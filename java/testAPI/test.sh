@@ -14,7 +14,7 @@
 #===============================================================================
 
 #set -o nounset     # Treat unset variables as an error
-cd java
+#cd java
 mkdir -p bin
 cd bin
 cp ../src/DemoImage.jpg ../src/DemoVideo.flv .
