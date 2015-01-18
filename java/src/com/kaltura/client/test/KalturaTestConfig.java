@@ -28,10 +28,10 @@
 package com.kaltura.client.test;
 
 public class KalturaTestConfig {
-	public static final  int PARTNER_ID = 54321;
-	public static final  String SECRET = "YOUR_USER_SECRET";
-	public static final  String ADMIN_SECRET = "YOUR_ADMIN_SECRET";
-	public static final String ENDPOINT = "http://www.kaltura.com";
+	public static final  int PARTNER_ID = 101;
+	public static final  String SECRET = "6aa758517fc892cf082185208a203116";
+	public static final  String ADMIN_SECRET = "0567e52a030ebc2ccb73b386aa1800e0";
+	public static final String ENDPOINT = "http://54.159.220.35/";
 	public static final String TEST_URL = "http://www.kaltura.org/demos/videos/DemoVideo.flv";
 	public static final String UPLOAD_VIDEO = "DemoVideo.flv";
 	public static final String UPLOAD_IMAGE = "DemoImage.jpg";
