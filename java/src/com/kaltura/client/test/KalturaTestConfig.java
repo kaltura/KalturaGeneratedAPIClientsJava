@@ -29,8 +29,8 @@ package com.kaltura.client.test;
 
 public class KalturaTestConfig {
 	public static final  int PARTNER_ID = 101;
-	public static final  String SECRET = "6aa758517fc892cf082185208a203116";
-	public static final  String ADMIN_SECRET = "0567e52a030ebc2ccb73b386aa1800e0";
+	public static final  String SECRET = "9c9f8d1cbb6bab63f3ac8450fcdb33f7";
+	public static final  String ADMIN_SECRET = "e068809c752fb5f311217eb3da3bc74d";
 	public static final String ENDPOINT = "http://54.159.220.35/";
 	public static final String TEST_URL = "http://www.kaltura.org/demos/videos/DemoVideo.flv";
 	public static final String UPLOAD_VIDEO = "DemoVideo.flv";
