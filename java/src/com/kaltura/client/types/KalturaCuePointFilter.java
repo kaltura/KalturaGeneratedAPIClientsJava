@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,29 +30,44 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public class KalturaCuePointFilter extends KalturaCuePointBaseFilter {
+    public String freeText;
 
     public KalturaCuePointFilter() {
     }
 
     public KalturaCuePointFilter(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("freeText")) {
+                this.freeText = ParseUtils.parseString(txt);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaCuePointFilter");
+        kparams.add("freeText", this.freeText);
         return kparams;
     }
 

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -42,6 +42,8 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
     DISTRIBUTION_PROFILE ("contentDistributionEventNotifications.DistributionProfile"),
     ENTRY_DISTRIBUTION ("contentDistributionEventNotifications.EntryDistribution"),
     CUE_POINT ("cuePointEventNotifications.CuePoint"),
+    DROP_FOLDER ("dropFolderEventNotifications.DropFolder"),
+    DROP_FOLDER_FILE ("dropFolderEventNotifications.DropFolderFile"),
     METADATA ("metadataEventNotifications.Metadata"),
     ENTRY ("1"),
     CATEGORY ("2"),
@@ -87,6 +89,10 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
         return this.hashCode;
     }
 
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
+    }
+
     public static KalturaEventNotificationEventObjectType get(String hashCode) {
         if (hashCode.equals("adCuePointEventNotifications.AdCuePoint"))
         {
@@ -121,6 +127,16 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
         if (hashCode.equals("cuePointEventNotifications.CuePoint"))
         {
            return CUE_POINT;
+        }
+        else 
+        if (hashCode.equals("dropFolderEventNotifications.DropFolder"))
+        {
+           return DROP_FOLDER;
+        }
+        else 
+        if (hashCode.equals("dropFolderEventNotifications.DropFolderFile"))
+        {
+           return DROP_FOLDER_FILE;
         }
         else 
         if (hashCode.equals("metadataEventNotifications.Metadata"))

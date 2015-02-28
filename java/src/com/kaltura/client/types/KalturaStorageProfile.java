@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -87,6 +87,9 @@ public class KalturaStorageProfile extends KalturaObjectBase {
     public ArrayList<KalturaRule> rules;
 	/**  Delivery profile ids     */
     public ArrayList<KalturaKeyValue> deliveryProfileIds;
+    public String privateKey;
+    public String publicKey;
+    public String passPhrase;
 
     public KalturaStorageProfile() {
     }
@@ -181,6 +184,15 @@ public class KalturaStorageProfile extends KalturaObjectBase {
             } else if (nodeName.equals("deliveryProfileIds")) {
                 this.deliveryProfileIds = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
                 continue;
+            } else if (nodeName.equals("privateKey")) {
+                this.privateKey = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("publicKey")) {
+                this.publicKey = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("passPhrase")) {
+                this.passPhrase = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -212,6 +224,9 @@ public class KalturaStorageProfile extends KalturaObjectBase {
         kparams.add("createFileLink", this.createFileLink);
         kparams.add("rules", this.rules);
         kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+        kparams.add("privateKey", this.privateKey);
+        kparams.add("publicKey", this.publicKey);
+        kparams.add("passPhrase", this.passPhrase);
         return kparams;
     }
 

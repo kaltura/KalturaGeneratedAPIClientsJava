@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -32,6 +32,7 @@ import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.enums.KalturaNullableBoolean;
+import com.kaltura.client.enums.KalturaLiveReportOrderBy;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -40,7 +41,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -51,6 +52,7 @@ public class KalturaLiveReportInputFilter extends KalturaObjectBase {
     public int fromTime = Integer.MIN_VALUE;
     public int toTime = Integer.MIN_VALUE;
     public KalturaNullableBoolean live;
+    public KalturaLiveReportOrderBy orderBy;
 
     public KalturaLiveReportInputFilter() {
     }
@@ -73,6 +75,9 @@ public class KalturaLiveReportInputFilter extends KalturaObjectBase {
             } else if (nodeName.equals("live")) {
                 this.live = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("orderBy")) {
+                this.orderBy = KalturaLiveReportOrderBy.get(ParseUtils.parseString(txt));
+                continue;
             } 
         }
     }
@@ -84,6 +89,7 @@ public class KalturaLiveReportInputFilter extends KalturaObjectBase {
         kparams.add("fromTime", this.fromTime);
         kparams.add("toTime", this.toTime);
         kparams.add("live", this.live);
+        kparams.add("orderBy", this.orderBy);
         return kparams;
     }
 

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,12 +30,11 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaConditionType implements KalturaEnumAsString {
-    ABC_WATERMARK ("abcScreenersWatermarkAccessControl.abcWatermark"),
     EVENT_NOTIFICATION_FIELD ("eventNotification.BooleanField"),
     EVENT_NOTIFICATION_OBJECT_CHANGED ("eventNotification.ObjectChanged"),
     METADATA_FIELD_CHANGED ("metadata.FieldChanged"),
@@ -50,7 +49,8 @@ public enum KalturaConditionType implements KalturaEnumAsString {
     FIELD_COMPARE ("7"),
     ASSET_PROPERTIES_COMPARE ("8"),
     USER_ROLE ("9"),
-    GEO_DISTANCE ("10");
+    GEO_DISTANCE ("10"),
+    OR_OPERATOR ("11");
 
     public String hashCode;
 
@@ -62,12 +62,11 @@ public enum KalturaConditionType implements KalturaEnumAsString {
         return this.hashCode;
     }
 
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
+    }
+
     public static KalturaConditionType get(String hashCode) {
-        if (hashCode.equals("abcScreenersWatermarkAccessControl.abcWatermark"))
-        {
-           return ABC_WATERMARK;
-        }
-        else 
         if (hashCode.equals("eventNotification.BooleanField"))
         {
            return EVENT_NOTIFICATION_FIELD;
@@ -143,8 +142,13 @@ public enum KalturaConditionType implements KalturaEnumAsString {
            return GEO_DISTANCE;
         }
         else 
+        if (hashCode.equals("11"))
         {
-           return ABC_WATERMARK;
+           return OR_OPERATOR;
+        }
+        else 
+        {
+           return EVENT_NOTIFICATION_FIELD;
         }
     }
 }

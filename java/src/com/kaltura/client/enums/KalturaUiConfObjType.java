@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -54,7 +54,8 @@ public enum KalturaUiConfObjType implements KalturaEnumAsInt {
     KMC_ROLES_AND_PERMISSIONS (17),
     CLIPPER (18),
     KSR (19),
-    KUPLOAD (20);
+    KUPLOAD (20),
+    WEBCASTING (21);
 
     public int hashCode;
 
@@ -64,6 +65,10 @@ public enum KalturaUiConfObjType implements KalturaEnumAsInt {
 
     public int getHashCode() {
         return this.hashCode;
+    }
+
+    public void setHashCode(int hashCode) {
+        this.hashCode = hashCode;
     }
 
     public static KalturaUiConfObjType get(int hashCode) {
@@ -88,6 +93,7 @@ public enum KalturaUiConfObjType implements KalturaEnumAsInt {
             case 18: return CLIPPER;
             case 19: return KSR;
             case 20: return KUPLOAD;
+            case 21: return WEBCASTING;
             default: return PLAYER;
         }
     }

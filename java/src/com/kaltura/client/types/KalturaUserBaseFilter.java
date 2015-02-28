@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaUserType;
 import com.kaltura.client.enums.KalturaUserStatus;
 import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.utils.ParseUtils;
@@ -40,7 +41,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +49,8 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public abstract class KalturaUserBaseFilter extends KalturaFilter {
     public int partnerIdEqual = Integer.MIN_VALUE;
+    public KalturaUserType typeEqual;
+    public String typeIn;
     public String screenNameLike;
     public String screenNameStartsWith;
     public String emailLike;
@@ -74,6 +77,12 @@ public abstract class KalturaUserBaseFilter extends KalturaFilter {
             String txt = aNode.getTextContent();
             if (nodeName.equals("partnerIdEqual")) {
                 this.partnerIdEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("typeEqual")) {
+                this.typeEqual = KalturaUserType.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("typeIn")) {
+                this.typeIn = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("screenNameLike")) {
                 this.screenNameLike = ParseUtils.parseString(txt);
@@ -122,6 +131,8 @@ public abstract class KalturaUserBaseFilter extends KalturaFilter {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUserBaseFilter");
         kparams.add("partnerIdEqual", this.partnerIdEqual);
+        kparams.add("typeEqual", this.typeEqual);
+        kparams.add("typeIn", this.typeIn);
         kparams.add("screenNameLike", this.screenNameLike);
         kparams.add("screenNameStartsWith", this.screenNameStartsWith);
         kparams.add("emailLike", this.emailLike);

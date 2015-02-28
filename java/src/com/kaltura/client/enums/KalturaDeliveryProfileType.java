@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -38,8 +38,6 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
     EDGE_CAST_HTTP ("edgeCast.EDGE_CAST_HTTP"),
     EDGE_CAST_RTMP ("edgeCast.EDGE_CAST_RTMP"),
     KONTIKI_HTTP ("kontiki.KONTIKI_HTTP"),
-    UPLYNK_HTTP ("uplynk.UPLYNK_HTTP"),
-    UPLYNK_RTMP ("uplynk.UPLYNK_RTMP"),
     VELOCIX_HDS ("velocix.VELOCIX_HDS"),
     VELOCIX_HLS ("velocix.VELOCIX_HLS"),
     APPLE_HTTP ("1"),
@@ -77,6 +75,7 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
     VOD_PACKAGER_DASH ("68"),
     LIVE_HLS ("1001"),
     LIVE_HDS ("1002"),
+    LIVE_DASH ("1003"),
     LIVE_RTMP ("1005"),
     LIVE_AKAMAI_HDS ("1013");
 
@@ -88,6 +87,10 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
 
     public String getHashCode() {
         return this.hashCode;
+    }
+
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
     }
 
     public static KalturaDeliveryProfileType get(String hashCode) {
@@ -104,16 +107,6 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
         if (hashCode.equals("kontiki.KONTIKI_HTTP"))
         {
            return KONTIKI_HTTP;
-        }
-        else 
-        if (hashCode.equals("uplynk.UPLYNK_HTTP"))
-        {
-           return UPLYNK_HTTP;
-        }
-        else 
-        if (hashCode.equals("uplynk.UPLYNK_RTMP"))
-        {
-           return UPLYNK_RTMP;
         }
         else 
         if (hashCode.equals("velocix.VELOCIX_HDS"))
@@ -299,6 +292,11 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
         if (hashCode.equals("1002"))
         {
            return LIVE_HDS;
+        }
+        else 
+        if (hashCode.equals("1003"))
+        {
+           return LIVE_DASH;
         }
         else 
         if (hashCode.equals("1005"))

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,28 +30,26 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBatchJobType implements KalturaEnumAsString {
     PARSE_CAPTION_ASSET ("captionSearch.parseCaptionAsset"),
     DISTRIBUTION_DELETE ("contentDistribution.DistributionDelete"),
-    CONVERT ("0"),
     DISTRIBUTION_DISABLE ("contentDistribution.DistributionDisable"),
     DISTRIBUTION_ENABLE ("contentDistribution.DistributionEnable"),
     DISTRIBUTION_FETCH_REPORT ("contentDistribution.DistributionFetchReport"),
     DISTRIBUTION_SUBMIT ("contentDistribution.DistributionSubmit"),
+    CONVERT ("0"),
     DISTRIBUTION_SYNC ("contentDistribution.DistributionSync"),
     DISTRIBUTION_UPDATE ("contentDistribution.DistributionUpdate"),
     DROP_FOLDER_CONTENT_PROCESSOR ("dropFolder.DropFolderContentProcessor"),
     DROP_FOLDER_WATCHER ("dropFolder.DropFolderWatcher"),
     EVENT_NOTIFICATION_HANDLER ("eventNotification.EventNotificationHandler"),
-    SCHEDULED_TASK ("scheduledTask.ScheduledTask"),
     INDEX_TAGS ("tagSearch.IndexTagsByPrivacyContext"),
     TAG_RESOLVE ("tagSearch.TagResolve"),
     VIRUS_SCAN ("virusScan.VirusScan"),
-    WIDEVINE_REPOSITORY_SYNC ("widevine.WidevineRepositorySync"),
     IMPORT ("1"),
     DELETE ("2"),
     FLATTEN ("3"),
@@ -99,6 +97,10 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         return this.hashCode;
     }
 
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
+    }
+
     public static KalturaBatchJobType get(String hashCode) {
         if (hashCode.equals("captionSearch.parseCaptionAsset"))
         {
@@ -108,11 +110,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("contentDistribution.DistributionDelete"))
         {
            return DISTRIBUTION_DELETE;
-        }
-        else 
-        if (hashCode.equals("0"))
-        {
-           return CONVERT;
         }
         else 
         if (hashCode.equals("contentDistribution.DistributionDisable"))
@@ -133,6 +130,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("contentDistribution.DistributionSubmit"))
         {
            return DISTRIBUTION_SUBMIT;
+        }
+        else 
+        if (hashCode.equals("0"))
+        {
+           return CONVERT;
         }
         else 
         if (hashCode.equals("contentDistribution.DistributionSync"))
@@ -160,11 +162,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
            return EVENT_NOTIFICATION_HANDLER;
         }
         else 
-        if (hashCode.equals("scheduledTask.ScheduledTask"))
-        {
-           return SCHEDULED_TASK;
-        }
-        else 
         if (hashCode.equals("tagSearch.IndexTagsByPrivacyContext"))
         {
            return INDEX_TAGS;
@@ -178,11 +175,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("virusScan.VirusScan"))
         {
            return VIRUS_SCAN;
-        }
-        else 
-        if (hashCode.equals("widevine.WidevineRepositorySync"))
-        {
-           return WIDEVINE_REPOSITORY_SYNC;
         }
         else 
         if (hashCode.equals("1"))

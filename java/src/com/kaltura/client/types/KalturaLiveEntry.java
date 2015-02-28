@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -75,6 +75,7 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
 	/**  The time (unix timestamp in milliseconds) in which the entry broadcast started
 	  or 0 when the entry is off the air     */
     public double currentBroadcastStartTime = Double.MIN_VALUE;
+    public KalturaLiveEntryRecordingOptions recordingOptions;
 
     public KalturaLiveEntry() {
     }
@@ -122,6 +123,9 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
             } else if (nodeName.equals("currentBroadcastStartTime")) {
                 this.currentBroadcastStartTime = ParseUtils.parseDouble(txt);
                 continue;
+            } else if (nodeName.equals("recordingOptions")) {
+                this.recordingOptions = ParseUtils.parseObject(KalturaLiveEntryRecordingOptions.class, aNode);
+                continue;
             } 
         }
     }
@@ -139,6 +143,7 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
         kparams.add("pushPublishEnabled", this.pushPublishEnabled);
         kparams.add("publishConfigurations", this.publishConfigurations);
         kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
+        kparams.add("recordingOptions", this.recordingOptions);
         return kparams;
     }
 

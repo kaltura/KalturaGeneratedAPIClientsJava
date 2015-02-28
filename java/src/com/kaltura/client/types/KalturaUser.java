@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -31,6 +31,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
+import com.kaltura.client.enums.KalturaUserType;
 import com.kaltura.client.enums.KalturaGender;
 import com.kaltura.client.enums.KalturaUserStatus;
 import com.kaltura.client.enums.KalturaLanguageCode;
@@ -42,7 +43,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -51,6 +52,7 @@ import org.w3c.dom.NodeList;
 public class KalturaUser extends KalturaObjectBase {
     public String id;
     public int partnerId = Integer.MIN_VALUE;
+    public KalturaUserType type;
     public String screenName;
     public String fullName;
     public String email;
@@ -104,6 +106,9 @@ public class KalturaUser extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("partnerId")) {
                 this.partnerId = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("type")) {
+                this.type = KalturaUserType.get(ParseUtils.parseInt(txt));
                 continue;
             } else if (nodeName.equals("screenName")) {
                 this.screenName = ParseUtils.parseString(txt);
@@ -215,6 +220,7 @@ public class KalturaUser extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUser");
         kparams.add("id", this.id);
+        kparams.add("type", this.type);
         kparams.add("screenName", this.screenName);
         kparams.add("fullName", this.fullName);
         kparams.add("email", this.email);

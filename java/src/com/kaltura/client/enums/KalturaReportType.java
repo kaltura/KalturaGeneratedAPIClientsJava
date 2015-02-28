@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -56,6 +56,7 @@ public enum KalturaReportType implements KalturaEnumAsInt {
     OPERATION_SYSTEM (22),
     BROWSERS (23),
     LIVE (24),
+    TOP_PLAYBACK_CONTEXT (25),
     PARTNER_USAGE (201);
 
     public int hashCode;
@@ -66,6 +67,10 @@ public enum KalturaReportType implements KalturaEnumAsInt {
 
     public int getHashCode() {
         return this.hashCode;
+    }
+
+    public void setHashCode(int hashCode) {
+        this.hashCode = hashCode;
     }
 
     public static KalturaReportType get(int hashCode) {
@@ -91,6 +96,7 @@ public enum KalturaReportType implements KalturaEnumAsInt {
             case 22: return OPERATION_SYSTEM;
             case 23: return BROWSERS;
             case 24: return LIVE;
+            case 25: return TOP_PLAYBACK_CONTEXT;
             case 201: return PARTNER_USAGE;
             default: return TOP_CONTENT;
         }

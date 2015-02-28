@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,9 @@ public class KalturaStorageJobData extends KalturaJobData {
     public String serverUrl;
     public String serverUsername;
     public String serverPassword;
+    public String serverPrivateKey;
+    public String serverPublicKey;
+    public String serverPassPhrase;
     public boolean ftpPassiveMode;
     public String srcFileSyncLocalPath;
     public String srcFileSyncId;
@@ -72,6 +75,15 @@ public class KalturaStorageJobData extends KalturaJobData {
             } else if (nodeName.equals("serverPassword")) {
                 this.serverPassword = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("serverPrivateKey")) {
+                this.serverPrivateKey = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("serverPublicKey")) {
+                this.serverPublicKey = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("serverPassPhrase")) {
+                this.serverPassPhrase = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("ftpPassiveMode")) {
                 this.ftpPassiveMode = ParseUtils.parseBool(txt);
                 continue;
@@ -94,6 +106,9 @@ public class KalturaStorageJobData extends KalturaJobData {
         kparams.add("serverUrl", this.serverUrl);
         kparams.add("serverUsername", this.serverUsername);
         kparams.add("serverPassword", this.serverPassword);
+        kparams.add("serverPrivateKey", this.serverPrivateKey);
+        kparams.add("serverPublicKey", this.serverPublicKey);
+        kparams.add("serverPassPhrase", this.serverPassPhrase);
         kparams.add("ftpPassiveMode", this.ftpPassiveMode);
         kparams.add("srcFileSyncLocalPath", this.srcFileSyncLocalPath);
         kparams.add("srcFileSyncId", this.srcFileSyncId);

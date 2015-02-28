@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,7 @@ public class KalturaEndUserReportInputFilter extends KalturaReportInputFilter {
     public String application;
     public String userIds;
     public String playbackContext;
+    public String ancestorPlaybackContext;
 
     public KalturaEndUserReportInputFilter() {
     }
@@ -68,6 +69,9 @@ public class KalturaEndUserReportInputFilter extends KalturaReportInputFilter {
             } else if (nodeName.equals("playbackContext")) {
                 this.playbackContext = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("ancestorPlaybackContext")) {
+                this.ancestorPlaybackContext = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -78,6 +82,7 @@ public class KalturaEndUserReportInputFilter extends KalturaReportInputFilter {
         kparams.add("application", this.application);
         kparams.add("userIds", this.userIds);
         kparams.add("playbackContext", this.playbackContext);
+        kparams.add("ancestorPlaybackContext", this.ancestorPlaybackContext);
         return kparams;
     }
 

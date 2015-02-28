@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -41,7 +41,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sat, 28 Feb 15 10:51:15 -0500
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -88,6 +88,8 @@ public class KalturaFlavorParams extends KalturaAssetParams {
     public String multiStream;
     public double anamorphicPixels = Double.MIN_VALUE;
     public int isAvoidForcedKeyFrames = Integer.MIN_VALUE;
+    public int isCropIMX = Integer.MIN_VALUE;
+    public int optimizationPolicy = Integer.MIN_VALUE;
     public int maxFrameRate = Integer.MIN_VALUE;
     public int videoConstantBitrate = Integer.MIN_VALUE;
     public int videoBitrateTolerance = Integer.MIN_VALUE;
@@ -186,6 +188,12 @@ public class KalturaFlavorParams extends KalturaAssetParams {
             } else if (nodeName.equals("isAvoidForcedKeyFrames")) {
                 this.isAvoidForcedKeyFrames = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("isCropIMX")) {
+                this.isCropIMX = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("optimizationPolicy")) {
+                this.optimizationPolicy = ParseUtils.parseInt(txt);
+                continue;
             } else if (nodeName.equals("maxFrameRate")) {
                 this.maxFrameRate = ParseUtils.parseInt(txt);
                 continue;
@@ -238,6 +246,8 @@ public class KalturaFlavorParams extends KalturaAssetParams {
         kparams.add("multiStream", this.multiStream);
         kparams.add("anamorphicPixels", this.anamorphicPixels);
         kparams.add("isAvoidForcedKeyFrames", this.isAvoidForcedKeyFrames);
+        kparams.add("isCropIMX", this.isCropIMX);
+        kparams.add("optimizationPolicy", this.optimizationPolicy);
         kparams.add("maxFrameRate", this.maxFrameRate);
         kparams.add("videoConstantBitrate", this.videoConstantBitrate);
         kparams.add("videoBitrateTolerance", this.videoBitrateTolerance);
