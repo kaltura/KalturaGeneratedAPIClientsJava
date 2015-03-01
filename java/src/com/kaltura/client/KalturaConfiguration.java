@@ -44,7 +44,7 @@ public class KalturaConfiguration implements Serializable {
 	protected String adminSecret;	
 	protected String endpoint;
 	protected int timeout = 120000;
-	protected String clientTag = "java:15-02-28";
+	protected String clientTag = "java:15-03-01";
     protected EKalturaServiceFormat serviceFormat = EKalturaServiceFormat.RESPONSE_TYPE_XML;
 	
 	private Map<String, String> params;
