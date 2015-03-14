@@ -110,7 +110,7 @@ import com.kaltura.client.services.KalturaExternalMediaService;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 13 Mar 15 13:52:55 -0400
+ * @date Sat, 14 Mar 15 00:17:16 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
