@@ -43,7 +43,7 @@ import com.kaltura.client.types.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 15 Mar 15 09:40:35 -0400
+ * @date Sun, 15 Mar 15 10:07:47 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
