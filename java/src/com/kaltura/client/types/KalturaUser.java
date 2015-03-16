@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 15 Mar 15 10:07:47 -0400
+ * @date Mon, 16 Mar 15 00:23:51 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
