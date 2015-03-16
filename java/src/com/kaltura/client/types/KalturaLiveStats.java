@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -47,6 +47,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaLiveStats extends KalturaObjectBase {
     public int audience = Integer.MIN_VALUE;
+    public int dvrAudience = Integer.MIN_VALUE;
     public double avgBitrate = Double.MIN_VALUE;
     public int bufferTime = Integer.MIN_VALUE;
     public int plays = Integer.MIN_VALUE;
@@ -65,6 +66,9 @@ public class KalturaLiveStats extends KalturaObjectBase {
             String txt = aNode.getTextContent();
             if (nodeName.equals("audience")) {
                 this.audience = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("dvrAudience")) {
+                this.dvrAudience = ParseUtils.parseInt(txt);
                 continue;
             } else if (nodeName.equals("avgBitrate")) {
                 this.avgBitrate = ParseUtils.parseDouble(txt);
@@ -92,6 +96,7 @@ public class KalturaLiveStats extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaLiveStats");
         kparams.add("audience", this.audience);
+        kparams.add("dvrAudience", this.dvrAudience);
         kparams.add("avgBitrate", this.avgBitrate);
         kparams.add("bufferTime", this.bufferTime);
         kparams.add("plays", this.plays);

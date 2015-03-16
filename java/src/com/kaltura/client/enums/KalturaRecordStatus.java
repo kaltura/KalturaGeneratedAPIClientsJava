@@ -30,13 +30,14 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaRecordStatus implements KalturaEnumAsInt {
     DISABLED (0),
-    ENABLED (1);
+    APPENDED (1),
+    PER_SESSION (2);
 
     public int hashCode;
 
@@ -55,7 +56,8 @@ public enum KalturaRecordStatus implements KalturaEnumAsInt {
     public static KalturaRecordStatus get(int hashCode) {
         switch(hashCode) {
             case 0: return DISABLED;
-            case 1: return ENABLED;
+            case 1: return APPENDED;
+            case 2: return PER_SESSION;
             default: return DISABLED;
         }
     }

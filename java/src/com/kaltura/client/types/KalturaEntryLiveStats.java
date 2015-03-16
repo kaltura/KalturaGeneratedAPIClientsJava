@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -47,6 +47,7 @@ import org.w3c.dom.NodeList;
 public class KalturaEntryLiveStats extends KalturaLiveStats {
     public String entryId;
     public int peakAudience = Integer.MIN_VALUE;
+    public int peakDvrAudience = Integer.MIN_VALUE;
 
     public KalturaEntryLiveStats() {
     }
@@ -64,6 +65,9 @@ public class KalturaEntryLiveStats extends KalturaLiveStats {
             } else if (nodeName.equals("peakAudience")) {
                 this.peakAudience = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("peakDvrAudience")) {
+                this.peakDvrAudience = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -73,6 +77,7 @@ public class KalturaEntryLiveStats extends KalturaLiveStats {
         kparams.add("objectType", "KalturaEntryLiveStats");
         kparams.add("entryId", this.entryId);
         kparams.add("peakAudience", this.peakAudience);
+        kparams.add("peakDvrAudience", this.peakDvrAudience);
         return kparams;
     }
 

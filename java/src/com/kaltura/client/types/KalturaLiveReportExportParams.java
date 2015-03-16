@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -50,6 +50,8 @@ public class KalturaLiveReportExportParams extends KalturaObjectBase {
     public String recpientEmail;
 	/**  Time zone offset in minutes (between client to UTC)     */
     public int timeZoneOffset = Integer.MIN_VALUE;
+	/**  Optional argument that allows controlling the prefix of the exported csv url     */
+    public String applicationUrlTemplate;
 
     public KalturaLiveReportExportParams() {
     }
@@ -69,6 +71,9 @@ public class KalturaLiveReportExportParams extends KalturaObjectBase {
             } else if (nodeName.equals("timeZoneOffset")) {
                 this.timeZoneOffset = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("applicationUrlTemplate")) {
+                this.applicationUrlTemplate = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -79,6 +84,7 @@ public class KalturaLiveReportExportParams extends KalturaObjectBase {
         kparams.add("entryIds", this.entryIds);
         kparams.add("recpientEmail", this.recpientEmail);
         kparams.add("timeZoneOffset", this.timeZoneOffset);
+        kparams.add("applicationUrlTemplate", this.applicationUrlTemplate);
         return kparams;
     }
 

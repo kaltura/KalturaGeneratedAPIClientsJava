@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -67,9 +67,13 @@ public class KalturaBaseEntry extends KalturaObjectBase {
     public String tags;
 	/**  Entry admin tags can be updated only by administrators     */
     public String adminTags;
-	/**  Categories with no entitlement that this entry belongs to.     */
+	/**  Comma separated list of full names of categories to which this entry belongs.
+	  Only categories that don't have entitlement (privacy context) are listed, to
+	  retrieve the full list of categories, use the categoryEntry.list action.      */
     public String categories;
-	/**  Categories Ids of categories with no entitlement that this entry belongs to     */
+	/**  Comma separated list of ids of categories to which this entry belongs. Only
+	  categories that don't have entitlement (privacy context) are listed, to retrieve
+	  the full list of categories, use the categoryEntry.list action.      */
     public String categoriesIds;
     public KalturaEntryStatus status;
 	/**  Entry moderation status     */

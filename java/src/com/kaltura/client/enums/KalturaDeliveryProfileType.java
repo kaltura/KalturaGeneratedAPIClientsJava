@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 16 Mar 15 00:23:51 -0400
+ * @date Mon, 16 Mar 15 11:48:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -67,6 +67,7 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
     LIMELIGHT_HTTP ("44"),
     LIMELIGHT_RTMP ("45"),
     LOCAL_PATH_APPLE_HTTP ("51"),
+    LOCAL_PATH_HDS ("53"),
     LOCAL_PATH_HTTP ("54"),
     LOCAL_PATH_RTMP ("55"),
     VOD_PACKAGER_HLS ("61"),
@@ -252,6 +253,11 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
         if (hashCode.equals("51"))
         {
            return LOCAL_PATH_APPLE_HTTP;
+        }
+        else 
+        if (hashCode.equals("53"))
+        {
+           return LOCAL_PATH_HDS;
         }
         else 
         if (hashCode.equals("54"))
