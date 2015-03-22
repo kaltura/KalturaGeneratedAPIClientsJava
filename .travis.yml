@@ -3,4 +3,4 @@ jdk:
     - openjdk7
     - oraclejdk7
     - oraclejdk8
-script: cd java && ./testAPI/test.sh
+script: ./testAPI/test.sh
