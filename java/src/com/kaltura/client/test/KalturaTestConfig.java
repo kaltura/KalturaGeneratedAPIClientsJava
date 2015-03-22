@@ -31,7 +31,7 @@ public class KalturaTestConfig {
 	public static final int PARTNER_ID = 101;
 	public static final String SECRET = "65b05dbdfc77b95ed4b21ff9b923d545";
 	public static final String ADMIN_SECRET = "066439f83615896a16efce529b84fcfb";
-	public static final String ENDPOINT = "http://54.81.207.25";
+	public static final String ENDPOINT = "http://54.163.254.64";
 	public static final String TEST_URL = "http://www.kaltura.org/demos/videos/DemoVideo.flv";
 	public static final String UPLOAD_VIDEO = "DemoVideo.flv";
 	public static final String UPLOAD_IMAGE = "DemoImage.jpg";
