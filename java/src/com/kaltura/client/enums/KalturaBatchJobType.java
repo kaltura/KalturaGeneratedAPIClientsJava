@@ -30,23 +30,24 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 07:40:14 -0400
+ * @date Sun, 22 Mar 15 08:21:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBatchJobType implements KalturaEnumAsString {
+    CONVERT ("0"),
     PARSE_CAPTION_ASSET ("captionSearch.parseCaptionAsset"),
     DISTRIBUTION_DELETE ("contentDistribution.DistributionDelete"),
     DISTRIBUTION_DISABLE ("contentDistribution.DistributionDisable"),
     DISTRIBUTION_ENABLE ("contentDistribution.DistributionEnable"),
     DISTRIBUTION_FETCH_REPORT ("contentDistribution.DistributionFetchReport"),
     DISTRIBUTION_SUBMIT ("contentDistribution.DistributionSubmit"),
-    CONVERT ("0"),
     DISTRIBUTION_SYNC ("contentDistribution.DistributionSync"),
     DISTRIBUTION_UPDATE ("contentDistribution.DistributionUpdate"),
     DROP_FOLDER_CONTENT_PROCESSOR ("dropFolder.DropFolderContentProcessor"),
     DROP_FOLDER_WATCHER ("dropFolder.DropFolderWatcher"),
     EVENT_NOTIFICATION_HANDLER ("eventNotification.EventNotificationHandler"),
+    SCHEDULED_TASK ("scheduledTask.ScheduledTask"),
     INDEX_TAGS ("tagSearch.IndexTagsByPrivacyContext"),
     TAG_RESOLVE ("tagSearch.TagResolve"),
     VIRUS_SCAN ("virusScan.VirusScan"),
@@ -102,6 +103,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     }
 
     public static KalturaBatchJobType get(String hashCode) {
+        if (hashCode.equals("0"))
+        {
+           return CONVERT;
+        }
+        else 
         if (hashCode.equals("captionSearch.parseCaptionAsset"))
         {
            return PARSE_CAPTION_ASSET;
@@ -132,11 +138,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
            return DISTRIBUTION_SUBMIT;
         }
         else 
-        if (hashCode.equals("0"))
-        {
-           return CONVERT;
-        }
-        else 
         if (hashCode.equals("contentDistribution.DistributionSync"))
         {
            return DISTRIBUTION_SYNC;
@@ -160,6 +161,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("eventNotification.EventNotificationHandler"))
         {
            return EVENT_NOTIFICATION_HANDLER;
+        }
+        else 
+        if (hashCode.equals("scheduledTask.ScheduledTask"))
+        {
+           return SCHEDULED_TASK;
         }
         else 
         if (hashCode.equals("tagSearch.IndexTagsByPrivacyContext"))
@@ -358,7 +364,7 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         }
         else 
         {
-           return PARSE_CAPTION_ASSET;
+           return CONVERT;
         }
     }
 }

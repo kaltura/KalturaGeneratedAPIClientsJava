@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -30,18 +30,20 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sun, 22 Mar 15 08:21:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaObjectTaskType implements KalturaEnumAsString {
+    DISTRIBUTE ("scheduledTaskContentDistribution.Distribute"),
     DISPATCH_EVENT_NOTIFICATION ("scheduledTaskEventNotification.DispatchEventNotification"),
     EXECUTE_METADATA_XSLT ("scheduledTaskMetadata.ExecuteMetadataXslt"),
     DELETE_ENTRY ("1"),
     MODIFY_CATEGORIES ("2"),
     DELETE_ENTRY_FLAVORS ("3"),
     CONVERT_ENTRY_FLAVORS ("4"),
-    DELETE_LOCAL_CONTENT ("5");
+    DELETE_LOCAL_CONTENT ("5"),
+    STORAGE_EXPORT ("6");
 
     public String hashCode;
 
@@ -53,7 +55,16 @@ public enum KalturaObjectTaskType implements KalturaEnumAsString {
         return this.hashCode;
     }
 
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
+    }
+
     public static KalturaObjectTaskType get(String hashCode) {
+        if (hashCode.equals("scheduledTaskContentDistribution.Distribute"))
+        {
+           return DISTRIBUTE;
+        }
+        else 
         if (hashCode.equals("scheduledTaskEventNotification.DispatchEventNotification"))
         {
            return DISPATCH_EVENT_NOTIFICATION;
@@ -89,8 +100,13 @@ public enum KalturaObjectTaskType implements KalturaEnumAsString {
            return DELETE_LOCAL_CONTENT;
         }
         else 
+        if (hashCode.equals("6"))
         {
-           return DISPATCH_EVENT_NOTIFICATION;
+           return STORAGE_EXPORT;
+        }
+        else 
+        {
+           return DISTRIBUTE;
         }
     }
 }

@@ -106,11 +106,12 @@ import com.kaltura.client.services.KalturaLikeService;
 import com.kaltura.client.services.KalturaVarConsoleService;
 import com.kaltura.client.services.KalturaEventNotificationTemplateService;
 import com.kaltura.client.services.KalturaExternalMediaService;
+import com.kaltura.client.services.KalturaScheduledTaskProfileService;
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 07:40:15 -0400
+ * @date Sun, 22 Mar 15 08:21:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -767,6 +768,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.externalMediaService = new KalturaExternalMediaService(this);
 	
 		return this.externalMediaService;
+	}
+	
+	protected KalturaScheduledTaskProfileService scheduledTaskProfileService;
+	public KalturaScheduledTaskProfileService getScheduledTaskProfileService() {
+		if(this.scheduledTaskProfileService == null)
+			this.scheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
+	
+		return this.scheduledTaskProfileService;
 	}
 	
 }

@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2011  Kaltura Inc.
+// Copyright (C) 2006-2015  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Dec 14 10:44:09 -0500
+ * @date Sun, 22 Mar 15 08:21:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public abstract class KalturaObjectTask extends KalturaObjectBase {
     public KalturaObjectTaskType type;
+    public boolean stopProcessingOnError;
 
     public KalturaObjectTask() {
     }
@@ -61,6 +62,9 @@ public abstract class KalturaObjectTask extends KalturaObjectBase {
             if (nodeName.equals("type")) {
                 this.type = KalturaObjectTaskType.get(ParseUtils.parseString(txt));
                 continue;
+            } else if (nodeName.equals("stopProcessingOnError")) {
+                this.stopProcessingOnError = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -68,6 +72,7 @@ public abstract class KalturaObjectTask extends KalturaObjectBase {
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaObjectTask");
+        kparams.add("stopProcessingOnError", this.stopProcessingOnError);
         return kparams;
     }
 
