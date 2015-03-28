@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -39,30 +38,26 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
-public class KalturaLiveStatsListResponse extends KalturaObjectBase {
+public class KalturaLiveStatsListResponse extends KalturaListResponse {
     public KalturaLiveStats objects;
-    public int totalCount = Integer.MIN_VALUE;
 
     public KalturaLiveStatsListResponse() {
     }
 
     public KalturaLiveStatsListResponse(Element node) throws KalturaApiException {
+        super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
             if (nodeName.equals("objects")) {
                 this.objects = ParseUtils.parseObject(KalturaLiveStats.class, aNode);
-                continue;
-            } else if (nodeName.equals("totalCount")) {
-                this.totalCount = ParseUtils.parseInt(txt);
                 continue;
             } 
         }
@@ -72,7 +67,6 @@ public class KalturaLiveStatsListResponse extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaLiveStatsListResponse");
         kparams.add("objects", this.objects);
-        kparams.add("totalCount", this.totalCount);
         return kparams;
     }
 

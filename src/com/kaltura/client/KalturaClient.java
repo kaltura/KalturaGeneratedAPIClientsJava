@@ -60,6 +60,7 @@ import com.kaltura.client.services.KalturaPermissionItemService;
 import com.kaltura.client.services.KalturaPermissionService;
 import com.kaltura.client.services.KalturaPlaylistService;
 import com.kaltura.client.services.KalturaReportService;
+import com.kaltura.client.services.KalturaResponseProfileService;
 import com.kaltura.client.services.KalturaSchemaService;
 import com.kaltura.client.services.KalturaSearchService;
 import com.kaltura.client.services.KalturaSessionService;
@@ -107,11 +108,12 @@ import com.kaltura.client.services.KalturaVarConsoleService;
 import com.kaltura.client.services.KalturaEventNotificationTemplateService;
 import com.kaltura.client.services.KalturaExternalMediaService;
 import com.kaltura.client.services.KalturaScheduledTaskProfileService;
+import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -119,15 +121,11 @@ import com.kaltura.client.services.KalturaScheduledTaskProfileService;
 @SuppressWarnings("serial")
 public class KalturaClient extends KalturaClientBase {
 	
-	protected String apiVersion = "3.1.6";
-	
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
-	}
-	
-	@Override
-	public String getApiVersion(){
-		return apiVersion;
+		
+		this.setClientTag("java:15-03-23");
+		this.setApiVersion("3.2.0");
 	}
 	
 	protected KalturaAccessControlProfileService accessControlProfileService;
@@ -400,6 +398,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.reportService = new KalturaReportService(this);
 	
 		return this.reportService;
+	}
+	
+	protected KalturaResponseProfileService responseProfileService;
+	public KalturaResponseProfileService getResponseProfileService() {
+		if(this.responseProfileService == null)
+			this.responseProfileService = new KalturaResponseProfileService(this);
+	
+		return this.responseProfileService;
 	}
 	
 	protected KalturaSchemaService schemaService;
@@ -776,6 +782,148 @@ public class KalturaClient extends KalturaClientBase {
 			this.scheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
 	
 		return this.scheduledTaskProfileService;
+	}
+	
+	/**
+	 * @param String $clientTag
+	 */
+	public void setClientTag(String clientTag)
+	{
+		this.clientConfiguration.put("clientTag", clientTag);
+	}
+	
+	/**
+	 * @return String
+	 */
+	public String getClientTag()
+	{
+		if(this.clientConfiguration.containsKey("clientTag"))
+		{
+			return (String) this.clientConfiguration.get("clientTag");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * @param String $apiVersion
+	 */
+	public void setApiVersion(String apiVersion)
+	{
+		this.clientConfiguration.put("apiVersion", apiVersion);
+	}
+	
+	/**
+	 * @return String
+	 */
+	public String getApiVersion()
+	{
+		if(this.clientConfiguration.containsKey("apiVersion"))
+		{
+			return (String) this.clientConfiguration.get("apiVersion");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @param Integer $partnerId
+	 */
+	public void setPartnerId(Integer partnerId)
+	{
+		this.requestConfiguration.put("partnerId", partnerId);
+	}
+	
+	/**
+	 * Impersonated partner id
+	 * 
+	 * @return Integer
+	 */
+	public Integer getPartnerId()
+	{
+		if(this.requestConfiguration.containsKey("partnerId"))
+		{
+			return (Integer) this.requestConfiguration.get("partnerId");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param String $ks
+	 */
+	public void setKs(String ks)
+	{
+		this.requestConfiguration.put("ks", ks);
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return String
+	 */
+	public String getKs()
+	{
+		if(this.requestConfiguration.containsKey("ks"))
+		{
+			return (String) this.requestConfiguration.get("ks");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @param String $sessionId
+	 */
+	public void setSessionId(String sessionId)
+	{
+		this.requestConfiguration.put("ks", sessionId);
+	}
+	
+	/**
+	 * Kaltura API session
+	 * 
+	 * @return String
+	 */
+	public String getSessionId()
+	{
+		if(this.requestConfiguration.containsKey("ks"))
+		{
+			return (String) this.requestConfiguration.get("ks");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @param KalturaBaseResponseProfile $responseProfile
+	 */
+	public void setResponseProfile(KalturaBaseResponseProfile responseProfile)
+	{
+		this.requestConfiguration.put("responseProfile", responseProfile);
+	}
+	
+	/**
+	 * Response profile
+	 * 
+	 * @return KalturaBaseResponseProfile
+	 */
+	public KalturaBaseResponseProfile getResponseProfile()
+	{
+		if(this.requestConfiguration.containsKey("responseProfile"))
+		{
+			return (KalturaBaseResponseProfile) this.requestConfiguration.get("responseProfile");
+		}
+		
+		return null;
 	}
 	
 }

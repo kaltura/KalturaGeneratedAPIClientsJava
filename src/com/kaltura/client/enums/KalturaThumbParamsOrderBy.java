@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -51,4 +51,7 @@ public enum KalturaThumbParamsOrderBy implements KalturaEnumAsString {
         this.hashCode = hashCode;
     }
 
+    public static KalturaThumbParamsOrderBy get(String hashCode) {
+    	return null;
+    }
 }

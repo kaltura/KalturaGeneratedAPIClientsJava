@@ -40,13 +40,13 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaFileAssetBaseFilter extends KalturaFilter {
+public abstract class KalturaFileAssetBaseFilter extends KalturaRelatedFilter {
     public int idEqual = Integer.MIN_VALUE;
     public String idIn;
     public int partnerIdEqual = Integer.MIN_VALUE;

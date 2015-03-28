@@ -31,28 +31,43 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
+import java.util.HashMap;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public abstract class KalturaObject extends KalturaObjectBase {
+    public HashMap<String, KalturaListResponse> relatedObjects;
 
     public KalturaObject() {
     }
 
     public KalturaObject(Element node) throws KalturaApiException {
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            if (nodeName.equals("relatedObjects")) {
+                this.relatedObjects = ParseUtils.parseMap(KalturaListResponse.class, aNode);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaObject");
+        kparams.add("relatedObjects", this.relatedObjects);
         return kparams;
     }
 

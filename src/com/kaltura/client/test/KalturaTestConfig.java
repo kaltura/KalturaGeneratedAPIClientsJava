@@ -27,13 +27,54 @@
 // ===================================================================================================
 package com.kaltura.client.test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class KalturaTestConfig {
-	public static final int PARTNER_ID = 101;
-	public static final String SECRET = "65b05dbdfc77b95ed4b21ff9b923d545";
-	public static final String ADMIN_SECRET = "066439f83615896a16efce529b84fcfb";
-	public static final String ENDPOINT = "http://54.163.254.64";
-	public static final String TEST_URL = "http://www.kaltura.org/demos/videos/DemoVideo.flv";
-	public static final String UPLOAD_VIDEO = "DemoVideo.flv";
-	public static final String UPLOAD_IMAGE = "DemoImage.jpg";
-	public static final String USER_NAME = "testUser";
+	private static Properties properties;
+	
+	private static final String PARTNER_ID = "partnerId";
+	private static final String ADMIN_SECRET = "adminSecret";
+	private static final String ENDPOINT = "serviceUrl";
+	private static final String TEST_URL = "testUrl";
+	private static final String UPLOAD_VIDEO = "uploadVideo";
+	private static final String UPLOAD_IMAGE = "uploadImage";
+	private static final String USER_ID = "userId";
+	
+	public KalturaTestConfig() throws IOException{
+		if(properties == null){
+			InputStream inputStream = getClass().getClassLoader().getResourceAsStream("test.properties");
+			properties = new Properties();
+			properties.load(inputStream);
+		}
+	}
+	
+	public int getPartnerId(){
+		return Integer.parseInt(properties.getProperty(PARTNER_ID));
+	}
+	
+	public String getAdminSecret(){
+		return properties.getProperty(ADMIN_SECRET);
+	}
+	
+	public String getServiceUrl(){
+		return properties.getProperty(ENDPOINT);
+	}
+	
+	public String getTestUrl(){
+		return properties.getProperty(TEST_URL);
+	}
+	
+	public String getUploadVideo(){
+		return properties.getProperty(UPLOAD_VIDEO);
+	}
+	
+	public String getUploadImage(){
+		return properties.getProperty(UPLOAD_IMAGE);
+	}
+	
+	public String getUserId(){
+		return properties.getProperty(USER_ID);
+	}
 }

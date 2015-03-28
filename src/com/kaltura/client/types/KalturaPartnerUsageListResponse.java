@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -40,34 +39,30 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 22 Mar 15 13:39:06 -0400
+ * @date Mon, 23 Mar 15 11:04:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
-public class KalturaPartnerUsageListResponse extends KalturaObjectBase {
+public class KalturaPartnerUsageListResponse extends KalturaListResponse {
     public KalturaVarPartnerUsageItem total;
     public ArrayList<KalturaVarPartnerUsageItem> objects;
-    public int totalCount = Integer.MIN_VALUE;
 
     public KalturaPartnerUsageListResponse() {
     }
 
     public KalturaPartnerUsageListResponse(Element node) throws KalturaApiException {
+        super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
             if (nodeName.equals("total")) {
                 this.total = ParseUtils.parseObject(KalturaVarPartnerUsageItem.class, aNode);
                 continue;
             } else if (nodeName.equals("objects")) {
                 this.objects = ParseUtils.parseArray(KalturaVarPartnerUsageItem.class, aNode);
-                continue;
-            } else if (nodeName.equals("totalCount")) {
-                this.totalCount = ParseUtils.parseInt(txt);
                 continue;
             } 
         }
@@ -78,7 +73,6 @@ public class KalturaPartnerUsageListResponse extends KalturaObjectBase {
         kparams.add("objectType", "KalturaPartnerUsageListResponse");
         kparams.add("total", this.total);
         kparams.add("objects", this.objects);
-        kparams.add("totalCount", this.totalCount);
         return kparams;
     }
 
