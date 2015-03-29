@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 23 Mar 15 11:04:33 -0400
+ * @date Sun, 29 Mar 15 09:55:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -52,6 +52,7 @@ public abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter {
     public int metadataProfileVersionEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionGreaterThanOrEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionLessThanOrEqual = Integer.MIN_VALUE;
+	/**  When null, default is KalturaMetadataObjectType::ENTRY     */
     public KalturaMetadataObjectType metadataObjectTypeEqual;
     public String objectIdEqual;
     public String objectIdIn;

@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 23 Mar 15 11:04:33 -0400
+ * @date Sun, 29 Mar 15 09:55:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -47,6 +47,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
     public KalturaAmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3;
+    public String s3Region;
 
     public KalturaAmazonS3StorageProfile() {
     }
@@ -61,6 +62,9 @@ public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
             if (nodeName.equals("filesPermissionInS3")) {
                 this.filesPermissionInS3 = KalturaAmazonS3StorageProfileFilesPermissionLevel.get(ParseUtils.parseString(txt));
                 continue;
+            } else if (nodeName.equals("s3Region")) {
+                this.s3Region = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -69,6 +73,7 @@ public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaAmazonS3StorageProfile");
         kparams.add("filesPermissionInS3", this.filesPermissionInS3);
+        kparams.add("s3Region", this.s3Region);
         return kparams;
     }
 

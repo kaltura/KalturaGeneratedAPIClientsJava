@@ -30,11 +30,12 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 23 Mar 15 11:04:33 -0400
+ * @date Sun, 29 Mar 15 09:55:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaLiveReportOrderBy implements KalturaEnumAsString {
+    NAME_ASC ("+name"),
     AUDIENCE_DESC ("-audience"),
     EVENT_TIME_DESC ("-eventTime"),
     PLAYS_DESC ("-plays");
@@ -54,6 +55,11 @@ public enum KalturaLiveReportOrderBy implements KalturaEnumAsString {
     }
 
     public static KalturaLiveReportOrderBy get(String hashCode) {
+        if (hashCode.equals("+name"))
+        {
+           return NAME_ASC;
+        }
+        else 
         if (hashCode.equals("-audience"))
         {
            return AUDIENCE_DESC;
@@ -70,7 +76,7 @@ public enum KalturaLiveReportOrderBy implements KalturaEnumAsString {
         }
         else 
         {
-           return AUDIENCE_DESC;
+           return NAME_ASC;
         }
     }
 }

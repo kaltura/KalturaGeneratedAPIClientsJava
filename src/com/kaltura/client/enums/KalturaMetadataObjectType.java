@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 23 Mar 15 11:04:33 -0400
+ * @date Sun, 29 Mar 15 09:55:03 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -41,7 +41,8 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
     ENTRY ("1"),
     CATEGORY ("2"),
     USER ("3"),
-    PARTNER ("4");
+    PARTNER ("4"),
+    DYNAMIC_OBJECT ("5");
 
     public String hashCode;
 
@@ -91,6 +92,11 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
         if (hashCode.equals("4"))
         {
            return PARTNER;
+        }
+        else 
+        if (hashCode.equals("5"))
+        {
+           return DYNAMIC_OBJECT;
         }
         else 
         {
