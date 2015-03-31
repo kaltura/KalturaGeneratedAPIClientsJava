@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 30 Mar 15 07:57:56 -0400
+ * @date Tue, 31 Mar 15 07:26:09 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -44,6 +44,7 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
     HLS ("hls"),
     ISMV ("ismv"),
     JPG ("jpg"),
+    M2TS ("m2ts"),
     M4V ("m4v"),
     MKV ("mkv"),
     MOV ("mov"),
@@ -51,6 +52,7 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
     MP4 ("mp4"),
     MPEG ("mpeg"),
     MPEGTS ("mpegts"),
+    MXF ("mxf"),
     OGG ("ogg"),
     OGV ("ogv"),
     PDF ("pdf"),
@@ -122,6 +124,11 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
            return JPG;
         }
         else 
+        if (hashCode.equals("m2ts"))
+        {
+           return M2TS;
+        }
+        else 
         if (hashCode.equals("m4v"))
         {
            return M4V;
@@ -155,6 +162,11 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
         if (hashCode.equals("mpegts"))
         {
            return MPEGTS;
+        }
+        else 
+        if (hashCode.equals("mxf"))
+        {
+           return MXF;
         }
         else 
         if (hashCode.equals("ogg"))
