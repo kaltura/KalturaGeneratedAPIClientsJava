@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Thu, 02 Apr 15 00:20:51 -0400
+ * @date Fri, 03 Apr 15 00:52:35 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,7 @@ import org.w3c.dom.NodeList;
 public class KalturaResponseProfileMapping extends KalturaObjectBase {
     public String parentProperty;
     public String filterProperty;
+    public boolean allowNull;
 
     public KalturaResponseProfileMapping() {
     }
@@ -64,6 +65,9 @@ public class KalturaResponseProfileMapping extends KalturaObjectBase {
             } else if (nodeName.equals("filterProperty")) {
                 this.filterProperty = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("allowNull")) {
+                this.allowNull = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -73,6 +77,7 @@ public class KalturaResponseProfileMapping extends KalturaObjectBase {
         kparams.add("objectType", "KalturaResponseProfileMapping");
         kparams.add("parentProperty", this.parentProperty);
         kparams.add("filterProperty", this.filterProperty);
+        kparams.add("allowNull", this.allowNull);
         return kparams;
     }
 
