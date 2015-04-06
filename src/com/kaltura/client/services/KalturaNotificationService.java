@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 06 Apr 15 00:20:52 -0400
+ * @date Mon, 06 Apr 15 10:11:54 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */

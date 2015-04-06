@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 06 Apr 15 00:20:52 -0400
+ * @date Mon, 06 Apr 15 10:11:54 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -184,12 +184,17 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return this.getUrl(id, storageId, false);
     }
 
-	/**  Get download URL for the asset     */
     public String getUrl(String id, int storageId, boolean forceProxy) throws KalturaApiException {
+        return this.getUrl(id, storageId, forceProxy, null);
+    }
+
+	/**  Get download URL for the asset     */
+    public String getUrl(String id, int storageId, boolean forceProxy, KalturaFlavorAssetUrlOptions options) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         kparams.add("storageId", storageId);
         kparams.add("forceProxy", forceProxy);
+        kparams.add("options", options);
         this.kalturaClient.queueServiceCall("flavorasset", "getUrl", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;
