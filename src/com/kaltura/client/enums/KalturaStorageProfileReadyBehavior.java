@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 19 Apr 15 00:21:35 -0400
+ * @date Mon, 20 Apr 15 00:21:39 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
