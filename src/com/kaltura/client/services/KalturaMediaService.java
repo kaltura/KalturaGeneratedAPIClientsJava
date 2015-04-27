@@ -44,7 +44,7 @@ import com.kaltura.client.KalturaFile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Apr 15 00:22:58 -0400
+ * @date Mon, 27 Apr 15 13:11:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -182,16 +182,16 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-    public int convert(String entryId) throws KalturaApiException {
+    public long convert(String entryId) throws KalturaApiException {
         return this.convert(entryId, Integer.MIN_VALUE);
     }
 
-    public int convert(String entryId, int conversionProfileId) throws KalturaApiException {
+    public long convert(String entryId, int conversionProfileId) throws KalturaApiException {
         return this.convert(entryId, conversionProfileId, null);
     }
 
 	/**  Convert entry     */
-    public int convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
+    public long convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("conversionProfileId", conversionProfileId);
@@ -201,7 +201,7 @@ public class KalturaMediaService extends KalturaServiceBase {
             return 0;
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
+        return ParseUtils.parseBigint(resultText);
     }
 
     public KalturaMediaEntry get(String entryId) throws KalturaApiException {

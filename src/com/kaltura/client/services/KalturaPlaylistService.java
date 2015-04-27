@@ -41,7 +41,7 @@ import java.util.ArrayList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Apr 15 00:22:58 -0400
+ * @date Mon, 27 Apr 15 13:11:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -163,13 +163,18 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.execute(id, detailed, playlistContext, null);
     }
 
-	/**  Retrieve playlist for playing purpose     */
     public List<KalturaBaseEntry> execute(String id, String detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter) throws KalturaApiException {
+        return this.execute(id, detailed, playlistContext, filter, null);
+    }
+
+	/**  Retrieve playlist for playing purpose     */
+    public List<KalturaBaseEntry> execute(String id, String detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         kparams.add("detailed", detailed);
         kparams.add("playlistContext", playlistContext);
         kparams.add("filter", filter);
+        kparams.add("pager", pager);
         this.kalturaClient.queueServiceCall("playlist", "execute", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
@@ -181,12 +186,17 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.executeFromContent(playlistType, playlistContent, "");
     }
 
-	/**  Retrieve playlist for playing purpose, based on content     */
     public List<KalturaBaseEntry> executeFromContent(KalturaPlaylistType playlistType, String playlistContent, String detailed) throws KalturaApiException {
+        return this.executeFromContent(playlistType, playlistContent, detailed, null);
+    }
+
+	/**  Retrieve playlist for playing purpose, based on content     */
+    public List<KalturaBaseEntry> executeFromContent(KalturaPlaylistType playlistType, String playlistContent, String detailed, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("playlistType", playlistType);
         kparams.add("playlistContent", playlistContent);
         kparams.add("detailed", detailed);
+        kparams.add("pager", pager);
         this.kalturaClient.queueServiceCall("playlist", "executeFromContent", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
@@ -195,15 +205,20 @@ public class KalturaPlaylistService extends KalturaServiceBase {
     }
 
     public List<KalturaBaseEntry> executeFromFilters(ArrayList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults) throws KalturaApiException {
-        return this.executeFromFilters(filters, totalResults, "");
+        return this.executeFromFilters(filters, totalResults, "1");
+    }
+
+    public List<KalturaBaseEntry> executeFromFilters(ArrayList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, String detailed) throws KalturaApiException {
+        return this.executeFromFilters(filters, totalResults, detailed, null);
     }
 
 	/**  Revrieve playlist for playing purpose, based on media entry filters     */
-    public List<KalturaBaseEntry> executeFromFilters(ArrayList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, String detailed) throws KalturaApiException {
+    public List<KalturaBaseEntry> executeFromFilters(ArrayList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, String detailed, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filters", filters);
         kparams.add("totalResults", totalResults);
         kparams.add("detailed", detailed);
+        kparams.add("pager", pager);
         this.kalturaClient.queueServiceCall("playlist", "executeFromFilters", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

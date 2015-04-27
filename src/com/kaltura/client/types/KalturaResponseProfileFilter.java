@@ -35,13 +35,13 @@ import com.kaltura.client.KalturaApiException;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Apr 15 00:22:58 -0400
+ * @date Mon, 27 Apr 15 13:11:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
-public class KalturaResponseProfileFilter extends KalturaDetachedResponseProfileFilter {
+public class KalturaResponseProfileFilter extends KalturaResponseProfileBaseFilter {
 
     public KalturaResponseProfileFilter() {
     }
