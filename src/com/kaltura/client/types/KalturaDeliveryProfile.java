@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 04 May 15 00:19:39 -0400
+ * @date Mon, 04 May 15 14:30:51 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -78,6 +78,8 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
     public int parentId = Integer.MIN_VALUE;
 	/**  Comma separated list of supported media protocols. f.i. rtmpe     */
     public String mediaProtocols;
+	/**  priority used for ordering similar delivery profiles     */
+    public int priority = Integer.MIN_VALUE;
 
     public KalturaDeliveryProfile() {
     }
@@ -139,6 +141,9 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
             } else if (nodeName.equals("mediaProtocols")) {
                 this.mediaProtocols = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("priority")) {
+                this.priority = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -156,6 +161,7 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
         kparams.add("recognizer", this.recognizer);
         kparams.add("tokenizer", this.tokenizer);
         kparams.add("mediaProtocols", this.mediaProtocols);
+        kparams.add("priority", this.priority);
         return kparams;
     }
 
