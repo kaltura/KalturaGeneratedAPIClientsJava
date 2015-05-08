@@ -113,7 +113,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Thu, 07 May 15 00:19:36 -0400
+ * @date Fri, 08 May 15 00:53:27 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -124,7 +124,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:15-05-07");
+		this.setClientTag("java:15-05-08");
 		this.setApiVersion("3.2.0");
 	}
 	
@@ -787,18 +787,15 @@ public class KalturaClient extends KalturaClientBase {
 	/**
 	 * @param String $clientTag
 	 */
-	public void setClientTag(String clientTag)
-	{
+	public void setClientTag(String clientTag){
 		this.clientConfiguration.put("clientTag", clientTag);
 	}
 	
 	/**
 	 * @return String
 	 */
-	public String getClientTag()
-	{
-		if(this.clientConfiguration.containsKey("clientTag"))
-		{
+	public String getClientTag(){
+		if(this.clientConfiguration.containsKey("clientTag")){
 			return (String) this.clientConfiguration.get("clientTag");
 		}
 		
@@ -808,18 +805,15 @@ public class KalturaClient extends KalturaClientBase {
 	/**
 	 * @param String $apiVersion
 	 */
-	public void setApiVersion(String apiVersion)
-	{
+	public void setApiVersion(String apiVersion){
 		this.clientConfiguration.put("apiVersion", apiVersion);
 	}
 	
 	/**
 	 * @return String
 	 */
-	public String getApiVersion()
-	{
-		if(this.clientConfiguration.containsKey("apiVersion"))
-		{
+	public String getApiVersion(){
+		if(this.clientConfiguration.containsKey("apiVersion")){
 			return (String) this.clientConfiguration.get("apiVersion");
 		}
 		
@@ -831,8 +825,7 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @param Integer $partnerId
 	 */
-	public void setPartnerId(Integer partnerId)
-	{
+	public void setPartnerId(Integer partnerId){
 		this.requestConfiguration.put("partnerId", partnerId);
 	}
 	
@@ -841,10 +834,8 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @return Integer
 	 */
-	public Integer getPartnerId()
-	{
-		if(this.requestConfiguration.containsKey("partnerId"))
-		{
+	public Integer getPartnerId(){
+		if(this.requestConfiguration.containsKey("partnerId")){
 			return (Integer) this.requestConfiguration.get("partnerId");
 		}
 		
@@ -856,8 +847,7 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @param String $ks
 	 */
-	public void setKs(String ks)
-	{
+	public void setKs(String ks){
 		this.requestConfiguration.put("ks", ks);
 	}
 	
@@ -866,10 +856,8 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @return String
 	 */
-	public String getKs()
-	{
-		if(this.requestConfiguration.containsKey("ks"))
-		{
+	public String getKs(){
+		if(this.requestConfiguration.containsKey("ks")){
 			return (String) this.requestConfiguration.get("ks");
 		}
 		
@@ -881,8 +869,7 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @param String $sessionId
 	 */
-	public void setSessionId(String sessionId)
-	{
+	public void setSessionId(String sessionId){
 		this.requestConfiguration.put("ks", sessionId);
 	}
 	
@@ -891,10 +878,8 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @return String
 	 */
-	public String getSessionId()
-	{
-		if(this.requestConfiguration.containsKey("ks"))
-		{
+	public String getSessionId(){
+		if(this.requestConfiguration.containsKey("ks")){
 			return (String) this.requestConfiguration.get("ks");
 		}
 		
@@ -906,8 +891,7 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @param KalturaBaseResponseProfile $responseProfile
 	 */
-	public void setResponseProfile(KalturaBaseResponseProfile responseProfile)
-	{
+	public void setResponseProfile(KalturaBaseResponseProfile responseProfile){
 		this.requestConfiguration.put("responseProfile", responseProfile);
 	}
 	
@@ -916,14 +900,18 @@ public class KalturaClient extends KalturaClientBase {
 	 * 
 	 * @return KalturaBaseResponseProfile
 	 */
-	public KalturaBaseResponseProfile getResponseProfile()
-	{
-		if(this.requestConfiguration.containsKey("responseProfile"))
-		{
+	public KalturaBaseResponseProfile getResponseProfile(){
+		if(this.requestConfiguration.containsKey("responseProfile")){
 			return (KalturaBaseResponseProfile) this.requestConfiguration.get("responseProfile");
 		}
 		
 		return null;
 	}
 	
+	/**
+	 * Clear all volatile configuration parameters
+	 */
+	protected void resetRequest(){
+		this.requestConfiguration.remove("responseProfile");
+	}
 }
