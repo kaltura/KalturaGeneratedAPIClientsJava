@@ -36,7 +36,7 @@ import com.kaltura.client.KalturaObjectBase;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 10 May 15 08:35:21 -0400
+ * @date Sun, 10 May 15 09:06:32 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
