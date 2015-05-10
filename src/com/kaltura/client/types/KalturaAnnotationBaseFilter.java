@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -38,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 09 May 15 00:20:46 -0400
+ * @date Sun, 10 May 15 08:35:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -54,6 +55,7 @@ public abstract class KalturaAnnotationBaseFilter extends KalturaCuePointFilter 
     public int endTimeLessThanOrEqual = Integer.MIN_VALUE;
     public int durationGreaterThanOrEqual = Integer.MIN_VALUE;
     public int durationLessThanOrEqual = Integer.MIN_VALUE;
+    public KalturaNullableBoolean isPublicEqual;
 
     public KalturaAnnotationBaseFilter() {
     }
@@ -92,6 +94,9 @@ public abstract class KalturaAnnotationBaseFilter extends KalturaCuePointFilter 
             } else if (nodeName.equals("durationLessThanOrEqual")) {
                 this.durationLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("isPublicEqual")) {
+                this.isPublicEqual = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -108,6 +113,7 @@ public abstract class KalturaAnnotationBaseFilter extends KalturaCuePointFilter 
         kparams.add("endTimeLessThanOrEqual", this.endTimeLessThanOrEqual);
         kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
         kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
+        kparams.add("isPublicEqual", this.isPublicEqual);
         return kparams;
     }
 

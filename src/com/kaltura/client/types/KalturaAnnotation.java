@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -38,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 09 May 15 00:20:45 -0400
+ * @date Sun, 10 May 15 08:35:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -57,6 +58,10 @@ public class KalturaAnnotation extends KalturaCuePoint {
     public int childrenCount = Integer.MIN_VALUE;
 	/**  Number of children, first generation only.     */
     public int directChildrenCount = Integer.MIN_VALUE;
+	/**  Is the annotation public.     */
+    public KalturaNullableBoolean isPublic;
+	/**  Should the cue point get indexed on the entry.     */
+    public KalturaNullableBoolean searchableOnEntry;
 
     public KalturaAnnotation() {
     }
@@ -89,6 +94,12 @@ public class KalturaAnnotation extends KalturaCuePoint {
             } else if (nodeName.equals("directChildrenCount")) {
                 this.directChildrenCount = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("isPublic")) {
+                this.isPublic = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("searchableOnEntry")) {
+                this.searchableOnEntry = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -99,6 +110,8 @@ public class KalturaAnnotation extends KalturaCuePoint {
         kparams.add("parentId", this.parentId);
         kparams.add("text", this.text);
         kparams.add("endTime", this.endTime);
+        kparams.add("isPublic", this.isPublic);
+        kparams.add("searchableOnEntry", this.searchableOnEntry);
         return kparams;
     }
 
