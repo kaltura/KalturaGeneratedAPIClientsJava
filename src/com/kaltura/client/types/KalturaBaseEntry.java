@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 20 May 15 11:28:31 -0400
+ * @date Thu, 21 May 15 07:32:20 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -296,7 +296,6 @@ public class KalturaBaseEntry extends KalturaObjectBase {
         kparams.add("groupId", this.groupId);
         kparams.add("partnerData", this.partnerData);
         kparams.add("licenseType", this.licenseType);
-        kparams.add("thumbnailUrl", this.thumbnailUrl);
         kparams.add("accessControlId", this.accessControlId);
         kparams.add("startDate", this.startDate);
         kparams.add("endDate", this.endDate);

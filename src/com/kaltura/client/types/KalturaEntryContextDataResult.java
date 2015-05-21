@@ -31,6 +31,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -39,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 20 May 15 11:28:32 -0400
+ * @date Thu, 21 May 15 07:32:20 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -66,6 +67,9 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
 	/**  Array of allowed flavor assets according to access control limitations and
 	  requested tags     */
     public ArrayList<KalturaFlavorAsset> flavorAssets;
+	/**  Array of allowed flavor assets according to access control limitations and
+	  requested tags        */
+    public HashMap<String, KalturaPluginData> pluginData;
 
     public KalturaEntryContextDataResult() {
     }
@@ -119,6 +123,9 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
             } else if (nodeName.equals("flavorAssets")) {
                 this.flavorAssets = ParseUtils.parseArray(KalturaFlavorAsset.class, aNode);
                 continue;
+            } else if (nodeName.equals("pluginData")) {
+                this.pluginData = ParseUtils.parseMap(KalturaPluginData.class, aNode);
+                continue;
             } 
         }
     }
@@ -140,6 +147,7 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
         kparams.add("accessControlMessages", this.accessControlMessages);
         kparams.add("accessControlActions", this.accessControlActions);
         kparams.add("flavorAssets", this.flavorAssets);
+        kparams.add("pluginData", this.pluginData);
         return kparams;
     }
 
