@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Thu, 28 May 15 00:22:11 -0400
+ * @date Fri, 29 May 15 00:56:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -38,7 +38,8 @@ public enum KalturaRuleActionType implements KalturaEnumAsString {
     BLOCK ("1"),
     PREVIEW ("2"),
     LIMIT_FLAVORS ("3"),
-    ADD_TO_STORAGE ("4");
+    ADD_TO_STORAGE ("4"),
+    LIMIT_DELIVERY_PROFILES ("5");
 
     public String hashCode;
 
@@ -73,6 +74,11 @@ public enum KalturaRuleActionType implements KalturaEnumAsString {
         if (hashCode.equals("4"))
         {
            return ADD_TO_STORAGE;
+        }
+        else 
+        if (hashCode.equals("5"))
+        {
+           return LIMIT_DELIVERY_PROFILES;
         }
         else 
         {
