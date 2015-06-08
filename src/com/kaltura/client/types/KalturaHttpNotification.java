@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 07 Jun 15 04:41:15 -0400
+ * @date Mon, 08 Jun 15 01:05:31 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -55,7 +55,7 @@ public class KalturaHttpNotification extends KalturaObjectBase {
 	/**  Object type that triggered the notification     */
     public KalturaEventNotificationEventObjectType eventObjectType;
 	/**  ID of the batch job that execute the notification     */
-    public int eventNotificationJobId = Integer.MIN_VALUE;
+    public long eventNotificationJobId = Long.MIN_VALUE;
 	/**  ID of the template that triggered the notification     */
     public int templateId = Integer.MIN_VALUE;
 	/**  Name of the template that triggered the notification     */
@@ -81,7 +81,7 @@ public class KalturaHttpNotification extends KalturaObjectBase {
                 this.eventObjectType = KalturaEventNotificationEventObjectType.get(ParseUtils.parseString(txt));
                 continue;
             } else if (nodeName.equals("eventNotificationJobId")) {
-                this.eventNotificationJobId = ParseUtils.parseInt(txt);
+                this.eventNotificationJobId = ParseUtils.parseBigint(txt);
                 continue;
             } else if (nodeName.equals("templateId")) {
                 this.templateId = ParseUtils.parseInt(txt);
