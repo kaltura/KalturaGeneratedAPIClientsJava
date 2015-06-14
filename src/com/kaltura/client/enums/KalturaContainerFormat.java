@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -42,6 +42,7 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
     COPY ("copy"),
     FLV ("flv"),
     HLS ("hls"),
+    ISMA ("isma"),
     ISMV ("ismv"),
     JPG ("jpg"),
     M2TS ("m2ts"),
@@ -112,6 +113,11 @@ public enum KalturaContainerFormat implements KalturaEnumAsString {
         if (hashCode.equals("hls"))
         {
            return HLS;
+        }
+        else 
+        if (hashCode.equals("isma"))
+        {
+           return ISMA;
         }
         else 
         if (hashCode.equals("ismv"))

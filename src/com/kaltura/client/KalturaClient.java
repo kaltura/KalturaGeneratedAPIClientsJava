@@ -39,6 +39,7 @@ import com.kaltura.client.services.KalturaConversionProfileService;
 import com.kaltura.client.services.KalturaDataService;
 import com.kaltura.client.services.KalturaDeliveryProfileService;
 import com.kaltura.client.services.KalturaDocumentService;
+import com.kaltura.client.services.KalturaEdgeServerService;
 import com.kaltura.client.services.KalturaEmailIngestionProfileService;
 import com.kaltura.client.services.KalturaFileAssetService;
 import com.kaltura.client.services.KalturaFlavorAssetService;
@@ -113,7 +114,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -230,6 +231,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.documentService = new KalturaDocumentService(this);
 	
 		return this.documentService;
+	}
+	
+	protected KalturaEdgeServerService edgeServerService;
+	public KalturaEdgeServerService getEdgeServerService() {
+		if(this.edgeServerService == null)
+			this.edgeServerService = new KalturaEdgeServerService(this);
+	
+		return this.edgeServerService;
 	}
 	
 	protected KalturaEmailIngestionProfileService EmailIngestionProfileService;

@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -118,6 +118,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     MR ("Marathi"),
     MO ("Moldavian"),
     MN ("Mongolian"),
+    MU ("Multilingual"),
     NA ("Nauru"),
     NE ("Nepali"),
     NO ("Norwegian"),
@@ -172,7 +173,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     CY ("Welsh"),
     WO ("Wolof"),
     XH ("Xhosa"),
-    YI ("Yiddish"),
+    JI ("Yiddish"),
     YO ("Yoruba"),
     ZU ("Zulu");
 
@@ -606,6 +607,11 @@ public enum KalturaLanguage implements KalturaEnumAsString {
            return MN;
         }
         else 
+        if (hashCode.equals("Multilingual"))
+        {
+           return MU;
+        }
+        else 
         if (hashCode.equals("Nauru"))
         {
            return NA;
@@ -878,7 +884,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         else 
         if (hashCode.equals("Yiddish"))
         {
-           return YI;
+           return JI;
         }
         else 
         if (hashCode.equals("Yoruba"))

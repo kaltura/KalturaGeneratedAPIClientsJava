@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -50,7 +50,8 @@ public enum KalturaConditionType implements KalturaEnumAsString {
     ASSET_PROPERTIES_COMPARE ("8"),
     USER_ROLE ("9"),
     GEO_DISTANCE ("10"),
-    OR_OPERATOR ("11");
+    OR_OPERATOR ("11"),
+    HASH ("12");
 
     public String hashCode;
 
@@ -145,6 +146,11 @@ public enum KalturaConditionType implements KalturaEnumAsString {
         if (hashCode.equals("11"))
         {
            return OR_OPERATOR;
+        }
+        else 
+        if (hashCode.equals("12"))
+        {
+           return HASH;
         }
         else 
         {

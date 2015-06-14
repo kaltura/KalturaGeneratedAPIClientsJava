@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -64,6 +64,8 @@ public class KalturaCaptionAsset extends KalturaAsset {
     public KalturaCaptionType format;
 	/**  The status of the asset     */
     public KalturaCaptionAssetStatus status;
+	/**  The parent id of the asset     */
+    public String parentId;
 
     public KalturaCaptionAsset() {
     }
@@ -96,6 +98,9 @@ public class KalturaCaptionAsset extends KalturaAsset {
             } else if (nodeName.equals("status")) {
                 this.status = KalturaCaptionAssetStatus.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("parentId")) {
+                this.parentId = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -108,6 +113,7 @@ public class KalturaCaptionAsset extends KalturaAsset {
         kparams.add("isDefault", this.isDefault);
         kparams.add("label", this.label);
         kparams.add("format", this.format);
+        kparams.add("parentId", this.parentId);
         return kparams;
     }
 

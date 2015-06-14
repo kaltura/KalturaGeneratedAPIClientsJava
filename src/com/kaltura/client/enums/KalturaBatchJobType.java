@@ -30,12 +30,13 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 00:20:51 -0400
+ * @date Sun, 14 Jun 15 11:59:21 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBatchJobType implements KalturaEnumAsString {
     CONVERT ("0"),
+    PARSE_MULTI_LANGUAGE_CAPTION_ASSET ("caption.parsemultilanguagecaptionasset"),
     PARSE_CAPTION_ASSET ("captionSearch.parseCaptionAsset"),
     DISTRIBUTION_DELETE ("contentDistribution.DistributionDelete"),
     DISTRIBUTION_DISABLE ("contentDistribution.DistributionDisable"),
@@ -106,6 +107,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("0"))
         {
            return CONVERT;
+        }
+        else 
+        if (hashCode.equals("caption.parsemultilanguagecaptionasset"))
+        {
+           return PARSE_MULTI_LANGUAGE_CAPTION_ASSET;
         }
         else 
         if (hashCode.equals("captionSearch.parseCaptionAsset"))
