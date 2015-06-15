@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 14 Jun 15 11:59:21 -0400
+ * @date Mon, 15 Jun 15 00:32:51 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
