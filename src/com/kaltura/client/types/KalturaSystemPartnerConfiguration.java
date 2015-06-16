@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 16 Jun 15 00:58:51 -0400
+ * @date Tue, 16 Jun 15 06:55:09 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -58,6 +58,7 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
     public String adminEmail;
     public String host;
     public String cdnHost;
+    public String cdnHostWhiteList;
     public String thumbnailHost;
     public int partnerPackage = Integer.MIN_VALUE;
     public int monitorUsage = Integer.MIN_VALUE;
@@ -145,6 +146,9 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("cdnHost")) {
                 this.cdnHost = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("cdnHostWhiteList")) {
+                this.cdnHostWhiteList = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("thumbnailHost")) {
                 this.thumbnailHost = ParseUtils.parseString(txt);
@@ -321,6 +325,7 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
         kparams.add("adminEmail", this.adminEmail);
         kparams.add("host", this.host);
         kparams.add("cdnHost", this.cdnHost);
+        kparams.add("cdnHostWhiteList", this.cdnHostWhiteList);
         kparams.add("thumbnailHost", this.thumbnailHost);
         kparams.add("partnerPackage", this.partnerPackage);
         kparams.add("monitorUsage", this.monitorUsage);
