@@ -75,6 +75,7 @@ import com.kaltura.client.services.KalturaThumbParamsService;
 import com.kaltura.client.services.KalturaUiConfService;
 import com.kaltura.client.services.KalturaUploadService;
 import com.kaltura.client.services.KalturaUploadTokenService;
+import com.kaltura.client.services.KalturaUserEntryService;
 import com.kaltura.client.services.KalturaUserRoleService;
 import com.kaltura.client.services.KalturaUserService;
 import com.kaltura.client.services.KalturaWidgetService;
@@ -114,7 +115,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 21 Jun 15 00:07:54 -0400
+ * @date Sun, 21 Jun 15 05:12:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -519,6 +520,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.uploadTokenService = new KalturaUploadTokenService(this);
 	
 		return this.uploadTokenService;
+	}
+	
+	protected KalturaUserEntryService userEntryService;
+	public KalturaUserEntryService getUserEntryService() {
+		if(this.userEntryService == null)
+			this.userEntryService = new KalturaUserEntryService(this);
+	
+		return this.userEntryService;
 	}
 	
 	protected KalturaUserRoleService userRoleService;

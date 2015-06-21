@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 21 Jun 15 00:07:54 -0400
+ * @date Sun, 21 Jun 15 05:12:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -63,6 +63,7 @@ public class KalturaMetadataProfile extends KalturaObjectBase {
     public String views;
     public String xslt;
     public KalturaMetadataProfileCreateMode createMode;
+    public boolean disableReIndexing;
 
     public KalturaMetadataProfile() {
     }
@@ -115,6 +116,9 @@ public class KalturaMetadataProfile extends KalturaObjectBase {
             } else if (nodeName.equals("createMode")) {
                 this.createMode = KalturaMetadataProfileCreateMode.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("disableReIndexing")) {
+                this.disableReIndexing = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -127,6 +131,7 @@ public class KalturaMetadataProfile extends KalturaObjectBase {
         kparams.add("systemName", this.systemName);
         kparams.add("description", this.description);
         kparams.add("createMode", this.createMode);
+        kparams.add("disableReIndexing", this.disableReIndexing);
         return kparams;
     }
 

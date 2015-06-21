@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 21 Jun 15 00:07:54 -0400
+ * @date Sun, 21 Jun 15 05:12:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -144,6 +144,9 @@ public class KalturaBaseEntry extends KalturaObjectBase {
 	  The difference between entitledUsersEdit and entitledUsersPublish is applicative
 	  only     */
     public String entitledUsersPublish;
+	/**  Comma seperated string of the capabilities of the entry. Any capability needed
+	  can be added to this list.     */
+    public String capabilities;
 
     public KalturaBaseEntry() {
     }
@@ -276,6 +279,9 @@ public class KalturaBaseEntry extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("entitledUsersPublish")) {
                 this.entitledUsersPublish = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("capabilities")) {
+                this.capabilities = ParseUtils.parseString(txt);
                 continue;
             } 
         }

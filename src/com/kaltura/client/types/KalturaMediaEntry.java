@@ -33,6 +33,7 @@ import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaMediaType;
 import com.kaltura.client.enums.KalturaSourceType;
 import com.kaltura.client.enums.KalturaSearchProviderType;
+import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -41,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sun, 21 Jun 15 00:07:54 -0400
+ * @date Sun, 21 Jun 15 05:12:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -69,6 +70,8 @@ public class KalturaMediaEntry extends KalturaPlayableEntry {
     public String dataUrl;
 	/**  Comma separated flavor params ids that exists for this media entry     */
     public String flavorParamsIds;
+	/**  True if trim action is disabled for this entry     */
+    public KalturaNullableBoolean isTrimDisabled;
 
     public KalturaMediaEntry() {
     }
@@ -109,6 +112,9 @@ public class KalturaMediaEntry extends KalturaPlayableEntry {
                 continue;
             } else if (nodeName.equals("flavorParamsIds")) {
                 this.flavorParamsIds = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("isTrimDisabled")) {
+                this.isTrimDisabled = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
             } 
         }
