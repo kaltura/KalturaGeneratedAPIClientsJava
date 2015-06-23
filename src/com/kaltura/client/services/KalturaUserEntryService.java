@@ -38,7 +38,7 @@ import com.kaltura.client.KalturaApiException;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 23 Jun 15 03:40:46 -0400
+ * @date Tue, 23 Jun 15 08:20:47 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -103,5 +103,17 @@ public class KalturaUserEntryService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaUserEntry.class, resultXmlElement);
+    }
+
+	/**  Submits the quiz so that it's status will be submitted and calculates the score
+	  for the quiz     */
+    public KalturaQuizUserEntry submitQuiz(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("userentry", "submitQuiz", kparams, KalturaQuizUserEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaQuizUserEntry.class, resultXmlElement);
     }
 }

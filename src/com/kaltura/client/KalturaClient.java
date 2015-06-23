@@ -96,6 +96,7 @@ import com.kaltura.client.services.KalturaGenericDistributionProviderService;
 import com.kaltura.client.services.KalturaGenericDistributionProviderActionService;
 import com.kaltura.client.services.KalturaCuePointService;
 import com.kaltura.client.services.KalturaAnnotationService;
+import com.kaltura.client.services.KalturaQuizService;
 import com.kaltura.client.services.KalturaShortLinkService;
 import com.kaltura.client.services.KalturaBulkService;
 import com.kaltura.client.services.KalturaDropFolderService;
@@ -115,7 +116,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 23 Jun 15 03:40:46 -0400
+ * @date Tue, 23 Jun 15 08:20:47 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -688,6 +689,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.annotationService = new KalturaAnnotationService(this);
 	
 		return this.annotationService;
+	}
+	
+	protected KalturaQuizService quizService;
+	public KalturaQuizService getQuizService() {
+		if(this.quizService == null)
+			this.quizService = new KalturaQuizService(this);
+	
+		return this.quizService;
 	}
 	
 	protected KalturaShortLinkService shortLinkService;

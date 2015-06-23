@@ -30,11 +30,12 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 23 Jun 15 03:40:46 -0400
+ * @date Tue, 23 Jun 15 08:20:46 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaUserEntryStatus implements KalturaEnumAsString {
+    QUIZ_SUBMITTED ("quiz.3"),
     ACTIVE ("1"),
     DELETED ("2");
 
@@ -53,6 +54,11 @@ public enum KalturaUserEntryStatus implements KalturaEnumAsString {
     }
 
     public static KalturaUserEntryStatus get(String hashCode) {
+        if (hashCode.equals("quiz.3"))
+        {
+           return QUIZ_SUBMITTED;
+        }
+        else 
         if (hashCode.equals("1"))
         {
            return ACTIVE;
@@ -64,7 +70,7 @@ public enum KalturaUserEntryStatus implements KalturaEnumAsString {
         }
         else 
         {
-           return ACTIVE;
+           return QUIZ_SUBMITTED;
         }
     }
 }

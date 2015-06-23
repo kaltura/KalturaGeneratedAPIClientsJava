@@ -30,19 +30,17 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 23 Jun 15 03:40:46 -0400
+ * @date Tue, 23 Jun 15 08:20:46 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaAnswerCuePointOrderBy implements KalturaEnumAsString {
     CREATED_AT_ASC ("+createdAt"),
-    IS_CORRECT_ASC ("+isCorrect"),
     PARTNER_SORT_VALUE_ASC ("+partnerSortValue"),
     START_TIME_ASC ("+startTime"),
     TRIGGERED_AT_ASC ("+triggeredAt"),
     UPDATED_AT_ASC ("+updatedAt"),
     CREATED_AT_DESC ("-createdAt"),
-    IS_CORRECT_DESC ("-isCorrect"),
     PARTNER_SORT_VALUE_DESC ("-partnerSortValue"),
     START_TIME_DESC ("-startTime"),
     TRIGGERED_AT_DESC ("-triggeredAt"),
@@ -68,11 +66,6 @@ public enum KalturaAnswerCuePointOrderBy implements KalturaEnumAsString {
            return CREATED_AT_ASC;
         }
         else 
-        if (hashCode.equals("+isCorrect"))
-        {
-           return IS_CORRECT_ASC;
-        }
-        else 
         if (hashCode.equals("+partnerSortValue"))
         {
            return PARTNER_SORT_VALUE_ASC;
@@ -96,11 +89,6 @@ public enum KalturaAnswerCuePointOrderBy implements KalturaEnumAsString {
         if (hashCode.equals("-createdAt"))
         {
            return CREATED_AT_DESC;
-        }
-        else 
-        if (hashCode.equals("-isCorrect"))
-        {
-           return IS_CORRECT_DESC;
         }
         else 
         if (hashCode.equals("-partnerSortValue"))
