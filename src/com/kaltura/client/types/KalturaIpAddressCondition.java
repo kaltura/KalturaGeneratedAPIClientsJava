@@ -30,29 +30,51 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 24 Jun 15 00:24:54 -0400
+ * @date Thu, 25 Jun 15 00:50:11 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public class KalturaIpAddressCondition extends KalturaMatchCondition {
+	/**  allow internal ips     */
+    public boolean acceptInternalIps;
+	/**  http header name for extracting the ip     */
+    public String httpHeader;
 
     public KalturaIpAddressCondition() {
     }
 
     public KalturaIpAddressCondition(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("acceptInternalIps")) {
+                this.acceptInternalIps = ParseUtils.parseBool(txt);
+                continue;
+            } else if (nodeName.equals("httpHeader")) {
+                this.httpHeader = ParseUtils.parseString(txt);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaIpAddressCondition");
+        kparams.add("acceptInternalIps", this.acceptInternalIps);
+        kparams.add("httpHeader", this.httpHeader);
         return kparams;
     }
 
