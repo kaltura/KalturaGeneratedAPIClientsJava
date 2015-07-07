@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 29 Jun 15 00:24:58 -0400
+ * @date Tue, 07 Jul 15 06:26:05 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -67,7 +67,6 @@ public abstract class KalturaObject extends KalturaObjectBase {
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaObject");
-        kparams.add("relatedObjects", this.relatedObjects);
         return kparams;
     }
 

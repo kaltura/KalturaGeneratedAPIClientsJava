@@ -32,6 +32,7 @@ import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.enums.KalturaUserEntryStatus;
+import com.kaltura.client.enums.KalturaUserEntryType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -40,7 +41,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 29 Jun 15 00:24:59 -0400
+ * @date Tue, 07 Jul 15 06:26:06 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -50,11 +51,12 @@ public abstract class KalturaUserEntry extends KalturaObjectBase {
 	/**  unique auto-generated identifier     */
     public int id = Integer.MIN_VALUE;
     public String entryId;
-    public int userId = Integer.MIN_VALUE;
+    public String userId;
     public int partnerId = Integer.MIN_VALUE;
     public KalturaUserEntryStatus status;
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
+    public KalturaUserEntryType type;
 
     public KalturaUserEntry() {
     }
@@ -72,7 +74,7 @@ public abstract class KalturaUserEntry extends KalturaObjectBase {
                 this.entryId = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("userId")) {
-                this.userId = ParseUtils.parseInt(txt);
+                this.userId = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("partnerId")) {
                 this.partnerId = ParseUtils.parseInt(txt);
@@ -85,6 +87,9 @@ public abstract class KalturaUserEntry extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("updatedAt")) {
                 this.updatedAt = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("type")) {
+                this.type = KalturaUserEntryType.get(ParseUtils.parseString(txt));
                 continue;
             } 
         }

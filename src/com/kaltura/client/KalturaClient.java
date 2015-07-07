@@ -29,6 +29,7 @@ package com.kaltura.client;
 import com.kaltura.client.services.KalturaAccessControlProfileService;
 import com.kaltura.client.services.KalturaAccessControlService;
 import com.kaltura.client.services.KalturaAdminUserService;
+import com.kaltura.client.services.KalturaAppTokenService;
 import com.kaltura.client.services.KalturaBaseEntryService;
 import com.kaltura.client.services.KalturaBulkUploadService;
 import com.kaltura.client.services.KalturaCategoryEntryService;
@@ -116,7 +117,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 29 Jun 15 00:24:59 -0400
+ * @date Tue, 07 Jul 15 06:26:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -127,7 +128,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:15-06-29");
+		this.setClientTag("java:15-07-07");
 		this.setApiVersion("3.2.0");
 	}
 	
@@ -153,6 +154,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.adminUserService = new KalturaAdminUserService(this);
 	
 		return this.adminUserService;
+	}
+	
+	protected KalturaAppTokenService appTokenService;
+	public KalturaAppTokenService getAppTokenService() {
+		if(this.appTokenService == null)
+			this.appTokenService = new KalturaAppTokenService(this);
+	
+		return this.appTokenService;
 	}
 	
 	protected KalturaBaseEntryService baseEntryService;

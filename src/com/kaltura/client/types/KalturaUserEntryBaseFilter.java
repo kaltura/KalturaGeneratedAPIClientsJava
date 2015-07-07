@@ -30,6 +30,8 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaUserEntryStatus;
+import com.kaltura.client.enums.KalturaUserEntryType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -38,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 29 Jun 15 00:24:59 -0400
+ * @date Tue, 07 Jul 15 06:26:08 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -54,10 +56,12 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
     public int userIdEqual = Integer.MIN_VALUE;
     public String userIdIn;
     public String userIdNotIn;
+    public KalturaUserEntryStatus statusEqual;
     public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
     public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtLessThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtGreaterThanOrEqual = Integer.MIN_VALUE;
+    public KalturaUserEntryType typeEqual;
 
     public KalturaUserEntryBaseFilter() {
     }
@@ -96,6 +100,9 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
             } else if (nodeName.equals("userIdNotIn")) {
                 this.userIdNotIn = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("statusEqual")) {
+                this.statusEqual = KalturaUserEntryStatus.get(ParseUtils.parseString(txt));
+                continue;
             } else if (nodeName.equals("createdAtLessThanOrEqual")) {
                 this.createdAtLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
@@ -107,6 +114,9 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
                 continue;
             } else if (nodeName.equals("updatedAtGreaterThanOrEqual")) {
                 this.updatedAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("typeEqual")) {
+                this.typeEqual = KalturaUserEntryType.get(ParseUtils.parseString(txt));
                 continue;
             } 
         }
@@ -124,10 +134,12 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
         kparams.add("userIdEqual", this.userIdEqual);
         kparams.add("userIdIn", this.userIdIn);
         kparams.add("userIdNotIn", this.userIdNotIn);
+        kparams.add("statusEqual", this.statusEqual);
         kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
         kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+        kparams.add("typeEqual", this.typeEqual);
         return kparams;
     }
 
