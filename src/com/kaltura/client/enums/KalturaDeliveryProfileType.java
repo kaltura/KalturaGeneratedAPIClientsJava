@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 08 Jul 15 03:26:39 -0400
+ * @date Wed, 08 Jul 15 14:26:42 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -78,6 +78,7 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
     LIVE_HDS ("1002"),
     LIVE_DASH ("1003"),
     LIVE_RTMP ("1005"),
+    LIVE_HLS_TO_MULTICAST ("1006"),
     LIVE_AKAMAI_HDS ("1013");
 
     public String hashCode;
@@ -308,6 +309,11 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
         if (hashCode.equals("1005"))
         {
            return LIVE_RTMP;
+        }
+        else 
+        if (hashCode.equals("1006"))
+        {
+           return LIVE_HLS_TO_MULTICAST;
         }
         else 
         if (hashCode.equals("1013"))

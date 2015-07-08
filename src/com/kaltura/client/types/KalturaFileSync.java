@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 08 Jul 15 03:26:41 -0400
+ * @date Wed, 08 Jul 15 14:26:43 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -72,6 +72,8 @@ public class KalturaFileSync extends KalturaObjectBase {
     public String fileContent;
     public double fileDiscSize = Double.MIN_VALUE;
     public boolean isCurrentDc;
+    public boolean isDir;
+    public int originalId = Integer.MIN_VALUE;
 
     public KalturaFileSync() {
     }
@@ -151,6 +153,12 @@ public class KalturaFileSync extends KalturaObjectBase {
             } else if (nodeName.equals("isCurrentDc")) {
                 this.isCurrentDc = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("isDir")) {
+                this.isDir = ParseUtils.parseBool(txt);
+                continue;
+            } else if (nodeName.equals("originalId")) {
+                this.originalId = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -158,6 +166,9 @@ public class KalturaFileSync extends KalturaObjectBase {
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaFileSync");
+        kparams.add("status", this.status);
+        kparams.add("fileRoot", this.fileRoot);
+        kparams.add("filePath", this.filePath);
         return kparams;
     }
 

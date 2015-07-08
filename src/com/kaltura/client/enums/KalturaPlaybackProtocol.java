@@ -30,12 +30,13 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 08 Jul 15 03:26:40 -0400
+ * @date Wed, 08 Jul 15 14:26:43 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaPlaybackProtocol implements KalturaEnumAsString {
     APPLE_HTTP ("applehttp"),
+    APPLE_HTTP_TO_MC ("applehttp_to_mc"),
     AUTO ("auto"),
     AKAMAI_HD ("hdnetwork"),
     AKAMAI_HDS ("hdnetworkmanifest"),
@@ -66,6 +67,11 @@ public enum KalturaPlaybackProtocol implements KalturaEnumAsString {
         if (hashCode.equals("applehttp"))
         {
            return APPLE_HTTP;
+        }
+        else 
+        if (hashCode.equals("applehttp_to_mc"))
+        {
+           return APPLE_HTTP_TO_MC;
         }
         else 
         if (hashCode.equals("auto"))
