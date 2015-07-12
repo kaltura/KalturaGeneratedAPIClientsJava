@@ -44,7 +44,7 @@ import com.kaltura.client.enums.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 11 Jul 15 00:27:19 -0400
+ * @date Sun, 12 Jul 15 00:10:22 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
