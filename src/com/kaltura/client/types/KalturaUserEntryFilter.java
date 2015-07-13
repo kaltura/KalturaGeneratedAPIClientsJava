@@ -30,29 +30,45 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaNullableBoolean;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:01 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter {
+    public KalturaNullableBoolean userIdEqualCurrent;
 
     public KalturaUserEntryFilter() {
     }
 
     public KalturaUserEntryFilter(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("userIdEqualCurrent")) {
+                this.userIdEqualCurrent = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUserEntryFilter");
+        kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
         return kparams;
     }
 

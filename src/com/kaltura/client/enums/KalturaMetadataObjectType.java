@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:00 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -38,6 +38,7 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
     AD_CUE_POINT ("adCuePointMetadata.AdCuePoint"),
     ANNOTATION ("annotationMetadata.Annotation"),
     CODE_CUE_POINT ("codeCuePointMetadata.CodeCuePoint"),
+    THUMB_CUE_POINT ("thumbCuePointMetadata.thumbCuePoint"),
     ENTRY ("1"),
     CATEGORY ("2"),
     USER ("3"),
@@ -72,6 +73,11 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
         if (hashCode.equals("codeCuePointMetadata.CodeCuePoint"))
         {
            return CODE_CUE_POINT;
+        }
+        else 
+        if (hashCode.equals("thumbCuePointMetadata.thumbCuePoint"))
+        {
+           return THUMB_CUE_POINT;
         }
         else 
         if (hashCode.equals("1"))

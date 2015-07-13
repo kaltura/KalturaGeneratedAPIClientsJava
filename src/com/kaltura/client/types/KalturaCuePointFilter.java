@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -38,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:01 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -46,6 +47,8 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaCuePointFilter extends KalturaCuePointBaseFilter {
     public String freeText;
+    public KalturaNullableBoolean userIdEqualCurrent;
+    public KalturaNullableBoolean userIdCurrent;
 
     public KalturaCuePointFilter() {
     }
@@ -60,6 +63,12 @@ public class KalturaCuePointFilter extends KalturaCuePointBaseFilter {
             if (nodeName.equals("freeText")) {
                 this.freeText = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("userIdEqualCurrent")) {
+                this.userIdEqualCurrent = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("userIdCurrent")) {
+                this.userIdCurrent = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -68,6 +77,8 @@ public class KalturaCuePointFilter extends KalturaCuePointBaseFilter {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaCuePointFilter");
         kparams.add("freeText", this.freeText);
+        kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
+        kparams.add("userIdCurrent", this.userIdCurrent);
         return kparams;
     }
 

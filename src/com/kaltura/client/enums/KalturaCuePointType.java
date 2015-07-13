@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:00 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -40,7 +40,8 @@ public enum KalturaCuePointType implements KalturaEnumAsString {
     CODE ("codeCuePoint.Code"),
     EVENT ("eventCuePoint.Event"),
     QUIZ_ANSWER ("quiz.QUIZ_ANSWER"),
-    QUIZ_QUESTION ("quiz.QUIZ_QUESTION");
+    QUIZ_QUESTION ("quiz.QUIZ_QUESTION"),
+    THUMB ("thumbCuePoint.Thumb");
 
     public String hashCode;
 
@@ -85,6 +86,11 @@ public enum KalturaCuePointType implements KalturaEnumAsString {
         if (hashCode.equals("quiz.QUIZ_QUESTION"))
         {
            return QUIZ_QUESTION;
+        }
+        else 
+        if (hashCode.equals("thumbCuePoint.Thumb"))
+        {
+           return THUMB;
         }
         else 
         {

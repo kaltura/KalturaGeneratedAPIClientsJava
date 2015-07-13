@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:00 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -56,6 +56,7 @@ public class KalturaResponseProfile extends KalturaDetachedResponseProfile {
 	/**  Update time as Unix timestamp (In seconds)      */
     public int updatedAt = Integer.MIN_VALUE;
     public KalturaResponseProfileStatus status;
+    public int version = Integer.MIN_VALUE;
 
     public KalturaResponseProfile() {
     }
@@ -84,6 +85,9 @@ public class KalturaResponseProfile extends KalturaDetachedResponseProfile {
                 continue;
             } else if (nodeName.equals("status")) {
                 this.status = KalturaResponseProfileStatus.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("version")) {
+                this.version = ParseUtils.parseInt(txt);
                 continue;
             } 
         }

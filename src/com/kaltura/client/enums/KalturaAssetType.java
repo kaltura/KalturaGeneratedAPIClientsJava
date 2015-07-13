@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:00 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -41,6 +41,7 @@ public enum KalturaAssetType implements KalturaEnumAsString {
     IMAGE ("document.Image"),
     PDF ("document.PDF"),
     SWF ("document.SWF"),
+    TIMED_THUMB_ASSET ("thumbCuePoint.timedThumb"),
     FLAVOR ("1"),
     THUMBNAIL ("2"),
     LIVE ("3");
@@ -88,6 +89,11 @@ public enum KalturaAssetType implements KalturaEnumAsString {
         if (hashCode.equals("document.SWF"))
         {
            return SWF;
+        }
+        else 
+        if (hashCode.equals("thumbCuePoint.timedThumb"))
+        {
+           return TIMED_THUMB_ASSET;
         }
         else 
         if (hashCode.equals("1"))

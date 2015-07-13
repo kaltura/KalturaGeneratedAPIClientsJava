@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:01 -0400
+ * @date Mon, 13 Jul 15 10:57:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -53,7 +53,7 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
     public String entryIdEqual;
     public String entryIdIn;
     public String entryIdNotIn;
-    public int userIdEqual = Integer.MIN_VALUE;
+    public String userIdEqual;
     public String userIdIn;
     public String userIdNotIn;
     public KalturaUserEntryStatus statusEqual;
@@ -92,7 +92,7 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaFilter {
                 this.entryIdNotIn = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("userIdEqual")) {
-                this.userIdEqual = ParseUtils.parseInt(txt);
+                this.userIdEqual = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("userIdIn")) {
                 this.userIdIn = ParseUtils.parseString(txt);

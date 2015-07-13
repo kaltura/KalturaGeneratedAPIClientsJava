@@ -117,7 +117,7 @@ import com.kaltura.client.types.KalturaBaseResponseProfile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:01 -0400
+ * @date Mon, 13 Jul 15 10:57:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -923,7 +923,7 @@ public class KalturaClient extends KalturaClientBase {
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @param KalturaBaseResponseProfile $responseProfile
 	 */
@@ -932,7 +932,7 @@ public class KalturaClient extends KalturaClientBase {
 	}
 	
 	/**
-	 * Response profile
+	 * Response profile - this attribute will be automatically unset after every API call.
 	 * 
 	 * @return KalturaBaseResponseProfile
 	 */

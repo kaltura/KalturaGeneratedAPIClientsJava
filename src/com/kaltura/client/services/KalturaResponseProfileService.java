@@ -39,7 +39,7 @@ import com.kaltura.client.enums.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 13 Jul 15 01:07:01 -0400
+ * @date Mon, 13 Jul 15 10:57:14 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -125,5 +125,16 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaResponseProfileListResponse.class, resultXmlElement);
+    }
+
+	/**  Recalculate response profile cached objects     */
+    public KalturaResponseProfileCacheRecalculateResults recalculate(KalturaResponseProfileCacheRecalculateOptions options) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("options", options);
+        this.kalturaClient.queueServiceCall("responseprofile", "recalculate", kparams, KalturaResponseProfileCacheRecalculateResults.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaResponseProfileCacheRecalculateResults.class, resultXmlElement);
     }
 }
