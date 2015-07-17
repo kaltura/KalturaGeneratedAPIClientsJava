@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 17 Jul 15 00:32:00 -0400
+ * @date Fri, 17 Jul 15 08:34:45 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -56,7 +56,7 @@ public class KalturaEdgeServer extends KalturaObjectBase {
 	/**  edgeServer uniqe system name     */
     public String systemName;
 	/**  edgeServer description     */
-    public String desciption;
+    public String description;
     public KalturaEdgeServerStatus status;
 	/**  edgeServer tags     */
     public String tags;
@@ -96,8 +96,8 @@ public class KalturaEdgeServer extends KalturaObjectBase {
             } else if (nodeName.equals("systemName")) {
                 this.systemName = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("desciption")) {
-                this.desciption = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("description")) {
+                this.description = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("status")) {
                 this.status = KalturaEdgeServerStatus.get(ParseUtils.parseInt(txt));
@@ -126,7 +126,7 @@ public class KalturaEdgeServer extends KalturaObjectBase {
         kparams.add("objectType", "KalturaEdgeServer");
         kparams.add("name", this.name);
         kparams.add("systemName", this.systemName);
-        kparams.add("desciption", this.desciption);
+        kparams.add("description", this.description);
         kparams.add("status", this.status);
         kparams.add("tags", this.tags);
         kparams.add("hostName", this.hostName);
