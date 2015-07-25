@@ -39,7 +39,7 @@ import com.kaltura.client.enums.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 24 Jul 15 00:33:17 -0400
+ * @date Sat, 25 Jul 15 00:32:50 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -52,7 +52,10 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add a new event notification template object     */
+	/**  This action allows for the creation of new backend event types in the system.
+	  This action requires access to the Kaltura server Admin Console. If you’re
+	  looking to register to existing event types, please use the clone action
+	  instead.     */
     public KalturaEventNotificationTemplate add(KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("eventNotificationTemplate", eventNotificationTemplate);
@@ -67,8 +70,10 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return this.clone(id, null);
     }
 
-	/**  Allows you to clone exiting event notification template object and create a new
-	  one with similar configuration     */
+	/**  This action allows registering to various backend event. Use this action to
+	  create notifications that will react to events such as new video was uploaded or
+	  metadata field was updated. To see the list of available event types, call the
+	  listTemplates action.     */
     public KalturaEventNotificationTemplate clone(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

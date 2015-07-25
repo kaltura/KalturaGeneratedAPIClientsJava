@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 24 Jul 15 00:33:16 -0400
+ * @date Sat, 25 Jul 15 00:32:50 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -60,6 +60,8 @@ public enum KalturaLanguageCode implements KalturaEnumAsString {
     DZ ("dz"),
     EL ("el"),
     EN ("en"),
+    EN_GB ("en_gb"),
+    EN_US ("en_us"),
     EO ("eo"),
     ES ("es"),
     ET ("et"),
@@ -318,6 +320,16 @@ public enum KalturaLanguageCode implements KalturaEnumAsString {
         if (hashCode.equals("en"))
         {
            return EN;
+        }
+        else 
+        if (hashCode.equals("en_gb"))
+        {
+           return EN_GB;
+        }
+        else 
+        if (hashCode.equals("en_us"))
+        {
+           return EN_US;
         }
         else 
         if (hashCode.equals("eo"))

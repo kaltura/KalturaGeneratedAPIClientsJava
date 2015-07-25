@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 24 Jul 15 00:33:16 -0400
+ * @date Sat, 25 Jul 15 00:32:50 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -64,6 +64,8 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     DA ("Danish"),
     NL ("Dutch"),
     EN ("English"),
+    EN_US ("English (American)"),
+    EN_GB ("English (British)"),
     EO ("Esperanto"),
     ET ("Estonian"),
     FO ("Faeroese"),
@@ -82,11 +84,11 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     GN ("Guarani"),
     GU ("Gujarati"),
     HA ("Hausa"),
-    IW ("Hebrew"),
+    HE ("Hebrew"),
     HI ("Hindi"),
     HU ("Hungarian"),
     IS ("Icelandic"),
-    IN ("Indonesian"),
+    ID ("Indonesian"),
     IA ("Interlingua"),
     IE ("Interlingue"),
     IU ("Inuktitut"),
@@ -337,6 +339,16 @@ public enum KalturaLanguage implements KalturaEnumAsString {
            return EN;
         }
         else 
+        if (hashCode.equals("English (American)"))
+        {
+           return EN_US;
+        }
+        else 
+        if (hashCode.equals("English (British)"))
+        {
+           return EN_GB;
+        }
+        else 
         if (hashCode.equals("Esperanto"))
         {
            return EO;
@@ -429,7 +441,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         else 
         if (hashCode.equals("Hebrew"))
         {
-           return IW;
+           return HE;
         }
         else 
         if (hashCode.equals("Hindi"))
@@ -449,7 +461,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         else 
         if (hashCode.equals("Indonesian"))
         {
-           return IN;
+           return ID;
         }
         else 
         if (hashCode.equals("Interlingua"))
