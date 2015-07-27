@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Jul 15 07:10:07 -0400
+ * @date Mon, 27 Jul 15 12:00:30 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
