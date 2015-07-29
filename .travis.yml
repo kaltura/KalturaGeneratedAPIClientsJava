@@ -4,3 +4,10 @@ jdk:
     - oraclejdk7
     - oraclejdk8
 script: ./testAPI/test.sh
+notifications:
+  email:
+    recipients:
+      - moshe.maor@kaltura.com
+      - jess.portnoy@kaltura.com
+    on_success: change
+    on_failure: always
