@@ -31,6 +31,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaNullableBoolean;
+import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -39,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 28 Jul 15 00:34:30 -0400
+ * @date Wed, 29 Jul 15 01:21:26 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -51,7 +52,7 @@ public class KalturaAnswerCuePoint extends KalturaCuePoint {
     public String answerKey;
     public KalturaNullableBoolean isCorrect;
 	/**  Array of string     */
-    public KalturaTypedArray correctAnswerKeys;
+    public ArrayList<KalturaString> correctAnswerKeys;
     public String explanation;
 
     public KalturaAnswerCuePoint() {
@@ -77,7 +78,7 @@ public class KalturaAnswerCuePoint extends KalturaCuePoint {
                 this.isCorrect = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
             } else if (nodeName.equals("correctAnswerKeys")) {
-                this.correctAnswerKeys = ParseUtils.parseObject(KalturaTypedArray.class, aNode);
+                this.correctAnswerKeys = ParseUtils.parseArray(KalturaString.class, aNode);
                 continue;
             } else if (nodeName.equals("explanation")) {
                 this.explanation = ParseUtils.parseString(txt);
