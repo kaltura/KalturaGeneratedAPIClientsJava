@@ -30,29 +30,49 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Jul 15 12:55:52 -0400
+ * @date Mon, 03 Aug 15 01:36:31 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFilter {
+    public String parentIdEqual;
+    public String parentIdIn;
 
     public KalturaAnswerCuePointBaseFilter() {
     }
 
     public KalturaAnswerCuePointBaseFilter(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("parentIdEqual")) {
+                this.parentIdEqual = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("parentIdIn")) {
+                this.parentIdIn = ParseUtils.parseString(txt);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaAnswerCuePointBaseFilter");
+        kparams.add("parentIdEqual", this.parentIdEqual);
+        kparams.add("parentIdIn", this.parentIdIn);
         return kparams;
     }
 
