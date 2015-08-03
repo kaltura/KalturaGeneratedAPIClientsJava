@@ -39,7 +39,7 @@ import com.kaltura.client.enums.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 27 Jul 15 12:55:52 -0400
+ * @date Mon, 03 Aug 15 01:36:31 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -136,5 +136,17 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaResponseProfileCacheRecalculateResults.class, resultXmlElement);
+    }
+
+	/**  Clone an existing response profile     */
+    public KalturaResponseProfile clone(int id, KalturaResponseProfile profile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("profile", profile);
+        this.kalturaClient.queueServiceCall("responseprofile", "clone", kparams, KalturaResponseProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 }
