@@ -6,9 +6,7 @@
 <!-- Contributed by:  Mark Ratliff, ratliff@princeton.edu      -->
 <!--                                                           -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <!-- Define the GAV coordinate for the project -->
   <modelVersion>4.0.0</modelVersion>
@@ -34,9 +32,19 @@
       <name>GNU Affero General Public License, Version 3.0</name>
       <url>https://www.gnu.org/licenses/agpl-3.0.html</url>
       <distribution>repo</distribution>
-      <comments/>
+      <comments />
     </license>
   </licenses>
+  <distributionManagement>
+<snapshotRepository>
+<id>ossrh</id>
+<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+</snapshotRepository>
+<repository>
+<id>ossrh</id>
+<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+</repository>
+</distributionManagement>
   
   <!-- Developers who contribute to this software. -->
   <developers>
@@ -110,6 +118,17 @@
       <!-- Use java version 1.6 to compile the code -->
       <!-- This may not be a strict requirement, so may want to loosen in future -->
       <plugin>
+      	<groupId>org.sonatype.plugins</groupId>
+      	<artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.3</version>
+        <extensions>true</extensions>
+        <configuration>
+       		<serverId>ossrh</serverId>
+        	<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+        	<autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
@@ -135,6 +154,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -149,6 +169,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>
@@ -157,6 +178,20 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-gpg-plugin</artifactId>
+	<version>1.5</version>
+	<executions>
+	    <execution>
+		<id>sign-artifacts</id>
+		<phase>verify</phase>
+		<goals>
+		    <goal>sign</goal>
+		</goals>
+	    </execution>
+	</executions>
       </plugin>
     </plugins>
   </build>
