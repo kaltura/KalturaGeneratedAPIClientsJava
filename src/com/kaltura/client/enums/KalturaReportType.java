@@ -30,12 +30,14 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 03 Aug 15 01:36:31 -0400
+ * @date Mon, 10 Aug 15 02:02:11 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaReportType implements KalturaEnumAsString {
     QUIZ ("quiz.QUIZ"),
+    QUIZ_AGGREGATE_BY_QUESTION ("quiz.QUIZ_AGGREGATE_BY_QUESTION"),
+    QUIZ_USER_AGGREGATE_BY_QUESTION ("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION"),
     QUIZ_USER_PERCENTAGE ("quiz.QUIZ_USER_PERCENTAGE"),
     TOP_CONTENT ("1"),
     CONTENT_DROPOFF ("2"),
@@ -79,6 +81,16 @@ public enum KalturaReportType implements KalturaEnumAsString {
         if (hashCode.equals("quiz.QUIZ"))
         {
            return QUIZ;
+        }
+        else 
+        if (hashCode.equals("quiz.QUIZ_AGGREGATE_BY_QUESTION"))
+        {
+           return QUIZ_AGGREGATE_BY_QUESTION;
+        }
+        else 
+        if (hashCode.equals("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION"))
+        {
+           return QUIZ_USER_AGGREGATE_BY_QUESTION;
         }
         else 
         if (hashCode.equals("quiz.QUIZ_USER_PERCENTAGE"))

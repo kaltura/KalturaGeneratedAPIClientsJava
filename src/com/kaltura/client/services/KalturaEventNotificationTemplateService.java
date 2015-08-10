@@ -39,7 +39,7 @@ import com.kaltura.client.enums.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 03 Aug 15 01:36:32 -0400
+ * @date Mon, 10 Aug 15 02:02:11 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -53,7 +53,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
     }
 
 	/**  This action allows for the creation of new backend event types in the system.
-	  This action requires access to the Kaltura server Admin Console. If you’re
+	  This action requires access to the Kaltura server Admin Console. If you're
 	  looking to register to existing event types, please use the clone action
 	  instead.     */
     public KalturaEventNotificationTemplate add(KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
