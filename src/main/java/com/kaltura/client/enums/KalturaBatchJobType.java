@@ -30,7 +30,7 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 22 Aug 15 01:53:19 -0400
+ * @date Sun, 23 Aug 15 11:04:58 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,7 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     DROP_FOLDER_CONTENT_PROCESSOR ("dropFolder.DropFolderContentProcessor"),
     DROP_FOLDER_WATCHER ("dropFolder.DropFolderWatcher"),
     EVENT_NOTIFICATION_HANDLER ("eventNotification.EventNotificationHandler"),
+    INTEGRATION ("integration.Integration"),
     SCHEDULED_TASK ("scheduledTask.ScheduledTask"),
     INDEX_TAGS ("tagSearch.IndexTagsByPrivacyContext"),
     TAG_RESOLVE ("tagSearch.TagResolve"),
@@ -168,6 +169,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("eventNotification.EventNotificationHandler"))
         {
            return EVENT_NOTIFICATION_HANDLER;
+        }
+        else 
+        if (hashCode.equals("integration.Integration"))
+        {
+           return INTEGRATION;
         }
         else 
         if (hashCode.equals("scheduledTask.ScheduledTask"))

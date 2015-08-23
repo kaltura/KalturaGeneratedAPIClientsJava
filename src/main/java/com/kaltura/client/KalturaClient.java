@@ -112,12 +112,13 @@ import com.kaltura.client.services.KalturaVarConsoleService;
 import com.kaltura.client.services.KalturaEventNotificationTemplateService;
 import com.kaltura.client.services.KalturaExternalMediaService;
 import com.kaltura.client.services.KalturaScheduledTaskProfileService;
+import com.kaltura.client.services.KalturaIntegrationService;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 22 Aug 15 01:53:19 -0400
+ * @date Sun, 23 Aug 15 11:04:58 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -128,7 +129,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:15-08-22");
+		this.setClientTag("java:15-08-23");
 		this.setApiVersion("3.2.0");
 	}
 	
@@ -818,6 +819,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.scheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
 	
 		return this.scheduledTaskProfileService;
+	}
+	
+	protected KalturaIntegrationService integrationService;
+	public KalturaIntegrationService getIntegrationService() {
+		if(this.integrationService == null)
+			this.integrationService = new KalturaIntegrationService(this);
+	
+		return this.integrationService;
 	}
 	
 	/**
