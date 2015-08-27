@@ -33,6 +33,7 @@ import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.enums.KalturaAppTokenStatus;
 import com.kaltura.client.enums.KalturaSessionType;
+import com.kaltura.client.enums.KalturaAppTokenHashType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -41,7 +42,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 25 Aug 15 01:05:32 -0400
+ * @date Thu, 27 Aug 15 01:34:33 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -71,6 +72,7 @@ public class KalturaAppToken extends KalturaObjectBase {
 	/**  Comma separated privileges to be applied on KS (Kaltura Session) that created
 	  using the current token     */
     public String sessionPrivileges;
+    public KalturaAppTokenHashType hashType;
 
     public KalturaAppToken() {
     }
@@ -114,6 +116,9 @@ public class KalturaAppToken extends KalturaObjectBase {
             } else if (nodeName.equals("sessionPrivileges")) {
                 this.sessionPrivileges = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("hashType")) {
+                this.hashType = KalturaAppTokenHashType.get(ParseUtils.parseString(txt));
+                continue;
             } 
         }
     }
@@ -126,6 +131,7 @@ public class KalturaAppToken extends KalturaObjectBase {
         kparams.add("sessionUserId", this.sessionUserId);
         kparams.add("sessionDuration", this.sessionDuration);
         kparams.add("sessionPrivileges", this.sessionPrivileges);
+        kparams.add("hashType", this.hashType);
         return kparams;
     }
 
