@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 31 Aug 15 01:12:55 -0400
+ * @date Tue, 01 Sep 15 01:39:59 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -116,6 +116,7 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
     public KalturaLanguageCode language;
     public String audioThumbEntryId;
     public String liveThumbEntryId;
+    public boolean timeAlignedRenditions;
 
     public KalturaSystemPartnerConfiguration() {
     }
@@ -312,6 +313,9 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
             } else if (nodeName.equals("liveThumbEntryId")) {
                 this.liveThumbEntryId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("timeAlignedRenditions")) {
+                this.timeAlignedRenditions = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -380,6 +384,7 @@ public class KalturaSystemPartnerConfiguration extends KalturaObjectBase {
         kparams.add("language", this.language);
         kparams.add("audioThumbEntryId", this.audioThumbEntryId);
         kparams.add("liveThumbEntryId", this.liveThumbEntryId);
+        kparams.add("timeAlignedRenditions", this.timeAlignedRenditions);
         return kparams;
     }
 

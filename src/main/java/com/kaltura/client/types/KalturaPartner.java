@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 31 Aug 15 01:12:55 -0400
+ * @date Tue, 01 Sep 15 01:39:59 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -108,6 +108,7 @@ public class KalturaPartner extends KalturaObjectBase {
     public int partnerParentId = Integer.MIN_VALUE;
     public String crmId;
     public String referenceId;
+    public boolean timeAlignedRenditions;
 
     public KalturaPartner() {
     }
@@ -273,6 +274,9 @@ public class KalturaPartner extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("referenceId")) {
                 this.referenceId = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("timeAlignedRenditions")) {
+                this.timeAlignedRenditions = ParseUtils.parseBool(txt);
                 continue;
             } 
         }

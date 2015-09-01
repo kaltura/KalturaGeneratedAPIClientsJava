@@ -40,7 +40,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 31 Aug 15 01:12:55 -0400
+ * @date Tue, 01 Sep 15 01:39:59 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -59,6 +59,7 @@ public abstract class KalturaPartnerBaseFilter extends KalturaFilter {
     public int partnerPackageEqual = Integer.MIN_VALUE;
     public int partnerPackageGreaterThanOrEqual = Integer.MIN_VALUE;
     public int partnerPackageLessThanOrEqual = Integer.MIN_VALUE;
+    public String partnerPackageIn;
     public KalturaPartnerGroupType partnerGroupTypeEqual;
     public String partnerNameDescriptionWebsiteAdminNameAdminEmailLike;
 
@@ -108,6 +109,9 @@ public abstract class KalturaPartnerBaseFilter extends KalturaFilter {
             } else if (nodeName.equals("partnerPackageLessThanOrEqual")) {
                 this.partnerPackageLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("partnerPackageIn")) {
+                this.partnerPackageIn = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("partnerGroupTypeEqual")) {
                 this.partnerGroupTypeEqual = KalturaPartnerGroupType.get(ParseUtils.parseInt(txt));
                 continue;
@@ -133,6 +137,7 @@ public abstract class KalturaPartnerBaseFilter extends KalturaFilter {
         kparams.add("partnerPackageEqual", this.partnerPackageEqual);
         kparams.add("partnerPackageGreaterThanOrEqual", this.partnerPackageGreaterThanOrEqual);
         kparams.add("partnerPackageLessThanOrEqual", this.partnerPackageLessThanOrEqual);
+        kparams.add("partnerPackageIn", this.partnerPackageIn);
         kparams.add("partnerGroupTypeEqual", this.partnerGroupTypeEqual);
         kparams.add("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this.partnerNameDescriptionWebsiteAdminNameAdminEmailLike);
         return kparams;
