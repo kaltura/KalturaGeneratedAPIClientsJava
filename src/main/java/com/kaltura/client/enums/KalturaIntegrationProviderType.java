@@ -30,11 +30,12 @@ package com.kaltura.client.enums;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 08 Sep 15 01:22:04 -0400
+ * @date Wed, 09 Sep 15 02:17:13 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaIntegrationProviderType implements KalturaEnumAsString {
+    CIELO24 ("cielo24.Cielo24"),
     VOICEBASE ("voicebase.Voicebase");
 
     public String hashCode;
@@ -52,13 +53,18 @@ public enum KalturaIntegrationProviderType implements KalturaEnumAsString {
     }
 
     public static KalturaIntegrationProviderType get(String hashCode) {
+        if (hashCode.equals("cielo24.Cielo24"))
+        {
+           return CIELO24;
+        }
+        else 
         if (hashCode.equals("voicebase.Voicebase"))
         {
            return VOICEBASE;
         }
         else 
         {
-           return VOICEBASE;
+           return CIELO24;
         }
     }
 }
