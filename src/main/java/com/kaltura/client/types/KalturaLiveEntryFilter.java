@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Sat, 12 Sep 15 02:29:48 -0400
+ * @date Sun, 13 Sep 15 01:31:39 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +48,7 @@ import org.w3c.dom.NodeList;
 public class KalturaLiveEntryFilter extends KalturaLiveEntryBaseFilter {
     public KalturaNullableBoolean isLive;
     public KalturaNullableBoolean isRecordedEntryIdEmpty;
+    public String hasMediaServerHostname;
 
     public KalturaLiveEntryFilter() {
     }
@@ -65,6 +66,9 @@ public class KalturaLiveEntryFilter extends KalturaLiveEntryBaseFilter {
             } else if (nodeName.equals("isRecordedEntryIdEmpty")) {
                 this.isRecordedEntryIdEmpty = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("hasMediaServerHostname")) {
+                this.hasMediaServerHostname = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -74,6 +78,7 @@ public class KalturaLiveEntryFilter extends KalturaLiveEntryBaseFilter {
         kparams.add("objectType", "KalturaLiveEntryFilter");
         kparams.add("isLive", this.isLive);
         kparams.add("isRecordedEntryIdEmpty", this.isRecordedEntryIdEmpty);
+        kparams.add("hasMediaServerHostname", this.hasMediaServerHostname);
         return kparams;
     }
 
