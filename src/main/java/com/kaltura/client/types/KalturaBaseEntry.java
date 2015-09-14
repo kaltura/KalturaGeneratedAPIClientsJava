@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 14 Sep 15 01:22:23 -0400
+ * @date Mon, 14 Sep 15 08:46:31 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
