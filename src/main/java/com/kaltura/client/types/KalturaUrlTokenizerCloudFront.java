@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Thu, 17 Sep 15 10:37:08 -0400
+ * @date Mon, 21 Sep 15 06:07:18 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -47,6 +47,7 @@ import org.w3c.dom.NodeList;
 public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
     public String keyPairId;
     public String rootDir;
+    public boolean limitIpAddress;
 
     public KalturaUrlTokenizerCloudFront() {
     }
@@ -64,6 +65,9 @@ public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
             } else if (nodeName.equals("rootDir")) {
                 this.rootDir = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("limitIpAddress")) {
+                this.limitIpAddress = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -73,6 +77,7 @@ public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
         kparams.add("objectType", "KalturaUrlTokenizerCloudFront");
         kparams.add("keyPairId", this.keyPairId);
         kparams.add("rootDir", this.rootDir);
+        kparams.add("limitIpAddress", this.limitIpAddress);
         return kparams;
     }
 
