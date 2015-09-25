@@ -41,7 +41,7 @@ import java.util.ArrayList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Thu, 24 Sep 15 01:17:41 -0400
+ * @date Fri, 25 Sep 15 01:17:22 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
