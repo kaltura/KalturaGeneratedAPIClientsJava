@@ -38,7 +38,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Fri, 02 Oct 15 00:46:40 -0400
+ * @date Sat, 03 Oct 15 02:30:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -47,6 +47,8 @@ import org.w3c.dom.NodeList;
 public abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFilter {
     public String parentIdEqual;
     public String parentIdIn;
+    public String quizUserEntryIdEqual;
+    public String quizUserEntryIdIn;
 
     public KalturaAnswerCuePointBaseFilter() {
     }
@@ -64,6 +66,12 @@ public abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFil
             } else if (nodeName.equals("parentIdIn")) {
                 this.parentIdIn = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("quizUserEntryIdEqual")) {
+                this.quizUserEntryIdEqual = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("quizUserEntryIdIn")) {
+                this.quizUserEntryIdIn = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -73,6 +81,8 @@ public abstract class KalturaAnswerCuePointBaseFilter extends KalturaCuePointFil
         kparams.add("objectType", "KalturaAnswerCuePointBaseFilter");
         kparams.add("parentIdEqual", this.parentIdEqual);
         kparams.add("parentIdIn", this.parentIdIn);
+        kparams.add("quizUserEntryIdEqual", this.quizUserEntryIdEqual);
+        kparams.add("quizUserEntryIdIn", this.quizUserEntryIdIn);
         return kparams;
     }
 
