@@ -41,7 +41,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 07 Oct 15 00:53:34 -0400
+ * @date Wed, 07 Oct 15 12:24:55 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -55,11 +55,13 @@ public class KalturaQuiz extends KalturaObjectBase {
     public KalturaNullableBoolean showCorrectKeyOnAnswer;
     public KalturaNullableBoolean allowAnswerUpdate;
     public KalturaNullableBoolean showCorrectAfterSubmission;
+    public KalturaNullableBoolean allowDownload;
 
     public KalturaQuiz() {
     }
 
     public KalturaQuiz(Element node) throws KalturaApiException {
+        super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
@@ -83,11 +85,14 @@ public class KalturaQuiz extends KalturaObjectBase {
             } else if (nodeName.equals("showCorrectAfterSubmission")) {
                 this.showCorrectAfterSubmission = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("allowDownload")) {
+                this.allowDownload = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
 
-    public KalturaParams toParams() {
+    public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaQuiz");
         kparams.add("uiAttributes", this.uiAttributes);
@@ -95,6 +100,7 @@ public class KalturaQuiz extends KalturaObjectBase {
         kparams.add("showCorrectKeyOnAnswer", this.showCorrectKeyOnAnswer);
         kparams.add("allowAnswerUpdate", this.allowAnswerUpdate);
         kparams.add("showCorrectAfterSubmission", this.showCorrectAfterSubmission);
+        kparams.add("allowDownload", this.allowDownload);
         return kparams;
     }
 

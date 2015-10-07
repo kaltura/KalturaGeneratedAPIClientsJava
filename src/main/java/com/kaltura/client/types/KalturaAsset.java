@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 07 Oct 15 00:53:34 -0400
+ * @date Wed, 07 Oct 15 12:24:54 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -75,6 +75,7 @@ public class KalturaAsset extends KalturaObjectBase {
     }
 
     public KalturaAsset(Element node) throws KalturaApiException {
+        super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
@@ -126,7 +127,7 @@ public class KalturaAsset extends KalturaObjectBase {
         }
     }
 
-    public KalturaParams toParams() {
+    public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaAsset");
         kparams.add("tags", this.tags);

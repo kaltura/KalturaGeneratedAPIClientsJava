@@ -39,7 +39,7 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Wed, 07 Oct 15 00:53:34 -0400
+ * @date Wed, 07 Oct 15 12:24:54 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -71,7 +71,7 @@ public class KalturaExternalMediaEntry extends KalturaMediaEntry {
         }
     }
 
-    public KalturaParams toParams() {
+    public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaExternalMediaEntry");
         kparams.add("externalSourceType", this.externalSourceType);
