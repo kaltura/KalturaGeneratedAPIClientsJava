@@ -38,7 +38,7 @@ import com.kaltura.client.types.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Mon, 12 Oct 15 07:42:00 -0400
+ * @date Mon, 12 Oct 15 11:29:35 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
