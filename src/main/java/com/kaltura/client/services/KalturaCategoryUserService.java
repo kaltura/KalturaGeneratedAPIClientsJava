@@ -43,12 +43,11 @@ import com.kaltura.client.KalturaFile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add & Manage CategoryUser - membership of a user in a category    */
+/**  Add &amp; Manage CategoryUser - membership of a user in a category    */
 @SuppressWarnings("serial")
 public class KalturaCategoryUserService extends KalturaServiceBase {
     public KalturaCategoryUserService(KalturaClient client) {

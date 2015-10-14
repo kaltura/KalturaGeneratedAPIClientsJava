@@ -39,14 +39,13 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 @SuppressWarnings("serial")
 public class KalturaQuestionCuePoint extends KalturaCuePoint {
-	/**  Array of key value answerKey->optionAnswer objects     */
+	/**  Array of key value answerKey-&gt;optionAnswer objects     */
     public HashMap<String, KalturaOptionalAnswer> optionalAnswers;
     public String hint;
     public String question;

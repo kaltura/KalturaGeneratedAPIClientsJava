@@ -39,7 +39,6 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -49,8 +48,9 @@ public class KalturaDropFolderContentFileHandlerConfig extends KalturaDropFolder
     public KalturaDropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
 	/**  Regular expression that defines valid file names to be handled.   The following
 	  might be extracted from the file name and used if defined:   -
-	  (?P<referenceId>\w+) - will be used as the drop folder file's parsed slug.   -
-	  (?P<flavorName>\w+)  - will be used as the drop folder file's parsed flavor.     */
+	  (?P&lt;referenceId&gt;\w+) - will be used as the drop folder file's parsed slug.
+	    - (?P&lt;flavorName&gt;\w+)  - will be used as the drop folder file's parsed
+	  flavor.     */
     public String slugRegex;
 
     public KalturaDropFolderContentFileHandlerConfig() {

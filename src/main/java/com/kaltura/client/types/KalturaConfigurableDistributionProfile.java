@@ -39,7 +39,6 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:23 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -48,6 +47,9 @@ import org.w3c.dom.NodeList;
 public abstract class KalturaConfigurableDistributionProfile extends KalturaDistributionProfile {
     public ArrayList<KalturaDistributionFieldConfig> fieldConfigArray;
     public ArrayList<KalturaExtendingItemMrssParameter> itemXpathsToExtend;
+	/**  When checking custom XSLT conditions using the fieldConfigArray - address only
+	  categories associated with the entry via the categoryEntry object     */
+    public boolean useCategoryEntries;
 
     public KalturaConfigurableDistributionProfile() {
     }
@@ -58,11 +60,15 @@ public abstract class KalturaConfigurableDistributionProfile extends KalturaDist
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
             if (nodeName.equals("fieldConfigArray")) {
                 this.fieldConfigArray = ParseUtils.parseArray(KalturaDistributionFieldConfig.class, aNode);
                 continue;
             } else if (nodeName.equals("itemXpathsToExtend")) {
                 this.itemXpathsToExtend = ParseUtils.parseArray(KalturaExtendingItemMrssParameter.class, aNode);
+                continue;
+            } else if (nodeName.equals("useCategoryEntries")) {
+                this.useCategoryEntries = ParseUtils.parseBool(txt);
                 continue;
             } 
         }
@@ -73,6 +79,7 @@ public abstract class KalturaConfigurableDistributionProfile extends KalturaDist
         kparams.add("objectType", "KalturaConfigurableDistributionProfile");
         kparams.add("fieldConfigArray", this.fieldConfigArray);
         kparams.add("itemXpathsToExtend", this.itemXpathsToExtend);
+        kparams.add("useCategoryEntries", this.useCategoryEntries);
         return kparams;
     }
 

@@ -38,12 +38,11 @@ import com.kaltura.client.KalturaApiException;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add & Manage Syndication Feeds    */
+/**  Add &amp; Manage Syndication Feeds    */
 @SuppressWarnings("serial")
 public class KalturaSyndicationFeedService extends KalturaServiceBase {
     public KalturaSyndicationFeedService(KalturaClient client) {

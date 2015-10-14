@@ -38,13 +38,12 @@ import com.kaltura.client.types.*;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  System service is used for internal system helpers & to retrieve system level
-  information    */
+/**  System service is used for internal system helpers &amp; to retrieve system
+  level information    */
 @SuppressWarnings("serial")
 public class KalturaSystemService extends KalturaServiceBase {
     public KalturaSystemService(KalturaClient client) {

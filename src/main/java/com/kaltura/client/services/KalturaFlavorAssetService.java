@@ -39,7 +39,6 @@ import java.util.List;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -232,7 +231,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
     }
 
 	/**  Get Flavor Asset with the relevant Flavor Params (Flavor Params can exist
-	  without Flavor Asset & vice versa)     */
+	  without Flavor Asset &amp; vice versa)     */
     public List<KalturaFlavorAssetWithParams> getFlavorAssetsWithParams(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

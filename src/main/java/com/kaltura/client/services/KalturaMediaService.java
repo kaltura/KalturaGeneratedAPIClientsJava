@@ -44,12 +44,12 @@ import com.kaltura.client.KalturaFile;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Media service lets you upload and manage media files (images / videos & audio)    */
+/**  Media service lets you upload and manage media files (images / videos &amp;
+  audio)    */
 @SuppressWarnings("serial")
 public class KalturaMediaService extends KalturaServiceBase {
     public KalturaMediaService(KalturaClient client) {
@@ -224,11 +224,16 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.getMrss(entryId, null);
     }
 
-	/**  Get MRSS by entry id      XML will return as an escaped string        */
     public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray) throws KalturaApiException {
+        return this.getMrss(entryId, extendingItemsArray, null);
+    }
+
+	/**  Get MRSS by entry id      XML will return as an escaped string        */
+    public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray, String features) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("extendingItemsArray", extendingItemsArray);
+        kparams.add("features", features);
         this.kalturaClient.queueServiceCall("media", "getMrss", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;

@@ -38,12 +38,11 @@ import com.kaltura.client.KalturaApiException;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:24 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add & Manage CategoryEntry - assign entry to category    */
+/**  Add &amp; Manage CategoryEntry - assign entry to category    */
 @SuppressWarnings("serial")
 public class KalturaCategoryEntryService extends KalturaServiceBase {
     public KalturaCategoryEntryService(KalturaClient client) {

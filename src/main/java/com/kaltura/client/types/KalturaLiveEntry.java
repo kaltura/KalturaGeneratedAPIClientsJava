@@ -42,7 +42,6 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:23 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -60,7 +59,7 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
 	/**  Elapsed recording time (in msec) up to the point where the live stream was last
 	  stopped (unpublished).     */
     public int lastElapsedRecordingTime = Integer.MIN_VALUE;
-	/**  Array of key value protocol->live stream url objects     */
+	/**  Array of key value protocol-&gt;live stream url objects     */
     public ArrayList<KalturaLiveStreamConfiguration> liveStreamConfigurations;
 	/**  Recorded entry id     */
     public String recordedEntryId;

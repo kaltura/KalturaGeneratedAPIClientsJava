@@ -48,7 +48,6 @@ import org.w3c.dom.NodeList;
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
- * @date Tue, 13 Oct 15 01:17:23 -0400
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
@@ -60,8 +59,8 @@ public class KalturaCategory extends KalturaObjectBase {
     public int parentId = Integer.MIN_VALUE;
     public int depth = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The name of the Category.    The following characters are not allowed: '<', '>',
-	  ','     */
+	/**  The name of the Category.    The following characters are not allowed: '&lt;',
+	  '&gt;', ','     */
     public String name;
 	/**  The full name of the Category     */
     public String fullName;
