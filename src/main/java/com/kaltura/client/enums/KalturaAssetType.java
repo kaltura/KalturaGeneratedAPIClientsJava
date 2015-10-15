@@ -41,6 +41,7 @@ public enum KalturaAssetType implements KalturaEnumAsString {
     PDF ("document.PDF"),
     SWF ("document.SWF"),
     TIMED_THUMB_ASSET ("thumbCuePoint.timedThumb"),
+    TRANSCRIPT ("transcript.Transcript"),
     FLAVOR ("1"),
     THUMBNAIL ("2"),
     LIVE ("3");
@@ -93,6 +94,11 @@ public enum KalturaAssetType implements KalturaEnumAsString {
         if (hashCode.equals("thumbCuePoint.timedThumb"))
         {
            return TIMED_THUMB_ASSET;
+        }
+        else 
+        if (hashCode.equals("transcript.Transcript"))
+        {
+           return TRANSCRIPT;
         }
         else 
         if (hashCode.equals("1"))
