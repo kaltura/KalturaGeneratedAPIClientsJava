@@ -66,6 +66,9 @@ public class KalturaDistributionFieldConfig extends KalturaObjectBase {
     public ArrayList<KalturaString> updateParams;
 	/**  Is this field config is the default for the distribution provider?        */
     public boolean isDefault;
+	/**  Is an error on this field going to trigger deletion of distributed content?     
+	    */
+    public boolean triggerDeleteOnError;
 
     public KalturaDistributionFieldConfig() {
     }
@@ -98,6 +101,9 @@ public class KalturaDistributionFieldConfig extends KalturaObjectBase {
             } else if (nodeName.equals("isDefault")) {
                 this.isDefault = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("triggerDeleteOnError")) {
+                this.triggerDeleteOnError = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -111,6 +117,7 @@ public class KalturaDistributionFieldConfig extends KalturaObjectBase {
         kparams.add("isRequired", this.isRequired);
         kparams.add("updateOnChange", this.updateOnChange);
         kparams.add("updateParams", this.updateParams);
+        kparams.add("triggerDeleteOnError", this.triggerDeleteOnError);
         return kparams;
     }
 
