@@ -33,6 +33,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.types.*;
 
 /**
  * This class was generated using generate.php
@@ -84,5 +85,24 @@ public class KalturaLikeService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseBool(resultText);
+    }
+
+    public KalturaLikeListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaLikeListResponse list(KalturaLikeFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+    public KalturaLikeListResponse list(KalturaLikeFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("like_like", "list", kparams, KalturaLikeListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLikeListResponse.class, resultXmlElement);
     }
 }
