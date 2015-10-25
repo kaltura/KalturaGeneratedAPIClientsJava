@@ -11,7 +11,7 @@
 	<!-- Define the GAV coordinate for the project -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kaltura</groupId>
-	<artifactId>KalturaClient</artifactId>
+	<artifactId>KalturaClientLib</artifactId>
 	<version>3.3.0</version>
 
 	<!-- Project description -->
