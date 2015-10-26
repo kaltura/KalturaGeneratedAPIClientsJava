@@ -64,7 +64,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
 	/**  The desired height of the Flavor Params     */
     public int height = Integer.MIN_VALUE;
 	/**  The frame rate of the Flavor Params     */
-    public int frameRate = Integer.MIN_VALUE;
+    public double frameRate = Double.MIN_VALUE;
 	/**  The gop size of the Flavor Params     */
     public int gopSize = Integer.MIN_VALUE;
 	/**  The list of conversion engines (comma separated)     */
@@ -131,7 +131,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
                 this.height = ParseUtils.parseInt(txt);
                 continue;
             } else if (nodeName.equals("frameRate")) {
-                this.frameRate = ParseUtils.parseInt(txt);
+                this.frameRate = ParseUtils.parseDouble(txt);
                 continue;
             } else if (nodeName.equals("gopSize")) {
                 this.gopSize = ParseUtils.parseInt(txt);
