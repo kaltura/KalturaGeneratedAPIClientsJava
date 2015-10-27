@@ -34,6 +34,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.*;
 
 /**
  * This class was generated using generate.php
@@ -105,10 +106,24 @@ public class KalturaQuizService extends KalturaServiceBase {
     }
 
 	/**  creates a pdf from quiz object     */
-    public String servePdf(String entryId) throws KalturaApiException {
+    public String serve(String entryId, KalturaQuizFileType quizFileType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("quiz_quiz", "servePdf", kparams);
+        kparams.add("quizFileType", quizFileType);
+        this.kalturaClient.queueServiceCall("quiz_quiz", "serve", kparams);
         return this.kalturaClient.serve();
+    }
+
+	/**  sends a with an api request for pdf from quiz object     */
+    public String getUrl(String entryId, KalturaQuizFileType quizFileType) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("quizFileType", quizFileType);
+        this.kalturaClient.queueServiceCall("quiz_quiz", "getUrl", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 }
