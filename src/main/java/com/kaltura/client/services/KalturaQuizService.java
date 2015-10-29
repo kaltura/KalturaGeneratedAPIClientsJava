@@ -105,7 +105,8 @@ public class KalturaQuizService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaQuizListResponse.class, resultXmlElement);
     }
 
-	/**  creates a pdf from quiz object     */
+	/**  creates a pdf from quiz object   The Output type defines the file format in
+	  which the quiz will be generated   Currently only PDF files are supported     */
     public String serve(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
