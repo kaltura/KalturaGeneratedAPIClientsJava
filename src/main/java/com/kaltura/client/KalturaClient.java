@@ -40,7 +40,6 @@ import com.kaltura.client.services.KalturaConversionProfileService;
 import com.kaltura.client.services.KalturaDataService;
 import com.kaltura.client.services.KalturaDeliveryProfileService;
 import com.kaltura.client.services.KalturaDocumentService;
-import com.kaltura.client.services.KalturaEdgeServerService;
 import com.kaltura.client.services.KalturaEmailIngestionProfileService;
 import com.kaltura.client.services.KalturaFileAssetService;
 import com.kaltura.client.services.KalturaFlavorAssetService;
@@ -53,7 +52,6 @@ import com.kaltura.client.services.KalturaLiveReportsService;
 import com.kaltura.client.services.KalturaLiveStatsService;
 import com.kaltura.client.services.KalturaLiveStreamService;
 import com.kaltura.client.services.KalturaMediaInfoService;
-import com.kaltura.client.services.KalturaMediaServerService;
 import com.kaltura.client.services.KalturaMediaService;
 import com.kaltura.client.services.KalturaMixingService;
 import com.kaltura.client.services.KalturaNotificationService;
@@ -65,6 +63,7 @@ import com.kaltura.client.services.KalturaReportService;
 import com.kaltura.client.services.KalturaResponseProfileService;
 import com.kaltura.client.services.KalturaSchemaService;
 import com.kaltura.client.services.KalturaSearchService;
+import com.kaltura.client.services.KalturaServerNodeService;
 import com.kaltura.client.services.KalturaSessionService;
 import com.kaltura.client.services.KalturaStatsService;
 import com.kaltura.client.services.KalturaStorageProfileService;
@@ -128,7 +127,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:15-10-28");
+		this.setClientTag("java:15-10-29");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -244,14 +243,6 @@ public class KalturaClient extends KalturaClientBase {
 		return this.documentService;
 	}
 	
-	protected KalturaEdgeServerService edgeServerService;
-	public KalturaEdgeServerService getEdgeServerService() {
-		if(this.edgeServerService == null)
-			this.edgeServerService = new KalturaEdgeServerService(this);
-	
-		return this.edgeServerService;
-	}
-	
 	protected KalturaEmailIngestionProfileService EmailIngestionProfileService;
 	public KalturaEmailIngestionProfileService getEmailIngestionProfileService() {
 		if(this.EmailIngestionProfileService == null)
@@ -348,14 +339,6 @@ public class KalturaClient extends KalturaClientBase {
 		return this.mediaInfoService;
 	}
 	
-	protected KalturaMediaServerService mediaServerService;
-	public KalturaMediaServerService getMediaServerService() {
-		if(this.mediaServerService == null)
-			this.mediaServerService = new KalturaMediaServerService(this);
-	
-		return this.mediaServerService;
-	}
-	
 	protected KalturaMediaService mediaService;
 	public KalturaMediaService getMediaService() {
 		if(this.mediaService == null)
@@ -442,6 +425,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.searchService = new KalturaSearchService(this);
 	
 		return this.searchService;
+	}
+	
+	protected KalturaServerNodeService serverNodeService;
+	public KalturaServerNodeService getServerNodeService() {
+		if(this.serverNodeService == null)
+			this.serverNodeService = new KalturaServerNodeService(this);
+	
+		return this.serverNodeService;
 	}
 	
 	protected KalturaSessionService sessionService;

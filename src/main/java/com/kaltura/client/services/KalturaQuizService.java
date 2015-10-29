@@ -106,19 +106,19 @@ public class KalturaQuizService extends KalturaServiceBase {
     }
 
 	/**  creates a pdf from quiz object     */
-    public String serve(String entryId, KalturaQuizFileType quizFileType) throws KalturaApiException {
+    public String serve(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("quizFileType", quizFileType);
+        kparams.add("quizOutputType", quizOutputType);
         this.kalturaClient.queueServiceCall("quiz_quiz", "serve", kparams);
         return this.kalturaClient.serve();
     }
 
 	/**  sends a with an api request for pdf from quiz object     */
-    public String getUrl(String entryId, KalturaQuizFileType quizFileType) throws KalturaApiException {
+    public String getUrl(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("quizFileType", quizFileType);
+        kparams.add("quizOutputType", quizOutputType);
         this.kalturaClient.queueServiceCall("quiz_quiz", "getUrl", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;
