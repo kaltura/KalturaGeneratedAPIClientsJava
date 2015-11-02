@@ -46,6 +46,8 @@ import org.w3c.dom.NodeList;
 public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
     public String entryIdEqual;
     public String userIdEqual;
+    public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
+    public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
 
     public KalturaLikeBaseFilter() {
     }
@@ -63,6 +65,12 @@ public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
             } else if (nodeName.equals("userIdEqual")) {
                 this.userIdEqual = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("createdAtGreaterThanOrEqual")) {
+                this.createdAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("createdAtLessThanOrEqual")) {
+                this.createdAtLessThanOrEqual = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -72,6 +80,8 @@ public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
         kparams.add("objectType", "KalturaLikeBaseFilter");
         kparams.add("entryIdEqual", this.entryIdEqual);
         kparams.add("userIdEqual", this.userIdEqual);
+        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
         return kparams;
     }
 

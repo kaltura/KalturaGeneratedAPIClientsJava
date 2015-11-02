@@ -49,6 +49,8 @@ public class KalturaLike extends KalturaObjectBase {
     public String entryId;
 	/**  The id of user that the like belongs to     */
     public String userId;
+	/**  The date of the like's creation     */
+    public int createdAt = Integer.MIN_VALUE;
 
     public KalturaLike() {
     }
@@ -66,6 +68,9 @@ public class KalturaLike extends KalturaObjectBase {
             } else if (nodeName.equals("userId")) {
                 this.userId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("createdAt")) {
+                this.createdAt = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -75,6 +80,7 @@ public class KalturaLike extends KalturaObjectBase {
         kparams.add("objectType", "KalturaLike");
         kparams.add("entryId", this.entryId);
         kparams.add("userId", this.userId);
+        kparams.add("createdAt", this.createdAt);
         return kparams;
     }
 
