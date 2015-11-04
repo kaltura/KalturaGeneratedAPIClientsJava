@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBatchJobType implements KalturaEnumAsString {
+    CONVERT ("0"),
     PARSE_MULTI_LANGUAGE_CAPTION_ASSET ("caption.parsemultilanguagecaptionasset"),
     PARSE_CAPTION_ASSET ("captionSearch.parseCaptionAsset"),
     DISTRIBUTION_DELETE ("contentDistribution.DistributionDelete"),
@@ -43,7 +44,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     DISTRIBUTION_SUBMIT ("contentDistribution.DistributionSubmit"),
     DISTRIBUTION_SYNC ("contentDistribution.DistributionSync"),
     DISTRIBUTION_UPDATE ("contentDistribution.DistributionUpdate"),
-    CONVERT ("0"),
     DROP_FOLDER_CONTENT_PROCESSOR ("dropFolder.DropFolderContentProcessor"),
     DROP_FOLDER_WATCHER ("dropFolder.DropFolderWatcher"),
     EVENT_NOTIFICATION_HANDLER ("eventNotification.EventNotificationHandler"),
@@ -105,6 +105,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     }
 
     public static KalturaBatchJobType get(String hashCode) {
+        if (hashCode.equals("0"))
+        {
+           return CONVERT;
+        }
+        else 
         if (hashCode.equals("caption.parsemultilanguagecaptionasset"))
         {
            return PARSE_MULTI_LANGUAGE_CAPTION_ASSET;
@@ -148,11 +153,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("contentDistribution.DistributionUpdate"))
         {
            return DISTRIBUTION_UPDATE;
-        }
-        else 
-        if (hashCode.equals("0"))
-        {
-           return CONVERT;
         }
         else 
         if (hashCode.equals("dropFolder.DropFolderContentProcessor"))
@@ -381,7 +381,7 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         }
         else 
         {
-           return PARSE_MULTI_LANGUAGE_CAPTION_ASSET;
+           return CONVERT;
         }
     }
 }
