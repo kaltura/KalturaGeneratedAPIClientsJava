@@ -414,9 +414,10 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  Clone an entry with optional attributes to apply to the clone     */
-    public KalturaBaseEntry clone(String entryId) throws KalturaApiException {
+    public KalturaBaseEntry clone(String entryId, KalturaBaseEntryCloneOptions cloneOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
+        kparams.add("cloneOptions", cloneOptions);
         this.kalturaClient.queueServiceCall("baseentry", "clone", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

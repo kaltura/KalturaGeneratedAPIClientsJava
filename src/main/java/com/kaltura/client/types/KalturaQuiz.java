@@ -55,6 +55,7 @@ public class KalturaQuiz extends KalturaObjectBase {
     public KalturaNullableBoolean allowAnswerUpdate;
     public KalturaNullableBoolean showCorrectAfterSubmission;
     public KalturaNullableBoolean allowDownload;
+    public KalturaNullableBoolean showGradeAfterSubmission;
 
     public KalturaQuiz() {
     }
@@ -87,6 +88,9 @@ public class KalturaQuiz extends KalturaObjectBase {
             } else if (nodeName.equals("allowDownload")) {
                 this.allowDownload = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("showGradeAfterSubmission")) {
+                this.showGradeAfterSubmission = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -100,6 +104,7 @@ public class KalturaQuiz extends KalturaObjectBase {
         kparams.add("allowAnswerUpdate", this.allowAnswerUpdate);
         kparams.add("showCorrectAfterSubmission", this.showCorrectAfterSubmission);
         kparams.add("allowDownload", this.allowDownload);
+        kparams.add("showGradeAfterSubmission", this.showGradeAfterSubmission);
         return kparams;
     }
 
