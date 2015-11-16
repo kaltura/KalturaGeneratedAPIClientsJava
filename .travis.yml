@@ -1,3 +1,5 @@
+env:
+    - RUN_ENV=development 
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install maven
