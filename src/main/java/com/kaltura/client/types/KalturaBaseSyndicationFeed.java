@@ -85,6 +85,7 @@ public abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase {
     public String privacyContext;
 	/**  Update date as Unix timestamp (In seconds)     */
     public int updatedAt = Integer.MIN_VALUE;
+    public boolean useCategoryEntries;
 
     public KalturaBaseSyndicationFeed() {
     }
@@ -156,6 +157,9 @@ public abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase {
             } else if (nodeName.equals("updatedAt")) {
                 this.updatedAt = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("useCategoryEntries")) {
+                this.useCategoryEntries = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -177,6 +181,7 @@ public abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase {
         kparams.add("entriesOrderBy", this.entriesOrderBy);
         kparams.add("enforceEntitlement", this.enforceEntitlement);
         kparams.add("privacyContext", this.privacyContext);
+        kparams.add("useCategoryEntries", this.useCategoryEntries);
         return kparams;
     }
 
