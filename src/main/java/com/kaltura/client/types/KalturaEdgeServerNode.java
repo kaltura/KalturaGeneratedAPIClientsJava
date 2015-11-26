@@ -30,6 +30,10 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.util.ArrayList;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
@@ -41,17 +45,29 @@ import com.kaltura.client.KalturaApiException;
 
 @SuppressWarnings("serial")
 public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
+	/**  Delivery profile ids     */
+    public ArrayList<KalturaKeyValue> deliveryProfileIds;
 
     public KalturaEdgeServerNode() {
     }
 
     public KalturaEdgeServerNode(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            if (nodeName.equals("deliveryProfileIds")) {
+                this.deliveryProfileIds = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaEdgeServerNode");
+        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
         return kparams;
     }
 
