@@ -60,6 +60,7 @@ public enum KalturaReportType implements KalturaEnumAsString {
     BROWSERS ("23"),
     LIVE ("24"),
     TOP_PLAYBACK_CONTEXT ("25"),
+    VPAAS_USAGE ("26"),
     PARTNER_USAGE ("201");
 
     public String hashCode;
@@ -205,6 +206,11 @@ public enum KalturaReportType implements KalturaEnumAsString {
         if (hashCode.equals("25"))
         {
            return TOP_PLAYBACK_CONTEXT;
+        }
+        else 
+        if (hashCode.equals("26"))
+        {
+           return VPAAS_USAGE;
         }
         else 
         if (hashCode.equals("201"))
