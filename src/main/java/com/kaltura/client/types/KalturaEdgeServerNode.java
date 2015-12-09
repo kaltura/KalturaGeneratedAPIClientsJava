@@ -47,6 +47,8 @@ import org.w3c.dom.NodeList;
 public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
 	/**  Delivery profile ids     */
     public ArrayList<KalturaKeyValue> deliveryProfileIds;
+	/**  Overdie edge server default configuration - json format     */
+    public String config;
 
     public KalturaEdgeServerNode() {
     }
@@ -57,8 +59,12 @@ public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
             if (nodeName.equals("deliveryProfileIds")) {
                 this.deliveryProfileIds = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
+                continue;
+            } else if (nodeName.equals("config")) {
+                this.config = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -68,6 +74,7 @@ public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaEdgeServerNode");
         kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+        kparams.add("config", this.config);
         return kparams;
     }
 

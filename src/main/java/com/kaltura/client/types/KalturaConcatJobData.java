@@ -55,6 +55,7 @@ public class KalturaConcatJobData extends KalturaJobData {
     public double offset = Double.MIN_VALUE;
 	/**  Clipping duration in seconds     */
     public double duration = Double.MIN_VALUE;
+    public ArrayList<KalturaKeyValue> amfArray;
 
     public KalturaConcatJobData() {
     }
@@ -81,6 +82,9 @@ public class KalturaConcatJobData extends KalturaJobData {
             } else if (nodeName.equals("duration")) {
                 this.duration = ParseUtils.parseDouble(txt);
                 continue;
+            } else if (nodeName.equals("amfArray")) {
+                this.amfArray = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
+                continue;
             } 
         }
     }
@@ -93,6 +97,7 @@ public class KalturaConcatJobData extends KalturaJobData {
         kparams.add("flavorAssetId", this.flavorAssetId);
         kparams.add("offset", this.offset);
         kparams.add("duration", this.duration);
+        kparams.add("amfArray", this.amfArray);
         return kparams;
     }
 
