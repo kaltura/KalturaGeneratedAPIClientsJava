@@ -61,6 +61,8 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
 	      */
     public double endTime = Double.MIN_VALUE;
     public ArrayList<KalturaKeyValue> amfArray;
+	/**  Duration of the live segment.   filled by the ConvertLiveSegment job     */
+    public double duration = Double.MIN_VALUE;
 
     public KalturaConvertLiveSegmentJobData() {
     }
@@ -96,6 +98,9 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
             } else if (nodeName.equals("amfArray")) {
                 this.amfArray = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
                 continue;
+            } else if (nodeName.equals("duration")) {
+                this.duration = ParseUtils.parseDouble(txt);
+                continue;
             } 
         }
     }
@@ -111,6 +116,7 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
         kparams.add("destFilePath", this.destFilePath);
         kparams.add("endTime", this.endTime);
         kparams.add("amfArray", this.amfArray);
+        kparams.add("duration", this.duration);
         return kparams;
     }
 
