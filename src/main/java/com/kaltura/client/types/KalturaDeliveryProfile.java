@@ -79,6 +79,8 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
     public String mediaProtocols;
 	/**  priority used for ordering similar delivery profiles     */
     public int priority = Integer.MIN_VALUE;
+	/**  Extra query string parameters that should be added to the url     */
+    public String extraParams;
 
     public KalturaDeliveryProfile() {
     }
@@ -144,6 +146,9 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
             } else if (nodeName.equals("priority")) {
                 this.priority = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("extraParams")) {
+                this.extraParams = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -162,6 +167,7 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
         kparams.add("tokenizer", this.tokenizer);
         kparams.add("mediaProtocols", this.mediaProtocols);
         kparams.add("priority", this.priority);
+        kparams.add("extraParams", this.extraParams);
         return kparams;
     }
 
