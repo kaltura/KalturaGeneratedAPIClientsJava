@@ -31,7 +31,6 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaMediaServerIndex;
-import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -60,9 +59,8 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
 	/**  Duration of the live entry including all recorded segments including the current
 	      */
     public double endTime = Double.MIN_VALUE;
-    public ArrayList<KalturaKeyValue> amfArray;
-	/**  Duration of the live segment.   filled by the ConvertLiveSegment job     */
-    public double duration = Double.MIN_VALUE;
+	/**  The data output file     */
+    public String destDataFilePath;
 
     public KalturaConvertLiveSegmentJobData() {
     }
@@ -95,11 +93,8 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
             } else if (nodeName.equals("endTime")) {
                 this.endTime = ParseUtils.parseDouble(txt);
                 continue;
-            } else if (nodeName.equals("amfArray")) {
-                this.amfArray = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
-                continue;
-            } else if (nodeName.equals("duration")) {
-                this.duration = ParseUtils.parseDouble(txt);
+            } else if (nodeName.equals("destDataFilePath")) {
+                this.destDataFilePath = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -115,8 +110,7 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
         kparams.add("srcFilePath", this.srcFilePath);
         kparams.add("destFilePath", this.destFilePath);
         kparams.add("endTime", this.endTime);
-        kparams.add("amfArray", this.amfArray);
-        kparams.add("duration", this.duration);
+        kparams.add("destDataFilePath", this.destDataFilePath);
         return kparams;
     }
 
