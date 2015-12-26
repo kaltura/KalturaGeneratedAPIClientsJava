@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaDistributionProviderType implements KalturaEnumAsString {
+    FACEBOOK ("facebookDistribution.FACEBOOK"),
     IDETIC ("ideticDistribution.IDETIC"),
     YOUTUBE_API ("youtubeApiDistribution.YOUTUBE_API"),
     GENERIC ("1"),
@@ -54,6 +55,11 @@ public enum KalturaDistributionProviderType implements KalturaEnumAsString {
     }
 
     public static KalturaDistributionProviderType get(String hashCode) {
+        if (hashCode.equals("facebookDistribution.FACEBOOK"))
+        {
+           return FACEBOOK;
+        }
+        else 
         if (hashCode.equals("ideticDistribution.IDETIC"))
         {
            return IDETIC;
@@ -75,7 +81,7 @@ public enum KalturaDistributionProviderType implements KalturaEnumAsString {
         }
         else 
         {
-           return IDETIC;
+           return FACEBOOK;
         }
     }
 }
