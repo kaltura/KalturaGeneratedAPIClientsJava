@@ -41,6 +41,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
+import java.util.ArrayList;
 
 /**
  * This class was generated using generate.php
@@ -413,10 +414,15 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Clone an entry with optional attributes to apply to the clone     */
     public KalturaBaseEntry clone(String entryId) throws KalturaApiException {
+        return this.clone(entryId, null);
+    }
+
+	/**  Clone an entry with optional attributes to apply to the clone     */
+    public KalturaBaseEntry clone(String entryId, ArrayList<KalturaBaseEntryCloneOptionItem> cloneOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
+        kparams.add("cloneOptions", cloneOptions);
         this.kalturaClient.queueServiceCall("baseentry", "clone", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
