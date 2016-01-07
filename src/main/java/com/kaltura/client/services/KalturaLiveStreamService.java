@@ -249,13 +249,18 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.registerMediaServer(entryId, hostname, mediaServerIndex, null);
     }
 
-	/**  Register media server to live entry     */
     public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex, String applicationName) throws KalturaApiException {
+        return this.registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, KalturaLiveEntryStatus.get(1));
+    }
+
+	/**  Register media server to live entry     */
+    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex, String applicationName, KalturaLiveEntryStatus liveEntryStatus) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("hostname", hostname);
         kparams.add("mediaServerIndex", mediaServerIndex);
         kparams.add("applicationName", applicationName);
+        kparams.add("liveEntryStatus", liveEntryStatus);
         this.kalturaClient.queueServiceCall("livestream", "registerMediaServer", kparams, KalturaLiveEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

@@ -46,6 +46,10 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaRule extends KalturaObjectBase {
+	/**  Short Rule Description     */
+    public String description;
+	/**  Rule Custom Data to allow saving rule specific information      */
+    public String ruleData;
 	/**  Message to be thrown to the player in case the rule is fulfilled     */
     public String message;
 	/**  Actions to be performed by the player in case the rule is fulfilled     */
@@ -68,7 +72,13 @@ public class KalturaRule extends KalturaObjectBase {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("message")) {
+            if (nodeName.equals("description")) {
+                this.description = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("ruleData")) {
+                this.ruleData = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("message")) {
                 this.message = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("actions")) {
@@ -90,6 +100,8 @@ public class KalturaRule extends KalturaObjectBase {
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaRule");
+        kparams.add("description", this.description);
+        kparams.add("ruleData", this.ruleData);
         kparams.add("message", this.message);
         kparams.add("actions", this.actions);
         kparams.add("conditions", this.conditions);
