@@ -91,4 +91,15 @@ public class KalturaEntryAdminService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaTrackEntryListResponse.class, resultXmlElement);
     }
+
+	/**  Restore deleted entry.     */
+    public KalturaBaseEntry restoreDeletedEntry(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("adminconsole_entryadmin", "restoreDeletedEntry", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
 }
