@@ -34,6 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBaseEntryCloneOptions implements KalturaEnumAsString {
+    AD_CUE_POINTS ("adCuePoint.AD_CUE_POINTS"),
+    ANNOTATION_CUE_POINTS ("annotation.ANNOTATION_CUE_POINTS"),
+    CODE_CUE_POINTS ("codeCuePoint.CODE_CUE_POINTS"),
+    THUMB_CUE_POINTS ("thumbCuePoint.THUMB_CUE_POINTS"),
     USERS ("1"),
     CATEGORIES ("2");
 
@@ -52,6 +56,26 @@ public enum KalturaBaseEntryCloneOptions implements KalturaEnumAsString {
     }
 
     public static KalturaBaseEntryCloneOptions get(String hashCode) {
+        if (hashCode.equals("adCuePoint.AD_CUE_POINTS"))
+        {
+           return AD_CUE_POINTS;
+        }
+        else 
+        if (hashCode.equals("annotation.ANNOTATION_CUE_POINTS"))
+        {
+           return ANNOTATION_CUE_POINTS;
+        }
+        else 
+        if (hashCode.equals("codeCuePoint.CODE_CUE_POINTS"))
+        {
+           return CODE_CUE_POINTS;
+        }
+        else 
+        if (hashCode.equals("thumbCuePoint.THUMB_CUE_POINTS"))
+        {
+           return THUMB_CUE_POINTS;
+        }
+        else 
         if (hashCode.equals("1"))
         {
            return USERS;
@@ -63,7 +87,7 @@ public enum KalturaBaseEntryCloneOptions implements KalturaEnumAsString {
         }
         else 
         {
-           return USERS;
+           return AD_CUE_POINTS;
         }
     }
 }

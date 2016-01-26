@@ -66,6 +66,8 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
 	/**  Array of allowed flavor assets according to access control limitations and
 	  requested tags     */
     public ArrayList<KalturaFlavorAsset> flavorAssets;
+	/**  The duration of the entry in milliseconds     */
+    public int msDuration = Integer.MIN_VALUE;
 	/**  Array of allowed flavor assets according to access control limitations and
 	  requested tags        */
     public HashMap<String, KalturaPluginData> pluginData;
@@ -122,6 +124,9 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
             } else if (nodeName.equals("flavorAssets")) {
                 this.flavorAssets = ParseUtils.parseArray(KalturaFlavorAsset.class, aNode);
                 continue;
+            } else if (nodeName.equals("msDuration")) {
+                this.msDuration = ParseUtils.parseInt(txt);
+                continue;
             } else if (nodeName.equals("pluginData")) {
                 this.pluginData = ParseUtils.parseMap(KalturaPluginData.class, aNode);
                 continue;
@@ -146,6 +151,7 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
         kparams.add("accessControlMessages", this.accessControlMessages);
         kparams.add("accessControlActions", this.accessControlActions);
         kparams.add("flavorAssets", this.flavorAssets);
+        kparams.add("msDuration", this.msDuration);
         kparams.add("pluginData", this.pluginData);
         return kparams;
     }
