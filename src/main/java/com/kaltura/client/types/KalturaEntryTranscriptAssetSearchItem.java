@@ -43,21 +43,29 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaQuizUserEntry extends KalturaUserEntry {
-    public double score = Double.MIN_VALUE;
+public class KalturaEntryTranscriptAssetSearchItem extends KalturaSearchItem {
+    public String contentLike;
+    public String contentMultiLikeOr;
+    public String contentMultiLikeAnd;
 
-    public KalturaQuizUserEntry() {
+    public KalturaEntryTranscriptAssetSearchItem() {
     }
 
-    public KalturaQuizUserEntry(Element node) throws KalturaApiException {
+    public KalturaEntryTranscriptAssetSearchItem(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("score")) {
-                this.score = ParseUtils.parseDouble(txt);
+            if (nodeName.equals("contentLike")) {
+                this.contentLike = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("contentMultiLikeOr")) {
+                this.contentMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("contentMultiLikeAnd")) {
+                this.contentMultiLikeAnd = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -65,7 +73,10 @@ public class KalturaQuizUserEntry extends KalturaUserEntry {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuizUserEntry");
+        kparams.add("objectType", "KalturaEntryTranscriptAssetSearchItem");
+        kparams.add("contentLike", this.contentLike);
+        kparams.add("contentMultiLikeOr", this.contentMultiLikeOr);
+        kparams.add("contentMultiLikeAnd", this.contentMultiLikeAnd);
         return kparams;
     }
 
