@@ -46,6 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter {
     public KalturaNullableBoolean userIdEqualCurrent;
+    public KalturaNullableBoolean isAnonymous;
 
     public KalturaUserEntryFilter() {
     }
@@ -60,6 +61,9 @@ public class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter {
             if (nodeName.equals("userIdEqualCurrent")) {
                 this.userIdEqualCurrent = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("isAnonymous")) {
+                this.isAnonymous = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -68,6 +72,7 @@ public class KalturaUserEntryFilter extends KalturaUserEntryBaseFilter {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUserEntryFilter");
         kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
+        kparams.add("isAnonymous", this.isAnonymous);
         return kparams;
     }
 

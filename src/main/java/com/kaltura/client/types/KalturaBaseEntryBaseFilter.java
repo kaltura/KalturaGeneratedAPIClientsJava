@@ -184,7 +184,9 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
     public String rootEntryIdIn;
     public String parentEntryIdEqual;
     public String entitledUsersEditMatchAnd;
+    public String entitledUsersEditMatchOr;
     public String entitledUsersPublishMatchAnd;
+    public String entitledUsersPublishMatchOr;
     public String tagsNameMultiLikeOr;
     public String tagsAdminTagsMultiLikeOr;
     public String tagsAdminTagsNameMultiLikeOr;
@@ -406,8 +408,14 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
             } else if (nodeName.equals("entitledUsersEditMatchAnd")) {
                 this.entitledUsersEditMatchAnd = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("entitledUsersEditMatchOr")) {
+                this.entitledUsersEditMatchOr = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("entitledUsersPublishMatchAnd")) {
                 this.entitledUsersPublishMatchAnd = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("entitledUsersPublishMatchOr")) {
+                this.entitledUsersPublishMatchOr = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("tagsNameMultiLikeOr")) {
                 this.tagsNameMultiLikeOr = ParseUtils.parseString(txt);
@@ -502,7 +510,9 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
         kparams.add("rootEntryIdIn", this.rootEntryIdIn);
         kparams.add("parentEntryIdEqual", this.parentEntryIdEqual);
         kparams.add("entitledUsersEditMatchAnd", this.entitledUsersEditMatchAnd);
+        kparams.add("entitledUsersEditMatchOr", this.entitledUsersEditMatchOr);
         kparams.add("entitledUsersPublishMatchAnd", this.entitledUsersPublishMatchAnd);
+        kparams.add("entitledUsersPublishMatchOr", this.entitledUsersPublishMatchOr);
         kparams.add("tagsNameMultiLikeOr", this.tagsNameMultiLikeOr);
         kparams.add("tagsAdminTagsMultiLikeOr", this.tagsAdminTagsMultiLikeOr);
         kparams.add("tagsAdminTagsNameMultiLikeOr", this.tagsAdminTagsNameMultiLikeOr);
