@@ -36,6 +36,7 @@ package com.kaltura.client.enums;
 public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsString {
     AD_CUE_POINT ("adCuePointEventNotifications.AdCuePoint"),
     ANNOTATION ("annotationEventNotifications.Annotation"),
+    ATTACHMENT_ASSET ("attachmentAssetEventNotifications.AttachmentAsset"),
     CAPTION_ASSET ("captionAssetEventNotifications.CaptionAsset"),
     CODE_CUE_POINT ("codeCuePointEventNotifications.CodeCuePoint"),
     DISTRIBUTION_PROFILE ("contentDistributionEventNotifications.DistributionProfile"),
@@ -44,6 +45,7 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
     DROP_FOLDER ("dropFolderEventNotifications.DropFolder"),
     DROP_FOLDER_FILE ("dropFolderEventNotifications.DropFolderFile"),
     METADATA ("metadataEventNotifications.Metadata"),
+    TRANSCRIPT_ASSET ("transcriptAssetEventNotifications.TranscriptAsset"),
     ENTRY ("1"),
     CATEGORY ("2"),
     ASSET ("3"),
@@ -103,6 +105,11 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
            return ANNOTATION;
         }
         else 
+        if (hashCode.equals("attachmentAssetEventNotifications.AttachmentAsset"))
+        {
+           return ATTACHMENT_ASSET;
+        }
+        else 
         if (hashCode.equals("captionAssetEventNotifications.CaptionAsset"))
         {
            return CAPTION_ASSET;
@@ -141,6 +148,11 @@ public enum KalturaEventNotificationEventObjectType implements KalturaEnumAsStri
         if (hashCode.equals("metadataEventNotifications.Metadata"))
         {
            return METADATA;
+        }
+        else 
+        if (hashCode.equals("transcriptAssetEventNotifications.TranscriptAsset"))
+        {
+           return TRANSCRIPT_ASSET;
         }
         else 
         if (hashCode.equals("1"))
