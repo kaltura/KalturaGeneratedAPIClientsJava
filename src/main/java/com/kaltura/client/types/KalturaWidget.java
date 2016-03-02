@@ -66,6 +66,7 @@ public class KalturaWidget extends KalturaObjectBase {
     public String privacyContext;
 	/**  Addes the HTML5 script line to the widget's embed code     */
     public boolean addEmbedHtml5Support;
+    public String roles;
 
     public KalturaWidget() {
     }
@@ -122,6 +123,9 @@ public class KalturaWidget extends KalturaObjectBase {
             } else if (nodeName.equals("addEmbedHtml5Support")) {
                 this.addEmbedHtml5Support = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("roles")) {
+                this.roles = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -138,6 +142,7 @@ public class KalturaWidget extends KalturaObjectBase {
         kparams.add("enforceEntitlement", this.enforceEntitlement);
         kparams.add("privacyContext", this.privacyContext);
         kparams.add("addEmbedHtml5Support", this.addEmbedHtml5Support);
+        kparams.add("roles", this.roles);
         return kparams;
     }
 
