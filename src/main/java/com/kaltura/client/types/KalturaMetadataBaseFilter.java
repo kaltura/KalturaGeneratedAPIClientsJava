@@ -48,6 +48,7 @@ import org.w3c.dom.NodeList;
 public abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter {
     public int partnerIdEqual = Integer.MIN_VALUE;
     public int metadataProfileIdEqual = Integer.MIN_VALUE;
+    public String metadataProfileIdIn;
     public int metadataProfileVersionEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionGreaterThanOrEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionLessThanOrEqual = Integer.MIN_VALUE;
@@ -80,6 +81,9 @@ public abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter {
                 continue;
             } else if (nodeName.equals("metadataProfileIdEqual")) {
                 this.metadataProfileIdEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("metadataProfileIdIn")) {
+                this.metadataProfileIdIn = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("metadataProfileVersionEqual")) {
                 this.metadataProfileVersionEqual = ParseUtils.parseInt(txt);
@@ -135,6 +139,7 @@ public abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter {
         kparams.add("objectType", "KalturaMetadataBaseFilter");
         kparams.add("partnerIdEqual", this.partnerIdEqual);
         kparams.add("metadataProfileIdEqual", this.metadataProfileIdEqual);
+        kparams.add("metadataProfileIdIn", this.metadataProfileIdIn);
         kparams.add("metadataProfileVersionEqual", this.metadataProfileVersionEqual);
         kparams.add("metadataProfileVersionGreaterThanOrEqual", this.metadataProfileVersionGreaterThanOrEqual);
         kparams.add("metadataProfileVersionLessThanOrEqual", this.metadataProfileVersionLessThanOrEqual);

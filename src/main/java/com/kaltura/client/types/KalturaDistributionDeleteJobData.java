@@ -30,6 +30,9 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
@@ -41,17 +44,31 @@ import com.kaltura.client.KalturaApiException;
 
 @SuppressWarnings("serial")
 public class KalturaDistributionDeleteJobData extends KalturaDistributionJobData {
+	/**  Flag signifying that the associated distribution item should not be moved to
+	  'removed' status     */
+    public boolean keepDistributionItem;
 
     public KalturaDistributionDeleteJobData() {
     }
 
     public KalturaDistributionDeleteJobData(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("keepDistributionItem")) {
+                this.keepDistributionItem = ParseUtils.parseBool(txt);
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaDistributionDeleteJobData");
+        kparams.add("keepDistributionItem", this.keepDistributionItem);
         return kparams;
     }
 
