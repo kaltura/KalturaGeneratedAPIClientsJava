@@ -46,6 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaThumbnailServeOptions extends KalturaObjectBase {
     public boolean download;
+    public String referrer;
 
     public KalturaThumbnailServeOptions() {
     }
@@ -60,6 +61,9 @@ public class KalturaThumbnailServeOptions extends KalturaObjectBase {
             if (nodeName.equals("download")) {
                 this.download = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("referrer")) {
+                this.referrer = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -68,6 +72,7 @@ public class KalturaThumbnailServeOptions extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaThumbnailServeOptions");
         kparams.add("download", this.download);
+        kparams.add("referrer", this.referrer);
         return kparams;
     }
 
