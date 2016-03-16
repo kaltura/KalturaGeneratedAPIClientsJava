@@ -39,6 +39,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
+import com.kaltura.client.enums.*;
 
 /**
  * This class was generated using generate.php
@@ -171,6 +172,17 @@ public class KalturaCuePointService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Update cuePoint status by id     */
+    public void updateStatus(String id, KalturaCuePointStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "updateStatus", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
