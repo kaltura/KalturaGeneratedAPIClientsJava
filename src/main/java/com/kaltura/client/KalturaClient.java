@@ -41,6 +41,7 @@ import com.kaltura.client.services.KalturaDataService;
 import com.kaltura.client.services.KalturaDeliveryProfileService;
 import com.kaltura.client.services.KalturaDocumentService;
 import com.kaltura.client.services.KalturaEmailIngestionProfileService;
+import com.kaltura.client.services.KalturaEntryServerNodeService;
 import com.kaltura.client.services.KalturaFileAssetService;
 import com.kaltura.client.services.KalturaFlavorAssetService;
 import com.kaltura.client.services.KalturaFlavorParamsOutputService;
@@ -127,7 +128,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-03-16");
+		this.setClientTag("java:16-03-18");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -249,6 +250,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.EmailIngestionProfileService = new KalturaEmailIngestionProfileService(this);
 	
 		return this.EmailIngestionProfileService;
+	}
+	
+	protected KalturaEntryServerNodeService entryServerNodeService;
+	public KalturaEntryServerNodeService getEntryServerNodeService() {
+		if(this.entryServerNodeService == null)
+			this.entryServerNodeService = new KalturaEntryServerNodeService(this);
+	
+		return this.entryServerNodeService;
 	}
 	
 	protected KalturaFileAssetService fileAssetService;

@@ -126,12 +126,12 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
         return ParseUtils.parseBool(resultText);
     }
 
-    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaMediaServerIndex mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
+    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
         return this.appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
     }
 
 	/**  Append recorded video to live entry     */
-    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaMediaServerIndex mediaServerIndex, KalturaDataCenterContentResource resource, double duration, boolean isLastChunk) throws KalturaApiException {
+    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, boolean isLastChunk) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("assetId", assetId);
@@ -146,16 +146,16 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
     }
 
-    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex) throws KalturaApiException {
+    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
         return this.registerMediaServer(entryId, hostname, mediaServerIndex, null);
     }
 
-    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex, String applicationName) throws KalturaApiException {
-        return this.registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, KalturaLiveEntryStatus.get(1));
+    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex, String applicationName) throws KalturaApiException {
+        return this.registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, KalturaEntryServerNodeStatus.get(1));
     }
 
 	/**  Register media server to live entry     */
-    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex, String applicationName, KalturaLiveEntryStatus liveEntryStatus) throws KalturaApiException {
+    public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex, String applicationName, KalturaEntryServerNodeStatus liveEntryStatus) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("hostname", hostname);
@@ -170,7 +170,7 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
     }
 
 	/**  Unregister media server from live entry     */
-    public KalturaLiveEntry unregisterMediaServer(String entryId, String hostname, KalturaMediaServerIndex mediaServerIndex) throws KalturaApiException {
+    public KalturaLiveEntry unregisterMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("hostname", hostname);

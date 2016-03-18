@@ -33,7 +33,7 @@ import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaRecordStatus;
 import com.kaltura.client.enums.KalturaDVRStatus;
 import com.kaltura.client.enums.KalturaLivePublishStatus;
-import com.kaltura.client.enums.KalturaLiveEntryStatus;
+import com.kaltura.client.enums.KalturaEntryServerNodeStatus;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -76,8 +76,8 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
 	  or 0 when the entry is off the air     */
     public double currentBroadcastStartTime = Double.MIN_VALUE;
     public KalturaLiveEntryRecordingOptions recordingOptions;
-	/**  the status of the entry of type LiveEntryStatus     */
-    public KalturaLiveEntryStatus liveStatus;
+	/**  the status of the entry of type EntryServerNodeStatus     */
+    public KalturaEntryServerNodeStatus liveStatus;
 
     public KalturaLiveEntry() {
     }
@@ -129,7 +129,7 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
                 this.recordingOptions = ParseUtils.parseObject(KalturaLiveEntryRecordingOptions.class, aNode);
                 continue;
             } else if (nodeName.equals("liveStatus")) {
-                this.liveStatus = KalturaLiveEntryStatus.get(ParseUtils.parseInt(txt));
+                this.liveStatus = KalturaEntryServerNodeStatus.get(ParseUtils.parseInt(txt));
                 continue;
             } 
         }
@@ -149,7 +149,6 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
         kparams.add("publishConfigurations", this.publishConfigurations);
         kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
         kparams.add("recordingOptions", this.recordingOptions);
-        kparams.add("liveStatus", this.liveStatus);
         return kparams;
     }
 

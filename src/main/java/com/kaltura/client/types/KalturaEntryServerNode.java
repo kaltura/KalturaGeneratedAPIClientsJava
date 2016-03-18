@@ -30,6 +30,8 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.KalturaObjectBase;
+import com.kaltura.client.enums.KalturaEntryServerNodeStatus;
 import com.kaltura.client.enums.KalturaEntryServerNodeType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -44,57 +46,50 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
-	/**  Live stream entry id     */
+public abstract class KalturaEntryServerNode extends KalturaObjectBase {
+	/**  unique auto-generated identifier     */
+    public int id = Integer.MIN_VALUE;
     public String entryId;
-    public String assetId;
-	/**  Primary or secondary media server     */
-    public KalturaEntryServerNodeType mediaServerIndex;
-	/**  The index of the file within the entry     */
-    public int fileIndex = Integer.MIN_VALUE;
-	/**  The recorded live media     */
-    public String srcFilePath;
-	/**  The output file     */
-    public String destFilePath;
-	/**  Duration of the live entry including all recorded segments including the current
-	      */
-    public double endTime = Double.MIN_VALUE;
-	/**  The data output file     */
-    public String destDataFilePath;
+    public int serverNodeId = Integer.MIN_VALUE;
+    public int partnerId = Integer.MIN_VALUE;
+    public int createdAt = Integer.MIN_VALUE;
+    public int updatedAt = Integer.MIN_VALUE;
+    public KalturaEntryServerNodeStatus status;
+    public KalturaEntryServerNodeType serverType;
 
-    public KalturaConvertLiveSegmentJobData() {
+    public KalturaEntryServerNode() {
     }
 
-    public KalturaConvertLiveSegmentJobData(Element node) throws KalturaApiException {
+    public KalturaEntryServerNode(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("entryId")) {
+            if (nodeName.equals("id")) {
+                this.id = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("entryId")) {
                 this.entryId = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("assetId")) {
-                this.assetId = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("serverNodeId")) {
+                this.serverNodeId = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("mediaServerIndex")) {
-                this.mediaServerIndex = KalturaEntryServerNodeType.get(ParseUtils.parseString(txt));
+            } else if (nodeName.equals("partnerId")) {
+                this.partnerId = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("fileIndex")) {
-                this.fileIndex = ParseUtils.parseInt(txt);
+            } else if (nodeName.equals("createdAt")) {
+                this.createdAt = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("srcFilePath")) {
-                this.srcFilePath = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("updatedAt")) {
+                this.updatedAt = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("destFilePath")) {
-                this.destFilePath = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("status")) {
+                this.status = KalturaEntryServerNodeStatus.get(ParseUtils.parseInt(txt));
                 continue;
-            } else if (nodeName.equals("endTime")) {
-                this.endTime = ParseUtils.parseDouble(txt);
-                continue;
-            } else if (nodeName.equals("destDataFilePath")) {
-                this.destDataFilePath = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("serverType")) {
+                this.serverType = KalturaEntryServerNodeType.get(ParseUtils.parseString(txt));
                 continue;
             } 
         }
@@ -102,15 +97,7 @@ public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertLiveSegmentJobData");
-        kparams.add("entryId", this.entryId);
-        kparams.add("assetId", this.assetId);
-        kparams.add("mediaServerIndex", this.mediaServerIndex);
-        kparams.add("fileIndex", this.fileIndex);
-        kparams.add("srcFilePath", this.srcFilePath);
-        kparams.add("destFilePath", this.destFilePath);
-        kparams.add("endTime", this.endTime);
-        kparams.add("destDataFilePath", this.destDataFilePath);
+        kparams.add("objectType", "KalturaEntryServerNode");
         return kparams;
     }
 
