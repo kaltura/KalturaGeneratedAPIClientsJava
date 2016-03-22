@@ -59,8 +59,6 @@ public class KalturaMoveCategoryEntriesJobData extends KalturaJobData {
     public int lastMovedCategoryEntryPageIndex = Integer.MIN_VALUE;
 	/**  All entries from all child categories will be moved as well        */
     public boolean moveFromChildren;
-	/**  Entries won't be deleted from the source entry        */
-    public boolean copyOnly;
 	/**  Destination categories fallback ids        */
     public String destCategoryFullIds;
 
@@ -92,9 +90,6 @@ public class KalturaMoveCategoryEntriesJobData extends KalturaJobData {
             } else if (nodeName.equals("moveFromChildren")) {
                 this.moveFromChildren = ParseUtils.parseBool(txt);
                 continue;
-            } else if (nodeName.equals("copyOnly")) {
-                this.copyOnly = ParseUtils.parseBool(txt);
-                continue;
             } else if (nodeName.equals("destCategoryFullIds")) {
                 this.destCategoryFullIds = ParseUtils.parseString(txt);
                 continue;
@@ -111,7 +106,6 @@ public class KalturaMoveCategoryEntriesJobData extends KalturaJobData {
         kparams.add("lastMovedCategoryPageIndex", this.lastMovedCategoryPageIndex);
         kparams.add("lastMovedCategoryEntryPageIndex", this.lastMovedCategoryEntryPageIndex);
         kparams.add("moveFromChildren", this.moveFromChildren);
-        kparams.add("copyOnly", this.copyOnly);
         kparams.add("destCategoryFullIds", this.destCategoryFullIds);
         return kparams;
     }

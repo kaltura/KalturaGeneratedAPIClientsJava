@@ -59,6 +59,8 @@ public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProvider
     public String username;
 	/**  Api key for service provider     */
     public String password;
+	/**  Base url for service provider     */
+    public String baseUrl;
 	/**  Transcript content language     */
     public KalturaLanguage spokenLanguage;
 	/**  should replace remote media content     */
@@ -94,6 +96,9 @@ public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProvider
                 continue;
             } else if (nodeName.equals("password")) {
                 this.password = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("baseUrl")) {
+                this.baseUrl = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("spokenLanguage")) {
                 this.spokenLanguage = KalturaLanguage.get(ParseUtils.parseString(txt));
