@@ -47,6 +47,7 @@ import org.w3c.dom.NodeList;
 public class KalturaFlavorAssetUrlOptions extends KalturaObjectBase {
 	/**  The name of the downloaded file     */
     public String fileName;
+    public String referrer;
 
     public KalturaFlavorAssetUrlOptions() {
     }
@@ -61,6 +62,9 @@ public class KalturaFlavorAssetUrlOptions extends KalturaObjectBase {
             if (nodeName.equals("fileName")) {
                 this.fileName = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("referrer")) {
+                this.referrer = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -69,6 +73,7 @@ public class KalturaFlavorAssetUrlOptions extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaFlavorAssetUrlOptions");
         kparams.add("fileName", this.fileName);
+        kparams.add("referrer", this.referrer);
         return kparams;
     }
 
