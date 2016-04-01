@@ -106,9 +106,9 @@ public class KalturaSystemPartnerService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPartnerListResponse.class, resultXmlElement);
     }
 
-    public void updateStatus(int partnerId, KalturaPartnerStatus status, String reason) throws KalturaApiException {
+    public void updateStatus(int id, KalturaPartnerStatus status, String reason) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("partnerId", partnerId);
+        kparams.add("id", id);
         kparams.add("status", status);
         kparams.add("reason", reason);
         this.kalturaClient.queueServiceCall("systempartner_systempartner", "updateStatus", kparams);
