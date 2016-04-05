@@ -49,6 +49,10 @@ public class KalturaEntryServerNodeService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+    public KalturaEntryServerNodeListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
     public KalturaEntryServerNodeListResponse list(KalturaEntryServerNodeFilter filter) throws KalturaApiException {
         return this.list(filter, null);
     }

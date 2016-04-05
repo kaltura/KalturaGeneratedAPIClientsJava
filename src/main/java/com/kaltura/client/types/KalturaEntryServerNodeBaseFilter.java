@@ -60,6 +60,7 @@ public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFil
     public int updatedAtLessThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public KalturaEntryServerNodeStatus statusEqual;
+    public KalturaEntryServerNodeStatus statusIn;
     public KalturaEntryServerNodeType serverTypeEqual;
 
     public KalturaEntryServerNodeBaseFilter() {
@@ -114,6 +115,9 @@ public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFil
             } else if (nodeName.equals("statusEqual")) {
                 this.statusEqual = KalturaEntryServerNodeStatus.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("statusIn")) {
+                this.statusIn = KalturaEntryServerNodeStatus.get(ParseUtils.parseInt(txt));
+                continue;
             } else if (nodeName.equals("serverTypeEqual")) {
                 this.serverTypeEqual = KalturaEntryServerNodeType.get(ParseUtils.parseString(txt));
                 continue;
@@ -138,6 +142,7 @@ public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFil
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
         kparams.add("statusEqual", this.statusEqual);
+        kparams.add("statusIn", this.statusIn);
         kparams.add("serverTypeEqual", this.serverTypeEqual);
         return kparams;
     }
