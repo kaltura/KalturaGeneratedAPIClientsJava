@@ -65,6 +65,8 @@ public class KalturaBulkUploadResultEntry extends KalturaBulkUploadResult {
     public String entitledUsersEdit;
     public String entitledUsersPublish;
     public String ownerId;
+    public String referenceId;
+    public String templateEntryId;
 
     public KalturaBulkUploadResultEntry() {
     }
@@ -139,6 +141,12 @@ public class KalturaBulkUploadResultEntry extends KalturaBulkUploadResult {
             } else if (nodeName.equals("ownerId")) {
                 this.ownerId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("referenceId")) {
+                this.referenceId = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("templateEntryId")) {
+                this.templateEntryId = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -167,6 +175,8 @@ public class KalturaBulkUploadResultEntry extends KalturaBulkUploadResult {
         kparams.add("entitledUsersEdit", this.entitledUsersEdit);
         kparams.add("entitledUsersPublish", this.entitledUsersPublish);
         kparams.add("ownerId", this.ownerId);
+        kparams.add("referenceId", this.referenceId);
+        kparams.add("templateEntryId", this.templateEntryId);
         return kparams;
     }
 

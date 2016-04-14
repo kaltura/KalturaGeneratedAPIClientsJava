@@ -113,6 +113,9 @@ import com.kaltura.client.services.KalturaEventNotificationTemplateService;
 import com.kaltura.client.services.KalturaExternalMediaService;
 import com.kaltura.client.services.KalturaScheduledTaskProfileService;
 import com.kaltura.client.services.KalturaIntegrationService;
+import com.kaltura.client.services.KalturaScheduleEventService;
+import com.kaltura.client.services.KalturaScheduleResourceService;
+import com.kaltura.client.services.KalturaScheduleEventResourceService;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
@@ -128,7 +131,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-04-12");
+		this.setClientTag("java:16-04-14");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -826,6 +829,30 @@ public class KalturaClient extends KalturaClientBase {
 			this.integrationService = new KalturaIntegrationService(this);
 	
 		return this.integrationService;
+	}
+	
+	protected KalturaScheduleEventService scheduleEventService;
+	public KalturaScheduleEventService getScheduleEventService() {
+		if(this.scheduleEventService == null)
+			this.scheduleEventService = new KalturaScheduleEventService(this);
+	
+		return this.scheduleEventService;
+	}
+	
+	protected KalturaScheduleResourceService scheduleResourceService;
+	public KalturaScheduleResourceService getScheduleResourceService() {
+		if(this.scheduleResourceService == null)
+			this.scheduleResourceService = new KalturaScheduleResourceService(this);
+	
+		return this.scheduleResourceService;
+	}
+	
+	protected KalturaScheduleEventResourceService scheduleEventResourceService;
+	public KalturaScheduleEventResourceService getScheduleEventResourceService() {
+		if(this.scheduleEventResourceService == null)
+			this.scheduleEventResourceService = new KalturaScheduleEventResourceService(this);
+	
+		return this.scheduleEventResourceService;
 	}
 	
 	/**

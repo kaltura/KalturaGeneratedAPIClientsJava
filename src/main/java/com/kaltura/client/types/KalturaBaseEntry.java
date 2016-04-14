@@ -146,6 +146,8 @@ public class KalturaBaseEntry extends KalturaObjectBase {
 	/**  Comma seperated string of the capabilities of the entry. Any capability needed
 	  can be added to this list.     */
     public String capabilities;
+	/**  Template entry id      */
+    public String templateEntryId;
 
     public KalturaBaseEntry() {
     }
@@ -283,6 +285,9 @@ public class KalturaBaseEntry extends KalturaObjectBase {
             } else if (nodeName.equals("capabilities")) {
                 this.capabilities = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("templateEntryId")) {
+                this.templateEntryId = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -313,6 +318,7 @@ public class KalturaBaseEntry extends KalturaObjectBase {
         kparams.add("operationAttributes", this.operationAttributes);
         kparams.add("entitledUsersEdit", this.entitledUsersEdit);
         kparams.add("entitledUsersPublish", this.entitledUsersPublish);
+        kparams.add("templateEntryId", this.templateEntryId);
         return kparams;
     }
 

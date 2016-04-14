@@ -33,7 +33,7 @@ import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.enums.KalturaBulkUploadResultStatus;
 import com.kaltura.client.enums.KalturaBulkUploadAction;
-import com.kaltura.client.enums.KalturaBulkUploadResultObjectType;
+import com.kaltura.client.enums.KalturaBulkUploadObjectType;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -60,7 +60,7 @@ public class KalturaBulkUploadResult extends KalturaObjectBase {
     public KalturaBulkUploadAction action;
     public String objectId;
     public int objectStatus = Integer.MIN_VALUE;
-    public KalturaBulkUploadResultObjectType bulkUploadResultObjectType;
+    public KalturaBulkUploadObjectType bulkUploadResultObjectType;
 	/**  The data as recieved in the csv     */
     public String rowData;
     public String partnerData;
@@ -105,7 +105,7 @@ public class KalturaBulkUploadResult extends KalturaObjectBase {
                 this.objectStatus = ParseUtils.parseInt(txt);
                 continue;
             } else if (nodeName.equals("bulkUploadResultObjectType")) {
-                this.bulkUploadResultObjectType = KalturaBulkUploadResultObjectType.get(ParseUtils.parseString(txt));
+                this.bulkUploadResultObjectType = KalturaBulkUploadObjectType.get(ParseUtils.parseString(txt));
                 continue;
             } else if (nodeName.equals("rowData")) {
                 this.rowData = ParseUtils.parseString(txt);
