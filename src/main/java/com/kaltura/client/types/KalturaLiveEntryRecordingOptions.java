@@ -48,6 +48,8 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
     public KalturaNullableBoolean shouldCopyEntitlement;
+    public KalturaNullableBoolean shouldCopyScheduling;
+    public KalturaNullableBoolean shouldCopyThumbnail;
 
     public KalturaLiveEntryRecordingOptions() {
     }
@@ -62,6 +64,12 @@ public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
             if (nodeName.equals("shouldCopyEntitlement")) {
                 this.shouldCopyEntitlement = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("shouldCopyScheduling")) {
+                this.shouldCopyScheduling = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("shouldCopyThumbnail")) {
+                this.shouldCopyThumbnail = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -70,6 +78,8 @@ public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaLiveEntryRecordingOptions");
         kparams.add("shouldCopyEntitlement", this.shouldCopyEntitlement);
+        kparams.add("shouldCopyScheduling", this.shouldCopyScheduling);
+        kparams.add("shouldCopyThumbnail", this.shouldCopyThumbnail);
         return kparams;
     }
 
