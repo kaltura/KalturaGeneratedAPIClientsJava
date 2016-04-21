@@ -87,11 +87,26 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Authenticate live-stream entry against stream token and partner limitations     */
     public KalturaLiveStreamEntry authenticate(String entryId, String token) throws KalturaApiException {
+        return this.authenticate(entryId, token, null);
+    }
+
+    public KalturaLiveStreamEntry authenticate(String entryId, String token, String hostname) throws KalturaApiException {
+        return this.authenticate(entryId, token, hostname, null);
+    }
+
+    public KalturaLiveStreamEntry authenticate(String entryId, String token, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
+        return this.authenticate(entryId, token, hostname, mediaServerIndex, null);
+    }
+
+	/**  Authenticate live-stream entry against stream token and partner limitations     */
+    public KalturaLiveStreamEntry authenticate(String entryId, String token, String hostname, KalturaEntryServerNodeType mediaServerIndex, String applicationName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("token", token);
+        kparams.add("hostname", hostname);
+        kparams.add("mediaServerIndex", mediaServerIndex);
+        kparams.add("applicationName", applicationName);
         this.kalturaClient.queueServiceCall("livestream", "authenticate", kparams, KalturaLiveStreamEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

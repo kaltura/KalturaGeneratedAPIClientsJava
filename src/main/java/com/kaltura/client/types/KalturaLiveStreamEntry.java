@@ -70,6 +70,8 @@ public class KalturaLiveStreamEntry extends KalturaLiveEntry {
     public String streamPassword;
 	/**  The broadcast username     */
     public String streamUsername;
+	/**  The Streams primary server node id      */
+    public int primaryServerNodeId = Integer.MIN_VALUE;
 
     public KalturaLiveStreamEntry() {
     }
@@ -125,6 +127,9 @@ public class KalturaLiveStreamEntry extends KalturaLiveEntry {
                 continue;
             } else if (nodeName.equals("streamUsername")) {
                 this.streamUsername = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("primaryServerNodeId")) {
+                this.primaryServerNodeId = ParseUtils.parseInt(txt);
                 continue;
             } 
         }
