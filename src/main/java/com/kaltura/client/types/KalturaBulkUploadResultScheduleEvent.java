@@ -43,37 +43,21 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
-    public String entryIdEqual;
-    public String entryIdIn;
-    public String userIdEqual;
-    public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
-    public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
+public class KalturaBulkUploadResultScheduleEvent extends KalturaBulkUploadResult {
+    public String referenceId;
 
-    public KalturaLikeBaseFilter() {
+    public KalturaBulkUploadResultScheduleEvent() {
     }
 
-    public KalturaLikeBaseFilter(Element node) throws KalturaApiException {
+    public KalturaBulkUploadResultScheduleEvent(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("entryIdEqual")) {
-                this.entryIdEqual = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("entryIdIn")) {
-                this.entryIdIn = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("userIdEqual")) {
-                this.userIdEqual = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("createdAtGreaterThanOrEqual")) {
-                this.createdAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("createdAtLessThanOrEqual")) {
-                this.createdAtLessThanOrEqual = ParseUtils.parseInt(txt);
+            if (nodeName.equals("referenceId")) {
+                this.referenceId = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -81,12 +65,8 @@ public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaLikeBaseFilter");
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+        kparams.add("objectType", "KalturaBulkUploadResultScheduleEvent");
+        kparams.add("referenceId", this.referenceId);
         return kparams;
     }
 

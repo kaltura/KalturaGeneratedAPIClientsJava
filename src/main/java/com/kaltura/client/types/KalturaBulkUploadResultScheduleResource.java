@@ -30,8 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
-import com.kaltura.client.enums.KalturaShortLinkStatus;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -45,57 +43,49 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaShortLink extends KalturaObjectBase {
-    public String id;
-    public int createdAt = Integer.MIN_VALUE;
-    public int updatedAt = Integer.MIN_VALUE;
-    public int expiresAt = Integer.MIN_VALUE;
-    public int partnerId = Integer.MIN_VALUE;
-    public String userId;
+public class KalturaBulkUploadResultScheduleResource extends KalturaBulkUploadResult {
+    public String resourceId;
     public String name;
+    public String type;
     public String systemName;
-    public String fullUrl;
-    public KalturaShortLinkStatus status;
+    public String description;
+    public String tags;
+    public String parentType;
+    public String parentSystemName;
 
-    public KalturaShortLink() {
+    public KalturaBulkUploadResultScheduleResource() {
     }
 
-    public KalturaShortLink(Element node) throws KalturaApiException {
+    public KalturaBulkUploadResultScheduleResource(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("id")) {
-                this.id = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("createdAt")) {
-                this.createdAt = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("updatedAt")) {
-                this.updatedAt = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("expiresAt")) {
-                this.expiresAt = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("partnerId")) {
-                this.partnerId = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("userId")) {
-                this.userId = ParseUtils.parseString(txt);
+            if (nodeName.equals("resourceId")) {
+                this.resourceId = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("name")) {
                 this.name = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("type")) {
+                this.type = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("systemName")) {
                 this.systemName = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("fullUrl")) {
-                this.fullUrl = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("description")) {
+                this.description = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("status")) {
-                this.status = KalturaShortLinkStatus.get(ParseUtils.parseInt(txt));
+            } else if (nodeName.equals("tags")) {
+                this.tags = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("parentType")) {
+                this.parentType = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("parentSystemName")) {
+                this.parentSystemName = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -103,13 +93,15 @@ public class KalturaShortLink extends KalturaObjectBase {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaShortLink");
-        kparams.add("expiresAt", this.expiresAt);
-        kparams.add("userId", this.userId);
+        kparams.add("objectType", "KalturaBulkUploadResultScheduleResource");
+        kparams.add("resourceId", this.resourceId);
         kparams.add("name", this.name);
+        kparams.add("type", this.type);
         kparams.add("systemName", this.systemName);
-        kparams.add("fullUrl", this.fullUrl);
-        kparams.add("status", this.status);
+        kparams.add("description", this.description);
+        kparams.add("tags", this.tags);
+        kparams.add("parentType", this.parentType);
+        kparams.add("parentSystemName", this.parentSystemName);
         return kparams;
     }
 

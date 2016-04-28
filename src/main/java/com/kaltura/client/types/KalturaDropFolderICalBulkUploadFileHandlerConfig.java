@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaScheduleEventType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -43,37 +44,22 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
-    public String entryIdEqual;
-    public String entryIdIn;
-    public String userIdEqual;
-    public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
-    public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
+public class KalturaDropFolderICalBulkUploadFileHandlerConfig extends KalturaDropFolderFileHandlerConfig {
+	/**  The type of the events that ill be created by this upload     */
+    public KalturaScheduleEventType eventsType;
 
-    public KalturaLikeBaseFilter() {
+    public KalturaDropFolderICalBulkUploadFileHandlerConfig() {
     }
 
-    public KalturaLikeBaseFilter(Element node) throws KalturaApiException {
+    public KalturaDropFolderICalBulkUploadFileHandlerConfig(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("entryIdEqual")) {
-                this.entryIdEqual = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("entryIdIn")) {
-                this.entryIdIn = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("userIdEqual")) {
-                this.userIdEqual = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("createdAtGreaterThanOrEqual")) {
-                this.createdAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("createdAtLessThanOrEqual")) {
-                this.createdAtLessThanOrEqual = ParseUtils.parseInt(txt);
+            if (nodeName.equals("eventsType")) {
+                this.eventsType = KalturaScheduleEventType.get(ParseUtils.parseInt(txt));
                 continue;
             } 
         }
@@ -81,12 +67,8 @@ public abstract class KalturaLikeBaseFilter extends KalturaRelatedFilter {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaLikeBaseFilter");
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+        kparams.add("objectType", "KalturaDropFolderICalBulkUploadFileHandlerConfig");
+        kparams.add("eventsType", this.eventsType);
         return kparams;
     }
 
