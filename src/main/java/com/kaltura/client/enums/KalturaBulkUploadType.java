@@ -37,7 +37,9 @@ public enum KalturaBulkUploadType implements KalturaEnumAsString {
     CSV ("bulkUploadCsv.CSV"),
     FILTER ("bulkUploadFilter.FILTER"),
     XML ("bulkUploadXml.XML"),
-    DROP_FOLDER_XML ("dropFolderXmlBulkUpload.DROP_FOLDER_XML");
+    DROP_FOLDER_XML ("dropFolderXmlBulkUpload.DROP_FOLDER_XML"),
+    ICAL ("scheduleBulkUpload.ICAL"),
+    DROP_FOLDER_ICAL ("scheduleDropFolder.DROP_FOLDER_ICAL");
 
     public String hashCode;
 
@@ -72,6 +74,16 @@ public enum KalturaBulkUploadType implements KalturaEnumAsString {
         if (hashCode.equals("dropFolderXmlBulkUpload.DROP_FOLDER_XML"))
         {
            return DROP_FOLDER_XML;
+        }
+        else 
+        if (hashCode.equals("scheduleBulkUpload.ICAL"))
+        {
+           return ICAL;
+        }
+        else 
+        if (hashCode.equals("scheduleDropFolder.DROP_FOLDER_ICAL"))
+        {
+           return DROP_FOLDER_ICAL;
         }
         else 
         {

@@ -34,6 +34,11 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import com.kaltura.client.KalturaFiles;
+import com.kaltura.client.KalturaFile;
 
 /**
  * This class was generated using generate.php
@@ -123,5 +128,46 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaScheduleEventListResponse.class, resultXmlElement);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData) throws KalturaApiException {
+        return this.addFromBulkUpload(fileData, null);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(File fileData) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData), null);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData, fileDataName, fileDataSize), null);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData, fileDataName), null);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(File fileData, KalturaBulkUploadICalJobData bulkUploadData) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData), bulkUploadData);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(InputStream fileData, String fileDataName, long fileDataSize, KalturaBulkUploadICalJobData bulkUploadData) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData, fileDataName, fileDataSize), bulkUploadData);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(FileInputStream fileData, String fileDataName, KalturaBulkUploadICalJobData bulkUploadData) throws KalturaApiException {
+        return this.addFromBulkUpload(new KalturaFile(fileData, fileDataName), bulkUploadData);
+    }
+
+	/**  Add new bulk upload batch job     */
+    public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData, KalturaBulkUploadICalJobData bulkUploadData) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("fileData", fileData);
+        kparams.add("bulkUploadData", bulkUploadData);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "addFromBulkUpload", kparams, kfiles, KalturaBulkUpload.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 }

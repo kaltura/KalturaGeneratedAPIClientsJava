@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBulkUploadAction implements KalturaEnumAsString {
+    CANCEL ("scheduleBulkUpload.CANCEL"),
     ADD ("1"),
     UPDATE ("2"),
     DELETE ("3"),
@@ -56,6 +57,11 @@ public enum KalturaBulkUploadAction implements KalturaEnumAsString {
     }
 
     public static KalturaBulkUploadAction get(String hashCode) {
+        if (hashCode.equals("scheduleBulkUpload.CANCEL"))
+        {
+           return CANCEL;
+        }
+        else 
         if (hashCode.equals("1"))
         {
            return ADD;
@@ -87,7 +93,7 @@ public enum KalturaBulkUploadAction implements KalturaEnumAsString {
         }
         else 
         {
-           return ADD;
+           return CANCEL;
         }
     }
 }

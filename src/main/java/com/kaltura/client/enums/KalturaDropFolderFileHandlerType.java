@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum KalturaDropFolderFileHandlerType implements KalturaEnumAsString {
     XML ("dropFolderXmlBulkUpload.XML"),
+    ICAL ("scheduleDropFolder.ICAL"),
     CONTENT ("1");
 
     public String hashCode;
@@ -55,6 +56,11 @@ public enum KalturaDropFolderFileHandlerType implements KalturaEnumAsString {
         if (hashCode.equals("dropFolderXmlBulkUpload.XML"))
         {
            return XML;
+        }
+        else 
+        if (hashCode.equals("scheduleDropFolder.ICAL"))
+        {
+           return ICAL;
         }
         else 
         if (hashCode.equals("1"))

@@ -111,11 +111,11 @@ import com.kaltura.client.services.KalturaLikeService;
 import com.kaltura.client.services.KalturaVarConsoleService;
 import com.kaltura.client.services.KalturaEventNotificationTemplateService;
 import com.kaltura.client.services.KalturaExternalMediaService;
-import com.kaltura.client.services.KalturaScheduledTaskProfileService;
-import com.kaltura.client.services.KalturaIntegrationService;
 import com.kaltura.client.services.KalturaScheduleEventService;
 import com.kaltura.client.services.KalturaScheduleResourceService;
 import com.kaltura.client.services.KalturaScheduleEventResourceService;
+import com.kaltura.client.services.KalturaScheduledTaskProfileService;
+import com.kaltura.client.services.KalturaIntegrationService;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
@@ -131,7 +131,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-04-28");
+		this.setClientTag("java:16-04-29");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -815,22 +815,6 @@ public class KalturaClient extends KalturaClientBase {
 		return this.externalMediaService;
 	}
 	
-	protected KalturaScheduledTaskProfileService scheduledTaskProfileService;
-	public KalturaScheduledTaskProfileService getScheduledTaskProfileService() {
-		if(this.scheduledTaskProfileService == null)
-			this.scheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
-	
-		return this.scheduledTaskProfileService;
-	}
-	
-	protected KalturaIntegrationService integrationService;
-	public KalturaIntegrationService getIntegrationService() {
-		if(this.integrationService == null)
-			this.integrationService = new KalturaIntegrationService(this);
-	
-		return this.integrationService;
-	}
-	
 	protected KalturaScheduleEventService scheduleEventService;
 	public KalturaScheduleEventService getScheduleEventService() {
 		if(this.scheduleEventService == null)
@@ -853,6 +837,22 @@ public class KalturaClient extends KalturaClientBase {
 			this.scheduleEventResourceService = new KalturaScheduleEventResourceService(this);
 	
 		return this.scheduleEventResourceService;
+	}
+	
+	protected KalturaScheduledTaskProfileService scheduledTaskProfileService;
+	public KalturaScheduledTaskProfileService getScheduledTaskProfileService() {
+		if(this.scheduledTaskProfileService == null)
+			this.scheduledTaskProfileService = new KalturaScheduledTaskProfileService(this);
+	
+		return this.scheduledTaskProfileService;
+	}
+	
+	protected KalturaIntegrationService integrationService;
+	public KalturaIntegrationService getIntegrationService() {
+		if(this.integrationService == null)
+			this.integrationService = new KalturaIntegrationService(this);
+	
+		return this.integrationService;
 	}
 	
 	/**

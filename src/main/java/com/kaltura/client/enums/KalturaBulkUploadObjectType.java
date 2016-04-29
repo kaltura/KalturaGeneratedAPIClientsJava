@@ -34,6 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBulkUploadObjectType implements KalturaEnumAsString {
+    SCHEDULE_EVENT ("scheduleBulkUpload.SCHEDULE_EVENT"),
+    SCHEDULE_RESOURCE ("scheduleBulkUpload.SCHEDULE_RESOURCE"),
     ENTRY ("1"),
     CATEGORY ("2"),
     USER ("3"),
@@ -55,6 +57,16 @@ public enum KalturaBulkUploadObjectType implements KalturaEnumAsString {
     }
 
     public static KalturaBulkUploadObjectType get(String hashCode) {
+        if (hashCode.equals("scheduleBulkUpload.SCHEDULE_EVENT"))
+        {
+           return SCHEDULE_EVENT;
+        }
+        else 
+        if (hashCode.equals("scheduleBulkUpload.SCHEDULE_RESOURCE"))
+        {
+           return SCHEDULE_RESOURCE;
+        }
+        else 
         if (hashCode.equals("1"))
         {
            return ENTRY;
@@ -81,7 +93,7 @@ public enum KalturaBulkUploadObjectType implements KalturaEnumAsString {
         }
         else 
         {
-           return ENTRY;
+           return SCHEDULE_EVENT;
         }
     }
 }
