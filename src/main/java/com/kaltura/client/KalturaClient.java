@@ -29,6 +29,7 @@ package com.kaltura.client;
 import com.kaltura.client.services.KalturaAccessControlProfileService;
 import com.kaltura.client.services.KalturaAccessControlService;
 import com.kaltura.client.services.KalturaAdminUserService;
+import com.kaltura.client.services.KalturaAnalyticsService;
 import com.kaltura.client.services.KalturaAppTokenService;
 import com.kaltura.client.services.KalturaBaseEntryService;
 import com.kaltura.client.services.KalturaBulkUploadService;
@@ -131,7 +132,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-05-03");
+		this.setClientTag("java:16-05-04");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -157,6 +158,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.adminUserService = new KalturaAdminUserService(this);
 	
 		return this.adminUserService;
+	}
+	
+	protected KalturaAnalyticsService analyticsService;
+	public KalturaAnalyticsService getAnalyticsService() {
+		if(this.analyticsService == null)
+			this.analyticsService = new KalturaAnalyticsService(this);
+	
+		return this.analyticsService;
 	}
 	
 	protected KalturaAppTokenService appTokenService;

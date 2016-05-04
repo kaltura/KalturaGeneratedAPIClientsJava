@@ -25,16 +25,15 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
+package com.kaltura.client.services;
 
+import com.kaltura.client.KalturaClient;
+import com.kaltura.client.KalturaServiceBase;
+import com.kaltura.client.types.*;
 import org.w3c.dom.Element;
+import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 
 /**
  * This class was generated using generate.php
@@ -43,40 +42,22 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**  api for getting analytics data    */
 @SuppressWarnings("serial")
-public class KalturaReportFilter extends KalturaObjectBase {
-	/**  The dimension whose values should be filtered     */
-    public String dimension;
-	/**  The (comma separated) values to include in the filter     */
-    public String values;
-
-    public KalturaReportFilter() {
+public class KalturaAnalyticsService extends KalturaServiceBase {
+    public KalturaAnalyticsService(KalturaClient client) {
+        this.kalturaClient = client;
     }
 
-    public KalturaReportFilter(Element node) throws KalturaApiException {
-        super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("dimension")) {
-                this.dimension = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("values")) {
-                this.values = ParseUtils.parseString(txt);
-                continue;
-            } 
-        }
+	/**  report query action allows to get a analytics data for specific query
+	  dimensions, metrics and filters.     */
+    public KalturaReportResponse query(KalturaAnalyticsFilter filter) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        this.kalturaClient.queueServiceCall("analytics", "query", kparams, KalturaReportResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaReportResponse.class, resultXmlElement);
     }
-
-    public KalturaParams toParams() throws KalturaApiException {
-        KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportFilter");
-        kparams.add("dimension", this.dimension);
-        kparams.add("values", this.values);
-        return kparams;
-    }
-
 }
-

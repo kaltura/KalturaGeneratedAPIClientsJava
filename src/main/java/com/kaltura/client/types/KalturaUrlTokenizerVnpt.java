@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -44,27 +43,21 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaReportFilter extends KalturaObjectBase {
-	/**  The dimension whose values should be filtered     */
-    public String dimension;
-	/**  The (comma separated) values to include in the filter     */
-    public String values;
+public class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer {
+    public int tokenizationFormat = Integer.MIN_VALUE;
 
-    public KalturaReportFilter() {
+    public KalturaUrlTokenizerVnpt() {
     }
 
-    public KalturaReportFilter(Element node) throws KalturaApiException {
+    public KalturaUrlTokenizerVnpt(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("dimension")) {
-                this.dimension = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("values")) {
-                this.values = ParseUtils.parseString(txt);
+            if (nodeName.equals("tokenizationFormat")) {
+                this.tokenizationFormat = ParseUtils.parseInt(txt);
                 continue;
             } 
         }
@@ -72,9 +65,8 @@ public class KalturaReportFilter extends KalturaObjectBase {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportFilter");
-        kparams.add("dimension", this.dimension);
-        kparams.add("values", this.values);
+        kparams.add("objectType", "KalturaUrlTokenizerVnpt");
+        kparams.add("tokenizationFormat", this.tokenizationFormat);
         return kparams;
     }
 

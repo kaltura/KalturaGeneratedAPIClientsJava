@@ -31,6 +31,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
+import com.kaltura.client.enums.KalturaNullableBoolean;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -61,6 +62,8 @@ public class KalturaRule extends KalturaObjectBase {
 	/**  Indicates that this rule is enough and no need to continue checking the rest of
 	  the rules      */
     public boolean stopProcessing;
+	/**  Indicates if we should force ks validation for admin ks users as well     */
+    public KalturaNullableBoolean forceAdminValidation;
 
     public KalturaRule() {
     }
@@ -93,6 +96,9 @@ public class KalturaRule extends KalturaObjectBase {
             } else if (nodeName.equals("stopProcessing")) {
                 this.stopProcessing = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("forceAdminValidation")) {
+                this.forceAdminValidation = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -107,6 +113,7 @@ public class KalturaRule extends KalturaObjectBase {
         kparams.add("conditions", this.conditions);
         kparams.add("contexts", this.contexts);
         kparams.add("stopProcessing", this.stopProcessing);
+        kparams.add("forceAdminValidation", this.forceAdminValidation);
         return kparams;
     }
 
