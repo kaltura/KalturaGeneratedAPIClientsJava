@@ -42,12 +42,12 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Clip operation attributes    */
+/**  Clip operation attributes  */
 @SuppressWarnings("serial")
 public class KalturaClipAttributes extends KalturaOperationAttributes {
-	/**  Offset in milliseconds     */
+	/**  Offset in milliseconds  */
     public int offset = Integer.MIN_VALUE;
-	/**  Duration in milliseconds     */
+	/**  Duration in milliseconds  */
     public int duration = Integer.MIN_VALUE;
 
     public KalturaClipAttributes() {

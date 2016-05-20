@@ -47,36 +47,36 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationTemplate extends KalturaEventNotificationTemplate {
-	/**  Define the email body format     */
+	/**  Define the email body format  */
     public KalturaEmailNotificationFormat format;
-	/**  Define the email subject      */
+	/**  Define the email subject  */
     public String subject;
-	/**  Define the email body content     */
+	/**  Define the email body content  */
     public String body;
-	/**  Define the email sender email     */
+	/**  Define the email sender email  */
     public String fromEmail;
-	/**  Define the email sender name     */
+	/**  Define the email sender name  */
     public String fromName;
-	/**  Email recipient emails and names     */
+	/**  Email recipient emails and names  */
     public KalturaEmailNotificationRecipientProvider to;
-	/**  Email recipient emails and names     */
+	/**  Email recipient emails and names  */
     public KalturaEmailNotificationRecipientProvider cc;
-	/**  Email recipient emails and names     */
+	/**  Email recipient emails and names  */
     public KalturaEmailNotificationRecipientProvider bcc;
-	/**  Default email addresses to whom the reply should be sent.      */
+	/**  Default email addresses to whom the reply should be sent.  */
     public KalturaEmailNotificationRecipientProvider replyTo;
-	/**  Define the email priority     */
+	/**  Define the email priority  */
     public KalturaEmailNotificationTemplatePriority priority;
-	/**  Email address that a reading confirmation will be sent     */
+	/**  Email address that a reading confirmation will be sent  */
     public String confirmReadingTo;
 	/**  Hostname to use in Message-Id and Received headers and as default HELLO string. 
 	    If empty, the value returned by SERVER_NAME is used or
-	  'localhost.localdomain'.     */
+	  'localhost.localdomain'.  */
     public String hostname;
 	/**  Sets the message ID to be used in the Message-Id header.   If empty, a unique id
-	  will be generated.     */
+	  will be generated.  */
     public String messageID;
-	/**  Adds a e-mail custom header     */
+	/**  Adds a e-mail custom header  */
     public ArrayList<KalturaKeyValue> customHeaders;
 
     public KalturaEmailNotificationTemplate() {

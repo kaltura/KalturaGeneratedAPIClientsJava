@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCopyPartnerJobData extends KalturaJobData {
-	/**  Id of the partner to copy from     */
+	/**  Id of the partner to copy from  */
     public int fromPartnerId = Integer.MIN_VALUE;
-	/**  Id of the partner to copy to     */
+	/**  Id of the partner to copy to  */
     public int toPartnerId = Integer.MIN_VALUE;
 
     public KalturaCopyPartnerJobData() {

@@ -40,7 +40,7 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  If this class used as the template data, the fields will be taken from the
-  content parameters    */
+  content parameters  */
 @SuppressWarnings("serial")
 public class KalturaHttpNotificationDataFields extends KalturaHttpNotificationData {
 

@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaExternalMediaEntry extends KalturaMediaEntry {
-	/**  The source type of the external media     */
+	/**  The source type of the external media  */
     public KalturaExternalMediaSourceType externalSourceType;
-	/**  Comma separated asset params ids that exists for this external media entry     */
+	/**  Comma separated asset params ids that exists for this external media entry  */
     public String assetParamsIds;
 
     public KalturaExternalMediaEntry() {

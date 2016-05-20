@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCategoryIdentifier extends KalturaObjectIdentifier {
-	/**  Identifier of the object     */
+	/**  Identifier of the object  */
     public KalturaCategoryIdentifierField identifier;
 
     public KalturaCategoryIdentifier() {

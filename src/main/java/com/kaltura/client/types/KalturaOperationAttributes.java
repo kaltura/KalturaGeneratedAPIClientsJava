@@ -40,7 +40,7 @@ import com.kaltura.client.KalturaObjectBase;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base class to all operation attributes types    */
+/**  Base class to all operation attributes types  */
 @SuppressWarnings("serial")
 public abstract class KalturaOperationAttributes extends KalturaObjectBase {
 

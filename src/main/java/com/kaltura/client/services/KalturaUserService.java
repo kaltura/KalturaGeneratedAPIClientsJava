@@ -49,7 +49,7 @@ import com.kaltura.client.KalturaFile;
 
 /**  Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
   in the partner's system, and the [partnerId,Id] couple are unique key in
-  kaltura's DB    */
+  kaltura's DB  */
 @SuppressWarnings("serial")
 public class KalturaUserService extends KalturaServiceBase {
     public KalturaUserService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaUserService extends KalturaServiceBase {
     }
 
 	/**  Adds a new user to an existing account in the Kaltura database.   Input param
-	  $id is the unique identifier in the partner's system.     */
+	  $id is the unique identifier in the partner's system.  */
     public KalturaUser add(KalturaUser user) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("user", user);
@@ -69,7 +69,7 @@ public class KalturaUserService extends KalturaServiceBase {
     }
 
 	/**  Updates an existing user object.   You can also use this action to update the
-	  userId.     */
+	  userId.  */
     public KalturaUser update(String userId, KalturaUser user) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -85,7 +85,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return this.get(null);
     }
 
-	/**  Retrieves a user object for a specified user ID.     */
+	/**  Retrieves a user object for a specified user ID.  */
     public KalturaUser get(String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -97,7 +97,7 @@ public class KalturaUserService extends KalturaServiceBase {
     }
 
 	/**  Retrieves a user object for a user's login ID and partner ID.   A login ID is
-	  the email address used by a user to log into the system.     */
+	  the email address used by a user to log into the system.  */
     public KalturaUser getByLoginId(String loginId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("loginId", loginId);
@@ -108,7 +108,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
     }
 
-	/**  Deletes a user from a partner account.     */
+	/**  Deletes a user from a partner account.  */
     public KalturaUser delete(String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -129,7 +129,7 @@ public class KalturaUserService extends KalturaServiceBase {
 
 	/**  Lists user objects that are associated with an account.   Blocked users are
 	  listed unless you use a filter to exclude them.   Deleted users are not listed
-	  unless you use a filter to include them.     */
+	  unless you use a filter to include them.  */
     public KalturaUserListResponse list(KalturaUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -141,7 +141,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserListResponse.class, resultXmlElement);
     }
 
-	/**  Notifies that a user is banned from an account.     */
+	/**  Notifies that a user is banned from an account.  */
     public void notifyBan(String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -160,7 +160,7 @@ public class KalturaUserService extends KalturaServiceBase {
     }
 
 	/**  Logs a user into a partner account with a partner ID, a partner user ID (puser),
-	  and a user password.     */
+	  and a user password.  */
     public String login(int partnerId, String userId, String password, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partnerId", partnerId);
@@ -188,7 +188,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return this.loginByLoginId(loginId, password, partnerId, expiry, "*");
     }
 
-	/**  Logs a user into a partner account with a user login ID and a user password.     */
+	/**  Logs a user into a partner account with a user login ID and a user password.  */
     public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("loginId", loginId);
@@ -220,7 +220,7 @@ public class KalturaUserService extends KalturaServiceBase {
         this.updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
     }
 
-	/**  Updates a user's login data: email, password, name.     */
+	/**  Updates a user's login data: email, password, name.  */
     public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("oldLoginId", oldLoginId);
@@ -235,7 +235,7 @@ public class KalturaUserService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Reset user's password and send the user an email to generate a new one.     */
+	/**  Reset user's password and send the user an email to generate a new one.  */
     public void resetPassword(String email) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("email", email);
@@ -245,7 +245,7 @@ public class KalturaUserService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Set initial users password     */
+	/**  Set initial users password  */
     public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("hashKey", hashKey);
@@ -261,7 +261,7 @@ public class KalturaUserService extends KalturaServiceBase {
     }
 
 	/**  Enables a user to log into a partner account using an email address and a
-	  password     */
+	  password  */
     public KalturaUser enableLogin(String userId, String loginId, String password) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -284,7 +284,7 @@ public class KalturaUserService extends KalturaServiceBase {
 
 	/**  Disables a user's ability to log into a partner account using an email address
 	  and a password.   You may use either a userId or a loginId parameter for this
-	  action.     */
+	  action.  */
     public KalturaUser disableLogin(String userId, String loginId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -300,7 +300,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return this.index(id, true);
     }
 
-	/**  Index an entry by id.     */
+	/**  Index an entry by id.  */
     public String index(String id, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -370,7 +370,7 @@ public class KalturaUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 
-	/**  Action which checks whther user login         */
+	/**  Action which checks whther user login  */
     public boolean checkLoginDataExists(KalturaUserLoginDataFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

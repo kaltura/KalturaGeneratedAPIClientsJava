@@ -47,16 +47,16 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCaptionParams extends KalturaAssetParams {
-	/**  The language of the caption content     */
+	/**  The language of the caption content  */
     public KalturaLanguage language;
-	/**  Is default caption asset of the entry     */
+	/**  Is default caption asset of the entry  */
     public KalturaNullableBoolean isDefault;
-	/**  Friendly label     */
+	/**  Friendly label  */
     public String label;
-	/**  The caption format     */
+	/**  The caption format  */
     public KalturaCaptionType format;
 	/**  Id of the caption params or the flavor params to be used as source for the
-	  caption creation     */
+	  caption creation  */
     public int sourceParamsId = Integer.MIN_VALUE;
 
     public KalturaCaptionParams() {

@@ -45,15 +45,15 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLiveStreamParams extends KalturaObjectBase {
-	/**  Bit rate of the stream. (i.e. 900)     */
+	/**  Bit rate of the stream. (i.e. 900)  */
     public int bitrate = Integer.MIN_VALUE;
-	/**  flavor asset id     */
+	/**  flavor asset id  */
     public String flavorId;
-	/**  Stream's width     */
+	/**  Stream's width  */
     public int width = Integer.MIN_VALUE;
-	/**  Stream's height     */
+	/**  Stream's height  */
     public int height = Integer.MIN_VALUE;
-	/**  Live stream's codec     */
+	/**  Live stream's codec  */
     public String codec;
 
     public KalturaLiveStreamParams() {

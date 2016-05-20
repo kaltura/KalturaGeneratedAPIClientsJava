@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Used to ingest media that uploaded to the system and represented by token that
-  returned from upload.upload action or uploadToken.add action.    */
+  returned from upload.upload action or uploadToken.add action.  */
 @SuppressWarnings("serial")
 public class KalturaUploadedFileTokenResource extends KalturaDataCenterContentResource {
-	/**  Token that returned from upload.upload action or uploadToken.add action.      */
+	/**  Token that returned from upload.upload action or uploadToken.add action.  */
     public String token;
 
     public KalturaUploadedFileTokenResource() {

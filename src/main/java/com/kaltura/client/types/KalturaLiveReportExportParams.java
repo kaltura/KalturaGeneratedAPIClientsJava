@@ -47,9 +47,9 @@ import org.w3c.dom.NodeList;
 public class KalturaLiveReportExportParams extends KalturaObjectBase {
     public String entryIds;
     public String recpientEmail;
-	/**  Time zone offset in minutes (between client to UTC)     */
+	/**  Time zone offset in minutes (between client to UTC)  */
     public int timeZoneOffset = Integer.MIN_VALUE;
-	/**  Optional argument that allows controlling the prefix of the exported csv url     */
+	/**  Optional argument that allows controlling the prefix of the exported csv url  */
     public String applicationUrlTemplate;
 
     public KalturaLiveReportExportParams() {

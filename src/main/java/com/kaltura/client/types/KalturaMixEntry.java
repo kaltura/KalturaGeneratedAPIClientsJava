@@ -46,11 +46,11 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaMixEntry extends KalturaPlayableEntry {
 	/**  Indicates whether the user has submited a real thumbnail to the mix (Not the one
-	  that was generated automaticaly)     */
+	  that was generated automaticaly)  */
     public boolean hasRealThumbnail;
-	/**  The editor type used to edit the metadata     */
+	/**  The editor type used to edit the metadata  */
     public KalturaEditorType editorType;
-	/**  The xml data of the mix     */
+	/**  The xml data of the mix  */
     public String dataContent;
 
     public KalturaMixEntry() {

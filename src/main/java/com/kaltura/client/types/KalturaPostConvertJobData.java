@@ -45,17 +45,17 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaPostConvertJobData extends KalturaConvartableJobData {
     public String flavorAssetId;
-	/**  Indicates if a thumbnail should be created     */
+	/**  Indicates if a thumbnail should be created  */
     public boolean createThumb;
-	/**  The path of the created thumbnail     */
+	/**  The path of the created thumbnail  */
     public String thumbPath;
-	/**  The position of the thumbnail in the media file     */
+	/**  The position of the thumbnail in the media file  */
     public int thumbOffset = Integer.MIN_VALUE;
 	/**  The height of the movie, will be used to comapare if this thumbnail is the best
-	  we can have     */
+	  we can have  */
     public int thumbHeight = Integer.MIN_VALUE;
 	/**  The bit rate of the movie, will be used to comapare if this thumbnail is the
-	  best we can have     */
+	  best we can have  */
     public int thumbBitrate = Integer.MIN_VALUE;
     public String customData;
 

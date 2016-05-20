@@ -52,7 +52,7 @@ public class KalturaSearch extends KalturaObjectBase {
     public KalturaMediaType mediaType;
 	/**  Use this field to pass dynamic data for searching   For example - if you set
 	  this field to "mymovies_$partner_id"   The $partner_id will be automatically
-	  replcaed with your real partner Id     */
+	  replcaed with your real partner Id  */
     public String extraData;
     public String authData;
 

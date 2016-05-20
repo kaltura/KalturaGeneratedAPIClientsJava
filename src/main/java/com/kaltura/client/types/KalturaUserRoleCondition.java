@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUserRoleCondition extends KalturaCondition {
-	/**  Comma separated list of role ids     */
+	/**  Comma separated list of role ids  */
     public String roleIds;
 
     public KalturaUserRoleCondition() {

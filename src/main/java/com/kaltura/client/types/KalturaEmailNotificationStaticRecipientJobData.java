@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  JobData representing the static receipient array    */
+/**  JobData representing the static receipient array  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationStaticRecipientJobData extends KalturaEmailNotificationRecipientJobData {
-	/**  Email to emails and names     */
+	/**  Email to emails and names  */
     public ArrayList<KalturaKeyValue> emailRecipients;
 
     public KalturaEmailNotificationStaticRecipientJobData() {

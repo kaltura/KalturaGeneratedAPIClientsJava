@@ -46,11 +46,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaTranscriptAsset extends KalturaAttachmentAsset {
-	/**  The accuracy of the transcript - values between 0 and 1     */
+	/**  The accuracy of the transcript - values between 0 and 1  */
     public double accuracy = Double.MIN_VALUE;
-	/**  Was verified by human or machine     */
+	/**  Was verified by human or machine  */
     public KalturaNullableBoolean humanVerified;
-	/**  The language of the transcript     */
+	/**  The language of the transcript  */
     public KalturaLanguage language;
 
     public KalturaTranscriptAsset() {

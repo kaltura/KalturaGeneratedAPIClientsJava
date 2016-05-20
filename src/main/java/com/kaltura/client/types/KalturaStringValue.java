@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return an array of strings    */
+/**  A string representation to return an array of strings  */
 @SuppressWarnings("serial")
 public class KalturaStringValue extends KalturaValue {
     public String value;

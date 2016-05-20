@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaStorageExportObjectTask extends KalturaObjectTask {
-	/**  Storage profile id     */
+	/**  Storage profile id  */
     public String storageId;
 
     public KalturaStorageExportObjectTask() {

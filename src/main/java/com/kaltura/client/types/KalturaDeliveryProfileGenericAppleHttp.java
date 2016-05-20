@@ -46,9 +46,9 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileGenericAppleHttp extends KalturaDeliveryProfile {
     public String pattern;
-	/**  rendererClass     */
+	/**  rendererClass  */
     public String rendererClass;
-	/**  Enable to make playManifest redirect to the domain of the delivery profile     */
+	/**  Enable to make playManifest redirect to the domain of the delivery profile  */
     public KalturaNullableBoolean manifestRedirect;
 
     public KalturaDeliveryProfileGenericAppleHttp() {

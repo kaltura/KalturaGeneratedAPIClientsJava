@@ -48,7 +48,7 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Metadata service    */
+/**  Metadata service  */
 @SuppressWarnings("serial")
 public class KalturaMetadataService extends KalturaServiceBase {
     public KalturaMetadataService(KalturaClient client) {
@@ -56,7 +56,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add a metadata object and metadata content associated with Kaltura
-	  object     */
+	  object  */
     public KalturaMetadata add(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, String xmlData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfileId", metadataProfileId);
@@ -83,7 +83,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add a metadata object and metadata file associated with Kaltura
-	  object     */
+	  object  */
     public KalturaMetadata addFromFile(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, KalturaFile xmlFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfileId", metadataProfileId);
@@ -98,7 +98,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
     }
 
-	/**  Allows you to add a metadata xml data from remote URL     */
+	/**  Allows you to add a metadata xml data from remote URL  */
     public KalturaMetadata addFromUrl(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfileId", metadataProfileId);
@@ -113,7 +113,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add a metadata xml data from remote URL.   Enables different
-	  permissions than addFromUrl action.     */
+	  permissions than addFromUrl action.  */
     public KalturaMetadata addFromBulk(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfileId", metadataProfileId);
@@ -127,7 +127,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
     }
 
-	/**  Retrieve a metadata object by id     */
+	/**  Retrieve a metadata object by id  */
     public KalturaMetadata get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -146,7 +146,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return this.update(id, xmlData, Integer.MIN_VALUE);
     }
 
-	/**  Update an existing metadata object with new XML content     */
+	/**  Update an existing metadata object with new XML content  */
     public KalturaMetadata update(int id, String xmlData, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -175,7 +175,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return this.updateFromFile(id, new KalturaFile(xmlFile, xmlFileName));
     }
 
-	/**  Update an existing metadata object with new XML file     */
+	/**  Update an existing metadata object with new XML file  */
     public KalturaMetadata updateFromFile(int id, KalturaFile xmlFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -196,7 +196,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List metadata objects by filter and pager     */
+	/**  List metadata objects by filter and pager  */
     public KalturaMetadataListResponse list(KalturaMetadataFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -208,7 +208,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataListResponse.class, resultXmlElement);
     }
 
-	/**  Delete an existing metadata     */
+	/**  Delete an existing metadata  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -222,7 +222,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         this.invalidate(id, Integer.MIN_VALUE);
     }
 
-	/**  Mark existing metadata as invalid   Used by batch metadata transform     */
+	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
     public void invalidate(int id, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -233,7 +233,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Index metadata by id, will also index the related object     */
+	/**  Index metadata by id, will also index the related object  */
     public int index(String id, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -246,7 +246,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Serves metadata XML file     */
+	/**  Serves metadata XML file  */
     public String serve(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -266,7 +266,7 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return this.updateFromXSL(id, new KalturaFile(xslFile, xslFileName));
     }
 
-	/**  Action transforms current metadata object XML using a provided XSL.     */
+	/**  Action transforms current metadata object XML using a provided XSL.  */
     public KalturaMetadata updateFromXSL(int id, KalturaFile xslFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

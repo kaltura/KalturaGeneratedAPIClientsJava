@@ -63,15 +63,15 @@ public class KalturaUser extends KalturaObjectBase {
     public String thumbnailUrl;
     public String description;
     public String tags;
-	/**  Admin tags can be updated only by using an admin session     */
+	/**  Admin tags can be updated only by using an admin session  */
     public String adminTags;
     public KalturaGender gender;
     public KalturaUserStatus status;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update date as Unix timestamp (In seconds)     */
+	/**  Last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Can be used to store various partner related data as a string      */
+	/**  Can be used to store various partner related data as a string  */
     public String partnerData;
     public int indexedPartnerDataInt = Integer.MIN_VALUE;
     public String indexedPartnerDataString;

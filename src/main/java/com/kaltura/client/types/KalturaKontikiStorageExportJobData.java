@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaKontikiStorageExportJobData extends KalturaStorageExportJobData {
-	/**  Holds the id of the exported asset     */
+	/**  Holds the id of the exported asset  */
     public String flavorAssetId;
-	/**  Unique Kontiki MOID for the content uploaded to Kontiki     */
+	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
     public String contentMoid;
     public String serviceToken;
 

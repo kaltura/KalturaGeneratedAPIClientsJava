@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLimitFlavorsRestriction extends KalturaBaseRestriction {
-	/**  Limit flavors restriction type (Allow or deny)     */
+	/**  Limit flavors restriction type (Allow or deny)  */
     public KalturaLimitFlavorsRestrictionType limitFlavorsRestrictionType;
-	/**  Comma separated list of flavor params ids to allow to deny      */
+	/**  Comma separated list of flavor params ids to allow to deny  */
     public String flavorParamsIds;
 
     public KalturaLimitFlavorsRestriction() {

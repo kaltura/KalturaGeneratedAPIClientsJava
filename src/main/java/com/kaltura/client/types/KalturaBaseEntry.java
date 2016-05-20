@@ -51,102 +51,101 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaBaseEntry extends KalturaObjectBase {
-	/**  Auto generated 10 characters alphanumeric string     */
+	/**  Auto generated 10 characters alphanumeric string  */
     public String id;
-	/**  Entry name (Min 1 chars)     */
+	/**  Entry name (Min 1 chars)  */
     public String name;
-	/**  Entry description     */
+	/**  Entry description  */
     public String description;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The ID of the user who is the owner of this entry      */
+	/**  The ID of the user who is the owner of this entry  */
     public String userId;
-	/**  The ID of the user who created this entry      */
+	/**  The ID of the user who created this entry  */
     public String creatorId;
-	/**  Entry tags     */
+	/**  Entry tags  */
     public String tags;
-	/**  Entry admin tags can be updated only by administrators     */
+	/**  Entry admin tags can be updated only by administrators  */
     public String adminTags;
 	/**  Comma separated list of full names of categories to which this entry belongs.
 	  Only categories that don't have entitlement (privacy context) are listed, to
-	  retrieve the full list of categories, use the categoryEntry.list action.      */
+	  retrieve the full list of categories, use the categoryEntry.list action.  */
     public String categories;
 	/**  Comma separated list of ids of categories to which this entry belongs. Only
 	  categories that don't have entitlement (privacy context) are listed, to retrieve
-	  the full list of categories, use the categoryEntry.list action.      */
+	  the full list of categories, use the categoryEntry.list action.  */
     public String categoriesIds;
     public KalturaEntryStatus status;
-	/**  Entry moderation status     */
+	/**  Entry moderation status  */
     public KalturaEntryModerationStatus moderationStatus;
-	/**  Number of moderation requests waiting for this entry     */
+	/**  Number of moderation requests waiting for this entry  */
     public int moderationCount = Integer.MIN_VALUE;
-	/**  The type of the entry, this is auto filled by the derived entry object     */
+	/**  The type of the entry, this is auto filled by the derived entry object  */
     public KalturaEntryType type;
-	/**  Entry creation date as Unix timestamp (In seconds)     */
+	/**  Entry creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Entry update date as Unix timestamp (In seconds)     */
+	/**  Entry update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  The calculated average rank. rank = totalRank / votes     */
+	/**  The calculated average rank. rank = totalRank / votes  */
     public double rank = Double.MIN_VALUE;
-	/**  The sum of all rank values submitted to the baseEntry.anonymousRank action     */
+	/**  The sum of all rank values submitted to the baseEntry.anonymousRank action  */
     public int totalRank = Integer.MIN_VALUE;
-	/**  A count of all requests made to the baseEntry.anonymousRank action     */
+	/**  A count of all requests made to the baseEntry.anonymousRank action  */
     public int votes = Integer.MIN_VALUE;
     public int groupId = Integer.MIN_VALUE;
-	/**  Can be used to store various partner related data as a string      */
+	/**  Can be used to store various partner related data as a string  */
     public String partnerData;
-	/**  Download URL for the entry     */
+	/**  Download URL for the entry  */
     public String downloadUrl;
-	/**  Indexed search text for full text search     */
+	/**  Indexed search text for full text search  */
     public String searchText;
-	/**  License type used for this entry     */
+	/**  License type used for this entry  */
     public KalturaLicenseType licenseType;
-	/**  Version of the entry data     */
+	/**  Version of the entry data  */
     public int version = Integer.MIN_VALUE;
-	/**  Thumbnail URL     */
+	/**  Thumbnail URL  */
     public String thumbnailUrl;
 	/**  The Access Control ID assigned to this entry (null when not set, send -1 to
-	  remove)       */
+	  remove)  */
     public int accessControlId = Integer.MIN_VALUE;
-	/**  Entry scheduling start date (null when not set, send -1 to remove)     */
+	/**  Entry scheduling start date (null when not set, send -1 to remove)  */
     public int startDate = Integer.MIN_VALUE;
-	/**  Entry scheduling end date (null when not set, send -1 to remove)     */
+	/**  Entry scheduling end date (null when not set, send -1 to remove)  */
     public int endDate = Integer.MIN_VALUE;
-	/**  Entry external reference id     */
+	/**  Entry external reference id  */
     public String referenceId;
 	/**  ID of temporary entry that will replace this entry when it's approved and ready
-	  for replacement     */
+	  for replacement  */
     public String replacingEntryId;
 	/**  ID of the entry that will be replaced when the replacement approved and this
-	  entry is ready     */
+	  entry is ready  */
     public String replacedEntryId;
-	/**  Status of the replacement readiness and approval     */
+	/**  Status of the replacement readiness and approval  */
     public KalturaEntryReplacementStatus replacementStatus;
-	/**  Can be used to store various partner related data as a numeric value     */
+	/**  Can be used to store various partner related data as a numeric value  */
     public int partnerSortValue = Integer.MIN_VALUE;
-	/**  Override the default ingestion profile       */
+	/**  Override the default ingestion profile  */
     public int conversionProfileId = Integer.MIN_VALUE;
-	/**  IF not empty, points to an entry ID the should replace this current entry's id. 
-	      */
+	/**  IF not empty, points to an entry ID the should replace this current entry's id.  */
     public String redirectEntryId;
 	/**  ID of source root entry, used for clipped, skipped and cropped entries that
-	  created from another entry     */
+	  created from another entry  */
     public String rootEntryId;
-	/**  ID of source root entry, used for defining entires association      */
+	/**  ID of source root entry, used for defining entires association  */
     public String parentEntryId;
-	/**  clipping, skipping and cropping attributes that used to create this entry       */
+	/**  clipping, skipping and cropping attributes that used to create this entry  */
     public ArrayList<KalturaOperationAttributes> operationAttributes;
 	/**  list of user ids that are entitled to edit the entry (no server enforcement) The
 	  difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only     */
+	  only  */
     public String entitledUsersEdit;
 	/**  list of user ids that are entitled to publish the entry (no server enforcement)
 	  The difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only     */
+	  only  */
     public String entitledUsersPublish;
 	/**  Comma seperated string of the capabilities of the entry. Any capability needed
-	  can be added to this list.     */
+	  can be added to this list.  */
     public String capabilities;
-	/**  Template entry id      */
+	/**  Template entry id  */
     public String templateEntryId;
 
     public KalturaBaseEntry() {

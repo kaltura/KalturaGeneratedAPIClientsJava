@@ -47,9 +47,9 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaAssetDistributionRule extends KalturaObjectBase {
 	/**  The validation error description that will be set on the "data" property on
-	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled     */
+	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled  */
     public String validationError;
-	/**  An array of asset distribution conditions     */
+	/**  An array of asset distribution conditions  */
     public ArrayList<KalturaAssetDistributionCondition> assetDistributionConditions;
 
     public KalturaAssetDistributionRule() {

@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Distribution Profile service    */
+/**  Distribution Profile service  */
 @SuppressWarnings("serial")
 public class KalturaDistributionProfileService extends KalturaServiceBase {
     public KalturaDistributionProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Distribution Profile     */
+	/**  Add new Distribution Profile  */
     public KalturaDistributionProfile add(KalturaDistributionProfile distributionProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("distributionProfile", distributionProfile);
@@ -61,7 +61,7 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 
-	/**  Get Distribution Profile by id     */
+	/**  Get Distribution Profile by id  */
     public KalturaDistributionProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 
-	/**  Update Distribution Profile by id     */
+	/**  Update Distribution Profile by id  */
     public KalturaDistributionProfile update(int id, KalturaDistributionProfile distributionProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 
-	/**  Update Distribution Profile status by id     */
+	/**  Update Distribution Profile status by id  */
     public KalturaDistributionProfile updateStatus(int id, KalturaDistributionProfileStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -96,7 +96,7 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 
-	/**  Delete Distribution Profile by id     */
+	/**  Delete Distribution Profile by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -114,7 +114,7 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all distribution providers     */
+	/**  List all distribution providers  */
     public KalturaDistributionProfileListResponse list(KalturaDistributionProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

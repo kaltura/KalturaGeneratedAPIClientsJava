@@ -46,54 +46,53 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaVarPartnerUsageItem extends KalturaObjectBase {
-	/**  Partner ID     */
+	/**  Partner ID  */
     public int partnerId = Integer.MIN_VALUE;
-	/**  Partner name     */
+	/**  Partner name  */
     public String partnerName;
-	/**  Partner status     */
+	/**  Partner status  */
     public KalturaPartnerStatus partnerStatus;
-	/**  Partner package     */
+	/**  Partner package  */
     public int partnerPackage = Integer.MIN_VALUE;
-	/**  Partner creation date (Unix timestamp)     */
+	/**  Partner creation date (Unix timestamp)  */
     public int partnerCreatedAt = Integer.MIN_VALUE;
-	/**  Number of player loads in the specific date range     */
+	/**  Number of player loads in the specific date range  */
     public int views = Integer.MIN_VALUE;
-	/**  Number of plays in the specific date range     */
+	/**  Number of plays in the specific date range  */
     public int plays = Integer.MIN_VALUE;
-	/**  Number of new entries created during specific date range     */
+	/**  Number of new entries created during specific date range  */
     public int entriesCount = Integer.MIN_VALUE;
-	/**  Total number of entries     */
+	/**  Total number of entries  */
     public int totalEntriesCount = Integer.MIN_VALUE;
-	/**  Number of new video entries created during specific date range     */
+	/**  Number of new video entries created during specific date range  */
     public int videoEntriesCount = Integer.MIN_VALUE;
-	/**  Number of new image entries created during specific date range     */
+	/**  Number of new image entries created during specific date range  */
     public int imageEntriesCount = Integer.MIN_VALUE;
-	/**  Number of new audio entries created during specific date range     */
+	/**  Number of new audio entries created during specific date range  */
     public int audioEntriesCount = Integer.MIN_VALUE;
-	/**  Number of new mix entries created during specific date range     */
+	/**  Number of new mix entries created during specific date range  */
     public int mixEntriesCount = Integer.MIN_VALUE;
-	/**  The total bandwidth usage during the given date range (in MB)     */
+	/**  The total bandwidth usage during the given date range (in MB)  */
     public double bandwidth = Double.MIN_VALUE;
-	/**  The total storage consumption (in MB)     */
+	/**  The total storage consumption (in MB)  */
     public double totalStorage = Double.MIN_VALUE;
-	/**  The added storage consumption (new uploads) during the given date range (in MB) 
-	     */
+	/**  The added storage consumption (new uploads) during the given date range (in MB)  */
     public double storage = Double.MIN_VALUE;
 	/**  The deleted storage consumption (new uploads) during the given date range (in
-	  MB)     */
+	  MB)  */
     public double deletedStorage = Double.MIN_VALUE;
 	/**  The peak amount of storage consumption during the given date range for the
-	  specific publisher     */
+	  specific publisher  */
     public double peakStorage = Double.MIN_VALUE;
 	/**  The average amount of storage consumption during the given date range for the
-	  specific publisher     */
+	  specific publisher  */
     public double avgStorage = Double.MIN_VALUE;
 	/**  The combined amount of bandwidth and storage consumed during the given date
-	  range for the specific publisher     */
+	  range for the specific publisher  */
     public double combinedStorageBandwidth = Double.MIN_VALUE;
-	/**  Amount of transcoding usage in MB     */
+	/**  Amount of transcoding usage in MB  */
     public double transcodingUsage = Double.MIN_VALUE;
-	/**  TGhe date at which the report was taken - Unix Timestamp     */
+	/**  TGhe date at which the report was taken - Unix Timestamp  */
     public String dateId;
 
     public KalturaVarPartnerUsageItem() {

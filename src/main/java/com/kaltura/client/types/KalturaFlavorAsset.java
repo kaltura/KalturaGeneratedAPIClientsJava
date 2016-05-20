@@ -31,6 +31,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaFlavorAssetStatus;
+import com.kaltura.client.enums.KalturaLanguage;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -45,26 +46,28 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFlavorAsset extends KalturaAsset {
-	/**  The Flavor Params used to create this Flavor Asset     */
+	/**  The Flavor Params used to create this Flavor Asset  */
     public int flavorParamsId = Integer.MIN_VALUE;
-	/**  The width of the Flavor Asset      */
+	/**  The width of the Flavor Asset  */
     public int width = Integer.MIN_VALUE;
-	/**  The height of the Flavor Asset     */
+	/**  The height of the Flavor Asset  */
     public int height = Integer.MIN_VALUE;
-	/**  The overall bitrate (in KBits) of the Flavor Asset      */
+	/**  The overall bitrate (in KBits) of the Flavor Asset  */
     public int bitrate = Integer.MIN_VALUE;
-	/**  The frame rate (in FPS) of the Flavor Asset     */
+	/**  The frame rate (in FPS) of the Flavor Asset  */
     public double frameRate = Double.MIN_VALUE;
-	/**  True if this Flavor Asset is the original source     */
+	/**  True if this Flavor Asset is the original source  */
     public boolean isOriginal;
-	/**  True if this Flavor Asset is playable in KDP     */
+	/**  True if this Flavor Asset is playable in KDP  */
     public boolean isWeb;
-	/**  The container format     */
+	/**  The container format  */
     public String containerFormat;
-	/**  The video codec     */
+	/**  The video codec  */
     public String videoCodecId;
-	/**  The status of the Flavor Asset     */
+	/**  The status of the Flavor Asset  */
     public KalturaFlavorAssetStatus status;
+	/**  The language of the flavor asset  */
+    public KalturaLanguage language;
 
     public KalturaFlavorAsset() {
     }
@@ -106,6 +109,9 @@ public class KalturaFlavorAsset extends KalturaAsset {
             } else if (nodeName.equals("status")) {
                 this.status = KalturaFlavorAssetStatus.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("language")) {
+                this.language = KalturaLanguage.get(ParseUtils.parseString(txt));
+                continue;
             } 
         }
     }
@@ -114,6 +120,7 @@ public class KalturaFlavorAsset extends KalturaAsset {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaFlavorAsset");
         kparams.add("flavorParamsId", this.flavorParamsId);
+        kparams.add("language", this.language);
         return kparams;
     }
 

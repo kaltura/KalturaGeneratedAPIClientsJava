@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileGenericRtmp extends KalturaDeliveryProfileRtmp {
     public String pattern;
-	/**  rendererClass     */
+	/**  rendererClass  */
     public String rendererClass;
 
     public KalturaDeliveryProfileGenericRtmp() {

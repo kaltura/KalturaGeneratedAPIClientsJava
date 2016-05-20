@@ -44,13 +44,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaIndexJobData extends KalturaJobData {
-	/**  The filter should return the list of objects that need to be reindexed.     */
+	/**  The filter should return the list of objects that need to be reindexed.  */
     public KalturaFilter filter;
 	/**  Indicates the last id that reindexed, used when the batch crached, to re-run
-	  from the last crash point.     */
+	  from the last crash point.  */
     public int lastIndexId = Integer.MIN_VALUE;
 	/**  Indicates that the object columns and attributes values should be recalculated
-	  before reindexed.     */
+	  before reindexed.  */
     public boolean shouldUpdate;
 
     public KalturaIndexJobData() {

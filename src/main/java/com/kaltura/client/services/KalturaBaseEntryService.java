@@ -50,7 +50,7 @@ import java.util.ArrayList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base Entry Service    */
+/**  Base Entry Service  */
 @SuppressWarnings("serial")
 public class KalturaBaseEntryService extends KalturaServiceBase {
     public KalturaBaseEntryService(KalturaClient client) {
@@ -61,8 +61,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.add(entry, null);
     }
 
-	/**  Generic add entry, should be used when the uploaded entry type is not known.    
-	     */
+	/**  Generic add entry, should be used when the uploaded entry type is not known.  */
     public KalturaBaseEntry add(KalturaBaseEntry entry, KalturaEntryType type) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entry", entry);
@@ -74,7 +73,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Attach content resource to entry in status NO_MEDIA        */
+	/**  Attach content resource to entry in status NO_MEDIA  */
     public KalturaBaseEntry addContent(String entryId, KalturaResource resource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -91,7 +90,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  Generic add entry using an uploaded file, should be used when the uploaded entry
-	  type is not known.        */
+	  type is not known.  */
     public KalturaBaseEntry addFromUploadedFile(KalturaBaseEntry entry, String uploadTokenId, KalturaEntryType type) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entry", entry);
@@ -108,7 +107,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get base entry by ID.     */
+	/**  Get base entry by ID.  */
     public KalturaBaseEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -120,7 +119,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Get remote storage existing paths for the asset.        */
+	/**  Get remote storage existing paths for the asset.  */
     public KalturaRemotePathListResponse getRemotePaths(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -131,7 +130,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
-	/**  Update base entry. Only the properties that were set will be updated.     */
+	/**  Update base entry. Only the properties that were set will be updated.  */
     public KalturaBaseEntry update(String entryId, KalturaBaseEntry baseEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -151,7 +150,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.updateContent(entryId, resource, conversionProfileId, null);
     }
 
-	/**  Update the content resource associated with the entry.     */
+	/**  Update the content resource associated with the entry.  */
     public KalturaBaseEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -165,7 +164,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Get an array of KalturaBaseEntry objects by a comma-separated list of ids.     */
+	/**  Get an array of KalturaBaseEntry objects by a comma-separated list of ids.  */
     public List<KalturaBaseEntry> getByIds(String entryIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryIds", entryIds);
@@ -176,7 +175,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Delete an entry.     */
+	/**  Delete an entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -194,7 +193,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List base entries by filter with paging support.     */
+	/**  List base entries by filter with paging support.  */
     public KalturaBaseEntryListResponse list(KalturaBaseEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -210,7 +209,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.listByReferenceId(refId, null);
     }
 
-	/**  List base entries by filter according to reference id     */
+	/**  List base entries by filter according to reference id  */
     public KalturaBaseEntryListResponse listByReferenceId(String refId, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("refId", refId);
@@ -226,7 +225,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  Count base entries by filter.     */
+	/**  Count base entries by filter.  */
     public int count(KalturaBaseEntryFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -250,7 +249,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.upload(new KalturaFile(fileData, fileDataName));
     }
 
-	/**  Upload a file to Kaltura, that can be used to create an entry.     */
+	/**  Upload a file to Kaltura, that can be used to create an entry.  */
     public String upload(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();
@@ -275,7 +274,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName));
     }
 
-	/**  Update entry thumbnail using a raw jpeg file.     */
+	/**  Update entry thumbnail using a raw jpeg file.  */
     public KalturaBaseEntry updateThumbnailJpeg(String entryId, KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -288,7 +287,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Update entry thumbnail using url.     */
+	/**  Update entry thumbnail using url.  */
     public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -301,7 +300,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  Update entry thumbnail from a different entry by a specified time offset (in
-	  seconds).     */
+	  seconds).  */
     public KalturaBaseEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -314,7 +313,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Flag inappropriate entry for moderation.     */
+	/**  Flag inappropriate entry for moderation.  */
     public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("moderationFlag", moderationFlag);
@@ -325,7 +324,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  Reject the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry non-playable).     */
+	  make the entry non-playable).  */
     public void reject(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -336,7 +335,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  Approve the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry playable).     */
+	  make the entry playable).  */
     public void approve(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -350,7 +349,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.listFlags(entryId, null);
     }
 
-	/**  List all pending flags for the entry.     */
+	/**  List all pending flags for the entry.  */
     public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -362,7 +361,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
     }
 
-	/**  Anonymously rank an entry, no validation is done on duplicate rankings.     */
+	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
     public void anonymousRank(String entryId, int rank) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -374,7 +373,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
     }
 
 	/**  This action delivers entry-related data, based on the user's context: access
-	  control, restriction, playback format and storage information.     */
+	  control, restriction, playback format and storage information.  */
     public KalturaEntryContextDataResult getContextData(String entryId, KalturaEntryContextDataParams contextDataParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -401,7 +400,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.index(id, true);
     }
 
-	/**  Index an entry by id.     */
+	/**  Index an entry by id.  */
     public int index(String id, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -418,7 +417,7 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return this.clone(entryId, null);
     }
 
-	/**  Clone an entry with optional attributes to apply to the clone     */
+	/**  Clone an entry with optional attributes to apply to the clone  */
     public KalturaBaseEntry clone(String entryId, ArrayList<KalturaBaseEntryCloneOptionItem> cloneOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base class for entry server node    */
+/**  Base class for entry server node  */
 @SuppressWarnings("serial")
 public class KalturaEntryServerNodeService extends KalturaServiceBase {
     public KalturaEntryServerNodeService(KalturaClient client) {

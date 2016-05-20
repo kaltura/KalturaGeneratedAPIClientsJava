@@ -45,21 +45,20 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConvertLiveSegmentJobData extends KalturaJobData {
-	/**  Live stream entry id     */
+	/**  Live stream entry id  */
     public String entryId;
     public String assetId;
-	/**  Primary or secondary media server     */
+	/**  Primary or secondary media server  */
     public KalturaEntryServerNodeType mediaServerIndex;
-	/**  The index of the file within the entry     */
+	/**  The index of the file within the entry  */
     public int fileIndex = Integer.MIN_VALUE;
-	/**  The recorded live media     */
+	/**  The recorded live media  */
     public String srcFilePath;
-	/**  The output file     */
+	/**  The output file  */
     public String destFilePath;
-	/**  Duration of the live entry including all recorded segments including the current
-	      */
+	/**  Duration of the live entry including all recorded segments including the current  */
     public double endTime = Double.MIN_VALUE;
-	/**  The data output file     */
+	/**  The data output file  */
     public String destDataFilePath;
 
     public KalturaConvertLiveSegmentJobData() {

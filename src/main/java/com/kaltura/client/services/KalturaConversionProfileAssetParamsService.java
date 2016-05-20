@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage the connection between Conversion Profiles and Asset Params    */
+/**  Manage the connection between Conversion Profiles and Asset Params  */
 @SuppressWarnings("serial")
 public class KalturaConversionProfileAssetParamsService extends KalturaServiceBase {
     public KalturaConversionProfileAssetParamsService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaConversionProfileAssetParamsService extends KalturaServiceBa
         return this.list(filter, null);
     }
 
-	/**  Lists asset parmas of conversion profile by ID     */
+	/**  Lists asset parmas of conversion profile by ID  */
     public KalturaConversionProfileAssetParamsListResponse list(KalturaConversionProfileAssetParamsFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -69,7 +69,7 @@ public class KalturaConversionProfileAssetParamsService extends KalturaServiceBa
         return ParseUtils.parseObject(KalturaConversionProfileAssetParamsListResponse.class, resultXmlElement);
     }
 
-	/**  Update asset parmas of conversion profile by ID     */
+	/**  Update asset parmas of conversion profile by ID  */
     public KalturaConversionProfileAssetParams update(int conversionProfileId, int assetParamsId, KalturaConversionProfileAssetParams conversionProfileAssetParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("conversionProfileId", conversionProfileId);

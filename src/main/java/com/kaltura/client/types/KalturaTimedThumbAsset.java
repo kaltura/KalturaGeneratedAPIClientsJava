@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaTimedThumbAsset extends KalturaThumbAsset {
-	/**  Associated thumb cue point ID     */
+	/**  Associated thumb cue point ID  */
     public String cuePointId;
 
     public KalturaTimedThumbAsset() {

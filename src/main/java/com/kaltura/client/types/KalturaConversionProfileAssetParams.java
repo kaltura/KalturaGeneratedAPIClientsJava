@@ -49,20 +49,20 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
-	/**  The id of the conversion profile     */
+	/**  The id of the conversion profile  */
     public int conversionProfileId = Integer.MIN_VALUE;
-	/**  The id of the asset params     */
+	/**  The id of the asset params  */
     public int assetParamsId = Integer.MIN_VALUE;
-	/**  The ingestion origin of the asset params     */
+	/**  The ingestion origin of the asset params  */
     public KalturaFlavorReadyBehaviorType readyBehavior;
-	/**  The ingestion origin of the asset params     */
+	/**  The ingestion origin of the asset params  */
     public KalturaAssetParamsOrigin origin;
-	/**  Asset params system name     */
+	/**  Asset params system name  */
     public String systemName;
 	/**  Starts conversion even if the decision layer reduced the configuration to comply
-	  with the source     */
+	  with the source  */
     public KalturaNullableBoolean forceNoneComplied;
-	/**  Specifies how to treat the flavor after conversion is finished     */
+	/**  Specifies how to treat the flavor after conversion is finished  */
     public KalturaAssetParamsDeletePolicy deletePolicy;
 
     public KalturaConversionProfileAssetParams() {

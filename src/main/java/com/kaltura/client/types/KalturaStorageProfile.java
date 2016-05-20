@@ -70,21 +70,21 @@ public class KalturaStorageProfile extends KalturaObjectBase {
     public int maxConcurrentConnections = Integer.MIN_VALUE;
     public String pathManagerClass;
     public ArrayList<KalturaKeyValue> pathManagerParams;
-	/**  No need to create enum for temp field     */
+	/**  No need to create enum for temp field  */
     public int trigger = Integer.MIN_VALUE;
-	/**  Delivery Priority     */
+	/**  Delivery Priority  */
     public int deliveryPriority = Integer.MIN_VALUE;
     public KalturaStorageProfileDeliveryStatus deliveryStatus;
     public KalturaStorageProfileReadyBehavior readyBehavior;
 	/**  Flag sugnifying that the storage exported content should be deleted when soure
-	  entry is deleted     */
+	  entry is deleted  */
     public int allowAutoDelete = Integer.MIN_VALUE;
 	/**  Indicates to the local file transfer manager to create a link to the file
-	  instead of copying it     */
+	  instead of copying it  */
     public boolean createFileLink;
-	/**  Holds storage profile export rules     */
+	/**  Holds storage profile export rules  */
     public ArrayList<KalturaRule> rules;
-	/**  Delivery profile ids     */
+	/**  Delivery profile ids  */
     public ArrayList<KalturaKeyValue> deliveryProfileIds;
     public String privateKey;
     public String publicKey;

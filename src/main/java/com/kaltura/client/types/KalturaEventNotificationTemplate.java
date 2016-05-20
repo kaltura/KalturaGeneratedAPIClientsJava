@@ -59,19 +59,19 @@ public class KalturaEventNotificationTemplate extends KalturaObjectBase {
     public KalturaEventNotificationTemplateStatus status;
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Define that the template could be dispatched manually from the API     */
+	/**  Define that the template could be dispatched manually from the API  */
     public boolean manualDispatchEnabled;
-	/**  Define that the template could be dispatched automatically by the system     */
+	/**  Define that the template could be dispatched automatically by the system  */
     public boolean automaticDispatchEnabled;
-	/**  Define the event that should trigger this notification     */
+	/**  Define the event that should trigger this notification  */
     public KalturaEventNotificationEventType eventType;
-	/**  Define the object that raied the event that should trigger this notification     */
+	/**  Define the object that raied the event that should trigger this notification  */
     public KalturaEventNotificationEventObjectType eventObjectType;
-	/**  Define the conditions that cause this notification to be triggered     */
+	/**  Define the conditions that cause this notification to be triggered  */
     public ArrayList<KalturaCondition> eventConditions;
-	/**  Define the content dynamic parameters     */
+	/**  Define the content dynamic parameters  */
     public ArrayList<KalturaEventNotificationParameter> contentParameters;
-	/**  Define the content dynamic parameters     */
+	/**  Define the content dynamic parameters  */
     public ArrayList<KalturaEventNotificationParameter> userParameters;
 
     public KalturaEventNotificationTemplate() {

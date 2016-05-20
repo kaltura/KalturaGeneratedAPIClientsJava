@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the current time context on Kaltura servers    */
+/**  Represents the current time context on Kaltura servers  */
 @SuppressWarnings("serial")
 public class KalturaTimeContextField extends KalturaIntegerField {
-	/**  Time offset in seconds since current time     */
+	/**  Time offset in seconds since current time  */
     public int offset = Integer.MIN_VALUE;
 
     public KalturaTimeContextField() {

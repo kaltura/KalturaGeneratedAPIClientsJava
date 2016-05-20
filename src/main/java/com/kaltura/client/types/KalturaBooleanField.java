@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A boolean representation to return evaluated dynamic value    */
+/**  A boolean representation to return evaluated dynamic value  */
 @SuppressWarnings("serial")
 public abstract class KalturaBooleanField extends KalturaBooleanValue {
 

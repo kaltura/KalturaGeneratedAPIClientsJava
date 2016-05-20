@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaExecuteMetadataXsltObjectTask extends KalturaObjectTask {
-	/**  Metadata profile id to lookup the metadata object     */
+	/**  Metadata profile id to lookup the metadata object  */
     public int metadataProfileId = Integer.MIN_VALUE;
-	/**  Metadata object type to lookup the metadata object     */
+	/**  Metadata object type to lookup the metadata object  */
     public KalturaMetadataObjectType metadataObjectType;
-	/**  The XSLT to execute     */
+	/**  The XSLT to execute  */
     public String xslt;
 
     public KalturaExecuteMetadataXsltObjectTask() {

@@ -46,26 +46,26 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUploadToken extends KalturaObjectBase {
-	/**  Upload token unique ID     */
+	/**  Upload token unique ID  */
     public String id;
-	/**  Partner ID of the upload token     */
+	/**  Partner ID of the upload token  */
     public int partnerId = Integer.MIN_VALUE;
-	/**  User id for the upload token     */
+	/**  User id for the upload token  */
     public String userId;
-	/**  Status of the upload token     */
+	/**  Status of the upload token  */
     public KalturaUploadTokenStatus status;
 	/**  Name of the file for the upload token, can be empty when the upload token is
-	  created and will be updated internally after the file is uploaded     */
+	  created and will be updated internally after the file is uploaded  */
     public String fileName;
 	/**  File size in bytes, can be empty when the upload token is created and will be
-	  updated internally after the file is uploaded     */
+	  updated internally after the file is uploaded  */
     public double fileSize = Double.MIN_VALUE;
 	/**  Uploaded file size in bytes, can be used to identify how many bytes were
-	  uploaded before resuming     */
+	  uploaded before resuming  */
     public double uploadedFileSize = Double.MIN_VALUE;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update date as Unix timestamp (In seconds)     */
+	/**  Last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 
     public KalturaUploadToken() {

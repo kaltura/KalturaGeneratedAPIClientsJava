@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  JobData representing the dynamic user receipient array    */
+/**  JobData representing the dynamic user receipient array  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationUserRecipientJobData extends KalturaEmailNotificationRecipientJobData {
     public KalturaUserFilter filter;

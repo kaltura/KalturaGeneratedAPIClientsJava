@@ -43,14 +43,14 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Defines the condition to match a property and value on core asset object (or one
-  if its inherited objects)    */
+  if its inherited objects)  */
 @SuppressWarnings("serial")
 public class KalturaAssetDistributionPropertyCondition extends KalturaAssetDistributionCondition {
 	/**  The property name to look for, this will match to a getter on the asset object. 
 	   Should be camelCase naming convention (defining "myPropertyName" will look for
-	  getMyPropertyName())     */
+	  getMyPropertyName())  */
     public String propertyName;
-	/**  The value to compare     */
+	/**  The value to compare  */
     public String propertyValue;
 
     public KalturaAssetDistributionPropertyCondition() {

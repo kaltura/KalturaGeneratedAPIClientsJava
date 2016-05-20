@@ -48,20 +48,20 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaModerationFlag extends KalturaObjectBase {
-	/**  Moderation flag id     */
+	/**  Moderation flag id  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The user id that added the moderation flag     */
+	/**  The user id that added the moderation flag  */
     public String userId;
-	/**  The type of the moderation flag (entry or user)     */
+	/**  The type of the moderation flag (entry or user)  */
     public KalturaModerationObjectType moderationObjectType;
-	/**  If moderation flag is set for entry, this is the flagged entry id     */
+	/**  If moderation flag is set for entry, this is the flagged entry id  */
     public String flaggedEntryId;
-	/**  If moderation flag is set for user, this is the flagged user id     */
+	/**  If moderation flag is set for user, this is the flagged user id  */
     public String flaggedUserId;
-	/**  The moderation flag status     */
+	/**  The moderation flag status  */
     public KalturaModerationFlagStatus status;
-	/**  The comment that was added to the flag     */
+	/**  The comment that was added to the flag  */
     public String comments;
     public KalturaModerationFlagType flagType;
     public int createdAt = Integer.MIN_VALUE;

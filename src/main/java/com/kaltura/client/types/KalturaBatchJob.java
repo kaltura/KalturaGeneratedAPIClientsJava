@@ -69,17 +69,17 @@ public class KalturaBatchJob extends KalturaObjectBase {
     public String description;
     public int priority = Integer.MIN_VALUE;
     public ArrayList<KalturaBatchHistoryData> history;
-	/**  The id of the bulk upload job that initiated this job     */
+	/**  The id of the bulk upload job that initiated this job  */
     public int bulkJobId = Integer.MIN_VALUE;
     public int batchVersion = Integer.MIN_VALUE;
 	/**  When one job creates another - the parent should set this parentJobId to be its
-	  own id.     */
+	  own id.  */
     public int parentJobId = Integer.MIN_VALUE;
-	/**  The id of the root parent job     */
+	/**  The id of the root parent job  */
     public int rootJobId = Integer.MIN_VALUE;
-	/**  The time that the job was pulled from the queue     */
+	/**  The time that the job was pulled from the queue  */
     public int queueTime = Integer.MIN_VALUE;
-	/**  The time that the job was finished or closed as failed     */
+	/**  The time that the job was finished or closed as failed  */
     public int finishTime = Integer.MIN_VALUE;
     public KalturaBatchJobErrorTypes errType;
     public int errNumber = Integer.MIN_VALUE;

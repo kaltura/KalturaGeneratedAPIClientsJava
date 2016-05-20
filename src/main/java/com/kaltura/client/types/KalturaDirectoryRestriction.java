@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDirectoryRestriction extends KalturaBaseRestriction {
-	/**  Kaltura directory restriction type     */
+	/**  Kaltura directory restriction type  */
     public KalturaDirectoryRestrictionType directoryRestrictionType;
 
     public KalturaDirectoryRestriction() {

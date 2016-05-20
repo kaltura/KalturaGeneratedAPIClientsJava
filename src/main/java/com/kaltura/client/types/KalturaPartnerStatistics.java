@@ -45,18 +45,18 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaPartnerStatistics extends KalturaObjectBase {
-	/**  Package total allowed bandwidth and storage     */
+	/**  Package total allowed bandwidth and storage  */
     public int packageBandwidthAndStorage = Integer.MIN_VALUE;
-	/**  Partner total hosting in GB on the disk     */
+	/**  Partner total hosting in GB on the disk  */
     public double hosting = Double.MIN_VALUE;
-	/**  Partner total bandwidth in GB     */
+	/**  Partner total bandwidth in GB  */
     public double bandwidth = Double.MIN_VALUE;
-	/**  total usage in GB - including bandwidth and storage     */
+	/**  total usage in GB - including bandwidth and storage  */
     public int usage = Integer.MIN_VALUE;
 	/**  Percent of usage out of partner's package. if usage is 5GB and package is 10GB,
-	  this value will be 50     */
+	  this value will be 50  */
     public double usagePercent = Double.MIN_VALUE;
-	/**  date when partner reached the limit of his package (timestamp)     */
+	/**  date when partner reached the limit of his package (timestamp)  */
     public int reachedLimitDate = Integer.MIN_VALUE;
 
     public KalturaPartnerStatistics() {

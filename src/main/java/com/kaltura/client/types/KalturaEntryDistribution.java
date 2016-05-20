@@ -51,13 +51,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEntryDistribution extends KalturaObjectBase {
-	/**  Auto generated unique id     */
+	/**  Auto generated unique id  */
     public int id = Integer.MIN_VALUE;
-	/**  Entry distribution creation date as Unix timestamp (In seconds)     */
+	/**  Entry distribution creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Entry distribution last update date as Unix timestamp (In seconds)     */
+	/**  Entry distribution last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Entry distribution submission date as Unix timestamp (In seconds)     */
+	/**  Entry distribution submission date as Unix timestamp (In seconds)  */
     public int submittedAt = Integer.MIN_VALUE;
     public String entryId;
     public int partnerId = Integer.MIN_VALUE;
@@ -65,21 +65,21 @@ public class KalturaEntryDistribution extends KalturaObjectBase {
     public KalturaEntryDistributionStatus status;
     public KalturaEntryDistributionSunStatus sunStatus;
     public KalturaEntryDistributionFlag dirtyStatus;
-	/**  Comma separated thumbnail asset ids     */
+	/**  Comma separated thumbnail asset ids  */
     public String thumbAssetIds;
-	/**  Comma separated flavor asset ids     */
+	/**  Comma separated flavor asset ids  */
     public String flavorAssetIds;
-	/**  Comma separated asset ids     */
+	/**  Comma separated asset ids  */
     public String assetIds;
-	/**  Entry distribution publish time as Unix timestamp (In seconds)     */
+	/**  Entry distribution publish time as Unix timestamp (In seconds)  */
     public int sunrise = Integer.MIN_VALUE;
-	/**  Entry distribution un-publish time as Unix timestamp (In seconds)     */
+	/**  Entry distribution un-publish time as Unix timestamp (In seconds)  */
     public int sunset = Integer.MIN_VALUE;
-	/**  The id as returned from the distributed destination     */
+	/**  The id as returned from the distributed destination  */
     public String remoteId;
-	/**  The plays as retrieved from the remote destination reports     */
+	/**  The plays as retrieved from the remote destination reports  */
     public int plays = Integer.MIN_VALUE;
-	/**  The views as retrieved from the remote destination reports     */
+	/**  The views as retrieved from the remote destination reports  */
     public int views = Integer.MIN_VALUE;
     public ArrayList<KalturaDistributionValidationError> validationErrors;
     public KalturaBatchJobErrorTypes errorType;

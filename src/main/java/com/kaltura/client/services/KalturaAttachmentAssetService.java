@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on attachment Asset    */
+/**  Retrieve information and invoke actions on attachment Asset  */
 @SuppressWarnings("serial")
 public class KalturaAttachmentAssetService extends KalturaServiceBase {
     public KalturaAttachmentAssetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add attachment asset        */
+	/**  Add attachment asset  */
     public KalturaAttachmentAsset add(String entryId, KalturaAttachmentAsset attachmentAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -61,7 +61,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 
-	/**  Update content of attachment asset        */
+	/**  Update content of attachment asset  */
     public KalturaAttachmentAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -73,7 +73,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 
-	/**  Update attachment asset        */
+	/**  Update attachment asset  */
     public KalturaAttachmentAsset update(String id, KalturaAttachmentAsset attachmentAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -89,7 +89,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return this.getUrl(id, Integer.MIN_VALUE);
     }
 
-	/**  Get download URL for the asset     */
+	/**  Get download URL for the asset  */
     public String getUrl(String id, int storageId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -102,7 +102,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Get remote storage existing paths for the asset     */
+	/**  Get remote storage existing paths for the asset  */
     public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -113,7 +113,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
-	/**  Serves attachment by its id     */
+	/**  Serves attachment by its id  */
     public String serve(String attachmentAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("attachmentAssetId", attachmentAssetId);
@@ -139,7 +139,7 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List attachment Assets by filter and pager     */
+	/**  List attachment Assets by filter and pager  */
     public KalturaAttachmentAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaDeliveryServerNode extends KalturaServerNode {
-	/**  Delivery server playback Domain     */
+	/**  Delivery server playback Domain  */
     public String playbackDomain;
 
     public KalturaDeliveryServerNode() {

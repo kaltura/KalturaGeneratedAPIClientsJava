@@ -40,7 +40,7 @@ import com.kaltura.client.KalturaObjectBase;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Abstract class for asset distribution condition    */
+/**  Abstract class for asset distribution condition  */
 @SuppressWarnings("serial")
 public abstract class KalturaAssetDistributionCondition extends KalturaObjectBase {
 

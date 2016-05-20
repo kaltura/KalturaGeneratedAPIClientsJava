@@ -47,7 +47,7 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Metadata Profile service    */
+/**  Metadata Profile service  */
 @SuppressWarnings("serial")
 public class KalturaMetadataProfileService extends KalturaServiceBase {
     public KalturaMetadataProfileService(KalturaClient client) {
@@ -59,7 +59,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add a metadata profile object and metadata profile content
-	  associated with Kaltura object type     */
+	  associated with Kaltura object type  */
     public KalturaMetadataProfile add(KalturaMetadataProfile metadataProfile, String xsdData, String viewsData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfile", metadataProfile);
@@ -101,7 +101,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add a metadata profile object and metadata profile file associated
-	  with Kaltura object type     */
+	  with Kaltura object type  */
     public KalturaMetadataProfile addFromFile(KalturaMetadataProfile metadataProfile, KalturaFile xsdFile, KalturaFile viewsFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfile", metadataProfile);
@@ -115,7 +115,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve a metadata profile object by id     */
+	/**  Retrieve a metadata profile object by id  */
     public KalturaMetadataProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -134,7 +134,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.update(id, metadataProfile, xsdData, null);
     }
 
-	/**  Update an existing metadata object     */
+	/**  Update an existing metadata object  */
     public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile, String xsdData, String viewsData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -156,7 +156,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List metadata profile objects by filter and pager     */
+	/**  List metadata profile objects by filter and pager  */
     public KalturaMetadataProfileListResponse list(KalturaMetadataProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -168,7 +168,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfileListResponse.class, resultXmlElement);
     }
 
-	/**  List metadata profile fields by metadata profile id     */
+	/**  List metadata profile fields by metadata profile id  */
     public KalturaMetadataProfileFieldListResponse listFields(int metadataProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("metadataProfileId", metadataProfileId);
@@ -179,7 +179,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfileFieldListResponse.class, resultXmlElement);
     }
 
-	/**  Delete an existing metadata profile     */
+	/**  Delete an existing metadata profile  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -189,7 +189,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Update an existing metadata object definition file     */
+	/**  Update an existing metadata object definition file  */
     public KalturaMetadataProfile revert(int id, int toVersion) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -213,7 +213,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.updateDefinitionFromFile(id, new KalturaFile(xsdFile, xsdFileName));
     }
 
-	/**  Update an existing metadata object definition file     */
+	/**  Update an existing metadata object definition file  */
     public KalturaMetadataProfile updateDefinitionFromFile(int id, KalturaFile xsdFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -238,7 +238,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.updateViewsFromFile(id, new KalturaFile(viewsFile, viewsFileName));
     }
 
-	/**  Update an existing metadata object views file     */
+	/**  Update an existing metadata object views file  */
     public KalturaMetadataProfile updateViewsFromFile(int id, KalturaFile viewsFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -263,7 +263,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.updateTransformationFromFile(id, new KalturaFile(xsltFile, xsltFileName));
     }
 
-	/**  Update an existing metadata object xslt file     */
+	/**  Update an existing metadata object xslt file  */
     public KalturaMetadataProfile updateTransformationFromFile(int id, KalturaFile xsltFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -276,7 +276,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 
-	/**  Serves metadata profile XSD file     */
+	/**  Serves metadata profile XSD file  */
     public String serve(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -284,7 +284,7 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Serves metadata profile view file     */
+	/**  Serves metadata profile view file  */
     public String serveView(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

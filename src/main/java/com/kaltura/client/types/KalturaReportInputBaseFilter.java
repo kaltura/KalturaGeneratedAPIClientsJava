@@ -45,13 +45,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaReportInputBaseFilter extends KalturaObjectBase {
-	/**  Start date as Unix timestamp (In seconds)     */
+	/**  Start date as Unix timestamp (In seconds)  */
     public int fromDate = Integer.MIN_VALUE;
-	/**  End date as Unix timestamp (In seconds)     */
+	/**  End date as Unix timestamp (In seconds)  */
     public int toDate = Integer.MIN_VALUE;
-	/**  Start day as string (YYYYMMDD)     */
+	/**  Start day as string (YYYYMMDD)  */
     public String fromDay;
-	/**  End date as string (YYYYMMDD)     */
+	/**  End date as string (YYYYMMDD)  */
     public String toDay;
 
     public KalturaReportInputBaseFilter() {

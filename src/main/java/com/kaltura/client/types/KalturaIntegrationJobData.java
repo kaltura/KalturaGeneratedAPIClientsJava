@@ -48,10 +48,10 @@ import org.w3c.dom.NodeList;
 public class KalturaIntegrationJobData extends KalturaJobData {
     public String callbackNotificationUrl;
     public KalturaIntegrationProviderType providerType;
-	/**  Additional data that relevant for the provider only     */
+	/**  Additional data that relevant for the provider only  */
     public KalturaIntegrationJobProviderData providerData;
     public KalturaIntegrationTriggerType triggerType;
-	/**  Additional data that relevant for the trigger only     */
+	/**  Additional data that relevant for the trigger only  */
     public KalturaIntegrationJobTriggerData triggerData;
 
     public KalturaIntegrationJobData() {

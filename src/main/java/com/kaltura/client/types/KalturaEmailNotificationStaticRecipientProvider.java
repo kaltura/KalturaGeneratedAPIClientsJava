@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  API class for recipient provider containing a static list of email recipients.    */
+/**  API class for recipient provider containing a static list of email recipients.  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationStaticRecipientProvider extends KalturaEmailNotificationRecipientProvider {
-	/**  Email to emails and names     */
+	/**  Email to emails and names  */
     public ArrayList<KalturaEmailNotificationRecipient> emailRecipients;
 
     public KalturaEmailNotificationStaticRecipientProvider() {

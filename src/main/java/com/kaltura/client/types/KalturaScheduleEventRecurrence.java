@@ -52,11 +52,11 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
     public int until = Integer.MIN_VALUE;
     public int count = Integer.MIN_VALUE;
     public int interval = Integer.MIN_VALUE;
-	/**  Comma separated numbers between 0 to 59     */
+	/**  Comma separated numbers between 0 to 59  */
     public String bySecond;
-	/**  Comma separated numbers between 0 to 59     */
+	/**  Comma separated numbers between 0 to 59  */
     public String byMinute;
-	/**  Comma separated numbers between 0 to 23     */
+	/**  Comma separated numbers between 0 to 23  */
     public String byHour;
 	/**  Comma separated of KalturaScheduleEventRecurrenceDay   Each byDay value can also
 	  be preceded by a positive (+n) or negative (-n) integer.   If present, this
@@ -65,23 +65,23 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
 	  first Monday within the month, whereas -1MO represents the last Monday of the
 	  month.   If an integer modifier is not present, it means all days of this type
 	  within the specified frequency.   For example, within a MONTHLY rule, MO
-	  represents all Mondays within the month.     */
+	  represents all Mondays within the month.  */
     public String byDay;
 	/**  Comma separated of numbers between -31 to 31, excluding 0.   For example, -10
-	  represents the tenth to the last day of the month.     */
+	  represents the tenth to the last day of the month.  */
     public String byMonthDay;
 	/**  Comma separated of numbers between -366 to 366, excluding 0.   For example, -1
 	  represents the last day of the year (December 31st) and -306 represents the
-	  306th to the last day of the year (March 1st).     */
+	  306th to the last day of the year (March 1st).  */
     public String byYearDay;
 	/**  Comma separated of numbers between -53 to 53, excluding 0.   This corresponds to
 	  weeks according to week numbering.   A week is defined as a seven day period,
 	  starting on the day of the week defined to be the week start.   Week number one
 	  of the calendar year is the first week which contains at least four (4) days in
 	  that calendar year.   This rule part is only valid for YEARLY frequency.   For
-	  example, 3 represents the third week of the year.     */
+	  example, 3 represents the third week of the year.  */
     public String byWeekNumber;
-	/**  Comma separated numbers between 1 to 12     */
+	/**  Comma separated numbers between 1 to 12  */
     public String byMonth;
 	/**  Comma separated of numbers between -366 to 366, excluding 0.   Corresponds to
 	  the nth occurrence within the set of events specified by the rule.   It must
@@ -90,7 +90,7 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
 	  frequency=MONTHLY;byDay=MO,TU,WE,TH,FR;byOffset=-1   Each byOffset value can
 	  include a positive (+n) or negative (-n) integer.   If present, this indicates
 	  the nth occurrence of the specific occurrence within the set of events specified
-	  by the rule.     */
+	  by the rule.  */
     public String byOffset;
     public KalturaScheduleEventRecurrenceDay weekStartDay;
 

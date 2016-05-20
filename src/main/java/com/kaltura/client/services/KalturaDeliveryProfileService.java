@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  delivery service is used to control delivery objects    */
+/**  delivery service is used to control delivery objects  */
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileService extends KalturaServiceBase {
     public KalturaDeliveryProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new delivery.     */
+	/**  Add new delivery.  */
     public KalturaDeliveryProfile add(KalturaDeliveryProfile delivery) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("delivery", delivery);
@@ -60,7 +60,7 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
     }
 
-	/**  Update exisiting delivery     */
+	/**  Update exisiting delivery  */
     public KalturaDeliveryProfile update(String id, KalturaDeliveryProfile delivery) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
     }
 
-	/**  Get delivery by id    */
+	/**  Get delivery by id  */
     public KalturaDeliveryProfile get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
     }
 
-	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId    */
+	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
     public KalturaDeliveryProfile clone(int deliveryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("deliveryId", deliveryId);
@@ -102,7 +102,7 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  Retrieve a list of available delivery depends on the filter given    */
+	/**  Retrieve a list of available delivery depends on the filter given  */
     public KalturaDeliveryProfileListResponse list(KalturaDeliveryProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

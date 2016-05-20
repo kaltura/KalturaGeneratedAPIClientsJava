@@ -45,22 +45,21 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaPlayableEntry extends KalturaBaseEntry {
-	/**  Number of plays     */
+	/**  Number of plays  */
     public int plays = Integer.MIN_VALUE;
-	/**  Number of views     */
+	/**  Number of views  */
     public int views = Integer.MIN_VALUE;
-	/**  The last time the entry was played     */
+	/**  The last time the entry was played  */
     public int lastPlayedAt = Integer.MIN_VALUE;
-	/**  The width in pixels     */
+	/**  The width in pixels  */
     public int width = Integer.MIN_VALUE;
-	/**  The height in pixels     */
+	/**  The height in pixels  */
     public int height = Integer.MIN_VALUE;
-	/**  The duration in seconds     */
+	/**  The duration in seconds  */
     public int duration = Integer.MIN_VALUE;
-	/**  The duration in miliseconds     */
+	/**  The duration in miliseconds  */
     public int msDuration = Integer.MIN_VALUE;
-	/**  The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins) 
-	     */
+	/**  The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins)  */
     public KalturaDurationType durationType;
 
     public KalturaPlayableEntry() {

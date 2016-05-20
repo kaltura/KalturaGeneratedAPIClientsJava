@@ -45,13 +45,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaThumbAsset extends KalturaAsset {
-	/**  The Flavor Params used to create this Flavor Asset     */
+	/**  The Flavor Params used to create this Flavor Asset  */
     public int thumbParamsId = Integer.MIN_VALUE;
-	/**  The width of the Flavor Asset      */
+	/**  The width of the Flavor Asset  */
     public int width = Integer.MIN_VALUE;
-	/**  The height of the Flavor Asset     */
+	/**  The height of the Flavor Asset  */
     public int height = Integer.MIN_VALUE;
-	/**  The status of the asset     */
+	/**  The status of the asset  */
     public KalturaThumbAssetStatus status;
 
     public KalturaThumbAsset() {

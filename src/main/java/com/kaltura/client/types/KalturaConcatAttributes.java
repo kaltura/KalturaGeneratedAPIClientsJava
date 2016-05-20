@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Concat operation attributes    */
+/**  Concat operation attributes  */
 @SuppressWarnings("serial")
 public class KalturaConcatAttributes extends KalturaOperationAttributes {
-	/**  The resource to be concatenated     */
+	/**  The resource to be concatenated  */
     public KalturaDataCenterContentResource resource;
 
     public KalturaConcatAttributes() {

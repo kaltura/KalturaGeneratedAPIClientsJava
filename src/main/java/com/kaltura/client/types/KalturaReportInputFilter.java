@@ -45,17 +45,17 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaReportInputFilter extends KalturaReportInputBaseFilter {
-	/**  Search keywords to filter objects     */
+	/**  Search keywords to filter objects  */
     public String keywords;
-	/**  Search keywords in onjects tags     */
+	/**  Search keywords in onjects tags  */
     public boolean searchInTags;
-	/**  Search keywords in onjects admin tags     */
+	/**  Search keywords in onjects admin tags  */
     public boolean searchInAdminTags;
-	/**  Search onjects in specified categories     */
+	/**  Search onjects in specified categories  */
     public String categories;
-	/**  Time zone offset in minutes     */
+	/**  Time zone offset in minutes  */
     public int timeZoneOffset = Integer.MIN_VALUE;
-	/**  Aggregated results according to interval     */
+	/**  Aggregated results according to interval  */
     public KalturaReportInterval interval;
 
     public KalturaReportInputFilter() {

@@ -48,11 +48,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaScheduleEvent extends KalturaObjectBase {
-	/**  Auto-generated unique identifier     */
+	/**  Auto-generated unique identifier  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
     public int parentId = Integer.MIN_VALUE;
-	/**  Defines a short summary or subject for the event     */
+	/**  Defines a short summary or subject for the event  */
     public String summary;
     public String description;
     public KalturaScheduleEventStatus status;
@@ -60,31 +60,31 @@ public abstract class KalturaScheduleEvent extends KalturaObjectBase {
     public int endDate = Integer.MIN_VALUE;
     public String referenceId;
     public KalturaScheduleEventClassificationType classificationType;
-	/**  Specifies the global position for the activity     */
+	/**  Specifies the global position for the activity  */
     public double geoLatitude = Double.MIN_VALUE;
-	/**  Specifies the global position for the activity     */
+	/**  Specifies the global position for the activity  */
     public double geoLongitude = Double.MIN_VALUE;
-	/**  Defines the intended venue for the activity     */
+	/**  Defines the intended venue for the activity  */
     public String location;
     public String organizer;
     public String ownerId;
-	/**  The value for the priority field.     */
+	/**  The value for the priority field.  */
     public int priority = Integer.MIN_VALUE;
-	/**  Defines the revision sequence number.     */
+	/**  Defines the revision sequence number.  */
     public int sequence = Integer.MIN_VALUE;
     public KalturaScheduleEventRecurrenceType recurrenceType;
-	/**  Duration in seconds     */
+	/**  Duration in seconds  */
     public int duration = Integer.MIN_VALUE;
 	/**  Used to represent contact information or alternately a reference to contact
-	  information.     */
+	  information.  */
     public String contact;
 	/**  Specifies non-processing information intended to provide a comment to the
-	  calendar user.     */
+	  calendar user.  */
     public String comment;
     public String tags;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update as Unix timestamp (In seconds)     */
+	/**  Last update as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public KalturaScheduleEventRecurrence recurrence;
 

@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  DropFolderFile service lets you create and manage drop folder files    */
+/**  DropFolderFile service lets you create and manage drop folder files  */
 @SuppressWarnings("serial")
 public class KalturaDropFolderFileService extends KalturaServiceBase {
     public KalturaDropFolderFileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add a new KalturaDropFolderFile object     */
+	/**  Allows you to add a new KalturaDropFolderFile object  */
     public KalturaDropFolderFile add(KalturaDropFolderFile dropFolderFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFile", dropFolderFile);
@@ -61,7 +61,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
-	/**  Retrieve a KalturaDropFolderFile object by ID     */
+	/**  Retrieve a KalturaDropFolderFile object by ID  */
     public KalturaDropFolderFile get(int dropFolderFileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
@@ -72,7 +72,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
-	/**  Update an existing KalturaDropFolderFile object     */
+	/**  Update an existing KalturaDropFolderFile object  */
     public KalturaDropFolderFile update(int dropFolderFileId, KalturaDropFolderFile dropFolderFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
@@ -84,7 +84,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
-	/**  Update status of KalturaDropFolderFile     */
+	/**  Update status of KalturaDropFolderFile  */
     public KalturaDropFolderFile updateStatus(int dropFolderFileId, KalturaDropFolderFileStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
@@ -96,7 +96,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
-	/**  Mark the KalturaDropFolderFile object as deleted     */
+	/**  Mark the KalturaDropFolderFile object as deleted  */
     public KalturaDropFolderFile delete(int dropFolderFileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
@@ -115,7 +115,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List KalturaDropFolderFile objects     */
+	/**  List KalturaDropFolderFile objects  */
     public KalturaDropFolderFileListResponse list(KalturaDropFolderFileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -128,7 +128,7 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
     }
 
 	/**  Set the KalturaDropFolderFile status to ignore
-	  (KalturaDropFolderFileStatus::IGNORE)     */
+	  (KalturaDropFolderFileStatus::IGNORE)  */
     public KalturaDropFolderFile ignore(int dropFolderFileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);

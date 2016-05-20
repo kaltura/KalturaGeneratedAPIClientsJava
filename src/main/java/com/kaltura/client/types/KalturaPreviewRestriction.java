@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaPreviewRestriction extends KalturaSessionRestriction {
-	/**  The preview restriction length      */
+	/**  The preview restriction length  */
     public int previewLength = Integer.MIN_VALUE;
 
     public KalturaPreviewRestriction() {

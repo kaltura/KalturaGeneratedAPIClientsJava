@@ -44,10 +44,10 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDataEntry extends KalturaBaseEntry {
-	/**  The data of the entry     */
+	/**  The data of the entry  */
     public String dataContent;
 	/**  indicator whether to return the object for get action with the dataContent
-	  field.     */
+	  field.  */
     public boolean retrieveDataContentByGet;
 
     public KalturaDataEntry() {

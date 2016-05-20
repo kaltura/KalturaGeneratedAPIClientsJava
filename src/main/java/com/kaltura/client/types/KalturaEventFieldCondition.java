@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEventFieldCondition extends KalturaCondition {
-	/**  The field to be evaluated at runtime     */
+	/**  The field to be evaluated at runtime  */
     public KalturaBooleanField field;
 
     public KalturaEventFieldCondition() {

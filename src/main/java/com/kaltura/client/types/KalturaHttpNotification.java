@@ -46,22 +46,22 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Wrapper for sent notifications     */
+/**  Wrapper for sent notifications  */
 @SuppressWarnings("serial")
 public class KalturaHttpNotification extends KalturaObjectBase {
-	/**  Object that triggered the notification     */
+	/**  Object that triggered the notification  */
     public KalturaObjectBase object;
-	/**  Object type that triggered the notification     */
+	/**  Object type that triggered the notification  */
     public KalturaEventNotificationEventObjectType eventObjectType;
-	/**  ID of the batch job that execute the notification     */
+	/**  ID of the batch job that execute the notification  */
     public long eventNotificationJobId = Long.MIN_VALUE;
-	/**  ID of the template that triggered the notification     */
+	/**  ID of the template that triggered the notification  */
     public int templateId = Integer.MIN_VALUE;
-	/**  Name of the template that triggered the notification     */
+	/**  Name of the template that triggered the notification  */
     public String templateName;
-	/**  System name of the template that triggered the notification     */
+	/**  System name of the template that triggered the notification  */
     public String templateSystemName;
-	/**  Ecent type that triggered the notification     */
+	/**  Ecent type that triggered the notification  */
     public KalturaEventNotificationEventType eventType;
 
     public KalturaHttpNotification() {

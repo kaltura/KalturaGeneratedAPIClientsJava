@@ -45,33 +45,33 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSchedulerConfig extends KalturaObjectBase {
-	/**  The id of the Category     */
+	/**  The id of the Category  */
     public int id = Integer.MIN_VALUE;
-	/**  Creator name     */
+	/**  Creator name  */
     public String createdBy;
-	/**  Updater name     */
+	/**  Updater name  */
     public String updatedBy;
-	/**  Id of the control panel command that created this config item      */
+	/**  Id of the control panel command that created this config item  */
     public String commandId;
-	/**  The status of the control panel command      */
+	/**  The status of the control panel command  */
     public String commandStatus;
-	/**  The id of the scheduler      */
+	/**  The id of the scheduler  */
     public int schedulerId = Integer.MIN_VALUE;
-	/**  The configured id of the scheduler      */
+	/**  The configured id of the scheduler  */
     public int schedulerConfiguredId = Integer.MIN_VALUE;
-	/**  The name of the scheduler      */
+	/**  The name of the scheduler  */
     public String schedulerName;
-	/**  The id of the job worker     */
+	/**  The id of the job worker  */
     public int workerId = Integer.MIN_VALUE;
-	/**  The configured id of the job worker     */
+	/**  The configured id of the job worker  */
     public int workerConfiguredId = Integer.MIN_VALUE;
-	/**  The name of the job worker     */
+	/**  The name of the job worker  */
     public String workerName;
-	/**  The name of the variable     */
+	/**  The name of the variable  */
     public String variable;
-	/**  The part of the variable     */
+	/**  The part of the variable  */
     public String variablePart;
-	/**  The value of the variable     */
+	/**  The value of the variable  */
     public String value;
 
     public KalturaSchedulerConfig() {

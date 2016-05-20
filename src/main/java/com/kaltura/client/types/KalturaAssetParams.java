@@ -48,33 +48,33 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAssetParams extends KalturaObjectBase {
-	/**  The id of the Flavor Params     */
+	/**  The id of the Flavor Params  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The name of the Flavor Params     */
+	/**  The name of the Flavor Params  */
     public String name;
-	/**  System name of the Flavor Params     */
+	/**  System name of the Flavor Params  */
     public String systemName;
-	/**  The description of the Flavor Params     */
+	/**  The description of the Flavor Params  */
     public String description;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  True if those Flavor Params are part of system defaults     */
+	/**  True if those Flavor Params are part of system defaults  */
     public KalturaNullableBoolean isSystemDefault;
 	/**  The Flavor Params tags are used to identify the flavor for different usage (e.g.
-	  web, hd, mobile)     */
+	  web, hd, mobile)  */
     public String tags;
-	/**  Array of partner permisison names that required for using this asset params     */
+	/**  Array of partner permisison names that required for using this asset params  */
     public ArrayList<KalturaString> requiredPermissions;
 	/**  Id of remote storage profile that used to get the source, zero indicates Kaltura
-	  data center     */
+	  data center  */
     public int sourceRemoteStorageProfileId = Integer.MIN_VALUE;
 	/**  Comma seperated ids of remote storage profiles that the flavor distributed to,
-	  the distribution done by the conversion engine     */
+	  the distribution done by the conversion engine  */
     public int remoteStorageProfileIds = Integer.MIN_VALUE;
-	/**  Media parser type to be used for post-conversion validation     */
+	/**  Media parser type to be used for post-conversion validation  */
     public KalturaMediaParserType mediaParserType;
-	/**  Comma seperated ids of source flavor params this flavor is created from     */
+	/**  Comma seperated ids of source flavor params this flavor is created from  */
     public String sourceAssetParamsIds;
 
     public KalturaAssetParams() {

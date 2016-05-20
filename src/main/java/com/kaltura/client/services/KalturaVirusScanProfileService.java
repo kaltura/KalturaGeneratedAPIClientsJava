@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Virus scan profile service    */
+/**  Virus scan profile service  */
 @SuppressWarnings("serial")
 public class KalturaVirusScanProfileService extends KalturaServiceBase {
     public KalturaVirusScanProfileService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List virus scan profile objects by filter and pager     */
+	/**  List virus scan profile objects by filter and pager  */
     public KalturaVirusScanProfileListResponse list(KalturaVirusScanProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -70,7 +70,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add an virus scan profile object and virus scan profile content
-	  associated with Kaltura object     */
+	  associated with Kaltura object  */
     public KalturaVirusScanProfile add(KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("virusScanProfile", virusScanProfile);
@@ -81,7 +81,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve an virus scan profile object by id     */
+	/**  Retrieve an virus scan profile object by id  */
     public KalturaVirusScanProfile get(int virusScanProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("virusScanProfileId", virusScanProfileId);
@@ -93,7 +93,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
     }
 
 	/**  Update exisitng virus scan profile, it is possible to update the virus scan
-	  profile id too     */
+	  profile id too  */
     public KalturaVirusScanProfile update(int virusScanProfileId, KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("virusScanProfileId", virusScanProfileId);
@@ -105,7 +105,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
     }
 
-	/**  Mark the virus scan profile as deleted     */
+	/**  Mark the virus scan profile as deleted  */
     public KalturaVirusScanProfile delete(int virusScanProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("virusScanProfileId", virusScanProfileId);
@@ -120,7 +120,7 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         return this.scan(flavorAssetId, Integer.MIN_VALUE);
     }
 
-	/**  Scan flavor asset according to virus scan profile     */
+	/**  Scan flavor asset according to virus scan profile  */
     public int scan(String flavorAssetId, int virusScanProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("flavorAssetId", flavorAssetId);

@@ -49,25 +49,24 @@ import org.w3c.dom.NodeList;
 public class KalturaDistributionFieldConfig extends KalturaObjectBase {
 	/**  A value taken from a connector field enum which associates the current
 	  configuration to that connector field      Field enum class should be returned
-	  by the provider's getFieldEnumClass function.        */
+	  by the provider's getFieldEnumClass function.  */
     public String fieldName;
 	/**  A string that will be shown to the user as the field name in error messages
-	  related to the current field        */
+	  related to the current field  */
     public String userFriendlyFieldName;
 	/**  An XSLT string that extracts the right value from the Kaltura entry MRSS XML.   
 	    The value of the current connector field will be the one that is returned from
-	  transforming the Kaltura entry MRSS XML using this XSLT string.        */
+	  transforming the Kaltura entry MRSS XML using this XSLT string.  */
     public String entryMrssXslt;
-	/**  Is the field required to have a value for submission ?        */
+	/**  Is the field required to have a value for submission ?  */
     public KalturaDistributionFieldRequiredStatus isRequired;
-	/**  Trigger distribution update when this field changes or not ?        */
+	/**  Trigger distribution update when this field changes or not ?  */
     public boolean updateOnChange;
-	/**  Entry column or metadata xpath that should trigger an update        */
+	/**  Entry column or metadata xpath that should trigger an update  */
     public ArrayList<KalturaString> updateParams;
-	/**  Is this field config is the default for the distribution provider?        */
+	/**  Is this field config is the default for the distribution provider?  */
     public boolean isDefault;
-	/**  Is an error on this field going to trigger deletion of distributed content?     
-	    */
+	/**  Is an error on this field going to trigger deletion of distributed content?  */
     public boolean triggerDeleteOnError;
 
     public KalturaDistributionFieldConfig() {

@@ -48,14 +48,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Annotation service - Video Annotation    */
+/**  Annotation service - Video Annotation  */
 @SuppressWarnings("serial")
 public class KalturaAnnotationService extends KalturaServiceBase {
     public KalturaAnnotationService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add an annotation object associated with an entry     */
+	/**  Allows you to add an annotation object associated with an entry  */
     public KalturaAnnotation add(KalturaCuePoint annotation) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("annotation", annotation);
@@ -66,7 +66,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAnnotation.class, resultXmlElement);
     }
 
-	/**  Update annotation by id     */
+	/**  Update annotation by id  */
     public KalturaAnnotation update(String id, KalturaCuePoint annotation) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -86,7 +86,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List annotation objects by filter and pager    */
+	/**  List annotation objects by filter and pager  */
     public KalturaAnnotationListResponse list(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -111,7 +111,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add multiple cue points objects by uploading XML that contains
-	  multiple cue point definitions     */
+	  multiple cue point definitions  */
     public KalturaCuePointListResponse addFromBulk(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();
@@ -131,7 +131,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return this.serveBulk(filter, null);
     }
 
-	/**  Download multiple cue points objects as XML definitions     */
+	/**  Download multiple cue points objects as XML definitions  */
     public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -140,7 +140,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Retrieve an CuePoint object by id     */
+	/**  Retrieve an CuePoint object by id  */
     public KalturaCuePoint get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -155,7 +155,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  count cue point objects by filter     */
+	/**  count cue point objects by filter  */
     public int count(KalturaCuePointFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -167,7 +167,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  delete cue point by id, and delete all children cue points     */
+	/**  delete cue point by id, and delete all children cue points  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -177,7 +177,7 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Update cuePoint status by id     */
+	/**  Update cuePoint status by id  */
     public void updateStatus(String id, KalturaCuePointStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

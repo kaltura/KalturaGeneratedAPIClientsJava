@@ -101,7 +101,7 @@ public class KalturaLiveReportsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveReportExportResponse.class, resultXmlElement);
     }
 
-	/**  Will serve a requested report     */
+	/**  Will serve a requested report  */
     public String serveReport(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

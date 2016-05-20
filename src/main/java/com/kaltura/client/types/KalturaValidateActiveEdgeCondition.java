@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaValidateActiveEdgeCondition extends KalturaCondition {
-	/**  Comma separated list of edge servers to validate are active     */
+	/**  Comma separated list of edge servers to validate are active  */
     public String edgeServerIds;
 
     public KalturaValidateActiveEdgeCondition() {

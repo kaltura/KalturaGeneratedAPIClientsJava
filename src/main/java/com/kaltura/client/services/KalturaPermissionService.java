@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Permission service lets you create and manage user permissions    */
+/**  Permission service lets you create and manage user permissions  */
 @SuppressWarnings("serial")
 public class KalturaPermissionService extends KalturaServiceBase {
     public KalturaPermissionService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Adds a new permission object to the account.     */
+	/**  Adds a new permission object to the account.  */
     public KalturaPermission add(KalturaPermission permission) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permission", permission);
@@ -60,7 +60,7 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 
-	/**  Retrieves a permission object using its ID.     */
+	/**  Retrieves a permission object using its ID.  */
     public KalturaPermission get(String permissionName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionName", permissionName);
@@ -71,7 +71,7 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 
-	/**  Updates an existing permission object.     */
+	/**  Updates an existing permission object.  */
     public KalturaPermission update(String permissionName, KalturaPermission permission) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionName", permissionName);
@@ -83,7 +83,7 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 
-	/**  Deletes an existing permission object.     */
+	/**  Deletes an existing permission object.  */
     public KalturaPermission delete(String permissionName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionName", permissionName);
@@ -104,7 +104,7 @@ public class KalturaPermissionService extends KalturaServiceBase {
 
 	/**  Lists permission objects that are associated with an account.   Blocked
 	  permissions are listed unless you use a filter to exclude them.   Blocked
-	  permissions are listed unless you use a filter to exclude them.     */
+	  permissions are listed unless you use a filter to exclude them.  */
     public KalturaPermissionListResponse list(KalturaPermissionFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -116,7 +116,7 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermissionListResponse.class, resultXmlElement);
     }
 
-	/**  Retrieves a list of permissions that apply to the current KS.     */
+	/**  Retrieves a list of permissions that apply to the current KS.  */
     public String getCurrentPermissions() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("permission", "getCurrentPermissions", kparams);

@@ -46,11 +46,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaRecalculateResponseProfileCacheJobData extends KalturaRecalculateCacheJobData {
-	/**  http / https     */
+	/**  http / https  */
     public String protocol;
     public KalturaSessionType ksType;
     public ArrayList<KalturaIntegerValue> userRoles;
-	/**  Class name     */
+	/**  Class name  */
     public String cachedObjectType;
     public String objectId;
     public String startObjectKey;

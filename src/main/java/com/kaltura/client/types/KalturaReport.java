@@ -45,21 +45,21 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaReport extends KalturaObjectBase {
-	/**  Report id     */
+	/**  Report id  */
     public int id = Integer.MIN_VALUE;
-	/**  Partner id associated with the report     */
+	/**  Partner id associated with the report  */
     public int partnerId = Integer.MIN_VALUE;
-	/**  Report name     */
+	/**  Report name  */
     public String name;
-	/**  Used to identify system reports in a friendly way     */
+	/**  Used to identify system reports in a friendly way  */
     public String systemName;
-	/**  Report description     */
+	/**  Report description  */
     public String description;
-	/**  Report query     */
+	/**  Report query  */
     public String query;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update date as Unix timestamp (In seconds)     */
+	/**  Last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 
     public KalturaReport() {

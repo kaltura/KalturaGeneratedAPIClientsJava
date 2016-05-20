@@ -48,14 +48,14 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Categories    */
+/**  Add &amp; Manage Categories  */
 @SuppressWarnings("serial")
 public class KalturaCategoryService extends KalturaServiceBase {
     public KalturaCategoryService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Category     */
+	/**  Add new Category  */
     public KalturaCategory add(KalturaCategory category) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("category", category);
@@ -66,7 +66,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategory.class, resultXmlElement);
     }
 
-	/**  Get Category by id     */
+	/**  Get Category by id  */
     public KalturaCategory get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -77,7 +77,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategory.class, resultXmlElement);
     }
 
-	/**  Update Category     */
+	/**  Update Category  */
     public KalturaCategory update(int id, KalturaCategory category) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -93,7 +93,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         this.delete(id, KalturaNullableBoolean.get(1));
     }
 
-	/**  Delete a Category     */
+	/**  Delete a Category  */
     public void delete(int id, KalturaNullableBoolean moveEntriesToParentCategory) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -112,7 +112,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all categories     */
+	/**  List all categories  */
     public KalturaCategoryListResponse list(KalturaCategoryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -128,7 +128,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         return this.index(id, true);
     }
 
-	/**  Index Category by id     */
+	/**  Index Category by id  */
     public int index(int id, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -142,7 +142,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
     }
 
 	/**  Move categories that belong to the same parent category to a target categroy -
-	  enabled only for ks with disable entitlement     */
+	  enabled only for ks with disable entitlement  */
     public KalturaCategoryListResponse move(String categoryIds, int targetCategoryParentId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryIds", categoryIds);
@@ -154,7 +154,7 @@ public class KalturaCategoryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryListResponse.class, resultXmlElement);
     }
 
-	/**  Unlock categories     */
+	/**  Unlock categories  */
     public void unlockCategories() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("category", "unlockCategories", kparams);

@@ -49,37 +49,37 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfile extends KalturaObjectBase {
-	/**  The id of the Delivery     */
+	/**  The id of the Delivery  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The name of the Delivery     */
+	/**  The name of the Delivery  */
     public String name;
-	/**  Delivery type     */
+	/**  Delivery type  */
     public KalturaDeliveryProfileType type;
-	/**  System name of the delivery     */
+	/**  System name of the delivery  */
     public String systemName;
-	/**  The description of the Delivery     */
+	/**  The description of the Delivery  */
     public String description;
-	/**  Creation time as Unix timestamp (In seconds)     */
+	/**  Creation time as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Update time as Unix timestamp (In seconds)     */
+	/**  Update time as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public KalturaPlaybackProtocol streamerType;
     public String url;
-	/**  the host part of the url     */
+	/**  the host part of the url  */
     public String hostName;
     public KalturaDeliveryStatus status;
     public KalturaUrlRecognizer recognizer;
     public KalturaUrlTokenizer tokenizer;
-	/**  True if this is the systemwide default for the protocol     */
+	/**  True if this is the systemwide default for the protocol  */
     public KalturaNullableBoolean isDefault;
-	/**  the object from which this object was cloned (or 0)     */
+	/**  the object from which this object was cloned (or 0)  */
     public int parentId = Integer.MIN_VALUE;
-	/**  Comma separated list of supported media protocols. f.i. rtmpe     */
+	/**  Comma separated list of supported media protocols. f.i. rtmpe  */
     public String mediaProtocols;
-	/**  priority used for ordering similar delivery profiles     */
+	/**  priority used for ordering similar delivery profiles  */
     public int priority = Integer.MIN_VALUE;
-	/**  Extra query string parameters that should be added to the url     */
+	/**  Extra query string parameters that should be added to the url  */
     public String extraParams;
 
     public KalturaDeliveryProfile() {

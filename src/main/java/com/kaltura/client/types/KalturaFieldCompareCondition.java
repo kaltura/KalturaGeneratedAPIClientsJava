@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFieldCompareCondition extends KalturaCompareCondition {
-	/**  Field to evaluate     */
+	/**  Field to evaluate  */
     public KalturaIntegerField field;
 
     public KalturaFieldCompareCondition() {

@@ -49,23 +49,23 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCaptionAsset extends KalturaAsset {
-	/**  The Caption Params used to create this Caption Asset     */
+	/**  The Caption Params used to create this Caption Asset  */
     public int captionParamsId = Integer.MIN_VALUE;
-	/**  The language of the caption asset content     */
+	/**  The language of the caption asset content  */
     public KalturaLanguage language;
-	/**  The language of the caption asset content     */
+	/**  The language of the caption asset content  */
     public KalturaLanguageCode languageCode;
-	/**  Is default caption asset of the entry     */
+	/**  Is default caption asset of the entry  */
     public KalturaNullableBoolean isDefault;
-	/**  Friendly label     */
+	/**  Friendly label  */
     public String label;
-	/**  The caption format     */
+	/**  The caption format  */
     public KalturaCaptionType format;
-	/**  The status of the asset     */
+	/**  The status of the asset  */
     public KalturaCaptionAssetStatus status;
-	/**  The parent id of the asset     */
+	/**  The parent id of the asset  */
     public String parentId;
-	/**  The Accuracy of the caption content     */
+	/**  The Accuracy of the caption content  */
     public int accuracy = Integer.MIN_VALUE;
 
     public KalturaCaptionAsset() {

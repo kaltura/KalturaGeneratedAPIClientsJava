@@ -52,20 +52,20 @@ public abstract class KalturaServerNode extends KalturaObjectBase {
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
     public int heartbeatTime = Integer.MIN_VALUE;
-	/**  serverNode name     */
+	/**  serverNode name  */
     public String name;
-	/**  serverNode uniqe system name     */
+	/**  serverNode uniqe system name  */
     public String systemName;
     public String description;
-	/**  serverNode hostName     */
+	/**  serverNode hostName  */
     public String hostName;
     public KalturaServerNodeStatus status;
     public KalturaServerNodeType type;
-	/**  serverNode tags     */
+	/**  serverNode tags  */
     public String tags;
-	/**  DC where the serverNode is located     */
+	/**  DC where the serverNode is located  */
     public int dc = Integer.MIN_VALUE;
-	/**  Id of the parent serverNode     */
+	/**  Id of the parent serverNode  */
     public int parentId = Integer.MIN_VALUE;
 
     public KalturaServerNode() {

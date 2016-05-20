@@ -46,20 +46,20 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaScheduleResource extends KalturaObjectBase {
-	/**  Auto-generated unique identifier     */
+	/**  Auto-generated unique identifier  */
     public int id = Integer.MIN_VALUE;
     public int parentId = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Defines a short name     */
+	/**  Defines a short name  */
     public String name;
-	/**  Defines a unique system-name     */
+	/**  Defines a unique system-name  */
     public String systemName;
     public String description;
     public KalturaScheduleResourceStatus status;
     public String tags;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update as Unix timestamp (In seconds)     */
+	/**  Last update as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 
     public KalturaScheduleResource() {

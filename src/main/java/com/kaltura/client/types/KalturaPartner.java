@@ -56,7 +56,7 @@ public class KalturaPartner extends KalturaObjectBase {
     public String notificationUrl;
     public int appearInSearch = Integer.MIN_VALUE;
     public int createdAt = Integer.MIN_VALUE;
-	/**  deprecated - lastName and firstName replaces this field     */
+	/**  deprecated - lastName and firstName replaces this field  */
     public String adminName;
     public String adminEmail;
     public String description;
@@ -82,13 +82,13 @@ public class KalturaPartner extends KalturaObjectBase {
     public int allowMultiNotification = Integer.MIN_VALUE;
     public int adminLoginUsersQuota = Integer.MIN_VALUE;
     public String adminUserId;
-	/**  firstName and lastName replace the old (deprecated) adminName     */
+	/**  firstName and lastName replace the old (deprecated) adminName  */
     public String firstName;
-	/**  lastName and firstName replace the old (deprecated) adminName     */
+	/**  lastName and firstName replace the old (deprecated) adminName  */
     public String lastName;
-	/**  country code (2char) - this field is optional     */
+	/**  country code (2char) - this field is optional  */
     public String country;
-	/**  state code (2char) - this field is optional     */
+	/**  state code (2char) - this field is optional  */
     public String state;
     public ArrayList<KalturaKeyValue> additionalParams;
     public int publishersQuota = Integer.MIN_VALUE;

@@ -43,14 +43,14 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Flavor Params    */
+/**  Add &amp; Manage Flavor Params  */
 @SuppressWarnings("serial")
 public class KalturaFlavorParamsService extends KalturaServiceBase {
     public KalturaFlavorParamsService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Flavor Params     */
+	/**  Add new Flavor Params  */
     public KalturaFlavorParams add(KalturaFlavorParams flavorParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("flavorParams", flavorParams);
@@ -61,7 +61,7 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 
-	/**  Get Flavor Params by ID     */
+	/**  Get Flavor Params by ID  */
     public KalturaFlavorParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 
-	/**  Update Flavor Params by ID     */
+	/**  Update Flavor Params by ID  */
     public KalturaFlavorParams update(int id, KalturaFlavorParams flavorParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 
-	/**  Delete Flavor Params by ID     */
+	/**  Delete Flavor Params by ID  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -103,7 +103,7 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
     }
 
 	/**  List Flavor Params by filter with paging support (By default - all system
-	  default params will be listed too)     */
+	  default params will be listed too)  */
     public KalturaFlavorParamsListResponse list(KalturaFlavorParamsFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -115,7 +115,7 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParamsListResponse.class, resultXmlElement);
     }
 
-	/**  Get Flavor Params by Conversion Profile ID     */
+	/**  Get Flavor Params by Conversion Profile ID  */
     public List<KalturaFlavorParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("conversionProfileId", conversionProfileId);

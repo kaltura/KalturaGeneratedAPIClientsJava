@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Schedule task service lets you create and manage scheduled task profiles    */
+/**  Schedule task service lets you create and manage scheduled task profiles  */
 @SuppressWarnings("serial")
 public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
     public KalturaScheduledTaskProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add a new scheduled task profile     */
+	/**  Add a new scheduled task profile  */
     public KalturaScheduledTaskProfile add(KalturaScheduledTaskProfile scheduledTaskProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("scheduledTaskProfile", scheduledTaskProfile);
@@ -60,7 +60,7 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve a scheduled task profile by id     */
+	/**  Retrieve a scheduled task profile by id  */
     public KalturaScheduledTaskProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 
-	/**  Update an existing scheduled task profile     */
+	/**  Update an existing scheduled task profile  */
     public KalturaScheduledTaskProfile update(int id, KalturaScheduledTaskProfile scheduledTaskProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 
-	/**  Delete a scheduled task profile     */
+	/**  Delete a scheduled task profile  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List scheduled task profiles     */
+	/**  List scheduled task profiles  */
     public KalturaScheduledTaskProfileListResponse list(KalturaScheduledTaskProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

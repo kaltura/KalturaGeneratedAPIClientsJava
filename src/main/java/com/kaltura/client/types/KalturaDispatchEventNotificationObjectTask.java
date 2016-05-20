@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDispatchEventNotificationObjectTask extends KalturaObjectTask {
-	/**  The event notification template id to dispatch     */
+	/**  The event notification template id to dispatch  */
     public int eventNotificationTemplateId = Integer.MIN_VALUE;
 
     public KalturaDispatchEventNotificationObjectTask() {

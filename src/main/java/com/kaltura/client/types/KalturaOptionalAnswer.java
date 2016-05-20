@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of an optional answer for question cue point    */
+/**  A representation of an optional answer for question cue point  */
 @SuppressWarnings("serial")
 public class KalturaOptionalAnswer extends KalturaObjectBase {
     public String key;

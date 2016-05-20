@@ -44,10 +44,10 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Represents the current request country context as calculated based on the IP
-  address    */
+  address  */
 @SuppressWarnings("serial")
 public class KalturaCountryContextField extends KalturaStringField {
-	/**  The ip geo coder engine to be used     */
+	/**  The ip geo coder engine to be used  */
     public KalturaGeoCoderType geoCoderType;
 
     public KalturaCountryContextField() {

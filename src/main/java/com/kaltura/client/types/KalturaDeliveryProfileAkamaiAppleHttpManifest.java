@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileAkamaiAppleHttpManifest extends KalturaDeliveryProfile {
-	/**  Should we use timing parameters - clipTo / seekFrom     */
+	/**  Should we use timing parameters - clipTo / seekFrom  */
     public boolean supportClipping;
 
     public KalturaDeliveryProfileAkamaiAppleHttpManifest() {

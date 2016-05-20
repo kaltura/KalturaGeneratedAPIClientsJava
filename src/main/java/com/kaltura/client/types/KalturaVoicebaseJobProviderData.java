@@ -45,23 +45,23 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaVoicebaseJobProviderData extends KalturaIntegrationJobProviderData {
-	/**  Entry ID     */
+	/**  Entry ID  */
     public String entryId;
-	/**  Flavor ID     */
+	/**  Flavor ID  */
     public String flavorAssetId;
-	/**  input Transcript-asset ID     */
+	/**  input Transcript-asset ID  */
     public String transcriptId;
-	/**  Caption formats     */
+	/**  Caption formats  */
     public String captionAssetFormats;
-	/**  Api key for service provider     */
+	/**  Api key for service provider  */
     public String apiKey;
-	/**  Api key for service provider     */
+	/**  Api key for service provider  */
     public String apiPassword;
-	/**  Transcript content language     */
+	/**  Transcript content language  */
     public KalturaLanguage spokenLanguage;
-	/**  Transcript Content location     */
+	/**  Transcript Content location  */
     public String fileLocation;
-	/**  should replace remote media content     */
+	/**  should replace remote media content  */
     public boolean replaceMediaContent;
 
     public KalturaVoicebaseJobProviderData() {

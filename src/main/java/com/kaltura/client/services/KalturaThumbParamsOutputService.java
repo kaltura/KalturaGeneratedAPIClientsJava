@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Thumbnail Params Output service    */
+/**  Thumbnail Params Output service  */
 @SuppressWarnings("serial")
 public class KalturaThumbParamsOutputService extends KalturaServiceBase {
     public KalturaThumbParamsOutputService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Get thumb params output object by ID     */
+	/**  Get thumb params output object by ID  */
     public KalturaThumbParamsOutput get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -68,7 +68,7 @@ public class KalturaThumbParamsOutputService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List thumb params output objects by filter and pager     */
+	/**  List thumb params output objects by filter and pager  */
     public KalturaThumbParamsOutputListResponse list(KalturaThumbParamsOutputFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

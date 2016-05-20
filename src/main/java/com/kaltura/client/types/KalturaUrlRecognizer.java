@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlRecognizer extends KalturaObjectBase {
-	/**  The hosts that are recognized     */
+	/**  The hosts that are recognized  */
     public String hosts;
-	/**  The URI prefix we use for security     */
+	/**  The URI prefix we use for security  */
     public String uriPrefix;
 
     public KalturaUrlRecognizer() {

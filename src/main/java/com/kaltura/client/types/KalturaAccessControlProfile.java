@@ -47,22 +47,22 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlProfile extends KalturaObjectBase {
-	/**  The id of the Access Control Profile     */
+	/**  The id of the Access Control Profile  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The name of the Access Control Profile     */
+	/**  The name of the Access Control Profile  */
     public String name;
-	/**  System name of the Access Control Profile     */
+	/**  System name of the Access Control Profile  */
     public String systemName;
-	/**  The description of the Access Control Profile     */
+	/**  The description of the Access Control Profile  */
     public String description;
-	/**  Creation time as Unix timestamp (In seconds)      */
+	/**  Creation time as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Update time as Unix timestamp (In seconds)      */
+	/**  Update time as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  True if this access control profile is the partner default     */
+	/**  True if this access control profile is the partner default  */
     public KalturaNullableBoolean isDefault;
-	/**  Array of access control rules     */
+	/**  Array of access control rules  */
     public ArrayList<KalturaRule> rules;
 
     public KalturaAccessControlProfile() {

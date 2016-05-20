@@ -44,14 +44,14 @@ import java.util.List;
  */
 
 /**  UiConf service lets you create and manage your UIConfs for the various flash
-  components  This service is used by the KMC-ApplicationStudio    */
+  components  This service is used by the KMC-ApplicationStudio  */
 @SuppressWarnings("serial")
 public class KalturaUiConfService extends KalturaServiceBase {
     public KalturaUiConfService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  UIConf Add action allows you to add a UIConf to Kaltura DB     */
+	/**  UIConf Add action allows you to add a UIConf to Kaltura DB  */
     public KalturaUiConf add(KalturaUiConf uiConf) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("uiConf", uiConf);
@@ -62,7 +62,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 
-	/**  Update an existing UIConf     */
+	/**  Update an existing UIConf  */
     public KalturaUiConf update(int id, KalturaUiConf uiConf) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -74,7 +74,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 
-	/**  Retrieve a UIConf by id     */
+	/**  Retrieve a UIConf by id  */
     public KalturaUiConf get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -85,7 +85,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 
-	/**  Delete an existing UIConf     */
+	/**  Delete an existing UIConf  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -95,7 +95,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Clone an existing UIConf     */
+	/**  Clone an existing UIConf  */
     public KalturaUiConf clone(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -114,7 +114,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return this.listTemplates(filter, null);
     }
 
-	/**  retrieve a list of available template UIConfs     */
+	/**  retrieve a list of available template UIConfs  */
     public KalturaUiConfListResponse listTemplates(KalturaUiConfFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -134,7 +134,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  Retrieve a list of available UIConfs     */
+	/**  Retrieve a list of available UIConfs  */
     public KalturaUiConfListResponse list(KalturaUiConfFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -146,7 +146,7 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConfListResponse.class, resultXmlElement);
     }
 
-	/**  Retrieve a list of all available versions by object type     */
+	/**  Retrieve a list of all available versions by object type  */
     public List<KalturaUiConfTypeInfo> getAvailableTypes() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("uiconf", "getAvailableTypes", kparams, KalturaUiConfTypeInfo.class);

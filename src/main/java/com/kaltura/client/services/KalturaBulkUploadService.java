@@ -49,7 +49,7 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  Bulk upload service is used to upload &amp; manage bulk uploads using CSV files.
-   This service manages only entry bulk uploads.    */
+   This service manages only entry bulk uploads.  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadService extends KalturaServiceBase {
     public KalturaBulkUploadService(KalturaClient client) {
@@ -118,7 +118,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
 
 	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
-	  conversion profile was specified, partner's default will be used     */
+	  conversion profile was specified, partner's default will be used  */
     public KalturaBulkUpload add(int conversionProfileId, KalturaFile csvFileData, KalturaBulkUploadType bulkUploadType, String uploadedBy, String fileName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("conversionProfileId", conversionProfileId);
@@ -134,7 +134,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 
-	/**  Get bulk upload batch job by id     */
+	/**  Get bulk upload batch job by id  */
     public KalturaBulkUpload get(long id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -149,7 +149,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         return this.list(null);
     }
 
-	/**  List bulk upload batch jobs     */
+	/**  List bulk upload batch jobs  */
     public KalturaBulkUploadListResponse list(KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("pager", pager);
@@ -160,7 +160,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBulkUploadListResponse.class, resultXmlElement);
     }
 
-	/**  serve action returan the original file.     */
+	/**  serve action returan the original file.  */
     public String serve(long id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -168,7 +168,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  serveLog action returan the original file.     */
+	/**  serveLog action returan the original file.  */
     public String serveLog(long id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -176,7 +176,7 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Aborts the bulk upload and all its child jobs     */
+	/**  Aborts the bulk upload and all its child jobs  */
     public KalturaBulkUpload abort(long id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

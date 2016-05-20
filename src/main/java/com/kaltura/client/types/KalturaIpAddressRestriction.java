@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaIpAddressRestriction extends KalturaBaseRestriction {
-	/**  Ip address restriction type (Allow or deny)     */
+	/**  Ip address restriction type (Allow or deny)  */
     public KalturaIpAddressRestrictionType ipAddressRestrictionType;
-	/**  Comma separated list of ip address to allow to deny      */
+	/**  Comma separated list of ip address to allow to deny  */
     public String ipAddressList;
 
     public KalturaIpAddressRestriction() {

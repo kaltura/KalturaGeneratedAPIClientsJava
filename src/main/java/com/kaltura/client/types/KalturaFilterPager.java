@@ -44,13 +44,13 @@ import org.w3c.dom.NodeList;
  */
 
 /**  The KalturaFilterPager object enables paging management to be applied upon
-  service list actions.     */
+  service list actions.  */
 @SuppressWarnings("serial")
 public class KalturaFilterPager extends KalturaObjectBase {
-	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).     */
+	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
     public int pageSize = Integer.MIN_VALUE;
 	/**  The page number for which {pageSize} of objects should be retrieved (Default is
-	  1).     */
+	  1).  */
     public int pageIndex = Integer.MIN_VALUE;
 
     public KalturaFilterPager() {

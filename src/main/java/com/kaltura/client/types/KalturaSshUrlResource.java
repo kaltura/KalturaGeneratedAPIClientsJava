@@ -44,14 +44,14 @@ import org.w3c.dom.NodeList;
 
 /**  Used to ingest media that is available on remote SSH server and accessible using
   the supplied URL, media file will be downloaded using import job in order to
-  make the asset ready.    */
+  make the asset ready.  */
 @SuppressWarnings("serial")
 public class KalturaSshUrlResource extends KalturaUrlResource {
-	/**  SSH private key     */
+	/**  SSH private key  */
     public String privateKey;
-	/**  SSH public key     */
+	/**  SSH public key  */
     public String publicKey;
-	/**  Passphrase for SSH keys     */
+	/**  Passphrase for SSH keys  */
     public String keyPassphrase;
 
     public KalturaSshUrlResource() {

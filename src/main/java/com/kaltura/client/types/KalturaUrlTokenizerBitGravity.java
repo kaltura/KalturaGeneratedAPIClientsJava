@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerBitGravity extends KalturaUrlTokenizer {
-	/**  hashPatternRegex     */
+	/**  hashPatternRegex  */
     public String hashPatternRegex;
 
     public KalturaUrlTokenizerBitGravity() {

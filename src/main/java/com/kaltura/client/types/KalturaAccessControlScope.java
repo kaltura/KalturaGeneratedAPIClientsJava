@@ -46,20 +46,20 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlScope extends KalturaObjectBase {
-	/**  URL to be used to test domain conditions.     */
+	/**  URL to be used to test domain conditions.  */
     public String referrer;
-	/**  IP to be used to test geographic location conditions.     */
+	/**  IP to be used to test geographic location conditions.  */
     public String ip;
-	/**  Kaltura session to be used to test session and user conditions.     */
+	/**  Kaltura session to be used to test session and user conditions.  */
     public String ks;
-	/**  Browser or client application to be used to test agent conditions.     */
+	/**  Browser or client application to be used to test agent conditions.  */
     public String userAgent;
 	/**  Unix timestamp (In seconds) to be used to test entry scheduling, keep null to
-	  use now.     */
+	  use now.  */
     public int time = Integer.MIN_VALUE;
-	/**  Indicates what contexts should be tested. No contexts means any context.     */
+	/**  Indicates what contexts should be tested. No contexts means any context.  */
     public ArrayList<KalturaAccessControlContextTypeHolder> contexts;
-	/**  Array of hashes to pass to the access control profile scope     */
+	/**  Array of hashes to pass to the access control profile scope  */
     public ArrayList<KalturaKeyValue> hashes;
 
     public KalturaAccessControlScope() {

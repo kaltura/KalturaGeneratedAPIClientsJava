@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSearchAuthData extends KalturaObjectBase {
-	/**  The authentication data that further should be used for search     */
+	/**  The authentication data that further should be used for search  */
     public String authData;
-	/**  Login URL when user need to sign-in and authorize the search     */
+	/**  Login URL when user need to sign-in and authorize the search  */
     public String loginUrl;
-	/**  Information when there was an error     */
+	/**  Information when there was an error  */
     public String message;
 
     public KalturaSearchAuthData() {

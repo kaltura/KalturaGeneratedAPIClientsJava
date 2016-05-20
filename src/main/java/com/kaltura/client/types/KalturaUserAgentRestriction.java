@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUserAgentRestriction extends KalturaBaseRestriction {
-	/**  User agent restriction type (Allow or deny)     */
+	/**  User agent restriction type (Allow or deny)  */
     public KalturaUserAgentRestrictionType userAgentRestrictionType;
-	/**  A comma seperated list of user agent regular expressions     */
+	/**  A comma seperated list of user agent regular expressions  */
     public String userAgentRegexList;
 
     public KalturaUserAgentRestriction() {

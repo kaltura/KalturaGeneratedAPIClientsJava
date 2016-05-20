@@ -48,7 +48,7 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Document service lets you upload and manage document files    */
+/**  Document service lets you upload and manage document files  */
 @SuppressWarnings("serial")
 public class KalturaDocumentsService extends KalturaServiceBase {
     public KalturaDocumentsService(KalturaClient client) {
@@ -56,7 +56,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
     }
 
 	/**  Add new document entry after the specific document file was uploaded and the
-	  upload token id exists     */
+	  upload token id exists  */
     public KalturaDocumentEntry addFromUploadedFile(KalturaDocumentEntry documentEntry, String uploadTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("documentEntry", documentEntry);
@@ -76,7 +76,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.addFromEntry(sourceEntryId, documentEntry, Integer.MIN_VALUE);
     }
 
-	/**  Copy entry into new entry     */
+	/**  Copy entry into new entry  */
     public KalturaDocumentEntry addFromEntry(String sourceEntryId, KalturaDocumentEntry documentEntry, int sourceFlavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("sourceEntryId", sourceEntryId);
@@ -93,7 +93,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.addFromFlavorAsset(sourceFlavorAssetId, null);
     }
 
-	/**  Copy flavor asset into new entry     */
+	/**  Copy flavor asset into new entry  */
     public KalturaDocumentEntry addFromFlavorAsset(String sourceFlavorAssetId, KalturaDocumentEntry documentEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
@@ -113,7 +113,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.convert(entryId, conversionProfileId, null);
     }
 
-	/**  Convert entry     */
+	/**  Convert entry  */
     public long convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -131,7 +131,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get document entry by ID.     */
+	/**  Get document entry by ID.  */
     public KalturaDocumentEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -143,7 +143,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
-	/**  Update document entry. Only the properties that were set will be updated.     */
+	/**  Update document entry. Only the properties that were set will be updated.  */
     public KalturaDocumentEntry update(String entryId, KalturaDocumentEntry documentEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -155,7 +155,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
-	/**  Delete a document entry.     */
+	/**  Delete a document entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -173,7 +173,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List document entries by filter with paging support.     */
+	/**  List document entries by filter with paging support.  */
     public KalturaDocumentListResponse list(KalturaDocumentEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -198,7 +198,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
     }
 
 	/**  Upload a document file to Kaltura, then the file can be used to create a
-	  document entry.      */
+	  document entry.  */
     public String upload(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();
@@ -212,7 +212,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
     }
 
 	/**  This will queue a batch job for converting the document file to swf   Returns
-	  the URL where the new swf will be available      */
+	  the URL where the new swf will be available  */
     public String convertPptToSwf(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -232,7 +232,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.serve(entryId, flavorAssetId, false);
     }
 
-	/**  Serves the file content     */
+	/**  Serves the file content  */
     public String serve(String entryId, String flavorAssetId, boolean forceProxy) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -250,7 +250,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.serveByFlavorParamsId(entryId, flavorParamsId, false);
     }
 
-	/**  Serves the file content     */
+	/**  Serves the file content  */
     public String serveByFlavorParamsId(String entryId, String flavorParamsId, boolean forceProxy) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -264,7 +264,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.updateContent(entryId, resource, Integer.MIN_VALUE);
     }
 
-	/**  Replace content associated with the given document entry.     */
+	/**  Replace content associated with the given document entry.  */
     public KalturaDocumentEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -277,7 +277,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
-	/**  Approves document replacement     */
+	/**  Approves document replacement  */
     public KalturaDocumentEntry approveReplace(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -288,7 +288,7 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
-	/**  Cancels document replacement     */
+	/**  Cancels document replacement  */
     public KalturaDocumentEntry cancelReplace(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

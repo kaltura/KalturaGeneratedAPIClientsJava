@@ -47,21 +47,21 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSchedulerStatus extends KalturaObjectBase {
-	/**  The id of the Category     */
+	/**  The id of the Category  */
     public int id = Integer.MIN_VALUE;
-	/**  The configured id of the scheduler     */
+	/**  The configured id of the scheduler  */
     public int schedulerConfiguredId = Integer.MIN_VALUE;
-	/**  The configured id of the job worker     */
+	/**  The configured id of the job worker  */
     public int workerConfiguredId = Integer.MIN_VALUE;
-	/**  The type of the job worker.     */
+	/**  The type of the job worker.  */
     public KalturaBatchJobType workerType;
-	/**  The status type     */
+	/**  The status type  */
     public KalturaSchedulerStatusType type;
-	/**  The status value     */
+	/**  The status value  */
     public int value = Integer.MIN_VALUE;
-	/**  The id of the scheduler     */
+	/**  The id of the scheduler  */
     public int schedulerId = Integer.MIN_VALUE;
-	/**  The id of the worker     */
+	/**  The id of the worker  */
     public int workerId = Integer.MIN_VALUE;
 
     public KalturaSchedulerStatus() {

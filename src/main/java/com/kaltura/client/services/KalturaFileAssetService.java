@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage file assets    */
+/**  Manage file assets  */
 @SuppressWarnings("serial")
 public class KalturaFileAssetService extends KalturaServiceBase {
     public KalturaFileAssetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new file asset     */
+	/**  Add new file asset  */
     public KalturaFileAsset add(KalturaFileAsset fileAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("fileAsset", fileAsset);
@@ -60,7 +60,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
-	/**  Get file asset by id     */
+	/**  Get file asset by id  */
     public KalturaFileAsset get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
-	/**  Update file asset by id     */
+	/**  Update file asset by id  */
     public KalturaFileAsset update(int id, KalturaFileAsset fileAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
-	/**  Delete file asset by id     */
+	/**  Delete file asset by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -93,7 +93,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Serve file asset by id     */
+	/**  Serve file asset by id  */
     public String serve(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Set content of file asset        */
+	/**  Set content of file asset  */
     public KalturaFileAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -117,7 +117,7 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List file assets by filter and pager     */
+	/**  List file assets by filter and pager  */
     public KalturaFileAssetListResponse list(KalturaFileAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

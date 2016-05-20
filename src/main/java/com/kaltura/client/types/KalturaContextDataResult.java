@@ -46,9 +46,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaContextDataResult extends KalturaObjectBase {
-	/**  Array of messages as received from the rules that invalidated     */
+	/**  Array of messages as received from the rules that invalidated  */
     public ArrayList<KalturaString> messages;
-	/**  Array of actions as received from the rules that invalidated     */
+	/**  Array of actions as received from the rules that invalidated  */
     public ArrayList<KalturaRuleAction> actions;
 
     public KalturaContextDataResult() {

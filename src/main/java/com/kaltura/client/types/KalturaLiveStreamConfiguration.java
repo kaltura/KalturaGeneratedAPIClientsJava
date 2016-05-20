@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of a live stream configuration    */
+/**  A representation of a live stream configuration  */
 @SuppressWarnings("serial")
 public class KalturaLiveStreamConfiguration extends KalturaObjectBase {
     public KalturaPlaybackProtocol protocol;

@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  UserRole service lets you create and manage user roles    */
+/**  UserRole service lets you create and manage user roles  */
 @SuppressWarnings("serial")
 public class KalturaUserRoleService extends KalturaServiceBase {
     public KalturaUserRoleService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Adds a new user role object to the account.     */
+	/**  Adds a new user role object to the account.  */
     public KalturaUserRole add(KalturaUserRole userRole) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRole", userRole);
@@ -60,7 +60,7 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
     }
 
-	/**  Retrieves a user role object using its ID.     */
+	/**  Retrieves a user role object using its ID.  */
     public KalturaUserRole get(int userRoleId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
@@ -71,7 +71,7 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
     }
 
-	/**  Updates an existing user role object.     */
+	/**  Updates an existing user role object.  */
     public KalturaUserRole update(int userRoleId, KalturaUserRole userRole) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
@@ -83,7 +83,7 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
     }
 
-	/**  Deletes an existing user role object.     */
+	/**  Deletes an existing user role object.  */
     public KalturaUserRole delete(int userRoleId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
@@ -104,7 +104,7 @@ public class KalturaUserRoleService extends KalturaServiceBase {
 
 	/**  Lists user role objects that are associated with an account.   Blocked user
 	  roles are listed unless you use a filter to exclude them.   Deleted user roles
-	  are not listed unless you use a filter to include them.     */
+	  are not listed unless you use a filter to include them.  */
     public KalturaUserRoleListResponse list(KalturaUserRoleFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -116,7 +116,7 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRoleListResponse.class, resultXmlElement);
     }
 
-	/**  Creates a new user role object that is a duplicate of an existing role.     */
+	/**  Creates a new user role object that is a duplicate of an existing role.  */
     public KalturaUserRole clone(int userRoleId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);

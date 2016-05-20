@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest string content.    */
+/**  Used to ingest string content.  */
 @SuppressWarnings("serial")
 public class KalturaStringResource extends KalturaContentResource {
-	/**  Textual content     */
+	/**  Textual content  */
     public String content;
 
     public KalturaStringResource() {

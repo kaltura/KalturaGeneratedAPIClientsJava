@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Allows user to handle quizzes    */
+/**  Allows user to handle quizzes  */
 @SuppressWarnings("serial")
 public class KalturaQuizService extends KalturaServiceBase {
     public KalturaQuizService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows to add a quiz to an entry     */
+	/**  Allows to add a quiz to an entry  */
     public KalturaQuiz add(String entryId, KalturaQuiz quiz) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -62,7 +62,7 @@ public class KalturaQuizService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
     }
 
-	/**  Allows to update a quiz     */
+	/**  Allows to update a quiz  */
     public KalturaQuiz update(String entryId, KalturaQuiz quiz) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -74,7 +74,7 @@ public class KalturaQuizService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
     }
 
-	/**  Allows to get a quiz     */
+	/**  Allows to get a quiz  */
     public KalturaQuiz get(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -93,7 +93,7 @@ public class KalturaQuizService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List quiz objects by filter and pager     */
+	/**  List quiz objects by filter and pager  */
     public KalturaQuizListResponse list(KalturaQuizFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -106,7 +106,7 @@ public class KalturaQuizService extends KalturaServiceBase {
     }
 
 	/**  creates a pdf from quiz object   The Output type defines the file format in
-	  which the quiz will be generated   Currently only PDF files are supported     */
+	  which the quiz will be generated   Currently only PDF files are supported  */
     public String serve(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -115,7 +115,7 @@ public class KalturaQuizService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  sends a with an api request for pdf from quiz object     */
+	/**  sends a with an api request for pdf from quiz object  */
     public String getUrl(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

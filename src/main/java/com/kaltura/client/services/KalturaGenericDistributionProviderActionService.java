@@ -48,14 +48,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Generic Distribution Provider Actions service    */
+/**  Generic Distribution Provider Actions service  */
 @SuppressWarnings("serial")
 public class KalturaGenericDistributionProviderActionService extends KalturaServiceBase {
     public KalturaGenericDistributionProviderActionService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Generic Distribution Provider Action     */
+	/**  Add new Generic Distribution Provider Action  */
     public KalturaGenericDistributionProviderAction add(KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("genericDistributionProviderAction", genericDistributionProviderAction);
@@ -66,7 +66,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Add MRSS transform file to generic distribution provider action     */
+	/**  Add MRSS transform file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addMrssTransform(int id, String xslData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -90,7 +90,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return this.addMrssTransformFromFile(id, new KalturaFile(xslFile, xslFileName));
     }
 
-	/**  Add MRSS transform file to generic distribution provider action     */
+	/**  Add MRSS transform file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addMrssTransformFromFile(int id, KalturaFile xslFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -103,7 +103,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Add MRSS validate file to generic distribution provider action     */
+	/**  Add MRSS validate file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addMrssValidate(int id, String xsdData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -127,7 +127,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return this.addMrssValidateFromFile(id, new KalturaFile(xsdFile, xsdFileName));
     }
 
-	/**  Add MRSS validate file to generic distribution provider action     */
+	/**  Add MRSS validate file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addMrssValidateFromFile(int id, KalturaFile xsdFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -140,7 +140,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Add results transform file to generic distribution provider action     */
+	/**  Add results transform file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addResultsTransform(int id, String transformData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -164,7 +164,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return this.addResultsTransformFromFile(id, new KalturaFile(transformFile, transformFileName));
     }
 
-	/**  Add MRSS transform file to generic distribution provider action     */
+	/**  Add MRSS transform file to generic distribution provider action  */
     public KalturaGenericDistributionProviderAction addResultsTransformFromFile(int id, KalturaFile transformFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -177,7 +177,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Get Generic Distribution Provider Action by id     */
+	/**  Get Generic Distribution Provider Action by id  */
     public KalturaGenericDistributionProviderAction get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -188,7 +188,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Get Generic Distribution Provider Action by provider id     */
+	/**  Get Generic Distribution Provider Action by provider id  */
     public KalturaGenericDistributionProviderAction getByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("genericDistributionProviderId", genericDistributionProviderId);
@@ -200,7 +200,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Update Generic Distribution Provider Action by provider id     */
+	/**  Update Generic Distribution Provider Action by provider id  */
     public KalturaGenericDistributionProviderAction updateByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("genericDistributionProviderId", genericDistributionProviderId);
@@ -213,7 +213,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Update Generic Distribution Provider Action by id     */
+	/**  Update Generic Distribution Provider Action by id  */
     public KalturaGenericDistributionProviderAction update(int id, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -225,7 +225,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Delete Generic Distribution Provider Action by id     */
+	/**  Delete Generic Distribution Provider Action by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -235,7 +235,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         this.kalturaClient.doQueue();
     }
 
-	/**  Delete Generic Distribution Provider Action by provider id     */
+	/**  Delete Generic Distribution Provider Action by provider id  */
     public void deleteByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("genericDistributionProviderId", genericDistributionProviderId);
@@ -254,7 +254,7 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return this.list(filter, null);
     }
 
-	/**  List all distribution providers     */
+	/**  List all distribution providers  */
     public KalturaGenericDistributionProviderActionListResponse list(KalturaGenericDistributionProviderActionFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

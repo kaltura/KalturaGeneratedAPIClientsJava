@@ -44,11 +44,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaEntryScheduleEvent extends KalturaScheduleEvent {
-	/**  Entry to be used as template during content ingestion     */
+	/**  Entry to be used as template during content ingestion  */
     public String templateEntryId;
-	/**  Entries that associated with this event     */
+	/**  Entries that associated with this event  */
     public String entryIds;
-	/**  Categories that associated with this event     */
+	/**  Categories that associated with this event  */
     public String categoryIds;
 
     public KalturaEntryScheduleEvent() {

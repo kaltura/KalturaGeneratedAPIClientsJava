@@ -43,7 +43,7 @@ import com.kaltura.client.types.*;
  */
 
 /**  System service is used for internal system helpers &amp; to retrieve system
-  level information    */
+  level information  */
 @SuppressWarnings("serial")
 public class KalturaSystemService extends KalturaServiceBase {
     public KalturaSystemService(KalturaClient client) {

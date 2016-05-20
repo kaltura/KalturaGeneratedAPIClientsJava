@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDocumentEntry extends KalturaBaseEntry {
-	/**  The type of the document     */
+	/**  The type of the document  */
     public KalturaDocumentType documentType;
-	/**  Comma separated asset params ids that exists for this media entry     */
+	/**  Comma separated asset params ids that exists for this media entry  */
     public String assetParamsIds;
 
     public KalturaDocumentEntry() {

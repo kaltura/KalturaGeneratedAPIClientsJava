@@ -48,7 +48,7 @@ public class KalturaUserEntryService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-	/**  Adds a user_entry to the Kaltura DB.     */
+	/**  Adds a user_entry to the Kaltura DB.  */
     public KalturaUserEntry add(KalturaUserEntry userEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userEntry", userEntry);
@@ -105,7 +105,7 @@ public class KalturaUserEntryService extends KalturaServiceBase {
     }
 
 	/**  Submits the quiz so that it's status will be submitted and calculates the score
-	  for the quiz     */
+	  for the quiz  */
     public KalturaQuizUserEntry submitQuiz(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

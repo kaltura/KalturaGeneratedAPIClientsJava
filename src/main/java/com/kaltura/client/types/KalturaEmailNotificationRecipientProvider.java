@@ -41,7 +41,7 @@ import com.kaltura.client.KalturaObjectBase;
  */
 
 /**  Abstract core class  which provides the recipients (to, CC, BCC) for an email
-  notification    */
+  notification  */
 @SuppressWarnings("serial")
 public abstract class KalturaEmailNotificationRecipientProvider extends KalturaObjectBase {
 

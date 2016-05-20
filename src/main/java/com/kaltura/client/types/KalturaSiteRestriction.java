@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSiteRestriction extends KalturaBaseRestriction {
-	/**  The site restriction type (allow or deny)     */
+	/**  The site restriction type (allow or deny)  */
     public KalturaSiteRestrictionType siteRestrictionType;
-	/**  Comma separated list of sites (domains) to allow or deny     */
+	/**  Comma separated list of sites (domains) to allow or deny  */
     public String siteList;
 
     public KalturaSiteRestriction() {

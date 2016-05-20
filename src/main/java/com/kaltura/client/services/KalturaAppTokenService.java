@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage application authentication tokens    */
+/**  Manage application authentication tokens  */
 @SuppressWarnings("serial")
 public class KalturaAppTokenService extends KalturaServiceBase {
     public KalturaAppTokenService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new application authentication token     */
+	/**  Add new application authentication token  */
     public KalturaAppToken add(KalturaAppToken appToken) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("appToken", appToken);
@@ -61,7 +61,7 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
     }
 
-	/**  Get application authentication token by id     */
+	/**  Get application authentication token by id  */
     public KalturaAppToken get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
     }
 
-	/**  Update application authentication token by id     */
+	/**  Update application authentication token by id  */
     public KalturaAppToken update(String id, KalturaAppToken appToken) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
     }
 
-	/**  Delete application authentication token by id     */
+	/**  Delete application authentication token by id  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -102,7 +102,7 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List application authentication tokens by filter and pager     */
+	/**  List application authentication tokens by filter and pager  */
     public KalturaAppTokenListResponse list(KalturaAppTokenFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -126,8 +126,7 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return this.startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
     }
 
-	/**  Starts a new KS (kaltura Session) based on application authentication token id  
-	    */
+	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
     public KalturaSessionInfo startSession(String id, String tokenHash, String userId, KalturaSessionType type, int expiry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

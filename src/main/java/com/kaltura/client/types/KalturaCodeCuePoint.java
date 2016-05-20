@@ -47,7 +47,7 @@ public class KalturaCodeCuePoint extends KalturaCuePoint {
     public String code;
     public String description;
     public int endTime = Integer.MIN_VALUE;
-	/**  Duration in milliseconds     */
+	/**  Duration in milliseconds  */
     public int duration = Integer.MIN_VALUE;
 
     public KalturaCodeCuePoint() {

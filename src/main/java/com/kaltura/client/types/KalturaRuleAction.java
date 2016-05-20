@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaRuleAction extends KalturaObjectBase {
-	/**  The type of the action     */
+	/**  The type of the action  */
     public KalturaRuleActionType type;
 
     public KalturaRuleAction() {

@@ -44,7 +44,7 @@ import com.kaltura.client.enums.*;
  */
 
 /**  Search service allows you to search for media in various media providers  This
-  service is being used mostly by the CW component    */
+  service is being used mostly by the CW component  */
 @SuppressWarnings("serial")
 public class KalturaSearchService extends KalturaServiceBase {
     public KalturaSearchService(KalturaClient client) {
@@ -55,7 +55,7 @@ public class KalturaSearchService extends KalturaServiceBase {
         return this.search(search, null);
     }
 
-	/**  Search for media in one of the supported media providers     */
+	/**  Search for media in one of the supported media providers  */
     public KalturaSearchResultResponse search(KalturaSearch search, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("search", search);
@@ -69,7 +69,7 @@ public class KalturaSearchService extends KalturaServiceBase {
 
 	/**  Retrieve extra information about media found in search action   Some providers
 	  return only part of the fields needed to create entry from, use this action to
-	  get the rest of the fields.     */
+	  get the rest of the fields.  */
     public KalturaSearchResult getMediaInfo(KalturaSearchResult searchResult) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("searchResult", searchResult);
@@ -82,7 +82,7 @@ public class KalturaSearchService extends KalturaServiceBase {
 
 	/**  Search for media given a specific URL   Kaltura supports a searchURL action on
 	  some of the media providers.   This action will return a KalturaSearchResult
-	  object based on a given URL (assuming the media provider is supported)     */
+	  object based on a given URL (assuming the media provider is supported)  */
     public KalturaSearchResult searchUrl(KalturaMediaType mediaType, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaType", mediaType);

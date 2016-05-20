@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLike extends KalturaObjectBase {
-	/**  The id of the entry that the like belongs to     */
+	/**  The id of the entry that the like belongs to  */
     public String entryId;
-	/**  The id of user that the like belongs to     */
+	/**  The id of user that the like belongs to  */
     public String userId;
-	/**  The date of the like's creation     */
+	/**  The date of the like's creation  */
     public int createdAt = Integer.MIN_VALUE;
 
     public KalturaLike() {

@@ -45,12 +45,11 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaCategoryUserFilter extends KalturaCategoryUserBaseFilter {
 	/**  Return the list of categoryUser that are not inherited from parent category -
-	  only the direct categoryUsers.     */
+	  only the direct categoryUsers.  */
     public boolean categoryDirectMembers;
-	/**  Free text search on user id or screen name     */
+	/**  Free text search on user id or screen name  */
     public String freeText;
-	/**  Return a list of categoryUser that related to the userId in this field by groups
-	      */
+	/**  Return a list of categoryUser that related to the userId in this field by groups  */
     public String relatedGroupsByUserId;
 
     public KalturaCategoryUserFilter() {

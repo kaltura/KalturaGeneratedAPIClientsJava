@@ -44,13 +44,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlRecognizerAkamaiG2O extends KalturaUrlRecognizer {
-	/**  headerData     */
+	/**  headerData  */
     public String headerData;
-	/**  headerSign     */
+	/**  headerSign  */
     public String headerSign;
-	/**  timeout     */
+	/**  timeout  */
     public int timeout = Integer.MIN_VALUE;
-	/**  salt     */
+	/**  salt  */
     public String salt;
 
     public KalturaUrlRecognizerAkamaiG2O() {

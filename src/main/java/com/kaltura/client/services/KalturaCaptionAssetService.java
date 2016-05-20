@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on caption Asset    */
+/**  Retrieve information and invoke actions on caption Asset  */
 @SuppressWarnings("serial")
 public class KalturaCaptionAssetService extends KalturaServiceBase {
     public KalturaCaptionAssetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add caption asset        */
+	/**  Add caption asset  */
     public KalturaCaptionAsset add(String entryId, KalturaCaptionAsset captionAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -61,7 +61,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 
-	/**  Update content of caption asset        */
+	/**  Update content of caption asset  */
     public KalturaCaptionAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -73,7 +73,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 
-	/**  Update caption asset        */
+	/**  Update caption asset  */
     public KalturaCaptionAsset update(String id, KalturaCaptionAsset captionAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -89,7 +89,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return this.serveByEntryId(entryId, Integer.MIN_VALUE);
     }
 
-	/**  Serves caption by entry id and thumnail params id     */
+	/**  Serves caption by entry id and thumnail params id  */
     public String serveByEntryId(String entryId, int captionParamId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -102,7 +102,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return this.getUrl(id, Integer.MIN_VALUE);
     }
 
-	/**  Get download URL for the asset     */
+	/**  Get download URL for the asset  */
     public String getUrl(String id, int storageId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -115,7 +115,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Get remote storage existing paths for the asset     */
+	/**  Get remote storage existing paths for the asset  */
     public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -126,7 +126,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
-	/**  Serves caption by its id     */
+	/**  Serves caption by its id  */
     public String serve(String captionAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("captionAssetId", captionAssetId);
@@ -146,7 +146,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return this.serveWebVTT(captionAssetId, segmentDuration, segmentIndex, 10000);
     }
 
-	/**  Serves caption by its id converting it to segmented WebVTT     */
+	/**  Serves caption by its id converting it to segmented WebVTT  */
     public String serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex, int localTimestamp) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("captionAssetId", captionAssetId);
@@ -158,7 +158,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
     }
 
 	/**  Markss the caption as default and removes that mark from all other caption
-	  assets of the entry.     */
+	  assets of the entry.  */
     public void setAsDefault(String captionAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("captionAssetId", captionAssetId);
@@ -186,7 +186,7 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List caption Assets by filter and pager     */
+	/**  List caption Assets by filter and pager  */
     public KalturaCaptionAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

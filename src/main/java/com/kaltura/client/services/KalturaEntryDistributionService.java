@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Entry Distribution service    */
+/**  Entry Distribution service  */
 @SuppressWarnings("serial")
 public class KalturaEntryDistributionService extends KalturaServiceBase {
     public KalturaEntryDistributionService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Entry Distribution     */
+	/**  Add new Entry Distribution  */
     public KalturaEntryDistribution add(KalturaEntryDistribution entryDistribution) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryDistribution", entryDistribution);
@@ -61,7 +61,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Get Entry Distribution by id     */
+	/**  Get Entry Distribution by id  */
     public KalturaEntryDistribution get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Validates Entry Distribution by id for submission     */
+	/**  Validates Entry Distribution by id for submission  */
     public KalturaEntryDistribution validate(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Update Entry Distribution by id     */
+	/**  Update Entry Distribution by id  */
     public KalturaEntryDistribution update(int id, KalturaEntryDistribution entryDistribution) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -95,7 +95,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Delete Entry Distribution by id     */
+	/**  Delete Entry Distribution by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -113,7 +113,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all distribution providers     */
+	/**  List all distribution providers  */
     public KalturaEntryDistributionListResponse list(KalturaEntryDistributionFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -129,7 +129,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return this.submitAdd(id, false);
     }
 
-	/**  Submits Entry Distribution to the remote destination     */
+	/**  Submits Entry Distribution to the remote destination  */
     public KalturaEntryDistribution submitAdd(int id, boolean submitWhenReady) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -141,7 +141,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Submits Entry Distribution changes to the remote destination     */
+	/**  Submits Entry Distribution changes to the remote destination  */
     public KalturaEntryDistribution submitUpdate(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -152,7 +152,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Submits Entry Distribution report request     */
+	/**  Submits Entry Distribution report request  */
     public KalturaEntryDistribution submitFetchReport(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -163,7 +163,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Deletes Entry Distribution from the remote destination     */
+	/**  Deletes Entry Distribution from the remote destination  */
     public KalturaEntryDistribution submitDelete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -174,7 +174,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Retries last submit action     */
+	/**  Retries last submit action  */
     public KalturaEntryDistribution retrySubmit(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -185,7 +185,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Serves entry distribution sent data     */
+	/**  Serves entry distribution sent data  */
     public String serveSentData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -194,7 +194,7 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Serves entry distribution returned data     */
+	/**  Serves entry distribution returned data  */
     public String serveReturnedData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

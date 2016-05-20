@@ -57,7 +57,7 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
         return this.add(null);
     }
 
-	/**  Adds new upload token to upload a file     */
+	/**  Adds new upload token to upload a file  */
     public KalturaUploadToken add(KalturaUploadToken uploadToken) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("uploadToken", uploadToken);
@@ -68,7 +68,7 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUploadToken.class, resultXmlElement);
     }
 
-	/**  Get upload token by id     */
+	/**  Get upload token by id  */
     public KalturaUploadToken get(String uploadTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("uploadTokenId", uploadTokenId);
@@ -150,7 +150,7 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
 	  resume=true, finalChunk=true and the expected resumeAt position. In case an
 	  UPLOAD_TOKEN_CANNOT_MATCH_EXPECTED_SIZE exception   has been returned
 	  (indicating not all of the chunks were appended yet) the final request can be
-	  retried.          */
+	  retried.  */
     public KalturaUploadToken upload(String uploadTokenId, KalturaFile fileData, boolean resume, boolean finalChunk, double resumeAt) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("uploadTokenId", uploadTokenId);
@@ -166,7 +166,7 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUploadToken.class, resultXmlElement);
     }
 
-	/**  Deletes the upload token by upload token id     */
+	/**  Deletes the upload token by upload token id  */
     public void delete(String uploadTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("uploadTokenId", uploadTokenId);
@@ -185,7 +185,7 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
     }
 
 	/**  List upload token by filter with pager support.    When using a user session the
-	  service will be restricted to users objects only.     */
+	  service will be restricted to users objects only.  */
     public KalturaUploadTokenListResponse list(KalturaUploadTokenFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaQuestionCuePoint extends KalturaCuePoint {
-	/**  Array of key value answerKey-&gt;optionAnswer objects     */
+	/**  Array of key value answerKey-&gt;optionAnswer objects  */
     public HashMap<String, KalturaOptionalAnswer> optionalAnswers;
     public String hint;
     public String question;

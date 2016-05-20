@@ -49,34 +49,34 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaLiveEntry extends KalturaMediaEntry {
-	/**  The message to be presented when the stream is offline     */
+	/**  The message to be presented when the stream is offline  */
     public String offlineMessage;
-	/**  Recording Status Enabled/Disabled     */
+	/**  Recording Status Enabled/Disabled  */
     public KalturaRecordStatus recordStatus;
-	/**  DVR Status Enabled/Disabled     */
+	/**  DVR Status Enabled/Disabled  */
     public KalturaDVRStatus dvrStatus;
-	/**  Window of time which the DVR allows for backwards scrubbing (in minutes)     */
+	/**  Window of time which the DVR allows for backwards scrubbing (in minutes)  */
     public int dvrWindow = Integer.MIN_VALUE;
 	/**  Elapsed recording time (in msec) up to the point where the live stream was last
-	  stopped (unpublished).     */
+	  stopped (unpublished).  */
     public int lastElapsedRecordingTime = Integer.MIN_VALUE;
-	/**  Array of key value protocol-&gt;live stream url objects     */
+	/**  Array of key value protocol-&gt;live stream url objects  */
     public ArrayList<KalturaLiveStreamConfiguration> liveStreamConfigurations;
-	/**  Recorded entry id     */
+	/**  Recorded entry id  */
     public String recordedEntryId;
-	/**  Flag denoting whether entry should be published by the media server     */
+	/**  Flag denoting whether entry should be published by the media server  */
     public KalturaLivePublishStatus pushPublishEnabled;
-	/**  Array of publish configurations     */
+	/**  Array of publish configurations  */
     public ArrayList<KalturaLiveStreamPushPublishConfiguration> publishConfigurations;
-	/**  The first time in which the entry was broadcast     */
+	/**  The first time in which the entry was broadcast  */
     public int firstBroadcast = Integer.MIN_VALUE;
-	/**  The Last time in which the entry was broadcast     */
+	/**  The Last time in which the entry was broadcast  */
     public int lastBroadcast = Integer.MIN_VALUE;
 	/**  The time (unix timestamp in milliseconds) in which the entry broadcast started
-	  or 0 when the entry is off the air     */
+	  or 0 when the entry is off the air  */
     public double currentBroadcastStartTime = Double.MIN_VALUE;
     public KalturaLiveEntryRecordingOptions recordingOptions;
-	/**  the status of the entry of type EntryServerNodeStatus     */
+	/**  the status of the entry of type EntryServerNodeStatus  */
     public KalturaEntryServerNodeStatus liveStatus;
 
     public KalturaLiveEntry() {

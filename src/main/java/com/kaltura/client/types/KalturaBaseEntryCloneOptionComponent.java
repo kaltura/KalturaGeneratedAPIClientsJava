@@ -47,7 +47,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaBaseEntryCloneOptionComponent extends KalturaBaseEntryCloneOptionItem {
     public KalturaBaseEntryCloneOptions itemType;
-	/**  condition rule (include/exclude)        */
+	/**  condition rule (include/exclude)  */
     public KalturaCloneComponentSelectorType rule;
 
     public KalturaBaseEntryCloneOptionComponent() {

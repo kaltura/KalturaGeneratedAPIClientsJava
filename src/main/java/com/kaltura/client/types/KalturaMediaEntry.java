@@ -48,28 +48,28 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaMediaEntry extends KalturaPlayableEntry {
-	/**  The media type of the entry     */
+	/**  The media type of the entry  */
     public KalturaMediaType mediaType;
-	/**  Override the default conversion quality       */
+	/**  Override the default conversion quality  */
     public String conversionQuality;
-	/**  The source type of the entry      */
+	/**  The source type of the entry  */
     public KalturaSourceType sourceType;
-	/**  The search provider type used to import this entry     */
+	/**  The search provider type used to import this entry  */
     public KalturaSearchProviderType searchProviderType;
-	/**  The ID of the media in the importing site     */
+	/**  The ID of the media in the importing site  */
     public String searchProviderId;
-	/**  The user name used for credits     */
+	/**  The user name used for credits  */
     public String creditUserName;
-	/**  The URL for credits     */
+	/**  The URL for credits  */
     public String creditUrl;
 	/**  The media date extracted from EXIF data (For images) as Unix timestamp (In
-	  seconds)     */
+	  seconds)  */
     public int mediaDate = Integer.MIN_VALUE;
-	/**  The URL used for playback. This is not the download URL.     */
+	/**  The URL used for playback. This is not the download URL.  */
     public String dataUrl;
-	/**  Comma separated flavor params ids that exists for this media entry     */
+	/**  Comma separated flavor params ids that exists for this media entry  */
     public String flavorParamsIds;
-	/**  True if trim action is disabled for this entry     */
+	/**  True if trim action is disabled for this entry  */
     public KalturaNullableBoolean isTrimDisabled;
 
     public KalturaMediaEntry() {

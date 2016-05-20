@@ -48,14 +48,14 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on Thumb Asset    */
+/**  Retrieve information and invoke actions on Thumb Asset  */
 @SuppressWarnings("serial")
 public class KalturaThumbAssetService extends KalturaServiceBase {
     public KalturaThumbAssetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add thumbnail asset        */
+	/**  Add thumbnail asset  */
     public KalturaThumbAsset add(String entryId, KalturaThumbAsset thumbAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -67,7 +67,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbAsset.class, resultXmlElement);
     }
 
-	/**  Update content of thumbnail asset        */
+	/**  Update content of thumbnail asset  */
     public KalturaThumbAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -79,7 +79,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbAsset.class, resultXmlElement);
     }
 
-	/**  Update thumbnail asset        */
+	/**  Update thumbnail asset  */
     public KalturaThumbAsset update(String id, KalturaThumbAsset thumbAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -95,7 +95,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return this.serveByEntryId(entryId, Integer.MIN_VALUE);
     }
 
-	/**  Serves thumbnail by entry id and thumnail params id     */
+	/**  Serves thumbnail by entry id and thumnail params id  */
     public String serveByEntryId(String entryId, int thumbParamId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -116,7 +116,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return this.serve(thumbAssetId, version, thumbParams, null);
     }
 
-	/**  Serves thumbnail by its id     */
+	/**  Serves thumbnail by its id  */
     public String serve(String thumbAssetId, int version, KalturaThumbParams thumbParams, KalturaThumbnailServeOptions options) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("thumbAssetId", thumbAssetId);
@@ -129,7 +129,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
 
 	/**  Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
 	  thumbnail assets of the entry.   Create a new file sync link on the entry
-	  thumbnail that points to the thumbnail asset file sync.     */
+	  thumbnail that points to the thumbnail asset file sync.  */
     public void setAsDefault(String thumbAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("thumbAssetId", thumbAssetId);
@@ -204,7 +204,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List Thumbnail Assets by filter and pager     */
+	/**  List Thumbnail Assets by filter and pager  */
     public KalturaThumbAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -268,7 +268,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return this.getUrl(id, storageId, null);
     }
 
-	/**  Get download URL for the asset     */
+	/**  Get download URL for the asset  */
     public String getUrl(String id, int storageId, KalturaThumbParams thumbParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -282,7 +282,7 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Get remote storage existing paths for the asset     */
+	/**  Get remote storage existing paths for the asset  */
     public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

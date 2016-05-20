@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaAssetPropertiesCompareCondition extends KalturaCondition {
 	/**  Array of key/value objects that holds the property and the value to find and
-	  compare on an asset object     */
+	  compare on an asset object  */
     public ArrayList<KalturaKeyValue> properties;
 
     public KalturaAssetPropertiesCompareCondition() {

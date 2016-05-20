@@ -45,29 +45,29 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAsset extends KalturaObjectBase {
-	/**  The ID of the Flavor Asset     */
+	/**  The ID of the Flavor Asset  */
     public String id;
-	/**  The entry ID of the Flavor Asset     */
+	/**  The entry ID of the Flavor Asset  */
     public String entryId;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The version of the Flavor Asset     */
+	/**  The version of the Flavor Asset  */
     public int version = Integer.MIN_VALUE;
-	/**  The size (in KBytes) of the Flavor Asset     */
+	/**  The size (in KBytes) of the Flavor Asset  */
     public int size = Integer.MIN_VALUE;
-	/**  Tags used to identify the Flavor Asset in various scenarios     */
+	/**  Tags used to identify the Flavor Asset in various scenarios  */
     public String tags;
-	/**  The file extension     */
+	/**  The file extension  */
     public String fileExt;
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
     public int deletedAt = Integer.MIN_VALUE;
-	/**  System description, error message, warnings and failure cause.     */
+	/**  System description, error message, warnings and failure cause.  */
     public String description;
-	/**  Partner private data     */
+	/**  Partner private data  */
     public String partnerData;
-	/**  Partner friendly description     */
+	/**  Partner friendly description  */
     public String partnerDescription;
-	/**  Comma separated list of source flavor params ids     */
+	/**  Comma separated list of source flavor params ids  */
     public String actualSourceAssetParamsIds;
 
     public KalturaAsset() {

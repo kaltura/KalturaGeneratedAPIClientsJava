@@ -43,14 +43,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Integration service lets you dispatch integration tasks    */
+/**  Integration service lets you dispatch integration tasks  */
 @SuppressWarnings("serial")
 public class KalturaIntegrationService extends KalturaServiceBase {
     public KalturaIntegrationService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Dispatch integration task     */
+	/**  Dispatch integration task  */
     public int dispatch(KalturaIntegrationJobData data, KalturaBatchJobObjectType objectType, String objectId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("data", data);

@@ -45,10 +45,10 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Abstract class representing the final output recipients going into the batch
-  mechanism    */
+  mechanism  */
 @SuppressWarnings("serial")
 public abstract class KalturaEmailNotificationRecipientJobData extends KalturaObjectBase {
-	/**  Provider type of the job data.      */
+	/**  Provider type of the job data.  */
     public KalturaEmailNotificationRecipientProviderType providerType;
 
     public KalturaEmailNotificationRecipientJobData() {

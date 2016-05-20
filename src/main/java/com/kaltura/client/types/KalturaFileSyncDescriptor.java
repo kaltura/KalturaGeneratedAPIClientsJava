@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaFileSyncDescriptor extends KalturaObjectBase {
     public String fileSyncLocalPath;
-	/**  The translated path as used by the scheduler     */
+	/**  The translated path as used by the scheduler  */
     public String fileSyncRemoteUrl;
     public int fileSyncObjectSubType = Integer.MIN_VALUE;
 

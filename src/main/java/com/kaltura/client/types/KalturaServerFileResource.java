@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media file that is already accessible on the shared disc.    */
+/**  Used to ingest media file that is already accessible on the shared disc.  */
 @SuppressWarnings("serial")
 public class KalturaServerFileResource extends KalturaDataCenterContentResource {
-	/**  Full path to the local file      */
+	/**  Full path to the local file  */
     public String localFilePath;
 
     public KalturaServerFileResource() {

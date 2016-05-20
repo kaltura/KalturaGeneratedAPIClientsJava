@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaGeoDistanceCondition extends KalturaMatchCondition {
-	/**  The ip geo coder engine to be used     */
+	/**  The ip geo coder engine to be used  */
     public KalturaGeoCoderType geoCoderType;
 
     public KalturaGeoDistanceCondition() {

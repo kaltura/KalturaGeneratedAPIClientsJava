@@ -50,7 +50,7 @@ public class KalturaAssetParamsOutput extends KalturaAssetParams {
     public String assetId;
     public String assetVersion;
     public int readyBehavior = Integer.MIN_VALUE;
-	/**  The container format of the Flavor Params     */
+	/**  The container format of the Flavor Params  */
     public KalturaContainerFormat format;
 
     public KalturaAssetParamsOutput() {

@@ -46,7 +46,7 @@ import java.util.ArrayList;
  */
 
 /**  Playlist service lets you create,manage and play your playlists  Playlists could
-  be static (containing a fixed list of entries) or dynamic (baseed on a filter)    */
+  be static (containing a fixed list of entries) or dynamic (baseed on a filter)  */
 @SuppressWarnings("serial")
 public class KalturaPlaylistService extends KalturaServiceBase {
     public KalturaPlaylistService(KalturaClient client) {
@@ -58,7 +58,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
     }
 
 	/**  Add new playlist   Note that all entries used in a playlist will become public
-	  and may appear in KalturaNetwork     */
+	  and may appear in KalturaNetwork  */
     public KalturaPlaylist add(KalturaPlaylist playlist, boolean updateStats) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("playlist", playlist);
@@ -74,7 +74,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.get(id, -1);
     }
 
-	/**  Retrieve a playlist     */
+	/**  Retrieve a playlist  */
     public KalturaPlaylist get(String id, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -91,7 +91,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
     }
 
 	/**  Update existing playlist   Note - you cannot change playlist type. updated
-	  playlist must be of the same type.     */
+	  playlist must be of the same type.  */
     public KalturaPlaylist update(String id, KalturaPlaylist playlist, boolean updateStats) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -104,7 +104,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
     }
 
-	/**  Delete existing playlist     */
+	/**  Delete existing playlist  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -118,7 +118,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.clone(id, null);
     }
 
-	/**  Clone an existing playlist     */
+	/**  Clone an existing playlist  */
     public KalturaPlaylist clone(String id, KalturaPlaylist newPlaylist) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -138,7 +138,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List available playlists     */
+	/**  List available playlists  */
     public KalturaPlaylistListResponse list(KalturaPlaylistFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -166,7 +166,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.execute(id, detailed, playlistContext, filter, null);
     }
 
-	/**  Retrieve playlist for playing purpose     */
+	/**  Retrieve playlist for playing purpose  */
     public List<KalturaBaseEntry> execute(String id, String detailed, KalturaContext playlistContext, KalturaMediaEntryFilterForPlaylist filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -189,7 +189,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.executeFromContent(playlistType, playlistContent, detailed, null);
     }
 
-	/**  Retrieve playlist for playing purpose, based on content     */
+	/**  Retrieve playlist for playing purpose, based on content  */
     public List<KalturaBaseEntry> executeFromContent(KalturaPlaylistType playlistType, String playlistContent, String detailed, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("playlistType", playlistType);
@@ -211,7 +211,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return this.executeFromFilters(filters, totalResults, detailed, null);
     }
 
-	/**  Revrieve playlist for playing purpose, based on media entry filters     */
+	/**  Revrieve playlist for playing purpose, based on media entry filters  */
     public List<KalturaBaseEntry> executeFromFilters(ArrayList<KalturaMediaEntryFilterForPlaylist> filters, int totalResults, String detailed, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filters", filters);
@@ -225,7 +225,7 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Retrieve playlist statistics     */
+	/**  Retrieve playlist statistics  */
     public KalturaPlaylist getStatsFromContent(KalturaPlaylistType playlistType, String playlistContent) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("playlistType", playlistType);

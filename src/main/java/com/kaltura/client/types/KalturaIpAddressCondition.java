@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaIpAddressCondition extends KalturaMatchCondition {
-	/**  allow internal ips     */
+	/**  allow internal ips  */
     public boolean acceptInternalIps;
-	/**  http header name for extracting the ip     */
+	/**  http header name for extracting the ip  */
     public String httpHeader;
 
     public KalturaIpAddressCondition() {

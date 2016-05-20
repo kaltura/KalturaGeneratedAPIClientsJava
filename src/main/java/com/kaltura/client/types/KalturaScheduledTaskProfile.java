@@ -54,18 +54,18 @@ public class KalturaScheduledTaskProfile extends KalturaObjectBase {
     public String systemName;
     public String description;
     public KalturaScheduledTaskProfileStatus status;
-	/**  The type of engine to use to list objects using the given "objectFilter"     */
+	/**  The type of engine to use to list objects using the given "objectFilter"  */
     public KalturaObjectFilterEngineType objectFilterEngineType;
 	/**  A filter object (inherits KalturaFilter) that is used to list objects for
-	  scheduled tasks     */
+	  scheduled tasks  */
     public KalturaFilter objectFilter;
-	/**  A list of tasks to execute on the founded objects     */
+	/**  A list of tasks to execute on the founded objects  */
     public ArrayList<KalturaObjectTask> objectTasks;
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
     public int lastExecutionStartedAt = Integer.MIN_VALUE;
 	/**  The maximum number of result count allowed to be processed by this profile per
-	  execution     */
+	  execution  */
     public int maxTotalCountAllowed = Integer.MIN_VALUE;
 
     public KalturaScheduledTaskProfile() {

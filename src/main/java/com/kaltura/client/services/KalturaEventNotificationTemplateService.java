@@ -44,7 +44,7 @@ import com.kaltura.client.enums.*;
  */
 
 /**  Event notification template service lets you create and manage event
-  notification templates    */
+  notification templates  */
 @SuppressWarnings("serial")
 public class KalturaEventNotificationTemplateService extends KalturaServiceBase {
     public KalturaEventNotificationTemplateService(KalturaClient client) {
@@ -54,7 +54,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
 	/**  This action allows for the creation of new backend event types in the system.
 	  This action requires access to the Kaltura server Admin Console. If you're
 	  looking to register to existing event types, please use the clone action
-	  instead.     */
+	  instead.  */
     public KalturaEventNotificationTemplate add(KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("eventNotificationTemplate", eventNotificationTemplate);
@@ -72,7 +72,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
 	/**  This action allows registering to various backend event. Use this action to
 	  create notifications that will react to events such as new video was uploaded or
 	  metadata field was updated. To see the list of available event types, call the
-	  listTemplates action.     */
+	  listTemplates action.  */
     public KalturaEventNotificationTemplate clone(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 
-	/**  Retrieve an event notification template object by id     */
+	/**  Retrieve an event notification template object by id  */
     public KalturaEventNotificationTemplate get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -95,7 +95,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 
-	/**  Update an existing event notification template object     */
+	/**  Update an existing event notification template object  */
     public KalturaEventNotificationTemplate update(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -107,7 +107,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 
-	/**  Update event notification template status by id     */
+	/**  Update event notification template status by id  */
     public KalturaEventNotificationTemplate updateStatus(int id, KalturaEventNotificationTemplateStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -119,7 +119,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 
-	/**  Delete an event notification template object     */
+	/**  Delete an event notification template object  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -137,7 +137,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return this.list(filter, null);
     }
 
-	/**  list event notification template objects     */
+	/**  list event notification template objects  */
     public KalturaEventNotificationTemplateListResponse list(KalturaEventNotificationTemplateFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -168,7 +168,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplateListResponse.class, resultXmlElement);
     }
 
-	/**  Dispatch event notification object by id     */
+	/**  Dispatch event notification object by id  */
     public int dispatch(int id, KalturaEventNotificationScope scope) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -189,7 +189,7 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return this.listTemplates(filter, null);
     }
 
-	/**  Action lists the template partner event notification templates.     */
+	/**  Action lists the template partner event notification templates.  */
     public KalturaEventNotificationTemplateListResponse listTemplates(KalturaEventNotificationTemplateFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

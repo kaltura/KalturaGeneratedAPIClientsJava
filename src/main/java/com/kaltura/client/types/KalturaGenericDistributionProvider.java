@@ -46,11 +46,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaGenericDistributionProvider extends KalturaDistributionProvider {
-	/**  Auto generated     */
+	/**  Auto generated  */
     public int id = Integer.MIN_VALUE;
-	/**  Generic distribution provider creation date as Unix timestamp (In seconds)     */
+	/**  Generic distribution provider creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Generic distribution provider last update date as Unix timestamp (In seconds)     */
+	/**  Generic distribution provider last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
     public boolean isDefault;

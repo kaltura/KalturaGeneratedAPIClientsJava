@@ -47,23 +47,23 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControl extends KalturaObjectBase {
-	/**  The id of the Access Control Profile     */
+	/**  The id of the Access Control Profile  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  The name of the Access Control Profile     */
+	/**  The name of the Access Control Profile  */
     public String name;
-	/**  System name of the Access Control Profile     */
+	/**  System name of the Access Control Profile  */
     public String systemName;
-	/**  The description of the Access Control Profile     */
+	/**  The description of the Access Control Profile  */
     public String description;
-	/**  Creation date as Unix timestamp (In seconds)      */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  True if this Conversion Profile is the default     */
+	/**  True if this Conversion Profile is the default  */
     public KalturaNullableBoolean isDefault;
-	/**  Array of Access Control Restrictions     */
+	/**  Array of Access Control Restrictions  */
     public ArrayList<KalturaBaseRestriction> restrictions;
 	/**  Indicates that the access control profile is new and should be handled using
-	  KalturaAccessControlProfile object and accessControlProfile service     */
+	  KalturaAccessControlProfile object and accessControlProfile service  */
     public boolean containsUnsuportedRestrictions;
 
     public KalturaAccessControl() {

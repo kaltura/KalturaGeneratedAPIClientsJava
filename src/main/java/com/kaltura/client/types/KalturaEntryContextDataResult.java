@@ -54,22 +54,22 @@ public class KalturaEntryContextDataResult extends KalturaContextDataResult {
     public int previewLength = Integer.MIN_VALUE;
     public boolean isScheduledNow;
     public boolean isAdmin;
-	/**  http/rtmp/hdnetwork     */
+	/**  http/rtmp/hdnetwork  */
     public String streamerType;
-	/**  http/https, rtmp/rtmpe     */
+	/**  http/https, rtmp/rtmpe  */
     public String mediaProtocol;
     public String storageProfilesXML;
-	/**  Array of messages as received from the access control rules that invalidated     */
+	/**  Array of messages as received from the access control rules that invalidated  */
     public ArrayList<KalturaString> accessControlMessages;
-	/**  Array of actions as received from the access control rules that invalidated     */
+	/**  Array of actions as received from the access control rules that invalidated  */
     public ArrayList<KalturaRuleAction> accessControlActions;
 	/**  Array of allowed flavor assets according to access control limitations and
-	  requested tags     */
+	  requested tags  */
     public ArrayList<KalturaFlavorAsset> flavorAssets;
-	/**  The duration of the entry in milliseconds     */
+	/**  The duration of the entry in milliseconds  */
     public int msDuration = Integer.MIN_VALUE;
 	/**  Array of allowed flavor assets according to access control limitations and
-	  requested tags        */
+	  requested tags  */
     public HashMap<String, KalturaPluginData> pluginData;
 
     public KalturaEntryContextDataResult() {

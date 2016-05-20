@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlLimitFlavorsAction extends KalturaRuleAction {
-	/**  Comma separated list of flavor ids      */
+	/**  Comma separated list of flavor ids  */
     public String flavorParamsIds;
     public boolean isBlockedList;
 

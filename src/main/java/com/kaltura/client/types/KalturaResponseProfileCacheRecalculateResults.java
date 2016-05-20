@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaResponseProfileCacheRecalculateResults extends KalturaObjectBase {
-	/**  Last recalculated id     */
+	/**  Last recalculated id  */
     public String lastObjectKey;
-	/**  Number of recalculated keys     */
+	/**  Number of recalculated keys  */
     public int recalculated = Integer.MIN_VALUE;
 
     public KalturaResponseProfileCacheRecalculateResults() {

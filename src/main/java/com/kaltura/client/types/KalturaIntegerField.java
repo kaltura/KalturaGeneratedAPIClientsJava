@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  An int representation to return evaluated dynamic value    */
+/**  An int representation to return evaluated dynamic value  */
 @SuppressWarnings("serial")
 public abstract class KalturaIntegerField extends KalturaIntegerValue {
 

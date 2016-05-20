@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizer extends KalturaObjectBase {
-	/**  Window     */
+	/**  Window  */
     public int window = Integer.MIN_VALUE;
-	/**  key     */
+	/**  key  */
     public String key;
 
     public KalturaUrlTokenizer() {

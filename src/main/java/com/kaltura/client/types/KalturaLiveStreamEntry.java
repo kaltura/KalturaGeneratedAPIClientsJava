@@ -45,32 +45,32 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLiveStreamEntry extends KalturaLiveEntry {
-	/**  The stream id as provided by the provider     */
+	/**  The stream id as provided by the provider  */
     public String streamRemoteId;
-	/**  The backup stream id as provided by the provider     */
+	/**  The backup stream id as provided by the provider  */
     public String streamRemoteBackupId;
-	/**  Array of supported bitrates     */
+	/**  Array of supported bitrates  */
     public ArrayList<KalturaLiveStreamBitrate> bitrates;
     public String primaryBroadcastingUrl;
     public String secondaryBroadcastingUrl;
     public String primaryRtspBroadcastingUrl;
     public String secondaryRtspBroadcastingUrl;
     public String streamName;
-	/**  The stream url     */
+	/**  The stream url  */
     public String streamUrl;
-	/**  HLS URL - URL for live stream playback on mobile device     */
+	/**  HLS URL - URL for live stream playback on mobile device  */
     public String hlsStreamUrl;
-	/**  URL Manager to handle the live stream URL (for instance, add token)     */
+	/**  URL Manager to handle the live stream URL (for instance, add token)  */
     public String urlManager;
-	/**  The broadcast primary ip     */
+	/**  The broadcast primary ip  */
     public String encodingIP1;
-	/**  The broadcast secondary ip     */
+	/**  The broadcast secondary ip  */
     public String encodingIP2;
-	/**  The broadcast password     */
+	/**  The broadcast password  */
     public String streamPassword;
-	/**  The broadcast username     */
+	/**  The broadcast username  */
     public String streamUsername;
-	/**  The Streams primary server node id      */
+	/**  The Streams primary server node id  */
     public int primaryServerNodeId = Integer.MIN_VALUE;
 
     public KalturaLiveStreamEntry() {

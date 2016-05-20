@@ -49,11 +49,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaBulkUploadResult extends KalturaObjectBase {
-	/**  The id of the result        */
+	/**  The id of the result  */
     public int id = Integer.MIN_VALUE;
-	/**  The id of the parent job     */
+	/**  The id of the parent job  */
     public long bulkUploadJobId = Long.MIN_VALUE;
-	/**  The index of the line in the CSV     */
+	/**  The index of the line in the CSV  */
     public int lineIndex = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
     public KalturaBulkUploadResultStatus status;
@@ -61,7 +61,7 @@ public class KalturaBulkUploadResult extends KalturaObjectBase {
     public String objectId;
     public int objectStatus = Integer.MIN_VALUE;
     public KalturaBulkUploadObjectType bulkUploadResultObjectType;
-	/**  The data as recieved in the csv     */
+	/**  The data as recieved in the csv  */
     public String rowData;
     public String partnerData;
     public String objectErrorDescription;

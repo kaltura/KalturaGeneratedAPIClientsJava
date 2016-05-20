@@ -43,14 +43,14 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on Flavor Asset    */
+/**  Retrieve information and invoke actions on Flavor Asset  */
 @SuppressWarnings("serial")
 public class KalturaFlavorAssetService extends KalturaServiceBase {
     public KalturaFlavorAssetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add flavor asset        */
+	/**  Add flavor asset  */
     public KalturaFlavorAsset add(String entryId, KalturaFlavorAsset flavorAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -62,7 +62,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Update flavor asset        */
+	/**  Update flavor asset  */
     public KalturaFlavorAsset update(String id, KalturaFlavorAsset flavorAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -74,7 +74,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Update content of flavor asset        */
+	/**  Update content of flavor asset  */
     public KalturaFlavorAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -86,7 +86,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Get Flavor Asset by ID     */
+	/**  Get Flavor Asset by ID  */
     public KalturaFlavorAsset get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -97,7 +97,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Get Flavor Assets for Entry     */
+	/**  Get Flavor Assets for Entry  */
     public List<KalturaFlavorAsset> getByEntryId(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -116,7 +116,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List Flavor Assets by filter and pager     */
+	/**  List Flavor Assets by filter and pager  */
     public KalturaFlavorAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -128,7 +128,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAssetListResponse.class, resultXmlElement);
     }
 
-	/**  Get web playable Flavor Assets for Entry     */
+	/**  Get web playable Flavor Assets for Entry  */
     public List<KalturaFlavorAsset> getWebPlayableByEntryId(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -143,7 +143,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.convert(entryId, flavorParamsId, 0);
     }
 
-	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params     */
+	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
     public void convert(String entryId, int flavorParamsId, int priority) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -155,7 +155,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Reconvert Flavor Asset by ID     */
+	/**  Reconvert Flavor Asset by ID  */
     public void reconvert(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -165,7 +165,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Delete Flavor Asset by ID     */
+	/**  Delete Flavor Asset by ID  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -187,7 +187,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return this.getUrl(id, storageId, forceProxy, null);
     }
 
-	/**  Get download URL for the asset     */
+	/**  Get download URL for the asset  */
     public String getUrl(String id, int storageId, boolean forceProxy, KalturaFlavorAssetUrlOptions options) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -202,7 +202,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Get remote storage existing paths for the asset     */
+	/**  Get remote storage existing paths for the asset  */
     public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -217,7 +217,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return this.getDownloadUrl(id, false);
     }
 
-	/**  Get download URL for the Flavor Asset     */
+	/**  Get download URL for the Flavor Asset  */
     public String getDownloadUrl(String id, boolean useCdn) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -231,7 +231,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
     }
 
 	/**  Get Flavor Asset with the relevant Flavor Params (Flavor Params can exist
-	  without Flavor Asset &amp; vice versa)     */
+	  without Flavor Asset &amp; vice versa)  */
     public List<KalturaFlavorAssetWithParams> getFlavorAssetsWithParams(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -242,7 +242,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaFlavorAssetWithParams.class, resultXmlElement);
     }
 
-	/**  manually export an asset     */
+	/**  manually export an asset  */
     public KalturaFlavorAsset export(String assetId, int storageProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("assetId", assetId);
@@ -254,7 +254,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Set a given flavor as the original flavor     */
+	/**  Set a given flavor as the original flavor  */
     public void setAsSource(String assetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("assetId", assetId);
@@ -264,7 +264,7 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  delete all local file syncs for this asset     */
+	/**  delete all local file syncs for this asset  */
     public void deleteLocalContent(String assetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("assetId", assetId);

@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRuleAction {
-	/**  Request host regex pattern     */
+	/**  Request host regex pattern  */
     public String pattern;
-	/**  Request host regex replacment     */
+	/**  Request host regex replacment  */
     public String replacement;
 
     public KalturaAccessControlModifyRequestHostRegexAction() {

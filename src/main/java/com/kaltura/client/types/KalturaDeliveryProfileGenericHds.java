@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileGenericHds extends KalturaDeliveryProfile {
     public String pattern;
-	/**  rendererClass     */
+	/**  rendererClass  */
     public String rendererClass;
 
     public KalturaDeliveryProfileGenericHds() {

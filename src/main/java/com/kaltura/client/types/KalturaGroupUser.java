@@ -50,9 +50,9 @@ public class KalturaGroupUser extends KalturaObjectBase {
     public String groupId;
     public KalturaGroupUserStatus status;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update date as Unix timestamp (In seconds)     */
+	/**  Last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 
     public KalturaGroupUser() {

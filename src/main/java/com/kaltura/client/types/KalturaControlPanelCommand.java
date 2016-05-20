@@ -48,39 +48,39 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaControlPanelCommand extends KalturaObjectBase {
-	/**  The id of the Category     */
+	/**  The id of the Category  */
     public int id = Integer.MIN_VALUE;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Creator name     */
+	/**  Creator name  */
     public String createdBy;
-	/**  Update date as Unix timestamp (In seconds)     */
+	/**  Update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Updater name     */
+	/**  Updater name  */
     public String updatedBy;
-	/**  Creator id     */
+	/**  Creator id  */
     public int createdById = Integer.MIN_VALUE;
-	/**  The id of the scheduler that the command refers to     */
+	/**  The id of the scheduler that the command refers to  */
     public int schedulerId = Integer.MIN_VALUE;
-	/**  The id of the scheduler worker that the command refers to     */
+	/**  The id of the scheduler worker that the command refers to  */
     public int workerId = Integer.MIN_VALUE;
-	/**  The id of the scheduler worker as configured in the ini file     */
+	/**  The id of the scheduler worker as configured in the ini file  */
     public int workerConfiguredId = Integer.MIN_VALUE;
-	/**  The name of the scheduler worker that the command refers to     */
+	/**  The name of the scheduler worker that the command refers to  */
     public int workerName = Integer.MIN_VALUE;
-	/**  The index of the batch process that the command refers to     */
+	/**  The index of the batch process that the command refers to  */
     public int batchIndex = Integer.MIN_VALUE;
-	/**  The command type - stop / start / config     */
+	/**  The command type - stop / start / config  */
     public KalturaControlPanelCommandType type;
-	/**  The command target type - data center / scheduler / job / job type     */
+	/**  The command target type - data center / scheduler / job / job type  */
     public KalturaControlPanelCommandTargetType targetType;
-	/**  The command status     */
+	/**  The command status  */
     public KalturaControlPanelCommandStatus status;
-	/**  The reason for the command     */
+	/**  The reason for the command  */
     public String cause;
-	/**  Command description     */
+	/**  Command description  */
     public String description;
-	/**  Error description     */
+	/**  Error description  */
     public String errorDescription;
 
     public KalturaControlPanelCommand() {

@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage CategoryEntry - assign entry to category    */
+/**  Add &amp; Manage CategoryEntry - assign entry to category  */
 @SuppressWarnings("serial")
 public class KalturaCategoryEntryService extends KalturaServiceBase {
     public KalturaCategoryEntryService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new CategoryEntry     */
+	/**  Add new CategoryEntry  */
     public KalturaCategoryEntry add(KalturaCategoryEntry categoryEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryEntry", categoryEntry);
@@ -60,7 +60,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryEntry.class, resultXmlElement);
     }
 
-	/**  Delete CategoryEntry     */
+	/**  Delete CategoryEntry  */
     public void delete(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -79,7 +79,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all categoryEntry     */
+	/**  List all categoryEntry  */
     public KalturaCategoryEntryListResponse list(KalturaCategoryEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -95,7 +95,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return this.index(entryId, categoryId, true);
     }
 
-	/**  Index CategoryEntry by Id     */
+	/**  Index CategoryEntry by Id  */
     public int index(String entryId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -109,7 +109,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  activate CategoryEntry when it is pending moderation     */
+	/**  activate CategoryEntry when it is pending moderation  */
     public void activate(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -120,7 +120,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  activate CategoryEntry when it is pending moderation     */
+	/**  activate CategoryEntry when it is pending moderation  */
     public void reject(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -131,7 +131,7 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  update privacy context from the category     */
+	/**  update privacy context from the category  */
     public void syncPrivacyContext(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

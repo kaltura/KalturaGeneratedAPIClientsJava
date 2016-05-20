@@ -47,14 +47,14 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage CategoryUser - membership of a user in a category    */
+/**  Add &amp; Manage CategoryUser - membership of a user in a category  */
 @SuppressWarnings("serial")
 public class KalturaCategoryUserService extends KalturaServiceBase {
     public KalturaCategoryUserService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new CategoryUser     */
+	/**  Add new CategoryUser  */
     public KalturaCategoryUser add(KalturaCategoryUser categoryUser) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryUser", categoryUser);
@@ -65,7 +65,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
     }
 
-	/**  Get CategoryUser by id     */
+	/**  Get CategoryUser by id  */
     public KalturaCategoryUser get(int categoryId, String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -81,7 +81,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return this.update(categoryId, userId, categoryUser, false);
     }
 
-	/**  Update CategoryUser by id     */
+	/**  Update CategoryUser by id  */
     public KalturaCategoryUser update(int categoryId, String userId, KalturaCategoryUser categoryUser, boolean override) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -95,7 +95,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
     }
 
-	/**  Delete a CategoryUser     */
+	/**  Delete a CategoryUser  */
     public void delete(int categoryId, String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -106,7 +106,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  activate CategoryUser     */
+	/**  activate CategoryUser  */
     public KalturaCategoryUser activate(int categoryId, String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -118,7 +118,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
     }
 
-	/**  reject CategoryUser     */
+	/**  reject CategoryUser  */
     public KalturaCategoryUser deactivate(int categoryId, String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -138,7 +138,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all categories     */
+	/**  List all categories  */
     public KalturaCategoryUserListResponse list(KalturaCategoryUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -150,7 +150,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryUserListResponse.class, resultXmlElement);
     }
 
-	/**  Copy all memeber from parent category     */
+	/**  Copy all memeber from parent category  */
     public void copyFromCategory(int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("categoryId", categoryId);
@@ -164,7 +164,7 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return this.index(userId, categoryId, true);
     }
 
-	/**  Index CategoryUser by userid and category id     */
+	/**  Index CategoryUser by userid and category id  */
     public int index(String userId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);

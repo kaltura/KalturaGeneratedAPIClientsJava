@@ -44,14 +44,14 @@ import org.w3c.dom.NodeList;
  */
 
 /**  A resource that perform operation (transcoding, clipping, cropping) before the
-  flavor is ready.    */
+  flavor is ready.  */
 @SuppressWarnings("serial")
 public class KalturaOperationResource extends KalturaContentResource {
-	/**  Only KalturaEntryResource and KalturaAssetResource are supported     */
+	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
     public KalturaContentResource resource;
     public ArrayList<KalturaOperationAttributes> operationAttributes;
 	/**  ID of alternative asset params to be used instead of the system default flavor
-	  params      */
+	  params  */
     public int assetParamsId = Integer.MIN_VALUE;
 
     public KalturaOperationResource() {

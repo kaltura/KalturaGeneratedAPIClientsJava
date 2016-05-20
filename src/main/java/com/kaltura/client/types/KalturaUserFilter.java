@@ -53,9 +53,9 @@ public class KalturaUserFilter extends KalturaUserBaseFilter {
     public String roleIdsEqual;
     public String roleIdsIn;
     public String firstNameOrLastNameStartsWith;
-	/**  Permission names filter expression     */
+	/**  Permission names filter expression  */
     public String permissionNamesMultiLikeOr;
-	/**  Permission names filter expression     */
+	/**  Permission names filter expression  */
     public String permissionNamesMultiLikeAnd;
 
     public KalturaUserFilter() {

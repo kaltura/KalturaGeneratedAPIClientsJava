@@ -60,7 +60,7 @@ public class KalturaDropFolder extends KalturaObjectBase {
     public int dc = Integer.MIN_VALUE;
     public String path;
 	/**  The ammount of time, in seconds, that should pass so that a file with no change
-	  in size we'll be treated as "finished uploading to folder"     */
+	  in size we'll be treated as "finished uploading to folder"  */
     public int fileSizeCheckInterval = Integer.MIN_VALUE;
     public KalturaDropFolderFileDeletePolicy fileDeletePolicy;
     public int autoFileDeleteDays = Integer.MIN_VALUE;

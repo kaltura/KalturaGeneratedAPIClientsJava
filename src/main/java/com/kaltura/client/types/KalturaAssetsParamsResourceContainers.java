@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAssetsParamsResourceContainers extends KalturaResource {
-	/**  Array of resources associated with asset params ids     */
+	/**  Array of resources associated with asset params ids  */
     public ArrayList<KalturaAssetParamsResourceContainer> resources;
 
     public KalturaAssetsParamsResourceContainers() {

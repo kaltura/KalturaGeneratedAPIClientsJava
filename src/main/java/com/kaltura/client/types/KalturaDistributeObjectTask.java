@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDistributeObjectTask extends KalturaObjectTask {
-	/**  Distribution profile id     */
+	/**  Distribution profile id  */
     public String distributionProfileId;
 
     public KalturaDistributeObjectTask() {

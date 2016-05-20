@@ -43,16 +43,16 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates PHP statement, depends on the execution context    */
+/**  Evaluates PHP statement, depends on the execution context  */
 @SuppressWarnings("serial")
 public class KalturaHttpNotificationObjectData extends KalturaHttpNotificationData {
-	/**  Kaltura API object type     */
+	/**  Kaltura API object type  */
     public String apiObjectType;
-	/**  Data format     */
+	/**  Data format  */
     public KalturaResponseType format;
-	/**  Ignore null attributes during serialization     */
+	/**  Ignore null attributes during serialization  */
     public boolean ignoreNull;
-	/**  PHP code     */
+	/**  PHP code  */
     public String code;
 
     public KalturaHttpNotificationObjectData() {

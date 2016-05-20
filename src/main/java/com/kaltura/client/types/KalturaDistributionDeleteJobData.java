@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaDistributionDeleteJobData extends KalturaDistributionJobData {
 	/**  Flag signifying that the associated distribution item should not be moved to
-	  'removed' status     */
+	  'removed' status  */
     public boolean keepDistributionItem;
 
     public KalturaDistributionDeleteJobData() {

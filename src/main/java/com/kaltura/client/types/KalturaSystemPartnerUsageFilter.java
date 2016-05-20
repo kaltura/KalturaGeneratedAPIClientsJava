@@ -44,11 +44,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSystemPartnerUsageFilter extends KalturaFilter {
-	/**  Date range from     */
+	/**  Date range from  */
     public int fromDate = Integer.MIN_VALUE;
-	/**  Date range to     */
+	/**  Date range to  */
     public int toDate = Integer.MIN_VALUE;
-	/**  Time zone offset     */
+	/**  Time zone offset  */
     public int timezoneOffset = Integer.MIN_VALUE;
 
     public KalturaSystemPartnerUsageFilter() {

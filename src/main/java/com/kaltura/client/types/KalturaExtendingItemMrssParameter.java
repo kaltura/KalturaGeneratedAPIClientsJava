@@ -46,11 +46,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaExtendingItemMrssParameter extends KalturaObjectBase {
-	/**  XPath for the extending item     */
+	/**  XPath for the extending item  */
     public String xpath;
-	/**  Object identifier     */
+	/**  Object identifier  */
     public KalturaObjectIdentifier identifier;
-	/**  Mode of extension - append to MRSS or replace the xpath content.     */
+	/**  Mode of extension - append to MRSS or replace the xpath content.  */
     public KalturaMrssExtensionMode extensionMode;
 
     public KalturaExtendingItemMrssParameter() {

@@ -48,34 +48,34 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLiveChannelSegment extends KalturaObjectBase {
-	/**  Unique identifier     */
+	/**  Unique identifier  */
     public String id;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Segment creation date as Unix timestamp (In seconds)     */
+	/**  Segment creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Segment update date as Unix timestamp (In seconds)     */
+	/**  Segment update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Segment name     */
+	/**  Segment name  */
     public String name;
-	/**  Segment description     */
+	/**  Segment description  */
     public String description;
-	/**  Segment tags     */
+	/**  Segment tags  */
     public String tags;
 	/**  Segment could be associated with the main stream, as additional stream or as
-	  overlay     */
+	  overlay  */
     public KalturaLiveChannelSegmentType type;
     public KalturaLiveChannelSegmentStatus status;
-	/**  Live channel id     */
+	/**  Live channel id  */
     public String channelId;
-	/**  Entry id to be played     */
+	/**  Entry id to be played  */
     public String entryId;
-	/**  Segment start time trigger type     */
+	/**  Segment start time trigger type  */
     public KalturaLiveChannelSegmentTriggerType triggerType;
-	/**  Live channel segment that the trigger relates to     */
+	/**  Live channel segment that the trigger relates to  */
     public String triggerSegmentId;
-	/**  Segment play start time, in mili-seconds, according to trigger type     */
+	/**  Segment play start time, in mili-seconds, according to trigger type  */
     public double startTime = Double.MIN_VALUE;
-	/**  Segment play duration time, in mili-seconds     */
+	/**  Segment play duration time, in mili-seconds  */
     public double duration = Double.MIN_VALUE;
 
     public KalturaLiveChannelSegment() {

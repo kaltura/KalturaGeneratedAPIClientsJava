@@ -48,7 +48,7 @@ public class KalturaDistributionValidationErrorInvalidData extends KalturaDistri
     public String fieldName;
     public KalturaDistributionValidationErrorType validationErrorType;
 	/**  Parameter of the validation error   For example, minimum value for
-	  KalturaDistributionValidationErrorType::STRING_TOO_SHORT validation error     */
+	  KalturaDistributionValidationErrorType::STRING_TOO_SHORT validation error  */
     public String validationErrorParam;
 
     public KalturaDistributionValidationErrorInvalidData() {

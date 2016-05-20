@@ -44,16 +44,16 @@ import org.w3c.dom.NodeList;
 
 /**  Used to ingest media that is already ingested to Kaltura system as a different
   file in the past, the new created flavor asset will be ready immediately using a
-  file sync of link type that will point to the existing file sync.    */
+  file sync of link type that will point to the existing file sync.  */
 @SuppressWarnings("serial")
 public class KalturaFileSyncResource extends KalturaContentResource {
-	/**  The object type of the file sync object      */
+	/**  The object type of the file sync object  */
     public int fileSyncObjectType = Integer.MIN_VALUE;
-	/**  The object sub-type of the file sync object      */
+	/**  The object sub-type of the file sync object  */
     public int objectSubType = Integer.MIN_VALUE;
-	/**  The object id of the file sync object      */
+	/**  The object id of the file sync object  */
     public String objectId;
-	/**  The version of the file sync object      */
+	/**  The version of the file sync object  */
     public String version;
 
     public KalturaFileSyncResource() {

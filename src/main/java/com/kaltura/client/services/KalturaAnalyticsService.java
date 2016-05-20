@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  api for getting analytics data    */
+/**  api for getting analytics data  */
 @SuppressWarnings("serial")
 public class KalturaAnalyticsService extends KalturaServiceBase {
     public KalturaAnalyticsService(KalturaClient client) {
@@ -50,7 +50,7 @@ public class KalturaAnalyticsService extends KalturaServiceBase {
     }
 
 	/**  report query action allows to get a analytics data for specific query
-	  dimensions, metrics and filters.     */
+	  dimensions, metrics and filters.  */
     public KalturaReportResponse query(KalturaAnalyticsFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

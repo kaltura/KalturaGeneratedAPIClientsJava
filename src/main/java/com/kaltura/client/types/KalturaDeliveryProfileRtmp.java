@@ -44,10 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileRtmp extends KalturaDeliveryProfile {
-	/**  enforceRtmpe     */
+	/**  enforceRtmpe  */
     public boolean enforceRtmpe;
-	/**  a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix) 
-	     */
+	/**  a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)  */
     public String prefix;
 
     public KalturaDeliveryProfileRtmp() {

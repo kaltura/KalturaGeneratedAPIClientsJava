@@ -51,7 +51,7 @@ public class KalturaAdCuePoint extends KalturaCuePoint {
     public KalturaAdType adType;
     public String title;
     public int endTime = Integer.MIN_VALUE;
-	/**  Duration in milliseconds     */
+	/**  Duration in milliseconds  */
     public int duration = Integer.MIN_VALUE;
 
     public KalturaAdCuePoint() {

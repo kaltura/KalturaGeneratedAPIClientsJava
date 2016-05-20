@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Stats Service    */
+/**  Stats Service  */
 @SuppressWarnings("serial")
 public class KalturaLiveStatsService extends KalturaServiceBase {
     public KalturaLiveStatsService(KalturaClient client) {
@@ -50,7 +50,7 @@ public class KalturaLiveStatsService extends KalturaServiceBase {
     }
 
 	/**  Will write to the event log a single line representing the event  
-	  KalturaStatsEvent $event     */
+	  KalturaStatsEvent $event  */
     public boolean collect(KalturaLiveStatsEvent event) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("event", event);

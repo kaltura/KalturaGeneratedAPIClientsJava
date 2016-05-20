@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
-	/**  Delivery profile ids     */
+	/**  Delivery profile ids  */
     public ArrayList<KalturaKeyValue> deliveryProfileIds;
-	/**  Overdie edge server default configuration - json format     */
+	/**  Overdie edge server default configuration - json format  */
     public String config;
 
     public KalturaEdgeServerNode() {

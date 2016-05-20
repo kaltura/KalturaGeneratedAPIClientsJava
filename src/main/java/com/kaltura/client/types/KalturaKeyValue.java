@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  */
 
 /**  A key value pair representation to return an array of key-value pairs
-  (associative array)    */
+  (associative array)  */
 @SuppressWarnings("serial")
 public class KalturaKeyValue extends KalturaObjectBase {
     public String key;

@@ -45,12 +45,12 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaVarConsolePartnerFilter extends KalturaPartnerFilter {
-	/**  Eq filter for the partner's group type        */
+	/**  Eq filter for the partner's group type  */
     public KalturaPartnerGroupType groupTypeEq;
-	/**  In filter for the partner's group type        */
+	/**  In filter for the partner's group type  */
     public String groupTypeIn;
 	/**  Filter for partner permissions- filter contains comma-separated string of
-	  permission names which the returned partners should have.        */
+	  permission names which the returned partners should have.  */
     public String partnerPermissionsExist;
 
     public KalturaVarConsolePartnerFilter() {

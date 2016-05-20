@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Job Data representing the provider of recipients for a single categoryId    */
+/**  Job Data representing the provider of recipients for a single categoryId  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationCategoryRecipientJobData extends KalturaEmailNotificationRecipientJobData {
     public KalturaCategoryUserFilter categoryUserFilter;

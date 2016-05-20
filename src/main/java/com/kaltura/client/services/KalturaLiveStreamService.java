@@ -48,7 +48,7 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Live Stream service lets you manage live stream entries    */
+/**  Live Stream service lets you manage live stream entries  */
 @SuppressWarnings("serial")
 public class KalturaLiveStreamService extends KalturaServiceBase {
     public KalturaLiveStreamService(KalturaClient client) {
@@ -59,7 +59,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.add(liveStreamEntry, null);
     }
 
-	/**  Adds new live stream entry.   The entry will be queued for provision.     */
+	/**  Adds new live stream entry.   The entry will be queued for provision.  */
     public KalturaLiveStreamEntry add(KalturaLiveStreamEntry liveStreamEntry, KalturaSourceType sourceType) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("liveStreamEntry", liveStreamEntry);
@@ -75,7 +75,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get live stream entry by ID.     */
+	/**  Get live stream entry by ID.  */
     public KalturaLiveStreamEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -99,7 +99,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.authenticate(entryId, token, hostname, mediaServerIndex, null);
     }
 
-	/**  Authenticate live-stream entry against stream token and partner limitations     */
+	/**  Authenticate live-stream entry against stream token and partner limitations  */
     public KalturaLiveStreamEntry authenticate(String entryId, String token, String hostname, KalturaEntryServerNodeType mediaServerIndex, String applicationName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -114,7 +114,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Update live stream entry. Only the properties that were set will be updated.     */
+	/**  Update live stream entry. Only the properties that were set will be updated.  */
     public KalturaLiveStreamEntry update(String entryId, KalturaLiveStreamEntry liveStreamEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -126,7 +126,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Delete a live stream entry.     */
+	/**  Delete a live stream entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -144,7 +144,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List live stream entries by filter with paging support.     */
+	/**  List live stream entries by filter with paging support.  */
     public KalturaLiveStreamListResponse list(KalturaLiveStreamEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -168,7 +168,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.updateOfflineThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName));
     }
 
-	/**  Update live stream entry thumbnail using a raw jpeg file     */
+	/**  Update live stream entry thumbnail using a raw jpeg file  */
     public KalturaLiveStreamEntry updateOfflineThumbnailJpeg(String entryId, KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -181,7 +181,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Update entry thumbnail using url     */
+	/**  Update entry thumbnail using url  */
     public KalturaLiveStreamEntry updateOfflineThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -193,7 +193,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Delivering the status of a live stream (on-air/offline) if it is possible     */
+	/**  Delivering the status of a live stream (on-air/offline) if it is possible  */
     public boolean isLive(String id, KalturaPlaybackProtocol protocol) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -214,7 +214,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.addLiveStreamPushPublishConfiguration(entryId, protocol, url, null);
     }
 
-	/**  Add new pushPublish configuration to entry     */
+	/**  Add new pushPublish configuration to entry  */
     public KalturaLiveStreamEntry addLiveStreamPushPublishConfiguration(String entryId, KalturaPlaybackProtocol protocol, String url, KalturaLiveStreamConfiguration liveStreamConfiguration) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -228,7 +228,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
-	/**  Remove push publish configuration from entry     */
+	/**  Remove push publish configuration from entry  */
     public KalturaLiveStreamEntry removeLiveStreamPushPublishConfiguration(String entryId, KalturaPlaybackProtocol protocol) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -244,7 +244,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
     }
 
-	/**  Append recorded video to live entry     */
+	/**  Append recorded video to live entry  */
     public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, boolean isLastChunk) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -268,7 +268,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, KalturaEntryServerNodeStatus.get(1));
     }
 
-	/**  Register media server to live entry     */
+	/**  Register media server to live entry  */
     public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex, String applicationName, KalturaEntryServerNodeStatus liveEntryStatus) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -283,7 +283,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
     }
 
-	/**  Unregister media server from live entry     */
+	/**  Unregister media server from live entry  */
     public KalturaLiveEntry unregisterMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -296,7 +296,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
     }
 
-	/**  Validates all registered media servers     */
+	/**  Validates all registered media servers  */
     public void validateRegisteredMediaServers(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -306,7 +306,7 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Creates perioding metadata sync-point events on a live stream     */
+	/**  Creates perioding metadata sync-point events on a live stream  */
     public void createPeriodicSyncPoints(String entryId, int interval, int duration) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

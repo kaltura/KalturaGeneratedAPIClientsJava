@@ -50,7 +50,7 @@ public class KalturaDropFolderContentFileHandlerConfig extends KalturaDropFolder
 	  might be extracted from the file name and used if defined:   -
 	  (?P&lt;referenceId&gt;\w+) - will be used as the drop folder file's parsed slug.
 	    - (?P&lt;flavorName&gt;\w+)  - will be used as the drop folder file's parsed
-	  flavor.     */
+	  flavor.  */
     public String slugRegex;
 
     public KalturaDropFolderContentFileHandlerConfig() {

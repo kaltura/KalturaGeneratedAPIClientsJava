@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  This class represents object-specific data passed to the   bulk upload job.    */
+/**  This class represents object-specific data passed to the   bulk upload job.  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadEntryData extends KalturaBulkUploadObjectData {
-	/**  Selected profile id for all bulk entries        */
+	/**  Selected profile id for all bulk entries  */
     public int conversionProfileId = Integer.MIN_VALUE;
 
     public KalturaBulkUploadEntryData() {

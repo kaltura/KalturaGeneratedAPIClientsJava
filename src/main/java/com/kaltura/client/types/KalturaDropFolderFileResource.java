@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that dropped through drop folder    */
+/**  Used to ingest media that dropped through drop folder  */
 @SuppressWarnings("serial")
 public class KalturaDropFolderFileResource extends KalturaDataCenterContentResource {
-	/**  Id of the drop folder file object     */
+	/**  Id of the drop folder file object  */
     public int dropFolderFileId = Integer.MIN_VALUE;
 
     public KalturaDropFolderFileResource() {

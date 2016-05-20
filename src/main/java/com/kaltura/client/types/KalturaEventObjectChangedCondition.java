@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEventObjectChangedCondition extends KalturaCondition {
-	/**  Comma seperated column names to be tested     */
+	/**  Comma seperated column names to be tested  */
     public String modifiedColumns;
 
     public KalturaEventObjectChangedCondition() {

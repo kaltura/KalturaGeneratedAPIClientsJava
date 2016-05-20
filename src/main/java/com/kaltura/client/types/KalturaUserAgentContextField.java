@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the current request user agent context    */
+/**  Represents the current request user agent context  */
 @SuppressWarnings("serial")
 public class KalturaUserAgentContextField extends KalturaStringField {
 

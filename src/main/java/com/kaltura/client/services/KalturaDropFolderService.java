@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  DropFolder service lets you create and manage drop folders    */
+/**  DropFolder service lets you create and manage drop folders  */
 @SuppressWarnings("serial")
 public class KalturaDropFolderService extends KalturaServiceBase {
     public KalturaDropFolderService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add a new KalturaDropFolder object     */
+	/**  Allows you to add a new KalturaDropFolder object  */
     public KalturaDropFolder add(KalturaDropFolder dropFolder) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolder", dropFolder);
@@ -60,7 +60,7 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 
-	/**  Retrieve a KalturaDropFolder object by ID     */
+	/**  Retrieve a KalturaDropFolder object by ID  */
     public KalturaDropFolder get(int dropFolderId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderId", dropFolderId);
@@ -71,7 +71,7 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 
-	/**  Update an existing KalturaDropFolder object     */
+	/**  Update an existing KalturaDropFolder object  */
     public KalturaDropFolder update(int dropFolderId, KalturaDropFolder dropFolder) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderId", dropFolderId);
@@ -83,7 +83,7 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 
-	/**  Mark the KalturaDropFolder object as deleted     */
+	/**  Mark the KalturaDropFolder object as deleted  */
     public KalturaDropFolder delete(int dropFolderId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderId", dropFolderId);
@@ -102,7 +102,7 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List KalturaDropFolder objects     */
+	/**  List KalturaDropFolder objects  */
     public KalturaDropFolderListResponse list(KalturaDropFolderFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

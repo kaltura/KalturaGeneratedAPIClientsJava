@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaCaptureThumbJobData extends KalturaJobData {
     public String srcFileSyncLocalPath;
-	/**  The translated path as used by the scheduler     */
+	/**  The translated path as used by the scheduler  */
     public String actualSrcFileSyncLocalPath;
     public String srcFileSyncRemoteUrl;
     public int thumbParamsOutputId = Integer.MIN_VALUE;

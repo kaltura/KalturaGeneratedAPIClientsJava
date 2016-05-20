@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Short link service    */
+/**  Short link service  */
 @SuppressWarnings("serial")
 public class KalturaShortLinkService extends KalturaServiceBase {
     public KalturaShortLinkService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List short link objects by filter and pager     */
+	/**  List short link objects by filter and pager  */
     public KalturaShortLinkListResponse list(KalturaShortLinkFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -69,7 +69,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaShortLinkListResponse.class, resultXmlElement);
     }
 
-	/**  Allows you to add a short link object     */
+	/**  Allows you to add a short link object  */
     public KalturaShortLink add(KalturaShortLink shortLink) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("shortLink", shortLink);
@@ -80,7 +80,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
     }
 
-	/**  Retrieve an short link object by id     */
+	/**  Retrieve an short link object by id  */
     public KalturaShortLink get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -91,7 +91,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
     }
 
-	/**  Update exisitng short link     */
+	/**  Update exisitng short link  */
     public KalturaShortLink update(String id, KalturaShortLink shortLink) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -103,7 +103,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
     }
 
-	/**  Mark the short link as deleted     */
+	/**  Mark the short link as deleted  */
     public KalturaShortLink delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -118,7 +118,7 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return this.goto_(id, false);
     }
 
-	/**  Serves short link     */
+	/**  Serves short link  */
     public String goto_(String id, boolean proxy) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of an RTMP live stream configuration    */
+/**  A representation of an RTMP live stream configuration  */
 @SuppressWarnings("serial")
 public class KalturaLiveStreamPushPublishRTMPConfiguration extends KalturaLiveStreamPushPublishConfiguration {
     public String userId;

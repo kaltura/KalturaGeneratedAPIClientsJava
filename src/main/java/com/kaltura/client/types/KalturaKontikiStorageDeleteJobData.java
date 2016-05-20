@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaKontikiStorageDeleteJobData extends KalturaStorageDeleteJobData {
-	/**  Unique Kontiki MOID for the content uploaded to Kontiki        */
+	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
     public String contentMoid;
     public String serviceToken;
 

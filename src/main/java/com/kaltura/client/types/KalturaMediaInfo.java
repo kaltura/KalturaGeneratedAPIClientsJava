@@ -46,60 +46,60 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaMediaInfo extends KalturaObjectBase {
-	/**  The id of the media info     */
+	/**  The id of the media info  */
     public int id = Integer.MIN_VALUE;
-	/**  The id of the related flavor asset     */
+	/**  The id of the related flavor asset  */
     public String flavorAssetId;
-	/**  The file size     */
+	/**  The file size  */
     public int fileSize = Integer.MIN_VALUE;
-	/**  The container format     */
+	/**  The container format  */
     public String containerFormat;
-	/**  The container id     */
+	/**  The container id  */
     public String containerId;
-	/**  The container profile     */
+	/**  The container profile  */
     public String containerProfile;
-	/**  The container duration     */
+	/**  The container duration  */
     public int containerDuration = Integer.MIN_VALUE;
-	/**  The container bit rate     */
+	/**  The container bit rate  */
     public int containerBitRate = Integer.MIN_VALUE;
-	/**  The video format     */
+	/**  The video format  */
     public String videoFormat;
-	/**  The video codec id     */
+	/**  The video codec id  */
     public String videoCodecId;
-	/**  The video duration     */
+	/**  The video duration  */
     public int videoDuration = Integer.MIN_VALUE;
-	/**  The video bit rate     */
+	/**  The video bit rate  */
     public int videoBitRate = Integer.MIN_VALUE;
-	/**  The video bit rate mode     */
+	/**  The video bit rate mode  */
     public KalturaBitRateMode videoBitRateMode;
-	/**  The video width     */
+	/**  The video width  */
     public int videoWidth = Integer.MIN_VALUE;
-	/**  The video height     */
+	/**  The video height  */
     public int videoHeight = Integer.MIN_VALUE;
-	/**  The video frame rate     */
+	/**  The video frame rate  */
     public double videoFrameRate = Double.MIN_VALUE;
-	/**  The video display aspect ratio (dar)     */
+	/**  The video display aspect ratio (dar)  */
     public double videoDar = Double.MIN_VALUE;
     public int videoRotation = Integer.MIN_VALUE;
-	/**  The audio format     */
+	/**  The audio format  */
     public String audioFormat;
-	/**  The audio codec id     */
+	/**  The audio codec id  */
     public String audioCodecId;
-	/**  The audio duration     */
+	/**  The audio duration  */
     public int audioDuration = Integer.MIN_VALUE;
-	/**  The audio bit rate     */
+	/**  The audio bit rate  */
     public int audioBitRate = Integer.MIN_VALUE;
-	/**  The audio bit rate mode     */
+	/**  The audio bit rate mode  */
     public KalturaBitRateMode audioBitRateMode;
-	/**  The number of audio channels     */
+	/**  The number of audio channels  */
     public int audioChannels = Integer.MIN_VALUE;
-	/**  The audio sampling rate     */
+	/**  The audio sampling rate  */
     public int audioSamplingRate = Integer.MIN_VALUE;
-	/**  The audio resolution     */
+	/**  The audio resolution  */
     public int audioResolution = Integer.MIN_VALUE;
-	/**  The writing library     */
+	/**  The writing library  */
     public String writingLib;
-	/**  The data as returned by the mediainfo command line     */
+	/**  The data as returned by the mediainfo command line  */
     public String rawData;
     public String multiStreamInfo;
     public int scanType = Integer.MIN_VALUE;

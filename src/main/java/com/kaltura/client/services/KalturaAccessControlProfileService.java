@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage access control profiles    */
+/**  Manage access control profiles  */
 @SuppressWarnings("serial")
 public class KalturaAccessControlProfileService extends KalturaServiceBase {
     public KalturaAccessControlProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new access control profile     */
+	/**  Add new access control profile  */
     public KalturaAccessControlProfile add(KalturaAccessControlProfile accessControlProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("accessControlProfile", accessControlProfile);
@@ -60,7 +60,7 @@ public class KalturaAccessControlProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAccessControlProfile.class, resultXmlElement);
     }
 
-	/**  Get access control profile by id     */
+	/**  Get access control profile by id  */
     public KalturaAccessControlProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaAccessControlProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAccessControlProfile.class, resultXmlElement);
     }
 
-	/**  Update access control profile by id     */
+	/**  Update access control profile by id  */
     public KalturaAccessControlProfile update(int id, KalturaAccessControlProfile accessControlProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaAccessControlProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAccessControlProfile.class, resultXmlElement);
     }
 
-	/**  Delete access control profile by id     */
+	/**  Delete access control profile by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaAccessControlProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List access control profiles by filter and pager     */
+	/**  List access control profiles by filter and pager  */
     public KalturaAccessControlProfileListResponse list(KalturaAccessControlProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

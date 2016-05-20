@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationRecipient extends KalturaObjectBase {
-	/**  Recipient e-mail address     */
+	/**  Recipient e-mail address  */
     public KalturaStringValue email;
-	/**  Recipient name     */
+	/**  Recipient name  */
     public KalturaStringValue name;
 
     public KalturaEmailNotificationRecipient() {

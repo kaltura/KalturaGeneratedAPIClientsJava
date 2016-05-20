@@ -46,12 +46,11 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaSyndicationFeedEntryCount extends KalturaObjectBase {
 	/**  the total count of entries that should appear in the feed without flavor
-	  filtering     */
+	  filtering  */
     public int totalEntryCount = Integer.MIN_VALUE;
-	/**  count of entries that will appear in the feed (including all relevant filters)  
-	    */
+	/**  count of entries that will appear in the feed (including all relevant filters)  */
     public int actualEntryCount = Integer.MIN_VALUE;
-	/**  count of entries that requires transcoding in order to be included in feed     */
+	/**  count of entries that requires transcoding in order to be included in feed  */
     public int requireTranscodingCount = Integer.MIN_VALUE;
 
     public KalturaSyndicationFeedEntryCount() {

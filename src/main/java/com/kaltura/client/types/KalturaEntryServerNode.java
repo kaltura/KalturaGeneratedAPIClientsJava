@@ -47,7 +47,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaEntryServerNode extends KalturaObjectBase {
-	/**  unique auto-generated identifier     */
+	/**  unique auto-generated identifier  */
     public int id = Integer.MIN_VALUE;
     public String entryId;
     public int serverNodeId = Integer.MIN_VALUE;

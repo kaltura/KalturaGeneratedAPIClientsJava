@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCountryRestriction extends KalturaBaseRestriction {
-	/**  Country restriction type (Allow or deny)     */
+	/**  Country restriction type (Allow or deny)  */
     public KalturaCountryRestrictionType countryRestrictionType;
-	/**  Comma separated list of country codes to allow to deny      */
+	/**  Comma separated list of country codes to allow to deny  */
     public String countryList;
 
     public KalturaCountryRestriction() {

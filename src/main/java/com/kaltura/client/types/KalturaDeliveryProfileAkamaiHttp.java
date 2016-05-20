@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileAkamaiHttp extends KalturaDeliveryProfile {
-	/**  Should we use intelliseek     */
+	/**  Should we use intelliseek  */
     public boolean useIntelliseek;
 
     public KalturaDeliveryProfileAkamaiHttp() {

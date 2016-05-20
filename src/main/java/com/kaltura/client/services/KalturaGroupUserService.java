@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage GroupUser    */
+/**  Add &amp; Manage GroupUser  */
 @SuppressWarnings("serial")
 public class KalturaGroupUserService extends KalturaServiceBase {
     public KalturaGroupUserService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new GroupUser     */
+	/**  Add new GroupUser  */
     public KalturaGroupUser add(KalturaGroupUser groupUser) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("groupUser", groupUser);
@@ -60,7 +60,7 @@ public class KalturaGroupUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaGroupUser.class, resultXmlElement);
     }
 
-	/**  delete by userId and groupId     */
+	/**  delete by userId and groupId  */
     public void delete(String userId, String groupId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userId", userId);
@@ -79,7 +79,7 @@ public class KalturaGroupUserService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all GroupUsers     */
+	/**  List all GroupUsers  */
     public KalturaGroupUserListResponse list(KalturaGroupUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

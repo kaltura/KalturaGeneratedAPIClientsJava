@@ -48,7 +48,7 @@ public class KalturaThumbCuePoint extends KalturaCuePoint {
     public String assetId;
     public String description;
     public String title;
-	/**  The sub type of the ThumbCuePoint     */
+	/**  The sub type of the ThumbCuePoint  */
     public KalturaThumbCuePointSubType subType;
 
     public KalturaThumbCuePoint() {

@@ -43,11 +43,11 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Configuration for extended item in the Kaltura MRSS feeds    */
+/**  Configuration for extended item in the Kaltura MRSS feeds  */
 @SuppressWarnings("serial")
 public abstract class KalturaObjectIdentifier extends KalturaObjectBase {
 	/**  Comma separated string of enum values denoting which features of the item need
-	  to be included in the MRSS      */
+	  to be included in the MRSS  */
     public String extendedFeatures;
 
     public KalturaObjectIdentifier() {

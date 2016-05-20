@@ -49,14 +49,14 @@ import com.kaltura.client.KalturaFile;
  */
 
 /**  Media service lets you upload and manage media files (images / videos &amp;
-  audio)    */
+  audio)  */
 @SuppressWarnings("serial")
 public class KalturaMediaService extends KalturaServiceBase {
     public KalturaMediaService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add entry        */
+	/**  Add entry  */
     public KalturaMediaEntry add(KalturaMediaEntry entry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entry", entry);
@@ -73,7 +73,7 @@ public class KalturaMediaService extends KalturaServiceBase {
 
 	/**  Add content to media entry which is not yet associated with content (therefore
 	  is in status NO_CONTENT).      If the requirement is to replace the entry's
-	  associated content, use action updateContent.        */
+	  associated content, use action updateContent.  */
     public KalturaMediaEntry addContent(String entryId, KalturaResource resource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -86,7 +86,22 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
-	  for import and then for conversion.     */
+	  for import and then for conversion.   This action should be exposed only to the
+	  batches  */
+    public KalturaMediaEntry addFromBulk(KalturaMediaEntry mediaEntry, String url, int bulkUploadId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("mediaEntry", mediaEntry);
+        kparams.add("url", url);
+        kparams.add("bulkUploadId", bulkUploadId);
+        this.kalturaClient.queueServiceCall("media", "addFromBulk", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
+	  for import and then for conversion.  */
     public KalturaMediaEntry addFromUrl(KalturaMediaEntry mediaEntry, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
@@ -107,7 +122,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Adds new media entry by importing the media file from a search provider.   This
-	  action should be used with the search service result.     */
+	  action should be used with the search service result.  */
     public KalturaMediaEntry addFromSearchResult(KalturaMediaEntry mediaEntry, KalturaSearchResult searchResult) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
@@ -120,7 +135,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Add new entry after the specific media file was uploaded and the upload token id
-	  exists     */
+	  exists  */
     public KalturaMediaEntry addFromUploadedFile(KalturaMediaEntry mediaEntry, String uploadTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
@@ -132,8 +147,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Add new entry after the file was recored on the server and the token id exists  
-	    */
+	/**  Add new entry after the file was recored on the server and the token id exists  */
     public KalturaMediaEntry addFromRecordedWebcam(KalturaMediaEntry mediaEntry, String webcamTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
@@ -153,7 +167,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
     }
 
-	/**  Copy entry into new entry     */
+	/**  Copy entry into new entry  */
     public KalturaMediaEntry addFromEntry(String sourceEntryId, KalturaMediaEntry mediaEntry, int sourceFlavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("sourceEntryId", sourceEntryId);
@@ -170,7 +184,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.addFromFlavorAsset(sourceFlavorAssetId, null);
     }
 
-	/**  Copy flavor asset into new entry     */
+	/**  Copy flavor asset into new entry  */
     public KalturaMediaEntry addFromFlavorAsset(String sourceFlavorAssetId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
@@ -190,7 +204,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.convert(entryId, conversionProfileId, null);
     }
 
-	/**  Convert entry     */
+	/**  Convert entry  */
     public long convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -208,7 +222,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get media entry by ID.     */
+	/**  Get media entry by ID.  */
     public KalturaMediaEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -228,7 +242,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.getMrss(entryId, extendingItemsArray, null);
     }
 
-	/**  Get MRSS by entry id      XML will return as an escaped string        */
+	/**  Get MRSS by entry id      XML will return as an escaped string  */
     public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray, String features) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -242,7 +256,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Update media entry. Only the properties that were set will be updated.     */
+	/**  Update media entry. Only the properties that were set will be updated.  */
     public KalturaMediaEntry update(String entryId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -262,7 +276,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.updateContent(entryId, resource, conversionProfileId, null);
     }
 
-	/**  Replace content associated with the media entry.     */
+	/**  Replace content associated with the media entry.  */
     public KalturaMediaEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -276,7 +290,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Delete a media entry.     */
+	/**  Delete a media entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -286,7 +300,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Approves media replacement     */
+	/**  Approves media replacement  */
     public KalturaMediaEntry approveReplace(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -297,7 +311,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Cancels media replacement     */
+	/**  Cancels media replacement  */
     public KalturaMediaEntry cancelReplace(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -316,7 +330,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List media entries by filter with paging support.     */
+	/**  List media entries by filter with paging support.  */
     public KalturaMediaListResponse list(KalturaMediaEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -332,7 +346,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  Count media entries by filter.     */
+	/**  Count media entries by filter.  */
     public int count(KalturaMediaEntryFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -357,7 +371,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Upload a media file to Kaltura, then the file can be used to create a media
-	  entry.     */
+	  entry.  */
     public String upload(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();
@@ -375,7 +389,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
-	  params id not specified, source flavor will be used by default     */
+	  params id not specified, source flavor will be used by default  */
     public KalturaMediaEntry updateThumbnail(String entryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -394,7 +408,7 @@ public class KalturaMediaService extends KalturaServiceBase {
 
 	/**  Update media entry thumbnail from a different entry by a specified time offset
 	  (In seconds)   If flavor params id not specified, source flavor will be used by
-	  default     */
+	  default  */
     public KalturaMediaEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -420,7 +434,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName));
     }
 
-	/**  Update media entry thumbnail using a raw jpeg file     */
+	/**  Update media entry thumbnail using a raw jpeg file  */
     public KalturaMediaEntry updateThumbnailJpeg(String entryId, KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -433,7 +447,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Update entry thumbnail using url     */
+	/**  Update entry thumbnail using url  */
     public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -446,7 +460,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Request a new conversion job, this can be used to convert the media entry to a
-	  different format     */
+	  different format  */
     public int requestConversion(String entryId, String fileFormat) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -459,7 +473,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Flag inappropriate media entry for moderation     */
+	/**  Flag inappropriate media entry for moderation  */
     public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("moderationFlag", moderationFlag);
@@ -470,7 +484,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
-	  will make the entry non playable)     */
+	  will make the entry non playable)  */
     public void reject(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -481,7 +495,7 @@ public class KalturaMediaService extends KalturaServiceBase {
     }
 
 	/**  Approve the media entry and mark the pending flags (if any) as moderated (this
-	  will make the entry playable)     */
+	  will make the entry playable)  */
     public void approve(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -495,7 +509,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return this.listFlags(entryId, null);
     }
 
-	/**  List all pending flags for the media entry     */
+	/**  List all pending flags for the media entry  */
     public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -507,7 +521,7 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
     }
 
-	/**  Anonymously rank a media entry, no validation is done on duplicate rankings     */
+	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
     public void anonymousRank(String entryId, int rank) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -564,7 +578,7 @@ public class KalturaMediaService extends KalturaServiceBase {
 
 	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
-	  conversion profile was specified, partner's default will be used     */
+	  conversion profile was specified, partner's default will be used  */
     public KalturaBulkUpload bulkUploadAdd(KalturaFile fileData, KalturaBulkUploadJobData bulkUploadData, KalturaBulkUploadEntryData bulkUploadEntryData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();

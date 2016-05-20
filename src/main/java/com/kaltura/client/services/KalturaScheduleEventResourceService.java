@@ -43,14 +43,14 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  ScheduleEventResource service lets you create and manage connections between
-  events and resources    */
+  events and resources  */
 @SuppressWarnings("serial")
 public class KalturaScheduleEventResourceService extends KalturaServiceBase {
     public KalturaScheduleEventResourceService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add a new KalturaScheduleEventResource object     */
+	/**  Allows you to add a new KalturaScheduleEventResource object  */
     public KalturaScheduleEventResource add(KalturaScheduleEventResource scheduleEventResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("scheduleEventResource", scheduleEventResource);
@@ -61,7 +61,7 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
     }
 
-	/**  Retrieve a KalturaScheduleEventResource object by ID     */
+	/**  Retrieve a KalturaScheduleEventResource object by ID  */
     public KalturaScheduleEventResource get(int scheduleEventId, int scheduleResourceId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("scheduleEventId", scheduleEventId);
@@ -73,7 +73,7 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
     }
 
-	/**  Update an existing KalturaScheduleEventResource object     */
+	/**  Update an existing KalturaScheduleEventResource object  */
     public KalturaScheduleEventResource update(int scheduleEventId, int scheduleResourceId, KalturaScheduleEventResource scheduleEventResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("scheduleEventId", scheduleEventId);
@@ -86,7 +86,7 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
     }
 
-	/**  Mark the KalturaScheduleEventResource object as deleted     */
+	/**  Mark the KalturaScheduleEventResource object as deleted  */
     public void delete(int scheduleEventId, int scheduleResourceId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("scheduleEventId", scheduleEventId);
@@ -105,7 +105,7 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List KalturaScheduleEventResource objects     */
+	/**  List KalturaScheduleEventResource objects  */
     public KalturaScheduleEventResourceListResponse list(KalturaScheduleEventResourceFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

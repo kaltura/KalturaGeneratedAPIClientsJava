@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage live channel segments    */
+/**  Manage live channel segments  */
 @SuppressWarnings("serial")
 public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
     public KalturaLiveChannelSegmentService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new live channel segment     */
+	/**  Add new live channel segment  */
     public KalturaLiveChannelSegment add(KalturaLiveChannelSegment liveChannelSegment) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("liveChannelSegment", liveChannelSegment);
@@ -60,7 +60,7 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
     }
 
-	/**  Get live channel segment by id     */
+	/**  Get live channel segment by id  */
     public KalturaLiveChannelSegment get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
     }
 
-	/**  Update live channel segment by id     */
+	/**  Update live channel segment by id  */
     public KalturaLiveChannelSegment update(int id, KalturaLiveChannelSegment liveChannelSegment) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
     }
 
-	/**  Delete live channel segment by id     */
+	/**  Delete live channel segment by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List live channel segments by filter and pager     */
+	/**  List live channel segments by filter and pager  */
     public KalturaLiveChannelSegmentListResponse list(KalturaLiveChannelSegmentFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConversionAttribute extends KalturaObjectBase {
-	/**  The id of the flavor params, set to null for source flavor     */
+	/**  The id of the flavor params, set to null for source flavor  */
     public int flavorParamsId = Integer.MIN_VALUE;
-	/**  Attribute name       */
+	/**  Attribute name  */
     public String name;
-	/**  Attribute value       */
+	/**  Attribute value  */
     public String value;
 
     public KalturaConversionAttribute() {

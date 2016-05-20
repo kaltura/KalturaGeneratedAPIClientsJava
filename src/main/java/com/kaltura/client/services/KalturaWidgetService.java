@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  widget service for full widget management    */
+/**  widget service for full widget management  */
 @SuppressWarnings("serial")
 public class KalturaWidgetService extends KalturaServiceBase {
     public KalturaWidgetService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new widget, can be attached to entry or kshow   SourceWidget is ignored.     */
+	/**  Add new widget, can be attached to entry or kshow   SourceWidget is ignored.  */
     public KalturaWidget add(KalturaWidget widget) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("widget", widget);
@@ -60,7 +60,7 @@ public class KalturaWidgetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
     }
 
-	/**  Update exisiting widget      */
+	/**  Update exisiting widget  */
     public KalturaWidget update(String id, KalturaWidget widget) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaWidgetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
     }
 
-	/**  Get widget by id     */
+	/**  Get widget by id  */
     public KalturaWidget get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaWidgetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
     }
 
-	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId     */
+	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
     public KalturaWidget clone(KalturaWidget widget) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("widget", widget);
@@ -102,7 +102,7 @@ public class KalturaWidgetService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  Retrieve a list of available widget depends on the filter given     */
+	/**  Retrieve a list of available widget depends on the filter given  */
     public KalturaWidgetListResponse list(KalturaWidgetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

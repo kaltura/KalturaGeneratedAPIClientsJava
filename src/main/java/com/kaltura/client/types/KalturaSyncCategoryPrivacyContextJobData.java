@@ -44,13 +44,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSyncCategoryPrivacyContextJobData extends KalturaJobData {
-	/**  category id     */
+	/**  category id  */
     public int categoryId = Integer.MIN_VALUE;
 	/**  Saves the last category entry creation date that was updated      In case of
-	  crash the batch will restart from that point        */
+	  crash the batch will restart from that point  */
     public int lastUpdatedCategoryEntryCreatedAt = Integer.MIN_VALUE;
 	/**  Saves the last sub category creation date that was updated      In case of crash
-	  the batch will restart from that point        */
+	  the batch will restart from that point  */
     public int lastUpdatedCategoryCreatedAt = Integer.MIN_VALUE;
 
     public KalturaSyncCategoryPrivacyContextJobData() {

@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
  */
 
 /**  API class for recipient provider which constructs a dynamic list of recipients
-  according to a user filter    */
+  according to a user filter  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationUserRecipientProvider extends KalturaEmailNotificationRecipientProvider {
     public KalturaUserFilter filter;

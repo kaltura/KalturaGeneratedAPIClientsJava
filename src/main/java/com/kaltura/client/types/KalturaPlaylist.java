@@ -47,20 +47,20 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaPlaylist extends KalturaBaseEntry {
 	/**  Content of the playlist -    XML if the playlistType is dynamic    text if the
-	  playlistType is static    url if the playlistType is mRss      */
+	  playlistType is static    url if the playlistType is mRss  */
     public String playlistContent;
     public ArrayList<KalturaMediaEntryFilterForPlaylist> filters;
-	/**  Maximum count of results to be returned in playlist execution     */
+	/**  Maximum count of results to be returned in playlist execution  */
     public int totalResults = Integer.MIN_VALUE;
-	/**  Type of playlist     */
+	/**  Type of playlist  */
     public KalturaPlaylistType playlistType;
-	/**  Number of plays     */
+	/**  Number of plays  */
     public int plays = Integer.MIN_VALUE;
-	/**  Number of views     */
+	/**  Number of views  */
     public int views = Integer.MIN_VALUE;
-	/**  The duration in seconds     */
+	/**  The duration in seconds  */
     public int duration = Integer.MIN_VALUE;
-	/**  The url for this playlist     */
+	/**  The url for this playlist  */
     public String executeUrl;
 
     public KalturaPlaylist() {

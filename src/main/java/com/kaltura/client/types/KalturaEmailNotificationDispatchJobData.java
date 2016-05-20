@@ -46,31 +46,30 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationDispatchJobData extends KalturaEventNotificationDispatchJobData {
-	/**  Define the email sender email     */
+	/**  Define the email sender email  */
     public String fromEmail;
-	/**  Define the email sender name     */
+	/**  Define the email sender name  */
     public String fromName;
-	/**  Email recipient emails and names, key is mail address and value is the name     */
+	/**  Email recipient emails and names, key is mail address and value is the name  */
     public KalturaEmailNotificationRecipientJobData to;
-	/**  Email cc emails and names, key is mail address and value is the name     */
+	/**  Email cc emails and names, key is mail address and value is the name  */
     public KalturaEmailNotificationRecipientJobData cc;
-	/**  Email bcc emails and names, key is mail address and value is the name     */
+	/**  Email bcc emails and names, key is mail address and value is the name  */
     public KalturaEmailNotificationRecipientJobData bcc;
 	/**  Email addresses that a replies should be sent to, key is mail address and value
-	  is the name     */
+	  is the name  */
     public KalturaEmailNotificationRecipientJobData replyTo;
-	/**  Define the email priority     */
+	/**  Define the email priority  */
     public KalturaEmailNotificationTemplatePriority priority;
-	/**  Email address that a reading confirmation will be sent to     */
+	/**  Email address that a reading confirmation will be sent to  */
     public String confirmReadingTo;
 	/**  Hostname to use in Message-Id and Received headers and as default HELO string.  
-	   If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
-	      */
+	   If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.  */
     public String hostname;
 	/**  Sets the message ID to be used in the Message-Id header.   If empty, a unique id
-	  will be generated.     */
+	  will be generated.  */
     public String messageID;
-	/**  Adds a e-mail custom header     */
+	/**  Adds a e-mail custom header  */
     public ArrayList<KalturaKeyValue> customHeaders;
 
     public KalturaEmailNotificationDispatchJobData() {

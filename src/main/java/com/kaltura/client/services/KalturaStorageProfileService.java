@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Storage Profiles service    */
+/**  Storage Profiles service  */
 @SuppressWarnings("serial")
 public class KalturaStorageProfileService extends KalturaServiceBase {
     public KalturaStorageProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Adds a storage profile to the Kaltura DB.     */
+	/**  Adds a storage profile to the Kaltura DB.  */
     public KalturaStorageProfile add(KalturaStorageProfile storageProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("storageProfile", storageProfile);
@@ -71,7 +71,7 @@ public class KalturaStorageProfileService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Get storage profile by id     */
+	/**  Get storage profile by id  */
     public KalturaStorageProfile get(int storageProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("storageProfileId", storageProfileId);
@@ -82,7 +82,7 @@ public class KalturaStorageProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaStorageProfile.class, resultXmlElement);
     }
 
-	/**  Update storage profile by id      */
+	/**  Update storage profile by id  */
     public KalturaStorageProfile update(int storageProfileId, KalturaStorageProfile storageProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("storageProfileId", storageProfileId);

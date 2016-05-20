@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for xml bulk upload    */
+/**  Represents the Bulk upload job data for xml bulk upload  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadXmlJobData extends KalturaBulkUploadJobData {
 

@@ -46,10 +46,10 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDetachedResponseProfile extends KalturaBaseResponseProfile {
-	/**  Friendly name     */
+	/**  Friendly name  */
     public String name;
     public KalturaResponseProfileType type;
-	/**  Comma separated fields list to be included or excluded     */
+	/**  Comma separated fields list to be included or excluded  */
     public String fields;
     public KalturaRelatedFilter filter;
     public KalturaFilterPager pager;

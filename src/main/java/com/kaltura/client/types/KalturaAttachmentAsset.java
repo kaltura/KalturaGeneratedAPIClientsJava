@@ -46,13 +46,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAttachmentAsset extends KalturaAsset {
-	/**  The filename of the attachment asset content     */
+	/**  The filename of the attachment asset content  */
     public String filename;
-	/**  Attachment asset title     */
+	/**  Attachment asset title  */
     public String title;
-	/**  The attachment format     */
+	/**  The attachment format  */
     public KalturaAttachmentType format;
-	/**  The status of the asset     */
+	/**  The status of the asset  */
     public KalturaAttachmentAssetStatus status;
 
     public KalturaAttachmentAsset() {

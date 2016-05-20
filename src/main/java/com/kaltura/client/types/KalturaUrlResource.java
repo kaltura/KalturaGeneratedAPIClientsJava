@@ -44,12 +44,12 @@ import org.w3c.dom.NodeList;
 
 /**  Used to ingest media that is available on remote server and accessible using the
   supplied URL, media file will be downloaded using import job in order to make
-  the asset ready.    */
+  the asset ready.  */
 @SuppressWarnings("serial")
 public class KalturaUrlResource extends KalturaContentResource {
-	/**  Remote URL, FTP, HTTP or HTTPS      */
+	/**  Remote URL, FTP, HTTP or HTTPS  */
     public String url;
-	/**  Force Import Job      */
+	/**  Force Import Job  */
     public boolean forceAsyncDownload;
 
     public KalturaUrlResource() {

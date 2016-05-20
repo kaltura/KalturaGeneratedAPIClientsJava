@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCameraScheduleResource extends KalturaScheduleResource {
-	/**  URL of the stream     */
+	/**  URL of the stream  */
     public String streamUrl;
 
     public KalturaCameraScheduleResource() {

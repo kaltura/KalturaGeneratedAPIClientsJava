@@ -47,22 +47,22 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaITunesSyndicationFeed extends KalturaBaseSyndicationFeed {
-	/**  feed description            */
+	/**  feed description  */
     public String feedDescription;
-	/**  feed language            */
+	/**  feed language  */
     public String language;
-	/**  feed landing page (i.e publisher website)            */
+	/**  feed landing page (i.e publisher website)  */
     public String feedLandingPage;
-	/**  author/publisher name            */
+	/**  author/publisher name  */
     public String ownerName;
-	/**  publisher email            */
+	/**  publisher email  */
     public String ownerEmail;
-	/**  podcast thumbnail            */
+	/**  podcast thumbnail  */
     public String feedImageUrl;
     public KalturaITunesSyndicationFeedCategories category;
     public KalturaITunesSyndicationFeedAdultValues adultContent;
     public String feedAuthor;
-	/**  true in case you want to enfore the palylist order on the       */
+	/**  true in case you want to enfore the palylist order on the  */
     public KalturaNullableBoolean enforceOrder;
 
     public KalturaITunesSyndicationFeed() {

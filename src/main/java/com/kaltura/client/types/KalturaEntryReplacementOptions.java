@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Advanced configuration for entry replacement process    */
+/**  Advanced configuration for entry replacement process  */
 @SuppressWarnings("serial")
 public class KalturaEntryReplacementOptions extends KalturaObjectBase {
-	/**  If true manually created thumbnails will not be deleted on entry replacement     */
+	/**  If true manually created thumbnails will not be deleted on entry replacement  */
     public int keepManualThumbnails = Integer.MIN_VALUE;
 
     public KalturaEntryReplacementOptions() {

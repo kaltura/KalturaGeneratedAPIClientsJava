@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the current session user e-mail address context    */
+/**  Represents the current session user e-mail address context  */
 @SuppressWarnings("serial")
 public class KalturaUserEmailContextField extends KalturaStringField {
 

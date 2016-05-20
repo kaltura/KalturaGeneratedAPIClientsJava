@@ -48,7 +48,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaQuiz extends KalturaObjectBase {
     public int version = Integer.MIN_VALUE;
-	/**  Array of key value ui related objects     */
+	/**  Array of key value ui related objects  */
     public ArrayList<KalturaKeyValue> uiAttributes;
     public KalturaNullableBoolean showResultOnAnswer;
     public KalturaNullableBoolean showCorrectKeyOnAnswer;

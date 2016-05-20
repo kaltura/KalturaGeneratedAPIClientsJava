@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConvertEntryFlavorsObjectTask extends KalturaObjectTask {
-	/**  Comma separated list of flavor param ids to convert     */
+	/**  Comma separated list of flavor param ids to convert  */
     public String flavorParamsIds;
-	/**  Should reconvert when flavor already exists?     */
+	/**  Should reconvert when flavor already exists?  */
     public boolean reconvert;
 
     public KalturaConvertEntryFlavorsObjectTask() {

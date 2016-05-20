@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeleteJobData extends KalturaJobData {
-	/**  The filter should return the list of objects that need to be deleted.     */
+	/**  The filter should return the list of objects that need to be deleted.  */
     public KalturaFilter filter;
 
     public KalturaDeleteJobData() {

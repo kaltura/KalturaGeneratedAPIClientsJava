@@ -49,40 +49,40 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConversionProfile extends KalturaObjectBase {
-	/**  The id of the Conversion Profile     */
+	/**  The id of the Conversion Profile  */
     public int id = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
     public KalturaConversionProfileStatus status;
     public KalturaConversionProfileType type;
-	/**  The name of the Conversion Profile     */
+	/**  The name of the Conversion Profile  */
     public String name;
-	/**  System name of the Conversion Profile     */
+	/**  System name of the Conversion Profile  */
     public String systemName;
-	/**  Comma separated tags     */
+	/**  Comma separated tags  */
     public String tags;
-	/**  The description of the Conversion Profile     */
+	/**  The description of the Conversion Profile  */
     public String description;
-	/**  ID of the default entry to be used for template data     */
+	/**  ID of the default entry to be used for template data  */
     public String defaultEntryId;
-	/**  Creation date as Unix timestamp (In seconds)      */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  List of included flavor ids (comma separated)     */
+	/**  List of included flavor ids (comma separated)  */
     public String flavorParamsIds;
-	/**  Indicates that this conversion profile is system default     */
+	/**  Indicates that this conversion profile is system default  */
     public KalturaNullableBoolean isDefault;
-	/**  Indicates that this conversion profile is partner default     */
+	/**  Indicates that this conversion profile is partner default  */
     public boolean isPartnerDefault;
-	/**  Cropping dimensions     */
+	/**  Cropping dimensions  */
     public KalturaCropDimensions cropDimensions;
-	/**  Clipping start position (in miliseconds)     */
+	/**  Clipping start position (in miliseconds)  */
     public int clipStart = Integer.MIN_VALUE;
-	/**  Clipping duration (in miliseconds)     */
+	/**  Clipping duration (in miliseconds)  */
     public int clipDuration = Integer.MIN_VALUE;
-	/**  XSL to transform ingestion MRSS XML     */
+	/**  XSL to transform ingestion MRSS XML  */
     public String xslTransformation;
-	/**  ID of default storage profile to be used for linked net-storage file syncs     */
+	/**  ID of default storage profile to be used for linked net-storage file syncs  */
     public int storageProfileId = Integer.MIN_VALUE;
-	/**  Media parser type to be used for extract media     */
+	/**  Media parser type to be used for extract media  */
     public KalturaMediaParserType mediaParserType;
 
     public KalturaConversionProfile() {

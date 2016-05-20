@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCaptionAssetItem extends KalturaObjectBase {
-	/**  The Caption Asset object     */
+	/**  The Caption Asset object  */
     public KalturaCaptionAsset asset;
-	/**  The entry object     */
+	/**  The entry object  */
     public KalturaBaseEntry entry;
     public int startTime = Integer.MIN_VALUE;
     public int endTime = Integer.MIN_VALUE;

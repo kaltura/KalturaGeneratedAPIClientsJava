@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Generic Distribution Provider service    */
+/**  Generic Distribution Provider service  */
 @SuppressWarnings("serial")
 public class KalturaGenericDistributionProviderService extends KalturaServiceBase {
     public KalturaGenericDistributionProviderService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Generic Distribution Provider     */
+	/**  Add new Generic Distribution Provider  */
     public KalturaGenericDistributionProvider add(KalturaGenericDistributionProvider genericDistributionProvider) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("genericDistributionProvider", genericDistributionProvider);
@@ -60,7 +60,7 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
         return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
     }
 
-	/**  Get Generic Distribution Provider by id     */
+	/**  Get Generic Distribution Provider by id  */
     public KalturaGenericDistributionProvider get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
         return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
     }
 
-	/**  Update Generic Distribution Provider by id     */
+	/**  Update Generic Distribution Provider by id  */
     public KalturaGenericDistributionProvider update(int id, KalturaGenericDistributionProvider genericDistributionProvider) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
         return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
     }
 
-	/**  Delete Generic Distribution Provider by id     */
+	/**  Delete Generic Distribution Provider by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
         return this.list(filter, null);
     }
 
-	/**  List all distribution providers     */
+	/**  List all distribution providers  */
     public KalturaGenericDistributionProviderListResponse list(KalturaGenericDistributionProviderFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

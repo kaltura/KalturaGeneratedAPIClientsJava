@@ -48,9 +48,9 @@ public class KalturaScheduleEventResource extends KalturaObjectBase {
     public int eventId = Integer.MIN_VALUE;
     public int resourceId = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Last update as Unix timestamp (In seconds)     */
+	/**  Last update as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 
     public KalturaScheduleEventResource() {

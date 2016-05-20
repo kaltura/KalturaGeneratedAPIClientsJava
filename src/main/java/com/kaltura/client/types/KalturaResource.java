@@ -41,7 +41,7 @@ import com.kaltura.client.KalturaObjectBase;
  */
 
 /**  Used to ingest entry object, as single resource or list of resources accompanied
-  by asset params ids.    */
+  by asset params ids.  */
 @SuppressWarnings("serial")
 public abstract class KalturaResource extends KalturaObjectBase {
 

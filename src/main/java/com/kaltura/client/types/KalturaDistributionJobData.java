@@ -50,17 +50,17 @@ public class KalturaDistributionJobData extends KalturaJobData {
     public KalturaDistributionProfile distributionProfile;
     public int entryDistributionId = Integer.MIN_VALUE;
     public KalturaEntryDistribution entryDistribution;
-	/**  Id of the media in the remote system     */
+	/**  Id of the media in the remote system  */
     public String remoteId;
     public KalturaDistributionProviderType providerType;
-	/**  Additional data that relevant for the provider only     */
+	/**  Additional data that relevant for the provider only  */
     public KalturaDistributionJobProviderData providerData;
-	/**  The results as returned from the remote destination     */
+	/**  The results as returned from the remote destination  */
     public String results;
-	/**  The data as sent to the remote destination     */
+	/**  The data as sent to the remote destination  */
     public String sentData;
 	/**  Stores array of media files that submitted to the destination site   Could be
-	  used later for media update      */
+	  used later for media update  */
     public ArrayList<KalturaDistributionRemoteMediaFile> mediaFiles;
 
     public KalturaDistributionJobData() {

@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaEventNotificationArrayParameter extends KalturaEventNotificationParameter {
     public ArrayList<KalturaString> values;
-	/**  Used to restrict the values to close list     */
+	/**  Used to restrict the values to close list  */
     public ArrayList<KalturaStringValue> allowedValues;
 
     public KalturaEventNotificationArrayParameter() {

@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerAkamaiRtmp extends KalturaUrlTokenizer {
-	/**  profile     */
+	/**  profile  */
     public String profile;
-	/**  Type     */
+	/**  Type  */
     public String type;
     public String aifp;
     public boolean usePrefix;

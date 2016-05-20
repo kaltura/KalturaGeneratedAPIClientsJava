@@ -43,14 +43,14 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Thumb Params    */
+/**  Add &amp; Manage Thumb Params  */
 @SuppressWarnings("serial")
 public class KalturaThumbParamsService extends KalturaServiceBase {
     public KalturaThumbParamsService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Thumb Params     */
+	/**  Add new Thumb Params  */
     public KalturaThumbParams add(KalturaThumbParams thumbParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("thumbParams", thumbParams);
@@ -61,7 +61,7 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 
-	/**  Get Thumb Params by ID     */
+	/**  Get Thumb Params by ID  */
     public KalturaThumbParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 
-	/**  Update Thumb Params by ID     */
+	/**  Update Thumb Params by ID  */
     public KalturaThumbParams update(int id, KalturaThumbParams thumbParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 
-	/**  Delete Thumb Params by ID     */
+	/**  Delete Thumb Params by ID  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -103,7 +103,7 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
     }
 
 	/**  List Thumb Params by filter with paging support (By default - all system default
-	  params will be listed too)     */
+	  params will be listed too)  */
     public KalturaThumbParamsListResponse list(KalturaThumbParamsFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -115,7 +115,7 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParamsListResponse.class, resultXmlElement);
     }
 
-	/**  Get Thumb Params by Conversion Profile ID     */
+	/**  Get Thumb Params by Conversion Profile ID  */
     public List<KalturaThumbParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("conversionProfileId", conversionProfileId);

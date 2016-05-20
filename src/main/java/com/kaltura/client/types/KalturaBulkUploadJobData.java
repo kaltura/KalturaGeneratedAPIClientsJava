@@ -47,31 +47,31 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaBulkUploadJobData extends KalturaJobData {
     public String userId;
-	/**  The screen name of the user     */
+	/**  The screen name of the user  */
     public String uploadedBy;
-	/**  Selected profile id for all bulk entries     */
+	/**  Selected profile id for all bulk entries  */
     public int conversionProfileId = Integer.MIN_VALUE;
-	/**  Created by the API     */
+	/**  Created by the API  */
     public String resultsFileLocalPath;
-	/**  Created by the API     */
+	/**  Created by the API  */
     public String resultsFileUrl;
-	/**  Number of created entries     */
+	/**  Number of created entries  */
     public int numOfEntries = Integer.MIN_VALUE;
-	/**  Number of created objects     */
+	/**  Number of created objects  */
     public int numOfObjects = Integer.MIN_VALUE;
-	/**  The bulk upload file path     */
+	/**  The bulk upload file path  */
     public String filePath;
-	/**  Type of object for bulk upload     */
+	/**  Type of object for bulk upload  */
     public KalturaBulkUploadObjectType bulkUploadObjectType;
-	/**  Friendly name of the file, used to be recognized later in the logs.     */
+	/**  Friendly name of the file, used to be recognized later in the logs.  */
     public String fileName;
-	/**  Data pertaining to the objects being uploaded     */
+	/**  Data pertaining to the objects being uploaded  */
     public KalturaBulkUploadObjectData objectData;
-	/**  Type of bulk upload     */
+	/**  Type of bulk upload  */
     public KalturaBulkUploadType type;
-	/**  Recipients of the email for bulk upload success/failure     */
+	/**  Recipients of the email for bulk upload success/failure  */
     public String emailRecipients;
-	/**  Number of objects that finished on error status     */
+	/**  Number of objects that finished on error status  */
     public int numOfErrorObjects = Integer.MIN_VALUE;
 
     public KalturaBulkUploadJobData() {

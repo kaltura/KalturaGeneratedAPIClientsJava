@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlServeRemoteEdgeServerAction extends KalturaRuleAction {
-	/**  Comma separated list of edge servers playBack should be done from     */
+	/**  Comma separated list of edge servers playBack should be done from  */
     public String edgeServerIds;
 
     public KalturaAccessControlServeRemoteEdgeServerAction() {

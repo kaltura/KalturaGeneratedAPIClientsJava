@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  EmailIngestionProfile service lets you manage email ingestion profile records    */
+/**  EmailIngestionProfile service lets you manage email ingestion profile records  */
 @SuppressWarnings("serial")
 public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
     public KalturaEmailIngestionProfileService(KalturaClient client) {
@@ -50,7 +50,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
     }
 
 	/**  EmailIngestionProfile Add action allows you to add a EmailIngestionProfile to
-	  Kaltura DB     */
+	  Kaltura DB  */
     public KalturaEmailIngestionProfile add(KalturaEmailIngestionProfile EmailIP) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("EmailIP", EmailIP);
@@ -61,7 +61,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve a EmailIngestionProfile by email address     */
+	/**  Retrieve a EmailIngestionProfile by email address  */
     public KalturaEmailIngestionProfile getByEmailAddress(String emailAddress) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("emailAddress", emailAddress);
@@ -72,7 +72,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve a EmailIngestionProfile by id     */
+	/**  Retrieve a EmailIngestionProfile by id  */
     public KalturaEmailIngestionProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
     }
 
-	/**  Update an existing EmailIngestionProfile     */
+	/**  Update an existing EmailIngestionProfile  */
     public KalturaEmailIngestionProfile update(int id, KalturaEmailIngestionProfile EmailIP) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -95,7 +95,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
     }
 
-	/**  Delete an existing EmailIngestionProfile     */
+	/**  Delete an existing EmailIngestionProfile  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -105,7 +105,7 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  add KalturaMediaEntry from email ingestion     */
+	/**  add KalturaMediaEntry from email ingestion  */
     public KalturaMediaEntry addMediaEntry(KalturaMediaEntry mediaEntry, String uploadTokenId, int emailProfId, String fromAddress, String emailMsgId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);

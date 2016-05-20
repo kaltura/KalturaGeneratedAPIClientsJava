@@ -57,18 +57,18 @@ public class KalturaThumbParams extends KalturaAssetParams {
     public int height = Integer.MIN_VALUE;
     public double scaleWidth = Double.MIN_VALUE;
     public double scaleHeight = Double.MIN_VALUE;
-	/**  Hexadecimal value     */
+	/**  Hexadecimal value  */
     public String backgroundColor;
 	/**  Id of the flavor params or the thumbnail params to be used as source for the
-	  thumbnail creation     */
+	  thumbnail creation  */
     public int sourceParamsId = Integer.MIN_VALUE;
-	/**  The container format of the Flavor Params     */
+	/**  The container format of the Flavor Params  */
     public KalturaContainerFormat format;
-	/**  The image density (dpi) for example: 72 or 96     */
+	/**  The image density (dpi) for example: 72 or 96  */
     public int density = Integer.MIN_VALUE;
-	/**  Strip profiles and comments     */
+	/**  Strip profiles and comments  */
     public boolean stripProfiles;
-	/**  Create thumbnail from the videoLengthpercentage second        */
+	/**  Create thumbnail from the videoLengthpercentage second  */
     public int videoOffsetInPercentage = Integer.MIN_VALUE;
 
     public KalturaThumbParams() {

@@ -45,10 +45,10 @@ import org.w3c.dom.NodeList;
 
 /**  Used to ingest media that is available on remote server and accessible using the
   supplied URL, the media file won't be downloaded but a file sync object of URL
-  type will point to the media URL.    */
+  type will point to the media URL.  */
 @SuppressWarnings("serial")
 public class KalturaRemoteStorageResources extends KalturaContentResource {
-	/**  Array of remote stoage resources      */
+	/**  Array of remote stoage resources  */
     public ArrayList<KalturaRemoteStorageResource> resources;
 
     public KalturaRemoteStorageResources() {

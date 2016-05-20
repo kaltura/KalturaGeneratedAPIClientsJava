@@ -40,7 +40,6 @@ import com.kaltura.client.services.KalturaConversionProfileAssetParamsService;
 import com.kaltura.client.services.KalturaConversionProfileService;
 import com.kaltura.client.services.KalturaDataService;
 import com.kaltura.client.services.KalturaDeliveryProfileService;
-import com.kaltura.client.services.KalturaDocumentService;
 import com.kaltura.client.services.KalturaEmailIngestionProfileService;
 import com.kaltura.client.services.KalturaEntryServerNodeService;
 import com.kaltura.client.services.KalturaFileAssetService;
@@ -85,11 +84,6 @@ import com.kaltura.client.services.KalturaXInternalService;
 import com.kaltura.client.services.KalturaMetadataService;
 import com.kaltura.client.services.KalturaMetadataProfileService;
 import com.kaltura.client.services.KalturaDocumentsService;
-import com.kaltura.client.services.KalturaSystemPartnerService;
-import com.kaltura.client.services.KalturaEntryAdminService;
-import com.kaltura.client.services.KalturaUiConfAdminService;
-import com.kaltura.client.services.KalturaReportAdminService;
-import com.kaltura.client.services.KalturaKalturaInternalToolsSystemHelperService;
 import com.kaltura.client.services.KalturaVirusScanProfileService;
 import com.kaltura.client.services.KalturaDistributionProfileService;
 import com.kaltura.client.services.KalturaEntryDistributionService;
@@ -105,7 +99,6 @@ import com.kaltura.client.services.KalturaDropFolderService;
 import com.kaltura.client.services.KalturaDropFolderFileService;
 import com.kaltura.client.services.KalturaCaptionAssetService;
 import com.kaltura.client.services.KalturaCaptionParamsService;
-import com.kaltura.client.services.KalturaCaptionAssetItemService;
 import com.kaltura.client.services.KalturaAttachmentAssetService;
 import com.kaltura.client.services.KalturaTagService;
 import com.kaltura.client.services.KalturaLikeService;
@@ -132,7 +125,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-05-11");
+		this.setClientTag("java:16-05-20");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -246,14 +239,6 @@ public class KalturaClient extends KalturaClientBase {
 			this.deliveryProfileService = new KalturaDeliveryProfileService(this);
 	
 		return this.deliveryProfileService;
-	}
-	
-	protected KalturaDocumentService documentService;
-	public KalturaDocumentService getDocumentService() {
-		if(this.documentService == null)
-			this.documentService = new KalturaDocumentService(this);
-	
-		return this.documentService;
 	}
 	
 	protected KalturaEmailIngestionProfileService EmailIngestionProfileService;
@@ -608,46 +593,6 @@ public class KalturaClient extends KalturaClientBase {
 		return this.documentsService;
 	}
 	
-	protected KalturaSystemPartnerService systemPartnerService;
-	public KalturaSystemPartnerService getSystemPartnerService() {
-		if(this.systemPartnerService == null)
-			this.systemPartnerService = new KalturaSystemPartnerService(this);
-	
-		return this.systemPartnerService;
-	}
-	
-	protected KalturaEntryAdminService entryAdminService;
-	public KalturaEntryAdminService getEntryAdminService() {
-		if(this.entryAdminService == null)
-			this.entryAdminService = new KalturaEntryAdminService(this);
-	
-		return this.entryAdminService;
-	}
-	
-	protected KalturaUiConfAdminService uiConfAdminService;
-	public KalturaUiConfAdminService getUiConfAdminService() {
-		if(this.uiConfAdminService == null)
-			this.uiConfAdminService = new KalturaUiConfAdminService(this);
-	
-		return this.uiConfAdminService;
-	}
-	
-	protected KalturaReportAdminService reportAdminService;
-	public KalturaReportAdminService getReportAdminService() {
-		if(this.reportAdminService == null)
-			this.reportAdminService = new KalturaReportAdminService(this);
-	
-		return this.reportAdminService;
-	}
-	
-	protected KalturaKalturaInternalToolsSystemHelperService kalturaInternalToolsSystemHelperService;
-	public KalturaKalturaInternalToolsSystemHelperService getKalturaInternalToolsSystemHelperService() {
-		if(this.kalturaInternalToolsSystemHelperService == null)
-			this.kalturaInternalToolsSystemHelperService = new KalturaKalturaInternalToolsSystemHelperService(this);
-	
-		return this.kalturaInternalToolsSystemHelperService;
-	}
-	
 	protected KalturaVirusScanProfileService virusScanProfileService;
 	public KalturaVirusScanProfileService getVirusScanProfileService() {
 		if(this.virusScanProfileService == null)
@@ -766,14 +711,6 @@ public class KalturaClient extends KalturaClientBase {
 			this.captionParamsService = new KalturaCaptionParamsService(this);
 	
 		return this.captionParamsService;
-	}
-	
-	protected KalturaCaptionAssetItemService captionAssetItemService;
-	public KalturaCaptionAssetItemService getCaptionAssetItemService() {
-		if(this.captionAssetItemService == null)
-			this.captionAssetItemService = new KalturaCaptionAssetItemService(this);
-	
-		return this.captionAssetItemService;
 	}
 	
 	protected KalturaAttachmentAssetService attachmentAssetService;

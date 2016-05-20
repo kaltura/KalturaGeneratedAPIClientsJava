@@ -48,9 +48,9 @@ import org.w3c.dom.NodeList;
 public class KalturaYahooSyndicationFeed extends KalturaBaseSyndicationFeed {
     public KalturaYahooSyndicationFeedCategories category;
     public KalturaYahooSyndicationFeedAdultValues adultContent;
-	/**  feed description            */
+	/**  feed description  */
     public String feedDescription;
-	/**  feed landing page (i.e publisher website)            */
+	/**  feed landing page (i.e publisher website)  */
     public String feedLandingPage;
 
     public KalturaYahooSyndicationFeed() {

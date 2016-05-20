@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Caption Params    */
+/**  Add &amp; Manage Caption Params  */
 @SuppressWarnings("serial")
 public class KalturaCaptionParamsService extends KalturaServiceBase {
     public KalturaCaptionParamsService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Caption Params     */
+	/**  Add new Caption Params  */
     public KalturaCaptionParams add(KalturaCaptionParams captionParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("captionParams", captionParams);
@@ -60,7 +60,7 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
     }
 
-	/**  Get Caption Params by ID     */
+	/**  Get Caption Params by ID  */
     public KalturaCaptionParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
     }
 
-	/**  Update Caption Params by ID     */
+	/**  Update Caption Params by ID  */
     public KalturaCaptionParams update(int id, KalturaCaptionParams captionParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
     }
 
-	/**  Delete Caption Params by ID     */
+	/**  Delete Caption Params by ID  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -102,7 +102,7 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
     }
 
 	/**  List Caption Params by filter with paging support (By default - all system
-	  default params will be listed too)     */
+	  default params will be listed too)  */
     public KalturaCaptionParamsListResponse list(KalturaCaptionParamsFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

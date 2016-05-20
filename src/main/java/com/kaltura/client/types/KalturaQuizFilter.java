@@ -45,10 +45,10 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaQuizFilter extends KalturaRelatedFilter {
 	/**  This filter should be in use for retrieving only a specific quiz entry
-	  (identified by its entryId).     */
+	  (identified by its entryId).  */
     public String entryIdEqual;
 	/**  This filter should be in use for retrieving few specific quiz entries (string
-	  should include comma separated list of entryId strings).     */
+	  should include comma separated list of entryId strings).  */
     public String entryIdIn;
 
     public KalturaQuizFilter() {

@@ -48,7 +48,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaUiConf extends KalturaObjectBase {
     public int id = Integer.MIN_VALUE;
-	/**  Name of the uiConf, this is not a primary key     */
+	/**  Name of the uiConf, this is not a primary key  */
     public String name;
     public String description;
     public int partnerId = Integer.MIN_VALUE;
@@ -66,13 +66,13 @@ public class KalturaUiConf extends KalturaObjectBase {
     public boolean useCdn;
     public String tags;
     public String swfUrlVersion;
-	/**  Entry creation date as Unix timestamp (In seconds)     */
+	/**  Entry creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Entry creation date as Unix timestamp (In seconds)     */
+	/**  Entry creation date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public KalturaUiConfCreationMode creationMode;
     public String html5Url;
-	/**  UiConf version     */
+	/**  UiConf version  */
     public String version;
     public String partnerTags;
 

@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Basic push-publish configuration for Kaltura live stream entry    */
+/**  Basic push-publish configuration for Kaltura live stream entry  */
 @SuppressWarnings("serial")
 public class KalturaLiveStreamPushPublishConfiguration extends KalturaObjectBase {
     public String publishUrl;

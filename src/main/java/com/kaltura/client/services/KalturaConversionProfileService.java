@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Conversion Profiles    */
+/**  Add &amp; Manage Conversion Profiles  */
 @SuppressWarnings("serial")
 public class KalturaConversionProfileService extends KalturaServiceBase {
     public KalturaConversionProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Set Conversion Profile to be the partner default     */
+	/**  Set Conversion Profile to be the partner default  */
     public KalturaConversionProfile setAsDefault(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -65,7 +65,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return this.getDefault(null);
     }
 
-	/**  Get the partner's default conversion profile     */
+	/**  Get the partner's default conversion profile  */
     public KalturaConversionProfile getDefault(KalturaConversionProfileType type) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("type", type);
@@ -76,7 +76,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 
-	/**  Add new Conversion Profile     */
+	/**  Add new Conversion Profile  */
     public KalturaConversionProfile add(KalturaConversionProfile conversionProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("conversionProfile", conversionProfile);
@@ -87,7 +87,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 
-	/**  Get Conversion Profile by ID     */
+	/**  Get Conversion Profile by ID  */
     public KalturaConversionProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -98,7 +98,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 
-	/**  Update Conversion Profile by ID     */
+	/**  Update Conversion Profile by ID  */
     public KalturaConversionProfile update(int id, KalturaConversionProfile conversionProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -110,7 +110,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 
-	/**  Delete Conversion Profile by ID     */
+	/**  Delete Conversion Profile by ID  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -128,7 +128,7 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List Conversion Profiles by filter with paging support     */
+	/**  List Conversion Profiles by filter with paging support  */
     public KalturaConversionProfileListResponse list(KalturaConversionProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

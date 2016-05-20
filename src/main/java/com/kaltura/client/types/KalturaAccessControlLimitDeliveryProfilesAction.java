@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAccessControlLimitDeliveryProfilesAction extends KalturaRuleAction {
-	/**  Comma separated list of delivery profile ids      */
+	/**  Comma separated list of delivery profile ids  */
     public String deliveryProfileIds;
     public boolean isBlockedList;
 

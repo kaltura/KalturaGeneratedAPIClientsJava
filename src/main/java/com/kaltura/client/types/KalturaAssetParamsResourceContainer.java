@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAssetParamsResourceContainer extends KalturaResource {
-	/**  The content resource to associate with asset params     */
+	/**  The content resource to associate with asset params  */
     public KalturaContentResource resource;
-	/**  The asset params to associate with the reaource     */
+	/**  The asset params to associate with the reaource  */
     public int assetParamsId = Integer.MIN_VALUE;
 
     public KalturaAssetParamsResourceContainer() {

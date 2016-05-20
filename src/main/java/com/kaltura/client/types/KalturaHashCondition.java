@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaHashCondition extends KalturaCondition {
-	/**  hash name     */
+	/**  hash name  */
     public String hashName;
-	/**  hash secret     */
+	/**  hash secret  */
     public String hashSecret;
 
     public KalturaHashCondition() {

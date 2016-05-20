@@ -42,10 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates PHP statement, depends on the execution context    */
+/**  Evaluates PHP statement, depends on the execution context  */
 @SuppressWarnings("serial")
 public class KalturaEvalBooleanField extends KalturaBooleanField {
-	/**  PHP code     */
+	/**  PHP code  */
     public String code;
 
     public KalturaEvalBooleanField() {

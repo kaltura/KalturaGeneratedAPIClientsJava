@@ -47,19 +47,19 @@ import org.w3c.dom.NodeList;
 public class KalturaAnnotation extends KalturaCuePoint {
     public String parentId;
     public String text;
-	/**  End time in milliseconds     */
+	/**  End time in milliseconds  */
     public int endTime = Integer.MIN_VALUE;
-	/**  Duration in milliseconds     */
+	/**  Duration in milliseconds  */
     public int duration = Integer.MIN_VALUE;
-	/**  Depth in the tree     */
+	/**  Depth in the tree  */
     public int depth = Integer.MIN_VALUE;
-	/**  Number of all descendants     */
+	/**  Number of all descendants  */
     public int childrenCount = Integer.MIN_VALUE;
-	/**  Number of children, first generation only.     */
+	/**  Number of children, first generation only.  */
     public int directChildrenCount = Integer.MIN_VALUE;
-	/**  Is the annotation public.     */
+	/**  Is the annotation public.  */
     public KalturaNullableBoolean isPublic;
-	/**  Should the cue point get indexed on the entry.     */
+	/**  Should the cue point get indexed on the entry.  */
     public KalturaNullableBoolean searchableOnEntry;
 
     public KalturaAnnotation() {

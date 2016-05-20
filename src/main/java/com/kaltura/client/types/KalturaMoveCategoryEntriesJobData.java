@@ -44,22 +44,22 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaMoveCategoryEntriesJobData extends KalturaJobData {
-	/**  Source category id     */
+	/**  Source category id  */
     public int srcCategoryId = Integer.MIN_VALUE;
-	/**  Destination category id        */
+	/**  Destination category id  */
     public int destCategoryId = Integer.MIN_VALUE;
 	/**  Saves the last category id that its entries moved completely      In case of
-	  crash the batch will restart from that point        */
+	  crash the batch will restart from that point  */
     public int lastMovedCategoryId = Integer.MIN_VALUE;
 	/**  Saves the last page index of the child categories filter pager      In case of
-	  crash the batch will restart from that point        */
+	  crash the batch will restart from that point  */
     public int lastMovedCategoryPageIndex = Integer.MIN_VALUE;
 	/**  Saves the last page index of the category entries filter pager      In case of
-	  crash the batch will restart from that point        */
+	  crash the batch will restart from that point  */
     public int lastMovedCategoryEntryPageIndex = Integer.MIN_VALUE;
-	/**  All entries from all child categories will be moved as well        */
+	/**  All entries from all child categories will be moved as well  */
     public boolean moveFromChildren;
-	/**  Destination categories fallback ids        */
+	/**  Destination categories fallback ids  */
     public String destCategoryFullIds;
 
     public KalturaMoveCategoryEntriesJobData() {

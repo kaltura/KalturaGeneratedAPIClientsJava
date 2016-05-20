@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerAkamaiRtsp extends KalturaUrlTokenizer {
-	/**  host     */
+	/**  host  */
     public String host;
-	/**  Cp-Code     */
+	/**  Cp-Code  */
     public int cpcode = Integer.MIN_VALUE;
 
     public KalturaUrlTokenizerAkamaiRtsp() {

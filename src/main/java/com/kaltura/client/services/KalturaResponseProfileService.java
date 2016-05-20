@@ -43,14 +43,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage response profiles    */
+/**  Manage response profiles  */
 @SuppressWarnings("serial")
 public class KalturaResponseProfileService extends KalturaServiceBase {
     public KalturaResponseProfileService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new response profile     */
+	/**  Add new response profile  */
     public KalturaResponseProfile add(KalturaResponseProfile addResponseProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("addResponseProfile", addResponseProfile);
@@ -61,7 +61,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
-	/**  Get response profile by id     */
+	/**  Get response profile by id  */
     public KalturaResponseProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,7 +72,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
-	/**  Update response profile by id     */
+	/**  Update response profile by id  */
     public KalturaResponseProfile update(int id, KalturaResponseProfile updateResponseProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -84,7 +84,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
-	/**  Update response profile status by id     */
+	/**  Update response profile status by id  */
     public KalturaResponseProfile updateStatus(int id, KalturaResponseProfileStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -96,7 +96,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
-	/**  Delete response profile by id     */
+	/**  Delete response profile by id  */
     public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -114,7 +114,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List response profiles by filter and pager     */
+	/**  List response profiles by filter and pager  */
     public KalturaResponseProfileListResponse list(KalturaResponseProfileFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -126,7 +126,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfileListResponse.class, resultXmlElement);
     }
 
-	/**  Recalculate response profile cached objects     */
+	/**  Recalculate response profile cached objects  */
     public KalturaResponseProfileCacheRecalculateResults recalculate(KalturaResponseProfileCacheRecalculateOptions options) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("options", options);
@@ -137,7 +137,7 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfileCacheRecalculateResults.class, resultXmlElement);
     }
 
-	/**  Clone an existing response profile     */
+	/**  Clone an existing response profile  */
     public KalturaResponseProfile clone(int id, KalturaResponseProfile profile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

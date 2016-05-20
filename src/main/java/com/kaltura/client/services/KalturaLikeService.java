@@ -42,7 +42,7 @@ import com.kaltura.client.types.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Allows user to 'like' or 'unlike' and entry    */
+/**  Allows user to 'like' or 'unlike' and entry  */
 @SuppressWarnings("serial")
 public class KalturaLikeService extends KalturaServiceBase {
     public KalturaLikeService(KalturaClient client) {

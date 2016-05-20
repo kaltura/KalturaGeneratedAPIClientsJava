@@ -50,7 +50,7 @@ public class KalturaCategoryFilter extends KalturaCategoryBaseFilter {
     public String managerEqual;
     public String memberEqual;
     public String fullNameStartsWithIn;
-	/**  not includes the category itself (only sub categories)     */
+	/**  not includes the category itself (only sub categories)  */
     public String ancestorIdIn;
     public String idOrInheritedParentIdIn;
 

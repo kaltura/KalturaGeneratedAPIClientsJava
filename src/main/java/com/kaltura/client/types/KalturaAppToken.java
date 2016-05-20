@@ -48,28 +48,28 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAppToken extends KalturaObjectBase {
-	/**  The id of the application token     */
+	/**  The id of the application token  */
     public String id;
-	/**  The application token     */
+	/**  The application token  */
     public String token;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Creation time as Unix timestamp (In seconds)      */
+	/**  Creation time as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Update time as Unix timestamp (In seconds)      */
+	/**  Update time as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Application token status      */
+	/**  Application token status  */
     public KalturaAppTokenStatus status;
-	/**  Expiry time of current token (unix timestamp in seconds)     */
+	/**  Expiry time of current token (unix timestamp in seconds)  */
     public int expiry = Integer.MIN_VALUE;
-	/**  Type of KS (Kaltura Session) that created using the current token     */
+	/**  Type of KS (Kaltura Session) that created using the current token  */
     public KalturaSessionType sessionType;
-	/**  User id of KS (Kaltura Session) that created using the current token     */
+	/**  User id of KS (Kaltura Session) that created using the current token  */
     public String sessionUserId;
 	/**  Expiry duration of KS (Kaltura Session) that created using the current token (in
-	  seconds)     */
+	  seconds)  */
     public int sessionDuration = Integer.MIN_VALUE;
 	/**  Comma separated privileges to be applied on KS (Kaltura Session) that created
-	  using the current token     */
+	  using the current token  */
     public String sessionPrivileges;
     public KalturaAppTokenHashType hashType;
 

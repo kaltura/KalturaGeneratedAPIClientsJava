@@ -56,15 +56,15 @@ public class KalturaWidget extends KalturaObjectBase {
     public int securityPolicy = Integer.MIN_VALUE;
     public int createdAt = Integer.MIN_VALUE;
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Can be used to store various partner related data as a string      */
+	/**  Can be used to store various partner related data as a string  */
     public String partnerData;
     public String widgetHTML;
-	/**  Should enforce entitlement on feed entries     */
+	/**  Should enforce entitlement on feed entries  */
     public boolean enforceEntitlement;
 	/**  Set privacy context for search entries that assiged to private and public
-	  categories within a category privacy context.     */
+	  categories within a category privacy context.  */
     public String privacyContext;
-	/**  Addes the HTML5 script line to the widget's embed code     */
+	/**  Addes the HTML5 script line to the widget's embed code  */
     public boolean addEmbedHtml5Support;
     public String roles;
 

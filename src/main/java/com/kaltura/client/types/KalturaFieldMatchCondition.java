@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFieldMatchCondition extends KalturaMatchCondition {
-	/**  Field to evaluate     */
+	/**  Field to evaluate  */
     public KalturaStringField field;
 
     public KalturaFieldMatchCondition() {

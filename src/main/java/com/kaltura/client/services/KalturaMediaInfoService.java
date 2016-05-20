@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Media Info service    */
+/**  Media Info service  */
 @SuppressWarnings("serial")
 public class KalturaMediaInfoService extends KalturaServiceBase {
     public KalturaMediaInfoService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaMediaInfoService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List media info objects by filter and pager     */
+	/**  List media info objects by filter and pager  */
     public KalturaMediaInfoListResponse list(KalturaMediaInfoFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

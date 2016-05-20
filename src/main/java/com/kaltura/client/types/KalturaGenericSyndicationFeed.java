@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed {
-	/**  feed description       */
+	/**  feed description  */
     public String feedDescription;
-	/**  feed landing page (i.e publisher website)    */
+	/**  feed landing page (i.e publisher website)  */
     public String feedLandingPage;
 
     public KalturaGenericSyndicationFeed() {

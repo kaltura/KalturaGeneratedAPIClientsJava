@@ -47,33 +47,33 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSchedulerWorker extends KalturaObjectBase {
-	/**  The id of the Worker     */
+	/**  The id of the Worker  */
     public int id = Integer.MIN_VALUE;
-	/**  The id as configured in the batch config     */
+	/**  The id as configured in the batch config  */
     public int configuredId = Integer.MIN_VALUE;
-	/**  The id of the Scheduler     */
+	/**  The id of the Scheduler  */
     public int schedulerId = Integer.MIN_VALUE;
-	/**  The id of the scheduler as configured in the batch config     */
+	/**  The id of the scheduler as configured in the batch config  */
     public int schedulerConfiguredId = Integer.MIN_VALUE;
-	/**  The worker type     */
+	/**  The worker type  */
     public KalturaBatchJobType type;
-	/**  The friendly name of the type     */
+	/**  The friendly name of the type  */
     public String typeName;
-	/**  The scheduler name     */
+	/**  The scheduler name  */
     public String name;
-	/**  Array of the last statuses     */
+	/**  Array of the last statuses  */
     public ArrayList<KalturaSchedulerStatus> statuses;
-	/**  Array of the last configs     */
+	/**  Array of the last configs  */
     public ArrayList<KalturaSchedulerConfig> configs;
-	/**  Array of jobs that locked to this worker     */
+	/**  Array of jobs that locked to this worker  */
     public ArrayList<KalturaBatchJob> lockedJobs;
-	/**  Avarage time between creation and queue time     */
+	/**  Avarage time between creation and queue time  */
     public int avgWait = Integer.MIN_VALUE;
-	/**  Avarage time between queue time end finish time     */
+	/**  Avarage time between queue time end finish time  */
     public int avgWork = Integer.MIN_VALUE;
-	/**  last status time     */
+	/**  last status time  */
     public int lastStatus = Integer.MIN_VALUE;
-	/**  last status formated     */
+	/**  last status formated  */
     public String lastStatusStr;
 
     public KalturaSchedulerWorker() {

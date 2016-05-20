@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaMediaServerNode extends KalturaDeliveryServerNode {
-	/**  Media server application name     */
+	/**  Media server application name  */
     public String applicationName;
-	/**  Media server playback port configuration by protocol and format     */
+	/**  Media server playback port configuration by protocol and format  */
     public ArrayList<KalturaKeyValue> mediaServerPortConfig;
-	/**  Media server playback Domain configuration by protocol and format     */
+	/**  Media server playback Domain configuration by protocol and format  */
     public ArrayList<KalturaKeyValue> mediaServerPlaybackDomainConfig;
 
     public KalturaMediaServerNode() {

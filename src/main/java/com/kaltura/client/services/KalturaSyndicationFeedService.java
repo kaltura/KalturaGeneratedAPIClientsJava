@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Syndication Feeds    */
+/**  Add &amp; Manage Syndication Feeds  */
 @SuppressWarnings("serial")
 public class KalturaSyndicationFeedService extends KalturaServiceBase {
     public KalturaSyndicationFeedService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add new Syndication Feed     */
+	/**  Add new Syndication Feed  */
     public KalturaBaseSyndicationFeed add(KalturaBaseSyndicationFeed syndicationFeed) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("syndicationFeed", syndicationFeed);
@@ -60,7 +60,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 
-	/**  Get Syndication Feed by ID     */
+	/**  Get Syndication Feed by ID  */
     public KalturaBaseSyndicationFeed get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -71,7 +71,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 
-	/**  Update Syndication Feed by ID     */
+	/**  Update Syndication Feed by ID  */
     public KalturaBaseSyndicationFeed update(String id, KalturaBaseSyndicationFeed syndicationFeed) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -83,7 +83,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 
-	/**  Delete Syndication Feed by ID     */
+	/**  Delete Syndication Feed by ID  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -101,7 +101,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List Syndication Feeds by filter with paging support     */
+	/**  List Syndication Feeds by filter with paging support  */
     public KalturaBaseSyndicationFeedListResponse list(KalturaBaseSyndicationFeedFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -113,7 +113,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeedListResponse.class, resultXmlElement);
     }
 
-	/**  get entry count for a syndication feed     */
+	/**  get entry count for a syndication feed  */
     public KalturaSyndicationFeedEntryCount getEntryCount(String feedId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("feedId", feedId);
@@ -125,7 +125,7 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
     }
 
 	/**  request conversion for all entries that doesnt have the required flavor param  
-	  returns a comma-separated ids of conversion jobs     */
+	  returns a comma-separated ids of conversion jobs  */
     public String requestConversion(String feedId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("feedId", feedId);

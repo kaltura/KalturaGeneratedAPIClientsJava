@@ -54,74 +54,74 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCategory extends KalturaObjectBase {
-	/**  The id of the Category     */
+	/**  The id of the Category  */
     public int id = Integer.MIN_VALUE;
     public int parentId = Integer.MIN_VALUE;
     public int depth = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
 	/**  The name of the Category.    The following characters are not allowed: '&lt;',
-	  '&gt;', ','     */
+	  '&gt;', ','  */
     public String name;
-	/**  The full name of the Category     */
+	/**  The full name of the Category  */
     public String fullName;
-	/**  The full ids of the Category     */
+	/**  The full ids of the Category  */
     public String fullIds;
-	/**  Number of entries in this Category (including child categories)     */
+	/**  Number of entries in this Category (including child categories)  */
     public int entriesCount = Integer.MIN_VALUE;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Update date as Unix timestamp (In seconds)     */
+	/**  Update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
-	/**  Category description     */
+	/**  Category description  */
     public String description;
-	/**  Category tags     */
+	/**  Category tags  */
     public String tags;
-	/**  If category will be returned for list action.     */
+	/**  If category will be returned for list action.  */
     public KalturaAppearInListType appearInList;
-	/**  defines the privacy of the entries that assigned to this category     */
+	/**  defines the privacy of the entries that assigned to this category  */
     public KalturaPrivacyType privacy;
-	/**  If Category members are inherited from parent category or set manualy.      */
+	/**  If Category members are inherited from parent category or set manualy.  */
     public KalturaInheritanceType inheritanceType;
-	/**  Who can ask to join this category     */
+	/**  Who can ask to join this category  */
     public KalturaUserJoinPolicyType userJoinPolicy;
-	/**  Default permissionLevel for new users     */
+	/**  Default permissionLevel for new users  */
     public KalturaCategoryUserPermissionLevel defaultPermissionLevel;
-	/**  Category Owner (User id)     */
+	/**  Category Owner (User id)  */
     public String owner;
-	/**  Number of entries that belong to this category directly     */
+	/**  Number of entries that belong to this category directly  */
     public int directEntriesCount = Integer.MIN_VALUE;
-	/**  Category external id, controlled and managed by the partner.     */
+	/**  Category external id, controlled and managed by the partner.  */
     public String referenceId;
-	/**  who can assign entries to this category     */
+	/**  who can assign entries to this category  */
     public KalturaContributionPolicyType contributionPolicy;
-	/**  Number of active members for this category     */
+	/**  Number of active members for this category  */
     public int membersCount = Integer.MIN_VALUE;
-	/**  Number of pending members for this category     */
+	/**  Number of pending members for this category  */
     public int pendingMembersCount = Integer.MIN_VALUE;
 	/**  Set privacy context for search entries that assiged to private and public
 	  categories. the entries will be private if the search context is set with those
-	  categories.     */
+	  categories.  */
     public String privacyContext;
-	/**  comma separated parents that defines a privacyContext for search     */
+	/**  comma separated parents that defines a privacyContext for search  */
     public String privacyContexts;
-	/**  Status     */
+	/**  Status  */
     public KalturaCategoryStatus status;
 	/**  The category id that this category inherit its members and members permission
-	  (for contribution and join)     */
+	  (for contribution and join)  */
     public int inheritedParentId = Integer.MIN_VALUE;
-	/**  Can be used to store various partner related data as a numeric value     */
+	/**  Can be used to store various partner related data as a numeric value  */
     public int partnerSortValue = Integer.MIN_VALUE;
-	/**  Can be used to store various partner related data as a string      */
+	/**  Can be used to store various partner related data as a string  */
     public String partnerData;
 	/**  Enable client side applications to define how to sort the category child
-	  categories      */
+	  categories  */
     public KalturaCategoryOrderBy defaultOrderBy;
-	/**  Number of direct children categories     */
+	/**  Number of direct children categories  */
     public int directSubCategoriesCount = Integer.MIN_VALUE;
 	/**  Moderation to add entries to this category by users that are not of permission
-	  level Manager or Moderator.       */
+	  level Manager or Moderator.  */
     public KalturaNullableBoolean moderation;
-	/**  Nunber of pending moderation entries     */
+	/**  Nunber of pending moderation entries  */
     public int pendingEntriesCount = Integer.MIN_VALUE;
 
     public KalturaCategory() {

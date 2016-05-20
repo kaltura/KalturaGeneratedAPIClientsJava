@@ -44,11 +44,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerLevel3 extends KalturaUrlTokenizer {
-	/**  paramName     */
+	/**  paramName  */
     public String paramName;
-	/**  expiryName     */
+	/**  expiryName  */
     public String expiryName;
-	/**  gen     */
+	/**  gen  */
     public String gen;
 
     public KalturaUrlTokenizerLevel3() {

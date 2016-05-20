@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Used to ingest media that streamed to the system and represented by token that
-  returned from media server such as FMS or red5.    */
+  returned from media server such as FMS or red5.  */
 @SuppressWarnings("serial")
 public class KalturaWebcamTokenResource extends KalturaDataCenterContentResource {
-	/**  Token that returned from media server such as FMS or red5.     */
+	/**  Token that returned from media server such as FMS or red5.  */
     public String token;
 
     public KalturaWebcamTokenResource() {

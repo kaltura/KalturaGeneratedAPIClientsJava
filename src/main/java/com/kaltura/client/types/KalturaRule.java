@@ -47,22 +47,22 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaRule extends KalturaObjectBase {
-	/**  Short Rule Description     */
+	/**  Short Rule Description  */
     public String description;
-	/**  Rule Custom Data to allow saving rule specific information      */
+	/**  Rule Custom Data to allow saving rule specific information  */
     public String ruleData;
-	/**  Message to be thrown to the player in case the rule is fulfilled     */
+	/**  Message to be thrown to the player in case the rule is fulfilled  */
     public String message;
-	/**  Actions to be performed by the player in case the rule is fulfilled     */
+	/**  Actions to be performed by the player in case the rule is fulfilled  */
     public ArrayList<KalturaRuleAction> actions;
-	/**  Conditions to validate the rule     */
+	/**  Conditions to validate the rule  */
     public ArrayList<KalturaCondition> conditions;
-	/**  Indicates what contexts should be tested by this rule      */
+	/**  Indicates what contexts should be tested by this rule  */
     public ArrayList<KalturaContextTypeHolder> contexts;
 	/**  Indicates that this rule is enough and no need to continue checking the rest of
-	  the rules      */
+	  the rules  */
     public boolean stopProcessing;
-	/**  Indicates if we should force ks validation for admin ks users as well     */
+	/**  Indicates if we should force ks validation for admin ks users as well  */
     public KalturaNullableBoolean forceAdminValidation;
 
     public KalturaRule() {

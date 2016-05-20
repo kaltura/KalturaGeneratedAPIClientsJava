@@ -43,12 +43,12 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for filter bulk upload    */
+/**  Represents the Bulk upload job data for filter bulk upload  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadFilterJobData extends KalturaBulkUploadJobData {
-	/**  Filter for extracting the objects list to upload      */
+	/**  Filter for extracting the objects list to upload  */
     public KalturaFilter filter;
-	/**  Template object for new object creation     */
+	/**  Template object for new object creation  */
     public KalturaObjectBase templateObject;
 
     public KalturaBulkUploadFilterJobData() {

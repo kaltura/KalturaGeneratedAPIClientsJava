@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return evaluated dynamic value    */
+/**  A string representation to return evaluated dynamic value  */
 @SuppressWarnings("serial")
 public abstract class KalturaStringField extends KalturaStringValue {
 

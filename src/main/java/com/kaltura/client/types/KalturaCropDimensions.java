@@ -45,13 +45,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCropDimensions extends KalturaObjectBase {
-	/**  Crop left point     */
+	/**  Crop left point  */
     public int left = Integer.MIN_VALUE;
-	/**  Crop top point     */
+	/**  Crop top point  */
     public int top = Integer.MIN_VALUE;
-	/**  Crop width     */
+	/**  Crop width  */
     public int width = Integer.MIN_VALUE;
-	/**  Crop height     */
+	/**  Crop height  */
     public int height = Integer.MIN_VALUE;
 
     public KalturaCropDimensions() {

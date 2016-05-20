@@ -42,16 +42,16 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Object which contains contextual entry-related data.    */
+/**  Object which contains contextual entry-related data.  */
 @SuppressWarnings("serial")
 public class KalturaEntryContextDataParams extends KalturaAccessControlScope {
-	/**  Id of the current flavor.     */
+	/**  Id of the current flavor.  */
     public String flavorAssetId;
-	/**  The tags of the flavors that should be used for playback.     */
+	/**  The tags of the flavors that should be used for playback.  */
     public String flavorTags;
-	/**  Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.     */
+	/**  Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.  */
     public String streamerType;
-	/**  Protocol of the specific media object.     */
+	/**  Protocol of the specific media object.  */
     public String mediaProtocol;
 
     public KalturaEntryContextDataParams() {

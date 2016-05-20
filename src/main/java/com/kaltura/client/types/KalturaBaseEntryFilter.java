@@ -48,9 +48,9 @@ public class KalturaBaseEntryFilter extends KalturaBaseEntryBaseFilter {
     public String freeText;
     public KalturaNullableBoolean isRoot;
     public String categoriesFullNameIn;
-	/**  All entries within this categoy or in child categories       */
+	/**  All entries within this categoy or in child categories  */
     public String categoryAncestorIdIn;
-	/**  The id of the original entry     */
+	/**  The id of the original entry  */
     public String redirectFromEntryId;
 
     public KalturaBaseEntryFilter() {

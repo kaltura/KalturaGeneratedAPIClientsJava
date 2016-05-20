@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFeedDropFolderFile extends KalturaDropFolderFile {
-	/**  MD5 or Sha1 encrypted string     */
+	/**  MD5 or Sha1 encrypted string  */
     public String hash;
-	/**  Path of the original Feed content XML     */
+	/**  Path of the original Feed content XML  */
     public String feedXmlPath;
 
     public KalturaFeedDropFolderFile() {

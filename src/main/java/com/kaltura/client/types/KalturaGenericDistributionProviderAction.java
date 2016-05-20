@@ -49,13 +49,13 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaGenericDistributionProviderAction extends KalturaObjectBase {
-	/**  Auto generated     */
+	/**  Auto generated  */
     public int id = Integer.MIN_VALUE;
 	/**  Generic distribution provider action creation date as Unix timestamp (In
-	  seconds)     */
+	  seconds)  */
     public int createdAt = Integer.MIN_VALUE;
 	/**  Generic distribution provider action last update date as Unix timestamp (In
-	  seconds)     */
+	  seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public int genericDistributionProviderId = Integer.MIN_VALUE;
     public KalturaDistributionAction action;

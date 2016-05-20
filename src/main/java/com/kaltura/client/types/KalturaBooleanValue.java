@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A boolean representation to return an array of booleans    */
+/**  A boolean representation to return an array of booleans  */
 @SuppressWarnings("serial")
 public class KalturaBooleanValue extends KalturaValue {
     public boolean value;

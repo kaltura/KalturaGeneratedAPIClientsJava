@@ -47,36 +47,36 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFlavorParams extends KalturaAssetParams {
-	/**  The video codec of the Flavor Params     */
+	/**  The video codec of the Flavor Params  */
     public KalturaVideoCodec videoCodec;
-	/**  The video bitrate (in KBits) of the Flavor Params     */
+	/**  The video bitrate (in KBits) of the Flavor Params  */
     public int videoBitrate = Integer.MIN_VALUE;
-	/**  The audio codec of the Flavor Params     */
+	/**  The audio codec of the Flavor Params  */
     public KalturaAudioCodec audioCodec;
-	/**  The audio bitrate (in KBits) of the Flavor Params     */
+	/**  The audio bitrate (in KBits) of the Flavor Params  */
     public int audioBitrate = Integer.MIN_VALUE;
-	/**  The number of audio channels for "downmixing"     */
+	/**  The number of audio channels for "downmixing"  */
     public int audioChannels = Integer.MIN_VALUE;
-	/**  The audio sample rate of the Flavor Params     */
+	/**  The audio sample rate of the Flavor Params  */
     public int audioSampleRate = Integer.MIN_VALUE;
-	/**  The desired width of the Flavor Params     */
+	/**  The desired width of the Flavor Params  */
     public int width = Integer.MIN_VALUE;
-	/**  The desired height of the Flavor Params     */
+	/**  The desired height of the Flavor Params  */
     public int height = Integer.MIN_VALUE;
-	/**  The frame rate of the Flavor Params     */
+	/**  The frame rate of the Flavor Params  */
     public double frameRate = Double.MIN_VALUE;
-	/**  The gop size of the Flavor Params     */
+	/**  The gop size of the Flavor Params  */
     public int gopSize = Integer.MIN_VALUE;
-	/**  The list of conversion engines (comma separated)     */
+	/**  The list of conversion engines (comma separated)  */
     public String conversionEngines;
-	/**  The list of conversion engines extra params (separated with "|")     */
+	/**  The list of conversion engines extra params (separated with "|")  */
     public String conversionEnginesExtraParams;
     public boolean twoPass;
     public int deinterlice = Integer.MIN_VALUE;
     public int rotate = Integer.MIN_VALUE;
     public String operators;
     public int engineVersion = Integer.MIN_VALUE;
-	/**  The container format of the Flavor Params     */
+	/**  The container format of the Flavor Params  */
     public KalturaContainerFormat format;
     public int aspectRatioProcessingMode = Integer.MIN_VALUE;
     public int forceFrameToMultiplication16 = Integer.MIN_VALUE;

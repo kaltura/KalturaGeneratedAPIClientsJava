@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaContextTypeHolder extends KalturaObjectBase {
-	/**  The type of the condition context     */
+	/**  The type of the condition context  */
     public KalturaContextType type;
 
     public KalturaContextTypeHolder() {

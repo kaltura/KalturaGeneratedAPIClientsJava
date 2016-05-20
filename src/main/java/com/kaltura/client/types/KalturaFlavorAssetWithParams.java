@@ -45,11 +45,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFlavorAssetWithParams extends KalturaObjectBase {
-	/**  The Flavor Asset (Can be null when there are params without asset)     */
+	/**  The Flavor Asset (Can be null when there are params without asset)  */
     public KalturaFlavorAsset flavorAsset;
-	/**  The Flavor Params     */
+	/**  The Flavor Params  */
     public KalturaFlavorParams flavorParams;
-	/**  The entry id     */
+	/**  The entry id  */
     public String entryId;
 
     public KalturaFlavorAssetWithParams() {

@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDropFolderICalBulkUploadFileHandlerConfig extends KalturaDropFolderFileHandlerConfig {
-	/**  The type of the events that ill be created by this upload     */
+	/**  The type of the events that ill be created by this upload  */
     public KalturaScheduleEventType eventsType;
 
     public KalturaDropFolderICalBulkUploadFileHandlerConfig() {

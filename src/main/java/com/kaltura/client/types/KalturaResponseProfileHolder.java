@@ -44,9 +44,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaResponseProfileHolder extends KalturaBaseResponseProfile {
-	/**  Auto generated numeric identifier     */
+	/**  Auto generated numeric identifier  */
     public int id = Integer.MIN_VALUE;
-	/**  Unique system name     */
+	/**  Unique system name  */
     public String systemName;
 
     public KalturaResponseProfileHolder() {

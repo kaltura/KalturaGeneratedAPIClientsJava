@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaReportFilter extends KalturaObjectBase {
-	/**  The dimension whose values should be filtered     */
+	/**  The dimension whose values should be filtered  */
     public String dimension;
-	/**  The (comma separated) values to include in the filter     */
+	/**  The (comma separated) values to include in the filter  */
     public String values;
 
     public KalturaReportFilter() {

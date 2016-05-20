@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeleteEntryFlavorsObjectTask extends KalturaObjectTask {
-	/**  The logic to use to choose the flavors for deletion     */
+	/**  The logic to use to choose the flavors for deletion  */
     public KalturaDeleteFlavorsLogicType deleteType;
-	/**  Comma separated list of flavor param ids to delete or keep     */
+	/**  Comma separated list of flavor param ids to delete or keep  */
     public String flavorParamsIds;
 
     public KalturaDeleteEntryFlavorsObjectTask() {

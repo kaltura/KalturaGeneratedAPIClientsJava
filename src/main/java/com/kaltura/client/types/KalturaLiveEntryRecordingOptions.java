@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of a live stream recording entry configuration    */
+/**  A representation of a live stream recording entry configuration  */
 @SuppressWarnings("serial")
 public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
     public KalturaNullableBoolean shouldCopyEntitlement;

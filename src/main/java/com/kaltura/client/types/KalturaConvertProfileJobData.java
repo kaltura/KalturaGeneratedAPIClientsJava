@@ -46,10 +46,10 @@ import org.w3c.dom.NodeList;
 public class KalturaConvertProfileJobData extends KalturaJobData {
     public String inputFileSyncLocalPath;
 	/**  The height of last created thumbnail, will be used to comapare if this thumbnail
-	  is the best we can have     */
+	  is the best we can have  */
     public int thumbHeight = Integer.MIN_VALUE;
 	/**  The bit rate of last created thumbnail, will be used to comapare if this
-	  thumbnail is the best we can have     */
+	  thumbnail is the best we can have  */
     public int thumbBitrate = Integer.MIN_VALUE;
 
     public KalturaConvertProfileJobData() {

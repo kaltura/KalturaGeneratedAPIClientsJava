@@ -46,7 +46,7 @@ import java.util.List;
 /**  A Mix is an XML unique format invented by Kaltura, it allows the user to create
   a mix of videos and images, in and out points, transitions, text overlays,
   soundtrack, effects and much more...  Mixing service lets you create a new mix,
-  manage its metadata and make basic manipulations.       */
+  manage its metadata and make basic manipulations.  */
 @SuppressWarnings("serial")
 public class KalturaMixingService extends KalturaServiceBase {
     public KalturaMixingService(KalturaClient client) {
@@ -54,7 +54,7 @@ public class KalturaMixingService extends KalturaServiceBase {
     }
 
 	/**  Adds a new mix.   If the dataContent is null, a default timeline will be
-	  created.     */
+	  created.  */
     public KalturaMixEntry add(KalturaMixEntry mixEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mixEntry", mixEntry);
@@ -69,7 +69,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get mix entry by id.     */
+	/**  Get mix entry by id.  */
     public KalturaMixEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -81,7 +81,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 
-	/**  Update mix entry. Only the properties that were set will be updated.     */
+	/**  Update mix entry. Only the properties that were set will be updated.  */
     public KalturaMixEntry update(String entryId, KalturaMixEntry mixEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -93,7 +93,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 
-	/**  Delete a mix entry.     */
+	/**  Delete a mix entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -112,7 +112,7 @@ public class KalturaMixingService extends KalturaServiceBase {
     }
 
 	/**  List entries by filter with paging support.   Return parameter is an array of
-	  mix entries.     */
+	  mix entries.  */
     public KalturaMixListResponse list(KalturaMixEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -128,7 +128,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  Count mix entries by filter.     */
+	/**  Count mix entries by filter.  */
     public int count(KalturaMediaEntryFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -140,7 +140,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Clones an existing mix.     */
+	/**  Clones an existing mix.  */
     public KalturaMixEntry clone(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -152,7 +152,7 @@ public class KalturaMixingService extends KalturaServiceBase {
     }
 
 	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
-	  timeline as a new version.     */
+	  timeline as a new version.  */
     public KalturaMixEntry appendMediaEntry(String mixEntryId, String mediaEntryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mixEntryId", mixEntryId);
@@ -164,7 +164,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 
-	/**  Get the mixes in which the media entry is included     */
+	/**  Get the mixes in which the media entry is included  */
     public List<KalturaMixEntry> getMixesByMediaId(String mediaEntryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntryId", mediaEntryId);
@@ -179,7 +179,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return this.getReadyMediaEntries(mixId, -1);
     }
 
-	/**  Get all ready media entries that exist in the given mix id     */
+	/**  Get all ready media entries that exist in the given mix id  */
     public List<KalturaMediaEntry> getReadyMediaEntries(String mixId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mixId", mixId);
@@ -191,7 +191,7 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings     */
+	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
     public void anonymousRank(String entryId, int rank) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

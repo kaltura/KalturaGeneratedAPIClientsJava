@@ -45,14 +45,14 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaResponseProfile extends KalturaDetachedResponseProfile {
-	/**  Auto generated numeric identifier     */
+	/**  Auto generated numeric identifier  */
     public int id = Integer.MIN_VALUE;
-	/**  Unique system name     */
+	/**  Unique system name  */
     public String systemName;
     public int partnerId = Integer.MIN_VALUE;
-	/**  Creation time as Unix timestamp (In seconds)      */
+	/**  Creation time as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Update time as Unix timestamp (In seconds)      */
+	/**  Update time as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public KalturaResponseProfileStatus status;
     public int version = Integer.MIN_VALUE;

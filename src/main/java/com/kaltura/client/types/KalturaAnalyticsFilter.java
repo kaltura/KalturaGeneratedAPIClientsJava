@@ -46,17 +46,17 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAnalyticsFilter extends KalturaObjectBase {
-	/**  Query start time (in local time)     */
+	/**  Query start time (in local time)  */
     public String from_time;
-	/**  Query end time (in local time)     */
+	/**  Query end time (in local time)  */
     public String to_time;
-	/**  Comma separated metrics list     */
+	/**  Comma separated metrics list  */
     public String metrics;
-	/**  Timezone offset from UTC (in minutes)     */
+	/**  Timezone offset from UTC (in minutes)  */
     public double utcOffset = Double.MIN_VALUE;
-	/**  Comma separated dimensions list     */
+	/**  Comma separated dimensions list  */
     public String dimensions;
-	/**  Array of filters     */
+	/**  Array of filters  */
     public ArrayList<KalturaReportFilter> filters;
 
     public KalturaAnalyticsFilter() {

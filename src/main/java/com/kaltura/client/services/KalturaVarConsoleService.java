@@ -43,7 +43,7 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Utility service for the Multi-publishers console    */
+/**  Utility service for the Multi-publishers console  */
 @SuppressWarnings("serial")
 public class KalturaVarConsoleService extends KalturaServiceBase {
     public KalturaVarConsoleService(KalturaClient client) {
@@ -62,8 +62,7 @@ public class KalturaVarConsoleService extends KalturaServiceBase {
         return this.getPartnerUsage(partnerFilter, usageFilter, null);
     }
 
-	/**  Function which calulates partner usage of a group of a VAR's sub-publishers     
-	    */
+	/**  Function which calulates partner usage of a group of a VAR's sub-publishers  */
     public KalturaPartnerUsageListResponse getPartnerUsage(KalturaPartnerFilter partnerFilter, KalturaReportInputFilter usageFilter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partnerFilter", partnerFilter);
@@ -76,7 +75,7 @@ public class KalturaVarConsoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPartnerUsageListResponse.class, resultXmlElement);
     }
 
-	/**  Function to change a sub-publisher's status     */
+	/**  Function to change a sub-publisher's status  */
     public void updateStatus(int id, KalturaPartnerStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

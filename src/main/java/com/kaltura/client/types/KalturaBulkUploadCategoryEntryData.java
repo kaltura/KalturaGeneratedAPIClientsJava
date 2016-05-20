@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  This class represents object-specific data passed to the   bulk upload job.    */
+/**  This class represents object-specific data passed to the   bulk upload job.  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadCategoryEntryData extends KalturaBulkUploadObjectData {
 

@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Bulk upload service is used to upload &amp; manage bulk uploads    */
+/**  Bulk upload service is used to upload &amp; manage bulk uploads  */
 @SuppressWarnings("serial")
 public class KalturaBulkService extends KalturaServiceBase {
     public KalturaBulkService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Get bulk upload batch job by id     */
+	/**  Get bulk upload batch job by id  */
     public KalturaBulkUpload get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -68,7 +68,7 @@ public class KalturaBulkService extends KalturaServiceBase {
         return this.list(bulkUploadFilter, null);
     }
 
-	/**  List bulk upload batch jobs     */
+	/**  List bulk upload batch jobs  */
     public KalturaBulkUploadListResponse list(KalturaBulkUploadFilter bulkUploadFilter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("bulkUploadFilter", bulkUploadFilter);
@@ -80,7 +80,7 @@ public class KalturaBulkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBulkUploadListResponse.class, resultXmlElement);
     }
 
-	/**  serve action returns the original file.     */
+	/**  serve action returns the original file.  */
     public String serve(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -88,7 +88,7 @@ public class KalturaBulkService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  serveLog action returns the log file for the bulk-upload job.     */
+	/**  serveLog action returns the log file for the bulk-upload job.  */
     public String serveLog(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -96,7 +96,7 @@ public class KalturaBulkService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Aborts the bulk upload and all its child jobs     */
+	/**  Aborts the bulk upload and all its child jobs  */
     public KalturaBulkUpload abort(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

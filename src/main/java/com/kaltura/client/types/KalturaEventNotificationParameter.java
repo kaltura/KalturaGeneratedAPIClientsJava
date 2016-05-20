@@ -45,10 +45,10 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEventNotificationParameter extends KalturaObjectBase {
-	/**  The key in the subject and body to be replaced with the dynamic value     */
+	/**  The key in the subject and body to be replaced with the dynamic value  */
     public String key;
     public String description;
-	/**  The dynamic value to be placed in the final output     */
+	/**  The dynamic value to be placed in the final output  */
     public KalturaStringValue value;
 
     public KalturaEventNotificationParameter() {

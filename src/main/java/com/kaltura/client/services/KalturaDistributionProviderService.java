@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Distribution Provider service    */
+/**  Distribution Provider service  */
 @SuppressWarnings("serial")
 public class KalturaDistributionProviderService extends KalturaServiceBase {
     public KalturaDistributionProviderService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaDistributionProviderService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List all distribution providers     */
+	/**  List all distribution providers  */
     public KalturaDistributionProviderListResponse list(KalturaDistributionProviderFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

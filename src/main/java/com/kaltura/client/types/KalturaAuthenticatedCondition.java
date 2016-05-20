@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAuthenticatedCondition extends KalturaCondition {
-	/**  The privelege needed to remove the restriction     */
+	/**  The privelege needed to remove the restriction  */
     public ArrayList<KalturaStringValue> privileges;
 
     public KalturaAuthenticatedCondition() {

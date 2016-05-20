@@ -53,7 +53,7 @@ public class KalturaContentDistributionSearchItem extends KalturaSearchItem {
     public KalturaEntryDistributionFlag entryDistributionFlag;
     public KalturaEntryDistributionStatus entryDistributionStatus;
     public boolean hasEntryDistributionValidationErrors;
-	/**  Comma seperated validation error types     */
+	/**  Comma seperated validation error types  */
     public String entryDistributionValidationErrors;
 
     public KalturaContentDistributionSearchItem() {

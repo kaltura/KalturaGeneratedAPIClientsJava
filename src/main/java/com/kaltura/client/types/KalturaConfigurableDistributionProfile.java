@@ -48,7 +48,7 @@ public abstract class KalturaConfigurableDistributionProfile extends KalturaDist
     public ArrayList<KalturaDistributionFieldConfig> fieldConfigArray;
     public ArrayList<KalturaExtendingItemMrssParameter> itemXpathsToExtend;
 	/**  When checking custom XSLT conditions using the fieldConfigArray - address only
-	  categories associated with the entry via the categoryEntry object     */
+	  categories associated with the entry via the categoryEntry object  */
     public boolean useCategoryEntries;
 
     public KalturaConfigurableDistributionProfile() {

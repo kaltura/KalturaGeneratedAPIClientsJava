@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage details for the administrative user    */
+/**  Manage details for the administrative user  */
 @SuppressWarnings("serial")
 public class KalturaAdminUserService extends KalturaServiceBase {
     public KalturaAdminUserService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaAdminUserService extends KalturaServiceBase {
         return this.updatePassword(email, password, newEmail, "");
     }
 
-	/**  Update admin user password and email     */
+	/**  Update admin user password and email  */
     public KalturaAdminUser updatePassword(String email, String password, String newEmail, String newPassword) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("email", email);
@@ -71,7 +71,7 @@ public class KalturaAdminUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAdminUser.class, resultXmlElement);
     }
 
-	/**  Reset admin user password and send it to the users email address     */
+	/**  Reset admin user password and send it to the users email address  */
     public void resetPassword(String email) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("email", email);
@@ -86,7 +86,7 @@ public class KalturaAdminUserService extends KalturaServiceBase {
     }
 
 	/**  Get an admin session using admin email and password (Used for login to the KMC
-	  application)     */
+	  application)  */
     public String login(String email, String password, int partnerId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("email", email);
@@ -100,7 +100,7 @@ public class KalturaAdminUserService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Set initial users password     */
+	/**  Set initial users password  */
     public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("hashKey", hashKey);

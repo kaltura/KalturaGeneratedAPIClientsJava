@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaResponseProfileCacheRecalculateOptions extends KalturaObjectBase {
-	/**  Maximum number of keys to recalculate     */
+	/**  Maximum number of keys to recalculate  */
     public int limit = Integer.MIN_VALUE;
-	/**  Class name     */
+	/**  Class name  */
     public String cachedObjectType;
     public String objectId;
     public String startObjectKey;

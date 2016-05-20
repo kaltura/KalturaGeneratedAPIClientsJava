@@ -44,12 +44,12 @@ import org.w3c.dom.NodeList;
  */
 
 /**  Client notification object to hold the notification url and the data when
-  sending client side notifications    */
+  sending client side notifications  */
 @SuppressWarnings("serial")
 public class KalturaClientNotification extends KalturaObjectBase {
-	/**  The URL where the notification should be sent to         */
+	/**  The URL where the notification should be sent to  */
     public String url;
-	/**  The serialized notification data to send        */
+	/**  The serialized notification data to send  */
     public String data;
 
     public KalturaClientNotification() {

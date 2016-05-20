@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Flavor Params Output service    */
+/**  Flavor Params Output service  */
 @SuppressWarnings("serial")
 public class KalturaFlavorParamsOutputService extends KalturaServiceBase {
     public KalturaFlavorParamsOutputService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Get flavor params output object by ID     */
+	/**  Get flavor params output object by ID  */
     public KalturaFlavorParamsOutput get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -68,7 +68,7 @@ public class KalturaFlavorParamsOutputService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List flavor params output objects by filter and pager     */
+	/**  List flavor params output objects by filter and pager  */
     public KalturaFlavorParamsOutputListResponse list(KalturaFlavorParamsOutputFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

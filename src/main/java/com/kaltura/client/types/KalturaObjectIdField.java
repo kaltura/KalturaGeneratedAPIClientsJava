@@ -39,7 +39,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates object ID according to given context    */
+/**  Evaluates object ID according to given context  */
 @SuppressWarnings("serial")
 public class KalturaObjectIdField extends KalturaStringField {
 

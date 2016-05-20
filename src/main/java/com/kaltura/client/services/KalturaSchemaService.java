@@ -41,14 +41,14 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  Expose the schema definitions for syndication MRSS, bulk upload XML and other
-  schema types.     */
+  schema types.  */
 @SuppressWarnings("serial")
 public class KalturaSchemaService extends KalturaServiceBase {
     public KalturaSchemaService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Serves the requested XSD according to the type and name.      */
+	/**  Serves the requested XSD according to the type and name.  */
     public String serve(KalturaSchemaType type) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("type", type);

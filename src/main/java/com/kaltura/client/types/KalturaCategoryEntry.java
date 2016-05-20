@@ -47,13 +47,13 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaCategoryEntry extends KalturaObjectBase {
     public int categoryId = Integer.MIN_VALUE;
-	/**  entry id     */
+	/**  entry id  */
     public String entryId;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  The full ids of the Category     */
+	/**  The full ids of the Category  */
     public String categoryFullIds;
-	/**  CategroyEntry status     */
+	/**  CategroyEntry status  */
     public KalturaCategoryEntryStatus status;
 
     public KalturaCategoryEntry() {

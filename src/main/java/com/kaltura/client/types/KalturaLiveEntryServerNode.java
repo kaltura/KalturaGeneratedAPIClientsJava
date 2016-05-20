@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLiveEntryServerNode extends KalturaEntryServerNode {
-	/**  parameters of the stream we got     */
+	/**  parameters of the stream we got  */
     public ArrayList<KalturaLiveStreamParams> streams;
 
     public KalturaLiveEntryServerNode() {

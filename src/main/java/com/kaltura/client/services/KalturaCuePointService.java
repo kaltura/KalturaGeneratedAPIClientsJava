@@ -48,14 +48,14 @@ import com.kaltura.client.enums.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Cue Point service    */
+/**  Cue Point service  */
 @SuppressWarnings("serial")
 public class KalturaCuePointService extends KalturaServiceBase {
     public KalturaCuePointService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Allows you to add an cue point object associated with an entry     */
+	/**  Allows you to add an cue point object associated with an entry  */
     public KalturaCuePoint add(KalturaCuePoint cuePoint) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("cuePoint", cuePoint);
@@ -79,7 +79,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
     }
 
 	/**  Allows you to add multiple cue points objects by uploading XML that contains
-	  multiple cue point definitions     */
+	  multiple cue point definitions  */
     public KalturaCuePointListResponse addFromBulk(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         KalturaFiles kfiles = new KalturaFiles();
@@ -99,7 +99,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return this.serveBulk(filter, null);
     }
 
-	/**  Download multiple cue points objects as XML definitions     */
+	/**  Download multiple cue points objects as XML definitions  */
     public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -108,7 +108,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  Retrieve an CuePoint object by id     */
+	/**  Retrieve an CuePoint object by id  */
     public KalturaCuePoint get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -127,7 +127,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List cue point objects by filter and pager     */
+	/**  List cue point objects by filter and pager  */
     public KalturaCuePointListResponse list(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -143,7 +143,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  count cue point objects by filter     */
+	/**  count cue point objects by filter  */
     public int count(KalturaCuePointFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -155,7 +155,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Update cue point by id      */
+	/**  Update cue point by id  */
     public KalturaCuePoint update(String id, KalturaCuePoint cuePoint) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -167,7 +167,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
     }
 
-	/**  delete cue point by id, and delete all children cue points     */
+	/**  delete cue point by id, and delete all children cue points  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -177,7 +177,7 @@ public class KalturaCuePointService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Update cuePoint status by id     */
+	/**  Update cuePoint status by id  */
     public void updateStatus(String id, KalturaCuePointStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

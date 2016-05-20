@@ -43,14 +43,14 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  External media service lets you upload and manage embed codes and external
-  playable content    */
+  playable content  */
 @SuppressWarnings("serial")
 public class KalturaExternalMediaService extends KalturaServiceBase {
     public KalturaExternalMediaService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Add external media entry     */
+	/**  Add external media entry  */
     public KalturaExternalMediaEntry add(KalturaExternalMediaEntry entry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entry", entry);
@@ -61,7 +61,7 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 
-	/**  Get external media entry by ID.     */
+	/**  Get external media entry by ID.  */
     public KalturaExternalMediaEntry get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -72,8 +72,7 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 
-	/**  Update external media entry. Only the properties that were set will be updated. 
-	     */
+	/**  Update external media entry. Only the properties that were set will be updated.  */
     public KalturaExternalMediaEntry update(String id, KalturaExternalMediaEntry entry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -85,7 +84,7 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 
-	/**  Delete a external media entry.     */
+	/**  Delete a external media entry.  */
     public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -103,7 +102,7 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List media entries by filter with paging support.     */
+	/**  List media entries by filter with paging support.  */
     public KalturaExternalMediaEntryListResponse list(KalturaExternalMediaEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -119,7 +118,7 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  Count media entries by filter.     */
+	/**  Count media entries by filter.  */
     public int count(KalturaExternalMediaEntryFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

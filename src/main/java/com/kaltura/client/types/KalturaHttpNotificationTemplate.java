@@ -50,44 +50,44 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaHttpNotificationTemplate extends KalturaEventNotificationTemplate {
-	/**  Remote server URL     */
+	/**  Remote server URL  */
     public String url;
-	/**  Request method.     */
+	/**  Request method.  */
     public KalturaHttpNotificationMethod method;
-	/**  Data to send.     */
+	/**  Data to send.  */
     public KalturaHttpNotificationData data;
-	/**  The maximum number of seconds to allow cURL functions to execute.     */
+	/**  The maximum number of seconds to allow cURL functions to execute.  */
     public int timeout = Integer.MIN_VALUE;
 	/**  The number of seconds to wait while trying to connect.   Must be larger than
-	  zero.     */
+	  zero.  */
     public int connectTimeout = Integer.MIN_VALUE;
-	/**  A username to use for the connection.     */
+	/**  A username to use for the connection.  */
     public String username;
-	/**  A password to use for the connection.     */
+	/**  A password to use for the connection.  */
     public String password;
-	/**  The HTTP authentication method to use.     */
+	/**  The HTTP authentication method to use.  */
     public KalturaHttpNotificationAuthenticationMethod authenticationMethod;
 	/**  The SSL version (2 or 3) to use.   By default PHP will try to determine this
-	  itself, although in some cases this must be set manually.     */
+	  itself, although in some cases this must be set manually.  */
     public KalturaHttpNotificationSslVersion sslVersion;
-	/**  SSL certificate to verify the peer with.     */
+	/**  SSL certificate to verify the peer with.  */
     public String sslCertificate;
-	/**  The format of the certificate.     */
+	/**  The format of the certificate.  */
     public KalturaHttpNotificationCertificateType sslCertificateType;
-	/**  The password required to use the certificate.     */
+	/**  The password required to use the certificate.  */
     public String sslCertificatePassword;
 	/**  The identifier for the crypto engine of the private SSL key specified in ssl
-	  key.     */
+	  key.  */
     public String sslEngine;
-	/**  The identifier for the crypto engine used for asymmetric crypto operations.     */
+	/**  The identifier for the crypto engine used for asymmetric crypto operations.  */
     public String sslEngineDefault;
-	/**  The key type of the private SSL key specified in ssl key - PEM / DER / ENG.     */
+	/**  The key type of the private SSL key specified in ssl key - PEM / DER / ENG.  */
     public KalturaHttpNotificationSslKeyType sslKeyType;
-	/**  Private SSL key.     */
+	/**  Private SSL key.  */
     public String sslKey;
-	/**  The secret password needed to use the private SSL key specified in ssl key.     */
+	/**  The secret password needed to use the private SSL key specified in ssl key.  */
     public String sslKeyPassword;
-	/**  Adds a e-mail custom header     */
+	/**  Adds a e-mail custom header  */
     public ArrayList<KalturaKeyValue> customHeaders;
 
     public KalturaHttpNotificationTemplate() {

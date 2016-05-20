@@ -43,7 +43,7 @@ import com.kaltura.client.types.*;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Session service    */
+/**  Session service  */
 @SuppressWarnings("serial")
 public class KalturaSessionService extends KalturaServiceBase {
     public KalturaSessionService(KalturaClient client) {
@@ -71,7 +71,7 @@ public class KalturaSessionService extends KalturaServiceBase {
     }
 
 	/**  Start a session with Kaltura's server.   The result KS is the session key that
-	  you should pass to all services that requires a ticket.     */
+	  you should pass to all services that requires a ticket.  */
     public String start(String secret, String userId, KalturaSessionType type, int partnerId, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("secret", secret);
@@ -88,7 +88,7 @@ public class KalturaSessionService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  End a session with the Kaltura server, making the current KS invalid.     */
+	/**  End a session with the Kaltura server, making the current KS invalid.  */
     public void end() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("session", "end", kparams);
@@ -118,7 +118,7 @@ public class KalturaSessionService extends KalturaServiceBase {
     }
 
 	/**  Start an impersonated session with Kaltura's server.   The result KS is the
-	  session key that you should pass to all services that requires a ticket.     */
+	  session key that you should pass to all services that requires a ticket.  */
     public String impersonate(String secret, int impersonatedPartnerId, String userId, KalturaSessionType type, int partnerId, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("secret", secret);
@@ -150,7 +150,7 @@ public class KalturaSessionService extends KalturaServiceBase {
 
 	/**  Start an impersonated session with Kaltura's server.   The result KS info
 	  contains the session key that you should pass to all services that requires a
-	  ticket.   Type, expiry and privileges won't be changed if they're not set     */
+	  ticket.   Type, expiry and privileges won't be changed if they're not set  */
     public KalturaSessionInfo impersonateByKs(String session, KalturaSessionType type, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("session", session);
@@ -168,7 +168,7 @@ public class KalturaSessionService extends KalturaServiceBase {
         return this.get(null);
     }
 
-	/**  Parse session key and return its info     */
+	/**  Parse session key and return its info  */
     public KalturaSessionInfo get(String session) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("session", session);
@@ -183,7 +183,7 @@ public class KalturaSessionService extends KalturaServiceBase {
         return this.startWidgetSession(widgetId, 86400);
     }
 
-	/**  Start a session for Kaltura's flash widgets     */
+	/**  Start a session for Kaltura's flash widgets  */
     public KalturaStartWidgetSessionResponse startWidgetSession(String widgetId, int expiry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("widgetId", widgetId);

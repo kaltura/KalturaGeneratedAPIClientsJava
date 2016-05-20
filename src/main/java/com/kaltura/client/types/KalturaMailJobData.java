@@ -52,7 +52,7 @@ public class KalturaMailJobData extends KalturaJobData {
     public KalturaMailJobStatus status;
     public String recipientName;
     public String recipientEmail;
-	/**  kuserId       */
+	/**  kuserId  */
     public int recipientId = Integer.MIN_VALUE;
     public String fromName;
     public String fromEmail;

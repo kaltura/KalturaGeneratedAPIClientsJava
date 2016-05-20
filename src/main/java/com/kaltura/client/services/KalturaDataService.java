@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Data service lets you manage data content (textual content)    */
+/**  Data service lets you manage data content (textual content)  */
 @SuppressWarnings("serial")
 public class KalturaDataService extends KalturaServiceBase {
     public KalturaDataService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Adds a new data entry     */
+	/**  Adds a new data entry  */
     public KalturaDataEntry add(KalturaDataEntry dataEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dataEntry", dataEntry);
@@ -64,7 +64,7 @@ public class KalturaDataService extends KalturaServiceBase {
         return this.get(entryId, -1);
     }
 
-	/**  Get data entry by ID.     */
+	/**  Get data entry by ID.  */
     public KalturaDataEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -76,7 +76,7 @@ public class KalturaDataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
     }
 
-	/**  Update data entry. Only the properties that were set will be updated.     */
+	/**  Update data entry. Only the properties that were set will be updated.  */
     public KalturaDataEntry update(String entryId, KalturaDataEntry documentEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -88,7 +88,7 @@ public class KalturaDataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
     }
 
-	/**  Delete a data entry.     */
+	/**  Delete a data entry.  */
     public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
@@ -106,7 +106,7 @@ public class KalturaDataService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  List data entries by filter with paging support.     */
+	/**  List data entries by filter with paging support.  */
     public KalturaDataListResponse list(KalturaDataEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -126,7 +126,7 @@ public class KalturaDataService extends KalturaServiceBase {
         return this.serve(entryId, version, false);
     }
 
-	/**  serve action returan the file from dataContent field.     */
+	/**  serve action returan the file from dataContent field.  */
     public String serve(String entryId, int version, boolean forceProxy) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

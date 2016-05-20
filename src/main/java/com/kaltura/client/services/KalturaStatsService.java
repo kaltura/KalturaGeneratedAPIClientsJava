@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Stats Service    */
+/**  Stats Service  */
 @SuppressWarnings("serial")
 public class KalturaStatsService extends KalturaServiceBase {
     public KalturaStatsService(KalturaClient client) {
@@ -57,7 +57,7 @@ public class KalturaStatsService extends KalturaServiceBase {
 	  number or guid partner id entry id unique viewer widget id ui_conf id uid - the
 	  puser id as set by the ppartner current point - in milliseconds duration -
 	  milliseconds user ip process duration - in milliseconds control id seek new
-	  point referrer       KalturaStatsEvent $event     */
+	  point referrer       KalturaStatsEvent $event  */
     public boolean collect(KalturaStatsEvent event) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("event", event);
@@ -71,7 +71,7 @@ public class KalturaStatsService extends KalturaServiceBase {
 
 	/**  Will collect the kmcEvent sent form the KMC client   // this will actually be an
 	  empty function because all events will be sent using GET and will anyway be
-	  logged in the apache log     */
+	  logged in the apache log  */
     public void kmcCollect(KalturaStatsKmcEvent kmcEvent) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("kmcEvent", kmcEvent);
@@ -91,7 +91,7 @@ public class KalturaStatsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCEError.class, resultXmlElement);
     }
 
-	/**  Use this action to report errors to the kaltura server.     */
+	/**  Use this action to report errors to the kaltura server.  */
     public void reportError(String errorCode, String errorMessage) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("errorCode", errorCode);

@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaCondition extends KalturaObjectBase {
-	/**  The type of the access control condition     */
+	/**  The type of the access control condition  */
     public KalturaConditionType type;
     public String description;
     public boolean not;

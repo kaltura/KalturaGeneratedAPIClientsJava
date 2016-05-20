@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaLiveChannel extends KalturaLiveEntry {
-	/**  Playlist id to be played     */
+	/**  Playlist id to be played  */
     public String playlistId;
-	/**  Indicates that the segments should be repeated for ever     */
+	/**  Indicates that the segments should be repeated for ever  */
     public KalturaNullableBoolean repeat;
 
     public KalturaLiveChannel() {

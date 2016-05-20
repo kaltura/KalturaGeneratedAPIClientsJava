@@ -57,7 +57,7 @@ public abstract class KalturaCuePoint extends KalturaObjectBase {
     public int updatedAt = Integer.MIN_VALUE;
     public int triggeredAt = Integer.MIN_VALUE;
     public String tags;
-	/**  Start time in milliseconds     */
+	/**  Start time in milliseconds  */
     public int startTime = Integer.MIN_VALUE;
     public String userId;
     public String partnerData;

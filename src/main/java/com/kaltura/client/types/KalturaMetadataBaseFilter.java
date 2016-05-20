@@ -52,7 +52,7 @@ public abstract class KalturaMetadataBaseFilter extends KalturaRelatedFilter {
     public int metadataProfileVersionEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionGreaterThanOrEqual = Integer.MIN_VALUE;
     public int metadataProfileVersionLessThanOrEqual = Integer.MIN_VALUE;
-	/**  When null, default is KalturaMetadataObjectType::ENTRY     */
+	/**  When null, default is KalturaMetadataObjectType::ENTRY  */
     public KalturaMetadataObjectType metadataObjectTypeEqual;
     public String objectIdEqual;
     public String objectIdIn;

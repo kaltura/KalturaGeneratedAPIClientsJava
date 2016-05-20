@@ -45,7 +45,7 @@ import java.util.ArrayList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  api for getting reports data by the report type and some inputFilter    */
+/**  api for getting reports data by the report type and some inputFilter  */
 @SuppressWarnings("serial")
 public class KalturaReportService extends KalturaServiceBase {
     public KalturaReportService(KalturaClient client) {
@@ -60,7 +60,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return this.getGraphs(reportType, reportInputFilter, dimension, null);
     }
 
-	/**  report getGraphs action allows to get a graph data for a specific report.      */
+	/**  report getGraphs action allows to get a graph data for a specific report.  */
     public List<KalturaReportGraph> getGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String dimension, String objectIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("reportType", reportType);
@@ -78,7 +78,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return this.getTotal(reportType, reportInputFilter, null);
     }
 
-	/**  report getTotal action allows to get a graph data for a specific report.      */
+	/**  report getTotal action allows to get a graph data for a specific report.  */
     public KalturaReportTotal getTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("reportType", reportType);
@@ -95,8 +95,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return this.getBaseTotal(reportType, reportInputFilter, null);
     }
 
-	/**  report getBaseTotal action allows to get a the total base for storage reports   
-	     */
+	/**  report getBaseTotal action allows to get a the total base for storage reports  */
     public List<KalturaReportBaseTotal> getBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("reportType", reportType);
@@ -117,7 +116,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return this.getTable(reportType, reportInputFilter, pager, order, null);
     }
 
-	/**  report getTable action allows to get a graph data for a specific report.      */
+	/**  report getTable action allows to get a graph data for a specific report.  */
     public KalturaReportTable getTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager, String order, String objectIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("reportType", reportType);
@@ -148,7 +147,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return this.getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, null);
     }
 
-	/**  will create a Csv file for the given report and return the URL to access it     */
+	/**  will create a Csv file for the given report and return the URL to access it  */
     public String getUrlForReportAsCsv(String reportTitle, String reportText, String headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String dimension, KalturaFilterPager pager, String order, String objectIds) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("reportTitle", reportTitle);
@@ -168,7 +167,7 @@ public class KalturaReportService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Will serve a requested report     */
+	/**  Will serve a requested report  */
     public String serve(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -212,7 +211,7 @@ public class KalturaReportService extends KalturaServiceBase {
     }
 
 	/**  Returns report CSV file executed by string params with the following convention:
-	  param1=value1;param2=value2      */
+	  param1=value1;param2=value2  */
     public String getCsvFromStringParams(int id, String params) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

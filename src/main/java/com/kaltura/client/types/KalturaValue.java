@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation to return an array of values    */
+/**  A representation to return an array of values  */
 @SuppressWarnings("serial")
 public abstract class KalturaValue extends KalturaObjectBase {
     public String description;

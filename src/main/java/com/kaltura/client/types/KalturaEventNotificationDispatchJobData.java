@@ -46,7 +46,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaEventNotificationDispatchJobData extends KalturaJobData {
     public int templateId = Integer.MIN_VALUE;
-	/**  Define the content dynamic parameters     */
+	/**  Define the content dynamic parameters  */
     public ArrayList<KalturaKeyValue> contentParameters;
 
     public KalturaEventNotificationDispatchJobData() {

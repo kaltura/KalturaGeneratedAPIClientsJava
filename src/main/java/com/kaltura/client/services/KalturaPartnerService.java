@@ -44,7 +44,7 @@ import com.kaltura.client.enums.*;
  */
 
 /**  partner service allows you to change/manage your partner personal details and
-  settings as well    */
+  settings as well  */
 @SuppressWarnings("serial")
 public class KalturaPartnerService extends KalturaServiceBase {
     public KalturaPartnerService(KalturaClient client) {
@@ -63,7 +63,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return this.register(partner, cmsPassword, templatePartnerId, false);
     }
 
-	/**  Create a new Partner object     */
+	/**  Create a new Partner object  */
     public KalturaPartner register(KalturaPartner partner, String cmsPassword, int templatePartnerId, boolean silent) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partner", partner);
@@ -81,7 +81,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return this.update(partner, false);
     }
 
-	/**  Update details and settings of an existing partner     */
+	/**  Update details and settings of an existing partner  */
     public KalturaPartner update(KalturaPartner partner, boolean allowEmpty) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partner", partner);
@@ -97,7 +97,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return this.get(Integer.MIN_VALUE);
     }
 
-	/**  Retrieve partner object by Id     */
+	/**  Retrieve partner object by Id  */
     public KalturaPartner get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
@@ -108,7 +108,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPartner.class, resultXmlElement);
     }
 
-	/**  Retrieve partner secret and admin secret     */
+	/**  Retrieve partner secret and admin secret  */
     public KalturaPartner getSecrets(int partnerId, String adminEmail, String cmsPassword) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partnerId", partnerId);
@@ -122,7 +122,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
     }
 
 	/**  Retrieve all info attributed to the partner   This action expects no parameters.
-	  It returns information for the current KS partnerId.     */
+	  It returns information for the current KS partnerId.  */
     public KalturaPartner getInfo() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("partner", "getInfo", kparams, KalturaPartner.class);
@@ -146,7 +146,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
 
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
 	  package   Additional data returned is a graph points of streaming usage in a
-	  timeframe   The resolution can be "days" or "months"     */
+	  timeframe   The resolution can be "days" or "months"  */
     public KalturaPartnerUsage getUsage(int year, int month, KalturaReportInterval resolution) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("year", year);
@@ -160,7 +160,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
     }
 
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
-	  package     */
+	  package  */
     public KalturaPartnerStatistics getStatistics() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("partner", "getStatistics", kparams, KalturaPartnerStatistics.class);
@@ -178,8 +178,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return this.listPartnersForUser(partnerFilter, null);
     }
 
-	/**  Retrieve a list of partner objects which the current user is allowed to access. 
-	     */
+	/**  Retrieve a list of partner objects which the current user is allowed to access.  */
     public KalturaPartnerListResponse listPartnersForUser(KalturaPartnerFilter partnerFilter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("partnerFilter", partnerFilter);
@@ -202,7 +201,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
 	/**  List partners by filter with paging support   Current implementation will only
 	  list the sub partners of the partner initiating the api call (using the current
 	  KS).   This action is only partially implemented to support listing sub partners
-	  of a VAR partner.     */
+	  of a VAR partner.  */
     public KalturaPartnerListResponse list(KalturaPartnerFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
@@ -214,7 +213,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPartnerListResponse.class, resultXmlElement);
     }
 
-	/**  List partner's current processes' statuses     */
+	/**  List partner's current processes' statuses  */
     public KalturaFeatureStatusListResponse listFeatureStatus() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         this.kalturaClient.queueServiceCall("partner", "listFeatureStatus", kparams, KalturaFeatureStatusListResponse.class);
@@ -228,7 +227,7 @@ public class KalturaPartnerService extends KalturaServiceBase {
         return this.count(null);
     }
 
-	/**  Count partner's existing sub-publishers (count includes the partner itself).     */
+	/**  Count partner's existing sub-publishers (count includes the partner itself).  */
     public int count(KalturaPartnerFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

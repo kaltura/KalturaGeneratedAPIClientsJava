@@ -52,25 +52,25 @@ public abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase {
     public String feedUrl;
     public int partnerId = Integer.MIN_VALUE;
 	/**  link a playlist that will set what content the feed will include   if empty, all
-	  content will be included in feed     */
+	  content will be included in feed  */
     public String playlistId;
-	/**  feed name     */
+	/**  feed name  */
     public String name;
-	/**  feed status     */
+	/**  feed status  */
     public KalturaSyndicationFeedStatus status;
-	/**  feed type     */
+	/**  feed type  */
     public KalturaSyndicationFeedType type;
 	/**  Base URL for each video, on the partners site   This is required by all
-	  syndication types.     */
+	  syndication types.  */
     public String landingPage;
-	/**  Creation date as Unix timestamp (In seconds)     */
+	/**  Creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
 	/**  allow_embed tells google OR yahoo weather to allow embedding the video on google
 	  OR yahoo video results   or just to provide a link to the landing page.   it is
 	  applied on the video-player_loc property in the XML (google)   and addes
-	  media-player tag (yahoo)     */
+	  media-player tag (yahoo)  */
     public boolean allowEmbed;
-	/**  Select a uiconf ID as player skin to include in the kwidget url     */
+	/**  Select a uiconf ID as player skin to include in the kwidget url  */
     public int playerUiconfId = Integer.MIN_VALUE;
     public int flavorParamId = Integer.MIN_VALUE;
     public boolean transcodeExistingContent;
@@ -78,12 +78,12 @@ public abstract class KalturaBaseSyndicationFeed extends KalturaObjectBase {
     public String categories;
     public int storageId = Integer.MIN_VALUE;
     public KalturaSyndicationFeedEntriesOrderBy entriesOrderBy;
-	/**  Should enforce entitlement on feed entries     */
+	/**  Should enforce entitlement on feed entries  */
     public boolean enforceEntitlement;
 	/**  Set privacy context for search entries that assiged to private and public
-	  categories within a category privacy context.     */
+	  categories within a category privacy context.  */
     public String privacyContext;
-	/**  Update date as Unix timestamp (In seconds)     */
+	/**  Update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public boolean useCategoryEntries;
 

@@ -47,23 +47,23 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProviderData {
-	/**  Entry ID     */
+	/**  Entry ID  */
     public String entryId;
-	/**  Flavor ID     */
+	/**  Flavor ID  */
     public String flavorAssetId;
-	/**  Caption formats     */
+	/**  Caption formats  */
     public String captionAssetFormats;
     public KalturaCielo24Priority priority;
     public KalturaCielo24Fidelity fidelity;
-	/**  Api key for service provider     */
+	/**  Api key for service provider  */
     public String username;
-	/**  Api key for service provider     */
+	/**  Api key for service provider  */
     public String password;
-	/**  Base url for service provider     */
+	/**  Base url for service provider  */
     public String baseUrl;
-	/**  Transcript content language     */
+	/**  Transcript content language  */
     public KalturaLanguage spokenLanguage;
-	/**  should replace remote media content     */
+	/**  should replace remote media content  */
     public boolean replaceMediaContent;
 
     public KalturaCielo24JobProviderData() {

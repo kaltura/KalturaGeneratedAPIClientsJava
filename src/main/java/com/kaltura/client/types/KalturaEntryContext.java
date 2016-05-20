@@ -45,9 +45,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEntryContext extends KalturaContext {
-	/**  The entry ID in the context of which the playlist should be built        */
+	/**  The entry ID in the context of which the playlist should be built  */
     public String entryId;
-	/**  Is this a redirected entry followup?        */
+	/**  Is this a redirected entry followup?  */
     public KalturaNullableBoolean followEntryRedirect;
 
     public KalturaEntryContext() {

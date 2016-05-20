@@ -46,25 +46,25 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaScheduler extends KalturaObjectBase {
-	/**  The id of the Scheduler     */
+	/**  The id of the Scheduler  */
     public int id = Integer.MIN_VALUE;
-	/**  The id as configured in the batch config     */
+	/**  The id as configured in the batch config  */
     public int configuredId = Integer.MIN_VALUE;
-	/**  The scheduler name     */
+	/**  The scheduler name  */
     public String name;
-	/**  The host name     */
+	/**  The host name  */
     public String host;
-	/**  Array of the last statuses     */
+	/**  Array of the last statuses  */
     public ArrayList<KalturaSchedulerStatus> statuses;
-	/**  Array of the last configs     */
+	/**  Array of the last configs  */
     public ArrayList<KalturaSchedulerConfig> configs;
-	/**  Array of the workers     */
+	/**  Array of the workers  */
     public ArrayList<KalturaSchedulerWorker> workers;
-	/**  creation time     */
+	/**  creation time  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  last status time     */
+	/**  last status time  */
     public int lastStatus = Integer.MIN_VALUE;
-	/**  last status formated     */
+	/**  last status formated  */
     public String lastStatusStr;
 
     public KalturaScheduler() {

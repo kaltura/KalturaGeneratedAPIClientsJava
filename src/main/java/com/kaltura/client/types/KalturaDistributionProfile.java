@@ -49,11 +49,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaDistributionProfile extends KalturaObjectBase {
-	/**  Auto generated unique id     */
+	/**  Auto generated unique id  */
     public int id = Integer.MIN_VALUE;
-	/**  Profile creation date as Unix timestamp (In seconds)     */
+	/**  Profile creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  Profile last update date as Unix timestamp (In seconds)     */
+	/**  Profile last update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
     public int partnerId = Integer.MIN_VALUE;
     public KalturaDistributionProviderType providerType;
@@ -63,34 +63,34 @@ public abstract class KalturaDistributionProfile extends KalturaObjectBase {
     public KalturaDistributionProfileActionStatus updateEnabled;
     public KalturaDistributionProfileActionStatus deleteEnabled;
     public KalturaDistributionProfileActionStatus reportEnabled;
-	/**  Comma separated flavor params ids that should be auto converted     */
+	/**  Comma separated flavor params ids that should be auto converted  */
     public String autoCreateFlavors;
-	/**  Comma separated thumbnail params ids that should be auto generated     */
+	/**  Comma separated thumbnail params ids that should be auto generated  */
     public String autoCreateThumb;
-	/**  Comma separated flavor params ids that should be submitted if ready     */
+	/**  Comma separated flavor params ids that should be submitted if ready  */
     public String optionalFlavorParamsIds;
-	/**  Comma separated flavor params ids that required to be ready before submission     */
+	/**  Comma separated flavor params ids that required to be ready before submission  */
     public String requiredFlavorParamsIds;
-	/**  Thumbnail dimensions that should be submitted if ready     */
+	/**  Thumbnail dimensions that should be submitted if ready  */
     public ArrayList<KalturaDistributionThumbDimensions> optionalThumbDimensions;
-	/**  Thumbnail dimensions that required to be readt before submission     */
+	/**  Thumbnail dimensions that required to be readt before submission  */
     public ArrayList<KalturaDistributionThumbDimensions> requiredThumbDimensions;
-	/**  Asset Distribution Rules for assets that should be submitted if ready     */
+	/**  Asset Distribution Rules for assets that should be submitted if ready  */
     public ArrayList<KalturaAssetDistributionRule> optionalAssetDistributionRules;
 	/**  Assets Asset Distribution Rules for assets that are required to be ready before
-	  submission     */
+	  submission  */
     public ArrayList<KalturaAssetDistributionRule> requiredAssetDistributionRules;
 	/**  If entry distribution sunrise not specified that will be the default since entry
-	  creation time, in seconds     */
+	  creation time, in seconds  */
     public int sunriseDefaultOffset = Integer.MIN_VALUE;
 	/**  If entry distribution sunset not specified that will be the default since entry
-	  creation time, in seconds     */
+	  creation time, in seconds  */
     public int sunsetDefaultOffset = Integer.MIN_VALUE;
-	/**  The best external storage to be used to download the asset files from     */
+	/**  The best external storage to be used to download the asset files from  */
     public int recommendedStorageProfileForDownload = Integer.MIN_VALUE;
-	/**  The best Kaltura data center to be used to download the asset files to     */
+	/**  The best Kaltura data center to be used to download the asset files to  */
     public int recommendedDcForDownload = Integer.MIN_VALUE;
-	/**  The best Kaltura data center to be used to execute the distribution job     */
+	/**  The best Kaltura data center to be used to execute the distribution job  */
     public int recommendedDcForExecute = Integer.MIN_VALUE;
 
     public KalturaDistributionProfile() {

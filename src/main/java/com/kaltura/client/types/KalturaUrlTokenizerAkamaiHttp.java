@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerAkamaiHttp extends KalturaUrlTokenizer {
-	/**  param     */
+	/**  param  */
     public String paramName;
     public String rootDir;
 

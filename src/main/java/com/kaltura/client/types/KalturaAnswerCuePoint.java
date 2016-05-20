@@ -50,7 +50,7 @@ public class KalturaAnswerCuePoint extends KalturaCuePoint {
     public String quizUserEntryId;
     public String answerKey;
     public KalturaNullableBoolean isCorrect;
-	/**  Array of string     */
+	/**  Array of string  */
     public ArrayList<KalturaString> correctAnswerKeys;
     public String explanation;
 

@@ -44,11 +44,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaBulkDownloadJobData extends KalturaJobData {
-	/**  Comma separated list of entry ids     */
+	/**  Comma separated list of entry ids  */
     public String entryIds;
-	/**  Flavor params id to use for conversion     */
+	/**  Flavor params id to use for conversion  */
     public int flavorParamsId = Integer.MIN_VALUE;
-	/**  The id of the requesting user     */
+	/**  The id of the requesting user  */
     public String puserId;
 
     public KalturaBulkDownloadJobData() {

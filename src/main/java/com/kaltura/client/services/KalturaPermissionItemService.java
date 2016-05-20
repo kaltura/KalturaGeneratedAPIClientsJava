@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  PermissionItem service lets you create and manage permission items    */
+/**  PermissionItem service lets you create and manage permission items  */
 @SuppressWarnings("serial")
 public class KalturaPermissionItemService extends KalturaServiceBase {
     public KalturaPermissionItemService(KalturaClient client) {
@@ -50,7 +50,7 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
     }
 
 	/**  Adds a new permission item object to the account.   This action is available
-	  only to Kaltura system administrators.     */
+	  only to Kaltura system administrators.  */
     public KalturaPermissionItem add(KalturaPermissionItem permissionItem) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionItem", permissionItem);
@@ -61,7 +61,7 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
     }
 
-	/**  Retrieves a permission item object using its ID.     */
+	/**  Retrieves a permission item object using its ID.  */
     public KalturaPermissionItem get(int permissionItemId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionItemId", permissionItemId);
@@ -73,7 +73,7 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
     }
 
 	/**  Updates an existing permission item object.   This action is available only to
-	  Kaltura system administrators.     */
+	  Kaltura system administrators.  */
     public KalturaPermissionItem update(int permissionItemId, KalturaPermissionItem permissionItem) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionItemId", permissionItemId);
@@ -86,7 +86,7 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
     }
 
 	/**  Deletes an existing permission item object.   This action is available only to
-	  Kaltura system administrators.     */
+	  Kaltura system administrators.  */
     public KalturaPermissionItem delete(int permissionItemId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionItemId", permissionItemId);
@@ -105,7 +105,7 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
         return this.list(filter, null);
     }
 
-	/**  Lists permission item objects that are associated with an account.     */
+	/**  Lists permission item objects that are associated with an account.  */
     public KalturaPermissionItemListResponse list(KalturaPermissionItemFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);

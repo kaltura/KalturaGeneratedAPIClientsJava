@@ -42,11 +42,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  API object which provides the recipients of category related notifications.    */
+/**  API object which provides the recipients of category related notifications.  */
 @SuppressWarnings("serial")
 public class KalturaEmailNotificationCategoryRecipientProvider extends KalturaEmailNotificationRecipientProvider {
-	/**  The ID of the category whose subscribers should receive the email notification. 
-	     */
+	/**  The ID of the category whose subscribers should receive the email notification.  */
     public KalturaStringValue categoryId;
     public KalturaCategoryUserProviderFilter categoryUserFilter;
 

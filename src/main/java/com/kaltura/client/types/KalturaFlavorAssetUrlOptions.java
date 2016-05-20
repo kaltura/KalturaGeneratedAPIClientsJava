@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaFlavorAssetUrlOptions extends KalturaObjectBase {
-	/**  The name of the downloaded file     */
+	/**  The name of the downloaded file  */
     public String fileName;
     public String referrer;
 

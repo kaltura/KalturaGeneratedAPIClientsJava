@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileCondition extends KalturaCondition {
-	/**  The delivery ids that are accepted by this condition     */
+	/**  The delivery ids that are accepted by this condition  */
     public ArrayList<KalturaIntegerValue> deliveryProfileIds;
 
     public KalturaDeliveryProfileCondition() {

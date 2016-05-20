@@ -45,17 +45,17 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaConcatJobData extends KalturaJobData {
-	/**  Source files to be concatenated     */
+	/**  Source files to be concatenated  */
     public ArrayList<KalturaString> srcFiles;
-	/**  Output file     */
+	/**  Output file  */
     public String destFilePath;
-	/**  Flavor asset to be ingested with the output     */
+	/**  Flavor asset to be ingested with the output  */
     public String flavorAssetId;
-	/**  Clipping offset in seconds     */
+	/**  Clipping offset in seconds  */
     public double offset = Double.MIN_VALUE;
-	/**  Clipping duration in seconds     */
+	/**  Clipping duration in seconds  */
     public double duration = Double.MIN_VALUE;
-	/**  duration of the concated video     */
+	/**  duration of the concated video  */
     public double concatenatedDuration = Double.MIN_VALUE;
 
     public KalturaConcatJobData() {

@@ -46,9 +46,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaModifyCategoriesObjectTask extends KalturaObjectTask {
-	/**  Should the object task add or remove categories?     */
+	/**  Should the object task add or remove categories?  */
     public KalturaScheduledTaskAddOrRemoveType addRemoveType;
-	/**  The list of category ids to add or remove     */
+	/**  The list of category ids to add or remove  */
     public ArrayList<KalturaIntegerValue> categoryIds;
 
     public KalturaModifyCategoriesObjectTask() {

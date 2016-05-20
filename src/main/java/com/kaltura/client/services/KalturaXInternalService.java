@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  */
 
 /**  Internal Service is used for actions that are used internally in Kaltura
-  applications and might be changed in the future without any notice.    */
+  applications and might be changed in the future without any notice.  */
 @SuppressWarnings("serial")
 public class KalturaXInternalService extends KalturaServiceBase {
     public KalturaXInternalService(KalturaClient client) {
@@ -58,7 +58,7 @@ public class KalturaXInternalService extends KalturaServiceBase {
 	  MediaEntry   - Video will be converted using the flavor params id   - Audio will
 	  be downloaded as MP3   - Image will be downloaded as Jpeg   - MixEntry will be
 	  flattened using the flavor params id   - Other entry types are not supported  
-	  Returns the admin email that the email message will be sent to      */
+	  Returns the admin email that the email message will be sent to  */
     public String xAddBulkDownload(String entryIds, String flavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryIds", entryIds);

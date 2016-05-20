@@ -44,17 +44,17 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaWowzaMediaServerNode extends KalturaMediaServerNode {
-	/**  Wowza Media server app prefix     */
+	/**  Wowza Media server app prefix  */
     public String appPrefix;
-	/**  Wowza Media server transcoder configuration overide     */
+	/**  Wowza Media server transcoder configuration overide  */
     public String transcoder;
-	/**  Wowza Media server GPU index id     */
+	/**  Wowza Media server GPU index id  */
     public int GPUID = Integer.MIN_VALUE;
-	/**  Live service port     */
+	/**  Live service port  */
     public int liveServicePort = Integer.MIN_VALUE;
-	/**  Live service protocol     */
+	/**  Live service protocol  */
     public String liveServiceProtocol;
-	/**  Wowza media server live service internal domain     */
+	/**  Wowza media server live service internal domain  */
     public String liveServiceInternalDomain;
 
     public KalturaWowzaMediaServerNode() {

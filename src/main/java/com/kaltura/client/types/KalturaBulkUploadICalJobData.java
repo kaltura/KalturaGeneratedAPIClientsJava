@@ -43,10 +43,10 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for iCal bulk upload    */
+/**  Represents the Bulk upload job data for iCal bulk upload  */
 @SuppressWarnings("serial")
 public class KalturaBulkUploadICalJobData extends KalturaBulkUploadJobData {
-	/**  The type of the events that ill be created by this upload     */
+	/**  The type of the events that ill be created by this upload  */
     public KalturaScheduleEventType eventsType;
 
     public KalturaBulkUploadICalJobData() {

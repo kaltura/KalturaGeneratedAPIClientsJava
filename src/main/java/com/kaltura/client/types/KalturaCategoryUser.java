@@ -49,24 +49,24 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaCategoryUser extends KalturaObjectBase {
     public int categoryId = Integer.MIN_VALUE;
-	/**  User id     */
+	/**  User id  */
     public String userId;
-	/**  Partner id     */
+	/**  Partner id  */
     public int partnerId = Integer.MIN_VALUE;
-	/**  Permission level     */
+	/**  Permission level  */
     public KalturaCategoryUserPermissionLevel permissionLevel;
-	/**  Status     */
+	/**  Status  */
     public KalturaCategoryUserStatus status;
-	/**  CategoryUser creation date as Unix timestamp (In seconds)     */
+	/**  CategoryUser creation date as Unix timestamp (In seconds)  */
     public int createdAt = Integer.MIN_VALUE;
-	/**  CategoryUser update date as Unix timestamp (In seconds)     */
+	/**  CategoryUser update date as Unix timestamp (In seconds)  */
     public int updatedAt = Integer.MIN_VALUE;
 	/**  Update method can be either manual or automatic to distinguish between manual
-	  operations (for example in KMC) on automatic - using bulk upload      */
+	  operations (for example in KMC) on automatic - using bulk upload  */
     public KalturaUpdateMethodType updateMethod;
-	/**  The full ids of the Category     */
+	/**  The full ids of the Category  */
     public String categoryFullIds;
-	/**  Set of category-related permissions for the current category user.     */
+	/**  Set of category-related permissions for the current category user.  */
     public String permissionNames;
 
     public KalturaCategoryUser() {

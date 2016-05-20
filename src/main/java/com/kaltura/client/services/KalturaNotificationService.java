@@ -43,14 +43,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Notification Service    */
+/**  Notification Service  */
 @SuppressWarnings("serial")
 public class KalturaNotificationService extends KalturaServiceBase {
     public KalturaNotificationService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Return the notifications for a specific entry id and type     */
+	/**  Return the notifications for a specific entry id and type  */
     public KalturaClientNotification getClientNotification(String entryId, KalturaNotificationType type) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);

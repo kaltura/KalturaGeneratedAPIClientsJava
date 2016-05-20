@@ -45,16 +45,16 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Info about uiconf type    */
+/**  Info about uiconf type  */
 @SuppressWarnings("serial")
 public class KalturaUiConfTypeInfo extends KalturaObjectBase {
-	/**  UiConf Type     */
+	/**  UiConf Type  */
     public KalturaUiConfObjType type;
-	/**  Available versions        */
+	/**  Available versions  */
     public ArrayList<KalturaString> versions;
-	/**  The direcotry this type is saved at        */
+	/**  The direcotry this type is saved at  */
     public String directory;
-	/**  Filename for this UiConf type        */
+	/**  Filename for this UiConf type  */
     public String filename;
 
     public KalturaUiConfTypeInfo() {

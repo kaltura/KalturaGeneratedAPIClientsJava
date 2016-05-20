@@ -44,11 +44,11 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerVelocix extends KalturaUrlTokenizer {
-	/**  hdsPaths     */
+	/**  hdsPaths  */
     public String hdsPaths;
-	/**  tokenParamName     */
+	/**  tokenParamName  */
     public String paramName;
-	/**  secure URL prefix     */
+	/**  secure URL prefix  */
     public String authPrefix;
 
     public KalturaUrlTokenizerVelocix() {

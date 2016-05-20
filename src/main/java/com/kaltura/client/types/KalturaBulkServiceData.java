@@ -40,7 +40,7 @@ import com.kaltura.client.KalturaObjectBase;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  This class represents object-specific data passed to the   bulk upload job.    */
+/**  This class represents object-specific data passed to the   bulk upload job.  */
 @SuppressWarnings("serial")
 public abstract class KalturaBulkServiceData extends KalturaObjectBase {
 

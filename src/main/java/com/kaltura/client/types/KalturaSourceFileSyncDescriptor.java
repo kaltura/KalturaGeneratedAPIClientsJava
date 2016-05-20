@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaSourceFileSyncDescriptor extends KalturaFileSyncDescriptor {
-	/**  The translated path as used by the scheduler     */
+	/**  The translated path as used by the scheduler  */
     public String actualFileSyncLocalPath;
     public String assetId;
     public int assetParamsId = Integer.MIN_VALUE;

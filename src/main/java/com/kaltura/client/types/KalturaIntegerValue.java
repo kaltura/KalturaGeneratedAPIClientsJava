@@ -42,7 +42,7 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  An int representation to return an array of ints    */
+/**  An int representation to return an array of ints  */
 @SuppressWarnings("serial")
 public class KalturaIntegerValue extends KalturaValue {
     public int value = Integer.MIN_VALUE;

@@ -42,14 +42,14 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Server Node service    */
+/**  Server Node service  */
 @SuppressWarnings("serial")
 public class KalturaServerNodeService extends KalturaServiceBase {
     public KalturaServerNodeService(KalturaClient client) {
         this.kalturaClient = client;
     }
 
-	/**  Adds a server node to the Kaltura DB.     */
+	/**  Adds a server node to the Kaltura DB.  */
     public KalturaServerNode add(KalturaServerNode serverNode) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNode", serverNode);
@@ -60,7 +60,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
     }
 
-	/**  Get server node by id     */
+	/**  Get server node by id  */
     public KalturaServerNode get(int serverNodeId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
@@ -71,7 +71,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
     }
 
-	/**  Update server node by id      */
+	/**  Update server node by id  */
     public KalturaServerNode update(int serverNodeId, KalturaServerNode serverNode) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
@@ -83,7 +83,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
     }
 
-	/**  delete server node by id     */
+	/**  delete server node by id  */
     public void delete(String serverNodeId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
@@ -93,7 +93,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Disable server node by id     */
+	/**  Disable server node by id  */
     public KalturaServerNode disable(String serverNodeId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
@@ -104,7 +104,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
     }
 
-	/**  Enable server node by id     */
+	/**  Enable server node by id  */
     public KalturaServerNode enable(String serverNodeId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
@@ -138,7 +138,7 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return this.reportStatus(hostName, null);
     }
 
-	/**  Update server node status     */
+	/**  Update server node status  */
     public KalturaServerNode reportStatus(String hostName, KalturaServerNode serverNode) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("hostName", hostName);
