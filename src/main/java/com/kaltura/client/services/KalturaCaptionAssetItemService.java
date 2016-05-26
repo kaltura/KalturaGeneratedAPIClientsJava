@@ -42,7 +42,7 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Search caption asset items    */
+/**  Search caption asset items  */
 @SuppressWarnings("serial")
 public class KalturaCaptionAssetItemService extends KalturaServiceBase {
     public KalturaCaptionAssetItemService(KalturaClient client) {
@@ -61,7 +61,7 @@ public class KalturaCaptionAssetItemService extends KalturaServiceBase {
         return this.search(entryFilter, captionAssetItemFilter, null);
     }
 
-	/**  Search caption asset items by filter, pager and free text     */
+	/**  Search caption asset items by filter, pager and free text  */
     public KalturaCaptionAssetItemListResponse search(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryFilter", entryFilter);
@@ -86,7 +86,7 @@ public class KalturaCaptionAssetItemService extends KalturaServiceBase {
         return this.searchEntries(entryFilter, captionAssetItemFilter, null);
     }
 
-	/**  Search caption asset items by filter, pager and free text     */
+	/**  Search caption asset items by filter, pager and free text  */
     public KalturaBaseEntryListResponse searchEntries(KalturaBaseEntryFilter entryFilter, KalturaCaptionAssetItemFilter captionAssetItemFilter, KalturaFilterPager captionAssetItemPager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryFilter", entryFilter);

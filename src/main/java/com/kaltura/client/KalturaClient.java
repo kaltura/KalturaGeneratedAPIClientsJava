@@ -99,6 +99,7 @@ import com.kaltura.client.services.KalturaDropFolderService;
 import com.kaltura.client.services.KalturaDropFolderFileService;
 import com.kaltura.client.services.KalturaCaptionAssetService;
 import com.kaltura.client.services.KalturaCaptionParamsService;
+import com.kaltura.client.services.KalturaCaptionAssetItemService;
 import com.kaltura.client.services.KalturaAttachmentAssetService;
 import com.kaltura.client.services.KalturaTagService;
 import com.kaltura.client.services.KalturaLikeService;
@@ -125,7 +126,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-05-24");
+		this.setClientTag("java:16-05-26");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -711,6 +712,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.captionParamsService = new KalturaCaptionParamsService(this);
 	
 		return this.captionParamsService;
+	}
+	
+	protected KalturaCaptionAssetItemService captionAssetItemService;
+	public KalturaCaptionAssetItemService getCaptionAssetItemService() {
+		if(this.captionAssetItemService == null)
+			this.captionAssetItemService = new KalturaCaptionAssetItemService(this);
+	
+		return this.captionAssetItemService;
 	}
 	
 	protected KalturaAttachmentAssetService attachmentAssetService;

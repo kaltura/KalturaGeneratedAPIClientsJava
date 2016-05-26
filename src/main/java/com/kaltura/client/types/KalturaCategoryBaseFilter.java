@@ -87,8 +87,6 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
     public String inheritedParentIdIn;
     public int partnerSortValueGreaterThanOrEqual = Integer.MIN_VALUE;
     public int partnerSortValueLessThanOrEqual = Integer.MIN_VALUE;
-    public String aggregationCategoriesMultiLikeOr;
-    public String aggregationCategoriesMultiLikeAnd;
 
     public KalturaCategoryBaseFilter() {
     }
@@ -211,12 +209,6 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
             } else if (nodeName.equals("partnerSortValueLessThanOrEqual")) {
                 this.partnerSortValueLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("aggregationCategoriesMultiLikeOr")) {
-                this.aggregationCategoriesMultiLikeOr = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("aggregationCategoriesMultiLikeAnd")) {
-                this.aggregationCategoriesMultiLikeAnd = ParseUtils.parseString(txt);
-                continue;
             } 
         }
     }
@@ -261,8 +253,6 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
         kparams.add("inheritedParentIdIn", this.inheritedParentIdIn);
         kparams.add("partnerSortValueGreaterThanOrEqual", this.partnerSortValueGreaterThanOrEqual);
         kparams.add("partnerSortValueLessThanOrEqual", this.partnerSortValueLessThanOrEqual);
-        kparams.add("aggregationCategoriesMultiLikeOr", this.aggregationCategoriesMultiLikeOr);
-        kparams.add("aggregationCategoriesMultiLikeAnd", this.aggregationCategoriesMultiLikeAnd);
         return kparams;
     }
 

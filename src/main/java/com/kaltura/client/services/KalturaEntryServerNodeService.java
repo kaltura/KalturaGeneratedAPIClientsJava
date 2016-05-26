@@ -49,6 +49,17 @@ public class KalturaEntryServerNodeService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+    public KalturaEntryServerNode update(int id, KalturaEntryServerNode entryServerNode) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("entryServerNode", entryServerNode);
+        this.kalturaClient.queueServiceCall("entryservernode", "update", kparams, KalturaEntryServerNode.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryServerNode.class, resultXmlElement);
+    }
+
     public KalturaEntryServerNodeListResponse list() throws KalturaApiException {
         return this.list(null);
     }

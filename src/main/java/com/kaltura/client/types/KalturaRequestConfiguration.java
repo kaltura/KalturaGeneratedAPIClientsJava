@@ -46,12 +46,12 @@ import org.w3c.dom.NodeList;
 /**  Define client request optional configurations  /  */
 @SuppressWarnings("serial")
 public class KalturaRequestConfiguration extends KalturaObjectBase {
-	/**  Impersonated partner id     */
+	/**  Impersonated partner id  */
     public int partnerId = Integer.MIN_VALUE;
-	/**  Kaltura API session     */
+	/**  Kaltura API session  */
     public String ks;
 	/**  Response profile - this attribute will be automatically unset after every API
-	  call.     */
+	  call.  */
     public KalturaBaseResponseProfile responseProfile;
 
     public KalturaRequestConfiguration() {

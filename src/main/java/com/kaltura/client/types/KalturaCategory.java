@@ -123,10 +123,6 @@ public class KalturaCategory extends KalturaObjectBase {
     public KalturaNullableBoolean moderation;
 	/**  Nunber of pending moderation entries  */
     public int pendingEntriesCount = Integer.MIN_VALUE;
-	/**  Flag indicating that the category is an aggregation category  */
-    public KalturaNullableBoolean isAggregationCategory;
-	/**  List of aggregation channels the category belongs to  */
-    public String aggregationCategories;
 
     public KalturaCategory() {
     }
@@ -237,12 +233,6 @@ public class KalturaCategory extends KalturaObjectBase {
             } else if (nodeName.equals("pendingEntriesCount")) {
                 this.pendingEntriesCount = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("isAggregationCategory")) {
-                this.isAggregationCategory = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
-                continue;
-            } else if (nodeName.equals("aggregationCategories")) {
-                this.aggregationCategories = ParseUtils.parseString(txt);
-                continue;
             } 
         }
     }
@@ -266,8 +256,6 @@ public class KalturaCategory extends KalturaObjectBase {
         kparams.add("partnerData", this.partnerData);
         kparams.add("defaultOrderBy", this.defaultOrderBy);
         kparams.add("moderation", this.moderation);
-        kparams.add("isAggregationCategory", this.isAggregationCategory);
-        kparams.add("aggregationCategories", this.aggregationCategories);
         return kparams;
     }
 

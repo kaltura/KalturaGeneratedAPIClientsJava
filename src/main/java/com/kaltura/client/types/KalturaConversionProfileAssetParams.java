@@ -64,6 +64,7 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
     public KalturaNullableBoolean forceNoneComplied;
 	/**  Specifies how to treat the flavor after conversion is finished  */
     public KalturaAssetParamsDeletePolicy deletePolicy;
+    public KalturaNullableBoolean isEncrypted;
 
     public KalturaConversionProfileAssetParams() {
     }
@@ -96,6 +97,9 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
             } else if (nodeName.equals("deletePolicy")) {
                 this.deletePolicy = KalturaAssetParamsDeletePolicy.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("isEncrypted")) {
+                this.isEncrypted = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -108,6 +112,7 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
         kparams.add("systemName", this.systemName);
         kparams.add("forceNoneComplied", this.forceNoneComplied);
         kparams.add("deletePolicy", this.deletePolicy);
+        kparams.add("isEncrypted", this.isEncrypted);
         return kparams;
     }
 
