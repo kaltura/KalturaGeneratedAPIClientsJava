@@ -45,7 +45,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaShortLinkBaseFilter extends KalturaFilter {
-    public int idEqual = Integer.MIN_VALUE;
+    public String idEqual;
     public String idIn;
     public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
@@ -73,7 +73,7 @@ public abstract class KalturaShortLinkBaseFilter extends KalturaFilter {
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
             if (nodeName.equals("idEqual")) {
-                this.idEqual = ParseUtils.parseInt(txt);
+                this.idEqual = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("idIn")) {
                 this.idIn = ParseUtils.parseString(txt);

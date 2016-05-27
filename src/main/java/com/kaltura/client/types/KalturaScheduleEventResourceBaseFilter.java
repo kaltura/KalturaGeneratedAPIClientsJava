@@ -43,7 +43,7 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaScheduleEventResourceBaseFilter extends KalturaFilter {
+public abstract class KalturaScheduleEventResourceBaseFilter extends KalturaRelatedFilter {
     public int eventIdEqual = Integer.MIN_VALUE;
     public String eventIdIn;
     public int resourceIdEqual = Integer.MIN_VALUE;

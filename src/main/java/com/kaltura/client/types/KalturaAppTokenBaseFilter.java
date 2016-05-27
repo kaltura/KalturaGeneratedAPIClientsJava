@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaAppTokenStatus;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -44,12 +45,14 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaAppTokenBaseFilter extends KalturaFilter {
-    public int idEqual = Integer.MIN_VALUE;
+    public String idEqual;
     public String idIn;
     public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtLessThanOrEqual = Integer.MIN_VALUE;
+    public KalturaAppTokenStatus statusEqual;
+    public String statusIn;
 
     public KalturaAppTokenBaseFilter() {
     }
@@ -62,7 +65,7 @@ public abstract class KalturaAppTokenBaseFilter extends KalturaFilter {
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
             if (nodeName.equals("idEqual")) {
-                this.idEqual = ParseUtils.parseInt(txt);
+                this.idEqual = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("idIn")) {
                 this.idIn = ParseUtils.parseString(txt);
@@ -79,6 +82,12 @@ public abstract class KalturaAppTokenBaseFilter extends KalturaFilter {
             } else if (nodeName.equals("updatedAtLessThanOrEqual")) {
                 this.updatedAtLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("statusEqual")) {
+                this.statusEqual = KalturaAppTokenStatus.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("statusIn")) {
+                this.statusIn = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -92,6 +101,8 @@ public abstract class KalturaAppTokenBaseFilter extends KalturaFilter {
         kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+        kparams.add("statusEqual", this.statusEqual);
+        kparams.add("statusIn", this.statusIn);
         return kparams;
     }
 

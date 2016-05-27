@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaScheduleResourceBaseFilter extends KalturaFilter {
+public abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFilter {
     public int idEqual = Integer.MIN_VALUE;
     public String idIn;
     public String idNotIn;

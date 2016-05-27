@@ -52,6 +52,7 @@ import org.w3c.dom.NodeList;
 public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
     public int idEqual = Integer.MIN_VALUE;
     public String idIn;
+    public String idNotIn;
     public int parentIdEqual = Integer.MIN_VALUE;
     public String parentIdIn;
     public int depthEqual = Integer.MIN_VALUE;
@@ -87,6 +88,8 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
     public String inheritedParentIdIn;
     public int partnerSortValueGreaterThanOrEqual = Integer.MIN_VALUE;
     public int partnerSortValueLessThanOrEqual = Integer.MIN_VALUE;
+    public String aggregationCategoriesMultiLikeOr;
+    public String aggregationCategoriesMultiLikeAnd;
 
     public KalturaCategoryBaseFilter() {
     }
@@ -103,6 +106,9 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
                 continue;
             } else if (nodeName.equals("idIn")) {
                 this.idIn = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("idNotIn")) {
+                this.idNotIn = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("parentIdEqual")) {
                 this.parentIdEqual = ParseUtils.parseInt(txt);
@@ -209,6 +215,12 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
             } else if (nodeName.equals("partnerSortValueLessThanOrEqual")) {
                 this.partnerSortValueLessThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("aggregationCategoriesMultiLikeOr")) {
+                this.aggregationCategoriesMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("aggregationCategoriesMultiLikeAnd")) {
+                this.aggregationCategoriesMultiLikeAnd = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -218,6 +230,7 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
         kparams.add("objectType", "KalturaCategoryBaseFilter");
         kparams.add("idEqual", this.idEqual);
         kparams.add("idIn", this.idIn);
+        kparams.add("idNotIn", this.idNotIn);
         kparams.add("parentIdEqual", this.parentIdEqual);
         kparams.add("parentIdIn", this.parentIdIn);
         kparams.add("depthEqual", this.depthEqual);
@@ -253,6 +266,8 @@ public abstract class KalturaCategoryBaseFilter extends KalturaRelatedFilter {
         kparams.add("inheritedParentIdIn", this.inheritedParentIdIn);
         kparams.add("partnerSortValueGreaterThanOrEqual", this.partnerSortValueGreaterThanOrEqual);
         kparams.add("partnerSortValueLessThanOrEqual", this.partnerSortValueLessThanOrEqual);
+        kparams.add("aggregationCategoriesMultiLikeOr", this.aggregationCategoriesMultiLikeOr);
+        kparams.add("aggregationCategoriesMultiLikeAnd", this.aggregationCategoriesMultiLikeAnd);
         return kparams;
     }
 
