@@ -45,6 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer {
     public int tokenizationFormat = Integer.MIN_VALUE;
+    public boolean shouldIncludeClientIp;
 
     public KalturaUrlTokenizerVnpt() {
     }
@@ -59,6 +60,9 @@ public class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer {
             if (nodeName.equals("tokenizationFormat")) {
                 this.tokenizationFormat = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("shouldIncludeClientIp")) {
+                this.shouldIncludeClientIp = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -67,6 +71,7 @@ public class KalturaUrlTokenizerVnpt extends KalturaUrlTokenizer {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUrlTokenizerVnpt");
         kparams.add("tokenizationFormat", this.tokenizationFormat);
+        kparams.add("shouldIncludeClientIp", this.shouldIncludeClientIp);
         return kparams;
     }
 
