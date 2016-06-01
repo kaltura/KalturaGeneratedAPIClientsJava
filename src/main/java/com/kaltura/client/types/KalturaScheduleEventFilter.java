@@ -50,6 +50,12 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
     public String parentResourceIdsLike;
     public String parentResourceIdsMultiLikeOr;
     public String parentResourceIdsMultiLikeAnd;
+    public String templateEntryCategoriesIdsMultiLikeAnd;
+    public String templateEntryCategoriesIdsMultiLikeOr;
+    public String templateEntryCategoriesIdsLike;
+    public String systemNamesMultiLikeOr;
+    public String systemNamesMultiLikeAnd;
+    public String systemNamesLike;
 
     public KalturaScheduleEventFilter() {
     }
@@ -79,6 +85,24 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
             } else if (nodeName.equals("parentResourceIdsMultiLikeAnd")) {
                 this.parentResourceIdsMultiLikeAnd = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("templateEntryCategoriesIdsMultiLikeAnd")) {
+                this.templateEntryCategoriesIdsMultiLikeAnd = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("templateEntryCategoriesIdsMultiLikeOr")) {
+                this.templateEntryCategoriesIdsMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("templateEntryCategoriesIdsLike")) {
+                this.templateEntryCategoriesIdsLike = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("systemNamesMultiLikeOr")) {
+                this.systemNamesMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("systemNamesMultiLikeAnd")) {
+                this.systemNamesMultiLikeAnd = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("systemNamesLike")) {
+                this.systemNamesLike = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -92,6 +116,12 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
         kparams.add("parentResourceIdsLike", this.parentResourceIdsLike);
         kparams.add("parentResourceIdsMultiLikeOr", this.parentResourceIdsMultiLikeOr);
         kparams.add("parentResourceIdsMultiLikeAnd", this.parentResourceIdsMultiLikeAnd);
+        kparams.add("templateEntryCategoriesIdsMultiLikeAnd", this.templateEntryCategoriesIdsMultiLikeAnd);
+        kparams.add("templateEntryCategoriesIdsMultiLikeOr", this.templateEntryCategoriesIdsMultiLikeOr);
+        kparams.add("templateEntryCategoriesIdsLike", this.templateEntryCategoriesIdsLike);
+        kparams.add("systemNamesMultiLikeOr", this.systemNamesMultiLikeOr);
+        kparams.add("systemNamesMultiLikeAnd", this.systemNamesMultiLikeAnd);
+        kparams.add("systemNamesLike", this.systemNamesLike);
         return kparams;
     }
 

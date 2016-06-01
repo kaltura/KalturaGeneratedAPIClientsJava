@@ -80,7 +80,6 @@ import com.kaltura.client.services.KalturaUserEntryService;
 import com.kaltura.client.services.KalturaUserRoleService;
 import com.kaltura.client.services.KalturaUserService;
 import com.kaltura.client.services.KalturaWidgetService;
-import com.kaltura.client.services.KalturaXInternalService;
 import com.kaltura.client.services.KalturaMetadataService;
 import com.kaltura.client.services.KalturaMetadataProfileService;
 import com.kaltura.client.services.KalturaDocumentsService;
@@ -126,7 +125,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-05-31");
+		this.setClientTag("java:16-06-01");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -560,14 +559,6 @@ public class KalturaClient extends KalturaClientBase {
 			this.widgetService = new KalturaWidgetService(this);
 	
 		return this.widgetService;
-	}
-	
-	protected KalturaXInternalService xInternalService;
-	public KalturaXInternalService getXInternalService() {
-		if(this.xInternalService == null)
-			this.xInternalService = new KalturaXInternalService(this);
-	
-		return this.xInternalService;
 	}
 	
 	protected KalturaMetadataService metadataService;
