@@ -88,4 +88,14 @@ public class KalturaEntryServerNodeService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEntryServerNode.class, resultXmlElement);
     }
+
+	/**  Validates server node still registered on entry  */
+    public void validateRegisteredEntryServerNode(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("entryservernode", "validateRegisteredEntryServerNode", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
 }
