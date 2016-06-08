@@ -44,6 +44,7 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaEntryScheduleEventBaseFilter extends KalturaScheduleEventFilter {
+    public String templateEntryIdEqual;
     public String entryIdsLike;
     public String entryIdsMultiLikeOr;
     public String entryIdsMultiLikeAnd;
@@ -61,7 +62,10 @@ public abstract class KalturaEntryScheduleEventBaseFilter extends KalturaSchedul
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("entryIdsLike")) {
+            if (nodeName.equals("templateEntryIdEqual")) {
+                this.templateEntryIdEqual = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("entryIdsLike")) {
                 this.entryIdsLike = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("entryIdsMultiLikeOr")) {
@@ -86,6 +90,7 @@ public abstract class KalturaEntryScheduleEventBaseFilter extends KalturaSchedul
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaEntryScheduleEventBaseFilter");
+        kparams.add("templateEntryIdEqual", this.templateEntryIdEqual);
         kparams.add("entryIdsLike", this.entryIdsLike);
         kparams.add("entryIdsMultiLikeOr", this.entryIdsMultiLikeOr);
         kparams.add("entryIdsMultiLikeAnd", this.entryIdsMultiLikeAnd);

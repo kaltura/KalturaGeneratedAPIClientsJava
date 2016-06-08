@@ -52,10 +52,11 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
     public String parentResourceIdsMultiLikeAnd;
     public String templateEntryCategoriesIdsMultiLikeAnd;
     public String templateEntryCategoriesIdsMultiLikeOr;
+    public String resourceSystemNamesMultiLikeOr;
     public String templateEntryCategoriesIdsLike;
-    public String systemNamesMultiLikeOr;
-    public String systemNamesMultiLikeAnd;
-    public String systemNamesLike;
+    public String resourceSystemNamesMultiLikeAnd;
+    public String resourceSystemNamesLike;
+    public String templateEntryIdEqual;
 
     public KalturaScheduleEventFilter() {
     }
@@ -91,17 +92,20 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
             } else if (nodeName.equals("templateEntryCategoriesIdsMultiLikeOr")) {
                 this.templateEntryCategoriesIdsMultiLikeOr = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("resourceSystemNamesMultiLikeOr")) {
+                this.resourceSystemNamesMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("templateEntryCategoriesIdsLike")) {
                 this.templateEntryCategoriesIdsLike = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("systemNamesMultiLikeOr")) {
-                this.systemNamesMultiLikeOr = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("resourceSystemNamesMultiLikeAnd")) {
+                this.resourceSystemNamesMultiLikeAnd = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("systemNamesMultiLikeAnd")) {
-                this.systemNamesMultiLikeAnd = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("resourceSystemNamesLike")) {
+                this.resourceSystemNamesLike = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("systemNamesLike")) {
-                this.systemNamesLike = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("templateEntryIdEqual")) {
+                this.templateEntryIdEqual = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -118,10 +122,11 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
         kparams.add("parentResourceIdsMultiLikeAnd", this.parentResourceIdsMultiLikeAnd);
         kparams.add("templateEntryCategoriesIdsMultiLikeAnd", this.templateEntryCategoriesIdsMultiLikeAnd);
         kparams.add("templateEntryCategoriesIdsMultiLikeOr", this.templateEntryCategoriesIdsMultiLikeOr);
+        kparams.add("resourceSystemNamesMultiLikeOr", this.resourceSystemNamesMultiLikeOr);
         kparams.add("templateEntryCategoriesIdsLike", this.templateEntryCategoriesIdsLike);
-        kparams.add("systemNamesMultiLikeOr", this.systemNamesMultiLikeOr);
-        kparams.add("systemNamesMultiLikeAnd", this.systemNamesMultiLikeAnd);
-        kparams.add("systemNamesLike", this.systemNamesLike);
+        kparams.add("resourceSystemNamesMultiLikeAnd", this.resourceSystemNamesMultiLikeAnd);
+        kparams.add("resourceSystemNamesLike", this.resourceSystemNamesLike);
+        kparams.add("templateEntryIdEqual", this.templateEntryIdEqual);
         return kparams;
     }
 
