@@ -47,6 +47,8 @@ import org.w3c.dom.NodeList;
 public class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJobData {
     public KalturaAmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3;
     public String s3Region;
+    public String sseType;
+    public String sseKmsKeyId;
 
     public KalturaAmazonS3StorageExportJobData() {
     }
@@ -64,6 +66,12 @@ public class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJob
             } else if (nodeName.equals("s3Region")) {
                 this.s3Region = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("sseType")) {
+                this.sseType = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("sseKmsKeyId")) {
+                this.sseKmsKeyId = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -73,6 +81,8 @@ public class KalturaAmazonS3StorageExportJobData extends KalturaStorageExportJob
         kparams.add("objectType", "KalturaAmazonS3StorageExportJobData");
         kparams.add("filesPermissionInS3", this.filesPermissionInS3);
         kparams.add("s3Region", this.s3Region);
+        kparams.add("sseType", this.sseType);
+        kparams.add("sseKmsKeyId", this.sseKmsKeyId);
         return kparams;
     }
 

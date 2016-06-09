@@ -292,4 +292,16 @@ public class KalturaThumbAssetService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
+
+	/**  manually export an asset  */
+    public KalturaFlavorAsset export(String assetId, int storageProfileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("assetId", assetId);
+        kparams.add("storageProfileId", storageProfileId);
+        this.kalturaClient.queueServiceCall("thumbasset", "export", kparams, KalturaFlavorAsset.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
+    }
 }
