@@ -95,6 +95,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
     public String watermarkData;
     public String subtitlesData;
     public int isEncrypted = Integer.MIN_VALUE;
+    public double contentAwareness = Double.MIN_VALUE;
     public int clipOffset = Integer.MIN_VALUE;
     public int clipDuration = Integer.MIN_VALUE;
 
@@ -213,6 +214,9 @@ public class KalturaFlavorParams extends KalturaAssetParams {
             } else if (nodeName.equals("isEncrypted")) {
                 this.isEncrypted = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("contentAwareness")) {
+                this.contentAwareness = ParseUtils.parseDouble(txt);
+                continue;
             } else if (nodeName.equals("clipOffset")) {
                 this.clipOffset = ParseUtils.parseInt(txt);
                 continue;
@@ -261,6 +265,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
         kparams.add("watermarkData", this.watermarkData);
         kparams.add("subtitlesData", this.subtitlesData);
         kparams.add("isEncrypted", this.isEncrypted);
+        kparams.add("contentAwareness", this.contentAwareness);
         kparams.add("clipOffset", this.clipOffset);
         kparams.add("clipDuration", this.clipDuration);
         return kparams;

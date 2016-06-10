@@ -106,6 +106,7 @@ public class KalturaMediaInfo extends KalturaObjectBase {
     public String multiStream;
     public int isFastStart = Integer.MIN_VALUE;
     public String contentStreams;
+    public int complexityValue = Integer.MIN_VALUE;
 
     public KalturaMediaInfo() {
     }
@@ -216,6 +217,9 @@ public class KalturaMediaInfo extends KalturaObjectBase {
             } else if (nodeName.equals("contentStreams")) {
                 this.contentStreams = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("complexityValue")) {
+                this.complexityValue = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -255,6 +259,7 @@ public class KalturaMediaInfo extends KalturaObjectBase {
         kparams.add("multiStream", this.multiStream);
         kparams.add("isFastStart", this.isFastStart);
         kparams.add("contentStreams", this.contentStreams);
+        kparams.add("complexityValue", this.complexityValue);
         return kparams;
     }
 

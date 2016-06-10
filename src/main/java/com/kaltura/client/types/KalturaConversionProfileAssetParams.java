@@ -65,6 +65,8 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
 	/**  Specifies how to treat the flavor after conversion is finished  */
     public KalturaAssetParamsDeletePolicy deletePolicy;
     public KalturaNullableBoolean isEncrypted;
+    public double contentAwareness = Double.MIN_VALUE;
+    public KalturaNullableBoolean twoPass;
 
     public KalturaConversionProfileAssetParams() {
     }
@@ -100,6 +102,12 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
             } else if (nodeName.equals("isEncrypted")) {
                 this.isEncrypted = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("contentAwareness")) {
+                this.contentAwareness = ParseUtils.parseDouble(txt);
+                continue;
+            } else if (nodeName.equals("twoPass")) {
+                this.twoPass = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -113,6 +121,8 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
         kparams.add("forceNoneComplied", this.forceNoneComplied);
         kparams.add("deletePolicy", this.deletePolicy);
         kparams.add("isEncrypted", this.isEncrypted);
+        kparams.add("contentAwareness", this.contentAwareness);
+        kparams.add("twoPass", this.twoPass);
         return kparams;
     }
 
