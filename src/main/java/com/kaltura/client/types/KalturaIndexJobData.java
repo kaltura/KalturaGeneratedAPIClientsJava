@@ -49,6 +49,9 @@ public class KalturaIndexJobData extends KalturaJobData {
 	/**  Indicates the last id that reindexed, used when the batch crached, to re-run
 	  from the last crash point.  */
     public int lastIndexId = Integer.MIN_VALUE;
+	/**  Indicates the last depth that reindexed, used when the batch crached, to re-run
+	  from the last crash point.  */
+    public int lastIndexDepth = Integer.MIN_VALUE;
 	/**  Indicates that the object columns and attributes values should be recalculated
 	  before reindexed.  */
     public boolean shouldUpdate;
@@ -69,6 +72,9 @@ public class KalturaIndexJobData extends KalturaJobData {
             } else if (nodeName.equals("lastIndexId")) {
                 this.lastIndexId = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("lastIndexDepth")) {
+                this.lastIndexDepth = ParseUtils.parseInt(txt);
+                continue;
             } else if (nodeName.equals("shouldUpdate")) {
                 this.shouldUpdate = ParseUtils.parseBool(txt);
                 continue;
@@ -81,6 +87,7 @@ public class KalturaIndexJobData extends KalturaJobData {
         kparams.add("objectType", "KalturaIndexJobData");
         kparams.add("filter", this.filter);
         kparams.add("lastIndexId", this.lastIndexId);
+        kparams.add("lastIndexDepth", this.lastIndexDepth);
         kparams.add("shouldUpdate", this.shouldUpdate);
         return kparams;
     }

@@ -45,6 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaIndexAdvancedFilter extends KalturaSearchItem {
     public int indexIdGreaterThan = Integer.MIN_VALUE;
+    public int depthGreaterThanEqual = Integer.MIN_VALUE;
 
     public KalturaIndexAdvancedFilter() {
     }
@@ -59,6 +60,9 @@ public class KalturaIndexAdvancedFilter extends KalturaSearchItem {
             if (nodeName.equals("indexIdGreaterThan")) {
                 this.indexIdGreaterThan = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("depthGreaterThanEqual")) {
+                this.depthGreaterThanEqual = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -67,6 +71,7 @@ public class KalturaIndexAdvancedFilter extends KalturaSearchItem {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaIndexAdvancedFilter");
         kparams.add("indexIdGreaterThan", this.indexIdGreaterThan);
+        kparams.add("depthGreaterThanEqual", this.depthGreaterThanEqual);
         return kparams;
     }
 
