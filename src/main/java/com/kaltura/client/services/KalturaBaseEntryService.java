@@ -44,7 +44,7 @@ import com.kaltura.client.KalturaFile;
 import java.util.ArrayList;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.

@@ -36,7 +36,7 @@ import org.w3c.dom.NodeList;
 
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -48,6 +48,8 @@ public class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRul
     public String pattern;
 	/**  Request host regex replacment  */
     public String replacement;
+	/**  serverNodeId to generate replacment host from  */
+    public int replacmenServerNodeId = Integer.MIN_VALUE;
 
     public KalturaAccessControlModifyRequestHostRegexAction() {
     }
@@ -65,6 +67,9 @@ public class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRul
             } else if (nodeName.equals("replacement")) {
                 this.replacement = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("replacmenServerNodeId")) {
+                this.replacmenServerNodeId = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -74,6 +79,7 @@ public class KalturaAccessControlModifyRequestHostRegexAction extends KalturaRul
         kparams.add("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
         kparams.add("pattern", this.pattern);
         kparams.add("replacement", this.replacement);
+        kparams.add("replacmenServerNodeId", this.replacmenServerNodeId);
         return kparams;
     }
 

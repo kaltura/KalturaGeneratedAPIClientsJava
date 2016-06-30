@@ -113,7 +113,7 @@ import com.kaltura.client.services.KalturaIntegrationService;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -125,7 +125,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:16-06-28");
+		this.setClientTag("java:16-06-30");
 		this.setApiVersion("3.3.0");
 	}
 	
