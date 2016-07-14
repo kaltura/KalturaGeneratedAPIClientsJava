@@ -49,6 +49,8 @@ public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
     public String s3Region;
     public String sseType;
     public String sseKmsKeyId;
+    public String signatureType;
+    public String endPoint;
 
     public KalturaAmazonS3StorageProfile() {
     }
@@ -72,6 +74,12 @@ public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
             } else if (nodeName.equals("sseKmsKeyId")) {
                 this.sseKmsKeyId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("signatureType")) {
+                this.signatureType = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("endPoint")) {
+                this.endPoint = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -83,6 +91,8 @@ public class KalturaAmazonS3StorageProfile extends KalturaStorageProfile {
         kparams.add("s3Region", this.s3Region);
         kparams.add("sseType", this.sseType);
         kparams.add("sseKmsKeyId", this.sseKmsKeyId);
+        kparams.add("signatureType", this.signatureType);
+        kparams.add("endPoint", this.endPoint);
         return kparams;
     }
 
