@@ -89,6 +89,7 @@ public class KalturaStorageProfile extends KalturaObjectBase {
     public String privateKey;
     public String publicKey;
     public String passPhrase;
+    public boolean shouldExportThumbs;
 
     public KalturaStorageProfile() {
     }
@@ -193,6 +194,9 @@ public class KalturaStorageProfile extends KalturaObjectBase {
             } else if (nodeName.equals("passPhrase")) {
                 this.passPhrase = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("shouldExportThumbs")) {
+                this.shouldExportThumbs = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -227,6 +231,7 @@ public class KalturaStorageProfile extends KalturaObjectBase {
         kparams.add("privateKey", this.privateKey);
         kparams.add("publicKey", this.publicKey);
         kparams.add("passPhrase", this.passPhrase);
+        kparams.add("shouldExportThumbs", this.shouldExportThumbs);
         return kparams;
     }
 
