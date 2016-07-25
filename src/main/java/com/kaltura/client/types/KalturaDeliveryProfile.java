@@ -81,6 +81,9 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
     public int priority = Integer.MIN_VALUE;
 	/**  Extra query string parameters that should be added to the url  */
     public String extraParams;
+	/**  A filter that can be used to include additional assets in the URL (e.g.
+	  captions)  */
+    public KalturaAssetFilter supplementaryAssetsFilter;
 
     public KalturaDeliveryProfile() {
     }
@@ -149,6 +152,9 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
             } else if (nodeName.equals("extraParams")) {
                 this.extraParams = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("supplementaryAssetsFilter")) {
+                this.supplementaryAssetsFilter = ParseUtils.parseObject(KalturaAssetFilter.class, aNode);
+                continue;
             } 
         }
     }
@@ -168,6 +174,7 @@ public class KalturaDeliveryProfile extends KalturaObjectBase {
         kparams.add("mediaProtocols", this.mediaProtocols);
         kparams.add("priority", this.priority);
         kparams.add("extraParams", this.extraParams);
+        kparams.add("supplementaryAssetsFilter", this.supplementaryAssetsFilter);
         return kparams;
     }
 
