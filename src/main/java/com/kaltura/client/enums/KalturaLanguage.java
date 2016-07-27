@@ -83,11 +83,11 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     GN ("Guarani"),
     GU ("Gujarati"),
     HA ("Hausa"),
-    HE ("Hebrew"),
+    IW ("Hebrew"),
     HI ("Hindi"),
     HU ("Hungarian"),
     IS ("Icelandic"),
-    ID ("Indonesian"),
+    IN ("Indonesian"),
     IA ("Interlingua"),
     IE ("Interlingue"),
     IU ("Inuktitut"),
@@ -167,6 +167,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
     TW ("Twi"),
     UG ("Uighur"),
     UK ("Ukrainian"),
+    UN ("Undefined"),
     UR ("Urdu"),
     UZ ("Uzbek"),
     VI ("Vietnamese"),
@@ -440,7 +441,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         else 
         if (hashCode.equals("Hebrew"))
         {
-           return HE;
+           return IW;
         }
         else 
         if (hashCode.equals("Hindi"))
@@ -460,7 +461,7 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         else 
         if (hashCode.equals("Indonesian"))
         {
-           return ID;
+           return IN;
         }
         else 
         if (hashCode.equals("Interlingua"))
@@ -856,6 +857,11 @@ public enum KalturaLanguage implements KalturaEnumAsString {
         if (hashCode.equals("Ukrainian"))
         {
            return UK;
+        }
+        else 
+        if (hashCode.equals("Undefined"))
+        {
+           return UN;
         }
         else 
         if (hashCode.equals("Urdu"))
