@@ -31,10 +31,6 @@ import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectBase;
-import java.util.ArrayList;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 
 /**
@@ -44,39 +40,19 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Advanced configuration for entry replacement process  */
 @SuppressWarnings("serial")
-public class KalturaEntryReplacementOptions extends KalturaObjectBase {
-	/**  If true manually created thumbnails will not be deleted on entry replacement  */
-    public int keepManualThumbnails = Integer.MIN_VALUE;
-	/**  Array of plugin replacement options  */
-    public ArrayList<KalturaPluginReplacementOptionsItem> pluginOptionItems;
+public abstract class KalturaPluginReplacementOptionsItem extends KalturaObjectBase {
 
-    public KalturaEntryReplacementOptions() {
+    public KalturaPluginReplacementOptionsItem() {
     }
 
-    public KalturaEntryReplacementOptions(Element node) throws KalturaApiException {
+    public KalturaPluginReplacementOptionsItem(Element node) throws KalturaApiException {
         super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("keepManualThumbnails")) {
-                this.keepManualThumbnails = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("pluginOptionItems")) {
-                this.pluginOptionItems = ParseUtils.parseArray(KalturaPluginReplacementOptionsItem.class, aNode);
-                continue;
-            } 
-        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryReplacementOptions");
-        kparams.add("keepManualThumbnails", this.keepManualThumbnails);
-        kparams.add("pluginOptionItems", this.pluginOptionItems);
+        kparams.add("objectType", "KalturaPluginReplacementOptionsItem");
         return kparams;
     }
 
