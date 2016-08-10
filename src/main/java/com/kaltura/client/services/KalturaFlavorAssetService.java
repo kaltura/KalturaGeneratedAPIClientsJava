@@ -274,11 +274,20 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
+    public void serveAdStitchCmd(String assetId) throws KalturaApiException {
+        this.serveAdStitchCmd(assetId, null);
+    }
+
+    public void serveAdStitchCmd(String assetId, String ffprobeJson) throws KalturaApiException {
+        this.serveAdStitchCmd(assetId, ffprobeJson, null);
+    }
+
 	/**  serve cmd line to transcode the ad  */
-    public void serveAdStitchCmd(String assetId, String mediaInfoJson) throws KalturaApiException {
+    public void serveAdStitchCmd(String assetId, String ffprobeJson, String duration) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("assetId", assetId);
-        kparams.add("mediaInfoJson", mediaInfoJson);
+        kparams.add("ffprobeJson", ffprobeJson);
+        kparams.add("duration", duration);
         this.kalturaClient.queueServiceCall("flavorasset", "serveAdStitchCmd", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
