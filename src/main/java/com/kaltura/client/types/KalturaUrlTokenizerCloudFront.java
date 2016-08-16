@@ -46,7 +46,6 @@ import org.w3c.dom.NodeList;
 public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
     public String keyPairId;
     public String rootDir;
-    public boolean limitIpAddress;
 
     public KalturaUrlTokenizerCloudFront() {
     }
@@ -64,9 +63,6 @@ public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
             } else if (nodeName.equals("rootDir")) {
                 this.rootDir = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("limitIpAddress")) {
-                this.limitIpAddress = ParseUtils.parseBool(txt);
-                continue;
             } 
         }
     }
@@ -76,7 +72,6 @@ public class KalturaUrlTokenizerCloudFront extends KalturaUrlTokenizer {
         kparams.add("objectType", "KalturaUrlTokenizerCloudFront");
         kparams.add("keyPairId", this.keyPairId);
         kparams.add("rootDir", this.rootDir);
-        kparams.add("limitIpAddress", this.limitIpAddress);
         return kparams;
     }
 

@@ -49,6 +49,7 @@ public class KalturaUrlTokenizer extends KalturaObjectBase {
     public int window = Integer.MIN_VALUE;
 	/**  key  */
     public String key;
+    public boolean limitIpAddress;
 
     public KalturaUrlTokenizer() {
     }
@@ -66,6 +67,9 @@ public class KalturaUrlTokenizer extends KalturaObjectBase {
             } else if (nodeName.equals("key")) {
                 this.key = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("limitIpAddress")) {
+                this.limitIpAddress = ParseUtils.parseBool(txt);
+                continue;
             } 
         }
     }
@@ -75,6 +79,7 @@ public class KalturaUrlTokenizer extends KalturaObjectBase {
         kparams.add("objectType", "KalturaUrlTokenizer");
         kparams.add("window", this.window);
         kparams.add("key", this.key);
+        kparams.add("limitIpAddress", this.limitIpAddress);
         return kparams;
     }
 
