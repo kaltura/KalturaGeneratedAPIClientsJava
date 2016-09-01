@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -44,8 +45,8 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaDeliveryServerNode extends KalturaServerNode {
-	/**  Delivery server playback Domain  */
-    public String playbackDomain;
+	/**  Delivery profile ids  */
+    public ArrayList<KalturaKeyValue> deliveryProfileIds;
 
     public KalturaDeliveryServerNode() {
     }
@@ -56,9 +57,8 @@ public abstract class KalturaDeliveryServerNode extends KalturaServerNode {
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("playbackDomain")) {
-                this.playbackDomain = ParseUtils.parseString(txt);
+            if (nodeName.equals("deliveryProfileIds")) {
+                this.deliveryProfileIds = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
                 continue;
             } 
         }
@@ -67,7 +67,7 @@ public abstract class KalturaDeliveryServerNode extends KalturaServerNode {
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaDeliveryServerNode");
-        kparams.add("playbackDomain", this.playbackDomain);
+        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
         return kparams;
     }
 

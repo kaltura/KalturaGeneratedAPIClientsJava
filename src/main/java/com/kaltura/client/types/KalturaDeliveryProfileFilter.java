@@ -30,6 +30,10 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaNullableBoolean;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
@@ -41,17 +45,29 @@ import com.kaltura.client.KalturaApiException;
 
 @SuppressWarnings("serial")
 public class KalturaDeliveryProfileFilter extends KalturaDeliveryProfileBaseFilter {
+    public KalturaNullableBoolean isLive;
 
     public KalturaDeliveryProfileFilter() {
     }
 
     public KalturaDeliveryProfileFilter(Element node) throws KalturaApiException {
         super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("isLive")) {
+                this.isLive = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
+            } 
+        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaDeliveryProfileFilter");
+        kparams.add("isLive", this.isLive);
         return kparams;
     }
 

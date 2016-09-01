@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -45,8 +44,8 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
-	/**  Delivery profile ids  */
-    public ArrayList<KalturaKeyValue> deliveryProfileIds;
+	/**  Delivery server playback Domain  */
+    public String playbackDomain;
 	/**  Overdie edge server default configuration - json format  */
     public String config;
 
@@ -60,8 +59,8 @@ public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("deliveryProfileIds")) {
-                this.deliveryProfileIds = ParseUtils.parseArray(KalturaKeyValue.class, aNode);
+            if (nodeName.equals("playbackDomain")) {
+                this.playbackDomain = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("config")) {
                 this.config = ParseUtils.parseString(txt);
@@ -73,7 +72,7 @@ public class KalturaEdgeServerNode extends KalturaDeliveryServerNode {
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaEdgeServerNode");
-        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+        kparams.add("playbackDomain", this.playbackDomain);
         kparams.add("config", this.config);
         return kparams;
     }
