@@ -25,15 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import org.w3c.dom.Element;
-import com.kaltura.client.KalturaParams;
-import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using exec.php
@@ -41,36 +33,33 @@ import org.w3c.dom.NodeList;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum KalturaEntryDisplayInSearchType implements KalturaEnumAsInt {
+    SYSTEM (-1),
+    NONE (0),
+    PARTNER_ONLY (1),
+    KALTURA_NETWORK (2);
 
-@SuppressWarnings("serial")
-public class KalturaScheduleEventResourceFilter extends KalturaScheduleEventResourceBaseFilter {
-	/**  Find event-resource objects that associated with the event, if none found, find
-	  by its parent event  */
-    public int eventIdOrItsParentIdEqual = Integer.MIN_VALUE;
+    public int hashCode;
 
-    public KalturaScheduleEventResourceFilter() {
+    KalturaEntryDisplayInSearchType(int hashCode) {
+        this.hashCode = hashCode;
     }
 
-    public KalturaScheduleEventResourceFilter(Element node) throws KalturaApiException {
-        super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("eventIdOrItsParentIdEqual")) {
-                this.eventIdOrItsParentIdEqual = ParseUtils.parseInt(txt);
-                continue;
-            } 
+    public int getHashCode() {
+        return this.hashCode;
+    }
+
+    public void setHashCode(int hashCode) {
+        this.hashCode = hashCode;
+    }
+
+    public static KalturaEntryDisplayInSearchType get(int hashCode) {
+        switch(hashCode) {
+            case -1: return SYSTEM;
+            case 0: return NONE;
+            case 1: return PARTNER_ONLY;
+            case 2: return KALTURA_NETWORK;
+            default: return SYSTEM;
         }
     }
-
-    public KalturaParams toParams() throws KalturaApiException {
-        KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventResourceFilter");
-        kparams.add("eventIdOrItsParentIdEqual", this.eventIdOrItsParentIdEqual);
-        return kparams;
-    }
-
 }
-

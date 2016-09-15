@@ -88,7 +88,8 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     VALIDATE_LIVE_MEDIA_SERVERS ("38"),
     SYNC_CATEGORY_PRIVACY_CONTEXT ("39"),
     LIVE_REPORT_EXPORT ("40"),
-    RECALCULATE_CACHE ("41");
+    RECALCULATE_CACHE ("41"),
+    LIVE_TO_VOD ("42");
 
     public String hashCode;
 
@@ -378,6 +379,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("41"))
         {
            return RECALCULATE_CACHE;
+        }
+        else 
+        if (hashCode.equals("42"))
+        {
+           return LIVE_TO_VOD;
         }
         else 
         {

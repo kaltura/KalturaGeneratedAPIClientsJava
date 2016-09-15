@@ -36,6 +36,7 @@ import com.kaltura.client.enums.KalturaEntryModerationStatus;
 import com.kaltura.client.enums.KalturaEntryType;
 import com.kaltura.client.enums.KalturaLicenseType;
 import com.kaltura.client.enums.KalturaEntryReplacementStatus;
+import com.kaltura.client.enums.KalturaEntryDisplayInSearchType;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -147,6 +148,8 @@ public class KalturaBaseEntry extends KalturaObjectBase {
     public String capabilities;
 	/**  Template entry id  */
     public String templateEntryId;
+	/**  should we display this entry in search  */
+    public KalturaEntryDisplayInSearchType displayInSearch;
 
     public KalturaBaseEntry() {
     }
@@ -287,6 +290,9 @@ public class KalturaBaseEntry extends KalturaObjectBase {
             } else if (nodeName.equals("templateEntryId")) {
                 this.templateEntryId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("displayInSearch")) {
+                this.displayInSearch = KalturaEntryDisplayInSearchType.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -318,6 +324,7 @@ public class KalturaBaseEntry extends KalturaObjectBase {
         kparams.add("entitledUsersEdit", this.entitledUsersEdit);
         kparams.add("entitledUsersPublish", this.entitledUsersPublish);
         kparams.add("templateEntryId", this.templateEntryId);
+        kparams.add("displayInSearch", this.displayInSearch);
         return kparams;
     }
 

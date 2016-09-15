@@ -187,4 +187,16 @@ public class KalturaAnnotationService extends KalturaServiceBase {
             return ;
         this.kalturaClient.doQueue();
     }
+
+	/**  Clone cuePoint with id to given entry  */
+    public KalturaCuePoint clone(String id, String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "clone", kparams, KalturaCuePoint.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
+    }
 }

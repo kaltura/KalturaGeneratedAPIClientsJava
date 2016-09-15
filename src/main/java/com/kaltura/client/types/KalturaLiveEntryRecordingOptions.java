@@ -50,6 +50,7 @@ public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
     public KalturaNullableBoolean shouldCopyEntitlement;
     public KalturaNullableBoolean shouldCopyScheduling;
     public KalturaNullableBoolean shouldCopyThumbnail;
+    public KalturaNullableBoolean shouldMakeHidden;
 
     public KalturaLiveEntryRecordingOptions() {
     }
@@ -70,6 +71,9 @@ public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
             } else if (nodeName.equals("shouldCopyThumbnail")) {
                 this.shouldCopyThumbnail = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("shouldMakeHidden")) {
+                this.shouldMakeHidden = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -80,6 +84,7 @@ public class KalturaLiveEntryRecordingOptions extends KalturaObjectBase {
         kparams.add("shouldCopyEntitlement", this.shouldCopyEntitlement);
         kparams.add("shouldCopyScheduling", this.shouldCopyScheduling);
         kparams.add("shouldCopyThumbnail", this.shouldCopyThumbnail);
+        kparams.add("shouldMakeHidden", this.shouldMakeHidden);
         return kparams;
     }
 
