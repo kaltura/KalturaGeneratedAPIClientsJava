@@ -57,6 +57,7 @@ public class KalturaBulkUploadResultUser extends KalturaBulkUploadResult {
     public int gender = Integer.MIN_VALUE;
     public String firstName;
     public String lastName;
+    public String group;
 
     public KalturaBulkUploadResultUser() {
     }
@@ -107,6 +108,9 @@ public class KalturaBulkUploadResultUser extends KalturaBulkUploadResult {
             } else if (nodeName.equals("lastName")) {
                 this.lastName = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("group")) {
+                this.group = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -127,6 +131,7 @@ public class KalturaBulkUploadResultUser extends KalturaBulkUploadResult {
         kparams.add("gender", this.gender);
         kparams.add("firstName", this.firstName);
         kparams.add("lastName", this.lastName);
+        kparams.add("group", this.group);
         return kparams;
     }
 

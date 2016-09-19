@@ -78,6 +78,10 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
     LIVE_DASH ("1003"),
     LIVE_RTMP ("1005"),
     LIVE_HLS_TO_MULTICAST ("1006"),
+    LIVE_PACKAGER_HLS ("1007"),
+    LIVE_PACKAGER_HDS ("1008"),
+    LIVE_PACKAGER_DASH ("1009"),
+    LIVE_PACKAGER_MSS ("1010"),
     LIVE_AKAMAI_HDS ("1013");
 
     public String hashCode;
@@ -313,6 +317,26 @@ public enum KalturaDeliveryProfileType implements KalturaEnumAsString {
         if (hashCode.equals("1006"))
         {
            return LIVE_HLS_TO_MULTICAST;
+        }
+        else 
+        if (hashCode.equals("1007"))
+        {
+           return LIVE_PACKAGER_HLS;
+        }
+        else 
+        if (hashCode.equals("1008"))
+        {
+           return LIVE_PACKAGER_HDS;
+        }
+        else 
+        if (hashCode.equals("1009"))
+        {
+           return LIVE_PACKAGER_DASH;
+        }
+        else 
+        if (hashCode.equals("1010"))
+        {
+           return LIVE_PACKAGER_MSS;
         }
         else 
         if (hashCode.equals("1013"))
