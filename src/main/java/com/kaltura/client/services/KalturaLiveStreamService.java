@@ -240,6 +240,16 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveStreamEntry.class, resultXmlElement);
     }
 
+	/**  Regenerate new secure token for liveStream  */
+    public void regenrateSecureToken(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("livestream", "regenrateSecureToken", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
     public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
         return this.appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
     }
