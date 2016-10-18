@@ -188,14 +188,19 @@ public class KalturaUserService extends KalturaServiceBase {
         return this.loginByLoginId(loginId, password, partnerId, expiry, "*");
     }
 
-	/**  Logs a user into a partner account with a user login ID and a user password.  */
     public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges) throws KalturaApiException {
+        return this.loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
+    }
+
+	/**  Logs a user into a partner account with a user login ID and a user password.  */
+    public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("loginId", loginId);
         kparams.add("password", password);
         kparams.add("partnerId", partnerId);
         kparams.add("expiry", expiry);
         kparams.add("privileges", privileges);
+        kparams.add("otp", otp);
         this.kalturaClient.queueServiceCall("user", "loginByLoginId", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;
