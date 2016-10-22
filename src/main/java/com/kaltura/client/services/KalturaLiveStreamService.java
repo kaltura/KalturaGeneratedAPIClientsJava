@@ -241,10 +241,10 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
     }
 
 	/**  Regenerate new secure token for liveStream  */
-    public void regenrateSecureToken(String entryId) throws KalturaApiException {
+    public void regenerateStreamToken(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("livestream", "regenrateSecureToken", kparams);
+        this.kalturaClient.queueServiceCall("livestream", "regenerateStreamToken", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
