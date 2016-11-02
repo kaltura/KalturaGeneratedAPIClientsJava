@@ -38,11 +38,13 @@ public enum KalturaEntryScheduleEventOrderBy implements KalturaEnumAsString {
     END_DATE_ASC ("+endDate"),
     PRIORITY_ASC ("+priority"),
     START_DATE_ASC ("+startDate"),
+    SUMMARY_ASC ("+summary"),
     UPDATED_AT_ASC ("+updatedAt"),
     CREATED_AT_DESC ("-createdAt"),
     END_DATE_DESC ("-endDate"),
     PRIORITY_DESC ("-priority"),
     START_DATE_DESC ("-startDate"),
+    SUMMARY_DESC ("-summary"),
     UPDATED_AT_DESC ("-updatedAt");
 
     public String hashCode;
@@ -80,6 +82,11 @@ public enum KalturaEntryScheduleEventOrderBy implements KalturaEnumAsString {
            return START_DATE_ASC;
         }
         else 
+        if (hashCode.equals("+summary"))
+        {
+           return SUMMARY_ASC;
+        }
+        else 
         if (hashCode.equals("+updatedAt"))
         {
            return UPDATED_AT_ASC;
@@ -103,6 +110,11 @@ public enum KalturaEntryScheduleEventOrderBy implements KalturaEnumAsString {
         if (hashCode.equals("-startDate"))
         {
            return START_DATE_DESC;
+        }
+        else 
+        if (hashCode.equals("-summary"))
+        {
+           return SUMMARY_DESC;
         }
         else 
         if (hashCode.equals("-updatedAt"))

@@ -42,8 +42,9 @@ import com.kaltura.client.KalturaApiException;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  ScheduleEventResource service lets you create and manage connections between
-  events and resources  */
+/**  The ScheduleEventResource service enables you create and manage (update, delete,
+  retrieve, etc.) the connections between recording events and the resources
+  required for these events (cameras, capture devices, etc.).  */
 @SuppressWarnings("serial")
 public class KalturaScheduleEventResourceService extends KalturaServiceBase {
     public KalturaScheduleEventResourceService(KalturaClient client) {

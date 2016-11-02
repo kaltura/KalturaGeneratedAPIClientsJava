@@ -274,23 +274,25 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-    public void serveAdStitchCmd(String assetId) throws KalturaApiException {
-        this.serveAdStitchCmd(assetId, null);
+    public String serveAdStitchCmd(String assetId) throws KalturaApiException {
+        return this.serveAdStitchCmd(assetId, null);
     }
 
-    public void serveAdStitchCmd(String assetId, String ffprobeJson) throws KalturaApiException {
-        this.serveAdStitchCmd(assetId, ffprobeJson, null);
+    public String serveAdStitchCmd(String assetId, String ffprobeJson) throws KalturaApiException {
+        return this.serveAdStitchCmd(assetId, ffprobeJson, null);
     }
 
 	/**  serve cmd line to transcode the ad  */
-    public void serveAdStitchCmd(String assetId, String ffprobeJson, String duration) throws KalturaApiException {
+    public String serveAdStitchCmd(String assetId, String ffprobeJson, String duration) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("assetId", assetId);
         kparams.add("ffprobeJson", ffprobeJson);
         kparams.add("duration", duration);
         this.kalturaClient.queueServiceCall("flavorasset", "serveAdStitchCmd", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 }

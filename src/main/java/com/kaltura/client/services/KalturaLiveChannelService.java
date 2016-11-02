@@ -191,4 +191,18 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
             return ;
         this.kalturaClient.doQueue();
     }
+
+	/**  Sey recorded video to live entry  */
+    public KalturaLiveEntry setRecordedContent(String entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("mediaServerIndex", mediaServerIndex);
+        kparams.add("resource", resource);
+        kparams.add("duration", duration);
+        this.kalturaClient.queueServiceCall("livechannel", "setRecordedContent", kparams, KalturaLiveEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
+    }
 }

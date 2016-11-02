@@ -47,7 +47,9 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  ScheduleResource service lets you create and manage schedule events  */
+/**  The ScheduleResource service enables you to create and manage (update, delete,
+  retrieve, etc.) the resources required for scheduled events (cameras, capture
+  devices, etc.).  */
 @SuppressWarnings("serial")
 public class KalturaScheduleResourceService extends KalturaServiceBase {
     public KalturaScheduleResourceService(KalturaClient client) {

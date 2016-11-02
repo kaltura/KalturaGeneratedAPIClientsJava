@@ -37,7 +37,8 @@ public enum KalturaEntryServerNodeStatus implements KalturaEnumAsInt {
     STOPPED (0),
     PLAYABLE (1),
     BROADCASTING (2),
-    AUTHENTICATED (3);
+    AUTHENTICATED (3),
+    MARKED_FOR_DELETION (4);
 
     public int hashCode;
 
@@ -59,6 +60,7 @@ public enum KalturaEntryServerNodeStatus implements KalturaEnumAsInt {
             case 1: return PLAYABLE;
             case 2: return BROADCASTING;
             case 3: return AUTHENTICATED;
+            case 4: return MARKED_FOR_DELETION;
             default: return STOPPED;
         }
     }

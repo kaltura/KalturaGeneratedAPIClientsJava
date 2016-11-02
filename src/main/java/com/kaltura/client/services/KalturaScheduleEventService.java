@@ -47,7 +47,8 @@ import com.kaltura.client.KalturaFile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  ScheduleEvent service lets you create and manage schedule events  */
+/**  The ScheduleEvent service enables you to create and manage (update, delete,
+  retrieve, etc.) scheduled recording events.  */
 @SuppressWarnings("serial")
 public class KalturaScheduleEventService extends KalturaServiceBase {
     public KalturaScheduleEventService(KalturaClient client) {
