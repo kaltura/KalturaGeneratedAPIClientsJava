@@ -43,21 +43,21 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfileVodPackagerPlayServer {
-    public boolean allowFairplayOffline;
+public class KalturaDeliveryProfileVodPackagerPlayServer extends KalturaDeliveryProfile {
+    public boolean adStitchingEnabled;
 
-    public KalturaDeliveryProfileVodPackagerHls() {
+    public KalturaDeliveryProfileVodPackagerPlayServer() {
     }
 
-    public KalturaDeliveryProfileVodPackagerHls(Element node) throws KalturaApiException {
+    public KalturaDeliveryProfileVodPackagerPlayServer(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("allowFairplayOffline")) {
-                this.allowFairplayOffline = ParseUtils.parseBool(txt);
+            if (nodeName.equals("adStitchingEnabled")) {
+                this.adStitchingEnabled = ParseUtils.parseBool(txt);
                 continue;
             } 
         }
@@ -65,8 +65,8 @@ public class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfile
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileVodPackagerHls");
-        kparams.add("allowFairplayOffline", this.allowFairplayOffline);
+        kparams.add("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
+        kparams.add("adStitchingEnabled", this.adStitchingEnabled);
         return kparams;
     }
 

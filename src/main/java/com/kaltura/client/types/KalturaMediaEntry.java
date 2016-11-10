@@ -34,6 +34,7 @@ import com.kaltura.client.enums.KalturaMediaType;
 import com.kaltura.client.enums.KalturaSourceType;
 import com.kaltura.client.enums.KalturaSearchProviderType;
 import com.kaltura.client.enums.KalturaNullableBoolean;
+import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -71,6 +72,8 @@ public class KalturaMediaEntry extends KalturaPlayableEntry {
     public String flavorParamsIds;
 	/**  True if trim action is disabled for this entry  */
     public KalturaNullableBoolean isTrimDisabled;
+	/**  Array of streams that exists on the entry  */
+    public ArrayList<KalturaStreamContainer> streams;
 
     public KalturaMediaEntry() {
     }
@@ -115,6 +118,9 @@ public class KalturaMediaEntry extends KalturaPlayableEntry {
             } else if (nodeName.equals("isTrimDisabled")) {
                 this.isTrimDisabled = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("streams")) {
+                this.streams = ParseUtils.parseArray(KalturaStreamContainer.class, aNode);
+                continue;
             } 
         }
     }
@@ -129,6 +135,7 @@ public class KalturaMediaEntry extends KalturaPlayableEntry {
         kparams.add("searchProviderId", this.searchProviderId);
         kparams.add("creditUserName", this.creditUserName);
         kparams.add("creditUrl", this.creditUrl);
+        kparams.add("streams", this.streams);
         return kparams;
     }
 

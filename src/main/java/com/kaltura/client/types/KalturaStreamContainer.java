@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.KalturaObjectBase;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -43,21 +44,41 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfileVodPackagerPlayServer {
-    public boolean allowFairplayOffline;
+public class KalturaStreamContainer extends KalturaObjectBase {
+    public String type;
+    public int trackIndex = Integer.MIN_VALUE;
+    public String language;
+    public int channelIndex = Integer.MIN_VALUE;
+    public String label;
+    public String channelLayout;
 
-    public KalturaDeliveryProfileVodPackagerHls() {
+    public KalturaStreamContainer() {
     }
 
-    public KalturaDeliveryProfileVodPackagerHls(Element node) throws KalturaApiException {
+    public KalturaStreamContainer(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("allowFairplayOffline")) {
-                this.allowFairplayOffline = ParseUtils.parseBool(txt);
+            if (nodeName.equals("type")) {
+                this.type = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("trackIndex")) {
+                this.trackIndex = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("language")) {
+                this.language = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("channelIndex")) {
+                this.channelIndex = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("label")) {
+                this.label = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("channelLayout")) {
+                this.channelLayout = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -65,8 +86,13 @@ public class KalturaDeliveryProfileVodPackagerHls extends KalturaDeliveryProfile
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileVodPackagerHls");
-        kparams.add("allowFairplayOffline", this.allowFairplayOffline);
+        kparams.add("objectType", "KalturaStreamContainer");
+        kparams.add("type", this.type);
+        kparams.add("trackIndex", this.trackIndex);
+        kparams.add("language", this.language);
+        kparams.add("channelIndex", this.channelIndex);
+        kparams.add("label", this.label);
+        kparams.add("channelLayout", this.channelLayout);
         return kparams;
     }
 

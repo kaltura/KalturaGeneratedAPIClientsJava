@@ -50,6 +50,8 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
     public String name;
     public KalturaScheduleEventRecurrenceFrequency frequency;
     public int until = Integer.MIN_VALUE;
+	/**  TimeZone String  */
+    public String timeZone;
     public int count = Integer.MIN_VALUE;
     public int interval = Integer.MIN_VALUE;
 	/**  Comma separated numbers between 0 to 59  */
@@ -113,6 +115,9 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
             } else if (nodeName.equals("until")) {
                 this.until = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("timeZone")) {
+                this.timeZone = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("count")) {
                 this.count = ParseUtils.parseInt(txt);
                 continue;
@@ -159,6 +164,7 @@ public class KalturaScheduleEventRecurrence extends KalturaObjectBase {
         kparams.add("name", this.name);
         kparams.add("frequency", this.frequency);
         kparams.add("until", this.until);
+        kparams.add("timeZone", this.timeZone);
         kparams.add("count", this.count);
         kparams.add("interval", this.interval);
         kparams.add("bySecond", this.bySecond);

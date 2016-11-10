@@ -68,6 +68,8 @@ public class KalturaFlavorAsset extends KalturaAsset {
     public KalturaFlavorAssetStatus status;
 	/**  The language of the flavor asset  */
     public KalturaLanguage language;
+	/**  The label of the flavor asset  */
+    public String label;
 
     public KalturaFlavorAsset() {
     }
@@ -111,6 +113,9 @@ public class KalturaFlavorAsset extends KalturaAsset {
                 continue;
             } else if (nodeName.equals("language")) {
                 this.language = KalturaLanguage.get(ParseUtils.parseString(txt));
+                continue;
+            } else if (nodeName.equals("label")) {
+                this.label = ParseUtils.parseString(txt);
                 continue;
             } 
         }
