@@ -83,6 +83,7 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
 	  by/assigned to a specific user (identified by user Id).  */
     public String userIdEqual;
     public String userIdIn;
+    public String userIdNotIn;
     public String creatorIdEqual;
 	/**  This filter should be in use for retrieving specific entries. It should include
 	  only one string to search for in entry tags (no wildcards, spaces are treated as
@@ -234,6 +235,9 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
                 continue;
             } else if (nodeName.equals("userIdIn")) {
                 this.userIdIn = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("userIdNotIn")) {
+                this.userIdNotIn = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("creatorIdEqual")) {
                 this.creatorIdEqual = ParseUtils.parseString(txt);
@@ -451,6 +455,7 @@ public abstract class KalturaBaseEntryBaseFilter extends KalturaRelatedFilter {
         kparams.add("partnerIdIn", this.partnerIdIn);
         kparams.add("userIdEqual", this.userIdEqual);
         kparams.add("userIdIn", this.userIdIn);
+        kparams.add("userIdNotIn", this.userIdNotIn);
         kparams.add("creatorIdEqual", this.creatorIdEqual);
         kparams.add("tagsLike", this.tagsLike);
         kparams.add("tagsMultiLikeOr", this.tagsMultiLikeOr);
