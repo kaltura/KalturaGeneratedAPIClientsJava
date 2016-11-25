@@ -55,6 +55,8 @@ public class KalturaCategoryEntry extends KalturaObjectBase {
     public String categoryFullIds;
 	/**  CategroyEntry status  */
     public KalturaCategoryEntryStatus status;
+	/**  CategroyEntry creator puser ID  */
+    public String creatorUserId;
 
     public KalturaCategoryEntry() {
     }
@@ -80,6 +82,9 @@ public class KalturaCategoryEntry extends KalturaObjectBase {
                 continue;
             } else if (nodeName.equals("status")) {
                 this.status = KalturaCategoryEntryStatus.get(ParseUtils.parseInt(txt));
+                continue;
+            } else if (nodeName.equals("creatorUserId")) {
+                this.creatorUserId = ParseUtils.parseString(txt);
                 continue;
             } 
         }

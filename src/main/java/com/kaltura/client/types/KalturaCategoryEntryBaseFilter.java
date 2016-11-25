@@ -54,6 +54,8 @@ public abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilte
     public String categoryFullIdsStartsWith;
     public KalturaCategoryEntryStatus statusEqual;
     public String statusIn;
+    public String creatorUserIdEqual;
+    public String creatorUserIdIn;
 
     public KalturaCategoryEntryBaseFilter() {
     }
@@ -92,6 +94,12 @@ public abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilte
             } else if (nodeName.equals("statusIn")) {
                 this.statusIn = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("creatorUserIdEqual")) {
+                this.creatorUserIdEqual = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("creatorUserIdIn")) {
+                this.creatorUserIdIn = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -108,6 +116,8 @@ public abstract class KalturaCategoryEntryBaseFilter extends KalturaRelatedFilte
         kparams.add("categoryFullIdsStartsWith", this.categoryFullIdsStartsWith);
         kparams.add("statusEqual", this.statusEqual);
         kparams.add("statusIn", this.statusIn);
+        kparams.add("creatorUserIdEqual", this.creatorUserIdEqual);
+        kparams.add("creatorUserIdIn", this.creatorUserIdIn);
         return kparams;
     }
 
