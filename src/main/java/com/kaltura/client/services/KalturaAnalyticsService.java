@@ -49,11 +49,16 @@ public class KalturaAnalyticsService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+    public KalturaReportResponse query(KalturaAnalyticsFilter filter) throws KalturaApiException {
+        return this.query(filter, null);
+    }
+
 	/**  report query action allows to get a analytics data for specific query
 	  dimensions, metrics and filters.  */
-    public KalturaReportResponse query(KalturaAnalyticsFilter filter) throws KalturaApiException {
+    public KalturaReportResponse query(KalturaAnalyticsFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
+        kparams.add("pager", pager);
         this.kalturaClient.queueServiceCall("analytics", "query", kparams, KalturaReportResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

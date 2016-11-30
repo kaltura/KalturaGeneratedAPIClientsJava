@@ -46,9 +46,9 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public class KalturaAnalyticsFilter extends KalturaObjectBase {
-	/**  Query start time (in local time)  */
+	/**  Query start time (in local time) MM/dd/yyyy HH:mi  */
     public String from_time;
-	/**  Query end time (in local time)  */
+	/**  Query end time (in local time) MM/dd/yyyy HH:mi  */
     public String to_time;
 	/**  Comma separated metrics list  */
     public String metrics;
@@ -58,6 +58,8 @@ public class KalturaAnalyticsFilter extends KalturaObjectBase {
     public String dimensions;
 	/**  Array of filters  */
     public ArrayList<KalturaReportFilter> filters;
+	/**  Query order by metric/dimension  */
+    public String orderBy;
 
     public KalturaAnalyticsFilter() {
     }
@@ -87,6 +89,9 @@ public class KalturaAnalyticsFilter extends KalturaObjectBase {
             } else if (nodeName.equals("filters")) {
                 this.filters = ParseUtils.parseArray(KalturaReportFilter.class, aNode);
                 continue;
+            } else if (nodeName.equals("orderBy")) {
+                this.orderBy = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -100,6 +105,7 @@ public class KalturaAnalyticsFilter extends KalturaObjectBase {
         kparams.add("utcOffset", this.utcOffset);
         kparams.add("dimensions", this.dimensions);
         kparams.add("filters", this.filters);
+        kparams.add("orderBy", this.orderBy);
         return kparams;
     }
 

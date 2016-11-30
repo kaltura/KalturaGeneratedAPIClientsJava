@@ -84,6 +84,8 @@ public class KalturaConversionProfile extends KalturaObjectBase {
     public int storageProfileId = Integer.MIN_VALUE;
 	/**  Media parser type to be used for extract media  */
     public KalturaMediaParserType mediaParserType;
+	/**  Should calculate file conversion complexity  */
+    public KalturaNullableBoolean calculateComplexity;
 
     public KalturaConversionProfile() {
     }
@@ -152,6 +154,9 @@ public class KalturaConversionProfile extends KalturaObjectBase {
             } else if (nodeName.equals("mediaParserType")) {
                 this.mediaParserType = KalturaMediaParserType.get(ParseUtils.parseString(txt));
                 continue;
+            } else if (nodeName.equals("calculateComplexity")) {
+                this.calculateComplexity = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
+                continue;
             } 
         }
     }
@@ -174,6 +179,7 @@ public class KalturaConversionProfile extends KalturaObjectBase {
         kparams.add("xslTransformation", this.xslTransformation);
         kparams.add("storageProfileId", this.storageProfileId);
         kparams.add("mediaParserType", this.mediaParserType);
+        kparams.add("calculateComplexity", this.calculateComplexity);
         return kparams;
     }
 

@@ -45,6 +45,10 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaExtractMediaJobData extends KalturaConvartableJobData {
     public String flavorAssetId;
+    public boolean calculateComplexity;
+    public boolean extractId3Tags;
+	/**  The data output file  */
+    public String destDataFilePath;
 
     public KalturaExtractMediaJobData() {
     }
@@ -59,6 +63,15 @@ public class KalturaExtractMediaJobData extends KalturaConvartableJobData {
             if (nodeName.equals("flavorAssetId")) {
                 this.flavorAssetId = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("calculateComplexity")) {
+                this.calculateComplexity = ParseUtils.parseBool(txt);
+                continue;
+            } else if (nodeName.equals("extractId3Tags")) {
+                this.extractId3Tags = ParseUtils.parseBool(txt);
+                continue;
+            } else if (nodeName.equals("destDataFilePath")) {
+                this.destDataFilePath = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -67,6 +80,9 @@ public class KalturaExtractMediaJobData extends KalturaConvartableJobData {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaExtractMediaJobData");
         kparams.add("flavorAssetId", this.flavorAssetId);
+        kparams.add("calculateComplexity", this.calculateComplexity);
+        kparams.add("extractId3Tags", this.extractId3Tags);
+        kparams.add("destDataFilePath", this.destDataFilePath);
         return kparams;
     }
 

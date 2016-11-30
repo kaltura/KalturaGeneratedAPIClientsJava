@@ -54,6 +54,10 @@ public class KalturaLiveToVodJobData extends KalturaJobData {
     public double lastSegmentDuration = Double.MIN_VALUE;
 	/**  amf Array File Path  */
     public String amfArray;
+	/**  last live to vod sync time  */
+    public int lastCuePointSyncTime = Integer.MIN_VALUE;
+	/**  last segment drift  */
+    public int lastSegmentDrift = Integer.MIN_VALUE;
 
     public KalturaLiveToVodJobData() {
     }
@@ -80,6 +84,12 @@ public class KalturaLiveToVodJobData extends KalturaJobData {
             } else if (nodeName.equals("amfArray")) {
                 this.amfArray = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("lastCuePointSyncTime")) {
+                this.lastCuePointSyncTime = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("lastSegmentDrift")) {
+                this.lastSegmentDrift = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -92,6 +102,8 @@ public class KalturaLiveToVodJobData extends KalturaJobData {
         kparams.add("totalVodDuration", this.totalVodDuration);
         kparams.add("lastSegmentDuration", this.lastSegmentDuration);
         kparams.add("amfArray", this.amfArray);
+        kparams.add("lastCuePointSyncTime", this.lastCuePointSyncTime);
+        kparams.add("lastSegmentDrift", this.lastSegmentDrift);
         return kparams;
     }
 
