@@ -428,4 +428,16 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
+
+	/**  This action delivers all data relevant for player  */
+    public KalturaPlaybackContextResult getPlaybackContext(String entryId, KalturaEntryContextDataParams contextDataParams) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("contextDataParams", contextDataParams);
+        this.kalturaClient.queueServiceCall("baseentry", "getPlaybackContext", kparams, KalturaPlaybackContextResult.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPlaybackContextResult.class, resultXmlElement);
+    }
 }

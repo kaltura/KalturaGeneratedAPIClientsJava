@@ -53,6 +53,8 @@ public class KalturaRule extends KalturaObjectBase {
     public String ruleData;
 	/**  Message to be thrown to the player in case the rule is fulfilled  */
     public String message;
+	/**  Code to be thrown to the player in case the rule is fulfilled  */
+    public String code;
 	/**  Actions to be performed by the player in case the rule is fulfilled  */
     public ArrayList<KalturaRuleAction> actions;
 	/**  Conditions to validate the rule  */
@@ -84,6 +86,9 @@ public class KalturaRule extends KalturaObjectBase {
             } else if (nodeName.equals("message")) {
                 this.message = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("code")) {
+                this.code = ParseUtils.parseString(txt);
+                continue;
             } else if (nodeName.equals("actions")) {
                 this.actions = ParseUtils.parseArray(KalturaRuleAction.class, aNode);
                 continue;
@@ -109,6 +114,7 @@ public class KalturaRule extends KalturaObjectBase {
         kparams.add("description", this.description);
         kparams.add("ruleData", this.ruleData);
         kparams.add("message", this.message);
+        kparams.add("code", this.code);
         kparams.add("actions", this.actions);
         kparams.add("conditions", this.conditions);
         kparams.add("contexts", this.contexts);
