@@ -46,7 +46,8 @@ public enum KalturaPlaybackProtocol implements KalturaEnumAsString {
     MULTICAST_SL ("multicast_silverlight"),
     RTMP ("rtmp"),
     RTSP ("rtsp"),
-    SILVER_LIGHT ("sl");
+    SILVER_LIGHT ("sl"),
+    URL ("url");
 
     public String hashCode;
 
@@ -126,6 +127,11 @@ public enum KalturaPlaybackProtocol implements KalturaEnumAsString {
         if (hashCode.equals("sl"))
         {
            return SILVER_LIGHT;
+        }
+        else 
+        if (hashCode.equals("url"))
+        {
+           return URL;
         }
         else 
         {
