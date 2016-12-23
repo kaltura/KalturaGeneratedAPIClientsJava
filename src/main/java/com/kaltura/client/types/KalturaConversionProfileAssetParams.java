@@ -67,6 +67,7 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
     public KalturaNullableBoolean isEncrypted;
     public double contentAwareness = Double.MIN_VALUE;
     public KalturaNullableBoolean twoPass;
+    public String tags;
 
     public KalturaConversionProfileAssetParams() {
     }
@@ -108,6 +109,9 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
             } else if (nodeName.equals("twoPass")) {
                 this.twoPass = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("tags")) {
+                this.tags = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -123,6 +127,7 @@ public class KalturaConversionProfileAssetParams extends KalturaObjectBase {
         kparams.add("isEncrypted", this.isEncrypted);
         kparams.add("contentAwareness", this.contentAwareness);
         kparams.add("twoPass", this.twoPass);
+        kparams.add("tags", this.tags);
         return kparams;
     }
 

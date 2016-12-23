@@ -45,47 +45,34 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaPlaybackSource extends KalturaObjectBase {
-    public String deliveryProfileId;
-	/**  source format according to delivery profile streamer type (applehttp, mpegdash
-	  etc.)  */
-    public String format;
-	/**  comma separated string according to deliveryProfile media protocols
-	  ('http,https' etc.)  */
-    public String protocols;
-	/**  comma separated string of flavor ids  */
-    public String flavorIds;
-    public String url;
-	/**  drm data object containing relevant license url ,scheme name and certificate  */
-    public ArrayList<KalturaDrmPlaybackPluginData> drm;
+public class KalturaPlaybackContext extends KalturaObjectBase {
+    public ArrayList<KalturaPlaybackSource> sources;
+    public ArrayList<KalturaFlavorAsset> flavorAssets;
+	/**  Array of actions as received from the rules that invalidated  */
+    public ArrayList<KalturaRuleAction> actions;
+	/**  Array of actions as received from the rules that invalidated  */
+    public ArrayList<KalturaAccessControlMessage> messages;
 
-    public KalturaPlaybackSource() {
+    public KalturaPlaybackContext() {
     }
 
-    public KalturaPlaybackSource(Element node) throws KalturaApiException {
+    public KalturaPlaybackContext(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("deliveryProfileId")) {
-                this.deliveryProfileId = ParseUtils.parseString(txt);
+            if (nodeName.equals("sources")) {
+                this.sources = ParseUtils.parseArray(KalturaPlaybackSource.class, aNode);
                 continue;
-            } else if (nodeName.equals("format")) {
-                this.format = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("flavorAssets")) {
+                this.flavorAssets = ParseUtils.parseArray(KalturaFlavorAsset.class, aNode);
                 continue;
-            } else if (nodeName.equals("protocols")) {
-                this.protocols = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("actions")) {
+                this.actions = ParseUtils.parseArray(KalturaRuleAction.class, aNode);
                 continue;
-            } else if (nodeName.equals("flavorIds")) {
-                this.flavorIds = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("url")) {
-                this.url = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("drm")) {
-                this.drm = ParseUtils.parseArray(KalturaDrmPlaybackPluginData.class, aNode);
+            } else if (nodeName.equals("messages")) {
+                this.messages = ParseUtils.parseArray(KalturaAccessControlMessage.class, aNode);
                 continue;
             } 
         }
@@ -93,13 +80,11 @@ public class KalturaPlaybackSource extends KalturaObjectBase {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaybackSource");
-        kparams.add("deliveryProfileId", this.deliveryProfileId);
-        kparams.add("format", this.format);
-        kparams.add("protocols", this.protocols);
-        kparams.add("flavorIds", this.flavorIds);
-        kparams.add("url", this.url);
-        kparams.add("drm", this.drm);
+        kparams.add("objectType", "KalturaPlaybackContext");
+        kparams.add("sources", this.sources);
+        kparams.add("flavorAssets", this.flavorAssets);
+        kparams.add("actions", this.actions);
+        kparams.add("messages", this.messages);
         return kparams;
     }
 

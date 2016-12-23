@@ -86,6 +86,9 @@ public class KalturaConversionProfile extends KalturaObjectBase {
     public KalturaMediaParserType mediaParserType;
 	/**  Should calculate file conversion complexity  */
     public KalturaNullableBoolean calculateComplexity;
+	/**  Defines the tags that should be used to define 'collective'/group/multi-flavor
+	  processing,   like 'mbr' or 'ism'  */
+    public String collectionTags;
 
     public KalturaConversionProfile() {
     }
@@ -157,6 +160,9 @@ public class KalturaConversionProfile extends KalturaObjectBase {
             } else if (nodeName.equals("calculateComplexity")) {
                 this.calculateComplexity = KalturaNullableBoolean.get(ParseUtils.parseInt(txt));
                 continue;
+            } else if (nodeName.equals("collectionTags")) {
+                this.collectionTags = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -180,6 +186,7 @@ public class KalturaConversionProfile extends KalturaObjectBase {
         kparams.add("storageProfileId", this.storageProfileId);
         kparams.add("mediaParserType", this.mediaParserType);
         kparams.add("calculateComplexity", this.calculateComplexity);
+        kparams.add("collectionTags", this.collectionTags);
         return kparams;
     }
 

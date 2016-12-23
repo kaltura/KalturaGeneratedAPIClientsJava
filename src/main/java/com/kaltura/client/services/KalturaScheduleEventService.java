@@ -34,6 +34,7 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -129,6 +130,18 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaScheduleEventListResponse.class, resultXmlElement);
+    }
+
+	/**  List conflicting events for resourcesIds by event's dates  */
+    public List<KalturaScheduleEvent> getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("resourceIds", resourceIds);
+        kparams.add("scheduleEvent", scheduleEvent);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaScheduleEvent.class, resultXmlElement);
     }
 
     public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData) throws KalturaApiException {

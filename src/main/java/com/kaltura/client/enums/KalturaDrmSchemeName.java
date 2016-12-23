@@ -25,16 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import org.w3c.dom.Element;
-import com.kaltura.client.KalturaParams;
-import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.enums.KalturaDrmSchemeName;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +33,24 @@ import org.w3c.dom.NodeList;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum KalturaDrmSchemeName implements KalturaEnumAsString {
+    /** Place holder for future values */;
 
-@SuppressWarnings("serial")
-public class KalturaDrmPlaybackPluginData extends KalturaPluginData {
-    public KalturaDrmSchemeName scheme;
-    public String licenseURL;
+    public String hashCode;
 
-    public KalturaDrmPlaybackPluginData() {
+    KalturaDrmSchemeName(String hashCode) {
+        this.hashCode = hashCode;
     }
 
-    public KalturaDrmPlaybackPluginData(Element node) throws KalturaApiException {
-        super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("scheme")) {
-                this.scheme = KalturaDrmSchemeName.get(ParseUtils.parseString(txt));
-                continue;
-            } else if (nodeName.equals("licenseURL")) {
-                this.licenseURL = ParseUtils.parseString(txt);
-                continue;
-            } 
-        }
+    public String getHashCode() {
+        return this.hashCode;
     }
 
-    public KalturaParams toParams() throws KalturaApiException {
-        KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmPlaybackPluginData");
-        kparams.add("scheme", this.scheme);
-        kparams.add("licenseURL", this.licenseURL);
-        return kparams;
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
     }
 
+    public static KalturaDrmSchemeName get(String hashCode) {
+    	return null;
+    }
 }
-
