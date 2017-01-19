@@ -33,15 +33,13 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum KalturaAttachmentType implements KalturaEnumAsString {
-    TEXT ("1"),
-    MEDIA ("2"),
-    DOCUMENT ("3"),
-    JSON ("4");
+public enum KalturaTranscriptProviderType implements KalturaEnumAsString {
+    CIELO24 ("cielo24.Cielo24"),
+    VOICEBASE ("voicebase.Voicebase");
 
     public String hashCode;
 
-    KalturaAttachmentType(String hashCode) {
+    KalturaTranscriptProviderType(String hashCode) {
         this.hashCode = hashCode;
     }
 
@@ -53,29 +51,19 @@ public enum KalturaAttachmentType implements KalturaEnumAsString {
         this.hashCode = hashCode;
     }
 
-    public static KalturaAttachmentType get(String hashCode) {
-        if (hashCode.equals("1"))
+    public static KalturaTranscriptProviderType get(String hashCode) {
+        if (hashCode.equals("cielo24.Cielo24"))
         {
-           return TEXT;
+           return CIELO24;
         }
         else 
-        if (hashCode.equals("2"))
+        if (hashCode.equals("voicebase.Voicebase"))
         {
-           return MEDIA;
-        }
-        else 
-        if (hashCode.equals("3"))
-        {
-           return DOCUMENT;
-        }
-        else 
-        if (hashCode.equals("4"))
-        {
-           return JSON;
+           return VOICEBASE;
         }
         else 
         {
-           return TEXT;
+           return CIELO24;
         }
     }
 }

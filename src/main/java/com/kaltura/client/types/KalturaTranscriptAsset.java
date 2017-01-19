@@ -32,6 +32,7 @@ import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaNullableBoolean;
 import com.kaltura.client.enums.KalturaLanguage;
+import com.kaltura.client.enums.KalturaTranscriptProviderType;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -52,6 +53,8 @@ public class KalturaTranscriptAsset extends KalturaAttachmentAsset {
     public KalturaNullableBoolean humanVerified;
 	/**  The language of the transcript  */
     public KalturaLanguage language;
+	/**  The provider of the transcript  */
+    public KalturaTranscriptProviderType providerType;
 
     public KalturaTranscriptAsset() {
     }
@@ -72,6 +75,9 @@ public class KalturaTranscriptAsset extends KalturaAttachmentAsset {
             } else if (nodeName.equals("language")) {
                 this.language = KalturaLanguage.get(ParseUtils.parseString(txt));
                 continue;
+            } else if (nodeName.equals("providerType")) {
+                this.providerType = KalturaTranscriptProviderType.get(ParseUtils.parseString(txt));
+                continue;
             } 
         }
     }
@@ -82,6 +88,7 @@ public class KalturaTranscriptAsset extends KalturaAttachmentAsset {
         kparams.add("accuracy", this.accuracy);
         kparams.add("humanVerified", this.humanVerified);
         kparams.add("language", this.language);
+        kparams.add("providerType", this.providerType);
         return kparams;
     }
 
