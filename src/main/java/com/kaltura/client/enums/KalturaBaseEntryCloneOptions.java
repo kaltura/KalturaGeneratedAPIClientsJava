@@ -39,7 +39,8 @@ public enum KalturaBaseEntryCloneOptions implements KalturaEnumAsString {
     CODE_CUE_POINTS ("codeCuePoint.CODE_CUE_POINTS"),
     THUMB_CUE_POINTS ("thumbCuePoint.THUMB_CUE_POINTS"),
     USERS ("1"),
-    CATEGORIES ("2");
+    CATEGORIES ("2"),
+    CHILD_ENTRIES ("3");
 
     public String hashCode;
 
@@ -84,6 +85,11 @@ public enum KalturaBaseEntryCloneOptions implements KalturaEnumAsString {
         if (hashCode.equals("2"))
         {
            return CATEGORIES;
+        }
+        else 
+        if (hashCode.equals("3"))
+        {
+           return CHILD_ENTRIES;
         }
         else 
         {
