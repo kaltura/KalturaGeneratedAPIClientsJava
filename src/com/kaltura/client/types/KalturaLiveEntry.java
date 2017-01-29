@@ -76,6 +76,8 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
 	  or 0 when the entry is off the air     */
     public double currentBroadcastStartTime = Double.MIN_VALUE;
     public KalturaLiveEntryRecordingOptions recordingOptions;
+    /** The chunk duration (in milliseconds), to use in transcode stream */
+    public int segmentDuration = Integer.MIN_VALUE;
 
     public KalturaLiveEntry() {
     }
@@ -126,7 +128,11 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
             } else if (nodeName.equals("recordingOptions")) {
                 this.recordingOptions = ParseUtils.parseObject(KalturaLiveEntryRecordingOptions.class, aNode);
                 continue;
-            } 
+            } else if (nodeName.equals("segmentDuration")) {
+                this.segmentDuration = ParseUtils.parseInt(txt);
+                continue;
+            }
+
         }
     }
 
@@ -144,6 +150,7 @@ public abstract class KalturaLiveEntry extends KalturaMediaEntry {
         kparams.add("publishConfigurations", this.publishConfigurations);
         kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
         kparams.add("recordingOptions", this.recordingOptions);
+        kparams.add("segmentDuration", this.segmentDuration);
         return kparams;
     }
 

@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kaltura</groupId>
 	<artifactId>KalturaClient</artifactId>
-	<version>3.3.3</version>
+	<version>3.3.4</version>
 
 	<!-- Project description -->
 	<name>KalturaClient Java Library</name>
@@ -140,6 +140,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
