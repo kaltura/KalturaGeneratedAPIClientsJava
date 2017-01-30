@@ -40,18 +40,18 @@ import com.kaltura.client.KalturaApiException;
  */
 
 @SuppressWarnings("serial")
-public class KalturaThumbnailServeOptions extends KalturaAssetServeOptions {
+public class KalturaAttachmentServeOptions extends KalturaAssetServeOptions {
 
-    public KalturaThumbnailServeOptions() {
+    public KalturaAttachmentServeOptions() {
     }
 
-    public KalturaThumbnailServeOptions(Element node) throws KalturaApiException {
+    public KalturaAttachmentServeOptions(Element node) throws KalturaApiException {
         super(node);
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbnailServeOptions");
+        kparams.add("objectType", "KalturaAttachmentServeOptions");
         return kparams;
     }
 

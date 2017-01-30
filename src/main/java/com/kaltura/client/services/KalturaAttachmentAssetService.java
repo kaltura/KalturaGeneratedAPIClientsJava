@@ -113,10 +113,15 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
-	/**  Serves attachment by its id  */
     public String serve(String attachmentAssetId) throws KalturaApiException {
+        return this.serve(attachmentAssetId, null);
+    }
+
+	/**  Serves attachment by its id  */
+    public String serve(String attachmentAssetId, KalturaAttachmentServeOptions serveOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("attachmentAssetId", attachmentAssetId);
+        kparams.add("serveOptions", serveOptions);
         this.kalturaClient.queueServiceCall("attachment_attachmentasset", "serve", kparams);
         return this.kalturaClient.serve();
     }
