@@ -65,6 +65,8 @@ public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProvider
     public KalturaLanguage spokenLanguage;
 	/**  should replace remote media content  */
     public boolean replaceMediaContent;
+	/**  additional parameters to send to Cielo24  */
+    public String additionalParameters;
 
     public KalturaCielo24JobProviderData() {
     }
@@ -106,6 +108,9 @@ public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProvider
             } else if (nodeName.equals("replaceMediaContent")) {
                 this.replaceMediaContent = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("additionalParameters")) {
+                this.additionalParameters = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -120,6 +125,7 @@ public class KalturaCielo24JobProviderData extends KalturaIntegrationJobProvider
         kparams.add("fidelity", this.fidelity);
         kparams.add("spokenLanguage", this.spokenLanguage);
         kparams.add("replaceMediaContent", this.replaceMediaContent);
+        kparams.add("additionalParameters", this.additionalParameters);
         return kparams;
     }
 
