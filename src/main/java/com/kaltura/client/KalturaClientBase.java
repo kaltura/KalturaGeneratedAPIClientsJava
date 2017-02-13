@@ -272,12 +272,19 @@ abstract public class KalturaClientBase implements Serializable {
 		String responseString = null;
 		try {
 			responseString = executeMethod(client, method);
+		} catch (Exception e) {
+			throw new KalturaApiException("Failed executing request: " + e);
 		} finally {
 			resetRequest();
 		}
-		
-		Element responseXml = XmlUtils.parseXml(responseString);
-		Element resultXml = this.validateXmlResult(responseXml);
+		Element responseXml = null;
+		Element resultXml = null;
+		try {
+			responseXml = XmlUtils.parseXml(responseString);
+			resultXml = this.validateXmlResult(responseXml);
+		} catch (Exception e) {
+			throw new KalturaApiException("invalid response: [" + responseString + "]. Error: " + e);
+		}
 		this.throwExceptionOnAPIError(resultXml);
 				
 		return resultXml;
