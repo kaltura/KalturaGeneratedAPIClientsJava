@@ -60,29 +60,6 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
     }
 
-	/**  Get server node by id  */
-    public KalturaServerNode get(int serverNodeId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("serverNodeId", serverNodeId);
-        this.kalturaClient.queueServiceCall("servernode", "get", kparams, KalturaServerNode.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
-    }
-
-	/**  Update server node by id  */
-    public KalturaServerNode update(int serverNodeId, KalturaServerNode serverNode) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("serverNodeId", serverNodeId);
-        kparams.add("serverNode", serverNode);
-        this.kalturaClient.queueServiceCall("servernode", "update", kparams, KalturaServerNode.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
-    }
-
 	/**  delete server node by id  */
     public void delete(String serverNodeId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -109,6 +86,17 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("serverNodeId", serverNodeId);
         this.kalturaClient.queueServiceCall("servernode", "enable", kparams, KalturaServerNode.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
+    }
+
+	/**  Get server node by id  */
+    public KalturaServerNode get(int serverNodeId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("serverNodeId", serverNodeId);
+        this.kalturaClient.queueServiceCall("servernode", "get", kparams, KalturaServerNode.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -144,6 +132,18 @@ public class KalturaServerNodeService extends KalturaServiceBase {
         kparams.add("hostName", hostName);
         kparams.add("serverNode", serverNode);
         this.kalturaClient.queueServiceCall("servernode", "reportStatus", kparams, KalturaServerNode.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaServerNode.class, resultXmlElement);
+    }
+
+	/**  Update server node by id  */
+    public KalturaServerNode update(int serverNodeId, KalturaServerNode serverNode) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("serverNodeId", serverNodeId);
+        kparams.add("serverNode", serverNode);
+        this.kalturaClient.queueServiceCall("servernode", "update", kparams, KalturaServerNode.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();

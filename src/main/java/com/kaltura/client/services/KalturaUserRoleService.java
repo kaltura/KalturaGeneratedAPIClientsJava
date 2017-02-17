@@ -60,23 +60,11 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
     }
 
-	/**  Retrieves a user role object using its ID.  */
-    public KalturaUserRole get(int userRoleId) throws KalturaApiException {
+	/**  Creates a new user role object that is a duplicate of an existing role.  */
+    public KalturaUserRole clone(int userRoleId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
-        this.kalturaClient.queueServiceCall("userrole", "get", kparams, KalturaUserRole.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
-    }
-
-	/**  Updates an existing user role object.  */
-    public KalturaUserRole update(int userRoleId, KalturaUserRole userRole) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userRoleId", userRoleId);
-        kparams.add("userRole", userRole);
-        this.kalturaClient.queueServiceCall("userrole", "update", kparams, KalturaUserRole.class);
+        this.kalturaClient.queueServiceCall("userrole", "clone", kparams, KalturaUserRole.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -88,6 +76,17 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
         this.kalturaClient.queueServiceCall("userrole", "delete", kparams, KalturaUserRole.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUserRole.class, resultXmlElement);
+    }
+
+	/**  Retrieves a user role object using its ID.  */
+    public KalturaUserRole get(int userRoleId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userRoleId", userRoleId);
+        this.kalturaClient.queueServiceCall("userrole", "get", kparams, KalturaUserRole.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -116,11 +115,12 @@ public class KalturaUserRoleService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserRoleListResponse.class, resultXmlElement);
     }
 
-	/**  Creates a new user role object that is a duplicate of an existing role.  */
-    public KalturaUserRole clone(int userRoleId) throws KalturaApiException {
+	/**  Updates an existing user role object.  */
+    public KalturaUserRole update(int userRoleId, KalturaUserRole userRole) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("userRoleId", userRoleId);
-        this.kalturaClient.queueServiceCall("userrole", "clone", kparams, KalturaUserRole.class);
+        kparams.add("userRole", userRole);
+        this.kalturaClient.queueServiceCall("userrole", "update", kparams, KalturaUserRole.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();

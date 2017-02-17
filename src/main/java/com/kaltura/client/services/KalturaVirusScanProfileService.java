@@ -49,6 +49,40 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+	/**  Allows you to add an virus scan profile object and virus scan profile content
+	  associated with Kaltura object  */
+    public KalturaVirusScanProfile add(KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("virusScanProfile", virusScanProfile);
+        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "add", kparams, KalturaVirusScanProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
+    }
+
+	/**  Mark the virus scan profile as deleted  */
+    public KalturaVirusScanProfile delete(int virusScanProfileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("virusScanProfileId", virusScanProfileId);
+        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "delete", kparams, KalturaVirusScanProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
+    }
+
+	/**  Retrieve an virus scan profile object by id  */
+    public KalturaVirusScanProfile get(int virusScanProfileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("virusScanProfileId", virusScanProfileId);
+        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "get", kparams, KalturaVirusScanProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
+    }
+
     public KalturaVirusScanProfileListResponse list() throws KalturaApiException {
         return this.list(null);
     }
@@ -69,53 +103,6 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaVirusScanProfileListResponse.class, resultXmlElement);
     }
 
-	/**  Allows you to add an virus scan profile object and virus scan profile content
-	  associated with Kaltura object  */
-    public KalturaVirusScanProfile add(KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("virusScanProfile", virusScanProfile);
-        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "add", kparams, KalturaVirusScanProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
-    }
-
-	/**  Retrieve an virus scan profile object by id  */
-    public KalturaVirusScanProfile get(int virusScanProfileId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("virusScanProfileId", virusScanProfileId);
-        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "get", kparams, KalturaVirusScanProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
-    }
-
-	/**  Update exisitng virus scan profile, it is possible to update the virus scan
-	  profile id too  */
-    public KalturaVirusScanProfile update(int virusScanProfileId, KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("virusScanProfileId", virusScanProfileId);
-        kparams.add("virusScanProfile", virusScanProfile);
-        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "update", kparams, KalturaVirusScanProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
-    }
-
-	/**  Mark the virus scan profile as deleted  */
-    public KalturaVirusScanProfile delete(int virusScanProfileId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("virusScanProfileId", virusScanProfileId);
-        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "delete", kparams, KalturaVirusScanProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
-    }
-
     public int scan(String flavorAssetId) throws KalturaApiException {
         return this.scan(flavorAssetId, Integer.MIN_VALUE);
     }
@@ -131,5 +118,18 @@ public class KalturaVirusScanProfileService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseInt(resultText);
+    }
+
+	/**  Update exisitng virus scan profile, it is possible to update the virus scan
+	  profile id too  */
+    public KalturaVirusScanProfile update(int virusScanProfileId, KalturaVirusScanProfile virusScanProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("virusScanProfileId", virusScanProfileId);
+        kparams.add("virusScanProfile", virusScanProfile);
+        this.kalturaClient.queueServiceCall("virusscan_virusscanprofile", "update", kparams, KalturaVirusScanProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaVirusScanProfile.class, resultXmlElement);
     }
 }

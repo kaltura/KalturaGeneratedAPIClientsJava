@@ -61,35 +61,12 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
-	/**  Get response profile by id  */
-    public KalturaResponseProfile get(int id) throws KalturaApiException {
+	/**  Clone an existing response profile  */
+    public KalturaResponseProfile clone(int id, KalturaResponseProfile profile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("responseprofile", "get", kparams, KalturaResponseProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
-    }
-
-	/**  Update response profile by id  */
-    public KalturaResponseProfile update(int id, KalturaResponseProfile updateResponseProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("updateResponseProfile", updateResponseProfile);
-        this.kalturaClient.queueServiceCall("responseprofile", "update", kparams, KalturaResponseProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
-    }
-
-	/**  Update response profile status by id  */
-    public KalturaResponseProfile updateStatus(int id, KalturaResponseProfileStatus status) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("status", status);
-        this.kalturaClient.queueServiceCall("responseprofile", "updateStatus", kparams, KalturaResponseProfile.class);
+        kparams.add("profile", profile);
+        this.kalturaClient.queueServiceCall("responseprofile", "clone", kparams, KalturaResponseProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -104,6 +81,17 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+	/**  Get response profile by id  */
+    public KalturaResponseProfile get(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("responseprofile", "get", kparams, KalturaResponseProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
     }
 
     public KalturaResponseProfileListResponse list() throws KalturaApiException {
@@ -137,12 +125,24 @@ public class KalturaResponseProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaResponseProfileCacheRecalculateResults.class, resultXmlElement);
     }
 
-	/**  Clone an existing response profile  */
-    public KalturaResponseProfile clone(int id, KalturaResponseProfile profile) throws KalturaApiException {
+	/**  Update response profile by id  */
+    public KalturaResponseProfile update(int id, KalturaResponseProfile updateResponseProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("profile", profile);
-        this.kalturaClient.queueServiceCall("responseprofile", "clone", kparams, KalturaResponseProfile.class);
+        kparams.add("updateResponseProfile", updateResponseProfile);
+        this.kalturaClient.queueServiceCall("responseprofile", "update", kparams, KalturaResponseProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaResponseProfile.class, resultXmlElement);
+    }
+
+	/**  Update response profile status by id  */
+    public KalturaResponseProfile updateStatus(int id, KalturaResponseProfileStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("responseprofile", "updateStatus", kparams, KalturaResponseProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();

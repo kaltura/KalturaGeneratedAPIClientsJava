@@ -177,6 +177,27 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
+	/**  Delete Generic Distribution Provider Action by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Delete Generic Distribution Provider Action by provider id  */
+    public void deleteByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("genericDistributionProviderId", genericDistributionProviderId);
+        kparams.add("actionType", actionType);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Generic Distribution Provider Action by id  */
     public KalturaGenericDistributionProviderAction get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -200,52 +221,6 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
         return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 
-	/**  Update Generic Distribution Provider Action by provider id  */
-    public KalturaGenericDistributionProviderAction updateByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("genericDistributionProviderId", genericDistributionProviderId);
-        kparams.add("actionType", actionType);
-        kparams.add("genericDistributionProviderAction", genericDistributionProviderAction);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", kparams, KalturaGenericDistributionProviderAction.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
-    }
-
-	/**  Update Generic Distribution Provider Action by id  */
-    public KalturaGenericDistributionProviderAction update(int id, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("genericDistributionProviderAction", genericDistributionProviderAction);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "update", kparams, KalturaGenericDistributionProviderAction.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
-    }
-
-	/**  Delete Generic Distribution Provider Action by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Delete Generic Distribution Provider Action by provider id  */
-    public void deleteByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("genericDistributionProviderId", genericDistributionProviderId);
-        kparams.add("actionType", actionType);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "deleteByProviderId", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
     public KalturaGenericDistributionProviderActionListResponse list() throws KalturaApiException {
         return this.list(null);
     }
@@ -264,5 +239,30 @@ public class KalturaGenericDistributionProviderActionService extends KalturaServ
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaGenericDistributionProviderActionListResponse.class, resultXmlElement);
+    }
+
+	/**  Update Generic Distribution Provider Action by id  */
+    public KalturaGenericDistributionProviderAction update(int id, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("genericDistributionProviderAction", genericDistributionProviderAction);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "update", kparams, KalturaGenericDistributionProviderAction.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
+    }
+
+	/**  Update Generic Distribution Provider Action by provider id  */
+    public KalturaGenericDistributionProviderAction updateByProviderId(int genericDistributionProviderId, KalturaDistributionAction actionType, KalturaGenericDistributionProviderAction genericDistributionProviderAction) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("genericDistributionProviderId", genericDistributionProviderId);
+        kparams.add("actionType", actionType);
+        kparams.add("genericDistributionProviderAction", genericDistributionProviderAction);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovideraction", "updateByProviderId", kparams, KalturaGenericDistributionProviderAction.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaGenericDistributionProviderAction.class, resultXmlElement);
     }
 }

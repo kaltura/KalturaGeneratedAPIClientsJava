@@ -60,6 +60,16 @@ public class KalturaAccessControlService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAccessControl.class, resultXmlElement);
     }
 
+	/**  Delete Access Control Profile by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("accesscontrol", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Access Control Profile by id  */
     public KalturaAccessControl get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -69,28 +79,6 @@ public class KalturaAccessControlService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaAccessControl.class, resultXmlElement);
-    }
-
-	/**  Update Access Control Profile by id  */
-    public KalturaAccessControl update(int id, KalturaAccessControl accessControl) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("accessControl", accessControl);
-        this.kalturaClient.queueServiceCall("accesscontrol", "update", kparams, KalturaAccessControl.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAccessControl.class, resultXmlElement);
-    }
-
-	/**  Delete Access Control Profile by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("accesscontrol", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaAccessControlListResponse list() throws KalturaApiException {
@@ -111,5 +99,17 @@ public class KalturaAccessControlService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaAccessControlListResponse.class, resultXmlElement);
+    }
+
+	/**  Update Access Control Profile by id  */
+    public KalturaAccessControl update(int id, KalturaAccessControl accessControl) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("accessControl", accessControl);
+        this.kalturaClient.queueServiceCall("accesscontrol", "update", kparams, KalturaAccessControl.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAccessControl.class, resultXmlElement);
     }
 }

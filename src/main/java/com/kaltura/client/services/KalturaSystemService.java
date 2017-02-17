@@ -29,11 +29,11 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
+import com.kaltura.client.types.*;
 import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.types.*;
 
 /**
  * This class was generated using exec.php
@@ -48,26 +48,6 @@ import com.kaltura.client.types.*;
 public class KalturaSystemService extends KalturaServiceBase {
     public KalturaSystemService(KalturaClient client) {
         this.kalturaClient = client;
-    }
-
-    public boolean ping() throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        this.kalturaClient.queueServiceCall("system", "ping", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return false;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBool(resultText);
-    }
-
-    public boolean pingDatabase() throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        this.kalturaClient.queueServiceCall("system", "pingDatabase", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return false;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBool(resultText);
     }
 
     public int getTime() throws KalturaApiException {
@@ -88,5 +68,25 @@ public class KalturaSystemService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
+    }
+
+    public boolean ping() throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        this.kalturaClient.queueServiceCall("system", "ping", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return false;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBool(resultText);
+    }
+
+    public boolean pingDatabase() throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        this.kalturaClient.queueServiceCall("system", "pingDatabase", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return false;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBool(resultText);
     }
 }

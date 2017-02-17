@@ -115,33 +115,21 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 
+	/**  Delete an existing metadata profile  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Retrieve a metadata profile object by id  */
     public KalturaMetadataProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("metadata_metadataprofile", "get", kparams, KalturaMetadataProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
-    }
-
-    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile) throws KalturaApiException {
-        return this.update(id, metadataProfile, null);
-    }
-
-    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile, String xsdData) throws KalturaApiException {
-        return this.update(id, metadataProfile, xsdData, null);
-    }
-
-	/**  Update an existing metadata object  */
-    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile, String xsdData, String viewsData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("metadataProfile", metadataProfile);
-        kparams.add("xsdData", xsdData);
-        kparams.add("viewsData", viewsData);
-        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "update", kparams, KalturaMetadataProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -179,22 +167,50 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfileFieldListResponse.class, resultXmlElement);
     }
 
-	/**  Delete an existing metadata profile  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
 	/**  Update an existing metadata object definition file  */
     public KalturaMetadataProfile revert(int id, int toVersion) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         kparams.add("toVersion", toVersion);
         this.kalturaClient.queueServiceCall("metadata_metadataprofile", "revert", kparams, KalturaMetadataProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
+    }
+
+	/**  Serves metadata profile XSD file  */
+    public String serve(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "serve", kparams);
+        return this.kalturaClient.serve();
+    }
+
+	/**  Serves metadata profile view file  */
+    public String serveView(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "serveView", kparams);
+        return this.kalturaClient.serve();
+    }
+
+    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile) throws KalturaApiException {
+        return this.update(id, metadataProfile, null);
+    }
+
+    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile, String xsdData) throws KalturaApiException {
+        return this.update(id, metadataProfile, xsdData, null);
+    }
+
+	/**  Update an existing metadata object  */
+    public KalturaMetadataProfile update(int id, KalturaMetadataProfile metadataProfile, String xsdData, String viewsData) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("metadataProfile", metadataProfile);
+        kparams.add("xsdData", xsdData);
+        kparams.add("viewsData", viewsData);
+        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "update", kparams, KalturaMetadataProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -226,31 +242,6 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 
-    public KalturaMetadataProfile updateViewsFromFile(int id, File viewsFile) throws KalturaApiException {
-        return this.updateViewsFromFile(id, new KalturaFile(viewsFile));
-    }
-
-    public KalturaMetadataProfile updateViewsFromFile(int id, InputStream viewsFile, String viewsFileName, long viewsFileSize) throws KalturaApiException {
-        return this.updateViewsFromFile(id, new KalturaFile(viewsFile, viewsFileName, viewsFileSize));
-    }
-
-    public KalturaMetadataProfile updateViewsFromFile(int id, FileInputStream viewsFile, String viewsFileName) throws KalturaApiException {
-        return this.updateViewsFromFile(id, new KalturaFile(viewsFile, viewsFileName));
-    }
-
-	/**  Update an existing metadata object views file  */
-    public KalturaMetadataProfile updateViewsFromFile(int id, KalturaFile viewsFile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        KalturaFiles kfiles = new KalturaFiles();
-        kfiles.add("viewsFile", viewsFile);
-        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "updateViewsFromFile", kparams, kfiles, KalturaMetadataProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
-    }
-
     public KalturaMetadataProfile updateTransformationFromFile(int id, File xsltFile) throws KalturaApiException {
         return this.updateTransformationFromFile(id, new KalturaFile(xsltFile));
     }
@@ -276,19 +267,28 @@ public class KalturaMetadataProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 
-	/**  Serves metadata profile XSD file  */
-    public String serve(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "serve", kparams);
-        return this.kalturaClient.serve();
+    public KalturaMetadataProfile updateViewsFromFile(int id, File viewsFile) throws KalturaApiException {
+        return this.updateViewsFromFile(id, new KalturaFile(viewsFile));
     }
 
-	/**  Serves metadata profile view file  */
-    public String serveView(int id) throws KalturaApiException {
+    public KalturaMetadataProfile updateViewsFromFile(int id, InputStream viewsFile, String viewsFileName, long viewsFileSize) throws KalturaApiException {
+        return this.updateViewsFromFile(id, new KalturaFile(viewsFile, viewsFileName, viewsFileSize));
+    }
+
+    public KalturaMetadataProfile updateViewsFromFile(int id, FileInputStream viewsFile, String viewsFileName) throws KalturaApiException {
+        return this.updateViewsFromFile(id, new KalturaFile(viewsFile, viewsFileName));
+    }
+
+	/**  Update an existing metadata object views file  */
+    public KalturaMetadataProfile updateViewsFromFile(int id, KalturaFile viewsFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "serveView", kparams);
-        return this.kalturaClient.serve();
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("viewsFile", viewsFile);
+        this.kalturaClient.queueServiceCall("metadata_metadataprofile", "updateViewsFromFile", kparams, kfiles, KalturaMetadataProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMetadataProfile.class, resultXmlElement);
     }
 }

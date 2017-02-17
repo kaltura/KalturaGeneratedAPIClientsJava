@@ -60,6 +60,16 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 
+	/**  Delete a scheduled task profile  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Retrieve a scheduled task profile by id  */
     public KalturaScheduledTaskProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -71,26 +81,14 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 
-	/**  Update an existing scheduled task profile  */
-    public KalturaScheduledTaskProfile update(int id, KalturaScheduledTaskProfile scheduledTaskProfile) throws KalturaApiException {
+    public KalturaObjectListResponse getDryRunResults(int requestId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("scheduledTaskProfile", scheduledTaskProfile);
-        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "update", kparams, KalturaScheduledTaskProfile.class);
+        kparams.add("requestId", requestId);
+        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", kparams, KalturaObjectListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
-    }
-
-	/**  Delete a scheduled task profile  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaObjectListResponse.class, resultXmlElement);
     }
 
     public KalturaScheduledTaskProfileListResponse list() throws KalturaApiException {
@@ -129,13 +127,15 @@ public class KalturaScheduledTaskProfileService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-    public KalturaObjectListResponse getDryRunResults(int requestId) throws KalturaApiException {
+	/**  Update an existing scheduled task profile  */
+    public KalturaScheduledTaskProfile update(int id, KalturaScheduledTaskProfile scheduledTaskProfile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("requestId", requestId);
-        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "getDryRunResults", kparams, KalturaObjectListResponse.class);
+        kparams.add("id", id);
+        kparams.add("scheduledTaskProfile", scheduledTaskProfile);
+        this.kalturaClient.queueServiceCall("scheduledtask_scheduledtaskprofile", "update", kparams, KalturaScheduledTaskProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaObjectListResponse.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaScheduledTaskProfile.class, resultXmlElement);
     }
 }

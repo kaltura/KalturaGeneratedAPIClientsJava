@@ -61,36 +61,23 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
     }
 
-	/**  Retrieves a permission item object using its ID.  */
-    public KalturaPermissionItem get(int permissionItemId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("permissionItemId", permissionItemId);
-        this.kalturaClient.queueServiceCall("permissionitem", "get", kparams, KalturaPermissionItem.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
-    }
-
-	/**  Updates an existing permission item object.   This action is available only to
-	  Kaltura system administrators.  */
-    public KalturaPermissionItem update(int permissionItemId, KalturaPermissionItem permissionItem) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("permissionItemId", permissionItemId);
-        kparams.add("permissionItem", permissionItem);
-        this.kalturaClient.queueServiceCall("permissionitem", "update", kparams, KalturaPermissionItem.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
-    }
-
 	/**  Deletes an existing permission item object.   This action is available only to
 	  Kaltura system administrators.  */
     public KalturaPermissionItem delete(int permissionItemId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("permissionItemId", permissionItemId);
         this.kalturaClient.queueServiceCall("permissionitem", "delete", kparams, KalturaPermissionItem.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
+    }
+
+	/**  Retrieves a permission item object using its ID.  */
+    public KalturaPermissionItem get(int permissionItemId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("permissionItemId", permissionItemId);
+        this.kalturaClient.queueServiceCall("permissionitem", "get", kparams, KalturaPermissionItem.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -115,5 +102,18 @@ public class KalturaPermissionItemService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaPermissionItemListResponse.class, resultXmlElement);
+    }
+
+	/**  Updates an existing permission item object.   This action is available only to
+	  Kaltura system administrators.  */
+    public KalturaPermissionItem update(int permissionItemId, KalturaPermissionItem permissionItem) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("permissionItemId", permissionItemId);
+        kparams.add("permissionItem", permissionItem);
+        this.kalturaClient.queueServiceCall("permissionitem", "update", kparams, KalturaPermissionItem.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPermissionItem.class, resultXmlElement);
     }
 }

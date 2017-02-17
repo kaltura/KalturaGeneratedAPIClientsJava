@@ -61,33 +61,11 @@ public class KalturaStorageProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaStorageProfile.class, resultXmlElement);
     }
 
-    public void updateStatus(int storageId, KalturaStorageProfileStatus status) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("storageId", storageId);
-        kparams.add("status", status);
-        this.kalturaClient.queueServiceCall("storageprofile", "updateStatus", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
 	/**  Get storage profile by id  */
     public KalturaStorageProfile get(int storageProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("storageProfileId", storageProfileId);
         this.kalturaClient.queueServiceCall("storageprofile", "get", kparams, KalturaStorageProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaStorageProfile.class, resultXmlElement);
-    }
-
-	/**  Update storage profile by id  */
-    public KalturaStorageProfile update(int storageProfileId, KalturaStorageProfile storageProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("storageProfileId", storageProfileId);
-        kparams.add("storageProfile", storageProfile);
-        this.kalturaClient.queueServiceCall("storageprofile", "update", kparams, KalturaStorageProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -111,5 +89,27 @@ public class KalturaStorageProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaStorageProfileListResponse.class, resultXmlElement);
+    }
+
+	/**  Update storage profile by id  */
+    public KalturaStorageProfile update(int storageProfileId, KalturaStorageProfile storageProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("storageProfileId", storageProfileId);
+        kparams.add("storageProfile", storageProfile);
+        this.kalturaClient.queueServiceCall("storageprofile", "update", kparams, KalturaStorageProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaStorageProfile.class, resultXmlElement);
+    }
+
+    public void updateStatus(int storageId, KalturaStorageProfileStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("storageId", storageId);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("storageprofile", "updateStatus", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 }

@@ -60,34 +60,22 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 
-	/**  Retrieve a KalturaDropFolder object by ID  */
-    public KalturaDropFolder get(int dropFolderId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("dropFolderId", dropFolderId);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "get", kparams, KalturaDropFolder.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
-    }
-
-	/**  Update an existing KalturaDropFolder object  */
-    public KalturaDropFolder update(int dropFolderId, KalturaDropFolder dropFolder) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("dropFolderId", dropFolderId);
-        kparams.add("dropFolder", dropFolder);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "update", kparams, KalturaDropFolder.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
-    }
-
 	/**  Mark the KalturaDropFolder object as deleted  */
     public KalturaDropFolder delete(int dropFolderId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderId", dropFolderId);
         this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "delete", kparams, KalturaDropFolder.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
+    }
+
+	/**  Retrieve a KalturaDropFolder object by ID  */
+    public KalturaDropFolder get(int dropFolderId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("dropFolderId", dropFolderId);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "get", kparams, KalturaDropFolder.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -112,5 +100,17 @@ public class KalturaDropFolderService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDropFolderListResponse.class, resultXmlElement);
+    }
+
+	/**  Update an existing KalturaDropFolder object  */
+    public KalturaDropFolder update(int dropFolderId, KalturaDropFolder dropFolder) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("dropFolderId", dropFolderId);
+        kparams.add("dropFolder", dropFolder);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "update", kparams, KalturaDropFolder.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 }

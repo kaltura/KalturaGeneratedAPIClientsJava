@@ -60,6 +60,16 @@ public class KalturaDataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
     }
 
+	/**  Delete a data entry.  */
+    public void delete(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("data", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
     public KalturaDataEntry get(String entryId) throws KalturaApiException {
         return this.get(entryId, -1);
     }
@@ -74,28 +84,6 @@ public class KalturaDataService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
-    }
-
-	/**  Update data entry. Only the properties that were set will be updated.  */
-    public KalturaDataEntry update(String entryId, KalturaDataEntry documentEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("documentEntry", documentEntry);
-        this.kalturaClient.queueServiceCall("data", "update", kparams, KalturaDataEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
-    }
-
-	/**  Delete a data entry.  */
-    public void delete(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("data", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaDataListResponse list() throws KalturaApiException {
@@ -134,5 +122,17 @@ public class KalturaDataService extends KalturaServiceBase {
         kparams.add("forceProxy", forceProxy);
         this.kalturaClient.queueServiceCall("data", "serve", kparams);
         return this.kalturaClient.serve();
+    }
+
+	/**  Update data entry. Only the properties that were set will be updated.  */
+    public KalturaDataEntry update(String entryId, KalturaDataEntry documentEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("documentEntry", documentEntry);
+        this.kalturaClient.queueServiceCall("data", "update", kparams, KalturaDataEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDataEntry.class, resultXmlElement);
     }
 }

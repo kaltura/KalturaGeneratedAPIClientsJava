@@ -61,6 +61,16 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 
+	/**  Delete Thumb Params by ID  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("thumbparams", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Thumb Params by ID  */
     public KalturaThumbParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -72,26 +82,15 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 
-	/**  Update Thumb Params by ID  */
-    public KalturaThumbParams update(int id, KalturaThumbParams thumbParams) throws KalturaApiException {
+	/**  Get Thumb Params by Conversion Profile ID  */
+    public List<KalturaThumbParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("thumbParams", thumbParams);
-        this.kalturaClient.queueServiceCall("thumbparams", "update", kparams, KalturaThumbParams.class);
+        kparams.add("conversionProfileId", conversionProfileId);
+        this.kalturaClient.queueServiceCall("thumbparams", "getByConversionProfileId", kparams, KalturaThumbParams.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
-    }
-
-	/**  Delete Thumb Params by ID  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("thumbparams", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaThumbParams.class, resultXmlElement);
     }
 
     public KalturaThumbParamsListResponse list() throws KalturaApiException {
@@ -115,14 +114,15 @@ public class KalturaThumbParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaThumbParamsListResponse.class, resultXmlElement);
     }
 
-	/**  Get Thumb Params by Conversion Profile ID  */
-    public List<KalturaThumbParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
+	/**  Update Thumb Params by ID  */
+    public KalturaThumbParams update(int id, KalturaThumbParams thumbParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("conversionProfileId", conversionProfileId);
-        this.kalturaClient.queueServiceCall("thumbparams", "getByConversionProfileId", kparams, KalturaThumbParams.class);
+        kparams.add("id", id);
+        kparams.add("thumbParams", thumbParams);
+        this.kalturaClient.queueServiceCall("thumbparams", "update", kparams, KalturaThumbParams.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaThumbParams.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaThumbParams.class, resultXmlElement);
     }
 }

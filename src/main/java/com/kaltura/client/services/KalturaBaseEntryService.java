@@ -35,13 +35,13 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
-import java.util.ArrayList;
 
 /**
  * This class was generated using exec.php
@@ -103,6 +103,91 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
+	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
+    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("rank", rank);
+        this.kalturaClient.queueServiceCall("baseentry", "anonymousRank", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Approve the entry and mark the pending flags (if any) as moderated (this will
+	  make the entry playable).  */
+    public void approve(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("baseentry", "approve", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaBaseEntry clone(String entryId) throws KalturaApiException {
+        return this.clone(entryId, null);
+    }
+
+	/**  Clone an entry with optional attributes to apply to the clone  */
+    public KalturaBaseEntry clone(String entryId, ArrayList<KalturaBaseEntryCloneOptionItem> cloneOptions) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("cloneOptions", cloneOptions);
+        this.kalturaClient.queueServiceCall("baseentry", "clone", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+    public int count() throws KalturaApiException {
+        return this.count(null);
+    }
+
+	/**  Count base entries by filter.  */
+    public int count(KalturaBaseEntryFilter filter) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        this.kalturaClient.queueServiceCall("baseentry", "count", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+	/**  Delete an entry.  */
+    public void delete(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("baseentry", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaBaseEntry export(String entryId, int storageProfileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("storageProfileId", storageProfileId);
+        this.kalturaClient.queueServiceCall("baseentry", "export", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+	/**  Flag inappropriate entry for moderation.  */
+    public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("moderationFlag", moderationFlag);
+        this.kalturaClient.queueServiceCall("baseentry", "flag", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
     public KalturaBaseEntry get(String entryId) throws KalturaApiException {
         return this.get(entryId, -1);
     }
@@ -113,51 +198,6 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         kparams.add("entryId", entryId);
         kparams.add("version", version);
         this.kalturaClient.queueServiceCall("baseentry", "get", kparams, KalturaBaseEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-	/**  Get remote storage existing paths for the asset.  */
-    public KalturaRemotePathListResponse getRemotePaths(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("baseentry", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
-    }
-
-	/**  Update base entry. Only the properties that were set will be updated.  */
-    public KalturaBaseEntry update(String entryId, KalturaBaseEntry baseEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("baseEntry", baseEntry);
-        this.kalturaClient.queueServiceCall("baseentry", "update", kparams, KalturaBaseEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource) throws KalturaApiException {
-        return this.updateContent(entryId, resource, Integer.MIN_VALUE);
-    }
-
-    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId) throws KalturaApiException {
-        return this.updateContent(entryId, resource, conversionProfileId, null);
-    }
-
-	/**  Update the content resource associated with the entry.  */
-    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("resource", resource);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("advancedOptions", advancedOptions);
-        this.kalturaClient.queueServiceCall("baseentry", "updateContent", kparams, KalturaBaseEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -175,14 +215,57 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Delete an entry.  */
-    public void delete(String entryId) throws KalturaApiException {
+	/**  This action delivers entry-related data, based on the user's context: access
+	  control, restriction, playback format and storage information.  */
+    public KalturaEntryContextDataResult getContextData(String entryId, KalturaEntryContextDataParams contextDataParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("baseentry", "delete", kparams);
+        kparams.add("contextDataParams", contextDataParams);
+        this.kalturaClient.queueServiceCall("baseentry", "getContextData", kparams, KalturaEntryContextDataResult.class);
         if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryContextDataResult.class, resultXmlElement);
+    }
+
+	/**  This action delivers all data relevant for player  */
+    public KalturaPlaybackContext getPlaybackContext(String entryId, KalturaPlaybackContextOptions contextDataParams) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("contextDataParams", contextDataParams);
+        this.kalturaClient.queueServiceCall("baseentry", "getPlaybackContext", kparams, KalturaPlaybackContext.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPlaybackContext.class, resultXmlElement);
+    }
+
+	/**  Get remote storage existing paths for the asset.  */
+    public KalturaRemotePathListResponse getRemotePaths(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("baseentry", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
+    }
+
+    public int index(String id) throws KalturaApiException {
+        return this.index(id, true);
+    }
+
+	/**  Index an entry by id.  */
+    public int index(String id, boolean shouldUpdate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("shouldUpdate", shouldUpdate);
+        this.kalturaClient.queueServiceCall("baseentry", "index", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
     }
 
     public KalturaBaseEntryListResponse list() throws KalturaApiException {
@@ -221,45 +304,91 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntryListResponse.class, resultXmlElement);
     }
 
-    public int count() throws KalturaApiException {
-        return this.count(null);
+    public KalturaModerationFlagListResponse listFlags(String entryId) throws KalturaApiException {
+        return this.listFlags(entryId, null);
     }
 
-	/**  Count base entries by filter.  */
-    public int count(KalturaBaseEntryFilter filter) throws KalturaApiException {
+	/**  List all pending flags for the entry.  */
+    public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        this.kalturaClient.queueServiceCall("baseentry", "count", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-    public String upload(File fileData) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData));
-    }
-
-    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
-    }
-
-    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName));
-    }
-
-	/**  Upload a file to Kaltura, that can be used to create an entry.  */
-    public String upload(KalturaFile fileData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        KalturaFiles kfiles = new KalturaFiles();
-        kfiles.add("fileData", fileData);
-        this.kalturaClient.queueServiceCall("baseentry", "upload", kparams, kfiles);
+        kparams.add("entryId", entryId);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("baseentry", "listFlags", kparams, KalturaModerationFlagListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
+        return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
+    }
+
+	/**  Reject the entry and mark the pending flags (if any) as moderated (this will
+	  make the entry non-playable).  */
+    public void reject(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("baseentry", "reject", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Update base entry. Only the properties that were set will be updated.  */
+    public KalturaBaseEntry update(String entryId, KalturaBaseEntry baseEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("baseEntry", baseEntry);
+        this.kalturaClient.queueServiceCall("baseentry", "update", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource) throws KalturaApiException {
+        return this.updateContent(entryId, resource, Integer.MIN_VALUE);
+    }
+
+    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId) throws KalturaApiException {
+        return this.updateContent(entryId, resource, conversionProfileId, null);
+    }
+
+	/**  Update the content resource associated with the entry.  */
+    public KalturaBaseEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("resource", resource);
+        kparams.add("conversionProfileId", conversionProfileId);
+        kparams.add("advancedOptions", advancedOptions);
+        this.kalturaClient.queueServiceCall("baseentry", "updateContent", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+	/**  Update entry thumbnail from a different entry by a specified time offset (in
+	  seconds).  */
+    public KalturaBaseEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("sourceEntryId", sourceEntryId);
+        kparams.add("timeOffset", timeOffset);
+        this.kalturaClient.queueServiceCall("baseentry", "updateThumbnailFromSourceEntry", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+	/**  Update entry thumbnail using url.  */
+    public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("url", url);
+        this.kalturaClient.queueServiceCall("baseentry", "updateThumbnailFromUrl", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
     public KalturaBaseEntry updateThumbnailJpeg(String entryId, File fileData) throws KalturaApiException {
@@ -287,157 +416,28 @@ public class KalturaBaseEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
     }
 
-	/**  Update entry thumbnail using url.  */
-    public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
+    public String upload(File fileData) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData));
+    }
+
+    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
+    }
+
+    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName));
+    }
+
+	/**  Upload a file to Kaltura, that can be used to create an entry.  */
+    public String upload(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("url", url);
-        this.kalturaClient.queueServiceCall("baseentry", "updateThumbnailFromUrl", kparams, KalturaBaseEntry.class);
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("fileData", fileData);
+        this.kalturaClient.queueServiceCall("baseentry", "upload", kparams, kfiles);
         if (this.kalturaClient.isMultiRequest())
             return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-	/**  Update entry thumbnail from a different entry by a specified time offset (in
-	  seconds).  */
-    public KalturaBaseEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("timeOffset", timeOffset);
-        this.kalturaClient.queueServiceCall("baseentry", "updateThumbnailFromSourceEntry", kparams, KalturaBaseEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-	/**  Flag inappropriate entry for moderation.  */
-    public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("moderationFlag", moderationFlag);
-        this.kalturaClient.queueServiceCall("baseentry", "flag", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Reject the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry non-playable).  */
-    public void reject(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("baseentry", "reject", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Approve the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry playable).  */
-    public void approve(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("baseentry", "approve", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public KalturaModerationFlagListResponse listFlags(String entryId) throws KalturaApiException {
-        return this.listFlags(entryId, null);
-    }
-
-	/**  List all pending flags for the entry.  */
-    public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("baseentry", "listFlags", kparams, KalturaModerationFlagListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
-    }
-
-	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
-    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("rank", rank);
-        this.kalturaClient.queueServiceCall("baseentry", "anonymousRank", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  This action delivers entry-related data, based on the user's context: access
-	  control, restriction, playback format and storage information.  */
-    public KalturaEntryContextDataResult getContextData(String entryId, KalturaEntryContextDataParams contextDataParams) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("contextDataParams", contextDataParams);
-        this.kalturaClient.queueServiceCall("baseentry", "getContextData", kparams, KalturaEntryContextDataResult.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEntryContextDataResult.class, resultXmlElement);
-    }
-
-    public KalturaBaseEntry export(String entryId, int storageProfileId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("storageProfileId", storageProfileId);
-        this.kalturaClient.queueServiceCall("baseentry", "export", kparams, KalturaBaseEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-    public int index(String id) throws KalturaApiException {
-        return this.index(id, true);
-    }
-
-	/**  Index an entry by id.  */
-    public int index(String id, boolean shouldUpdate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
-        this.kalturaClient.queueServiceCall("baseentry", "index", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-    public KalturaBaseEntry clone(String entryId) throws KalturaApiException {
-        return this.clone(entryId, null);
-    }
-
-	/**  Clone an entry with optional attributes to apply to the clone  */
-    public KalturaBaseEntry clone(String entryId, ArrayList<KalturaBaseEntryCloneOptionItem> cloneOptions) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("cloneOptions", cloneOptions);
-        this.kalturaClient.queueServiceCall("baseentry", "clone", kparams, KalturaBaseEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
-    }
-
-	/**  This action delivers all data relevant for player  */
-    public KalturaPlaybackContext getPlaybackContext(String entryId, KalturaPlaybackContextOptions contextDataParams) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("contextDataParams", contextDataParams);
-        this.kalturaClient.queueServiceCall("baseentry", "getPlaybackContext", kparams, KalturaPlaybackContext.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPlaybackContext.class, resultXmlElement);
+        return ParseUtils.parseString(resultText);
     }
 }

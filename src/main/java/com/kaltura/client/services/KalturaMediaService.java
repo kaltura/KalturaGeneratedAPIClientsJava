@@ -34,12 +34,12 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
+import java.util.ArrayList;
 
 /**
  * This class was generated using exec.php
@@ -100,13 +100,49 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
-	  for import and then for conversion.  */
-    public KalturaMediaEntry addFromUrl(KalturaMediaEntry mediaEntry, String url) throws KalturaApiException {
+    public KalturaMediaEntry addFromEntry(String sourceEntryId) throws KalturaApiException {
+        return this.addFromEntry(sourceEntryId, null);
+    }
+
+    public KalturaMediaEntry addFromEntry(String sourceEntryId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
+        return this.addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
+    }
+
+	/**  Copy entry into new entry  */
+    public KalturaMediaEntry addFromEntry(String sourceEntryId, KalturaMediaEntry mediaEntry, int sourceFlavorParamsId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("sourceEntryId", sourceEntryId);
+        kparams.add("mediaEntry", mediaEntry);
+        kparams.add("sourceFlavorParamsId", sourceFlavorParamsId);
+        this.kalturaClient.queueServiceCall("media", "addFromEntry", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public KalturaMediaEntry addFromFlavorAsset(String sourceFlavorAssetId) throws KalturaApiException {
+        return this.addFromFlavorAsset(sourceFlavorAssetId, null);
+    }
+
+	/**  Copy flavor asset into new entry  */
+    public KalturaMediaEntry addFromFlavorAsset(String sourceFlavorAssetId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
+        kparams.add("mediaEntry", mediaEntry);
+        this.kalturaClient.queueServiceCall("media", "addFromFlavorAsset", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+	/**  Add new entry after the file was recored on the server and the token id exists  */
+    public KalturaMediaEntry addFromRecordedWebcam(KalturaMediaEntry mediaEntry, String webcamTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
-        kparams.add("url", url);
-        this.kalturaClient.queueServiceCall("media", "addFromUrl", kparams, KalturaMediaEntry.class);
+        kparams.add("webcamTokenId", webcamTokenId);
+        this.kalturaClient.queueServiceCall("media", "addFromRecordedWebcam", kparams, KalturaMediaEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -147,348 +183,25 @@ public class KalturaMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Add new entry after the file was recored on the server and the token id exists  */
-    public KalturaMediaEntry addFromRecordedWebcam(KalturaMediaEntry mediaEntry, String webcamTokenId) throws KalturaApiException {
+	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
+	  for import and then for conversion.  */
+    public KalturaMediaEntry addFromUrl(KalturaMediaEntry mediaEntry, String url) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("mediaEntry", mediaEntry);
-        kparams.add("webcamTokenId", webcamTokenId);
-        this.kalturaClient.queueServiceCall("media", "addFromRecordedWebcam", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaEntry addFromEntry(String sourceEntryId) throws KalturaApiException {
-        return this.addFromEntry(sourceEntryId, null);
-    }
-
-    public KalturaMediaEntry addFromEntry(String sourceEntryId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
-        return this.addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
-    }
-
-	/**  Copy entry into new entry  */
-    public KalturaMediaEntry addFromEntry(String sourceEntryId, KalturaMediaEntry mediaEntry, int sourceFlavorParamsId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("sourceFlavorParamsId", sourceFlavorParamsId);
-        this.kalturaClient.queueServiceCall("media", "addFromEntry", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaEntry addFromFlavorAsset(String sourceFlavorAssetId) throws KalturaApiException {
-        return this.addFromFlavorAsset(sourceFlavorAssetId, null);
-    }
-
-	/**  Copy flavor asset into new entry  */
-    public KalturaMediaEntry addFromFlavorAsset(String sourceFlavorAssetId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
-        kparams.add("mediaEntry", mediaEntry);
-        this.kalturaClient.queueServiceCall("media", "addFromFlavorAsset", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public long convert(String entryId) throws KalturaApiException {
-        return this.convert(entryId, Integer.MIN_VALUE);
-    }
-
-    public long convert(String entryId, int conversionProfileId) throws KalturaApiException {
-        return this.convert(entryId, conversionProfileId, null);
-    }
-
-	/**  Convert entry  */
-    public long convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("dynamicConversionAttributes", dynamicConversionAttributes);
-        this.kalturaClient.queueServiceCall("media", "convert", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBigint(resultText);
-    }
-
-    public KalturaMediaEntry get(String entryId) throws KalturaApiException {
-        return this.get(entryId, -1);
-    }
-
-	/**  Get media entry by ID.  */
-    public KalturaMediaEntry get(String entryId, int version) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("version", version);
-        this.kalturaClient.queueServiceCall("media", "get", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public String getMrss(String entryId) throws KalturaApiException {
-        return this.getMrss(entryId, null);
-    }
-
-    public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray) throws KalturaApiException {
-        return this.getMrss(entryId, extendingItemsArray, null);
-    }
-
-	/**  Get MRSS by entry id      XML will return as an escaped string  */
-    public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray, String features) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("extendingItemsArray", extendingItemsArray);
-        kparams.add("features", features);
-        this.kalturaClient.queueServiceCall("media", "getMrss", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-	/**  Update media entry. Only the properties that were set will be updated.  */
-    public KalturaMediaEntry update(String entryId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("mediaEntry", mediaEntry);
-        this.kalturaClient.queueServiceCall("media", "update", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource) throws KalturaApiException {
-        return this.updateContent(entryId, resource, Integer.MIN_VALUE);
-    }
-
-    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId) throws KalturaApiException {
-        return this.updateContent(entryId, resource, conversionProfileId, null);
-    }
-
-	/**  Replace content associated with the media entry.  */
-    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("resource", resource);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("advancedOptions", advancedOptions);
-        this.kalturaClient.queueServiceCall("media", "updateContent", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-	/**  Delete a media entry.  */
-    public void delete(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("media", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Approves media replacement  */
-    public KalturaMediaEntry approveReplace(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("media", "approveReplace", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-	/**  Cancels media replacement  */
-    public KalturaMediaEntry cancelReplace(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("media", "cancelReplace", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaMediaListResponse list(KalturaMediaEntryFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List media entries by filter with paging support.  */
-    public KalturaMediaListResponse list(KalturaMediaEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("media", "list", kparams, KalturaMediaListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaListResponse.class, resultXmlElement);
-    }
-
-    public int count() throws KalturaApiException {
-        return this.count(null);
-    }
-
-	/**  Count media entries by filter.  */
-    public int count(KalturaMediaEntryFilter filter) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        this.kalturaClient.queueServiceCall("media", "count", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-    public String upload(File fileData) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData));
-    }
-
-    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
-    }
-
-    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName));
-    }
-
-	/**  Upload a media file to Kaltura, then the file can be used to create a media
-	  entry.  */
-    public String upload(KalturaFile fileData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        KalturaFiles kfiles = new KalturaFiles();
-        kfiles.add("fileData", fileData);
-        this.kalturaClient.queueServiceCall("media", "upload", kparams, kfiles);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-    public KalturaMediaEntry updateThumbnail(String entryId, int timeOffset) throws KalturaApiException {
-        return this.updateThumbnail(entryId, timeOffset, Integer.MIN_VALUE);
-    }
-
-	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
-	  params id not specified, source flavor will be used by default  */
-    public KalturaMediaEntry updateThumbnail(String entryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("timeOffset", timeOffset);
-        kparams.add("flavorParamsId", flavorParamsId);
-        this.kalturaClient.queueServiceCall("media", "updateThumbnail", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset) throws KalturaApiException {
-        return this.updateThumbnailFromSourceEntry(entryId, sourceEntryId, timeOffset, Integer.MIN_VALUE);
-    }
-
-	/**  Update media entry thumbnail from a different entry by a specified time offset
-	  (In seconds)   If flavor params id not specified, source flavor will be used by
-	  default  */
-    public KalturaMediaEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("timeOffset", timeOffset);
-        kparams.add("flavorParamsId", flavorParamsId);
-        this.kalturaClient.queueServiceCall("media", "updateThumbnailFromSourceEntry", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-    public KalturaMediaEntry updateThumbnailJpeg(String entryId, File fileData) throws KalturaApiException {
-        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData));
-    }
-
-    public KalturaMediaEntry updateThumbnailJpeg(String entryId, InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
-        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName, fileDataSize));
-    }
-
-    public KalturaMediaEntry updateThumbnailJpeg(String entryId, FileInputStream fileData, String fileDataName) throws KalturaApiException {
-        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName));
-    }
-
-	/**  Update media entry thumbnail using a raw jpeg file  */
-    public KalturaMediaEntry updateThumbnailJpeg(String entryId, KalturaFile fileData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        KalturaFiles kfiles = new KalturaFiles();
-        kfiles.add("fileData", fileData);
-        this.kalturaClient.queueServiceCall("media", "updateThumbnailJpeg", kparams, kfiles, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
-    }
-
-	/**  Update entry thumbnail using url  */
-    public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
         kparams.add("url", url);
-        this.kalturaClient.queueServiceCall("media", "updateThumbnailFromUrl", kparams, KalturaBaseEntry.class);
+        this.kalturaClient.queueServiceCall("media", "addFromUrl", kparams, KalturaMediaEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Request a new conversion job, this can be used to convert the media entry to a
-	  different format  */
-    public int requestConversion(String entryId, String fileFormat) throws KalturaApiException {
+	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
+    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("fileFormat", fileFormat);
-        this.kalturaClient.queueServiceCall("media", "requestConversion", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-	/**  Flag inappropriate media entry for moderation  */
-    public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("moderationFlag", moderationFlag);
-        this.kalturaClient.queueServiceCall("media", "flag", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
-	  will make the entry non playable)  */
-    public void reject(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("media", "reject", kparams);
+        kparams.add("rank", rank);
+        this.kalturaClient.queueServiceCall("media", "anonymousRank", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
@@ -505,31 +218,15 @@ public class KalturaMediaService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-    public KalturaModerationFlagListResponse listFlags(String entryId) throws KalturaApiException {
-        return this.listFlags(entryId, null);
-    }
-
-	/**  List all pending flags for the media entry  */
-    public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Approves media replacement  */
+    public KalturaMediaEntry approveReplace(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("media", "listFlags", kparams, KalturaModerationFlagListResponse.class);
+        this.kalturaClient.queueServiceCall("media", "approveReplace", kparams, KalturaMediaEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
-    }
-
-	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
-    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("rank", rank);
-        this.kalturaClient.queueServiceCall("media", "anonymousRank", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 
     public KalturaBulkUpload bulkUploadAdd(KalturaFile fileData) throws KalturaApiException {
@@ -590,5 +287,308 @@ public class KalturaMediaService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
+    }
+
+	/**  Cancels media replacement  */
+    public KalturaMediaEntry cancelReplace(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("media", "cancelReplace", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public long convert(String entryId) throws KalturaApiException {
+        return this.convert(entryId, Integer.MIN_VALUE);
+    }
+
+    public long convert(String entryId, int conversionProfileId) throws KalturaApiException {
+        return this.convert(entryId, conversionProfileId, null);
+    }
+
+	/**  Convert entry  */
+    public long convert(String entryId, int conversionProfileId, ArrayList<KalturaConversionAttribute> dynamicConversionAttributes) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("conversionProfileId", conversionProfileId);
+        kparams.add("dynamicConversionAttributes", dynamicConversionAttributes);
+        this.kalturaClient.queueServiceCall("media", "convert", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBigint(resultText);
+    }
+
+    public int count() throws KalturaApiException {
+        return this.count(null);
+    }
+
+	/**  Count media entries by filter.  */
+    public int count(KalturaMediaEntryFilter filter) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        this.kalturaClient.queueServiceCall("media", "count", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+	/**  Delete a media entry.  */
+    public void delete(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("media", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Flag inappropriate media entry for moderation  */
+    public void flag(KalturaModerationFlag moderationFlag) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("moderationFlag", moderationFlag);
+        this.kalturaClient.queueServiceCall("media", "flag", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaMediaEntry get(String entryId) throws KalturaApiException {
+        return this.get(entryId, -1);
+    }
+
+	/**  Get media entry by ID.  */
+    public KalturaMediaEntry get(String entryId, int version) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("version", version);
+        this.kalturaClient.queueServiceCall("media", "get", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public String getMrss(String entryId) throws KalturaApiException {
+        return this.getMrss(entryId, null);
+    }
+
+    public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray) throws KalturaApiException {
+        return this.getMrss(entryId, extendingItemsArray, null);
+    }
+
+	/**  Get MRSS by entry id      XML will return as an escaped string  */
+    public String getMrss(String entryId, ArrayList<KalturaExtendingItemMrssParameter> extendingItemsArray, String features) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("extendingItemsArray", extendingItemsArray);
+        kparams.add("features", features);
+        this.kalturaClient.queueServiceCall("media", "getMrss", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+    public KalturaMediaListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaMediaListResponse list(KalturaMediaEntryFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List media entries by filter with paging support.  */
+    public KalturaMediaListResponse list(KalturaMediaEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("media", "list", kparams, KalturaMediaListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaListResponse.class, resultXmlElement);
+    }
+
+    public KalturaModerationFlagListResponse listFlags(String entryId) throws KalturaApiException {
+        return this.listFlags(entryId, null);
+    }
+
+	/**  List all pending flags for the media entry  */
+    public KalturaModerationFlagListResponse listFlags(String entryId, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("media", "listFlags", kparams, KalturaModerationFlagListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaModerationFlagListResponse.class, resultXmlElement);
+    }
+
+	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
+	  will make the entry non playable)  */
+    public void reject(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("media", "reject", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Request a new conversion job, this can be used to convert the media entry to a
+	  different format  */
+    public int requestConversion(String entryId, String fileFormat) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("fileFormat", fileFormat);
+        this.kalturaClient.queueServiceCall("media", "requestConversion", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+	/**  Update media entry. Only the properties that were set will be updated.  */
+    public KalturaMediaEntry update(String entryId, KalturaMediaEntry mediaEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("mediaEntry", mediaEntry);
+        this.kalturaClient.queueServiceCall("media", "update", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource) throws KalturaApiException {
+        return this.updateContent(entryId, resource, Integer.MIN_VALUE);
+    }
+
+    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId) throws KalturaApiException {
+        return this.updateContent(entryId, resource, conversionProfileId, null);
+    }
+
+	/**  Replace content associated with the media entry.  */
+    public KalturaMediaEntry updateContent(String entryId, KalturaResource resource, int conversionProfileId, KalturaEntryReplacementOptions advancedOptions) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("resource", resource);
+        kparams.add("conversionProfileId", conversionProfileId);
+        kparams.add("advancedOptions", advancedOptions);
+        this.kalturaClient.queueServiceCall("media", "updateContent", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public KalturaMediaEntry updateThumbnail(String entryId, int timeOffset) throws KalturaApiException {
+        return this.updateThumbnail(entryId, timeOffset, Integer.MIN_VALUE);
+    }
+
+	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
+	  params id not specified, source flavor will be used by default  */
+    public KalturaMediaEntry updateThumbnail(String entryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("timeOffset", timeOffset);
+        kparams.add("flavorParamsId", flavorParamsId);
+        this.kalturaClient.queueServiceCall("media", "updateThumbnail", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public KalturaMediaEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset) throws KalturaApiException {
+        return this.updateThumbnailFromSourceEntry(entryId, sourceEntryId, timeOffset, Integer.MIN_VALUE);
+    }
+
+	/**  Update media entry thumbnail from a different entry by a specified time offset
+	  (In seconds)   If flavor params id not specified, source flavor will be used by
+	  default  */
+    public KalturaMediaEntry updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("sourceEntryId", sourceEntryId);
+        kparams.add("timeOffset", timeOffset);
+        kparams.add("flavorParamsId", flavorParamsId);
+        this.kalturaClient.queueServiceCall("media", "updateThumbnailFromSourceEntry", kparams, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+	/**  Update entry thumbnail using url  */
+    public KalturaBaseEntry updateThumbnailFromUrl(String entryId, String url) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("url", url);
+        this.kalturaClient.queueServiceCall("media", "updateThumbnailFromUrl", kparams, KalturaBaseEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseEntry.class, resultXmlElement);
+    }
+
+    public KalturaMediaEntry updateThumbnailJpeg(String entryId, File fileData) throws KalturaApiException {
+        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData));
+    }
+
+    public KalturaMediaEntry updateThumbnailJpeg(String entryId, InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
+        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName, fileDataSize));
+    }
+
+    public KalturaMediaEntry updateThumbnailJpeg(String entryId, FileInputStream fileData, String fileDataName) throws KalturaApiException {
+        return this.updateThumbnailJpeg(entryId, new KalturaFile(fileData, fileDataName));
+    }
+
+	/**  Update media entry thumbnail using a raw jpeg file  */
+    public KalturaMediaEntry updateThumbnailJpeg(String entryId, KalturaFile fileData) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("fileData", fileData);
+        this.kalturaClient.queueServiceCall("media", "updateThumbnailJpeg", kparams, kfiles, KalturaMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+    public String upload(File fileData) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData));
+    }
+
+    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
+    }
+
+    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName));
+    }
+
+	/**  Upload a media file to Kaltura, then the file can be used to create a media
+	  entry.  */
+    public String upload(KalturaFile fileData) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("fileData", fileData);
+        this.kalturaClient.queueServiceCall("media", "upload", kparams, kfiles);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 }

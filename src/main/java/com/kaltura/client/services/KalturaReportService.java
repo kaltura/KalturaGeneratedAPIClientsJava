@@ -29,14 +29,14 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
-import java.util.List;
 import com.kaltura.client.types.*;
-import com.kaltura.client.enums.*;
+import java.util.ArrayList;
 import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import java.util.ArrayList;
+import java.util.List;
+import com.kaltura.client.enums.*;
 
 /**
  * This class was generated using exec.php
@@ -50,6 +50,64 @@ import java.util.ArrayList;
 public class KalturaReportService extends KalturaServiceBase {
     public KalturaReportService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+    public KalturaReportResponse execute(int id) throws KalturaApiException {
+        return this.execute(id, null);
+    }
+
+    public KalturaReportResponse execute(int id, ArrayList<KalturaKeyValue> params) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("params", params);
+        this.kalturaClient.queueServiceCall("report", "execute", kparams, KalturaReportResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaReportResponse.class, resultXmlElement);
+    }
+
+    public List<KalturaReportBaseTotal> getBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
+        return this.getBaseTotal(reportType, reportInputFilter, null);
+    }
+
+	/**  report getBaseTotal action allows to get a the total base for storage reports  */
+    public List<KalturaReportBaseTotal> getBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("reportType", reportType);
+        kparams.add("reportInputFilter", reportInputFilter);
+        kparams.add("objectIds", objectIds);
+        this.kalturaClient.queueServiceCall("report", "getBaseTotal", kparams, KalturaReportBaseTotal.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaReportBaseTotal.class, resultXmlElement);
+    }
+
+    public String getCsv(int id) throws KalturaApiException {
+        return this.getCsv(id, null);
+    }
+
+    public String getCsv(int id, ArrayList<KalturaKeyValue> params) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("params", params);
+        this.kalturaClient.queueServiceCall("report", "getCsv", kparams);
+        return this.kalturaClient.serve();
+    }
+
+    public String getCsvFromStringParams(int id) throws KalturaApiException {
+        return this.getCsvFromStringParams(id, null);
+    }
+
+	/**  Returns report CSV file executed by string params with the following convention:
+	  param1=value1;param2=value2  */
+    public String getCsvFromStringParams(int id, String params) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("params", params);
+        this.kalturaClient.queueServiceCall("report", "getCsvFromStringParams", kparams);
+        return this.kalturaClient.serve();
     }
 
     public List<KalturaReportGraph> getGraphs(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
@@ -74,40 +132,6 @@ public class KalturaReportService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaReportGraph.class, resultXmlElement);
     }
 
-    public KalturaReportTotal getTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
-        return this.getTotal(reportType, reportInputFilter, null);
-    }
-
-	/**  report getTotal action allows to get a graph data for a specific report.  */
-    public KalturaReportTotal getTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("objectIds", objectIds);
-        this.kalturaClient.queueServiceCall("report", "getTotal", kparams, KalturaReportTotal.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaReportTotal.class, resultXmlElement);
-    }
-
-    public List<KalturaReportBaseTotal> getBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
-        return this.getBaseTotal(reportType, reportInputFilter, null);
-    }
-
-	/**  report getBaseTotal action allows to get a the total base for storage reports  */
-    public List<KalturaReportBaseTotal> getBaseTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("objectIds", objectIds);
-        this.kalturaClient.queueServiceCall("report", "getBaseTotal", kparams, KalturaReportBaseTotal.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaReportBaseTotal.class, resultXmlElement);
-    }
-
     public KalturaReportTable getTable(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, KalturaFilterPager pager) throws KalturaApiException {
         return this.getTable(reportType, reportInputFilter, pager, null);
     }
@@ -129,6 +153,23 @@ public class KalturaReportService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaReportTable.class, resultXmlElement);
+    }
+
+    public KalturaReportTotal getTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
+        return this.getTotal(reportType, reportInputFilter, null);
+    }
+
+	/**  report getTotal action allows to get a graph data for a specific report.  */
+    public KalturaReportTotal getTotal(KalturaReportType reportType, KalturaReportInputFilter reportInputFilter, String objectIds) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("reportType", reportType);
+        kparams.add("reportInputFilter", reportInputFilter);
+        kparams.add("objectIds", objectIds);
+        this.kalturaClient.queueServiceCall("report", "getTotal", kparams, KalturaReportTotal.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaReportTotal.class, resultXmlElement);
     }
 
     public String getUrlForReportAsCsv(String reportTitle, String reportText, String headers, KalturaReportType reportType, KalturaReportInputFilter reportInputFilter) throws KalturaApiException {
@@ -177,46 +218,5 @@ public class KalturaReportService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
-    }
-
-    public KalturaReportResponse execute(int id) throws KalturaApiException {
-        return this.execute(id, null);
-    }
-
-    public KalturaReportResponse execute(int id, ArrayList<KalturaKeyValue> params) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("params", params);
-        this.kalturaClient.queueServiceCall("report", "execute", kparams, KalturaReportResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaReportResponse.class, resultXmlElement);
-    }
-
-    public String getCsv(int id) throws KalturaApiException {
-        return this.getCsv(id, null);
-    }
-
-    public String getCsv(int id, ArrayList<KalturaKeyValue> params) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("params", params);
-        this.kalturaClient.queueServiceCall("report", "getCsv", kparams);
-        return this.kalturaClient.serve();
-    }
-
-    public String getCsvFromStringParams(int id) throws KalturaApiException {
-        return this.getCsvFromStringParams(id, null);
-    }
-
-	/**  Returns report CSV file executed by string params with the following convention:
-	  param1=value1;param2=value2  */
-    public String getCsvFromStringParams(int id, String params) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("params", params);
-        this.kalturaClient.queueServiceCall("report", "getCsvFromStringParams", kparams);
-        return this.kalturaClient.serve();
     }
 }

@@ -61,28 +61,34 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 
-	/**  Update content of attachment asset  */
-    public KalturaAttachmentAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
+    public void delete(String attachmentAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "setContent", kparams, KalturaAttachmentAsset.class);
+        kparams.add("attachmentAssetId", attachmentAssetId);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaAttachmentAsset get(String attachmentAssetId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("attachmentAssetId", attachmentAssetId);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "get", kparams, KalturaAttachmentAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 
-	/**  Update attachment asset  */
-    public KalturaAttachmentAsset update(String id, KalturaAttachmentAsset attachmentAsset) throws KalturaApiException {
+	/**  Get remote storage existing paths for the asset  */
+    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("attachmentAsset", attachmentAsset);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "update", kparams, KalturaAttachmentAsset.class);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
     public String getUrl(String id) throws KalturaApiException {
@@ -100,40 +106,6 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
-    }
-
-	/**  Get remote storage existing paths for the asset  */
-    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
-    }
-
-    public String serve(String attachmentAssetId) throws KalturaApiException {
-        return this.serve(attachmentAssetId, null);
-    }
-
-	/**  Serves attachment by its id  */
-    public String serve(String attachmentAssetId, KalturaAttachmentServeOptions serveOptions) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("attachmentAssetId", attachmentAssetId);
-        kparams.add("serveOptions", serveOptions);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "serve", kparams);
-        return this.kalturaClient.serve();
-    }
-
-    public KalturaAttachmentAsset get(String attachmentAssetId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("attachmentAssetId", attachmentAssetId);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "get", kparams, KalturaAttachmentAsset.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 
     public KalturaAttachmentAssetListResponse list() throws KalturaApiException {
@@ -156,12 +128,40 @@ public class KalturaAttachmentAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAttachmentAssetListResponse.class, resultXmlElement);
     }
 
-    public void delete(String attachmentAssetId) throws KalturaApiException {
+    public String serve(String attachmentAssetId) throws KalturaApiException {
+        return this.serve(attachmentAssetId, null);
+    }
+
+	/**  Serves attachment by its id  */
+    public String serve(String attachmentAssetId, KalturaAttachmentServeOptions serveOptions) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("attachmentAssetId", attachmentAssetId);
-        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "delete", kparams);
+        kparams.add("serveOptions", serveOptions);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "serve", kparams);
+        return this.kalturaClient.serve();
+    }
+
+	/**  Update content of attachment asset  */
+    public KalturaAttachmentAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("contentResource", contentResource);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "setContent", kparams, KalturaAttachmentAsset.class);
         if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
+    }
+
+	/**  Update attachment asset  */
+    public KalturaAttachmentAsset update(String id, KalturaAttachmentAsset attachmentAsset) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("attachmentAsset", attachmentAsset);
+        this.kalturaClient.queueServiceCall("attachment_attachmentasset", "update", kparams, KalturaAttachmentAsset.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAttachmentAsset.class, resultXmlElement);
     }
 }

@@ -61,41 +61,34 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 
-	/**  Update content of caption asset  */
-    public KalturaCaptionAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
+    public void delete(String captionAssetId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "setContent", kparams, KalturaCaptionAsset.class);
+        kparams.add("captionAssetId", captionAssetId);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaCaptionAsset get(String captionAssetId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("captionAssetId", captionAssetId);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "get", kparams, KalturaCaptionAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 
-	/**  Update caption asset  */
-    public KalturaCaptionAsset update(String id, KalturaCaptionAsset captionAsset) throws KalturaApiException {
+	/**  Get remote storage existing paths for the asset  */
+    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("captionAsset", captionAsset);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "update", kparams, KalturaCaptionAsset.class);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
-    }
-
-    public String serveByEntryId(String entryId) throws KalturaApiException {
-        return this.serveByEntryId(entryId, Integer.MIN_VALUE);
-    }
-
-	/**  Serves caption by entry id and thumnail params id  */
-    public String serveByEntryId(String entryId, int captionParamId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("captionParamId", captionParamId);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "serveByEntryId", kparams);
-        return this.kalturaClient.serve();
+        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
     public String getUrl(String id) throws KalturaApiException {
@@ -115,15 +108,24 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
-	/**  Get remote storage existing paths for the asset  */
-    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
+    public KalturaCaptionAssetListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaCaptionAssetListResponse list(KalturaAssetFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List caption Assets by filter and pager  */
+    public KalturaCaptionAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "list", kparams, KalturaCaptionAssetListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaCaptionAssetListResponse.class, resultXmlElement);
     }
 
 	/**  Serves caption by its id  */
@@ -131,6 +133,19 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("captionAssetId", captionAssetId);
         this.kalturaClient.queueServiceCall("caption_captionasset", "serve", kparams);
+        return this.kalturaClient.serve();
+    }
+
+    public String serveByEntryId(String entryId) throws KalturaApiException {
+        return this.serveByEntryId(entryId, Integer.MIN_VALUE);
+    }
+
+	/**  Serves caption by entry id and thumnail params id  */
+    public String serveByEntryId(String entryId, int captionParamId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("captionParamId", captionParamId);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "serveByEntryId", kparams);
         return this.kalturaClient.serve();
     }
 
@@ -168,42 +183,27 @@ public class KalturaCaptionAssetService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-    public KalturaCaptionAsset get(String captionAssetId) throws KalturaApiException {
+	/**  Update content of caption asset  */
+    public KalturaCaptionAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("captionAssetId", captionAssetId);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "get", kparams, KalturaCaptionAsset.class);
+        kparams.add("id", id);
+        kparams.add("contentResource", contentResource);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "setContent", kparams, KalturaCaptionAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 
-    public KalturaCaptionAssetListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaCaptionAssetListResponse list(KalturaAssetFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List caption Assets by filter and pager  */
-    public KalturaCaptionAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Update caption asset  */
+    public KalturaCaptionAsset update(String id, KalturaCaptionAsset captionAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "list", kparams, KalturaCaptionAssetListResponse.class);
+        kparams.add("id", id);
+        kparams.add("captionAsset", captionAsset);
+        this.kalturaClient.queueServiceCall("caption_captionasset", "update", kparams, KalturaCaptionAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCaptionAssetListResponse.class, resultXmlElement);
-    }
-
-    public void delete(String captionAssetId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("captionAssetId", captionAssetId);
-        this.kalturaClient.queueServiceCall("caption_captionasset", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCaptionAsset.class, resultXmlElement);
     }
 }

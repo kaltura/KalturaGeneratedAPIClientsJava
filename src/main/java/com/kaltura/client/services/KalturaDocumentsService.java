@@ -55,19 +55,6 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-	/**  Add new document entry after the specific document file was uploaded and the
-	  upload token id exists  */
-    public KalturaDocumentEntry addFromUploadedFile(KalturaDocumentEntry documentEntry, String uploadTokenId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("documentEntry", documentEntry);
-        kparams.add("uploadTokenId", uploadTokenId);
-        this.kalturaClient.queueServiceCall("document_documents", "addFromUploadedFile", kparams, KalturaDocumentEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
-    }
-
     public KalturaDocumentEntry addFromEntry(String sourceEntryId) throws KalturaApiException {
         return this.addFromEntry(sourceEntryId, null);
     }
@@ -105,6 +92,41 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
+	/**  Add new document entry after the specific document file was uploaded and the
+	  upload token id exists  */
+    public KalturaDocumentEntry addFromUploadedFile(KalturaDocumentEntry documentEntry, String uploadTokenId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("documentEntry", documentEntry);
+        kparams.add("uploadTokenId", uploadTokenId);
+        this.kalturaClient.queueServiceCall("document_documents", "addFromUploadedFile", kparams, KalturaDocumentEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+    }
+
+	/**  Approves document replacement  */
+    public KalturaDocumentEntry approveReplace(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("document_documents", "approveReplace", kparams, KalturaDocumentEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+    }
+
+	/**  Cancels document replacement  */
+    public KalturaDocumentEntry cancelReplace(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("document_documents", "cancelReplace", kparams, KalturaDocumentEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+    }
+
     public long convert(String entryId) throws KalturaApiException {
         return this.convert(entryId, Integer.MIN_VALUE);
     }
@@ -127,6 +149,29 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseBigint(resultText);
     }
 
+	/**  This will queue a batch job for converting the document file to swf   Returns
+	  the URL where the new swf will be available  */
+    public String convertPptToSwf(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("document_documents", "convertPptToSwf", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+	/**  Delete a document entry.  */
+    public void delete(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("document_documents", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
     public KalturaDocumentEntry get(String entryId) throws KalturaApiException {
         return this.get(entryId, -1);
     }
@@ -141,28 +186,6 @@ public class KalturaDocumentsService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
-    }
-
-	/**  Update document entry. Only the properties that were set will be updated.  */
-    public KalturaDocumentEntry update(String entryId, KalturaDocumentEntry documentEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("documentEntry", documentEntry);
-        this.kalturaClient.queueServiceCall("document_documents", "update", kparams, KalturaDocumentEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
-    }
-
-	/**  Delete a document entry.  */
-    public void delete(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("document_documents", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaDocumentListResponse list() throws KalturaApiException {
@@ -183,45 +206,6 @@ public class KalturaDocumentsService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDocumentListResponse.class, resultXmlElement);
-    }
-
-    public String upload(File fileData) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData));
-    }
-
-    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
-    }
-
-    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
-        return this.upload(new KalturaFile(fileData, fileDataName));
-    }
-
-	/**  Upload a document file to Kaltura, then the file can be used to create a
-	  document entry.  */
-    public String upload(KalturaFile fileData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        KalturaFiles kfiles = new KalturaFiles();
-        kfiles.add("fileData", fileData);
-        this.kalturaClient.queueServiceCall("document_documents", "upload", kparams, kfiles);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-	/**  This will queue a batch job for converting the document file to swf   Returns
-	  the URL where the new swf will be available  */
-    public String convertPptToSwf(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("document_documents", "convertPptToSwf", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
     }
 
     public String serve(String entryId) throws KalturaApiException {
@@ -260,6 +244,18 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
+	/**  Update document entry. Only the properties that were set will be updated.  */
+    public KalturaDocumentEntry update(String entryId, KalturaDocumentEntry documentEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("documentEntry", documentEntry);
+        this.kalturaClient.queueServiceCall("document_documents", "update", kparams, KalturaDocumentEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+    }
+
     public KalturaDocumentEntry updateContent(String entryId, KalturaResource resource) throws KalturaApiException {
         return this.updateContent(entryId, resource, Integer.MIN_VALUE);
     }
@@ -277,25 +273,29 @@ public class KalturaDocumentsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
     }
 
-	/**  Approves document replacement  */
-    public KalturaDocumentEntry approveReplace(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("document_documents", "approveReplace", kparams, KalturaDocumentEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+    public String upload(File fileData) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData));
     }
 
-	/**  Cancels document replacement  */
-    public KalturaDocumentEntry cancelReplace(String entryId) throws KalturaApiException {
+    public String upload(InputStream fileData, String fileDataName, long fileDataSize) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName, fileDataSize));
+    }
+
+    public String upload(FileInputStream fileData, String fileDataName) throws KalturaApiException {
+        return this.upload(new KalturaFile(fileData, fileDataName));
+    }
+
+	/**  Upload a document file to Kaltura, then the file can be used to create a
+	  document entry.  */
+    public String upload(KalturaFile fileData) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("document_documents", "cancelReplace", kparams, KalturaDocumentEntry.class);
+        KalturaFiles kfiles = new KalturaFiles();
+        kfiles.add("fileData", fileData);
+        this.kalturaClient.queueServiceCall("document_documents", "upload", kparams, kfiles);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDocumentEntry.class, resultXmlElement);
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 }

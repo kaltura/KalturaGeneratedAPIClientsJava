@@ -66,38 +66,6 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAnnotation.class, resultXmlElement);
     }
 
-	/**  Update annotation by id  */
-    public KalturaAnnotation update(String id, KalturaCuePoint annotation) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("annotation", annotation);
-        this.kalturaClient.queueServiceCall("annotation_annotation", "update", kparams, KalturaAnnotation.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAnnotation.class, resultXmlElement);
-    }
-
-    public KalturaAnnotationListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaAnnotationListResponse list(KalturaCuePointFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List annotation objects by filter and pager  */
-    public KalturaAnnotationListResponse list(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("annotation_annotation", "list", kparams, KalturaAnnotationListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAnnotationListResponse.class, resultXmlElement);
-    }
-
     public KalturaCuePointListResponse addFromBulk(File fileData) throws KalturaApiException {
         return this.addFromBulk(new KalturaFile(fileData));
     }
@@ -123,28 +91,12 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCuePointListResponse.class, resultXmlElement);
     }
 
-    public String serveBulk() throws KalturaApiException {
-        return this.serveBulk(null);
-    }
-
-    public String serveBulk(KalturaCuePointFilter filter) throws KalturaApiException {
-        return this.serveBulk(filter, null);
-    }
-
-	/**  Download multiple cue points objects as XML definitions  */
-    public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("annotation_annotation", "serveBulk", kparams);
-        return this.kalturaClient.serve();
-    }
-
-	/**  Retrieve an CuePoint object by id  */
-    public KalturaCuePoint get(String id) throws KalturaApiException {
+	/**  Clone cuePoint with id to given entry  */
+    public KalturaCuePoint clone(String id, String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("annotation_annotation", "get", kparams, KalturaCuePoint.class);
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "clone", kparams, KalturaCuePoint.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -177,6 +129,66 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
+	/**  Retrieve an CuePoint object by id  */
+    public KalturaCuePoint get(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "get", kparams, KalturaCuePoint.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
+    }
+
+    public KalturaAnnotationListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaAnnotationListResponse list(KalturaCuePointFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List annotation objects by filter and pager  */
+    public KalturaAnnotationListResponse list(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "list", kparams, KalturaAnnotationListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAnnotationListResponse.class, resultXmlElement);
+    }
+
+    public String serveBulk() throws KalturaApiException {
+        return this.serveBulk(null);
+    }
+
+    public String serveBulk(KalturaCuePointFilter filter) throws KalturaApiException {
+        return this.serveBulk(filter, null);
+    }
+
+	/**  Download multiple cue points objects as XML definitions  */
+    public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "serveBulk", kparams);
+        return this.kalturaClient.serve();
+    }
+
+	/**  Update annotation by id  */
+    public KalturaAnnotation update(String id, KalturaCuePoint annotation) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("annotation", annotation);
+        this.kalturaClient.queueServiceCall("annotation_annotation", "update", kparams, KalturaAnnotation.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAnnotation.class, resultXmlElement);
+    }
+
 	/**  Update cuePoint status by id  */
     public void updateStatus(String id, KalturaCuePointStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -186,17 +198,5 @@ public class KalturaAnnotationService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
-    }
-
-	/**  Clone cuePoint with id to given entry  */
-    public KalturaCuePoint clone(String id, String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("annotation_annotation", "clone", kparams, KalturaCuePoint.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
     }
 }

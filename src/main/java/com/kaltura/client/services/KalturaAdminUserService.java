@@ -29,11 +29,11 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
-import com.kaltura.client.types.*;
 import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.types.*;
 
 /**
  * This class was generated using exec.php
@@ -47,6 +47,46 @@ import com.kaltura.client.KalturaApiException;
 public class KalturaAdminUserService extends KalturaServiceBase {
     public KalturaAdminUserService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+    public String login(String email, String password) throws KalturaApiException {
+        return this.login(email, password, Integer.MIN_VALUE);
+    }
+
+	/**  Get an admin session using admin email and password (Used for login to the KMC
+	  application)  */
+    public String login(String email, String password, int partnerId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("email", email);
+        kparams.add("password", password);
+        kparams.add("partnerId", partnerId);
+        this.kalturaClient.queueServiceCall("adminuser", "login", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+	/**  Reset admin user password and send it to the users email address  */
+    public void resetPassword(String email) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("email", email);
+        this.kalturaClient.queueServiceCall("adminuser", "resetPassword", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Set initial users password  */
+    public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("hashKey", hashKey);
+        kparams.add("newPassword", newPassword);
+        this.kalturaClient.queueServiceCall("adminuser", "setInitialPassword", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 
     public KalturaAdminUser updatePassword(String email, String password) throws KalturaApiException {
@@ -69,45 +109,5 @@ public class KalturaAdminUserService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaAdminUser.class, resultXmlElement);
-    }
-
-	/**  Reset admin user password and send it to the users email address  */
-    public void resetPassword(String email) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("email", email);
-        this.kalturaClient.queueServiceCall("adminuser", "resetPassword", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public String login(String email, String password) throws KalturaApiException {
-        return this.login(email, password, Integer.MIN_VALUE);
-    }
-
-	/**  Get an admin session using admin email and password (Used for login to the KMC
-	  application)  */
-    public String login(String email, String password, int partnerId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("email", email);
-        kparams.add("password", password);
-        kparams.add("partnerId", partnerId);
-        this.kalturaClient.queueServiceCall("adminuser", "login", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-	/**  Set initial users password  */
-    public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("hashKey", hashKey);
-        kparams.add("newPassword", newPassword);
-        this.kalturaClient.queueServiceCall("adminuser", "setInitialPassword", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 }

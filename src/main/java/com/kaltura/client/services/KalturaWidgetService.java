@@ -60,12 +60,11 @@ public class KalturaWidgetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
     }
 
-	/**  Update exisiting widget  */
-    public KalturaWidget update(String id, KalturaWidget widget) throws KalturaApiException {
+	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
+    public KalturaWidget clone(KalturaWidget widget) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
         kparams.add("widget", widget);
-        this.kalturaClient.queueServiceCall("widget", "update", kparams, KalturaWidget.class);
+        this.kalturaClient.queueServiceCall("widget", "clone", kparams, KalturaWidget.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -77,17 +76,6 @@ public class KalturaWidgetService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("widget", "get", kparams, KalturaWidget.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
-    }
-
-	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
-    public KalturaWidget clone(KalturaWidget widget) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("widget", widget);
-        this.kalturaClient.queueServiceCall("widget", "clone", kparams, KalturaWidget.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -112,5 +100,17 @@ public class KalturaWidgetService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaWidgetListResponse.class, resultXmlElement);
+    }
+
+	/**  Update exisiting widget  */
+    public KalturaWidget update(String id, KalturaWidget widget) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("widget", widget);
+        this.kalturaClient.queueServiceCall("widget", "update", kparams, KalturaWidget.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaWidget.class, resultXmlElement);
     }
 }

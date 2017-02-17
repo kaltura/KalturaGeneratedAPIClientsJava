@@ -60,6 +60,16 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
+	/**  Delete file asset by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("fileasset", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get file asset by id  */
     public KalturaFileAsset get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -71,26 +81,20 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
-	/**  Update file asset by id  */
-    public KalturaFileAsset update(int id, KalturaFileAsset fileAsset) throws KalturaApiException {
+    public KalturaFileAssetListResponse list(KalturaFileAssetFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List file assets by filter and pager  */
+    public KalturaFileAssetListResponse list(KalturaFileAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("fileAsset", fileAsset);
-        this.kalturaClient.queueServiceCall("fileasset", "update", kparams, KalturaFileAsset.class);
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("fileasset", "list", kparams, KalturaFileAssetListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
-    }
-
-	/**  Delete file asset by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("fileasset", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaFileAssetListResponse.class, resultXmlElement);
     }
 
 	/**  Serve file asset by id  */
@@ -113,19 +117,15 @@ public class KalturaFileAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 
-    public KalturaFileAssetListResponse list(KalturaFileAssetFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List file assets by filter and pager  */
-    public KalturaFileAssetListResponse list(KalturaFileAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Update file asset by id  */
+    public KalturaFileAsset update(int id, KalturaFileAsset fileAsset) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("fileasset", "list", kparams, KalturaFileAssetListResponse.class);
+        kparams.add("id", id);
+        kparams.add("fileAsset", fileAsset);
+        this.kalturaClient.queueServiceCall("fileasset", "update", kparams, KalturaFileAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFileAssetListResponse.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaFileAsset.class, resultXmlElement);
     }
 }

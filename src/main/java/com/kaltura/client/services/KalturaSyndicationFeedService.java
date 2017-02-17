@@ -60,6 +60,16 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 
+	/**  Delete Syndication Feed by ID  */
+    public void delete(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("syndicationfeed", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Syndication Feed by ID  */
     public KalturaBaseSyndicationFeed get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -71,26 +81,15 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 
-	/**  Update Syndication Feed by ID  */
-    public KalturaBaseSyndicationFeed update(String id, KalturaBaseSyndicationFeed syndicationFeed) throws KalturaApiException {
+	/**  get entry count for a syndication feed  */
+    public KalturaSyndicationFeedEntryCount getEntryCount(String feedId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("syndicationFeed", syndicationFeed);
-        this.kalturaClient.queueServiceCall("syndicationfeed", "update", kparams, KalturaBaseSyndicationFeed.class);
+        kparams.add("feedId", feedId);
+        this.kalturaClient.queueServiceCall("syndicationfeed", "getEntryCount", kparams, KalturaSyndicationFeedEntryCount.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
-    }
-
-	/**  Delete Syndication Feed by ID  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("syndicationfeed", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaSyndicationFeedEntryCount.class, resultXmlElement);
     }
 
     public KalturaBaseSyndicationFeedListResponse list() throws KalturaApiException {
@@ -113,17 +112,6 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaBaseSyndicationFeedListResponse.class, resultXmlElement);
     }
 
-	/**  get entry count for a syndication feed  */
-    public KalturaSyndicationFeedEntryCount getEntryCount(String feedId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("feedId", feedId);
-        this.kalturaClient.queueServiceCall("syndicationfeed", "getEntryCount", kparams, KalturaSyndicationFeedEntryCount.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaSyndicationFeedEntryCount.class, resultXmlElement);
-    }
-
 	/**  request conversion for all entries that doesnt have the required flavor param  
 	  returns a comma-separated ids of conversion jobs  */
     public String requestConversion(String feedId) throws KalturaApiException {
@@ -135,5 +123,17 @@ public class KalturaSyndicationFeedService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
+    }
+
+	/**  Update Syndication Feed by ID  */
+    public KalturaBaseSyndicationFeed update(String id, KalturaBaseSyndicationFeed syndicationFeed) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("syndicationFeed", syndicationFeed);
+        this.kalturaClient.queueServiceCall("syndicationfeed", "update", kparams, KalturaBaseSyndicationFeed.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBaseSyndicationFeed.class, resultXmlElement);
     }
 }

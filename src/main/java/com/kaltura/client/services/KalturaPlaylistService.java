@@ -70,50 +70,6 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
     }
 
-    public KalturaPlaylist get(String id) throws KalturaApiException {
-        return this.get(id, -1);
-    }
-
-	/**  Retrieve a playlist  */
-    public KalturaPlaylist get(String id, int version) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("version", version);
-        this.kalturaClient.queueServiceCall("playlist", "get", kparams, KalturaPlaylist.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
-    }
-
-    public KalturaPlaylist update(String id, KalturaPlaylist playlist) throws KalturaApiException {
-        return this.update(id, playlist, false);
-    }
-
-	/**  Update existing playlist   Note - you cannot change playlist type. updated
-	  playlist must be of the same type.  */
-    public KalturaPlaylist update(String id, KalturaPlaylist playlist, boolean updateStats) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("playlist", playlist);
-        kparams.add("updateStats", updateStats);
-        this.kalturaClient.queueServiceCall("playlist", "update", kparams, KalturaPlaylist.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
-    }
-
-	/**  Delete existing playlist  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("playlist", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
     public KalturaPlaylist clone(String id) throws KalturaApiException {
         return this.clone(id, null);
     }
@@ -130,24 +86,14 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
     }
 
-    public KalturaPlaylistListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaPlaylistListResponse list(KalturaPlaylistFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List available playlists  */
-    public KalturaPlaylistListResponse list(KalturaPlaylistFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Delete existing playlist  */
+    public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("playlist", "list", kparams, KalturaPlaylistListResponse.class);
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("playlist", "delete", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPlaylistListResponse.class, resultXmlElement);
+            return ;
+        this.kalturaClient.doQueue();
     }
 
     public List<KalturaBaseEntry> execute(String id) throws KalturaApiException {
@@ -225,12 +171,66 @@ public class KalturaPlaylistService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaBaseEntry.class, resultXmlElement);
     }
 
+    public KalturaPlaylist get(String id) throws KalturaApiException {
+        return this.get(id, -1);
+    }
+
+	/**  Retrieve a playlist  */
+    public KalturaPlaylist get(String id, int version) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("version", version);
+        this.kalturaClient.queueServiceCall("playlist", "get", kparams, KalturaPlaylist.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
+    }
+
 	/**  Retrieve playlist statistics  */
     public KalturaPlaylist getStatsFromContent(KalturaPlaylistType playlistType, String playlistContent) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("playlistType", playlistType);
         kparams.add("playlistContent", playlistContent);
         this.kalturaClient.queueServiceCall("playlist", "getStatsFromContent", kparams, KalturaPlaylist.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPlaylist.class, resultXmlElement);
+    }
+
+    public KalturaPlaylistListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaPlaylistListResponse list(KalturaPlaylistFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List available playlists  */
+    public KalturaPlaylistListResponse list(KalturaPlaylistFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("playlist", "list", kparams, KalturaPlaylistListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPlaylistListResponse.class, resultXmlElement);
+    }
+
+    public KalturaPlaylist update(String id, KalturaPlaylist playlist) throws KalturaApiException {
+        return this.update(id, playlist, false);
+    }
+
+	/**  Update existing playlist   Note - you cannot change playlist type. updated
+	  playlist must be of the same type.  */
+    public KalturaPlaylist update(String id, KalturaPlaylist playlist, boolean updateStats) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("playlist", playlist);
+        kparams.add("updateStats", updateStats);
+        this.kalturaClient.queueServiceCall("playlist", "update", kparams, KalturaPlaylist.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();

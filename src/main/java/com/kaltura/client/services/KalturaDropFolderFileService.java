@@ -61,6 +61,17 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
+	/**  Mark the KalturaDropFolderFile object as deleted  */
+    public KalturaDropFolderFile delete(int dropFolderFileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("dropFolderFileId", dropFolderFileId);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "delete", kparams, KalturaDropFolderFile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
+    }
+
 	/**  Retrieve a KalturaDropFolderFile object by ID  */
     public KalturaDropFolderFile get(int dropFolderFileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -72,35 +83,12 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
     }
 
-	/**  Update an existing KalturaDropFolderFile object  */
-    public KalturaDropFolderFile update(int dropFolderFileId, KalturaDropFolderFile dropFolderFile) throws KalturaApiException {
+	/**  Set the KalturaDropFolderFile status to ignore
+	  (KalturaDropFolderFileStatus::IGNORE)  */
+    public KalturaDropFolderFile ignore(int dropFolderFileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
-        kparams.add("dropFolderFile", dropFolderFile);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "update", kparams, KalturaDropFolderFile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
-    }
-
-	/**  Update status of KalturaDropFolderFile  */
-    public KalturaDropFolderFile updateStatus(int dropFolderFileId, KalturaDropFolderFileStatus status) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-        kparams.add("status", status);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "updateStatus", kparams, KalturaDropFolderFile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
-    }
-
-	/**  Mark the KalturaDropFolderFile object as deleted  */
-    public KalturaDropFolderFile delete(int dropFolderFileId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "delete", kparams, KalturaDropFolderFile.class);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "ignore", kparams, KalturaDropFolderFile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -127,12 +115,24 @@ public class KalturaDropFolderFileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolderFileListResponse.class, resultXmlElement);
     }
 
-	/**  Set the KalturaDropFolderFile status to ignore
-	  (KalturaDropFolderFileStatus::IGNORE)  */
-    public KalturaDropFolderFile ignore(int dropFolderFileId) throws KalturaApiException {
+	/**  Update an existing KalturaDropFolderFile object  */
+    public KalturaDropFolderFile update(int dropFolderFileId, KalturaDropFolderFile dropFolderFile) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderFileId", dropFolderFileId);
-        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "ignore", kparams, KalturaDropFolderFile.class);
+        kparams.add("dropFolderFile", dropFolderFile);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "update", kparams, KalturaDropFolderFile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolderFile.class, resultXmlElement);
+    }
+
+	/**  Update status of KalturaDropFolderFile  */
+    public KalturaDropFolderFile updateStatus(int dropFolderFileId, KalturaDropFolderFileStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("dropFolderFileId", dropFolderFileId);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolderfile", "updateStatus", kparams, KalturaDropFolderFile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();

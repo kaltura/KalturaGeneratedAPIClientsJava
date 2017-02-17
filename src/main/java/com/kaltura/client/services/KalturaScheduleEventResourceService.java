@@ -62,6 +62,17 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
     }
 
+	/**  Mark the KalturaScheduleEventResource object as deleted  */
+    public void delete(int scheduleEventId, int scheduleResourceId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        kparams.add("scheduleResourceId", scheduleResourceId);
+        this.kalturaClient.queueServiceCall("schedule_scheduleeventresource", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Retrieve a KalturaScheduleEventResource object by ID  */
     public KalturaScheduleEventResource get(int scheduleEventId, int scheduleResourceId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -72,30 +83,6 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
-    }
-
-	/**  Update an existing KalturaScheduleEventResource object  */
-    public KalturaScheduleEventResource update(int scheduleEventId, int scheduleResourceId, KalturaScheduleEventResource scheduleEventResource) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleResourceId", scheduleResourceId);
-        kparams.add("scheduleEventResource", scheduleEventResource);
-        this.kalturaClient.queueServiceCall("schedule_scheduleeventresource", "update", kparams, KalturaScheduleEventResource.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
-    }
-
-	/**  Mark the KalturaScheduleEventResource object as deleted  */
-    public void delete(int scheduleEventId, int scheduleResourceId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleResourceId", scheduleResourceId);
-        this.kalturaClient.queueServiceCall("schedule_scheduleeventresource", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaScheduleEventResourceListResponse list() throws KalturaApiException {
@@ -116,5 +103,18 @@ public class KalturaScheduleEventResourceService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaScheduleEventResourceListResponse.class, resultXmlElement);
+    }
+
+	/**  Update an existing KalturaScheduleEventResource object  */
+    public KalturaScheduleEventResource update(int scheduleEventId, int scheduleResourceId, KalturaScheduleEventResource scheduleEventResource) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        kparams.add("scheduleResourceId", scheduleResourceId);
+        kparams.add("scheduleEventResource", scheduleEventResource);
+        this.kalturaClient.queueServiceCall("schedule_scheduleeventresource", "update", kparams, KalturaScheduleEventResource.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEventResource.class, resultXmlElement);
     }
 }

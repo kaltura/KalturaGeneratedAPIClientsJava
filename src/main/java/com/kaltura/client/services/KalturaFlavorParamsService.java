@@ -61,6 +61,16 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 
+	/**  Delete Flavor Params by ID  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("flavorparams", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Flavor Params by ID  */
     public KalturaFlavorParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -72,26 +82,15 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 
-	/**  Update Flavor Params by ID  */
-    public KalturaFlavorParams update(int id, KalturaFlavorParams flavorParams) throws KalturaApiException {
+	/**  Get Flavor Params by Conversion Profile ID  */
+    public List<KalturaFlavorParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("flavorParams", flavorParams);
-        this.kalturaClient.queueServiceCall("flavorparams", "update", kparams, KalturaFlavorParams.class);
+        kparams.add("conversionProfileId", conversionProfileId);
+        this.kalturaClient.queueServiceCall("flavorparams", "getByConversionProfileId", kparams, KalturaFlavorParams.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
-    }
-
-	/**  Delete Flavor Params by ID  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("flavorparams", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaFlavorParams.class, resultXmlElement);
     }
 
     public KalturaFlavorParamsListResponse list() throws KalturaApiException {
@@ -115,14 +114,15 @@ public class KalturaFlavorParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorParamsListResponse.class, resultXmlElement);
     }
 
-	/**  Get Flavor Params by Conversion Profile ID  */
-    public List<KalturaFlavorParams> getByConversionProfileId(int conversionProfileId) throws KalturaApiException {
+	/**  Update Flavor Params by ID  */
+    public KalturaFlavorParams update(int id, KalturaFlavorParams flavorParams) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("conversionProfileId", conversionProfileId);
-        this.kalturaClient.queueServiceCall("flavorparams", "getByConversionProfileId", kparams, KalturaFlavorParams.class);
+        kparams.add("id", id);
+        kparams.add("flavorParams", flavorParams);
+        this.kalturaClient.queueServiceCall("flavorparams", "update", kparams, KalturaFlavorParams.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaFlavorParams.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaFlavorParams.class, resultXmlElement);
     }
 }

@@ -70,6 +70,21 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
     }
 
+	/**  Allows you to add a metadata xml data from remote URL.   Enables different
+	  permissions than addFromUrl action.  */
+    public KalturaMetadata addFromBulk(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, String url) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("metadataProfileId", metadataProfileId);
+        kparams.add("objectType", objectType);
+        kparams.add("objectId", objectId);
+        kparams.add("url", url);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "addFromBulk", kparams, KalturaMetadata.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
+    }
+
     public KalturaMetadata addFromFile(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, File xmlFile) throws KalturaApiException {
         return this.addFromFile(metadataProfileId, objectType, objectId, new KalturaFile(xmlFile));
     }
@@ -112,19 +127,14 @@ public class KalturaMetadataService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
     }
 
-	/**  Allows you to add a metadata xml data from remote URL.   Enables different
-	  permissions than addFromUrl action.  */
-    public KalturaMetadata addFromBulk(int metadataProfileId, KalturaMetadataObjectType objectType, String objectId, String url) throws KalturaApiException {
+	/**  Delete an existing metadata  */
+    public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("metadataProfileId", metadataProfileId);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("url", url);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "addFromBulk", kparams, KalturaMetadata.class);
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "delete", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
+            return ;
+        this.kalturaClient.doQueue();
     }
 
 	/**  Retrieve a metadata object by id  */
@@ -136,6 +146,62 @@ public class KalturaMetadataService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
+    }
+
+	/**  Index metadata by id, will also index the related object  */
+    public int index(String id, boolean shouldUpdate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("shouldUpdate", shouldUpdate);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "index", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+    public void invalidate(int id) throws KalturaApiException {
+        this.invalidate(id, Integer.MIN_VALUE);
+    }
+
+	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
+    public void invalidate(int id, int version) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("version", version);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "invalidate", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+    public KalturaMetadataListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaMetadataListResponse list(KalturaMetadataFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List metadata objects by filter and pager  */
+    public KalturaMetadataListResponse list(KalturaMetadataFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "list", kparams, KalturaMetadataListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMetadataListResponse.class, resultXmlElement);
+    }
+
+	/**  Serves metadata XML file  */
+    public String serve(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("metadata_metadata", "serve", kparams);
+        return this.kalturaClient.serve();
     }
 
     public KalturaMetadata update(int id) throws KalturaApiException {
@@ -186,72 +252,6 @@ public class KalturaMetadataService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaMetadata.class, resultXmlElement);
-    }
-
-    public KalturaMetadataListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaMetadataListResponse list(KalturaMetadataFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List metadata objects by filter and pager  */
-    public KalturaMetadataListResponse list(KalturaMetadataFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "list", kparams, KalturaMetadataListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMetadataListResponse.class, resultXmlElement);
-    }
-
-	/**  Delete an existing metadata  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public void invalidate(int id) throws KalturaApiException {
-        this.invalidate(id, Integer.MIN_VALUE);
-    }
-
-	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
-    public void invalidate(int id, int version) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("version", version);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "invalidate", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Index metadata by id, will also index the related object  */
-    public int index(String id, boolean shouldUpdate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "index", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-	/**  Serves metadata XML file  */
-    public String serve(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("metadata_metadata", "serve", kparams);
-        return this.kalturaClient.serve();
     }
 
     public KalturaMetadata updateFromXSL(int id, File xslFile) throws KalturaApiException {

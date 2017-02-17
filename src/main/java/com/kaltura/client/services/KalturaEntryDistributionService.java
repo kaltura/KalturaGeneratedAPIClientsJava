@@ -61,6 +61,16 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
+	/**  Delete Entry Distribution by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Entry Distribution by id  */
     public KalturaEntryDistribution get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -70,39 +80,6 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
-    }
-
-	/**  Validates Entry Distribution by id for submission  */
-    public KalturaEntryDistribution validate(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "validate", kparams, KalturaEntryDistribution.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
-    }
-
-	/**  Update Entry Distribution by id  */
-    public KalturaEntryDistribution update(int id, KalturaEntryDistribution entryDistribution) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("entryDistribution", entryDistribution);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "update", kparams, KalturaEntryDistribution.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
-    }
-
-	/**  Delete Entry Distribution by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaEntryDistributionListResponse list() throws KalturaApiException {
@@ -125,6 +102,35 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistributionListResponse.class, resultXmlElement);
     }
 
+	/**  Retries last submit action  */
+    public KalturaEntryDistribution retrySubmit(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "retrySubmit", kparams, KalturaEntryDistribution.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
+    }
+
+	/**  Serves entry distribution returned data  */
+    public String serveReturnedData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("actionType", actionType);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "serveReturnedData", kparams);
+        return this.kalturaClient.serve();
+    }
+
+	/**  Serves entry distribution sent data  */
+    public String serveSentData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("actionType", actionType);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "serveSentData", kparams);
+        return this.kalturaClient.serve();
+    }
+
     public KalturaEntryDistribution submitAdd(int id) throws KalturaApiException {
         return this.submitAdd(id, false);
     }
@@ -135,28 +141,6 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         kparams.add("id", id);
         kparams.add("submitWhenReady", submitWhenReady);
         this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "submitAdd", kparams, KalturaEntryDistribution.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
-    }
-
-	/**  Submits Entry Distribution changes to the remote destination  */
-    public KalturaEntryDistribution submitUpdate(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "submitUpdate", kparams, KalturaEntryDistribution.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
-    }
-
-	/**  Submits Entry Distribution report request  */
-    public KalturaEntryDistribution submitFetchReport(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "submitFetchReport", kparams, KalturaEntryDistribution.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -174,32 +158,48 @@ public class KalturaEntryDistributionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Retries last submit action  */
-    public KalturaEntryDistribution retrySubmit(int id) throws KalturaApiException {
+	/**  Submits Entry Distribution report request  */
+    public KalturaEntryDistribution submitFetchReport(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "retrySubmit", kparams, KalturaEntryDistribution.class);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "submitFetchReport", kparams, KalturaEntryDistribution.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Serves entry distribution sent data  */
-    public String serveSentData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
+	/**  Submits Entry Distribution changes to the remote destination  */
+    public KalturaEntryDistribution submitUpdate(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("actionType", actionType);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "serveSentData", kparams);
-        return this.kalturaClient.serve();
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "submitUpdate", kparams, KalturaEntryDistribution.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 
-	/**  Serves entry distribution returned data  */
-    public String serveReturnedData(int id, KalturaDistributionAction actionType) throws KalturaApiException {
+	/**  Update Entry Distribution by id  */
+    public KalturaEntryDistribution update(int id, KalturaEntryDistribution entryDistribution) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("actionType", actionType);
-        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "serveReturnedData", kparams);
-        return this.kalturaClient.serve();
+        kparams.add("entryDistribution", entryDistribution);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "update", kparams, KalturaEntryDistribution.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
+    }
+
+	/**  Validates Entry Distribution by id for submission  */
+    public KalturaEntryDistribution validate(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_entrydistribution", "validate", kparams, KalturaEntryDistribution.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEntryDistribution.class, resultXmlElement);
     }
 }

@@ -60,6 +60,16 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
         return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
     }
 
+	/**  Delete Generic Distribution Provider by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovider", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Generic Distribution Provider by id  */
     public KalturaGenericDistributionProvider get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -69,28 +79,6 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
-    }
-
-	/**  Update Generic Distribution Provider by id  */
-    public KalturaGenericDistributionProvider update(int id, KalturaGenericDistributionProvider genericDistributionProvider) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("genericDistributionProvider", genericDistributionProvider);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovider", "update", kparams, KalturaGenericDistributionProvider.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
-    }
-
-	/**  Delete Generic Distribution Provider by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovider", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaGenericDistributionProviderListResponse list() throws KalturaApiException {
@@ -111,5 +99,17 @@ public class KalturaGenericDistributionProviderService extends KalturaServiceBas
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaGenericDistributionProviderListResponse.class, resultXmlElement);
+    }
+
+	/**  Update Generic Distribution Provider by id  */
+    public KalturaGenericDistributionProvider update(int id, KalturaGenericDistributionProvider genericDistributionProvider) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("genericDistributionProvider", genericDistributionProvider);
+        this.kalturaClient.queueServiceCall("contentdistribution_genericdistributionprovider", "update", kparams, KalturaGenericDistributionProvider.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaGenericDistributionProvider.class, resultXmlElement);
     }
 }

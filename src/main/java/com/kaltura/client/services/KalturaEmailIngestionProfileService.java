@@ -61,15 +61,29 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
     }
 
-	/**  Retrieve a EmailIngestionProfile by email address  */
-    public KalturaEmailIngestionProfile getByEmailAddress(String emailAddress) throws KalturaApiException {
+	/**  add KalturaMediaEntry from email ingestion  */
+    public KalturaMediaEntry addMediaEntry(KalturaMediaEntry mediaEntry, String uploadTokenId, int emailProfId, String fromAddress, String emailMsgId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("emailAddress", emailAddress);
-        this.kalturaClient.queueServiceCall("emailingestionprofile", "getByEmailAddress", kparams, KalturaEmailIngestionProfile.class);
+        kparams.add("mediaEntry", mediaEntry);
+        kparams.add("uploadTokenId", uploadTokenId);
+        kparams.add("emailProfId", emailProfId);
+        kparams.add("fromAddress", fromAddress);
+        kparams.add("emailMsgId", emailMsgId);
+        this.kalturaClient.queueServiceCall("emailingestionprofile", "addMediaEntry", kparams, KalturaMediaEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
+    }
+
+	/**  Delete an existing EmailIngestionProfile  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("emailingestionprofile", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 
 	/**  Retrieve a EmailIngestionProfile by id  */
@@ -77,6 +91,17 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("emailingestionprofile", "get", kparams, KalturaEmailIngestionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
+    }
+
+	/**  Retrieve a EmailIngestionProfile by email address  */
+    public KalturaEmailIngestionProfile getByEmailAddress(String emailAddress) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("emailAddress", emailAddress);
+        this.kalturaClient.queueServiceCall("emailingestionprofile", "getByEmailAddress", kparams, KalturaEmailIngestionProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -93,30 +118,5 @@ public class KalturaEmailIngestionProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEmailIngestionProfile.class, resultXmlElement);
-    }
-
-	/**  Delete an existing EmailIngestionProfile  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("emailingestionprofile", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  add KalturaMediaEntry from email ingestion  */
-    public KalturaMediaEntry addMediaEntry(KalturaMediaEntry mediaEntry, String uploadTokenId, int emailProfId, String fromAddress, String emailMsgId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("uploadTokenId", uploadTokenId);
-        kparams.add("emailProfId", emailProfId);
-        kparams.add("fromAddress", fromAddress);
-        kparams.add("emailMsgId", emailMsgId);
-        this.kalturaClient.queueServiceCall("emailingestionprofile", "addMediaEntry", kparams, KalturaMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMediaEntry.class, resultXmlElement);
     }
 }

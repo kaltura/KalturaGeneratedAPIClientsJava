@@ -29,12 +29,12 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
-import com.kaltura.client.enums.*;
 import org.w3c.dom.Element;
-import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.types.*;
+import com.kaltura.client.utils.ParseUtils;
+import com.kaltura.client.enums.*;
 
 /**
  * This class was generated using exec.php
@@ -50,44 +50,6 @@ public class KalturaSessionService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-    public String start(String secret) throws KalturaApiException {
-        return this.start(secret, "");
-    }
-
-    public String start(String secret, String userId) throws KalturaApiException {
-        return this.start(secret, userId, KalturaSessionType.get(0));
-    }
-
-    public String start(String secret, String userId, KalturaSessionType type) throws KalturaApiException {
-        return this.start(secret, userId, type, Integer.MIN_VALUE);
-    }
-
-    public String start(String secret, String userId, KalturaSessionType type, int partnerId) throws KalturaApiException {
-        return this.start(secret, userId, type, partnerId, 86400);
-    }
-
-    public String start(String secret, String userId, KalturaSessionType type, int partnerId, int expiry) throws KalturaApiException {
-        return this.start(secret, userId, type, partnerId, expiry, null);
-    }
-
-	/**  Start a session with Kaltura's server.   The result KS is the session key that
-	  you should pass to all services that requires a ticket.  */
-    public String start(String secret, String userId, KalturaSessionType type, int partnerId, int expiry, String privileges) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("secret", secret);
-        kparams.add("userId", userId);
-        kparams.add("type", type);
-        kparams.add("partnerId", partnerId);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-        this.kalturaClient.queueServiceCall("session", "start", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
 	/**  End a session with the Kaltura server, making the current KS invalid.  */
     public void end() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -95,6 +57,21 @@ public class KalturaSessionService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+    public KalturaSessionInfo get() throws KalturaApiException {
+        return this.get(null);
+    }
+
+	/**  Parse session key and return its info  */
+    public KalturaSessionInfo get(String session) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("session", session);
+        this.kalturaClient.queueServiceCall("session", "get", kparams, KalturaSessionInfo.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaSessionInfo.class, resultXmlElement);
     }
 
     public String impersonate(String secret, int impersonatedPartnerId) throws KalturaApiException {
@@ -164,19 +141,42 @@ public class KalturaSessionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaSessionInfo.class, resultXmlElement);
     }
 
-    public KalturaSessionInfo get() throws KalturaApiException {
-        return this.get(null);
+    public String start(String secret) throws KalturaApiException {
+        return this.start(secret, "");
     }
 
-	/**  Parse session key and return its info  */
-    public KalturaSessionInfo get(String session) throws KalturaApiException {
+    public String start(String secret, String userId) throws KalturaApiException {
+        return this.start(secret, userId, KalturaSessionType.get(0));
+    }
+
+    public String start(String secret, String userId, KalturaSessionType type) throws KalturaApiException {
+        return this.start(secret, userId, type, Integer.MIN_VALUE);
+    }
+
+    public String start(String secret, String userId, KalturaSessionType type, int partnerId) throws KalturaApiException {
+        return this.start(secret, userId, type, partnerId, 86400);
+    }
+
+    public String start(String secret, String userId, KalturaSessionType type, int partnerId, int expiry) throws KalturaApiException {
+        return this.start(secret, userId, type, partnerId, expiry, null);
+    }
+
+	/**  Start a session with Kaltura's server.   The result KS is the session key that
+	  you should pass to all services that requires a ticket.  */
+    public String start(String secret, String userId, KalturaSessionType type, int partnerId, int expiry, String privileges) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("session", session);
-        this.kalturaClient.queueServiceCall("session", "get", kparams, KalturaSessionInfo.class);
+        kparams.add("secret", secret);
+        kparams.add("userId", userId);
+        kparams.add("type", type);
+        kparams.add("partnerId", partnerId);
+        kparams.add("expiry", expiry);
+        kparams.add("privileges", privileges);
+        this.kalturaClient.queueServiceCall("session", "start", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaSessionInfo.class, resultXmlElement);
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 
     public KalturaStartWidgetSessionResponse startWidgetSession(String widgetId) throws KalturaApiException {

@@ -60,6 +60,16 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
     }
 
+	/**  Delete live channel segment by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("livechannelsegment", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get live channel segment by id  */
     public KalturaLiveChannelSegment get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -69,28 +79,6 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
-    }
-
-	/**  Update live channel segment by id  */
-    public KalturaLiveChannelSegment update(int id, KalturaLiveChannelSegment liveChannelSegment) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("liveChannelSegment", liveChannelSegment);
-        this.kalturaClient.queueServiceCall("livechannelsegment", "update", kparams, KalturaLiveChannelSegment.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
-    }
-
-	/**  Delete live channel segment by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("livechannelsegment", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaLiveChannelSegmentListResponse list() throws KalturaApiException {
@@ -111,5 +99,17 @@ public class KalturaLiveChannelSegmentService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLiveChannelSegmentListResponse.class, resultXmlElement);
+    }
+
+	/**  Update live channel segment by id  */
+    public KalturaLiveChannelSegment update(int id, KalturaLiveChannelSegment liveChannelSegment) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("liveChannelSegment", liveChannelSegment);
+        this.kalturaClient.queueServiceCall("livechannelsegment", "update", kparams, KalturaLiveChannelSegment.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveChannelSegment.class, resultXmlElement);
     }
 }

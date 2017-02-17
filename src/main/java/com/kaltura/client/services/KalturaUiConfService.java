@@ -62,23 +62,11 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 
-	/**  Update an existing UIConf  */
-    public KalturaUiConf update(int id, KalturaUiConf uiConf) throws KalturaApiException {
+	/**  Clone an existing UIConf  */
+    public KalturaUiConf clone(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("uiConf", uiConf);
-        this.kalturaClient.queueServiceCall("uiconf", "update", kparams, KalturaUiConf.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
-    }
-
-	/**  Retrieve a UIConf by id  */
-    public KalturaUiConf get(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("uiconf", "get", kparams, KalturaUiConf.class);
+        this.kalturaClient.queueServiceCall("uiconf", "clone", kparams, KalturaUiConf.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -95,35 +83,25 @@ public class KalturaUiConfService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-	/**  Clone an existing UIConf  */
-    public KalturaUiConf clone(int id) throws KalturaApiException {
+	/**  Retrieve a UIConf by id  */
+    public KalturaUiConf get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("uiconf", "clone", kparams, KalturaUiConf.class);
+        this.kalturaClient.queueServiceCall("uiconf", "get", kparams, KalturaUiConf.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 
-    public KalturaUiConfListResponse listTemplates() throws KalturaApiException {
-        return this.listTemplates(null);
-    }
-
-    public KalturaUiConfListResponse listTemplates(KalturaUiConfFilter filter) throws KalturaApiException {
-        return this.listTemplates(filter, null);
-    }
-
-	/**  retrieve a list of available template UIConfs  */
-    public KalturaUiConfListResponse listTemplates(KalturaUiConfFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Retrieve a list of all available versions by object type  */
+    public List<KalturaUiConfTypeInfo> getAvailableTypes() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("uiconf", "listTemplates", kparams, KalturaUiConfListResponse.class);
+        this.kalturaClient.queueServiceCall("uiconf", "getAvailableTypes", kparams, KalturaUiConfTypeInfo.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUiConfListResponse.class, resultXmlElement);
+        return ParseUtils.parseArray(KalturaUiConfTypeInfo.class, resultXmlElement);
     }
 
     public KalturaUiConfListResponse list() throws KalturaApiException {
@@ -146,13 +124,35 @@ public class KalturaUiConfService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUiConfListResponse.class, resultXmlElement);
     }
 
-	/**  Retrieve a list of all available versions by object type  */
-    public List<KalturaUiConfTypeInfo> getAvailableTypes() throws KalturaApiException {
+    public KalturaUiConfListResponse listTemplates() throws KalturaApiException {
+        return this.listTemplates(null);
+    }
+
+    public KalturaUiConfListResponse listTemplates(KalturaUiConfFilter filter) throws KalturaApiException {
+        return this.listTemplates(filter, null);
+    }
+
+	/**  retrieve a list of available template UIConfs  */
+    public KalturaUiConfListResponse listTemplates(KalturaUiConfFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        this.kalturaClient.queueServiceCall("uiconf", "getAvailableTypes", kparams, KalturaUiConfTypeInfo.class);
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("uiconf", "listTemplates", kparams, KalturaUiConfListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaUiConfTypeInfo.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaUiConfListResponse.class, resultXmlElement);
+    }
+
+	/**  Update an existing UIConf  */
+    public KalturaUiConf update(int id, KalturaUiConf uiConf) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("uiConf", uiConf);
+        this.kalturaClient.queueServiceCall("uiconf", "update", kparams, KalturaUiConf.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUiConf.class, resultXmlElement);
     }
 }

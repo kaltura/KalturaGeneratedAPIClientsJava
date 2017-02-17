@@ -49,21 +49,6 @@ public class KalturaTagService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-    public KalturaTagListResponse search(KalturaTagFilter tagFilter) throws KalturaApiException {
-        return this.search(tagFilter, null);
-    }
-
-    public KalturaTagListResponse search(KalturaTagFilter tagFilter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("tagFilter", tagFilter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("tagsearch_tag", "search", kparams, KalturaTagListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaTagListResponse.class, resultXmlElement);
-    }
-
 	/**  Action goes over all tags with instanceCount==0 and checks whether they need to
 	  be removed from the DB. Returns number of removed tags.  */
     public int deletePending() throws KalturaApiException {
@@ -85,5 +70,20 @@ public class KalturaTagService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+    public KalturaTagListResponse search(KalturaTagFilter tagFilter) throws KalturaApiException {
+        return this.search(tagFilter, null);
+    }
+
+    public KalturaTagListResponse search(KalturaTagFilter tagFilter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("tagFilter", tagFilter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("tagsearch_tag", "search", kparams, KalturaTagListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaTagListResponse.class, resultXmlElement);
     }
 }

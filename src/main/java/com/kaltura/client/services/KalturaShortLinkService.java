@@ -49,6 +49,52 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+	/**  Allows you to add a short link object  */
+    public KalturaShortLink add(KalturaShortLink shortLink) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("shortLink", shortLink);
+        this.kalturaClient.queueServiceCall("shortlink_shortlink", "add", kparams, KalturaShortLink.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
+    }
+
+	/**  Mark the short link as deleted  */
+    public KalturaShortLink delete(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("shortlink_shortlink", "delete", kparams, KalturaShortLink.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
+    }
+
+	/**  Retrieve an short link object by id  */
+    public KalturaShortLink get(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("shortlink_shortlink", "get", kparams, KalturaShortLink.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
+    }
+
+    public String goto_(String id) throws KalturaApiException {
+        return this.goto_(id, false);
+    }
+
+	/**  Serves short link  */
+    public String goto_(String id, boolean proxy) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("proxy", proxy);
+        this.kalturaClient.queueServiceCall("shortlink_shortlink", "goto_", kparams);
+        return this.kalturaClient.serve();
+    }
+
     public KalturaShortLinkListResponse list() throws KalturaApiException {
         return this.list(null);
     }
@@ -69,28 +115,6 @@ public class KalturaShortLinkService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaShortLinkListResponse.class, resultXmlElement);
     }
 
-	/**  Allows you to add a short link object  */
-    public KalturaShortLink add(KalturaShortLink shortLink) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("shortLink", shortLink);
-        this.kalturaClient.queueServiceCall("shortlink_shortlink", "add", kparams, KalturaShortLink.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
-    }
-
-	/**  Retrieve an short link object by id  */
-    public KalturaShortLink get(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("shortlink_shortlink", "get", kparams, KalturaShortLink.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
-    }
-
 	/**  Update exisitng short link  */
     public KalturaShortLink update(String id, KalturaShortLink shortLink) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -101,29 +125,5 @@ public class KalturaShortLinkService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
-    }
-
-	/**  Mark the short link as deleted  */
-    public KalturaShortLink delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("shortlink_shortlink", "delete", kparams, KalturaShortLink.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaShortLink.class, resultXmlElement);
-    }
-
-    public String goto_(String id) throws KalturaApiException {
-        return this.goto_(id, false);
-    }
-
-	/**  Serves short link  */
-    public String goto_(String id, boolean proxy) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("proxy", proxy);
-        this.kalturaClient.queueServiceCall("shortlink_shortlink", "goto_", kparams);
-        return this.kalturaClient.serve();
     }
 }

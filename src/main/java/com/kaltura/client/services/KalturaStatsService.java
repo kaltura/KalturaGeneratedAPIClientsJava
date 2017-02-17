@@ -81,16 +81,6 @@ public class KalturaStatsService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
-    public KalturaCEError reportKceError(KalturaCEError kalturaCEError) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("kalturaCEError", kalturaCEError);
-        this.kalturaClient.queueServiceCall("stats", "reportKceError", kparams, KalturaCEError.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCEError.class, resultXmlElement);
-    }
-
 	/**  Use this action to report errors to the kaltura server.  */
     public void reportError(String errorCode, String errorMessage) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -100,5 +90,15 @@ public class KalturaStatsService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+    public KalturaCEError reportKceError(KalturaCEError kalturaCEError) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("kalturaCEError", kalturaCEError);
+        this.kalturaClient.queueServiceCall("stats", "reportKceError", kparams, KalturaCEError.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCEError.class, resultXmlElement);
     }
 }

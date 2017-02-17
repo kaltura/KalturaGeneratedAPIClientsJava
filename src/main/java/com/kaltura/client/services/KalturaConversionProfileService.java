@@ -50,11 +50,32 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-	/**  Set Conversion Profile to be the partner default  */
-    public KalturaConversionProfile setAsDefault(int id) throws KalturaApiException {
+	/**  Add new Conversion Profile  */
+    public KalturaConversionProfile add(KalturaConversionProfile conversionProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("conversionProfile", conversionProfile);
+        this.kalturaClient.queueServiceCall("conversionprofile", "add", kparams, KalturaConversionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
+    }
+
+	/**  Delete Conversion Profile by ID  */
+    public void delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("conversionprofile", "setAsDefault", kparams, KalturaConversionProfile.class);
+        this.kalturaClient.queueServiceCall("conversionprofile", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Get Conversion Profile by ID  */
+    public KalturaConversionProfile get(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("conversionprofile", "get", kparams, KalturaConversionProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -76,50 +97,6 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 
-	/**  Add new Conversion Profile  */
-    public KalturaConversionProfile add(KalturaConversionProfile conversionProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("conversionProfile", conversionProfile);
-        this.kalturaClient.queueServiceCall("conversionprofile", "add", kparams, KalturaConversionProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
-    }
-
-	/**  Get Conversion Profile by ID  */
-    public KalturaConversionProfile get(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("conversionprofile", "get", kparams, KalturaConversionProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
-    }
-
-	/**  Update Conversion Profile by ID  */
-    public KalturaConversionProfile update(int id, KalturaConversionProfile conversionProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("conversionProfile", conversionProfile);
-        this.kalturaClient.queueServiceCall("conversionprofile", "update", kparams, KalturaConversionProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
-    }
-
-	/**  Delete Conversion Profile by ID  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("conversionprofile", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
     public KalturaConversionProfileListResponse list() throws KalturaApiException {
         return this.list(null);
     }
@@ -138,5 +115,28 @@ public class KalturaConversionProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaConversionProfileListResponse.class, resultXmlElement);
+    }
+
+	/**  Set Conversion Profile to be the partner default  */
+    public KalturaConversionProfile setAsDefault(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("conversionprofile", "setAsDefault", kparams, KalturaConversionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
+    }
+
+	/**  Update Conversion Profile by ID  */
+    public KalturaConversionProfile update(int id, KalturaConversionProfile conversionProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("conversionProfile", conversionProfile);
+        this.kalturaClient.queueServiceCall("conversionprofile", "update", kparams, KalturaConversionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaConversionProfile.class, resultXmlElement);
     }
 }

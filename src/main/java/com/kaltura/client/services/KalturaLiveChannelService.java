@@ -61,6 +61,36 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannel.class, resultXmlElement);
     }
 
+    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
+        return this.appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
+    }
+
+	/**  Append recorded video to live entry  */
+    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, boolean isLastChunk) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("assetId", assetId);
+        kparams.add("mediaServerIndex", mediaServerIndex);
+        kparams.add("resource", resource);
+        kparams.add("duration", duration);
+        kparams.add("isLastChunk", isLastChunk);
+        this.kalturaClient.queueServiceCall("livechannel", "appendRecording", kparams, KalturaLiveEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
+    }
+
+	/**  Delete a live channel.  */
+    public void delete(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("livechannel", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get live channel by ID.  */
     public KalturaLiveChannel get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -72,26 +102,16 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveChannel.class, resultXmlElement);
     }
 
-	/**  Update live channel. Only the properties that were set will be updated.  */
-    public KalturaLiveChannel update(String id, KalturaLiveChannel liveChannel) throws KalturaApiException {
+	/**  Delivering the status of a live channel (on-air/offline)  */
+    public boolean isLive(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("liveChannel", liveChannel);
-        this.kalturaClient.queueServiceCall("livechannel", "update", kparams, KalturaLiveChannel.class);
+        this.kalturaClient.queueServiceCall("livechannel", "isLive", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return null;
+            return false;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaLiveChannel.class, resultXmlElement);
-    }
-
-	/**  Delete a live channel.  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("livechannel", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBool(resultText);
     }
 
     public KalturaLiveChannelListResponse list() throws KalturaApiException {
@@ -112,38 +132,6 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLiveChannelListResponse.class, resultXmlElement);
-    }
-
-	/**  Delivering the status of a live channel (on-air/offline)  */
-    public boolean isLive(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("livechannel", "isLive", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return false;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBool(resultText);
-    }
-
-    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
-        return this.appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
-    }
-
-	/**  Append recorded video to live entry  */
-    public KalturaLiveEntry appendRecording(String entryId, String assetId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, boolean isLastChunk) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("assetId", assetId);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        kparams.add("resource", resource);
-        kparams.add("duration", duration);
-        kparams.add("isLastChunk", isLastChunk);
-        this.kalturaClient.queueServiceCall("livechannel", "appendRecording", kparams, KalturaLiveEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
     }
 
     public KalturaLiveEntry registerMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
@@ -169,29 +157,6 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
     }
 
-	/**  Unregister media server from live entry  */
-    public KalturaLiveEntry unregisterMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("hostname", hostname);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        this.kalturaClient.queueServiceCall("livechannel", "unregisterMediaServer", kparams, KalturaLiveEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
-    }
-
-	/**  Validates all registered media servers  */
-    public void validateRegisteredMediaServers(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("livechannel", "validateRegisteredMediaServers", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
     public KalturaLiveEntry setRecordedContent(String entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration) throws KalturaApiException {
         return this.setRecordedContent(entryId, mediaServerIndex, resource, duration, null);
     }
@@ -209,5 +174,40 @@ public class KalturaLiveChannelService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
+    }
+
+	/**  Unregister media server from live entry  */
+    public KalturaLiveEntry unregisterMediaServer(String entryId, String hostname, KalturaEntryServerNodeType mediaServerIndex) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("hostname", hostname);
+        kparams.add("mediaServerIndex", mediaServerIndex);
+        this.kalturaClient.queueServiceCall("livechannel", "unregisterMediaServer", kparams, KalturaLiveEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveEntry.class, resultXmlElement);
+    }
+
+	/**  Update live channel. Only the properties that were set will be updated.  */
+    public KalturaLiveChannel update(String id, KalturaLiveChannel liveChannel) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("liveChannel", liveChannel);
+        this.kalturaClient.queueServiceCall("livechannel", "update", kparams, KalturaLiveChannel.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveChannel.class, resultXmlElement);
+    }
+
+	/**  Validates all registered media servers  */
+    public void validateRegisteredMediaServers(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("livechannel", "validateRegisteredMediaServers", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 }

@@ -49,6 +49,17 @@ public class KalturaBulkService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+	/**  Aborts the bulk upload and all its child jobs  */
+    public KalturaBulkUpload abort(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("bulkupload_bulk", "abort", kparams, KalturaBulkUpload.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
+    }
+
 	/**  Get bulk upload batch job by id  */
     public KalturaBulkUpload get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -94,16 +105,5 @@ public class KalturaBulkService extends KalturaServiceBase {
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("bulkupload_bulk", "serveLog", kparams);
         return this.kalturaClient.serve();
-    }
-
-	/**  Aborts the bulk upload and all its child jobs  */
-    public KalturaBulkUpload abort(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("bulkupload_bulk", "abort", kparams, KalturaBulkUpload.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 }

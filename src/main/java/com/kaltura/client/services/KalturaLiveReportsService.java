@@ -29,13 +29,13 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
-import java.util.List;
 import com.kaltura.client.types.*;
 import com.kaltura.client.enums.*;
 import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -48,6 +48,17 @@ import com.kaltura.client.KalturaApiException;
 public class KalturaLiveReportsService extends KalturaServiceBase {
     public KalturaLiveReportsService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+    public KalturaLiveReportExportResponse exportToCsv(KalturaLiveReportExportType reportType, KalturaLiveReportExportParams params) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("reportType", reportType);
+        kparams.add("params", params);
+        this.kalturaClient.queueServiceCall("livereports", "exportToCsv", kparams, KalturaLiveReportExportResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaLiveReportExportResponse.class, resultXmlElement);
     }
 
     public List<KalturaReportGraph> getEvents(KalturaLiveReportType reportType) throws KalturaApiException {
@@ -88,17 +99,6 @@ public class KalturaLiveReportsService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLiveStatsListResponse.class, resultXmlElement);
-    }
-
-    public KalturaLiveReportExportResponse exportToCsv(KalturaLiveReportExportType reportType, KalturaLiveReportExportParams params) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("reportType", reportType);
-        kparams.add("params", params);
-        this.kalturaClient.queueServiceCall("livereports", "exportToCsv", kparams, KalturaLiveReportExportResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaLiveReportExportResponse.class, resultXmlElement);
     }
 
 	/**  Will serve a requested report  */

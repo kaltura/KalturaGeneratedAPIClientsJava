@@ -30,16 +30,16 @@ package com.kaltura.client.services;
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
 import com.kaltura.client.types.*;
+import org.w3c.dom.Element;
+import com.kaltura.client.utils.ParseUtils;
+import com.kaltura.client.KalturaParams;
+import com.kaltura.client.KalturaApiException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.enums.*;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
-import org.w3c.dom.Element;
-import com.kaltura.client.utils.ParseUtils;
-import com.kaltura.client.KalturaParams;
-import com.kaltura.client.KalturaApiException;
 
 /**
  * This class was generated using exec.php
@@ -54,6 +54,17 @@ import com.kaltura.client.KalturaApiException;
 public class KalturaBulkUploadService extends KalturaServiceBase {
     public KalturaBulkUploadService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+	/**  Aborts the bulk upload and all its child jobs  */
+    public KalturaBulkUpload abort(long id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("bulkupload", "abort", kparams, KalturaBulkUpload.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 
     public KalturaBulkUpload add(int conversionProfileId, KalturaFile csvFileData) throws KalturaApiException {
@@ -174,16 +185,5 @@ public class KalturaBulkUploadService extends KalturaServiceBase {
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("bulkupload", "serveLog", kparams);
         return this.kalturaClient.serve();
-    }
-
-	/**  Aborts the bulk upload and all its child jobs  */
-    public KalturaBulkUpload abort(long id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("bulkupload", "abort", kparams, KalturaBulkUpload.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 }

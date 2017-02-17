@@ -61,27 +61,20 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 
-	/**  Get external media entry by ID.  */
-    public KalturaExternalMediaEntry get(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "get", kparams, KalturaExternalMediaEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
+    public int count() throws KalturaApiException {
+        return this.count(null);
     }
 
-	/**  Update external media entry. Only the properties that were set will be updated.  */
-    public KalturaExternalMediaEntry update(String id, KalturaExternalMediaEntry entry) throws KalturaApiException {
+	/**  Count media entries by filter.  */
+    public int count(KalturaExternalMediaEntryFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("entry", entry);
-        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "update", kparams, KalturaExternalMediaEntry.class);
+        kparams.add("filter", filter);
+        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "count", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return null;
+            return 0;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
     }
 
 	/**  Delete a external media entry.  */
@@ -92,6 +85,17 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+	/**  Get external media entry by ID.  */
+    public KalturaExternalMediaEntry get(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "get", kparams, KalturaExternalMediaEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 
     public KalturaExternalMediaEntryListResponse list() throws KalturaApiException {
@@ -114,19 +118,15 @@ public class KalturaExternalMediaService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaExternalMediaEntryListResponse.class, resultXmlElement);
     }
 
-    public int count() throws KalturaApiException {
-        return this.count(null);
-    }
-
-	/**  Count media entries by filter.  */
-    public int count(KalturaExternalMediaEntryFilter filter) throws KalturaApiException {
+	/**  Update external media entry. Only the properties that were set will be updated.  */
+    public KalturaExternalMediaEntry update(String id, KalturaExternalMediaEntry entry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "count", kparams);
+        kparams.add("id", id);
+        kparams.add("entry", entry);
+        this.kalturaClient.queueServiceCall("externalmedia_externalmedia", "update", kparams, KalturaExternalMediaEntry.class);
         if (this.kalturaClient.isMultiRequest())
-            return 0;
+            return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
+        return ParseUtils.parseObject(KalturaExternalMediaEntry.class, resultXmlElement);
     }
 }

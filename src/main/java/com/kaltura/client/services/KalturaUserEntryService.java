@@ -59,20 +59,20 @@ public class KalturaUserEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserEntry.class, resultXmlElement);
     }
 
-    public void update(int id, KalturaUserEntry userEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("userEntry", userEntry);
-        this.kalturaClient.queueServiceCall("userentry", "update", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
     public KalturaUserEntry delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("userentry", "delete", kparams, KalturaUserEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUserEntry.class, resultXmlElement);
+    }
+
+    public KalturaUserEntry get(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("userentry", "get", kparams, KalturaUserEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -94,16 +94,6 @@ public class KalturaUserEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserEntryListResponse.class, resultXmlElement);
     }
 
-    public KalturaUserEntry get(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("userentry", "get", kparams, KalturaUserEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUserEntry.class, resultXmlElement);
-    }
-
 	/**  Submits the quiz so that it's status will be submitted and calculates the score
 	  for the quiz  */
     public KalturaQuizUserEntry submitQuiz(int id) throws KalturaApiException {
@@ -114,5 +104,15 @@ public class KalturaUserEntryService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaQuizUserEntry.class, resultXmlElement);
+    }
+
+    public void update(int id, KalturaUserEntry userEntry) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("userEntry", userEntry);
+        this.kalturaClient.queueServiceCall("userentry", "update", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 }

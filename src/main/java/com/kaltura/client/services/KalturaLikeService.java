@@ -49,28 +49,6 @@ public class KalturaLikeService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-    public boolean like(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("like_like", "like", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return false;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBool(resultText);
-    }
-
-    public boolean unlike(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("like_like", "unlike", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return false;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseBool(resultText);
-    }
-
     public boolean checkLikeExists(String entryId) throws KalturaApiException {
         return this.checkLikeExists(entryId, null);
     }
@@ -80,6 +58,17 @@ public class KalturaLikeService extends KalturaServiceBase {
         kparams.add("entryId", entryId);
         kparams.add("userId", userId);
         this.kalturaClient.queueServiceCall("like_like", "checkLikeExists", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return false;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBool(resultText);
+    }
+
+    public boolean like(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("like_like", "like", kparams);
         if (this.kalturaClient.isMultiRequest())
             return false;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -104,5 +93,16 @@ public class KalturaLikeService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaLikeListResponse.class, resultXmlElement);
+    }
+
+    public boolean unlike(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("like_like", "unlike", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return false;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseBool(resultText);
     }
 }

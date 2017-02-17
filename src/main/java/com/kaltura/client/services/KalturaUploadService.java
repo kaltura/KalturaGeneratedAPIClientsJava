@@ -29,16 +29,16 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
+import com.kaltura.client.types.*;
+import org.w3c.dom.Element;
+import com.kaltura.client.utils.ParseUtils;
+import com.kaltura.client.KalturaParams;
+import com.kaltura.client.KalturaApiException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
-import org.w3c.dom.Element;
-import com.kaltura.client.utils.ParseUtils;
-import com.kaltura.client.KalturaParams;
-import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.types.*;
 
 /**
  * This class was generated using exec.php
@@ -51,6 +51,16 @@ import com.kaltura.client.types.*;
 public class KalturaUploadService extends KalturaServiceBase {
     public KalturaUploadService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+    public KalturaUploadResponse getUploadedFileTokenByFileName(String fileName) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("fileName", fileName);
+        this.kalturaClient.queueServiceCall("upload", "getUploadedFileTokenByFileName", kparams, KalturaUploadResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUploadResponse.class, resultXmlElement);
     }
 
     public String upload(File fileData) throws KalturaApiException {
@@ -75,15 +85,5 @@ public class KalturaUploadService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
-    }
-
-    public KalturaUploadResponse getUploadedFileTokenByFileName(String fileName) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("fileName", fileName);
-        this.kalturaClient.queueServiceCall("upload", "getUploadedFileTokenByFileName", kparams, KalturaUploadResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUploadResponse.class, resultXmlElement);
     }
 }

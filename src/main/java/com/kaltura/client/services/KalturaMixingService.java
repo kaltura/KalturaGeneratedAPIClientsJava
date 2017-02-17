@@ -65,63 +65,39 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 
-    public KalturaMixEntry get(String entryId) throws KalturaApiException {
-        return this.get(entryId, -1);
-    }
-
-	/**  Get mix entry by id.  */
-    public KalturaMixEntry get(String entryId, int version) throws KalturaApiException {
+	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
+    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("version", version);
-        this.kalturaClient.queueServiceCall("mixing", "get", kparams, KalturaMixEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
-    }
-
-	/**  Update mix entry. Only the properties that were set will be updated.  */
-    public KalturaMixEntry update(String entryId, KalturaMixEntry mixEntry) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("mixEntry", mixEntry);
-        this.kalturaClient.queueServiceCall("mixing", "update", kparams, KalturaMixEntry.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
-    }
-
-	/**  Delete a mix entry.  */
-    public void delete(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("mixing", "delete", kparams);
+        kparams.add("rank", rank);
+        this.kalturaClient.queueServiceCall("mixing", "anonymousRank", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
     }
 
-    public KalturaMixListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaMixListResponse list(KalturaMixEntryFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List entries by filter with paging support.   Return parameter is an array of
-	  mix entries.  */
-    public KalturaMixListResponse list(KalturaMixEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
+	  timeline as a new version.  */
+    public KalturaMixEntry appendMediaEntry(String mixEntryId, String mediaEntryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("mixing", "list", kparams, KalturaMixListResponse.class);
+        kparams.add("mixEntryId", mixEntryId);
+        kparams.add("mediaEntryId", mediaEntryId);
+        this.kalturaClient.queueServiceCall("mixing", "appendMediaEntry", kparams, KalturaMixEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMixListResponse.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
+    }
+
+	/**  Clones an existing mix.  */
+    public KalturaMixEntry clone(String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("mixing", "clone", kparams, KalturaMixEntry.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 
     public int count() throws KalturaApiException {
@@ -140,24 +116,26 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseInt(resultText);
     }
 
-	/**  Clones an existing mix.  */
-    public KalturaMixEntry clone(String entryId) throws KalturaApiException {
+	/**  Delete a mix entry.  */
+    public void delete(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("mixing", "clone", kparams, KalturaMixEntry.class);
+        this.kalturaClient.queueServiceCall("mixing", "delete", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
+            return ;
+        this.kalturaClient.doQueue();
     }
 
-	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
-	  timeline as a new version.  */
-    public KalturaMixEntry appendMediaEntry(String mixEntryId, String mediaEntryId) throws KalturaApiException {
+    public KalturaMixEntry get(String entryId) throws KalturaApiException {
+        return this.get(entryId, -1);
+    }
+
+	/**  Get mix entry by id.  */
+    public KalturaMixEntry get(String entryId, int version) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("mixEntryId", mixEntryId);
-        kparams.add("mediaEntryId", mediaEntryId);
-        this.kalturaClient.queueServiceCall("mixing", "appendMediaEntry", kparams, KalturaMixEntry.class);
+        kparams.add("entryId", entryId);
+        kparams.add("version", version);
+        this.kalturaClient.queueServiceCall("mixing", "get", kparams, KalturaMixEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -191,14 +169,36 @@ public class KalturaMixingService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaMediaEntry.class, resultXmlElement);
     }
 
-	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
-    public void anonymousRank(String entryId, int rank) throws KalturaApiException {
+    public KalturaMixListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaMixListResponse list(KalturaMixEntryFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List entries by filter with paging support.   Return parameter is an array of
+	  mix entries.  */
+    public KalturaMixListResponse list(KalturaMixEntryFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("mixing", "list", kparams, KalturaMixListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMixListResponse.class, resultXmlElement);
+    }
+
+	/**  Update mix entry. Only the properties that were set will be updated.  */
+    public KalturaMixEntry update(String entryId, KalturaMixEntry mixEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("rank", rank);
-        this.kalturaClient.queueServiceCall("mixing", "anonymousRank", kparams);
+        kparams.add("mixEntry", mixEntry);
+        this.kalturaClient.queueServiceCall("mixing", "update", kparams, KalturaMixEntry.class);
         if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaMixEntry.class, resultXmlElement);
     }
 }

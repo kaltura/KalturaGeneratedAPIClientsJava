@@ -54,58 +54,6 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
-	/**  Add new CategoryUser  */
-    public KalturaCategoryUser add(KalturaCategoryUser categoryUser) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryUser", categoryUser);
-        this.kalturaClient.queueServiceCall("categoryuser", "add", kparams, KalturaCategoryUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
-    }
-
-	/**  Get CategoryUser by id  */
-    public KalturaCategoryUser get(int categoryId, String userId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryId", categoryId);
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("categoryuser", "get", kparams, KalturaCategoryUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
-    }
-
-    public KalturaCategoryUser update(int categoryId, String userId, KalturaCategoryUser categoryUser) throws KalturaApiException {
-        return this.update(categoryId, userId, categoryUser, false);
-    }
-
-	/**  Update CategoryUser by id  */
-    public KalturaCategoryUser update(int categoryId, String userId, KalturaCategoryUser categoryUser, boolean override) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryId", categoryId);
-        kparams.add("userId", userId);
-        kparams.add("categoryUser", categoryUser);
-        kparams.add("override", override);
-        this.kalturaClient.queueServiceCall("categoryuser", "update", kparams, KalturaCategoryUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
-    }
-
-	/**  Delete a CategoryUser  */
-    public void delete(int categoryId, String userId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryId", categoryId);
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("categoryuser", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
 	/**  activate CategoryUser  */
     public KalturaCategoryUser activate(int categoryId, String userId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -118,64 +66,15 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
     }
 
-	/**  reject CategoryUser  */
-    public KalturaCategoryUser deactivate(int categoryId, String userId) throws KalturaApiException {
+	/**  Add new CategoryUser  */
+    public KalturaCategoryUser add(KalturaCategoryUser categoryUser) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryId", categoryId);
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("categoryuser", "deactivate", kparams, KalturaCategoryUser.class);
+        kparams.add("categoryUser", categoryUser);
+        this.kalturaClient.queueServiceCall("categoryuser", "add", kparams, KalturaCategoryUser.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
-    }
-
-    public KalturaCategoryUserListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaCategoryUserListResponse list(KalturaCategoryUserFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List all categories  */
-    public KalturaCategoryUserListResponse list(KalturaCategoryUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("categoryuser", "list", kparams, KalturaCategoryUserListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCategoryUserListResponse.class, resultXmlElement);
-    }
-
-	/**  Copy all memeber from parent category  */
-    public void copyFromCategory(int categoryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("categoryId", categoryId);
-        this.kalturaClient.queueServiceCall("categoryuser", "copyFromCategory", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public int index(String userId, int categoryId) throws KalturaApiException {
-        return this.index(userId, categoryId, true);
-    }
-
-	/**  Index CategoryUser by userid and category id  */
-    public int index(String userId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        kparams.add("categoryId", categoryId);
-        kparams.add("shouldUpdate", shouldUpdate);
-        this.kalturaClient.queueServiceCall("categoryuser", "index", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
     }
 
     public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData) throws KalturaApiException {
@@ -233,5 +132,106 @@ public class KalturaCategoryUserService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
+    }
+
+	/**  Copy all memeber from parent category  */
+    public void copyFromCategory(int categoryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("categoryId", categoryId);
+        this.kalturaClient.queueServiceCall("categoryuser", "copyFromCategory", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  reject CategoryUser  */
+    public KalturaCategoryUser deactivate(int categoryId, String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("categoryId", categoryId);
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("categoryuser", "deactivate", kparams, KalturaCategoryUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
+    }
+
+	/**  Delete a CategoryUser  */
+    public void delete(int categoryId, String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("categoryId", categoryId);
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("categoryuser", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Get CategoryUser by id  */
+    public KalturaCategoryUser get(int categoryId, String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("categoryId", categoryId);
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("categoryuser", "get", kparams, KalturaCategoryUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
+    }
+
+    public int index(String userId, int categoryId) throws KalturaApiException {
+        return this.index(userId, categoryId, true);
+    }
+
+	/**  Index CategoryUser by userid and category id  */
+    public int index(String userId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        kparams.add("categoryId", categoryId);
+        kparams.add("shouldUpdate", shouldUpdate);
+        this.kalturaClient.queueServiceCall("categoryuser", "index", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+    public KalturaCategoryUserListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaCategoryUserListResponse list(KalturaCategoryUserFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List all categories  */
+    public KalturaCategoryUserListResponse list(KalturaCategoryUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("categoryuser", "list", kparams, KalturaCategoryUserListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCategoryUserListResponse.class, resultXmlElement);
+    }
+
+    public KalturaCategoryUser update(int categoryId, String userId, KalturaCategoryUser categoryUser) throws KalturaApiException {
+        return this.update(categoryId, userId, categoryUser, false);
+    }
+
+	/**  Update CategoryUser by id  */
+    public KalturaCategoryUser update(int categoryId, String userId, KalturaCategoryUser categoryUser, boolean override) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("categoryId", categoryId);
+        kparams.add("userId", userId);
+        kparams.add("categoryUser", categoryUser);
+        kparams.add("override", override);
+        this.kalturaClient.queueServiceCall("categoryuser", "update", kparams, KalturaCategoryUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCategoryUser.class, resultXmlElement);
     }
 }

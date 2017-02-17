@@ -60,12 +60,11 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
     }
 
-	/**  Update exisiting delivery  */
-    public KalturaDeliveryProfile update(String id, KalturaDeliveryProfile delivery) throws KalturaApiException {
+	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
+    public KalturaDeliveryProfile clone(int deliveryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("delivery", delivery);
-        this.kalturaClient.queueServiceCall("deliveryprofile", "update", kparams, KalturaDeliveryProfile.class);
+        kparams.add("deliveryId", deliveryId);
+        this.kalturaClient.queueServiceCall("deliveryprofile", "clone", kparams, KalturaDeliveryProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -77,17 +76,6 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
         this.kalturaClient.queueServiceCall("deliveryprofile", "get", kparams, KalturaDeliveryProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
-    }
-
-	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
-    public KalturaDeliveryProfile clone(int deliveryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("deliveryId", deliveryId);
-        this.kalturaClient.queueServiceCall("deliveryprofile", "clone", kparams, KalturaDeliveryProfile.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -112,5 +100,17 @@ public class KalturaDeliveryProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDeliveryProfileListResponse.class, resultXmlElement);
+    }
+
+	/**  Update exisiting delivery  */
+    public KalturaDeliveryProfile update(String id, KalturaDeliveryProfile delivery) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("delivery", delivery);
+        this.kalturaClient.queueServiceCall("deliveryprofile", "update", kparams, KalturaDeliveryProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDeliveryProfile.class, resultXmlElement);
     }
 }

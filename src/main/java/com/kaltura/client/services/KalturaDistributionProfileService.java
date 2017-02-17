@@ -61,6 +61,16 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 
+	/**  Delete Distribution Profile by id  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Distribution Profile by id  */
     public KalturaDistributionProfile get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -70,40 +80,6 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
-    }
-
-	/**  Update Distribution Profile by id  */
-    public KalturaDistributionProfile update(int id, KalturaDistributionProfile distributionProfile) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("distributionProfile", distributionProfile);
-        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "update", kparams, KalturaDistributionProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
-    }
-
-	/**  Update Distribution Profile status by id  */
-    public KalturaDistributionProfile updateStatus(int id, KalturaDistributionProfileStatus status) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("status", status);
-        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "updateStatus", kparams, KalturaDistributionProfile.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
-    }
-
-	/**  Delete Distribution Profile by id  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaDistributionProfileListResponse list() throws KalturaApiException {
@@ -143,5 +119,29 @@ public class KalturaDistributionProfileService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaDistributionProfileListResponse.class, resultXmlElement);
+    }
+
+	/**  Update Distribution Profile by id  */
+    public KalturaDistributionProfile update(int id, KalturaDistributionProfile distributionProfile) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("distributionProfile", distributionProfile);
+        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "update", kparams, KalturaDistributionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
+    }
+
+	/**  Update Distribution Profile status by id  */
+    public KalturaDistributionProfile updateStatus(int id, KalturaDistributionProfileStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("contentdistribution_distributionprofile", "updateStatus", kparams, KalturaDistributionProfile.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDistributionProfile.class, resultXmlElement);
     }
 }

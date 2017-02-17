@@ -91,21 +91,42 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCuePointListResponse.class, resultXmlElement);
     }
 
-    public String serveBulk() throws KalturaApiException {
-        return this.serveBulk(null);
+	/**  Clone cuePoint with id to given entry  */
+    public KalturaCuePoint clone(String id, String entryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "clone", kparams, KalturaCuePoint.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
     }
 
-    public String serveBulk(KalturaCuePointFilter filter) throws KalturaApiException {
-        return this.serveBulk(filter, null);
+    public int count() throws KalturaApiException {
+        return this.count(null);
     }
 
-	/**  Download multiple cue points objects as XML definitions  */
-    public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+	/**  count cue point objects by filter  */
+    public int count(KalturaCuePointFilter filter) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "serveBulk", kparams);
-        return this.kalturaClient.serve();
+        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "count", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
+	/**  delete cue point by id, and delete all children cue points  */
+    public void delete(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 
 	/**  Retrieve an CuePoint object by id  */
@@ -139,20 +160,21 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCuePointListResponse.class, resultXmlElement);
     }
 
-    public int count() throws KalturaApiException {
-        return this.count(null);
+    public String serveBulk() throws KalturaApiException {
+        return this.serveBulk(null);
     }
 
-	/**  count cue point objects by filter  */
-    public int count(KalturaCuePointFilter filter) throws KalturaApiException {
+    public String serveBulk(KalturaCuePointFilter filter) throws KalturaApiException {
+        return this.serveBulk(filter, null);
+    }
+
+	/**  Download multiple cue points objects as XML definitions  */
+    public String serveBulk(KalturaCuePointFilter filter, KalturaFilterPager pager) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("filter", filter);
-        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "count", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "serveBulk", kparams);
+        return this.kalturaClient.serve();
     }
 
 	/**  Update cue point by id  */
@@ -167,16 +189,6 @@ public class KalturaCuePointService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
     }
 
-	/**  delete cue point by id, and delete all children cue points  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
 	/**  Update cuePoint status by id  */
     public void updateStatus(String id, KalturaCuePointStatus status) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -186,17 +198,5 @@ public class KalturaCuePointService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
-    }
-
-	/**  Clone cuePoint with id to given entry  */
-    public KalturaCuePoint clone(String id, String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("cuepoint_cuepoint", "clone", kparams, KalturaCuePoint.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCuePoint.class, resultXmlElement);
     }
 }

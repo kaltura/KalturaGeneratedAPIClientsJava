@@ -61,6 +61,16 @@ public class KalturaAppTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
     }
 
+	/**  Delete application authentication token by id  */
+    public void delete(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("apptoken", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get application authentication token by id  */
     public KalturaAppToken get(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -70,28 +80,6 @@ public class KalturaAppTokenService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
-    }
-
-	/**  Update application authentication token by id  */
-    public KalturaAppToken update(String id, KalturaAppToken appToken) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("appToken", appToken);
-        this.kalturaClient.queueServiceCall("apptoken", "update", kparams, KalturaAppToken.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
-    }
-
-	/**  Delete application authentication token by id  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("apptoken", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaAppTokenListResponse list() throws KalturaApiException {
@@ -139,5 +127,17 @@ public class KalturaAppTokenService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaSessionInfo.class, resultXmlElement);
+    }
+
+	/**  Update application authentication token by id  */
+    public KalturaAppToken update(String id, KalturaAppToken appToken) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("appToken", appToken);
+        this.kalturaClient.queueServiceCall("apptoken", "update", kparams, KalturaAppToken.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaAppToken.class, resultXmlElement);
     }
 }

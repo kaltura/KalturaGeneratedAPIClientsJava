@@ -60,6 +60,17 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 
+	/**  Deletes an existing permission object.  */
+    public KalturaPermission delete(String permissionName) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("permissionName", permissionName);
+        this.kalturaClient.queueServiceCall("permission", "delete", kparams, KalturaPermission.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
+    }
+
 	/**  Retrieves a permission object using its ID.  */
     public KalturaPermission get(String permissionName) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -71,27 +82,15 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 
-	/**  Updates an existing permission object.  */
-    public KalturaPermission update(String permissionName, KalturaPermission permission) throws KalturaApiException {
+	/**  Retrieves a list of permissions that apply to the current KS.  */
+    public String getCurrentPermissions() throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("permissionName", permissionName);
-        kparams.add("permission", permission);
-        this.kalturaClient.queueServiceCall("permission", "update", kparams, KalturaPermission.class);
+        this.kalturaClient.queueServiceCall("permission", "getCurrentPermissions", kparams);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
-    }
-
-	/**  Deletes an existing permission object.  */
-    public KalturaPermission delete(String permissionName) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("permissionName", permissionName);
-        this.kalturaClient.queueServiceCall("permission", "delete", kparams, KalturaPermission.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 
     public KalturaPermissionListResponse list() throws KalturaApiException {
@@ -116,14 +115,15 @@ public class KalturaPermissionService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaPermissionListResponse.class, resultXmlElement);
     }
 
-	/**  Retrieves a list of permissions that apply to the current KS.  */
-    public String getCurrentPermissions() throws KalturaApiException {
+	/**  Updates an existing permission object.  */
+    public KalturaPermission update(String permissionName, KalturaPermission permission) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        this.kalturaClient.queueServiceCall("permission", "getCurrentPermissions", kparams);
+        kparams.add("permissionName", permissionName);
+        kparams.add("permission", permission);
+        this.kalturaClient.queueServiceCall("permission", "update", kparams, KalturaPermission.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
+        return ParseUtils.parseObject(KalturaPermission.class, resultXmlElement);
     }
 }

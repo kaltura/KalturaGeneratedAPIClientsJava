@@ -60,6 +60,16 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
     }
 
+	/**  Delete Caption Params by ID  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("caption_captionparams", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get Caption Params by ID  */
     public KalturaCaptionParams get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -69,28 +79,6 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
-    }
-
-	/**  Update Caption Params by ID  */
-    public KalturaCaptionParams update(int id, KalturaCaptionParams captionParams) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("captionParams", captionParams);
-        this.kalturaClient.queueServiceCall("caption_captionparams", "update", kparams, KalturaCaptionParams.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
-    }
-
-	/**  Delete Caption Params by ID  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("caption_captionparams", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaCaptionParamsListResponse list() throws KalturaApiException {
@@ -112,5 +100,17 @@ public class KalturaCaptionParamsService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaCaptionParamsListResponse.class, resultXmlElement);
+    }
+
+	/**  Update Caption Params by ID  */
+    public KalturaCaptionParams update(int id, KalturaCaptionParams captionParams) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("captionParams", captionParams);
+        this.kalturaClient.queueServiceCall("caption_captionparams", "update", kparams, KalturaCaptionParams.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaCaptionParams.class, resultXmlElement);
     }
 }

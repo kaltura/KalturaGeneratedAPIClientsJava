@@ -30,11 +30,11 @@ package com.kaltura.client.services;
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
 import com.kaltura.client.types.*;
+import com.kaltura.client.enums.*;
 import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.enums.*;
 
 /**
  * This class was generated using exec.php
@@ -49,6 +49,31 @@ import com.kaltura.client.enums.*;
 public class KalturaSearchService extends KalturaServiceBase {
     public KalturaSearchService(KalturaClient client) {
         this.kalturaClient = client;
+    }
+
+    public KalturaSearchAuthData externalLogin(KalturaSearchProviderType searchSource, String userName, String password) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("searchSource", searchSource);
+        kparams.add("userName", userName);
+        kparams.add("password", password);
+        this.kalturaClient.queueServiceCall("search", "externalLogin", kparams, KalturaSearchAuthData.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaSearchAuthData.class, resultXmlElement);
+    }
+
+	/**  Retrieve extra information about media found in search action   Some providers
+	  return only part of the fields needed to create entry from, use this action to
+	  get the rest of the fields.  */
+    public KalturaSearchResult getMediaInfo(KalturaSearchResult searchResult) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("searchResult", searchResult);
+        this.kalturaClient.queueServiceCall("search", "getMediaInfo", kparams, KalturaSearchResult.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaSearchResult.class, resultXmlElement);
     }
 
     public KalturaSearchResultResponse search(KalturaSearch search) throws KalturaApiException {
@@ -67,19 +92,6 @@ public class KalturaSearchService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaSearchResultResponse.class, resultXmlElement);
     }
 
-	/**  Retrieve extra information about media found in search action   Some providers
-	  return only part of the fields needed to create entry from, use this action to
-	  get the rest of the fields.  */
-    public KalturaSearchResult getMediaInfo(KalturaSearchResult searchResult) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("searchResult", searchResult);
-        this.kalturaClient.queueServiceCall("search", "getMediaInfo", kparams, KalturaSearchResult.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaSearchResult.class, resultXmlElement);
-    }
-
 	/**  Search for media given a specific URL   Kaltura supports a searchURL action on
 	  some of the media providers.   This action will return a KalturaSearchResult
 	  object based on a given URL (assuming the media provider is supported)  */
@@ -92,17 +104,5 @@ public class KalturaSearchService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaSearchResult.class, resultXmlElement);
-    }
-
-    public KalturaSearchAuthData externalLogin(KalturaSearchProviderType searchSource, String userName, String password) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("searchSource", searchSource);
-        kparams.add("userName", userName);
-        kparams.add("password", password);
-        this.kalturaClient.queueServiceCall("search", "externalLogin", kparams, KalturaSearchAuthData.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaSearchAuthData.class, resultXmlElement);
     }
 }

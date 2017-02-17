@@ -68,256 +68,6 @@ public class KalturaUserService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
     }
 
-	/**  Updates an existing user object.   You can also use this action to update the
-	  userId.  */
-    public KalturaUser update(String userId, KalturaUser user) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        kparams.add("user", user);
-        this.kalturaClient.queueServiceCall("user", "update", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-    public KalturaUser get() throws KalturaApiException {
-        return this.get(null);
-    }
-
-	/**  Retrieves a user object for a specified user ID.  */
-    public KalturaUser get(String userId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("user", "get", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-	/**  Retrieves a user object for a user's login ID and partner ID.   A login ID is
-	  the email address used by a user to log into the system.  */
-    public KalturaUser getByLoginId(String loginId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("loginId", loginId);
-        this.kalturaClient.queueServiceCall("user", "getByLoginId", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-	/**  Deletes a user from a partner account.  */
-    public KalturaUser delete(String userId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("user", "delete", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-    public KalturaUserListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaUserListResponse list(KalturaUserFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  Lists user objects that are associated with an account.   Blocked users are
-	  listed unless you use a filter to exclude them.   Deleted users are not listed
-	  unless you use a filter to include them.  */
-    public KalturaUserListResponse list(KalturaUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("user", "list", kparams, KalturaUserListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUserListResponse.class, resultXmlElement);
-    }
-
-	/**  Notifies that a user is banned from an account.  */
-    public void notifyBan(String userId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        this.kalturaClient.queueServiceCall("user", "notifyBan", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public String login(int partnerId, String userId, String password) throws KalturaApiException {
-        return this.login(partnerId, userId, password, 86400);
-    }
-
-    public String login(int partnerId, String userId, String password, int expiry) throws KalturaApiException {
-        return this.login(partnerId, userId, password, expiry, "*");
-    }
-
-	/**  Logs a user into a partner account with a partner ID, a partner user ID (puser),
-	  and a user password.  */
-    public String login(int partnerId, String userId, String password, int expiry, String privileges) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("partnerId", partnerId);
-        kparams.add("userId", userId);
-        kparams.add("password", password);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-        this.kalturaClient.queueServiceCall("user", "login", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-    public String loginByLoginId(String loginId, String password) throws KalturaApiException {
-        return this.loginByLoginId(loginId, password, Integer.MIN_VALUE);
-    }
-
-    public String loginByLoginId(String loginId, String password, int partnerId) throws KalturaApiException {
-        return this.loginByLoginId(loginId, password, partnerId, 86400);
-    }
-
-    public String loginByLoginId(String loginId, String password, int partnerId, int expiry) throws KalturaApiException {
-        return this.loginByLoginId(loginId, password, partnerId, expiry, "*");
-    }
-
-    public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges) throws KalturaApiException {
-        return this.loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
-    }
-
-	/**  Logs a user into a partner account with a user login ID and a user password.  */
-    public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("loginId", loginId);
-        kparams.add("password", password);
-        kparams.add("partnerId", partnerId);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-        kparams.add("otp", otp);
-        this.kalturaClient.queueServiceCall("user", "loginByLoginId", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-    public void updateLoginData(String oldLoginId, String password) throws KalturaApiException {
-        this.updateLoginData(oldLoginId, password, "");
-    }
-
-    public void updateLoginData(String oldLoginId, String password, String newLoginId) throws KalturaApiException {
-        this.updateLoginData(oldLoginId, password, newLoginId, "");
-    }
-
-    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword) throws KalturaApiException {
-        this.updateLoginData(oldLoginId, password, newLoginId, newPassword, null);
-    }
-
-    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName) throws KalturaApiException {
-        this.updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
-    }
-
-	/**  Updates a user's login data: email, password, name.  */
-    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("oldLoginId", oldLoginId);
-        kparams.add("password", password);
-        kparams.add("newLoginId", newLoginId);
-        kparams.add("newPassword", newPassword);
-        kparams.add("newFirstName", newFirstName);
-        kparams.add("newLastName", newLastName);
-        this.kalturaClient.queueServiceCall("user", "updateLoginData", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Reset user's password and send the user an email to generate a new one.  */
-    public void resetPassword(String email) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("email", email);
-        this.kalturaClient.queueServiceCall("user", "resetPassword", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Set initial users password  */
-    public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("hashKey", hashKey);
-        kparams.add("newPassword", newPassword);
-        this.kalturaClient.queueServiceCall("user", "setInitialPassword", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public KalturaUser enableLogin(String userId, String loginId) throws KalturaApiException {
-        return this.enableLogin(userId, loginId, null);
-    }
-
-	/**  Enables a user to log into a partner account using an email address and a
-	  password  */
-    public KalturaUser enableLogin(String userId, String loginId, String password) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        kparams.add("loginId", loginId);
-        kparams.add("password", password);
-        this.kalturaClient.queueServiceCall("user", "enableLogin", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-    public KalturaUser disableLogin() throws KalturaApiException {
-        return this.disableLogin(null);
-    }
-
-    public KalturaUser disableLogin(String userId) throws KalturaApiException {
-        return this.disableLogin(userId, null);
-    }
-
-	/**  Disables a user's ability to log into a partner account using an email address
-	  and a password.   You may use either a userId or a loginId parameter for this
-	  action.  */
-    public KalturaUser disableLogin(String userId, String loginId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("userId", userId);
-        kparams.add("loginId", loginId);
-        this.kalturaClient.queueServiceCall("user", "disableLogin", kparams, KalturaUser.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
-    }
-
-    public String index(String id) throws KalturaApiException {
-        return this.index(id, true);
-    }
-
-	/**  Index an entry by id.  */
-    public String index(String id, boolean shouldUpdate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
-        this.kalturaClient.queueServiceCall("user", "index", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
     public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData) throws KalturaApiException {
         return this.addFromBulkUpload(fileData, null);
     }
@@ -385,5 +135,255 @@ public class KalturaUserService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseBool(resultText);
+    }
+
+	/**  Deletes a user from a partner account.  */
+    public KalturaUser delete(String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("user", "delete", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+    public KalturaUser disableLogin() throws KalturaApiException {
+        return this.disableLogin(null);
+    }
+
+    public KalturaUser disableLogin(String userId) throws KalturaApiException {
+        return this.disableLogin(userId, null);
+    }
+
+	/**  Disables a user's ability to log into a partner account using an email address
+	  and a password.   You may use either a userId or a loginId parameter for this
+	  action.  */
+    public KalturaUser disableLogin(String userId, String loginId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        kparams.add("loginId", loginId);
+        this.kalturaClient.queueServiceCall("user", "disableLogin", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+    public KalturaUser enableLogin(String userId, String loginId) throws KalturaApiException {
+        return this.enableLogin(userId, loginId, null);
+    }
+
+	/**  Enables a user to log into a partner account using an email address and a
+	  password  */
+    public KalturaUser enableLogin(String userId, String loginId, String password) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        kparams.add("loginId", loginId);
+        kparams.add("password", password);
+        this.kalturaClient.queueServiceCall("user", "enableLogin", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+    public KalturaUser get() throws KalturaApiException {
+        return this.get(null);
+    }
+
+	/**  Retrieves a user object for a specified user ID.  */
+    public KalturaUser get(String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("user", "get", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+	/**  Retrieves a user object for a user's login ID and partner ID.   A login ID is
+	  the email address used by a user to log into the system.  */
+    public KalturaUser getByLoginId(String loginId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("loginId", loginId);
+        this.kalturaClient.queueServiceCall("user", "getByLoginId", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+    public String index(String id) throws KalturaApiException {
+        return this.index(id, true);
+    }
+
+	/**  Index an entry by id.  */
+    public String index(String id, boolean shouldUpdate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("shouldUpdate", shouldUpdate);
+        this.kalturaClient.queueServiceCall("user", "index", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+    public KalturaUserListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaUserListResponse list(KalturaUserFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  Lists user objects that are associated with an account.   Blocked users are
+	  listed unless you use a filter to exclude them.   Deleted users are not listed
+	  unless you use a filter to include them.  */
+    public KalturaUserListResponse list(KalturaUserFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("user", "list", kparams, KalturaUserListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUserListResponse.class, resultXmlElement);
+    }
+
+    public String login(int partnerId, String userId, String password) throws KalturaApiException {
+        return this.login(partnerId, userId, password, 86400);
+    }
+
+    public String login(int partnerId, String userId, String password, int expiry) throws KalturaApiException {
+        return this.login(partnerId, userId, password, expiry, "*");
+    }
+
+	/**  Logs a user into a partner account with a partner ID, a partner user ID (puser),
+	  and a user password.  */
+    public String login(int partnerId, String userId, String password, int expiry, String privileges) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("partnerId", partnerId);
+        kparams.add("userId", userId);
+        kparams.add("password", password);
+        kparams.add("expiry", expiry);
+        kparams.add("privileges", privileges);
+        this.kalturaClient.queueServiceCall("user", "login", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+    public String loginByLoginId(String loginId, String password) throws KalturaApiException {
+        return this.loginByLoginId(loginId, password, Integer.MIN_VALUE);
+    }
+
+    public String loginByLoginId(String loginId, String password, int partnerId) throws KalturaApiException {
+        return this.loginByLoginId(loginId, password, partnerId, 86400);
+    }
+
+    public String loginByLoginId(String loginId, String password, int partnerId, int expiry) throws KalturaApiException {
+        return this.loginByLoginId(loginId, password, partnerId, expiry, "*");
+    }
+
+    public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges) throws KalturaApiException {
+        return this.loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
+    }
+
+	/**  Logs a user into a partner account with a user login ID and a user password.  */
+    public String loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("loginId", loginId);
+        kparams.add("password", password);
+        kparams.add("partnerId", partnerId);
+        kparams.add("expiry", expiry);
+        kparams.add("privileges", privileges);
+        kparams.add("otp", otp);
+        this.kalturaClient.queueServiceCall("user", "loginByLoginId", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
+	/**  Notifies that a user is banned from an account.  */
+    public void notifyBan(String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("user", "notifyBan", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Reset user's password and send the user an email to generate a new one.  */
+    public void resetPassword(String email) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("email", email);
+        this.kalturaClient.queueServiceCall("user", "resetPassword", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Set initial users password  */
+    public void setInitialPassword(String hashKey, String newPassword) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("hashKey", hashKey);
+        kparams.add("newPassword", newPassword);
+        this.kalturaClient.queueServiceCall("user", "setInitialPassword", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Updates an existing user object.   You can also use this action to update the
+	  userId.  */
+    public KalturaUser update(String userId, KalturaUser user) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("userId", userId);
+        kparams.add("user", user);
+        this.kalturaClient.queueServiceCall("user", "update", kparams, KalturaUser.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUser.class, resultXmlElement);
+    }
+
+    public void updateLoginData(String oldLoginId, String password) throws KalturaApiException {
+        this.updateLoginData(oldLoginId, password, "");
+    }
+
+    public void updateLoginData(String oldLoginId, String password, String newLoginId) throws KalturaApiException {
+        this.updateLoginData(oldLoginId, password, newLoginId, "");
+    }
+
+    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword) throws KalturaApiException {
+        this.updateLoginData(oldLoginId, password, newLoginId, newPassword, null);
+    }
+
+    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName) throws KalturaApiException {
+        this.updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
+    }
+
+	/**  Updates a user's login data: email, password, name.  */
+    public void updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("oldLoginId", oldLoginId);
+        kparams.add("password", password);
+        kparams.add("newLoginId", newLoginId);
+        kparams.add("newPassword", newPassword);
+        kparams.add("newFirstName", newFirstName);
+        kparams.add("newLastName", newLastName);
+        this.kalturaClient.queueServiceCall("user", "updateLoginData", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
     }
 }

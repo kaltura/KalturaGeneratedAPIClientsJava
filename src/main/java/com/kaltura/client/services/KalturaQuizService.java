@@ -62,18 +62,6 @@ public class KalturaQuizService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
     }
 
-	/**  Allows to update a quiz  */
-    public KalturaQuiz update(String entryId, KalturaQuiz quiz) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("quiz", quiz);
-        this.kalturaClient.queueServiceCall("quiz_quiz", "update", kparams, KalturaQuiz.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
-    }
-
 	/**  Allows to get a quiz  */
     public KalturaQuiz get(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -83,6 +71,19 @@ public class KalturaQuizService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
+    }
+
+	/**  sends a with an api request for pdf from quiz object  */
+    public String getUrl(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("quizOutputType", quizOutputType);
+        this.kalturaClient.queueServiceCall("quiz_quiz", "getUrl", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 
     public KalturaQuizListResponse list() throws KalturaApiException {
@@ -115,16 +116,15 @@ public class KalturaQuizService extends KalturaServiceBase {
         return this.kalturaClient.serve();
     }
 
-	/**  sends a with an api request for pdf from quiz object  */
-    public String getUrl(String entryId, KalturaQuizOutputType quizOutputType) throws KalturaApiException {
+	/**  Allows to update a quiz  */
+    public KalturaQuiz update(String entryId, KalturaQuiz quiz) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
-        kparams.add("quizOutputType", quizOutputType);
-        this.kalturaClient.queueServiceCall("quiz_quiz", "getUrl", kparams);
+        kparams.add("quiz", quiz);
+        this.kalturaClient.queueServiceCall("quiz_quiz", "update", kparams, KalturaQuiz.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
+        return ParseUtils.parseObject(KalturaQuiz.class, resultXmlElement);
     }
 }

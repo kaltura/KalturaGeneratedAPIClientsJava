@@ -62,24 +62,48 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 
-	/**  Update flavor asset  */
-    public KalturaFlavorAsset update(String id, KalturaFlavorAsset flavorAsset) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("flavorAsset", flavorAsset);
-        this.kalturaClient.queueServiceCall("flavorasset", "update", kparams, KalturaFlavorAsset.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
+    public void convert(String entryId, int flavorParamsId) throws KalturaApiException {
+        this.convert(entryId, flavorParamsId, 0);
     }
 
-	/**  Update content of flavor asset  */
-    public KalturaFlavorAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
+	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
+    public void convert(String entryId, int flavorParamsId, int priority) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("flavorParamsId", flavorParamsId);
+        kparams.add("priority", priority);
+        this.kalturaClient.queueServiceCall("flavorasset", "convert", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Delete Flavor Asset by ID  */
+    public void delete(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-        this.kalturaClient.queueServiceCall("flavorasset", "setContent", kparams, KalturaFlavorAsset.class);
+        this.kalturaClient.queueServiceCall("flavorasset", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  delete all local file syncs for this asset  */
+    public void deleteLocalContent(String assetId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("assetId", assetId);
+        this.kalturaClient.queueServiceCall("flavorasset", "deleteLocalContent", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  manually export an asset  */
+    public KalturaFlavorAsset export(String assetId, int storageProfileId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("assetId", assetId);
+        kparams.add("storageProfileId", storageProfileId);
+        this.kalturaClient.queueServiceCall("flavorasset", "export", kparams, KalturaFlavorAsset.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
@@ -106,111 +130,6 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseArray(KalturaFlavorAsset.class, resultXmlElement);
-    }
-
-    public KalturaFlavorAssetListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaFlavorAssetListResponse list(KalturaAssetFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List Flavor Assets by filter and pager  */
-    public KalturaFlavorAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("flavorasset", "list", kparams, KalturaFlavorAssetListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFlavorAssetListResponse.class, resultXmlElement);
-    }
-
-	/**  Get web playable Flavor Assets for Entry  */
-    public List<KalturaFlavorAsset> getWebPlayableByEntryId(String entryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        this.kalturaClient.queueServiceCall("flavorasset", "getWebPlayableByEntryId", kparams, KalturaFlavorAsset.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaFlavorAsset.class, resultXmlElement);
-    }
-
-    public void convert(String entryId, int flavorParamsId) throws KalturaApiException {
-        this.convert(entryId, flavorParamsId, 0);
-    }
-
-	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
-    public void convert(String entryId, int flavorParamsId, int priority) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorParamsId", flavorParamsId);
-        kparams.add("priority", priority);
-        this.kalturaClient.queueServiceCall("flavorasset", "convert", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Reconvert Flavor Asset by ID  */
-    public void reconvert(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("flavorasset", "reconvert", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-	/**  Delete Flavor Asset by ID  */
-    public void delete(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("flavorasset", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public String getUrl(String id) throws KalturaApiException {
-        return this.getUrl(id, Integer.MIN_VALUE);
-    }
-
-    public String getUrl(String id, int storageId) throws KalturaApiException {
-        return this.getUrl(id, storageId, false);
-    }
-
-    public String getUrl(String id, int storageId, boolean forceProxy) throws KalturaApiException {
-        return this.getUrl(id, storageId, forceProxy, null);
-    }
-
-	/**  Get download URL for the asset  */
-    public String getUrl(String id, int storageId, boolean forceProxy, KalturaFlavorAssetUrlOptions options) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("storageId", storageId);
-        kparams.add("forceProxy", forceProxy);
-        kparams.add("options", options);
-        this.kalturaClient.queueServiceCall("flavorasset", "getUrl", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseString(resultText);
-    }
-
-	/**  Get remote storage existing paths for the asset  */
-    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("flavorasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
     public String getDownloadUrl(String id) throws KalturaApiException {
@@ -242,33 +161,80 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         return ParseUtils.parseArray(KalturaFlavorAssetWithParams.class, resultXmlElement);
     }
 
-	/**  manually export an asset  */
-    public KalturaFlavorAsset export(String assetId, int storageProfileId) throws KalturaApiException {
+	/**  Get remote storage existing paths for the asset  */
+    public KalturaRemotePathListResponse getRemotePaths(String id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("assetId", assetId);
-        kparams.add("storageProfileId", storageProfileId);
-        this.kalturaClient.queueServiceCall("flavorasset", "export", kparams, KalturaFlavorAsset.class);
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("flavorasset", "getRemotePaths", kparams, KalturaRemotePathListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaRemotePathListResponse.class, resultXmlElement);
     }
 
-	/**  Set a given flavor as the original flavor  */
-    public void setAsSource(String assetId) throws KalturaApiException {
+    public String getUrl(String id) throws KalturaApiException {
+        return this.getUrl(id, Integer.MIN_VALUE);
+    }
+
+    public String getUrl(String id, int storageId) throws KalturaApiException {
+        return this.getUrl(id, storageId, false);
+    }
+
+    public String getUrl(String id, int storageId, boolean forceProxy) throws KalturaApiException {
+        return this.getUrl(id, storageId, forceProxy, null);
+    }
+
+	/**  Get download URL for the asset  */
+    public String getUrl(String id, int storageId, boolean forceProxy, KalturaFlavorAssetUrlOptions options) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("assetId", assetId);
-        this.kalturaClient.queueServiceCall("flavorasset", "setAsSource", kparams);
+        kparams.add("id", id);
+        kparams.add("storageId", storageId);
+        kparams.add("forceProxy", forceProxy);
+        kparams.add("options", options);
+        this.kalturaClient.queueServiceCall("flavorasset", "getUrl", kparams);
         if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
     }
 
-	/**  delete all local file syncs for this asset  */
-    public void deleteLocalContent(String assetId) throws KalturaApiException {
+	/**  Get web playable Flavor Assets for Entry  */
+    public List<KalturaFlavorAsset> getWebPlayableByEntryId(String entryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
-        kparams.add("assetId", assetId);
-        this.kalturaClient.queueServiceCall("flavorasset", "deleteLocalContent", kparams);
+        kparams.add("entryId", entryId);
+        this.kalturaClient.queueServiceCall("flavorasset", "getWebPlayableByEntryId", kparams, KalturaFlavorAsset.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaFlavorAsset.class, resultXmlElement);
+    }
+
+    public KalturaFlavorAssetListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaFlavorAssetListResponse list(KalturaAssetFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List Flavor Assets by filter and pager  */
+    public KalturaFlavorAssetListResponse list(KalturaAssetFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("flavorasset", "list", kparams, KalturaFlavorAssetListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaFlavorAssetListResponse.class, resultXmlElement);
+    }
+
+	/**  Reconvert Flavor Asset by ID  */
+    public void reconvert(String id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("flavorasset", "reconvert", kparams);
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
@@ -294,5 +260,39 @@ public class KalturaFlavorAssetService extends KalturaServiceBase {
         Element resultXmlElement = this.kalturaClient.doQueue();
         String resultText = resultXmlElement.getTextContent();
         return ParseUtils.parseString(resultText);
+    }
+
+	/**  Set a given flavor as the original flavor  */
+    public void setAsSource(String assetId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("assetId", assetId);
+        this.kalturaClient.queueServiceCall("flavorasset", "setAsSource", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Update content of flavor asset  */
+    public KalturaFlavorAsset setContent(String id, KalturaContentResource contentResource) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("contentResource", contentResource);
+        this.kalturaClient.queueServiceCall("flavorasset", "setContent", kparams, KalturaFlavorAsset.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
+    }
+
+	/**  Update flavor asset  */
+    public KalturaFlavorAsset update(String id, KalturaFlavorAsset flavorAsset) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("flavorAsset", flavorAsset);
+        this.kalturaClient.queueServiceCall("flavorasset", "update", kparams, KalturaFlavorAsset.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaFlavorAsset.class, resultXmlElement);
     }
 }

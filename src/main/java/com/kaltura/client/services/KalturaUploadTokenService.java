@@ -68,6 +68,16 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUploadToken.class, resultXmlElement);
     }
 
+	/**  Deletes the upload token by upload token id  */
+    public void delete(String uploadTokenId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("uploadTokenId", uploadTokenId);
+        this.kalturaClient.queueServiceCall("uploadtoken", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Get upload token by id  */
     public KalturaUploadToken get(String uploadTokenId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -77,6 +87,27 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaUploadToken.class, resultXmlElement);
+    }
+
+    public KalturaUploadTokenListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaUploadTokenListResponse list(KalturaUploadTokenFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List upload token by filter with pager support.    When using a user session the
+	  service will be restricted to users objects only.  */
+    public KalturaUploadTokenListResponse list(KalturaUploadTokenFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("uploadtoken", "list", kparams, KalturaUploadTokenListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaUploadTokenListResponse.class, resultXmlElement);
     }
 
     public KalturaUploadToken upload(String uploadTokenId, KalturaFile fileData) throws KalturaApiException {
@@ -164,36 +195,5 @@ public class KalturaUploadTokenService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaUploadToken.class, resultXmlElement);
-    }
-
-	/**  Deletes the upload token by upload token id  */
-    public void delete(String uploadTokenId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("uploadTokenId", uploadTokenId);
-        this.kalturaClient.queueServiceCall("uploadtoken", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
-    public KalturaUploadTokenListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaUploadTokenListResponse list(KalturaUploadTokenFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List upload token by filter with pager support.    When using a user session the
-	  service will be restricted to users objects only.  */
-    public KalturaUploadTokenListResponse list(KalturaUploadTokenFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("uploadtoken", "list", kparams, KalturaUploadTokenListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaUploadTokenListResponse.class, resultXmlElement);
     }
 }

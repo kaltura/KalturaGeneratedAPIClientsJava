@@ -84,6 +84,29 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 
+	/**  Delete an event notification template object  */
+    public void delete(int id) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "delete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
+	/**  Dispatch event notification object by id  */
+    public int dispatch(int id, KalturaEventNotificationScope scope) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("scope", scope);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "dispatch", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
 	/**  Retrieve an event notification template object by id  */
     public KalturaEventNotificationTemplate get(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -93,40 +116,6 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
-    }
-
-	/**  Update an existing event notification template object  */
-    public KalturaEventNotificationTemplate update(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("eventNotificationTemplate", eventNotificationTemplate);
-        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "update", kparams, KalturaEventNotificationTemplate.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
-    }
-
-	/**  Update event notification template status by id  */
-    public KalturaEventNotificationTemplate updateStatus(int id, KalturaEventNotificationTemplateStatus status) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("status", status);
-        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "updateStatus", kparams, KalturaEventNotificationTemplate.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
-    }
-
-	/**  Delete an event notification template object  */
-    public void delete(int id) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "delete", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
     }
 
     public KalturaEventNotificationTemplateListResponse list() throws KalturaApiException {
@@ -168,19 +157,6 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplateListResponse.class, resultXmlElement);
     }
 
-	/**  Dispatch event notification object by id  */
-    public int dispatch(int id, KalturaEventNotificationScope scope) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("id", id);
-        kparams.add("scope", scope);
-        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "dispatch", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
     public KalturaEventNotificationTemplateListResponse listTemplates() throws KalturaApiException {
         return this.listTemplates(null);
     }
@@ -199,5 +175,29 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaEventNotificationTemplateListResponse.class, resultXmlElement);
+    }
+
+	/**  Update an existing event notification template object  */
+    public KalturaEventNotificationTemplate update(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("eventNotificationTemplate", eventNotificationTemplate);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "update", kparams, KalturaEventNotificationTemplate.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
+    }
+
+	/**  Update event notification template status by id  */
+    public KalturaEventNotificationTemplate updateStatus(int id, KalturaEventNotificationTemplateStatus status) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("id", id);
+        kparams.add("status", status);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "updateStatus", kparams, KalturaEventNotificationTemplate.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaEventNotificationTemplate.class, resultXmlElement);
     }
 }

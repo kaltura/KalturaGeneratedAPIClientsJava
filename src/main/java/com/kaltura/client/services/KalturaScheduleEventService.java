@@ -34,12 +34,12 @@ import org.w3c.dom.Element;
 import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -65,83 +65,6 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
-    }
-
-	/**  Retrieve a KalturaScheduleEvent object by ID  */
-    public KalturaScheduleEvent get(int scheduleEventId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "get", kparams, KalturaScheduleEvent.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
-    }
-
-	/**  Update an existing KalturaScheduleEvent object  */
-    public KalturaScheduleEvent update(int scheduleEventId, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleEvent", scheduleEvent);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "update", kparams, KalturaScheduleEvent.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
-    }
-
-	/**  Mark the KalturaScheduleEvent object as deleted  */
-    public KalturaScheduleEvent delete(int scheduleEventId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "delete", kparams, KalturaScheduleEvent.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
-    }
-
-	/**  Mark the KalturaScheduleEvent object as cancelled  */
-    public KalturaScheduleEvent cancel(int scheduleEventId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("scheduleEventId", scheduleEventId);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "cancel", kparams, KalturaScheduleEvent.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
-    }
-
-    public KalturaScheduleEventListResponse list() throws KalturaApiException {
-        return this.list(null);
-    }
-
-    public KalturaScheduleEventListResponse list(KalturaScheduleEventFilter filter) throws KalturaApiException {
-        return this.list(filter, null);
-    }
-
-	/**  List KalturaScheduleEvent objects  */
-    public KalturaScheduleEventListResponse list(KalturaScheduleEventFilter filter, KalturaFilterPager pager) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "list", kparams, KalturaScheduleEventListResponse.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaScheduleEventListResponse.class, resultXmlElement);
-    }
-
-	/**  List conflicting events for resourcesIds by event's dates  */
-    public List<KalturaScheduleEvent> getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("resourceIds", resourceIds);
-        kparams.add("scheduleEvent", scheduleEvent);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEvent.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaScheduleEvent.class, resultXmlElement);
     }
 
     public KalturaBulkUpload addFromBulkUpload(KalturaFile fileData) throws KalturaApiException {
@@ -183,5 +106,82 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
         return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
+    }
+
+	/**  Mark the KalturaScheduleEvent object as cancelled  */
+    public KalturaScheduleEvent cancel(int scheduleEventId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "cancel", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
+    }
+
+	/**  Mark the KalturaScheduleEvent object as deleted  */
+    public KalturaScheduleEvent delete(int scheduleEventId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "delete", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
+    }
+
+	/**  Retrieve a KalturaScheduleEvent object by ID  */
+    public KalturaScheduleEvent get(int scheduleEventId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "get", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
+    }
+
+	/**  List conflicting events for resourcesIds by event's dates  */
+    public List<KalturaScheduleEvent> getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("resourceIds", resourceIds);
+        kparams.add("scheduleEvent", scheduleEvent);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseArray(KalturaScheduleEvent.class, resultXmlElement);
+    }
+
+    public KalturaScheduleEventListResponse list() throws KalturaApiException {
+        return this.list(null);
+    }
+
+    public KalturaScheduleEventListResponse list(KalturaScheduleEventFilter filter) throws KalturaApiException {
+        return this.list(filter, null);
+    }
+
+	/**  List KalturaScheduleEvent objects  */
+    public KalturaScheduleEventListResponse list(KalturaScheduleEventFilter filter, KalturaFilterPager pager) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        kparams.add("pager", pager);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "list", kparams, KalturaScheduleEventListResponse.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEventListResponse.class, resultXmlElement);
+    }
+
+	/**  Update an existing KalturaScheduleEvent object  */
+    public KalturaScheduleEvent update(int scheduleEventId, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("scheduleEventId", scheduleEventId);
+        kparams.add("scheduleEvent", scheduleEvent);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "update", kparams, KalturaScheduleEvent.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
     }
 }

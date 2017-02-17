@@ -29,11 +29,11 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.KalturaServiceBase;
-import com.kaltura.client.types.*;
 import org.w3c.dom.Element;
-import com.kaltura.client.utils.ParseUtils;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.types.*;
+import com.kaltura.client.utils.ParseUtils;
 
 /**
  * This class was generated using exec.php
@@ -49,6 +49,17 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         this.kalturaClient = client;
     }
 
+	/**  activate CategoryEntry when it is pending moderation  */
+    public void activate(String entryId, int categoryId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("categoryId", categoryId);
+        this.kalturaClient.queueServiceCall("categoryentry", "activate", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Add new CategoryEntry  */
     public KalturaCategoryEntry add(KalturaCategoryEntry categoryEntry) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -60,6 +71,21 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryEntry.class, resultXmlElement);
     }
 
+    public KalturaBulkUpload addFromBulkUpload(KalturaBulkServiceData bulkUploadData) throws KalturaApiException {
+        return this.addFromBulkUpload(bulkUploadData, null);
+    }
+
+    public KalturaBulkUpload addFromBulkUpload(KalturaBulkServiceData bulkUploadData, KalturaBulkUploadCategoryEntryData bulkUploadCategoryEntryData) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("bulkUploadData", bulkUploadData);
+        kparams.add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
+        this.kalturaClient.queueServiceCall("categoryentry", "addFromBulkUpload", kparams, KalturaBulkUpload.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
+    }
+
 	/**  Delete CategoryEntry  */
     public void delete(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -69,6 +95,24 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
+    }
+
+    public int index(String entryId, int categoryId) throws KalturaApiException {
+        return this.index(entryId, categoryId, true);
+    }
+
+	/**  Index CategoryEntry by Id  */
+    public int index(String entryId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("entryId", entryId);
+        kparams.add("categoryId", categoryId);
+        kparams.add("shouldUpdate", shouldUpdate);
+        this.kalturaClient.queueServiceCall("categoryentry", "index", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
     }
 
     public KalturaCategoryEntryListResponse list() throws KalturaApiException {
@@ -91,35 +135,6 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaCategoryEntryListResponse.class, resultXmlElement);
     }
 
-    public int index(String entryId, int categoryId) throws KalturaApiException {
-        return this.index(entryId, categoryId, true);
-    }
-
-	/**  Index CategoryEntry by Id  */
-    public int index(String entryId, int categoryId, boolean shouldUpdate) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-        kparams.add("shouldUpdate", shouldUpdate);
-        this.kalturaClient.queueServiceCall("categoryentry", "index", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return 0;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        String resultText = resultXmlElement.getTextContent();
-        return ParseUtils.parseInt(resultText);
-    }
-
-	/**  activate CategoryEntry when it is pending moderation  */
-    public void activate(String entryId, int categoryId) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-        this.kalturaClient.queueServiceCall("categoryentry", "activate", kparams);
-        if (this.kalturaClient.isMultiRequest())
-            return ;
-        this.kalturaClient.doQueue();
-    }
-
 	/**  activate CategoryEntry when it is pending moderation  */
     public void reject(String entryId, int categoryId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
@@ -140,20 +155,5 @@ public class KalturaCategoryEntryService extends KalturaServiceBase {
         if (this.kalturaClient.isMultiRequest())
             return ;
         this.kalturaClient.doQueue();
-    }
-
-    public KalturaBulkUpload addFromBulkUpload(KalturaBulkServiceData bulkUploadData) throws KalturaApiException {
-        return this.addFromBulkUpload(bulkUploadData, null);
-    }
-
-    public KalturaBulkUpload addFromBulkUpload(KalturaBulkServiceData bulkUploadData, KalturaBulkUploadCategoryEntryData bulkUploadCategoryEntryData) throws KalturaApiException {
-        KalturaParams kparams = new KalturaParams();
-        kparams.add("bulkUploadData", bulkUploadData);
-        kparams.add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
-        this.kalturaClient.queueServiceCall("categoryentry", "addFromBulkUpload", kparams, KalturaBulkUpload.class);
-        if (this.kalturaClient.isMultiRequest())
-            return null;
-        Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseObject(KalturaBulkUpload.class, resultXmlElement);
     }
 }
