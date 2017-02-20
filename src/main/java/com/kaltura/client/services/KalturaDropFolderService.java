@@ -71,11 +71,45 @@ public class KalturaDropFolderService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
     }
 
+    public KalturaDropFolder freeExclusiveDropFolder(int dropFolderId, int status) throws KalturaApiException {
+        return this.freeExclusiveDropFolder(dropFolderId, status, null);
+    }
+
+    public KalturaDropFolder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode) throws KalturaApiException {
+        return this.freeExclusiveDropFolder(dropFolderId, status, errorCode, null);
+    }
+
+	/**  freeExclusive KalturaDropFolder object  */
+    public KalturaDropFolder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode, String errorDescription) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("dropFolderId", dropFolderId);
+        kparams.add("status", status);
+        kparams.add("errorCode", errorCode);
+        kparams.add("errorDescription", errorDescription);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "freeExclusiveDropFolder", kparams, KalturaDropFolder.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
+    }
+
 	/**  Retrieve a KalturaDropFolder object by ID  */
     public KalturaDropFolder get(int dropFolderId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("dropFolderId", dropFolderId);
         this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "get", kparams, KalturaDropFolder.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaDropFolder.class, resultXmlElement);
+    }
+
+	/**  getExclusive KalturaDropFolder object  */
+    public KalturaDropFolder getExclusiveDropFolder(String tag, int maxTime) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("tag", tag);
+        kparams.add("maxTime", maxTime);
+        this.kalturaClient.queueServiceCall("dropfolder_dropfolder", "getExclusiveDropFolder", kparams, KalturaDropFolder.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
