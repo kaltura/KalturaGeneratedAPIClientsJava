@@ -87,6 +87,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
     public String multiStream;
     public double anamorphicPixels = Double.MIN_VALUE;
     public int isAvoidForcedKeyFrames = Integer.MIN_VALUE;
+    public int forcedKeyFramesMode = Integer.MIN_VALUE;
     public int isCropIMX = Integer.MIN_VALUE;
     public int optimizationPolicy = Integer.MIN_VALUE;
     public int maxFrameRate = Integer.MIN_VALUE;
@@ -190,6 +191,9 @@ public class KalturaFlavorParams extends KalturaAssetParams {
             } else if (nodeName.equals("isAvoidForcedKeyFrames")) {
                 this.isAvoidForcedKeyFrames = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("forcedKeyFramesMode")) {
+                this.forcedKeyFramesMode = ParseUtils.parseInt(txt);
+                continue;
             } else if (nodeName.equals("isCropIMX")) {
                 this.isCropIMX = ParseUtils.parseInt(txt);
                 continue;
@@ -257,6 +261,7 @@ public class KalturaFlavorParams extends KalturaAssetParams {
         kparams.add("multiStream", this.multiStream);
         kparams.add("anamorphicPixels", this.anamorphicPixels);
         kparams.add("isAvoidForcedKeyFrames", this.isAvoidForcedKeyFrames);
+        kparams.add("forcedKeyFramesMode", this.forcedKeyFramesMode);
         kparams.add("isCropIMX", this.isCropIMX);
         kparams.add("optimizationPolicy", this.optimizationPolicy);
         kparams.add("maxFrameRate", this.maxFrameRate);

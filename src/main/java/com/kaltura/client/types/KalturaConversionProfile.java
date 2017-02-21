@@ -89,6 +89,11 @@ public class KalturaConversionProfile extends KalturaObjectBase {
 	/**  Defines the tags that should be used to define 'collective'/group/multi-flavor
 	  processing,   like 'mbr' or 'ism'  */
     public String collectionTags;
+	/**  JSON string with array of "condition,profile-id" pairs.  */
+    public String conditionalProfiles;
+	/**  When set, the ExtractMedia job should detect the source file GOP using this
+	  value as the max calculated period  */
+    public int detectGOP = Integer.MIN_VALUE;
 
     public KalturaConversionProfile() {
     }
@@ -163,6 +168,12 @@ public class KalturaConversionProfile extends KalturaObjectBase {
             } else if (nodeName.equals("collectionTags")) {
                 this.collectionTags = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("conditionalProfiles")) {
+                this.conditionalProfiles = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("detectGOP")) {
+                this.detectGOP = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -187,6 +198,8 @@ public class KalturaConversionProfile extends KalturaObjectBase {
         kparams.add("mediaParserType", this.mediaParserType);
         kparams.add("calculateComplexity", this.calculateComplexity);
         kparams.add("collectionTags", this.collectionTags);
+        kparams.add("conditionalProfiles", this.conditionalProfiles);
+        kparams.add("detectGOP", this.detectGOP);
         return kparams;
     }
 

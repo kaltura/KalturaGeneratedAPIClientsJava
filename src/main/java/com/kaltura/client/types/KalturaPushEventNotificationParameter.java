@@ -43,38 +43,21 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public class KalturaExtractMediaJobData extends KalturaConvartableJobData {
-    public String flavorAssetId;
-    public boolean calculateComplexity;
-    public boolean extractId3Tags;
-	/**  The data output file  */
-    public String destDataFilePath;
-    public int detectGOP = Integer.MIN_VALUE;
+public class KalturaPushEventNotificationParameter extends KalturaEventNotificationParameter {
+    public String queueKeyToken;
 
-    public KalturaExtractMediaJobData() {
+    public KalturaPushEventNotificationParameter() {
     }
 
-    public KalturaExtractMediaJobData(Element node) throws KalturaApiException {
+    public KalturaPushEventNotificationParameter(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("flavorAssetId")) {
-                this.flavorAssetId = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("calculateComplexity")) {
-                this.calculateComplexity = ParseUtils.parseBool(txt);
-                continue;
-            } else if (nodeName.equals("extractId3Tags")) {
-                this.extractId3Tags = ParseUtils.parseBool(txt);
-                continue;
-            } else if (nodeName.equals("destDataFilePath")) {
-                this.destDataFilePath = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("detectGOP")) {
-                this.detectGOP = ParseUtils.parseInt(txt);
+            if (nodeName.equals("queueKeyToken")) {
+                this.queueKeyToken = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -82,12 +65,8 @@ public class KalturaExtractMediaJobData extends KalturaConvartableJobData {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaExtractMediaJobData");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("calculateComplexity", this.calculateComplexity);
-        kparams.add("extractId3Tags", this.extractId3Tags);
-        kparams.add("destDataFilePath", this.destDataFilePath);
-        kparams.add("detectGOP", this.detectGOP);
+        kparams.add("objectType", "KalturaPushEventNotificationParameter");
+        kparams.add("queueKeyToken", this.queueKeyToken);
         return kparams;
     }
 
