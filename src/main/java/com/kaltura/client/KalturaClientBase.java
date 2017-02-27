@@ -257,7 +257,7 @@ abstract public class KalturaClientBase implements Serializable {
 
 		if (logger.isEnabled())
 		{
-			logger.debug("JSON: [" + kparams + "]");
+			logger.debug("Request params JSON: [" + kparams + "]");
 		}
 
 		PostMethod method;
@@ -265,19 +265,26 @@ abstract public class KalturaClientBase implements Serializable {
 			method = createPostMethod(kparams, kfiles, url);
 		} catch (UnsupportedEncodingException e) {
 			resetRequest();
-			throw new KalturaApiException("Unsupported encoding: " + e.getMessage());
+			throw new KalturaApiException("Failed executing request, unsupported encoding: " + e.getMessage());
 		}
 		
 		HttpClient client = createHttpClient();
 		String responseString = null;
 		try {
 			responseString = executeMethod(client, method);
+		} catch (Exception e) {
+			throw new KalturaApiException("Failed executing request: " + e);
 		} finally {
 			resetRequest();
 		}
-		
-		Element responseXml = XmlUtils.parseXml(responseString);
-		Element resultXml = this.validateXmlResult(responseXml);
+		Element responseXml = null;
+		Element resultXml = null;
+		try {
+			responseXml = XmlUtils.parseXml(responseString);
+			resultXml = this.validateXmlResult(responseXml);
+		} catch (Exception e) {
+			throw new KalturaApiException("invalid response: [" + responseString + "]. Error: " + e);
+		}
 		this.throwExceptionOnAPIError(resultXml);
 				
 		return resultXml;
@@ -317,7 +324,7 @@ abstract public class KalturaClientBase implements Serializable {
 			{
 				Header[] headers = method.getRequestHeaders();
 				for(Header header : headers)
-					logger.debug("Header [" + header.getName() + " value [" + header.getValue() + "]");
+					logger.debug("Request header \"" + header.getName() + "\":" + header.getValue());
 			}
 			
 			if (logger.isEnabled() && statusCode != HttpStatus.SC_OK) {
@@ -342,10 +349,10 @@ abstract public class KalturaClientBase implements Serializable {
             String serverSession = null;
             for(Header header : responseHeaders)
             {
-            	if (header.getName().compareTo("X-Me") == 0)
-                    serverName = header.getValue();
-            	else if (header.getName().compareTo("X-Kaltura-Session") == 0)
-                    serverSession = header.getValue();
+				if (header.getName().compareTo("X-Me") == 0)
+					serverName = header.getValue();
+				else if (header.getName().compareTo("X-Kaltura-Session") == 0)
+					serverSession = header.getValue();
 			}
 			if (serverName != null || serverSession != null)
 				logger.debug("Server: [" + serverName + "], Session: [" + serverSession + "]");
@@ -530,7 +537,7 @@ abstract public class KalturaClientBase implements Serializable {
 		}
 		catch (XPathExpressionException xee)
 		{
-			throw new KalturaApiException("XPath expression exception evaluating result");
+			throw new KalturaApiException("XPath expression exception evaluating result: [" + element + "] xpath: [" + xPath +"]");
 		}
 	}
 	
@@ -604,9 +611,9 @@ abstract public class KalturaClientBase implements Serializable {
    		resultElement = getElementByXPath(resultXml, "/xml/result");
 						
 		if (resultElement != null) {
-			return resultElement;			
+			return resultElement;
 		} else {
-			throw new KalturaApiException("Invalid result");
+			throw new KalturaApiException("invalid result (missing /xml/result)");
 		}
 	}
 
