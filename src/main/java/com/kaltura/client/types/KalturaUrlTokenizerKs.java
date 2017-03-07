@@ -45,6 +45,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public class KalturaUrlTokenizerKs extends KalturaUrlTokenizer {
     public boolean usePath;
+    public String additionalUris;
 
     public KalturaUrlTokenizerKs() {
     }
@@ -59,6 +60,9 @@ public class KalturaUrlTokenizerKs extends KalturaUrlTokenizer {
             if (nodeName.equals("usePath")) {
                 this.usePath = ParseUtils.parseBool(txt);
                 continue;
+            } else if (nodeName.equals("additionalUris")) {
+                this.additionalUris = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -67,6 +71,7 @@ public class KalturaUrlTokenizerKs extends KalturaUrlTokenizer {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaUrlTokenizerKs");
         kparams.add("usePath", this.usePath);
+        kparams.add("additionalUris", this.additionalUris);
         return kparams;
     }
 

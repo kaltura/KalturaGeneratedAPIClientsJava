@@ -47,6 +47,7 @@ public enum KalturaSourceType implements KalturaEnumAsString {
     RECORDED_LIVE ("34"),
     CLIP ("35"),
     KALTURA_RECORDED_LIVE ("36"),
+    LECTURE_CAPTURE ("37"),
     LIVE_STREAM_ONTEXTDATA_CAPTIONS ("42");
 
     public String hashCode;
@@ -127,6 +128,11 @@ public enum KalturaSourceType implements KalturaEnumAsString {
         if (hashCode.equals("36"))
         {
            return KALTURA_RECORDED_LIVE;
+        }
+        else 
+        if (hashCode.equals("37"))
+        {
+           return LECTURE_CAPTURE;
         }
         else 
         if (hashCode.equals("42"))
