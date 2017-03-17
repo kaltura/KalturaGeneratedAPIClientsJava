@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum KalturaCaptionType implements KalturaEnumAsString {
     SRT ("1"),
     DFXP ("2"),
-    WEBVTT ("3");
+    WEBVTT ("3"),
+    CAP ("4");
 
     public String hashCode;
 
@@ -66,6 +67,11 @@ public enum KalturaCaptionType implements KalturaEnumAsString {
         if (hashCode.equals("3"))
         {
            return WEBVTT;
+        }
+        else 
+        if (hashCode.equals("4"))
+        {
+           return CAP;
         }
         else 
         {
