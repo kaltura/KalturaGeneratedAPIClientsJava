@@ -48,6 +48,10 @@ public class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed {
     public String feedDescription;
 	/**  feed landing page (i.e publisher website)  */
     public String feedLandingPage;
+	/**  entry filter  */
+    public KalturaBaseEntryFilter entryFilter;
+	/**  page size  */
+    public int pageSize = Integer.MIN_VALUE;
 
     public KalturaGenericSyndicationFeed() {
     }
@@ -65,6 +69,12 @@ public class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed {
             } else if (nodeName.equals("feedLandingPage")) {
                 this.feedLandingPage = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("entryFilter")) {
+                this.entryFilter = ParseUtils.parseObject(KalturaBaseEntryFilter.class, aNode);
+                continue;
+            } else if (nodeName.equals("pageSize")) {
+                this.pageSize = ParseUtils.parseInt(txt);
+                continue;
             } 
         }
     }
@@ -74,6 +84,8 @@ public class KalturaGenericSyndicationFeed extends KalturaBaseSyndicationFeed {
         kparams.add("objectType", "KalturaGenericSyndicationFeed");
         kparams.add("feedDescription", this.feedDescription);
         kparams.add("feedLandingPage", this.feedLandingPage);
+        kparams.add("entryFilter", this.entryFilter);
+        kparams.add("pageSize", this.pageSize);
         return kparams;
     }
 

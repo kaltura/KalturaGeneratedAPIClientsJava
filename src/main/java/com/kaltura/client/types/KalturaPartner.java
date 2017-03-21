@@ -313,6 +313,7 @@ public class KalturaPartner extends KalturaObjectBase {
         kparams.add("country", this.country);
         kparams.add("state", this.state);
         kparams.add("additionalParams", this.additionalParams);
+        kparams.add("partnerParentId", this.partnerParentId);
         kparams.add("referenceId", this.referenceId);
         return kparams;
     }
