@@ -39,7 +39,9 @@ public enum KalturaSyndicationFeedType implements KalturaEnumAsInt {
     ITUNES (3),
     TUBE_MOGUL (4),
     KALTURA (5),
-    KALTURA_XSLT (6);
+    KALTURA_XSLT (6),
+    ROKU_DIRECT_PUBLISHER (7),
+    OPERA_TV_SNAP (8);
 
     public int hashCode;
 
@@ -63,6 +65,8 @@ public enum KalturaSyndicationFeedType implements KalturaEnumAsInt {
             case 4: return TUBE_MOGUL;
             case 5: return KALTURA;
             case 6: return KALTURA_XSLT;
+            case 7: return ROKU_DIRECT_PUBLISHER;
+            case 8: return OPERA_TV_SNAP;
             default: return GOOGLE_VIDEO;
         }
     }
