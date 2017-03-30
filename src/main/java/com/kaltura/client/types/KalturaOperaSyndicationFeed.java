@@ -30,9 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 
 /**
@@ -42,39 +39,19 @@ import org.w3c.dom.NodeList;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media file that is already accessible on the shared disc.  */
 @SuppressWarnings("serial")
-public class KalturaServerFileResource extends KalturaDataCenterContentResource {
-	/**  Full path to the local file  */
-    public String localFilePath;
-	/**  Should keep original file (false = mv, true = cp)  */
-    public boolean keepOriginalFile;
+public class KalturaOperaSyndicationFeed extends KalturaConstantXsltSyndicationFeed {
 
-    public KalturaServerFileResource() {
+    public KalturaOperaSyndicationFeed() {
     }
 
-    public KalturaServerFileResource(Element node) throws KalturaApiException {
+    public KalturaOperaSyndicationFeed(Element node) throws KalturaApiException {
         super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("localFilePath")) {
-                this.localFilePath = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("keepOriginalFile")) {
-                this.keepOriginalFile = ParseUtils.parseBool(txt);
-                continue;
-            } 
-        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaServerFileResource");
-        kparams.add("localFilePath", this.localFilePath);
-        kparams.add("keepOriginalFile", this.keepOriginalFile);
+        kparams.add("objectType", "KalturaOperaSyndicationFeed");
         return kparams;
     }
 
