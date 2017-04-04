@@ -17,6 +17,7 @@ if [ "$RUN_ENV" = 'development' ];then
     BASEDIR=`dirname $0`
     if [ -r "$BASEDIR/../src/log4j/log4j.ci.properties" ]; then
         cp $BASEDIR/../src/log4j/log4j.ci.properties $BASEDIR/../src/log4j.properties
+	ls -al $BASEDIR/../src/log4j.properties
     fi
 fi
 
