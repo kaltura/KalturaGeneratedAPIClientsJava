@@ -45,6 +45,8 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaAssetParamsBaseFilter extends KalturaRelatedFilter {
+    public int idEqual = Integer.MIN_VALUE;
+    public String idIn;
     public String systemNameEqual;
     public String systemNameIn;
     public KalturaNullableBoolean isSystemDefaultEqual;
@@ -60,7 +62,13 @@ public abstract class KalturaAssetParamsBaseFilter extends KalturaRelatedFilter 
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("systemNameEqual")) {
+            if (nodeName.equals("idEqual")) {
+                this.idEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("idIn")) {
+                this.idIn = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("systemNameEqual")) {
                 this.systemNameEqual = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("systemNameIn")) {
@@ -79,6 +87,8 @@ public abstract class KalturaAssetParamsBaseFilter extends KalturaRelatedFilter 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaAssetParamsBaseFilter");
+        kparams.add("idEqual", this.idEqual);
+        kparams.add("idIn", this.idIn);
         kparams.add("systemNameEqual", this.systemNameEqual);
         kparams.add("systemNameIn", this.systemNameIn);
         kparams.add("isSystemDefaultEqual", this.isSystemDefaultEqual);
