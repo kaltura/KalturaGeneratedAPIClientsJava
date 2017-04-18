@@ -288,7 +288,7 @@ abstract public class KalturaClientBase implements Serializable {
         {
         	out.write(buf,0,len);
         }
-        return new String(out.toByteArray());
+        return new String(out.toByteArray(), "UTF-8");
     }
 
 	protected String executeMethod(HttpClient client, PostMethod method) throws KalturaApiException {
