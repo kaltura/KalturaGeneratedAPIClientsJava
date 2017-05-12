@@ -33,37 +33,43 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum KalturaEntryModerationStatus implements KalturaEnumAsInt {
-    PENDING_MODERATION (1),
-    APPROVED (2),
-    REJECTED (3),
-    DELETED (4),
-    FLAGGED_FOR_REVIEW (5),
-    AUTO_APPROVED (6);
+public enum KalturaUserEntryExtendedStatus implements KalturaEnumAsString {
+    PLAYBACK_COMPLETE ("viewHistory.PLAYBACK_COMPLETE"),
+    PLAYBACK_STARTED ("viewHistory.PLAYBACK_STARTED"),
+    VIEWED ("viewHistory.VIEWED");
 
-    public int hashCode;
+    public String hashCode;
 
-    KalturaEntryModerationStatus(int hashCode) {
+    KalturaUserEntryExtendedStatus(String hashCode) {
         this.hashCode = hashCode;
     }
 
-    public int getHashCode() {
+    public String getHashCode() {
         return this.hashCode;
     }
 
-    public void setHashCode(int hashCode) {
+    public void setHashCode(String hashCode) {
         this.hashCode = hashCode;
     }
 
-    public static KalturaEntryModerationStatus get(int hashCode) {
-        switch(hashCode) {
-            case 1: return PENDING_MODERATION;
-            case 2: return APPROVED;
-            case 3: return REJECTED;
-            case 4: return DELETED;
-            case 5: return FLAGGED_FOR_REVIEW;
-            case 6: return AUTO_APPROVED;
-            default: return PENDING_MODERATION;
+    public static KalturaUserEntryExtendedStatus get(String hashCode) {
+        if (hashCode.equals("viewHistory.PLAYBACK_COMPLETE"))
+        {
+           return PLAYBACK_COMPLETE;
+        }
+        else 
+        if (hashCode.equals("viewHistory.PLAYBACK_STARTED"))
+        {
+           return PLAYBACK_STARTED;
+        }
+        else 
+        if (hashCode.equals("viewHistory.VIEWED"))
+        {
+           return VIEWED;
+        }
+        else 
+        {
+           return PLAYBACK_COMPLETE;
         }
     }
 }

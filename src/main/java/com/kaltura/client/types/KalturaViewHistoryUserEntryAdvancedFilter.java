@@ -30,9 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
-import com.kaltura.client.enums.KalturaUserEntryStatus;
-import com.kaltura.client.enums.KalturaUserEntryType;
 import com.kaltura.client.enums.KalturaUserEntryExtendedStatus;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -47,54 +44,49 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaUserEntry extends KalturaObjectBase {
-	/**  unique auto-generated identifier  */
-    public int id = Integer.MIN_VALUE;
-    public String entryId;
-    public String userId;
-    public int partnerId = Integer.MIN_VALUE;
-    public KalturaUserEntryStatus status;
-    public int createdAt = Integer.MIN_VALUE;
-    public int updatedAt = Integer.MIN_VALUE;
-    public KalturaUserEntryType type;
-    public KalturaUserEntryExtendedStatus extendedStatus;
+public class KalturaViewHistoryUserEntryAdvancedFilter extends KalturaSearchItem {
+    public String idEqual;
+    public String idIn;
+    public String userIdEqual;
+    public String userIdIn;
+    public String updatedAtGreaterThanOrEqual;
+    public String updatedAtLessThanOrEqual;
+    public KalturaUserEntryExtendedStatus extendedStatusEqual;
+    public String extendedStatusIn;
 
-    public KalturaUserEntry() {
+    public KalturaViewHistoryUserEntryAdvancedFilter() {
     }
 
-    public KalturaUserEntry(Element node) throws KalturaApiException {
+    public KalturaViewHistoryUserEntryAdvancedFilter(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("id")) {
-                this.id = ParseUtils.parseInt(txt);
+            if (nodeName.equals("idEqual")) {
+                this.idEqual = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("entryId")) {
-                this.entryId = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("idIn")) {
+                this.idIn = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("userId")) {
-                this.userId = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("userIdEqual")) {
+                this.userIdEqual = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("partnerId")) {
-                this.partnerId = ParseUtils.parseInt(txt);
+            } else if (nodeName.equals("userIdIn")) {
+                this.userIdIn = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("status")) {
-                this.status = KalturaUserEntryStatus.get(ParseUtils.parseString(txt));
+            } else if (nodeName.equals("updatedAtGreaterThanOrEqual")) {
+                this.updatedAtGreaterThanOrEqual = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("createdAt")) {
-                this.createdAt = ParseUtils.parseInt(txt);
+            } else if (nodeName.equals("updatedAtLessThanOrEqual")) {
+                this.updatedAtLessThanOrEqual = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("updatedAt")) {
-                this.updatedAt = ParseUtils.parseInt(txt);
+            } else if (nodeName.equals("extendedStatusEqual")) {
+                this.extendedStatusEqual = KalturaUserEntryExtendedStatus.get(ParseUtils.parseString(txt));
                 continue;
-            } else if (nodeName.equals("type")) {
-                this.type = KalturaUserEntryType.get(ParseUtils.parseString(txt));
-                continue;
-            } else if (nodeName.equals("extendedStatus")) {
-                this.extendedStatus = KalturaUserEntryExtendedStatus.get(ParseUtils.parseString(txt));
+            } else if (nodeName.equals("extendedStatusIn")) {
+                this.extendedStatusIn = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -102,10 +94,15 @@ public abstract class KalturaUserEntry extends KalturaObjectBase {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserEntry");
-        kparams.add("entryId", this.entryId);
-        kparams.add("userId", this.userId);
-        kparams.add("extendedStatus", this.extendedStatus);
+        kparams.add("objectType", "KalturaViewHistoryUserEntryAdvancedFilter");
+        kparams.add("idEqual", this.idEqual);
+        kparams.add("idIn", this.idIn);
+        kparams.add("userIdEqual", this.userIdEqual);
+        kparams.add("userIdIn", this.userIdIn);
+        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+        kparams.add("extendedStatusEqual", this.extendedStatusEqual);
+        kparams.add("extendedStatusIn", this.extendedStatusIn);
         return kparams;
     }
 

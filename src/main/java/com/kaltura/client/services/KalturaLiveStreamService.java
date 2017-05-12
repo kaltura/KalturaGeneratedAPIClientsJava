@@ -260,14 +260,19 @@ public class KalturaLiveStreamService extends KalturaServiceBase {
         return this.setRecordedContent(entryId, mediaServerIndex, resource, duration, null);
     }
 
-	/**  Sey recorded video to live entry  */
     public KalturaLiveEntry setRecordedContent(String entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, String recordedEntryId) throws KalturaApiException {
+        return this.setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
+    }
+
+	/**  Sey recorded video to live entry  */
+    public KalturaLiveEntry setRecordedContent(String entryId, KalturaEntryServerNodeType mediaServerIndex, KalturaDataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("entryId", entryId);
         kparams.add("mediaServerIndex", mediaServerIndex);
         kparams.add("resource", resource);
         kparams.add("duration", duration);
         kparams.add("recordedEntryId", recordedEntryId);
+        kparams.add("flavorParamsId", flavorParamsId);
         this.kalturaClient.queueServiceCall("livestream", "setRecordedContent", kparams, KalturaLiveEntry.class);
         if (this.kalturaClient.isMultiRequest())
             return null;

@@ -25,7 +25,16 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import org.w3c.dom.Element;
+import com.kaltura.client.KalturaParams;
+import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaGeoCoderType;
+import com.kaltura.client.utils.ParseUtils;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 
 /**
  * This class was generated using exec.php
@@ -33,37 +42,37 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum KalturaEntryModerationStatus implements KalturaEnumAsInt {
-    PENDING_MODERATION (1),
-    APPROVED (2),
-    REJECTED (3),
-    DELETED (4),
-    FLAGGED_FOR_REVIEW (5),
-    AUTO_APPROVED (6);
 
-    public int hashCode;
+/**  Represents the current request country context as calculated based on the IP
+  address  */
+@SuppressWarnings("serial")
+public class KalturaAnonymousIPContextField extends KalturaStringField {
+	/**  The ip geo coder engine to be used  */
+    public KalturaGeoCoderType geoCoderType;
 
-    KalturaEntryModerationStatus(int hashCode) {
-        this.hashCode = hashCode;
+    public KalturaAnonymousIPContextField() {
     }
 
-    public int getHashCode() {
-        return this.hashCode;
-    }
-
-    public void setHashCode(int hashCode) {
-        this.hashCode = hashCode;
-    }
-
-    public static KalturaEntryModerationStatus get(int hashCode) {
-        switch(hashCode) {
-            case 1: return PENDING_MODERATION;
-            case 2: return APPROVED;
-            case 3: return REJECTED;
-            case 4: return DELETED;
-            case 5: return FLAGGED_FOR_REVIEW;
-            case 6: return AUTO_APPROVED;
-            default: return PENDING_MODERATION;
+    public KalturaAnonymousIPContextField(Element node) throws KalturaApiException {
+        super(node);
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node aNode = childNodes.item(i);
+            String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
+            if (nodeName.equals("geoCoderType")) {
+                this.geoCoderType = KalturaGeoCoderType.get(ParseUtils.parseString(txt));
+                continue;
+            } 
         }
     }
+
+    public KalturaParams toParams() throws KalturaApiException {
+        KalturaParams kparams = super.toParams();
+        kparams.add("objectType", "KalturaAnonymousIPContextField");
+        kparams.add("geoCoderType", this.geoCoderType);
+        return kparams;
+    }
+
 }
+

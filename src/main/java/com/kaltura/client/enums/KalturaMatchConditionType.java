@@ -33,37 +33,37 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum KalturaEntryModerationStatus implements KalturaEnumAsInt {
-    PENDING_MODERATION (1),
-    APPROVED (2),
-    REJECTED (3),
-    DELETED (4),
-    FLAGGED_FOR_REVIEW (5),
-    AUTO_APPROVED (6);
+public enum KalturaMatchConditionType implements KalturaEnumAsString {
+    MATCH_ANY ("1"),
+    MATCH_ALL ("2");
 
-    public int hashCode;
+    public String hashCode;
 
-    KalturaEntryModerationStatus(int hashCode) {
+    KalturaMatchConditionType(String hashCode) {
         this.hashCode = hashCode;
     }
 
-    public int getHashCode() {
+    public String getHashCode() {
         return this.hashCode;
     }
 
-    public void setHashCode(int hashCode) {
+    public void setHashCode(String hashCode) {
         this.hashCode = hashCode;
     }
 
-    public static KalturaEntryModerationStatus get(int hashCode) {
-        switch(hashCode) {
-            case 1: return PENDING_MODERATION;
-            case 2: return APPROVED;
-            case 3: return REJECTED;
-            case 4: return DELETED;
-            case 5: return FLAGGED_FOR_REVIEW;
-            case 6: return AUTO_APPROVED;
-            default: return PENDING_MODERATION;
+    public static KalturaMatchConditionType get(String hashCode) {
+        if (hashCode.equals("1"))
+        {
+           return MATCH_ANY;
+        }
+        else 
+        if (hashCode.equals("2"))
+        {
+           return MATCH_ALL;
+        }
+        else 
+        {
+           return MATCH_ANY;
         }
     }
 }

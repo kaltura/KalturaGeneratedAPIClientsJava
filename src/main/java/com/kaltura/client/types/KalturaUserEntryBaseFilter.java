@@ -32,6 +32,7 @@ import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaUserEntryStatus;
 import com.kaltura.client.enums.KalturaUserEntryType;
+import com.kaltura.client.enums.KalturaUserEntryExtendedStatus;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -61,6 +62,9 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaRelatedFilter {
     public int updatedAtLessThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public KalturaUserEntryType typeEqual;
+    public KalturaUserEntryExtendedStatus extendedStatusEqual;
+    public String extendedStatusIn;
+    public String extendedStatusNotIn;
 
     public KalturaUserEntryBaseFilter() {
     }
@@ -117,6 +121,15 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaRelatedFilter {
             } else if (nodeName.equals("typeEqual")) {
                 this.typeEqual = KalturaUserEntryType.get(ParseUtils.parseString(txt));
                 continue;
+            } else if (nodeName.equals("extendedStatusEqual")) {
+                this.extendedStatusEqual = KalturaUserEntryExtendedStatus.get(ParseUtils.parseString(txt));
+                continue;
+            } else if (nodeName.equals("extendedStatusIn")) {
+                this.extendedStatusIn = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("extendedStatusNotIn")) {
+                this.extendedStatusNotIn = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -139,6 +152,9 @@ public abstract class KalturaUserEntryBaseFilter extends KalturaRelatedFilter {
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
         kparams.add("typeEqual", this.typeEqual);
+        kparams.add("extendedStatusEqual", this.extendedStatusEqual);
+        kparams.add("extendedStatusIn", this.extendedStatusIn);
+        kparams.add("extendedStatusNotIn", this.extendedStatusNotIn);
         return kparams;
     }
 

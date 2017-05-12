@@ -59,6 +59,8 @@ public class KalturaLiveStreamParams extends KalturaObjectBase {
     public int frameRate = Integer.MIN_VALUE;
 	/**  Live stream's key frame interval  */
     public double keyFrameInterval = Double.MIN_VALUE;
+	/**  Live stream's language  */
+    public String language;
 
     public KalturaLiveStreamParams() {
     }
@@ -91,6 +93,9 @@ public class KalturaLiveStreamParams extends KalturaObjectBase {
             } else if (nodeName.equals("keyFrameInterval")) {
                 this.keyFrameInterval = ParseUtils.parseDouble(txt);
                 continue;
+            } else if (nodeName.equals("language")) {
+                this.language = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -105,6 +110,7 @@ public class KalturaLiveStreamParams extends KalturaObjectBase {
         kparams.add("codec", this.codec);
         kparams.add("frameRate", this.frameRate);
         kparams.add("keyFrameInterval", this.keyFrameInterval);
+        kparams.add("language", this.language);
         return kparams;
     }
 

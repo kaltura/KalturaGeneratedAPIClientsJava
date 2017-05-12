@@ -30,10 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaObjectBase;
-import com.kaltura.client.enums.KalturaUserEntryStatus;
-import com.kaltura.client.enums.KalturaUserEntryType;
-import com.kaltura.client.enums.KalturaUserEntryExtendedStatus;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -47,54 +43,32 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaUserEntry extends KalturaObjectBase {
-	/**  unique auto-generated identifier  */
-    public int id = Integer.MIN_VALUE;
-    public String entryId;
-    public String userId;
-    public int partnerId = Integer.MIN_VALUE;
-    public KalturaUserEntryStatus status;
-    public int createdAt = Integer.MIN_VALUE;
-    public int updatedAt = Integer.MIN_VALUE;
-    public KalturaUserEntryType type;
-    public KalturaUserEntryExtendedStatus extendedStatus;
+public class KalturaMailNotificationObjectTask extends KalturaObjectTask {
+	/**  The mail to send the notification to  */
+    public String mailAddress;
+	/**  The message to send in the notification mail  */
+    public String message;
+	/**  Send the mail to each user  */
+    public boolean sendToUsers;
 
-    public KalturaUserEntry() {
+    public KalturaMailNotificationObjectTask() {
     }
 
-    public KalturaUserEntry(Element node) throws KalturaApiException {
+    public KalturaMailNotificationObjectTask(Element node) throws KalturaApiException {
         super(node);
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
             String txt = aNode.getTextContent();
-            if (nodeName.equals("id")) {
-                this.id = ParseUtils.parseInt(txt);
+            if (nodeName.equals("mailAddress")) {
+                this.mailAddress = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("entryId")) {
-                this.entryId = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("message")) {
+                this.message = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("userId")) {
-                this.userId = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("partnerId")) {
-                this.partnerId = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("status")) {
-                this.status = KalturaUserEntryStatus.get(ParseUtils.parseString(txt));
-                continue;
-            } else if (nodeName.equals("createdAt")) {
-                this.createdAt = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("updatedAt")) {
-                this.updatedAt = ParseUtils.parseInt(txt);
-                continue;
-            } else if (nodeName.equals("type")) {
-                this.type = KalturaUserEntryType.get(ParseUtils.parseString(txt));
-                continue;
-            } else if (nodeName.equals("extendedStatus")) {
-                this.extendedStatus = KalturaUserEntryExtendedStatus.get(ParseUtils.parseString(txt));
+            } else if (nodeName.equals("sendToUsers")) {
+                this.sendToUsers = ParseUtils.parseBool(txt);
                 continue;
             } 
         }
@@ -102,10 +76,10 @@ public abstract class KalturaUserEntry extends KalturaObjectBase {
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserEntry");
-        kparams.add("entryId", this.entryId);
-        kparams.add("userId", this.userId);
-        kparams.add("extendedStatus", this.extendedStatus);
+        kparams.add("objectType", "KalturaMailNotificationObjectTask");
+        kparams.add("mailAddress", this.mailAddress);
+        kparams.add("message", this.message);
+        kparams.add("sendToUsers", this.sendToUsers);
         return kparams;
     }
 

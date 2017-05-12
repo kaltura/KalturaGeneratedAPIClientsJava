@@ -59,6 +59,17 @@ public class KalturaUserEntryService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaUserEntry.class, resultXmlElement);
     }
 
+    public int bulkDelete(KalturaUserEntryFilter filter) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("filter", filter);
+        this.kalturaClient.queueServiceCall("userentry", "bulkDelete", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return 0;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseInt(resultText);
+    }
+
     public KalturaUserEntry delete(int id) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("id", id);

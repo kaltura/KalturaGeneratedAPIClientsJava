@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
+import com.kaltura.client.enums.KalturaMatchConditionType;
 import java.util.ArrayList;
 import com.kaltura.client.utils.ParseUtils;
 import org.w3c.dom.Node;
@@ -46,6 +47,7 @@ import org.w3c.dom.NodeList;
 @SuppressWarnings("serial")
 public abstract class KalturaMatchCondition extends KalturaCondition {
     public ArrayList<KalturaStringValue> values;
+    public KalturaMatchConditionType matchType;
 
     public KalturaMatchCondition() {
     }
@@ -56,8 +58,12 @@ public abstract class KalturaMatchCondition extends KalturaCondition {
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node aNode = childNodes.item(i);
             String nodeName = aNode.getNodeName();
+            String txt = aNode.getTextContent();
             if (nodeName.equals("values")) {
                 this.values = ParseUtils.parseArray(KalturaStringValue.class, aNode);
+                continue;
+            } else if (nodeName.equals("matchType")) {
+                this.matchType = KalturaMatchConditionType.get(ParseUtils.parseString(txt));
                 continue;
             } 
         }
@@ -67,6 +73,7 @@ public abstract class KalturaMatchCondition extends KalturaCondition {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaMatchCondition");
         kparams.add("values", this.values);
+        kparams.add("matchType", this.matchType);
         return kparams;
     }
 

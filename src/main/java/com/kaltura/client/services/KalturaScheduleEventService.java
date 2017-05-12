@@ -39,7 +39,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import com.kaltura.client.KalturaFiles;
 import com.kaltura.client.KalturaFile;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -142,15 +141,15 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
     }
 
 	/**  List conflicting events for resourcesIds by event's dates  */
-    public List<KalturaScheduleEvent> getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
+    public KalturaScheduleEventListResponse getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("resourceIds", resourceIds);
         kparams.add("scheduleEvent", scheduleEvent);
-        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEvent.class);
+        this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEventListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
         Element resultXmlElement = this.kalturaClient.doQueue();
-        return ParseUtils.parseArray(KalturaScheduleEvent.class, resultXmlElement);
+        return ParseUtils.parseObject(KalturaScheduleEventListResponse.class, resultXmlElement);
     }
 
     public KalturaScheduleEventListResponse list() throws KalturaApiException {

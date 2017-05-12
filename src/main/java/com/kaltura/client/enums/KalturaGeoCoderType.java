@@ -34,7 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaGeoCoderType implements KalturaEnumAsString {
-    KALTURA ("1");
+    KALTURA ("1"),
+    MAX_MIND ("2");
 
     public String hashCode;
 
@@ -54,6 +55,11 @@ public enum KalturaGeoCoderType implements KalturaEnumAsString {
         if (hashCode.equals("1"))
         {
            return KALTURA;
+        }
+        else 
+        if (hashCode.equals("2"))
+        {
+           return MAX_MIND;
         }
         else 
         {

@@ -52,7 +52,8 @@ public enum KalturaConditionType implements KalturaEnumAsString {
     OR_OPERATOR ("11"),
     HASH ("12"),
     DELIVERY_PROFILE ("13"),
-    ACTIVE_EDGE_VALIDATE ("14");
+    ACTIVE_EDGE_VALIDATE ("14"),
+    ANONYMOUS_IP ("15");
 
     public String hashCode;
 
@@ -162,6 +163,11 @@ public enum KalturaConditionType implements KalturaEnumAsString {
         if (hashCode.equals("14"))
         {
            return ACTIVE_EDGE_VALIDATE;
+        }
+        else 
+        if (hashCode.equals("15"))
+        {
+           return ANONYMOUS_IP;
         }
         else 
         {

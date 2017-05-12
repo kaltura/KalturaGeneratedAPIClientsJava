@@ -34,7 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaUserEntryType implements KalturaEnumAsString {
-    QUIZ ("quiz.QUIZ");
+    QUIZ ("quiz.QUIZ"),
+    VIEW_HISTORY ("viewHistory.VIEW_HISTORY");
 
     public String hashCode;
 
@@ -54,6 +55,11 @@ public enum KalturaUserEntryType implements KalturaEnumAsString {
         if (hashCode.equals("quiz.QUIZ"))
         {
            return QUIZ;
+        }
+        else 
+        if (hashCode.equals("viewHistory.VIEW_HISTORY"))
+        {
+           return VIEW_HISTORY;
         }
         else 
         {

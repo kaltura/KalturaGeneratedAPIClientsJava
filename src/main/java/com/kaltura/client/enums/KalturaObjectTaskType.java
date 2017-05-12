@@ -43,7 +43,8 @@ public enum KalturaObjectTaskType implements KalturaEnumAsString {
     CONVERT_ENTRY_FLAVORS ("4"),
     DELETE_LOCAL_CONTENT ("5"),
     STORAGE_EXPORT ("6"),
-    MODIFY_ENTRY ("7");
+    MODIFY_ENTRY ("7"),
+    MAIL_NOTIFICATION ("8");
 
     public String hashCode;
 
@@ -108,6 +109,11 @@ public enum KalturaObjectTaskType implements KalturaEnumAsString {
         if (hashCode.equals("7"))
         {
            return MODIFY_ENTRY;
+        }
+        else 
+        if (hashCode.equals("8"))
+        {
+           return MAIL_NOTIFICATION;
         }
         else 
         {
