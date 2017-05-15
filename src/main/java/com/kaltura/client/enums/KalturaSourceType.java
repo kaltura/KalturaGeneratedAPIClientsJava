@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaSourceType implements KalturaEnumAsString {
+    LIMELIGHT_LIVE ("limeLight.LIVE_STREAM"),
     VELOCIX_LIVE ("velocix.VELOCIX_LIVE"),
     FILE ("1"),
     WEBCAM ("2"),
@@ -65,6 +66,11 @@ public enum KalturaSourceType implements KalturaEnumAsString {
     }
 
     public static KalturaSourceType get(String hashCode) {
+        if (hashCode.equals("limeLight.LIVE_STREAM"))
+        {
+           return LIMELIGHT_LIVE;
+        }
+        else 
         if (hashCode.equals("velocix.VELOCIX_LIVE"))
         {
            return VELOCIX_LIVE;
@@ -141,7 +147,7 @@ public enum KalturaSourceType implements KalturaEnumAsString {
         }
         else 
         {
-           return VELOCIX_LIVE;
+           return LIMELIGHT_LIVE;
         }
     }
 }

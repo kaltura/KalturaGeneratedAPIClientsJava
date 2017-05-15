@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum KalturaIntegrationProviderType implements KalturaEnumAsString {
     CIELO24 ("cielo24.Cielo24"),
+    EXAMPLE ("exampleIntegration.Example"),
     VOICEBASE ("voicebase.Voicebase");
 
     public String hashCode;
@@ -55,6 +56,11 @@ public enum KalturaIntegrationProviderType implements KalturaEnumAsString {
         if (hashCode.equals("cielo24.Cielo24"))
         {
            return CIELO24;
+        }
+        else 
+        if (hashCode.equals("exampleIntegration.Example"))
+        {
+           return EXAMPLE;
         }
         else 
         if (hashCode.equals("voicebase.Voicebase"))

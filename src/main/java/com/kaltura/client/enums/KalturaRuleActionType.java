@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaRuleActionType implements KalturaEnumAsString {
+    DRM_POLICY ("drm.DRM_POLICY"),
     BLOCK ("1"),
     PREVIEW ("2"),
     LIMIT_FLAVORS ("3"),
@@ -58,6 +59,11 @@ public enum KalturaRuleActionType implements KalturaEnumAsString {
     }
 
     public static KalturaRuleActionType get(String hashCode) {
+        if (hashCode.equals("drm.DRM_POLICY"))
+        {
+           return DRM_POLICY;
+        }
+        else 
         if (hashCode.equals("1"))
         {
            return BLOCK;
@@ -99,7 +105,7 @@ public enum KalturaRuleActionType implements KalturaEnumAsString {
         }
         else 
         {
-           return BLOCK;
+           return DRM_POLICY;
         }
     }
 }

@@ -177,6 +177,31 @@ public class KalturaEventNotificationTemplateService extends KalturaServiceBase 
         return ParseUtils.parseObject(KalturaEventNotificationTemplateListResponse.class, resultXmlElement);
     }
 
+	/**  Register to a queue from which event messages will be provided according to
+	  given template. Queue will be created if not already exists  */
+    public KalturaPushNotificationData register(String notificationTemplateSystemName, KalturaPushNotificationParams pushNotificationParams) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("notificationTemplateSystemName", notificationTemplateSystemName);
+        kparams.add("pushNotificationParams", pushNotificationParams);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "register", kparams, KalturaPushNotificationData.class);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        return ParseUtils.parseObject(KalturaPushNotificationData.class, resultXmlElement);
+    }
+
+	/**  Clear queue messages  */
+    public void sendCommand(String notificationTemplateSystemName, KalturaPushNotificationParams pushNotificationParams, KalturaPushNotificationCommandType command) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("notificationTemplateSystemName", notificationTemplateSystemName);
+        kparams.add("pushNotificationParams", pushNotificationParams);
+        kparams.add("command", command);
+        this.kalturaClient.queueServiceCall("eventnotification_eventnotificationtemplate", "sendCommand", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Update an existing event notification template object  */
     public KalturaEventNotificationTemplate update(int id, KalturaEventNotificationTemplate eventNotificationTemplate) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();

@@ -34,7 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaVirusScanEngineType implements KalturaEnumAsString {
-    CLAMAV_SCAN_ENGINE ("clamAVScanEngine.ClamAV");
+    CLAMAV_SCAN_ENGINE ("clamAVScanEngine.ClamAV"),
+    SYMANTEC_SCAN_DIRECT_ENGINE ("symantecScanEngine.SymantecScanDirectEngine"),
+    SYMANTEC_SCAN_ENGINE ("symantecScanEngine.SymantecScanEngine"),
+    SYMANTEC_SCAN_JAVA_ENGINE ("symantecScanEngine.SymantecScanJavaEngine");
 
     public String hashCode;
 
@@ -54,6 +57,21 @@ public enum KalturaVirusScanEngineType implements KalturaEnumAsString {
         if (hashCode.equals("clamAVScanEngine.ClamAV"))
         {
            return CLAMAV_SCAN_ENGINE;
+        }
+        else 
+        if (hashCode.equals("symantecScanEngine.SymantecScanDirectEngine"))
+        {
+           return SYMANTEC_SCAN_DIRECT_ENGINE;
+        }
+        else 
+        if (hashCode.equals("symantecScanEngine.SymantecScanEngine"))
+        {
+           return SYMANTEC_SCAN_ENGINE;
+        }
+        else 
+        if (hashCode.equals("symantecScanEngine.SymantecScanJavaEngine"))
+        {
+           return SYMANTEC_SCAN_JAVA_ENGINE;
         }
         else 
         {

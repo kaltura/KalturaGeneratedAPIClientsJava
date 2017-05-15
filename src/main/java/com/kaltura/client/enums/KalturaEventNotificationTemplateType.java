@@ -34,8 +34,12 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaEventNotificationTemplateType implements KalturaEnumAsString {
+    BPM_ABORT ("businessProcessNotification.BusinessProcessAbort"),
+    BPM_SIGNAL ("businessProcessNotification.BusinessProcessSignal"),
+    BPM_START ("businessProcessNotification.BusinessProcessStart"),
     EMAIL ("emailNotification.Email"),
-    HTTP ("httpNotification.Http");
+    HTTP ("httpNotification.Http"),
+    PUSH ("pushNotification.Push");
 
     public String hashCode;
 
@@ -52,6 +56,21 @@ public enum KalturaEventNotificationTemplateType implements KalturaEnumAsString 
     }
 
     public static KalturaEventNotificationTemplateType get(String hashCode) {
+        if (hashCode.equals("businessProcessNotification.BusinessProcessAbort"))
+        {
+           return BPM_ABORT;
+        }
+        else 
+        if (hashCode.equals("businessProcessNotification.BusinessProcessSignal"))
+        {
+           return BPM_SIGNAL;
+        }
+        else 
+        if (hashCode.equals("businessProcessNotification.BusinessProcessStart"))
+        {
+           return BPM_START;
+        }
+        else 
         if (hashCode.equals("emailNotification.Email"))
         {
            return EMAIL;
@@ -62,8 +81,13 @@ public enum KalturaEventNotificationTemplateType implements KalturaEnumAsString 
            return HTTP;
         }
         else 
+        if (hashCode.equals("pushNotification.Push"))
         {
-           return EMAIL;
+           return PUSH;
+        }
+        else 
+        {
+           return BPM_ABORT;
         }
     }
 }
