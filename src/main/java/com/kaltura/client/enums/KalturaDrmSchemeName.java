@@ -34,11 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaDrmSchemeName implements KalturaEnumAsString {
-    PLAYREADY_CENC ("drm.PLAYREADY_CENC"),
-    WIDEVINE_CENC ("drm.WIDEVINE_CENC"),
-    FAIRPLAY ("fairplay.FAIRPLAY"),
-    PLAYREADY ("playReady.PLAYREADY"),
-    WIDEVINE ("widevine.WIDEVINE");
+    /** Place holder for future values */;
 
     public String hashCode;
 
@@ -55,33 +51,6 @@ public enum KalturaDrmSchemeName implements KalturaEnumAsString {
     }
 
     public static KalturaDrmSchemeName get(String hashCode) {
-        if (hashCode.equals("drm.PLAYREADY_CENC"))
-        {
-           return PLAYREADY_CENC;
-        }
-        else 
-        if (hashCode.equals("drm.WIDEVINE_CENC"))
-        {
-           return WIDEVINE_CENC;
-        }
-        else 
-        if (hashCode.equals("fairplay.FAIRPLAY"))
-        {
-           return FAIRPLAY;
-        }
-        else 
-        if (hashCode.equals("playReady.PLAYREADY"))
-        {
-           return PLAYREADY;
-        }
-        else 
-        if (hashCode.equals("widevine.WIDEVINE"))
-        {
-           return WIDEVINE;
-        }
-        else 
-        {
-           return PLAYREADY_CENC;
-        }
+    	return null;
     }
 }

@@ -34,10 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaBatchJobType implements KalturaEnumAsString {
+    CONVERT ("0"),
     PARSE_MULTI_LANGUAGE_CAPTION_ASSET ("caption.parsemultilanguagecaptionasset"),
     PARSE_CAPTION_ASSET ("captionSearch.parseCaptionAsset"),
     DISTRIBUTION_DELETE ("contentDistribution.DistributionDelete"),
-    CONVERT ("0"),
     DISTRIBUTION_DISABLE ("contentDistribution.DistributionDisable"),
     DISTRIBUTION_ENABLE ("contentDistribution.DistributionEnable"),
     DISTRIBUTION_FETCH_REPORT ("contentDistribution.DistributionFetchReport"),
@@ -52,7 +52,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     INDEX_TAGS ("tagSearch.IndexTagsByPrivacyContext"),
     TAG_RESOLVE ("tagSearch.TagResolve"),
     VIRUS_SCAN ("virusScan.VirusScan"),
-    WIDEVINE_REPOSITORY_SYNC ("widevine.WidevineRepositorySync"),
     IMPORT ("1"),
     DELETE ("2"),
     FLATTEN ("3"),
@@ -107,6 +106,11 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
     }
 
     public static KalturaBatchJobType get(String hashCode) {
+        if (hashCode.equals("0"))
+        {
+           return CONVERT;
+        }
+        else 
         if (hashCode.equals("caption.parsemultilanguagecaptionasset"))
         {
            return PARSE_MULTI_LANGUAGE_CAPTION_ASSET;
@@ -120,11 +124,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("contentDistribution.DistributionDelete"))
         {
            return DISTRIBUTION_DELETE;
-        }
-        else 
-        if (hashCode.equals("0"))
-        {
-           return CONVERT;
         }
         else 
         if (hashCode.equals("contentDistribution.DistributionDisable"))
@@ -195,11 +194,6 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         if (hashCode.equals("virusScan.VirusScan"))
         {
            return VIRUS_SCAN;
-        }
-        else 
-        if (hashCode.equals("widevine.WidevineRepositorySync"))
-        {
-           return WIDEVINE_REPOSITORY_SYNC;
         }
         else 
         if (hashCode.equals("1"))
@@ -393,7 +387,7 @@ public enum KalturaBatchJobType implements KalturaEnumAsString {
         }
         else 
         {
-           return PARSE_MULTI_LANGUAGE_CAPTION_ASSET;
+           return CONVERT;
         }
     }
 }

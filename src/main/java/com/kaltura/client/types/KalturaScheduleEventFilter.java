@@ -56,6 +56,7 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
     public String templateEntryCategoriesIdsLike;
     public String resourceSystemNamesMultiLikeAnd;
     public String resourceSystemNamesLike;
+    public String resourceIdEqual;
 
     public KalturaScheduleEventFilter() {
     }
@@ -103,6 +104,9 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
             } else if (nodeName.equals("resourceSystemNamesLike")) {
                 this.resourceSystemNamesLike = ParseUtils.parseString(txt);
                 continue;
+            } else if (nodeName.equals("resourceIdEqual")) {
+                this.resourceIdEqual = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -122,6 +126,7 @@ public class KalturaScheduleEventFilter extends KalturaScheduleEventBaseFilter {
         kparams.add("templateEntryCategoriesIdsLike", this.templateEntryCategoriesIdsLike);
         kparams.add("resourceSystemNamesMultiLikeAnd", this.resourceSystemNamesMultiLikeAnd);
         kparams.add("resourceSystemNamesLike", this.resourceSystemNamesLike);
+        kparams.add("resourceIdEqual", this.resourceIdEqual);
         return kparams;
     }
 

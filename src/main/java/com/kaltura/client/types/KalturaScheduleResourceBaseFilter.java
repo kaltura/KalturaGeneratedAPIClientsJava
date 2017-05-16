@@ -50,6 +50,7 @@ public abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFi
     public String idNotIn;
     public int parentIdEqual = Integer.MIN_VALUE;
     public String parentIdIn;
+    public String nameEqual;
     public String systemNameEqual;
     public String systemNameIn;
     public KalturaScheduleResourceStatus statusEqual;
@@ -86,6 +87,9 @@ public abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFi
                 continue;
             } else if (nodeName.equals("parentIdIn")) {
                 this.parentIdIn = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("nameEqual")) {
+                this.nameEqual = ParseUtils.parseString(txt);
                 continue;
             } else if (nodeName.equals("systemNameEqual")) {
                 this.systemNameEqual = ParseUtils.parseString(txt);
@@ -132,6 +136,7 @@ public abstract class KalturaScheduleResourceBaseFilter extends KalturaRelatedFi
         kparams.add("idNotIn", this.idNotIn);
         kparams.add("parentIdEqual", this.parentIdEqual);
         kparams.add("parentIdIn", this.parentIdIn);
+        kparams.add("nameEqual", this.nameEqual);
         kparams.add("systemNameEqual", this.systemNameEqual);
         kparams.add("systemNameIn", this.systemNameIn);
         kparams.add("statusEqual", this.statusEqual);

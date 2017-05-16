@@ -42,7 +42,6 @@ public enum KalturaAssetType implements KalturaEnumAsString {
     SWF ("document.SWF"),
     TIMED_THUMB_ASSET ("thumbCuePoint.timedThumb"),
     TRANSCRIPT ("transcript.Transcript"),
-    WIDEVINE_FLAVOR ("widevine.WidevineFlavor"),
     FLAVOR ("1"),
     THUMBNAIL ("2"),
     LIVE ("3");
@@ -100,11 +99,6 @@ public enum KalturaAssetType implements KalturaEnumAsString {
         if (hashCode.equals("transcript.Transcript"))
         {
            return TRANSCRIPT;
-        }
-        else 
-        if (hashCode.equals("widevine.WidevineFlavor"))
-        {
-           return WIDEVINE_FLAVOR;
         }
         else 
         if (hashCode.equals("1"))

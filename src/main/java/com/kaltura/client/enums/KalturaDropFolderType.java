@@ -35,7 +35,6 @@ package com.kaltura.client.enums;
  */
 public enum KalturaDropFolderType implements KalturaEnumAsString {
     FEED ("FeedDropFolder.FEED"),
-    WEBEX ("WebexDropFolder.WEBEX"),
     LOCAL ("1"),
     FTP ("2"),
     SCP ("3"),
@@ -60,11 +59,6 @@ public enum KalturaDropFolderType implements KalturaEnumAsString {
         if (hashCode.equals("FeedDropFolder.FEED"))
         {
            return FEED;
-        }
-        else 
-        if (hashCode.equals("WebexDropFolder.WEBEX"))
-        {
-           return WEBEX;
         }
         else 
         if (hashCode.equals("1"))

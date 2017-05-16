@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum KalturaIntegrationTriggerType implements KalturaEnumAsString {
-    BPM_EVENT_NOTIFICATION ("bpmEventNotificationIntegration.BpmEventNotification"),
     MANUAL ("1");
 
     public String hashCode;
@@ -52,18 +51,13 @@ public enum KalturaIntegrationTriggerType implements KalturaEnumAsString {
     }
 
     public static KalturaIntegrationTriggerType get(String hashCode) {
-        if (hashCode.equals("bpmEventNotificationIntegration.BpmEventNotification"))
-        {
-           return BPM_EVENT_NOTIFICATION;
-        }
-        else 
         if (hashCode.equals("1"))
         {
            return MANUAL;
         }
         else 
         {
-           return BPM_EVENT_NOTIFICATION;
+           return MANUAL;
         }
     }
 }
