@@ -94,6 +94,8 @@ public class KalturaConversionProfile extends KalturaObjectBase {
 	/**  When set, the ExtractMedia job should detect the source file GOP using this
 	  value as the max calculated period  */
     public int detectGOP = Integer.MIN_VALUE;
+	/**  XSL to transform ingestion Media Info XML  */
+    public String mediaInfoXslTransformation;
 
     public KalturaConversionProfile() {
     }
@@ -174,6 +176,9 @@ public class KalturaConversionProfile extends KalturaObjectBase {
             } else if (nodeName.equals("detectGOP")) {
                 this.detectGOP = ParseUtils.parseInt(txt);
                 continue;
+            } else if (nodeName.equals("mediaInfoXslTransformation")) {
+                this.mediaInfoXslTransformation = ParseUtils.parseString(txt);
+                continue;
             } 
         }
     }
@@ -200,6 +205,7 @@ public class KalturaConversionProfile extends KalturaObjectBase {
         kparams.add("collectionTags", this.collectionTags);
         kparams.add("conditionalProfiles", this.conditionalProfiles);
         kparams.add("detectGOP", this.detectGOP);
+        kparams.add("mediaInfoXslTransformation", this.mediaInfoXslTransformation);
         return kparams;
     }
 
