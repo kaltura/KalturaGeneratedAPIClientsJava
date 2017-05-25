@@ -110,6 +110,7 @@ import com.kaltura.client.services.KalturaScheduleResourceService;
 import com.kaltura.client.services.KalturaScheduleEventResourceService;
 import com.kaltura.client.services.KalturaScheduledTaskProfileService;
 import com.kaltura.client.services.KalturaIntegrationService;
+import com.kaltura.client.services.KalturaPollService;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
@@ -125,7 +126,7 @@ public class KalturaClient extends KalturaClientBase {
 	public KalturaClient(KalturaConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:17-05-24");
+		this.setClientTag("java:17-05-25");
 		this.setApiVersion("3.3.0");
 	}
 	
@@ -799,6 +800,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.integrationService = new KalturaIntegrationService(this);
 	
 		return this.integrationService;
+	}
+	
+	protected KalturaPollService pollService;
+	public KalturaPollService getPollService() {
+		if(this.pollService == null)
+			this.pollService = new KalturaPollService(this);
+	
+		return this.pollService;
 	}
 	
 	/**
