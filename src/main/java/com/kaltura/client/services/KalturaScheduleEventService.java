@@ -140,11 +140,16 @@ public class KalturaScheduleEventService extends KalturaServiceBase {
         return ParseUtils.parseObject(KalturaScheduleEvent.class, resultXmlElement);
     }
 
-	/**  List conflicting events for resourcesIds by event's dates  */
     public KalturaScheduleEventListResponse getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent) throws KalturaApiException {
+        return this.getConflicts(resourceIds, scheduleEvent, null);
+    }
+
+	/**  List conflicting events for resourcesIds by event's dates  */
+    public KalturaScheduleEventListResponse getConflicts(String resourceIds, KalturaScheduleEvent scheduleEvent, String scheduleEventIdToIgnore) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
         kparams.add("resourceIds", resourceIds);
         kparams.add("scheduleEvent", scheduleEvent);
+        kparams.add("scheduleEventIdToIgnore", scheduleEventIdToIgnore);
         this.kalturaClient.queueServiceCall("schedule_scheduleevent", "getConflicts", kparams, KalturaScheduleEventListResponse.class);
         if (this.kalturaClient.isMultiRequest())
             return null;
