@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum KalturaScheduledTaskAddOrRemoveType implements KalturaEnumAsInt {
     ADD (1),
-    REMOVE (2);
+    REMOVE (2),
+    MOVE (3);
 
     public int hashCode;
 
@@ -55,6 +56,7 @@ public enum KalturaScheduledTaskAddOrRemoveType implements KalturaEnumAsInt {
         switch(hashCode) {
             case 1: return ADD;
             case 2: return REMOVE;
+            case 3: return MOVE;
             default: return ADD;
         }
     }
