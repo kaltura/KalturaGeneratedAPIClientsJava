@@ -66,7 +66,7 @@ public abstract class KalturaServerNode extends KalturaObjectBase {
 	/**  DC where the serverNode is located  */
     public int dc = Integer.MIN_VALUE;
 	/**  Id of the parent serverNode  */
-    public int parentId = Integer.MIN_VALUE;
+    public String parentId;
 
     public KalturaServerNode() {
     }
@@ -118,7 +118,7 @@ public abstract class KalturaServerNode extends KalturaObjectBase {
                 this.dc = ParseUtils.parseInt(txt);
                 continue;
             } else if (nodeName.equals("parentId")) {
-                this.parentId = ParseUtils.parseInt(txt);
+                this.parentId = ParseUtils.parseString(txt);
                 continue;
             } 
         }

@@ -30,9 +30,6 @@ package com.kaltura.client.types;
 import org.w3c.dom.Element;
 import com.kaltura.client.KalturaParams;
 import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.utils.ParseUtils;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 
 /**
@@ -44,39 +41,17 @@ import org.w3c.dom.NodeList;
 
 @SuppressWarnings("serial")
 public abstract class KalturaDeliveryServerNodeBaseFilter extends KalturaServerNodeFilter {
-    public String playbackDomainLike;
-    public String playbackDomainMultiLikeOr;
-    public String playbackDomainMultiLikeAnd;
 
     public KalturaDeliveryServerNodeBaseFilter() {
     }
 
     public KalturaDeliveryServerNodeBaseFilter(Element node) throws KalturaApiException {
         super(node);
-        NodeList childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node aNode = childNodes.item(i);
-            String nodeName = aNode.getNodeName();
-            String txt = aNode.getTextContent();
-            if (nodeName.equals("playbackDomainLike")) {
-                this.playbackDomainLike = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("playbackDomainMultiLikeOr")) {
-                this.playbackDomainMultiLikeOr = ParseUtils.parseString(txt);
-                continue;
-            } else if (nodeName.equals("playbackDomainMultiLikeAnd")) {
-                this.playbackDomainMultiLikeAnd = ParseUtils.parseString(txt);
-                continue;
-            } 
-        }
     }
 
     public KalturaParams toParams() throws KalturaApiException {
         KalturaParams kparams = super.toParams();
         kparams.add("objectType", "KalturaDeliveryServerNodeBaseFilter");
-        kparams.add("playbackDomainLike", this.playbackDomainLike);
-        kparams.add("playbackDomainMultiLikeOr", this.playbackDomainMultiLikeOr);
-        kparams.add("playbackDomainMultiLikeAnd", this.playbackDomainMultiLikeAnd);
         return kparams;
     }
 

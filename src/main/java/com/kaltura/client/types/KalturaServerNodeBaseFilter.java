@@ -70,8 +70,9 @@ public abstract class KalturaServerNodeBaseFilter extends KalturaFilter {
     public String tagsMultiLikeAnd;
     public int dcEqual = Integer.MIN_VALUE;
     public String dcIn;
-    public int parentIdEqual = Integer.MIN_VALUE;
-    public String parentIdIn;
+    public String parentIdLike;
+    public String parentIdMultiLikeOr;
+    public String parentIdMultiLikeAnd;
 
     public KalturaServerNodeBaseFilter() {
     }
@@ -155,11 +156,14 @@ public abstract class KalturaServerNodeBaseFilter extends KalturaFilter {
             } else if (nodeName.equals("dcIn")) {
                 this.dcIn = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("parentIdEqual")) {
-                this.parentIdEqual = ParseUtils.parseInt(txt);
+            } else if (nodeName.equals("parentIdLike")) {
+                this.parentIdLike = ParseUtils.parseString(txt);
                 continue;
-            } else if (nodeName.equals("parentIdIn")) {
-                this.parentIdIn = ParseUtils.parseString(txt);
+            } else if (nodeName.equals("parentIdMultiLikeOr")) {
+                this.parentIdMultiLikeOr = ParseUtils.parseString(txt);
+                continue;
+            } else if (nodeName.equals("parentIdMultiLikeAnd")) {
+                this.parentIdMultiLikeAnd = ParseUtils.parseString(txt);
                 continue;
             } 
         }
@@ -192,8 +196,9 @@ public abstract class KalturaServerNodeBaseFilter extends KalturaFilter {
         kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
         kparams.add("dcEqual", this.dcEqual);
         kparams.add("dcIn", this.dcIn);
-        kparams.add("parentIdEqual", this.parentIdEqual);
-        kparams.add("parentIdIn", this.parentIdIn);
+        kparams.add("parentIdLike", this.parentIdLike);
+        kparams.add("parentIdMultiLikeOr", this.parentIdMultiLikeOr);
+        kparams.add("parentIdMultiLikeAnd", this.parentIdMultiLikeAnd);
         return kparams;
     }
 

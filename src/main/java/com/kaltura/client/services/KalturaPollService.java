@@ -65,6 +65,19 @@ public class KalturaPollService extends KalturaServiceBase {
         return ParseUtils.parseString(resultText);
     }
 
+	/**  Vote Action  */
+    public String getVote(String pollId, String userId) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("pollId", pollId);
+        kparams.add("userId", userId);
+        this.kalturaClient.queueServiceCall("poll_poll", "getVote", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return null;
+        Element resultXmlElement = this.kalturaClient.doQueue();
+        String resultText = resultXmlElement.getTextContent();
+        return ParseUtils.parseString(resultText);
+    }
+
     public String getVotes(String pollId, String answerIds) throws KalturaApiException {
         return this.getVotes(pollId, answerIds, null);
     }

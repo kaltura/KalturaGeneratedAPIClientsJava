@@ -45,12 +45,12 @@ import org.w3c.dom.NodeList;
  */
 
 @SuppressWarnings("serial")
-public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFilter {
+public abstract class KalturaEntryServerNodeBaseFilter extends KalturaFilter {
     public String entryIdEqual;
     public String entryIdIn;
     public int serverNodeIdEqual = Integer.MIN_VALUE;
-    public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int createdAtLessThanOrEqual = Integer.MIN_VALUE;
+    public int createdAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtGreaterThanOrEqual = Integer.MIN_VALUE;
     public int updatedAtLessThanOrEqual = Integer.MIN_VALUE;
     public KalturaEntryServerNodeStatus statusEqual;
@@ -76,11 +76,11 @@ public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFil
             } else if (nodeName.equals("serverNodeIdEqual")) {
                 this.serverNodeIdEqual = ParseUtils.parseInt(txt);
                 continue;
-            } else if (nodeName.equals("createdAtGreaterThanOrEqual")) {
-                this.createdAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
-                continue;
             } else if (nodeName.equals("createdAtLessThanOrEqual")) {
                 this.createdAtLessThanOrEqual = ParseUtils.parseInt(txt);
+                continue;
+            } else if (nodeName.equals("createdAtGreaterThanOrEqual")) {
+                this.createdAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
                 continue;
             } else if (nodeName.equals("updatedAtGreaterThanOrEqual")) {
                 this.updatedAtGreaterThanOrEqual = ParseUtils.parseInt(txt);
@@ -107,8 +107,8 @@ public abstract class KalturaEntryServerNodeBaseFilter extends KalturaRelatedFil
         kparams.add("entryIdEqual", this.entryIdEqual);
         kparams.add("entryIdIn", this.entryIdIn);
         kparams.add("serverNodeIdEqual", this.serverNodeIdEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
         kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
         kparams.add("statusEqual", this.statusEqual);
