@@ -37,6 +37,8 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
     AD_CUE_POINT ("adCuePointMetadata.AdCuePoint"),
     ANNOTATION ("annotationMetadata.Annotation"),
     CODE_CUE_POINT ("codeCuePointMetadata.CodeCuePoint"),
+    ANSWER_CUE_POINT ("quiz.AnswerCuePoint"),
+    QUESTION_CUE_POINT ("quiz.QuestionCuePoint"),
     THUMB_CUE_POINT ("thumbCuePointMetadata.thumbCuePoint"),
     ENTRY ("1"),
     CATEGORY ("2"),
@@ -72,6 +74,16 @@ public enum KalturaMetadataObjectType implements KalturaEnumAsString {
         if (hashCode.equals("codeCuePointMetadata.CodeCuePoint"))
         {
            return CODE_CUE_POINT;
+        }
+        else 
+        if (hashCode.equals("quiz.AnswerCuePoint"))
+        {
+           return ANSWER_CUE_POINT;
+        }
+        else 
+        if (hashCode.equals("quiz.QuestionCuePoint"))
+        {
+           return QUESTION_CUE_POINT;
         }
         else 
         if (hashCode.equals("thumbCuePointMetadata.thumbCuePoint"))
