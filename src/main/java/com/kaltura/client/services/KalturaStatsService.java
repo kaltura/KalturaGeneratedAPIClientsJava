@@ -81,6 +81,16 @@ public class KalturaStatsService extends KalturaServiceBase {
         this.kalturaClient.doQueue();
     }
 
+	/**  Use this action to report device capabilities to the kaltura server.  */
+    public void reportDeviceCapabilities(String data) throws KalturaApiException {
+        KalturaParams kparams = new KalturaParams();
+        kparams.add("data", data);
+        this.kalturaClient.queueServiceCall("stats", "reportDeviceCapabilities", kparams);
+        if (this.kalturaClient.isMultiRequest())
+            return ;
+        this.kalturaClient.doQueue();
+    }
+
 	/**  Use this action to report errors to the kaltura server.  */
     public void reportError(String errorCode, String errorMessage) throws KalturaApiException {
         KalturaParams kparams = new KalturaParams();
