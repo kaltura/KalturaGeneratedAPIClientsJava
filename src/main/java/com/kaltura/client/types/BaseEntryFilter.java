@@ -1,0 +1,124 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2017  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+package com.kaltura.client.types;
+
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.google.gson.JsonObject;
+
+
+/**
+ * This class was generated using exec.php
+ * against an XML schema provided by Kaltura.
+ * 
+ * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
+ */
+
+@SuppressWarnings("serial")
+public class BaseEntryFilter extends BaseEntryBaseFilter {
+
+    private String freeText;
+    private Boolean isRoot;
+    private String categoriesFullNameIn;
+	/**  All entries within this categoy or in child categories  */
+    private String categoryAncestorIdIn;
+	/**  The id of the original entry  */
+    private String redirectFromEntryId;
+
+    // freeText:
+    public String getFreeText(){
+        return this.freeText;
+    }
+    public void setFreeText(String freeText){
+        this.freeText = freeText;
+    }
+
+    // isRoot:
+    public Boolean getIsRoot(){
+        return this.isRoot;
+    }
+    public void setIsRoot(Boolean isRoot){
+        this.isRoot = isRoot;
+    }
+
+    // categoriesFullNameIn:
+    public String getCategoriesFullNameIn(){
+        return this.categoriesFullNameIn;
+    }
+    public void setCategoriesFullNameIn(String categoriesFullNameIn){
+        this.categoriesFullNameIn = categoriesFullNameIn;
+    }
+
+    // categoryAncestorIdIn:
+    public String getCategoryAncestorIdIn(){
+        return this.categoryAncestorIdIn;
+    }
+    public void setCategoryAncestorIdIn(String categoryAncestorIdIn){
+        this.categoryAncestorIdIn = categoryAncestorIdIn;
+    }
+
+    // redirectFromEntryId:
+    public String getRedirectFromEntryId(){
+        return this.redirectFromEntryId;
+    }
+    public void setRedirectFromEntryId(String redirectFromEntryId){
+        this.redirectFromEntryId = redirectFromEntryId;
+    }
+
+
+    public BaseEntryFilter() {
+       super();
+    }
+
+    public BaseEntryFilter(JsonObject jsonObject) throws APIException {
+        super(jsonObject);
+
+        if(jsonObject == null) return;
+
+        // set members values:
+        freeText = GsonParser.parseString(jsonObject.get("freeText"));
+        isRoot = GsonParser.parseBoolean(jsonObject.get("isRoot"));
+        categoriesFullNameIn = GsonParser.parseString(jsonObject.get("categoriesFullNameIn"));
+        categoryAncestorIdIn = GsonParser.parseString(jsonObject.get("categoryAncestorIdIn"));
+        redirectFromEntryId = GsonParser.parseString(jsonObject.get("redirectFromEntryId"));
+
+    }
+
+    public Params toParams() {
+        Params kparams = super.toParams();
+        kparams.add("objectType", "KalturaBaseEntryFilter");
+        kparams.add("freeText", this.freeText);
+        kparams.add("isRoot", this.isRoot);
+        kparams.add("categoriesFullNameIn", this.categoriesFullNameIn);
+        kparams.add("categoryAncestorIdIn", this.categoryAncestorIdIn);
+        kparams.add("redirectFromEntryId", this.redirectFromEntryId);
+        return kparams;
+    }
+
+}
+

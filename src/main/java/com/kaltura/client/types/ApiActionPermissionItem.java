@@ -42,9 +42,7 @@ import com.google.gson.JsonObject;
 @SuppressWarnings("serial")
 public class ApiActionPermissionItem extends PermissionItem {
 
-	/**  API service name  */
     private String service;
-	/**  API action name  */
     private String action;
 
     // service:

@@ -36,9 +36,9 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AppTokenStatus implements EnumAsInt {
-    DELETED(0),
     DISABLED(1),
-    ACTIVE(2);
+    ACTIVE(2),
+    DELETED(3);
 
     private int value;
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.types.SearchItem;
 import com.google.gson.JsonObject;
 
 
@@ -43,14 +44,23 @@ import com.google.gson.JsonObject;
 @SuppressWarnings("serial")
 public abstract class Filter extends ObjectBase {
 
-    private Integer orderBy;
+    private String orderBy;
+    private SearchItem advancedSearch;
 
     // orderBy:
-    public Integer getOrderBy(){
+    public String getOrderBy(){
         return this.orderBy;
     }
-    public void setOrderBy(Integer orderBy){
+    public void setOrderBy(String orderBy){
         this.orderBy = orderBy;
+    }
+
+    // advancedSearch:
+    public SearchItem getAdvancedSearch(){
+        return this.advancedSearch;
+    }
+    public void setAdvancedSearch(SearchItem advancedSearch){
+        this.advancedSearch = advancedSearch;
     }
 
 
@@ -64,7 +74,8 @@ public abstract class Filter extends ObjectBase {
         if(jsonObject == null) return;
 
         // set members values:
-        orderBy = GsonParser.parseInt(jsonObject.get("orderBy"));
+        orderBy = GsonParser.parseString(jsonObject.get("orderBy"));
+        advancedSearch = GsonParser.parseObject(jsonObject.getAsJsonObject("advancedSearch"), SearchItem.class);
 
     }
 
@@ -72,6 +83,7 @@ public abstract class Filter extends ObjectBase {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaFilter");
         kparams.add("orderBy", this.orderBy);
+        kparams.add("advancedSearch", this.advancedSearch);
         return kparams;
     }
 

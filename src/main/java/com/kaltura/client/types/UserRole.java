@@ -30,7 +30,7 @@ package com.kaltura.client.types;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.types.ObjectBase;
-import java.util.List;
+import com.kaltura.client.enums.UserRoleStatus;
 import com.google.gson.JsonObject;
 
 
@@ -44,18 +44,22 @@ import com.google.gson.JsonObject;
 @SuppressWarnings("serial")
 public class UserRole extends ObjectBase {
 
-	/**  User role identifier  */
-    private Long id;
-	/**  User role name  */
+    private Integer id;
     private String name;
-	/**  List of permissions associated with the user role  */
-    private List<Permission> permissions;
+    private String systemName;
+    private String description;
+    private UserRoleStatus status;
+    private Integer partnerId;
+    private String permissionNames;
+    private String tags;
+    private Integer createdAt;
+    private Integer updatedAt;
 
     // id:
-    public Long getId(){
+    public Integer getId(){
         return this.id;
     }
-    public void setId(Long id){
+    public void setId(Integer id){
         this.id = id;
     }
 
@@ -67,12 +71,68 @@ public class UserRole extends ObjectBase {
         this.name = name;
     }
 
-    // permissions:
-    public List<Permission> getPermissions(){
-        return this.permissions;
+    // systemName:
+    public String getSystemName(){
+        return this.systemName;
     }
-    public void setPermissions(List<Permission> permissions){
-        this.permissions = permissions;
+    public void setSystemName(String systemName){
+        this.systemName = systemName;
+    }
+
+    // description:
+    public String getDescription(){
+        return this.description;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    // status:
+    public UserRoleStatus getStatus(){
+        return this.status;
+    }
+    public void setStatus(UserRoleStatus status){
+        this.status = status;
+    }
+
+    // partnerId:
+    public Integer getPartnerId(){
+        return this.partnerId;
+    }
+    public void setPartnerId(Integer partnerId){
+        this.partnerId = partnerId;
+    }
+
+    // permissionNames:
+    public String getPermissionNames(){
+        return this.permissionNames;
+    }
+    public void setPermissionNames(String permissionNames){
+        this.permissionNames = permissionNames;
+    }
+
+    // tags:
+    public String getTags(){
+        return this.tags;
+    }
+    public void setTags(String tags){
+        this.tags = tags;
+    }
+
+    // createdAt:
+    public Integer getCreatedAt(){
+        return this.createdAt;
+    }
+    public void setCreatedAt(Integer createdAt){
+        this.createdAt = createdAt;
+    }
+
+    // updatedAt:
+    public Integer getUpdatedAt(){
+        return this.updatedAt;
+    }
+    public void setUpdatedAt(Integer updatedAt){
+        this.updatedAt = updatedAt;
     }
 
 
@@ -86,9 +146,16 @@ public class UserRole extends ObjectBase {
         if(jsonObject == null) return;
 
         // set members values:
-        id = GsonParser.parseLong(jsonObject.get("id"));
+        id = GsonParser.parseInt(jsonObject.get("id"));
         name = GsonParser.parseString(jsonObject.get("name"));
-        permissions = GsonParser.parseArray(jsonObject.getAsJsonArray("permissions"), Permission.class);
+        systemName = GsonParser.parseString(jsonObject.get("systemName"));
+        description = GsonParser.parseString(jsonObject.get("description"));
+        status = UserRoleStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+        permissionNames = GsonParser.parseString(jsonObject.get("permissionNames"));
+        tags = GsonParser.parseString(jsonObject.get("tags"));
+        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
     }
 
@@ -96,7 +163,11 @@ public class UserRole extends ObjectBase {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaUserRole");
         kparams.add("name", this.name);
-        kparams.add("permissions", this.permissions);
+        kparams.add("systemName", this.systemName);
+        kparams.add("description", this.description);
+        kparams.add("status", this.status);
+        kparams.add("permissionNames", this.permissionNames);
+        kparams.add("tags", this.tags);
         return kparams;
     }
 

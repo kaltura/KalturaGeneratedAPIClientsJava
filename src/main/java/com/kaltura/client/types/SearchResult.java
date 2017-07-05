@@ -1,0 +1,189 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2017  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+package com.kaltura.client.types;
+
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.enums.LicenseType;
+import com.google.gson.JsonObject;
+
+
+/**
+ * This class was generated using exec.php
+ * against an XML schema provided by Kaltura.
+ * 
+ * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
+ */
+
+@SuppressWarnings("serial")
+public class SearchResult extends Search {
+
+    private String id;
+    private String title;
+    private String thumbUrl;
+    private String description;
+    private String tags;
+    private String url;
+    private String sourceLink;
+    private String credit;
+    private LicenseType licenseType;
+    private String flashPlaybackType;
+    private String fileExt;
+
+    // id:
+    public String getId(){
+        return this.id;
+    }
+    public void setId(String id){
+        this.id = id;
+    }
+
+    // title:
+    public String getTitle(){
+        return this.title;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    // thumbUrl:
+    public String getThumbUrl(){
+        return this.thumbUrl;
+    }
+    public void setThumbUrl(String thumbUrl){
+        this.thumbUrl = thumbUrl;
+    }
+
+    // description:
+    public String getDescription(){
+        return this.description;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    // tags:
+    public String getTags(){
+        return this.tags;
+    }
+    public void setTags(String tags){
+        this.tags = tags;
+    }
+
+    // url:
+    public String getUrl(){
+        return this.url;
+    }
+    public void setUrl(String url){
+        this.url = url;
+    }
+
+    // sourceLink:
+    public String getSourceLink(){
+        return this.sourceLink;
+    }
+    public void setSourceLink(String sourceLink){
+        this.sourceLink = sourceLink;
+    }
+
+    // credit:
+    public String getCredit(){
+        return this.credit;
+    }
+    public void setCredit(String credit){
+        this.credit = credit;
+    }
+
+    // licenseType:
+    public LicenseType getLicenseType(){
+        return this.licenseType;
+    }
+    public void setLicenseType(LicenseType licenseType){
+        this.licenseType = licenseType;
+    }
+
+    // flashPlaybackType:
+    public String getFlashPlaybackType(){
+        return this.flashPlaybackType;
+    }
+    public void setFlashPlaybackType(String flashPlaybackType){
+        this.flashPlaybackType = flashPlaybackType;
+    }
+
+    // fileExt:
+    public String getFileExt(){
+        return this.fileExt;
+    }
+    public void setFileExt(String fileExt){
+        this.fileExt = fileExt;
+    }
+
+
+    public SearchResult() {
+       super();
+    }
+
+    public SearchResult(JsonObject jsonObject) throws APIException {
+        super(jsonObject);
+
+        if(jsonObject == null) return;
+
+        // set members values:
+        id = GsonParser.parseString(jsonObject.get("id"));
+        title = GsonParser.parseString(jsonObject.get("title"));
+        thumbUrl = GsonParser.parseString(jsonObject.get("thumbUrl"));
+        description = GsonParser.parseString(jsonObject.get("description"));
+        tags = GsonParser.parseString(jsonObject.get("tags"));
+        url = GsonParser.parseString(jsonObject.get("url"));
+        sourceLink = GsonParser.parseString(jsonObject.get("sourceLink"));
+        credit = GsonParser.parseString(jsonObject.get("credit"));
+        licenseType = LicenseType.get(GsonParser.parseInt(jsonObject.get("licenseType")));
+        flashPlaybackType = GsonParser.parseString(jsonObject.get("flashPlaybackType"));
+        fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
+
+    }
+
+    public Params toParams() {
+        Params kparams = super.toParams();
+        kparams.add("objectType", "KalturaSearchResult");
+        kparams.add("id", this.id);
+        kparams.add("title", this.title);
+        kparams.add("thumbUrl", this.thumbUrl);
+        kparams.add("description", this.description);
+        kparams.add("tags", this.tags);
+        kparams.add("url", this.url);
+        kparams.add("sourceLink", this.sourceLink);
+        kparams.add("credit", this.credit);
+        kparams.add("licenseType", this.licenseType);
+        kparams.add("flashPlaybackType", this.flashPlaybackType);
+        kparams.add("fileExt", this.fileExt);
+        return kparams;
+    }
+
+}
+

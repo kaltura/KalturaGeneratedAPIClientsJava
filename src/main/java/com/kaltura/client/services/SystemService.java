@@ -28,7 +28,6 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.Params;
-import com.kaltura.client.types.Country;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -38,38 +37,31 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**  System service is used for internal system helpers &amp; to retrieve system
+  level information  */
 public class SystemService {
 
-    public static RequestBuilder<Country> getCountry()  {
-        return getCountry(null);
-    }
-
-	/**  Returns country details by the provided IP, if not provided - by the client IP  */
-    public static RequestBuilder<Country> getCountry(String ip)  {
-        Params kparams = new Params();
-        kparams.add("ip", ip);
-
-        return new RequestBuilder<Country>(Country.class, "system", "getCountry", kparams);
-    }
-
-	/**  Returns current server timestamp  */
-    public static RequestBuilder<Long> getTime()  {
+    public static RequestBuilder<Integer> getTime()  {
         Params kparams = new Params();
 
-        return new RequestBuilder<Long>(Long.class, "system", "getTime", kparams);
+        return new RequestBuilder<Integer>(Integer.class, "system", "getTime", kparams);
     }
 
-	/**  Returns current server version  */
     public static RequestBuilder<String> getVersion()  {
         Params kparams = new Params();
 
         return new RequestBuilder<String>(String.class, "system", "getVersion", kparams);
     }
 
-	/**  Returns true  */
     public static RequestBuilder<Boolean> ping()  {
         Params kparams = new Params();
 
         return new RequestBuilder<Boolean>(Boolean.class, "system", "ping", kparams);
+    }
+
+    public static RequestBuilder<Boolean> pingDatabase()  {
+        Params kparams = new Params();
+
+        return new RequestBuilder<Boolean>(Boolean.class, "system", "pingDatabase", kparams);
     }
 }

@@ -36,15 +36,14 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetOrderBy implements EnumAsString {
-    RELEVANCY_DESC("RELEVANCY_DESC"),
-    NAME_ASC("NAME_ASC"),
-    NAME_DESC("NAME_DESC"),
-    VIEWS_DESC("VIEWS_DESC"),
-    RATINGS_DESC("RATINGS_DESC"),
-    VOTES_DESC("VOTES_DESC"),
-    START_DATE_DESC("START_DATE_DESC"),
-    START_DATE_ASC("START_DATE_ASC"),
-    LIKES_DESC("LIKES_DESC");
+    CREATED_AT_ASC("+createdAt"),
+    DELETED_AT_ASC("+deletedAt"),
+    SIZE_ASC("+size"),
+    UPDATED_AT_ASC("+updatedAt"),
+    CREATED_AT_DESC("-createdAt"),
+    DELETED_AT_DESC("-deletedAt"),
+    SIZE_DESC("-size"),
+    UPDATED_AT_DESC("-updatedAt");
 
     private String value;
 

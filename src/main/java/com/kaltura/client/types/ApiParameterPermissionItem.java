@@ -43,11 +43,8 @@ import com.google.gson.JsonObject;
 @SuppressWarnings("serial")
 public class ApiParameterPermissionItem extends PermissionItem {
 
-	/**  API object name  */
     private String object;
-	/**  API parameter name  */
     private String parameter;
-	/**  API action type  */
     private ApiParameterPermissionItemAction action;
 
     // object:

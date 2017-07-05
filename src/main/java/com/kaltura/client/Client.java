@@ -28,6 +28,7 @@
 package com.kaltura.client;
 
 import com.kaltura.client.utils.request.ConnectionConfiguration;
+import com.kaltura.client.types.BaseResponseProfile;
 
 /**
  * This class was generated using exec.php
@@ -43,7 +44,7 @@ public class Client extends ClientBase {
 		super(config);
 		
 		this.setClientTag("java:17-07-05");
-		this.setApiVersion("3.6.287.20330");
+		this.setApiVersion("3.3.0");
 		this.clientConfiguration.put("format", 1); // JSON
 	}
 	
@@ -106,50 +107,6 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * Impersonated user id
-	 * 
-	 * @param userId
-	 */
-	public void setUserId(Integer userId){
-		this.requestConfiguration.put("userId", userId);
-	}
-	
-	/**
-	 * Impersonated user id
-	 * 
-	 * @return Integer
-	 */
-	public Integer getUserId(){
-		if(this.requestConfiguration.containsKey("userId")){
-			return(Integer) this.requestConfiguration.get("userId");
-		}
-		
-		return 0;
-	}
-	
-	/**
-	 * Content language
-	 * 
-	 * @param language
-	 */
-	public void setLanguage(Integer language){
-		this.requestConfiguration.put("language", language);
-	}
-	
-	/**
-	 * Content language
-	 * 
-	 * @return Integer
-	 */
-	public Integer getLanguage(){
-		if(this.requestConfiguration.containsKey("language")){
-			return(Integer) this.requestConfiguration.get("language");
-		}
-		
-		return 0;
-	}
-	
-	/**
 	 * Kaltura API session
 	 * 
 	 * @param ks
@@ -188,6 +145,28 @@ public class Client extends ClientBase {
 	public String getSessionId(){
 		if(this.requestConfiguration.containsKey("ks")){
 			return(String) this.requestConfiguration.get("ks");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Response profile - this attribute will be automatically unset after every API call.
+	 * 
+	 * @param responseProfile
+	 */
+	public void setResponseProfile(BaseResponseProfile responseProfile){
+		this.requestConfiguration.put("responseProfile", responseProfile);
+	}
+	
+	/**
+	 * Response profile - this attribute will be automatically unset after every API call.
+	 * 
+	 * @return BaseResponseProfile
+	 */
+	public BaseResponseProfile getResponseProfile(){
+		if(this.requestConfiguration.containsKey("responseProfile")){
+			return(BaseResponseProfile) this.requestConfiguration.get("responseProfile");
 		}
 		
 		return null;
