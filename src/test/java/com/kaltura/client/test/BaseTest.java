@@ -28,50 +28,157 @@
 package com.kaltura.client.test;
 
 
-import java.io.InputStream;
+import java.io.File;
 import java.io.IOException;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import junit.framework.TestCase;
 
-import com.kaltura.client.KalturaApiException;
-import com.kaltura.client.KalturaClient;
-import com.kaltura.client.KalturaConfiguration;
-import com.kaltura.client.enums.KalturaEntryStatus;
-import com.kaltura.client.enums.KalturaMediaType;
-import com.kaltura.client.enums.KalturaSessionType;
-import com.kaltura.client.services.KalturaMediaService;
-import com.kaltura.client.types.KalturaMediaEntry;
-import com.kaltura.client.types.KalturaUploadToken;
-import com.kaltura.client.types.KalturaUploadedFileTokenResource;
-import com.kaltura.client.IKalturaLogger;
-import com.kaltura.client.KalturaLogger;
+import com.kaltura.client.APIOkRequestsExecutor;
+import com.kaltura.client.Client;
+import com.kaltura.client.Configuration;
+import com.kaltura.client.ILogger;
+import com.kaltura.client.Logger;
+import com.kaltura.client.enums.EntryStatus;
+import com.kaltura.client.enums.MediaType;
+import com.kaltura.client.enums.SessionType;
+import com.kaltura.client.services.MediaService;
+import com.kaltura.client.services.UploadTokenService;
+import com.kaltura.client.types.APIException;
+import com.kaltura.client.types.MediaEntry;
+import com.kaltura.client.types.UploadToken;
+import com.kaltura.client.types.UploadedFileTokenResource;
+import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.RequestElement;
+import com.kaltura.client.utils.response.OnCompletion;
 
 public class BaseTest extends TestCase {
-	protected KalturaTestConfig testConfig;
+	protected TestConfig testConfig;
 	
-	protected KalturaConfiguration kalturaConfig = new KalturaConfiguration();
-	protected KalturaClient client;
+	protected Configuration kalturaConfig = new Configuration();
+	protected Client client;
 	
 	// keeps track of test vids we upload so they can be cleaned up at the end
-	protected List<String> testIds = new ArrayList<String>();
+	protected List<String> testIds = Collections.synchronizedList(new ArrayList<String>());
 
 	protected boolean doCleanup = true;
+	private ExecutorService executor;
 
-	private static IKalturaLogger logger = KalturaLogger.getLogger(BaseTest.class);
+	private static ILogger logger = Logger.getLogger(BaseTest.class);
 
+	@SuppressWarnings("serial")
+	protected class CompletionException extends Exception {
+		
+		public CompletionException(String message) {
+			super(message);
+		}
+		
+		@Override
+		public String toString() {
+			return getMessage();
+		}
+	}
+	
+	protected class Completion{
+		
+		@SuppressWarnings("rawtypes")
+		private CompletableFuture future;
+		
+		@SuppressWarnings("rawtypes")
+		public Completion() {
+			future = new CompletableFuture();
+		}
+		
+		public void run(Runnable runnable) throws InterruptedException, ExecutionException {
+			executor.submit(runnable);
+			Exception error = (Exception) future.get();
+
+			if(error != null) {
+				throw new AssertionError(error);
+			}
+		}
+		
+		@SuppressWarnings("unchecked")
+		public void complete() {
+			future.complete(null);
+		}
+		
+		@SuppressWarnings("unchecked")
+		public void fail(Exception e) {
+			future.complete(new CompletionException(e.getMessage()));
+			throw new RuntimeException(e);
+		}
+		
+		@SuppressWarnings("unchecked")
+		public void fail(String message) {
+			future.complete(new CompletionException(message));
+			throw new RuntimeException(message);
+		}
+		
+		public void assertTrue(boolean condition) {
+			this.assertTrue(condition, null);
+		}
+		
+		public void assertTrue(boolean condition, String message) {
+			if(!condition) {
+				this.fail(message);
+			}
+		}
+		
+		public void assertNull(Exception exception) {
+			if(exception == null) {
+				return;
+			}
+			this.assertTrue(false, exception.getMessage());
+		}
+		
+		public void assertNull(Object object) {
+			this.assertNull(object, null);
+		}
+		
+		public void assertNull(Object object, String message) {
+			this.assertTrue(object == null, message);
+		}
+		
+		public void assertNotNull(Object object, String message) {
+			this.assertTrue(object != null, message);
+		}
+		
+		public void assertNotNull(Object object) {
+			this.assertNotNull(object, null);
+		}
+
+		public void assertEquals(int expected, int actual) {
+			this.assertTrue(expected == actual, actual + " is different than " + expected);
+		}
+
+		public void assertEquals(long expected, long actual) {
+			this.assertTrue(expected == actual, actual + " is different than " + expected);
+		}
+
+		public void assertEquals(Object expected, Object actual) {
+			this.assertTrue(expected.equals(actual), actual + " is different than " + expected);
+		}
+	}
+	
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		
-		testConfig = new KalturaTestConfig();
+		testConfig = new TestConfig();
 		
 		// Create client
 		this.kalturaConfig.setEndpoint(testConfig.getServiceUrl());
-		this.client = new KalturaClient(this.kalturaConfig);
+		this.client = new Client(this.kalturaConfig);
+		
+		executor = Executors.newScheduledThreadPool(1);
 	}
 	
 	@Override
@@ -83,31 +190,33 @@ public class BaseTest extends TestCase {
 		if (logger.isEnabled())
 			logger.info("Cleaning up test entries after test");
 		
-		KalturaMediaService mediaService = this.client.getMediaService();
-		for (String id : this.testIds) {
-			if (logger.isEnabled())
+		for (final String id : this.testIds) {
+			if (logger.isEnabled()) {
 				logger.info("Deleting " + id);
-			try {
-				getProcessedEntry(client, id);
-				mediaService.delete(id);			
-			} catch (Exception e) {
-				if (logger.isEnabled())
-					logger.error("Couldn't delete " + id, e);
-				fail(e.getMessage());
 			}
-		} //next id
+
+			RequestBuilder<Void> requestBuilder = MediaService.delete(id)
+			.setCompletion(new OnCompletion<Void>() {
+
+				@Override
+				public void onComplete(Void response, APIException error) {
+					assertNull(error);
+				}
+			});
+			APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
+		}
 	}
 	
 	
 	public void startUserSession() throws Exception{
-		startSession(KalturaSessionType.USER);
+		startSession(SessionType.USER);
 	}
 	
 	public void startAdminSession() throws Exception{
-		startSession(KalturaSessionType.ADMIN);
+		startSession(SessionType.ADMIN);
 	}
 	
-	protected void startSession(KalturaSessionType type) throws Exception {
+	protected void startSession(SessionType type) throws Exception {
 		
 		String sessionId = client.generateSessionV2(testConfig.getAdminSecret(), testConfig.getUserId(), type, testConfig.getPartnerId(), 86400, "");
 		if (logger.isEnabled()){
@@ -117,80 +226,131 @@ public class BaseTest extends TestCase {
 		client.setSessionId(sessionId);
 	}
 	
-	public static void closeSession(KalturaClient client) throws KalturaApiException {
-		client.getSessionService().end();
-	}
-	
 	// Entry utils
 	
-	public KalturaMediaEntry addTestImage(BaseTest container, String name) throws KalturaApiException, IOException, FileNotFoundException
+	public void addTestImage(final Completion completion, String name, final OnCompletion<MediaEntry> onCompletion)
 	{
-		KalturaMediaEntry entry = new KalturaMediaEntry();
-		entry.name = name;
-		entry.mediaType = KalturaMediaType.IMAGE;
-		entry.referenceId = getUniqueString();
+		MediaEntry entry = new MediaEntry();
+		entry.setName(name);
+		entry.setMediaType(MediaType.IMAGE);
+		entry.setReferenceId(getUniqueString());
 		
-		InputStream fileData = TestUtils.getTestImage();
-		int fileSize = fileData.available();
-		entry = client.getMediaService().add(entry);
+		final File fileData;
+		final long fileSize;
+		try {
+			fileData = TestUtils.getTestImageFile();
+			fileSize = fileData.length();
+		} catch (IOException e) {
+			fail(e.getMessage());
+			return;
+		}
 		
-		// Upload token
-		KalturaUploadToken uploadToken = new KalturaUploadToken();
-		uploadToken.fileName = testConfig.getUploadImage();
-		uploadToken.fileSize = fileSize;
-		KalturaUploadToken token = client.getUploadTokenService().add(uploadToken);
-		assertNotNull(token);
-		
-		// Define content
-		KalturaUploadedFileTokenResource resource = new KalturaUploadedFileTokenResource();
-		resource.token = token.id;
-		entry = client.getMediaService().addContent(entry.id, resource);
-		assertNotNull(entry);
-		
-		// upload
-		uploadToken = client.getUploadTokenService().upload(token.id, fileData, testConfig.getUploadImage(), fileSize, false);
-		if(container != null)
-			container.testIds.add(entry.id);
-		return client.getMediaService().get(entry.id);
+		RequestBuilder<MediaEntry> requestBuilder = MediaService.add(entry)
+		.setCompletion(new OnCompletion<MediaEntry>() {
+
+			@Override
+			public void onComplete(final MediaEntry entry, APIException error) {
+				completion.assertNull(error);
+				
+				// Upload token
+				UploadToken uploadToken = new UploadToken();
+				uploadToken.setFileName(testConfig.getUploadImage());
+				uploadToken.setFileSize((double) fileSize);
+				RequestBuilder<UploadToken> requestBuilder = UploadTokenService.add(uploadToken)
+				.setCompletion(new OnCompletion<UploadToken>() {
+
+					@Override
+					public void onComplete(final UploadToken token, APIException error) {
+						completion.assertNull(error);
+						completion.assertNotNull(token);
+						
+						// Define content
+						UploadedFileTokenResource resource = new UploadedFileTokenResource();
+						resource.setToken(token.getId());
+						RequestBuilder<MediaEntry> requestBuilder = MediaService.addContent(entry.getId(), resource)
+						.setCompletion(new OnCompletion<MediaEntry>() {
+
+							@Override
+							public void onComplete(final MediaEntry entry, APIException error) {
+								completion.assertNull(error);
+								completion.assertNotNull(entry);
+								
+								// upload
+								RequestBuilder<UploadToken> requestBuilder = UploadTokenService.upload(token.getId(), fileData, false)
+								.setCompletion(new OnCompletion<UploadToken>() {
+
+									@Override
+									public void onComplete(UploadToken token, APIException error) {
+										completion.assertNull(error);
+										completion.assertNotNull(token);
+												
+										testIds.add(entry.getId());
+										MediaService.get(entry.getId());
+										
+										onCompletion.onComplete(entry, null);
+									}
+								});
+								APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
+							}
+						});
+						APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
+					}
+				});
+				APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
+			}
+		});
+		APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 	}
 	
 	protected String getUniqueString() {
 		return UUID.randomUUID().toString();
 	}
 
-	public static KalturaMediaEntry getProcessedEntry(KalturaClient client, String id) throws Exception {
-		return getProcessedEntry(client, id, false);
+	public void getProcessedEntry(Completion completion, String id, OnCompletion<MediaEntry> onCompletion) {
+		getProcessedEntry(completion, id, false, onCompletion);
 	}
 	
-	public static KalturaMediaEntry getProcessedEntry(KalturaClient client, String id,
-			Boolean checkReady) throws KalturaApiException {
-		int maxTries = 50;
-		int sleepInterval = 30 * 1000;
-		int counter = 0;
-		KalturaMediaEntry retrievedEntry = null;
-		KalturaMediaService mediaService = client.getMediaService();
-		retrievedEntry = mediaService.get(id);
-		while (checkReady && retrievedEntry.status != KalturaEntryStatus.READY) {
+	private int counter = 0;
+	public void getProcessedEntry(final Completion completion, final String id, final Boolean checkReady, final OnCompletion<MediaEntry> onCompletion) {
+		final int maxTries = 50;
+		final int sleepInterval = 30 * 1000;
+		counter = 0;
 
-			counter++;
+		RequestBuilder<MediaEntry> requestBuilder = MediaService.get(id);
+		final RequestElement requestElement = requestBuilder.build(client);
 
-			if (counter >= maxTries) {
-				throw new RuntimeException("Max retries (" + maxTries
-						+ ") when retrieving entry:" + id);
-			} else {
-				if (logger.isEnabled())
-					logger.info("On try: " + counter + ", clip not ready. waiting "
-						+ (sleepInterval / 1000) + " seconds...");
-				try {
-					Thread.sleep(sleepInterval);
-				} catch (InterruptedException ie) {
-					throw new RuntimeException("Failed while waiting for entry");
+		requestBuilder.setCompletion(new OnCompletion<MediaEntry>() {
+			
+			@Override
+			public void onComplete(MediaEntry retrievedEntry, APIException error) {
+				completion.assertNull(error);
+				
+				if(checkReady && retrievedEntry.getStatus() != EntryStatus.READY) {
+
+					counter++;
+
+					if (counter >= maxTries) {
+						throw new RuntimeException("Max retries (" + maxTries
+								+ ") when retrieving entry:" + id);
+					} else {
+						if (logger.isEnabled())
+							logger.info("On try: " + counter + ", clip not ready. waiting "
+								+ (sleepInterval / 1000) + " seconds...");
+						try {
+							Thread.sleep(sleepInterval);
+						} catch (InterruptedException ie) {
+							throw new RuntimeException("Failed while waiting for entry");
+						}
+					}
+
+					APIOkRequestsExecutor.getSingleton().queue(requestElement);
+				}
+				else {
+					onCompletion.onComplete(retrievedEntry, error);
 				}
 			}
-
-			retrievedEntry = mediaService.get(id);
-		}
-
-		return retrievedEntry;
+		});
+		
+		APIOkRequestsExecutor.getSingleton().queue(requestElement);
 	}
 }

@@ -27,26 +27,43 @@
 // ===================================================================================================
 package com.kaltura.client.test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class TestUtils {
-	protected static KalturaTestConfig testConfig;
+	protected static TestConfig testConfig;
 
 	static public InputStream getTestVideo() throws IOException {
 		if(testConfig == null){
-			testConfig = new KalturaTestConfig();
+			testConfig = new TestConfig();
 		}
 		
 		return new FileInputStream("src/test/resources/" + testConfig.getUploadVideo());
 	}
 	
+	static public File getTestVideoFile() throws IOException {
+		if(testConfig == null){
+			testConfig = new TestConfig();
+		}
+		
+		return new File("src/test/resources/" + testConfig.getUploadVideo());
+	}
+	
 	static public InputStream getTestImage() throws IOException {
 		if(testConfig == null){
-			testConfig = new KalturaTestConfig();
+			testConfig = new TestConfig();
 		}
 		
 		return new FileInputStream("src/test/resources/" + testConfig.getUploadImage());
+	}
+	
+	static public File getTestImageFile() throws IOException {
+		if(testConfig == null){
+			testConfig = new TestConfig();
+		}
+		
+		return new File("src/test/resources/" + testConfig.getUploadImage());
 	}
 }
