@@ -36,10 +36,10 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AppTokenHashType implements EnumAsString {
-    MD5("MD5"),
     SHA1("SHA1"),
     SHA256("SHA256"),
-    SHA512("SHA512");
+    SHA512("SHA512"),
+    MD5("MD5");
 
     private String value;
 

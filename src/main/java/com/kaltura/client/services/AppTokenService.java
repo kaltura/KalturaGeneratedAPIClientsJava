@@ -30,12 +30,7 @@ package com.kaltura.client.services;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.AppToken;
-import com.kaltura.client.types.AppTokenFilter;
-import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.SessionInfo;
-import com.kaltura.client.utils.request.ListResponseRequestBuilder;
-import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -45,7 +40,6 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage application authentication tokens  */
 public class AppTokenService {
 
 	/**  Add new application authentication token  */
@@ -57,11 +51,11 @@ public class AppTokenService {
     }
 
 	/**  Delete application authentication token by id  */
-    public static RequestBuilder<Void> delete(String id)  {
+    public static RequestBuilder<Boolean> delete(String id)  {
         Params kparams = new Params();
         kparams.add("id", id);
 
-        return new NullRequestBuilder("apptoken", "delete", kparams);
+        return new RequestBuilder<Boolean>(Boolean.class, "apptoken", "delete", kparams);
     }
 
 	/**  Get application authentication token by id  */
@@ -70,23 +64,6 @@ public class AppTokenService {
         kparams.add("id", id);
 
         return new RequestBuilder<AppToken>(AppToken.class, "apptoken", "get", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<AppToken>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AppToken>> list(AppTokenFilter filter)  {
-        return list(filter, null);
-    }
-
-	/**  List application authentication tokens by filter and pager  */
-    public static RequestBuilder<ListResponse<AppToken>> list(AppTokenFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<AppToken>(AppToken.class, "apptoken", "list", kparams);
     }
 
     public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash)  {
@@ -101,24 +78,20 @@ public class AppTokenService {
         return startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
     }
 
-	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
     public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
+        return startSession(id, tokenHash, userId, type, expiry, null);
+    }
+
+	/**  Starts a new KS (Kaltura Session) based on application authentication token id  */
+    public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash, String userId, SessionType type, int expiry, String udid)  {
         Params kparams = new Params();
         kparams.add("id", id);
         kparams.add("tokenHash", tokenHash);
         kparams.add("userId", userId);
         kparams.add("type", type);
         kparams.add("expiry", expiry);
+        kparams.add("udid", udid);
 
         return new RequestBuilder<SessionInfo>(SessionInfo.class, "apptoken", "startSession", kparams);
-    }
-
-	/**  Update application authentication token by id  */
-    public static RequestBuilder<AppToken> update(String id, AppToken appToken)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("appToken", appToken);
-
-        return new RequestBuilder<AppToken>(AppToken.class, "apptoken", "update", kparams);
     }
 }

@@ -36,14 +36,7 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserRoleOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    NAME_ASC("+name"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id"),
-    NAME_DESC("-name"),
-    UPDATED_AT_DESC("-updatedAt");
+    NONE("NONE");
 
     private String value;
 

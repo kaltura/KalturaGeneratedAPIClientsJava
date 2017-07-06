@@ -40,8 +40,6 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A key value pair representation to return an array of key-value pairs
-  (associative array)  */
 @SuppressWarnings("serial")
 public class KeyValue extends ObjectBase {
 

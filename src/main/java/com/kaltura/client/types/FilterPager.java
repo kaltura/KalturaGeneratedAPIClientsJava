@@ -41,14 +41,15 @@ import com.google.gson.JsonObject;
  */
 
 /**  The KalturaFilterPager object enables paging management to be applied upon
-  service list actions.  */
+  service list actions  */
 @SuppressWarnings("serial")
 public class FilterPager extends ObjectBase {
 
-	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
+	/**  The number of objects to retrieve. Possible range 1 ≤ value ≤ 50. If omitted
+	  or value &amp;lt; 1 - will be set to 25. If a value &amp;gt; 50 provided –
+	  will be set to 50  */
     private Integer pageSize;
-	/**  The page number for which {pageSize} of objects should be retrieved (Default is
-	  1).  */
+	/**  The page number for which {pageSize} of objects should be retrieved  */
     private Integer pageIndex;
 
     // pageSize:

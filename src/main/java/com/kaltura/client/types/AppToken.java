@@ -30,9 +30,9 @@ package com.kaltura.client.types;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.AppTokenStatus;
-import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.enums.AppTokenHashType;
+import com.kaltura.client.enums.SessionType;
+import com.kaltura.client.enums.AppTokenStatus;
 import com.google.gson.JsonObject;
 
 
@@ -43,33 +43,32 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**  Application token  */
 @SuppressWarnings("serial")
 public class AppToken extends ObjectBase {
 
 	/**  The id of the application token  */
     private String id;
-	/**  The application token  */
-    private String token;
-    private Integer partnerId;
-	/**  Creation time as Unix timestamp (In seconds)  */
-    private Integer createdAt;
-	/**  Update time as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
-	/**  Application token status  */
-    private AppTokenStatus status;
 	/**  Expiry time of current token (unix timestamp in seconds)  */
     private Integer expiry;
-	/**  Type of KS (Kaltura Session) that created using the current token  */
-    private SessionType sessionType;
-	/**  User id of KS (Kaltura Session) that created using the current token  */
-    private String sessionUserId;
+	/**  Partner identifier  */
+    private Integer partnerId;
 	/**  Expiry duration of KS (Kaltura Session) that created using the current token (in
 	  seconds)  */
     private Integer sessionDuration;
+	/**  The hash type of the token  */
+    private AppTokenHashType hashType;
 	/**  Comma separated privileges to be applied on KS (Kaltura Session) that created
 	  using the current token  */
     private String sessionPrivileges;
-    private AppTokenHashType hashType;
+	/**  Type of KS (Kaltura Session) that created using the current token  */
+    private SessionType sessionType;
+	/**  Application token status  */
+    private AppTokenStatus status;
+	/**  The application token  */
+    private String token;
+	/**  User id of KS (Kaltura Session) that created using the current token  */
+    private String sessionUserId;
 
     // id:
     public String getId(){
@@ -77,46 +76,6 @@ public class AppToken extends ObjectBase {
     }
     public void setId(String id){
         this.id = id;
-    }
-
-    // token:
-    public String getToken(){
-        return this.token;
-    }
-    public void setToken(String token){
-        this.token = token;
-    }
-
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
-
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
-
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
-
-    // status:
-    public AppTokenStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(AppTokenStatus status){
-        this.status = status;
     }
 
     // expiry:
@@ -127,20 +86,12 @@ public class AppToken extends ObjectBase {
         this.expiry = expiry;
     }
 
-    // sessionType:
-    public SessionType getSessionType(){
-        return this.sessionType;
+    // partnerId:
+    public Integer getPartnerId(){
+        return this.partnerId;
     }
-    public void setSessionType(SessionType sessionType){
-        this.sessionType = sessionType;
-    }
-
-    // sessionUserId:
-    public String getSessionUserId(){
-        return this.sessionUserId;
-    }
-    public void setSessionUserId(String sessionUserId){
-        this.sessionUserId = sessionUserId;
+    public void setPartnerId(Integer partnerId){
+        this.partnerId = partnerId;
     }
 
     // sessionDuration:
@@ -151,6 +102,14 @@ public class AppToken extends ObjectBase {
         this.sessionDuration = sessionDuration;
     }
 
+    // hashType:
+    public AppTokenHashType getHashType(){
+        return this.hashType;
+    }
+    public void setHashType(AppTokenHashType hashType){
+        this.hashType = hashType;
+    }
+
     // sessionPrivileges:
     public String getSessionPrivileges(){
         return this.sessionPrivileges;
@@ -159,12 +118,36 @@ public class AppToken extends ObjectBase {
         this.sessionPrivileges = sessionPrivileges;
     }
 
-    // hashType:
-    public AppTokenHashType getHashType(){
-        return this.hashType;
+    // sessionType:
+    public SessionType getSessionType(){
+        return this.sessionType;
     }
-    public void setHashType(AppTokenHashType hashType){
-        this.hashType = hashType;
+    public void setSessionType(SessionType sessionType){
+        this.sessionType = sessionType;
+    }
+
+    // status:
+    public AppTokenStatus getStatus(){
+        return this.status;
+    }
+    public void setStatus(AppTokenStatus status){
+        this.status = status;
+    }
+
+    // token:
+    public String getToken(){
+        return this.token;
+    }
+    public void setToken(String token){
+        this.token = token;
+    }
+
+    // sessionUserId:
+    public String getSessionUserId(){
+        return this.sessionUserId;
+    }
+    public void setSessionUserId(String sessionUserId){
+        this.sessionUserId = sessionUserId;
     }
 
 
@@ -179,17 +162,15 @@ public class AppToken extends ObjectBase {
 
         // set members values:
         id = GsonParser.parseString(jsonObject.get("id"));
-        token = GsonParser.parseString(jsonObject.get("token"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        status = AppTokenStatus.get(GsonParser.parseInt(jsonObject.get("status")));
         expiry = GsonParser.parseInt(jsonObject.get("expiry"));
-        sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
-        sessionUserId = GsonParser.parseString(jsonObject.get("sessionUserId"));
+        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
         sessionDuration = GsonParser.parseInt(jsonObject.get("sessionDuration"));
-        sessionPrivileges = GsonParser.parseString(jsonObject.get("sessionPrivileges"));
         hashType = AppTokenHashType.get(GsonParser.parseString(jsonObject.get("hashType")));
+        sessionPrivileges = GsonParser.parseString(jsonObject.get("sessionPrivileges"));
+        sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
+        status = AppTokenStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+        token = GsonParser.parseString(jsonObject.get("token"));
+        sessionUserId = GsonParser.parseString(jsonObject.get("sessionUserId"));
 
     }
 
@@ -197,11 +178,13 @@ public class AppToken extends ObjectBase {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaAppToken");
         kparams.add("expiry", this.expiry);
-        kparams.add("sessionType", this.sessionType);
-        kparams.add("sessionUserId", this.sessionUserId);
+        kparams.add("partnerId", this.partnerId);
         kparams.add("sessionDuration", this.sessionDuration);
-        kparams.add("sessionPrivileges", this.sessionPrivileges);
         kparams.add("hashType", this.hashType);
+        kparams.add("sessionPrivileges", this.sessionPrivileges);
+        kparams.add("sessionType", this.sessionType);
+        kparams.add("token", this.token);
+        kparams.add("sessionUserId", this.sessionUserId);
         return kparams;
     }
 

@@ -39,7 +39,7 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A boolean representation to return an array of booleans  */
+/**  A string representation to return an array of booleans  */
 @SuppressWarnings("serial")
 public class BooleanValue extends Value {
 

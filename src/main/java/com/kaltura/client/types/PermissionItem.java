@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.PermissionItemType;
 import com.google.gson.JsonObject;
 
 
@@ -42,61 +41,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
-public abstract class PermissionItem extends ObjectBase {
+public class PermissionItem extends ObjectBase {
 
-    private Integer id;
-    private PermissionItemType type;
-    private Integer partnerId;
-    private String tags;
-    private Integer createdAt;
-    private Integer updatedAt;
+	/**  Permission item identifier  */
+    private Long id;
+	/**  Permission item name  */
+    private String name;
 
     // id:
-    public Integer getId(){
+    public Long getId(){
         return this.id;
     }
-    public void setId(Integer id){
+    public void setId(Long id){
         this.id = id;
     }
 
-    // type:
-    public PermissionItemType getType(){
-        return this.type;
+    // name:
+    public String getName(){
+        return this.name;
     }
-    public void setType(PermissionItemType type){
-        this.type = type;
-    }
-
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
-
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
-
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
-
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
+    public void setName(String name){
+        this.name = name;
     }
 
 
@@ -110,19 +75,15 @@ public abstract class PermissionItem extends ObjectBase {
         if(jsonObject == null) return;
 
         // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        type = PermissionItemType.get(GsonParser.parseString(jsonObject.get("type")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+        id = GsonParser.parseLong(jsonObject.get("id"));
+        name = GsonParser.parseString(jsonObject.get("name"));
 
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaPermissionItem");
-        kparams.add("tags", this.tags);
+        kparams.add("name", this.name);
         return kparams;
     }
 

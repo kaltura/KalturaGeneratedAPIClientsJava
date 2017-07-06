@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.SessionType;
 import com.google.gson.JsonObject;
 
 
@@ -41,63 +39,10 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**  Kaltura Session  */
 @SuppressWarnings("serial")
-public class SessionInfo extends ObjectBase {
+public class SessionInfo extends Session {
 
-    private String ks;
-    private SessionType sessionType;
-    private Integer partnerId;
-    private String userId;
-    private Integer expiry;
-    private String privileges;
-
-    // ks:
-    public String getKs(){
-        return this.ks;
-    }
-    public void setKs(String ks){
-        this.ks = ks;
-    }
-
-    // sessionType:
-    public SessionType getSessionType(){
-        return this.sessionType;
-    }
-    public void setSessionType(SessionType sessionType){
-        this.sessionType = sessionType;
-    }
-
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
-
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
-
-    // expiry:
-    public Integer getExpiry(){
-        return this.expiry;
-    }
-    public void setExpiry(Integer expiry){
-        this.expiry = expiry;
-    }
-
-    // privileges:
-    public String getPrivileges(){
-        return this.privileges;
-    }
-    public void setPrivileges(String privileges){
-        this.privileges = privileges;
-    }
 
 
     public SessionInfo() {
@@ -106,17 +51,6 @@ public class SessionInfo extends ObjectBase {
 
     public SessionInfo(JsonObject jsonObject) throws APIException {
         super(jsonObject);
-
-        if(jsonObject == null) return;
-
-        // set members values:
-        ks = GsonParser.parseString(jsonObject.get("ks"));
-        sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        expiry = GsonParser.parseInt(jsonObject.get("expiry"));
-        privileges = GsonParser.parseString(jsonObject.get("privileges"));
-
     }
 
     public Params toParams() {

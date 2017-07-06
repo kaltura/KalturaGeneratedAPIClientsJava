@@ -36,10 +36,10 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ApiParameterPermissionItemAction implements EnumAsString {
-    USAGE("all"),
-    INSERT("insert"),
-    READ("read"),
-    UPDATE("update");
+    READ("READ"),
+    INSERT("INSERT"),
+    UPDATE("UPDATE"),
+    USAGE("USAGE");
 
     private String value;
 

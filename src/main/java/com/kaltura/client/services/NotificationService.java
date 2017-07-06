@@ -29,7 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.NotificationType;
-import com.kaltura.client.types.ClientNotification;
+import com.kaltura.client.types.RegistryResponse;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -39,15 +39,29 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Notification Service  */
 public class NotificationService {
 
-	/**  Return the notifications for a specific entry id and type  */
-    public static RequestBuilder<ClientNotification> getClientNotification(String entryId, NotificationType type)  {
+	/**  TBD  */
+    public static RequestBuilder<Boolean> initiateCleanup()  {
         Params kparams = new Params();
-        kparams.add("entryId", entryId);
+
+        return new RequestBuilder<Boolean>(Boolean.class, "notification", "initiateCleanup", kparams);
+    }
+
+	/**  TBD  */
+    public static RequestBuilder<RegistryResponse> register(String identifier, NotificationType type)  {
+        Params kparams = new Params();
+        kparams.add("identifier", identifier);
         kparams.add("type", type);
 
-        return new RequestBuilder<ClientNotification>(ClientNotification.class, "notification", "getClientNotification", kparams);
+        return new RequestBuilder<RegistryResponse>(RegistryResponse.class, "notification", "register", kparams);
+    }
+
+	/**  Registers the device push token to the push service  */
+    public static RequestBuilder<Boolean> setDevicePushToken(String pushToken)  {
+        Params kparams = new Params();
+        kparams.add("pushToken", pushToken);
+
+        return new RequestBuilder<Boolean>(Boolean.class, "notification", "setDevicePushToken", kparams);
     }
 }

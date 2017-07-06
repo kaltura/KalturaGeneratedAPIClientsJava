@@ -28,10 +28,8 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.SessionType;
-import com.kaltura.client.types.SessionInfo;
-import com.kaltura.client.types.StartWidgetSessionResponse;
-import com.kaltura.client.utils.request.NullRequestBuilder;
+import com.kaltura.client.types.LoginSession;
+import com.kaltura.client.types.Session;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -41,132 +39,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Session service  */
 public class SessionService {
 
-	/**  End a session with the Kaltura server, making the current KS invalid.  */
-    public static RequestBuilder<Void> end()  {
-        Params kparams = new Params();
-
-        return new NullRequestBuilder("session", "end", kparams);
-    }
-
-    public static RequestBuilder<SessionInfo> get()  {
+    public static RequestBuilder<Session> get()  {
         return get(null);
     }
 
-	/**  Parse session key and return its info  */
-    public static RequestBuilder<SessionInfo> get(String session)  {
+	/**  Parses KS  */
+    public static RequestBuilder<Session> get(String session)  {
         Params kparams = new Params();
         kparams.add("session", session);
 
-        return new RequestBuilder<SessionInfo>(SessionInfo.class, "session", "get", kparams);
+        return new RequestBuilder<Session>(Session.class, "session", "get", kparams);
     }
 
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId)  {
-        return impersonate(secret, impersonatedPartnerId, "");
-    }
-
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId, String userId)  {
-        return impersonate(secret, impersonatedPartnerId, userId, SessionType.get(0));
-    }
-
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId, String userId, SessionType type)  {
-        return impersonate(secret, impersonatedPartnerId, userId, type, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId, String userId, SessionType type, int partnerId)  {
-        return impersonate(secret, impersonatedPartnerId, userId, type, partnerId, 86400);
-    }
-
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId, String userId, SessionType type, int partnerId, int expiry)  {
-        return impersonate(secret, impersonatedPartnerId, userId, type, partnerId, expiry, null);
-    }
-
-	/**  Start an impersonated session with Kaltura's server.   The result KS is the
-	  session key that you should pass to all services that requires a ticket.  */
-    public static RequestBuilder<String> impersonate(String secret, int impersonatedPartnerId, String userId, SessionType type, int partnerId, int expiry, String privileges)  {
+	/**  Switching the user in the session by generating a new session for a new user
+	  within the same household  */
+    public static RequestBuilder<LoginSession> switchUser(String userIdToSwitch)  {
         Params kparams = new Params();
-        kparams.add("secret", secret);
-        kparams.add("impersonatedPartnerId", impersonatedPartnerId);
-        kparams.add("userId", userId);
-        kparams.add("type", type);
-        kparams.add("partnerId", partnerId);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
+        kparams.add("userIdToSwitch", userIdToSwitch);
 
-        return new RequestBuilder<String>(String.class, "session", "impersonate", kparams);
-    }
-
-    public static RequestBuilder<SessionInfo> impersonateByKs(String session)  {
-        return impersonateByKs(session, SessionType.get(Integer.MIN_VALUE));
-    }
-
-    public static RequestBuilder<SessionInfo> impersonateByKs(String session, SessionType type)  {
-        return impersonateByKs(session, type, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<SessionInfo> impersonateByKs(String session, SessionType type, int expiry)  {
-        return impersonateByKs(session, type, expiry, null);
-    }
-
-	/**  Start an impersonated session with Kaltura's server.   The result KS info
-	  contains the session key that you should pass to all services that requires a
-	  ticket.   Type, expiry and privileges won't be changed if they're not set  */
-    public static RequestBuilder<SessionInfo> impersonateByKs(String session, SessionType type, int expiry, String privileges)  {
-        Params kparams = new Params();
-        kparams.add("session", session);
-        kparams.add("type", type);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-
-        return new RequestBuilder<SessionInfo>(SessionInfo.class, "session", "impersonateByKs", kparams);
-    }
-
-    public static RequestBuilder<String> start(String secret)  {
-        return start(secret, "");
-    }
-
-    public static RequestBuilder<String> start(String secret, String userId)  {
-        return start(secret, userId, SessionType.get(0));
-    }
-
-    public static RequestBuilder<String> start(String secret, String userId, SessionType type)  {
-        return start(secret, userId, type, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<String> start(String secret, String userId, SessionType type, int partnerId)  {
-        return start(secret, userId, type, partnerId, 86400);
-    }
-
-    public static RequestBuilder<String> start(String secret, String userId, SessionType type, int partnerId, int expiry)  {
-        return start(secret, userId, type, partnerId, expiry, null);
-    }
-
-	/**  Start a session with Kaltura's server.   The result KS is the session key that
-	  you should pass to all services that requires a ticket.  */
-    public static RequestBuilder<String> start(String secret, String userId, SessionType type, int partnerId, int expiry, String privileges)  {
-        Params kparams = new Params();
-        kparams.add("secret", secret);
-        kparams.add("userId", userId);
-        kparams.add("type", type);
-        kparams.add("partnerId", partnerId);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-
-        return new RequestBuilder<String>(String.class, "session", "start", kparams);
-    }
-
-    public static RequestBuilder<StartWidgetSessionResponse> startWidgetSession(String widgetId)  {
-        return startWidgetSession(widgetId, 86400);
-    }
-
-	/**  Start a session for Kaltura's flash widgets  */
-    public static RequestBuilder<StartWidgetSessionResponse> startWidgetSession(String widgetId, int expiry)  {
-        Params kparams = new Params();
-        kparams.add("widgetId", widgetId);
-        kparams.add("expiry", expiry);
-
-        return new RequestBuilder<StartWidgetSessionResponse>(StartWidgetSessionResponse.class, "session", "startWidgetSession", kparams);
+        return new RequestBuilder<LoginSession>(LoginSession.class, "session", "switchUser", kparams);
     }
 }

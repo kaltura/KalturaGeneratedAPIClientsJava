@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
+import java.util.Map;
 import com.google.gson.JsonObject;
 
 
@@ -40,144 +40,94 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**  Asset info  */
 @SuppressWarnings("serial")
-public class Asset extends ObjectBase {
+public abstract class Asset extends BaseAssetInfo {
 
-	/**  The ID of the Flavor Asset  */
-    private String id;
-	/**  The entry ID of the Flavor Asset  */
-    private String entryId;
-    private Integer partnerId;
-	/**  The version of the Flavor Asset  */
-    private Integer version;
-	/**  The size (in KBytes) of the Flavor Asset  */
-    private Integer size;
-	/**  Tags used to identify the Flavor Asset in various scenarios  */
-    private String tags;
-	/**  The file extension  */
-    private String fileExt;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private Integer deletedAt;
-	/**  System description, error message, warnings and failure cause.  */
-    private String description;
-	/**  Partner private data  */
-    private String partnerData;
-	/**  Partner friendly description  */
-    private String partnerDescription;
-	/**  Comma separated list of source flavor params ids  */
-    private String actualSourceAssetParamsIds;
+	/**  Dynamic collection of key-value pairs according to the String Meta defined in
+	  the system  */
+    private Map<String, Value> metas;
+	/**  Dynamic collection of key-value pairs according to the Tag Types defined in the
+	  system  */
+    private Map<String, StringValueArray> tags;
+	/**  Date and time represented as epoch. For VOD – since when the asset is
+	  available in the catalog. For EPG/Linear – when the program is aired (can be
+	  in the future).  */
+    private Long startDate;
+	/**  Date and time represented as epoch. For VOD – till when the asset be available
+	  in the catalog. For EPG/Linear – program end time and date  */
+    private Long endDate;
+	/**  Enable cDVR  */
+    private Boolean enableCdvr;
+	/**  Enable catch-up  */
+    private Boolean enableCatchUp;
+	/**  Enable start over  */
+    private Boolean enableStartOver;
+	/**  Enable trick-play  */
+    private Boolean enableTrickPlay;
 
-    // id:
-    public String getId(){
-        return this.id;
+    // metas:
+    public Map<String, Value> getMetas(){
+        return this.metas;
     }
-    public void setId(String id){
-        this.id = id;
-    }
-
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
-
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
-
-    // version:
-    public Integer getVersion(){
-        return this.version;
-    }
-    public void setVersion(Integer version){
-        this.version = version;
-    }
-
-    // size:
-    public Integer getSize(){
-        return this.size;
-    }
-    public void setSize(Integer size){
-        this.size = size;
+    public void setMetas(Map<String, Value> metas){
+        this.metas = metas;
     }
 
     // tags:
-    public String getTags(){
+    public Map<String, StringValueArray> getTags(){
         return this.tags;
     }
-    public void setTags(String tags){
+    public void setTags(Map<String, StringValueArray> tags){
         this.tags = tags;
     }
 
-    // fileExt:
-    public String getFileExt(){
-        return this.fileExt;
+    // startDate:
+    public Long getStartDate(){
+        return this.startDate;
     }
-    public void setFileExt(String fileExt){
-        this.fileExt = fileExt;
-    }
-
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
+    public void setStartDate(Long startDate){
+        this.startDate = startDate;
     }
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
+    // endDate:
+    public Long getEndDate(){
+        return this.endDate;
     }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
-
-    // deletedAt:
-    public Integer getDeletedAt(){
-        return this.deletedAt;
-    }
-    public void setDeletedAt(Integer deletedAt){
-        this.deletedAt = deletedAt;
+    public void setEndDate(Long endDate){
+        this.endDate = endDate;
     }
 
-    // description:
-    public String getDescription(){
-        return this.description;
+    // enableCdvr:
+    public Boolean getEnableCdvr(){
+        return this.enableCdvr;
     }
-    public void setDescription(String description){
-        this.description = description;
-    }
-
-    // partnerData:
-    public String getPartnerData(){
-        return this.partnerData;
-    }
-    public void setPartnerData(String partnerData){
-        this.partnerData = partnerData;
+    public void setEnableCdvr(Boolean enableCdvr){
+        this.enableCdvr = enableCdvr;
     }
 
-    // partnerDescription:
-    public String getPartnerDescription(){
-        return this.partnerDescription;
+    // enableCatchUp:
+    public Boolean getEnableCatchUp(){
+        return this.enableCatchUp;
     }
-    public void setPartnerDescription(String partnerDescription){
-        this.partnerDescription = partnerDescription;
+    public void setEnableCatchUp(Boolean enableCatchUp){
+        this.enableCatchUp = enableCatchUp;
     }
 
-    // actualSourceAssetParamsIds:
-    public String getActualSourceAssetParamsIds(){
-        return this.actualSourceAssetParamsIds;
+    // enableStartOver:
+    public Boolean getEnableStartOver(){
+        return this.enableStartOver;
     }
-    public void setActualSourceAssetParamsIds(String actualSourceAssetParamsIds){
-        this.actualSourceAssetParamsIds = actualSourceAssetParamsIds;
+    public void setEnableStartOver(Boolean enableStartOver){
+        this.enableStartOver = enableStartOver;
+    }
+
+    // enableTrickPlay:
+    public Boolean getEnableTrickPlay(){
+        return this.enableTrickPlay;
+    }
+    public void setEnableTrickPlay(Boolean enableTrickPlay){
+        this.enableTrickPlay = enableTrickPlay;
     }
 
 
@@ -191,31 +141,28 @@ public class Asset extends ObjectBase {
         if(jsonObject == null) return;
 
         // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        version = GsonParser.parseInt(jsonObject.get("version"));
-        size = GsonParser.parseInt(jsonObject.get("size"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        deletedAt = GsonParser.parseInt(jsonObject.get("deletedAt"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
-        partnerDescription = GsonParser.parseString(jsonObject.get("partnerDescription"));
-        actualSourceAssetParamsIds = GsonParser.parseString(jsonObject.get("actualSourceAssetParamsIds"));
+        metas = GsonParser.parseMap(jsonObject.getAsJsonObject("metas"), Value.class);
+        tags = GsonParser.parseMap(jsonObject.getAsJsonObject("tags"), StringValueArray.class);
+        startDate = GsonParser.parseLong(jsonObject.get("startDate"));
+        endDate = GsonParser.parseLong(jsonObject.get("endDate"));
+        enableCdvr = GsonParser.parseBoolean(jsonObject.get("enableCdvr"));
+        enableCatchUp = GsonParser.parseBoolean(jsonObject.get("enableCatchUp"));
+        enableStartOver = GsonParser.parseBoolean(jsonObject.get("enableStartOver"));
+        enableTrickPlay = GsonParser.parseBoolean(jsonObject.get("enableTrickPlay"));
 
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaAsset");
+        kparams.add("metas", this.metas);
         kparams.add("tags", this.tags);
-        kparams.add("fileExt", this.fileExt);
-        kparams.add("partnerData", this.partnerData);
-        kparams.add("partnerDescription", this.partnerDescription);
-        kparams.add("actualSourceAssetParamsIds", this.actualSourceAssetParamsIds);
+        kparams.add("startDate", this.startDate);
+        kparams.add("endDate", this.endDate);
+        kparams.add("enableCdvr", this.enableCdvr);
+        kparams.add("enableCatchUp", this.enableCatchUp);
+        kparams.add("enableStartOver", this.enableStartOver);
+        kparams.add("enableTrickPlay", this.enableTrickPlay);
         return kparams;
     }
 
