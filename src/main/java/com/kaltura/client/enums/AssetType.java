@@ -36,9 +36,17 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetType implements EnumAsString {
-    MEDIA("media"),
-    RECORDING("recording"),
-    EPG("epg");
+    ATTACHMENT("attachment.Attachment"),
+    CAPTION("caption.Caption"),
+    DOCUMENT("document.Document"),
+    IMAGE("document.Image"),
+    PDF("document.PDF"),
+    SWF("document.SWF"),
+    TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
+    TRANSCRIPT("transcript.Transcript"),
+    FLAVOR("1"),
+    THUMBNAIL("2"),
+    LIVE("3");
 
     private String value;
 

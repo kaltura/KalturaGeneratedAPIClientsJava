@@ -39,7 +39,7 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return an array of ints  */
+/**  An int representation to return an array of ints  */
 @SuppressWarnings("serial")
 public class IntegerValue extends Value {
 

@@ -28,6 +28,7 @@
 package com.kaltura.client.utils.request;
 
 import com.kaltura.client.Params;
+import com.kaltura.client.types.BaseResponseProfile;
 
 /**
  * This class was generated using exec.php
@@ -68,24 +69,6 @@ public class RequestBuilderData {
 	}
 	
 	/**
-	 * Impersonated user id
-	 * 
-	 * @param userId
-	 */
-	public void setUserId(Integer userId){
-		params.add("userId", userId);
-	}
-	
-	/**
-	 * Content language
-	 * 
-	 * @param language
-	 */
-	public void setLanguage(Integer language){
-		params.add("language", language);
-	}
-	
-	/**
 	 * Kaltura API session
 	 * 
 	 * @param ks
@@ -101,6 +84,15 @@ public class RequestBuilderData {
 	 */
 	public void setSessionId(String sessionId){
 		params.add("ks", sessionId);
+	}
+	
+	/**
+	 * Response profile - this attribute will be automatically unset after every API call.
+	 * 
+	 * @param responseProfile
+	 */
+	public void setResponseProfile(BaseResponseProfile responseProfile){
+		params.add("responseProfile", responseProfile);
 	}
 	
 }

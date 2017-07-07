@@ -39,20 +39,9 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  User roles filter  */
 @SuppressWarnings("serial")
-public class UserRoleFilter extends Filter {
+public class UserRoleFilter extends UserRoleBaseFilter {
 
-	/**  Comma separated roles identifiers  */
-    private String idIn;
-
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
 
 
     public UserRoleFilter() {
@@ -61,18 +50,11 @@ public class UserRoleFilter extends Filter {
 
     public UserRoleFilter(JsonObject jsonObject) throws APIException {
         super(jsonObject);
-
-        if(jsonObject == null) return;
-
-        // set members values:
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaUserRoleFilter");
-        kparams.add("idIn", this.idIn);
         return kparams;
     }
 
