@@ -46,7 +46,6 @@ public class ViewHistoryUserEntry extends UserEntry {
     private String playbackContext;
 	/**  Last playback time reached by user  */
     private Integer lastTimeReached;
-    private Integer lastUpdateTime;
 
     // playbackContext:
     public String getPlaybackContext(){
@@ -64,14 +63,6 @@ public class ViewHistoryUserEntry extends UserEntry {
         this.lastTimeReached = lastTimeReached;
     }
 
-    // lastUpdateTime:
-    public Integer getLastUpdateTime(){
-        return this.lastUpdateTime;
-    }
-    public void setLastUpdateTime(Integer lastUpdateTime){
-        this.lastUpdateTime = lastUpdateTime;
-    }
-
 
     public ViewHistoryUserEntry() {
        super();
@@ -85,7 +76,6 @@ public class ViewHistoryUserEntry extends UserEntry {
         // set members values:
         playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
         lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
-        lastUpdateTime = GsonParser.parseInt(jsonObject.get("lastUpdateTime"));
 
     }
 
@@ -94,7 +84,6 @@ public class ViewHistoryUserEntry extends UserEntry {
         kparams.add("objectType", "KalturaViewHistoryUserEntry");
         kparams.add("playbackContext", this.playbackContext);
         kparams.add("lastTimeReached", this.lastTimeReached);
-        kparams.add("lastUpdateTime", this.lastUpdateTime);
         return kparams;
     }
 

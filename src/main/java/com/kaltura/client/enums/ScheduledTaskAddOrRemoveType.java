@@ -37,8 +37,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum ScheduledTaskAddOrRemoveType implements EnumAsInt {
     ADD(1),
-    REMOVE(2),
-    MOVE(3);
+    REMOVE(2);
 
     private int value;
 

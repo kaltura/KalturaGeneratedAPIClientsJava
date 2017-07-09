@@ -28,7 +28,6 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -54,30 +53,18 @@ public class PollService {
         return new RequestBuilder<String>(String.class, "poll_poll", "add", kparams);
     }
 
-	/**  Vote Action  */
-    public static RequestBuilder<String> getVote(String pollId, String userId)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-        kparams.add("userId", userId);
-
-        return new RequestBuilder<String>(String.class, "poll_poll", "getVote", kparams);
+    public static RequestBuilder<String> getVotes(String pollId, String answerIds)  {
+        return getVotes(pollId, answerIds, null);
     }
 
 	/**  Get Votes Action  */
-    public static RequestBuilder<String> getVotes(String pollId, String answerIds)  {
+    public static RequestBuilder<String> getVotes(String pollId, String answerIds, String otherDCVotes)  {
         Params kparams = new Params();
         kparams.add("pollId", pollId);
         kparams.add("answerIds", answerIds);
+        kparams.add("otherDCVotes", otherDCVotes);
 
         return new RequestBuilder<String>(String.class, "poll_poll", "getVotes", kparams);
-    }
-
-	/**  Get resetVotes Action  */
-    public static RequestBuilder<Void> resetVotes(String pollId)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-
-        return new NullRequestBuilder("poll_poll", "resetVotes", kparams);
     }
 
 	/**  Vote Action  */

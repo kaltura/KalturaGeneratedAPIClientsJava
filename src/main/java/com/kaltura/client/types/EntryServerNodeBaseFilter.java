@@ -47,8 +47,8 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
     private String entryIdEqual;
     private String entryIdIn;
     private Integer serverNodeIdEqual;
-    private Integer createdAtLessThanOrEqual;
     private Integer createdAtGreaterThanOrEqual;
+    private Integer createdAtLessThanOrEqual;
     private Integer updatedAtGreaterThanOrEqual;
     private Integer updatedAtLessThanOrEqual;
     private EntryServerNodeStatus statusEqual;
@@ -79,20 +79,20 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
         this.serverNodeIdEqual = serverNodeIdEqual;
     }
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
-
     // createdAtGreaterThanOrEqual:
     public Integer getCreatedAtGreaterThanOrEqual(){
         return this.createdAtGreaterThanOrEqual;
     }
     public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
         this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+    }
+
+    // createdAtLessThanOrEqual:
+    public Integer getCreatedAtLessThanOrEqual(){
+        return this.createdAtLessThanOrEqual;
+    }
+    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
     }
 
     // updatedAtGreaterThanOrEqual:
@@ -149,8 +149,8 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
         entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
         entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
         serverNodeIdEqual = GsonParser.parseInt(jsonObject.get("serverNodeIdEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
         createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
         updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
         updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
         statusEqual = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
@@ -165,8 +165,8 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
         kparams.add("entryIdEqual", this.entryIdEqual);
         kparams.add("entryIdIn", this.entryIdIn);
         kparams.add("serverNodeIdEqual", this.serverNodeIdEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
         kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
         kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
         kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
         kparams.add("statusEqual", this.statusEqual);
