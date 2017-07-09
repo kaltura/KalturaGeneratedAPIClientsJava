@@ -32,8 +32,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 import com.kaltura.client.APIOkRequestsExecutor;
 import com.kaltura.client.ILogger;
@@ -403,17 +401,13 @@ public class MediaServiceTest extends BaseTest {
 	}
 
 	private long count(ListResponse<MediaEntry> listResponse, final MediaEntry entry) {
-		return listResponse
-		.getObjects()
-		.stream()
-		.filter(new Predicate<MediaEntry>() {
-
-			@Override
-			public boolean test(MediaEntry t) {
-				return t.getId().equals(entry.getId());
+		int count = 0;
+		for(MediaEntry item : listResponse.getObjects()) {
+			if(item.getId().equals(entry.getId())) { 
+				count++;
 			}
-		})
-		.count();
+		}
+		return count;
 	}
 	
 	/**
@@ -458,19 +452,14 @@ public class MediaServiceTest extends BaseTest {
 					
 					private void testFilters() {
 		
-						Object[] nameObjects = entries.stream().map(new Function<MediaEntry, String>() {
-							@Override
-							public String apply(MediaEntry t) {
-								return t.getName();
-							}
-						})
-						.toArray();
-		
-						String[] names = new String[nameObjects.length];
-						System.arraycopy(nameObjects, 0, names, 0, nameObjects.length);
+						List<String> list = new ArrayList<String>();
+						for(MediaEntry entry : entries) {
+							list.add(entry.getName());
+						}
+						String[] nameObjects = list.toArray(new String[entries.size()]);
 						
 						MediaEntryFilter filter = new MediaEntryFilter();
-						filter.setNameMultiLikeOr(String.join(",", names));
+						filter.setNameMultiLikeOr(String.join(",", nameObjects));
 						filter.setStatusIn(EntryStatus.IMPORT.getValue() + "," + EntryStatus.NO_CONTENT.getValue() + "," + EntryStatus.PENDING.getValue() + "," + EntryStatus.PRECONVERT.getValue() + "," + EntryStatus.READY.getValue());
 		
 						RequestBuilder<ListResponse<MediaEntry>> requestBuilder = MediaService.list(filter)
