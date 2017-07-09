@@ -68,9 +68,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
     private String tagsMultiLikeAnd;
     private Integer dcEqual;
     private String dcIn;
-    private String parentIdLike;
-    private String parentIdMultiLikeOr;
-    private String parentIdMultiLikeAnd;
+    private Integer parentIdEqual;
+    private String parentIdIn;
 
     // idEqual:
     public Integer getIdEqual(){
@@ -264,28 +263,20 @@ public abstract class ServerNodeBaseFilter extends Filter {
         this.dcIn = dcIn;
     }
 
-    // parentIdLike:
-    public String getParentIdLike(){
-        return this.parentIdLike;
+    // parentIdEqual:
+    public Integer getParentIdEqual(){
+        return this.parentIdEqual;
     }
-    public void setParentIdLike(String parentIdLike){
-        this.parentIdLike = parentIdLike;
-    }
-
-    // parentIdMultiLikeOr:
-    public String getParentIdMultiLikeOr(){
-        return this.parentIdMultiLikeOr;
-    }
-    public void setParentIdMultiLikeOr(String parentIdMultiLikeOr){
-        this.parentIdMultiLikeOr = parentIdMultiLikeOr;
+    public void setParentIdEqual(Integer parentIdEqual){
+        this.parentIdEqual = parentIdEqual;
     }
 
-    // parentIdMultiLikeAnd:
-    public String getParentIdMultiLikeAnd(){
-        return this.parentIdMultiLikeAnd;
+    // parentIdIn:
+    public String getParentIdIn(){
+        return this.parentIdIn;
     }
-    public void setParentIdMultiLikeAnd(String parentIdMultiLikeAnd){
-        this.parentIdMultiLikeAnd = parentIdMultiLikeAnd;
+    public void setParentIdIn(String parentIdIn){
+        this.parentIdIn = parentIdIn;
     }
 
 
@@ -323,9 +314,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
         tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));
         dcEqual = GsonParser.parseInt(jsonObject.get("dcEqual"));
         dcIn = GsonParser.parseString(jsonObject.get("dcIn"));
-        parentIdLike = GsonParser.parseString(jsonObject.get("parentIdLike"));
-        parentIdMultiLikeOr = GsonParser.parseString(jsonObject.get("parentIdMultiLikeOr"));
-        parentIdMultiLikeAnd = GsonParser.parseString(jsonObject.get("parentIdMultiLikeAnd"));
+        parentIdEqual = GsonParser.parseInt(jsonObject.get("parentIdEqual"));
+        parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
 
     }
 
@@ -356,9 +346,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
         kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
         kparams.add("dcEqual", this.dcEqual);
         kparams.add("dcIn", this.dcIn);
-        kparams.add("parentIdLike", this.parentIdLike);
-        kparams.add("parentIdMultiLikeOr", this.parentIdMultiLikeOr);
-        kparams.add("parentIdMultiLikeAnd", this.parentIdMultiLikeAnd);
+        kparams.add("parentIdEqual", this.parentIdEqual);
+        kparams.add("parentIdIn", this.parentIdIn);
         return kparams;
     }
 

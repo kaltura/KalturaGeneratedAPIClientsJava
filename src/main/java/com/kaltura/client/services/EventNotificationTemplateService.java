@@ -29,12 +29,15 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EventNotificationTemplateStatus;
+import com.kaltura.client.enums.PushNotificationCommandType;
 import com.kaltura.client.types.EventNotificationScope;
 import com.kaltura.client.types.EventNotificationTemplate;
 import com.kaltura.client.types.EventNotificationTemplateFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.PartnerFilter;
+import com.kaltura.client.types.PushNotificationData;
+import com.kaltura.client.types.PushNotificationParams;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -150,6 +153,26 @@ public class EventNotificationTemplateService {
         kparams.add("pager", pager);
 
         return new ListResponseRequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "listTemplates", kparams);
+    }
+
+	/**  Register to a queue from which event messages will be provided according to
+	  given template. Queue will be created if not already exists  */
+    public static RequestBuilder<PushNotificationData> register(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams)  {
+        Params kparams = new Params();
+        kparams.add("notificationTemplateSystemName", notificationTemplateSystemName);
+        kparams.add("pushNotificationParams", pushNotificationParams);
+
+        return new RequestBuilder<PushNotificationData>(PushNotificationData.class, "eventnotification_eventnotificationtemplate", "register", kparams);
+    }
+
+	/**  Clear queue messages  */
+    public static RequestBuilder<Void> sendCommand(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command)  {
+        Params kparams = new Params();
+        kparams.add("notificationTemplateSystemName", notificationTemplateSystemName);
+        kparams.add("pushNotificationParams", pushNotificationParams);
+        kparams.add("command", command);
+
+        return new NullRequestBuilder("eventnotification_eventnotificationtemplate", "sendCommand", kparams);
     }
 
 	/**  Update an existing event notification template object  */

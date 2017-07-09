@@ -39,8 +39,6 @@ public enum MetadataObjectType implements EnumAsString {
     AD_CUE_POINT("adCuePointMetadata.AdCuePoint"),
     ANNOTATION("annotationMetadata.Annotation"),
     CODE_CUE_POINT("codeCuePointMetadata.CodeCuePoint"),
-    ANSWER_CUE_POINT("quiz.AnswerCuePoint"),
-    QUESTION_CUE_POINT("quiz.QuestionCuePoint"),
     THUMB_CUE_POINT("thumbCuePointMetadata.thumbCuePoint"),
     ENTRY("1"),
     CATEGORY("2"),
