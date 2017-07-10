@@ -8,7 +8,7 @@ jdk:
     - openjdk7
     - oraclejdk7
     - oraclejdk8
-script: travis_wait 60 ./testAPI/test.sh
+script: ./testAPI/test.sh
 notifications:
   email:
     recipients:
