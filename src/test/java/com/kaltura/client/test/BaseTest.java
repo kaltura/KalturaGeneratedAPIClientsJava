@@ -57,7 +57,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.RequestElement;
 import com.kaltura.client.utils.response.OnCompletion;
 
-public class BaseTest extends TestCase {
+abstract class BaseTest extends TestCase {
 	protected TestConfig testConfig;
 	
 	protected Configuration kalturaConfig = new Configuration();
