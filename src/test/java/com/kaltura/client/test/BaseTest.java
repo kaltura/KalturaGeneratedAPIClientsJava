@@ -31,7 +31,9 @@ package com.kaltura.client.test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -135,6 +137,22 @@ public class BaseTest extends TestCase {
 		}
 		
 		client.setSessionId(sessionId);
+	}
+	
+	protected static String join(Collection<?> col) {
+		return join(col, ",");
+	}
+	
+	protected static String join(Collection<?> col, String delim) {
+	    StringBuilder sb = new StringBuilder();
+	    Iterator<?> iter = col.iterator();
+	    if (iter.hasNext())
+	        sb.append(iter.next().toString());
+	    while (iter.hasNext()) {
+	        sb.append(delim);
+	        sb.append(iter.next().toString());
+	    }
+	    return sb.toString();
 	}
 	
 	// Entry utils

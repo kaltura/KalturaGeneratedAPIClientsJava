@@ -436,10 +436,9 @@ public class MediaServiceTest extends BaseTest {
 				for(MediaEntry entry : entries) {
 					list.add(entry.getName());
 				}
-				String[] nameObjects = list.toArray(new String[entries.size()]);
 				
 				MediaEntryFilter filter = new MediaEntryFilter();
-				filter.setNameMultiLikeOr(String.join(",", nameObjects));
+				filter.setNameMultiLikeOr(join(list));
 				filter.setStatusIn(EntryStatus.IMPORT.getValue() + "," + EntryStatus.NO_CONTENT.getValue() + "," + EntryStatus.PENDING.getValue() + "," + EntryStatus.PRECONVERT.getValue() + "," + EntryStatus.READY.getValue());
 
 				RequestBuilder<ListResponse<MediaEntry>> requestBuilder = MediaService.list(filter)
