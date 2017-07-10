@@ -196,6 +196,7 @@ public class FlavorAsset extends Asset {
         kparams.add("objectType", "KalturaFlavorAsset");
         kparams.add("flavorParamsId", this.flavorParamsId);
         kparams.add("language", this.language);
+        kparams.add("label", this.label);
         return kparams;
     }
 

@@ -28,7 +28,6 @@
 package com.kaltura.client.test;
 
 import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
 
 import com.kaltura.client.APIOkRequestsExecutor;
 import com.kaltura.client.services.MediaService;
@@ -49,34 +48,38 @@ public class SessionServiceTest extends BaseTest {
 		startUserSession();
 		assertNotNull(client.getSessionId());
 
-        final CountDownLatch doneSignal = new CountDownLatch(1);
-		RequestBuilder<ListResponse<MediaEntry>> requestBuilder = MediaService.list()
-		.setCompletion(new OnCompletion<ListResponse<MediaEntry>>() {
-			
+		final Completion completion = new Completion();
+		completion.run(new Runnable() {
 			@Override
-			public void onComplete(ListResponse<MediaEntry> response, APIException error) {
-				assertNull(error);
-				assertNotNull(response);
-
-				// Close session
-				client.setSessionId(null);;
-
+			public void run() {
 				RequestBuilder<ListResponse<MediaEntry>> requestBuilder = MediaService.list()
 				.setCompletion(new OnCompletion<ListResponse<MediaEntry>>() {
 					
 					@Override
 					public void onComplete(ListResponse<MediaEntry> response, APIException error) {
-						assertNotNull(error);
-						assertNull(response);
+						completion.assertNull(error);
+						completion.assertNotNull(response);
 
-						
-						doneSignal.countDown();
+						// Close session
+						client.setSessionId(null);;
+
+						RequestBuilder<ListResponse<MediaEntry>> requestBuilder = MediaService.list()
+						.setCompletion(new OnCompletion<ListResponse<MediaEntry>>() {
+							
+							@Override
+							public void onComplete(ListResponse<MediaEntry> response, APIException error) {
+								completion.assertNotNull(error);
+								completion.assertNull(response);
+
+								
+								completion.complete();
+							}
+						});
+						APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 					}
 				});
 				APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 			}
 		});
-		APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
-		doneSignal.await();
 	}
 }

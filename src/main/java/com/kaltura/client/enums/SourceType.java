@@ -36,7 +36,6 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SourceType implements EnumAsString {
-    LIMELIGHT_LIVE("limeLight.LIVE_STREAM"),
     VELOCIX_LIVE("velocix.VELOCIX_LIVE"),
     FILE("1"),
     WEBCAM("2"),

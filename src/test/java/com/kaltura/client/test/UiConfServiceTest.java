@@ -30,13 +30,13 @@ package com.kaltura.client.test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 import com.kaltura.client.APIOkRequestsExecutor;
 import com.kaltura.client.ILogger;
 import com.kaltura.client.Logger;
 import com.kaltura.client.enums.UiConfCreationMode;
 import com.kaltura.client.services.UiConfService;
+import com.kaltura.client.test.BaseTest.Completion;
 import com.kaltura.client.types.APIException;
 import com.kaltura.client.types.UiConf;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -79,18 +79,22 @@ public class UiConfServiceTest extends BaseTest {
 			logger.info("Starting ui conf add test");
 
 		startAdminSession();
-        final CountDownLatch doneSignal = new CountDownLatch(1);
-		String name = "Test UI Conf (" + new Date() + ")";
-		addUiConf(name, new OnCompletion<UiConf>() {
-
+		final Completion completion = new Completion();
+		completion.run(new Runnable() {
 			@Override
-			public void onComplete(UiConf addedConf, APIException error) {
-				assertNull(error);
-				assertNotNull(addedConf);
-				doneSignal.countDown();
+			public void run() {
+				String name = "Test UI Conf (" + new Date() + ")";
+				addUiConf(name, new OnCompletion<UiConf>() {
+
+					@Override
+					public void onComplete(UiConf addedConf, APIException error) {
+						completion.assertNull(error);
+						completion.assertNotNull(addedConf);
+						completion.complete();
+					}
+				});
 			}
 		});
-		doneSignal.await();
 	}
 	
 	public void testGetUiConf() throws Exception {
@@ -98,31 +102,35 @@ public class UiConfServiceTest extends BaseTest {
 			logger.info("Starting ui get test");
 
 		startAdminSession();
-        final CountDownLatch doneSignal = new CountDownLatch(1);
-		String name = "Test UI Conf (" + new Date() + ")";
-		addUiConf(name, new OnCompletion<UiConf>() {
-
+		final Completion completion = new Completion();
+		completion.run(new Runnable() {
 			@Override
-			public void onComplete(final UiConf addedConf, APIException error) {
-				assertNull(error);
-				assertNotNull(addedConf);
-				
-				RequestBuilder<UiConf> requestBuilder = UiConfService.get(addedConf.getId())
-				.setCompletion(new OnCompletion<UiConf>() {
-					
-					@Override
-					public void onComplete(UiConf retrievedConf, APIException error) {
-						assertNull(error);
+			public void run() {
+				String name = "Test UI Conf (" + new Date() + ")";
+				addUiConf(name, new OnCompletion<UiConf>() {
 
-						assertEquals(retrievedConf.getId(), addedConf.getId());
+					@Override
+					public void onComplete(final UiConf addedConf, APIException error) {
+						completion.assertNull(error);
+						completion.assertNotNull(addedConf);
 						
-						doneSignal.countDown();
+						RequestBuilder<UiConf> requestBuilder = UiConfService.get(addedConf.getId())
+						.setCompletion(new OnCompletion<UiConf>() {
+							
+							@Override
+							public void onComplete(UiConf retrievedConf, APIException error) {
+								completion.assertNull(error);
+
+								completion.assertEquals(retrievedConf.getId(), addedConf.getId());
+								
+								completion.complete();
+							}
+						});
+						APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 					}
 				});
-				APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 			}
 		});
-		doneSignal.await();
 	}
 	
 	public void testDeleteUiConf() throws Exception {
@@ -130,42 +138,46 @@ public class UiConfServiceTest extends BaseTest {
 			logger.info("Starting ui conf delete test");
 
 		startAdminSession();
-        final CountDownLatch doneSignal = new CountDownLatch(1);
-		String name = "Test UI Conf (" + new Date() + ")";
-		addUiConf(name, new OnCompletion<UiConf>() {
-
+		final Completion completion = new Completion();
+		completion.run(new Runnable() {
 			@Override
-			public void onComplete(final UiConf addedConf, APIException error) {
-				assertNull(error);
-				assertNotNull(addedConf);
-				
-				RequestBuilder<Void> requestBuilder = UiConfService.delete(addedConf.getId())
-				.setCompletion(new OnCompletion<Void>() {
-					
+			public void run() {
+				String name = "Test UI Conf (" + new Date() + ")";
+				addUiConf(name, new OnCompletion<UiConf>() {
+
 					@Override
-					public void onComplete(Void response, APIException error) {
-						assertNull(error);
-
-						testUiConfIds.remove(addedConf.getId());
-
-						RequestBuilder<UiConf> requestBuilder = UiConfService.get(addedConf.getId())
-						.setCompletion(new OnCompletion<UiConf>() {
+					public void onComplete(final UiConf addedConf, APIException error) {
+						completion.assertNull(error);
+						completion.assertNotNull(addedConf);
+						
+						RequestBuilder<Void> requestBuilder = UiConfService.delete(addedConf.getId())
+						.setCompletion(new OnCompletion<Void>() {
 							
 							@Override
-							public void onComplete(UiConf retrievedConf, APIException error) {
-								assertNull("Getting deleted ui-conf should fail", retrievedConf);
-								assertNotNull("Getting deleted ui-conf should fail", error);
+							public void onComplete(Void response, APIException error) {
+								completion.assertNull(error);
 
-								doneSignal.countDown();
+								testUiConfIds.remove(addedConf.getId());
+
+								RequestBuilder<UiConf> requestBuilder = UiConfService.get(addedConf.getId())
+								.setCompletion(new OnCompletion<UiConf>() {
+									
+									@Override
+									public void onComplete(UiConf retrievedConf, APIException error) {
+										completion.assertNull(retrievedConf, "Getting deleted ui-conf should fail");
+										completion.assertNotNull(error, "Getting deleted ui-conf should fail");
+
+										completion.complete();
+									}
+								});
+								APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 							}
 						});
 						APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 					}
 				});
-				APIOkRequestsExecutor.getSingleton().queue(requestBuilder.build(client));
 			}
 		});
-		doneSignal.await();
 	}
 
 	@Override

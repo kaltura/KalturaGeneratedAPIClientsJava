@@ -37,7 +37,8 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum GeoCoderType implements EnumAsString {
     KALTURA("1"),
-    MAX_MIND("2");
+    MAX_MIND("2"),
+    DIGITAL_ELEMENT("3");
 
     private String value;
 

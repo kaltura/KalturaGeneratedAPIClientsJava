@@ -42,33 +42,6 @@ import com.google.gson.JsonObject;
 @SuppressWarnings("serial")
 public abstract class DeliveryServerNodeBaseFilter extends ServerNodeFilter {
 
-    private String playbackDomainLike;
-    private String playbackDomainMultiLikeOr;
-    private String playbackDomainMultiLikeAnd;
-
-    // playbackDomainLike:
-    public String getPlaybackDomainLike(){
-        return this.playbackDomainLike;
-    }
-    public void setPlaybackDomainLike(String playbackDomainLike){
-        this.playbackDomainLike = playbackDomainLike;
-    }
-
-    // playbackDomainMultiLikeOr:
-    public String getPlaybackDomainMultiLikeOr(){
-        return this.playbackDomainMultiLikeOr;
-    }
-    public void setPlaybackDomainMultiLikeOr(String playbackDomainMultiLikeOr){
-        this.playbackDomainMultiLikeOr = playbackDomainMultiLikeOr;
-    }
-
-    // playbackDomainMultiLikeAnd:
-    public String getPlaybackDomainMultiLikeAnd(){
-        return this.playbackDomainMultiLikeAnd;
-    }
-    public void setPlaybackDomainMultiLikeAnd(String playbackDomainMultiLikeAnd){
-        this.playbackDomainMultiLikeAnd = playbackDomainMultiLikeAnd;
-    }
 
 
     public DeliveryServerNodeBaseFilter() {
@@ -77,22 +50,11 @@ public abstract class DeliveryServerNodeBaseFilter extends ServerNodeFilter {
 
     public DeliveryServerNodeBaseFilter(JsonObject jsonObject) throws APIException {
         super(jsonObject);
-
-        if(jsonObject == null) return;
-
-        // set members values:
-        playbackDomainLike = GsonParser.parseString(jsonObject.get("playbackDomainLike"));
-        playbackDomainMultiLikeOr = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeOr"));
-        playbackDomainMultiLikeAnd = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeAnd"));
-
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaDeliveryServerNodeBaseFilter");
-        kparams.add("playbackDomainLike", this.playbackDomainLike);
-        kparams.add("playbackDomainMultiLikeOr", this.playbackDomainMultiLikeOr);
-        kparams.add("playbackDomainMultiLikeAnd", this.playbackDomainMultiLikeAnd);
         return kparams;
     }
 

@@ -70,6 +70,14 @@ public class StatsService {
         return new NullRequestBuilder("stats", "kmcCollect", kparams);
     }
 
+	/**  Use this action to report device capabilities to the kaltura server.  */
+    public static RequestBuilder<Void> reportDeviceCapabilities(String data)  {
+        Params kparams = new Params();
+        kparams.add("data", data);
+
+        return new NullRequestBuilder("stats", "reportDeviceCapabilities", kparams);
+    }
+
 	/**  Use this action to report errors to the kaltura server.  */
     public static RequestBuilder<Void> reportError(String errorCode, String errorMessage)  {
         Params kparams = new Params();
