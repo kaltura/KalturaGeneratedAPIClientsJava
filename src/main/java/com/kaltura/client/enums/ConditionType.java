@@ -36,7 +36,6 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType implements EnumAsString {
-    ABC_WATERMARK("abcScreenersWatermarkAccessControl.abcWatermark"),
     EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
     EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
     METADATA_FIELD_CHANGED("metadata.FieldChanged"),

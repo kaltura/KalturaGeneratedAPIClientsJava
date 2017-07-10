@@ -36,7 +36,6 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum IntegrationTriggerType implements EnumAsString {
-    BPM_EVENT_NOTIFICATION("bpmEventNotificationIntegration.BpmEventNotification"),
     MANUAL("1");
 
     private String value;

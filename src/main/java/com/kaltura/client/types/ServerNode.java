@@ -64,7 +64,7 @@ public abstract class ServerNode extends ObjectBase {
 	/**  DC where the serverNode is located  */
     private Integer dc;
 	/**  Id of the parent serverNode  */
-    private Integer parentId;
+    private String parentId;
 
     // id:
     public Integer getId(){
@@ -171,10 +171,10 @@ public abstract class ServerNode extends ObjectBase {
     }
 
     // parentId:
-    public Integer getParentId(){
+    public String getParentId(){
         return this.parentId;
     }
-    public void setParentId(Integer parentId){
+    public void setParentId(String parentId){
         this.parentId = parentId;
     }
 
@@ -202,7 +202,7 @@ public abstract class ServerNode extends ObjectBase {
         type = ServerNodeType.get(GsonParser.parseString(jsonObject.get("type")));
         tags = GsonParser.parseString(jsonObject.get("tags"));
         dc = GsonParser.parseInt(jsonObject.get("dc"));
-        parentId = GsonParser.parseInt(jsonObject.get("parentId"));
+        parentId = GsonParser.parseString(jsonObject.get("parentId"));
 
     }
 

@@ -44,7 +44,6 @@ public enum AssetType implements EnumAsString {
     SWF("document.SWF"),
     TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
     TRANSCRIPT("transcript.Transcript"),
-    WIDEVINE_FLAVOR("widevine.WidevineFlavor"),
     FLAVOR("1"),
     THUMBNAIL("2"),
     LIVE("3");

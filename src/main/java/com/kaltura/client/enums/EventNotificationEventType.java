@@ -36,7 +36,6 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationEventType implements EnumAsString {
-    INTEGRATION_JOB_CLOSED("integrationEventNotifications.INTEGRATION_JOB_CLOSED"),
     BATCH_JOB_STATUS("1"),
     OBJECT_ADDED("2"),
     OBJECT_CHANGED("3"),

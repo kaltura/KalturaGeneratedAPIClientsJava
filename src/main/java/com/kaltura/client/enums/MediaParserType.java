@@ -37,7 +37,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum MediaParserType implements EnumAsString {
     MEDIAINFO("0"),
-    REMOTE_MEDIAINFO("remoteMediaInfo.RemoteMediaInfo"),
     FFMPEG("1");
 
     private String value;
