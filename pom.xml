@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <!-- -->
 <!-- Maven POM file for packaging and testing the -->
-<!-- KalturaClient Java library. -->
-<!-- -->
-<!-- Contributed by: Mark Ratliff, ratliff@princeton.edu -->
-<!-- -->
+<!-- KalturaApiClient Java library. -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -21,7 +18,7 @@
     </properties>
 
     <!-- Project description -->
-    <name>KalturaApiClient Java Library</name>
+    <name>Kaltura API Java Client Library</name>
     <description>
         KalturaApiClient is a library of Java classes that can be used to interact
         with the Kaltura REST API. More information about the REST API can be
