@@ -41,7 +41,7 @@ import com.google.gson.JsonObject;
 
 /**  Used to ingest media file that is already accessible on the shared disc.  */
 @SuppressWarnings("serial")
-public class ServerFileResource extends DataCenterContentResource {
+public class ServerFileResource extends GenericDataCenterContentResource {
 
 	/**  Full path to the local file  */
     private String localFilePath;

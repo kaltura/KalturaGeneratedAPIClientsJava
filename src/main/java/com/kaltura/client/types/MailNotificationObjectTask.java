@@ -43,18 +43,40 @@ import com.google.gson.JsonObject;
 public class MailNotificationObjectTask extends ObjectTask {
 
 	/**  The mail to send the notification to  */
-    private String mailAddress;
+    private String mailTo;
+	/**  The sender in the mail  */
+    private String sender;
+	/**  The subject of the entry  */
+    private String subject;
 	/**  The message to send in the notification mail  */
     private String message;
+	/**  The basic link for the KMC site  */
+    private String link;
 	/**  Send the mail to each user  */
     private Boolean sendToUsers;
 
-    // mailAddress:
-    public String getMailAddress(){
-        return this.mailAddress;
+    // mailTo:
+    public String getMailTo(){
+        return this.mailTo;
     }
-    public void setMailAddress(String mailAddress){
-        this.mailAddress = mailAddress;
+    public void setMailTo(String mailTo){
+        this.mailTo = mailTo;
+    }
+
+    // sender:
+    public String getSender(){
+        return this.sender;
+    }
+    public void setSender(String sender){
+        this.sender = sender;
+    }
+
+    // subject:
+    public String getSubject(){
+        return this.subject;
+    }
+    public void setSubject(String subject){
+        this.subject = subject;
     }
 
     // message:
@@ -63,6 +85,14 @@ public class MailNotificationObjectTask extends ObjectTask {
     }
     public void setMessage(String message){
         this.message = message;
+    }
+
+    // link:
+    public String getLink(){
+        return this.link;
+    }
+    public void setLink(String link){
+        this.link = link;
     }
 
     // sendToUsers:
@@ -84,8 +114,11 @@ public class MailNotificationObjectTask extends ObjectTask {
         if(jsonObject == null) return;
 
         // set members values:
-        mailAddress = GsonParser.parseString(jsonObject.get("mailAddress"));
+        mailTo = GsonParser.parseString(jsonObject.get("mailTo"));
+        sender = GsonParser.parseString(jsonObject.get("sender"));
+        subject = GsonParser.parseString(jsonObject.get("subject"));
         message = GsonParser.parseString(jsonObject.get("message"));
+        link = GsonParser.parseString(jsonObject.get("link"));
         sendToUsers = GsonParser.parseBoolean(jsonObject.get("sendToUsers"));
 
     }
@@ -93,8 +126,11 @@ public class MailNotificationObjectTask extends ObjectTask {
     public Params toParams() {
         Params kparams = super.toParams();
         kparams.add("objectType", "KalturaMailNotificationObjectTask");
-        kparams.add("mailAddress", this.mailAddress);
+        kparams.add("mailTo", this.mailTo);
+        kparams.add("sender", this.sender);
+        kparams.add("subject", this.subject);
         kparams.add("message", this.message);
+        kparams.add("link", this.link);
         kparams.add("sendToUsers", this.sendToUsers);
         return kparams;
     }

@@ -41,7 +41,7 @@ import com.google.gson.JsonObject;
 
 /**  Used to ingest media that dropped through drop folder  */
 @SuppressWarnings("serial")
-public class DropFolderFileResource extends DataCenterContentResource {
+public class DropFolderFileResource extends GenericDataCenterContentResource {
 
 	/**  Id of the drop folder file object  */
     private Integer dropFolderFileId;

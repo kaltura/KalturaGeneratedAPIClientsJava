@@ -31,6 +31,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.DataEntry;
 import com.kaltura.client.types.DataEntryFilter;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.GenericDataCenterContentResource;
 import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -53,6 +54,15 @@ public class DataService {
         kparams.add("dataEntry", dataEntry);
 
         return new RequestBuilder<DataEntry>(DataEntry.class, "data", "add", kparams);
+    }
+
+	/**  Update the dataContent of data entry using a resource  */
+    public static RequestBuilder<String> addContent(String entryId, GenericDataCenterContentResource resource)  {
+        Params kparams = new Params();
+        kparams.add("entryId", entryId);
+        kparams.add("resource", resource);
+
+        return new RequestBuilder<String>(String.class, "data", "addContent", kparams);
     }
 
 	/**  Delete a data entry.  */

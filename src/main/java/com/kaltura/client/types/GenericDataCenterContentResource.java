@@ -39,41 +39,22 @@ import com.google.gson.JsonObject;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that uploaded to the system and represented by token that
-  returned from upload.upload action or uploadToken.add action.  */
 @SuppressWarnings("serial")
-public class UploadedFileTokenResource extends GenericDataCenterContentResource {
-
-	/**  Token that returned from upload.upload action or uploadToken.add action.  */
-    private String token;
-
-    // token:
-    public String getToken(){
-        return this.token;
-    }
-    public void setToken(String token){
-        this.token = token;
-    }
+public abstract class GenericDataCenterContentResource extends DataCenterContentResource {
 
 
-    public UploadedFileTokenResource() {
+
+    public GenericDataCenterContentResource() {
        super();
     }
 
-    public UploadedFileTokenResource(JsonObject jsonObject) throws APIException {
+    public GenericDataCenterContentResource(JsonObject jsonObject) throws APIException {
         super(jsonObject);
-
-        if(jsonObject == null) return;
-
-        // set members values:
-        token = GsonParser.parseString(jsonObject.get("token"));
-
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUploadedFileTokenResource");
-        kparams.add("token", this.token);
+        kparams.add("objectType", "KalturaGenericDataCenterContentResource");
         return kparams;
     }
 
