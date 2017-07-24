@@ -63,6 +63,7 @@ public class ConversionProfileAssetParams extends ObjectBase {
     private AssetParamsDeletePolicy deletePolicy;
     private Boolean isEncrypted;
     private Double contentAwareness;
+    private Integer chunkedEncodeMode;
     private Boolean twoPass;
     private String tags;
 
@@ -138,6 +139,14 @@ public class ConversionProfileAssetParams extends ObjectBase {
         this.contentAwareness = contentAwareness;
     }
 
+    // chunkedEncodeMode:
+    public Integer getChunkedEncodeMode(){
+        return this.chunkedEncodeMode;
+    }
+    public void setChunkedEncodeMode(Integer chunkedEncodeMode){
+        this.chunkedEncodeMode = chunkedEncodeMode;
+    }
+
     // twoPass:
     public Boolean getTwoPass(){
         return this.twoPass;
@@ -174,6 +183,7 @@ public class ConversionProfileAssetParams extends ObjectBase {
         deletePolicy = AssetParamsDeletePolicy.get(GsonParser.parseInt(jsonObject.get("deletePolicy")));
         isEncrypted = GsonParser.parseBoolean(jsonObject.get("isEncrypted"));
         contentAwareness = GsonParser.parseDouble(jsonObject.get("contentAwareness"));
+        chunkedEncodeMode = GsonParser.parseInt(jsonObject.get("chunkedEncodeMode"));
         twoPass = GsonParser.parseBoolean(jsonObject.get("twoPass"));
         tags = GsonParser.parseString(jsonObject.get("tags"));
 
@@ -189,6 +199,7 @@ public class ConversionProfileAssetParams extends ObjectBase {
         kparams.add("deletePolicy", this.deletePolicy);
         kparams.add("isEncrypted", this.isEncrypted);
         kparams.add("contentAwareness", this.contentAwareness);
+        kparams.add("chunkedEncodeMode", this.chunkedEncodeMode);
         kparams.add("twoPass", this.twoPass);
         kparams.add("tags", this.tags);
         return kparams;

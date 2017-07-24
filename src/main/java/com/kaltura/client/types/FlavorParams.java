@@ -95,6 +95,7 @@ public class FlavorParams extends AssetParams {
     private String subtitlesData;
     private Integer isEncrypted;
     private Double contentAwareness;
+    private Integer chunkedEncodeMode;
     private Integer clipOffset;
     private Integer clipDuration;
 
@@ -394,6 +395,14 @@ public class FlavorParams extends AssetParams {
         this.contentAwareness = contentAwareness;
     }
 
+    // chunkedEncodeMode:
+    public Integer getChunkedEncodeMode(){
+        return this.chunkedEncodeMode;
+    }
+    public void setChunkedEncodeMode(Integer chunkedEncodeMode){
+        this.chunkedEncodeMode = chunkedEncodeMode;
+    }
+
     // clipOffset:
     public Integer getClipOffset(){
         return this.clipOffset;
@@ -458,6 +467,7 @@ public class FlavorParams extends AssetParams {
         subtitlesData = GsonParser.parseString(jsonObject.get("subtitlesData"));
         isEncrypted = GsonParser.parseInt(jsonObject.get("isEncrypted"));
         contentAwareness = GsonParser.parseDouble(jsonObject.get("contentAwareness"));
+        chunkedEncodeMode = GsonParser.parseInt(jsonObject.get("chunkedEncodeMode"));
         clipOffset = GsonParser.parseInt(jsonObject.get("clipOffset"));
         clipDuration = GsonParser.parseInt(jsonObject.get("clipDuration"));
 
@@ -503,6 +513,7 @@ public class FlavorParams extends AssetParams {
         kparams.add("subtitlesData", this.subtitlesData);
         kparams.add("isEncrypted", this.isEncrypted);
         kparams.add("contentAwareness", this.contentAwareness);
+        kparams.add("chunkedEncodeMode", this.chunkedEncodeMode);
         kparams.add("clipOffset", this.clipOffset);
         kparams.add("clipDuration", this.clipDuration);
         return kparams;
