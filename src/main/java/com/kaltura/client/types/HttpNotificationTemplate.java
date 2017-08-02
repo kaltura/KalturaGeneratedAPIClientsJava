@@ -27,17 +27,16 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.HttpNotificationData;
-import com.kaltura.client.enums.HttpNotificationMethod;
-import com.kaltura.client.enums.HttpNotificationAuthenticationMethod;
-import com.kaltura.client.enums.HttpNotificationSslVersion;
-import com.kaltura.client.enums.HttpNotificationCertificateType;
-import com.kaltura.client.enums.HttpNotificationSslKeyType;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.HttpNotificationAuthenticationMethod;
+import com.kaltura.client.enums.HttpNotificationCertificateType;
+import com.kaltura.client.enums.HttpNotificationMethod;
+import com.kaltura.client.enums.HttpNotificationSslKeyType;
+import com.kaltura.client.enums.HttpNotificationSslVersion;
+import com.kaltura.client.types.HttpNotificationData;
+import com.kaltura.client.utils.GsonParser;
+import java.util.List;
 
 /**
  * This class was generated using exec.php

@@ -27,15 +27,14 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.BulkUploadResultStatus;
 import com.kaltura.client.enums.BulkUploadAction;
 import com.kaltura.client.enums.BulkUploadObjectType;
+import com.kaltura.client.enums.BulkUploadResultStatus;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php

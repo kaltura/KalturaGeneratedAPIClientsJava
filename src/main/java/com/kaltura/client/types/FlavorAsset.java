@@ -27,12 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.enums.FlavorAssetStatus;
 import com.kaltura.client.enums.Language;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php

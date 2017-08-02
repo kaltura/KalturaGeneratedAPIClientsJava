@@ -27,12 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.ITunesSyndicationFeedCategories;
-import com.kaltura.client.enums.ITunesSyndicationFeedAdultValues;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.ITunesSyndicationFeedAdultValues;
+import com.kaltura.client.enums.ITunesSyndicationFeedCategories;
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php

@@ -27,16 +27,15 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.StorageProfileStatus;
-import com.kaltura.client.enums.StorageProfileProtocol;
-import com.kaltura.client.enums.StorageProfileDeliveryStatus;
-import com.kaltura.client.enums.StorageProfileReadyBehavior;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.StorageProfileDeliveryStatus;
+import com.kaltura.client.enums.StorageProfileProtocol;
+import com.kaltura.client.enums.StorageProfileReadyBehavior;
+import com.kaltura.client.enums.StorageProfileStatus;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import java.util.List;
 
 /**
  * This class was generated using exec.php

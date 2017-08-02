@@ -27,15 +27,14 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.types.ScheduleEventRecurrence;
-import com.kaltura.client.enums.ScheduleEventStatus;
 import com.kaltura.client.enums.ScheduleEventClassificationType;
 import com.kaltura.client.enums.ScheduleEventRecurrenceType;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.enums.ScheduleEventStatus;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.types.ScheduleEventRecurrence;
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php

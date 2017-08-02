@@ -75,6 +75,10 @@ public class UserEntryService {
         return new RequestBuilder<UserEntry>(UserEntry.class, "userentry", "get", kparams);
     }
 
+    public static RequestBuilder<ListResponse<UserEntry>> list()  {
+        return list(null);
+    }
+
     public static RequestBuilder<ListResponse<UserEntry>> list(UserEntryFilter filter)  {
         return list(filter, null);
     }

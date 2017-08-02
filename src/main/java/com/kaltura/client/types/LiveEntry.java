@@ -27,16 +27,15 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.LiveEntryRecordingOptions;
-import com.kaltura.client.enums.RecordStatus;
-import com.kaltura.client.enums.DVRStatus;
-import com.kaltura.client.enums.LivePublishStatus;
-import com.kaltura.client.enums.EntryServerNodeStatus;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.DVRStatus;
+import com.kaltura.client.enums.EntryServerNodeStatus;
+import com.kaltura.client.enums.LivePublishStatus;
+import com.kaltura.client.enums.RecordStatus;
+import com.kaltura.client.types.LiveEntryRecordingOptions;
+import com.kaltura.client.utils.GsonParser;
+import java.util.List;
 
 /**
  * This class was generated using exec.php

@@ -27,14 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.enums.EventNotificationEventObjectType;
 import com.kaltura.client.enums.EventNotificationEventType;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php

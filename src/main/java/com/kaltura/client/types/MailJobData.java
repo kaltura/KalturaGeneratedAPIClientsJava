@@ -27,13 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.MailType;
-import com.kaltura.client.enums.MailJobStatus;
-import com.kaltura.client.enums.LanguageCode;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.LanguageCode;
+import com.kaltura.client.enums.MailJobStatus;
+import com.kaltura.client.enums.MailType;
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php

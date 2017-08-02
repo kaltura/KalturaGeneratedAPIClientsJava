@@ -27,16 +27,15 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.enums.BatchJobErrorTypes;
+import com.kaltura.client.enums.EntryDistributionFlag;
 import com.kaltura.client.enums.EntryDistributionStatus;
 import com.kaltura.client.enums.EntryDistributionSunStatus;
-import com.kaltura.client.enums.EntryDistributionFlag;
-import com.kaltura.client.enums.BatchJobErrorTypes;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php

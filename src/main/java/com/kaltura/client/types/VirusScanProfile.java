@@ -27,15 +27,14 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.types.BaseEntryFilter;
-import com.kaltura.client.enums.VirusScanProfileStatus;
-import com.kaltura.client.enums.VirusScanEngineType;
-import com.kaltura.client.enums.VirusFoundAction;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.VirusFoundAction;
+import com.kaltura.client.enums.VirusScanEngineType;
+import com.kaltura.client.enums.VirusScanProfileStatus;
+import com.kaltura.client.types.BaseEntryFilter;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 
 /**
  * This class was generated using exec.php
