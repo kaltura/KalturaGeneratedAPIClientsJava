@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 
 /**
@@ -38,24 +39,54 @@ import com.kaltura.client.utils.GsonParser;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  The KalturaFilterPager object enables paging management to be applied upon
-  service list actions.  */
+/**  The KalturaPager object enables paging management to be applied upon service
+  list/search actions.  */
 @SuppressWarnings("serial")
-public class FilterPager extends Pager {
+public class Pager extends ObjectBase {
+
+	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
+    private Integer pageSize;
+	/**  The page number for which {pageSize} of objects should be retrieved (Default is
+	  1).  */
+    private Integer pageIndex;
+
+    // pageSize:
+    public Integer getPageSize(){
+        return this.pageSize;
+    }
+    public void setPageSize(Integer pageSize){
+        this.pageSize = pageSize;
+    }
+
+    // pageIndex:
+    public Integer getPageIndex(){
+        return this.pageIndex;
+    }
+    public void setPageIndex(Integer pageIndex){
+        this.pageIndex = pageIndex;
+    }
 
 
-
-    public FilterPager() {
+    public Pager() {
        super();
     }
 
-    public FilterPager(JsonObject jsonObject) throws APIException {
+    public Pager(JsonObject jsonObject) throws APIException {
         super(jsonObject);
+
+        if(jsonObject == null) return;
+
+        // set members values:
+        pageSize = GsonParser.parseInt(jsonObject.get("pageSize"));
+        pageIndex = GsonParser.parseInt(jsonObject.get("pageIndex"));
+
     }
 
     public Params toParams() {
         Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFilterPager");
+        kparams.add("objectType", "KalturaPager");
+        kparams.add("pageSize", this.pageSize);
+        kparams.add("pageIndex", this.pageIndex);
         return kparams;
     }
 
