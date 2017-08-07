@@ -37,6 +37,7 @@ import com.kaltura.client.enums.EntryType;
 import com.kaltura.client.enums.LicenseType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

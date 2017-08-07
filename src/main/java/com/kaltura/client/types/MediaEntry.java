@@ -33,6 +33,7 @@ import com.kaltura.client.enums.MediaType;
 import com.kaltura.client.enums.SearchProviderType;
 import com.kaltura.client.enums.SourceType;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

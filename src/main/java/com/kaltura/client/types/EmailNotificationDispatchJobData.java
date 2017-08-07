@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EmailNotificationTemplatePriority;
 import com.kaltura.client.types.EmailNotificationRecipientJobData;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -35,6 +35,7 @@ import com.kaltura.client.enums.EntryDistributionStatus;
 import com.kaltura.client.enums.EntryDistributionSunStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

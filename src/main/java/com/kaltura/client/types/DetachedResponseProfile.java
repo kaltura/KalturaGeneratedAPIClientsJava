@@ -33,6 +33,7 @@ import com.kaltura.client.enums.ResponseProfileType;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.RelatedFilter;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -34,6 +34,7 @@ import com.kaltura.client.enums.BulkUploadObjectType;
 import com.kaltura.client.enums.BulkUploadResultStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

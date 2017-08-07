@@ -36,6 +36,7 @@ import com.kaltura.client.enums.HttpNotificationSslKeyType;
 import com.kaltura.client.enums.HttpNotificationSslVersion;
 import com.kaltura.client.types.HttpNotificationData;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

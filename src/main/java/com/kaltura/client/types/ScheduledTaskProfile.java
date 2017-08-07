@@ -34,6 +34,7 @@ import com.kaltura.client.enums.ScheduledTaskProfileStatus;
 import com.kaltura.client.types.Filter;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

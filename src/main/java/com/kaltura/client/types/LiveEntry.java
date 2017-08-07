@@ -35,6 +35,7 @@ import com.kaltura.client.enums.LivePublishStatus;
 import com.kaltura.client.enums.RecordStatus;
 import com.kaltura.client.types.LiveEntryRecordingOptions;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

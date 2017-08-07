@@ -35,6 +35,7 @@ import com.kaltura.client.enums.StorageProfileReadyBehavior;
 import com.kaltura.client.enums.StorageProfileStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

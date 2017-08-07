@@ -34,6 +34,7 @@ import com.kaltura.client.types.DistributionJobProviderData;
 import com.kaltura.client.types.DistributionProfile;
 import com.kaltura.client.types.EntryDistribution;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

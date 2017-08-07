@@ -35,6 +35,7 @@ import com.kaltura.client.enums.BatchJobType;
 import com.kaltura.client.types.JobData;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
