@@ -75,6 +75,15 @@ public class LiveChannelService {
         return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "appendRecording", kparams);
     }
 
+    public static RequestBuilder<LiveEntry> createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
+        Params kparams = new Params();
+        kparams.add("entryId", entryId);
+        kparams.add("mediaServerIndex", mediaServerIndex);
+        kparams.add("liveEntryStatus", liveEntryStatus);
+
+        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "createRecordedEntry", kparams);
+    }
+
 	/**  Delete a live channel.  */
     public static RequestBuilder<Void> delete(String id)  {
         Params kparams = new Params();
@@ -124,14 +133,19 @@ public class LiveChannelService {
         return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, EntryServerNodeStatus.get(1));
     }
 
-	/**  Register media server to live entry  */
     public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus)  {
+        return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
+    }
+
+	/**  Register media server to live entry  */
+    public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
         Params kparams = new Params();
         kparams.add("entryId", entryId);
         kparams.add("hostname", hostname);
         kparams.add("mediaServerIndex", mediaServerIndex);
         kparams.add("applicationName", applicationName);
         kparams.add("liveEntryStatus", liveEntryStatus);
+        kparams.add("shouldCreateRecordedEntry", shouldCreateRecordedEntry);
 
         return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "registerMediaServer", kparams);
     }
