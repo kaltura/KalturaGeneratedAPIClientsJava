@@ -6,7 +6,6 @@ before_install:
 language: java
 jdk:
     - openjdk7
-    - oraclejdk7
     - oraclejdk8
 script: ./testAPI/test.sh
 notifications:
