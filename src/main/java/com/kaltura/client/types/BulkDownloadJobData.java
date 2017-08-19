@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkDownloadJobData.Tokenizer.class)
 public class BulkDownloadJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String entryIds();
+		String flavorParamsId();
+		String puserId();
+	}
 
 	/**  Comma separated list of entry ids  */
-    private String entryIds;
+	private String entryIds;
 	/**  Flavor params id to use for conversion  */
-    private Integer flavorParamsId;
+	private Integer flavorParamsId;
 	/**  The id of the requesting user  */
-    private String puserId;
+	private String puserId;
 
-    // entryIds:
-    public String getEntryIds(){
-        return this.entryIds;
-    }
-    public void setEntryIds(String entryIds){
-        this.entryIds = entryIds;
-    }
+	// entryIds:
+	public String getEntryIds(){
+		return this.entryIds;
+	}
+	public void setEntryIds(String entryIds){
+		this.entryIds = entryIds;
+	}
 
-    // flavorParamsId:
-    public Integer getFlavorParamsId(){
-        return this.flavorParamsId;
-    }
-    public void setFlavorParamsId(Integer flavorParamsId){
-        this.flavorParamsId = flavorParamsId;
-    }
+	public void entryIds(String multirequestToken){
+		setToken("entryIds", multirequestToken);
+	}
 
-    // puserId:
-    public String getPuserId(){
-        return this.puserId;
-    }
-    public void setPuserId(String puserId){
-        this.puserId = puserId;
-    }
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
+
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
+
+	// puserId:
+	public String getPuserId(){
+		return this.puserId;
+	}
+	public void setPuserId(String puserId){
+		this.puserId = puserId;
+	}
+
+	public void puserId(String multirequestToken){
+		setToken("puserId", multirequestToken);
+	}
 
 
-    public BulkDownloadJobData() {
-       super();
-    }
+	public BulkDownloadJobData() {
+		super();
+	}
 
-    public BulkDownloadJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkDownloadJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-        flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
-        puserId = GsonParser.parseString(jsonObject.get("puserId"));
+		// set members values:
+		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		puserId = GsonParser.parseString(jsonObject.get("puserId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkDownloadJobData");
-        kparams.add("entryIds", this.entryIds);
-        kparams.add("flavorParamsId", this.flavorParamsId);
-        kparams.add("puserId", this.puserId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkDownloadJobData");
+		kparams.add("entryIds", this.entryIds);
+		kparams.add("flavorParamsId", this.flavorParamsId);
+		kparams.add("puserId", this.puserId);
+		return kparams;
+	}
 
 }
 

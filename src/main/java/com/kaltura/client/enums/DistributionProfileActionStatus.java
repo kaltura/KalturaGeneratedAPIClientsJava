@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProfileActionStatus implements EnumAsInt {
-    DISABLED(1),
-    AUTOMATIC(2),
-    MANUAL(3);
+	DISABLED(1),
+	AUTOMATIC(2),
+	MANUAL(3);
 
-    private int value;
+	private int value;
 
-    DistributionProfileActionStatus(int value) {
-        this.value = value;
-    }
+	DistributionProfileActionStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DistributionProfileActionStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionProfileActionStatus defined values and compare the inner value with the given one:
-        for(DistributionProfileActionStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionProfileActionStatus.values().length > 0 ? DistributionProfileActionStatus.values()[0]: null;
+	public static DistributionProfileActionStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionProfileActionStatus defined values and compare the inner value with the given one:
+		for(DistributionProfileActionStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionProfileActionStatus.values().length > 0 ? DistributionProfileActionStatus.values()[0]: null;
    }
 }

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,52 +42,58 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationRecipient.Tokenizer.class)
 public class EmailNotificationRecipient extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		StringValue.Tokenizer email();
+		StringValue.Tokenizer name();
+	}
 
 	/**  Recipient e-mail address  */
-    private StringValue email;
+	private StringValue email;
 	/**  Recipient name  */
-    private StringValue name;
+	private StringValue name;
 
-    // email:
-    public StringValue getEmail(){
-        return this.email;
-    }
-    public void setEmail(StringValue email){
-        this.email = email;
-    }
+	// email:
+	public StringValue getEmail(){
+		return this.email;
+	}
+	public void setEmail(StringValue email){
+		this.email = email;
+	}
 
-    // name:
-    public StringValue getName(){
-        return this.name;
-    }
-    public void setName(StringValue name){
-        this.name = name;
-    }
+	// name:
+	public StringValue getName(){
+		return this.name;
+	}
+	public void setName(StringValue name){
+		this.name = name;
+	}
 
 
-    public EmailNotificationRecipient() {
-       super();
-    }
+	public EmailNotificationRecipient() {
+		super();
+	}
 
-    public EmailNotificationRecipient(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationRecipient(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        email = GsonParser.parseObject(jsonObject.getAsJsonObject("email"), StringValue.class);
-        name = GsonParser.parseObject(jsonObject.getAsJsonObject("name"), StringValue.class);
+		// set members values:
+		email = GsonParser.parseObject(jsonObject.getAsJsonObject("email"), StringValue.class);
+		name = GsonParser.parseObject(jsonObject.getAsJsonObject("name"), StringValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationRecipient");
-        kparams.add("email", this.email);
-        kparams.add("name", this.name);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationRecipient");
+		kparams.add("email", this.email);
+		kparams.add("name", this.name);
+		return kparams;
+	}
 
 }
 

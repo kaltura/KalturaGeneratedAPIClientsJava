@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.AttachmentAssetStatus;
 import com.kaltura.client.enums.AttachmentType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,83 +42,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttachmentAssetBaseFilter.Tokenizer.class)
 public abstract class AttachmentAssetBaseFilter extends AssetFilter {
+	
+	public interface Tokenizer extends AssetFilter.Tokenizer {
+		String formatEqual();
+		String formatIn();
+		String statusEqual();
+		String statusIn();
+		String statusNotIn();
+	}
 
-    private AttachmentType formatEqual;
-    private String formatIn;
-    private AttachmentAssetStatus statusEqual;
-    private String statusIn;
-    private String statusNotIn;
+	private AttachmentType formatEqual;
+	private String formatIn;
+	private AttachmentAssetStatus statusEqual;
+	private String statusIn;
+	private String statusNotIn;
 
-    // formatEqual:
-    public AttachmentType getFormatEqual(){
-        return this.formatEqual;
-    }
-    public void setFormatEqual(AttachmentType formatEqual){
-        this.formatEqual = formatEqual;
-    }
+	// formatEqual:
+	public AttachmentType getFormatEqual(){
+		return this.formatEqual;
+	}
+	public void setFormatEqual(AttachmentType formatEqual){
+		this.formatEqual = formatEqual;
+	}
 
-    // formatIn:
-    public String getFormatIn(){
-        return this.formatIn;
-    }
-    public void setFormatIn(String formatIn){
-        this.formatIn = formatIn;
-    }
+	public void formatEqual(String multirequestToken){
+		setToken("formatEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public AttachmentAssetStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(AttachmentAssetStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// formatIn:
+	public String getFormatIn(){
+		return this.formatIn;
+	}
+	public void setFormatIn(String formatIn){
+		this.formatIn = formatIn;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void formatIn(String multirequestToken){
+		setToken("formatIn", multirequestToken);
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	// statusEqual:
+	public AttachmentAssetStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(AttachmentAssetStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
+
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
 
 
-    public AttachmentAssetBaseFilter() {
-       super();
-    }
+	public AttachmentAssetBaseFilter() {
+		super();
+	}
 
-    public AttachmentAssetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttachmentAssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        formatEqual = AttachmentType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
-        formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
-        statusEqual = AttachmentAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		// set members values:
+		formatEqual = AttachmentType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
+		formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
+		statusEqual = AttachmentAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttachmentAssetBaseFilter");
-        kparams.add("formatEqual", this.formatEqual);
-        kparams.add("formatIn", this.formatIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttachmentAssetBaseFilter");
+		kparams.add("formatEqual", this.formatEqual);
+		kparams.add("formatIn", this.formatIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		return kparams;
+	}
 
 }
 

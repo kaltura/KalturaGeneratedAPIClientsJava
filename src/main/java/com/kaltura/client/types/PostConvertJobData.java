@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,112 +40,151 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PostConvertJobData.Tokenizer.class)
 public class PostConvertJobData extends ConvartableJobData {
+	
+	public interface Tokenizer extends ConvartableJobData.Tokenizer {
+		String flavorAssetId();
+		String createThumb();
+		String thumbPath();
+		String thumbOffset();
+		String thumbHeight();
+		String thumbBitrate();
+		String customData();
+	}
 
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  Indicates if a thumbnail should be created  */
-    private Boolean createThumb;
+	private Boolean createThumb;
 	/**  The path of the created thumbnail  */
-    private String thumbPath;
+	private String thumbPath;
 	/**  The position of the thumbnail in the media file  */
-    private Integer thumbOffset;
+	private Integer thumbOffset;
 	/**  The height of the movie, will be used to comapare if this thumbnail is the best
 	  we can have  */
-    private Integer thumbHeight;
+	private Integer thumbHeight;
 	/**  The bit rate of the movie, will be used to comapare if this thumbnail is the
 	  best we can have  */
-    private Integer thumbBitrate;
-    private String customData;
+	private Integer thumbBitrate;
+	private String customData;
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // createThumb:
-    public Boolean getCreateThumb(){
-        return this.createThumb;
-    }
-    public void setCreateThumb(Boolean createThumb){
-        this.createThumb = createThumb;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // thumbPath:
-    public String getThumbPath(){
-        return this.thumbPath;
-    }
-    public void setThumbPath(String thumbPath){
-        this.thumbPath = thumbPath;
-    }
+	// createThumb:
+	public Boolean getCreateThumb(){
+		return this.createThumb;
+	}
+	public void setCreateThumb(Boolean createThumb){
+		this.createThumb = createThumb;
+	}
 
-    // thumbOffset:
-    public Integer getThumbOffset(){
-        return this.thumbOffset;
-    }
-    public void setThumbOffset(Integer thumbOffset){
-        this.thumbOffset = thumbOffset;
-    }
+	public void createThumb(String multirequestToken){
+		setToken("createThumb", multirequestToken);
+	}
 
-    // thumbHeight:
-    public Integer getThumbHeight(){
-        return this.thumbHeight;
-    }
-    public void setThumbHeight(Integer thumbHeight){
-        this.thumbHeight = thumbHeight;
-    }
+	// thumbPath:
+	public String getThumbPath(){
+		return this.thumbPath;
+	}
+	public void setThumbPath(String thumbPath){
+		this.thumbPath = thumbPath;
+	}
 
-    // thumbBitrate:
-    public Integer getThumbBitrate(){
-        return this.thumbBitrate;
-    }
-    public void setThumbBitrate(Integer thumbBitrate){
-        this.thumbBitrate = thumbBitrate;
-    }
+	public void thumbPath(String multirequestToken){
+		setToken("thumbPath", multirequestToken);
+	}
 
-    // customData:
-    public String getCustomData(){
-        return this.customData;
-    }
-    public void setCustomData(String customData){
-        this.customData = customData;
-    }
+	// thumbOffset:
+	public Integer getThumbOffset(){
+		return this.thumbOffset;
+	}
+	public void setThumbOffset(Integer thumbOffset){
+		this.thumbOffset = thumbOffset;
+	}
+
+	public void thumbOffset(String multirequestToken){
+		setToken("thumbOffset", multirequestToken);
+	}
+
+	// thumbHeight:
+	public Integer getThumbHeight(){
+		return this.thumbHeight;
+	}
+	public void setThumbHeight(Integer thumbHeight){
+		this.thumbHeight = thumbHeight;
+	}
+
+	public void thumbHeight(String multirequestToken){
+		setToken("thumbHeight", multirequestToken);
+	}
+
+	// thumbBitrate:
+	public Integer getThumbBitrate(){
+		return this.thumbBitrate;
+	}
+	public void setThumbBitrate(Integer thumbBitrate){
+		this.thumbBitrate = thumbBitrate;
+	}
+
+	public void thumbBitrate(String multirequestToken){
+		setToken("thumbBitrate", multirequestToken);
+	}
+
+	// customData:
+	public String getCustomData(){
+		return this.customData;
+	}
+	public void setCustomData(String customData){
+		this.customData = customData;
+	}
+
+	public void customData(String multirequestToken){
+		setToken("customData", multirequestToken);
+	}
 
 
-    public PostConvertJobData() {
-       super();
-    }
+	public PostConvertJobData() {
+		super();
+	}
 
-    public PostConvertJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PostConvertJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        createThumb = GsonParser.parseBoolean(jsonObject.get("createThumb"));
-        thumbPath = GsonParser.parseString(jsonObject.get("thumbPath"));
-        thumbOffset = GsonParser.parseInt(jsonObject.get("thumbOffset"));
-        thumbHeight = GsonParser.parseInt(jsonObject.get("thumbHeight"));
-        thumbBitrate = GsonParser.parseInt(jsonObject.get("thumbBitrate"));
-        customData = GsonParser.parseString(jsonObject.get("customData"));
+		// set members values:
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		createThumb = GsonParser.parseBoolean(jsonObject.get("createThumb"));
+		thumbPath = GsonParser.parseString(jsonObject.get("thumbPath"));
+		thumbOffset = GsonParser.parseInt(jsonObject.get("thumbOffset"));
+		thumbHeight = GsonParser.parseInt(jsonObject.get("thumbHeight"));
+		thumbBitrate = GsonParser.parseInt(jsonObject.get("thumbBitrate"));
+		customData = GsonParser.parseString(jsonObject.get("customData"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPostConvertJobData");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("createThumb", this.createThumb);
-        kparams.add("thumbPath", this.thumbPath);
-        kparams.add("thumbOffset", this.thumbOffset);
-        kparams.add("thumbHeight", this.thumbHeight);
-        kparams.add("thumbBitrate", this.thumbBitrate);
-        kparams.add("customData", this.customData);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPostConvertJobData");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("createThumb", this.createThumb);
+		kparams.add("thumbPath", this.thumbPath);
+		kparams.add("thumbOffset", this.thumbOffset);
+		kparams.add("thumbHeight", this.thumbHeight);
+		kparams.add("thumbBitrate", this.thumbBitrate);
+		kparams.add("customData", this.customData);
+		return kparams;
+	}
 
 }
 

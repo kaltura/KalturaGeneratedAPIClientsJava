@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,140 +40,194 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserFilter.Tokenizer.class)
 public class UserFilter extends UserBaseFilter {
+	
+	public interface Tokenizer extends UserBaseFilter.Tokenizer {
+		String idOrScreenNameStartsWith();
+		String idEqual();
+		String idIn();
+		String loginEnabledEqual();
+		String roleIdEqual();
+		String roleIdsEqual();
+		String roleIdsIn();
+		String firstNameOrLastNameStartsWith();
+		String permissionNamesMultiLikeOr();
+		String permissionNamesMultiLikeAnd();
+	}
 
-    private String idOrScreenNameStartsWith;
-    private String idEqual;
-    private String idIn;
-    private Boolean loginEnabledEqual;
-    private String roleIdEqual;
-    private String roleIdsEqual;
-    private String roleIdsIn;
-    private String firstNameOrLastNameStartsWith;
+	private String idOrScreenNameStartsWith;
+	private String idEqual;
+	private String idIn;
+	private Boolean loginEnabledEqual;
+	private String roleIdEqual;
+	private String roleIdsEqual;
+	private String roleIdsIn;
+	private String firstNameOrLastNameStartsWith;
 	/**  Permission names filter expression  */
-    private String permissionNamesMultiLikeOr;
+	private String permissionNamesMultiLikeOr;
 	/**  Permission names filter expression  */
-    private String permissionNamesMultiLikeAnd;
+	private String permissionNamesMultiLikeAnd;
 
-    // idOrScreenNameStartsWith:
-    public String getIdOrScreenNameStartsWith(){
-        return this.idOrScreenNameStartsWith;
-    }
-    public void setIdOrScreenNameStartsWith(String idOrScreenNameStartsWith){
-        this.idOrScreenNameStartsWith = idOrScreenNameStartsWith;
-    }
+	// idOrScreenNameStartsWith:
+	public String getIdOrScreenNameStartsWith(){
+		return this.idOrScreenNameStartsWith;
+	}
+	public void setIdOrScreenNameStartsWith(String idOrScreenNameStartsWith){
+		this.idOrScreenNameStartsWith = idOrScreenNameStartsWith;
+	}
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	public void idOrScreenNameStartsWith(String multirequestToken){
+		setToken("idOrScreenNameStartsWith", multirequestToken);
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // loginEnabledEqual:
-    public Boolean getLoginEnabledEqual(){
-        return this.loginEnabledEqual;
-    }
-    public void setLoginEnabledEqual(Boolean loginEnabledEqual){
-        this.loginEnabledEqual = loginEnabledEqual;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // roleIdEqual:
-    public String getRoleIdEqual(){
-        return this.roleIdEqual;
-    }
-    public void setRoleIdEqual(String roleIdEqual){
-        this.roleIdEqual = roleIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // roleIdsEqual:
-    public String getRoleIdsEqual(){
-        return this.roleIdsEqual;
-    }
-    public void setRoleIdsEqual(String roleIdsEqual){
-        this.roleIdsEqual = roleIdsEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // roleIdsIn:
-    public String getRoleIdsIn(){
-        return this.roleIdsIn;
-    }
-    public void setRoleIdsIn(String roleIdsIn){
-        this.roleIdsIn = roleIdsIn;
-    }
+	// loginEnabledEqual:
+	public Boolean getLoginEnabledEqual(){
+		return this.loginEnabledEqual;
+	}
+	public void setLoginEnabledEqual(Boolean loginEnabledEqual){
+		this.loginEnabledEqual = loginEnabledEqual;
+	}
 
-    // firstNameOrLastNameStartsWith:
-    public String getFirstNameOrLastNameStartsWith(){
-        return this.firstNameOrLastNameStartsWith;
-    }
-    public void setFirstNameOrLastNameStartsWith(String firstNameOrLastNameStartsWith){
-        this.firstNameOrLastNameStartsWith = firstNameOrLastNameStartsWith;
-    }
+	public void loginEnabledEqual(String multirequestToken){
+		setToken("loginEnabledEqual", multirequestToken);
+	}
 
-    // permissionNamesMultiLikeOr:
-    public String getPermissionNamesMultiLikeOr(){
-        return this.permissionNamesMultiLikeOr;
-    }
-    public void setPermissionNamesMultiLikeOr(String permissionNamesMultiLikeOr){
-        this.permissionNamesMultiLikeOr = permissionNamesMultiLikeOr;
-    }
+	// roleIdEqual:
+	public String getRoleIdEqual(){
+		return this.roleIdEqual;
+	}
+	public void setRoleIdEqual(String roleIdEqual){
+		this.roleIdEqual = roleIdEqual;
+	}
 
-    // permissionNamesMultiLikeAnd:
-    public String getPermissionNamesMultiLikeAnd(){
-        return this.permissionNamesMultiLikeAnd;
-    }
-    public void setPermissionNamesMultiLikeAnd(String permissionNamesMultiLikeAnd){
-        this.permissionNamesMultiLikeAnd = permissionNamesMultiLikeAnd;
-    }
+	public void roleIdEqual(String multirequestToken){
+		setToken("roleIdEqual", multirequestToken);
+	}
+
+	// roleIdsEqual:
+	public String getRoleIdsEqual(){
+		return this.roleIdsEqual;
+	}
+	public void setRoleIdsEqual(String roleIdsEqual){
+		this.roleIdsEqual = roleIdsEqual;
+	}
+
+	public void roleIdsEqual(String multirequestToken){
+		setToken("roleIdsEqual", multirequestToken);
+	}
+
+	// roleIdsIn:
+	public String getRoleIdsIn(){
+		return this.roleIdsIn;
+	}
+	public void setRoleIdsIn(String roleIdsIn){
+		this.roleIdsIn = roleIdsIn;
+	}
+
+	public void roleIdsIn(String multirequestToken){
+		setToken("roleIdsIn", multirequestToken);
+	}
+
+	// firstNameOrLastNameStartsWith:
+	public String getFirstNameOrLastNameStartsWith(){
+		return this.firstNameOrLastNameStartsWith;
+	}
+	public void setFirstNameOrLastNameStartsWith(String firstNameOrLastNameStartsWith){
+		this.firstNameOrLastNameStartsWith = firstNameOrLastNameStartsWith;
+	}
+
+	public void firstNameOrLastNameStartsWith(String multirequestToken){
+		setToken("firstNameOrLastNameStartsWith", multirequestToken);
+	}
+
+	// permissionNamesMultiLikeOr:
+	public String getPermissionNamesMultiLikeOr(){
+		return this.permissionNamesMultiLikeOr;
+	}
+	public void setPermissionNamesMultiLikeOr(String permissionNamesMultiLikeOr){
+		this.permissionNamesMultiLikeOr = permissionNamesMultiLikeOr;
+	}
+
+	public void permissionNamesMultiLikeOr(String multirequestToken){
+		setToken("permissionNamesMultiLikeOr", multirequestToken);
+	}
+
+	// permissionNamesMultiLikeAnd:
+	public String getPermissionNamesMultiLikeAnd(){
+		return this.permissionNamesMultiLikeAnd;
+	}
+	public void setPermissionNamesMultiLikeAnd(String permissionNamesMultiLikeAnd){
+		this.permissionNamesMultiLikeAnd = permissionNamesMultiLikeAnd;
+	}
+
+	public void permissionNamesMultiLikeAnd(String multirequestToken){
+		setToken("permissionNamesMultiLikeAnd", multirequestToken);
+	}
 
 
-    public UserFilter() {
-       super();
-    }
+	public UserFilter() {
+		super();
+	}
 
-    public UserFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idOrScreenNameStartsWith = GsonParser.parseString(jsonObject.get("idOrScreenNameStartsWith"));
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        loginEnabledEqual = GsonParser.parseBoolean(jsonObject.get("loginEnabledEqual"));
-        roleIdEqual = GsonParser.parseString(jsonObject.get("roleIdEqual"));
-        roleIdsEqual = GsonParser.parseString(jsonObject.get("roleIdsEqual"));
-        roleIdsIn = GsonParser.parseString(jsonObject.get("roleIdsIn"));
-        firstNameOrLastNameStartsWith = GsonParser.parseString(jsonObject.get("firstNameOrLastNameStartsWith"));
-        permissionNamesMultiLikeOr = GsonParser.parseString(jsonObject.get("permissionNamesMultiLikeOr"));
-        permissionNamesMultiLikeAnd = GsonParser.parseString(jsonObject.get("permissionNamesMultiLikeAnd"));
+		// set members values:
+		idOrScreenNameStartsWith = GsonParser.parseString(jsonObject.get("idOrScreenNameStartsWith"));
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		loginEnabledEqual = GsonParser.parseBoolean(jsonObject.get("loginEnabledEqual"));
+		roleIdEqual = GsonParser.parseString(jsonObject.get("roleIdEqual"));
+		roleIdsEqual = GsonParser.parseString(jsonObject.get("roleIdsEqual"));
+		roleIdsIn = GsonParser.parseString(jsonObject.get("roleIdsIn"));
+		firstNameOrLastNameStartsWith = GsonParser.parseString(jsonObject.get("firstNameOrLastNameStartsWith"));
+		permissionNamesMultiLikeOr = GsonParser.parseString(jsonObject.get("permissionNamesMultiLikeOr"));
+		permissionNamesMultiLikeAnd = GsonParser.parseString(jsonObject.get("permissionNamesMultiLikeAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserFilter");
-        kparams.add("idOrScreenNameStartsWith", this.idOrScreenNameStartsWith);
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("loginEnabledEqual", this.loginEnabledEqual);
-        kparams.add("roleIdEqual", this.roleIdEqual);
-        kparams.add("roleIdsEqual", this.roleIdsEqual);
-        kparams.add("roleIdsIn", this.roleIdsIn);
-        kparams.add("firstNameOrLastNameStartsWith", this.firstNameOrLastNameStartsWith);
-        kparams.add("permissionNamesMultiLikeOr", this.permissionNamesMultiLikeOr);
-        kparams.add("permissionNamesMultiLikeAnd", this.permissionNamesMultiLikeAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserFilter");
+		kparams.add("idOrScreenNameStartsWith", this.idOrScreenNameStartsWith);
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("loginEnabledEqual", this.loginEnabledEqual);
+		kparams.add("roleIdEqual", this.roleIdEqual);
+		kparams.add("roleIdsEqual", this.roleIdsEqual);
+		kparams.add("roleIdsIn", this.roleIdsIn);
+		kparams.add("firstNameOrLastNameStartsWith", this.firstNameOrLastNameStartsWith);
+		kparams.add("permissionNamesMultiLikeOr", this.permissionNamesMultiLikeOr);
+		kparams.add("permissionNamesMultiLikeAnd", this.permissionNamesMultiLikeAnd);
+		return kparams;
+	}
 
 }
 

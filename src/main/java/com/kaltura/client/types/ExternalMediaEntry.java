@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ExternalMediaSourceType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,51 +41,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExternalMediaEntry.Tokenizer.class)
 public class ExternalMediaEntry extends MediaEntry {
+	
+	public interface Tokenizer extends MediaEntry.Tokenizer {
+		String externalSourceType();
+		String assetParamsIds();
+	}
 
 	/**  The source type of the external media  */
-    private ExternalMediaSourceType externalSourceType;
+	private ExternalMediaSourceType externalSourceType;
 	/**  Comma separated asset params ids that exists for this external media entry  */
-    private String assetParamsIds;
+	private String assetParamsIds;
 
-    // externalSourceType:
-    public ExternalMediaSourceType getExternalSourceType(){
-        return this.externalSourceType;
-    }
-    public void setExternalSourceType(ExternalMediaSourceType externalSourceType){
-        this.externalSourceType = externalSourceType;
-    }
+	// externalSourceType:
+	public ExternalMediaSourceType getExternalSourceType(){
+		return this.externalSourceType;
+	}
+	public void setExternalSourceType(ExternalMediaSourceType externalSourceType){
+		this.externalSourceType = externalSourceType;
+	}
 
-    // assetParamsIds:
-    public String getAssetParamsIds(){
-        return this.assetParamsIds;
-    }
-    public void setAssetParamsIds(String assetParamsIds){
-        this.assetParamsIds = assetParamsIds;
-    }
+	public void externalSourceType(String multirequestToken){
+		setToken("externalSourceType", multirequestToken);
+	}
+
+	// assetParamsIds:
+	public String getAssetParamsIds(){
+		return this.assetParamsIds;
+	}
+	public void setAssetParamsIds(String assetParamsIds){
+		this.assetParamsIds = assetParamsIds;
+	}
+
+	public void assetParamsIds(String multirequestToken){
+		setToken("assetParamsIds", multirequestToken);
+	}
 
 
-    public ExternalMediaEntry() {
-       super();
-    }
+	public ExternalMediaEntry() {
+		super();
+	}
 
-    public ExternalMediaEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExternalMediaEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        externalSourceType = ExternalMediaSourceType.get(GsonParser.parseString(jsonObject.get("externalSourceType")));
-        assetParamsIds = GsonParser.parseString(jsonObject.get("assetParamsIds"));
+		// set members values:
+		externalSourceType = ExternalMediaSourceType.get(GsonParser.parseString(jsonObject.get("externalSourceType")));
+		assetParamsIds = GsonParser.parseString(jsonObject.get("assetParamsIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExternalMediaEntry");
-        kparams.add("externalSourceType", this.externalSourceType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExternalMediaEntry");
+		kparams.add("externalSourceType", this.externalSourceType);
+		return kparams;
+	}
 
 }
 

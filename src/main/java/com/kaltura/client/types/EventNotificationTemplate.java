@@ -35,7 +35,8 @@ import com.kaltura.client.enums.EventNotificationTemplateStatus;
 import com.kaltura.client.enums.EventNotificationTemplateType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -46,206 +47,278 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventNotificationTemplate.Tokenizer.class)
 public class EventNotificationTemplate extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String name();
+		String systemName();
+		String description();
+		String type();
+		String status();
+		String createdAt();
+		String updatedAt();
+		String manualDispatchEnabled();
+		String automaticDispatchEnabled();
+		String eventType();
+		String eventObjectType();
+		RequestBuilder.ListTokenizer<Condition.Tokenizer> eventConditions();
+		RequestBuilder.ListTokenizer<EventNotificationParameter.Tokenizer> contentParameters();
+		RequestBuilder.ListTokenizer<EventNotificationParameter.Tokenizer> userParameters();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private String name;
-    private String systemName;
-    private String description;
-    private EventNotificationTemplateType type;
-    private EventNotificationTemplateStatus status;
-    private Integer createdAt;
-    private Integer updatedAt;
+	private Integer id;
+	private Integer partnerId;
+	private String name;
+	private String systemName;
+	private String description;
+	private EventNotificationTemplateType type;
+	private EventNotificationTemplateStatus status;
+	private Integer createdAt;
+	private Integer updatedAt;
 	/**  Define that the template could be dispatched manually from the API  */
-    private Boolean manualDispatchEnabled;
+	private Boolean manualDispatchEnabled;
 	/**  Define that the template could be dispatched automatically by the system  */
-    private Boolean automaticDispatchEnabled;
+	private Boolean automaticDispatchEnabled;
 	/**  Define the event that should trigger this notification  */
-    private EventNotificationEventType eventType;
+	private EventNotificationEventType eventType;
 	/**  Define the object that raied the event that should trigger this notification  */
-    private EventNotificationEventObjectType eventObjectType;
+	private EventNotificationEventObjectType eventObjectType;
 	/**  Define the conditions that cause this notification to be triggered  */
-    private List<Condition> eventConditions;
+	private List<Condition> eventConditions;
 	/**  Define the content dynamic parameters  */
-    private List<EventNotificationParameter> contentParameters;
+	private List<EventNotificationParameter> contentParameters;
 	/**  Define the content dynamic parameters  */
-    private List<EventNotificationParameter> userParameters;
+	private List<EventNotificationParameter> userParameters;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // type:
-    public EventNotificationTemplateType getType(){
-        return this.type;
-    }
-    public void setType(EventNotificationTemplateType type){
-        this.type = type;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // status:
-    public EventNotificationTemplateStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(EventNotificationTemplateStatus status){
-        this.status = status;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // manualDispatchEnabled:
-    public Boolean getManualDispatchEnabled(){
-        return this.manualDispatchEnabled;
-    }
-    public void setManualDispatchEnabled(Boolean manualDispatchEnabled){
-        this.manualDispatchEnabled = manualDispatchEnabled;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // automaticDispatchEnabled:
-    public Boolean getAutomaticDispatchEnabled(){
-        return this.automaticDispatchEnabled;
-    }
-    public void setAutomaticDispatchEnabled(Boolean automaticDispatchEnabled){
-        this.automaticDispatchEnabled = automaticDispatchEnabled;
-    }
+	// type:
+	public EventNotificationTemplateType getType(){
+		return this.type;
+	}
+	public void setType(EventNotificationTemplateType type){
+		this.type = type;
+	}
 
-    // eventType:
-    public EventNotificationEventType getEventType(){
-        return this.eventType;
-    }
-    public void setEventType(EventNotificationEventType eventType){
-        this.eventType = eventType;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // eventObjectType:
-    public EventNotificationEventObjectType getEventObjectType(){
-        return this.eventObjectType;
-    }
-    public void setEventObjectType(EventNotificationEventObjectType eventObjectType){
-        this.eventObjectType = eventObjectType;
-    }
+	// status:
+	public EventNotificationTemplateStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(EventNotificationTemplateStatus status){
+		this.status = status;
+	}
 
-    // eventConditions:
-    public List<Condition> getEventConditions(){
-        return this.eventConditions;
-    }
-    public void setEventConditions(List<Condition> eventConditions){
-        this.eventConditions = eventConditions;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // contentParameters:
-    public List<EventNotificationParameter> getContentParameters(){
-        return this.contentParameters;
-    }
-    public void setContentParameters(List<EventNotificationParameter> contentParameters){
-        this.contentParameters = contentParameters;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // userParameters:
-    public List<EventNotificationParameter> getUserParameters(){
-        return this.userParameters;
-    }
-    public void setUserParameters(List<EventNotificationParameter> userParameters){
-        this.userParameters = userParameters;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// manualDispatchEnabled:
+	public Boolean getManualDispatchEnabled(){
+		return this.manualDispatchEnabled;
+	}
+	public void setManualDispatchEnabled(Boolean manualDispatchEnabled){
+		this.manualDispatchEnabled = manualDispatchEnabled;
+	}
+
+	public void manualDispatchEnabled(String multirequestToken){
+		setToken("manualDispatchEnabled", multirequestToken);
+	}
+
+	// automaticDispatchEnabled:
+	public Boolean getAutomaticDispatchEnabled(){
+		return this.automaticDispatchEnabled;
+	}
+	public void setAutomaticDispatchEnabled(Boolean automaticDispatchEnabled){
+		this.automaticDispatchEnabled = automaticDispatchEnabled;
+	}
+
+	public void automaticDispatchEnabled(String multirequestToken){
+		setToken("automaticDispatchEnabled", multirequestToken);
+	}
+
+	// eventType:
+	public EventNotificationEventType getEventType(){
+		return this.eventType;
+	}
+	public void setEventType(EventNotificationEventType eventType){
+		this.eventType = eventType;
+	}
+
+	public void eventType(String multirequestToken){
+		setToken("eventType", multirequestToken);
+	}
+
+	// eventObjectType:
+	public EventNotificationEventObjectType getEventObjectType(){
+		return this.eventObjectType;
+	}
+	public void setEventObjectType(EventNotificationEventObjectType eventObjectType){
+		this.eventObjectType = eventObjectType;
+	}
+
+	public void eventObjectType(String multirequestToken){
+		setToken("eventObjectType", multirequestToken);
+	}
+
+	// eventConditions:
+	public List<Condition> getEventConditions(){
+		return this.eventConditions;
+	}
+	public void setEventConditions(List<Condition> eventConditions){
+		this.eventConditions = eventConditions;
+	}
+
+	// contentParameters:
+	public List<EventNotificationParameter> getContentParameters(){
+		return this.contentParameters;
+	}
+	public void setContentParameters(List<EventNotificationParameter> contentParameters){
+		this.contentParameters = contentParameters;
+	}
+
+	// userParameters:
+	public List<EventNotificationParameter> getUserParameters(){
+		return this.userParameters;
+	}
+	public void setUserParameters(List<EventNotificationParameter> userParameters){
+		this.userParameters = userParameters;
+	}
 
 
-    public EventNotificationTemplate() {
-       super();
-    }
+	public EventNotificationTemplate() {
+		super();
+	}
 
-    public EventNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        type = EventNotificationTemplateType.get(GsonParser.parseString(jsonObject.get("type")));
-        status = EventNotificationTemplateStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        manualDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("manualDispatchEnabled"));
-        automaticDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("automaticDispatchEnabled"));
-        eventType = EventNotificationEventType.get(GsonParser.parseString(jsonObject.get("eventType")));
-        eventObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("eventObjectType")));
-        eventConditions = GsonParser.parseArray(jsonObject.getAsJsonArray("eventConditions"), Condition.class);
-        contentParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("contentParameters"), EventNotificationParameter.class);
-        userParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("userParameters"), EventNotificationParameter.class);
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		type = EventNotificationTemplateType.get(GsonParser.parseString(jsonObject.get("type")));
+		status = EventNotificationTemplateStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		manualDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("manualDispatchEnabled"));
+		automaticDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("automaticDispatchEnabled"));
+		eventType = EventNotificationEventType.get(GsonParser.parseString(jsonObject.get("eventType")));
+		eventObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("eventObjectType")));
+		eventConditions = GsonParser.parseArray(jsonObject.getAsJsonArray("eventConditions"), Condition.class);
+		contentParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("contentParameters"), EventNotificationParameter.class);
+		userParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("userParameters"), EventNotificationParameter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventNotificationTemplate");
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("type", this.type);
-        kparams.add("manualDispatchEnabled", this.manualDispatchEnabled);
-        kparams.add("automaticDispatchEnabled", this.automaticDispatchEnabled);
-        kparams.add("eventType", this.eventType);
-        kparams.add("eventObjectType", this.eventObjectType);
-        kparams.add("eventConditions", this.eventConditions);
-        kparams.add("contentParameters", this.contentParameters);
-        kparams.add("userParameters", this.userParameters);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventNotificationTemplate");
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("type", this.type);
+		kparams.add("manualDispatchEnabled", this.manualDispatchEnabled);
+		kparams.add("automaticDispatchEnabled", this.automaticDispatchEnabled);
+		kparams.add("eventType", this.eventType);
+		kparams.add("eventObjectType", this.eventObjectType);
+		kparams.add("eventConditions", this.eventConditions);
+		kparams.add("contentParameters", this.contentParameters);
+		kparams.add("userParameters", this.userParameters);
+		return kparams;
+	}
 
 }
 

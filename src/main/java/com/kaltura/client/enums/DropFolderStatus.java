@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderStatus implements EnumAsInt {
-    DISABLED(0),
-    ENABLED(1),
-    DELETED(2),
-    ERROR(3);
+	DISABLED(0),
+	ENABLED(1),
+	DELETED(2),
+	ERROR(3);
 
-    private int value;
+	private int value;
 
-    DropFolderStatus(int value) {
-        this.value = value;
-    }
+	DropFolderStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DropFolderStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderStatus defined values and compare the inner value with the given one:
-        for(DropFolderStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderStatus.values().length > 0 ? DropFolderStatus.values()[0]: null;
+	public static DropFolderStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderStatus defined values and compare the inner value with the given one:
+		for(DropFolderStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderStatus.values().length > 0 ? DropFolderStatus.values()[0]: null;
    }
 }

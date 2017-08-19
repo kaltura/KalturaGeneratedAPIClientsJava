@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.AkamaiUniversalStreamType;
 import com.kaltura.client.enums.DVRStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,138 +42,192 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AkamaiUniversalProvisionJobData.Tokenizer.class)
 public class AkamaiUniversalProvisionJobData extends ProvisionJobData {
+	
+	public interface Tokenizer extends ProvisionJobData.Tokenizer {
+		String streamId();
+		String systemUserName();
+		String systemPassword();
+		String domainName();
+		String dvrEnabled();
+		String dvrWindow();
+		String primaryContact();
+		String secondaryContact();
+		String streamType();
+		String notificationEmail();
+	}
 
-    private Integer streamId;
-    private String systemUserName;
-    private String systemPassword;
-    private String domainName;
-    private DVRStatus dvrEnabled;
-    private Integer dvrWindow;
-    private String primaryContact;
-    private String secondaryContact;
-    private AkamaiUniversalStreamType streamType;
-    private String notificationEmail;
+	private Integer streamId;
+	private String systemUserName;
+	private String systemPassword;
+	private String domainName;
+	private DVRStatus dvrEnabled;
+	private Integer dvrWindow;
+	private String primaryContact;
+	private String secondaryContact;
+	private AkamaiUniversalStreamType streamType;
+	private String notificationEmail;
 
-    // streamId:
-    public Integer getStreamId(){
-        return this.streamId;
-    }
-    public void setStreamId(Integer streamId){
-        this.streamId = streamId;
-    }
+	// streamId:
+	public Integer getStreamId(){
+		return this.streamId;
+	}
+	public void setStreamId(Integer streamId){
+		this.streamId = streamId;
+	}
 
-    // systemUserName:
-    public String getSystemUserName(){
-        return this.systemUserName;
-    }
-    public void setSystemUserName(String systemUserName){
-        this.systemUserName = systemUserName;
-    }
+	public void streamId(String multirequestToken){
+		setToken("streamId", multirequestToken);
+	}
 
-    // systemPassword:
-    public String getSystemPassword(){
-        return this.systemPassword;
-    }
-    public void setSystemPassword(String systemPassword){
-        this.systemPassword = systemPassword;
-    }
+	// systemUserName:
+	public String getSystemUserName(){
+		return this.systemUserName;
+	}
+	public void setSystemUserName(String systemUserName){
+		this.systemUserName = systemUserName;
+	}
 
-    // domainName:
-    public String getDomainName(){
-        return this.domainName;
-    }
-    public void setDomainName(String domainName){
-        this.domainName = domainName;
-    }
+	public void systemUserName(String multirequestToken){
+		setToken("systemUserName", multirequestToken);
+	}
 
-    // dvrEnabled:
-    public DVRStatus getDvrEnabled(){
-        return this.dvrEnabled;
-    }
-    public void setDvrEnabled(DVRStatus dvrEnabled){
-        this.dvrEnabled = dvrEnabled;
-    }
+	// systemPassword:
+	public String getSystemPassword(){
+		return this.systemPassword;
+	}
+	public void setSystemPassword(String systemPassword){
+		this.systemPassword = systemPassword;
+	}
 
-    // dvrWindow:
-    public Integer getDvrWindow(){
-        return this.dvrWindow;
-    }
-    public void setDvrWindow(Integer dvrWindow){
-        this.dvrWindow = dvrWindow;
-    }
+	public void systemPassword(String multirequestToken){
+		setToken("systemPassword", multirequestToken);
+	}
 
-    // primaryContact:
-    public String getPrimaryContact(){
-        return this.primaryContact;
-    }
-    public void setPrimaryContact(String primaryContact){
-        this.primaryContact = primaryContact;
-    }
+	// domainName:
+	public String getDomainName(){
+		return this.domainName;
+	}
+	public void setDomainName(String domainName){
+		this.domainName = domainName;
+	}
 
-    // secondaryContact:
-    public String getSecondaryContact(){
-        return this.secondaryContact;
-    }
-    public void setSecondaryContact(String secondaryContact){
-        this.secondaryContact = secondaryContact;
-    }
+	public void domainName(String multirequestToken){
+		setToken("domainName", multirequestToken);
+	}
 
-    // streamType:
-    public AkamaiUniversalStreamType getStreamType(){
-        return this.streamType;
-    }
-    public void setStreamType(AkamaiUniversalStreamType streamType){
-        this.streamType = streamType;
-    }
+	// dvrEnabled:
+	public DVRStatus getDvrEnabled(){
+		return this.dvrEnabled;
+	}
+	public void setDvrEnabled(DVRStatus dvrEnabled){
+		this.dvrEnabled = dvrEnabled;
+	}
 
-    // notificationEmail:
-    public String getNotificationEmail(){
-        return this.notificationEmail;
-    }
-    public void setNotificationEmail(String notificationEmail){
-        this.notificationEmail = notificationEmail;
-    }
+	public void dvrEnabled(String multirequestToken){
+		setToken("dvrEnabled", multirequestToken);
+	}
+
+	// dvrWindow:
+	public Integer getDvrWindow(){
+		return this.dvrWindow;
+	}
+	public void setDvrWindow(Integer dvrWindow){
+		this.dvrWindow = dvrWindow;
+	}
+
+	public void dvrWindow(String multirequestToken){
+		setToken("dvrWindow", multirequestToken);
+	}
+
+	// primaryContact:
+	public String getPrimaryContact(){
+		return this.primaryContact;
+	}
+	public void setPrimaryContact(String primaryContact){
+		this.primaryContact = primaryContact;
+	}
+
+	public void primaryContact(String multirequestToken){
+		setToken("primaryContact", multirequestToken);
+	}
+
+	// secondaryContact:
+	public String getSecondaryContact(){
+		return this.secondaryContact;
+	}
+	public void setSecondaryContact(String secondaryContact){
+		this.secondaryContact = secondaryContact;
+	}
+
+	public void secondaryContact(String multirequestToken){
+		setToken("secondaryContact", multirequestToken);
+	}
+
+	// streamType:
+	public AkamaiUniversalStreamType getStreamType(){
+		return this.streamType;
+	}
+	public void setStreamType(AkamaiUniversalStreamType streamType){
+		this.streamType = streamType;
+	}
+
+	public void streamType(String multirequestToken){
+		setToken("streamType", multirequestToken);
+	}
+
+	// notificationEmail:
+	public String getNotificationEmail(){
+		return this.notificationEmail;
+	}
+	public void setNotificationEmail(String notificationEmail){
+		this.notificationEmail = notificationEmail;
+	}
+
+	public void notificationEmail(String multirequestToken){
+		setToken("notificationEmail", multirequestToken);
+	}
 
 
-    public AkamaiUniversalProvisionJobData() {
-       super();
-    }
+	public AkamaiUniversalProvisionJobData() {
+		super();
+	}
 
-    public AkamaiUniversalProvisionJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AkamaiUniversalProvisionJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        streamId = GsonParser.parseInt(jsonObject.get("streamId"));
-        systemUserName = GsonParser.parseString(jsonObject.get("systemUserName"));
-        systemPassword = GsonParser.parseString(jsonObject.get("systemPassword"));
-        domainName = GsonParser.parseString(jsonObject.get("domainName"));
-        dvrEnabled = DVRStatus.get(GsonParser.parseInt(jsonObject.get("dvrEnabled")));
-        dvrWindow = GsonParser.parseInt(jsonObject.get("dvrWindow"));
-        primaryContact = GsonParser.parseString(jsonObject.get("primaryContact"));
-        secondaryContact = GsonParser.parseString(jsonObject.get("secondaryContact"));
-        streamType = AkamaiUniversalStreamType.get(GsonParser.parseString(jsonObject.get("streamType")));
-        notificationEmail = GsonParser.parseString(jsonObject.get("notificationEmail"));
+		// set members values:
+		streamId = GsonParser.parseInt(jsonObject.get("streamId"));
+		systemUserName = GsonParser.parseString(jsonObject.get("systemUserName"));
+		systemPassword = GsonParser.parseString(jsonObject.get("systemPassword"));
+		domainName = GsonParser.parseString(jsonObject.get("domainName"));
+		dvrEnabled = DVRStatus.get(GsonParser.parseInt(jsonObject.get("dvrEnabled")));
+		dvrWindow = GsonParser.parseInt(jsonObject.get("dvrWindow"));
+		primaryContact = GsonParser.parseString(jsonObject.get("primaryContact"));
+		secondaryContact = GsonParser.parseString(jsonObject.get("secondaryContact"));
+		streamType = AkamaiUniversalStreamType.get(GsonParser.parseString(jsonObject.get("streamType")));
+		notificationEmail = GsonParser.parseString(jsonObject.get("notificationEmail"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAkamaiUniversalProvisionJobData");
-        kparams.add("streamId", this.streamId);
-        kparams.add("systemUserName", this.systemUserName);
-        kparams.add("systemPassword", this.systemPassword);
-        kparams.add("domainName", this.domainName);
-        kparams.add("dvrEnabled", this.dvrEnabled);
-        kparams.add("dvrWindow", this.dvrWindow);
-        kparams.add("primaryContact", this.primaryContact);
-        kparams.add("secondaryContact", this.secondaryContact);
-        kparams.add("streamType", this.streamType);
-        kparams.add("notificationEmail", this.notificationEmail);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAkamaiUniversalProvisionJobData");
+		kparams.add("streamId", this.streamId);
+		kparams.add("systemUserName", this.systemUserName);
+		kparams.add("systemPassword", this.systemPassword);
+		kparams.add("domainName", this.domainName);
+		kparams.add("dvrEnabled", this.dvrEnabled);
+		kparams.add("dvrWindow", this.dvrWindow);
+		kparams.add("primaryContact", this.primaryContact);
+		kparams.add("secondaryContact", this.secondaryContact);
+		kparams.add("streamType", this.streamType);
+		kparams.add("notificationEmail", this.notificationEmail);
+		return kparams;
+	}
 
 }
 

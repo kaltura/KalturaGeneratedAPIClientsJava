@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum HttpNotificationCertificateType implements EnumAsString {
-    DER("DER"),
-    ENG("ENG"),
-    PEM("PEM");
+	DER("DER"),
+	ENG("ENG"),
+	PEM("PEM");
 
-    private String value;
+	private String value;
 
-    HttpNotificationCertificateType(String value) {
-        this.value = value;
-    }
+	HttpNotificationCertificateType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static HttpNotificationCertificateType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over HttpNotificationCertificateType defined values and compare the inner value with the given one:
-        for(HttpNotificationCertificateType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return HttpNotificationCertificateType.values().length > 0 ? HttpNotificationCertificateType.values()[0]: null;
+	public static HttpNotificationCertificateType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over HttpNotificationCertificateType defined values and compare the inner value with the given one:
+		for(HttpNotificationCertificateType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return HttpNotificationCertificateType.values().length > 0 ? HttpNotificationCertificateType.values()[0]: null;
    }
 }

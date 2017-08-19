@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FlavorReadyBehaviorType implements EnumAsInt {
-    NO_IMPACT(0),
-    REQUIRED(1),
-    OPTIONAL(2);
+	NO_IMPACT(0),
+	REQUIRED(1),
+	OPTIONAL(2);
 
-    private int value;
+	private int value;
 
-    FlavorReadyBehaviorType(int value) {
-        this.value = value;
-    }
+	FlavorReadyBehaviorType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static FlavorReadyBehaviorType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FlavorReadyBehaviorType defined values and compare the inner value with the given one:
-        for(FlavorReadyBehaviorType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FlavorReadyBehaviorType.values().length > 0 ? FlavorReadyBehaviorType.values()[0]: null;
+	public static FlavorReadyBehaviorType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FlavorReadyBehaviorType defined values and compare the inner value with the given one:
+		for(FlavorReadyBehaviorType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FlavorReadyBehaviorType.values().length > 0 ? FlavorReadyBehaviorType.values()[0]: null;
    }
 }

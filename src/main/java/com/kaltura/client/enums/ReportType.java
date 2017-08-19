@@ -34,63 +34,63 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ReportType implements EnumAsString {
-    QUIZ("quiz.QUIZ"),
-    QUIZ_AGGREGATE_BY_QUESTION("quiz.QUIZ_AGGREGATE_BY_QUESTION"),
-    QUIZ_USER_AGGREGATE_BY_QUESTION("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION"),
-    QUIZ_USER_PERCENTAGE("quiz.QUIZ_USER_PERCENTAGE"),
-    TOP_CONTENT("1"),
-    CONTENT_DROPOFF("2"),
-    CONTENT_INTERACTIONS("3"),
-    MAP_OVERLAY("4"),
-    TOP_CONTRIBUTORS("5"),
-    TOP_SYNDICATION("6"),
-    CONTENT_CONTRIBUTIONS("7"),
-    USER_ENGAGEMENT("11"),
-    SPEFICIC_USER_ENGAGEMENT("12"),
-    USER_TOP_CONTENT("13"),
-    USER_CONTENT_DROPOFF("14"),
-    USER_CONTENT_INTERACTIONS("15"),
-    APPLICATIONS("16"),
-    USER_USAGE("17"),
-    SPECIFIC_USER_USAGE("18"),
-    VAR_USAGE("19"),
-    TOP_CREATORS("20"),
-    PLATFORMS("21"),
-    OPERATION_SYSTEM("22"),
-    BROWSERS("23"),
-    LIVE("24"),
-    TOP_PLAYBACK_CONTEXT("25"),
-    VPAAS_USAGE("26"),
-    PARTNER_USAGE("201");
+	QUIZ("quiz.QUIZ"),
+	QUIZ_AGGREGATE_BY_QUESTION("quiz.QUIZ_AGGREGATE_BY_QUESTION"),
+	QUIZ_USER_AGGREGATE_BY_QUESTION("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION"),
+	QUIZ_USER_PERCENTAGE("quiz.QUIZ_USER_PERCENTAGE"),
+	TOP_CONTENT("1"),
+	CONTENT_DROPOFF("2"),
+	CONTENT_INTERACTIONS("3"),
+	MAP_OVERLAY("4"),
+	TOP_CONTRIBUTORS("5"),
+	TOP_SYNDICATION("6"),
+	CONTENT_CONTRIBUTIONS("7"),
+	USER_ENGAGEMENT("11"),
+	SPEFICIC_USER_ENGAGEMENT("12"),
+	USER_TOP_CONTENT("13"),
+	USER_CONTENT_DROPOFF("14"),
+	USER_CONTENT_INTERACTIONS("15"),
+	APPLICATIONS("16"),
+	USER_USAGE("17"),
+	SPECIFIC_USER_USAGE("18"),
+	VAR_USAGE("19"),
+	TOP_CREATORS("20"),
+	PLATFORMS("21"),
+	OPERATION_SYSTEM("22"),
+	BROWSERS("23"),
+	LIVE("24"),
+	TOP_PLAYBACK_CONTEXT("25"),
+	VPAAS_USAGE("26"),
+	PARTNER_USAGE("201");
 
-    private String value;
+	private String value;
 
-    ReportType(String value) {
-        this.value = value;
-    }
+	ReportType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ReportType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ReportType defined values and compare the inner value with the given one:
-        for(ReportType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ReportType.values().length > 0 ? ReportType.values()[0]: null;
+	public static ReportType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ReportType defined values and compare the inner value with the given one:
+		for(ReportType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ReportType.values().length > 0 ? ReportType.values()[0]: null;
    }
 }

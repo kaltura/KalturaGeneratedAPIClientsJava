@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ResponseProfileHolder.Tokenizer.class)
 public class ResponseProfileHolder extends BaseResponseProfile {
+	
+	public interface Tokenizer extends BaseResponseProfile.Tokenizer {
+		String id();
+		String systemName();
+	}
 
 	/**  Auto generated numeric identifier  */
-    private Integer id;
+	private Integer id;
 	/**  Unique system name  */
-    private String systemName;
+	private String systemName;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
+
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
+
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
 
-    public ResponseProfileHolder() {
-       super();
-    }
+	public ResponseProfileHolder() {
+		super();
+	}
 
-    public ResponseProfileHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ResponseProfileHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResponseProfileHolder");
-        kparams.add("id", this.id);
-        kparams.add("systemName", this.systemName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResponseProfileHolder");
+		kparams.add("id", this.id);
+		kparams.add("systemName", this.systemName);
+		return kparams;
+	}
 
 }
 

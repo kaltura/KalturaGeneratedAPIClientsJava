@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    DELETED_AT_ASC("+deletedAt"),
-    SIZE_ASC("+size"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    DELETED_AT_DESC("-deletedAt"),
-    SIZE_DESC("-size"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	DELETED_AT_ASC("+deletedAt"),
+	SIZE_ASC("+size"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	DELETED_AT_DESC("-deletedAt"),
+	SIZE_DESC("-size"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    AssetOrderBy(String value) {
-        this.value = value;
-    }
+	AssetOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AssetOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AssetOrderBy defined values and compare the inner value with the given one:
-        for(AssetOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AssetOrderBy.values().length > 0 ? AssetOrderBy.values()[0]: null;
+	public static AssetOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AssetOrderBy defined values and compare the inner value with the given one:
+		for(AssetOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AssetOrderBy.values().length > 0 ? AssetOrderBy.values()[0]: null;
    }
 }

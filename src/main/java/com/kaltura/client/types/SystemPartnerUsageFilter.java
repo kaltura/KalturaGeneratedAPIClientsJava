@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SystemPartnerUsageFilter.Tokenizer.class)
 public class SystemPartnerUsageFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String fromDate();
+		String toDate();
+		String timezoneOffset();
+	}
 
 	/**  Date range from  */
-    private Integer fromDate;
+	private Integer fromDate;
 	/**  Date range to  */
-    private Integer toDate;
+	private Integer toDate;
 	/**  Time zone offset  */
-    private Integer timezoneOffset;
+	private Integer timezoneOffset;
 
-    // fromDate:
-    public Integer getFromDate(){
-        return this.fromDate;
-    }
-    public void setFromDate(Integer fromDate){
-        this.fromDate = fromDate;
-    }
+	// fromDate:
+	public Integer getFromDate(){
+		return this.fromDate;
+	}
+	public void setFromDate(Integer fromDate){
+		this.fromDate = fromDate;
+	}
 
-    // toDate:
-    public Integer getToDate(){
-        return this.toDate;
-    }
-    public void setToDate(Integer toDate){
-        this.toDate = toDate;
-    }
+	public void fromDate(String multirequestToken){
+		setToken("fromDate", multirequestToken);
+	}
 
-    // timezoneOffset:
-    public Integer getTimezoneOffset(){
-        return this.timezoneOffset;
-    }
-    public void setTimezoneOffset(Integer timezoneOffset){
-        this.timezoneOffset = timezoneOffset;
-    }
+	// toDate:
+	public Integer getToDate(){
+		return this.toDate;
+	}
+	public void setToDate(Integer toDate){
+		this.toDate = toDate;
+	}
+
+	public void toDate(String multirequestToken){
+		setToken("toDate", multirequestToken);
+	}
+
+	// timezoneOffset:
+	public Integer getTimezoneOffset(){
+		return this.timezoneOffset;
+	}
+	public void setTimezoneOffset(Integer timezoneOffset){
+		this.timezoneOffset = timezoneOffset;
+	}
+
+	public void timezoneOffset(String multirequestToken){
+		setToken("timezoneOffset", multirequestToken);
+	}
 
 
-    public SystemPartnerUsageFilter() {
-       super();
-    }
+	public SystemPartnerUsageFilter() {
+		super();
+	}
 
-    public SystemPartnerUsageFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SystemPartnerUsageFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
-        toDate = GsonParser.parseInt(jsonObject.get("toDate"));
-        timezoneOffset = GsonParser.parseInt(jsonObject.get("timezoneOffset"));
+		// set members values:
+		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
+		toDate = GsonParser.parseInt(jsonObject.get("toDate"));
+		timezoneOffset = GsonParser.parseInt(jsonObject.get("timezoneOffset"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSystemPartnerUsageFilter");
-        kparams.add("fromDate", this.fromDate);
-        kparams.add("toDate", this.toDate);
-        kparams.add("timezoneOffset", this.timezoneOffset);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSystemPartnerUsageFilter");
+		kparams.add("fromDate", this.fromDate);
+		kparams.add("toDate", this.toDate);
+		kparams.add("timezoneOffset", this.timezoneOffset);
+		return kparams;
+	}
 
 }
 

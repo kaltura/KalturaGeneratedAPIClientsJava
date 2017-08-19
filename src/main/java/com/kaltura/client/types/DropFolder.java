@@ -37,6 +37,7 @@ import com.kaltura.client.enums.DropFolderType;
 import com.kaltura.client.types.DropFolderFileHandlerConfig;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -46,335 +47,475 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolder.Tokenizer.class)
 public class DropFolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String name();
+		String description();
+		String type();
+		String status();
+		String conversionProfileId();
+		String dc();
+		String path();
+		String fileSizeCheckInterval();
+		String fileDeletePolicy();
+		String autoFileDeleteDays();
+		String fileHandlerType();
+		String fileNamePatterns();
+		DropFolderFileHandlerConfig.Tokenizer fileHandlerConfig();
+		String tags();
+		String errorCode();
+		String errorDescription();
+		String ignoreFileNamePatterns();
+		String createdAt();
+		String updatedAt();
+		String lastAccessedAt();
+		String incremental();
+		String lastFileTimestamp();
+		String metadataProfileId();
+		String categoriesMetadataFieldName();
+		String enforceEntitlement();
+		String shouldValidateKS();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private String name;
-    private String description;
-    private DropFolderType type;
-    private DropFolderStatus status;
-    private Integer conversionProfileId;
-    private Integer dc;
-    private String path;
+	private Integer id;
+	private Integer partnerId;
+	private String name;
+	private String description;
+	private DropFolderType type;
+	private DropFolderStatus status;
+	private Integer conversionProfileId;
+	private Integer dc;
+	private String path;
 	/**  The ammount of time, in seconds, that should pass so that a file with no change
 	  in size we'll be treated as "finished uploading to folder"  */
-    private Integer fileSizeCheckInterval;
-    private DropFolderFileDeletePolicy fileDeletePolicy;
-    private Integer autoFileDeleteDays;
-    private DropFolderFileHandlerType fileHandlerType;
-    private String fileNamePatterns;
-    private DropFolderFileHandlerConfig fileHandlerConfig;
-    private String tags;
-    private DropFolderErrorCode errorCode;
-    private String errorDescription;
-    private String ignoreFileNamePatterns;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private Integer lastAccessedAt;
-    private Boolean incremental;
-    private Integer lastFileTimestamp;
-    private Integer metadataProfileId;
-    private String categoriesMetadataFieldName;
-    private Boolean enforceEntitlement;
-    private Boolean shouldValidateKS;
+	private Integer fileSizeCheckInterval;
+	private DropFolderFileDeletePolicy fileDeletePolicy;
+	private Integer autoFileDeleteDays;
+	private DropFolderFileHandlerType fileHandlerType;
+	private String fileNamePatterns;
+	private DropFolderFileHandlerConfig fileHandlerConfig;
+	private String tags;
+	private DropFolderErrorCode errorCode;
+	private String errorDescription;
+	private String ignoreFileNamePatterns;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private Integer lastAccessedAt;
+	private Boolean incremental;
+	private Integer lastFileTimestamp;
+	private Integer metadataProfileId;
+	private String categoriesMetadataFieldName;
+	private Boolean enforceEntitlement;
+	private Boolean shouldValidateKS;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // type:
-    public DropFolderType getType(){
-        return this.type;
-    }
-    public void setType(DropFolderType type){
-        this.type = type;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // status:
-    public DropFolderStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(DropFolderStatus status){
-        this.status = status;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // conversionProfileId:
-    public Integer getConversionProfileId(){
-        return this.conversionProfileId;
-    }
-    public void setConversionProfileId(Integer conversionProfileId){
-        this.conversionProfileId = conversionProfileId;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // dc:
-    public Integer getDc(){
-        return this.dc;
-    }
-    public void setDc(Integer dc){
-        this.dc = dc;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // path:
-    public String getPath(){
-        return this.path;
-    }
-    public void setPath(String path){
-        this.path = path;
-    }
+	// type:
+	public DropFolderType getType(){
+		return this.type;
+	}
+	public void setType(DropFolderType type){
+		this.type = type;
+	}
 
-    // fileSizeCheckInterval:
-    public Integer getFileSizeCheckInterval(){
-        return this.fileSizeCheckInterval;
-    }
-    public void setFileSizeCheckInterval(Integer fileSizeCheckInterval){
-        this.fileSizeCheckInterval = fileSizeCheckInterval;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // fileDeletePolicy:
-    public DropFolderFileDeletePolicy getFileDeletePolicy(){
-        return this.fileDeletePolicy;
-    }
-    public void setFileDeletePolicy(DropFolderFileDeletePolicy fileDeletePolicy){
-        this.fileDeletePolicy = fileDeletePolicy;
-    }
+	// status:
+	public DropFolderStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(DropFolderStatus status){
+		this.status = status;
+	}
 
-    // autoFileDeleteDays:
-    public Integer getAutoFileDeleteDays(){
-        return this.autoFileDeleteDays;
-    }
-    public void setAutoFileDeleteDays(Integer autoFileDeleteDays){
-        this.autoFileDeleteDays = autoFileDeleteDays;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // fileHandlerType:
-    public DropFolderFileHandlerType getFileHandlerType(){
-        return this.fileHandlerType;
-    }
-    public void setFileHandlerType(DropFolderFileHandlerType fileHandlerType){
-        this.fileHandlerType = fileHandlerType;
-    }
+	// conversionProfileId:
+	public Integer getConversionProfileId(){
+		return this.conversionProfileId;
+	}
+	public void setConversionProfileId(Integer conversionProfileId){
+		this.conversionProfileId = conversionProfileId;
+	}
 
-    // fileNamePatterns:
-    public String getFileNamePatterns(){
-        return this.fileNamePatterns;
-    }
-    public void setFileNamePatterns(String fileNamePatterns){
-        this.fileNamePatterns = fileNamePatterns;
-    }
+	public void conversionProfileId(String multirequestToken){
+		setToken("conversionProfileId", multirequestToken);
+	}
 
-    // fileHandlerConfig:
-    public DropFolderFileHandlerConfig getFileHandlerConfig(){
-        return this.fileHandlerConfig;
-    }
-    public void setFileHandlerConfig(DropFolderFileHandlerConfig fileHandlerConfig){
-        this.fileHandlerConfig = fileHandlerConfig;
-    }
+	// dc:
+	public Integer getDc(){
+		return this.dc;
+	}
+	public void setDc(Integer dc){
+		this.dc = dc;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void dc(String multirequestToken){
+		setToken("dc", multirequestToken);
+	}
 
-    // errorCode:
-    public DropFolderErrorCode getErrorCode(){
-        return this.errorCode;
-    }
-    public void setErrorCode(DropFolderErrorCode errorCode){
-        this.errorCode = errorCode;
-    }
+	// path:
+	public String getPath(){
+		return this.path;
+	}
+	public void setPath(String path){
+		this.path = path;
+	}
 
-    // errorDescription:
-    public String getErrorDescription(){
-        return this.errorDescription;
-    }
-    public void setErrorDescription(String errorDescription){
-        this.errorDescription = errorDescription;
-    }
+	public void path(String multirequestToken){
+		setToken("path", multirequestToken);
+	}
 
-    // ignoreFileNamePatterns:
-    public String getIgnoreFileNamePatterns(){
-        return this.ignoreFileNamePatterns;
-    }
-    public void setIgnoreFileNamePatterns(String ignoreFileNamePatterns){
-        this.ignoreFileNamePatterns = ignoreFileNamePatterns;
-    }
+	// fileSizeCheckInterval:
+	public Integer getFileSizeCheckInterval(){
+		return this.fileSizeCheckInterval;
+	}
+	public void setFileSizeCheckInterval(Integer fileSizeCheckInterval){
+		this.fileSizeCheckInterval = fileSizeCheckInterval;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void fileSizeCheckInterval(String multirequestToken){
+		setToken("fileSizeCheckInterval", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// fileDeletePolicy:
+	public DropFolderFileDeletePolicy getFileDeletePolicy(){
+		return this.fileDeletePolicy;
+	}
+	public void setFileDeletePolicy(DropFolderFileDeletePolicy fileDeletePolicy){
+		this.fileDeletePolicy = fileDeletePolicy;
+	}
 
-    // lastAccessedAt:
-    public Integer getLastAccessedAt(){
-        return this.lastAccessedAt;
-    }
-    public void setLastAccessedAt(Integer lastAccessedAt){
-        this.lastAccessedAt = lastAccessedAt;
-    }
+	public void fileDeletePolicy(String multirequestToken){
+		setToken("fileDeletePolicy", multirequestToken);
+	}
 
-    // incremental:
-    public Boolean getIncremental(){
-        return this.incremental;
-    }
-    public void setIncremental(Boolean incremental){
-        this.incremental = incremental;
-    }
+	// autoFileDeleteDays:
+	public Integer getAutoFileDeleteDays(){
+		return this.autoFileDeleteDays;
+	}
+	public void setAutoFileDeleteDays(Integer autoFileDeleteDays){
+		this.autoFileDeleteDays = autoFileDeleteDays;
+	}
 
-    // lastFileTimestamp:
-    public Integer getLastFileTimestamp(){
-        return this.lastFileTimestamp;
-    }
-    public void setLastFileTimestamp(Integer lastFileTimestamp){
-        this.lastFileTimestamp = lastFileTimestamp;
-    }
+	public void autoFileDeleteDays(String multirequestToken){
+		setToken("autoFileDeleteDays", multirequestToken);
+	}
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	// fileHandlerType:
+	public DropFolderFileHandlerType getFileHandlerType(){
+		return this.fileHandlerType;
+	}
+	public void setFileHandlerType(DropFolderFileHandlerType fileHandlerType){
+		this.fileHandlerType = fileHandlerType;
+	}
 
-    // categoriesMetadataFieldName:
-    public String getCategoriesMetadataFieldName(){
-        return this.categoriesMetadataFieldName;
-    }
-    public void setCategoriesMetadataFieldName(String categoriesMetadataFieldName){
-        this.categoriesMetadataFieldName = categoriesMetadataFieldName;
-    }
+	public void fileHandlerType(String multirequestToken){
+		setToken("fileHandlerType", multirequestToken);
+	}
 
-    // enforceEntitlement:
-    public Boolean getEnforceEntitlement(){
-        return this.enforceEntitlement;
-    }
-    public void setEnforceEntitlement(Boolean enforceEntitlement){
-        this.enforceEntitlement = enforceEntitlement;
-    }
+	// fileNamePatterns:
+	public String getFileNamePatterns(){
+		return this.fileNamePatterns;
+	}
+	public void setFileNamePatterns(String fileNamePatterns){
+		this.fileNamePatterns = fileNamePatterns;
+	}
 
-    // shouldValidateKS:
-    public Boolean getShouldValidateKS(){
-        return this.shouldValidateKS;
-    }
-    public void setShouldValidateKS(Boolean shouldValidateKS){
-        this.shouldValidateKS = shouldValidateKS;
-    }
+	public void fileNamePatterns(String multirequestToken){
+		setToken("fileNamePatterns", multirequestToken);
+	}
+
+	// fileHandlerConfig:
+	public DropFolderFileHandlerConfig getFileHandlerConfig(){
+		return this.fileHandlerConfig;
+	}
+	public void setFileHandlerConfig(DropFolderFileHandlerConfig fileHandlerConfig){
+		this.fileHandlerConfig = fileHandlerConfig;
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
+
+	// errorCode:
+	public DropFolderErrorCode getErrorCode(){
+		return this.errorCode;
+	}
+	public void setErrorCode(DropFolderErrorCode errorCode){
+		this.errorCode = errorCode;
+	}
+
+	public void errorCode(String multirequestToken){
+		setToken("errorCode", multirequestToken);
+	}
+
+	// errorDescription:
+	public String getErrorDescription(){
+		return this.errorDescription;
+	}
+	public void setErrorDescription(String errorDescription){
+		this.errorDescription = errorDescription;
+	}
+
+	public void errorDescription(String multirequestToken){
+		setToken("errorDescription", multirequestToken);
+	}
+
+	// ignoreFileNamePatterns:
+	public String getIgnoreFileNamePatterns(){
+		return this.ignoreFileNamePatterns;
+	}
+	public void setIgnoreFileNamePatterns(String ignoreFileNamePatterns){
+		this.ignoreFileNamePatterns = ignoreFileNamePatterns;
+	}
+
+	public void ignoreFileNamePatterns(String multirequestToken){
+		setToken("ignoreFileNamePatterns", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// lastAccessedAt:
+	public Integer getLastAccessedAt(){
+		return this.lastAccessedAt;
+	}
+	public void setLastAccessedAt(Integer lastAccessedAt){
+		this.lastAccessedAt = lastAccessedAt;
+	}
+
+	public void lastAccessedAt(String multirequestToken){
+		setToken("lastAccessedAt", multirequestToken);
+	}
+
+	// incremental:
+	public Boolean getIncremental(){
+		return this.incremental;
+	}
+	public void setIncremental(Boolean incremental){
+		this.incremental = incremental;
+	}
+
+	public void incremental(String multirequestToken){
+		setToken("incremental", multirequestToken);
+	}
+
+	// lastFileTimestamp:
+	public Integer getLastFileTimestamp(){
+		return this.lastFileTimestamp;
+	}
+	public void setLastFileTimestamp(Integer lastFileTimestamp){
+		this.lastFileTimestamp = lastFileTimestamp;
+	}
+
+	public void lastFileTimestamp(String multirequestToken){
+		setToken("lastFileTimestamp", multirequestToken);
+	}
+
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
+
+	// categoriesMetadataFieldName:
+	public String getCategoriesMetadataFieldName(){
+		return this.categoriesMetadataFieldName;
+	}
+	public void setCategoriesMetadataFieldName(String categoriesMetadataFieldName){
+		this.categoriesMetadataFieldName = categoriesMetadataFieldName;
+	}
+
+	public void categoriesMetadataFieldName(String multirequestToken){
+		setToken("categoriesMetadataFieldName", multirequestToken);
+	}
+
+	// enforceEntitlement:
+	public Boolean getEnforceEntitlement(){
+		return this.enforceEntitlement;
+	}
+	public void setEnforceEntitlement(Boolean enforceEntitlement){
+		this.enforceEntitlement = enforceEntitlement;
+	}
+
+	public void enforceEntitlement(String multirequestToken){
+		setToken("enforceEntitlement", multirequestToken);
+	}
+
+	// shouldValidateKS:
+	public Boolean getShouldValidateKS(){
+		return this.shouldValidateKS;
+	}
+	public void setShouldValidateKS(Boolean shouldValidateKS){
+		this.shouldValidateKS = shouldValidateKS;
+	}
+
+	public void shouldValidateKS(String multirequestToken){
+		setToken("shouldValidateKS", multirequestToken);
+	}
 
 
-    public DropFolder() {
-       super();
-    }
+	public DropFolder() {
+		super();
+	}
 
-    public DropFolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        type = DropFolderType.get(GsonParser.parseString(jsonObject.get("type")));
-        status = DropFolderStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
-        dc = GsonParser.parseInt(jsonObject.get("dc"));
-        path = GsonParser.parseString(jsonObject.get("path"));
-        fileSizeCheckInterval = GsonParser.parseInt(jsonObject.get("fileSizeCheckInterval"));
-        fileDeletePolicy = DropFolderFileDeletePolicy.get(GsonParser.parseInt(jsonObject.get("fileDeletePolicy")));
-        autoFileDeleteDays = GsonParser.parseInt(jsonObject.get("autoFileDeleteDays"));
-        fileHandlerType = DropFolderFileHandlerType.get(GsonParser.parseString(jsonObject.get("fileHandlerType")));
-        fileNamePatterns = GsonParser.parseString(jsonObject.get("fileNamePatterns"));
-        fileHandlerConfig = GsonParser.parseObject(jsonObject.getAsJsonObject("fileHandlerConfig"), DropFolderFileHandlerConfig.class);
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        errorCode = DropFolderErrorCode.get(GsonParser.parseString(jsonObject.get("errorCode")));
-        errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
-        ignoreFileNamePatterns = GsonParser.parseString(jsonObject.get("ignoreFileNamePatterns"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        lastAccessedAt = GsonParser.parseInt(jsonObject.get("lastAccessedAt"));
-        incremental = GsonParser.parseBoolean(jsonObject.get("incremental"));
-        lastFileTimestamp = GsonParser.parseInt(jsonObject.get("lastFileTimestamp"));
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-        categoriesMetadataFieldName = GsonParser.parseString(jsonObject.get("categoriesMetadataFieldName"));
-        enforceEntitlement = GsonParser.parseBoolean(jsonObject.get("enforceEntitlement"));
-        shouldValidateKS = GsonParser.parseBoolean(jsonObject.get("shouldValidateKS"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		type = DropFolderType.get(GsonParser.parseString(jsonObject.get("type")));
+		status = DropFolderStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
+		dc = GsonParser.parseInt(jsonObject.get("dc"));
+		path = GsonParser.parseString(jsonObject.get("path"));
+		fileSizeCheckInterval = GsonParser.parseInt(jsonObject.get("fileSizeCheckInterval"));
+		fileDeletePolicy = DropFolderFileDeletePolicy.get(GsonParser.parseInt(jsonObject.get("fileDeletePolicy")));
+		autoFileDeleteDays = GsonParser.parseInt(jsonObject.get("autoFileDeleteDays"));
+		fileHandlerType = DropFolderFileHandlerType.get(GsonParser.parseString(jsonObject.get("fileHandlerType")));
+		fileNamePatterns = GsonParser.parseString(jsonObject.get("fileNamePatterns"));
+		fileHandlerConfig = GsonParser.parseObject(jsonObject.getAsJsonObject("fileHandlerConfig"), DropFolderFileHandlerConfig.class);
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		errorCode = DropFolderErrorCode.get(GsonParser.parseString(jsonObject.get("errorCode")));
+		errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
+		ignoreFileNamePatterns = GsonParser.parseString(jsonObject.get("ignoreFileNamePatterns"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		lastAccessedAt = GsonParser.parseInt(jsonObject.get("lastAccessedAt"));
+		incremental = GsonParser.parseBoolean(jsonObject.get("incremental"));
+		lastFileTimestamp = GsonParser.parseInt(jsonObject.get("lastFileTimestamp"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		categoriesMetadataFieldName = GsonParser.parseString(jsonObject.get("categoriesMetadataFieldName"));
+		enforceEntitlement = GsonParser.parseBoolean(jsonObject.get("enforceEntitlement"));
+		shouldValidateKS = GsonParser.parseBoolean(jsonObject.get("shouldValidateKS"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolder");
-        kparams.add("partnerId", this.partnerId);
-        kparams.add("name", this.name);
-        kparams.add("description", this.description);
-        kparams.add("type", this.type);
-        kparams.add("status", this.status);
-        kparams.add("conversionProfileId", this.conversionProfileId);
-        kparams.add("dc", this.dc);
-        kparams.add("path", this.path);
-        kparams.add("fileSizeCheckInterval", this.fileSizeCheckInterval);
-        kparams.add("fileDeletePolicy", this.fileDeletePolicy);
-        kparams.add("autoFileDeleteDays", this.autoFileDeleteDays);
-        kparams.add("fileHandlerType", this.fileHandlerType);
-        kparams.add("fileNamePatterns", this.fileNamePatterns);
-        kparams.add("fileHandlerConfig", this.fileHandlerConfig);
-        kparams.add("tags", this.tags);
-        kparams.add("errorCode", this.errorCode);
-        kparams.add("errorDescription", this.errorDescription);
-        kparams.add("ignoreFileNamePatterns", this.ignoreFileNamePatterns);
-        kparams.add("lastAccessedAt", this.lastAccessedAt);
-        kparams.add("incremental", this.incremental);
-        kparams.add("lastFileTimestamp", this.lastFileTimestamp);
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        kparams.add("categoriesMetadataFieldName", this.categoriesMetadataFieldName);
-        kparams.add("enforceEntitlement", this.enforceEntitlement);
-        kparams.add("shouldValidateKS", this.shouldValidateKS);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolder");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("name", this.name);
+		kparams.add("description", this.description);
+		kparams.add("type", this.type);
+		kparams.add("status", this.status);
+		kparams.add("conversionProfileId", this.conversionProfileId);
+		kparams.add("dc", this.dc);
+		kparams.add("path", this.path);
+		kparams.add("fileSizeCheckInterval", this.fileSizeCheckInterval);
+		kparams.add("fileDeletePolicy", this.fileDeletePolicy);
+		kparams.add("autoFileDeleteDays", this.autoFileDeleteDays);
+		kparams.add("fileHandlerType", this.fileHandlerType);
+		kparams.add("fileNamePatterns", this.fileNamePatterns);
+		kparams.add("fileHandlerConfig", this.fileHandlerConfig);
+		kparams.add("tags", this.tags);
+		kparams.add("errorCode", this.errorCode);
+		kparams.add("errorDescription", this.errorDescription);
+		kparams.add("ignoreFileNamePatterns", this.ignoreFileNamePatterns);
+		kparams.add("lastAccessedAt", this.lastAccessedAt);
+		kparams.add("incremental", this.incremental);
+		kparams.add("lastFileTimestamp", this.lastFileTimestamp);
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("categoriesMetadataFieldName", this.categoriesMetadataFieldName);
+		kparams.add("enforceEntitlement", this.enforceEntitlement);
+		kparams.add("shouldValidateKS", this.shouldValidateKS);
+		return kparams;
+	}
 
 }
 

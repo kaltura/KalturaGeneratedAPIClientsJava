@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,64 +42,75 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaServerNode.Tokenizer.class)
 public abstract class MediaServerNode extends DeliveryServerNode {
+	
+	public interface Tokenizer extends DeliveryServerNode.Tokenizer {
+		String applicationName();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mediaServerPortConfig();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mediaServerPlaybackDomainConfig();
+	}
 
 	/**  Media server application name  */
-    private String applicationName;
+	private String applicationName;
 	/**  Media server playback port configuration by protocol and format  */
-    private List<KeyValue> mediaServerPortConfig;
+	private List<KeyValue> mediaServerPortConfig;
 	/**  Media server playback Domain configuration by protocol and format  */
-    private List<KeyValue> mediaServerPlaybackDomainConfig;
+	private List<KeyValue> mediaServerPlaybackDomainConfig;
 
-    // applicationName:
-    public String getApplicationName(){
-        return this.applicationName;
-    }
-    public void setApplicationName(String applicationName){
-        this.applicationName = applicationName;
-    }
+	// applicationName:
+	public String getApplicationName(){
+		return this.applicationName;
+	}
+	public void setApplicationName(String applicationName){
+		this.applicationName = applicationName;
+	}
 
-    // mediaServerPortConfig:
-    public List<KeyValue> getMediaServerPortConfig(){
-        return this.mediaServerPortConfig;
-    }
-    public void setMediaServerPortConfig(List<KeyValue> mediaServerPortConfig){
-        this.mediaServerPortConfig = mediaServerPortConfig;
-    }
+	public void applicationName(String multirequestToken){
+		setToken("applicationName", multirequestToken);
+	}
 
-    // mediaServerPlaybackDomainConfig:
-    public List<KeyValue> getMediaServerPlaybackDomainConfig(){
-        return this.mediaServerPlaybackDomainConfig;
-    }
-    public void setMediaServerPlaybackDomainConfig(List<KeyValue> mediaServerPlaybackDomainConfig){
-        this.mediaServerPlaybackDomainConfig = mediaServerPlaybackDomainConfig;
-    }
+	// mediaServerPortConfig:
+	public List<KeyValue> getMediaServerPortConfig(){
+		return this.mediaServerPortConfig;
+	}
+	public void setMediaServerPortConfig(List<KeyValue> mediaServerPortConfig){
+		this.mediaServerPortConfig = mediaServerPortConfig;
+	}
+
+	// mediaServerPlaybackDomainConfig:
+	public List<KeyValue> getMediaServerPlaybackDomainConfig(){
+		return this.mediaServerPlaybackDomainConfig;
+	}
+	public void setMediaServerPlaybackDomainConfig(List<KeyValue> mediaServerPlaybackDomainConfig){
+		this.mediaServerPlaybackDomainConfig = mediaServerPlaybackDomainConfig;
+	}
 
 
-    public MediaServerNode() {
-       super();
-    }
+	public MediaServerNode() {
+		super();
+	}
 
-    public MediaServerNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        applicationName = GsonParser.parseString(jsonObject.get("applicationName"));
-        mediaServerPortConfig = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaServerPortConfig"), KeyValue.class);
-        mediaServerPlaybackDomainConfig = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaServerPlaybackDomainConfig"), KeyValue.class);
+		// set members values:
+		applicationName = GsonParser.parseString(jsonObject.get("applicationName"));
+		mediaServerPortConfig = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaServerPortConfig"), KeyValue.class);
+		mediaServerPlaybackDomainConfig = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaServerPlaybackDomainConfig"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaServerNode");
-        kparams.add("applicationName", this.applicationName);
-        kparams.add("mediaServerPortConfig", this.mediaServerPortConfig);
-        kparams.add("mediaServerPlaybackDomainConfig", this.mediaServerPlaybackDomainConfig);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaServerNode");
+		kparams.add("applicationName", this.applicationName);
+		kparams.add("mediaServerPortConfig", this.mediaServerPortConfig);
+		kparams.add("mediaServerPlaybackDomainConfig", this.mediaServerPlaybackDomainConfig);
+		return kparams;
+	}
 
 }
 

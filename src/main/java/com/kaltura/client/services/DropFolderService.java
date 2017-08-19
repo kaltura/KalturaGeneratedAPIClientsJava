@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.DropFolder;
 import com.kaltura.client.types.DropFolderFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,82 +42,153 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  DropFolder service lets you create and manage drop folders  */
 public class DropFolderService {
+	
+	public static class AddDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, AddDropFolderBuilder> {
+		
+		public AddDropFolderBuilder(DropFolder dropFolder) {
+			super(DropFolder.class, "dropfolder_dropfolder", "add");
+			params.add("dropFolder", dropFolder);
+		}
+	}
 
 	/**  Allows you to add a new KalturaDropFolder object  */
-    public static RequestBuilder<DropFolder> add(DropFolder dropFolder)  {
-        Params kparams = new Params();
-        kparams.add("dropFolder", dropFolder);
-
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "add", kparams);
-    }
+    public static AddDropFolderBuilder add(DropFolder dropFolder)  {
+		return new AddDropFolderBuilder(dropFolder);
+	}
+	
+	public static class DeleteDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, DeleteDropFolderBuilder> {
+		
+		public DeleteDropFolderBuilder(int dropFolderId) {
+			super(DropFolder.class, "dropfolder_dropfolder", "delete");
+			params.add("dropFolderId", dropFolderId);
+		}
+		
+		public void dropFolderId(String multirequestToken) {
+			params.add("dropFolderId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaDropFolder object as deleted  */
-    public static RequestBuilder<DropFolder> delete(int dropFolderId)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderId", dropFolderId);
+    public static DeleteDropFolderBuilder delete(int dropFolderId)  {
+		return new DeleteDropFolderBuilder(dropFolderId);
+	}
+	
+	public static class FreeExclusiveDropFolderDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, FreeExclusiveDropFolderDropFolderBuilder> {
+		
+		public FreeExclusiveDropFolderDropFolderBuilder(int dropFolderId, int status, String errorCode, String errorDescription) {
+			super(DropFolder.class, "dropfolder_dropfolder", "freeExclusiveDropFolder");
+			params.add("dropFolderId", dropFolderId);
+			params.add("status", status);
+			params.add("errorCode", errorCode);
+			params.add("errorDescription", errorDescription);
+		}
+		
+		public void dropFolderId(String multirequestToken) {
+			params.add("dropFolderId", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+		
+		public void errorCode(String multirequestToken) {
+			params.add("errorCode", multirequestToken);
+		}
+		
+		public void errorDescription(String multirequestToken) {
+			params.add("errorDescription", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "delete", kparams);
-    }
+	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status)  {
+		return freeExclusiveDropFolder(dropFolderId, status, null);
+	}
 
-    public static RequestBuilder<DropFolder> freeExclusiveDropFolder(int dropFolderId, int status)  {
-        return freeExclusiveDropFolder(dropFolderId, status, null);
-    }
-
-    public static RequestBuilder<DropFolder> freeExclusiveDropFolder(int dropFolderId, int status, String errorCode)  {
-        return freeExclusiveDropFolder(dropFolderId, status, errorCode, null);
-    }
+	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode)  {
+		return freeExclusiveDropFolder(dropFolderId, status, errorCode, null);
+	}
 
 	/**  freeExclusive KalturaDropFolder object  */
-    public static RequestBuilder<DropFolder> freeExclusiveDropFolder(int dropFolderId, int status, String errorCode, String errorDescription)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderId", dropFolderId);
-        kparams.add("status", status);
-        kparams.add("errorCode", errorCode);
-        kparams.add("errorDescription", errorDescription);
-
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "freeExclusiveDropFolder", kparams);
-    }
+    public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode, String errorDescription)  {
+		return new FreeExclusiveDropFolderDropFolderBuilder(dropFolderId, status, errorCode, errorDescription);
+	}
+	
+	public static class GetDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, GetDropFolderBuilder> {
+		
+		public GetDropFolderBuilder(int dropFolderId) {
+			super(DropFolder.class, "dropfolder_dropfolder", "get");
+			params.add("dropFolderId", dropFolderId);
+		}
+		
+		public void dropFolderId(String multirequestToken) {
+			params.add("dropFolderId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaDropFolder object by ID  */
-    public static RequestBuilder<DropFolder> get(int dropFolderId)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderId", dropFolderId);
-
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "get", kparams);
-    }
+    public static GetDropFolderBuilder get(int dropFolderId)  {
+		return new GetDropFolderBuilder(dropFolderId);
+	}
+	
+	public static class GetExclusiveDropFolderDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, GetExclusiveDropFolderDropFolderBuilder> {
+		
+		public GetExclusiveDropFolderDropFolderBuilder(String tag, int maxTime) {
+			super(DropFolder.class, "dropfolder_dropfolder", "getExclusiveDropFolder");
+			params.add("tag", tag);
+			params.add("maxTime", maxTime);
+		}
+		
+		public void tag(String multirequestToken) {
+			params.add("tag", multirequestToken);
+		}
+		
+		public void maxTime(String multirequestToken) {
+			params.add("maxTime", multirequestToken);
+		}
+	}
 
 	/**  getExclusive KalturaDropFolder object  */
-    public static RequestBuilder<DropFolder> getExclusiveDropFolder(String tag, int maxTime)  {
-        Params kparams = new Params();
-        kparams.add("tag", tag);
-        kparams.add("maxTime", maxTime);
+    public static GetExclusiveDropFolderDropFolderBuilder getExclusiveDropFolder(String tag, int maxTime)  {
+		return new GetExclusiveDropFolderDropFolderBuilder(tag, maxTime);
+	}
+	
+	public static class ListDropFolderBuilder extends ListResponseRequestBuilder<DropFolder, DropFolder.Tokenizer, ListDropFolderBuilder> {
+		
+		public ListDropFolderBuilder(DropFolderFilter filter, FilterPager pager) {
+			super(DropFolder.class, "dropfolder_dropfolder", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "getExclusiveDropFolder", kparams);
-    }
+	public static ListDropFolderBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DropFolder>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DropFolder>> list(DropFolderFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDropFolderBuilder list(DropFolderFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaDropFolder objects  */
-    public static RequestBuilder<ListResponse<DropFolder>> list(DropFolderFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "list", kparams);
-    }
+    public static ListDropFolderBuilder list(DropFolderFilter filter, FilterPager pager)  {
+		return new ListDropFolderBuilder(filter, pager);
+	}
+	
+	public static class UpdateDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, UpdateDropFolderBuilder> {
+		
+		public UpdateDropFolderBuilder(int dropFolderId, DropFolder dropFolder) {
+			super(DropFolder.class, "dropfolder_dropfolder", "update");
+			params.add("dropFolderId", dropFolderId);
+			params.add("dropFolder", dropFolder);
+		}
+		
+		public void dropFolderId(String multirequestToken) {
+			params.add("dropFolderId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaDropFolder object  */
-    public static RequestBuilder<DropFolder> update(int dropFolderId, DropFolder dropFolder)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderId", dropFolderId);
-        kparams.add("dropFolder", dropFolder);
-
-        return new RequestBuilder<DropFolder>(DropFolder.class, "dropfolder_dropfolder", "update", kparams);
-    }
+    public static UpdateDropFolderBuilder update(int dropFolderId, DropFolder dropFolder)  {
+		return new UpdateDropFolderBuilder(dropFolderId, dropFolder);
+	}
 }

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,211 +42,291 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamEntry.Tokenizer.class)
 public class LiveStreamEntry extends LiveEntry {
+	
+	public interface Tokenizer extends LiveEntry.Tokenizer {
+		String streamRemoteId();
+		String streamRemoteBackupId();
+		RequestBuilder.ListTokenizer<LiveStreamBitrate.Tokenizer> bitrates();
+		String primaryBroadcastingUrl();
+		String secondaryBroadcastingUrl();
+		String primaryRtspBroadcastingUrl();
+		String secondaryRtspBroadcastingUrl();
+		String streamName();
+		String streamUrl();
+		String hlsStreamUrl();
+		String urlManager();
+		String encodingIP1();
+		String encodingIP2();
+		String streamPassword();
+		String streamUsername();
+		String primaryServerNodeId();
+	}
 
 	/**  The stream id as provided by the provider  */
-    private String streamRemoteId;
+	private String streamRemoteId;
 	/**  The backup stream id as provided by the provider  */
-    private String streamRemoteBackupId;
+	private String streamRemoteBackupId;
 	/**  Array of supported bitrates  */
-    private List<LiveStreamBitrate> bitrates;
-    private String primaryBroadcastingUrl;
-    private String secondaryBroadcastingUrl;
-    private String primaryRtspBroadcastingUrl;
-    private String secondaryRtspBroadcastingUrl;
-    private String streamName;
+	private List<LiveStreamBitrate> bitrates;
+	private String primaryBroadcastingUrl;
+	private String secondaryBroadcastingUrl;
+	private String primaryRtspBroadcastingUrl;
+	private String secondaryRtspBroadcastingUrl;
+	private String streamName;
 	/**  The stream url  */
-    private String streamUrl;
+	private String streamUrl;
 	/**  HLS URL - URL for live stream playback on mobile device  */
-    private String hlsStreamUrl;
+	private String hlsStreamUrl;
 	/**  URL Manager to handle the live stream URL (for instance, add token)  */
-    private String urlManager;
+	private String urlManager;
 	/**  The broadcast primary ip  */
-    private String encodingIP1;
+	private String encodingIP1;
 	/**  The broadcast secondary ip  */
-    private String encodingIP2;
+	private String encodingIP2;
 	/**  The broadcast password  */
-    private String streamPassword;
+	private String streamPassword;
 	/**  The broadcast username  */
-    private String streamUsername;
+	private String streamUsername;
 	/**  The Streams primary server node id  */
-    private Integer primaryServerNodeId;
+	private Integer primaryServerNodeId;
 
-    // streamRemoteId:
-    public String getStreamRemoteId(){
-        return this.streamRemoteId;
-    }
-    public void setStreamRemoteId(String streamRemoteId){
-        this.streamRemoteId = streamRemoteId;
-    }
+	// streamRemoteId:
+	public String getStreamRemoteId(){
+		return this.streamRemoteId;
+	}
+	public void setStreamRemoteId(String streamRemoteId){
+		this.streamRemoteId = streamRemoteId;
+	}
 
-    // streamRemoteBackupId:
-    public String getStreamRemoteBackupId(){
-        return this.streamRemoteBackupId;
-    }
-    public void setStreamRemoteBackupId(String streamRemoteBackupId){
-        this.streamRemoteBackupId = streamRemoteBackupId;
-    }
+	public void streamRemoteId(String multirequestToken){
+		setToken("streamRemoteId", multirequestToken);
+	}
 
-    // bitrates:
-    public List<LiveStreamBitrate> getBitrates(){
-        return this.bitrates;
-    }
-    public void setBitrates(List<LiveStreamBitrate> bitrates){
-        this.bitrates = bitrates;
-    }
+	// streamRemoteBackupId:
+	public String getStreamRemoteBackupId(){
+		return this.streamRemoteBackupId;
+	}
+	public void setStreamRemoteBackupId(String streamRemoteBackupId){
+		this.streamRemoteBackupId = streamRemoteBackupId;
+	}
 
-    // primaryBroadcastingUrl:
-    public String getPrimaryBroadcastingUrl(){
-        return this.primaryBroadcastingUrl;
-    }
-    public void setPrimaryBroadcastingUrl(String primaryBroadcastingUrl){
-        this.primaryBroadcastingUrl = primaryBroadcastingUrl;
-    }
+	public void streamRemoteBackupId(String multirequestToken){
+		setToken("streamRemoteBackupId", multirequestToken);
+	}
 
-    // secondaryBroadcastingUrl:
-    public String getSecondaryBroadcastingUrl(){
-        return this.secondaryBroadcastingUrl;
-    }
-    public void setSecondaryBroadcastingUrl(String secondaryBroadcastingUrl){
-        this.secondaryBroadcastingUrl = secondaryBroadcastingUrl;
-    }
+	// bitrates:
+	public List<LiveStreamBitrate> getBitrates(){
+		return this.bitrates;
+	}
+	public void setBitrates(List<LiveStreamBitrate> bitrates){
+		this.bitrates = bitrates;
+	}
 
-    // primaryRtspBroadcastingUrl:
-    public String getPrimaryRtspBroadcastingUrl(){
-        return this.primaryRtspBroadcastingUrl;
-    }
-    public void setPrimaryRtspBroadcastingUrl(String primaryRtspBroadcastingUrl){
-        this.primaryRtspBroadcastingUrl = primaryRtspBroadcastingUrl;
-    }
+	// primaryBroadcastingUrl:
+	public String getPrimaryBroadcastingUrl(){
+		return this.primaryBroadcastingUrl;
+	}
+	public void setPrimaryBroadcastingUrl(String primaryBroadcastingUrl){
+		this.primaryBroadcastingUrl = primaryBroadcastingUrl;
+	}
 
-    // secondaryRtspBroadcastingUrl:
-    public String getSecondaryRtspBroadcastingUrl(){
-        return this.secondaryRtspBroadcastingUrl;
-    }
-    public void setSecondaryRtspBroadcastingUrl(String secondaryRtspBroadcastingUrl){
-        this.secondaryRtspBroadcastingUrl = secondaryRtspBroadcastingUrl;
-    }
+	public void primaryBroadcastingUrl(String multirequestToken){
+		setToken("primaryBroadcastingUrl", multirequestToken);
+	}
 
-    // streamName:
-    public String getStreamName(){
-        return this.streamName;
-    }
-    public void setStreamName(String streamName){
-        this.streamName = streamName;
-    }
+	// secondaryBroadcastingUrl:
+	public String getSecondaryBroadcastingUrl(){
+		return this.secondaryBroadcastingUrl;
+	}
+	public void setSecondaryBroadcastingUrl(String secondaryBroadcastingUrl){
+		this.secondaryBroadcastingUrl = secondaryBroadcastingUrl;
+	}
 
-    // streamUrl:
-    public String getStreamUrl(){
-        return this.streamUrl;
-    }
-    public void setStreamUrl(String streamUrl){
-        this.streamUrl = streamUrl;
-    }
+	public void secondaryBroadcastingUrl(String multirequestToken){
+		setToken("secondaryBroadcastingUrl", multirequestToken);
+	}
 
-    // hlsStreamUrl:
-    public String getHlsStreamUrl(){
-        return this.hlsStreamUrl;
-    }
-    public void setHlsStreamUrl(String hlsStreamUrl){
-        this.hlsStreamUrl = hlsStreamUrl;
-    }
+	// primaryRtspBroadcastingUrl:
+	public String getPrimaryRtspBroadcastingUrl(){
+		return this.primaryRtspBroadcastingUrl;
+	}
+	public void setPrimaryRtspBroadcastingUrl(String primaryRtspBroadcastingUrl){
+		this.primaryRtspBroadcastingUrl = primaryRtspBroadcastingUrl;
+	}
 
-    // urlManager:
-    public String getUrlManager(){
-        return this.urlManager;
-    }
-    public void setUrlManager(String urlManager){
-        this.urlManager = urlManager;
-    }
+	public void primaryRtspBroadcastingUrl(String multirequestToken){
+		setToken("primaryRtspBroadcastingUrl", multirequestToken);
+	}
 
-    // encodingIP1:
-    public String getEncodingIP1(){
-        return this.encodingIP1;
-    }
-    public void setEncodingIP1(String encodingIP1){
-        this.encodingIP1 = encodingIP1;
-    }
+	// secondaryRtspBroadcastingUrl:
+	public String getSecondaryRtspBroadcastingUrl(){
+		return this.secondaryRtspBroadcastingUrl;
+	}
+	public void setSecondaryRtspBroadcastingUrl(String secondaryRtspBroadcastingUrl){
+		this.secondaryRtspBroadcastingUrl = secondaryRtspBroadcastingUrl;
+	}
 
-    // encodingIP2:
-    public String getEncodingIP2(){
-        return this.encodingIP2;
-    }
-    public void setEncodingIP2(String encodingIP2){
-        this.encodingIP2 = encodingIP2;
-    }
+	public void secondaryRtspBroadcastingUrl(String multirequestToken){
+		setToken("secondaryRtspBroadcastingUrl", multirequestToken);
+	}
 
-    // streamPassword:
-    public String getStreamPassword(){
-        return this.streamPassword;
-    }
-    public void setStreamPassword(String streamPassword){
-        this.streamPassword = streamPassword;
-    }
+	// streamName:
+	public String getStreamName(){
+		return this.streamName;
+	}
+	public void setStreamName(String streamName){
+		this.streamName = streamName;
+	}
 
-    // streamUsername:
-    public String getStreamUsername(){
-        return this.streamUsername;
-    }
-    public void setStreamUsername(String streamUsername){
-        this.streamUsername = streamUsername;
-    }
+	public void streamName(String multirequestToken){
+		setToken("streamName", multirequestToken);
+	}
 
-    // primaryServerNodeId:
-    public Integer getPrimaryServerNodeId(){
-        return this.primaryServerNodeId;
-    }
-    public void setPrimaryServerNodeId(Integer primaryServerNodeId){
-        this.primaryServerNodeId = primaryServerNodeId;
-    }
+	// streamUrl:
+	public String getStreamUrl(){
+		return this.streamUrl;
+	}
+	public void setStreamUrl(String streamUrl){
+		this.streamUrl = streamUrl;
+	}
+
+	public void streamUrl(String multirequestToken){
+		setToken("streamUrl", multirequestToken);
+	}
+
+	// hlsStreamUrl:
+	public String getHlsStreamUrl(){
+		return this.hlsStreamUrl;
+	}
+	public void setHlsStreamUrl(String hlsStreamUrl){
+		this.hlsStreamUrl = hlsStreamUrl;
+	}
+
+	public void hlsStreamUrl(String multirequestToken){
+		setToken("hlsStreamUrl", multirequestToken);
+	}
+
+	// urlManager:
+	public String getUrlManager(){
+		return this.urlManager;
+	}
+	public void setUrlManager(String urlManager){
+		this.urlManager = urlManager;
+	}
+
+	public void urlManager(String multirequestToken){
+		setToken("urlManager", multirequestToken);
+	}
+
+	// encodingIP1:
+	public String getEncodingIP1(){
+		return this.encodingIP1;
+	}
+	public void setEncodingIP1(String encodingIP1){
+		this.encodingIP1 = encodingIP1;
+	}
+
+	public void encodingIP1(String multirequestToken){
+		setToken("encodingIP1", multirequestToken);
+	}
+
+	// encodingIP2:
+	public String getEncodingIP2(){
+		return this.encodingIP2;
+	}
+	public void setEncodingIP2(String encodingIP2){
+		this.encodingIP2 = encodingIP2;
+	}
+
+	public void encodingIP2(String multirequestToken){
+		setToken("encodingIP2", multirequestToken);
+	}
+
+	// streamPassword:
+	public String getStreamPassword(){
+		return this.streamPassword;
+	}
+	public void setStreamPassword(String streamPassword){
+		this.streamPassword = streamPassword;
+	}
+
+	public void streamPassword(String multirequestToken){
+		setToken("streamPassword", multirequestToken);
+	}
+
+	// streamUsername:
+	public String getStreamUsername(){
+		return this.streamUsername;
+	}
+	public void setStreamUsername(String streamUsername){
+		this.streamUsername = streamUsername;
+	}
+
+	public void streamUsername(String multirequestToken){
+		setToken("streamUsername", multirequestToken);
+	}
+
+	// primaryServerNodeId:
+	public Integer getPrimaryServerNodeId(){
+		return this.primaryServerNodeId;
+	}
+	public void setPrimaryServerNodeId(Integer primaryServerNodeId){
+		this.primaryServerNodeId = primaryServerNodeId;
+	}
+
+	public void primaryServerNodeId(String multirequestToken){
+		setToken("primaryServerNodeId", multirequestToken);
+	}
 
 
-    public LiveStreamEntry() {
-       super();
-    }
+	public LiveStreamEntry() {
+		super();
+	}
 
-    public LiveStreamEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStreamEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        streamRemoteId = GsonParser.parseString(jsonObject.get("streamRemoteId"));
-        streamRemoteBackupId = GsonParser.parseString(jsonObject.get("streamRemoteBackupId"));
-        bitrates = GsonParser.parseArray(jsonObject.getAsJsonArray("bitrates"), LiveStreamBitrate.class);
-        primaryBroadcastingUrl = GsonParser.parseString(jsonObject.get("primaryBroadcastingUrl"));
-        secondaryBroadcastingUrl = GsonParser.parseString(jsonObject.get("secondaryBroadcastingUrl"));
-        primaryRtspBroadcastingUrl = GsonParser.parseString(jsonObject.get("primaryRtspBroadcastingUrl"));
-        secondaryRtspBroadcastingUrl = GsonParser.parseString(jsonObject.get("secondaryRtspBroadcastingUrl"));
-        streamName = GsonParser.parseString(jsonObject.get("streamName"));
-        streamUrl = GsonParser.parseString(jsonObject.get("streamUrl"));
-        hlsStreamUrl = GsonParser.parseString(jsonObject.get("hlsStreamUrl"));
-        urlManager = GsonParser.parseString(jsonObject.get("urlManager"));
-        encodingIP1 = GsonParser.parseString(jsonObject.get("encodingIP1"));
-        encodingIP2 = GsonParser.parseString(jsonObject.get("encodingIP2"));
-        streamPassword = GsonParser.parseString(jsonObject.get("streamPassword"));
-        streamUsername = GsonParser.parseString(jsonObject.get("streamUsername"));
-        primaryServerNodeId = GsonParser.parseInt(jsonObject.get("primaryServerNodeId"));
+		// set members values:
+		streamRemoteId = GsonParser.parseString(jsonObject.get("streamRemoteId"));
+		streamRemoteBackupId = GsonParser.parseString(jsonObject.get("streamRemoteBackupId"));
+		bitrates = GsonParser.parseArray(jsonObject.getAsJsonArray("bitrates"), LiveStreamBitrate.class);
+		primaryBroadcastingUrl = GsonParser.parseString(jsonObject.get("primaryBroadcastingUrl"));
+		secondaryBroadcastingUrl = GsonParser.parseString(jsonObject.get("secondaryBroadcastingUrl"));
+		primaryRtspBroadcastingUrl = GsonParser.parseString(jsonObject.get("primaryRtspBroadcastingUrl"));
+		secondaryRtspBroadcastingUrl = GsonParser.parseString(jsonObject.get("secondaryRtspBroadcastingUrl"));
+		streamName = GsonParser.parseString(jsonObject.get("streamName"));
+		streamUrl = GsonParser.parseString(jsonObject.get("streamUrl"));
+		hlsStreamUrl = GsonParser.parseString(jsonObject.get("hlsStreamUrl"));
+		urlManager = GsonParser.parseString(jsonObject.get("urlManager"));
+		encodingIP1 = GsonParser.parseString(jsonObject.get("encodingIP1"));
+		encodingIP2 = GsonParser.parseString(jsonObject.get("encodingIP2"));
+		streamPassword = GsonParser.parseString(jsonObject.get("streamPassword"));
+		streamUsername = GsonParser.parseString(jsonObject.get("streamUsername"));
+		primaryServerNodeId = GsonParser.parseInt(jsonObject.get("primaryServerNodeId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamEntry");
-        kparams.add("bitrates", this.bitrates);
-        kparams.add("primaryBroadcastingUrl", this.primaryBroadcastingUrl);
-        kparams.add("secondaryBroadcastingUrl", this.secondaryBroadcastingUrl);
-        kparams.add("primaryRtspBroadcastingUrl", this.primaryRtspBroadcastingUrl);
-        kparams.add("secondaryRtspBroadcastingUrl", this.secondaryRtspBroadcastingUrl);
-        kparams.add("streamName", this.streamName);
-        kparams.add("streamUrl", this.streamUrl);
-        kparams.add("hlsStreamUrl", this.hlsStreamUrl);
-        kparams.add("urlManager", this.urlManager);
-        kparams.add("encodingIP1", this.encodingIP1);
-        kparams.add("encodingIP2", this.encodingIP2);
-        kparams.add("streamPassword", this.streamPassword);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamEntry");
+		kparams.add("bitrates", this.bitrates);
+		kparams.add("primaryBroadcastingUrl", this.primaryBroadcastingUrl);
+		kparams.add("secondaryBroadcastingUrl", this.secondaryBroadcastingUrl);
+		kparams.add("primaryRtspBroadcastingUrl", this.primaryRtspBroadcastingUrl);
+		kparams.add("secondaryRtspBroadcastingUrl", this.secondaryRtspBroadcastingUrl);
+		kparams.add("streamName", this.streamName);
+		kparams.add("streamUrl", this.streamUrl);
+		kparams.add("hlsStreamUrl", this.hlsStreamUrl);
+		kparams.add("urlManager", this.urlManager);
+		kparams.add("encodingIP1", this.encodingIP1);
+		kparams.add("encodingIP2", this.encodingIP2);
+		kparams.add("streamPassword", this.streamPassword);
+		return kparams;
+	}
 
 }
 

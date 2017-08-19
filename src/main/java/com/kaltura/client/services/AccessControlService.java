@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AccessControl;
 import com.kaltura.client.types.AccessControlFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,54 +43,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage Access Controls  */
 public class AccessControlService {
+	
+	public static class AddAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, AddAccessControlBuilder> {
+		
+		public AddAccessControlBuilder(AccessControl accessControl) {
+			super(AccessControl.class, "accesscontrol", "add");
+			params.add("accessControl", accessControl);
+		}
+	}
 
 	/**  Add new Access Control Profile  */
-    public static RequestBuilder<AccessControl> add(AccessControl accessControl)  {
-        Params kparams = new Params();
-        kparams.add("accessControl", accessControl);
-
-        return new RequestBuilder<AccessControl>(AccessControl.class, "accesscontrol", "add", kparams);
-    }
+    public static AddAccessControlBuilder add(AccessControl accessControl)  {
+		return new AddAccessControlBuilder(accessControl);
+	}
+	
+	public static class DeleteAccessControlBuilder extends NullRequestBuilder {
+		
+		public DeleteAccessControlBuilder(int id) {
+			super("accesscontrol", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Access Control Profile by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("accesscontrol", "delete", kparams);
-    }
+    public static DeleteAccessControlBuilder delete(int id)  {
+		return new DeleteAccessControlBuilder(id);
+	}
+	
+	public static class GetAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, GetAccessControlBuilder> {
+		
+		public GetAccessControlBuilder(int id) {
+			super(AccessControl.class, "accesscontrol", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Access Control Profile by id  */
-    public static RequestBuilder<AccessControl> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetAccessControlBuilder get(int id)  {
+		return new GetAccessControlBuilder(id);
+	}
+	
+	public static class ListAccessControlBuilder extends ListResponseRequestBuilder<AccessControl, AccessControl.Tokenizer, ListAccessControlBuilder> {
+		
+		public ListAccessControlBuilder(AccessControlFilter filter, FilterPager pager) {
+			super(AccessControl.class, "accesscontrol", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<AccessControl>(AccessControl.class, "accesscontrol", "get", kparams);
-    }
+	public static ListAccessControlBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<AccessControl>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AccessControl>> list(AccessControlFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListAccessControlBuilder list(AccessControlFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Access Control Profiles by filter and pager  */
-    public static RequestBuilder<ListResponse<AccessControl>> list(AccessControlFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<AccessControl>(AccessControl.class, "accesscontrol", "list", kparams);
-    }
+    public static ListAccessControlBuilder list(AccessControlFilter filter, FilterPager pager)  {
+		return new ListAccessControlBuilder(filter, pager);
+	}
+	
+	public static class UpdateAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, UpdateAccessControlBuilder> {
+		
+		public UpdateAccessControlBuilder(int id, AccessControl accessControl) {
+			super(AccessControl.class, "accesscontrol", "update");
+			params.add("id", id);
+			params.add("accessControl", accessControl);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Access Control Profile by id  */
-    public static RequestBuilder<AccessControl> update(int id, AccessControl accessControl)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("accessControl", accessControl);
-
-        return new RequestBuilder<AccessControl>(AccessControl.class, "accesscontrol", "update", kparams);
-    }
+    public static UpdateAccessControlBuilder update(int id, AccessControl accessControl)  {
+		return new UpdateAccessControlBuilder(id, accessControl);
+	}
 }

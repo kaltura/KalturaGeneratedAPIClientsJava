@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.BooleanField;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,45 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventFieldCondition.Tokenizer.class)
 public class EventFieldCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		BooleanField.Tokenizer field();
+	}
 
 	/**  The field to be evaluated at runtime  */
-    private BooleanField field;
+	private BooleanField field;
 
-    // field:
-    public BooleanField getField(){
-        return this.field;
-    }
-    public void setField(BooleanField field){
-        this.field = field;
-    }
+	// field:
+	public BooleanField getField(){
+		return this.field;
+	}
+	public void setField(BooleanField field){
+		this.field = field;
+	}
 
 
-    public EventFieldCondition() {
-       super();
-    }
+	public EventFieldCondition() {
+		super();
+	}
 
-    public EventFieldCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventFieldCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        field = GsonParser.parseObject(jsonObject.getAsJsonObject("field"), BooleanField.class);
+		// set members values:
+		field = GsonParser.parseObject(jsonObject.getAsJsonObject("field"), BooleanField.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventFieldCondition");
-        kparams.add("field", this.field);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventFieldCondition");
+		kparams.add("field", this.field);
+		return kparams;
+	}
 
 }
 

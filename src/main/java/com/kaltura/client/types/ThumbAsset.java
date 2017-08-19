@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ThumbAssetStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,73 +41,97 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbAsset.Tokenizer.class)
 public class ThumbAsset extends Asset {
+	
+	public interface Tokenizer extends Asset.Tokenizer {
+		String thumbParamsId();
+		String width();
+		String height();
+		String status();
+	}
 
 	/**  The Flavor Params used to create this Flavor Asset  */
-    private Integer thumbParamsId;
+	private Integer thumbParamsId;
 	/**  The width of the Flavor Asset  */
-    private Integer width;
+	private Integer width;
 	/**  The height of the Flavor Asset  */
-    private Integer height;
+	private Integer height;
 	/**  The status of the asset  */
-    private ThumbAssetStatus status;
+	private ThumbAssetStatus status;
 
-    // thumbParamsId:
-    public Integer getThumbParamsId(){
-        return this.thumbParamsId;
-    }
-    public void setThumbParamsId(Integer thumbParamsId){
-        this.thumbParamsId = thumbParamsId;
-    }
+	// thumbParamsId:
+	public Integer getThumbParamsId(){
+		return this.thumbParamsId;
+	}
+	public void setThumbParamsId(Integer thumbParamsId){
+		this.thumbParamsId = thumbParamsId;
+	}
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	public void thumbParamsId(String multirequestToken){
+		setToken("thumbParamsId", multirequestToken);
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
 
-    // status:
-    public ThumbAssetStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ThumbAssetStatus status){
-        this.status = status;
-    }
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
+
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
+
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
+
+	// status:
+	public ThumbAssetStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ThumbAssetStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
 
-    public ThumbAsset() {
-       super();
-    }
+	public ThumbAsset() {
+		super();
+	}
 
-    public ThumbAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        thumbParamsId = GsonParser.parseInt(jsonObject.get("thumbParamsId"));
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
-        status = ThumbAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		// set members values:
+		thumbParamsId = GsonParser.parseInt(jsonObject.get("thumbParamsId"));
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
+		status = ThumbAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbAsset");
-        kparams.add("thumbParamsId", this.thumbParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbAsset");
+		kparams.add("thumbParamsId", this.thumbParamsId);
+		return kparams;
+	}
 
 }
 

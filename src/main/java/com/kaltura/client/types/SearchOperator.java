@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SearchOperatorType;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,50 +43,60 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchOperator.Tokenizer.class)
 public class SearchOperator extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String type();
+		RequestBuilder.ListTokenizer<SearchItem.Tokenizer> items();
+	}
 
-    private SearchOperatorType type;
-    private List<SearchItem> items;
+	private SearchOperatorType type;
+	private List<SearchItem> items;
 
-    // type:
-    public SearchOperatorType getType(){
-        return this.type;
-    }
-    public void setType(SearchOperatorType type){
-        this.type = type;
-    }
+	// type:
+	public SearchOperatorType getType(){
+		return this.type;
+	}
+	public void setType(SearchOperatorType type){
+		this.type = type;
+	}
 
-    // items:
-    public List<SearchItem> getItems(){
-        return this.items;
-    }
-    public void setItems(List<SearchItem> items){
-        this.items = items;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// items:
+	public List<SearchItem> getItems(){
+		return this.items;
+	}
+	public void setItems(List<SearchItem> items){
+		this.items = items;
+	}
 
 
-    public SearchOperator() {
-       super();
-    }
+	public SearchOperator() {
+		super();
+	}
 
-    public SearchOperator(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchOperator(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = SearchOperatorType.get(GsonParser.parseInt(jsonObject.get("type")));
-        items = GsonParser.parseArray(jsonObject.getAsJsonArray("items"), SearchItem.class);
+		// set members values:
+		type = SearchOperatorType.get(GsonParser.parseInt(jsonObject.get("type")));
+		items = GsonParser.parseArray(jsonObject.getAsJsonArray("items"), SearchItem.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchOperator");
-        kparams.add("type", this.type);
-        kparams.add("items", this.items);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchOperator");
+		kparams.add("type", this.type);
+		kparams.add("items", this.items);
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,39 +42,44 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(OrCondition.Tokenizer.class)
 public class OrCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		RequestBuilder.ListTokenizer<Condition.Tokenizer> conditions();
+	}
 
-    private List<Condition> conditions;
+	private List<Condition> conditions;
 
-    // conditions:
-    public List<Condition> getConditions(){
-        return this.conditions;
-    }
-    public void setConditions(List<Condition> conditions){
-        this.conditions = conditions;
-    }
+	// conditions:
+	public List<Condition> getConditions(){
+		return this.conditions;
+	}
+	public void setConditions(List<Condition> conditions){
+		this.conditions = conditions;
+	}
 
 
-    public OrCondition() {
-       super();
-    }
+	public OrCondition() {
+		super();
+	}
 
-    public OrCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public OrCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        conditions = GsonParser.parseArray(jsonObject.getAsJsonArray("conditions"), Condition.class);
+		// set members values:
+		conditions = GsonParser.parseArray(jsonObject.getAsJsonArray("conditions"), Condition.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaOrCondition");
-        kparams.add("conditions", this.conditions);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaOrCondition");
+		kparams.add("conditions", this.conditions);
+		return kparams;
+	}
 
 }
 

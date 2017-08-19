@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CommercialUseType implements EnumAsInt {
-    NON_COMMERCIAL_USE(0),
-    COMMERCIAL_USE(1);
+	NON_COMMERCIAL_USE(0),
+	COMMERCIAL_USE(1);
 
-    private int value;
+	private int value;
 
-    CommercialUseType(int value) {
-        this.value = value;
-    }
+	CommercialUseType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static CommercialUseType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CommercialUseType defined values and compare the inner value with the given one:
-        for(CommercialUseType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CommercialUseType.values().length > 0 ? CommercialUseType.values()[0]: null;
+	public static CommercialUseType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CommercialUseType defined values and compare the inner value with the given one:
+		for(CommercialUseType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CommercialUseType.values().length > 0 ? CommercialUseType.values()[0]: null;
    }
 }

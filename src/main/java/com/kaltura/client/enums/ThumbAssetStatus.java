@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ThumbAssetStatus implements EnumAsInt {
-    ERROR(-1),
-    QUEUED(0),
-    CAPTURING(1),
-    READY(2),
-    DELETED(3),
-    IMPORTING(7),
-    EXPORTING(9);
+	ERROR(-1),
+	QUEUED(0),
+	CAPTURING(1),
+	READY(2),
+	DELETED(3),
+	IMPORTING(7),
+	EXPORTING(9);
 
-    private int value;
+	private int value;
 
-    ThumbAssetStatus(int value) {
-        this.value = value;
-    }
+	ThumbAssetStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ThumbAssetStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ThumbAssetStatus defined values and compare the inner value with the given one:
-        for(ThumbAssetStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ThumbAssetStatus.values().length > 0 ? ThumbAssetStatus.values()[0]: null;
+	public static ThumbAssetStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ThumbAssetStatus defined values and compare the inner value with the given one:
+		for(ThumbAssetStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ThumbAssetStatus.values().length > 0 ? ThumbAssetStatus.values()[0]: null;
    }
 }

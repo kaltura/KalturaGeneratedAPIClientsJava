@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.UserRole;
 import com.kaltura.client.types.UserRoleFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -44,64 +42,110 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  UserRole service lets you create and manage user roles  */
 public class UserRoleService {
+	
+	public static class AddUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, AddUserRoleBuilder> {
+		
+		public AddUserRoleBuilder(UserRole userRole) {
+			super(UserRole.class, "userrole", "add");
+			params.add("userRole", userRole);
+		}
+	}
 
 	/**  Adds a new user role object to the account.  */
-    public static RequestBuilder<UserRole> add(UserRole userRole)  {
-        Params kparams = new Params();
-        kparams.add("userRole", userRole);
-
-        return new RequestBuilder<UserRole>(UserRole.class, "userrole", "add", kparams);
-    }
+    public static AddUserRoleBuilder add(UserRole userRole)  {
+		return new AddUserRoleBuilder(userRole);
+	}
+	
+	public static class CloneUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, CloneUserRoleBuilder> {
+		
+		public CloneUserRoleBuilder(int userRoleId) {
+			super(UserRole.class, "userrole", "clone");
+			params.add("userRoleId", userRoleId);
+		}
+		
+		public void userRoleId(String multirequestToken) {
+			params.add("userRoleId", multirequestToken);
+		}
+	}
 
 	/**  Creates a new user role object that is a duplicate of an existing role.  */
-    public static RequestBuilder<UserRole> clone(int userRoleId)  {
-        Params kparams = new Params();
-        kparams.add("userRoleId", userRoleId);
-
-        return new RequestBuilder<UserRole>(UserRole.class, "userrole", "clone", kparams);
-    }
+    public static CloneUserRoleBuilder clone(int userRoleId)  {
+		return new CloneUserRoleBuilder(userRoleId);
+	}
+	
+	public static class DeleteUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, DeleteUserRoleBuilder> {
+		
+		public DeleteUserRoleBuilder(int userRoleId) {
+			super(UserRole.class, "userrole", "delete");
+			params.add("userRoleId", userRoleId);
+		}
+		
+		public void userRoleId(String multirequestToken) {
+			params.add("userRoleId", multirequestToken);
+		}
+	}
 
 	/**  Deletes an existing user role object.  */
-    public static RequestBuilder<UserRole> delete(int userRoleId)  {
-        Params kparams = new Params();
-        kparams.add("userRoleId", userRoleId);
-
-        return new RequestBuilder<UserRole>(UserRole.class, "userrole", "delete", kparams);
-    }
+    public static DeleteUserRoleBuilder delete(int userRoleId)  {
+		return new DeleteUserRoleBuilder(userRoleId);
+	}
+	
+	public static class GetUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, GetUserRoleBuilder> {
+		
+		public GetUserRoleBuilder(int userRoleId) {
+			super(UserRole.class, "userrole", "get");
+			params.add("userRoleId", userRoleId);
+		}
+		
+		public void userRoleId(String multirequestToken) {
+			params.add("userRoleId", multirequestToken);
+		}
+	}
 
 	/**  Retrieves a user role object using its ID.  */
-    public static RequestBuilder<UserRole> get(int userRoleId)  {
-        Params kparams = new Params();
-        kparams.add("userRoleId", userRoleId);
+    public static GetUserRoleBuilder get(int userRoleId)  {
+		return new GetUserRoleBuilder(userRoleId);
+	}
+	
+	public static class ListUserRoleBuilder extends ListResponseRequestBuilder<UserRole, UserRole.Tokenizer, ListUserRoleBuilder> {
+		
+		public ListUserRoleBuilder(UserRoleFilter filter, FilterPager pager) {
+			super(UserRole.class, "userrole", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<UserRole>(UserRole.class, "userrole", "get", kparams);
-    }
+	public static ListUserRoleBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<UserRole>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<UserRole>> list(UserRoleFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListUserRoleBuilder list(UserRoleFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Lists user role objects that are associated with an account.   Blocked user
 	  roles are listed unless you use a filter to exclude them.   Deleted user roles
 	  are not listed unless you use a filter to include them.  */
-    public static RequestBuilder<ListResponse<UserRole>> list(UserRoleFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<UserRole>(UserRole.class, "userrole", "list", kparams);
-    }
+    public static ListUserRoleBuilder list(UserRoleFilter filter, FilterPager pager)  {
+		return new ListUserRoleBuilder(filter, pager);
+	}
+	
+	public static class UpdateUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, UpdateUserRoleBuilder> {
+		
+		public UpdateUserRoleBuilder(int userRoleId, UserRole userRole) {
+			super(UserRole.class, "userrole", "update");
+			params.add("userRoleId", userRoleId);
+			params.add("userRole", userRole);
+		}
+		
+		public void userRoleId(String multirequestToken) {
+			params.add("userRoleId", multirequestToken);
+		}
+	}
 
 	/**  Updates an existing user role object.  */
-    public static RequestBuilder<UserRole> update(int userRoleId, UserRole userRole)  {
-        Params kparams = new Params();
-        kparams.add("userRoleId", userRoleId);
-        kparams.add("userRole", userRole);
-
-        return new RequestBuilder<UserRole>(UserRole.class, "userrole", "update", kparams);
-    }
+    public static UpdateUserRoleBuilder update(int userRoleId, UserRole userRole)  {
+		return new UpdateUserRoleBuilder(userRoleId, userRole);
+	}
 }

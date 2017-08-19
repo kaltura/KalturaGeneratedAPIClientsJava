@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleResourceStatus implements EnumAsInt {
-    DISABLED(1),
-    ACTIVE(2),
-    DELETED(3);
+	DISABLED(1),
+	ACTIVE(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    ScheduleResourceStatus(int value) {
-        this.value = value;
-    }
+	ScheduleResourceStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduleResourceStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleResourceStatus defined values and compare the inner value with the given one:
-        for(ScheduleResourceStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleResourceStatus.values().length > 0 ? ScheduleResourceStatus.values()[0]: null;
+	public static ScheduleResourceStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleResourceStatus defined values and compare the inner value with the given one:
+		for(ScheduleResourceStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleResourceStatus.values().length > 0 ? ScheduleResourceStatus.values()[0]: null;
    }
 }

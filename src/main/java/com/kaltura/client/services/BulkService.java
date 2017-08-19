@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.ServeRequestBuilder;
@@ -45,53 +43,94 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Bulk upload service is used to upload &amp; manage bulk uploads  */
 public class BulkService {
+	
+	public static class AbortBulkBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AbortBulkBuilder> {
+		
+		public AbortBulkBuilder(int id) {
+			super(BulkUpload.class, "bulkupload_bulk", "abort");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Aborts the bulk upload and all its child jobs  */
-    public static RequestBuilder<BulkUpload> abort(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "bulkupload_bulk", "abort", kparams);
-    }
+    public static AbortBulkBuilder abort(int id)  {
+		return new AbortBulkBuilder(id);
+	}
+	
+	public static class GetBulkBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, GetBulkBuilder> {
+		
+		public GetBulkBuilder(int id) {
+			super(BulkUpload.class, "bulkupload_bulk", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get bulk upload batch job by id  */
-    public static RequestBuilder<BulkUpload> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetBulkBuilder get(int id)  {
+		return new GetBulkBuilder(id);
+	}
+	
+	public static class ListBulkBuilder extends ListResponseRequestBuilder<BulkUpload, BulkUpload.Tokenizer, ListBulkBuilder> {
+		
+		public ListBulkBuilder(BulkUploadFilter bulkUploadFilter, FilterPager pager) {
+			super(BulkUpload.class, "bulkupload_bulk", "list");
+			params.add("bulkUploadFilter", bulkUploadFilter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "bulkupload_bulk", "get", kparams);
-    }
+	public static ListBulkBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<BulkUpload>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<BulkUpload>> list(BulkUploadFilter bulkUploadFilter)  {
-        return list(bulkUploadFilter, null);
-    }
+	public static ListBulkBuilder list(BulkUploadFilter bulkUploadFilter)  {
+		return list(bulkUploadFilter, null);
+	}
 
 	/**  List bulk upload batch jobs  */
-    public static RequestBuilder<ListResponse<BulkUpload>> list(BulkUploadFilter bulkUploadFilter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("bulkUploadFilter", bulkUploadFilter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<BulkUpload>(BulkUpload.class, "bulkupload_bulk", "list", kparams);
-    }
+    public static ListBulkBuilder list(BulkUploadFilter bulkUploadFilter, FilterPager pager)  {
+		return new ListBulkBuilder(bulkUploadFilter, pager);
+	}
+	
+	public static class ServeBulkBuilder extends ServeRequestBuilder {
+		
+		public ServeBulkBuilder(int id) {
+			super("bulkupload_bulk", "serve");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  serve action returns the original file.  */
-    public static RequestBuilder<String> serve(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new ServeRequestBuilder("bulkupload_bulk", "serve", kparams);
-    }
+    public static ServeBulkBuilder serve(int id)  {
+		return new ServeBulkBuilder(id);
+	}
+	
+	public static class ServeLogBulkBuilder extends ServeRequestBuilder {
+		
+		public ServeLogBulkBuilder(int id) {
+			super("bulkupload_bulk", "serveLog");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  serveLog action returns the log file for the bulk-upload job.  */
-    public static RequestBuilder<String> serveLog(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new ServeRequestBuilder("bulkupload_bulk", "serveLog", kparams);
-    }
+    public static ServeLogBulkBuilder serveLog(int id)  {
+		return new ServeLogBulkBuilder(id);
+	}
 }

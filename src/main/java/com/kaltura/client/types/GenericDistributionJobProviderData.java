@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GenericDistributionProviderParser;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +41,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericDistributionJobProviderData.Tokenizer.class)
 public class GenericDistributionJobProviderData extends DistributionJobProviderData {
+	
+	public interface Tokenizer extends DistributionJobProviderData.Tokenizer {
+		String xml();
+		String resultParseData();
+		String resultParserType();
+	}
 
-    private String xml;
-    private String resultParseData;
-    private GenericDistributionProviderParser resultParserType;
+	private String xml;
+	private String resultParseData;
+	private GenericDistributionProviderParser resultParserType;
 
-    // xml:
-    public String getXml(){
-        return this.xml;
-    }
-    public void setXml(String xml){
-        this.xml = xml;
-    }
+	// xml:
+	public String getXml(){
+		return this.xml;
+	}
+	public void setXml(String xml){
+		this.xml = xml;
+	}
 
-    // resultParseData:
-    public String getResultParseData(){
-        return this.resultParseData;
-    }
-    public void setResultParseData(String resultParseData){
-        this.resultParseData = resultParseData;
-    }
+	public void xml(String multirequestToken){
+		setToken("xml", multirequestToken);
+	}
 
-    // resultParserType:
-    public GenericDistributionProviderParser getResultParserType(){
-        return this.resultParserType;
-    }
-    public void setResultParserType(GenericDistributionProviderParser resultParserType){
-        this.resultParserType = resultParserType;
-    }
+	// resultParseData:
+	public String getResultParseData(){
+		return this.resultParseData;
+	}
+	public void setResultParseData(String resultParseData){
+		this.resultParseData = resultParseData;
+	}
+
+	public void resultParseData(String multirequestToken){
+		setToken("resultParseData", multirequestToken);
+	}
+
+	// resultParserType:
+	public GenericDistributionProviderParser getResultParserType(){
+		return this.resultParserType;
+	}
+	public void setResultParserType(GenericDistributionProviderParser resultParserType){
+		this.resultParserType = resultParserType;
+	}
+
+	public void resultParserType(String multirequestToken){
+		setToken("resultParserType", multirequestToken);
+	}
 
 
-    public GenericDistributionJobProviderData() {
-       super();
-    }
+	public GenericDistributionJobProviderData() {
+		super();
+	}
 
-    public GenericDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xml = GsonParser.parseString(jsonObject.get("xml"));
-        resultParseData = GsonParser.parseString(jsonObject.get("resultParseData"));
-        resultParserType = GenericDistributionProviderParser.get(GsonParser.parseInt(jsonObject.get("resultParserType")));
+		// set members values:
+		xml = GsonParser.parseString(jsonObject.get("xml"));
+		resultParseData = GsonParser.parseString(jsonObject.get("resultParseData"));
+		resultParserType = GenericDistributionProviderParser.get(GsonParser.parseInt(jsonObject.get("resultParserType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericDistributionJobProviderData");
-        kparams.add("xml", this.xml);
-        kparams.add("resultParseData", this.resultParseData);
-        kparams.add("resultParserType", this.resultParserType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericDistributionJobProviderData");
+		kparams.add("xml", this.xml);
+		kparams.add("resultParseData", this.resultParseData);
+		kparams.add("resultParserType", this.resultParserType);
+		return kparams;
+	}
 
 }
 

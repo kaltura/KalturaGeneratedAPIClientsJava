@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.GenericDistributionProvider;
 import com.kaltura.client.types.GenericDistributionProviderFilter;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,54 +43,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Generic Distribution Provider service  */
 public class GenericDistributionProviderService {
+	
+	public static class AddGenericDistributionProviderBuilder extends RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.Tokenizer, AddGenericDistributionProviderBuilder> {
+		
+		public AddGenericDistributionProviderBuilder(GenericDistributionProvider genericDistributionProvider) {
+			super(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "add");
+			params.add("genericDistributionProvider", genericDistributionProvider);
+		}
+	}
 
 	/**  Add new Generic Distribution Provider  */
-    public static RequestBuilder<GenericDistributionProvider> add(GenericDistributionProvider genericDistributionProvider)  {
-        Params kparams = new Params();
-        kparams.add("genericDistributionProvider", genericDistributionProvider);
-
-        return new RequestBuilder<GenericDistributionProvider>(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "add", kparams);
-    }
+    public static AddGenericDistributionProviderBuilder add(GenericDistributionProvider genericDistributionProvider)  {
+		return new AddGenericDistributionProviderBuilder(genericDistributionProvider);
+	}
+	
+	public static class DeleteGenericDistributionProviderBuilder extends NullRequestBuilder {
+		
+		public DeleteGenericDistributionProviderBuilder(int id) {
+			super("contentdistribution_genericdistributionprovider", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Generic Distribution Provider by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("contentdistribution_genericdistributionprovider", "delete", kparams);
-    }
+    public static DeleteGenericDistributionProviderBuilder delete(int id)  {
+		return new DeleteGenericDistributionProviderBuilder(id);
+	}
+	
+	public static class GetGenericDistributionProviderBuilder extends RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.Tokenizer, GetGenericDistributionProviderBuilder> {
+		
+		public GetGenericDistributionProviderBuilder(int id) {
+			super(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Generic Distribution Provider by id  */
-    public static RequestBuilder<GenericDistributionProvider> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetGenericDistributionProviderBuilder get(int id)  {
+		return new GetGenericDistributionProviderBuilder(id);
+	}
+	
+	public static class ListGenericDistributionProviderBuilder extends ListResponseRequestBuilder<GenericDistributionProvider, GenericDistributionProvider.Tokenizer, ListGenericDistributionProviderBuilder> {
+		
+		public ListGenericDistributionProviderBuilder(GenericDistributionProviderFilter filter, FilterPager pager) {
+			super(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<GenericDistributionProvider>(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "get", kparams);
-    }
+	public static ListGenericDistributionProviderBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<GenericDistributionProvider>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<GenericDistributionProvider>> list(GenericDistributionProviderFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListGenericDistributionProviderBuilder list(GenericDistributionProviderFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all distribution providers  */
-    public static RequestBuilder<ListResponse<GenericDistributionProvider>> list(GenericDistributionProviderFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<GenericDistributionProvider>(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "list", kparams);
-    }
+    public static ListGenericDistributionProviderBuilder list(GenericDistributionProviderFilter filter, FilterPager pager)  {
+		return new ListGenericDistributionProviderBuilder(filter, pager);
+	}
+	
+	public static class UpdateGenericDistributionProviderBuilder extends RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.Tokenizer, UpdateGenericDistributionProviderBuilder> {
+		
+		public UpdateGenericDistributionProviderBuilder(int id, GenericDistributionProvider genericDistributionProvider) {
+			super(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "update");
+			params.add("id", id);
+			params.add("genericDistributionProvider", genericDistributionProvider);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Generic Distribution Provider by id  */
-    public static RequestBuilder<GenericDistributionProvider> update(int id, GenericDistributionProvider genericDistributionProvider)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("genericDistributionProvider", genericDistributionProvider);
-
-        return new RequestBuilder<GenericDistributionProvider>(GenericDistributionProvider.class, "contentdistribution_genericdistributionprovider", "update", kparams);
-    }
+    public static UpdateGenericDistributionProviderBuilder update(int id, GenericDistributionProvider genericDistributionProvider)  {
+		return new UpdateGenericDistributionProviderBuilder(id, genericDistributionProvider);
+	}
 }

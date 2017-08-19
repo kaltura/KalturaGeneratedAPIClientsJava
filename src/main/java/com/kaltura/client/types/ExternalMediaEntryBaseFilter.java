@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ExternalMediaSourceType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,72 +41,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExternalMediaEntryBaseFilter.Tokenizer.class)
 public abstract class ExternalMediaEntryBaseFilter extends MediaEntryFilter {
+	
+	public interface Tokenizer extends MediaEntryFilter.Tokenizer {
+		String externalSourceTypeEqual();
+		String externalSourceTypeIn();
+		String assetParamsIdsMatchOr();
+		String assetParamsIdsMatchAnd();
+	}
 
-    private ExternalMediaSourceType externalSourceTypeEqual;
-    private String externalSourceTypeIn;
-    private String assetParamsIdsMatchOr;
-    private String assetParamsIdsMatchAnd;
+	private ExternalMediaSourceType externalSourceTypeEqual;
+	private String externalSourceTypeIn;
+	private String assetParamsIdsMatchOr;
+	private String assetParamsIdsMatchAnd;
 
-    // externalSourceTypeEqual:
-    public ExternalMediaSourceType getExternalSourceTypeEqual(){
-        return this.externalSourceTypeEqual;
-    }
-    public void setExternalSourceTypeEqual(ExternalMediaSourceType externalSourceTypeEqual){
-        this.externalSourceTypeEqual = externalSourceTypeEqual;
-    }
+	// externalSourceTypeEqual:
+	public ExternalMediaSourceType getExternalSourceTypeEqual(){
+		return this.externalSourceTypeEqual;
+	}
+	public void setExternalSourceTypeEqual(ExternalMediaSourceType externalSourceTypeEqual){
+		this.externalSourceTypeEqual = externalSourceTypeEqual;
+	}
 
-    // externalSourceTypeIn:
-    public String getExternalSourceTypeIn(){
-        return this.externalSourceTypeIn;
-    }
-    public void setExternalSourceTypeIn(String externalSourceTypeIn){
-        this.externalSourceTypeIn = externalSourceTypeIn;
-    }
+	public void externalSourceTypeEqual(String multirequestToken){
+		setToken("externalSourceTypeEqual", multirequestToken);
+	}
 
-    // assetParamsIdsMatchOr:
-    public String getAssetParamsIdsMatchOr(){
-        return this.assetParamsIdsMatchOr;
-    }
-    public void setAssetParamsIdsMatchOr(String assetParamsIdsMatchOr){
-        this.assetParamsIdsMatchOr = assetParamsIdsMatchOr;
-    }
+	// externalSourceTypeIn:
+	public String getExternalSourceTypeIn(){
+		return this.externalSourceTypeIn;
+	}
+	public void setExternalSourceTypeIn(String externalSourceTypeIn){
+		this.externalSourceTypeIn = externalSourceTypeIn;
+	}
 
-    // assetParamsIdsMatchAnd:
-    public String getAssetParamsIdsMatchAnd(){
-        return this.assetParamsIdsMatchAnd;
-    }
-    public void setAssetParamsIdsMatchAnd(String assetParamsIdsMatchAnd){
-        this.assetParamsIdsMatchAnd = assetParamsIdsMatchAnd;
-    }
+	public void externalSourceTypeIn(String multirequestToken){
+		setToken("externalSourceTypeIn", multirequestToken);
+	}
+
+	// assetParamsIdsMatchOr:
+	public String getAssetParamsIdsMatchOr(){
+		return this.assetParamsIdsMatchOr;
+	}
+	public void setAssetParamsIdsMatchOr(String assetParamsIdsMatchOr){
+		this.assetParamsIdsMatchOr = assetParamsIdsMatchOr;
+	}
+
+	public void assetParamsIdsMatchOr(String multirequestToken){
+		setToken("assetParamsIdsMatchOr", multirequestToken);
+	}
+
+	// assetParamsIdsMatchAnd:
+	public String getAssetParamsIdsMatchAnd(){
+		return this.assetParamsIdsMatchAnd;
+	}
+	public void setAssetParamsIdsMatchAnd(String assetParamsIdsMatchAnd){
+		this.assetParamsIdsMatchAnd = assetParamsIdsMatchAnd;
+	}
+
+	public void assetParamsIdsMatchAnd(String multirequestToken){
+		setToken("assetParamsIdsMatchAnd", multirequestToken);
+	}
 
 
-    public ExternalMediaEntryBaseFilter() {
-       super();
-    }
+	public ExternalMediaEntryBaseFilter() {
+		super();
+	}
 
-    public ExternalMediaEntryBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExternalMediaEntryBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        externalSourceTypeEqual = ExternalMediaSourceType.get(GsonParser.parseString(jsonObject.get("externalSourceTypeEqual")));
-        externalSourceTypeIn = GsonParser.parseString(jsonObject.get("externalSourceTypeIn"));
-        assetParamsIdsMatchOr = GsonParser.parseString(jsonObject.get("assetParamsIdsMatchOr"));
-        assetParamsIdsMatchAnd = GsonParser.parseString(jsonObject.get("assetParamsIdsMatchAnd"));
+		// set members values:
+		externalSourceTypeEqual = ExternalMediaSourceType.get(GsonParser.parseString(jsonObject.get("externalSourceTypeEqual")));
+		externalSourceTypeIn = GsonParser.parseString(jsonObject.get("externalSourceTypeIn"));
+		assetParamsIdsMatchOr = GsonParser.parseString(jsonObject.get("assetParamsIdsMatchOr"));
+		assetParamsIdsMatchAnd = GsonParser.parseString(jsonObject.get("assetParamsIdsMatchAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExternalMediaEntryBaseFilter");
-        kparams.add("externalSourceTypeEqual", this.externalSourceTypeEqual);
-        kparams.add("externalSourceTypeIn", this.externalSourceTypeIn);
-        kparams.add("assetParamsIdsMatchOr", this.assetParamsIdsMatchOr);
-        kparams.add("assetParamsIdsMatchAnd", this.assetParamsIdsMatchAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExternalMediaEntryBaseFilter");
+		kparams.add("externalSourceTypeEqual", this.externalSourceTypeEqual);
+		kparams.add("externalSourceTypeIn", this.externalSourceTypeIn);
+		kparams.add("assetParamsIdsMatchOr", this.assetParamsIdsMatchOr);
+		kparams.add("assetParamsIdsMatchAnd", this.assetParamsIdsMatchAnd);
+		return kparams;
+	}
 
 }
 

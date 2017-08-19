@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.enums.EntryServerNodeType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,138 +42,192 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryServerNodeBaseFilter.Tokenizer.class)
 public abstract class EntryServerNodeBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String entryIdEqual();
+		String entryIdIn();
+		String serverNodeIdEqual();
+		String createdAtLessThanOrEqual();
+		String createdAtGreaterThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String statusEqual();
+		String statusIn();
+		String serverTypeEqual();
+	}
 
-    private String entryIdEqual;
-    private String entryIdIn;
-    private Integer serverNodeIdEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private EntryServerNodeStatus statusEqual;
-    private String statusIn;
-    private EntryServerNodeType serverTypeEqual;
+	private String entryIdEqual;
+	private String entryIdIn;
+	private Integer serverNodeIdEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private EntryServerNodeStatus statusEqual;
+	private String statusIn;
+	private EntryServerNodeType serverTypeEqual;
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // entryIdIn:
-    public String getEntryIdIn(){
-        return this.entryIdIn;
-    }
-    public void setEntryIdIn(String entryIdIn){
-        this.entryIdIn = entryIdIn;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
 
-    // serverNodeIdEqual:
-    public Integer getServerNodeIdEqual(){
-        return this.serverNodeIdEqual;
-    }
-    public void setServerNodeIdEqual(Integer serverNodeIdEqual){
-        this.serverNodeIdEqual = serverNodeIdEqual;
-    }
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	// serverNodeIdEqual:
+	public Integer getServerNodeIdEqual(){
+		return this.serverNodeIdEqual;
+	}
+	public void setServerNodeIdEqual(Integer serverNodeIdEqual){
+		this.serverNodeIdEqual = serverNodeIdEqual;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void serverNodeIdEqual(String multirequestToken){
+		setToken("serverNodeIdEqual", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
 
-    // statusEqual:
-    public EntryServerNodeStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(EntryServerNodeStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
 
-    // serverTypeEqual:
-    public EntryServerNodeType getServerTypeEqual(){
-        return this.serverTypeEqual;
-    }
-    public void setServerTypeEqual(EntryServerNodeType serverTypeEqual){
-        this.serverTypeEqual = serverTypeEqual;
-    }
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// statusEqual:
+	public EntryServerNodeStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(EntryServerNodeStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// serverTypeEqual:
+	public EntryServerNodeType getServerTypeEqual(){
+		return this.serverTypeEqual;
+	}
+	public void setServerTypeEqual(EntryServerNodeType serverTypeEqual){
+		this.serverTypeEqual = serverTypeEqual;
+	}
+
+	public void serverTypeEqual(String multirequestToken){
+		setToken("serverTypeEqual", multirequestToken);
+	}
 
 
-    public EntryServerNodeBaseFilter() {
-       super();
-    }
+	public EntryServerNodeBaseFilter() {
+		super();
+	}
 
-    public EntryServerNodeBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryServerNodeBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-        serverNodeIdEqual = GsonParser.parseInt(jsonObject.get("serverNodeIdEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        statusEqual = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        serverTypeEqual = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("serverTypeEqual")));
+		// set members values:
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		serverNodeIdEqual = GsonParser.parseInt(jsonObject.get("serverNodeIdEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		statusEqual = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		serverTypeEqual = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("serverTypeEqual")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryServerNodeBaseFilter");
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("serverNodeIdEqual", this.serverNodeIdEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("serverTypeEqual", this.serverTypeEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryServerNodeBaseFilter");
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
+		kparams.add("serverNodeIdEqual", this.serverNodeIdEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("serverTypeEqual", this.serverTypeEqual);
+		return kparams;
+	}
 
 }
 

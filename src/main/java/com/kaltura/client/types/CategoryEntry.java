@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.CategoryEntryStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,95 +42,129 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CategoryEntry.Tokenizer.class)
 public class CategoryEntry extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String categoryId();
+		String entryId();
+		String createdAt();
+		String categoryFullIds();
+		String status();
+		String creatorUserId();
+	}
 
-    private Integer categoryId;
+	private Integer categoryId;
 	/**  entry id  */
-    private String entryId;
+	private String entryId;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  The full ids of the Category  */
-    private String categoryFullIds;
+	private String categoryFullIds;
 	/**  CategroyEntry status  */
-    private CategoryEntryStatus status;
+	private CategoryEntryStatus status;
 	/**  CategroyEntry creator puser ID  */
-    private String creatorUserId;
+	private String creatorUserId;
 
-    // categoryId:
-    public Integer getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public Integer getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(Integer categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	public void categoryId(String multirequestToken){
+		setToken("categoryId", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // categoryFullIds:
-    public String getCategoryFullIds(){
-        return this.categoryFullIds;
-    }
-    public void setCategoryFullIds(String categoryFullIds){
-        this.categoryFullIds = categoryFullIds;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // status:
-    public CategoryEntryStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(CategoryEntryStatus status){
-        this.status = status;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // creatorUserId:
-    public String getCreatorUserId(){
-        return this.creatorUserId;
-    }
-    public void setCreatorUserId(String creatorUserId){
-        this.creatorUserId = creatorUserId;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// categoryFullIds:
+	public String getCategoryFullIds(){
+		return this.categoryFullIds;
+	}
+	public void setCategoryFullIds(String categoryFullIds){
+		this.categoryFullIds = categoryFullIds;
+	}
+
+	public void categoryFullIds(String multirequestToken){
+		setToken("categoryFullIds", multirequestToken);
+	}
+
+	// status:
+	public CategoryEntryStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(CategoryEntryStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// creatorUserId:
+	public String getCreatorUserId(){
+		return this.creatorUserId;
+	}
+	public void setCreatorUserId(String creatorUserId){
+		this.creatorUserId = creatorUserId;
+	}
+
+	public void creatorUserId(String multirequestToken){
+		setToken("creatorUserId", multirequestToken);
+	}
 
 
-    public CategoryEntry() {
-       super();
-    }
+	public CategoryEntry() {
+		super();
+	}
 
-    public CategoryEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CategoryEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        categoryFullIds = GsonParser.parseString(jsonObject.get("categoryFullIds"));
-        status = CategoryEntryStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        creatorUserId = GsonParser.parseString(jsonObject.get("creatorUserId"));
+		// set members values:
+		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		categoryFullIds = GsonParser.parseString(jsonObject.get("categoryFullIds"));
+		status = CategoryEntryStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		creatorUserId = GsonParser.parseString(jsonObject.get("creatorUserId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategoryEntry");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("entryId", this.entryId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategoryEntry");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("entryId", this.entryId);
+		return kparams;
+	}
 
 }
 

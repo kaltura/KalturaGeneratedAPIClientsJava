@@ -39,6 +39,7 @@ import com.kaltura.client.enums.PrivacyType;
 import com.kaltura.client.enums.UserJoinPolicyType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -48,434 +49,613 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Category.Tokenizer.class)
 public class Category extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String parentId();
+		String depth();
+		String partnerId();
+		String name();
+		String fullName();
+		String fullIds();
+		String entriesCount();
+		String createdAt();
+		String updatedAt();
+		String description();
+		String tags();
+		String appearInList();
+		String privacy();
+		String inheritanceType();
+		String userJoinPolicy();
+		String defaultPermissionLevel();
+		String owner();
+		String directEntriesCount();
+		String referenceId();
+		String contributionPolicy();
+		String membersCount();
+		String pendingMembersCount();
+		String privacyContext();
+		String privacyContexts();
+		String status();
+		String inheritedParentId();
+		String partnerSortValue();
+		String partnerData();
+		String defaultOrderBy();
+		String directSubCategoriesCount();
+		String moderation();
+		String pendingEntriesCount();
+		String isAggregationCategory();
+		String aggregationCategories();
+	}
 
 	/**  The id of the Category  */
-    private Integer id;
-    private Integer parentId;
-    private Integer depth;
-    private Integer partnerId;
+	private Integer id;
+	private Integer parentId;
+	private Integer depth;
+	private Integer partnerId;
 	/**  The name of the Category.    The following characters are not allowed: '&lt;',
 	  '&gt;', ','  */
-    private String name;
+	private String name;
 	/**  The full name of the Category  */
-    private String fullName;
+	private String fullName;
 	/**  The full ids of the Category  */
-    private String fullIds;
+	private String fullIds;
 	/**  Number of entries in this Category (including child categories)  */
-    private Integer entriesCount;
+	private Integer entriesCount;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 	/**  Category description  */
-    private String description;
+	private String description;
 	/**  Category tags  */
-    private String tags;
+	private String tags;
 	/**  If category will be returned for list action.  */
-    private AppearInListType appearInList;
+	private AppearInListType appearInList;
 	/**  defines the privacy of the entries that assigned to this category  */
-    private PrivacyType privacy;
+	private PrivacyType privacy;
 	/**  If Category members are inherited from parent category or set manualy.  */
-    private InheritanceType inheritanceType;
+	private InheritanceType inheritanceType;
 	/**  Who can ask to join this category  */
-    private UserJoinPolicyType userJoinPolicy;
+	private UserJoinPolicyType userJoinPolicy;
 	/**  Default permissionLevel for new users  */
-    private CategoryUserPermissionLevel defaultPermissionLevel;
+	private CategoryUserPermissionLevel defaultPermissionLevel;
 	/**  Category Owner (User id)  */
-    private String owner;
+	private String owner;
 	/**  Number of entries that belong to this category directly  */
-    private Integer directEntriesCount;
+	private Integer directEntriesCount;
 	/**  Category external id, controlled and managed by the partner.  */
-    private String referenceId;
+	private String referenceId;
 	/**  who can assign entries to this category  */
-    private ContributionPolicyType contributionPolicy;
+	private ContributionPolicyType contributionPolicy;
 	/**  Number of active members for this category  */
-    private Integer membersCount;
+	private Integer membersCount;
 	/**  Number of pending members for this category  */
-    private Integer pendingMembersCount;
+	private Integer pendingMembersCount;
 	/**  Set privacy context for search entries that assiged to private and public
 	  categories. the entries will be private if the search context is set with those
 	  categories.  */
-    private String privacyContext;
+	private String privacyContext;
 	/**  comma separated parents that defines a privacyContext for search  */
-    private String privacyContexts;
+	private String privacyContexts;
 	/**  Status  */
-    private CategoryStatus status;
+	private CategoryStatus status;
 	/**  The category id that this category inherit its members and members permission
 	  (for contribution and join)  */
-    private Integer inheritedParentId;
+	private Integer inheritedParentId;
 	/**  Can be used to store various partner related data as a numeric value  */
-    private Integer partnerSortValue;
+	private Integer partnerSortValue;
 	/**  Can be used to store various partner related data as a string  */
-    private String partnerData;
+	private String partnerData;
 	/**  Enable client side applications to define how to sort the category child
 	  categories  */
-    private CategoryOrderBy defaultOrderBy;
+	private CategoryOrderBy defaultOrderBy;
 	/**  Number of direct children categories  */
-    private Integer directSubCategoriesCount;
+	private Integer directSubCategoriesCount;
 	/**  Moderation to add entries to this category by users that are not of permission
 	  level Manager or Moderator.  */
-    private Boolean moderation;
+	private Boolean moderation;
 	/**  Nunber of pending moderation entries  */
-    private Integer pendingEntriesCount;
+	private Integer pendingEntriesCount;
 	/**  Flag indicating that the category is an aggregation category  */
-    private Boolean isAggregationCategory;
+	private Boolean isAggregationCategory;
 	/**  List of aggregation channels the category belongs to  */
-    private String aggregationCategories;
+	private String aggregationCategories;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // parentId:
-    public Integer getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(Integer parentId){
-        this.parentId = parentId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // depth:
-    public Integer getDepth(){
-        return this.depth;
-    }
-    public void setDepth(Integer depth){
-        this.depth = depth;
-    }
+	// parentId:
+	public Integer getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(Integer parentId){
+		this.parentId = parentId;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// depth:
+	public Integer getDepth(){
+		return this.depth;
+	}
+	public void setDepth(Integer depth){
+		this.depth = depth;
+	}
 
-    // fullName:
-    public String getFullName(){
-        return this.fullName;
-    }
-    public void setFullName(String fullName){
-        this.fullName = fullName;
-    }
+	public void depth(String multirequestToken){
+		setToken("depth", multirequestToken);
+	}
 
-    // fullIds:
-    public String getFullIds(){
-        return this.fullIds;
-    }
-    public void setFullIds(String fullIds){
-        this.fullIds = fullIds;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // entriesCount:
-    public Integer getEntriesCount(){
-        return this.entriesCount;
-    }
-    public void setEntriesCount(Integer entriesCount){
-        this.entriesCount = entriesCount;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// fullName:
+	public String getFullName(){
+		return this.fullName;
+	}
+	public void setFullName(String fullName){
+		this.fullName = fullName;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void fullName(String multirequestToken){
+		setToken("fullName", multirequestToken);
+	}
 
-    // appearInList:
-    public AppearInListType getAppearInList(){
-        return this.appearInList;
-    }
-    public void setAppearInList(AppearInListType appearInList){
-        this.appearInList = appearInList;
-    }
+	// fullIds:
+	public String getFullIds(){
+		return this.fullIds;
+	}
+	public void setFullIds(String fullIds){
+		this.fullIds = fullIds;
+	}
 
-    // privacy:
-    public PrivacyType getPrivacy(){
-        return this.privacy;
-    }
-    public void setPrivacy(PrivacyType privacy){
-        this.privacy = privacy;
-    }
+	public void fullIds(String multirequestToken){
+		setToken("fullIds", multirequestToken);
+	}
 
-    // inheritanceType:
-    public InheritanceType getInheritanceType(){
-        return this.inheritanceType;
-    }
-    public void setInheritanceType(InheritanceType inheritanceType){
-        this.inheritanceType = inheritanceType;
-    }
+	// entriesCount:
+	public Integer getEntriesCount(){
+		return this.entriesCount;
+	}
+	public void setEntriesCount(Integer entriesCount){
+		this.entriesCount = entriesCount;
+	}
 
-    // userJoinPolicy:
-    public UserJoinPolicyType getUserJoinPolicy(){
-        return this.userJoinPolicy;
-    }
-    public void setUserJoinPolicy(UserJoinPolicyType userJoinPolicy){
-        this.userJoinPolicy = userJoinPolicy;
-    }
+	public void entriesCount(String multirequestToken){
+		setToken("entriesCount", multirequestToken);
+	}
 
-    // defaultPermissionLevel:
-    public CategoryUserPermissionLevel getDefaultPermissionLevel(){
-        return this.defaultPermissionLevel;
-    }
-    public void setDefaultPermissionLevel(CategoryUserPermissionLevel defaultPermissionLevel){
-        this.defaultPermissionLevel = defaultPermissionLevel;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // owner:
-    public String getOwner(){
-        return this.owner;
-    }
-    public void setOwner(String owner){
-        this.owner = owner;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // directEntriesCount:
-    public Integer getDirectEntriesCount(){
-        return this.directEntriesCount;
-    }
-    public void setDirectEntriesCount(Integer directEntriesCount){
-        this.directEntriesCount = directEntriesCount;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // referenceId:
-    public String getReferenceId(){
-        return this.referenceId;
-    }
-    public void setReferenceId(String referenceId){
-        this.referenceId = referenceId;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // contributionPolicy:
-    public ContributionPolicyType getContributionPolicy(){
-        return this.contributionPolicy;
-    }
-    public void setContributionPolicy(ContributionPolicyType contributionPolicy){
-        this.contributionPolicy = contributionPolicy;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // membersCount:
-    public Integer getMembersCount(){
-        return this.membersCount;
-    }
-    public void setMembersCount(Integer membersCount){
-        this.membersCount = membersCount;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // pendingMembersCount:
-    public Integer getPendingMembersCount(){
-        return this.pendingMembersCount;
-    }
-    public void setPendingMembersCount(Integer pendingMembersCount){
-        this.pendingMembersCount = pendingMembersCount;
-    }
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
 
-    // privacyContext:
-    public String getPrivacyContext(){
-        return this.privacyContext;
-    }
-    public void setPrivacyContext(String privacyContext){
-        this.privacyContext = privacyContext;
-    }
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
-    // privacyContexts:
-    public String getPrivacyContexts(){
-        return this.privacyContexts;
-    }
-    public void setPrivacyContexts(String privacyContexts){
-        this.privacyContexts = privacyContexts;
-    }
+	// appearInList:
+	public AppearInListType getAppearInList(){
+		return this.appearInList;
+	}
+	public void setAppearInList(AppearInListType appearInList){
+		this.appearInList = appearInList;
+	}
 
-    // status:
-    public CategoryStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(CategoryStatus status){
-        this.status = status;
-    }
+	public void appearInList(String multirequestToken){
+		setToken("appearInList", multirequestToken);
+	}
 
-    // inheritedParentId:
-    public Integer getInheritedParentId(){
-        return this.inheritedParentId;
-    }
-    public void setInheritedParentId(Integer inheritedParentId){
-        this.inheritedParentId = inheritedParentId;
-    }
+	// privacy:
+	public PrivacyType getPrivacy(){
+		return this.privacy;
+	}
+	public void setPrivacy(PrivacyType privacy){
+		this.privacy = privacy;
+	}
 
-    // partnerSortValue:
-    public Integer getPartnerSortValue(){
-        return this.partnerSortValue;
-    }
-    public void setPartnerSortValue(Integer partnerSortValue){
-        this.partnerSortValue = partnerSortValue;
-    }
+	public void privacy(String multirequestToken){
+		setToken("privacy", multirequestToken);
+	}
 
-    // partnerData:
-    public String getPartnerData(){
-        return this.partnerData;
-    }
-    public void setPartnerData(String partnerData){
-        this.partnerData = partnerData;
-    }
+	// inheritanceType:
+	public InheritanceType getInheritanceType(){
+		return this.inheritanceType;
+	}
+	public void setInheritanceType(InheritanceType inheritanceType){
+		this.inheritanceType = inheritanceType;
+	}
 
-    // defaultOrderBy:
-    public CategoryOrderBy getDefaultOrderBy(){
-        return this.defaultOrderBy;
-    }
-    public void setDefaultOrderBy(CategoryOrderBy defaultOrderBy){
-        this.defaultOrderBy = defaultOrderBy;
-    }
+	public void inheritanceType(String multirequestToken){
+		setToken("inheritanceType", multirequestToken);
+	}
 
-    // directSubCategoriesCount:
-    public Integer getDirectSubCategoriesCount(){
-        return this.directSubCategoriesCount;
-    }
-    public void setDirectSubCategoriesCount(Integer directSubCategoriesCount){
-        this.directSubCategoriesCount = directSubCategoriesCount;
-    }
+	// userJoinPolicy:
+	public UserJoinPolicyType getUserJoinPolicy(){
+		return this.userJoinPolicy;
+	}
+	public void setUserJoinPolicy(UserJoinPolicyType userJoinPolicy){
+		this.userJoinPolicy = userJoinPolicy;
+	}
 
-    // moderation:
-    public Boolean getModeration(){
-        return this.moderation;
-    }
-    public void setModeration(Boolean moderation){
-        this.moderation = moderation;
-    }
+	public void userJoinPolicy(String multirequestToken){
+		setToken("userJoinPolicy", multirequestToken);
+	}
 
-    // pendingEntriesCount:
-    public Integer getPendingEntriesCount(){
-        return this.pendingEntriesCount;
-    }
-    public void setPendingEntriesCount(Integer pendingEntriesCount){
-        this.pendingEntriesCount = pendingEntriesCount;
-    }
+	// defaultPermissionLevel:
+	public CategoryUserPermissionLevel getDefaultPermissionLevel(){
+		return this.defaultPermissionLevel;
+	}
+	public void setDefaultPermissionLevel(CategoryUserPermissionLevel defaultPermissionLevel){
+		this.defaultPermissionLevel = defaultPermissionLevel;
+	}
 
-    // isAggregationCategory:
-    public Boolean getIsAggregationCategory(){
-        return this.isAggregationCategory;
-    }
-    public void setIsAggregationCategory(Boolean isAggregationCategory){
-        this.isAggregationCategory = isAggregationCategory;
-    }
+	public void defaultPermissionLevel(String multirequestToken){
+		setToken("defaultPermissionLevel", multirequestToken);
+	}
 
-    // aggregationCategories:
-    public String getAggregationCategories(){
-        return this.aggregationCategories;
-    }
-    public void setAggregationCategories(String aggregationCategories){
-        this.aggregationCategories = aggregationCategories;
-    }
+	// owner:
+	public String getOwner(){
+		return this.owner;
+	}
+	public void setOwner(String owner){
+		this.owner = owner;
+	}
+
+	public void owner(String multirequestToken){
+		setToken("owner", multirequestToken);
+	}
+
+	// directEntriesCount:
+	public Integer getDirectEntriesCount(){
+		return this.directEntriesCount;
+	}
+	public void setDirectEntriesCount(Integer directEntriesCount){
+		this.directEntriesCount = directEntriesCount;
+	}
+
+	public void directEntriesCount(String multirequestToken){
+		setToken("directEntriesCount", multirequestToken);
+	}
+
+	// referenceId:
+	public String getReferenceId(){
+		return this.referenceId;
+	}
+	public void setReferenceId(String referenceId){
+		this.referenceId = referenceId;
+	}
+
+	public void referenceId(String multirequestToken){
+		setToken("referenceId", multirequestToken);
+	}
+
+	// contributionPolicy:
+	public ContributionPolicyType getContributionPolicy(){
+		return this.contributionPolicy;
+	}
+	public void setContributionPolicy(ContributionPolicyType contributionPolicy){
+		this.contributionPolicy = contributionPolicy;
+	}
+
+	public void contributionPolicy(String multirequestToken){
+		setToken("contributionPolicy", multirequestToken);
+	}
+
+	// membersCount:
+	public Integer getMembersCount(){
+		return this.membersCount;
+	}
+	public void setMembersCount(Integer membersCount){
+		this.membersCount = membersCount;
+	}
+
+	public void membersCount(String multirequestToken){
+		setToken("membersCount", multirequestToken);
+	}
+
+	// pendingMembersCount:
+	public Integer getPendingMembersCount(){
+		return this.pendingMembersCount;
+	}
+	public void setPendingMembersCount(Integer pendingMembersCount){
+		this.pendingMembersCount = pendingMembersCount;
+	}
+
+	public void pendingMembersCount(String multirequestToken){
+		setToken("pendingMembersCount", multirequestToken);
+	}
+
+	// privacyContext:
+	public String getPrivacyContext(){
+		return this.privacyContext;
+	}
+	public void setPrivacyContext(String privacyContext){
+		this.privacyContext = privacyContext;
+	}
+
+	public void privacyContext(String multirequestToken){
+		setToken("privacyContext", multirequestToken);
+	}
+
+	// privacyContexts:
+	public String getPrivacyContexts(){
+		return this.privacyContexts;
+	}
+	public void setPrivacyContexts(String privacyContexts){
+		this.privacyContexts = privacyContexts;
+	}
+
+	public void privacyContexts(String multirequestToken){
+		setToken("privacyContexts", multirequestToken);
+	}
+
+	// status:
+	public CategoryStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(CategoryStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// inheritedParentId:
+	public Integer getInheritedParentId(){
+		return this.inheritedParentId;
+	}
+	public void setInheritedParentId(Integer inheritedParentId){
+		this.inheritedParentId = inheritedParentId;
+	}
+
+	public void inheritedParentId(String multirequestToken){
+		setToken("inheritedParentId", multirequestToken);
+	}
+
+	// partnerSortValue:
+	public Integer getPartnerSortValue(){
+		return this.partnerSortValue;
+	}
+	public void setPartnerSortValue(Integer partnerSortValue){
+		this.partnerSortValue = partnerSortValue;
+	}
+
+	public void partnerSortValue(String multirequestToken){
+		setToken("partnerSortValue", multirequestToken);
+	}
+
+	// partnerData:
+	public String getPartnerData(){
+		return this.partnerData;
+	}
+	public void setPartnerData(String partnerData){
+		this.partnerData = partnerData;
+	}
+
+	public void partnerData(String multirequestToken){
+		setToken("partnerData", multirequestToken);
+	}
+
+	// defaultOrderBy:
+	public CategoryOrderBy getDefaultOrderBy(){
+		return this.defaultOrderBy;
+	}
+	public void setDefaultOrderBy(CategoryOrderBy defaultOrderBy){
+		this.defaultOrderBy = defaultOrderBy;
+	}
+
+	public void defaultOrderBy(String multirequestToken){
+		setToken("defaultOrderBy", multirequestToken);
+	}
+
+	// directSubCategoriesCount:
+	public Integer getDirectSubCategoriesCount(){
+		return this.directSubCategoriesCount;
+	}
+	public void setDirectSubCategoriesCount(Integer directSubCategoriesCount){
+		this.directSubCategoriesCount = directSubCategoriesCount;
+	}
+
+	public void directSubCategoriesCount(String multirequestToken){
+		setToken("directSubCategoriesCount", multirequestToken);
+	}
+
+	// moderation:
+	public Boolean getModeration(){
+		return this.moderation;
+	}
+	public void setModeration(Boolean moderation){
+		this.moderation = moderation;
+	}
+
+	public void moderation(String multirequestToken){
+		setToken("moderation", multirequestToken);
+	}
+
+	// pendingEntriesCount:
+	public Integer getPendingEntriesCount(){
+		return this.pendingEntriesCount;
+	}
+	public void setPendingEntriesCount(Integer pendingEntriesCount){
+		this.pendingEntriesCount = pendingEntriesCount;
+	}
+
+	public void pendingEntriesCount(String multirequestToken){
+		setToken("pendingEntriesCount", multirequestToken);
+	}
+
+	// isAggregationCategory:
+	public Boolean getIsAggregationCategory(){
+		return this.isAggregationCategory;
+	}
+	public void setIsAggregationCategory(Boolean isAggregationCategory){
+		this.isAggregationCategory = isAggregationCategory;
+	}
+
+	public void isAggregationCategory(String multirequestToken){
+		setToken("isAggregationCategory", multirequestToken);
+	}
+
+	// aggregationCategories:
+	public String getAggregationCategories(){
+		return this.aggregationCategories;
+	}
+	public void setAggregationCategories(String aggregationCategories){
+		this.aggregationCategories = aggregationCategories;
+	}
+
+	public void aggregationCategories(String multirequestToken){
+		setToken("aggregationCategories", multirequestToken);
+	}
 
 
-    public Category() {
-       super();
-    }
+	public Category() {
+		super();
+	}
 
-    public Category(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Category(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        parentId = GsonParser.parseInt(jsonObject.get("parentId"));
-        depth = GsonParser.parseInt(jsonObject.get("depth"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        fullName = GsonParser.parseString(jsonObject.get("fullName"));
-        fullIds = GsonParser.parseString(jsonObject.get("fullIds"));
-        entriesCount = GsonParser.parseInt(jsonObject.get("entriesCount"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        appearInList = AppearInListType.get(GsonParser.parseInt(jsonObject.get("appearInList")));
-        privacy = PrivacyType.get(GsonParser.parseInt(jsonObject.get("privacy")));
-        inheritanceType = InheritanceType.get(GsonParser.parseInt(jsonObject.get("inheritanceType")));
-        userJoinPolicy = UserJoinPolicyType.get(GsonParser.parseInt(jsonObject.get("userJoinPolicy")));
-        defaultPermissionLevel = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("defaultPermissionLevel")));
-        owner = GsonParser.parseString(jsonObject.get("owner"));
-        directEntriesCount = GsonParser.parseInt(jsonObject.get("directEntriesCount"));
-        referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
-        contributionPolicy = ContributionPolicyType.get(GsonParser.parseInt(jsonObject.get("contributionPolicy")));
-        membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
-        pendingMembersCount = GsonParser.parseInt(jsonObject.get("pendingMembersCount"));
-        privacyContext = GsonParser.parseString(jsonObject.get("privacyContext"));
-        privacyContexts = GsonParser.parseString(jsonObject.get("privacyContexts"));
-        status = CategoryStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        inheritedParentId = GsonParser.parseInt(jsonObject.get("inheritedParentId"));
-        partnerSortValue = GsonParser.parseInt(jsonObject.get("partnerSortValue"));
-        partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
-        defaultOrderBy = CategoryOrderBy.get(GsonParser.parseString(jsonObject.get("defaultOrderBy")));
-        directSubCategoriesCount = GsonParser.parseInt(jsonObject.get("directSubCategoriesCount"));
-        moderation = GsonParser.parseBoolean(jsonObject.get("moderation"));
-        pendingEntriesCount = GsonParser.parseInt(jsonObject.get("pendingEntriesCount"));
-        isAggregationCategory = GsonParser.parseBoolean(jsonObject.get("isAggregationCategory"));
-        aggregationCategories = GsonParser.parseString(jsonObject.get("aggregationCategories"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		parentId = GsonParser.parseInt(jsonObject.get("parentId"));
+		depth = GsonParser.parseInt(jsonObject.get("depth"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		fullName = GsonParser.parseString(jsonObject.get("fullName"));
+		fullIds = GsonParser.parseString(jsonObject.get("fullIds"));
+		entriesCount = GsonParser.parseInt(jsonObject.get("entriesCount"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		appearInList = AppearInListType.get(GsonParser.parseInt(jsonObject.get("appearInList")));
+		privacy = PrivacyType.get(GsonParser.parseInt(jsonObject.get("privacy")));
+		inheritanceType = InheritanceType.get(GsonParser.parseInt(jsonObject.get("inheritanceType")));
+		userJoinPolicy = UserJoinPolicyType.get(GsonParser.parseInt(jsonObject.get("userJoinPolicy")));
+		defaultPermissionLevel = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("defaultPermissionLevel")));
+		owner = GsonParser.parseString(jsonObject.get("owner"));
+		directEntriesCount = GsonParser.parseInt(jsonObject.get("directEntriesCount"));
+		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
+		contributionPolicy = ContributionPolicyType.get(GsonParser.parseInt(jsonObject.get("contributionPolicy")));
+		membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
+		pendingMembersCount = GsonParser.parseInt(jsonObject.get("pendingMembersCount"));
+		privacyContext = GsonParser.parseString(jsonObject.get("privacyContext"));
+		privacyContexts = GsonParser.parseString(jsonObject.get("privacyContexts"));
+		status = CategoryStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		inheritedParentId = GsonParser.parseInt(jsonObject.get("inheritedParentId"));
+		partnerSortValue = GsonParser.parseInt(jsonObject.get("partnerSortValue"));
+		partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
+		defaultOrderBy = CategoryOrderBy.get(GsonParser.parseString(jsonObject.get("defaultOrderBy")));
+		directSubCategoriesCount = GsonParser.parseInt(jsonObject.get("directSubCategoriesCount"));
+		moderation = GsonParser.parseBoolean(jsonObject.get("moderation"));
+		pendingEntriesCount = GsonParser.parseInt(jsonObject.get("pendingEntriesCount"));
+		isAggregationCategory = GsonParser.parseBoolean(jsonObject.get("isAggregationCategory"));
+		aggregationCategories = GsonParser.parseString(jsonObject.get("aggregationCategories"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategory");
-        kparams.add("parentId", this.parentId);
-        kparams.add("name", this.name);
-        kparams.add("description", this.description);
-        kparams.add("tags", this.tags);
-        kparams.add("appearInList", this.appearInList);
-        kparams.add("privacy", this.privacy);
-        kparams.add("inheritanceType", this.inheritanceType);
-        kparams.add("defaultPermissionLevel", this.defaultPermissionLevel);
-        kparams.add("owner", this.owner);
-        kparams.add("referenceId", this.referenceId);
-        kparams.add("contributionPolicy", this.contributionPolicy);
-        kparams.add("privacyContext", this.privacyContext);
-        kparams.add("partnerSortValue", this.partnerSortValue);
-        kparams.add("partnerData", this.partnerData);
-        kparams.add("defaultOrderBy", this.defaultOrderBy);
-        kparams.add("moderation", this.moderation);
-        kparams.add("isAggregationCategory", this.isAggregationCategory);
-        kparams.add("aggregationCategories", this.aggregationCategories);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategory");
+		kparams.add("parentId", this.parentId);
+		kparams.add("name", this.name);
+		kparams.add("description", this.description);
+		kparams.add("tags", this.tags);
+		kparams.add("appearInList", this.appearInList);
+		kparams.add("privacy", this.privacy);
+		kparams.add("inheritanceType", this.inheritanceType);
+		kparams.add("defaultPermissionLevel", this.defaultPermissionLevel);
+		kparams.add("owner", this.owner);
+		kparams.add("referenceId", this.referenceId);
+		kparams.add("contributionPolicy", this.contributionPolicy);
+		kparams.add("privacyContext", this.privacyContext);
+		kparams.add("partnerSortValue", this.partnerSortValue);
+		kparams.add("partnerData", this.partnerData);
+		kparams.add("defaultOrderBy", this.defaultOrderBy);
+		kparams.add("moderation", this.moderation);
+		kparams.add("isAggregationCategory", this.isAggregationCategory);
+		kparams.add("aggregationCategories", this.aggregationCategories);
+		return kparams;
+	}
 
 }
 

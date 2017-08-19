@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,40 +42,49 @@ import com.kaltura.client.utils.GsonParser;
 /**  Used to ingest media that uploaded to the system and represented by token that
   returned from upload.upload action or uploadToken.add action.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UploadedFileTokenResource.Tokenizer.class)
 public class UploadedFileTokenResource extends GenericDataCenterContentResource {
+	
+	public interface Tokenizer extends GenericDataCenterContentResource.Tokenizer {
+		String token();
+	}
 
 	/**  Token that returned from upload.upload action or uploadToken.add action.  */
-    private String token;
+	private String token;
 
-    // token:
-    public String getToken(){
-        return this.token;
-    }
-    public void setToken(String token){
-        this.token = token;
-    }
+	// token:
+	public String getToken(){
+		return this.token;
+	}
+	public void setToken(String token){
+		this.token = token;
+	}
+
+	public void token(String multirequestToken){
+		setToken("token", multirequestToken);
+	}
 
 
-    public UploadedFileTokenResource() {
-       super();
-    }
+	public UploadedFileTokenResource() {
+		super();
+	}
 
-    public UploadedFileTokenResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UploadedFileTokenResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        token = GsonParser.parseString(jsonObject.get("token"));
+		// set members values:
+		token = GsonParser.parseString(jsonObject.get("token"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUploadedFileTokenResource");
-        kparams.add("token", this.token);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUploadedFileTokenResource");
+		kparams.add("token", this.token);
+		return kparams;
+	}
 
 }
 

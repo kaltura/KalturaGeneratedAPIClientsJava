@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.GroupUserStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,92 +42,126 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GroupUser.Tokenizer.class)
 public class GroupUser extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String userId();
+		String groupId();
+		String status();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+	}
 
-    private String userId;
-    private String groupId;
-    private GroupUserStatus status;
-    private Integer partnerId;
+	private String userId;
+	private String groupId;
+	private GroupUserStatus status;
+	private Integer partnerId;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Last update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // groupId:
-    public String getGroupId(){
-        return this.groupId;
-    }
-    public void setGroupId(String groupId){
-        this.groupId = groupId;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // status:
-    public GroupUserStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(GroupUserStatus status){
-        this.status = status;
-    }
+	// groupId:
+	public String getGroupId(){
+		return this.groupId;
+	}
+	public void setGroupId(String groupId){
+		this.groupId = groupId;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void groupId(String multirequestToken){
+		setToken("groupId", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// status:
+	public GroupUserStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(GroupUserStatus status){
+		this.status = status;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
+
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
 
-    public GroupUser() {
-       super();
-    }
+	public GroupUser() {
+		super();
+	}
 
-    public GroupUser(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GroupUser(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        groupId = GsonParser.parseString(jsonObject.get("groupId"));
-        status = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		// set members values:
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		groupId = GsonParser.parseString(jsonObject.get("groupId"));
+		status = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGroupUser");
-        kparams.add("userId", this.userId);
-        kparams.add("groupId", this.groupId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGroupUser");
+		kparams.add("userId", this.userId);
+		kparams.add("groupId", this.groupId);
+		return kparams;
+	}
 
 }
 

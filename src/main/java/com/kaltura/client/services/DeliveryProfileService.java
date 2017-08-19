@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.DeliveryProfile;
 import com.kaltura.client.types.DeliveryProfileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,54 +42,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  delivery service is used to control delivery objects  */
 public class DeliveryProfileService {
+	
+	public static class AddDeliveryProfileBuilder extends RequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, AddDeliveryProfileBuilder> {
+		
+		public AddDeliveryProfileBuilder(DeliveryProfile delivery) {
+			super(DeliveryProfile.class, "deliveryprofile", "add");
+			params.add("delivery", delivery);
+		}
+	}
 
 	/**  Add new delivery.  */
-    public static RequestBuilder<DeliveryProfile> add(DeliveryProfile delivery)  {
-        Params kparams = new Params();
-        kparams.add("delivery", delivery);
-
-        return new RequestBuilder<DeliveryProfile>(DeliveryProfile.class, "deliveryprofile", "add", kparams);
-    }
+    public static AddDeliveryProfileBuilder add(DeliveryProfile delivery)  {
+		return new AddDeliveryProfileBuilder(delivery);
+	}
+	
+	public static class CloneDeliveryProfileBuilder extends RequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, CloneDeliveryProfileBuilder> {
+		
+		public CloneDeliveryProfileBuilder(int deliveryId) {
+			super(DeliveryProfile.class, "deliveryprofile", "clone");
+			params.add("deliveryId", deliveryId);
+		}
+		
+		public void deliveryId(String multirequestToken) {
+			params.add("deliveryId", multirequestToken);
+		}
+	}
 
 	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
-    public static RequestBuilder<DeliveryProfile> clone(int deliveryId)  {
-        Params kparams = new Params();
-        kparams.add("deliveryId", deliveryId);
-
-        return new RequestBuilder<DeliveryProfile>(DeliveryProfile.class, "deliveryprofile", "clone", kparams);
-    }
+    public static CloneDeliveryProfileBuilder clone(int deliveryId)  {
+		return new CloneDeliveryProfileBuilder(deliveryId);
+	}
+	
+	public static class GetDeliveryProfileBuilder extends RequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, GetDeliveryProfileBuilder> {
+		
+		public GetDeliveryProfileBuilder(String id) {
+			super(DeliveryProfile.class, "deliveryprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get delivery by id  */
-    public static RequestBuilder<DeliveryProfile> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetDeliveryProfileBuilder get(String id)  {
+		return new GetDeliveryProfileBuilder(id);
+	}
+	
+	public static class ListDeliveryProfileBuilder extends ListResponseRequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, ListDeliveryProfileBuilder> {
+		
+		public ListDeliveryProfileBuilder(DeliveryProfileFilter filter, FilterPager pager) {
+			super(DeliveryProfile.class, "deliveryprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DeliveryProfile>(DeliveryProfile.class, "deliveryprofile", "get", kparams);
-    }
+	public static ListDeliveryProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DeliveryProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DeliveryProfile>> list(DeliveryProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDeliveryProfileBuilder list(DeliveryProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Retrieve a list of available delivery depends on the filter given  */
-    public static RequestBuilder<ListResponse<DeliveryProfile>> list(DeliveryProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DeliveryProfile>(DeliveryProfile.class, "deliveryprofile", "list", kparams);
-    }
+    public static ListDeliveryProfileBuilder list(DeliveryProfileFilter filter, FilterPager pager)  {
+		return new ListDeliveryProfileBuilder(filter, pager);
+	}
+	
+	public static class UpdateDeliveryProfileBuilder extends RequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, UpdateDeliveryProfileBuilder> {
+		
+		public UpdateDeliveryProfileBuilder(String id, DeliveryProfile delivery) {
+			super(DeliveryProfile.class, "deliveryprofile", "update");
+			params.add("id", id);
+			params.add("delivery", delivery);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update exisiting delivery  */
-    public static RequestBuilder<DeliveryProfile> update(String id, DeliveryProfile delivery)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("delivery", delivery);
-
-        return new RequestBuilder<DeliveryProfile>(DeliveryProfile.class, "deliveryprofile", "update", kparams);
-    }
+    public static UpdateDeliveryProfileBuilder update(String id, DeliveryProfile delivery)  {
+		return new UpdateDeliveryProfileBuilder(id, delivery);
+	}
 }

@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UploadTokenStatus implements EnumAsInt {
-    PENDING(0),
-    PARTIAL_UPLOAD(1),
-    FULL_UPLOAD(2),
-    CLOSED(3),
-    TIMED_OUT(4),
-    DELETED(5);
+	PENDING(0),
+	PARTIAL_UPLOAD(1),
+	FULL_UPLOAD(2),
+	CLOSED(3),
+	TIMED_OUT(4),
+	DELETED(5);
 
-    private int value;
+	private int value;
 
-    UploadTokenStatus(int value) {
-        this.value = value;
-    }
+	UploadTokenStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UploadTokenStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UploadTokenStatus defined values and compare the inner value with the given one:
-        for(UploadTokenStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UploadTokenStatus.values().length > 0 ? UploadTokenStatus.values()[0]: null;
+	public static UploadTokenStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UploadTokenStatus defined values and compare the inner value with the given one:
+		for(UploadTokenStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UploadTokenStatus.values().length > 0 ? UploadTokenStatus.values()[0]: null;
    }
 }

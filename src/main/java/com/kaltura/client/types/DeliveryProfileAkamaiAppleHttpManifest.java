@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileAkamaiAppleHttpManifest.Tokenizer.class)
 public class DeliveryProfileAkamaiAppleHttpManifest extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String supportClipping();
+	}
 
 	/**  Should we use timing parameters - clipTo / seekFrom  */
-    private Boolean supportClipping;
+	private Boolean supportClipping;
 
-    // supportClipping:
-    public Boolean getSupportClipping(){
-        return this.supportClipping;
-    }
-    public void setSupportClipping(Boolean supportClipping){
-        this.supportClipping = supportClipping;
-    }
+	// supportClipping:
+	public Boolean getSupportClipping(){
+		return this.supportClipping;
+	}
+	public void setSupportClipping(Boolean supportClipping){
+		this.supportClipping = supportClipping;
+	}
+
+	public void supportClipping(String multirequestToken){
+		setToken("supportClipping", multirequestToken);
+	}
 
 
-    public DeliveryProfileAkamaiAppleHttpManifest() {
-       super();
-    }
+	public DeliveryProfileAkamaiAppleHttpManifest() {
+		super();
+	}
 
-    public DeliveryProfileAkamaiAppleHttpManifest(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileAkamaiAppleHttpManifest(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        supportClipping = GsonParser.parseBoolean(jsonObject.get("supportClipping"));
+		// set members values:
+		supportClipping = GsonParser.parseBoolean(jsonObject.get("supportClipping"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileAkamaiAppleHttpManifest");
-        kparams.add("supportClipping", this.supportClipping);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileAkamaiAppleHttpManifest");
+		kparams.add("supportClipping", this.supportClipping);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ResponseProfileCacheRecalculateResults.Tokenizer.class)
 public class ResponseProfileCacheRecalculateResults extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String lastObjectKey();
+		String recalculated();
+	}
 
 	/**  Last recalculated id  */
-    private String lastObjectKey;
+	private String lastObjectKey;
 	/**  Number of recalculated keys  */
-    private Integer recalculated;
+	private Integer recalculated;
 
-    // lastObjectKey:
-    public String getLastObjectKey(){
-        return this.lastObjectKey;
-    }
-    public void setLastObjectKey(String lastObjectKey){
-        this.lastObjectKey = lastObjectKey;
-    }
+	// lastObjectKey:
+	public String getLastObjectKey(){
+		return this.lastObjectKey;
+	}
+	public void setLastObjectKey(String lastObjectKey){
+		this.lastObjectKey = lastObjectKey;
+	}
 
-    // recalculated:
-    public Integer getRecalculated(){
-        return this.recalculated;
-    }
-    public void setRecalculated(Integer recalculated){
-        this.recalculated = recalculated;
-    }
+	public void lastObjectKey(String multirequestToken){
+		setToken("lastObjectKey", multirequestToken);
+	}
+
+	// recalculated:
+	public Integer getRecalculated(){
+		return this.recalculated;
+	}
+	public void setRecalculated(Integer recalculated){
+		this.recalculated = recalculated;
+	}
+
+	public void recalculated(String multirequestToken){
+		setToken("recalculated", multirequestToken);
+	}
 
 
-    public ResponseProfileCacheRecalculateResults() {
-       super();
-    }
+	public ResponseProfileCacheRecalculateResults() {
+		super();
+	}
 
-    public ResponseProfileCacheRecalculateResults(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ResponseProfileCacheRecalculateResults(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        lastObjectKey = GsonParser.parseString(jsonObject.get("lastObjectKey"));
-        recalculated = GsonParser.parseInt(jsonObject.get("recalculated"));
+		// set members values:
+		lastObjectKey = GsonParser.parseString(jsonObject.get("lastObjectKey"));
+		recalculated = GsonParser.parseInt(jsonObject.get("recalculated"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResponseProfileCacheRecalculateResults");
-        kparams.add("lastObjectKey", this.lastObjectKey);
-        kparams.add("recalculated", this.recalculated);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResponseProfileCacheRecalculateResults");
+		kparams.add("lastObjectKey", this.lastObjectKey);
+		kparams.add("recalculated", this.recalculated);
+		return kparams;
+	}
 
 }
 

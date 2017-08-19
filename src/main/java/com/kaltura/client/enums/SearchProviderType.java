@@ -34,51 +34,51 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SearchProviderType implements EnumAsInt {
-    FLICKR(3),
-    YOUTUBE(4),
-    MYSPACE(7),
-    PHOTOBUCKET(8),
-    JAMENDO(9),
-    CCMIXTER(10),
-    NYPL(11),
-    CURRENT(12),
-    MEDIA_COMMONS(13),
-    KALTURA(20),
-    KALTURA_USER_CLIPS(21),
-    ARCHIVE_ORG(22),
-    KALTURA_PARTNER(23),
-    METACAFE(24),
-    SEARCH_PROXY(28),
-    PARTNER_SPECIFIC(100);
+	FLICKR(3),
+	YOUTUBE(4),
+	MYSPACE(7),
+	PHOTOBUCKET(8),
+	JAMENDO(9),
+	CCMIXTER(10),
+	NYPL(11),
+	CURRENT(12),
+	MEDIA_COMMONS(13),
+	KALTURA(20),
+	KALTURA_USER_CLIPS(21),
+	ARCHIVE_ORG(22),
+	KALTURA_PARTNER(23),
+	METACAFE(24),
+	SEARCH_PROXY(28),
+	PARTNER_SPECIFIC(100);
 
-    private int value;
+	private int value;
 
-    SearchProviderType(int value) {
-        this.value = value;
-    }
+	SearchProviderType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static SearchProviderType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SearchProviderType defined values and compare the inner value with the given one:
-        for(SearchProviderType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SearchProviderType.values().length > 0 ? SearchProviderType.values()[0]: null;
+	public static SearchProviderType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SearchProviderType defined values and compare the inner value with the given one:
+		for(SearchProviderType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SearchProviderType.values().length > 0 ? SearchProviderType.values()[0]: null;
    }
 }

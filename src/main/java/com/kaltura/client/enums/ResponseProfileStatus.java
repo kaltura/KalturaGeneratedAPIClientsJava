@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ResponseProfileStatus implements EnumAsInt {
-    DISABLED(1),
-    ENABLED(2),
-    DELETED(3);
+	DISABLED(1),
+	ENABLED(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    ResponseProfileStatus(int value) {
-        this.value = value;
-    }
+	ResponseProfileStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ResponseProfileStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ResponseProfileStatus defined values and compare the inner value with the given one:
-        for(ResponseProfileStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ResponseProfileStatus.values().length > 0 ? ResponseProfileStatus.values()[0]: null;
+	public static ResponseProfileStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ResponseProfileStatus defined values and compare the inner value with the given one:
+		for(ResponseProfileStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ResponseProfileStatus.values().length > 0 ? ResponseProfileStatus.values()[0]: null;
    }
 }

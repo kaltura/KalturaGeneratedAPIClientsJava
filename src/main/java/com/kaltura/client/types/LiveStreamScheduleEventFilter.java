@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamScheduleEventFilter.Tokenizer.class)
 public class LiveStreamScheduleEventFilter extends LiveStreamScheduleEventBaseFilter {
+	
+	public interface Tokenizer extends LiveStreamScheduleEventBaseFilter.Tokenizer {
+	}
 
 
 
-    public LiveStreamScheduleEventFilter() {
-       super();
-    }
+	public LiveStreamScheduleEventFilter() {
+		super();
+	}
 
-    public LiveStreamScheduleEventFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public LiveStreamScheduleEventFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamScheduleEventFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamScheduleEventFilter");
+		return kparams;
+	}
 
 }
 

@@ -29,7 +29,6 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BaseEntry;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadEntryData;
@@ -38,7 +37,6 @@ import com.kaltura.client.types.ConversionAttribute;
 import com.kaltura.client.types.EntryReplacementOptions;
 import com.kaltura.client.types.ExtendingItemMrssParameter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.MediaEntry;
 import com.kaltura.client.types.MediaEntryFilter;
 import com.kaltura.client.types.ModerationFlag;
@@ -62,447 +60,754 @@ import java.util.List;
 /**  Media service lets you upload and manage media files (images / videos &amp;
   audio)  */
 public class MediaService {
+	
+	public static class AddMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddMediaBuilder> {
+		
+		public AddMediaBuilder(MediaEntry entry) {
+			super(MediaEntry.class, "media", "add");
+			params.add("entry", entry);
+		}
+	}
 
 	/**  Add entry  */
-    public static RequestBuilder<MediaEntry> add(MediaEntry entry)  {
-        Params kparams = new Params();
-        kparams.add("entry", entry);
+    public static AddMediaBuilder add(MediaEntry entry)  {
+		return new AddMediaBuilder(entry);
+	}
+	
+	public static class AddContentMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddContentMediaBuilder> {
+		
+		public AddContentMediaBuilder(String entryId, Resource resource) {
+			super(MediaEntry.class, "media", "addContent");
+			params.add("entryId", entryId);
+			params.add("resource", resource);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "add", kparams);
-    }
-
-    public static RequestBuilder<MediaEntry> addContent(String entryId)  {
-        return addContent(entryId, null);
-    }
+	public static AddContentMediaBuilder addContent(String entryId)  {
+		return addContent(entryId, null);
+	}
 
 	/**  Add content to media entry which is not yet associated with content (therefore
 	  is in status NO_CONTENT).      If the requirement is to replace the entry's
 	  associated content, use action updateContent.  */
-    public static RequestBuilder<MediaEntry> addContent(String entryId, Resource resource)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("resource", resource);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addContent", kparams);
-    }
+    public static AddContentMediaBuilder addContent(String entryId, Resource resource)  {
+		return new AddContentMediaBuilder(entryId, resource);
+	}
+	
+	public static class AddFromBulkMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromBulkMediaBuilder> {
+		
+		public AddFromBulkMediaBuilder(MediaEntry mediaEntry, String url, int bulkUploadId) {
+			super(MediaEntry.class, "media", "addFromBulk");
+			params.add("mediaEntry", mediaEntry);
+			params.add("url", url);
+			params.add("bulkUploadId", bulkUploadId);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+		
+		public void bulkUploadId(String multirequestToken) {
+			params.add("bulkUploadId", multirequestToken);
+		}
+	}
 
 	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
 	  for import and then for conversion.   This action should be exposed only to the
 	  batches  */
-    public static RequestBuilder<MediaEntry> addFromBulk(MediaEntry mediaEntry, String url, int bulkUploadId)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("url", url);
-        kparams.add("bulkUploadId", bulkUploadId);
+    public static AddFromBulkMediaBuilder addFromBulk(MediaEntry mediaEntry, String url, int bulkUploadId)  {
+		return new AddFromBulkMediaBuilder(mediaEntry, url, bulkUploadId);
+	}
+	
+	public static class AddFromEntryMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromEntryMediaBuilder> {
+		
+		public AddFromEntryMediaBuilder(String sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId) {
+			super(MediaEntry.class, "media", "addFromEntry");
+			params.add("sourceEntryId", sourceEntryId);
+			params.add("mediaEntry", mediaEntry);
+			params.add("sourceFlavorParamsId", sourceFlavorParamsId);
+		}
+		
+		public void sourceEntryId(String multirequestToken) {
+			params.add("sourceEntryId", multirequestToken);
+		}
+		
+		public void sourceFlavorParamsId(String multirequestToken) {
+			params.add("sourceFlavorParamsId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromBulk", kparams);
-    }
+	public static AddFromEntryMediaBuilder addFromEntry(String sourceEntryId)  {
+		return addFromEntry(sourceEntryId, null);
+	}
 
-    public static RequestBuilder<MediaEntry> addFromEntry(String sourceEntryId)  {
-        return addFromEntry(sourceEntryId, null);
-    }
-
-    public static RequestBuilder<MediaEntry> addFromEntry(String sourceEntryId, MediaEntry mediaEntry)  {
-        return addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
-    }
+	public static AddFromEntryMediaBuilder addFromEntry(String sourceEntryId, MediaEntry mediaEntry)  {
+		return addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
+	}
 
 	/**  Copy entry into new entry  */
-    public static RequestBuilder<MediaEntry> addFromEntry(String sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId)  {
-        Params kparams = new Params();
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("sourceFlavorParamsId", sourceFlavorParamsId);
+    public static AddFromEntryMediaBuilder addFromEntry(String sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId)  {
+		return new AddFromEntryMediaBuilder(sourceEntryId, mediaEntry, sourceFlavorParamsId);
+	}
+	
+	public static class AddFromFlavorAssetMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromFlavorAssetMediaBuilder> {
+		
+		public AddFromFlavorAssetMediaBuilder(String sourceFlavorAssetId, MediaEntry mediaEntry) {
+			super(MediaEntry.class, "media", "addFromFlavorAsset");
+			params.add("sourceFlavorAssetId", sourceFlavorAssetId);
+			params.add("mediaEntry", mediaEntry);
+		}
+		
+		public void sourceFlavorAssetId(String multirequestToken) {
+			params.add("sourceFlavorAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromEntry", kparams);
-    }
-
-    public static RequestBuilder<MediaEntry> addFromFlavorAsset(String sourceFlavorAssetId)  {
-        return addFromFlavorAsset(sourceFlavorAssetId, null);
-    }
+	public static AddFromFlavorAssetMediaBuilder addFromFlavorAsset(String sourceFlavorAssetId)  {
+		return addFromFlavorAsset(sourceFlavorAssetId, null);
+	}
 
 	/**  Copy flavor asset into new entry  */
-    public static RequestBuilder<MediaEntry> addFromFlavorAsset(String sourceFlavorAssetId, MediaEntry mediaEntry)  {
-        Params kparams = new Params();
-        kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
-        kparams.add("mediaEntry", mediaEntry);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromFlavorAsset", kparams);
-    }
+    public static AddFromFlavorAssetMediaBuilder addFromFlavorAsset(String sourceFlavorAssetId, MediaEntry mediaEntry)  {
+		return new AddFromFlavorAssetMediaBuilder(sourceFlavorAssetId, mediaEntry);
+	}
+	
+	public static class AddFromRecordedWebcamMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromRecordedWebcamMediaBuilder> {
+		
+		public AddFromRecordedWebcamMediaBuilder(MediaEntry mediaEntry, String webcamTokenId) {
+			super(MediaEntry.class, "media", "addFromRecordedWebcam");
+			params.add("mediaEntry", mediaEntry);
+			params.add("webcamTokenId", webcamTokenId);
+		}
+		
+		public void webcamTokenId(String multirequestToken) {
+			params.add("webcamTokenId", multirequestToken);
+		}
+	}
 
 	/**  Add new entry after the file was recored on the server and the token id exists  */
-    public static RequestBuilder<MediaEntry> addFromRecordedWebcam(MediaEntry mediaEntry, String webcamTokenId)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("webcamTokenId", webcamTokenId);
+    public static AddFromRecordedWebcamMediaBuilder addFromRecordedWebcam(MediaEntry mediaEntry, String webcamTokenId)  {
+		return new AddFromRecordedWebcamMediaBuilder(mediaEntry, webcamTokenId);
+	}
+	
+	public static class AddFromSearchResultMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromSearchResultMediaBuilder> {
+		
+		public AddFromSearchResultMediaBuilder(MediaEntry mediaEntry, SearchResult searchResult) {
+			super(MediaEntry.class, "media", "addFromSearchResult");
+			params.add("mediaEntry", mediaEntry);
+			params.add("searchResult", searchResult);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromRecordedWebcam", kparams);
-    }
+	public static AddFromSearchResultMediaBuilder addFromSearchResult()  {
+		return addFromSearchResult(null);
+	}
 
-    public static RequestBuilder<MediaEntry> addFromSearchResult()  {
-        return addFromSearchResult(null);
-    }
-
-    public static RequestBuilder<MediaEntry> addFromSearchResult(MediaEntry mediaEntry)  {
-        return addFromSearchResult(mediaEntry, null);
-    }
+	public static AddFromSearchResultMediaBuilder addFromSearchResult(MediaEntry mediaEntry)  {
+		return addFromSearchResult(mediaEntry, null);
+	}
 
 	/**  Adds new media entry by importing the media file from a search provider.   This
 	  action should be used with the search service result.  */
-    public static RequestBuilder<MediaEntry> addFromSearchResult(MediaEntry mediaEntry, SearchResult searchResult)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("searchResult", searchResult);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromSearchResult", kparams);
-    }
+    public static AddFromSearchResultMediaBuilder addFromSearchResult(MediaEntry mediaEntry, SearchResult searchResult)  {
+		return new AddFromSearchResultMediaBuilder(mediaEntry, searchResult);
+	}
+	
+	public static class AddFromUploadedFileMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromUploadedFileMediaBuilder> {
+		
+		public AddFromUploadedFileMediaBuilder(MediaEntry mediaEntry, String uploadTokenId) {
+			super(MediaEntry.class, "media", "addFromUploadedFile");
+			params.add("mediaEntry", mediaEntry);
+			params.add("uploadTokenId", uploadTokenId);
+		}
+		
+		public void uploadTokenId(String multirequestToken) {
+			params.add("uploadTokenId", multirequestToken);
+		}
+	}
 
 	/**  Add new entry after the specific media file was uploaded and the upload token id
 	  exists  */
-    public static RequestBuilder<MediaEntry> addFromUploadedFile(MediaEntry mediaEntry, String uploadTokenId)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("uploadTokenId", uploadTokenId);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromUploadedFile", kparams);
-    }
+    public static AddFromUploadedFileMediaBuilder addFromUploadedFile(MediaEntry mediaEntry, String uploadTokenId)  {
+		return new AddFromUploadedFileMediaBuilder(mediaEntry, uploadTokenId);
+	}
+	
+	public static class AddFromUrlMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddFromUrlMediaBuilder> {
+		
+		public AddFromUrlMediaBuilder(MediaEntry mediaEntry, String url) {
+			super(MediaEntry.class, "media", "addFromUrl");
+			params.add("mediaEntry", mediaEntry);
+			params.add("url", url);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
 	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
 	  for import and then for conversion.  */
-    public static RequestBuilder<MediaEntry> addFromUrl(MediaEntry mediaEntry, String url)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntry", mediaEntry);
-        kparams.add("url", url);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "addFromUrl", kparams);
-    }
+    public static AddFromUrlMediaBuilder addFromUrl(MediaEntry mediaEntry, String url)  {
+		return new AddFromUrlMediaBuilder(mediaEntry, url);
+	}
+	
+	public static class AnonymousRankMediaBuilder extends NullRequestBuilder {
+		
+		public AnonymousRankMediaBuilder(String entryId, int rank) {
+			super("media", "anonymousRank");
+			params.add("entryId", entryId);
+			params.add("rank", rank);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void rank(String multirequestToken) {
+			params.add("rank", multirequestToken);
+		}
+	}
 
 	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
-    public static RequestBuilder<Void> anonymousRank(String entryId, int rank)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("rank", rank);
-
-        return new NullRequestBuilder("media", "anonymousRank", kparams);
-    }
+    public static AnonymousRankMediaBuilder anonymousRank(String entryId, int rank)  {
+		return new AnonymousRankMediaBuilder(entryId, rank);
+	}
+	
+	public static class ApproveMediaBuilder extends NullRequestBuilder {
+		
+		public ApproveMediaBuilder(String entryId) {
+			super("media", "approve");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Approve the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry playable)  */
-    public static RequestBuilder<Void> approve(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new NullRequestBuilder("media", "approve", kparams);
-    }
+    public static ApproveMediaBuilder approve(String entryId)  {
+		return new ApproveMediaBuilder(entryId);
+	}
+	
+	public static class ApproveReplaceMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, ApproveReplaceMediaBuilder> {
+		
+		public ApproveReplaceMediaBuilder(String entryId) {
+			super(MediaEntry.class, "media", "approveReplace");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Approves media replacement  */
-    public static RequestBuilder<MediaEntry> approveReplace(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static ApproveReplaceMediaBuilder approveReplace(String entryId)  {
+		return new ApproveReplaceMediaBuilder(entryId);
+	}
+	
+	public static class BulkUploadAddMediaBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, BulkUploadAddMediaBuilder> {
+		
+		public BulkUploadAddMediaBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData) {
+			super(BulkUpload.class, "media", "bulkUploadAdd");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadEntryData", bulkUploadEntryData);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "approveReplace", kparams);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(FileHolder fileData)  {
+		return bulkUploadAdd(fileData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileHolder fileData)  {
-        return bulkUploadAdd(fileData, null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(File fileData)  {
+		return bulkUploadAdd(new FileHolder(fileData), null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(File fileData)  {
-        return bulkUploadAdd(new FileHolder(fileData), null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return bulkUploadAdd(fileData, bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
-        return bulkUploadAdd(fileData, bulkUploadData, null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(File fileData, BulkUploadJobData bulkUploadData)  {
+		return bulkUploadAdd(new FileHolder(fileData), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(File fileData, BulkUploadJobData bulkUploadData)  {
-        return bulkUploadAdd(new FileHolder(fileData), bulkUploadData, null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(File fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
+		return bulkUploadAdd(new FileHolder(fileData), bulkUploadData, bulkUploadEntryData);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(File fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
-        return bulkUploadAdd(new FileHolder(fileData), bulkUploadData, bulkUploadEntryData);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadEntryData);
+	}
 
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadEntryData);
-    }
-
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
-        return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadEntryData);
-    }
+	public static BulkUploadAddMediaBuilder bulkUploadAdd(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
+		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadEntryData);
+	}
 
 	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
 	  conversion profile was specified, partner's default will be used  */
-    public static RequestBuilder<BulkUpload> bulkUploadAdd(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-        kparams.add("bulkUploadData", bulkUploadData);
-        kparams.add("bulkUploadEntryData", bulkUploadEntryData);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "media", "bulkUploadAdd", kparams, kfiles);
-    }
+    public static BulkUploadAddMediaBuilder bulkUploadAdd(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
+		return new BulkUploadAddMediaBuilder(fileData, bulkUploadData, bulkUploadEntryData);
+	}
+	
+	public static class CancelReplaceMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, CancelReplaceMediaBuilder> {
+		
+		public CancelReplaceMediaBuilder(String entryId) {
+			super(MediaEntry.class, "media", "cancelReplace");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Cancels media replacement  */
-    public static RequestBuilder<MediaEntry> cancelReplace(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static CancelReplaceMediaBuilder cancelReplace(String entryId)  {
+		return new CancelReplaceMediaBuilder(entryId);
+	}
+	
+	public static class ConvertMediaBuilder extends RequestBuilder<Long, String, ConvertMediaBuilder> {
+		
+		public ConvertMediaBuilder(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes) {
+			super(Long.class, "media", "convert");
+			params.add("entryId", entryId);
+			params.add("conversionProfileId", conversionProfileId);
+			params.add("dynamicConversionAttributes", dynamicConversionAttributes);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "cancelReplace", kparams);
-    }
+	public static ConvertMediaBuilder convert(String entryId)  {
+		return convert(entryId, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<Long> convert(String entryId)  {
-        return convert(entryId, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<Long> convert(String entryId, int conversionProfileId)  {
-        return convert(entryId, conversionProfileId, null);
-    }
+	public static ConvertMediaBuilder convert(String entryId, int conversionProfileId)  {
+		return convert(entryId, conversionProfileId, null);
+	}
 
 	/**  Convert entry  */
-    public static RequestBuilder<Long> convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("dynamicConversionAttributes", dynamicConversionAttributes);
+    public static ConvertMediaBuilder convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
+		return new ConvertMediaBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
+	}
+	
+	public static class CountMediaBuilder extends RequestBuilder<Integer, String, CountMediaBuilder> {
+		
+		public CountMediaBuilder(MediaEntryFilter filter) {
+			super(Integer.class, "media", "count");
+			params.add("filter", filter);
+		}
+	}
 
-        return new RequestBuilder<Long>(Long.class, "media", "convert", kparams);
-    }
-
-    public static RequestBuilder<Integer> count()  {
-        return count(null);
-    }
+	public static CountMediaBuilder count()  {
+		return count(null);
+	}
 
 	/**  Count media entries by filter.  */
-    public static RequestBuilder<Integer> count(MediaEntryFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-
-        return new RequestBuilder<Integer>(Integer.class, "media", "count", kparams);
-    }
+    public static CountMediaBuilder count(MediaEntryFilter filter)  {
+		return new CountMediaBuilder(filter);
+	}
+	
+	public static class DeleteMediaBuilder extends NullRequestBuilder {
+		
+		public DeleteMediaBuilder(String entryId) {
+			super("media", "delete");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Delete a media entry.  */
-    public static RequestBuilder<Void> delete(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new NullRequestBuilder("media", "delete", kparams);
-    }
+    public static DeleteMediaBuilder delete(String entryId)  {
+		return new DeleteMediaBuilder(entryId);
+	}
+	
+	public static class FlagMediaBuilder extends NullRequestBuilder {
+		
+		public FlagMediaBuilder(ModerationFlag moderationFlag) {
+			super("media", "flag");
+			params.add("moderationFlag", moderationFlag);
+		}
+	}
 
 	/**  Flag inappropriate media entry for moderation  */
-    public static RequestBuilder<Void> flag(ModerationFlag moderationFlag)  {
-        Params kparams = new Params();
-        kparams.add("moderationFlag", moderationFlag);
+    public static FlagMediaBuilder flag(ModerationFlag moderationFlag)  {
+		return new FlagMediaBuilder(moderationFlag);
+	}
+	
+	public static class GetMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, GetMediaBuilder> {
+		
+		public GetMediaBuilder(String entryId, int version) {
+			super(MediaEntry.class, "media", "get");
+			params.add("entryId", entryId);
+			params.add("version", version);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("media", "flag", kparams);
-    }
-
-    public static RequestBuilder<MediaEntry> get(String entryId)  {
-        return get(entryId, -1);
-    }
+	public static GetMediaBuilder get(String entryId)  {
+		return get(entryId, -1);
+	}
 
 	/**  Get media entry by ID.  */
-    public static RequestBuilder<MediaEntry> get(String entryId, int version)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("version", version);
+    public static GetMediaBuilder get(String entryId, int version)  {
+		return new GetMediaBuilder(entryId, version);
+	}
+	
+	public static class GetMrssMediaBuilder extends RequestBuilder<String, String, GetMrssMediaBuilder> {
+		
+		public GetMrssMediaBuilder(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray, String features) {
+			super(String.class, "media", "getMrss");
+			params.add("entryId", entryId);
+			params.add("extendingItemsArray", extendingItemsArray);
+			params.add("features", features);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void features(String multirequestToken) {
+			params.add("features", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "get", kparams);
-    }
+	public static GetMrssMediaBuilder getMrss(String entryId)  {
+		return getMrss(entryId, null);
+	}
 
-    public static RequestBuilder<String> getMrss(String entryId)  {
-        return getMrss(entryId, null);
-    }
-
-    public static RequestBuilder<String> getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray)  {
-        return getMrss(entryId, extendingItemsArray, null);
-    }
+	public static GetMrssMediaBuilder getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray)  {
+		return getMrss(entryId, extendingItemsArray, null);
+	}
 
 	/**  Get MRSS by entry id      XML will return as an escaped string  */
-    public static RequestBuilder<String> getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray, String features)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("extendingItemsArray", extendingItemsArray);
-        kparams.add("features", features);
+    public static GetMrssMediaBuilder getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray, String features)  {
+		return new GetMrssMediaBuilder(entryId, extendingItemsArray, features);
+	}
+	
+	public static class ListMediaBuilder extends ListResponseRequestBuilder<MediaEntry, MediaEntry.Tokenizer, ListMediaBuilder> {
+		
+		public ListMediaBuilder(MediaEntryFilter filter, FilterPager pager) {
+			super(MediaEntry.class, "media", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "media", "getMrss", kparams);
-    }
+	public static ListMediaBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<MediaEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<MediaEntry>> list(MediaEntryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListMediaBuilder list(MediaEntryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List media entries by filter with paging support.  */
-    public static RequestBuilder<ListResponse<MediaEntry>> list(MediaEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListMediaBuilder list(MediaEntryFilter filter, FilterPager pager)  {
+		return new ListMediaBuilder(filter, pager);
+	}
+	
+	public static class ListFlagsMediaBuilder extends ListResponseRequestBuilder<ModerationFlag, ModerationFlag.Tokenizer, ListFlagsMediaBuilder> {
+		
+		public ListFlagsMediaBuilder(String entryId, FilterPager pager) {
+			super(ModerationFlag.class, "media", "listFlags");
+			params.add("entryId", entryId);
+			params.add("pager", pager);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<MediaEntry>(MediaEntry.class, "media", "list", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<ModerationFlag>> listFlags(String entryId)  {
-        return listFlags(entryId, null);
-    }
+	public static ListFlagsMediaBuilder listFlags(String entryId)  {
+		return listFlags(entryId, null);
+	}
 
 	/**  List all pending flags for the media entry  */
-    public static RequestBuilder<ListResponse<ModerationFlag>> listFlags(String entryId, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ModerationFlag>(ModerationFlag.class, "media", "listFlags", kparams);
-    }
+    public static ListFlagsMediaBuilder listFlags(String entryId, FilterPager pager)  {
+		return new ListFlagsMediaBuilder(entryId, pager);
+	}
+	
+	public static class RejectMediaBuilder extends NullRequestBuilder {
+		
+		public RejectMediaBuilder(String entryId) {
+			super("media", "reject");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry non playable)  */
-    public static RequestBuilder<Void> reject(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new NullRequestBuilder("media", "reject", kparams);
-    }
+    public static RejectMediaBuilder reject(String entryId)  {
+		return new RejectMediaBuilder(entryId);
+	}
+	
+	public static class RequestConversionMediaBuilder extends RequestBuilder<Integer, String, RequestConversionMediaBuilder> {
+		
+		public RequestConversionMediaBuilder(String entryId, String fileFormat) {
+			super(Integer.class, "media", "requestConversion");
+			params.add("entryId", entryId);
+			params.add("fileFormat", fileFormat);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void fileFormat(String multirequestToken) {
+			params.add("fileFormat", multirequestToken);
+		}
+	}
 
 	/**  Request a new conversion job, this can be used to convert the media entry to a
 	  different format  */
-    public static RequestBuilder<Integer> requestConversion(String entryId, String fileFormat)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("fileFormat", fileFormat);
-
-        return new RequestBuilder<Integer>(Integer.class, "media", "requestConversion", kparams);
-    }
+    public static RequestConversionMediaBuilder requestConversion(String entryId, String fileFormat)  {
+		return new RequestConversionMediaBuilder(entryId, fileFormat);
+	}
+	
+	public static class UpdateMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, UpdateMediaBuilder> {
+		
+		public UpdateMediaBuilder(String entryId, MediaEntry mediaEntry) {
+			super(MediaEntry.class, "media", "update");
+			params.add("entryId", entryId);
+			params.add("mediaEntry", mediaEntry);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Update media entry. Only the properties that were set will be updated.  */
-    public static RequestBuilder<MediaEntry> update(String entryId, MediaEntry mediaEntry)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("mediaEntry", mediaEntry);
+    public static UpdateMediaBuilder update(String entryId, MediaEntry mediaEntry)  {
+		return new UpdateMediaBuilder(entryId, mediaEntry);
+	}
+	
+	public static class UpdateContentMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, UpdateContentMediaBuilder> {
+		
+		public UpdateContentMediaBuilder(String entryId, Resource resource, int conversionProfileId, EntryReplacementOptions advancedOptions) {
+			super(MediaEntry.class, "media", "updateContent");
+			params.add("entryId", entryId);
+			params.add("resource", resource);
+			params.add("conversionProfileId", conversionProfileId);
+			params.add("advancedOptions", advancedOptions);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "update", kparams);
-    }
+	public static UpdateContentMediaBuilder updateContent(String entryId, Resource resource)  {
+		return updateContent(entryId, resource, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<MediaEntry> updateContent(String entryId, Resource resource)  {
-        return updateContent(entryId, resource, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<MediaEntry> updateContent(String entryId, Resource resource, int conversionProfileId)  {
-        return updateContent(entryId, resource, conversionProfileId, null);
-    }
+	public static UpdateContentMediaBuilder updateContent(String entryId, Resource resource, int conversionProfileId)  {
+		return updateContent(entryId, resource, conversionProfileId, null);
+	}
 
 	/**  Replace content associated with the media entry.  */
-    public static RequestBuilder<MediaEntry> updateContent(String entryId, Resource resource, int conversionProfileId, EntryReplacementOptions advancedOptions)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("resource", resource);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("advancedOptions", advancedOptions);
+    public static UpdateContentMediaBuilder updateContent(String entryId, Resource resource, int conversionProfileId, EntryReplacementOptions advancedOptions)  {
+		return new UpdateContentMediaBuilder(entryId, resource, conversionProfileId, advancedOptions);
+	}
+	
+	public static class UpdateThumbnailMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, UpdateThumbnailMediaBuilder> {
+		
+		public UpdateThumbnailMediaBuilder(String entryId, int timeOffset, int flavorParamsId) {
+			super(MediaEntry.class, "media", "updateThumbnail");
+			params.add("entryId", entryId);
+			params.add("timeOffset", timeOffset);
+			params.add("flavorParamsId", flavorParamsId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void timeOffset(String multirequestToken) {
+			params.add("timeOffset", multirequestToken);
+		}
+		
+		public void flavorParamsId(String multirequestToken) {
+			params.add("flavorParamsId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "updateContent", kparams);
-    }
-
-    public static RequestBuilder<MediaEntry> updateThumbnail(String entryId, int timeOffset)  {
-        return updateThumbnail(entryId, timeOffset, Integer.MIN_VALUE);
-    }
+	public static UpdateThumbnailMediaBuilder updateThumbnail(String entryId, int timeOffset)  {
+		return updateThumbnail(entryId, timeOffset, Integer.MIN_VALUE);
+	}
 
 	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
 	  params id not specified, source flavor will be used by default  */
-    public static RequestBuilder<MediaEntry> updateThumbnail(String entryId, int timeOffset, int flavorParamsId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("timeOffset", timeOffset);
-        kparams.add("flavorParamsId", flavorParamsId);
+    public static UpdateThumbnailMediaBuilder updateThumbnail(String entryId, int timeOffset, int flavorParamsId)  {
+		return new UpdateThumbnailMediaBuilder(entryId, timeOffset, flavorParamsId);
+	}
+	
+	public static class UpdateThumbnailFromSourceEntryMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, UpdateThumbnailFromSourceEntryMediaBuilder> {
+		
+		public UpdateThumbnailFromSourceEntryMediaBuilder(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId) {
+			super(MediaEntry.class, "media", "updateThumbnailFromSourceEntry");
+			params.add("entryId", entryId);
+			params.add("sourceEntryId", sourceEntryId);
+			params.add("timeOffset", timeOffset);
+			params.add("flavorParamsId", flavorParamsId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void sourceEntryId(String multirequestToken) {
+			params.add("sourceEntryId", multirequestToken);
+		}
+		
+		public void timeOffset(String multirequestToken) {
+			params.add("timeOffset", multirequestToken);
+		}
+		
+		public void flavorParamsId(String multirequestToken) {
+			params.add("flavorParamsId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "updateThumbnail", kparams);
-    }
-
-    public static RequestBuilder<MediaEntry> updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset)  {
-        return updateThumbnailFromSourceEntry(entryId, sourceEntryId, timeOffset, Integer.MIN_VALUE);
-    }
+	public static UpdateThumbnailFromSourceEntryMediaBuilder updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset)  {
+		return updateThumbnailFromSourceEntry(entryId, sourceEntryId, timeOffset, Integer.MIN_VALUE);
+	}
 
 	/**  Update media entry thumbnail from a different entry by a specified time offset
 	  (In seconds)   If flavor params id not specified, source flavor will be used by
 	  default  */
-    public static RequestBuilder<MediaEntry> updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("timeOffset", timeOffset);
-        kparams.add("flavorParamsId", flavorParamsId);
-
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "updateThumbnailFromSourceEntry", kparams);
-    }
+    public static UpdateThumbnailFromSourceEntryMediaBuilder updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId)  {
+		return new UpdateThumbnailFromSourceEntryMediaBuilder(entryId, sourceEntryId, timeOffset, flavorParamsId);
+	}
+	
+	public static class UpdateThumbnailFromUrlMediaBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, UpdateThumbnailFromUrlMediaBuilder> {
+		
+		public UpdateThumbnailFromUrlMediaBuilder(String entryId, String url) {
+			super(BaseEntry.class, "media", "updateThumbnailFromUrl");
+			params.add("entryId", entryId);
+			params.add("url", url);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
 	/**  Update entry thumbnail using url  */
-    public static RequestBuilder<BaseEntry> updateThumbnailFromUrl(String entryId, String url)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("url", url);
+    public static UpdateThumbnailFromUrlMediaBuilder updateThumbnailFromUrl(String entryId, String url)  {
+		return new UpdateThumbnailFromUrlMediaBuilder(entryId, url);
+	}
+	
+	public static class UpdateThumbnailJpegMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, UpdateThumbnailJpegMediaBuilder> {
+		
+		public UpdateThumbnailJpegMediaBuilder(String entryId, FileHolder fileData) {
+			super(MediaEntry.class, "media", "updateThumbnailJpeg");
+			params.add("entryId", entryId);
+			files = new Files();
+			files.add("fileData", fileData);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<BaseEntry>(BaseEntry.class, "media", "updateThumbnailFromUrl", kparams);
-    }
+	public static UpdateThumbnailJpegMediaBuilder updateThumbnailJpeg(String entryId, File fileData)  {
+		return updateThumbnailJpeg(entryId, new FileHolder(fileData));
+	}
 
-    public static RequestBuilder<MediaEntry> updateThumbnailJpeg(String entryId, File fileData)  {
-        return updateThumbnailJpeg(entryId, new FileHolder(fileData));
-    }
+	public static UpdateThumbnailJpegMediaBuilder updateThumbnailJpeg(String entryId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
+	}
 
-    public static RequestBuilder<MediaEntry> updateThumbnailJpeg(String entryId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
-    }
-
-    public static RequestBuilder<MediaEntry> updateThumbnailJpeg(String entryId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
-    }
+	public static UpdateThumbnailJpegMediaBuilder updateThumbnailJpeg(String entryId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
+	}
 
 	/**  Update media entry thumbnail using a raw jpeg file  */
-    public static RequestBuilder<MediaEntry> updateThumbnailJpeg(String entryId, FileHolder fileData)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
+    public static UpdateThumbnailJpegMediaBuilder updateThumbnailJpeg(String entryId, FileHolder fileData)  {
+		return new UpdateThumbnailJpegMediaBuilder(entryId, fileData);
+	}
+	
+	public static class UploadMediaBuilder extends RequestBuilder<String, String, UploadMediaBuilder> {
+		
+		public UploadMediaBuilder(FileHolder fileData) {
+			super(String.class, "media", "upload");
+			files = new Files();
+			files.add("fileData", fileData);
+		}
+	}
 
-        return new RequestBuilder<MediaEntry>(MediaEntry.class, "media", "updateThumbnailJpeg", kparams, kfiles);
-    }
+	public static UploadMediaBuilder upload(File fileData)  {
+		return upload(new FileHolder(fileData));
+	}
 
-    public static RequestBuilder<String> upload(File fileData)  {
-        return upload(new FileHolder(fileData));
-    }
+	public static UploadMediaBuilder upload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
+	}
 
-    public static RequestBuilder<String> upload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return upload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
-    }
-
-    public static RequestBuilder<String> upload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
-    }
+	public static UploadMediaBuilder upload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
+	}
 
 	/**  Upload a media file to Kaltura, then the file can be used to create a media
 	  entry.  */
-    public static RequestBuilder<String> upload(FileHolder fileData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-
-        return new RequestBuilder<String>(String.class, "media", "upload", kparams, kfiles);
-    }
+    public static UploadMediaBuilder upload(FileHolder fileData)  {
+		return new UploadMediaBuilder(fileData);
+	}
 }

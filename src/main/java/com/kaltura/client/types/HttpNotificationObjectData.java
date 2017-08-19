@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ResponseType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,76 +42,100 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Evaluates PHP statement, depends on the execution context  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HttpNotificationObjectData.Tokenizer.class)
 public class HttpNotificationObjectData extends HttpNotificationData {
+	
+	public interface Tokenizer extends HttpNotificationData.Tokenizer {
+		String apiObjectType();
+		String format();
+		String ignoreNull();
+		String code();
+	}
 
 	/**  Kaltura API object type  */
-    private String apiObjectType;
+	private String apiObjectType;
 	/**  Data format  */
-    private ResponseType format;
+	private ResponseType format;
 	/**  Ignore null attributes during serialization  */
-    private Boolean ignoreNull;
+	private Boolean ignoreNull;
 	/**  PHP code  */
-    private String code;
+	private String code;
 
-    // apiObjectType:
-    public String getApiObjectType(){
-        return this.apiObjectType;
-    }
-    public void setApiObjectType(String apiObjectType){
-        this.apiObjectType = apiObjectType;
-    }
+	// apiObjectType:
+	public String getApiObjectType(){
+		return this.apiObjectType;
+	}
+	public void setApiObjectType(String apiObjectType){
+		this.apiObjectType = apiObjectType;
+	}
 
-    // format:
-    public ResponseType getFormat(){
-        return this.format;
-    }
-    public void setFormat(ResponseType format){
-        this.format = format;
-    }
+	public void apiObjectType(String multirequestToken){
+		setToken("apiObjectType", multirequestToken);
+	}
 
-    // ignoreNull:
-    public Boolean getIgnoreNull(){
-        return this.ignoreNull;
-    }
-    public void setIgnoreNull(Boolean ignoreNull){
-        this.ignoreNull = ignoreNull;
-    }
+	// format:
+	public ResponseType getFormat(){
+		return this.format;
+	}
+	public void setFormat(ResponseType format){
+		this.format = format;
+	}
 
-    // code:
-    public String getCode(){
-        return this.code;
-    }
-    public void setCode(String code){
-        this.code = code;
-    }
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
+
+	// ignoreNull:
+	public Boolean getIgnoreNull(){
+		return this.ignoreNull;
+	}
+	public void setIgnoreNull(Boolean ignoreNull){
+		this.ignoreNull = ignoreNull;
+	}
+
+	public void ignoreNull(String multirequestToken){
+		setToken("ignoreNull", multirequestToken);
+	}
+
+	// code:
+	public String getCode(){
+		return this.code;
+	}
+	public void setCode(String code){
+		this.code = code;
+	}
+
+	public void code(String multirequestToken){
+		setToken("code", multirequestToken);
+	}
 
 
-    public HttpNotificationObjectData() {
-       super();
-    }
+	public HttpNotificationObjectData() {
+		super();
+	}
 
-    public HttpNotificationObjectData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public HttpNotificationObjectData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        apiObjectType = GsonParser.parseString(jsonObject.get("apiObjectType"));
-        format = ResponseType.get(GsonParser.parseInt(jsonObject.get("format")));
-        ignoreNull = GsonParser.parseBoolean(jsonObject.get("ignoreNull"));
-        code = GsonParser.parseString(jsonObject.get("code"));
+		// set members values:
+		apiObjectType = GsonParser.parseString(jsonObject.get("apiObjectType"));
+		format = ResponseType.get(GsonParser.parseInt(jsonObject.get("format")));
+		ignoreNull = GsonParser.parseBoolean(jsonObject.get("ignoreNull"));
+		code = GsonParser.parseString(jsonObject.get("code"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHttpNotificationObjectData");
-        kparams.add("apiObjectType", this.apiObjectType);
-        kparams.add("format", this.format);
-        kparams.add("ignoreNull", this.ignoreNull);
-        kparams.add("code", this.code);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHttpNotificationObjectData");
+		kparams.add("apiObjectType", this.apiObjectType);
+		kparams.add("format", this.format);
+		kparams.add("ignoreNull", this.ignoreNull);
+		kparams.add("code", this.code);
+		return kparams;
+	}
 
 }
 

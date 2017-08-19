@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MailJobStatus implements EnumAsInt {
-    PENDING(1),
-    SENT(2),
-    ERROR(3),
-    QUEUED(4);
+	PENDING(1),
+	SENT(2),
+	ERROR(3),
+	QUEUED(4);
 
-    private int value;
+	private int value;
 
-    MailJobStatus(int value) {
-        this.value = value;
-    }
+	MailJobStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static MailJobStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MailJobStatus defined values and compare the inner value with the given one:
-        for(MailJobStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MailJobStatus.values().length > 0 ? MailJobStatus.values()[0]: null;
+	public static MailJobStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MailJobStatus defined values and compare the inner value with the given one:
+		for(MailJobStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MailJobStatus.values().length > 0 ? MailJobStatus.values()[0]: null;
    }
 }

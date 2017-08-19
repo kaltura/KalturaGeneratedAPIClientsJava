@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDisplayInSearchType implements EnumAsInt {
-    SYSTEM(-1),
-    NONE(0),
-    PARTNER_ONLY(1),
-    KALTURA_NETWORK(2);
+	SYSTEM(-1),
+	NONE(0),
+	PARTNER_ONLY(1),
+	KALTURA_NETWORK(2);
 
-    private int value;
+	private int value;
 
-    EntryDisplayInSearchType(int value) {
-        this.value = value;
-    }
+	EntryDisplayInSearchType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryDisplayInSearchType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryDisplayInSearchType defined values and compare the inner value with the given one:
-        for(EntryDisplayInSearchType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryDisplayInSearchType.values().length > 0 ? EntryDisplayInSearchType.values()[0]: null;
+	public static EntryDisplayInSearchType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryDisplayInSearchType defined values and compare the inner value with the given one:
+		for(EntryDisplayInSearchType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryDisplayInSearchType.values().length > 0 ? EntryDisplayInSearchType.values()[0]: null;
    }
 }

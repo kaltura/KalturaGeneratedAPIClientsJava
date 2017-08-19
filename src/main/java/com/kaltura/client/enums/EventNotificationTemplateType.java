@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationTemplateType implements EnumAsString {
-    EMAIL("emailNotification.Email"),
-    HTTP("httpNotification.Http");
+	EMAIL("emailNotification.Email"),
+	HTTP("httpNotification.Http");
 
-    private String value;
+	private String value;
 
-    EventNotificationTemplateType(String value) {
-        this.value = value;
-    }
+	EventNotificationTemplateType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EventNotificationTemplateType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EventNotificationTemplateType defined values and compare the inner value with the given one:
-        for(EventNotificationTemplateType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EventNotificationTemplateType.values().length > 0 ? EventNotificationTemplateType.values()[0]: null;
+	public static EventNotificationTemplateType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EventNotificationTemplateType defined values and compare the inner value with the given one:
+		for(EventNotificationTemplateType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EventNotificationTemplateType.values().length > 0 ? EventNotificationTemplateType.values()[0]: null;
    }
 }

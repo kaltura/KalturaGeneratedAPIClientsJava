@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserRoleCondition.Tokenizer.class)
 public class UserRoleCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		String roleIds();
+	}
 
 	/**  Comma separated list of role ids  */
-    private String roleIds;
+	private String roleIds;
 
-    // roleIds:
-    public String getRoleIds(){
-        return this.roleIds;
-    }
-    public void setRoleIds(String roleIds){
-        this.roleIds = roleIds;
-    }
+	// roleIds:
+	public String getRoleIds(){
+		return this.roleIds;
+	}
+	public void setRoleIds(String roleIds){
+		this.roleIds = roleIds;
+	}
+
+	public void roleIds(String multirequestToken){
+		setToken("roleIds", multirequestToken);
+	}
 
 
-    public UserRoleCondition() {
-       super();
-    }
+	public UserRoleCondition() {
+		super();
+	}
 
-    public UserRoleCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserRoleCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        roleIds = GsonParser.parseString(jsonObject.get("roleIds"));
+		// set members values:
+		roleIds = GsonParser.parseString(jsonObject.get("roleIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserRoleCondition");
-        kparams.add("roleIds", this.roleIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserRoleCondition");
+		kparams.add("roleIds", this.roleIds);
+		return kparams;
+	}
 
 }
 

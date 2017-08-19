@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum Gender implements EnumAsInt {
-    UNKNOWN(0),
-    MALE(1),
-    FEMALE(2);
+	UNKNOWN(0),
+	MALE(1),
+	FEMALE(2);
 
-    private int value;
+	private int value;
 
-    Gender(int value) {
-        this.value = value;
-    }
+	Gender(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static Gender get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over Gender defined values and compare the inner value with the given one:
-        for(Gender item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return Gender.values().length > 0 ? Gender.values()[0]: null;
+	public static Gender get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over Gender defined values and compare the inner value with the given one:
+		for(Gender item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return Gender.values().length > 0 ? Gender.values()[0]: null;
    }
 }

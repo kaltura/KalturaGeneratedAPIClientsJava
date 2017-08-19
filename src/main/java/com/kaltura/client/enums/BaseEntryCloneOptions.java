@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BaseEntryCloneOptions implements EnumAsString {
-    AD_CUE_POINTS("adCuePoint.AD_CUE_POINTS"),
-    ANNOTATION_CUE_POINTS("annotation.ANNOTATION_CUE_POINTS"),
-    CODE_CUE_POINTS("codeCuePoint.CODE_CUE_POINTS"),
-    THUMB_CUE_POINTS("thumbCuePoint.THUMB_CUE_POINTS"),
-    USERS("1"),
-    CATEGORIES("2"),
-    CHILD_ENTRIES("3"),
-    ACCESS_CONTROL("4");
+	AD_CUE_POINTS("adCuePoint.AD_CUE_POINTS"),
+	ANNOTATION_CUE_POINTS("annotation.ANNOTATION_CUE_POINTS"),
+	CODE_CUE_POINTS("codeCuePoint.CODE_CUE_POINTS"),
+	THUMB_CUE_POINTS("thumbCuePoint.THUMB_CUE_POINTS"),
+	USERS("1"),
+	CATEGORIES("2"),
+	CHILD_ENTRIES("3"),
+	ACCESS_CONTROL("4");
 
-    private String value;
+	private String value;
 
-    BaseEntryCloneOptions(String value) {
-        this.value = value;
-    }
+	BaseEntryCloneOptions(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static BaseEntryCloneOptions get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BaseEntryCloneOptions defined values and compare the inner value with the given one:
-        for(BaseEntryCloneOptions item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BaseEntryCloneOptions.values().length > 0 ? BaseEntryCloneOptions.values()[0]: null;
+	public static BaseEntryCloneOptions get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BaseEntryCloneOptions defined values and compare the inner value with the given one:
+		for(BaseEntryCloneOptions item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BaseEntryCloneOptions.values().length > 0 ? BaseEntryCloneOptions.values()[0]: null;
    }
 }

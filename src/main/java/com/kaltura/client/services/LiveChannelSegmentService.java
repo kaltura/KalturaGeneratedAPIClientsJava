@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.LiveChannelSegment;
 import com.kaltura.client.types.LiveChannelSegmentFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -45,54 +43,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage live channel segments  */
 public class LiveChannelSegmentService {
+	
+	public static class AddLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, AddLiveChannelSegmentBuilder> {
+		
+		public AddLiveChannelSegmentBuilder(LiveChannelSegment liveChannelSegment) {
+			super(LiveChannelSegment.class, "livechannelsegment", "add");
+			params.add("liveChannelSegment", liveChannelSegment);
+		}
+	}
 
 	/**  Add new live channel segment  */
-    public static RequestBuilder<LiveChannelSegment> add(LiveChannelSegment liveChannelSegment)  {
-        Params kparams = new Params();
-        kparams.add("liveChannelSegment", liveChannelSegment);
-
-        return new RequestBuilder<LiveChannelSegment>(LiveChannelSegment.class, "livechannelsegment", "add", kparams);
-    }
+    public static AddLiveChannelSegmentBuilder add(LiveChannelSegment liveChannelSegment)  {
+		return new AddLiveChannelSegmentBuilder(liveChannelSegment);
+	}
+	
+	public static class DeleteLiveChannelSegmentBuilder extends NullRequestBuilder {
+		
+		public DeleteLiveChannelSegmentBuilder(int id) {
+			super("livechannelsegment", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete live channel segment by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("livechannelsegment", "delete", kparams);
-    }
+    public static DeleteLiveChannelSegmentBuilder delete(int id)  {
+		return new DeleteLiveChannelSegmentBuilder(id);
+	}
+	
+	public static class GetLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, GetLiveChannelSegmentBuilder> {
+		
+		public GetLiveChannelSegmentBuilder(int id) {
+			super(LiveChannelSegment.class, "livechannelsegment", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get live channel segment by id  */
-    public static RequestBuilder<LiveChannelSegment> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetLiveChannelSegmentBuilder get(int id)  {
+		return new GetLiveChannelSegmentBuilder(id);
+	}
+	
+	public static class ListLiveChannelSegmentBuilder extends ListResponseRequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, ListLiveChannelSegmentBuilder> {
+		
+		public ListLiveChannelSegmentBuilder(LiveChannelSegmentFilter filter, FilterPager pager) {
+			super(LiveChannelSegment.class, "livechannelsegment", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<LiveChannelSegment>(LiveChannelSegment.class, "livechannelsegment", "get", kparams);
-    }
+	public static ListLiveChannelSegmentBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<LiveChannelSegment>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<LiveChannelSegment>> list(LiveChannelSegmentFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListLiveChannelSegmentBuilder list(LiveChannelSegmentFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List live channel segments by filter and pager  */
-    public static RequestBuilder<ListResponse<LiveChannelSegment>> list(LiveChannelSegmentFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<LiveChannelSegment>(LiveChannelSegment.class, "livechannelsegment", "list", kparams);
-    }
+    public static ListLiveChannelSegmentBuilder list(LiveChannelSegmentFilter filter, FilterPager pager)  {
+		return new ListLiveChannelSegmentBuilder(filter, pager);
+	}
+	
+	public static class UpdateLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, UpdateLiveChannelSegmentBuilder> {
+		
+		public UpdateLiveChannelSegmentBuilder(int id, LiveChannelSegment liveChannelSegment) {
+			super(LiveChannelSegment.class, "livechannelsegment", "update");
+			params.add("id", id);
+			params.add("liveChannelSegment", liveChannelSegment);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update live channel segment by id  */
-    public static RequestBuilder<LiveChannelSegment> update(int id, LiveChannelSegment liveChannelSegment)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("liveChannelSegment", liveChannelSegment);
-
-        return new RequestBuilder<LiveChannelSegment>(LiveChannelSegment.class, "livechannelsegment", "update", kparams);
-    }
+    public static UpdateLiveChannelSegmentBuilder update(int id, LiveChannelSegment liveChannelSegment)  {
+		return new UpdateLiveChannelSegmentBuilder(id, liveChannelSegment);
+	}
 }

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GeoCoderType implements EnumAsString {
-    KALTURA("1"),
-    MAX_MIND("2"),
-    DIGITAL_ELEMENT("3");
+	KALTURA("1"),
+	MAX_MIND("2"),
+	DIGITAL_ELEMENT("3");
 
-    private String value;
+	private String value;
 
-    GeoCoderType(String value) {
-        this.value = value;
-    }
+	GeoCoderType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static GeoCoderType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GeoCoderType defined values and compare the inner value with the given one:
-        for(GeoCoderType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GeoCoderType.values().length > 0 ? GeoCoderType.values()[0]: null;
+	public static GeoCoderType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GeoCoderType defined values and compare the inner value with the given one:
+		for(GeoCoderType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GeoCoderType.values().length > 0 ? GeoCoderType.values()[0]: null;
    }
 }

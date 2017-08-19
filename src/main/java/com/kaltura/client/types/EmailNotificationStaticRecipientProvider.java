@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,40 +43,45 @@ import java.util.List;
 
 /**  API class for recipient provider containing a static list of email recipients.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationStaticRecipientProvider.Tokenizer.class)
 public class EmailNotificationStaticRecipientProvider extends EmailNotificationRecipientProvider {
+	
+	public interface Tokenizer extends EmailNotificationRecipientProvider.Tokenizer {
+		RequestBuilder.ListTokenizer<EmailNotificationRecipient.Tokenizer> emailRecipients();
+	}
 
 	/**  Email to emails and names  */
-    private List<EmailNotificationRecipient> emailRecipients;
+	private List<EmailNotificationRecipient> emailRecipients;
 
-    // emailRecipients:
-    public List<EmailNotificationRecipient> getEmailRecipients(){
-        return this.emailRecipients;
-    }
-    public void setEmailRecipients(List<EmailNotificationRecipient> emailRecipients){
-        this.emailRecipients = emailRecipients;
-    }
+	// emailRecipients:
+	public List<EmailNotificationRecipient> getEmailRecipients(){
+		return this.emailRecipients;
+	}
+	public void setEmailRecipients(List<EmailNotificationRecipient> emailRecipients){
+		this.emailRecipients = emailRecipients;
+	}
 
 
-    public EmailNotificationStaticRecipientProvider() {
-       super();
-    }
+	public EmailNotificationStaticRecipientProvider() {
+		super();
+	}
 
-    public EmailNotificationStaticRecipientProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationStaticRecipientProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        emailRecipients = GsonParser.parseArray(jsonObject.getAsJsonArray("emailRecipients"), EmailNotificationRecipient.class);
+		// set members values:
+		emailRecipients = GsonParser.parseArray(jsonObject.getAsJsonArray("emailRecipients"), EmailNotificationRecipient.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationStaticRecipientProvider");
-        kparams.add("emailRecipients", this.emailRecipients);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationStaticRecipientProvider");
+		kparams.add("emailRecipients", this.emailRecipients);
+		return kparams;
+	}
 
 }
 

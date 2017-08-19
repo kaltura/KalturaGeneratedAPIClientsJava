@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum RuleActionType implements EnumAsString {
-    BLOCK("1"),
-    PREVIEW("2"),
-    LIMIT_FLAVORS("3"),
-    ADD_TO_STORAGE("4"),
-    LIMIT_DELIVERY_PROFILES("5"),
-    SERVE_FROM_REMOTE_SERVER("6"),
-    REQUEST_HOST_REGEX("7"),
-    LIMIT_THUMBNAIL_CAPTURE("8");
+	BLOCK("1"),
+	PREVIEW("2"),
+	LIMIT_FLAVORS("3"),
+	ADD_TO_STORAGE("4"),
+	LIMIT_DELIVERY_PROFILES("5"),
+	SERVE_FROM_REMOTE_SERVER("6"),
+	REQUEST_HOST_REGEX("7"),
+	LIMIT_THUMBNAIL_CAPTURE("8");
 
-    private String value;
+	private String value;
 
-    RuleActionType(String value) {
-        this.value = value;
-    }
+	RuleActionType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static RuleActionType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over RuleActionType defined values and compare the inner value with the given one:
-        for(RuleActionType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return RuleActionType.values().length > 0 ? RuleActionType.values()[0]: null;
+	public static RuleActionType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over RuleActionType defined values and compare the inner value with the given one:
+		for(RuleActionType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return RuleActionType.values().length > 0 ? RuleActionType.values()[0]: null;
    }
 }

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserStatus implements EnumAsInt {
-    BLOCKED(0),
-    ACTIVE(1),
-    DELETED(2);
+	BLOCKED(0),
+	ACTIVE(1),
+	DELETED(2);
 
-    private int value;
+	private int value;
 
-    UserStatus(int value) {
-        this.value = value;
-    }
+	UserStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UserStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserStatus defined values and compare the inner value with the given one:
-        for(UserStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserStatus.values().length > 0 ? UserStatus.values()[0]: null;
+	public static UserStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserStatus defined values and compare the inner value with the given one:
+		for(UserStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserStatus.values().length > 0 ? UserStatus.values()[0]: null;
    }
 }

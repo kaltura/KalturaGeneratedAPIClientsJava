@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.ConversionProfileAssetParams;
 import com.kaltura.client.types.ConversionProfileAssetParamsFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,31 +42,49 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage the connection between Conversion Profiles and Asset Params  */
 public class ConversionProfileAssetParamsService {
+	
+	public static class ListConversionProfileAssetParamsBuilder extends ListResponseRequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.Tokenizer, ListConversionProfileAssetParamsBuilder> {
+		
+		public ListConversionProfileAssetParamsBuilder(ConversionProfileAssetParamsFilter filter, FilterPager pager) {
+			super(ConversionProfileAssetParams.class, "conversionprofileassetparams", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<ConversionProfileAssetParams>> list()  {
-        return list(null);
-    }
+	public static ListConversionProfileAssetParamsBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ConversionProfileAssetParams>> list(ConversionProfileAssetParamsFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListConversionProfileAssetParamsBuilder list(ConversionProfileAssetParamsFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Lists asset parmas of conversion profile by ID  */
-    public static RequestBuilder<ListResponse<ConversionProfileAssetParams>> list(ConversionProfileAssetParamsFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ConversionProfileAssetParams>(ConversionProfileAssetParams.class, "conversionprofileassetparams", "list", kparams);
-    }
+    public static ListConversionProfileAssetParamsBuilder list(ConversionProfileAssetParamsFilter filter, FilterPager pager)  {
+		return new ListConversionProfileAssetParamsBuilder(filter, pager);
+	}
+	
+	public static class UpdateConversionProfileAssetParamsBuilder extends RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.Tokenizer, UpdateConversionProfileAssetParamsBuilder> {
+		
+		public UpdateConversionProfileAssetParamsBuilder(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams) {
+			super(ConversionProfileAssetParams.class, "conversionprofileassetparams", "update");
+			params.add("conversionProfileId", conversionProfileId);
+			params.add("assetParamsId", assetParamsId);
+			params.add("conversionProfileAssetParams", conversionProfileAssetParams);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+		
+		public void assetParamsId(String multirequestToken) {
+			params.add("assetParamsId", multirequestToken);
+		}
+	}
 
 	/**  Update asset parmas of conversion profile by ID  */
-    public static RequestBuilder<ConversionProfileAssetParams> update(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams)  {
-        Params kparams = new Params();
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("assetParamsId", assetParamsId);
-        kparams.add("conversionProfileAssetParams", conversionProfileAssetParams);
-
-        return new RequestBuilder<ConversionProfileAssetParams>(ConversionProfileAssetParams.class, "conversionprofileassetparams", "update", kparams);
-    }
+    public static UpdateConversionProfileAssetParamsBuilder update(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams)  {
+		return new UpdateConversionProfileAssetParamsBuilder(conversionProfileId, assetParamsId, conversionProfileAssetParams);
+	}
 }

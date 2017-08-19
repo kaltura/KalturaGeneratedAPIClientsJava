@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FileAsset;
 import com.kaltura.client.types.FileAssetFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -47,67 +45,122 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Manage file assets  */
 public class FileAssetService {
+	
+	public static class AddFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, AddFileAssetBuilder> {
+		
+		public AddFileAssetBuilder(FileAsset fileAsset) {
+			super(FileAsset.class, "fileasset", "add");
+			params.add("fileAsset", fileAsset);
+		}
+	}
 
 	/**  Add new file asset  */
-    public static RequestBuilder<FileAsset> add(FileAsset fileAsset)  {
-        Params kparams = new Params();
-        kparams.add("fileAsset", fileAsset);
-
-        return new RequestBuilder<FileAsset>(FileAsset.class, "fileasset", "add", kparams);
-    }
+    public static AddFileAssetBuilder add(FileAsset fileAsset)  {
+		return new AddFileAssetBuilder(fileAsset);
+	}
+	
+	public static class DeleteFileAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteFileAssetBuilder(int id) {
+			super("fileasset", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete file asset by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("fileasset", "delete", kparams);
-    }
+    public static DeleteFileAssetBuilder delete(int id)  {
+		return new DeleteFileAssetBuilder(id);
+	}
+	
+	public static class GetFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, GetFileAssetBuilder> {
+		
+		public GetFileAssetBuilder(int id) {
+			super(FileAsset.class, "fileasset", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get file asset by id  */
-    public static RequestBuilder<FileAsset> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetFileAssetBuilder get(int id)  {
+		return new GetFileAssetBuilder(id);
+	}
+	
+	public static class ListFileAssetBuilder extends ListResponseRequestBuilder<FileAsset, FileAsset.Tokenizer, ListFileAssetBuilder> {
+		
+		public ListFileAssetBuilder(FileAssetFilter filter, FilterPager pager) {
+			super(FileAsset.class, "fileasset", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<FileAsset>(FileAsset.class, "fileasset", "get", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<FileAsset>> list(FileAssetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListFileAssetBuilder list(FileAssetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List file assets by filter and pager  */
-    public static RequestBuilder<ListResponse<FileAsset>> list(FileAssetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<FileAsset>(FileAsset.class, "fileasset", "list", kparams);
-    }
+    public static ListFileAssetBuilder list(FileAssetFilter filter, FilterPager pager)  {
+		return new ListFileAssetBuilder(filter, pager);
+	}
+	
+	public static class ServeFileAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeFileAssetBuilder(int id) {
+			super("fileasset", "serve");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Serve file asset by id  */
-    public static RequestBuilder<String> serve(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new ServeRequestBuilder("fileasset", "serve", kparams);
-    }
+    public static ServeFileAssetBuilder serve(int id)  {
+		return new ServeFileAssetBuilder(id);
+	}
+	
+	public static class SetContentFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, SetContentFileAssetBuilder> {
+		
+		public SetContentFileAssetBuilder(String id, ContentResource contentResource) {
+			super(FileAsset.class, "fileasset", "setContent");
+			params.add("id", id);
+			params.add("contentResource", contentResource);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Set content of file asset  */
-    public static RequestBuilder<FileAsset> setContent(String id, ContentResource contentResource)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-
-        return new RequestBuilder<FileAsset>(FileAsset.class, "fileasset", "setContent", kparams);
-    }
+    public static SetContentFileAssetBuilder setContent(String id, ContentResource contentResource)  {
+		return new SetContentFileAssetBuilder(id, contentResource);
+	}
+	
+	public static class UpdateFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, UpdateFileAssetBuilder> {
+		
+		public UpdateFileAssetBuilder(int id, FileAsset fileAsset) {
+			super(FileAsset.class, "fileasset", "update");
+			params.add("id", id);
+			params.add("fileAsset", fileAsset);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update file asset by id  */
-    public static RequestBuilder<FileAsset> update(int id, FileAsset fileAsset)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("fileAsset", fileAsset);
-
-        return new RequestBuilder<FileAsset>(FileAsset.class, "fileasset", "update", kparams);
-    }
+    public static UpdateFileAssetBuilder update(int id, FileAsset fileAsset)  {
+		return new UpdateFileAssetBuilder(id, fileAsset);
+	}
 }

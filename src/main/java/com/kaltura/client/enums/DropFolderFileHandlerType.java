@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileHandlerType implements EnumAsString {
-    XML("dropFolderXmlBulkUpload.XML"),
-    ICAL("scheduleDropFolder.ICAL"),
-    CONTENT("1");
+	XML("dropFolderXmlBulkUpload.XML"),
+	ICAL("scheduleDropFolder.ICAL"),
+	CONTENT("1");
 
-    private String value;
+	private String value;
 
-    DropFolderFileHandlerType(String value) {
-        this.value = value;
-    }
+	DropFolderFileHandlerType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DropFolderFileHandlerType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderFileHandlerType defined values and compare the inner value with the given one:
-        for(DropFolderFileHandlerType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderFileHandlerType.values().length > 0 ? DropFolderFileHandlerType.values()[0]: null;
+	public static DropFolderFileHandlerType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderFileHandlerType defined values and compare the inner value with the given one:
+		for(DropFolderFileHandlerType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderFileHandlerType.values().length > 0 ? DropFolderFileHandlerType.values()[0]: null;
    }
 }

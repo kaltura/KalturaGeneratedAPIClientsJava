@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ThumbCuePointSubType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,116 +41,160 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbCuePointBaseFilter.Tokenizer.class)
 public abstract class ThumbCuePointBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String descriptionLike();
+		String descriptionMultiLikeOr();
+		String descriptionMultiLikeAnd();
+		String titleLike();
+		String titleMultiLikeOr();
+		String titleMultiLikeAnd();
+		String subTypeEqual();
+		String subTypeIn();
+	}
 
-    private String descriptionLike;
-    private String descriptionMultiLikeOr;
-    private String descriptionMultiLikeAnd;
-    private String titleLike;
-    private String titleMultiLikeOr;
-    private String titleMultiLikeAnd;
-    private ThumbCuePointSubType subTypeEqual;
-    private String subTypeIn;
+	private String descriptionLike;
+	private String descriptionMultiLikeOr;
+	private String descriptionMultiLikeAnd;
+	private String titleLike;
+	private String titleMultiLikeOr;
+	private String titleMultiLikeAnd;
+	private ThumbCuePointSubType subTypeEqual;
+	private String subTypeIn;
 
-    // descriptionLike:
-    public String getDescriptionLike(){
-        return this.descriptionLike;
-    }
-    public void setDescriptionLike(String descriptionLike){
-        this.descriptionLike = descriptionLike;
-    }
+	// descriptionLike:
+	public String getDescriptionLike(){
+		return this.descriptionLike;
+	}
+	public void setDescriptionLike(String descriptionLike){
+		this.descriptionLike = descriptionLike;
+	}
 
-    // descriptionMultiLikeOr:
-    public String getDescriptionMultiLikeOr(){
-        return this.descriptionMultiLikeOr;
-    }
-    public void setDescriptionMultiLikeOr(String descriptionMultiLikeOr){
-        this.descriptionMultiLikeOr = descriptionMultiLikeOr;
-    }
+	public void descriptionLike(String multirequestToken){
+		setToken("descriptionLike", multirequestToken);
+	}
 
-    // descriptionMultiLikeAnd:
-    public String getDescriptionMultiLikeAnd(){
-        return this.descriptionMultiLikeAnd;
-    }
-    public void setDescriptionMultiLikeAnd(String descriptionMultiLikeAnd){
-        this.descriptionMultiLikeAnd = descriptionMultiLikeAnd;
-    }
+	// descriptionMultiLikeOr:
+	public String getDescriptionMultiLikeOr(){
+		return this.descriptionMultiLikeOr;
+	}
+	public void setDescriptionMultiLikeOr(String descriptionMultiLikeOr){
+		this.descriptionMultiLikeOr = descriptionMultiLikeOr;
+	}
 
-    // titleLike:
-    public String getTitleLike(){
-        return this.titleLike;
-    }
-    public void setTitleLike(String titleLike){
-        this.titleLike = titleLike;
-    }
+	public void descriptionMultiLikeOr(String multirequestToken){
+		setToken("descriptionMultiLikeOr", multirequestToken);
+	}
 
-    // titleMultiLikeOr:
-    public String getTitleMultiLikeOr(){
-        return this.titleMultiLikeOr;
-    }
-    public void setTitleMultiLikeOr(String titleMultiLikeOr){
-        this.titleMultiLikeOr = titleMultiLikeOr;
-    }
+	// descriptionMultiLikeAnd:
+	public String getDescriptionMultiLikeAnd(){
+		return this.descriptionMultiLikeAnd;
+	}
+	public void setDescriptionMultiLikeAnd(String descriptionMultiLikeAnd){
+		this.descriptionMultiLikeAnd = descriptionMultiLikeAnd;
+	}
 
-    // titleMultiLikeAnd:
-    public String getTitleMultiLikeAnd(){
-        return this.titleMultiLikeAnd;
-    }
-    public void setTitleMultiLikeAnd(String titleMultiLikeAnd){
-        this.titleMultiLikeAnd = titleMultiLikeAnd;
-    }
+	public void descriptionMultiLikeAnd(String multirequestToken){
+		setToken("descriptionMultiLikeAnd", multirequestToken);
+	}
 
-    // subTypeEqual:
-    public ThumbCuePointSubType getSubTypeEqual(){
-        return this.subTypeEqual;
-    }
-    public void setSubTypeEqual(ThumbCuePointSubType subTypeEqual){
-        this.subTypeEqual = subTypeEqual;
-    }
+	// titleLike:
+	public String getTitleLike(){
+		return this.titleLike;
+	}
+	public void setTitleLike(String titleLike){
+		this.titleLike = titleLike;
+	}
 
-    // subTypeIn:
-    public String getSubTypeIn(){
-        return this.subTypeIn;
-    }
-    public void setSubTypeIn(String subTypeIn){
-        this.subTypeIn = subTypeIn;
-    }
+	public void titleLike(String multirequestToken){
+		setToken("titleLike", multirequestToken);
+	}
+
+	// titleMultiLikeOr:
+	public String getTitleMultiLikeOr(){
+		return this.titleMultiLikeOr;
+	}
+	public void setTitleMultiLikeOr(String titleMultiLikeOr){
+		this.titleMultiLikeOr = titleMultiLikeOr;
+	}
+
+	public void titleMultiLikeOr(String multirequestToken){
+		setToken("titleMultiLikeOr", multirequestToken);
+	}
+
+	// titleMultiLikeAnd:
+	public String getTitleMultiLikeAnd(){
+		return this.titleMultiLikeAnd;
+	}
+	public void setTitleMultiLikeAnd(String titleMultiLikeAnd){
+		this.titleMultiLikeAnd = titleMultiLikeAnd;
+	}
+
+	public void titleMultiLikeAnd(String multirequestToken){
+		setToken("titleMultiLikeAnd", multirequestToken);
+	}
+
+	// subTypeEqual:
+	public ThumbCuePointSubType getSubTypeEqual(){
+		return this.subTypeEqual;
+	}
+	public void setSubTypeEqual(ThumbCuePointSubType subTypeEqual){
+		this.subTypeEqual = subTypeEqual;
+	}
+
+	public void subTypeEqual(String multirequestToken){
+		setToken("subTypeEqual", multirequestToken);
+	}
+
+	// subTypeIn:
+	public String getSubTypeIn(){
+		return this.subTypeIn;
+	}
+	public void setSubTypeIn(String subTypeIn){
+		this.subTypeIn = subTypeIn;
+	}
+
+	public void subTypeIn(String multirequestToken){
+		setToken("subTypeIn", multirequestToken);
+	}
 
 
-    public ThumbCuePointBaseFilter() {
-       super();
-    }
+	public ThumbCuePointBaseFilter() {
+		super();
+	}
 
-    public ThumbCuePointBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbCuePointBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        descriptionLike = GsonParser.parseString(jsonObject.get("descriptionLike"));
-        descriptionMultiLikeOr = GsonParser.parseString(jsonObject.get("descriptionMultiLikeOr"));
-        descriptionMultiLikeAnd = GsonParser.parseString(jsonObject.get("descriptionMultiLikeAnd"));
-        titleLike = GsonParser.parseString(jsonObject.get("titleLike"));
-        titleMultiLikeOr = GsonParser.parseString(jsonObject.get("titleMultiLikeOr"));
-        titleMultiLikeAnd = GsonParser.parseString(jsonObject.get("titleMultiLikeAnd"));
-        subTypeEqual = ThumbCuePointSubType.get(GsonParser.parseInt(jsonObject.get("subTypeEqual")));
-        subTypeIn = GsonParser.parseString(jsonObject.get("subTypeIn"));
+		// set members values:
+		descriptionLike = GsonParser.parseString(jsonObject.get("descriptionLike"));
+		descriptionMultiLikeOr = GsonParser.parseString(jsonObject.get("descriptionMultiLikeOr"));
+		descriptionMultiLikeAnd = GsonParser.parseString(jsonObject.get("descriptionMultiLikeAnd"));
+		titleLike = GsonParser.parseString(jsonObject.get("titleLike"));
+		titleMultiLikeOr = GsonParser.parseString(jsonObject.get("titleMultiLikeOr"));
+		titleMultiLikeAnd = GsonParser.parseString(jsonObject.get("titleMultiLikeAnd"));
+		subTypeEqual = ThumbCuePointSubType.get(GsonParser.parseInt(jsonObject.get("subTypeEqual")));
+		subTypeIn = GsonParser.parseString(jsonObject.get("subTypeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbCuePointBaseFilter");
-        kparams.add("descriptionLike", this.descriptionLike);
-        kparams.add("descriptionMultiLikeOr", this.descriptionMultiLikeOr);
-        kparams.add("descriptionMultiLikeAnd", this.descriptionMultiLikeAnd);
-        kparams.add("titleLike", this.titleLike);
-        kparams.add("titleMultiLikeOr", this.titleMultiLikeOr);
-        kparams.add("titleMultiLikeAnd", this.titleMultiLikeAnd);
-        kparams.add("subTypeEqual", this.subTypeEqual);
-        kparams.add("subTypeIn", this.subTypeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbCuePointBaseFilter");
+		kparams.add("descriptionLike", this.descriptionLike);
+		kparams.add("descriptionMultiLikeOr", this.descriptionMultiLikeOr);
+		kparams.add("descriptionMultiLikeAnd", this.descriptionMultiLikeAnd);
+		kparams.add("titleLike", this.titleLike);
+		kparams.add("titleMultiLikeOr", this.titleMultiLikeOr);
+		kparams.add("titleMultiLikeAnd", this.titleMultiLikeAnd);
+		kparams.add("subTypeEqual", this.subTypeEqual);
+		kparams.add("subTypeIn", this.subTypeIn);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,85 +40,114 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BaseEntryFilter.Tokenizer.class)
 public class BaseEntryFilter extends BaseEntryBaseFilter {
+	
+	public interface Tokenizer extends BaseEntryBaseFilter.Tokenizer {
+		String freeText();
+		String isRoot();
+		String categoriesFullNameIn();
+		String categoryAncestorIdIn();
+		String redirectFromEntryId();
+	}
 
-    private String freeText;
-    private Boolean isRoot;
-    private String categoriesFullNameIn;
+	private String freeText;
+	private Boolean isRoot;
+	private String categoriesFullNameIn;
 	/**  All entries within this categoy or in child categories  */
-    private String categoryAncestorIdIn;
+	private String categoryAncestorIdIn;
 	/**  The id of the original entry  */
-    private String redirectFromEntryId;
+	private String redirectFromEntryId;
 
-    // freeText:
-    public String getFreeText(){
-        return this.freeText;
-    }
-    public void setFreeText(String freeText){
-        this.freeText = freeText;
-    }
+	// freeText:
+	public String getFreeText(){
+		return this.freeText;
+	}
+	public void setFreeText(String freeText){
+		this.freeText = freeText;
+	}
 
-    // isRoot:
-    public Boolean getIsRoot(){
-        return this.isRoot;
-    }
-    public void setIsRoot(Boolean isRoot){
-        this.isRoot = isRoot;
-    }
+	public void freeText(String multirequestToken){
+		setToken("freeText", multirequestToken);
+	}
 
-    // categoriesFullNameIn:
-    public String getCategoriesFullNameIn(){
-        return this.categoriesFullNameIn;
-    }
-    public void setCategoriesFullNameIn(String categoriesFullNameIn){
-        this.categoriesFullNameIn = categoriesFullNameIn;
-    }
+	// isRoot:
+	public Boolean getIsRoot(){
+		return this.isRoot;
+	}
+	public void setIsRoot(Boolean isRoot){
+		this.isRoot = isRoot;
+	}
 
-    // categoryAncestorIdIn:
-    public String getCategoryAncestorIdIn(){
-        return this.categoryAncestorIdIn;
-    }
-    public void setCategoryAncestorIdIn(String categoryAncestorIdIn){
-        this.categoryAncestorIdIn = categoryAncestorIdIn;
-    }
+	public void isRoot(String multirequestToken){
+		setToken("isRoot", multirequestToken);
+	}
 
-    // redirectFromEntryId:
-    public String getRedirectFromEntryId(){
-        return this.redirectFromEntryId;
-    }
-    public void setRedirectFromEntryId(String redirectFromEntryId){
-        this.redirectFromEntryId = redirectFromEntryId;
-    }
+	// categoriesFullNameIn:
+	public String getCategoriesFullNameIn(){
+		return this.categoriesFullNameIn;
+	}
+	public void setCategoriesFullNameIn(String categoriesFullNameIn){
+		this.categoriesFullNameIn = categoriesFullNameIn;
+	}
+
+	public void categoriesFullNameIn(String multirequestToken){
+		setToken("categoriesFullNameIn", multirequestToken);
+	}
+
+	// categoryAncestorIdIn:
+	public String getCategoryAncestorIdIn(){
+		return this.categoryAncestorIdIn;
+	}
+	public void setCategoryAncestorIdIn(String categoryAncestorIdIn){
+		this.categoryAncestorIdIn = categoryAncestorIdIn;
+	}
+
+	public void categoryAncestorIdIn(String multirequestToken){
+		setToken("categoryAncestorIdIn", multirequestToken);
+	}
+
+	// redirectFromEntryId:
+	public String getRedirectFromEntryId(){
+		return this.redirectFromEntryId;
+	}
+	public void setRedirectFromEntryId(String redirectFromEntryId){
+		this.redirectFromEntryId = redirectFromEntryId;
+	}
+
+	public void redirectFromEntryId(String multirequestToken){
+		setToken("redirectFromEntryId", multirequestToken);
+	}
 
 
-    public BaseEntryFilter() {
-       super();
-    }
+	public BaseEntryFilter() {
+		super();
+	}
 
-    public BaseEntryFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BaseEntryFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        freeText = GsonParser.parseString(jsonObject.get("freeText"));
-        isRoot = GsonParser.parseBoolean(jsonObject.get("isRoot"));
-        categoriesFullNameIn = GsonParser.parseString(jsonObject.get("categoriesFullNameIn"));
-        categoryAncestorIdIn = GsonParser.parseString(jsonObject.get("categoryAncestorIdIn"));
-        redirectFromEntryId = GsonParser.parseString(jsonObject.get("redirectFromEntryId"));
+		// set members values:
+		freeText = GsonParser.parseString(jsonObject.get("freeText"));
+		isRoot = GsonParser.parseBoolean(jsonObject.get("isRoot"));
+		categoriesFullNameIn = GsonParser.parseString(jsonObject.get("categoriesFullNameIn"));
+		categoryAncestorIdIn = GsonParser.parseString(jsonObject.get("categoryAncestorIdIn"));
+		redirectFromEntryId = GsonParser.parseString(jsonObject.get("redirectFromEntryId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBaseEntryFilter");
-        kparams.add("freeText", this.freeText);
-        kparams.add("isRoot", this.isRoot);
-        kparams.add("categoriesFullNameIn", this.categoriesFullNameIn);
-        kparams.add("categoryAncestorIdIn", this.categoryAncestorIdIn);
-        kparams.add("redirectFromEntryId", this.redirectFromEntryId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBaseEntryFilter");
+		kparams.add("freeText", this.freeText);
+		kparams.add("isRoot", this.isRoot);
+		kparams.add("categoriesFullNameIn", this.categoriesFullNameIn);
+		kparams.add("categoryAncestorIdIn", this.categoryAncestorIdIn);
+		kparams.add("redirectFromEntryId", this.redirectFromEntryId);
+		return kparams;
+	}
 
 }
 

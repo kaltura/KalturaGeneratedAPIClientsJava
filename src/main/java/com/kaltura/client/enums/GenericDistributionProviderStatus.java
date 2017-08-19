@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GenericDistributionProviderStatus implements EnumAsInt {
-    ACTIVE(2),
-    DELETED(3);
+	ACTIVE(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    GenericDistributionProviderStatus(int value) {
-        this.value = value;
-    }
+	GenericDistributionProviderStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static GenericDistributionProviderStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GenericDistributionProviderStatus defined values and compare the inner value with the given one:
-        for(GenericDistributionProviderStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GenericDistributionProviderStatus.values().length > 0 ? GenericDistributionProviderStatus.values()[0]: null;
+	public static GenericDistributionProviderStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GenericDistributionProviderStatus defined values and compare the inner value with the given one:
+		for(GenericDistributionProviderStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GenericDistributionProviderStatus.values().length > 0 ? GenericDistributionProviderStatus.values()[0]: null;
    }
 }

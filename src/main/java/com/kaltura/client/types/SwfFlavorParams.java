@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SwfFlavorParams.Tokenizer.class)
 public class SwfFlavorParams extends FlavorParams {
+	
+	public interface Tokenizer extends FlavorParams.Tokenizer {
+		String flashVersion();
+		String poly2Bitmap();
+	}
 
-    private Integer flashVersion;
-    private Boolean poly2Bitmap;
+	private Integer flashVersion;
+	private Boolean poly2Bitmap;
 
-    // flashVersion:
-    public Integer getFlashVersion(){
-        return this.flashVersion;
-    }
-    public void setFlashVersion(Integer flashVersion){
-        this.flashVersion = flashVersion;
-    }
+	// flashVersion:
+	public Integer getFlashVersion(){
+		return this.flashVersion;
+	}
+	public void setFlashVersion(Integer flashVersion){
+		this.flashVersion = flashVersion;
+	}
 
-    // poly2Bitmap:
-    public Boolean getPoly2Bitmap(){
-        return this.poly2Bitmap;
-    }
-    public void setPoly2Bitmap(Boolean poly2Bitmap){
-        this.poly2Bitmap = poly2Bitmap;
-    }
+	public void flashVersion(String multirequestToken){
+		setToken("flashVersion", multirequestToken);
+	}
+
+	// poly2Bitmap:
+	public Boolean getPoly2Bitmap(){
+		return this.poly2Bitmap;
+	}
+	public void setPoly2Bitmap(Boolean poly2Bitmap){
+		this.poly2Bitmap = poly2Bitmap;
+	}
+
+	public void poly2Bitmap(String multirequestToken){
+		setToken("poly2Bitmap", multirequestToken);
+	}
 
 
-    public SwfFlavorParams() {
-       super();
-    }
+	public SwfFlavorParams() {
+		super();
+	}
 
-    public SwfFlavorParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SwfFlavorParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flashVersion = GsonParser.parseInt(jsonObject.get("flashVersion"));
-        poly2Bitmap = GsonParser.parseBoolean(jsonObject.get("poly2Bitmap"));
+		// set members values:
+		flashVersion = GsonParser.parseInt(jsonObject.get("flashVersion"));
+		poly2Bitmap = GsonParser.parseBoolean(jsonObject.get("poly2Bitmap"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSwfFlavorParams");
-        kparams.add("flashVersion", this.flashVersion);
-        kparams.add("poly2Bitmap", this.poly2Bitmap);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSwfFlavorParams");
+		kparams.add("flashVersion", this.flashVersion);
+		kparams.add("poly2Bitmap", this.poly2Bitmap);
+		return kparams;
+	}
 
 }
 

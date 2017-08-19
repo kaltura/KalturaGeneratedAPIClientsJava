@@ -34,6 +34,7 @@ import com.kaltura.client.enums.LiveChannelSegmentTriggerType;
 import com.kaltura.client.enums.LiveChannelSegmentType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,202 +44,281 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveChannelSegment.Tokenizer.class)
 public class LiveChannelSegment extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String name();
+		String description();
+		String tags();
+		String type();
+		String status();
+		String channelId();
+		String entryId();
+		String triggerType();
+		String triggerSegmentId();
+		String startTime();
+		String duration();
+	}
 
 	/**  Unique identifier  */
-    private String id;
-    private Integer partnerId;
+	private String id;
+	private Integer partnerId;
 	/**  Segment creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Segment update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 	/**  Segment name  */
-    private String name;
+	private String name;
 	/**  Segment description  */
-    private String description;
+	private String description;
 	/**  Segment tags  */
-    private String tags;
+	private String tags;
 	/**  Segment could be associated with the main stream, as additional stream or as
 	  overlay  */
-    private LiveChannelSegmentType type;
-    private LiveChannelSegmentStatus status;
+	private LiveChannelSegmentType type;
+	private LiveChannelSegmentStatus status;
 	/**  Live channel id  */
-    private String channelId;
+	private String channelId;
 	/**  Entry id to be played  */
-    private String entryId;
+	private String entryId;
 	/**  Segment start time trigger type  */
-    private LiveChannelSegmentTriggerType triggerType;
+	private LiveChannelSegmentTriggerType triggerType;
 	/**  Live channel segment that the trigger relates to  */
-    private String triggerSegmentId;
+	private String triggerSegmentId;
 	/**  Segment play start time, in mili-seconds, according to trigger type  */
-    private Double startTime;
+	private Double startTime;
 	/**  Segment play duration time, in mili-seconds  */
-    private Double duration;
+	private Double duration;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // type:
-    public LiveChannelSegmentType getType(){
-        return this.type;
-    }
-    public void setType(LiveChannelSegmentType type){
-        this.type = type;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // status:
-    public LiveChannelSegmentStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(LiveChannelSegmentStatus status){
-        this.status = status;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // channelId:
-    public String getChannelId(){
-        return this.channelId;
-    }
-    public void setChannelId(String channelId){
-        this.channelId = channelId;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // triggerType:
-    public LiveChannelSegmentTriggerType getTriggerType(){
-        return this.triggerType;
-    }
-    public void setTriggerType(LiveChannelSegmentTriggerType triggerType){
-        this.triggerType = triggerType;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // triggerSegmentId:
-    public String getTriggerSegmentId(){
-        return this.triggerSegmentId;
-    }
-    public void setTriggerSegmentId(String triggerSegmentId){
-        this.triggerSegmentId = triggerSegmentId;
-    }
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
 
-    // startTime:
-    public Double getStartTime(){
-        return this.startTime;
-    }
-    public void setStartTime(Double startTime){
-        this.startTime = startTime;
-    }
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
-    // duration:
-    public Double getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Double duration){
-        this.duration = duration;
-    }
+	// type:
+	public LiveChannelSegmentType getType(){
+		return this.type;
+	}
+	public void setType(LiveChannelSegmentType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// status:
+	public LiveChannelSegmentStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(LiveChannelSegmentStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// channelId:
+	public String getChannelId(){
+		return this.channelId;
+	}
+	public void setChannelId(String channelId){
+		this.channelId = channelId;
+	}
+
+	public void channelId(String multirequestToken){
+		setToken("channelId", multirequestToken);
+	}
+
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
+
+	// triggerType:
+	public LiveChannelSegmentTriggerType getTriggerType(){
+		return this.triggerType;
+	}
+	public void setTriggerType(LiveChannelSegmentTriggerType triggerType){
+		this.triggerType = triggerType;
+	}
+
+	public void triggerType(String multirequestToken){
+		setToken("triggerType", multirequestToken);
+	}
+
+	// triggerSegmentId:
+	public String getTriggerSegmentId(){
+		return this.triggerSegmentId;
+	}
+	public void setTriggerSegmentId(String triggerSegmentId){
+		this.triggerSegmentId = triggerSegmentId;
+	}
+
+	public void triggerSegmentId(String multirequestToken){
+		setToken("triggerSegmentId", multirequestToken);
+	}
+
+	// startTime:
+	public Double getStartTime(){
+		return this.startTime;
+	}
+	public void setStartTime(Double startTime){
+		this.startTime = startTime;
+	}
+
+	public void startTime(String multirequestToken){
+		setToken("startTime", multirequestToken);
+	}
+
+	// duration:
+	public Double getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Double duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
 
 
-    public LiveChannelSegment() {
-       super();
-    }
+	public LiveChannelSegment() {
+		super();
+	}
 
-    public LiveChannelSegment(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveChannelSegment(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        type = LiveChannelSegmentType.get(GsonParser.parseString(jsonObject.get("type")));
-        status = LiveChannelSegmentStatus.get(GsonParser.parseString(jsonObject.get("status")));
-        channelId = GsonParser.parseString(jsonObject.get("channelId"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        triggerType = LiveChannelSegmentTriggerType.get(GsonParser.parseString(jsonObject.get("triggerType")));
-        triggerSegmentId = GsonParser.parseString(jsonObject.get("triggerSegmentId"));
-        startTime = GsonParser.parseDouble(jsonObject.get("startTime"));
-        duration = GsonParser.parseDouble(jsonObject.get("duration"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		type = LiveChannelSegmentType.get(GsonParser.parseString(jsonObject.get("type")));
+		status = LiveChannelSegmentStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		channelId = GsonParser.parseString(jsonObject.get("channelId"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		triggerType = LiveChannelSegmentTriggerType.get(GsonParser.parseString(jsonObject.get("triggerType")));
+		triggerSegmentId = GsonParser.parseString(jsonObject.get("triggerSegmentId"));
+		startTime = GsonParser.parseDouble(jsonObject.get("startTime"));
+		duration = GsonParser.parseDouble(jsonObject.get("duration"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveChannelSegment");
-        kparams.add("name", this.name);
-        kparams.add("description", this.description);
-        kparams.add("tags", this.tags);
-        kparams.add("type", this.type);
-        kparams.add("channelId", this.channelId);
-        kparams.add("entryId", this.entryId);
-        kparams.add("triggerType", this.triggerType);
-        kparams.add("triggerSegmentId", this.triggerSegmentId);
-        kparams.add("startTime", this.startTime);
-        kparams.add("duration", this.duration);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveChannelSegment");
+		kparams.add("name", this.name);
+		kparams.add("description", this.description);
+		kparams.add("tags", this.tags);
+		kparams.add("type", this.type);
+		kparams.add("channelId", this.channelId);
+		kparams.add("entryId", this.entryId);
+		kparams.add("triggerType", this.triggerType);
+		kparams.add("triggerSegmentId", this.triggerSegmentId);
+		kparams.add("startTime", this.startTime);
+		kparams.add("duration", this.duration);
+		return kparams;
+	}
 
 }
 

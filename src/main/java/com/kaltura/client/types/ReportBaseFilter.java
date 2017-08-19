@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,94 +40,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportBaseFilter.Tokenizer.class)
 public abstract class ReportBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String systemNameEqual();
+		String systemNameIn();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private String systemNameEqual;
-    private String systemNameIn;
+	private Integer idEqual;
+	private String idIn;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private String systemNameEqual;
+	private String systemNameIn;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // systemNameEqual:
-    public String getSystemNameEqual(){
-        return this.systemNameEqual;
-    }
-    public void setSystemNameEqual(String systemNameEqual){
-        this.systemNameEqual = systemNameEqual;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // systemNameIn:
-    public String getSystemNameIn(){
-        return this.systemNameIn;
-    }
-    public void setSystemNameIn(String systemNameIn){
-        this.systemNameIn = systemNameIn;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
+
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
+
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
+
+	// systemNameEqual:
+	public String getSystemNameEqual(){
+		return this.systemNameEqual;
+	}
+	public void setSystemNameEqual(String systemNameEqual){
+		this.systemNameEqual = systemNameEqual;
+	}
+
+	public void systemNameEqual(String multirequestToken){
+		setToken("systemNameEqual", multirequestToken);
+	}
+
+	// systemNameIn:
+	public String getSystemNameIn(){
+		return this.systemNameIn;
+	}
+	public void setSystemNameIn(String systemNameIn){
+		this.systemNameIn = systemNameIn;
+	}
+
+	public void systemNameIn(String multirequestToken){
+		setToken("systemNameIn", multirequestToken);
+	}
 
 
-    public ReportBaseFilter() {
-       super();
-    }
+	public ReportBaseFilter() {
+		super();
+	}
 
-    public ReportBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
-        systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
+		systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("systemNameEqual", this.systemNameEqual);
-        kparams.add("systemNameIn", this.systemNameIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("systemNameEqual", this.systemNameEqual);
+		kparams.add("systemNameIn", this.systemNameIn);
+		return kparams;
+	}
 
 }
 

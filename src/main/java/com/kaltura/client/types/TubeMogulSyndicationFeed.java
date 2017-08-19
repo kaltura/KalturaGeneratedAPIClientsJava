@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.TubeMogulSyndicationFeedCategories;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,38 +41,47 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TubeMogulSyndicationFeed.Tokenizer.class)
 public class TubeMogulSyndicationFeed extends BaseSyndicationFeed {
+	
+	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
+		String category();
+	}
 
-    private TubeMogulSyndicationFeedCategories category;
+	private TubeMogulSyndicationFeedCategories category;
 
-    // category:
-    public TubeMogulSyndicationFeedCategories getCategory(){
-        return this.category;
-    }
-    public void setCategory(TubeMogulSyndicationFeedCategories category){
-        this.category = category;
-    }
+	// category:
+	public TubeMogulSyndicationFeedCategories getCategory(){
+		return this.category;
+	}
+	public void setCategory(TubeMogulSyndicationFeedCategories category){
+		this.category = category;
+	}
+
+	public void category(String multirequestToken){
+		setToken("category", multirequestToken);
+	}
 
 
-    public TubeMogulSyndicationFeed() {
-       super();
-    }
+	public TubeMogulSyndicationFeed() {
+		super();
+	}
 
-    public TubeMogulSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TubeMogulSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        category = TubeMogulSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
+		// set members values:
+		category = TubeMogulSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTubeMogulSyndicationFeed");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTubeMogulSyndicationFeed");
+		return kparams;
+	}
 
 }
 

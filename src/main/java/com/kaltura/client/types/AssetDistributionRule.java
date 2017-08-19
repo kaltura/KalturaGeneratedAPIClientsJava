@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,53 +43,63 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetDistributionRule.Tokenizer.class)
 public class AssetDistributionRule extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String validationError();
+		RequestBuilder.ListTokenizer<AssetDistributionCondition.Tokenizer> assetDistributionConditions();
+	}
 
 	/**  The validation error description that will be set on the "data" property on
 	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled  */
-    private String validationError;
+	private String validationError;
 	/**  An array of asset distribution conditions  */
-    private List<AssetDistributionCondition> assetDistributionConditions;
+	private List<AssetDistributionCondition> assetDistributionConditions;
 
-    // validationError:
-    public String getValidationError(){
-        return this.validationError;
-    }
-    public void setValidationError(String validationError){
-        this.validationError = validationError;
-    }
+	// validationError:
+	public String getValidationError(){
+		return this.validationError;
+	}
+	public void setValidationError(String validationError){
+		this.validationError = validationError;
+	}
 
-    // assetDistributionConditions:
-    public List<AssetDistributionCondition> getAssetDistributionConditions(){
-        return this.assetDistributionConditions;
-    }
-    public void setAssetDistributionConditions(List<AssetDistributionCondition> assetDistributionConditions){
-        this.assetDistributionConditions = assetDistributionConditions;
-    }
+	public void validationError(String multirequestToken){
+		setToken("validationError", multirequestToken);
+	}
+
+	// assetDistributionConditions:
+	public List<AssetDistributionCondition> getAssetDistributionConditions(){
+		return this.assetDistributionConditions;
+	}
+	public void setAssetDistributionConditions(List<AssetDistributionCondition> assetDistributionConditions){
+		this.assetDistributionConditions = assetDistributionConditions;
+	}
 
 
-    public AssetDistributionRule() {
-       super();
-    }
+	public AssetDistributionRule() {
+		super();
+	}
 
-    public AssetDistributionRule(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetDistributionRule(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        validationError = GsonParser.parseString(jsonObject.get("validationError"));
-        assetDistributionConditions = GsonParser.parseArray(jsonObject.getAsJsonArray("assetDistributionConditions"), AssetDistributionCondition.class);
+		// set members values:
+		validationError = GsonParser.parseString(jsonObject.get("validationError"));
+		assetDistributionConditions = GsonParser.parseArray(jsonObject.getAsJsonArray("assetDistributionConditions"), AssetDistributionCondition.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetDistributionRule");
-        kparams.add("validationError", this.validationError);
-        kparams.add("assetDistributionConditions", this.assetDistributionConditions);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetDistributionRule");
+		kparams.add("validationError", this.validationError);
+		kparams.add("assetDistributionConditions", this.assetDistributionConditions);
+		return kparams;
+	}
 
 }
 

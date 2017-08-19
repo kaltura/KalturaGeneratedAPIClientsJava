@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DrmSchemeName;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmPlaybackPluginData.Tokenizer.class)
 public class DrmPlaybackPluginData extends PluginData {
+	
+	public interface Tokenizer extends PluginData.Tokenizer {
+		String scheme();
+		String licenseURL();
+	}
 
-    private DrmSchemeName scheme;
-    private String licenseURL;
+	private DrmSchemeName scheme;
+	private String licenseURL;
 
-    // scheme:
-    public DrmSchemeName getScheme(){
-        return this.scheme;
-    }
-    public void setScheme(DrmSchemeName scheme){
-        this.scheme = scheme;
-    }
+	// scheme:
+	public DrmSchemeName getScheme(){
+		return this.scheme;
+	}
+	public void setScheme(DrmSchemeName scheme){
+		this.scheme = scheme;
+	}
 
-    // licenseURL:
-    public String getLicenseURL(){
-        return this.licenseURL;
-    }
-    public void setLicenseURL(String licenseURL){
-        this.licenseURL = licenseURL;
-    }
+	public void scheme(String multirequestToken){
+		setToken("scheme", multirequestToken);
+	}
+
+	// licenseURL:
+	public String getLicenseURL(){
+		return this.licenseURL;
+	}
+	public void setLicenseURL(String licenseURL){
+		this.licenseURL = licenseURL;
+	}
+
+	public void licenseURL(String multirequestToken){
+		setToken("licenseURL", multirequestToken);
+	}
 
 
-    public DrmPlaybackPluginData() {
-       super();
-    }
+	public DrmPlaybackPluginData() {
+		super();
+	}
 
-    public DrmPlaybackPluginData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmPlaybackPluginData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        scheme = DrmSchemeName.get(GsonParser.parseString(jsonObject.get("scheme")));
-        licenseURL = GsonParser.parseString(jsonObject.get("licenseURL"));
+		// set members values:
+		scheme = DrmSchemeName.get(GsonParser.parseString(jsonObject.get("scheme")));
+		licenseURL = GsonParser.parseString(jsonObject.get("licenseURL"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmPlaybackPluginData");
-        kparams.add("scheme", this.scheme);
-        kparams.add("licenseURL", this.licenseURL);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmPlaybackPluginData");
+		kparams.add("scheme", this.scheme);
+		kparams.add("licenseURL", this.licenseURL);
+		return kparams;
+	}
 
 }
 

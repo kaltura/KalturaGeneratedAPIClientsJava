@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +41,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchAuthData.Tokenizer.class)
 public class SearchAuthData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String authData();
+		String loginUrl();
+		String message();
+	}
 
 	/**  The authentication data that further should be used for search  */
-    private String authData;
+	private String authData;
 	/**  Login URL when user need to sign-in and authorize the search  */
-    private String loginUrl;
+	private String loginUrl;
 	/**  Information when there was an error  */
-    private String message;
+	private String message;
 
-    // authData:
-    public String getAuthData(){
-        return this.authData;
-    }
-    public void setAuthData(String authData){
-        this.authData = authData;
-    }
+	// authData:
+	public String getAuthData(){
+		return this.authData;
+	}
+	public void setAuthData(String authData){
+		this.authData = authData;
+	}
 
-    // loginUrl:
-    public String getLoginUrl(){
-        return this.loginUrl;
-    }
-    public void setLoginUrl(String loginUrl){
-        this.loginUrl = loginUrl;
-    }
+	public void authData(String multirequestToken){
+		setToken("authData", multirequestToken);
+	}
 
-    // message:
-    public String getMessage(){
-        return this.message;
-    }
-    public void setMessage(String message){
-        this.message = message;
-    }
+	// loginUrl:
+	public String getLoginUrl(){
+		return this.loginUrl;
+	}
+	public void setLoginUrl(String loginUrl){
+		this.loginUrl = loginUrl;
+	}
+
+	public void loginUrl(String multirequestToken){
+		setToken("loginUrl", multirequestToken);
+	}
+
+	// message:
+	public String getMessage(){
+		return this.message;
+	}
+	public void setMessage(String message){
+		this.message = message;
+	}
+
+	public void message(String multirequestToken){
+		setToken("message", multirequestToken);
+	}
 
 
-    public SearchAuthData() {
-       super();
-    }
+	public SearchAuthData() {
+		super();
+	}
 
-    public SearchAuthData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchAuthData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        authData = GsonParser.parseString(jsonObject.get("authData"));
-        loginUrl = GsonParser.parseString(jsonObject.get("loginUrl"));
-        message = GsonParser.parseString(jsonObject.get("message"));
+		// set members values:
+		authData = GsonParser.parseString(jsonObject.get("authData"));
+		loginUrl = GsonParser.parseString(jsonObject.get("loginUrl"));
+		message = GsonParser.parseString(jsonObject.get("message"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchAuthData");
-        kparams.add("authData", this.authData);
-        kparams.add("loginUrl", this.loginUrl);
-        kparams.add("message", this.message);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchAuthData");
+		kparams.add("authData", this.authData);
+		kparams.add("loginUrl", this.loginUrl);
+		kparams.add("message", this.message);
+		return kparams;
+	}
 
 }
 

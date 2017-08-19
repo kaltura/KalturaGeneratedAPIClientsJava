@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,41 +43,50 @@ import com.kaltura.client.utils.GsonParser;
   supplied URL, the media file won't be downloaded but a file sync object of URL
   type will point to the media URL.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(RemoteStorageResource.Tokenizer.class)
 public class RemoteStorageResource extends UrlResource {
+	
+	public interface Tokenizer extends UrlResource.Tokenizer {
+		String storageProfileId();
+	}
 
 	/**  ID of storage profile to be associated with the created file sync, used for file
 	  serving URL composing.  */
-    private Integer storageProfileId;
+	private Integer storageProfileId;
 
-    // storageProfileId:
-    public Integer getStorageProfileId(){
-        return this.storageProfileId;
-    }
-    public void setStorageProfileId(Integer storageProfileId){
-        this.storageProfileId = storageProfileId;
-    }
+	// storageProfileId:
+	public Integer getStorageProfileId(){
+		return this.storageProfileId;
+	}
+	public void setStorageProfileId(Integer storageProfileId){
+		this.storageProfileId = storageProfileId;
+	}
+
+	public void storageProfileId(String multirequestToken){
+		setToken("storageProfileId", multirequestToken);
+	}
 
 
-    public RemoteStorageResource() {
-       super();
-    }
+	public RemoteStorageResource() {
+		super();
+	}
 
-    public RemoteStorageResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public RemoteStorageResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
+		// set members values:
+		storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaRemoteStorageResource");
-        kparams.add("storageProfileId", this.storageProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaRemoteStorageResource");
+		kparams.add("storageProfileId", this.storageProfileId);
+		return kparams;
+	}
 
 }
 

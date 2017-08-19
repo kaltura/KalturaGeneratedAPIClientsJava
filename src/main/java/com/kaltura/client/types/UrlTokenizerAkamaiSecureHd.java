@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerAkamaiSecureHd.Tokenizer.class)
 public class UrlTokenizerAkamaiSecureHd extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String paramName();
+		String aclPostfix();
+		String customPostfixes();
+		String useCookieHosts();
+		String rootDir();
+	}
 
-    private String paramName;
-    private String aclPostfix;
-    private String customPostfixes;
-    private String useCookieHosts;
-    private String rootDir;
+	private String paramName;
+	private String aclPostfix;
+	private String customPostfixes;
+	private String useCookieHosts;
+	private String rootDir;
 
-    // paramName:
-    public String getParamName(){
-        return this.paramName;
-    }
-    public void setParamName(String paramName){
-        this.paramName = paramName;
-    }
+	// paramName:
+	public String getParamName(){
+		return this.paramName;
+	}
+	public void setParamName(String paramName){
+		this.paramName = paramName;
+	}
 
-    // aclPostfix:
-    public String getAclPostfix(){
-        return this.aclPostfix;
-    }
-    public void setAclPostfix(String aclPostfix){
-        this.aclPostfix = aclPostfix;
-    }
+	public void paramName(String multirequestToken){
+		setToken("paramName", multirequestToken);
+	}
 
-    // customPostfixes:
-    public String getCustomPostfixes(){
-        return this.customPostfixes;
-    }
-    public void setCustomPostfixes(String customPostfixes){
-        this.customPostfixes = customPostfixes;
-    }
+	// aclPostfix:
+	public String getAclPostfix(){
+		return this.aclPostfix;
+	}
+	public void setAclPostfix(String aclPostfix){
+		this.aclPostfix = aclPostfix;
+	}
 
-    // useCookieHosts:
-    public String getUseCookieHosts(){
-        return this.useCookieHosts;
-    }
-    public void setUseCookieHosts(String useCookieHosts){
-        this.useCookieHosts = useCookieHosts;
-    }
+	public void aclPostfix(String multirequestToken){
+		setToken("aclPostfix", multirequestToken);
+	}
 
-    // rootDir:
-    public String getRootDir(){
-        return this.rootDir;
-    }
-    public void setRootDir(String rootDir){
-        this.rootDir = rootDir;
-    }
+	// customPostfixes:
+	public String getCustomPostfixes(){
+		return this.customPostfixes;
+	}
+	public void setCustomPostfixes(String customPostfixes){
+		this.customPostfixes = customPostfixes;
+	}
+
+	public void customPostfixes(String multirequestToken){
+		setToken("customPostfixes", multirequestToken);
+	}
+
+	// useCookieHosts:
+	public String getUseCookieHosts(){
+		return this.useCookieHosts;
+	}
+	public void setUseCookieHosts(String useCookieHosts){
+		this.useCookieHosts = useCookieHosts;
+	}
+
+	public void useCookieHosts(String multirequestToken){
+		setToken("useCookieHosts", multirequestToken);
+	}
+
+	// rootDir:
+	public String getRootDir(){
+		return this.rootDir;
+	}
+	public void setRootDir(String rootDir){
+		this.rootDir = rootDir;
+	}
+
+	public void rootDir(String multirequestToken){
+		setToken("rootDir", multirequestToken);
+	}
 
 
-    public UrlTokenizerAkamaiSecureHd() {
-       super();
-    }
+	public UrlTokenizerAkamaiSecureHd() {
+		super();
+	}
 
-    public UrlTokenizerAkamaiSecureHd(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerAkamaiSecureHd(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        paramName = GsonParser.parseString(jsonObject.get("paramName"));
-        aclPostfix = GsonParser.parseString(jsonObject.get("aclPostfix"));
-        customPostfixes = GsonParser.parseString(jsonObject.get("customPostfixes"));
-        useCookieHosts = GsonParser.parseString(jsonObject.get("useCookieHosts"));
-        rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
+		// set members values:
+		paramName = GsonParser.parseString(jsonObject.get("paramName"));
+		aclPostfix = GsonParser.parseString(jsonObject.get("aclPostfix"));
+		customPostfixes = GsonParser.parseString(jsonObject.get("customPostfixes"));
+		useCookieHosts = GsonParser.parseString(jsonObject.get("useCookieHosts"));
+		rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerAkamaiSecureHd");
-        kparams.add("paramName", this.paramName);
-        kparams.add("aclPostfix", this.aclPostfix);
-        kparams.add("customPostfixes", this.customPostfixes);
-        kparams.add("useCookieHosts", this.useCookieHosts);
-        kparams.add("rootDir", this.rootDir);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerAkamaiSecureHd");
+		kparams.add("paramName", this.paramName);
+		kparams.add("aclPostfix", this.aclPostfix);
+		kparams.add("customPostfixes", this.customPostfixes);
+		kparams.add("useCookieHosts", this.useCookieHosts);
+		kparams.add("rootDir", this.rootDir);
+		return kparams;
+	}
 
 }
 

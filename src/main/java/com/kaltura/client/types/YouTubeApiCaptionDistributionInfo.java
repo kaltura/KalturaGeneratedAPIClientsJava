@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.YouTubeApiDistributionCaptionAction;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,105 +42,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YouTubeApiCaptionDistributionInfo.Tokenizer.class)
 public class YouTubeApiCaptionDistributionInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String language();
+		String label();
+		String filePath();
+		String remoteId();
+		String action();
+		String version();
+		String assetId();
+	}
 
-    private String language;
-    private String label;
-    private String filePath;
-    private String remoteId;
-    private YouTubeApiDistributionCaptionAction action;
-    private String version;
-    private String assetId;
+	private String language;
+	private String label;
+	private String filePath;
+	private String remoteId;
+	private YouTubeApiDistributionCaptionAction action;
+	private String version;
+	private String assetId;
 
-    // language:
-    public String getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(String language){
-        this.language = language;
-    }
+	// language:
+	public String getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(String language){
+		this.language = language;
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
 
-    // filePath:
-    public String getFilePath(){
-        return this.filePath;
-    }
-    public void setFilePath(String filePath){
-        this.filePath = filePath;
-    }
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
 
-    // remoteId:
-    public String getRemoteId(){
-        return this.remoteId;
-    }
-    public void setRemoteId(String remoteId){
-        this.remoteId = remoteId;
-    }
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
 
-    // action:
-    public YouTubeApiDistributionCaptionAction getAction(){
-        return this.action;
-    }
-    public void setAction(YouTubeApiDistributionCaptionAction action){
-        this.action = action;
-    }
+	// filePath:
+	public String getFilePath(){
+		return this.filePath;
+	}
+	public void setFilePath(String filePath){
+		this.filePath = filePath;
+	}
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	public void filePath(String multirequestToken){
+		setToken("filePath", multirequestToken);
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	// remoteId:
+	public String getRemoteId(){
+		return this.remoteId;
+	}
+	public void setRemoteId(String remoteId){
+		this.remoteId = remoteId;
+	}
+
+	public void remoteId(String multirequestToken){
+		setToken("remoteId", multirequestToken);
+	}
+
+	// action:
+	public YouTubeApiDistributionCaptionAction getAction(){
+		return this.action;
+	}
+	public void setAction(YouTubeApiDistributionCaptionAction action){
+		this.action = action;
+	}
+
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
+
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
+
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
 
-    public YouTubeApiCaptionDistributionInfo() {
-       super();
-    }
+	public YouTubeApiCaptionDistributionInfo() {
+		super();
+	}
 
-    public YouTubeApiCaptionDistributionInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YouTubeApiCaptionDistributionInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        language = GsonParser.parseString(jsonObject.get("language"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        filePath = GsonParser.parseString(jsonObject.get("filePath"));
-        remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
-        action = YouTubeApiDistributionCaptionAction.get(GsonParser.parseInt(jsonObject.get("action")));
-        version = GsonParser.parseString(jsonObject.get("version"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		// set members values:
+		language = GsonParser.parseString(jsonObject.get("language"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		filePath = GsonParser.parseString(jsonObject.get("filePath"));
+		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
+		action = YouTubeApiDistributionCaptionAction.get(GsonParser.parseInt(jsonObject.get("action")));
+		version = GsonParser.parseString(jsonObject.get("version"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYouTubeApiCaptionDistributionInfo");
-        kparams.add("language", this.language);
-        kparams.add("label", this.label);
-        kparams.add("filePath", this.filePath);
-        kparams.add("remoteId", this.remoteId);
-        kparams.add("action", this.action);
-        kparams.add("version", this.version);
-        kparams.add("assetId", this.assetId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYouTubeApiCaptionDistributionInfo");
+		kparams.add("language", this.language);
+		kparams.add("label", this.label);
+		kparams.add("filePath", this.filePath);
+		kparams.add("remoteId", this.remoteId);
+		kparams.add("action", this.action);
+		kparams.add("version", this.version);
+		kparams.add("assetId", this.assetId);
+		return kparams;
+	}
 
 }
 

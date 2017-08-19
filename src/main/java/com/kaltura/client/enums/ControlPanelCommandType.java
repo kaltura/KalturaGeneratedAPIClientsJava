@@ -34,36 +34,36 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ControlPanelCommandType implements EnumAsInt {
-    KILL(4);
+	KILL(4);
 
-    private int value;
+	private int value;
 
-    ControlPanelCommandType(int value) {
-        this.value = value;
-    }
+	ControlPanelCommandType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ControlPanelCommandType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ControlPanelCommandType defined values and compare the inner value with the given one:
-        for(ControlPanelCommandType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ControlPanelCommandType.values().length > 0 ? ControlPanelCommandType.values()[0]: null;
+	public static ControlPanelCommandType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ControlPanelCommandType defined values and compare the inner value with the given one:
+		for(ControlPanelCommandType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ControlPanelCommandType.values().length > 0 ? ControlPanelCommandType.values()[0]: null;
    }
 }

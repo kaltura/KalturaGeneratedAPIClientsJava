@@ -29,14 +29,12 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadCategoryData;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.Category;
 import com.kaltura.client.types.CategoryFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -53,143 +51,220 @@ import java.io.InputStream;
 
 /**  Add &amp; Manage Categories  */
 public class CategoryService {
+	
+	public static class AddCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, AddCategoryBuilder> {
+		
+		public AddCategoryBuilder(Category category) {
+			super(Category.class, "category", "add");
+			params.add("category", category);
+		}
+	}
 
 	/**  Add new Category  */
-    public static RequestBuilder<Category> add(Category category)  {
-        Params kparams = new Params();
-        kparams.add("category", category);
+    public static AddCategoryBuilder add(Category category)  {
+		return new AddCategoryBuilder(category);
+	}
+	
+	public static class AddFromBulkUploadCategoryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadCategoryBuilder> {
+		
+		public AddFromBulkUploadCategoryBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData) {
+			super(BulkUpload.class, "category", "addFromBulkUpload");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadCategoryData", bulkUploadCategoryData);
+		}
+	}
 
-        return new RequestBuilder<Category>(Category.class, "category", "add", kparams);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileHolder fileData)  {
+		return addFromBulkUpload(fileData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData)  {
-        return addFromBulkUpload(fileData, null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(File fileData)  {
+		return addFromBulkUpload(new FileHolder(fileData), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData)  {
-        return addFromBulkUpload(new FileHolder(fileData), null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(fileData, bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(fileData, bulkUploadData, null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, bulkUploadCategoryData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
-        return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, bulkUploadCategoryData);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadCategoryData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadCategoryData);
-    }
+	public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadCategoryData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadCategoryData);
-    }
+    public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
+		return new AddFromBulkUploadCategoryBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
+	}
+	
+	public static class DeleteCategoryBuilder extends NullRequestBuilder {
+		
+		public DeleteCategoryBuilder(int id, Boolean moveEntriesToParentCategory) {
+			super("category", "delete");
+			params.add("id", id);
+			params.add("moveEntriesToParentCategory", moveEntriesToParentCategory);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void moveEntriesToParentCategory(String multirequestToken) {
+			params.add("moveEntriesToParentCategory", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-        kparams.add("bulkUploadData", bulkUploadData);
-        kparams.add("bulkUploadCategoryData", bulkUploadCategoryData);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "category", "addFromBulkUpload", kparams, kfiles);
-    }
-
-    public static RequestBuilder<Void> delete(int id)  {
-        return delete(id, true);
-    }
+	public static DeleteCategoryBuilder delete(int id)  {
+		return delete(id, true);
+	}
 
 	/**  Delete a Category  */
-    public static RequestBuilder<Void> delete(int id, Boolean moveEntriesToParentCategory)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("moveEntriesToParentCategory", moveEntriesToParentCategory);
-
-        return new NullRequestBuilder("category", "delete", kparams);
-    }
+    public static DeleteCategoryBuilder delete(int id, Boolean moveEntriesToParentCategory)  {
+		return new DeleteCategoryBuilder(id, moveEntriesToParentCategory);
+	}
+	
+	public static class GetCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, GetCategoryBuilder> {
+		
+		public GetCategoryBuilder(int id) {
+			super(Category.class, "category", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Category by id  */
-    public static RequestBuilder<Category> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetCategoryBuilder get(int id)  {
+		return new GetCategoryBuilder(id);
+	}
+	
+	public static class IndexCategoryBuilder extends RequestBuilder<Integer, String, IndexCategoryBuilder> {
+		
+		public IndexCategoryBuilder(int id, boolean shouldUpdate) {
+			super(Integer.class, "category", "index");
+			params.add("id", id);
+			params.add("shouldUpdate", shouldUpdate);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void shouldUpdate(String multirequestToken) {
+			params.add("shouldUpdate", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Category>(Category.class, "category", "get", kparams);
-    }
-
-    public static RequestBuilder<Integer> index(int id)  {
-        return index(id, true);
-    }
+	public static IndexCategoryBuilder index(int id)  {
+		return index(id, true);
+	}
 
 	/**  Index Category by id  */
-    public static RequestBuilder<Integer> index(int id, boolean shouldUpdate)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
+    public static IndexCategoryBuilder index(int id, boolean shouldUpdate)  {
+		return new IndexCategoryBuilder(id, shouldUpdate);
+	}
+	
+	public static class ListCategoryBuilder extends ListResponseRequestBuilder<Category, Category.Tokenizer, ListCategoryBuilder> {
+		
+		public ListCategoryBuilder(CategoryFilter filter, FilterPager pager) {
+			super(Category.class, "category", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "category", "index", kparams);
-    }
+	public static ListCategoryBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Category>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Category>> list(CategoryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListCategoryBuilder list(CategoryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all categories  */
-    public static RequestBuilder<ListResponse<Category>> list(CategoryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Category>(Category.class, "category", "list", kparams);
-    }
+    public static ListCategoryBuilder list(CategoryFilter filter, FilterPager pager)  {
+		return new ListCategoryBuilder(filter, pager);
+	}
+	
+	public static class MoveCategoryBuilder extends ListResponseRequestBuilder<Category, Category.Tokenizer, MoveCategoryBuilder> {
+		
+		public MoveCategoryBuilder(String categoryIds, int targetCategoryParentId) {
+			super(Category.class, "category", "move");
+			params.add("categoryIds", categoryIds);
+			params.add("targetCategoryParentId", targetCategoryParentId);
+		}
+		
+		public void categoryIds(String multirequestToken) {
+			params.add("categoryIds", multirequestToken);
+		}
+		
+		public void targetCategoryParentId(String multirequestToken) {
+			params.add("targetCategoryParentId", multirequestToken);
+		}
+	}
 
 	/**  Move categories that belong to the same parent category to a target categroy -
 	  enabled only for ks with disable entitlement  */
-    public static RequestBuilder<ListResponse<Category>> move(String categoryIds, int targetCategoryParentId)  {
-        Params kparams = new Params();
-        kparams.add("categoryIds", categoryIds);
-        kparams.add("targetCategoryParentId", targetCategoryParentId);
-
-        return new ListResponseRequestBuilder<Category>(Category.class, "category", "move", kparams);
-    }
+    public static MoveCategoryBuilder move(String categoryIds, int targetCategoryParentId)  {
+		return new MoveCategoryBuilder(categoryIds, targetCategoryParentId);
+	}
+	
+	public static class UnlockCategoriesCategoryBuilder extends NullRequestBuilder {
+		
+		public UnlockCategoriesCategoryBuilder() {
+			super("category", "unlockCategories");
+		}
+	}
 
 	/**  Unlock categories  */
-    public static RequestBuilder<Void> unlockCategories()  {
-        Params kparams = new Params();
-
-        return new NullRequestBuilder("category", "unlockCategories", kparams);
-    }
+    public static UnlockCategoriesCategoryBuilder unlockCategories()  {
+		return new UnlockCategoriesCategoryBuilder();
+	}
+	
+	public static class UpdateCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, UpdateCategoryBuilder> {
+		
+		public UpdateCategoryBuilder(int id, Category category) {
+			super(Category.class, "category", "update");
+			params.add("id", id);
+			params.add("category", category);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Category  */
-    public static RequestBuilder<Category> update(int id, Category category)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("category", category);
-
-        return new RequestBuilder<Category>(Category.class, "category", "update", kparams);
-    }
+    public static UpdateCategoryBuilder update(int id, Category category)  {
+		return new UpdateCategoryBuilder(id, category);
+	}
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,98 +41,132 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PartnerUsage.Tokenizer.class)
 public class PartnerUsage extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String hostingGB();
+		String Percent();
+		String packageBW();
+		String usageGB();
+		String reachedLimitDate();
+		String usageGraph();
+	}
 
 	/**  Partner total hosting in GB on the disk  */
-    private Double hostingGB;
+	private Double hostingGB;
 	/**  percent of usage out of partner's package. if usageGB is 5 and package is 10GB,
 	  this value will be 50  */
-    private Double Percent;
+	private Double Percent;
 	/**  package total BW - actually this is usage, which represents BW+storage  */
-    private Integer packageBW;
+	private Integer packageBW;
 	/**  total usage in GB - including bandwidth and storage  */
-    private Double usageGB;
+	private Double usageGB;
 	/**  date when partner reached the limit of his package (timestamp)  */
-    private Integer reachedLimitDate;
+	private Integer reachedLimitDate;
 	/**  a semi-colon separated list of comma-separated key-values to represent a usage
 	  graph.   keys could be 1-12 for a year view (1,1.2;2,1.1;3,0.9;...;12,1.4;)  
 	  keys could be 1-[28,29,30,31] depending on the requested month, for a daily view
 	  in a given month (1,0.4;2,0.2;...;31,0.1;)  */
-    private String usageGraph;
+	private String usageGraph;
 
-    // hostingGB:
-    public Double getHostingGB(){
-        return this.hostingGB;
-    }
-    public void setHostingGB(Double hostingGB){
-        this.hostingGB = hostingGB;
-    }
+	// hostingGB:
+	public Double getHostingGB(){
+		return this.hostingGB;
+	}
+	public void setHostingGB(Double hostingGB){
+		this.hostingGB = hostingGB;
+	}
 
-    // Percent:
-    public Double getPercent(){
-        return this.Percent;
-    }
-    public void setPercent(Double Percent){
-        this.Percent = Percent;
-    }
+	public void hostingGB(String multirequestToken){
+		setToken("hostingGB", multirequestToken);
+	}
 
-    // packageBW:
-    public Integer getPackageBW(){
-        return this.packageBW;
-    }
-    public void setPackageBW(Integer packageBW){
-        this.packageBW = packageBW;
-    }
+	// Percent:
+	public Double getPercent(){
+		return this.Percent;
+	}
+	public void setPercent(Double Percent){
+		this.Percent = Percent;
+	}
 
-    // usageGB:
-    public Double getUsageGB(){
-        return this.usageGB;
-    }
-    public void setUsageGB(Double usageGB){
-        this.usageGB = usageGB;
-    }
+	public void Percent(String multirequestToken){
+		setToken("Percent", multirequestToken);
+	}
 
-    // reachedLimitDate:
-    public Integer getReachedLimitDate(){
-        return this.reachedLimitDate;
-    }
-    public void setReachedLimitDate(Integer reachedLimitDate){
-        this.reachedLimitDate = reachedLimitDate;
-    }
+	// packageBW:
+	public Integer getPackageBW(){
+		return this.packageBW;
+	}
+	public void setPackageBW(Integer packageBW){
+		this.packageBW = packageBW;
+	}
 
-    // usageGraph:
-    public String getUsageGraph(){
-        return this.usageGraph;
-    }
-    public void setUsageGraph(String usageGraph){
-        this.usageGraph = usageGraph;
-    }
+	public void packageBW(String multirequestToken){
+		setToken("packageBW", multirequestToken);
+	}
+
+	// usageGB:
+	public Double getUsageGB(){
+		return this.usageGB;
+	}
+	public void setUsageGB(Double usageGB){
+		this.usageGB = usageGB;
+	}
+
+	public void usageGB(String multirequestToken){
+		setToken("usageGB", multirequestToken);
+	}
+
+	// reachedLimitDate:
+	public Integer getReachedLimitDate(){
+		return this.reachedLimitDate;
+	}
+	public void setReachedLimitDate(Integer reachedLimitDate){
+		this.reachedLimitDate = reachedLimitDate;
+	}
+
+	public void reachedLimitDate(String multirequestToken){
+		setToken("reachedLimitDate", multirequestToken);
+	}
+
+	// usageGraph:
+	public String getUsageGraph(){
+		return this.usageGraph;
+	}
+	public void setUsageGraph(String usageGraph){
+		this.usageGraph = usageGraph;
+	}
+
+	public void usageGraph(String multirequestToken){
+		setToken("usageGraph", multirequestToken);
+	}
 
 
-    public PartnerUsage() {
-       super();
-    }
+	public PartnerUsage() {
+		super();
+	}
 
-    public PartnerUsage(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PartnerUsage(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hostingGB = GsonParser.parseDouble(jsonObject.get("hostingGB"));
-        Percent = GsonParser.parseDouble(jsonObject.get("Percent"));
-        packageBW = GsonParser.parseInt(jsonObject.get("packageBW"));
-        usageGB = GsonParser.parseDouble(jsonObject.get("usageGB"));
-        reachedLimitDate = GsonParser.parseInt(jsonObject.get("reachedLimitDate"));
-        usageGraph = GsonParser.parseString(jsonObject.get("usageGraph"));
+		// set members values:
+		hostingGB = GsonParser.parseDouble(jsonObject.get("hostingGB"));
+		Percent = GsonParser.parseDouble(jsonObject.get("Percent"));
+		packageBW = GsonParser.parseInt(jsonObject.get("packageBW"));
+		usageGB = GsonParser.parseDouble(jsonObject.get("usageGB"));
+		reachedLimitDate = GsonParser.parseInt(jsonObject.get("reachedLimitDate"));
+		usageGraph = GsonParser.parseString(jsonObject.get("usageGraph"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPartnerUsage");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPartnerUsage");
+		return kparams;
+	}
 
 }
 

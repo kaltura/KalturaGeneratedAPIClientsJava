@@ -29,12 +29,10 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.CuePointStatus;
 import com.kaltura.client.types.CuePoint;
 import com.kaltura.client.types.CuePointFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -52,123 +50,201 @@ import java.io.InputStream;
 
 /**  Cue Point service  */
 public class CuePointService {
+	
+	public static class AddCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, AddCuePointBuilder> {
+		
+		public AddCuePointBuilder(CuePoint cuePoint) {
+			super(CuePoint.class, "cuepoint_cuepoint", "add");
+			params.add("cuePoint", cuePoint);
+		}
+	}
 
 	/**  Allows you to add an cue point object associated with an entry  */
-    public static RequestBuilder<CuePoint> add(CuePoint cuePoint)  {
-        Params kparams = new Params();
-        kparams.add("cuePoint", cuePoint);
+    public static AddCuePointBuilder add(CuePoint cuePoint)  {
+		return new AddCuePointBuilder(cuePoint);
+	}
+	
+	public static class AddFromBulkCuePointBuilder extends ListResponseRequestBuilder<CuePoint, CuePoint.Tokenizer, AddFromBulkCuePointBuilder> {
+		
+		public AddFromBulkCuePointBuilder(FileHolder fileData) {
+			super(CuePoint.class, "cuepoint_cuepoint", "addFromBulk");
+			files = new Files();
+			files.add("fileData", fileData);
+		}
+	}
 
-        return new RequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "add", kparams);
-    }
+	public static AddFromBulkCuePointBuilder addFromBulk(File fileData)  {
+		return addFromBulk(new FileHolder(fileData));
+	}
 
-    public static RequestBuilder<ListResponse<CuePoint>> addFromBulk(File fileData)  {
-        return addFromBulk(new FileHolder(fileData));
-    }
+	public static AddFromBulkCuePointBuilder addFromBulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
+	}
 
-    public static RequestBuilder<ListResponse<CuePoint>> addFromBulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
-    }
-
-    public static RequestBuilder<ListResponse<CuePoint>> addFromBulk(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName));
-    }
+	public static AddFromBulkCuePointBuilder addFromBulk(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName));
+	}
 
 	/**  Allows you to add multiple cue points objects by uploading XML that contains
 	  multiple cue point definitions  */
-    public static RequestBuilder<ListResponse<CuePoint>> addFromBulk(FileHolder fileData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-
-        return new ListResponseRequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "addFromBulk", kparams, kfiles);
-    }
+    public static AddFromBulkCuePointBuilder addFromBulk(FileHolder fileData)  {
+		return new AddFromBulkCuePointBuilder(fileData);
+	}
+	
+	public static class CloneCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, CloneCuePointBuilder> {
+		
+		public CloneCuePointBuilder(String id, String entryId) {
+			super(CuePoint.class, "cuepoint_cuepoint", "clone");
+			params.add("id", id);
+			params.add("entryId", entryId);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Clone cuePoint with id to given entry  */
-    public static RequestBuilder<CuePoint> clone(String id, String entryId)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("entryId", entryId);
+    public static CloneCuePointBuilder clone(String id, String entryId)  {
+		return new CloneCuePointBuilder(id, entryId);
+	}
+	
+	public static class CountCuePointBuilder extends RequestBuilder<Integer, String, CountCuePointBuilder> {
+		
+		public CountCuePointBuilder(CuePointFilter filter) {
+			super(Integer.class, "cuepoint_cuepoint", "count");
+			params.add("filter", filter);
+		}
+	}
 
-        return new RequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "clone", kparams);
-    }
-
-    public static RequestBuilder<Integer> count()  {
-        return count(null);
-    }
+	public static CountCuePointBuilder count()  {
+		return count(null);
+	}
 
 	/**  count cue point objects by filter  */
-    public static RequestBuilder<Integer> count(CuePointFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-
-        return new RequestBuilder<Integer>(Integer.class, "cuepoint_cuepoint", "count", kparams);
-    }
+    public static CountCuePointBuilder count(CuePointFilter filter)  {
+		return new CountCuePointBuilder(filter);
+	}
+	
+	public static class DeleteCuePointBuilder extends NullRequestBuilder {
+		
+		public DeleteCuePointBuilder(String id) {
+			super("cuepoint_cuepoint", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  delete cue point by id, and delete all children cue points  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("cuepoint_cuepoint", "delete", kparams);
-    }
+    public static DeleteCuePointBuilder delete(String id)  {
+		return new DeleteCuePointBuilder(id);
+	}
+	
+	public static class GetCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, GetCuePointBuilder> {
+		
+		public GetCuePointBuilder(String id) {
+			super(CuePoint.class, "cuepoint_cuepoint", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve an CuePoint object by id  */
-    public static RequestBuilder<CuePoint> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetCuePointBuilder get(String id)  {
+		return new GetCuePointBuilder(id);
+	}
+	
+	public static class ListCuePointBuilder extends ListResponseRequestBuilder<CuePoint, CuePoint.Tokenizer, ListCuePointBuilder> {
+		
+		public ListCuePointBuilder(CuePointFilter filter, FilterPager pager) {
+			super(CuePoint.class, "cuepoint_cuepoint", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "get", kparams);
-    }
+	public static ListCuePointBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<CuePoint>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<CuePoint>> list(CuePointFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListCuePointBuilder list(CuePointFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List cue point objects by filter and pager  */
-    public static RequestBuilder<ListResponse<CuePoint>> list(CuePointFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListCuePointBuilder list(CuePointFilter filter, FilterPager pager)  {
+		return new ListCuePointBuilder(filter, pager);
+	}
+	
+	public static class ServeBulkCuePointBuilder extends ServeRequestBuilder {
+		
+		public ServeBulkCuePointBuilder(CuePointFilter filter, FilterPager pager) {
+			super("cuepoint_cuepoint", "serveBulk");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "list", kparams);
-    }
+	public static ServeBulkCuePointBuilder serveBulk()  {
+		return serveBulk(null);
+	}
 
-    public static RequestBuilder<String> serveBulk()  {
-        return serveBulk(null);
-    }
-
-    public static RequestBuilder<String> serveBulk(CuePointFilter filter)  {
-        return serveBulk(filter, null);
-    }
+	public static ServeBulkCuePointBuilder serveBulk(CuePointFilter filter)  {
+		return serveBulk(filter, null);
+	}
 
 	/**  Download multiple cue points objects as XML definitions  */
-    public static RequestBuilder<String> serveBulk(CuePointFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ServeRequestBuilder("cuepoint_cuepoint", "serveBulk", kparams);
-    }
+    public static ServeBulkCuePointBuilder serveBulk(CuePointFilter filter, FilterPager pager)  {
+		return new ServeBulkCuePointBuilder(filter, pager);
+	}
+	
+	public static class UpdateCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, UpdateCuePointBuilder> {
+		
+		public UpdateCuePointBuilder(String id, CuePoint cuePoint) {
+			super(CuePoint.class, "cuepoint_cuepoint", "update");
+			params.add("id", id);
+			params.add("cuePoint", cuePoint);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update cue point by id  */
-    public static RequestBuilder<CuePoint> update(String id, CuePoint cuePoint)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("cuePoint", cuePoint);
-
-        return new RequestBuilder<CuePoint>(CuePoint.class, "cuepoint_cuepoint", "update", kparams);
-    }
+    public static UpdateCuePointBuilder update(String id, CuePoint cuePoint)  {
+		return new UpdateCuePointBuilder(id, cuePoint);
+	}
+	
+	public static class UpdateStatusCuePointBuilder extends NullRequestBuilder {
+		
+		public UpdateStatusCuePointBuilder(String id, CuePointStatus status) {
+			super("cuepoint_cuepoint", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Update cuePoint status by id  */
-    public static RequestBuilder<Void> updateStatus(String id, CuePointStatus status)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("status", status);
-
-        return new NullRequestBuilder("cuepoint_cuepoint", "updateStatus", kparams);
-    }
+    public static UpdateStatusCuePointBuilder updateStatus(String id, CuePointStatus status)  {
+		return new UpdateStatusCuePointBuilder(id, status);
+	}
 }

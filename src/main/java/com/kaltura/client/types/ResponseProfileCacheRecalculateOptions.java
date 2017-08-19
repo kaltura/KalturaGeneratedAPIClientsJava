@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,107 +41,146 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ResponseProfileCacheRecalculateOptions.Tokenizer.class)
 public class ResponseProfileCacheRecalculateOptions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String limit();
+		String cachedObjectType();
+		String objectId();
+		String startObjectKey();
+		String endObjectKey();
+		String jobCreatedAt();
+		String isFirstLoop();
+	}
 
 	/**  Maximum number of keys to recalculate  */
-    private Integer limit;
+	private Integer limit;
 	/**  Class name  */
-    private String cachedObjectType;
-    private String objectId;
-    private String startObjectKey;
-    private String endObjectKey;
-    private Integer jobCreatedAt;
-    private Boolean isFirstLoop;
+	private String cachedObjectType;
+	private String objectId;
+	private String startObjectKey;
+	private String endObjectKey;
+	private Integer jobCreatedAt;
+	private Boolean isFirstLoop;
 
-    // limit:
-    public Integer getLimit(){
-        return this.limit;
-    }
-    public void setLimit(Integer limit){
-        this.limit = limit;
-    }
+	// limit:
+	public Integer getLimit(){
+		return this.limit;
+	}
+	public void setLimit(Integer limit){
+		this.limit = limit;
+	}
 
-    // cachedObjectType:
-    public String getCachedObjectType(){
-        return this.cachedObjectType;
-    }
-    public void setCachedObjectType(String cachedObjectType){
-        this.cachedObjectType = cachedObjectType;
-    }
+	public void limit(String multirequestToken){
+		setToken("limit", multirequestToken);
+	}
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	// cachedObjectType:
+	public String getCachedObjectType(){
+		return this.cachedObjectType;
+	}
+	public void setCachedObjectType(String cachedObjectType){
+		this.cachedObjectType = cachedObjectType;
+	}
 
-    // startObjectKey:
-    public String getStartObjectKey(){
-        return this.startObjectKey;
-    }
-    public void setStartObjectKey(String startObjectKey){
-        this.startObjectKey = startObjectKey;
-    }
+	public void cachedObjectType(String multirequestToken){
+		setToken("cachedObjectType", multirequestToken);
+	}
 
-    // endObjectKey:
-    public String getEndObjectKey(){
-        return this.endObjectKey;
-    }
-    public void setEndObjectKey(String endObjectKey){
-        this.endObjectKey = endObjectKey;
-    }
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
 
-    // jobCreatedAt:
-    public Integer getJobCreatedAt(){
-        return this.jobCreatedAt;
-    }
-    public void setJobCreatedAt(Integer jobCreatedAt){
-        this.jobCreatedAt = jobCreatedAt;
-    }
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
 
-    // isFirstLoop:
-    public Boolean getIsFirstLoop(){
-        return this.isFirstLoop;
-    }
-    public void setIsFirstLoop(Boolean isFirstLoop){
-        this.isFirstLoop = isFirstLoop;
-    }
+	// startObjectKey:
+	public String getStartObjectKey(){
+		return this.startObjectKey;
+	}
+	public void setStartObjectKey(String startObjectKey){
+		this.startObjectKey = startObjectKey;
+	}
+
+	public void startObjectKey(String multirequestToken){
+		setToken("startObjectKey", multirequestToken);
+	}
+
+	// endObjectKey:
+	public String getEndObjectKey(){
+		return this.endObjectKey;
+	}
+	public void setEndObjectKey(String endObjectKey){
+		this.endObjectKey = endObjectKey;
+	}
+
+	public void endObjectKey(String multirequestToken){
+		setToken("endObjectKey", multirequestToken);
+	}
+
+	// jobCreatedAt:
+	public Integer getJobCreatedAt(){
+		return this.jobCreatedAt;
+	}
+	public void setJobCreatedAt(Integer jobCreatedAt){
+		this.jobCreatedAt = jobCreatedAt;
+	}
+
+	public void jobCreatedAt(String multirequestToken){
+		setToken("jobCreatedAt", multirequestToken);
+	}
+
+	// isFirstLoop:
+	public Boolean getIsFirstLoop(){
+		return this.isFirstLoop;
+	}
+	public void setIsFirstLoop(Boolean isFirstLoop){
+		this.isFirstLoop = isFirstLoop;
+	}
+
+	public void isFirstLoop(String multirequestToken){
+		setToken("isFirstLoop", multirequestToken);
+	}
 
 
-    public ResponseProfileCacheRecalculateOptions() {
-       super();
-    }
+	public ResponseProfileCacheRecalculateOptions() {
+		super();
+	}
 
-    public ResponseProfileCacheRecalculateOptions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ResponseProfileCacheRecalculateOptions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        limit = GsonParser.parseInt(jsonObject.get("limit"));
-        cachedObjectType = GsonParser.parseString(jsonObject.get("cachedObjectType"));
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        startObjectKey = GsonParser.parseString(jsonObject.get("startObjectKey"));
-        endObjectKey = GsonParser.parseString(jsonObject.get("endObjectKey"));
-        jobCreatedAt = GsonParser.parseInt(jsonObject.get("jobCreatedAt"));
-        isFirstLoop = GsonParser.parseBoolean(jsonObject.get("isFirstLoop"));
+		// set members values:
+		limit = GsonParser.parseInt(jsonObject.get("limit"));
+		cachedObjectType = GsonParser.parseString(jsonObject.get("cachedObjectType"));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		startObjectKey = GsonParser.parseString(jsonObject.get("startObjectKey"));
+		endObjectKey = GsonParser.parseString(jsonObject.get("endObjectKey"));
+		jobCreatedAt = GsonParser.parseInt(jsonObject.get("jobCreatedAt"));
+		isFirstLoop = GsonParser.parseBoolean(jsonObject.get("isFirstLoop"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResponseProfileCacheRecalculateOptions");
-        kparams.add("limit", this.limit);
-        kparams.add("cachedObjectType", this.cachedObjectType);
-        kparams.add("objectId", this.objectId);
-        kparams.add("startObjectKey", this.startObjectKey);
-        kparams.add("endObjectKey", this.endObjectKey);
-        kparams.add("jobCreatedAt", this.jobCreatedAt);
-        kparams.add("isFirstLoop", this.isFirstLoop);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResponseProfileCacheRecalculateOptions");
+		kparams.add("limit", this.limit);
+		kparams.add("cachedObjectType", this.cachedObjectType);
+		kparams.add("objectId", this.objectId);
+		kparams.add("startObjectKey", this.startObjectKey);
+		kparams.add("endObjectKey", this.endObjectKey);
+		kparams.add("jobCreatedAt", this.jobCreatedAt);
+		kparams.add("isFirstLoop", this.isFirstLoop);
+		return kparams;
+	}
 
 }
 

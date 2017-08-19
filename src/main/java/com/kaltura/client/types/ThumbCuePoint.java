@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ThumbCuePointSubType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,73 +41,97 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbCuePoint.Tokenizer.class)
 public class ThumbCuePoint extends CuePoint {
+	
+	public interface Tokenizer extends CuePoint.Tokenizer {
+		String assetId();
+		String description();
+		String title();
+		String subType();
+	}
 
-    private String assetId;
-    private String description;
-    private String title;
+	private String assetId;
+	private String description;
+	private String title;
 	/**  The sub type of the ThumbCuePoint  */
-    private ThumbCuePointSubType subType;
+	private ThumbCuePointSubType subType;
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
-    // title:
-    public String getTitle(){
-        return this.title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // subType:
-    public ThumbCuePointSubType getSubType(){
-        return this.subType;
-    }
-    public void setSubType(ThumbCuePointSubType subType){
-        this.subType = subType;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// title:
+	public String getTitle(){
+		return this.title;
+	}
+	public void setTitle(String title){
+		this.title = title;
+	}
+
+	public void title(String multirequestToken){
+		setToken("title", multirequestToken);
+	}
+
+	// subType:
+	public ThumbCuePointSubType getSubType(){
+		return this.subType;
+	}
+	public void setSubType(ThumbCuePointSubType subType){
+		this.subType = subType;
+	}
+
+	public void subType(String multirequestToken){
+		setToken("subType", multirequestToken);
+	}
 
 
-    public ThumbCuePoint() {
-       super();
-    }
+	public ThumbCuePoint() {
+		super();
+	}
 
-    public ThumbCuePoint(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbCuePoint(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        title = GsonParser.parseString(jsonObject.get("title"));
-        subType = ThumbCuePointSubType.get(GsonParser.parseInt(jsonObject.get("subType")));
+		// set members values:
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		title = GsonParser.parseString(jsonObject.get("title"));
+		subType = ThumbCuePointSubType.get(GsonParser.parseInt(jsonObject.get("subType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbCuePoint");
-        kparams.add("assetId", this.assetId);
-        kparams.add("description", this.description);
-        kparams.add("title", this.title);
-        kparams.add("subType", this.subType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbCuePoint");
+		kparams.add("assetId", this.assetId);
+		kparams.add("description", this.description);
+		kparams.add("title", this.title);
+		kparams.add("subType", this.subType);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GeoCoderType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CountryCondition.Tokenizer.class)
 public class CountryCondition extends MatchCondition {
+	
+	public interface Tokenizer extends MatchCondition.Tokenizer {
+		String geoCoderType();
+	}
 
 	/**  The ip geo coder engine to be used  */
-    private GeoCoderType geoCoderType;
+	private GeoCoderType geoCoderType;
 
-    // geoCoderType:
-    public GeoCoderType getGeoCoderType(){
-        return this.geoCoderType;
-    }
-    public void setGeoCoderType(GeoCoderType geoCoderType){
-        this.geoCoderType = geoCoderType;
-    }
+	// geoCoderType:
+	public GeoCoderType getGeoCoderType(){
+		return this.geoCoderType;
+	}
+	public void setGeoCoderType(GeoCoderType geoCoderType){
+		this.geoCoderType = geoCoderType;
+	}
+
+	public void geoCoderType(String multirequestToken){
+		setToken("geoCoderType", multirequestToken);
+	}
 
 
-    public CountryCondition() {
-       super();
-    }
+	public CountryCondition() {
+		super();
+	}
 
-    public CountryCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CountryCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        geoCoderType = GeoCoderType.get(GsonParser.parseString(jsonObject.get("geoCoderType")));
+		// set members values:
+		geoCoderType = GeoCoderType.get(GsonParser.parseString(jsonObject.get("geoCoderType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCountryCondition");
-        kparams.add("geoCoderType", this.geoCoderType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCountryCondition");
+		kparams.add("geoCoderType", this.geoCoderType);
+		return kparams;
+	}
 
 }
 

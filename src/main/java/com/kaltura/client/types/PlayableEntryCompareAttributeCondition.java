@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.PlayableEntryCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaPlayableEntry attributes. Use
   KalturaPlayableEntryCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayableEntryCompareAttributeCondition.Tokenizer.class)
 public class PlayableEntryCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private PlayableEntryCompareAttribute attribute;
+	private PlayableEntryCompareAttribute attribute;
 
-    // attribute:
-    public PlayableEntryCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(PlayableEntryCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public PlayableEntryCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(PlayableEntryCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public PlayableEntryCompareAttributeCondition() {
-       super();
-    }
+	public PlayableEntryCompareAttributeCondition() {
+		super();
+	}
 
-    public PlayableEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayableEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = PlayableEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = PlayableEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayableEntryCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayableEntryCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

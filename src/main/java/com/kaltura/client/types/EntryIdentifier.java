@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryIdentifierField;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryIdentifier.Tokenizer.class)
 public class EntryIdentifier extends ObjectIdentifier {
+	
+	public interface Tokenizer extends ObjectIdentifier.Tokenizer {
+		String identifier();
+	}
 
 	/**  Identifier of the object  */
-    private EntryIdentifierField identifier;
+	private EntryIdentifierField identifier;
 
-    // identifier:
-    public EntryIdentifierField getIdentifier(){
-        return this.identifier;
-    }
-    public void setIdentifier(EntryIdentifierField identifier){
-        this.identifier = identifier;
-    }
+	// identifier:
+	public EntryIdentifierField getIdentifier(){
+		return this.identifier;
+	}
+	public void setIdentifier(EntryIdentifierField identifier){
+		this.identifier = identifier;
+	}
+
+	public void identifier(String multirequestToken){
+		setToken("identifier", multirequestToken);
+	}
 
 
-    public EntryIdentifier() {
-       super();
-    }
+	public EntryIdentifier() {
+		super();
+	}
 
-    public EntryIdentifier(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryIdentifier(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        identifier = EntryIdentifierField.get(GsonParser.parseString(jsonObject.get("identifier")));
+		// set members values:
+		identifier = EntryIdentifierField.get(GsonParser.parseString(jsonObject.get("identifier")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryIdentifier");
-        kparams.add("identifier", this.identifier);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryIdentifier");
+		kparams.add("identifier", this.identifier);
+		return kparams;
+	}
 
 }
 

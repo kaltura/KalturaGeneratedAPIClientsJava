@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.Like;
 import com.kaltura.client.types.LikeFilter;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,46 +42,82 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Allows user to 'like' or 'unlike' and entry  */
 public class LikeService {
+	
+	public static class CheckLikeExistsLikeBuilder extends RequestBuilder<Boolean, String, CheckLikeExistsLikeBuilder> {
+		
+		public CheckLikeExistsLikeBuilder(String entryId, String userId) {
+			super(Boolean.class, "like_like", "checkLikeExists");
+			params.add("entryId", entryId);
+			params.add("userId", userId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Boolean> checkLikeExists(String entryId)  {
-        return checkLikeExists(entryId, null);
-    }
+	public static CheckLikeExistsLikeBuilder checkLikeExists(String entryId)  {
+		return checkLikeExists(entryId, null);
+	}
 
-    public static RequestBuilder<Boolean> checkLikeExists(String entryId, String userId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("userId", userId);
+    public static CheckLikeExistsLikeBuilder checkLikeExists(String entryId, String userId)  {
+		return new CheckLikeExistsLikeBuilder(entryId, userId);
+	}
+	
+	public static class LikeLikeBuilder extends RequestBuilder<Boolean, String, LikeLikeBuilder> {
+		
+		public LikeLikeBuilder(String entryId) {
+			super(Boolean.class, "like_like", "like");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Boolean>(Boolean.class, "like_like", "checkLikeExists", kparams);
-    }
+    public static LikeLikeBuilder like(String entryId)  {
+		return new LikeLikeBuilder(entryId);
+	}
+	
+	public static class ListLikeBuilder extends ListResponseRequestBuilder<Like, Like.Tokenizer, ListLikeBuilder> {
+		
+		public ListLikeBuilder(LikeFilter filter, FilterPager pager) {
+			super(Like.class, "like_like", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<Boolean> like(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+	public static ListLikeBuilder list()  {
+		return list(null);
+	}
 
-        return new RequestBuilder<Boolean>(Boolean.class, "like_like", "like", kparams);
-    }
+	public static ListLikeBuilder list(LikeFilter filter)  {
+		return list(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<Like>> list()  {
-        return list(null);
-    }
+    public static ListLikeBuilder list(LikeFilter filter, FilterPager pager)  {
+		return new ListLikeBuilder(filter, pager);
+	}
+	
+	public static class UnlikeLikeBuilder extends RequestBuilder<Boolean, String, UnlikeLikeBuilder> {
+		
+		public UnlikeLikeBuilder(String entryId) {
+			super(Boolean.class, "like_like", "unlike");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<Like>> list(LikeFilter filter)  {
-        return list(filter, null);
-    }
-
-    public static RequestBuilder<ListResponse<Like>> list(LikeFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Like>(Like.class, "like_like", "list", kparams);
-    }
-
-    public static RequestBuilder<Boolean> unlike(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new RequestBuilder<Boolean>(Boolean.class, "like_like", "unlike", kparams);
-    }
+    public static UnlikeLikeBuilder unlike(String entryId)  {
+		return new UnlikeLikeBuilder(entryId);
+	}
 }

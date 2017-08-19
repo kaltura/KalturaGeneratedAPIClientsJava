@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType implements EnumAsString {
-    FACEBOOK("facebookDistribution.FACEBOOK"),
-    IDETIC("ideticDistribution.IDETIC"),
-    YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
-    GENERIC("1"),
-    SYNDICATION("2");
+	FACEBOOK("facebookDistribution.FACEBOOK"),
+	IDETIC("ideticDistribution.IDETIC"),
+	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
+	GENERIC("1"),
+	SYNDICATION("2");
 
-    private String value;
+	private String value;
 
-    DistributionProviderType(String value) {
-        this.value = value;
-    }
+	DistributionProviderType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DistributionProviderType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionProviderType defined values and compare the inner value with the given one:
-        for(DistributionProviderType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionProviderType.values().length > 0 ? DistributionProviderType.values()[0]: null;
+	public static DistributionProviderType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionProviderType defined values and compare the inner value with the given one:
+		for(DistributionProviderType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionProviderType.values().length > 0 ? DistributionProviderType.values()[0]: null;
    }
 }

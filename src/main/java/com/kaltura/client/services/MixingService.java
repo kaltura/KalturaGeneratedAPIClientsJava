@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.MediaEntry;
 import com.kaltura.client.types.MediaEntryFilter;
 import com.kaltura.client.types.MixEntry;
@@ -38,7 +36,6 @@ import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -52,121 +49,224 @@ import java.util.List;
   soundtrack, effects and much more...  Mixing service lets you create a new mix,
   manage its metadata and make basic manipulations.  */
 public class MixingService {
+	
+	public static class AddMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, AddMixingBuilder> {
+		
+		public AddMixingBuilder(MixEntry mixEntry) {
+			super(MixEntry.class, "mixing", "add");
+			params.add("mixEntry", mixEntry);
+		}
+	}
 
 	/**  Adds a new mix.   If the dataContent is null, a default timeline will be
 	  created.  */
-    public static RequestBuilder<MixEntry> add(MixEntry mixEntry)  {
-        Params kparams = new Params();
-        kparams.add("mixEntry", mixEntry);
-
-        return new RequestBuilder<MixEntry>(MixEntry.class, "mixing", "add", kparams);
-    }
+    public static AddMixingBuilder add(MixEntry mixEntry)  {
+		return new AddMixingBuilder(mixEntry);
+	}
+	
+	public static class AnonymousRankMixingBuilder extends NullRequestBuilder {
+		
+		public AnonymousRankMixingBuilder(String entryId, int rank) {
+			super("mixing", "anonymousRank");
+			params.add("entryId", entryId);
+			params.add("rank", rank);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void rank(String multirequestToken) {
+			params.add("rank", multirequestToken);
+		}
+	}
 
 	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
-    public static RequestBuilder<Void> anonymousRank(String entryId, int rank)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("rank", rank);
-
-        return new NullRequestBuilder("mixing", "anonymousRank", kparams);
-    }
+    public static AnonymousRankMixingBuilder anonymousRank(String entryId, int rank)  {
+		return new AnonymousRankMixingBuilder(entryId, rank);
+	}
+	
+	public static class AppendMediaEntryMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, AppendMediaEntryMixingBuilder> {
+		
+		public AppendMediaEntryMixingBuilder(String mixEntryId, String mediaEntryId) {
+			super(MixEntry.class, "mixing", "appendMediaEntry");
+			params.add("mixEntryId", mixEntryId);
+			params.add("mediaEntryId", mediaEntryId);
+		}
+		
+		public void mixEntryId(String multirequestToken) {
+			params.add("mixEntryId", multirequestToken);
+		}
+		
+		public void mediaEntryId(String multirequestToken) {
+			params.add("mediaEntryId", multirequestToken);
+		}
+	}
 
 	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
 	  timeline as a new version.  */
-    public static RequestBuilder<MixEntry> appendMediaEntry(String mixEntryId, String mediaEntryId)  {
-        Params kparams = new Params();
-        kparams.add("mixEntryId", mixEntryId);
-        kparams.add("mediaEntryId", mediaEntryId);
-
-        return new RequestBuilder<MixEntry>(MixEntry.class, "mixing", "appendMediaEntry", kparams);
-    }
+    public static AppendMediaEntryMixingBuilder appendMediaEntry(String mixEntryId, String mediaEntryId)  {
+		return new AppendMediaEntryMixingBuilder(mixEntryId, mediaEntryId);
+	}
+	
+	public static class CloneMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, CloneMixingBuilder> {
+		
+		public CloneMixingBuilder(String entryId) {
+			super(MixEntry.class, "mixing", "clone");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Clones an existing mix.  */
-    public static RequestBuilder<MixEntry> clone(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static CloneMixingBuilder clone(String entryId)  {
+		return new CloneMixingBuilder(entryId);
+	}
+	
+	public static class CountMixingBuilder extends RequestBuilder<Integer, String, CountMixingBuilder> {
+		
+		public CountMixingBuilder(MediaEntryFilter filter) {
+			super(Integer.class, "mixing", "count");
+			params.add("filter", filter);
+		}
+	}
 
-        return new RequestBuilder<MixEntry>(MixEntry.class, "mixing", "clone", kparams);
-    }
-
-    public static RequestBuilder<Integer> count()  {
-        return count(null);
-    }
+	public static CountMixingBuilder count()  {
+		return count(null);
+	}
 
 	/**  Count mix entries by filter.  */
-    public static RequestBuilder<Integer> count(MediaEntryFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-
-        return new RequestBuilder<Integer>(Integer.class, "mixing", "count", kparams);
-    }
+    public static CountMixingBuilder count(MediaEntryFilter filter)  {
+		return new CountMixingBuilder(filter);
+	}
+	
+	public static class DeleteMixingBuilder extends NullRequestBuilder {
+		
+		public DeleteMixingBuilder(String entryId) {
+			super("mixing", "delete");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Delete a mix entry.  */
-    public static RequestBuilder<Void> delete(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static DeleteMixingBuilder delete(String entryId)  {
+		return new DeleteMixingBuilder(entryId);
+	}
+	
+	public static class GetMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, GetMixingBuilder> {
+		
+		public GetMixingBuilder(String entryId, int version) {
+			super(MixEntry.class, "mixing", "get");
+			params.add("entryId", entryId);
+			params.add("version", version);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("mixing", "delete", kparams);
-    }
-
-    public static RequestBuilder<MixEntry> get(String entryId)  {
-        return get(entryId, -1);
-    }
+	public static GetMixingBuilder get(String entryId)  {
+		return get(entryId, -1);
+	}
 
 	/**  Get mix entry by id.  */
-    public static RequestBuilder<MixEntry> get(String entryId, int version)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("version", version);
-
-        return new RequestBuilder<MixEntry>(MixEntry.class, "mixing", "get", kparams);
-    }
+    public static GetMixingBuilder get(String entryId, int version)  {
+		return new GetMixingBuilder(entryId, version);
+	}
+	
+	public static class GetMixesByMediaIdMixingBuilder extends ArrayRequestBuilder<MixEntry, MixEntry.Tokenizer, GetMixesByMediaIdMixingBuilder> {
+		
+		public GetMixesByMediaIdMixingBuilder(String mediaEntryId) {
+			super(MixEntry.class, "mixing", "getMixesByMediaId");
+			params.add("mediaEntryId", mediaEntryId);
+		}
+		
+		public void mediaEntryId(String multirequestToken) {
+			params.add("mediaEntryId", multirequestToken);
+		}
+	}
 
 	/**  Get the mixes in which the media entry is included  */
-    public static RequestBuilder<List<MixEntry>> getMixesByMediaId(String mediaEntryId)  {
-        Params kparams = new Params();
-        kparams.add("mediaEntryId", mediaEntryId);
+    public static GetMixesByMediaIdMixingBuilder getMixesByMediaId(String mediaEntryId)  {
+		return new GetMixesByMediaIdMixingBuilder(mediaEntryId);
+	}
+	
+	public static class GetReadyMediaEntriesMixingBuilder extends ArrayRequestBuilder<MediaEntry, MediaEntry.Tokenizer, GetReadyMediaEntriesMixingBuilder> {
+		
+		public GetReadyMediaEntriesMixingBuilder(String mixId, int version) {
+			super(MediaEntry.class, "mixing", "getReadyMediaEntries");
+			params.add("mixId", mixId);
+			params.add("version", version);
+		}
+		
+		public void mixId(String multirequestToken) {
+			params.add("mixId", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<MixEntry>(MixEntry.class, "mixing", "getMixesByMediaId", kparams);
-    }
-
-    public static RequestBuilder<List<MediaEntry>> getReadyMediaEntries(String mixId)  {
-        return getReadyMediaEntries(mixId, -1);
-    }
+	public static GetReadyMediaEntriesMixingBuilder getReadyMediaEntries(String mixId)  {
+		return getReadyMediaEntries(mixId, -1);
+	}
 
 	/**  Get all ready media entries that exist in the given mix id  */
-    public static RequestBuilder<List<MediaEntry>> getReadyMediaEntries(String mixId, int version)  {
-        Params kparams = new Params();
-        kparams.add("mixId", mixId);
-        kparams.add("version", version);
+    public static GetReadyMediaEntriesMixingBuilder getReadyMediaEntries(String mixId, int version)  {
+		return new GetReadyMediaEntriesMixingBuilder(mixId, version);
+	}
+	
+	public static class ListMixingBuilder extends ListResponseRequestBuilder<MixEntry, MixEntry.Tokenizer, ListMixingBuilder> {
+		
+		public ListMixingBuilder(MixEntryFilter filter, FilterPager pager) {
+			super(MixEntry.class, "mixing", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ArrayRequestBuilder<MediaEntry>(MediaEntry.class, "mixing", "getReadyMediaEntries", kparams);
-    }
+	public static ListMixingBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<MixEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<MixEntry>> list(MixEntryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListMixingBuilder list(MixEntryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List entries by filter with paging support.   Return parameter is an array of
 	  mix entries.  */
-    public static RequestBuilder<ListResponse<MixEntry>> list(MixEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<MixEntry>(MixEntry.class, "mixing", "list", kparams);
-    }
+    public static ListMixingBuilder list(MixEntryFilter filter, FilterPager pager)  {
+		return new ListMixingBuilder(filter, pager);
+	}
+	
+	public static class UpdateMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, UpdateMixingBuilder> {
+		
+		public UpdateMixingBuilder(String entryId, MixEntry mixEntry) {
+			super(MixEntry.class, "mixing", "update");
+			params.add("entryId", entryId);
+			params.add("mixEntry", mixEntry);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Update mix entry. Only the properties that were set will be updated.  */
-    public static RequestBuilder<MixEntry> update(String entryId, MixEntry mixEntry)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("mixEntry", mixEntry);
-
-        return new RequestBuilder<MixEntry>(MixEntry.class, "mixing", "update", kparams);
-    }
+    public static UpdateMixingBuilder update(String entryId, MixEntry mixEntry)  {
+		return new UpdateMixingBuilder(entryId, mixEntry);
+	}
 }

@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Tag;
 import com.kaltura.client.types.TagFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -45,33 +43,60 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Search object tags  */
 public class TagService {
+	
+	public static class DeletePendingTagBuilder extends RequestBuilder<Integer, String, DeletePendingTagBuilder> {
+		
+		public DeletePendingTagBuilder() {
+			super(Integer.class, "tagsearch_tag", "deletePending");
+		}
+	}
 
 	/**  Action goes over all tags with instanceCount==0 and checks whether they need to
 	  be removed from the DB. Returns number of removed tags.  */
-    public static RequestBuilder<Integer> deletePending()  {
-        Params kparams = new Params();
+    public static DeletePendingTagBuilder deletePending()  {
+		return new DeletePendingTagBuilder();
+	}
+	
+	public static class IndexCategoryEntryTagsTagBuilder extends NullRequestBuilder {
+		
+		public IndexCategoryEntryTagsTagBuilder(int categoryId, String pcToDecrement, String pcToIncrement) {
+			super("tagsearch_tag", "indexCategoryEntryTags");
+			params.add("categoryId", categoryId);
+			params.add("pcToDecrement", pcToDecrement);
+			params.add("pcToIncrement", pcToIncrement);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+		
+		public void pcToDecrement(String multirequestToken) {
+			params.add("pcToDecrement", multirequestToken);
+		}
+		
+		public void pcToIncrement(String multirequestToken) {
+			params.add("pcToIncrement", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "tagsearch_tag", "deletePending", kparams);
-    }
+    public static IndexCategoryEntryTagsTagBuilder indexCategoryEntryTags(int categoryId, String pcToDecrement, String pcToIncrement)  {
+		return new IndexCategoryEntryTagsTagBuilder(categoryId, pcToDecrement, pcToIncrement);
+	}
+	
+	public static class SearchTagBuilder extends ListResponseRequestBuilder<Tag, Tag.Tokenizer, SearchTagBuilder> {
+		
+		public SearchTagBuilder(TagFilter tagFilter, FilterPager pager) {
+			super(Tag.class, "tagsearch_tag", "search");
+			params.add("tagFilter", tagFilter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<Void> indexCategoryEntryTags(int categoryId, String pcToDecrement, String pcToIncrement)  {
-        Params kparams = new Params();
-        kparams.add("categoryId", categoryId);
-        kparams.add("pcToDecrement", pcToDecrement);
-        kparams.add("pcToIncrement", pcToIncrement);
+	public static SearchTagBuilder search(TagFilter tagFilter)  {
+		return search(tagFilter, null);
+	}
 
-        return new NullRequestBuilder("tagsearch_tag", "indexCategoryEntryTags", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<Tag>> search(TagFilter tagFilter)  {
-        return search(tagFilter, null);
-    }
-
-    public static RequestBuilder<ListResponse<Tag>> search(TagFilter tagFilter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("tagFilter", tagFilter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Tag>(Tag.class, "tagsearch_tag", "search", kparams);
-    }
+    public static SearchTagBuilder search(TagFilter tagFilter, FilterPager pager)  {
+		return new SearchTagBuilder(tagFilter, pager);
+	}
 }

@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GenericDistributionProviderStatus;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,158 +43,214 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericDistributionProvider.Tokenizer.class)
 public class GenericDistributionProvider extends DistributionProvider {
+	
+	public interface Tokenizer extends DistributionProvider.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
+		String isDefault();
+		String status();
+		String optionalFlavorParamsIds();
+		String requiredFlavorParamsIds();
+		RequestBuilder.ListTokenizer<DistributionThumbDimensions.Tokenizer> optionalThumbDimensions();
+		RequestBuilder.ListTokenizer<DistributionThumbDimensions.Tokenizer> requiredThumbDimensions();
+		String editableFields();
+		String mandatoryFields();
+	}
 
 	/**  Auto generated  */
-    private Integer id;
+	private Integer id;
 	/**  Generic distribution provider creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Generic distribution provider last update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
-    private Integer partnerId;
-    private Boolean isDefault;
-    private GenericDistributionProviderStatus status;
-    private String optionalFlavorParamsIds;
-    private String requiredFlavorParamsIds;
-    private List<DistributionThumbDimensions> optionalThumbDimensions;
-    private List<DistributionThumbDimensions> requiredThumbDimensions;
-    private String editableFields;
-    private String mandatoryFields;
+	private Integer updatedAt;
+	private Integer partnerId;
+	private Boolean isDefault;
+	private GenericDistributionProviderStatus status;
+	private String optionalFlavorParamsIds;
+	private String requiredFlavorParamsIds;
+	private List<DistributionThumbDimensions> optionalThumbDimensions;
+	private List<DistributionThumbDimensions> requiredThumbDimensions;
+	private String editableFields;
+	private String mandatoryFields;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // status:
-    public GenericDistributionProviderStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(GenericDistributionProviderStatus status){
-        this.status = status;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // optionalFlavorParamsIds:
-    public String getOptionalFlavorParamsIds(){
-        return this.optionalFlavorParamsIds;
-    }
-    public void setOptionalFlavorParamsIds(String optionalFlavorParamsIds){
-        this.optionalFlavorParamsIds = optionalFlavorParamsIds;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // requiredFlavorParamsIds:
-    public String getRequiredFlavorParamsIds(){
-        return this.requiredFlavorParamsIds;
-    }
-    public void setRequiredFlavorParamsIds(String requiredFlavorParamsIds){
-        this.requiredFlavorParamsIds = requiredFlavorParamsIds;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // optionalThumbDimensions:
-    public List<DistributionThumbDimensions> getOptionalThumbDimensions(){
-        return this.optionalThumbDimensions;
-    }
-    public void setOptionalThumbDimensions(List<DistributionThumbDimensions> optionalThumbDimensions){
-        this.optionalThumbDimensions = optionalThumbDimensions;
-    }
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
 
-    // requiredThumbDimensions:
-    public List<DistributionThumbDimensions> getRequiredThumbDimensions(){
-        return this.requiredThumbDimensions;
-    }
-    public void setRequiredThumbDimensions(List<DistributionThumbDimensions> requiredThumbDimensions){
-        this.requiredThumbDimensions = requiredThumbDimensions;
-    }
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
 
-    // editableFields:
-    public String getEditableFields(){
-        return this.editableFields;
-    }
-    public void setEditableFields(String editableFields){
-        this.editableFields = editableFields;
-    }
+	// status:
+	public GenericDistributionProviderStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(GenericDistributionProviderStatus status){
+		this.status = status;
+	}
 
-    // mandatoryFields:
-    public String getMandatoryFields(){
-        return this.mandatoryFields;
-    }
-    public void setMandatoryFields(String mandatoryFields){
-        this.mandatoryFields = mandatoryFields;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// optionalFlavorParamsIds:
+	public String getOptionalFlavorParamsIds(){
+		return this.optionalFlavorParamsIds;
+	}
+	public void setOptionalFlavorParamsIds(String optionalFlavorParamsIds){
+		this.optionalFlavorParamsIds = optionalFlavorParamsIds;
+	}
+
+	public void optionalFlavorParamsIds(String multirequestToken){
+		setToken("optionalFlavorParamsIds", multirequestToken);
+	}
+
+	// requiredFlavorParamsIds:
+	public String getRequiredFlavorParamsIds(){
+		return this.requiredFlavorParamsIds;
+	}
+	public void setRequiredFlavorParamsIds(String requiredFlavorParamsIds){
+		this.requiredFlavorParamsIds = requiredFlavorParamsIds;
+	}
+
+	public void requiredFlavorParamsIds(String multirequestToken){
+		setToken("requiredFlavorParamsIds", multirequestToken);
+	}
+
+	// optionalThumbDimensions:
+	public List<DistributionThumbDimensions> getOptionalThumbDimensions(){
+		return this.optionalThumbDimensions;
+	}
+	public void setOptionalThumbDimensions(List<DistributionThumbDimensions> optionalThumbDimensions){
+		this.optionalThumbDimensions = optionalThumbDimensions;
+	}
+
+	// requiredThumbDimensions:
+	public List<DistributionThumbDimensions> getRequiredThumbDimensions(){
+		return this.requiredThumbDimensions;
+	}
+	public void setRequiredThumbDimensions(List<DistributionThumbDimensions> requiredThumbDimensions){
+		this.requiredThumbDimensions = requiredThumbDimensions;
+	}
+
+	// editableFields:
+	public String getEditableFields(){
+		return this.editableFields;
+	}
+	public void setEditableFields(String editableFields){
+		this.editableFields = editableFields;
+	}
+
+	public void editableFields(String multirequestToken){
+		setToken("editableFields", multirequestToken);
+	}
+
+	// mandatoryFields:
+	public String getMandatoryFields(){
+		return this.mandatoryFields;
+	}
+	public void setMandatoryFields(String mandatoryFields){
+		this.mandatoryFields = mandatoryFields;
+	}
+
+	public void mandatoryFields(String multirequestToken){
+		setToken("mandatoryFields", multirequestToken);
+	}
 
 
-    public GenericDistributionProvider() {
-       super();
-    }
+	public GenericDistributionProvider() {
+		super();
+	}
 
-    public GenericDistributionProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericDistributionProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        status = GenericDistributionProviderStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        optionalFlavorParamsIds = GsonParser.parseString(jsonObject.get("optionalFlavorParamsIds"));
-        requiredFlavorParamsIds = GsonParser.parseString(jsonObject.get("requiredFlavorParamsIds"));
-        optionalThumbDimensions = GsonParser.parseArray(jsonObject.getAsJsonArray("optionalThumbDimensions"), DistributionThumbDimensions.class);
-        requiredThumbDimensions = GsonParser.parseArray(jsonObject.getAsJsonArray("requiredThumbDimensions"), DistributionThumbDimensions.class);
-        editableFields = GsonParser.parseString(jsonObject.get("editableFields"));
-        mandatoryFields = GsonParser.parseString(jsonObject.get("mandatoryFields"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		status = GenericDistributionProviderStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		optionalFlavorParamsIds = GsonParser.parseString(jsonObject.get("optionalFlavorParamsIds"));
+		requiredFlavorParamsIds = GsonParser.parseString(jsonObject.get("requiredFlavorParamsIds"));
+		optionalThumbDimensions = GsonParser.parseArray(jsonObject.getAsJsonArray("optionalThumbDimensions"), DistributionThumbDimensions.class);
+		requiredThumbDimensions = GsonParser.parseArray(jsonObject.getAsJsonArray("requiredThumbDimensions"), DistributionThumbDimensions.class);
+		editableFields = GsonParser.parseString(jsonObject.get("editableFields"));
+		mandatoryFields = GsonParser.parseString(jsonObject.get("mandatoryFields"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericDistributionProvider");
-        kparams.add("isDefault", this.isDefault);
-        kparams.add("optionalFlavorParamsIds", this.optionalFlavorParamsIds);
-        kparams.add("requiredFlavorParamsIds", this.requiredFlavorParamsIds);
-        kparams.add("optionalThumbDimensions", this.optionalThumbDimensions);
-        kparams.add("requiredThumbDimensions", this.requiredThumbDimensions);
-        kparams.add("editableFields", this.editableFields);
-        kparams.add("mandatoryFields", this.mandatoryFields);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericDistributionProvider");
+		kparams.add("isDefault", this.isDefault);
+		kparams.add("optionalFlavorParamsIds", this.optionalFlavorParamsIds);
+		kparams.add("requiredFlavorParamsIds", this.requiredFlavorParamsIds);
+		kparams.add("optionalThumbDimensions", this.optionalThumbDimensions);
+		kparams.add("requiredThumbDimensions", this.requiredThumbDimensions);
+		kparams.add("editableFields", this.editableFields);
+		kparams.add("mandatoryFields", this.mandatoryFields);
+		return kparams;
+	}
 
 }
 

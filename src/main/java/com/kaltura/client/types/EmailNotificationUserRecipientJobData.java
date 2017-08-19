@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.UserFilter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,39 +42,44 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  JobData representing the dynamic user receipient array  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationUserRecipientJobData.Tokenizer.class)
 public class EmailNotificationUserRecipientJobData extends EmailNotificationRecipientJobData {
+	
+	public interface Tokenizer extends EmailNotificationRecipientJobData.Tokenizer {
+		UserFilter.Tokenizer filter();
+	}
 
-    private UserFilter filter;
+	private UserFilter filter;
 
-    // filter:
-    public UserFilter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(UserFilter filter){
-        this.filter = filter;
-    }
+	// filter:
+	public UserFilter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(UserFilter filter){
+		this.filter = filter;
+	}
 
 
-    public EmailNotificationUserRecipientJobData() {
-       super();
-    }
+	public EmailNotificationUserRecipientJobData() {
+		super();
+	}
 
-    public EmailNotificationUserRecipientJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationUserRecipientJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationUserRecipientJobData");
-        kparams.add("filter", this.filter);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationUserRecipientJobData");
+		kparams.add("filter", this.filter);
+		return kparams;
+	}
 
 }
 

@@ -27,16 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.PartnerStatus;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.PartnerFilter;
 import com.kaltura.client.types.ReportInputFilter;
 import com.kaltura.client.types.VarPartnerUsageItem;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -47,35 +44,53 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Utility service for the Multi-publishers console  */
 public class VarConsoleService {
+	
+	public static class GetPartnerUsageVarConsoleBuilder extends ListResponseRequestBuilder<VarPartnerUsageItem, VarPartnerUsageItem.Tokenizer, GetPartnerUsageVarConsoleBuilder> {
+		
+		public GetPartnerUsageVarConsoleBuilder(PartnerFilter partnerFilter, ReportInputFilter usageFilter, FilterPager pager) {
+			super(VarPartnerUsageItem.class, "varconsole_varconsole", "getPartnerUsage");
+			params.add("partnerFilter", partnerFilter);
+			params.add("usageFilter", usageFilter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<VarPartnerUsageItem>> getPartnerUsage()  {
-        return getPartnerUsage(null);
-    }
+	public static GetPartnerUsageVarConsoleBuilder getPartnerUsage()  {
+		return getPartnerUsage(null);
+	}
 
-    public static RequestBuilder<ListResponse<VarPartnerUsageItem>> getPartnerUsage(PartnerFilter partnerFilter)  {
-        return getPartnerUsage(partnerFilter, null);
-    }
+	public static GetPartnerUsageVarConsoleBuilder getPartnerUsage(PartnerFilter partnerFilter)  {
+		return getPartnerUsage(partnerFilter, null);
+	}
 
-    public static RequestBuilder<ListResponse<VarPartnerUsageItem>> getPartnerUsage(PartnerFilter partnerFilter, ReportInputFilter usageFilter)  {
-        return getPartnerUsage(partnerFilter, usageFilter, null);
-    }
+	public static GetPartnerUsageVarConsoleBuilder getPartnerUsage(PartnerFilter partnerFilter, ReportInputFilter usageFilter)  {
+		return getPartnerUsage(partnerFilter, usageFilter, null);
+	}
 
 	/**  Function which calulates partner usage of a group of a VAR's sub-publishers  */
-    public static RequestBuilder<ListResponse<VarPartnerUsageItem>> getPartnerUsage(PartnerFilter partnerFilter, ReportInputFilter usageFilter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("partnerFilter", partnerFilter);
-        kparams.add("usageFilter", usageFilter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<VarPartnerUsageItem>(VarPartnerUsageItem.class, "varconsole_varconsole", "getPartnerUsage", kparams);
-    }
+    public static GetPartnerUsageVarConsoleBuilder getPartnerUsage(PartnerFilter partnerFilter, ReportInputFilter usageFilter, FilterPager pager)  {
+		return new GetPartnerUsageVarConsoleBuilder(partnerFilter, usageFilter, pager);
+	}
+	
+	public static class UpdateStatusVarConsoleBuilder extends NullRequestBuilder {
+		
+		public UpdateStatusVarConsoleBuilder(int id, PartnerStatus status) {
+			super("varconsole_varconsole", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Function to change a sub-publisher's status  */
-    public static RequestBuilder<Void> updateStatus(int id, PartnerStatus status)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("status", status);
-
-        return new NullRequestBuilder("varconsole_varconsole", "updateStatus", kparams);
-    }
+    public static UpdateStatusVarConsoleBuilder updateStatus(int id, PartnerStatus status)  {
+		return new UpdateStatusVarConsoleBuilder(id, status);
+	}
 }

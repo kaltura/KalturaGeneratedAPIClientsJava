@@ -34,50 +34,50 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SourceType implements EnumAsString {
-    VELOCIX_LIVE("velocix.VELOCIX_LIVE"),
-    FILE("1"),
-    WEBCAM("2"),
-    URL("5"),
-    SEARCH_PROVIDER("6"),
-    AKAMAI_LIVE("29"),
-    MANUAL_LIVE_STREAM("30"),
-    AKAMAI_UNIVERSAL_LIVE("31"),
-    LIVE_STREAM("32"),
-    LIVE_CHANNEL("33"),
-    RECORDED_LIVE("34"),
-    CLIP("35"),
-    KALTURA_RECORDED_LIVE("36"),
-    LECTURE_CAPTURE("37"),
-    LIVE_STREAM_ONTEXTDATA_CAPTIONS("42");
+	VELOCIX_LIVE("velocix.VELOCIX_LIVE"),
+	FILE("1"),
+	WEBCAM("2"),
+	URL("5"),
+	SEARCH_PROVIDER("6"),
+	AKAMAI_LIVE("29"),
+	MANUAL_LIVE_STREAM("30"),
+	AKAMAI_UNIVERSAL_LIVE("31"),
+	LIVE_STREAM("32"),
+	LIVE_CHANNEL("33"),
+	RECORDED_LIVE("34"),
+	CLIP("35"),
+	KALTURA_RECORDED_LIVE("36"),
+	LECTURE_CAPTURE("37"),
+	LIVE_STREAM_ONTEXTDATA_CAPTIONS("42");
 
-    private String value;
+	private String value;
 
-    SourceType(String value) {
-        this.value = value;
-    }
+	SourceType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static SourceType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SourceType defined values and compare the inner value with the given one:
-        for(SourceType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SourceType.values().length > 0 ? SourceType.values()[0]: null;
+	public static SourceType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SourceType defined values and compare the inner value with the given one:
+		for(SourceType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SourceType.values().length > 0 ? SourceType.values()[0]: null;
    }
 }

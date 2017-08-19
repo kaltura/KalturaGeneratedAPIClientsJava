@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum IntegrationProviderType implements EnumAsString {
-    CIELO24("cielo24.Cielo24"),
-    VOICEBASE("voicebase.Voicebase");
+	CIELO24("cielo24.Cielo24"),
+	VOICEBASE("voicebase.Voicebase");
 
-    private String value;
+	private String value;
 
-    IntegrationProviderType(String value) {
-        this.value = value;
-    }
+	IntegrationProviderType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static IntegrationProviderType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over IntegrationProviderType defined values and compare the inner value with the given one:
-        for(IntegrationProviderType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return IntegrationProviderType.values().length > 0 ? IntegrationProviderType.values()[0]: null;
+	public static IntegrationProviderType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over IntegrationProviderType defined values and compare the inner value with the given one:
+		for(IntegrationProviderType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return IntegrationProviderType.values().length > 0 ? IntegrationProviderType.values()[0]: null;
    }
 }

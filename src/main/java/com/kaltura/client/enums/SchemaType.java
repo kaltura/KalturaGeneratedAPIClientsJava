@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SchemaType implements EnumAsString {
-    BULK_UPLOAD_RESULT_XML("bulkUploadXml.bulkUploadResultXML"),
-    BULK_UPLOAD_XML("bulkUploadXml.bulkUploadXML"),
-    INGEST_API("cuePoint.ingestAPI"),
-    SERVE_API("cuePoint.serveAPI"),
-    DROP_FOLDER_XML("dropFolderXmlBulkUpload.dropFolderXml"),
-    SYNDICATION("syndication");
+	BULK_UPLOAD_RESULT_XML("bulkUploadXml.bulkUploadResultXML"),
+	BULK_UPLOAD_XML("bulkUploadXml.bulkUploadXML"),
+	INGEST_API("cuePoint.ingestAPI"),
+	SERVE_API("cuePoint.serveAPI"),
+	DROP_FOLDER_XML("dropFolderXmlBulkUpload.dropFolderXml"),
+	SYNDICATION("syndication");
 
-    private String value;
+	private String value;
 
-    SchemaType(String value) {
-        this.value = value;
-    }
+	SchemaType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static SchemaType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SchemaType defined values and compare the inner value with the given one:
-        for(SchemaType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SchemaType.values().length > 0 ? SchemaType.values()[0]: null;
+	public static SchemaType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SchemaType defined values and compare the inner value with the given one:
+		for(SchemaType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SchemaType.values().length > 0 ? SchemaType.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,51 +40,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControlLimitDeliveryProfilesAction.Tokenizer.class)
 public class AccessControlLimitDeliveryProfilesAction extends RuleAction {
+	
+	public interface Tokenizer extends RuleAction.Tokenizer {
+		String deliveryProfileIds();
+		String isBlockedList();
+	}
 
 	/**  Comma separated list of delivery profile ids  */
-    private String deliveryProfileIds;
-    private Boolean isBlockedList;
+	private String deliveryProfileIds;
+	private Boolean isBlockedList;
 
-    // deliveryProfileIds:
-    public String getDeliveryProfileIds(){
-        return this.deliveryProfileIds;
-    }
-    public void setDeliveryProfileIds(String deliveryProfileIds){
-        this.deliveryProfileIds = deliveryProfileIds;
-    }
+	// deliveryProfileIds:
+	public String getDeliveryProfileIds(){
+		return this.deliveryProfileIds;
+	}
+	public void setDeliveryProfileIds(String deliveryProfileIds){
+		this.deliveryProfileIds = deliveryProfileIds;
+	}
 
-    // isBlockedList:
-    public Boolean getIsBlockedList(){
-        return this.isBlockedList;
-    }
-    public void setIsBlockedList(Boolean isBlockedList){
-        this.isBlockedList = isBlockedList;
-    }
+	public void deliveryProfileIds(String multirequestToken){
+		setToken("deliveryProfileIds", multirequestToken);
+	}
+
+	// isBlockedList:
+	public Boolean getIsBlockedList(){
+		return this.isBlockedList;
+	}
+	public void setIsBlockedList(Boolean isBlockedList){
+		this.isBlockedList = isBlockedList;
+	}
+
+	public void isBlockedList(String multirequestToken){
+		setToken("isBlockedList", multirequestToken);
+	}
 
 
-    public AccessControlLimitDeliveryProfilesAction() {
-       super();
-    }
+	public AccessControlLimitDeliveryProfilesAction() {
+		super();
+	}
 
-    public AccessControlLimitDeliveryProfilesAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControlLimitDeliveryProfilesAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        deliveryProfileIds = GsonParser.parseString(jsonObject.get("deliveryProfileIds"));
-        isBlockedList = GsonParser.parseBoolean(jsonObject.get("isBlockedList"));
+		// set members values:
+		deliveryProfileIds = GsonParser.parseString(jsonObject.get("deliveryProfileIds"));
+		isBlockedList = GsonParser.parseBoolean(jsonObject.get("isBlockedList"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControlLimitDeliveryProfilesAction");
-        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
-        kparams.add("isBlockedList", this.isBlockedList);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControlLimitDeliveryProfilesAction");
+		kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+		kparams.add("isBlockedList", this.isBlockedList);
+		return kparams;
+	}
 
 }
 

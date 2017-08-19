@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ThumbAssetStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,83 +41,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbAssetBaseFilter.Tokenizer.class)
 public abstract class ThumbAssetBaseFilter extends AssetFilter {
+	
+	public interface Tokenizer extends AssetFilter.Tokenizer {
+		String thumbParamsIdEqual();
+		String thumbParamsIdIn();
+		String statusEqual();
+		String statusIn();
+		String statusNotIn();
+	}
 
-    private Integer thumbParamsIdEqual;
-    private String thumbParamsIdIn;
-    private ThumbAssetStatus statusEqual;
-    private String statusIn;
-    private String statusNotIn;
+	private Integer thumbParamsIdEqual;
+	private String thumbParamsIdIn;
+	private ThumbAssetStatus statusEqual;
+	private String statusIn;
+	private String statusNotIn;
 
-    // thumbParamsIdEqual:
-    public Integer getThumbParamsIdEqual(){
-        return this.thumbParamsIdEqual;
-    }
-    public void setThumbParamsIdEqual(Integer thumbParamsIdEqual){
-        this.thumbParamsIdEqual = thumbParamsIdEqual;
-    }
+	// thumbParamsIdEqual:
+	public Integer getThumbParamsIdEqual(){
+		return this.thumbParamsIdEqual;
+	}
+	public void setThumbParamsIdEqual(Integer thumbParamsIdEqual){
+		this.thumbParamsIdEqual = thumbParamsIdEqual;
+	}
 
-    // thumbParamsIdIn:
-    public String getThumbParamsIdIn(){
-        return this.thumbParamsIdIn;
-    }
-    public void setThumbParamsIdIn(String thumbParamsIdIn){
-        this.thumbParamsIdIn = thumbParamsIdIn;
-    }
+	public void thumbParamsIdEqual(String multirequestToken){
+		setToken("thumbParamsIdEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public ThumbAssetStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(ThumbAssetStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// thumbParamsIdIn:
+	public String getThumbParamsIdIn(){
+		return this.thumbParamsIdIn;
+	}
+	public void setThumbParamsIdIn(String thumbParamsIdIn){
+		this.thumbParamsIdIn = thumbParamsIdIn;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void thumbParamsIdIn(String multirequestToken){
+		setToken("thumbParamsIdIn", multirequestToken);
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	// statusEqual:
+	public ThumbAssetStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(ThumbAssetStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
+
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
 
 
-    public ThumbAssetBaseFilter() {
-       super();
-    }
+	public ThumbAssetBaseFilter() {
+		super();
+	}
 
-    public ThumbAssetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbAssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        thumbParamsIdEqual = GsonParser.parseInt(jsonObject.get("thumbParamsIdEqual"));
-        thumbParamsIdIn = GsonParser.parseString(jsonObject.get("thumbParamsIdIn"));
-        statusEqual = ThumbAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		// set members values:
+		thumbParamsIdEqual = GsonParser.parseInt(jsonObject.get("thumbParamsIdEqual"));
+		thumbParamsIdIn = GsonParser.parseString(jsonObject.get("thumbParamsIdIn"));
+		statusEqual = ThumbAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbAssetBaseFilter");
-        kparams.add("thumbParamsIdEqual", this.thumbParamsIdEqual);
-        kparams.add("thumbParamsIdIn", this.thumbParamsIdIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbAssetBaseFilter");
+		kparams.add("thumbParamsIdEqual", this.thumbParamsIdEqual);
+		kparams.add("thumbParamsIdIn", this.thumbParamsIdIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		return kparams;
+	}
 
 }
 

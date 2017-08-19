@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DocumentEntryCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaDocumentEntry attributes. Use
   KalturaDocumentEntryCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DocumentEntryCompareAttributeCondition.Tokenizer.class)
 public class DocumentEntryCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private DocumentEntryCompareAttribute attribute;
+	private DocumentEntryCompareAttribute attribute;
 
-    // attribute:
-    public DocumentEntryCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(DocumentEntryCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public DocumentEntryCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(DocumentEntryCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public DocumentEntryCompareAttributeCondition() {
-       super();
-    }
+	public DocumentEntryCompareAttributeCondition() {
+		super();
+	}
 
-    public DocumentEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DocumentEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = DocumentEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = DocumentEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDocumentEntryCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDocumentEntryCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

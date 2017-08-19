@@ -34,24 +34,24 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum YoutubeApiDistributionProviderOrderBy implements EnumAsString {
-    /** Place holder for future values */;
+	/** Place holder for future values */;
 
-    private String value;
+	private String value;
 
-    YoutubeApiDistributionProviderOrderBy(String value) {
-        this.value = value;
-    }
+	YoutubeApiDistributionProviderOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static YoutubeApiDistributionProviderOrderBy get(String value) {
-    	return null;
-    }
+	public static YoutubeApiDistributionProviderOrderBy get(String value) {
+		return null;
+	}
 }

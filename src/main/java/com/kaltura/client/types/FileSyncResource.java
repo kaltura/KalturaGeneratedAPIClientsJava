@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,76 +43,100 @@ import com.kaltura.client.utils.GsonParser;
   file in the past, the new created flavor asset will be ready immediately using a
   file sync of link type that will point to the existing file sync.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FileSyncResource.Tokenizer.class)
 public class FileSyncResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		String fileSyncObjectType();
+		String objectSubType();
+		String objectId();
+		String version();
+	}
 
 	/**  The object type of the file sync object  */
-    private Integer fileSyncObjectType;
+	private Integer fileSyncObjectType;
 	/**  The object sub-type of the file sync object  */
-    private Integer objectSubType;
+	private Integer objectSubType;
 	/**  The object id of the file sync object  */
-    private String objectId;
+	private String objectId;
 	/**  The version of the file sync object  */
-    private String version;
+	private String version;
 
-    // fileSyncObjectType:
-    public Integer getFileSyncObjectType(){
-        return this.fileSyncObjectType;
-    }
-    public void setFileSyncObjectType(Integer fileSyncObjectType){
-        this.fileSyncObjectType = fileSyncObjectType;
-    }
+	// fileSyncObjectType:
+	public Integer getFileSyncObjectType(){
+		return this.fileSyncObjectType;
+	}
+	public void setFileSyncObjectType(Integer fileSyncObjectType){
+		this.fileSyncObjectType = fileSyncObjectType;
+	}
 
-    // objectSubType:
-    public Integer getObjectSubType(){
-        return this.objectSubType;
-    }
-    public void setObjectSubType(Integer objectSubType){
-        this.objectSubType = objectSubType;
-    }
+	public void fileSyncObjectType(String multirequestToken){
+		setToken("fileSyncObjectType", multirequestToken);
+	}
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	// objectSubType:
+	public Integer getObjectSubType(){
+		return this.objectSubType;
+	}
+	public void setObjectSubType(Integer objectSubType){
+		this.objectSubType = objectSubType;
+	}
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	public void objectSubType(String multirequestToken){
+		setToken("objectSubType", multirequestToken);
+	}
+
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
+
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
+
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
 
-    public FileSyncResource() {
-       super();
-    }
+	public FileSyncResource() {
+		super();
+	}
 
-    public FileSyncResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FileSyncResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fileSyncObjectType = GsonParser.parseInt(jsonObject.get("fileSyncObjectType"));
-        objectSubType = GsonParser.parseInt(jsonObject.get("objectSubType"));
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        version = GsonParser.parseString(jsonObject.get("version"));
+		// set members values:
+		fileSyncObjectType = GsonParser.parseInt(jsonObject.get("fileSyncObjectType"));
+		objectSubType = GsonParser.parseInt(jsonObject.get("objectSubType"));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		version = GsonParser.parseString(jsonObject.get("version"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFileSyncResource");
-        kparams.add("fileSyncObjectType", this.fileSyncObjectType);
-        kparams.add("objectSubType", this.objectSubType);
-        kparams.add("objectId", this.objectId);
-        kparams.add("version", this.version);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFileSyncResource");
+		kparams.add("fileSyncObjectType", this.fileSyncObjectType);
+		kparams.add("objectSubType", this.objectSubType);
+		kparams.add("objectId", this.objectId);
+		kparams.add("version", this.version);
+		return kparams;
+	}
 
 }
 

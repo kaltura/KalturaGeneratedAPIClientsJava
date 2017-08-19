@@ -30,7 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,23 +41,27 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Abstract class for asset distribution condition  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetDistributionCondition.Tokenizer.class)
 public abstract class AssetDistributionCondition extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+	}
 
 
 
-    public AssetDistributionCondition() {
-       super();
-    }
+	public AssetDistributionCondition() {
+		super();
+	}
 
-    public AssetDistributionCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public AssetDistributionCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetDistributionCondition");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetDistributionCondition");
+		return kparams;
+	}
 
 }
 

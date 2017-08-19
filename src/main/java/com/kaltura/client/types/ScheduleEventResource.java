@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,82 +41,111 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleEventResource.Tokenizer.class)
 public class ScheduleEventResource extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String eventId();
+		String resourceId();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+	}
 
-    private Integer eventId;
-    private Integer resourceId;
-    private Integer partnerId;
+	private Integer eventId;
+	private Integer resourceId;
+	private Integer partnerId;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Last update as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 
-    // eventId:
-    public Integer getEventId(){
-        return this.eventId;
-    }
-    public void setEventId(Integer eventId){
-        this.eventId = eventId;
-    }
+	// eventId:
+	public Integer getEventId(){
+		return this.eventId;
+	}
+	public void setEventId(Integer eventId){
+		this.eventId = eventId;
+	}
 
-    // resourceId:
-    public Integer getResourceId(){
-        return this.resourceId;
-    }
-    public void setResourceId(Integer resourceId){
-        this.resourceId = resourceId;
-    }
+	public void eventId(String multirequestToken){
+		setToken("eventId", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// resourceId:
+	public Integer getResourceId(){
+		return this.resourceId;
+	}
+	public void setResourceId(Integer resourceId){
+		this.resourceId = resourceId;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void resourceId(String multirequestToken){
+		setToken("resourceId", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
+
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
 
-    public ScheduleEventResource() {
-       super();
-    }
+	public ScheduleEventResource() {
+		super();
+	}
 
-    public ScheduleEventResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleEventResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventId = GsonParser.parseInt(jsonObject.get("eventId"));
-        resourceId = GsonParser.parseInt(jsonObject.get("resourceId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		// set members values:
+		eventId = GsonParser.parseInt(jsonObject.get("eventId"));
+		resourceId = GsonParser.parseInt(jsonObject.get("resourceId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventResource");
-        kparams.add("eventId", this.eventId);
-        kparams.add("resourceId", this.resourceId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleEventResource");
+		kparams.add("eventId", this.eventId);
+		kparams.add("resourceId", this.resourceId);
+		return kparams;
+	}
 
 }
 

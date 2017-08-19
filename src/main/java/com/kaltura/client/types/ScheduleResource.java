@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ScheduleResourceStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,138 +42,192 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleResource.Tokenizer.class)
 public abstract class ScheduleResource extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String parentId();
+		String partnerId();
+		String name();
+		String systemName();
+		String description();
+		String status();
+		String tags();
+		String createdAt();
+		String updatedAt();
+	}
 
 	/**  Auto-generated unique identifier  */
-    private Integer id;
-    private Integer parentId;
-    private Integer partnerId;
+	private Integer id;
+	private Integer parentId;
+	private Integer partnerId;
 	/**  Defines a short name  */
-    private String name;
+	private String name;
 	/**  Defines a unique system-name  */
-    private String systemName;
-    private String description;
-    private ScheduleResourceStatus status;
-    private String tags;
+	private String systemName;
+	private String description;
+	private ScheduleResourceStatus status;
+	private String tags;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Last update as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // parentId:
-    public Integer getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(Integer parentId){
-        this.parentId = parentId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// parentId:
+	public Integer getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(Integer parentId){
+		this.parentId = parentId;
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // status:
-    public ScheduleResourceStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ScheduleResourceStatus status){
-        this.status = status;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// status:
+	public ScheduleResourceStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ScheduleResourceStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
 
-    public ScheduleResource() {
-       super();
-    }
+	public ScheduleResource() {
+		super();
+	}
 
-    public ScheduleResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        parentId = GsonParser.parseInt(jsonObject.get("parentId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        status = ScheduleResourceStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		parentId = GsonParser.parseInt(jsonObject.get("parentId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		status = ScheduleResourceStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleResource");
-        kparams.add("parentId", this.parentId);
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("tags", this.tags);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleResource");
+		kparams.add("parentId", this.parentId);
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("tags", this.tags);
+		return kparams;
+	}
 
 }
 

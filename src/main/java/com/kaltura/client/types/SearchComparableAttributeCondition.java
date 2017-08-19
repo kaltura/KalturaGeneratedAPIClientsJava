@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SearchConditionComparison;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +41,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchComparableAttributeCondition.Tokenizer.class)
 public abstract class SearchComparableAttributeCondition extends AttributeCondition {
+	
+	public interface Tokenizer extends AttributeCondition.Tokenizer {
+		String comparison();
+	}
 
-    private SearchConditionComparison comparison;
+	private SearchConditionComparison comparison;
 
-    // comparison:
-    public SearchConditionComparison getComparison(){
-        return this.comparison;
-    }
-    public void setComparison(SearchConditionComparison comparison){
-        this.comparison = comparison;
-    }
+	// comparison:
+	public SearchConditionComparison getComparison(){
+		return this.comparison;
+	}
+	public void setComparison(SearchConditionComparison comparison){
+		this.comparison = comparison;
+	}
+
+	public void comparison(String multirequestToken){
+		setToken("comparison", multirequestToken);
+	}
 
 
-    public SearchComparableAttributeCondition() {
-       super();
-    }
+	public SearchComparableAttributeCondition() {
+		super();
+	}
 
-    public SearchComparableAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchComparableAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        comparison = SearchConditionComparison.get(GsonParser.parseString(jsonObject.get("comparison")));
+		// set members values:
+		comparison = SearchConditionComparison.get(GsonParser.parseString(jsonObject.get("comparison")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchComparableAttributeCondition");
-        kparams.add("comparison", this.comparison);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchComparableAttributeCondition");
+		kparams.add("comparison", this.comparison);
+		return kparams;
+	}
 
 }
 

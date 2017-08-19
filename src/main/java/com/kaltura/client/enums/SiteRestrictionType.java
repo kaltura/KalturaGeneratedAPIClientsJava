@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SiteRestrictionType implements EnumAsInt {
-    RESTRICT_SITE_LIST(0),
-    ALLOW_SITE_LIST(1);
+	RESTRICT_SITE_LIST(0),
+	ALLOW_SITE_LIST(1);
 
-    private int value;
+	private int value;
 
-    SiteRestrictionType(int value) {
-        this.value = value;
-    }
+	SiteRestrictionType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static SiteRestrictionType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SiteRestrictionType defined values and compare the inner value with the given one:
-        for(SiteRestrictionType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SiteRestrictionType.values().length > 0 ? SiteRestrictionType.values()[0]: null;
+	public static SiteRestrictionType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SiteRestrictionType defined values and compare the inner value with the given one:
+		for(SiteRestrictionType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SiteRestrictionType.values().length > 0 ? SiteRestrictionType.values()[0]: null;
    }
 }

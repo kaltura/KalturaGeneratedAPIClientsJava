@@ -34,24 +34,24 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ImageFlavorParamsOrderBy implements EnumAsString {
-    /** Place holder for future values */;
+	/** Place holder for future values */;
 
-    private String value;
+	private String value;
 
-    ImageFlavorParamsOrderBy(String value) {
-        this.value = value;
-    }
+	ImageFlavorParamsOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ImageFlavorParamsOrderBy get(String value) {
-    	return null;
-    }
+	public static ImageFlavorParamsOrderBy get(String value) {
+		return null;
+	}
 }

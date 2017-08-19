@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ContainerFormat;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,95 +41,129 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetParamsOutput.Tokenizer.class)
 public class AssetParamsOutput extends AssetParams {
+	
+	public interface Tokenizer extends AssetParams.Tokenizer {
+		String assetParamsId();
+		String assetParamsVersion();
+		String assetId();
+		String assetVersion();
+		String readyBehavior();
+		String format();
+	}
 
-    private Integer assetParamsId;
-    private String assetParamsVersion;
-    private String assetId;
-    private String assetVersion;
-    private Integer readyBehavior;
+	private Integer assetParamsId;
+	private String assetParamsVersion;
+	private String assetId;
+	private String assetVersion;
+	private Integer readyBehavior;
 	/**  The container format of the Flavor Params  */
-    private ContainerFormat format;
+	private ContainerFormat format;
 
-    // assetParamsId:
-    public Integer getAssetParamsId(){
-        return this.assetParamsId;
-    }
-    public void setAssetParamsId(Integer assetParamsId){
-        this.assetParamsId = assetParamsId;
-    }
+	// assetParamsId:
+	public Integer getAssetParamsId(){
+		return this.assetParamsId;
+	}
+	public void setAssetParamsId(Integer assetParamsId){
+		this.assetParamsId = assetParamsId;
+	}
 
-    // assetParamsVersion:
-    public String getAssetParamsVersion(){
-        return this.assetParamsVersion;
-    }
-    public void setAssetParamsVersion(String assetParamsVersion){
-        this.assetParamsVersion = assetParamsVersion;
-    }
+	public void assetParamsId(String multirequestToken){
+		setToken("assetParamsId", multirequestToken);
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	// assetParamsVersion:
+	public String getAssetParamsVersion(){
+		return this.assetParamsVersion;
+	}
+	public void setAssetParamsVersion(String assetParamsVersion){
+		this.assetParamsVersion = assetParamsVersion;
+	}
 
-    // assetVersion:
-    public String getAssetVersion(){
-        return this.assetVersion;
-    }
-    public void setAssetVersion(String assetVersion){
-        this.assetVersion = assetVersion;
-    }
+	public void assetParamsVersion(String multirequestToken){
+		setToken("assetParamsVersion", multirequestToken);
+	}
 
-    // readyBehavior:
-    public Integer getReadyBehavior(){
-        return this.readyBehavior;
-    }
-    public void setReadyBehavior(Integer readyBehavior){
-        this.readyBehavior = readyBehavior;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
 
-    // format:
-    public ContainerFormat getFormat(){
-        return this.format;
-    }
-    public void setFormat(ContainerFormat format){
-        this.format = format;
-    }
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
+
+	// assetVersion:
+	public String getAssetVersion(){
+		return this.assetVersion;
+	}
+	public void setAssetVersion(String assetVersion){
+		this.assetVersion = assetVersion;
+	}
+
+	public void assetVersion(String multirequestToken){
+		setToken("assetVersion", multirequestToken);
+	}
+
+	// readyBehavior:
+	public Integer getReadyBehavior(){
+		return this.readyBehavior;
+	}
+	public void setReadyBehavior(Integer readyBehavior){
+		this.readyBehavior = readyBehavior;
+	}
+
+	public void readyBehavior(String multirequestToken){
+		setToken("readyBehavior", multirequestToken);
+	}
+
+	// format:
+	public ContainerFormat getFormat(){
+		return this.format;
+	}
+	public void setFormat(ContainerFormat format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
 
 
-    public AssetParamsOutput() {
-       super();
-    }
+	public AssetParamsOutput() {
+		super();
+	}
 
-    public AssetParamsOutput(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetParamsOutput(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
-        assetParamsVersion = GsonParser.parseString(jsonObject.get("assetParamsVersion"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        assetVersion = GsonParser.parseString(jsonObject.get("assetVersion"));
-        readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
-        format = ContainerFormat.get(GsonParser.parseString(jsonObject.get("format")));
+		// set members values:
+		assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
+		assetParamsVersion = GsonParser.parseString(jsonObject.get("assetParamsVersion"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		assetVersion = GsonParser.parseString(jsonObject.get("assetVersion"));
+		readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
+		format = ContainerFormat.get(GsonParser.parseString(jsonObject.get("format")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetParamsOutput");
-        kparams.add("assetParamsId", this.assetParamsId);
-        kparams.add("assetParamsVersion", this.assetParamsVersion);
-        kparams.add("assetId", this.assetId);
-        kparams.add("assetVersion", this.assetVersion);
-        kparams.add("readyBehavior", this.readyBehavior);
-        kparams.add("format", this.format);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetParamsOutput");
+		kparams.add("assetParamsId", this.assetParamsId);
+		kparams.add("assetParamsVersion", this.assetParamsVersion);
+		kparams.add("assetId", this.assetId);
+		kparams.add("assetVersion", this.assetVersion);
+		kparams.add("readyBehavior", this.readyBehavior);
+		kparams.add("format", this.format);
+		return kparams;
+	}
 
 }
 

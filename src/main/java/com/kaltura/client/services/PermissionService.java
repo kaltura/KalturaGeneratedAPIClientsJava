@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Permission;
 import com.kaltura.client.types.PermissionFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -44,63 +42,105 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Permission service lets you create and manage user permissions  */
 public class PermissionService {
+	
+	public static class AddPermissionBuilder extends RequestBuilder<Permission, Permission.Tokenizer, AddPermissionBuilder> {
+		
+		public AddPermissionBuilder(Permission permission) {
+			super(Permission.class, "permission", "add");
+			params.add("permission", permission);
+		}
+	}
 
 	/**  Adds a new permission object to the account.  */
-    public static RequestBuilder<Permission> add(Permission permission)  {
-        Params kparams = new Params();
-        kparams.add("permission", permission);
-
-        return new RequestBuilder<Permission>(Permission.class, "permission", "add", kparams);
-    }
+    public static AddPermissionBuilder add(Permission permission)  {
+		return new AddPermissionBuilder(permission);
+	}
+	
+	public static class DeletePermissionBuilder extends RequestBuilder<Permission, Permission.Tokenizer, DeletePermissionBuilder> {
+		
+		public DeletePermissionBuilder(String permissionName) {
+			super(Permission.class, "permission", "delete");
+			params.add("permissionName", permissionName);
+		}
+		
+		public void permissionName(String multirequestToken) {
+			params.add("permissionName", multirequestToken);
+		}
+	}
 
 	/**  Deletes an existing permission object.  */
-    public static RequestBuilder<Permission> delete(String permissionName)  {
-        Params kparams = new Params();
-        kparams.add("permissionName", permissionName);
-
-        return new RequestBuilder<Permission>(Permission.class, "permission", "delete", kparams);
-    }
+    public static DeletePermissionBuilder delete(String permissionName)  {
+		return new DeletePermissionBuilder(permissionName);
+	}
+	
+	public static class GetPermissionBuilder extends RequestBuilder<Permission, Permission.Tokenizer, GetPermissionBuilder> {
+		
+		public GetPermissionBuilder(String permissionName) {
+			super(Permission.class, "permission", "get");
+			params.add("permissionName", permissionName);
+		}
+		
+		public void permissionName(String multirequestToken) {
+			params.add("permissionName", multirequestToken);
+		}
+	}
 
 	/**  Retrieves a permission object using its ID.  */
-    public static RequestBuilder<Permission> get(String permissionName)  {
-        Params kparams = new Params();
-        kparams.add("permissionName", permissionName);
-
-        return new RequestBuilder<Permission>(Permission.class, "permission", "get", kparams);
-    }
+    public static GetPermissionBuilder get(String permissionName)  {
+		return new GetPermissionBuilder(permissionName);
+	}
+	
+	public static class GetCurrentPermissionsPermissionBuilder extends RequestBuilder<String, String, GetCurrentPermissionsPermissionBuilder> {
+		
+		public GetCurrentPermissionsPermissionBuilder() {
+			super(String.class, "permission", "getCurrentPermissions");
+		}
+	}
 
 	/**  Retrieves a list of permissions that apply to the current KS.  */
-    public static RequestBuilder<String> getCurrentPermissions()  {
-        Params kparams = new Params();
+    public static GetCurrentPermissionsPermissionBuilder getCurrentPermissions()  {
+		return new GetCurrentPermissionsPermissionBuilder();
+	}
+	
+	public static class ListPermissionBuilder extends ListResponseRequestBuilder<Permission, Permission.Tokenizer, ListPermissionBuilder> {
+		
+		public ListPermissionBuilder(PermissionFilter filter, FilterPager pager) {
+			super(Permission.class, "permission", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "permission", "getCurrentPermissions", kparams);
-    }
+	public static ListPermissionBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Permission>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Permission>> list(PermissionFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListPermissionBuilder list(PermissionFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Lists permission objects that are associated with an account.   Blocked
 	  permissions are listed unless you use a filter to exclude them.   Blocked
 	  permissions are listed unless you use a filter to exclude them.  */
-    public static RequestBuilder<ListResponse<Permission>> list(PermissionFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Permission>(Permission.class, "permission", "list", kparams);
-    }
+    public static ListPermissionBuilder list(PermissionFilter filter, FilterPager pager)  {
+		return new ListPermissionBuilder(filter, pager);
+	}
+	
+	public static class UpdatePermissionBuilder extends RequestBuilder<Permission, Permission.Tokenizer, UpdatePermissionBuilder> {
+		
+		public UpdatePermissionBuilder(String permissionName, Permission permission) {
+			super(Permission.class, "permission", "update");
+			params.add("permissionName", permissionName);
+			params.add("permission", permission);
+		}
+		
+		public void permissionName(String multirequestToken) {
+			params.add("permissionName", multirequestToken);
+		}
+	}
 
 	/**  Updates an existing permission object.  */
-    public static RequestBuilder<Permission> update(String permissionName, Permission permission)  {
-        Params kparams = new Params();
-        kparams.add("permissionName", permissionName);
-        kparams.add("permission", permission);
-
-        return new RequestBuilder<Permission>(Permission.class, "permission", "update", kparams);
-    }
+    public static UpdatePermissionBuilder update(String permissionName, Permission permission)  {
+		return new UpdatePermissionBuilder(permissionName, permission);
+	}
 }

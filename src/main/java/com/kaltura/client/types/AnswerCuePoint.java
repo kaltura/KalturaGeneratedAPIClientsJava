@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,92 +42,122 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AnswerCuePoint.Tokenizer.class)
 public class AnswerCuePoint extends CuePoint {
+	
+	public interface Tokenizer extends CuePoint.Tokenizer {
+		String parentId();
+		String quizUserEntryId();
+		String answerKey();
+		String isCorrect();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> correctAnswerKeys();
+		String explanation();
+	}
 
-    private String parentId;
-    private String quizUserEntryId;
-    private String answerKey;
-    private Boolean isCorrect;
+	private String parentId;
+	private String quizUserEntryId;
+	private String answerKey;
+	private Boolean isCorrect;
 	/**  Array of string  */
-    private List<StringHolder> correctAnswerKeys;
-    private String explanation;
+	private List<StringHolder> correctAnswerKeys;
+	private String explanation;
 
-    // parentId:
-    public String getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(String parentId){
-        this.parentId = parentId;
-    }
+	// parentId:
+	public String getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(String parentId){
+		this.parentId = parentId;
+	}
 
-    // quizUserEntryId:
-    public String getQuizUserEntryId(){
-        return this.quizUserEntryId;
-    }
-    public void setQuizUserEntryId(String quizUserEntryId){
-        this.quizUserEntryId = quizUserEntryId;
-    }
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
 
-    // answerKey:
-    public String getAnswerKey(){
-        return this.answerKey;
-    }
-    public void setAnswerKey(String answerKey){
-        this.answerKey = answerKey;
-    }
+	// quizUserEntryId:
+	public String getQuizUserEntryId(){
+		return this.quizUserEntryId;
+	}
+	public void setQuizUserEntryId(String quizUserEntryId){
+		this.quizUserEntryId = quizUserEntryId;
+	}
 
-    // isCorrect:
-    public Boolean getIsCorrect(){
-        return this.isCorrect;
-    }
-    public void setIsCorrect(Boolean isCorrect){
-        this.isCorrect = isCorrect;
-    }
+	public void quizUserEntryId(String multirequestToken){
+		setToken("quizUserEntryId", multirequestToken);
+	}
 
-    // correctAnswerKeys:
-    public List<StringHolder> getCorrectAnswerKeys(){
-        return this.correctAnswerKeys;
-    }
-    public void setCorrectAnswerKeys(List<StringHolder> correctAnswerKeys){
-        this.correctAnswerKeys = correctAnswerKeys;
-    }
+	// answerKey:
+	public String getAnswerKey(){
+		return this.answerKey;
+	}
+	public void setAnswerKey(String answerKey){
+		this.answerKey = answerKey;
+	}
 
-    // explanation:
-    public String getExplanation(){
-        return this.explanation;
-    }
-    public void setExplanation(String explanation){
-        this.explanation = explanation;
-    }
+	public void answerKey(String multirequestToken){
+		setToken("answerKey", multirequestToken);
+	}
+
+	// isCorrect:
+	public Boolean getIsCorrect(){
+		return this.isCorrect;
+	}
+	public void setIsCorrect(Boolean isCorrect){
+		this.isCorrect = isCorrect;
+	}
+
+	public void isCorrect(String multirequestToken){
+		setToken("isCorrect", multirequestToken);
+	}
+
+	// correctAnswerKeys:
+	public List<StringHolder> getCorrectAnswerKeys(){
+		return this.correctAnswerKeys;
+	}
+	public void setCorrectAnswerKeys(List<StringHolder> correctAnswerKeys){
+		this.correctAnswerKeys = correctAnswerKeys;
+	}
+
+	// explanation:
+	public String getExplanation(){
+		return this.explanation;
+	}
+	public void setExplanation(String explanation){
+		this.explanation = explanation;
+	}
+
+	public void explanation(String multirequestToken){
+		setToken("explanation", multirequestToken);
+	}
 
 
-    public AnswerCuePoint() {
-       super();
-    }
+	public AnswerCuePoint() {
+		super();
+	}
 
-    public AnswerCuePoint(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AnswerCuePoint(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentId = GsonParser.parseString(jsonObject.get("parentId"));
-        quizUserEntryId = GsonParser.parseString(jsonObject.get("quizUserEntryId"));
-        answerKey = GsonParser.parseString(jsonObject.get("answerKey"));
-        isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
-        correctAnswerKeys = GsonParser.parseArray(jsonObject.getAsJsonArray("correctAnswerKeys"), StringHolder.class);
-        explanation = GsonParser.parseString(jsonObject.get("explanation"));
+		// set members values:
+		parentId = GsonParser.parseString(jsonObject.get("parentId"));
+		quizUserEntryId = GsonParser.parseString(jsonObject.get("quizUserEntryId"));
+		answerKey = GsonParser.parseString(jsonObject.get("answerKey"));
+		isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
+		correctAnswerKeys = GsonParser.parseArray(jsonObject.getAsJsonArray("correctAnswerKeys"), StringHolder.class);
+		explanation = GsonParser.parseString(jsonObject.get("explanation"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAnswerCuePoint");
-        kparams.add("parentId", this.parentId);
-        kparams.add("quizUserEntryId", this.quizUserEntryId);
-        kparams.add("answerKey", this.answerKey);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAnswerCuePoint");
+		kparams.add("parentId", this.parentId);
+		kparams.add("quizUserEntryId", this.quizUserEntryId);
+		kparams.add("answerKey", this.answerKey);
+		return kparams;
+	}
 
 }
 

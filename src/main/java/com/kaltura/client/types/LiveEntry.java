@@ -35,7 +35,8 @@ import com.kaltura.client.enums.LivePublishStatus;
 import com.kaltura.client.enums.RecordStatus;
 import com.kaltura.client.types.LiveEntryRecordingOptions;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -46,206 +47,273 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveEntry.Tokenizer.class)
 public abstract class LiveEntry extends MediaEntry {
+	
+	public interface Tokenizer extends MediaEntry.Tokenizer {
+		String offlineMessage();
+		String recordStatus();
+		String dvrStatus();
+		String dvrWindow();
+		String lastElapsedRecordingTime();
+		RequestBuilder.ListTokenizer<LiveStreamConfiguration.Tokenizer> liveStreamConfigurations();
+		String recordedEntryId();
+		String pushPublishEnabled();
+		RequestBuilder.ListTokenizer<LiveStreamPushPublishConfiguration.Tokenizer> publishConfigurations();
+		String firstBroadcast();
+		String lastBroadcast();
+		String currentBroadcastStartTime();
+		LiveEntryRecordingOptions.Tokenizer recordingOptions();
+		String liveStatus();
+		String segmentDuration();
+	}
 
 	/**  The message to be presented when the stream is offline  */
-    private String offlineMessage;
+	private String offlineMessage;
 	/**  Recording Status Enabled/Disabled  */
-    private RecordStatus recordStatus;
+	private RecordStatus recordStatus;
 	/**  DVR Status Enabled/Disabled  */
-    private DVRStatus dvrStatus;
+	private DVRStatus dvrStatus;
 	/**  Window of time which the DVR allows for backwards scrubbing (in minutes)  */
-    private Integer dvrWindow;
+	private Integer dvrWindow;
 	/**  Elapsed recording time (in msec) up to the point where the live stream was last
 	  stopped (unpublished).  */
-    private Integer lastElapsedRecordingTime;
+	private Integer lastElapsedRecordingTime;
 	/**  Array of key value protocol-&gt;live stream url objects  */
-    private List<LiveStreamConfiguration> liveStreamConfigurations;
+	private List<LiveStreamConfiguration> liveStreamConfigurations;
 	/**  Recorded entry id  */
-    private String recordedEntryId;
+	private String recordedEntryId;
 	/**  Flag denoting whether entry should be published by the media server  */
-    private LivePublishStatus pushPublishEnabled;
+	private LivePublishStatus pushPublishEnabled;
 	/**  Array of publish configurations  */
-    private List<LiveStreamPushPublishConfiguration> publishConfigurations;
+	private List<LiveStreamPushPublishConfiguration> publishConfigurations;
 	/**  The first time in which the entry was broadcast  */
-    private Integer firstBroadcast;
+	private Integer firstBroadcast;
 	/**  The Last time in which the entry was broadcast  */
-    private Integer lastBroadcast;
+	private Integer lastBroadcast;
 	/**  The time (unix timestamp in milliseconds) in which the entry broadcast started
 	  or 0 when the entry is off the air  */
-    private Double currentBroadcastStartTime;
-    private LiveEntryRecordingOptions recordingOptions;
+	private Double currentBroadcastStartTime;
+	private LiveEntryRecordingOptions recordingOptions;
 	/**  the status of the entry of type EntryServerNodeStatus  */
-    private EntryServerNodeStatus liveStatus;
+	private EntryServerNodeStatus liveStatus;
 	/**  The chunk duration value in milliseconds  */
-    private Integer segmentDuration;
+	private Integer segmentDuration;
 
-    // offlineMessage:
-    public String getOfflineMessage(){
-        return this.offlineMessage;
-    }
-    public void setOfflineMessage(String offlineMessage){
-        this.offlineMessage = offlineMessage;
-    }
+	// offlineMessage:
+	public String getOfflineMessage(){
+		return this.offlineMessage;
+	}
+	public void setOfflineMessage(String offlineMessage){
+		this.offlineMessage = offlineMessage;
+	}
 
-    // recordStatus:
-    public RecordStatus getRecordStatus(){
-        return this.recordStatus;
-    }
-    public void setRecordStatus(RecordStatus recordStatus){
-        this.recordStatus = recordStatus;
-    }
+	public void offlineMessage(String multirequestToken){
+		setToken("offlineMessage", multirequestToken);
+	}
 
-    // dvrStatus:
-    public DVRStatus getDvrStatus(){
-        return this.dvrStatus;
-    }
-    public void setDvrStatus(DVRStatus dvrStatus){
-        this.dvrStatus = dvrStatus;
-    }
+	// recordStatus:
+	public RecordStatus getRecordStatus(){
+		return this.recordStatus;
+	}
+	public void setRecordStatus(RecordStatus recordStatus){
+		this.recordStatus = recordStatus;
+	}
 
-    // dvrWindow:
-    public Integer getDvrWindow(){
-        return this.dvrWindow;
-    }
-    public void setDvrWindow(Integer dvrWindow){
-        this.dvrWindow = dvrWindow;
-    }
+	public void recordStatus(String multirequestToken){
+		setToken("recordStatus", multirequestToken);
+	}
 
-    // lastElapsedRecordingTime:
-    public Integer getLastElapsedRecordingTime(){
-        return this.lastElapsedRecordingTime;
-    }
-    public void setLastElapsedRecordingTime(Integer lastElapsedRecordingTime){
-        this.lastElapsedRecordingTime = lastElapsedRecordingTime;
-    }
+	// dvrStatus:
+	public DVRStatus getDvrStatus(){
+		return this.dvrStatus;
+	}
+	public void setDvrStatus(DVRStatus dvrStatus){
+		this.dvrStatus = dvrStatus;
+	}
 
-    // liveStreamConfigurations:
-    public List<LiveStreamConfiguration> getLiveStreamConfigurations(){
-        return this.liveStreamConfigurations;
-    }
-    public void setLiveStreamConfigurations(List<LiveStreamConfiguration> liveStreamConfigurations){
-        this.liveStreamConfigurations = liveStreamConfigurations;
-    }
+	public void dvrStatus(String multirequestToken){
+		setToken("dvrStatus", multirequestToken);
+	}
 
-    // recordedEntryId:
-    public String getRecordedEntryId(){
-        return this.recordedEntryId;
-    }
-    public void setRecordedEntryId(String recordedEntryId){
-        this.recordedEntryId = recordedEntryId;
-    }
+	// dvrWindow:
+	public Integer getDvrWindow(){
+		return this.dvrWindow;
+	}
+	public void setDvrWindow(Integer dvrWindow){
+		this.dvrWindow = dvrWindow;
+	}
 
-    // pushPublishEnabled:
-    public LivePublishStatus getPushPublishEnabled(){
-        return this.pushPublishEnabled;
-    }
-    public void setPushPublishEnabled(LivePublishStatus pushPublishEnabled){
-        this.pushPublishEnabled = pushPublishEnabled;
-    }
+	public void dvrWindow(String multirequestToken){
+		setToken("dvrWindow", multirequestToken);
+	}
 
-    // publishConfigurations:
-    public List<LiveStreamPushPublishConfiguration> getPublishConfigurations(){
-        return this.publishConfigurations;
-    }
-    public void setPublishConfigurations(List<LiveStreamPushPublishConfiguration> publishConfigurations){
-        this.publishConfigurations = publishConfigurations;
-    }
+	// lastElapsedRecordingTime:
+	public Integer getLastElapsedRecordingTime(){
+		return this.lastElapsedRecordingTime;
+	}
+	public void setLastElapsedRecordingTime(Integer lastElapsedRecordingTime){
+		this.lastElapsedRecordingTime = lastElapsedRecordingTime;
+	}
 
-    // firstBroadcast:
-    public Integer getFirstBroadcast(){
-        return this.firstBroadcast;
-    }
-    public void setFirstBroadcast(Integer firstBroadcast){
-        this.firstBroadcast = firstBroadcast;
-    }
+	public void lastElapsedRecordingTime(String multirequestToken){
+		setToken("lastElapsedRecordingTime", multirequestToken);
+	}
 
-    // lastBroadcast:
-    public Integer getLastBroadcast(){
-        return this.lastBroadcast;
-    }
-    public void setLastBroadcast(Integer lastBroadcast){
-        this.lastBroadcast = lastBroadcast;
-    }
+	// liveStreamConfigurations:
+	public List<LiveStreamConfiguration> getLiveStreamConfigurations(){
+		return this.liveStreamConfigurations;
+	}
+	public void setLiveStreamConfigurations(List<LiveStreamConfiguration> liveStreamConfigurations){
+		this.liveStreamConfigurations = liveStreamConfigurations;
+	}
 
-    // currentBroadcastStartTime:
-    public Double getCurrentBroadcastStartTime(){
-        return this.currentBroadcastStartTime;
-    }
-    public void setCurrentBroadcastStartTime(Double currentBroadcastStartTime){
-        this.currentBroadcastStartTime = currentBroadcastStartTime;
-    }
+	// recordedEntryId:
+	public String getRecordedEntryId(){
+		return this.recordedEntryId;
+	}
+	public void setRecordedEntryId(String recordedEntryId){
+		this.recordedEntryId = recordedEntryId;
+	}
 
-    // recordingOptions:
-    public LiveEntryRecordingOptions getRecordingOptions(){
-        return this.recordingOptions;
-    }
-    public void setRecordingOptions(LiveEntryRecordingOptions recordingOptions){
-        this.recordingOptions = recordingOptions;
-    }
+	public void recordedEntryId(String multirequestToken){
+		setToken("recordedEntryId", multirequestToken);
+	}
 
-    // liveStatus:
-    public EntryServerNodeStatus getLiveStatus(){
-        return this.liveStatus;
-    }
-    public void setLiveStatus(EntryServerNodeStatus liveStatus){
-        this.liveStatus = liveStatus;
-    }
+	// pushPublishEnabled:
+	public LivePublishStatus getPushPublishEnabled(){
+		return this.pushPublishEnabled;
+	}
+	public void setPushPublishEnabled(LivePublishStatus pushPublishEnabled){
+		this.pushPublishEnabled = pushPublishEnabled;
+	}
 
-    // segmentDuration:
-    public Integer getSegmentDuration(){
-        return this.segmentDuration;
-    }
-    public void setSegmentDuration(Integer segmentDuration){
-        this.segmentDuration = segmentDuration;
-    }
+	public void pushPublishEnabled(String multirequestToken){
+		setToken("pushPublishEnabled", multirequestToken);
+	}
+
+	// publishConfigurations:
+	public List<LiveStreamPushPublishConfiguration> getPublishConfigurations(){
+		return this.publishConfigurations;
+	}
+	public void setPublishConfigurations(List<LiveStreamPushPublishConfiguration> publishConfigurations){
+		this.publishConfigurations = publishConfigurations;
+	}
+
+	// firstBroadcast:
+	public Integer getFirstBroadcast(){
+		return this.firstBroadcast;
+	}
+	public void setFirstBroadcast(Integer firstBroadcast){
+		this.firstBroadcast = firstBroadcast;
+	}
+
+	public void firstBroadcast(String multirequestToken){
+		setToken("firstBroadcast", multirequestToken);
+	}
+
+	// lastBroadcast:
+	public Integer getLastBroadcast(){
+		return this.lastBroadcast;
+	}
+	public void setLastBroadcast(Integer lastBroadcast){
+		this.lastBroadcast = lastBroadcast;
+	}
+
+	public void lastBroadcast(String multirequestToken){
+		setToken("lastBroadcast", multirequestToken);
+	}
+
+	// currentBroadcastStartTime:
+	public Double getCurrentBroadcastStartTime(){
+		return this.currentBroadcastStartTime;
+	}
+	public void setCurrentBroadcastStartTime(Double currentBroadcastStartTime){
+		this.currentBroadcastStartTime = currentBroadcastStartTime;
+	}
+
+	public void currentBroadcastStartTime(String multirequestToken){
+		setToken("currentBroadcastStartTime", multirequestToken);
+	}
+
+	// recordingOptions:
+	public LiveEntryRecordingOptions getRecordingOptions(){
+		return this.recordingOptions;
+	}
+	public void setRecordingOptions(LiveEntryRecordingOptions recordingOptions){
+		this.recordingOptions = recordingOptions;
+	}
+
+	// liveStatus:
+	public EntryServerNodeStatus getLiveStatus(){
+		return this.liveStatus;
+	}
+	public void setLiveStatus(EntryServerNodeStatus liveStatus){
+		this.liveStatus = liveStatus;
+	}
+
+	public void liveStatus(String multirequestToken){
+		setToken("liveStatus", multirequestToken);
+	}
+
+	// segmentDuration:
+	public Integer getSegmentDuration(){
+		return this.segmentDuration;
+	}
+	public void setSegmentDuration(Integer segmentDuration){
+		this.segmentDuration = segmentDuration;
+	}
+
+	public void segmentDuration(String multirequestToken){
+		setToken("segmentDuration", multirequestToken);
+	}
 
 
-    public LiveEntry() {
-       super();
-    }
+	public LiveEntry() {
+		super();
+	}
 
-    public LiveEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        offlineMessage = GsonParser.parseString(jsonObject.get("offlineMessage"));
-        recordStatus = RecordStatus.get(GsonParser.parseInt(jsonObject.get("recordStatus")));
-        dvrStatus = DVRStatus.get(GsonParser.parseInt(jsonObject.get("dvrStatus")));
-        dvrWindow = GsonParser.parseInt(jsonObject.get("dvrWindow"));
-        lastElapsedRecordingTime = GsonParser.parseInt(jsonObject.get("lastElapsedRecordingTime"));
-        liveStreamConfigurations = GsonParser.parseArray(jsonObject.getAsJsonArray("liveStreamConfigurations"), LiveStreamConfiguration.class);
-        recordedEntryId = GsonParser.parseString(jsonObject.get("recordedEntryId"));
-        pushPublishEnabled = LivePublishStatus.get(GsonParser.parseInt(jsonObject.get("pushPublishEnabled")));
-        publishConfigurations = GsonParser.parseArray(jsonObject.getAsJsonArray("publishConfigurations"), LiveStreamPushPublishConfiguration.class);
-        firstBroadcast = GsonParser.parseInt(jsonObject.get("firstBroadcast"));
-        lastBroadcast = GsonParser.parseInt(jsonObject.get("lastBroadcast"));
-        currentBroadcastStartTime = GsonParser.parseDouble(jsonObject.get("currentBroadcastStartTime"));
-        recordingOptions = GsonParser.parseObject(jsonObject.getAsJsonObject("recordingOptions"), LiveEntryRecordingOptions.class);
-        liveStatus = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("liveStatus")));
-        segmentDuration = GsonParser.parseInt(jsonObject.get("segmentDuration"));
+		// set members values:
+		offlineMessage = GsonParser.parseString(jsonObject.get("offlineMessage"));
+		recordStatus = RecordStatus.get(GsonParser.parseInt(jsonObject.get("recordStatus")));
+		dvrStatus = DVRStatus.get(GsonParser.parseInt(jsonObject.get("dvrStatus")));
+		dvrWindow = GsonParser.parseInt(jsonObject.get("dvrWindow"));
+		lastElapsedRecordingTime = GsonParser.parseInt(jsonObject.get("lastElapsedRecordingTime"));
+		liveStreamConfigurations = GsonParser.parseArray(jsonObject.getAsJsonArray("liveStreamConfigurations"), LiveStreamConfiguration.class);
+		recordedEntryId = GsonParser.parseString(jsonObject.get("recordedEntryId"));
+		pushPublishEnabled = LivePublishStatus.get(GsonParser.parseInt(jsonObject.get("pushPublishEnabled")));
+		publishConfigurations = GsonParser.parseArray(jsonObject.getAsJsonArray("publishConfigurations"), LiveStreamPushPublishConfiguration.class);
+		firstBroadcast = GsonParser.parseInt(jsonObject.get("firstBroadcast"));
+		lastBroadcast = GsonParser.parseInt(jsonObject.get("lastBroadcast"));
+		currentBroadcastStartTime = GsonParser.parseDouble(jsonObject.get("currentBroadcastStartTime"));
+		recordingOptions = GsonParser.parseObject(jsonObject.getAsJsonObject("recordingOptions"), LiveEntryRecordingOptions.class);
+		liveStatus = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("liveStatus")));
+		segmentDuration = GsonParser.parseInt(jsonObject.get("segmentDuration"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveEntry");
-        kparams.add("offlineMessage", this.offlineMessage);
-        kparams.add("recordStatus", this.recordStatus);
-        kparams.add("dvrStatus", this.dvrStatus);
-        kparams.add("dvrWindow", this.dvrWindow);
-        kparams.add("lastElapsedRecordingTime", this.lastElapsedRecordingTime);
-        kparams.add("liveStreamConfigurations", this.liveStreamConfigurations);
-        kparams.add("recordedEntryId", this.recordedEntryId);
-        kparams.add("pushPublishEnabled", this.pushPublishEnabled);
-        kparams.add("publishConfigurations", this.publishConfigurations);
-        kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
-        kparams.add("recordingOptions", this.recordingOptions);
-        kparams.add("segmentDuration", this.segmentDuration);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveEntry");
+		kparams.add("offlineMessage", this.offlineMessage);
+		kparams.add("recordStatus", this.recordStatus);
+		kparams.add("dvrStatus", this.dvrStatus);
+		kparams.add("dvrWindow", this.dvrWindow);
+		kparams.add("lastElapsedRecordingTime", this.lastElapsedRecordingTime);
+		kparams.add("liveStreamConfigurations", this.liveStreamConfigurations);
+		kparams.add("recordedEntryId", this.recordedEntryId);
+		kparams.add("pushPublishEnabled", this.pushPublishEnabled);
+		kparams.add("publishConfigurations", this.publishConfigurations);
+		kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
+		kparams.add("recordingOptions", this.recordingOptions);
+		kparams.add("segmentDuration", this.segmentDuration);
+		return kparams;
+	}
 
 }
 

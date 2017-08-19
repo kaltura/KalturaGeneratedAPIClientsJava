@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControlMessage.Tokenizer.class)
 public class AccessControlMessage extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String message();
+		String code();
+	}
 
-    private String message;
-    private String code;
+	private String message;
+	private String code;
 
-    // message:
-    public String getMessage(){
-        return this.message;
-    }
-    public void setMessage(String message){
-        this.message = message;
-    }
+	// message:
+	public String getMessage(){
+		return this.message;
+	}
+	public void setMessage(String message){
+		this.message = message;
+	}
 
-    // code:
-    public String getCode(){
-        return this.code;
-    }
-    public void setCode(String code){
-        this.code = code;
-    }
+	public void message(String multirequestToken){
+		setToken("message", multirequestToken);
+	}
+
+	// code:
+	public String getCode(){
+		return this.code;
+	}
+	public void setCode(String code){
+		this.code = code;
+	}
+
+	public void code(String multirequestToken){
+		setToken("code", multirequestToken);
+	}
 
 
-    public AccessControlMessage() {
-       super();
-    }
+	public AccessControlMessage() {
+		super();
+	}
 
-    public AccessControlMessage(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControlMessage(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        message = GsonParser.parseString(jsonObject.get("message"));
-        code = GsonParser.parseString(jsonObject.get("code"));
+		// set members values:
+		message = GsonParser.parseString(jsonObject.get("message"));
+		code = GsonParser.parseString(jsonObject.get("code"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControlMessage");
-        kparams.add("message", this.message);
-        kparams.add("code", this.code);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControlMessage");
+		kparams.add("message", this.message);
+		kparams.add("code", this.code);
+		return kparams;
+	}
 
 }
 

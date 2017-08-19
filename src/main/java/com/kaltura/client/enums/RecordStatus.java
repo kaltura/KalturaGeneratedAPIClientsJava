@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum RecordStatus implements EnumAsInt {
-    DISABLED(0),
-    APPENDED(1),
-    PER_SESSION(2);
+	DISABLED(0),
+	APPENDED(1),
+	PER_SESSION(2);
 
-    private int value;
+	private int value;
 
-    RecordStatus(int value) {
-        this.value = value;
-    }
+	RecordStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static RecordStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over RecordStatus defined values and compare the inner value with the given one:
-        for(RecordStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return RecordStatus.values().length > 0 ? RecordStatus.values()[0]: null;
+	public static RecordStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over RecordStatus defined values and compare the inner value with the given one:
+		for(RecordStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return RecordStatus.values().length > 0 ? RecordStatus.values()[0]: null;
    }
 }

@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.QuizUserEntry;
 import com.kaltura.client.types.UserEntry;
 import com.kaltura.client.types.UserEntryFilter;
@@ -45,66 +43,117 @@ import com.kaltura.client.utils.request.RequestBuilder;
  */
 
 public class UserEntryService {
+	
+	public static class AddUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, AddUserEntryBuilder> {
+		
+		public AddUserEntryBuilder(UserEntry userEntry) {
+			super(UserEntry.class, "userentry", "add");
+			params.add("userEntry", userEntry);
+		}
+	}
 
 	/**  Adds a user_entry to the Kaltura DB.  */
-    public static RequestBuilder<UserEntry> add(UserEntry userEntry)  {
-        Params kparams = new Params();
-        kparams.add("userEntry", userEntry);
+    public static AddUserEntryBuilder add(UserEntry userEntry)  {
+		return new AddUserEntryBuilder(userEntry);
+	}
+	
+	public static class BulkDeleteUserEntryBuilder extends RequestBuilder<Integer, String, BulkDeleteUserEntryBuilder> {
+		
+		public BulkDeleteUserEntryBuilder(UserEntryFilter filter) {
+			super(Integer.class, "userentry", "bulkDelete");
+			params.add("filter", filter);
+		}
+	}
 
-        return new RequestBuilder<UserEntry>(UserEntry.class, "userentry", "add", kparams);
-    }
+    public static BulkDeleteUserEntryBuilder bulkDelete(UserEntryFilter filter)  {
+		return new BulkDeleteUserEntryBuilder(filter);
+	}
+	
+	public static class DeleteUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, DeleteUserEntryBuilder> {
+		
+		public DeleteUserEntryBuilder(int id) {
+			super(UserEntry.class, "userentry", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Integer> bulkDelete(UserEntryFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
+    public static DeleteUserEntryBuilder delete(int id)  {
+		return new DeleteUserEntryBuilder(id);
+	}
+	
+	public static class GetUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, GetUserEntryBuilder> {
+		
+		public GetUserEntryBuilder(String id) {
+			super(UserEntry.class, "userentry", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "userentry", "bulkDelete", kparams);
-    }
+    public static GetUserEntryBuilder get(String id)  {
+		return new GetUserEntryBuilder(id);
+	}
+	
+	public static class ListUserEntryBuilder extends ListResponseRequestBuilder<UserEntry, UserEntry.Tokenizer, ListUserEntryBuilder> {
+		
+		public ListUserEntryBuilder(UserEntryFilter filter, FilterPager pager) {
+			super(UserEntry.class, "userentry", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<UserEntry> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+	public static ListUserEntryBuilder list()  {
+		return list(null);
+	}
 
-        return new RequestBuilder<UserEntry>(UserEntry.class, "userentry", "delete", kparams);
-    }
+	public static ListUserEntryBuilder list(UserEntryFilter filter)  {
+		return list(filter, null);
+	}
 
-    public static RequestBuilder<UserEntry> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<UserEntry>(UserEntry.class, "userentry", "get", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<UserEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<UserEntry>> list(UserEntryFilter filter)  {
-        return list(filter, null);
-    }
-
-    public static RequestBuilder<ListResponse<UserEntry>> list(UserEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<UserEntry>(UserEntry.class, "userentry", "list", kparams);
-    }
+    public static ListUserEntryBuilder list(UserEntryFilter filter, FilterPager pager)  {
+		return new ListUserEntryBuilder(filter, pager);
+	}
+	
+	public static class SubmitQuizUserEntryBuilder extends RequestBuilder<QuizUserEntry, QuizUserEntry.Tokenizer, SubmitQuizUserEntryBuilder> {
+		
+		public SubmitQuizUserEntryBuilder(int id) {
+			super(QuizUserEntry.class, "userentry", "submitQuiz");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Submits the quiz so that it's status will be submitted and calculates the score
 	  for the quiz  */
-    public static RequestBuilder<QuizUserEntry> submitQuiz(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static SubmitQuizUserEntryBuilder submitQuiz(int id)  {
+		return new SubmitQuizUserEntryBuilder(id);
+	}
+	
+	public static class UpdateUserEntryBuilder extends NullRequestBuilder {
+		
+		public UpdateUserEntryBuilder(int id, UserEntry userEntry) {
+			super("userentry", "update");
+			params.add("id", id);
+			params.add("userEntry", userEntry);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<QuizUserEntry>(QuizUserEntry.class, "userentry", "submitQuiz", kparams);
-    }
-
-    public static RequestBuilder<Void> update(int id, UserEntry userEntry)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("userEntry", userEntry);
-
-        return new NullRequestBuilder("userentry", "update", kparams);
-    }
+    public static UpdateUserEntryBuilder update(int id, UserEntry userEntry)  {
+		return new UpdateUserEntryBuilder(id, userEntry);
+	}
 }

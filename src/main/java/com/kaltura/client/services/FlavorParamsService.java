@@ -27,16 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.FlavorParams;
 import com.kaltura.client.types.FlavorParamsFilter;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -47,63 +44,109 @@ import java.util.List;
 
 /**  Add &amp; Manage Flavor Params  */
 public class FlavorParamsService {
+	
+	public static class AddFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, AddFlavorParamsBuilder> {
+		
+		public AddFlavorParamsBuilder(FlavorParams flavorParams) {
+			super(FlavorParams.class, "flavorparams", "add");
+			params.add("flavorParams", flavorParams);
+		}
+	}
 
 	/**  Add new Flavor Params  */
-    public static RequestBuilder<FlavorParams> add(FlavorParams flavorParams)  {
-        Params kparams = new Params();
-        kparams.add("flavorParams", flavorParams);
-
-        return new RequestBuilder<FlavorParams>(FlavorParams.class, "flavorparams", "add", kparams);
-    }
+    public static AddFlavorParamsBuilder add(FlavorParams flavorParams)  {
+		return new AddFlavorParamsBuilder(flavorParams);
+	}
+	
+	public static class DeleteFlavorParamsBuilder extends NullRequestBuilder {
+		
+		public DeleteFlavorParamsBuilder(int id) {
+			super("flavorparams", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Flavor Params by ID  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("flavorparams", "delete", kparams);
-    }
+    public static DeleteFlavorParamsBuilder delete(int id)  {
+		return new DeleteFlavorParamsBuilder(id);
+	}
+	
+	public static class GetFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, GetFlavorParamsBuilder> {
+		
+		public GetFlavorParamsBuilder(int id) {
+			super(FlavorParams.class, "flavorparams", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Flavor Params by ID  */
-    public static RequestBuilder<FlavorParams> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<FlavorParams>(FlavorParams.class, "flavorparams", "get", kparams);
-    }
+    public static GetFlavorParamsBuilder get(int id)  {
+		return new GetFlavorParamsBuilder(id);
+	}
+	
+	public static class GetByConversionProfileIdFlavorParamsBuilder extends ArrayRequestBuilder<FlavorParams, FlavorParams.Tokenizer, GetByConversionProfileIdFlavorParamsBuilder> {
+		
+		public GetByConversionProfileIdFlavorParamsBuilder(int conversionProfileId) {
+			super(FlavorParams.class, "flavorparams", "getByConversionProfileId");
+			params.add("conversionProfileId", conversionProfileId);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
 	/**  Get Flavor Params by Conversion Profile ID  */
-    public static RequestBuilder<List<FlavorParams>> getByConversionProfileId(int conversionProfileId)  {
-        Params kparams = new Params();
-        kparams.add("conversionProfileId", conversionProfileId);
+    public static GetByConversionProfileIdFlavorParamsBuilder getByConversionProfileId(int conversionProfileId)  {
+		return new GetByConversionProfileIdFlavorParamsBuilder(conversionProfileId);
+	}
+	
+	public static class ListFlavorParamsBuilder extends ListResponseRequestBuilder<FlavorParams, FlavorParams.Tokenizer, ListFlavorParamsBuilder> {
+		
+		public ListFlavorParamsBuilder(FlavorParamsFilter filter, FilterPager pager) {
+			super(FlavorParams.class, "flavorparams", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ArrayRequestBuilder<FlavorParams>(FlavorParams.class, "flavorparams", "getByConversionProfileId", kparams);
-    }
+	public static ListFlavorParamsBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<FlavorParams>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<FlavorParams>> list(FlavorParamsFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListFlavorParamsBuilder list(FlavorParamsFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Flavor Params by filter with paging support (By default - all system
 	  default params will be listed too)  */
-    public static RequestBuilder<ListResponse<FlavorParams>> list(FlavorParamsFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<FlavorParams>(FlavorParams.class, "flavorparams", "list", kparams);
-    }
+    public static ListFlavorParamsBuilder list(FlavorParamsFilter filter, FilterPager pager)  {
+		return new ListFlavorParamsBuilder(filter, pager);
+	}
+	
+	public static class UpdateFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, UpdateFlavorParamsBuilder> {
+		
+		public UpdateFlavorParamsBuilder(int id, FlavorParams flavorParams) {
+			super(FlavorParams.class, "flavorparams", "update");
+			params.add("id", id);
+			params.add("flavorParams", flavorParams);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Flavor Params by ID  */
-    public static RequestBuilder<FlavorParams> update(int id, FlavorParams flavorParams)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("flavorParams", flavorParams);
-
-        return new RequestBuilder<FlavorParams>(FlavorParams.class, "flavorparams", "update", kparams);
-    }
+    public static UpdateFlavorParamsBuilder update(int id, FlavorParams flavorParams)  {
+		return new UpdateFlavorParamsBuilder(id, flavorParams);
+	}
 }

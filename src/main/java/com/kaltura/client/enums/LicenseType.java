@@ -34,52 +34,52 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LicenseType implements EnumAsInt {
-    UNKNOWN(-1),
-    NONE(0),
-    COPYRIGHTED(1),
-    PUBLIC_DOMAIN(2),
-    CREATIVECOMMONS_ATTRIBUTION(3),
-    CREATIVECOMMONS_ATTRIBUTION_SHARE_ALIKE(4),
-    CREATIVECOMMONS_ATTRIBUTION_NO_DERIVATIVES(5),
-    CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL(6),
-    CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL_SHARE_ALIKE(7),
-    CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL_NO_DERIVATIVES(8),
-    GFDL(9),
-    GPL(10),
-    AFFERO_GPL(11),
-    LGPL(12),
-    BSD(13),
-    APACHE(14),
-    MOZILLA(15);
+	UNKNOWN(-1),
+	NONE(0),
+	COPYRIGHTED(1),
+	PUBLIC_DOMAIN(2),
+	CREATIVECOMMONS_ATTRIBUTION(3),
+	CREATIVECOMMONS_ATTRIBUTION_SHARE_ALIKE(4),
+	CREATIVECOMMONS_ATTRIBUTION_NO_DERIVATIVES(5),
+	CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL(6),
+	CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL_SHARE_ALIKE(7),
+	CREATIVECOMMONS_ATTRIBUTION_NON_COMMERCIAL_NO_DERIVATIVES(8),
+	GFDL(9),
+	GPL(10),
+	AFFERO_GPL(11),
+	LGPL(12),
+	BSD(13),
+	APACHE(14),
+	MOZILLA(15);
 
-    private int value;
+	private int value;
 
-    LicenseType(int value) {
-        this.value = value;
-    }
+	LicenseType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static LicenseType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LicenseType defined values and compare the inner value with the given one:
-        for(LicenseType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LicenseType.values().length > 0 ? LicenseType.values()[0]: null;
+	public static LicenseType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LicenseType defined values and compare the inner value with the given one:
+		for(LicenseType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LicenseType.values().length > 0 ? LicenseType.values()[0]: null;
    }
 }

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ConditionType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,61 +42,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Condition.Tokenizer.class)
 public abstract class Condition extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+		String description();
+		String not();
+	}
 
 	/**  The type of the access control condition  */
-    private ConditionType type;
-    private String description;
-    private Boolean not;
+	private ConditionType type;
+	private String description;
+	private Boolean not;
 
-    // type:
-    public ConditionType getType(){
-        return this.type;
-    }
-    public void setType(ConditionType type){
-        this.type = type;
-    }
+	// type:
+	public ConditionType getType(){
+		return this.type;
+	}
+	public void setType(ConditionType type){
+		this.type = type;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // not:
-    public Boolean getNot(){
-        return this.not;
-    }
-    public void setNot(Boolean not){
-        this.not = not;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// not:
+	public Boolean getNot(){
+		return this.not;
+	}
+	public void setNot(Boolean not){
+		this.not = not;
+	}
+
+	public void not(String multirequestToken){
+		setToken("not", multirequestToken);
+	}
 
 
-    public Condition() {
-       super();
-    }
+	public Condition() {
+		super();
+	}
 
-    public Condition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Condition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = ConditionType.get(GsonParser.parseString(jsonObject.get("type")));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        not = GsonParser.parseBoolean(jsonObject.get("not"));
+		// set members values:
+		type = ConditionType.get(GsonParser.parseString(jsonObject.get("type")));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		not = GsonParser.parseBoolean(jsonObject.get("not"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCondition");
-        kparams.add("description", this.description);
-        kparams.add("not", this.not);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCondition");
+		kparams.add("description", this.description);
+		kparams.add("not", this.not);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,39 +42,48 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  A string representation to return an array of strings  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StringHolder.Tokenizer.class)
 public class StringHolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String value();
+	}
 
-    private String value;
+	private String value;
 
-    // value:
-    public String getValue(){
-        return this.value;
-    }
-    public void setValue(String value){
-        this.value = value;
-    }
+	// value:
+	public String getValue(){
+		return this.value;
+	}
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public StringHolder() {
-       super();
-    }
+	public StringHolder() {
+		super();
+	}
 
-    public StringHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StringHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        value = GsonParser.parseString(jsonObject.get("value"));
+		// set members values:
+		value = GsonParser.parseString(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaString");
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaString");
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PermissionItemType implements EnumAsString {
-    API_ACTION_ITEM("kApiActionPermissionItem"),
-    API_PARAMETER_ITEM("kApiParameterPermissionItem");
+	API_ACTION_ITEM("kApiActionPermissionItem"),
+	API_PARAMETER_ITEM("kApiParameterPermissionItem");
 
-    private String value;
+	private String value;
 
-    PermissionItemType(String value) {
-        this.value = value;
-    }
+	PermissionItemType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PermissionItemType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PermissionItemType defined values and compare the inner value with the given one:
-        for(PermissionItemType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PermissionItemType.values().length > 0 ? PermissionItemType.values()[0]: null;
+	public static PermissionItemType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PermissionItemType defined values and compare the inner value with the given one:
+		for(PermissionItemType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PermissionItemType.values().length > 0 ? PermissionItemType.values()[0]: null;
    }
 }

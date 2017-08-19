@@ -34,46 +34,46 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FlavorAssetStatus implements EnumAsInt {
-    ERROR(-1),
-    QUEUED(0),
-    CONVERTING(1),
-    READY(2),
-    DELETED(3),
-    NOT_APPLICABLE(4),
-    TEMP(5),
-    WAIT_FOR_CONVERT(6),
-    IMPORTING(7),
-    VALIDATING(8),
-    EXPORTING(9);
+	ERROR(-1),
+	QUEUED(0),
+	CONVERTING(1),
+	READY(2),
+	DELETED(3),
+	NOT_APPLICABLE(4),
+	TEMP(5),
+	WAIT_FOR_CONVERT(6),
+	IMPORTING(7),
+	VALIDATING(8),
+	EXPORTING(9);
 
-    private int value;
+	private int value;
 
-    FlavorAssetStatus(int value) {
-        this.value = value;
-    }
+	FlavorAssetStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static FlavorAssetStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FlavorAssetStatus defined values and compare the inner value with the given one:
-        for(FlavorAssetStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FlavorAssetStatus.values().length > 0 ? FlavorAssetStatus.values()[0]: null;
+	public static FlavorAssetStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FlavorAssetStatus defined values and compare the inner value with the given one:
+		for(FlavorAssetStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FlavorAssetStatus.values().length > 0 ? FlavorAssetStatus.values()[0]: null;
    }
 }

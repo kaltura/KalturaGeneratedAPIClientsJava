@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EditorType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +41,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MixEntry.Tokenizer.class)
 public class MixEntry extends PlayableEntry {
+	
+	public interface Tokenizer extends PlayableEntry.Tokenizer {
+		String hasRealThumbnail();
+		String editorType();
+		String dataContent();
+	}
 
 	/**  Indicates whether the user has submited a real thumbnail to the mix (Not the one
 	  that was generated automaticaly)  */
-    private Boolean hasRealThumbnail;
+	private Boolean hasRealThumbnail;
 	/**  The editor type used to edit the metadata  */
-    private EditorType editorType;
+	private EditorType editorType;
 	/**  The xml data of the mix  */
-    private String dataContent;
+	private String dataContent;
 
-    // hasRealThumbnail:
-    public Boolean getHasRealThumbnail(){
-        return this.hasRealThumbnail;
-    }
-    public void setHasRealThumbnail(Boolean hasRealThumbnail){
-        this.hasRealThumbnail = hasRealThumbnail;
-    }
+	// hasRealThumbnail:
+	public Boolean getHasRealThumbnail(){
+		return this.hasRealThumbnail;
+	}
+	public void setHasRealThumbnail(Boolean hasRealThumbnail){
+		this.hasRealThumbnail = hasRealThumbnail;
+	}
 
-    // editorType:
-    public EditorType getEditorType(){
-        return this.editorType;
-    }
-    public void setEditorType(EditorType editorType){
-        this.editorType = editorType;
-    }
+	public void hasRealThumbnail(String multirequestToken){
+		setToken("hasRealThumbnail", multirequestToken);
+	}
 
-    // dataContent:
-    public String getDataContent(){
-        return this.dataContent;
-    }
-    public void setDataContent(String dataContent){
-        this.dataContent = dataContent;
-    }
+	// editorType:
+	public EditorType getEditorType(){
+		return this.editorType;
+	}
+	public void setEditorType(EditorType editorType){
+		this.editorType = editorType;
+	}
+
+	public void editorType(String multirequestToken){
+		setToken("editorType", multirequestToken);
+	}
+
+	// dataContent:
+	public String getDataContent(){
+		return this.dataContent;
+	}
+	public void setDataContent(String dataContent){
+		this.dataContent = dataContent;
+	}
+
+	public void dataContent(String multirequestToken){
+		setToken("dataContent", multirequestToken);
+	}
 
 
-    public MixEntry() {
-       super();
-    }
+	public MixEntry() {
+		super();
+	}
 
-    public MixEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MixEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hasRealThumbnail = GsonParser.parseBoolean(jsonObject.get("hasRealThumbnail"));
-        editorType = EditorType.get(GsonParser.parseInt(jsonObject.get("editorType")));
-        dataContent = GsonParser.parseString(jsonObject.get("dataContent"));
+		// set members values:
+		hasRealThumbnail = GsonParser.parseBoolean(jsonObject.get("hasRealThumbnail"));
+		editorType = EditorType.get(GsonParser.parseInt(jsonObject.get("editorType")));
+		dataContent = GsonParser.parseString(jsonObject.get("dataContent"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMixEntry");
-        kparams.add("editorType", this.editorType);
-        kparams.add("dataContent", this.dataContent);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMixEntry");
+		kparams.add("editorType", this.editorType);
+		kparams.add("dataContent", this.dataContent);
+		return kparams;
+	}
 
 }
 

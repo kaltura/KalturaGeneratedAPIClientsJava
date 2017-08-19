@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.PlaylistType;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,120 +43,160 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Playlist.Tokenizer.class)
 public class Playlist extends BaseEntry {
+	
+	public interface Tokenizer extends BaseEntry.Tokenizer {
+		String playlistContent();
+		RequestBuilder.ListTokenizer<MediaEntryFilterForPlaylist.Tokenizer> filters();
+		String totalResults();
+		String playlistType();
+		String plays();
+		String views();
+		String duration();
+		String executeUrl();
+	}
 
 	/**  Content of the playlist -    XML if the playlistType is dynamic    text if the
 	  playlistType is static    url if the playlistType is mRss  */
-    private String playlistContent;
-    private List<MediaEntryFilterForPlaylist> filters;
+	private String playlistContent;
+	private List<MediaEntryFilterForPlaylist> filters;
 	/**  Maximum count of results to be returned in playlist execution  */
-    private Integer totalResults;
+	private Integer totalResults;
 	/**  Type of playlist  */
-    private PlaylistType playlistType;
+	private PlaylistType playlistType;
 	/**  Number of plays  */
-    private Integer plays;
+	private Integer plays;
 	/**  Number of views  */
-    private Integer views;
+	private Integer views;
 	/**  The duration in seconds  */
-    private Integer duration;
+	private Integer duration;
 	/**  The url for this playlist  */
-    private String executeUrl;
+	private String executeUrl;
 
-    // playlistContent:
-    public String getPlaylistContent(){
-        return this.playlistContent;
-    }
-    public void setPlaylistContent(String playlistContent){
-        this.playlistContent = playlistContent;
-    }
+	// playlistContent:
+	public String getPlaylistContent(){
+		return this.playlistContent;
+	}
+	public void setPlaylistContent(String playlistContent){
+		this.playlistContent = playlistContent;
+	}
 
-    // filters:
-    public List<MediaEntryFilterForPlaylist> getFilters(){
-        return this.filters;
-    }
-    public void setFilters(List<MediaEntryFilterForPlaylist> filters){
-        this.filters = filters;
-    }
+	public void playlistContent(String multirequestToken){
+		setToken("playlistContent", multirequestToken);
+	}
 
-    // totalResults:
-    public Integer getTotalResults(){
-        return this.totalResults;
-    }
-    public void setTotalResults(Integer totalResults){
-        this.totalResults = totalResults;
-    }
+	// filters:
+	public List<MediaEntryFilterForPlaylist> getFilters(){
+		return this.filters;
+	}
+	public void setFilters(List<MediaEntryFilterForPlaylist> filters){
+		this.filters = filters;
+	}
 
-    // playlistType:
-    public PlaylistType getPlaylistType(){
-        return this.playlistType;
-    }
-    public void setPlaylistType(PlaylistType playlistType){
-        this.playlistType = playlistType;
-    }
+	// totalResults:
+	public Integer getTotalResults(){
+		return this.totalResults;
+	}
+	public void setTotalResults(Integer totalResults){
+		this.totalResults = totalResults;
+	}
 
-    // plays:
-    public Integer getPlays(){
-        return this.plays;
-    }
-    public void setPlays(Integer plays){
-        this.plays = plays;
-    }
+	public void totalResults(String multirequestToken){
+		setToken("totalResults", multirequestToken);
+	}
 
-    // views:
-    public Integer getViews(){
-        return this.views;
-    }
-    public void setViews(Integer views){
-        this.views = views;
-    }
+	// playlistType:
+	public PlaylistType getPlaylistType(){
+		return this.playlistType;
+	}
+	public void setPlaylistType(PlaylistType playlistType){
+		this.playlistType = playlistType;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void playlistType(String multirequestToken){
+		setToken("playlistType", multirequestToken);
+	}
 
-    // executeUrl:
-    public String getExecuteUrl(){
-        return this.executeUrl;
-    }
-    public void setExecuteUrl(String executeUrl){
-        this.executeUrl = executeUrl;
-    }
+	// plays:
+	public Integer getPlays(){
+		return this.plays;
+	}
+	public void setPlays(Integer plays){
+		this.plays = plays;
+	}
+
+	public void plays(String multirequestToken){
+		setToken("plays", multirequestToken);
+	}
+
+	// views:
+	public Integer getViews(){
+		return this.views;
+	}
+	public void setViews(Integer views){
+		this.views = views;
+	}
+
+	public void views(String multirequestToken){
+		setToken("views", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+	// executeUrl:
+	public String getExecuteUrl(){
+		return this.executeUrl;
+	}
+	public void setExecuteUrl(String executeUrl){
+		this.executeUrl = executeUrl;
+	}
+
+	public void executeUrl(String multirequestToken){
+		setToken("executeUrl", multirequestToken);
+	}
 
 
-    public Playlist() {
-       super();
-    }
+	public Playlist() {
+		super();
+	}
 
-    public Playlist(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Playlist(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        playlistContent = GsonParser.parseString(jsonObject.get("playlistContent"));
-        filters = GsonParser.parseArray(jsonObject.getAsJsonArray("filters"), MediaEntryFilterForPlaylist.class);
-        totalResults = GsonParser.parseInt(jsonObject.get("totalResults"));
-        playlistType = PlaylistType.get(GsonParser.parseInt(jsonObject.get("playlistType")));
-        plays = GsonParser.parseInt(jsonObject.get("plays"));
-        views = GsonParser.parseInt(jsonObject.get("views"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
-        executeUrl = GsonParser.parseString(jsonObject.get("executeUrl"));
+		// set members values:
+		playlistContent = GsonParser.parseString(jsonObject.get("playlistContent"));
+		filters = GsonParser.parseArray(jsonObject.getAsJsonArray("filters"), MediaEntryFilterForPlaylist.class);
+		totalResults = GsonParser.parseInt(jsonObject.get("totalResults"));
+		playlistType = PlaylistType.get(GsonParser.parseInt(jsonObject.get("playlistType")));
+		plays = GsonParser.parseInt(jsonObject.get("plays"));
+		views = GsonParser.parseInt(jsonObject.get("views"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		executeUrl = GsonParser.parseString(jsonObject.get("executeUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaylist");
-        kparams.add("playlistContent", this.playlistContent);
-        kparams.add("filters", this.filters);
-        kparams.add("totalResults", this.totalResults);
-        kparams.add("playlistType", this.playlistType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlaylist");
+		kparams.add("playlistContent", this.playlistContent);
+		kparams.add("filters", this.filters);
+		kparams.add("totalResults", this.totalResults);
+		kparams.add("playlistType", this.playlistType);
+		return kparams;
+	}
 
 }
 

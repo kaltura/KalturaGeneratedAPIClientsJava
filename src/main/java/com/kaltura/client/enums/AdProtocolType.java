@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AdProtocolType implements EnumAsString {
-    CUSTOM("0"),
-    VAST("1"),
-    VAST_2_0("2"),
-    VPAID("3");
+	CUSTOM("0"),
+	VAST("1"),
+	VAST_2_0("2"),
+	VPAID("3");
 
-    private String value;
+	private String value;
 
-    AdProtocolType(String value) {
-        this.value = value;
-    }
+	AdProtocolType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AdProtocolType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AdProtocolType defined values and compare the inner value with the given one:
-        for(AdProtocolType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AdProtocolType.values().length > 0 ? AdProtocolType.values()[0]: null;
+	public static AdProtocolType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AdProtocolType defined values and compare the inner value with the given one:
+		for(AdProtocolType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AdProtocolType.values().length > 0 ? AdProtocolType.values()[0]: null;
    }
 }

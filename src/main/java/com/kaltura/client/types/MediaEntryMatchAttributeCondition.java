@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.MediaEntryMatchAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaMediaEntry attributes. Use
   KalturaMediaEntryMatchAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaEntryMatchAttributeCondition.Tokenizer.class)
 public class MediaEntryMatchAttributeCondition extends SearchMatchAttributeCondition {
+	
+	public interface Tokenizer extends SearchMatchAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private MediaEntryMatchAttribute attribute;
+	private MediaEntryMatchAttribute attribute;
 
-    // attribute:
-    public MediaEntryMatchAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(MediaEntryMatchAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public MediaEntryMatchAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(MediaEntryMatchAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public MediaEntryMatchAttributeCondition() {
-       super();
-    }
+	public MediaEntryMatchAttributeCondition() {
+		super();
+	}
 
-    public MediaEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = MediaEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = MediaEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaEntryMatchAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaEntryMatchAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

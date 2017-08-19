@@ -29,12 +29,10 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AssetFilter;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.FlavorAsset;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.RemotePath;
 import com.kaltura.client.types.ThumbAsset;
 import com.kaltura.client.types.ThumbParams;
@@ -47,7 +45,6 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -58,207 +55,393 @@ import java.util.List;
 
 /**  Retrieve information and invoke actions on Thumb Asset  */
 public class ThumbAssetService {
+	
+	public static class AddThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, AddThumbAssetBuilder> {
+		
+		public AddThumbAssetBuilder(String entryId, ThumbAsset thumbAsset) {
+			super(ThumbAsset.class, "thumbasset", "add");
+			params.add("entryId", entryId);
+			params.add("thumbAsset", thumbAsset);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Add thumbnail asset  */
-    public static RequestBuilder<ThumbAsset> add(String entryId, ThumbAsset thumbAsset)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("thumbAsset", thumbAsset);
+    public static AddThumbAssetBuilder add(String entryId, ThumbAsset thumbAsset)  {
+		return new AddThumbAssetBuilder(entryId, thumbAsset);
+	}
+	
+	public static class AddFromImageThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, AddFromImageThumbAssetBuilder> {
+		
+		public AddFromImageThumbAssetBuilder(String entryId, FileHolder fileData) {
+			super(ThumbAsset.class, "thumbasset", "addFromImage");
+			params.add("entryId", entryId);
+			files = new Files();
+			files.add("fileData", fileData);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "add", kparams);
-    }
+	public static AddFromImageThumbAssetBuilder addFromImage(String entryId, File fileData)  {
+		return addFromImage(entryId, new FileHolder(fileData));
+	}
 
-    public static RequestBuilder<ThumbAsset> addFromImage(String entryId, File fileData)  {
-        return addFromImage(entryId, new FileHolder(fileData));
-    }
+	public static AddFromImageThumbAssetBuilder addFromImage(String entryId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromImage(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
+	}
 
-    public static RequestBuilder<ThumbAsset> addFromImage(String entryId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return addFromImage(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
-    }
+	public static AddFromImageThumbAssetBuilder addFromImage(String entryId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromImage(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
+	}
 
-    public static RequestBuilder<ThumbAsset> addFromImage(String entryId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return addFromImage(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
-    }
+    public static AddFromImageThumbAssetBuilder addFromImage(String entryId, FileHolder fileData)  {
+		return new AddFromImageThumbAssetBuilder(entryId, fileData);
+	}
+	
+	public static class AddFromUrlThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, AddFromUrlThumbAssetBuilder> {
+		
+		public AddFromUrlThumbAssetBuilder(String entryId, String url) {
+			super(ThumbAsset.class, "thumbasset", "addFromUrl");
+			params.add("entryId", entryId);
+			params.add("url", url);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ThumbAsset> addFromImage(String entryId, FileHolder fileData)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
+    public static AddFromUrlThumbAssetBuilder addFromUrl(String entryId, String url)  {
+		return new AddFromUrlThumbAssetBuilder(entryId, url);
+	}
+	
+	public static class DeleteThumbAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteThumbAssetBuilder(String thumbAssetId) {
+			super("thumbasset", "delete");
+			params.add("thumbAssetId", thumbAssetId);
+		}
+		
+		public void thumbAssetId(String multirequestToken) {
+			params.add("thumbAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "addFromImage", kparams, kfiles);
-    }
-
-    public static RequestBuilder<ThumbAsset> addFromUrl(String entryId, String url)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("url", url);
-
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "addFromUrl", kparams);
-    }
-
-    public static RequestBuilder<Void> delete(String thumbAssetId)  {
-        Params kparams = new Params();
-        kparams.add("thumbAssetId", thumbAssetId);
-
-        return new NullRequestBuilder("thumbasset", "delete", kparams);
-    }
+    public static DeleteThumbAssetBuilder delete(String thumbAssetId)  {
+		return new DeleteThumbAssetBuilder(thumbAssetId);
+	}
+	
+	public static class ExportThumbAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, ExportThumbAssetBuilder> {
+		
+		public ExportThumbAssetBuilder(String assetId, int storageProfileId) {
+			super(FlavorAsset.class, "thumbasset", "export");
+			params.add("assetId", assetId);
+			params.add("storageProfileId", storageProfileId);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+		
+		public void storageProfileId(String multirequestToken) {
+			params.add("storageProfileId", multirequestToken);
+		}
+	}
 
 	/**  manually export an asset  */
-    public static RequestBuilder<FlavorAsset> export(String assetId, int storageProfileId)  {
-        Params kparams = new Params();
-        kparams.add("assetId", assetId);
-        kparams.add("storageProfileId", storageProfileId);
+    public static ExportThumbAssetBuilder export(String assetId, int storageProfileId)  {
+		return new ExportThumbAssetBuilder(assetId, storageProfileId);
+	}
+	
+	public static class GenerateThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, GenerateThumbAssetBuilder> {
+		
+		public GenerateThumbAssetBuilder(String entryId, ThumbParams thumbParams, String sourceAssetId) {
+			super(ThumbAsset.class, "thumbasset", "generate");
+			params.add("entryId", entryId);
+			params.add("thumbParams", thumbParams);
+			params.add("sourceAssetId", sourceAssetId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void sourceAssetId(String multirequestToken) {
+			params.add("sourceAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "thumbasset", "export", kparams);
-    }
+	public static GenerateThumbAssetBuilder generate(String entryId, ThumbParams thumbParams)  {
+		return generate(entryId, thumbParams, null);
+	}
 
-    public static RequestBuilder<ThumbAsset> generate(String entryId, ThumbParams thumbParams)  {
-        return generate(entryId, thumbParams, null);
-    }
+    public static GenerateThumbAssetBuilder generate(String entryId, ThumbParams thumbParams, String sourceAssetId)  {
+		return new GenerateThumbAssetBuilder(entryId, thumbParams, sourceAssetId);
+	}
+	
+	public static class GenerateByEntryIdThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, GenerateByEntryIdThumbAssetBuilder> {
+		
+		public GenerateByEntryIdThumbAssetBuilder(String entryId, int destThumbParamsId) {
+			super(ThumbAsset.class, "thumbasset", "generateByEntryId");
+			params.add("entryId", entryId);
+			params.add("destThumbParamsId", destThumbParamsId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void destThumbParamsId(String multirequestToken) {
+			params.add("destThumbParamsId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ThumbAsset> generate(String entryId, ThumbParams thumbParams, String sourceAssetId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("thumbParams", thumbParams);
-        kparams.add("sourceAssetId", sourceAssetId);
+    public static GenerateByEntryIdThumbAssetBuilder generateByEntryId(String entryId, int destThumbParamsId)  {
+		return new GenerateByEntryIdThumbAssetBuilder(entryId, destThumbParamsId);
+	}
+	
+	public static class GetThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, GetThumbAssetBuilder> {
+		
+		public GetThumbAssetBuilder(String thumbAssetId) {
+			super(ThumbAsset.class, "thumbasset", "get");
+			params.add("thumbAssetId", thumbAssetId);
+		}
+		
+		public void thumbAssetId(String multirequestToken) {
+			params.add("thumbAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "generate", kparams);
-    }
+    public static GetThumbAssetBuilder get(String thumbAssetId)  {
+		return new GetThumbAssetBuilder(thumbAssetId);
+	}
+	
+	public static class GetByEntryIdThumbAssetBuilder extends ArrayRequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, GetByEntryIdThumbAssetBuilder> {
+		
+		public GetByEntryIdThumbAssetBuilder(String entryId) {
+			super(ThumbAsset.class, "thumbasset", "getByEntryId");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ThumbAsset> generateByEntryId(String entryId, int destThumbParamsId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("destThumbParamsId", destThumbParamsId);
-
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "generateByEntryId", kparams);
-    }
-
-    public static RequestBuilder<ThumbAsset> get(String thumbAssetId)  {
-        Params kparams = new Params();
-        kparams.add("thumbAssetId", thumbAssetId);
-
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "get", kparams);
-    }
-
-    public static RequestBuilder<List<ThumbAsset>> getByEntryId(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new ArrayRequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "getByEntryId", kparams);
-    }
+    public static GetByEntryIdThumbAssetBuilder getByEntryId(String entryId)  {
+		return new GetByEntryIdThumbAssetBuilder(entryId);
+	}
+	
+	public static class GetRemotePathsThumbAssetBuilder extends ListResponseRequestBuilder<RemotePath, RemotePath.Tokenizer, GetRemotePathsThumbAssetBuilder> {
+		
+		public GetRemotePathsThumbAssetBuilder(String id) {
+			super(RemotePath.class, "thumbasset", "getRemotePaths");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get remote storage existing paths for the asset  */
-    public static RequestBuilder<ListResponse<RemotePath>> getRemotePaths(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetRemotePathsThumbAssetBuilder getRemotePaths(String id)  {
+		return new GetRemotePathsThumbAssetBuilder(id);
+	}
+	
+	public static class GetUrlThumbAssetBuilder extends RequestBuilder<String, String, GetUrlThumbAssetBuilder> {
+		
+		public GetUrlThumbAssetBuilder(String id, int storageId, ThumbParams thumbParams) {
+			super(String.class, "thumbasset", "getUrl");
+			params.add("id", id);
+			params.add("storageId", storageId);
+			params.add("thumbParams", thumbParams);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void storageId(String multirequestToken) {
+			params.add("storageId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<RemotePath>(RemotePath.class, "thumbasset", "getRemotePaths", kparams);
-    }
+	public static GetUrlThumbAssetBuilder getUrl(String id)  {
+		return getUrl(id, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<String> getUrl(String id)  {
-        return getUrl(id, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<String> getUrl(String id, int storageId)  {
-        return getUrl(id, storageId, null);
-    }
+	public static GetUrlThumbAssetBuilder getUrl(String id, int storageId)  {
+		return getUrl(id, storageId, null);
+	}
 
 	/**  Get download URL for the asset  */
-    public static RequestBuilder<String> getUrl(String id, int storageId, ThumbParams thumbParams)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("storageId", storageId);
-        kparams.add("thumbParams", thumbParams);
+    public static GetUrlThumbAssetBuilder getUrl(String id, int storageId, ThumbParams thumbParams)  {
+		return new GetUrlThumbAssetBuilder(id, storageId, thumbParams);
+	}
+	
+	public static class ListThumbAssetBuilder extends ListResponseRequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, ListThumbAssetBuilder> {
+		
+		public ListThumbAssetBuilder(AssetFilter filter, FilterPager pager) {
+			super(ThumbAsset.class, "thumbasset", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "thumbasset", "getUrl", kparams);
-    }
+	public static ListThumbAssetBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ThumbAsset>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ThumbAsset>> list(AssetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListThumbAssetBuilder list(AssetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Thumbnail Assets by filter and pager  */
-    public static RequestBuilder<ListResponse<ThumbAsset>> list(AssetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListThumbAssetBuilder list(AssetFilter filter, FilterPager pager)  {
+		return new ListThumbAssetBuilder(filter, pager);
+	}
+	
+	public static class RegenerateThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, RegenerateThumbAssetBuilder> {
+		
+		public RegenerateThumbAssetBuilder(String thumbAssetId) {
+			super(ThumbAsset.class, "thumbasset", "regenerate");
+			params.add("thumbAssetId", thumbAssetId);
+		}
+		
+		public void thumbAssetId(String multirequestToken) {
+			params.add("thumbAssetId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "list", kparams);
-    }
+    public static RegenerateThumbAssetBuilder regenerate(String thumbAssetId)  {
+		return new RegenerateThumbAssetBuilder(thumbAssetId);
+	}
+	
+	public static class ServeThumbAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeThumbAssetBuilder(String thumbAssetId, int version, ThumbParams thumbParams, ThumbnailServeOptions options) {
+			super("thumbasset", "serve");
+			params.add("thumbAssetId", thumbAssetId);
+			params.add("version", version);
+			params.add("thumbParams", thumbParams);
+			params.add("options", options);
+		}
+		
+		public void thumbAssetId(String multirequestToken) {
+			params.add("thumbAssetId", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ThumbAsset> regenerate(String thumbAssetId)  {
-        Params kparams = new Params();
-        kparams.add("thumbAssetId", thumbAssetId);
+	public static ServeThumbAssetBuilder serve(String thumbAssetId)  {
+		return serve(thumbAssetId, Integer.MIN_VALUE);
+	}
 
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "regenerate", kparams);
-    }
+	public static ServeThumbAssetBuilder serve(String thumbAssetId, int version)  {
+		return serve(thumbAssetId, version, null);
+	}
 
-    public static RequestBuilder<String> serve(String thumbAssetId)  {
-        return serve(thumbAssetId, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<String> serve(String thumbAssetId, int version)  {
-        return serve(thumbAssetId, version, null);
-    }
-
-    public static RequestBuilder<String> serve(String thumbAssetId, int version, ThumbParams thumbParams)  {
-        return serve(thumbAssetId, version, thumbParams, null);
-    }
+	public static ServeThumbAssetBuilder serve(String thumbAssetId, int version, ThumbParams thumbParams)  {
+		return serve(thumbAssetId, version, thumbParams, null);
+	}
 
 	/**  Serves thumbnail by its id  */
-    public static RequestBuilder<String> serve(String thumbAssetId, int version, ThumbParams thumbParams, ThumbnailServeOptions options)  {
-        Params kparams = new Params();
-        kparams.add("thumbAssetId", thumbAssetId);
-        kparams.add("version", version);
-        kparams.add("thumbParams", thumbParams);
-        kparams.add("options", options);
+    public static ServeThumbAssetBuilder serve(String thumbAssetId, int version, ThumbParams thumbParams, ThumbnailServeOptions options)  {
+		return new ServeThumbAssetBuilder(thumbAssetId, version, thumbParams, options);
+	}
+	
+	public static class ServeByEntryIdThumbAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeByEntryIdThumbAssetBuilder(String entryId, int thumbParamId) {
+			super("thumbasset", "serveByEntryId");
+			params.add("entryId", entryId);
+			params.add("thumbParamId", thumbParamId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void thumbParamId(String multirequestToken) {
+			params.add("thumbParamId", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("thumbasset", "serve", kparams);
-    }
-
-    public static RequestBuilder<String> serveByEntryId(String entryId)  {
-        return serveByEntryId(entryId, Integer.MIN_VALUE);
-    }
+	public static ServeByEntryIdThumbAssetBuilder serveByEntryId(String entryId)  {
+		return serveByEntryId(entryId, Integer.MIN_VALUE);
+	}
 
 	/**  Serves thumbnail by entry id and thumnail params id  */
-    public static RequestBuilder<String> serveByEntryId(String entryId, int thumbParamId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("thumbParamId", thumbParamId);
-
-        return new ServeRequestBuilder("thumbasset", "serveByEntryId", kparams);
-    }
+    public static ServeByEntryIdThumbAssetBuilder serveByEntryId(String entryId, int thumbParamId)  {
+		return new ServeByEntryIdThumbAssetBuilder(entryId, thumbParamId);
+	}
+	
+	public static class SetAsDefaultThumbAssetBuilder extends NullRequestBuilder {
+		
+		public SetAsDefaultThumbAssetBuilder(String thumbAssetId) {
+			super("thumbasset", "setAsDefault");
+			params.add("thumbAssetId", thumbAssetId);
+		}
+		
+		public void thumbAssetId(String multirequestToken) {
+			params.add("thumbAssetId", multirequestToken);
+		}
+	}
 
 	/**  Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
 	  thumbnail assets of the entry.   Create a new file sync link on the entry
 	  thumbnail that points to the thumbnail asset file sync.  */
-    public static RequestBuilder<Void> setAsDefault(String thumbAssetId)  {
-        Params kparams = new Params();
-        kparams.add("thumbAssetId", thumbAssetId);
-
-        return new NullRequestBuilder("thumbasset", "setAsDefault", kparams);
-    }
+    public static SetAsDefaultThumbAssetBuilder setAsDefault(String thumbAssetId)  {
+		return new SetAsDefaultThumbAssetBuilder(thumbAssetId);
+	}
+	
+	public static class SetContentThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, SetContentThumbAssetBuilder> {
+		
+		public SetContentThumbAssetBuilder(String id, ContentResource contentResource) {
+			super(ThumbAsset.class, "thumbasset", "setContent");
+			params.add("id", id);
+			params.add("contentResource", contentResource);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update content of thumbnail asset  */
-    public static RequestBuilder<ThumbAsset> setContent(String id, ContentResource contentResource)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "setContent", kparams);
-    }
+    public static SetContentThumbAssetBuilder setContent(String id, ContentResource contentResource)  {
+		return new SetContentThumbAssetBuilder(id, contentResource);
+	}
+	
+	public static class UpdateThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, UpdateThumbAssetBuilder> {
+		
+		public UpdateThumbAssetBuilder(String id, ThumbAsset thumbAsset) {
+			super(ThumbAsset.class, "thumbasset", "update");
+			params.add("id", id);
+			params.add("thumbAsset", thumbAsset);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update thumbnail asset  */
-    public static RequestBuilder<ThumbAsset> update(String id, ThumbAsset thumbAsset)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("thumbAsset", thumbAsset);
-
-        return new RequestBuilder<ThumbAsset>(ThumbAsset.class, "thumbasset", "update", kparams);
-    }
+    public static UpdateThumbAssetBuilder update(String id, ThumbAsset thumbAsset)  {
+		return new UpdateThumbAssetBuilder(id, thumbAsset);
+	}
 }

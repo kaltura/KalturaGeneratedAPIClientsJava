@@ -30,7 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,23 +42,27 @@ import com.kaltura.client.utils.GsonParser;
 /**  Abstract core class  which provides the recipients (to, CC, BCC) for an email
   notification  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationRecipientProvider.Tokenizer.class)
 public abstract class EmailNotificationRecipientProvider extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+	}
 
 
 
-    public EmailNotificationRecipientProvider() {
-       super();
-    }
+	public EmailNotificationRecipientProvider() {
+		super();
+	}
 
-    public EmailNotificationRecipientProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public EmailNotificationRecipientProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationRecipientProvider");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationRecipientProvider");
+		return kparams;
+	}
 
 }
 

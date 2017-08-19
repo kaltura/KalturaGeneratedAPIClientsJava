@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeliveryProfileAkamaiHttpOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    DeliveryProfileAkamaiHttpOrderBy(String value) {
-        this.value = value;
-    }
+	DeliveryProfileAkamaiHttpOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DeliveryProfileAkamaiHttpOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DeliveryProfileAkamaiHttpOrderBy defined values and compare the inner value with the given one:
-        for(DeliveryProfileAkamaiHttpOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DeliveryProfileAkamaiHttpOrderBy.values().length > 0 ? DeliveryProfileAkamaiHttpOrderBy.values()[0]: null;
+	public static DeliveryProfileAkamaiHttpOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DeliveryProfileAkamaiHttpOrderBy defined values and compare the inner value with the given one:
+		for(DeliveryProfileAkamaiHttpOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DeliveryProfileAkamaiHttpOrderBy.values().length > 0 ? DeliveryProfileAkamaiHttpOrderBy.values()[0]: null;
    }
 }

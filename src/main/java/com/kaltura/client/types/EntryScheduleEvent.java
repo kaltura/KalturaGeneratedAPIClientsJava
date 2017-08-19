@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryScheduleEvent.Tokenizer.class)
 public abstract class EntryScheduleEvent extends ScheduleEvent {
+	
+	public interface Tokenizer extends ScheduleEvent.Tokenizer {
+		String templateEntryId();
+		String entryIds();
+		String categoryIds();
+	}
 
 	/**  Entry to be used as template during content ingestion  */
-    private String templateEntryId;
+	private String templateEntryId;
 	/**  Entries that associated with this event  */
-    private String entryIds;
+	private String entryIds;
 	/**  Categories that associated with this event  */
-    private String categoryIds;
+	private String categoryIds;
 
-    // templateEntryId:
-    public String getTemplateEntryId(){
-        return this.templateEntryId;
-    }
-    public void setTemplateEntryId(String templateEntryId){
-        this.templateEntryId = templateEntryId;
-    }
+	// templateEntryId:
+	public String getTemplateEntryId(){
+		return this.templateEntryId;
+	}
+	public void setTemplateEntryId(String templateEntryId){
+		this.templateEntryId = templateEntryId;
+	}
 
-    // entryIds:
-    public String getEntryIds(){
-        return this.entryIds;
-    }
-    public void setEntryIds(String entryIds){
-        this.entryIds = entryIds;
-    }
+	public void templateEntryId(String multirequestToken){
+		setToken("templateEntryId", multirequestToken);
+	}
 
-    // categoryIds:
-    public String getCategoryIds(){
-        return this.categoryIds;
-    }
-    public void setCategoryIds(String categoryIds){
-        this.categoryIds = categoryIds;
-    }
+	// entryIds:
+	public String getEntryIds(){
+		return this.entryIds;
+	}
+	public void setEntryIds(String entryIds){
+		this.entryIds = entryIds;
+	}
+
+	public void entryIds(String multirequestToken){
+		setToken("entryIds", multirequestToken);
+	}
+
+	// categoryIds:
+	public String getCategoryIds(){
+		return this.categoryIds;
+	}
+	public void setCategoryIds(String categoryIds){
+		this.categoryIds = categoryIds;
+	}
+
+	public void categoryIds(String multirequestToken){
+		setToken("categoryIds", multirequestToken);
+	}
 
 
-    public EntryScheduleEvent() {
-       super();
-    }
+	public EntryScheduleEvent() {
+		super();
+	}
 
-    public EntryScheduleEvent(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryScheduleEvent(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        templateEntryId = GsonParser.parseString(jsonObject.get("templateEntryId"));
-        entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-        categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
+		// set members values:
+		templateEntryId = GsonParser.parseString(jsonObject.get("templateEntryId"));
+		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
+		categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryScheduleEvent");
-        kparams.add("templateEntryId", this.templateEntryId);
-        kparams.add("entryIds", this.entryIds);
-        kparams.add("categoryIds", this.categoryIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryScheduleEvent");
+		kparams.add("templateEntryId", this.templateEntryId);
+		kparams.add("entryIds", this.entryIds);
+		kparams.add("categoryIds", this.categoryIds);
+		return kparams;
+	}
 
 }
 

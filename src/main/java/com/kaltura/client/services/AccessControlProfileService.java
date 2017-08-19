@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AccessControlProfile;
 import com.kaltura.client.types.AccessControlProfileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,54 +43,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage access control profiles  */
 public class AccessControlProfileService {
+	
+	public static class AddAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, AddAccessControlProfileBuilder> {
+		
+		public AddAccessControlProfileBuilder(AccessControlProfile accessControlProfile) {
+			super(AccessControlProfile.class, "accesscontrolprofile", "add");
+			params.add("accessControlProfile", accessControlProfile);
+		}
+	}
 
 	/**  Add new access control profile  */
-    public static RequestBuilder<AccessControlProfile> add(AccessControlProfile accessControlProfile)  {
-        Params kparams = new Params();
-        kparams.add("accessControlProfile", accessControlProfile);
-
-        return new RequestBuilder<AccessControlProfile>(AccessControlProfile.class, "accesscontrolprofile", "add", kparams);
-    }
+    public static AddAccessControlProfileBuilder add(AccessControlProfile accessControlProfile)  {
+		return new AddAccessControlProfileBuilder(accessControlProfile);
+	}
+	
+	public static class DeleteAccessControlProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteAccessControlProfileBuilder(int id) {
+			super("accesscontrolprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete access control profile by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("accesscontrolprofile", "delete", kparams);
-    }
+    public static DeleteAccessControlProfileBuilder delete(int id)  {
+		return new DeleteAccessControlProfileBuilder(id);
+	}
+	
+	public static class GetAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, GetAccessControlProfileBuilder> {
+		
+		public GetAccessControlProfileBuilder(int id) {
+			super(AccessControlProfile.class, "accesscontrolprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get access control profile by id  */
-    public static RequestBuilder<AccessControlProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetAccessControlProfileBuilder get(int id)  {
+		return new GetAccessControlProfileBuilder(id);
+	}
+	
+	public static class ListAccessControlProfileBuilder extends ListResponseRequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, ListAccessControlProfileBuilder> {
+		
+		public ListAccessControlProfileBuilder(AccessControlProfileFilter filter, FilterPager pager) {
+			super(AccessControlProfile.class, "accesscontrolprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<AccessControlProfile>(AccessControlProfile.class, "accesscontrolprofile", "get", kparams);
-    }
+	public static ListAccessControlProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<AccessControlProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AccessControlProfile>> list(AccessControlProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListAccessControlProfileBuilder list(AccessControlProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List access control profiles by filter and pager  */
-    public static RequestBuilder<ListResponse<AccessControlProfile>> list(AccessControlProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<AccessControlProfile>(AccessControlProfile.class, "accesscontrolprofile", "list", kparams);
-    }
+    public static ListAccessControlProfileBuilder list(AccessControlProfileFilter filter, FilterPager pager)  {
+		return new ListAccessControlProfileBuilder(filter, pager);
+	}
+	
+	public static class UpdateAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, UpdateAccessControlProfileBuilder> {
+		
+		public UpdateAccessControlProfileBuilder(int id, AccessControlProfile accessControlProfile) {
+			super(AccessControlProfile.class, "accesscontrolprofile", "update");
+			params.add("id", id);
+			params.add("accessControlProfile", accessControlProfile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update access control profile by id  */
-    public static RequestBuilder<AccessControlProfile> update(int id, AccessControlProfile accessControlProfile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("accessControlProfile", accessControlProfile);
-
-        return new RequestBuilder<AccessControlProfile>(AccessControlProfile.class, "accesscontrolprofile", "update", kparams);
-    }
+    public static UpdateAccessControlProfileBuilder update(int id, AccessControlProfile accessControlProfile)  {
+		return new UpdateAccessControlProfileBuilder(id, accessControlProfile);
+	}
 }

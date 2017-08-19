@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CameraScheduleResource.Tokenizer.class)
 public class CameraScheduleResource extends ScheduleResource {
+	
+	public interface Tokenizer extends ScheduleResource.Tokenizer {
+		String streamUrl();
+	}
 
 	/**  URL of the stream  */
-    private String streamUrl;
+	private String streamUrl;
 
-    // streamUrl:
-    public String getStreamUrl(){
-        return this.streamUrl;
-    }
-    public void setStreamUrl(String streamUrl){
-        this.streamUrl = streamUrl;
-    }
+	// streamUrl:
+	public String getStreamUrl(){
+		return this.streamUrl;
+	}
+	public void setStreamUrl(String streamUrl){
+		this.streamUrl = streamUrl;
+	}
+
+	public void streamUrl(String multirequestToken){
+		setToken("streamUrl", multirequestToken);
+	}
 
 
-    public CameraScheduleResource() {
-       super();
-    }
+	public CameraScheduleResource() {
+		super();
+	}
 
-    public CameraScheduleResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CameraScheduleResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        streamUrl = GsonParser.parseString(jsonObject.get("streamUrl"));
+		// set members values:
+		streamUrl = GsonParser.parseString(jsonObject.get("streamUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCameraScheduleResource");
-        kparams.add("streamUrl", this.streamUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCameraScheduleResource");
+		kparams.add("streamUrl", this.streamUrl);
+		return kparams;
+	}
 
 }
 

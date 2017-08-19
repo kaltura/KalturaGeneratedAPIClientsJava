@@ -34,47 +34,47 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryStatus implements EnumAsString {
-    ERROR_IMPORTING("-2"),
-    ERROR_CONVERTING("-1"),
-    SCAN_FAILURE("virusScan.ScanFailure"),
-    IMPORT("0"),
-    INFECTED("virusScan.Infected"),
-    PRECONVERT("1"),
-    READY("2"),
-    DELETED("3"),
-    PENDING("4"),
-    MODERATE("5"),
-    BLOCKED("6"),
-    NO_CONTENT("7");
+	ERROR_IMPORTING("-2"),
+	ERROR_CONVERTING("-1"),
+	SCAN_FAILURE("virusScan.ScanFailure"),
+	IMPORT("0"),
+	INFECTED("virusScan.Infected"),
+	PRECONVERT("1"),
+	READY("2"),
+	DELETED("3"),
+	PENDING("4"),
+	MODERATE("5"),
+	BLOCKED("6"),
+	NO_CONTENT("7");
 
-    private String value;
+	private String value;
 
-    EntryStatus(String value) {
-        this.value = value;
-    }
+	EntryStatus(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryStatus get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryStatus defined values and compare the inner value with the given one:
-        for(EntryStatus item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryStatus.values().length > 0 ? EntryStatus.values()[0]: null;
+	public static EntryStatus get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryStatus defined values and compare the inner value with the given one:
+		for(EntryStatus item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryStatus.values().length > 0 ? EntryStatus.values()[0]: null;
    }
 }

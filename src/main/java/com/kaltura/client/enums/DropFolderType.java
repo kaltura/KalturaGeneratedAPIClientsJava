@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType implements EnumAsString {
-    FEED("FeedDropFolder.FEED"),
-    LOCAL("1"),
-    FTP("2"),
-    SCP("3"),
-    SFTP("4"),
-    S3("6");
+	FEED("FeedDropFolder.FEED"),
+	LOCAL("1"),
+	FTP("2"),
+	SCP("3"),
+	SFTP("4"),
+	S3("6");
 
-    private String value;
+	private String value;
 
-    DropFolderType(String value) {
-        this.value = value;
-    }
+	DropFolderType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DropFolderType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderType defined values and compare the inner value with the given one:
-        for(DropFolderType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderType.values().length > 0 ? DropFolderType.values()[0]: null;
+	public static DropFolderType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderType defined values and compare the inner value with the given one:
+		for(DropFolderType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderType.values().length > 0 ? DropFolderType.values()[0]: null;
    }
 }

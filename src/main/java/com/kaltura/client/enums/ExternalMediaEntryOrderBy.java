@@ -34,67 +34,67 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ExternalMediaEntryOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    DURATION_ASC("+duration"),
-    END_DATE_ASC("+endDate"),
-    LAST_PLAYED_AT_ASC("+lastPlayedAt"),
-    MEDIA_TYPE_ASC("+mediaType"),
-    MODERATION_COUNT_ASC("+moderationCount"),
-    NAME_ASC("+name"),
-    PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
-    PLAYS_ASC("+plays"),
-    RANK_ASC("+rank"),
-    RECENT_ASC("+recent"),
-    START_DATE_ASC("+startDate"),
-    TOTAL_RANK_ASC("+totalRank"),
-    UPDATED_AT_ASC("+updatedAt"),
-    VIEWS_ASC("+views"),
-    WEIGHT_ASC("+weight"),
-    CREATED_AT_DESC("-createdAt"),
-    DURATION_DESC("-duration"),
-    END_DATE_DESC("-endDate"),
-    LAST_PLAYED_AT_DESC("-lastPlayedAt"),
-    MEDIA_TYPE_DESC("-mediaType"),
-    MODERATION_COUNT_DESC("-moderationCount"),
-    NAME_DESC("-name"),
-    PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
-    PLAYS_DESC("-plays"),
-    RANK_DESC("-rank"),
-    RECENT_DESC("-recent"),
-    START_DATE_DESC("-startDate"),
-    TOTAL_RANK_DESC("-totalRank"),
-    UPDATED_AT_DESC("-updatedAt"),
-    VIEWS_DESC("-views"),
-    WEIGHT_DESC("-weight");
+	CREATED_AT_ASC("+createdAt"),
+	DURATION_ASC("+duration"),
+	END_DATE_ASC("+endDate"),
+	LAST_PLAYED_AT_ASC("+lastPlayedAt"),
+	MEDIA_TYPE_ASC("+mediaType"),
+	MODERATION_COUNT_ASC("+moderationCount"),
+	NAME_ASC("+name"),
+	PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
+	PLAYS_ASC("+plays"),
+	RANK_ASC("+rank"),
+	RECENT_ASC("+recent"),
+	START_DATE_ASC("+startDate"),
+	TOTAL_RANK_ASC("+totalRank"),
+	UPDATED_AT_ASC("+updatedAt"),
+	VIEWS_ASC("+views"),
+	WEIGHT_ASC("+weight"),
+	CREATED_AT_DESC("-createdAt"),
+	DURATION_DESC("-duration"),
+	END_DATE_DESC("-endDate"),
+	LAST_PLAYED_AT_DESC("-lastPlayedAt"),
+	MEDIA_TYPE_DESC("-mediaType"),
+	MODERATION_COUNT_DESC("-moderationCount"),
+	NAME_DESC("-name"),
+	PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
+	PLAYS_DESC("-plays"),
+	RANK_DESC("-rank"),
+	RECENT_DESC("-recent"),
+	START_DATE_DESC("-startDate"),
+	TOTAL_RANK_DESC("-totalRank"),
+	UPDATED_AT_DESC("-updatedAt"),
+	VIEWS_DESC("-views"),
+	WEIGHT_DESC("-weight");
 
-    private String value;
+	private String value;
 
-    ExternalMediaEntryOrderBy(String value) {
-        this.value = value;
-    }
+	ExternalMediaEntryOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ExternalMediaEntryOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ExternalMediaEntryOrderBy defined values and compare the inner value with the given one:
-        for(ExternalMediaEntryOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ExternalMediaEntryOrderBy.values().length > 0 ? ExternalMediaEntryOrderBy.values()[0]: null;
+	public static ExternalMediaEntryOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ExternalMediaEntryOrderBy defined values and compare the inner value with the given one:
+		for(ExternalMediaEntryOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ExternalMediaEntryOrderBy.values().length > 0 ? ExternalMediaEntryOrderBy.values()[0]: null;
    }
 }

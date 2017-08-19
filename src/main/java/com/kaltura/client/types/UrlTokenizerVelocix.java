@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerVelocix.Tokenizer.class)
 public class UrlTokenizerVelocix extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String hdsPaths();
+		String paramName();
+		String authPrefix();
+	}
 
 	/**  hdsPaths  */
-    private String hdsPaths;
+	private String hdsPaths;
 	/**  tokenParamName  */
-    private String paramName;
+	private String paramName;
 	/**  secure URL prefix  */
-    private String authPrefix;
+	private String authPrefix;
 
-    // hdsPaths:
-    public String getHdsPaths(){
-        return this.hdsPaths;
-    }
-    public void setHdsPaths(String hdsPaths){
-        this.hdsPaths = hdsPaths;
-    }
+	// hdsPaths:
+	public String getHdsPaths(){
+		return this.hdsPaths;
+	}
+	public void setHdsPaths(String hdsPaths){
+		this.hdsPaths = hdsPaths;
+	}
 
-    // paramName:
-    public String getParamName(){
-        return this.paramName;
-    }
-    public void setParamName(String paramName){
-        this.paramName = paramName;
-    }
+	public void hdsPaths(String multirequestToken){
+		setToken("hdsPaths", multirequestToken);
+	}
 
-    // authPrefix:
-    public String getAuthPrefix(){
-        return this.authPrefix;
-    }
-    public void setAuthPrefix(String authPrefix){
-        this.authPrefix = authPrefix;
-    }
+	// paramName:
+	public String getParamName(){
+		return this.paramName;
+	}
+	public void setParamName(String paramName){
+		this.paramName = paramName;
+	}
+
+	public void paramName(String multirequestToken){
+		setToken("paramName", multirequestToken);
+	}
+
+	// authPrefix:
+	public String getAuthPrefix(){
+		return this.authPrefix;
+	}
+	public void setAuthPrefix(String authPrefix){
+		this.authPrefix = authPrefix;
+	}
+
+	public void authPrefix(String multirequestToken){
+		setToken("authPrefix", multirequestToken);
+	}
 
 
-    public UrlTokenizerVelocix() {
-       super();
-    }
+	public UrlTokenizerVelocix() {
+		super();
+	}
 
-    public UrlTokenizerVelocix(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerVelocix(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hdsPaths = GsonParser.parseString(jsonObject.get("hdsPaths"));
-        paramName = GsonParser.parseString(jsonObject.get("paramName"));
-        authPrefix = GsonParser.parseString(jsonObject.get("authPrefix"));
+		// set members values:
+		hdsPaths = GsonParser.parseString(jsonObject.get("hdsPaths"));
+		paramName = GsonParser.parseString(jsonObject.get("paramName"));
+		authPrefix = GsonParser.parseString(jsonObject.get("authPrefix"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerVelocix");
-        kparams.add("hdsPaths", this.hdsPaths);
-        kparams.add("paramName", this.paramName);
-        kparams.add("authPrefix", this.authPrefix);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerVelocix");
+		kparams.add("hdsPaths", this.hdsPaths);
+		kparams.add("paramName", this.paramName);
+		kparams.add("authPrefix", this.authPrefix);
+		return kparams;
+	}
 
 }
 

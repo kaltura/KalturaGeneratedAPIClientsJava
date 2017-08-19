@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.ConversionProfileType;
 import com.kaltura.client.types.ConversionProfile;
 import com.kaltura.client.types.ConversionProfileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -46,74 +44,129 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage Conversion Profiles  */
 public class ConversionProfileService {
+	
+	public static class AddConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, AddConversionProfileBuilder> {
+		
+		public AddConversionProfileBuilder(ConversionProfile conversionProfile) {
+			super(ConversionProfile.class, "conversionprofile", "add");
+			params.add("conversionProfile", conversionProfile);
+		}
+	}
 
 	/**  Add new Conversion Profile  */
-    public static RequestBuilder<ConversionProfile> add(ConversionProfile conversionProfile)  {
-        Params kparams = new Params();
-        kparams.add("conversionProfile", conversionProfile);
-
-        return new RequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "add", kparams);
-    }
+    public static AddConversionProfileBuilder add(ConversionProfile conversionProfile)  {
+		return new AddConversionProfileBuilder(conversionProfile);
+	}
+	
+	public static class DeleteConversionProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteConversionProfileBuilder(int id) {
+			super("conversionprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Conversion Profile by ID  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("conversionprofile", "delete", kparams);
-    }
+    public static DeleteConversionProfileBuilder delete(int id)  {
+		return new DeleteConversionProfileBuilder(id);
+	}
+	
+	public static class GetConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, GetConversionProfileBuilder> {
+		
+		public GetConversionProfileBuilder(int id) {
+			super(ConversionProfile.class, "conversionprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Conversion Profile by ID  */
-    public static RequestBuilder<ConversionProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetConversionProfileBuilder get(int id)  {
+		return new GetConversionProfileBuilder(id);
+	}
+	
+	public static class GetDefaultConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, GetDefaultConversionProfileBuilder> {
+		
+		public GetDefaultConversionProfileBuilder(ConversionProfileType type) {
+			super(ConversionProfile.class, "conversionprofile", "getDefault");
+			params.add("type", type);
+		}
+		
+		public void type(String multirequestToken) {
+			params.add("type", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "get", kparams);
-    }
-
-    public static RequestBuilder<ConversionProfile> getDefault()  {
-        return getDefault(null);
-    }
+	public static GetDefaultConversionProfileBuilder getDefault()  {
+		return getDefault(null);
+	}
 
 	/**  Get the partner's default conversion profile  */
-    public static RequestBuilder<ConversionProfile> getDefault(ConversionProfileType type)  {
-        Params kparams = new Params();
-        kparams.add("type", type);
+    public static GetDefaultConversionProfileBuilder getDefault(ConversionProfileType type)  {
+		return new GetDefaultConversionProfileBuilder(type);
+	}
+	
+	public static class ListConversionProfileBuilder extends ListResponseRequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, ListConversionProfileBuilder> {
+		
+		public ListConversionProfileBuilder(ConversionProfileFilter filter, FilterPager pager) {
+			super(ConversionProfile.class, "conversionprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "getDefault", kparams);
-    }
+	public static ListConversionProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ConversionProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ConversionProfile>> list(ConversionProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListConversionProfileBuilder list(ConversionProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Conversion Profiles by filter with paging support  */
-    public static RequestBuilder<ListResponse<ConversionProfile>> list(ConversionProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "list", kparams);
-    }
+    public static ListConversionProfileBuilder list(ConversionProfileFilter filter, FilterPager pager)  {
+		return new ListConversionProfileBuilder(filter, pager);
+	}
+	
+	public static class SetAsDefaultConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, SetAsDefaultConversionProfileBuilder> {
+		
+		public SetAsDefaultConversionProfileBuilder(int id) {
+			super(ConversionProfile.class, "conversionprofile", "setAsDefault");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Set Conversion Profile to be the partner default  */
-    public static RequestBuilder<ConversionProfile> setAsDefault(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "setAsDefault", kparams);
-    }
+    public static SetAsDefaultConversionProfileBuilder setAsDefault(int id)  {
+		return new SetAsDefaultConversionProfileBuilder(id);
+	}
+	
+	public static class UpdateConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, UpdateConversionProfileBuilder> {
+		
+		public UpdateConversionProfileBuilder(int id, ConversionProfile conversionProfile) {
+			super(ConversionProfile.class, "conversionprofile", "update");
+			params.add("id", id);
+			params.add("conversionProfile", conversionProfile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Conversion Profile by ID  */
-    public static RequestBuilder<ConversionProfile> update(int id, ConversionProfile conversionProfile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("conversionProfile", conversionProfile);
-
-        return new RequestBuilder<ConversionProfile>(ConversionProfile.class, "conversionprofile", "update", kparams);
-    }
+    public static UpdateConversionProfileBuilder update(int id, ConversionProfile conversionProfile)  {
+		return new UpdateConversionProfileBuilder(id, conversionProfile);
+	}
 }

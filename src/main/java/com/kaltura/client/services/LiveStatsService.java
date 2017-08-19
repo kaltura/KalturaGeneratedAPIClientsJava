@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.LiveStatsEvent;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -40,13 +39,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Stats Service  */
 public class LiveStatsService {
+	
+	public static class CollectLiveStatsBuilder extends RequestBuilder<Boolean, String, CollectLiveStatsBuilder> {
+		
+		public CollectLiveStatsBuilder(LiveStatsEvent event) {
+			super(Boolean.class, "livestats", "collect");
+			params.add("event", event);
+		}
+	}
 
 	/**  Will write to the event log a single line representing the event  
 	  KalturaStatsEvent $event  */
-    public static RequestBuilder<Boolean> collect(LiveStatsEvent event)  {
-        Params kparams = new Params();
-        kparams.add("event", event);
-
-        return new RequestBuilder<Boolean>(Boolean.class, "livestats", "collect", kparams);
-    }
+    public static CollectLiveStatsBuilder collect(LiveStatsEvent event)  {
+		return new CollectLiveStatsBuilder(event);
+	}
 }

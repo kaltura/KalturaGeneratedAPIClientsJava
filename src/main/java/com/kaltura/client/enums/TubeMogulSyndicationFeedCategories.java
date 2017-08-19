@@ -34,50 +34,50 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum TubeMogulSyndicationFeedCategories implements EnumAsString {
-    ANIMALS_AND_PETS("Animals &amp; Pets"),
-    ARTS_AND_ANIMATION("Arts &amp; Animation"),
-    AUTOS("Autos"),
-    COMEDY("Comedy"),
-    COMMERCIALS_PROMOTIONAL("Commercials/Promotional"),
-    ENTERTAINMENT("Entertainment"),
-    FAMILY_AND_KIDS("Family &amp; Kids"),
-    HOW_TO_INSTRUCTIONAL_DIY("How To/Instructional/DIY"),
-    MUSIC("Music"),
-    NEWS_AND_BLOGS("News &amp; Blogs"),
-    SCIENCE_AND_TECHNOLOGY("Science &amp; Technology"),
-    SPORTS("Sports"),
-    TRAVEL_AND_PLACES("Travel &amp; Places"),
-    VIDEO_GAMES("Video Games"),
-    VLOGS_PEOPLE("Vlogs &amp; People");
+	ANIMALS_AND_PETS("Animals &amp; Pets"),
+	ARTS_AND_ANIMATION("Arts &amp; Animation"),
+	AUTOS("Autos"),
+	COMEDY("Comedy"),
+	COMMERCIALS_PROMOTIONAL("Commercials/Promotional"),
+	ENTERTAINMENT("Entertainment"),
+	FAMILY_AND_KIDS("Family &amp; Kids"),
+	HOW_TO_INSTRUCTIONAL_DIY("How To/Instructional/DIY"),
+	MUSIC("Music"),
+	NEWS_AND_BLOGS("News &amp; Blogs"),
+	SCIENCE_AND_TECHNOLOGY("Science &amp; Technology"),
+	SPORTS("Sports"),
+	TRAVEL_AND_PLACES("Travel &amp; Places"),
+	VIDEO_GAMES("Video Games"),
+	VLOGS_PEOPLE("Vlogs &amp; People");
 
-    private String value;
+	private String value;
 
-    TubeMogulSyndicationFeedCategories(String value) {
-        this.value = value;
-    }
+	TubeMogulSyndicationFeedCategories(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static TubeMogulSyndicationFeedCategories get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over TubeMogulSyndicationFeedCategories defined values and compare the inner value with the given one:
-        for(TubeMogulSyndicationFeedCategories item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return TubeMogulSyndicationFeedCategories.values().length > 0 ? TubeMogulSyndicationFeedCategories.values()[0]: null;
+	public static TubeMogulSyndicationFeedCategories get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over TubeMogulSyndicationFeedCategories defined values and compare the inner value with the given one:
+		for(TubeMogulSyndicationFeedCategories item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return TubeMogulSyndicationFeedCategories.values().length > 0 ? TubeMogulSyndicationFeedCategories.values()[0]: null;
    }
 }

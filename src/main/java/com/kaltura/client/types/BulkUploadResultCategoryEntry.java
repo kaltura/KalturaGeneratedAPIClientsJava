@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadResultCategoryEntry.Tokenizer.class)
 public class BulkUploadResultCategoryEntry extends BulkUploadResult {
+	
+	public interface Tokenizer extends BulkUploadResult.Tokenizer {
+		String categoryId();
+		String entryId();
+	}
 
-    private Integer categoryId;
-    private String entryId;
+	private Integer categoryId;
+	private String entryId;
 
-    // categoryId:
-    public Integer getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public Integer getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(Integer categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	public void categoryId(String multirequestToken){
+		setToken("categoryId", multirequestToken);
+	}
+
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
 
-    public BulkUploadResultCategoryEntry() {
-       super();
-    }
+	public BulkUploadResultCategoryEntry() {
+		super();
+	}
 
-    public BulkUploadResultCategoryEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadResultCategoryEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		// set members values:
+		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadResultCategoryEntry");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("entryId", this.entryId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadResultCategoryEntry");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("entryId", this.entryId);
+		return kparams;
+	}
 
 }
 

@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,113 +43,144 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControlScope.Tokenizer.class)
 public class AccessControlScope extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String referrer();
+		String ip();
+		String ks();
+		String userAgent();
+		String time();
+		RequestBuilder.ListTokenizer<AccessControlContextTypeHolder.Tokenizer> contexts();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> hashes();
+	}
 
 	/**  URL to be used to test domain conditions.  */
-    private String referrer;
+	private String referrer;
 	/**  IP to be used to test geographic location conditions.  */
-    private String ip;
+	private String ip;
 	/**  Kaltura session to be used to test session and user conditions.  */
-    private String ks;
+	private String ks;
 	/**  Browser or client application to be used to test agent conditions.  */
-    private String userAgent;
+	private String userAgent;
 	/**  Unix timestamp (In seconds) to be used to test entry scheduling, keep null to
 	  use now.  */
-    private Integer time;
+	private Integer time;
 	/**  Indicates what contexts should be tested. No contexts means any context.  */
-    private List<AccessControlContextTypeHolder> contexts;
+	private List<AccessControlContextTypeHolder> contexts;
 	/**  Array of hashes to pass to the access control profile scope  */
-    private List<KeyValue> hashes;
+	private List<KeyValue> hashes;
 
-    // referrer:
-    public String getReferrer(){
-        return this.referrer;
-    }
-    public void setReferrer(String referrer){
-        this.referrer = referrer;
-    }
+	// referrer:
+	public String getReferrer(){
+		return this.referrer;
+	}
+	public void setReferrer(String referrer){
+		this.referrer = referrer;
+	}
 
-    // ip:
-    public String getIp(){
-        return this.ip;
-    }
-    public void setIp(String ip){
-        this.ip = ip;
-    }
+	public void referrer(String multirequestToken){
+		setToken("referrer", multirequestToken);
+	}
 
-    // ks:
-    public String getKs(){
-        return this.ks;
-    }
-    public void setKs(String ks){
-        this.ks = ks;
-    }
+	// ip:
+	public String getIp(){
+		return this.ip;
+	}
+	public void setIp(String ip){
+		this.ip = ip;
+	}
 
-    // userAgent:
-    public String getUserAgent(){
-        return this.userAgent;
-    }
-    public void setUserAgent(String userAgent){
-        this.userAgent = userAgent;
-    }
+	public void ip(String multirequestToken){
+		setToken("ip", multirequestToken);
+	}
 
-    // time:
-    public Integer getTime(){
-        return this.time;
-    }
-    public void setTime(Integer time){
-        this.time = time;
-    }
+	// ks:
+	public String getKs(){
+		return this.ks;
+	}
+	public void setKs(String ks){
+		this.ks = ks;
+	}
 
-    // contexts:
-    public List<AccessControlContextTypeHolder> getContexts(){
-        return this.contexts;
-    }
-    public void setContexts(List<AccessControlContextTypeHolder> contexts){
-        this.contexts = contexts;
-    }
+	public void ks(String multirequestToken){
+		setToken("ks", multirequestToken);
+	}
 
-    // hashes:
-    public List<KeyValue> getHashes(){
-        return this.hashes;
-    }
-    public void setHashes(List<KeyValue> hashes){
-        this.hashes = hashes;
-    }
+	// userAgent:
+	public String getUserAgent(){
+		return this.userAgent;
+	}
+	public void setUserAgent(String userAgent){
+		this.userAgent = userAgent;
+	}
+
+	public void userAgent(String multirequestToken){
+		setToken("userAgent", multirequestToken);
+	}
+
+	// time:
+	public Integer getTime(){
+		return this.time;
+	}
+	public void setTime(Integer time){
+		this.time = time;
+	}
+
+	public void time(String multirequestToken){
+		setToken("time", multirequestToken);
+	}
+
+	// contexts:
+	public List<AccessControlContextTypeHolder> getContexts(){
+		return this.contexts;
+	}
+	public void setContexts(List<AccessControlContextTypeHolder> contexts){
+		this.contexts = contexts;
+	}
+
+	// hashes:
+	public List<KeyValue> getHashes(){
+		return this.hashes;
+	}
+	public void setHashes(List<KeyValue> hashes){
+		this.hashes = hashes;
+	}
 
 
-    public AccessControlScope() {
-       super();
-    }
+	public AccessControlScope() {
+		super();
+	}
 
-    public AccessControlScope(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControlScope(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        referrer = GsonParser.parseString(jsonObject.get("referrer"));
-        ip = GsonParser.parseString(jsonObject.get("ip"));
-        ks = GsonParser.parseString(jsonObject.get("ks"));
-        userAgent = GsonParser.parseString(jsonObject.get("userAgent"));
-        time = GsonParser.parseInt(jsonObject.get("time"));
-        contexts = GsonParser.parseArray(jsonObject.getAsJsonArray("contexts"), AccessControlContextTypeHolder.class);
-        hashes = GsonParser.parseArray(jsonObject.getAsJsonArray("hashes"), KeyValue.class);
+		// set members values:
+		referrer = GsonParser.parseString(jsonObject.get("referrer"));
+		ip = GsonParser.parseString(jsonObject.get("ip"));
+		ks = GsonParser.parseString(jsonObject.get("ks"));
+		userAgent = GsonParser.parseString(jsonObject.get("userAgent"));
+		time = GsonParser.parseInt(jsonObject.get("time"));
+		contexts = GsonParser.parseArray(jsonObject.getAsJsonArray("contexts"), AccessControlContextTypeHolder.class);
+		hashes = GsonParser.parseArray(jsonObject.getAsJsonArray("hashes"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControlScope");
-        kparams.add("referrer", this.referrer);
-        kparams.add("ip", this.ip);
-        kparams.add("ks", this.ks);
-        kparams.add("userAgent", this.userAgent);
-        kparams.add("time", this.time);
-        kparams.add("contexts", this.contexts);
-        kparams.add("hashes", this.hashes);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControlScope");
+		kparams.add("referrer", this.referrer);
+		kparams.add("ip", this.ip);
+		kparams.add("ks", this.ks);
+		kparams.add("userAgent", this.userAgent);
+		kparams.add("time", this.time);
+		kparams.add("contexts", this.contexts);
+		kparams.add("hashes", this.hashes);
+		return kparams;
+	}
 
 }
 

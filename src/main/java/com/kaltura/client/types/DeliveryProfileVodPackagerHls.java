@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileVodPackagerHls.Tokenizer.class)
 public class DeliveryProfileVodPackagerHls extends DeliveryProfileVodPackagerPlayServer {
+	
+	public interface Tokenizer extends DeliveryProfileVodPackagerPlayServer.Tokenizer {
+		String allowFairplayOffline();
+	}
 
-    private Boolean allowFairplayOffline;
+	private Boolean allowFairplayOffline;
 
-    // allowFairplayOffline:
-    public Boolean getAllowFairplayOffline(){
-        return this.allowFairplayOffline;
-    }
-    public void setAllowFairplayOffline(Boolean allowFairplayOffline){
-        this.allowFairplayOffline = allowFairplayOffline;
-    }
+	// allowFairplayOffline:
+	public Boolean getAllowFairplayOffline(){
+		return this.allowFairplayOffline;
+	}
+	public void setAllowFairplayOffline(Boolean allowFairplayOffline){
+		this.allowFairplayOffline = allowFairplayOffline;
+	}
+
+	public void allowFairplayOffline(String multirequestToken){
+		setToken("allowFairplayOffline", multirequestToken);
+	}
 
 
-    public DeliveryProfileVodPackagerHls() {
-       super();
-    }
+	public DeliveryProfileVodPackagerHls() {
+		super();
+	}
 
-    public DeliveryProfileVodPackagerHls(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileVodPackagerHls(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        allowFairplayOffline = GsonParser.parseBoolean(jsonObject.get("allowFairplayOffline"));
+		// set members values:
+		allowFairplayOffline = GsonParser.parseBoolean(jsonObject.get("allowFairplayOffline"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileVodPackagerHls");
-        kparams.add("allowFairplayOffline", this.allowFairplayOffline);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileVodPackagerHls");
+		kparams.add("allowFairplayOffline", this.allowFairplayOffline);
+		return kparams;
+	}
 
 }
 

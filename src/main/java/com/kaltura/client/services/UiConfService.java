@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.UiConf;
 import com.kaltura.client.types.UiConfFilter;
 import com.kaltura.client.types.UiConfTypeInfo;
@@ -37,7 +35,6 @@ import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -49,86 +46,142 @@ import java.util.List;
 /**  UiConf service lets you create and manage your UIConfs for the various flash
   components  This service is used by the KMC-ApplicationStudio  */
 public class UiConfService {
+	
+	public static class AddUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, AddUiConfBuilder> {
+		
+		public AddUiConfBuilder(UiConf uiConf) {
+			super(UiConf.class, "uiconf", "add");
+			params.add("uiConf", uiConf);
+		}
+	}
 
 	/**  UIConf Add action allows you to add a UIConf to Kaltura DB  */
-    public static RequestBuilder<UiConf> add(UiConf uiConf)  {
-        Params kparams = new Params();
-        kparams.add("uiConf", uiConf);
-
-        return new RequestBuilder<UiConf>(UiConf.class, "uiconf", "add", kparams);
-    }
+    public static AddUiConfBuilder add(UiConf uiConf)  {
+		return new AddUiConfBuilder(uiConf);
+	}
+	
+	public static class CloneUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, CloneUiConfBuilder> {
+		
+		public CloneUiConfBuilder(int id) {
+			super(UiConf.class, "uiconf", "clone");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Clone an existing UIConf  */
-    public static RequestBuilder<UiConf> clone(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<UiConf>(UiConf.class, "uiconf", "clone", kparams);
-    }
+    public static CloneUiConfBuilder clone(int id)  {
+		return new CloneUiConfBuilder(id);
+	}
+	
+	public static class DeleteUiConfBuilder extends NullRequestBuilder {
+		
+		public DeleteUiConfBuilder(int id) {
+			super("uiconf", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete an existing UIConf  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("uiconf", "delete", kparams);
-    }
+    public static DeleteUiConfBuilder delete(int id)  {
+		return new DeleteUiConfBuilder(id);
+	}
+	
+	public static class GetUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, GetUiConfBuilder> {
+		
+		public GetUiConfBuilder(int id) {
+			super(UiConf.class, "uiconf", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a UIConf by id  */
-    public static RequestBuilder<UiConf> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<UiConf>(UiConf.class, "uiconf", "get", kparams);
-    }
+    public static GetUiConfBuilder get(int id)  {
+		return new GetUiConfBuilder(id);
+	}
+	
+	public static class GetAvailableTypesUiConfBuilder extends ArrayRequestBuilder<UiConfTypeInfo, UiConfTypeInfo.Tokenizer, GetAvailableTypesUiConfBuilder> {
+		
+		public GetAvailableTypesUiConfBuilder() {
+			super(UiConfTypeInfo.class, "uiconf", "getAvailableTypes");
+		}
+	}
 
 	/**  Retrieve a list of all available versions by object type  */
-    public static RequestBuilder<List<UiConfTypeInfo>> getAvailableTypes()  {
-        Params kparams = new Params();
+    public static GetAvailableTypesUiConfBuilder getAvailableTypes()  {
+		return new GetAvailableTypesUiConfBuilder();
+	}
+	
+	public static class ListUiConfBuilder extends ListResponseRequestBuilder<UiConf, UiConf.Tokenizer, ListUiConfBuilder> {
+		
+		public ListUiConfBuilder(UiConfFilter filter, FilterPager pager) {
+			super(UiConf.class, "uiconf", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ArrayRequestBuilder<UiConfTypeInfo>(UiConfTypeInfo.class, "uiconf", "getAvailableTypes", kparams);
-    }
+	public static ListUiConfBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<UiConf>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<UiConf>> list(UiConfFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListUiConfBuilder list(UiConfFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Retrieve a list of available UIConfs  */
-    public static RequestBuilder<ListResponse<UiConf>> list(UiConfFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListUiConfBuilder list(UiConfFilter filter, FilterPager pager)  {
+		return new ListUiConfBuilder(filter, pager);
+	}
+	
+	public static class ListTemplatesUiConfBuilder extends ListResponseRequestBuilder<UiConf, UiConf.Tokenizer, ListTemplatesUiConfBuilder> {
+		
+		public ListTemplatesUiConfBuilder(UiConfFilter filter, FilterPager pager) {
+			super(UiConf.class, "uiconf", "listTemplates");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<UiConf>(UiConf.class, "uiconf", "list", kparams);
-    }
+	public static ListTemplatesUiConfBuilder listTemplates()  {
+		return listTemplates(null);
+	}
 
-    public static RequestBuilder<ListResponse<UiConf>> listTemplates()  {
-        return listTemplates(null);
-    }
-
-    public static RequestBuilder<ListResponse<UiConf>> listTemplates(UiConfFilter filter)  {
-        return listTemplates(filter, null);
-    }
+	public static ListTemplatesUiConfBuilder listTemplates(UiConfFilter filter)  {
+		return listTemplates(filter, null);
+	}
 
 	/**  retrieve a list of available template UIConfs  */
-    public static RequestBuilder<ListResponse<UiConf>> listTemplates(UiConfFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<UiConf>(UiConf.class, "uiconf", "listTemplates", kparams);
-    }
+    public static ListTemplatesUiConfBuilder listTemplates(UiConfFilter filter, FilterPager pager)  {
+		return new ListTemplatesUiConfBuilder(filter, pager);
+	}
+	
+	public static class UpdateUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, UpdateUiConfBuilder> {
+		
+		public UpdateUiConfBuilder(int id, UiConf uiConf) {
+			super(UiConf.class, "uiconf", "update");
+			params.add("id", id);
+			params.add("uiConf", uiConf);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update an existing UIConf  */
-    public static RequestBuilder<UiConf> update(int id, UiConf uiConf)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("uiConf", uiConf);
-
-        return new RequestBuilder<UiConf>(UiConf.class, "uiconf", "update", kparams);
-    }
+    public static UpdateUiConfBuilder update(int id, UiConf uiConf)  {
+		return new UpdateUiConfBuilder(id, uiConf);
+	}
 }

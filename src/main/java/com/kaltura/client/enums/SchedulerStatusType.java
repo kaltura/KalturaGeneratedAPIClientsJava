@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SchedulerStatusType implements EnumAsInt {
-    RUNNING_BATCHES_COUNT(1),
-    RUNNING_BATCHES_CPU(2),
-    RUNNING_BATCHES_MEMORY(3),
-    RUNNING_BATCHES_NETWORK(4),
-    RUNNING_BATCHES_DISC_IO(5),
-    RUNNING_BATCHES_DISC_SPACE(6),
-    RUNNING_BATCHES_IS_RUNNING(7);
+	RUNNING_BATCHES_COUNT(1),
+	RUNNING_BATCHES_CPU(2),
+	RUNNING_BATCHES_MEMORY(3),
+	RUNNING_BATCHES_NETWORK(4),
+	RUNNING_BATCHES_DISC_IO(5),
+	RUNNING_BATCHES_DISC_SPACE(6),
+	RUNNING_BATCHES_IS_RUNNING(7);
 
-    private int value;
+	private int value;
 
-    SchedulerStatusType(int value) {
-        this.value = value;
-    }
+	SchedulerStatusType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static SchedulerStatusType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SchedulerStatusType defined values and compare the inner value with the given one:
-        for(SchedulerStatusType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SchedulerStatusType.values().length > 0 ? SchedulerStatusType.values()[0]: null;
+	public static SchedulerStatusType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SchedulerStatusType defined values and compare the inner value with the given one:
+		for(SchedulerStatusType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SchedulerStatusType.values().length > 0 ? SchedulerStatusType.values()[0]: null;
    }
 }

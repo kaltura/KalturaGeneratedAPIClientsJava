@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserLoginDataBaseFilter.Tokenizer.class)
 public abstract class UserLoginDataBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String loginEmailEqual();
+	}
 
-    private String loginEmailEqual;
+	private String loginEmailEqual;
 
-    // loginEmailEqual:
-    public String getLoginEmailEqual(){
-        return this.loginEmailEqual;
-    }
-    public void setLoginEmailEqual(String loginEmailEqual){
-        this.loginEmailEqual = loginEmailEqual;
-    }
+	// loginEmailEqual:
+	public String getLoginEmailEqual(){
+		return this.loginEmailEqual;
+	}
+	public void setLoginEmailEqual(String loginEmailEqual){
+		this.loginEmailEqual = loginEmailEqual;
+	}
+
+	public void loginEmailEqual(String multirequestToken){
+		setToken("loginEmailEqual", multirequestToken);
+	}
 
 
-    public UserLoginDataBaseFilter() {
-       super();
-    }
+	public UserLoginDataBaseFilter() {
+		super();
+	}
 
-    public UserLoginDataBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserLoginDataBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        loginEmailEqual = GsonParser.parseString(jsonObject.get("loginEmailEqual"));
+		// set members values:
+		loginEmailEqual = GsonParser.parseString(jsonObject.get("loginEmailEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserLoginDataBaseFilter");
-        kparams.add("loginEmailEqual", this.loginEmailEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserLoginDataBaseFilter");
+		kparams.add("loginEmailEqual", this.loginEmailEqual);
+		return kparams;
+	}
 
 }
 

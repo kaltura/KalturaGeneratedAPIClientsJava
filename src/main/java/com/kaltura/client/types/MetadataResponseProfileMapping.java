@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataResponseProfileMapping.Tokenizer.class)
 public class MetadataResponseProfileMapping extends ResponseProfileMapping {
+	
+	public interface Tokenizer extends ResponseProfileMapping.Tokenizer {
+	}
 
 
 
-    public MetadataResponseProfileMapping() {
-       super();
-    }
+	public MetadataResponseProfileMapping() {
+		super();
+	}
 
-    public MetadataResponseProfileMapping(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public MetadataResponseProfileMapping(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataResponseProfileMapping");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataResponseProfileMapping");
+		return kparams;
+	}
 
 }
 

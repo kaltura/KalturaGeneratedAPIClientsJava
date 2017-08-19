@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +40,27 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  A string representation to return evaluated dynamic value  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StringField.Tokenizer.class)
 public abstract class StringField extends StringValue {
+	
+	public interface Tokenizer extends StringValue.Tokenizer {
+	}
 
 
 
-    public StringField() {
-       super();
-    }
+	public StringField() {
+		super();
+	}
 
-    public StringField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public StringField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStringField");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStringField");
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,40 +43,45 @@ import java.util.List;
 
 /**  JobData representing the static receipient array  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationStaticRecipientJobData.Tokenizer.class)
 public class EmailNotificationStaticRecipientJobData extends EmailNotificationRecipientJobData {
+	
+	public interface Tokenizer extends EmailNotificationRecipientJobData.Tokenizer {
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> emailRecipients();
+	}
 
 	/**  Email to emails and names  */
-    private List<KeyValue> emailRecipients;
+	private List<KeyValue> emailRecipients;
 
-    // emailRecipients:
-    public List<KeyValue> getEmailRecipients(){
-        return this.emailRecipients;
-    }
-    public void setEmailRecipients(List<KeyValue> emailRecipients){
-        this.emailRecipients = emailRecipients;
-    }
+	// emailRecipients:
+	public List<KeyValue> getEmailRecipients(){
+		return this.emailRecipients;
+	}
+	public void setEmailRecipients(List<KeyValue> emailRecipients){
+		this.emailRecipients = emailRecipients;
+	}
 
 
-    public EmailNotificationStaticRecipientJobData() {
-       super();
-    }
+	public EmailNotificationStaticRecipientJobData() {
+		super();
+	}
 
-    public EmailNotificationStaticRecipientJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationStaticRecipientJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        emailRecipients = GsonParser.parseArray(jsonObject.getAsJsonArray("emailRecipients"), KeyValue.class);
+		// set members values:
+		emailRecipients = GsonParser.parseArray(jsonObject.getAsJsonArray("emailRecipients"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationStaticRecipientJobData");
-        kparams.add("emailRecipients", this.emailRecipients);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationStaticRecipientJobData");
+		kparams.add("emailRecipients", this.emailRecipients);
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,61 +42,76 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YoutubeApiDistributionJobProviderData.Tokenizer.class)
 public class YoutubeApiDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String videoAssetFilePath();
+		String thumbAssetFilePath();
+		RequestBuilder.ListTokenizer<YouTubeApiCaptionDistributionInfo.Tokenizer> captionsInfo();
+	}
 
-    private String videoAssetFilePath;
-    private String thumbAssetFilePath;
-    private List<YouTubeApiCaptionDistributionInfo> captionsInfo;
+	private String videoAssetFilePath;
+	private String thumbAssetFilePath;
+	private List<YouTubeApiCaptionDistributionInfo> captionsInfo;
 
-    // videoAssetFilePath:
-    public String getVideoAssetFilePath(){
-        return this.videoAssetFilePath;
-    }
-    public void setVideoAssetFilePath(String videoAssetFilePath){
-        this.videoAssetFilePath = videoAssetFilePath;
-    }
+	// videoAssetFilePath:
+	public String getVideoAssetFilePath(){
+		return this.videoAssetFilePath;
+	}
+	public void setVideoAssetFilePath(String videoAssetFilePath){
+		this.videoAssetFilePath = videoAssetFilePath;
+	}
 
-    // thumbAssetFilePath:
-    public String getThumbAssetFilePath(){
-        return this.thumbAssetFilePath;
-    }
-    public void setThumbAssetFilePath(String thumbAssetFilePath){
-        this.thumbAssetFilePath = thumbAssetFilePath;
-    }
+	public void videoAssetFilePath(String multirequestToken){
+		setToken("videoAssetFilePath", multirequestToken);
+	}
 
-    // captionsInfo:
-    public List<YouTubeApiCaptionDistributionInfo> getCaptionsInfo(){
-        return this.captionsInfo;
-    }
-    public void setCaptionsInfo(List<YouTubeApiCaptionDistributionInfo> captionsInfo){
-        this.captionsInfo = captionsInfo;
-    }
+	// thumbAssetFilePath:
+	public String getThumbAssetFilePath(){
+		return this.thumbAssetFilePath;
+	}
+	public void setThumbAssetFilePath(String thumbAssetFilePath){
+		this.thumbAssetFilePath = thumbAssetFilePath;
+	}
+
+	public void thumbAssetFilePath(String multirequestToken){
+		setToken("thumbAssetFilePath", multirequestToken);
+	}
+
+	// captionsInfo:
+	public List<YouTubeApiCaptionDistributionInfo> getCaptionsInfo(){
+		return this.captionsInfo;
+	}
+	public void setCaptionsInfo(List<YouTubeApiCaptionDistributionInfo> captionsInfo){
+		this.captionsInfo = captionsInfo;
+	}
 
 
-    public YoutubeApiDistributionJobProviderData() {
-       super();
-    }
+	public YoutubeApiDistributionJobProviderData() {
+		super();
+	}
 
-    public YoutubeApiDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YoutubeApiDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
-        thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
-        captionsInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("captionsInfo"), YouTubeApiCaptionDistributionInfo.class);
+		// set members values:
+		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
+		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		captionsInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("captionsInfo"), YouTubeApiCaptionDistributionInfo.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYoutubeApiDistributionJobProviderData");
-        kparams.add("videoAssetFilePath", this.videoAssetFilePath);
-        kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-        kparams.add("captionsInfo", this.captionsInfo);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYoutubeApiDistributionJobProviderData");
+		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
+		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		kparams.add("captionsInfo", this.captionsInfo);
+		return kparams;
+	}
 
 }
 

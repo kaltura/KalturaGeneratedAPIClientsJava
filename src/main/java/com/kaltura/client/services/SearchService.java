@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.MediaType;
 import com.kaltura.client.enums.SearchProviderType;
 import com.kaltura.client.types.FilterPager;
@@ -47,47 +46,87 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  Search service allows you to search for media in various media providers  This
   service is being used mostly by the CW component  */
 public class SearchService {
+	
+	public static class ExternalLoginSearchBuilder extends RequestBuilder<SearchAuthData, SearchAuthData.Tokenizer, ExternalLoginSearchBuilder> {
+		
+		public ExternalLoginSearchBuilder(SearchProviderType searchSource, String userName, String password) {
+			super(SearchAuthData.class, "search", "externalLogin");
+			params.add("searchSource", searchSource);
+			params.add("userName", userName);
+			params.add("password", password);
+		}
+		
+		public void searchSource(String multirequestToken) {
+			params.add("searchSource", multirequestToken);
+		}
+		
+		public void userName(String multirequestToken) {
+			params.add("userName", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<SearchAuthData> externalLogin(SearchProviderType searchSource, String userName, String password)  {
-        Params kparams = new Params();
-        kparams.add("searchSource", searchSource);
-        kparams.add("userName", userName);
-        kparams.add("password", password);
-
-        return new RequestBuilder<SearchAuthData>(SearchAuthData.class, "search", "externalLogin", kparams);
-    }
+    public static ExternalLoginSearchBuilder externalLogin(SearchProviderType searchSource, String userName, String password)  {
+		return new ExternalLoginSearchBuilder(searchSource, userName, password);
+	}
+	
+	public static class GetMediaInfoSearchBuilder extends RequestBuilder<SearchResult, SearchResult.Tokenizer, GetMediaInfoSearchBuilder> {
+		
+		public GetMediaInfoSearchBuilder(SearchResult searchResult) {
+			super(SearchResult.class, "search", "getMediaInfo");
+			params.add("searchResult", searchResult);
+		}
+	}
 
 	/**  Retrieve extra information about media found in search action   Some providers
 	  return only part of the fields needed to create entry from, use this action to
 	  get the rest of the fields.  */
-    public static RequestBuilder<SearchResult> getMediaInfo(SearchResult searchResult)  {
-        Params kparams = new Params();
-        kparams.add("searchResult", searchResult);
+    public static GetMediaInfoSearchBuilder getMediaInfo(SearchResult searchResult)  {
+		return new GetMediaInfoSearchBuilder(searchResult);
+	}
+	
+	public static class SearchSearchBuilder extends RequestBuilder<SearchResultResponse, SearchResultResponse.Tokenizer, SearchSearchBuilder> {
+		
+		public SearchSearchBuilder(Search search, FilterPager pager) {
+			super(SearchResultResponse.class, "search", "search");
+			params.add("search", search);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<SearchResult>(SearchResult.class, "search", "getMediaInfo", kparams);
-    }
-
-    public static RequestBuilder<SearchResultResponse> search(Search search)  {
-        return search(search, null);
-    }
+	public static SearchSearchBuilder search(Search search)  {
+		return search(search, null);
+	}
 
 	/**  Search for media in one of the supported media providers  */
-    public static RequestBuilder<SearchResultResponse> search(Search search, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("search", search);
-        kparams.add("pager", pager);
-
-        return new RequestBuilder<SearchResultResponse>(SearchResultResponse.class, "search", "search", kparams);
-    }
+    public static SearchSearchBuilder search(Search search, FilterPager pager)  {
+		return new SearchSearchBuilder(search, pager);
+	}
+	
+	public static class SearchUrlSearchBuilder extends RequestBuilder<SearchResult, SearchResult.Tokenizer, SearchUrlSearchBuilder> {
+		
+		public SearchUrlSearchBuilder(MediaType mediaType, String url) {
+			super(SearchResult.class, "search", "searchUrl");
+			params.add("mediaType", mediaType);
+			params.add("url", url);
+		}
+		
+		public void mediaType(String multirequestToken) {
+			params.add("mediaType", multirequestToken);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
 	/**  Search for media given a specific URL   Kaltura supports a searchURL action on
 	  some of the media providers.   This action will return a KalturaSearchResult
 	  object based on a given URL (assuming the media provider is supported)  */
-    public static RequestBuilder<SearchResult> searchUrl(MediaType mediaType, String url)  {
-        Params kparams = new Params();
-        kparams.add("mediaType", mediaType);
-        kparams.add("url", url);
-
-        return new RequestBuilder<SearchResult>(SearchResult.class, "search", "searchUrl", kparams);
-    }
+    public static SearchUrlSearchBuilder searchUrl(MediaType mediaType, String url)  {
+		return new SearchUrlSearchBuilder(mediaType, url);
+	}
 }

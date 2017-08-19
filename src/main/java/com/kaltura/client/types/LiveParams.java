@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,42 +40,51 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveParams.Tokenizer.class)
 public class LiveParams extends FlavorParams {
+	
+	public interface Tokenizer extends FlavorParams.Tokenizer {
+		String streamSuffix();
+	}
 
 	/**  Suffix to be added to the stream name after the entry id
 	  {entry_id}_{stream_suffix}, e.g. for entry id 0_kjdu5jr6 and suffix 1, the
 	  stream name will be 0_kjdu5jr6_1  */
-    private String streamSuffix;
+	private String streamSuffix;
 
-    // streamSuffix:
-    public String getStreamSuffix(){
-        return this.streamSuffix;
-    }
-    public void setStreamSuffix(String streamSuffix){
-        this.streamSuffix = streamSuffix;
-    }
+	// streamSuffix:
+	public String getStreamSuffix(){
+		return this.streamSuffix;
+	}
+	public void setStreamSuffix(String streamSuffix){
+		this.streamSuffix = streamSuffix;
+	}
+
+	public void streamSuffix(String multirequestToken){
+		setToken("streamSuffix", multirequestToken);
+	}
 
 
-    public LiveParams() {
-       super();
-    }
+	public LiveParams() {
+		super();
+	}
 
-    public LiveParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        streamSuffix = GsonParser.parseString(jsonObject.get("streamSuffix"));
+		// set members values:
+		streamSuffix = GsonParser.parseString(jsonObject.get("streamSuffix"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveParams");
-        kparams.add("streamSuffix", this.streamSuffix);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveParams");
+		kparams.add("streamSuffix", this.streamSuffix);
+		return kparams;
+	}
 
 }
 

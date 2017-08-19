@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,64 +43,83 @@ import com.kaltura.client.utils.GsonParser;
   the supplied URL, media file will be downloaded using import job in order to
   make the asset ready.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SshUrlResource.Tokenizer.class)
 public class SshUrlResource extends UrlResource {
+	
+	public interface Tokenizer extends UrlResource.Tokenizer {
+		String privateKey();
+		String publicKey();
+		String keyPassphrase();
+	}
 
 	/**  SSH private key  */
-    private String privateKey;
+	private String privateKey;
 	/**  SSH public key  */
-    private String publicKey;
+	private String publicKey;
 	/**  Passphrase for SSH keys  */
-    private String keyPassphrase;
+	private String keyPassphrase;
 
-    // privateKey:
-    public String getPrivateKey(){
-        return this.privateKey;
-    }
-    public void setPrivateKey(String privateKey){
-        this.privateKey = privateKey;
-    }
+	// privateKey:
+	public String getPrivateKey(){
+		return this.privateKey;
+	}
+	public void setPrivateKey(String privateKey){
+		this.privateKey = privateKey;
+	}
 
-    // publicKey:
-    public String getPublicKey(){
-        return this.publicKey;
-    }
-    public void setPublicKey(String publicKey){
-        this.publicKey = publicKey;
-    }
+	public void privateKey(String multirequestToken){
+		setToken("privateKey", multirequestToken);
+	}
 
-    // keyPassphrase:
-    public String getKeyPassphrase(){
-        return this.keyPassphrase;
-    }
-    public void setKeyPassphrase(String keyPassphrase){
-        this.keyPassphrase = keyPassphrase;
-    }
+	// publicKey:
+	public String getPublicKey(){
+		return this.publicKey;
+	}
+	public void setPublicKey(String publicKey){
+		this.publicKey = publicKey;
+	}
+
+	public void publicKey(String multirequestToken){
+		setToken("publicKey", multirequestToken);
+	}
+
+	// keyPassphrase:
+	public String getKeyPassphrase(){
+		return this.keyPassphrase;
+	}
+	public void setKeyPassphrase(String keyPassphrase){
+		this.keyPassphrase = keyPassphrase;
+	}
+
+	public void keyPassphrase(String multirequestToken){
+		setToken("keyPassphrase", multirequestToken);
+	}
 
 
-    public SshUrlResource() {
-       super();
-    }
+	public SshUrlResource() {
+		super();
+	}
 
-    public SshUrlResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SshUrlResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        privateKey = GsonParser.parseString(jsonObject.get("privateKey"));
-        publicKey = GsonParser.parseString(jsonObject.get("publicKey"));
-        keyPassphrase = GsonParser.parseString(jsonObject.get("keyPassphrase"));
+		// set members values:
+		privateKey = GsonParser.parseString(jsonObject.get("privateKey"));
+		publicKey = GsonParser.parseString(jsonObject.get("publicKey"));
+		keyPassphrase = GsonParser.parseString(jsonObject.get("keyPassphrase"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSshUrlResource");
-        kparams.add("privateKey", this.privateKey);
-        kparams.add("publicKey", this.publicKey);
-        kparams.add("keyPassphrase", this.keyPassphrase);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSshUrlResource");
+		kparams.add("privateKey", this.privateKey);
+		kparams.add("publicKey", this.publicKey);
+		kparams.add("keyPassphrase", this.keyPassphrase);
+		return kparams;
+	}
 
 }
 

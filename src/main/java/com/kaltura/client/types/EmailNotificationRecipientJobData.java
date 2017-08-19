@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EmailNotificationRecipientProviderType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,39 +44,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Abstract class representing the final output recipients going into the batch
   mechanism  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationRecipientJobData.Tokenizer.class)
 public abstract class EmailNotificationRecipientJobData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String providerType();
+	}
 
 	/**  Provider type of the job data.  */
-    private EmailNotificationRecipientProviderType providerType;
+	private EmailNotificationRecipientProviderType providerType;
 
-    // providerType:
-    public EmailNotificationRecipientProviderType getProviderType(){
-        return this.providerType;
-    }
-    public void setProviderType(EmailNotificationRecipientProviderType providerType){
-        this.providerType = providerType;
-    }
+	// providerType:
+	public EmailNotificationRecipientProviderType getProviderType(){
+		return this.providerType;
+	}
+	public void setProviderType(EmailNotificationRecipientProviderType providerType){
+		this.providerType = providerType;
+	}
+
+	public void providerType(String multirequestToken){
+		setToken("providerType", multirequestToken);
+	}
 
 
-    public EmailNotificationRecipientJobData() {
-       super();
-    }
+	public EmailNotificationRecipientJobData() {
+		super();
+	}
 
-    public EmailNotificationRecipientJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationRecipientJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        providerType = EmailNotificationRecipientProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
+		// set members values:
+		providerType = EmailNotificationRecipientProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationRecipientJobData");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationRecipientJobData");
+		return kparams;
+	}
 
 }
 

@@ -34,6 +34,7 @@ import com.kaltura.client.enums.ModerationFlagType;
 import com.kaltura.client.enums.ModerationObjectType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,149 +44,208 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ModerationFlag.Tokenizer.class)
 public class ModerationFlag extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String userId();
+		String moderationObjectType();
+		String flaggedEntryId();
+		String flaggedUserId();
+		String status();
+		String comments();
+		String flagType();
+		String createdAt();
+		String updatedAt();
+	}
 
 	/**  Moderation flag id  */
-    private Integer id;
-    private Integer partnerId;
+	private Integer id;
+	private Integer partnerId;
 	/**  The user id that added the moderation flag  */
-    private String userId;
+	private String userId;
 	/**  The type of the moderation flag (entry or user)  */
-    private ModerationObjectType moderationObjectType;
+	private ModerationObjectType moderationObjectType;
 	/**  If moderation flag is set for entry, this is the flagged entry id  */
-    private String flaggedEntryId;
+	private String flaggedEntryId;
 	/**  If moderation flag is set for user, this is the flagged user id  */
-    private String flaggedUserId;
+	private String flaggedUserId;
 	/**  The moderation flag status  */
-    private ModerationFlagStatus status;
+	private ModerationFlagStatus status;
 	/**  The comment that was added to the flag  */
-    private String comments;
-    private ModerationFlagType flagType;
-    private Integer createdAt;
-    private Integer updatedAt;
+	private String comments;
+	private ModerationFlagType flagType;
+	private Integer createdAt;
+	private Integer updatedAt;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // moderationObjectType:
-    public ModerationObjectType getModerationObjectType(){
-        return this.moderationObjectType;
-    }
-    public void setModerationObjectType(ModerationObjectType moderationObjectType){
-        this.moderationObjectType = moderationObjectType;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // flaggedEntryId:
-    public String getFlaggedEntryId(){
-        return this.flaggedEntryId;
-    }
-    public void setFlaggedEntryId(String flaggedEntryId){
-        this.flaggedEntryId = flaggedEntryId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // flaggedUserId:
-    public String getFlaggedUserId(){
-        return this.flaggedUserId;
-    }
-    public void setFlaggedUserId(String flaggedUserId){
-        this.flaggedUserId = flaggedUserId;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // status:
-    public ModerationFlagStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ModerationFlagStatus status){
-        this.status = status;
-    }
+	// moderationObjectType:
+	public ModerationObjectType getModerationObjectType(){
+		return this.moderationObjectType;
+	}
+	public void setModerationObjectType(ModerationObjectType moderationObjectType){
+		this.moderationObjectType = moderationObjectType;
+	}
 
-    // comments:
-    public String getComments(){
-        return this.comments;
-    }
-    public void setComments(String comments){
-        this.comments = comments;
-    }
+	public void moderationObjectType(String multirequestToken){
+		setToken("moderationObjectType", multirequestToken);
+	}
 
-    // flagType:
-    public ModerationFlagType getFlagType(){
-        return this.flagType;
-    }
-    public void setFlagType(ModerationFlagType flagType){
-        this.flagType = flagType;
-    }
+	// flaggedEntryId:
+	public String getFlaggedEntryId(){
+		return this.flaggedEntryId;
+	}
+	public void setFlaggedEntryId(String flaggedEntryId){
+		this.flaggedEntryId = flaggedEntryId;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void flaggedEntryId(String multirequestToken){
+		setToken("flaggedEntryId", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// flaggedUserId:
+	public String getFlaggedUserId(){
+		return this.flaggedUserId;
+	}
+	public void setFlaggedUserId(String flaggedUserId){
+		this.flaggedUserId = flaggedUserId;
+	}
+
+	public void flaggedUserId(String multirequestToken){
+		setToken("flaggedUserId", multirequestToken);
+	}
+
+	// status:
+	public ModerationFlagStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ModerationFlagStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// comments:
+	public String getComments(){
+		return this.comments;
+	}
+	public void setComments(String comments){
+		this.comments = comments;
+	}
+
+	public void comments(String multirequestToken){
+		setToken("comments", multirequestToken);
+	}
+
+	// flagType:
+	public ModerationFlagType getFlagType(){
+		return this.flagType;
+	}
+	public void setFlagType(ModerationFlagType flagType){
+		this.flagType = flagType;
+	}
+
+	public void flagType(String multirequestToken){
+		setToken("flagType", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
 
-    public ModerationFlag() {
-       super();
-    }
+	public ModerationFlag() {
+		super();
+	}
 
-    public ModerationFlag(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ModerationFlag(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        moderationObjectType = ModerationObjectType.get(GsonParser.parseString(jsonObject.get("moderationObjectType")));
-        flaggedEntryId = GsonParser.parseString(jsonObject.get("flaggedEntryId"));
-        flaggedUserId = GsonParser.parseString(jsonObject.get("flaggedUserId"));
-        status = ModerationFlagStatus.get(GsonParser.parseString(jsonObject.get("status")));
-        comments = GsonParser.parseString(jsonObject.get("comments"));
-        flagType = ModerationFlagType.get(GsonParser.parseInt(jsonObject.get("flagType")));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		moderationObjectType = ModerationObjectType.get(GsonParser.parseString(jsonObject.get("moderationObjectType")));
+		flaggedEntryId = GsonParser.parseString(jsonObject.get("flaggedEntryId"));
+		flaggedUserId = GsonParser.parseString(jsonObject.get("flaggedUserId"));
+		status = ModerationFlagStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		comments = GsonParser.parseString(jsonObject.get("comments"));
+		flagType = ModerationFlagType.get(GsonParser.parseInt(jsonObject.get("flagType")));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaModerationFlag");
-        kparams.add("flaggedEntryId", this.flaggedEntryId);
-        kparams.add("flaggedUserId", this.flaggedUserId);
-        kparams.add("comments", this.comments);
-        kparams.add("flagType", this.flagType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaModerationFlag");
+		kparams.add("flaggedEntryId", this.flaggedEntryId);
+		kparams.add("flaggedUserId", this.flaggedUserId);
+		kparams.add("comments", this.comments);
+		kparams.add("flagType", this.flagType);
+		return kparams;
+	}
 
 }
 

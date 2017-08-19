@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EdgeServerNode.Tokenizer.class)
 public class EdgeServerNode extends DeliveryServerNode {
+	
+	public interface Tokenizer extends DeliveryServerNode.Tokenizer {
+		String playbackDomain();
+		String config();
+	}
 
 	/**  Delivery server playback Domain  */
-    private String playbackDomain;
+	private String playbackDomain;
 	/**  Overdie edge server default configuration - json format  */
-    private String config;
+	private String config;
 
-    // playbackDomain:
-    public String getPlaybackDomain(){
-        return this.playbackDomain;
-    }
-    public void setPlaybackDomain(String playbackDomain){
-        this.playbackDomain = playbackDomain;
-    }
+	// playbackDomain:
+	public String getPlaybackDomain(){
+		return this.playbackDomain;
+	}
+	public void setPlaybackDomain(String playbackDomain){
+		this.playbackDomain = playbackDomain;
+	}
 
-    // config:
-    public String getConfig(){
-        return this.config;
-    }
-    public void setConfig(String config){
-        this.config = config;
-    }
+	public void playbackDomain(String multirequestToken){
+		setToken("playbackDomain", multirequestToken);
+	}
+
+	// config:
+	public String getConfig(){
+		return this.config;
+	}
+	public void setConfig(String config){
+		this.config = config;
+	}
+
+	public void config(String multirequestToken){
+		setToken("config", multirequestToken);
+	}
 
 
-    public EdgeServerNode() {
-       super();
-    }
+	public EdgeServerNode() {
+		super();
+	}
 
-    public EdgeServerNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EdgeServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        playbackDomain = GsonParser.parseString(jsonObject.get("playbackDomain"));
-        config = GsonParser.parseString(jsonObject.get("config"));
+		// set members values:
+		playbackDomain = GsonParser.parseString(jsonObject.get("playbackDomain"));
+		config = GsonParser.parseString(jsonObject.get("config"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEdgeServerNode");
-        kparams.add("playbackDomain", this.playbackDomain);
-        kparams.add("config", this.config);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEdgeServerNode");
+		kparams.add("playbackDomain", this.playbackDomain);
+		kparams.add("config", this.config);
+		return kparams;
+	}
 
 }
 

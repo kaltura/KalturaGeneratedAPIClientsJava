@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryCuePointSearchFilter.Tokenizer.class)
 public class EntryCuePointSearchFilter extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String cuePointsFreeText();
+		String cuePointTypeIn();
+		String cuePointSubTypeEqual();
+	}
 
-    private String cuePointsFreeText;
-    private String cuePointTypeIn;
-    private Integer cuePointSubTypeEqual;
+	private String cuePointsFreeText;
+	private String cuePointTypeIn;
+	private Integer cuePointSubTypeEqual;
 
-    // cuePointsFreeText:
-    public String getCuePointsFreeText(){
-        return this.cuePointsFreeText;
-    }
-    public void setCuePointsFreeText(String cuePointsFreeText){
-        this.cuePointsFreeText = cuePointsFreeText;
-    }
+	// cuePointsFreeText:
+	public String getCuePointsFreeText(){
+		return this.cuePointsFreeText;
+	}
+	public void setCuePointsFreeText(String cuePointsFreeText){
+		this.cuePointsFreeText = cuePointsFreeText;
+	}
 
-    // cuePointTypeIn:
-    public String getCuePointTypeIn(){
-        return this.cuePointTypeIn;
-    }
-    public void setCuePointTypeIn(String cuePointTypeIn){
-        this.cuePointTypeIn = cuePointTypeIn;
-    }
+	public void cuePointsFreeText(String multirequestToken){
+		setToken("cuePointsFreeText", multirequestToken);
+	}
 
-    // cuePointSubTypeEqual:
-    public Integer getCuePointSubTypeEqual(){
-        return this.cuePointSubTypeEqual;
-    }
-    public void setCuePointSubTypeEqual(Integer cuePointSubTypeEqual){
-        this.cuePointSubTypeEqual = cuePointSubTypeEqual;
-    }
+	// cuePointTypeIn:
+	public String getCuePointTypeIn(){
+		return this.cuePointTypeIn;
+	}
+	public void setCuePointTypeIn(String cuePointTypeIn){
+		this.cuePointTypeIn = cuePointTypeIn;
+	}
+
+	public void cuePointTypeIn(String multirequestToken){
+		setToken("cuePointTypeIn", multirequestToken);
+	}
+
+	// cuePointSubTypeEqual:
+	public Integer getCuePointSubTypeEqual(){
+		return this.cuePointSubTypeEqual;
+	}
+	public void setCuePointSubTypeEqual(Integer cuePointSubTypeEqual){
+		this.cuePointSubTypeEqual = cuePointSubTypeEqual;
+	}
+
+	public void cuePointSubTypeEqual(String multirequestToken){
+		setToken("cuePointSubTypeEqual", multirequestToken);
+	}
 
 
-    public EntryCuePointSearchFilter() {
-       super();
-    }
+	public EntryCuePointSearchFilter() {
+		super();
+	}
 
-    public EntryCuePointSearchFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryCuePointSearchFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        cuePointsFreeText = GsonParser.parseString(jsonObject.get("cuePointsFreeText"));
-        cuePointTypeIn = GsonParser.parseString(jsonObject.get("cuePointTypeIn"));
-        cuePointSubTypeEqual = GsonParser.parseInt(jsonObject.get("cuePointSubTypeEqual"));
+		// set members values:
+		cuePointsFreeText = GsonParser.parseString(jsonObject.get("cuePointsFreeText"));
+		cuePointTypeIn = GsonParser.parseString(jsonObject.get("cuePointTypeIn"));
+		cuePointSubTypeEqual = GsonParser.parseInt(jsonObject.get("cuePointSubTypeEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryCuePointSearchFilter");
-        kparams.add("cuePointsFreeText", this.cuePointsFreeText);
-        kparams.add("cuePointTypeIn", this.cuePointTypeIn);
-        kparams.add("cuePointSubTypeEqual", this.cuePointSubTypeEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryCuePointSearchFilter");
+		kparams.add("cuePointsFreeText", this.cuePointsFreeText);
+		kparams.add("cuePointTypeIn", this.cuePointTypeIn);
+		kparams.add("cuePointSubTypeEqual", this.cuePointSubTypeEqual);
+		return kparams;
+	}
 
 }
 

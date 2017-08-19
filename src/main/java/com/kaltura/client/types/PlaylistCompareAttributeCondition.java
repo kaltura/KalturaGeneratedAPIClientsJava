@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.PlaylistCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaPlaylist attributes. Use
   KalturaPlaylistCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlaylistCompareAttributeCondition.Tokenizer.class)
 public class PlaylistCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private PlaylistCompareAttribute attribute;
+	private PlaylistCompareAttribute attribute;
 
-    // attribute:
-    public PlaylistCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(PlaylistCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public PlaylistCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(PlaylistCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public PlaylistCompareAttributeCondition() {
-       super();
-    }
+	public PlaylistCompareAttributeCondition() {
+		super();
+	}
 
-    public PlaylistCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlaylistCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = PlaylistCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = PlaylistCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaylistCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlaylistCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

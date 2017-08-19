@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionProfileStatus;
 import com.kaltura.client.types.DistributionProfile;
 import com.kaltura.client.types.DistributionProfileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.PartnerFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -47,79 +45,134 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Distribution Profile service  */
 public class DistributionProfileService {
+	
+	public static class AddDistributionProfileBuilder extends RequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, AddDistributionProfileBuilder> {
+		
+		public AddDistributionProfileBuilder(DistributionProfile distributionProfile) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "add");
+			params.add("distributionProfile", distributionProfile);
+		}
+	}
 
 	/**  Add new Distribution Profile  */
-    public static RequestBuilder<DistributionProfile> add(DistributionProfile distributionProfile)  {
-        Params kparams = new Params();
-        kparams.add("distributionProfile", distributionProfile);
-
-        return new RequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "add", kparams);
-    }
+    public static AddDistributionProfileBuilder add(DistributionProfile distributionProfile)  {
+		return new AddDistributionProfileBuilder(distributionProfile);
+	}
+	
+	public static class DeleteDistributionProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteDistributionProfileBuilder(int id) {
+			super("contentdistribution_distributionprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Distribution Profile by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("contentdistribution_distributionprofile", "delete", kparams);
-    }
+    public static DeleteDistributionProfileBuilder delete(int id)  {
+		return new DeleteDistributionProfileBuilder(id);
+	}
+	
+	public static class GetDistributionProfileBuilder extends RequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, GetDistributionProfileBuilder> {
+		
+		public GetDistributionProfileBuilder(int id) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Distribution Profile by id  */
-    public static RequestBuilder<DistributionProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetDistributionProfileBuilder get(int id)  {
+		return new GetDistributionProfileBuilder(id);
+	}
+	
+	public static class ListDistributionProfileBuilder extends ListResponseRequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, ListDistributionProfileBuilder> {
+		
+		public ListDistributionProfileBuilder(DistributionProfileFilter filter, FilterPager pager) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "get", kparams);
-    }
+	public static ListDistributionProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DistributionProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DistributionProfile>> list(DistributionProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDistributionProfileBuilder list(DistributionProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all distribution providers  */
-    public static RequestBuilder<ListResponse<DistributionProfile>> list(DistributionProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListDistributionProfileBuilder list(DistributionProfileFilter filter, FilterPager pager)  {
+		return new ListDistributionProfileBuilder(filter, pager);
+	}
+	
+	public static class ListByPartnerDistributionProfileBuilder extends ListResponseRequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, ListByPartnerDistributionProfileBuilder> {
+		
+		public ListByPartnerDistributionProfileBuilder(PartnerFilter filter, FilterPager pager) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "listByPartner");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "list", kparams);
-    }
+	public static ListByPartnerDistributionProfileBuilder listByPartner()  {
+		return listByPartner(null);
+	}
 
-    public static RequestBuilder<ListResponse<DistributionProfile>> listByPartner()  {
-        return listByPartner(null);
-    }
+	public static ListByPartnerDistributionProfileBuilder listByPartner(PartnerFilter filter)  {
+		return listByPartner(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<DistributionProfile>> listByPartner(PartnerFilter filter)  {
-        return listByPartner(filter, null);
-    }
-
-    public static RequestBuilder<ListResponse<DistributionProfile>> listByPartner(PartnerFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "listByPartner", kparams);
-    }
+    public static ListByPartnerDistributionProfileBuilder listByPartner(PartnerFilter filter, FilterPager pager)  {
+		return new ListByPartnerDistributionProfileBuilder(filter, pager);
+	}
+	
+	public static class UpdateDistributionProfileBuilder extends RequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, UpdateDistributionProfileBuilder> {
+		
+		public UpdateDistributionProfileBuilder(int id, DistributionProfile distributionProfile) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "update");
+			params.add("id", id);
+			params.add("distributionProfile", distributionProfile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Distribution Profile by id  */
-    public static RequestBuilder<DistributionProfile> update(int id, DistributionProfile distributionProfile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("distributionProfile", distributionProfile);
-
-        return new RequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "update", kparams);
-    }
+    public static UpdateDistributionProfileBuilder update(int id, DistributionProfile distributionProfile)  {
+		return new UpdateDistributionProfileBuilder(id, distributionProfile);
+	}
+	
+	public static class UpdateStatusDistributionProfileBuilder extends RequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, UpdateStatusDistributionProfileBuilder> {
+		
+		public UpdateStatusDistributionProfileBuilder(int id, DistributionProfileStatus status) {
+			super(DistributionProfile.class, "contentdistribution_distributionprofile", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Update Distribution Profile status by id  */
-    public static RequestBuilder<DistributionProfile> updateStatus(int id, DistributionProfileStatus status)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("status", status);
-
-        return new RequestBuilder<DistributionProfile>(DistributionProfile.class, "contentdistribution_distributionprofile", "updateStatus", kparams);
-    }
+    public static UpdateStatusDistributionProfileBuilder updateStatus(int id, DistributionProfileStatus status)  {
+		return new UpdateStatusDistributionProfileBuilder(id, status);
+	}
 }

@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ResponseType implements EnumAsInt {
-    RESPONSE_TYPE_JSON(1),
-    RESPONSE_TYPE_XML(2),
-    RESPONSE_TYPE_PHP(3),
-    RESPONSE_TYPE_PHP_ARRAY(4),
-    RESPONSE_TYPE_HTML(7),
-    RESPONSE_TYPE_MRSS(8),
-    RESPONSE_TYPE_JSONP(9);
+	RESPONSE_TYPE_JSON(1),
+	RESPONSE_TYPE_XML(2),
+	RESPONSE_TYPE_PHP(3),
+	RESPONSE_TYPE_PHP_ARRAY(4),
+	RESPONSE_TYPE_HTML(7),
+	RESPONSE_TYPE_MRSS(8),
+	RESPONSE_TYPE_JSONP(9);
 
-    private int value;
+	private int value;
 
-    ResponseType(int value) {
-        this.value = value;
-    }
+	ResponseType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ResponseType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ResponseType defined values and compare the inner value with the given one:
-        for(ResponseType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ResponseType.values().length > 0 ? ResponseType.values()[0]: null;
+	public static ResponseType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ResponseType defined values and compare the inner value with the given one:
+		for(ResponseType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ResponseType.values().length > 0 ? ResponseType.values()[0]: null;
    }
 }

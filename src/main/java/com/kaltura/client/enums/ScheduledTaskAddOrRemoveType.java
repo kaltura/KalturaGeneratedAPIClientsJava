@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduledTaskAddOrRemoveType implements EnumAsInt {
-    ADD(1),
-    REMOVE(2),
-    MOVE(3);
+	ADD(1),
+	REMOVE(2),
+	MOVE(3);
 
-    private int value;
+	private int value;
 
-    ScheduledTaskAddOrRemoveType(int value) {
-        this.value = value;
-    }
+	ScheduledTaskAddOrRemoveType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduledTaskAddOrRemoveType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduledTaskAddOrRemoveType defined values and compare the inner value with the given one:
-        for(ScheduledTaskAddOrRemoveType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduledTaskAddOrRemoveType.values().length > 0 ? ScheduledTaskAddOrRemoveType.values()[0]: null;
+	public static ScheduledTaskAddOrRemoveType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduledTaskAddOrRemoveType defined values and compare the inner value with the given one:
+		for(ScheduledTaskAddOrRemoveType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduledTaskAddOrRemoveType.values().length > 0 ? ScheduledTaskAddOrRemoveType.values()[0]: null;
    }
 }

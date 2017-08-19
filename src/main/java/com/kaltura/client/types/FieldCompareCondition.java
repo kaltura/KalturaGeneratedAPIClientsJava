@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.IntegerField;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,45 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FieldCompareCondition.Tokenizer.class)
 public class FieldCompareCondition extends CompareCondition {
+	
+	public interface Tokenizer extends CompareCondition.Tokenizer {
+		IntegerField.Tokenizer field();
+	}
 
 	/**  Field to evaluate  */
-    private IntegerField field;
+	private IntegerField field;
 
-    // field:
-    public IntegerField getField(){
-        return this.field;
-    }
-    public void setField(IntegerField field){
-        this.field = field;
-    }
+	// field:
+	public IntegerField getField(){
+		return this.field;
+	}
+	public void setField(IntegerField field){
+		this.field = field;
+	}
 
 
-    public FieldCompareCondition() {
-       super();
-    }
+	public FieldCompareCondition() {
+		super();
+	}
 
-    public FieldCompareCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FieldCompareCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        field = GsonParser.parseObject(jsonObject.getAsJsonObject("field"), IntegerField.class);
+		// set members values:
+		field = GsonParser.parseObject(jsonObject.getAsJsonObject("field"), IntegerField.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFieldCompareCondition");
-        kparams.add("field", this.field);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFieldCompareCondition");
+		kparams.add("field", this.field);
+		return kparams;
+	}
 
 }
 

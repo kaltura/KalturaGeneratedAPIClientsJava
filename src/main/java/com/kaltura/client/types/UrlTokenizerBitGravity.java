@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerBitGravity.Tokenizer.class)
 public class UrlTokenizerBitGravity extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String hashPatternRegex();
+	}
 
 	/**  hashPatternRegex  */
-    private String hashPatternRegex;
+	private String hashPatternRegex;
 
-    // hashPatternRegex:
-    public String getHashPatternRegex(){
-        return this.hashPatternRegex;
-    }
-    public void setHashPatternRegex(String hashPatternRegex){
-        this.hashPatternRegex = hashPatternRegex;
-    }
+	// hashPatternRegex:
+	public String getHashPatternRegex(){
+		return this.hashPatternRegex;
+	}
+	public void setHashPatternRegex(String hashPatternRegex){
+		this.hashPatternRegex = hashPatternRegex;
+	}
+
+	public void hashPatternRegex(String multirequestToken){
+		setToken("hashPatternRegex", multirequestToken);
+	}
 
 
-    public UrlTokenizerBitGravity() {
-       super();
-    }
+	public UrlTokenizerBitGravity() {
+		super();
+	}
 
-    public UrlTokenizerBitGravity(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerBitGravity(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hashPatternRegex = GsonParser.parseString(jsonObject.get("hashPatternRegex"));
+		// set members values:
+		hashPatternRegex = GsonParser.parseString(jsonObject.get("hashPatternRegex"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerBitGravity");
-        kparams.add("hashPatternRegex", this.hashPatternRegex);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerBitGravity");
+		kparams.add("hashPatternRegex", this.hashPatternRegex);
+		return kparams;
+	}
 
 }
 

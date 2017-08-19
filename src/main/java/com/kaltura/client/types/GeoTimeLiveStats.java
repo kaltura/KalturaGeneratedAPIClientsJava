@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.Coordinate;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,56 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GeoTimeLiveStats.Tokenizer.class)
 public class GeoTimeLiveStats extends EntryLiveStats {
+	
+	public interface Tokenizer extends EntryLiveStats.Tokenizer {
+		Coordinate.Tokenizer city();
+		Coordinate.Tokenizer country();
+	}
 
-    private Coordinate city;
-    private Coordinate country;
+	private Coordinate city;
+	private Coordinate country;
 
-    // city:
-    public Coordinate getCity(){
-        return this.city;
-    }
-    public void setCity(Coordinate city){
-        this.city = city;
-    }
+	// city:
+	public Coordinate getCity(){
+		return this.city;
+	}
+	public void setCity(Coordinate city){
+		this.city = city;
+	}
 
-    // country:
-    public Coordinate getCountry(){
-        return this.country;
-    }
-    public void setCountry(Coordinate country){
-        this.country = country;
-    }
+	// country:
+	public Coordinate getCountry(){
+		return this.country;
+	}
+	public void setCountry(Coordinate country){
+		this.country = country;
+	}
 
 
-    public GeoTimeLiveStats() {
-       super();
-    }
+	public GeoTimeLiveStats() {
+		super();
+	}
 
-    public GeoTimeLiveStats(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GeoTimeLiveStats(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        city = GsonParser.parseObject(jsonObject.getAsJsonObject("city"), Coordinate.class);
-        country = GsonParser.parseObject(jsonObject.getAsJsonObject("country"), Coordinate.class);
+		// set members values:
+		city = GsonParser.parseObject(jsonObject.getAsJsonObject("city"), Coordinate.class);
+		country = GsonParser.parseObject(jsonObject.getAsJsonObject("country"), Coordinate.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGeoTimeLiveStats");
-        kparams.add("city", this.city);
-        kparams.add("country", this.country);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGeoTimeLiveStats");
+		kparams.add("city", this.city);
+		kparams.add("country", this.country);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionFetchReportJobData.Tokenizer.class)
 public class DistributionFetchReportJobData extends DistributionJobData {
+	
+	public interface Tokenizer extends DistributionJobData.Tokenizer {
+		String plays();
+		String views();
+	}
 
-    private Integer plays;
-    private Integer views;
+	private Integer plays;
+	private Integer views;
 
-    // plays:
-    public Integer getPlays(){
-        return this.plays;
-    }
-    public void setPlays(Integer plays){
-        this.plays = plays;
-    }
+	// plays:
+	public Integer getPlays(){
+		return this.plays;
+	}
+	public void setPlays(Integer plays){
+		this.plays = plays;
+	}
 
-    // views:
-    public Integer getViews(){
-        return this.views;
-    }
-    public void setViews(Integer views){
-        this.views = views;
-    }
+	public void plays(String multirequestToken){
+		setToken("plays", multirequestToken);
+	}
+
+	// views:
+	public Integer getViews(){
+		return this.views;
+	}
+	public void setViews(Integer views){
+		this.views = views;
+	}
+
+	public void views(String multirequestToken){
+		setToken("views", multirequestToken);
+	}
 
 
-    public DistributionFetchReportJobData() {
-       super();
-    }
+	public DistributionFetchReportJobData() {
+		super();
+	}
 
-    public DistributionFetchReportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionFetchReportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        plays = GsonParser.parseInt(jsonObject.get("plays"));
-        views = GsonParser.parseInt(jsonObject.get("views"));
+		// set members values:
+		plays = GsonParser.parseInt(jsonObject.get("plays"));
+		views = GsonParser.parseInt(jsonObject.get("views"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionFetchReportJobData");
-        kparams.add("plays", this.plays);
-        kparams.add("views", this.views);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionFetchReportJobData");
+		kparams.add("plays", this.plays);
+		kparams.add("views", this.views);
+		return kparams;
+	}
 
 }
 

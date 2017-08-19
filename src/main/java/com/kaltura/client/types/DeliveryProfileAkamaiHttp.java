@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileAkamaiHttp.Tokenizer.class)
 public class DeliveryProfileAkamaiHttp extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String useIntelliseek();
+	}
 
 	/**  Should we use intelliseek  */
-    private Boolean useIntelliseek;
+	private Boolean useIntelliseek;
 
-    // useIntelliseek:
-    public Boolean getUseIntelliseek(){
-        return this.useIntelliseek;
-    }
-    public void setUseIntelliseek(Boolean useIntelliseek){
-        this.useIntelliseek = useIntelliseek;
-    }
+	// useIntelliseek:
+	public Boolean getUseIntelliseek(){
+		return this.useIntelliseek;
+	}
+	public void setUseIntelliseek(Boolean useIntelliseek){
+		this.useIntelliseek = useIntelliseek;
+	}
+
+	public void useIntelliseek(String multirequestToken){
+		setToken("useIntelliseek", multirequestToken);
+	}
 
 
-    public DeliveryProfileAkamaiHttp() {
-       super();
-    }
+	public DeliveryProfileAkamaiHttp() {
+		super();
+	}
 
-    public DeliveryProfileAkamaiHttp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileAkamaiHttp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        useIntelliseek = GsonParser.parseBoolean(jsonObject.get("useIntelliseek"));
+		// set members values:
+		useIntelliseek = GsonParser.parseBoolean(jsonObject.get("useIntelliseek"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileAkamaiHttp");
-        kparams.add("useIntelliseek", this.useIntelliseek);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileAkamaiHttp");
+		kparams.add("useIntelliseek", this.useIntelliseek);
+		return kparams;
+	}
 
 }
 

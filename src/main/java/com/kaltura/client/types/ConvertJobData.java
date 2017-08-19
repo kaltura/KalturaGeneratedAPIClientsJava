@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,127 +42,172 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertJobData.Tokenizer.class)
 public class ConvertJobData extends ConvartableJobData {
+	
+	public interface Tokenizer extends ConvartableJobData.Tokenizer {
+		String destFileSyncLocalPath();
+		String destFileSyncRemoteUrl();
+		String logFileSyncLocalPath();
+		String logFileSyncRemoteUrl();
+		String flavorAssetId();
+		String remoteMediaId();
+		String customData();
+		RequestBuilder.ListTokenizer<DestFileSyncDescriptor.Tokenizer> extraDestFileSyncs();
+		String engineMessage();
+	}
 
-    private String destFileSyncLocalPath;
-    private String destFileSyncRemoteUrl;
-    private String logFileSyncLocalPath;
-    private String logFileSyncRemoteUrl;
-    private String flavorAssetId;
-    private String remoteMediaId;
-    private String customData;
-    private List<DestFileSyncDescriptor> extraDestFileSyncs;
-    private String engineMessage;
+	private String destFileSyncLocalPath;
+	private String destFileSyncRemoteUrl;
+	private String logFileSyncLocalPath;
+	private String logFileSyncRemoteUrl;
+	private String flavorAssetId;
+	private String remoteMediaId;
+	private String customData;
+	private List<DestFileSyncDescriptor> extraDestFileSyncs;
+	private String engineMessage;
 
-    // destFileSyncLocalPath:
-    public String getDestFileSyncLocalPath(){
-        return this.destFileSyncLocalPath;
-    }
-    public void setDestFileSyncLocalPath(String destFileSyncLocalPath){
-        this.destFileSyncLocalPath = destFileSyncLocalPath;
-    }
+	// destFileSyncLocalPath:
+	public String getDestFileSyncLocalPath(){
+		return this.destFileSyncLocalPath;
+	}
+	public void setDestFileSyncLocalPath(String destFileSyncLocalPath){
+		this.destFileSyncLocalPath = destFileSyncLocalPath;
+	}
 
-    // destFileSyncRemoteUrl:
-    public String getDestFileSyncRemoteUrl(){
-        return this.destFileSyncRemoteUrl;
-    }
-    public void setDestFileSyncRemoteUrl(String destFileSyncRemoteUrl){
-        this.destFileSyncRemoteUrl = destFileSyncRemoteUrl;
-    }
+	public void destFileSyncLocalPath(String multirequestToken){
+		setToken("destFileSyncLocalPath", multirequestToken);
+	}
 
-    // logFileSyncLocalPath:
-    public String getLogFileSyncLocalPath(){
-        return this.logFileSyncLocalPath;
-    }
-    public void setLogFileSyncLocalPath(String logFileSyncLocalPath){
-        this.logFileSyncLocalPath = logFileSyncLocalPath;
-    }
+	// destFileSyncRemoteUrl:
+	public String getDestFileSyncRemoteUrl(){
+		return this.destFileSyncRemoteUrl;
+	}
+	public void setDestFileSyncRemoteUrl(String destFileSyncRemoteUrl){
+		this.destFileSyncRemoteUrl = destFileSyncRemoteUrl;
+	}
 
-    // logFileSyncRemoteUrl:
-    public String getLogFileSyncRemoteUrl(){
-        return this.logFileSyncRemoteUrl;
-    }
-    public void setLogFileSyncRemoteUrl(String logFileSyncRemoteUrl){
-        this.logFileSyncRemoteUrl = logFileSyncRemoteUrl;
-    }
+	public void destFileSyncRemoteUrl(String multirequestToken){
+		setToken("destFileSyncRemoteUrl", multirequestToken);
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// logFileSyncLocalPath:
+	public String getLogFileSyncLocalPath(){
+		return this.logFileSyncLocalPath;
+	}
+	public void setLogFileSyncLocalPath(String logFileSyncLocalPath){
+		this.logFileSyncLocalPath = logFileSyncLocalPath;
+	}
 
-    // remoteMediaId:
-    public String getRemoteMediaId(){
-        return this.remoteMediaId;
-    }
-    public void setRemoteMediaId(String remoteMediaId){
-        this.remoteMediaId = remoteMediaId;
-    }
+	public void logFileSyncLocalPath(String multirequestToken){
+		setToken("logFileSyncLocalPath", multirequestToken);
+	}
 
-    // customData:
-    public String getCustomData(){
-        return this.customData;
-    }
-    public void setCustomData(String customData){
-        this.customData = customData;
-    }
+	// logFileSyncRemoteUrl:
+	public String getLogFileSyncRemoteUrl(){
+		return this.logFileSyncRemoteUrl;
+	}
+	public void setLogFileSyncRemoteUrl(String logFileSyncRemoteUrl){
+		this.logFileSyncRemoteUrl = logFileSyncRemoteUrl;
+	}
 
-    // extraDestFileSyncs:
-    public List<DestFileSyncDescriptor> getExtraDestFileSyncs(){
-        return this.extraDestFileSyncs;
-    }
-    public void setExtraDestFileSyncs(List<DestFileSyncDescriptor> extraDestFileSyncs){
-        this.extraDestFileSyncs = extraDestFileSyncs;
-    }
+	public void logFileSyncRemoteUrl(String multirequestToken){
+		setToken("logFileSyncRemoteUrl", multirequestToken);
+	}
 
-    // engineMessage:
-    public String getEngineMessage(){
-        return this.engineMessage;
-    }
-    public void setEngineMessage(String engineMessage){
-        this.engineMessage = engineMessage;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
+
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
+
+	// remoteMediaId:
+	public String getRemoteMediaId(){
+		return this.remoteMediaId;
+	}
+	public void setRemoteMediaId(String remoteMediaId){
+		this.remoteMediaId = remoteMediaId;
+	}
+
+	public void remoteMediaId(String multirequestToken){
+		setToken("remoteMediaId", multirequestToken);
+	}
+
+	// customData:
+	public String getCustomData(){
+		return this.customData;
+	}
+	public void setCustomData(String customData){
+		this.customData = customData;
+	}
+
+	public void customData(String multirequestToken){
+		setToken("customData", multirequestToken);
+	}
+
+	// extraDestFileSyncs:
+	public List<DestFileSyncDescriptor> getExtraDestFileSyncs(){
+		return this.extraDestFileSyncs;
+	}
+	public void setExtraDestFileSyncs(List<DestFileSyncDescriptor> extraDestFileSyncs){
+		this.extraDestFileSyncs = extraDestFileSyncs;
+	}
+
+	// engineMessage:
+	public String getEngineMessage(){
+		return this.engineMessage;
+	}
+	public void setEngineMessage(String engineMessage){
+		this.engineMessage = engineMessage;
+	}
+
+	public void engineMessage(String multirequestToken){
+		setToken("engineMessage", multirequestToken);
+	}
 
 
-    public ConvertJobData() {
-       super();
-    }
+	public ConvertJobData() {
+		super();
+	}
 
-    public ConvertJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        destFileSyncLocalPath = GsonParser.parseString(jsonObject.get("destFileSyncLocalPath"));
-        destFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("destFileSyncRemoteUrl"));
-        logFileSyncLocalPath = GsonParser.parseString(jsonObject.get("logFileSyncLocalPath"));
-        logFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("logFileSyncRemoteUrl"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        remoteMediaId = GsonParser.parseString(jsonObject.get("remoteMediaId"));
-        customData = GsonParser.parseString(jsonObject.get("customData"));
-        extraDestFileSyncs = GsonParser.parseArray(jsonObject.getAsJsonArray("extraDestFileSyncs"), DestFileSyncDescriptor.class);
-        engineMessage = GsonParser.parseString(jsonObject.get("engineMessage"));
+		// set members values:
+		destFileSyncLocalPath = GsonParser.parseString(jsonObject.get("destFileSyncLocalPath"));
+		destFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("destFileSyncRemoteUrl"));
+		logFileSyncLocalPath = GsonParser.parseString(jsonObject.get("logFileSyncLocalPath"));
+		logFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("logFileSyncRemoteUrl"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		remoteMediaId = GsonParser.parseString(jsonObject.get("remoteMediaId"));
+		customData = GsonParser.parseString(jsonObject.get("customData"));
+		extraDestFileSyncs = GsonParser.parseArray(jsonObject.getAsJsonArray("extraDestFileSyncs"), DestFileSyncDescriptor.class);
+		engineMessage = GsonParser.parseString(jsonObject.get("engineMessage"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertJobData");
-        kparams.add("destFileSyncLocalPath", this.destFileSyncLocalPath);
-        kparams.add("destFileSyncRemoteUrl", this.destFileSyncRemoteUrl);
-        kparams.add("logFileSyncLocalPath", this.logFileSyncLocalPath);
-        kparams.add("logFileSyncRemoteUrl", this.logFileSyncRemoteUrl);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("remoteMediaId", this.remoteMediaId);
-        kparams.add("customData", this.customData);
-        kparams.add("extraDestFileSyncs", this.extraDestFileSyncs);
-        kparams.add("engineMessage", this.engineMessage);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertJobData");
+		kparams.add("destFileSyncLocalPath", this.destFileSyncLocalPath);
+		kparams.add("destFileSyncRemoteUrl", this.destFileSyncRemoteUrl);
+		kparams.add("logFileSyncLocalPath", this.logFileSyncLocalPath);
+		kparams.add("logFileSyncRemoteUrl", this.logFileSyncRemoteUrl);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("remoteMediaId", this.remoteMediaId);
+		kparams.add("customData", this.customData);
+		kparams.add("extraDestFileSyncs", this.extraDestFileSyncs);
+		kparams.add("engineMessage", this.engineMessage);
+		return kparams;
+	}
 
 }
 

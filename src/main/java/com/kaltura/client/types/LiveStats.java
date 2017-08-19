@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,116 +41,160 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStats.Tokenizer.class)
 public class LiveStats extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String audience();
+		String dvrAudience();
+		String avgBitrate();
+		String bufferTime();
+		String plays();
+		String secondsViewed();
+		String startEvent();
+		String timestamp();
+	}
 
-    private Integer audience;
-    private Integer dvrAudience;
-    private Double avgBitrate;
-    private Integer bufferTime;
-    private Integer plays;
-    private Integer secondsViewed;
-    private Long startEvent;
-    private Integer timestamp;
+	private Integer audience;
+	private Integer dvrAudience;
+	private Double avgBitrate;
+	private Integer bufferTime;
+	private Integer plays;
+	private Integer secondsViewed;
+	private Long startEvent;
+	private Integer timestamp;
 
-    // audience:
-    public Integer getAudience(){
-        return this.audience;
-    }
-    public void setAudience(Integer audience){
-        this.audience = audience;
-    }
+	// audience:
+	public Integer getAudience(){
+		return this.audience;
+	}
+	public void setAudience(Integer audience){
+		this.audience = audience;
+	}
 
-    // dvrAudience:
-    public Integer getDvrAudience(){
-        return this.dvrAudience;
-    }
-    public void setDvrAudience(Integer dvrAudience){
-        this.dvrAudience = dvrAudience;
-    }
+	public void audience(String multirequestToken){
+		setToken("audience", multirequestToken);
+	}
 
-    // avgBitrate:
-    public Double getAvgBitrate(){
-        return this.avgBitrate;
-    }
-    public void setAvgBitrate(Double avgBitrate){
-        this.avgBitrate = avgBitrate;
-    }
+	// dvrAudience:
+	public Integer getDvrAudience(){
+		return this.dvrAudience;
+	}
+	public void setDvrAudience(Integer dvrAudience){
+		this.dvrAudience = dvrAudience;
+	}
 
-    // bufferTime:
-    public Integer getBufferTime(){
-        return this.bufferTime;
-    }
-    public void setBufferTime(Integer bufferTime){
-        this.bufferTime = bufferTime;
-    }
+	public void dvrAudience(String multirequestToken){
+		setToken("dvrAudience", multirequestToken);
+	}
 
-    // plays:
-    public Integer getPlays(){
-        return this.plays;
-    }
-    public void setPlays(Integer plays){
-        this.plays = plays;
-    }
+	// avgBitrate:
+	public Double getAvgBitrate(){
+		return this.avgBitrate;
+	}
+	public void setAvgBitrate(Double avgBitrate){
+		this.avgBitrate = avgBitrate;
+	}
 
-    // secondsViewed:
-    public Integer getSecondsViewed(){
-        return this.secondsViewed;
-    }
-    public void setSecondsViewed(Integer secondsViewed){
-        this.secondsViewed = secondsViewed;
-    }
+	public void avgBitrate(String multirequestToken){
+		setToken("avgBitrate", multirequestToken);
+	}
 
-    // startEvent:
-    public Long getStartEvent(){
-        return this.startEvent;
-    }
-    public void setStartEvent(Long startEvent){
-        this.startEvent = startEvent;
-    }
+	// bufferTime:
+	public Integer getBufferTime(){
+		return this.bufferTime;
+	}
+	public void setBufferTime(Integer bufferTime){
+		this.bufferTime = bufferTime;
+	}
 
-    // timestamp:
-    public Integer getTimestamp(){
-        return this.timestamp;
-    }
-    public void setTimestamp(Integer timestamp){
-        this.timestamp = timestamp;
-    }
+	public void bufferTime(String multirequestToken){
+		setToken("bufferTime", multirequestToken);
+	}
+
+	// plays:
+	public Integer getPlays(){
+		return this.plays;
+	}
+	public void setPlays(Integer plays){
+		this.plays = plays;
+	}
+
+	public void plays(String multirequestToken){
+		setToken("plays", multirequestToken);
+	}
+
+	// secondsViewed:
+	public Integer getSecondsViewed(){
+		return this.secondsViewed;
+	}
+	public void setSecondsViewed(Integer secondsViewed){
+		this.secondsViewed = secondsViewed;
+	}
+
+	public void secondsViewed(String multirequestToken){
+		setToken("secondsViewed", multirequestToken);
+	}
+
+	// startEvent:
+	public Long getStartEvent(){
+		return this.startEvent;
+	}
+	public void setStartEvent(Long startEvent){
+		this.startEvent = startEvent;
+	}
+
+	public void startEvent(String multirequestToken){
+		setToken("startEvent", multirequestToken);
+	}
+
+	// timestamp:
+	public Integer getTimestamp(){
+		return this.timestamp;
+	}
+	public void setTimestamp(Integer timestamp){
+		this.timestamp = timestamp;
+	}
+
+	public void timestamp(String multirequestToken){
+		setToken("timestamp", multirequestToken);
+	}
 
 
-    public LiveStats() {
-       super();
-    }
+	public LiveStats() {
+		super();
+	}
 
-    public LiveStats(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStats(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        audience = GsonParser.parseInt(jsonObject.get("audience"));
-        dvrAudience = GsonParser.parseInt(jsonObject.get("dvrAudience"));
-        avgBitrate = GsonParser.parseDouble(jsonObject.get("avgBitrate"));
-        bufferTime = GsonParser.parseInt(jsonObject.get("bufferTime"));
-        plays = GsonParser.parseInt(jsonObject.get("plays"));
-        secondsViewed = GsonParser.parseInt(jsonObject.get("secondsViewed"));
-        startEvent = GsonParser.parseLong(jsonObject.get("startEvent"));
-        timestamp = GsonParser.parseInt(jsonObject.get("timestamp"));
+		// set members values:
+		audience = GsonParser.parseInt(jsonObject.get("audience"));
+		dvrAudience = GsonParser.parseInt(jsonObject.get("dvrAudience"));
+		avgBitrate = GsonParser.parseDouble(jsonObject.get("avgBitrate"));
+		bufferTime = GsonParser.parseInt(jsonObject.get("bufferTime"));
+		plays = GsonParser.parseInt(jsonObject.get("plays"));
+		secondsViewed = GsonParser.parseInt(jsonObject.get("secondsViewed"));
+		startEvent = GsonParser.parseLong(jsonObject.get("startEvent"));
+		timestamp = GsonParser.parseInt(jsonObject.get("timestamp"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStats");
-        kparams.add("audience", this.audience);
-        kparams.add("dvrAudience", this.dvrAudience);
-        kparams.add("avgBitrate", this.avgBitrate);
-        kparams.add("bufferTime", this.bufferTime);
-        kparams.add("plays", this.plays);
-        kparams.add("secondsViewed", this.secondsViewed);
-        kparams.add("startEvent", this.startEvent);
-        kparams.add("timestamp", this.timestamp);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStats");
+		kparams.add("audience", this.audience);
+		kparams.add("dvrAudience", this.dvrAudience);
+		kparams.add("avgBitrate", this.avgBitrate);
+		kparams.add("bufferTime", this.bufferTime);
+		kparams.add("plays", this.plays);
+		kparams.add("secondsViewed", this.secondsViewed);
+		kparams.add("startEvent", this.startEvent);
+		kparams.add("timestamp", this.timestamp);
+		return kparams;
+	}
 
 }
 

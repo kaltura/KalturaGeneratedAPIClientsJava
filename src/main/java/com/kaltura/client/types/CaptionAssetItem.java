@@ -33,6 +33,7 @@ import com.kaltura.client.types.BaseEntry;
 import com.kaltura.client.types.CaptionAsset;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,85 +43,106 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CaptionAssetItem.Tokenizer.class)
 public class CaptionAssetItem extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		CaptionAsset.Tokenizer asset();
+		BaseEntry.Tokenizer entry();
+		String startTime();
+		String endTime();
+		String content();
+	}
 
 	/**  The Caption Asset object  */
-    private CaptionAsset asset;
+	private CaptionAsset asset;
 	/**  The entry object  */
-    private BaseEntry entry;
-    private Integer startTime;
-    private Integer endTime;
-    private String content;
+	private BaseEntry entry;
+	private Integer startTime;
+	private Integer endTime;
+	private String content;
 
-    // asset:
-    public CaptionAsset getAsset(){
-        return this.asset;
-    }
-    public void setAsset(CaptionAsset asset){
-        this.asset = asset;
-    }
+	// asset:
+	public CaptionAsset getAsset(){
+		return this.asset;
+	}
+	public void setAsset(CaptionAsset asset){
+		this.asset = asset;
+	}
 
-    // entry:
-    public BaseEntry getEntry(){
-        return this.entry;
-    }
-    public void setEntry(BaseEntry entry){
-        this.entry = entry;
-    }
+	// entry:
+	public BaseEntry getEntry(){
+		return this.entry;
+	}
+	public void setEntry(BaseEntry entry){
+		this.entry = entry;
+	}
 
-    // startTime:
-    public Integer getStartTime(){
-        return this.startTime;
-    }
-    public void setStartTime(Integer startTime){
-        this.startTime = startTime;
-    }
+	// startTime:
+	public Integer getStartTime(){
+		return this.startTime;
+	}
+	public void setStartTime(Integer startTime){
+		this.startTime = startTime;
+	}
 
-    // endTime:
-    public Integer getEndTime(){
-        return this.endTime;
-    }
-    public void setEndTime(Integer endTime){
-        this.endTime = endTime;
-    }
+	public void startTime(String multirequestToken){
+		setToken("startTime", multirequestToken);
+	}
 
-    // content:
-    public String getContent(){
-        return this.content;
-    }
-    public void setContent(String content){
-        this.content = content;
-    }
+	// endTime:
+	public Integer getEndTime(){
+		return this.endTime;
+	}
+	public void setEndTime(Integer endTime){
+		this.endTime = endTime;
+	}
+
+	public void endTime(String multirequestToken){
+		setToken("endTime", multirequestToken);
+	}
+
+	// content:
+	public String getContent(){
+		return this.content;
+	}
+	public void setContent(String content){
+		this.content = content;
+	}
+
+	public void content(String multirequestToken){
+		setToken("content", multirequestToken);
+	}
 
 
-    public CaptionAssetItem() {
-       super();
-    }
+	public CaptionAssetItem() {
+		super();
+	}
 
-    public CaptionAssetItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CaptionAssetItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        asset = GsonParser.parseObject(jsonObject.getAsJsonObject("asset"), CaptionAsset.class);
-        entry = GsonParser.parseObject(jsonObject.getAsJsonObject("entry"), BaseEntry.class);
-        startTime = GsonParser.parseInt(jsonObject.get("startTime"));
-        endTime = GsonParser.parseInt(jsonObject.get("endTime"));
-        content = GsonParser.parseString(jsonObject.get("content"));
+		// set members values:
+		asset = GsonParser.parseObject(jsonObject.getAsJsonObject("asset"), CaptionAsset.class);
+		entry = GsonParser.parseObject(jsonObject.getAsJsonObject("entry"), BaseEntry.class);
+		startTime = GsonParser.parseInt(jsonObject.get("startTime"));
+		endTime = GsonParser.parseInt(jsonObject.get("endTime"));
+		content = GsonParser.parseString(jsonObject.get("content"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCaptionAssetItem");
-        kparams.add("asset", this.asset);
-        kparams.add("entry", this.entry);
-        kparams.add("startTime", this.startTime);
-        kparams.add("endTime", this.endTime);
-        kparams.add("content", this.content);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCaptionAssetItem");
+		kparams.add("asset", this.asset);
+		kparams.add("entry", this.entry);
+		kparams.add("startTime", this.startTime);
+		kparams.add("endTime", this.endTime);
+		kparams.add("content", this.content);
+		return kparams;
+	}
 
 }
 

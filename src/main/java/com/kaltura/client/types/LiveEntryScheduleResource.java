@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveEntryScheduleResource.Tokenizer.class)
 public class LiveEntryScheduleResource extends ScheduleResource {
+	
+	public interface Tokenizer extends ScheduleResource.Tokenizer {
+		String entryId();
+	}
 
-    private String entryId;
+	private String entryId;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
 
-    public LiveEntryScheduleResource() {
-       super();
-    }
+	public LiveEntryScheduleResource() {
+		super();
+	}
 
-    public LiveEntryScheduleResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveEntryScheduleResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveEntryScheduleResource");
-        kparams.add("entryId", this.entryId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveEntryScheduleResource");
+		kparams.add("entryId", this.entryId);
+		return kparams;
+	}
 
 }
 

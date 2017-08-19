@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(QuestionCuePointBaseFilter.Tokenizer.class)
 public abstract class QuestionCuePointBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String questionLike();
+		String questionMultiLikeOr();
+		String questionMultiLikeAnd();
+	}
 
-    private String questionLike;
-    private String questionMultiLikeOr;
-    private String questionMultiLikeAnd;
+	private String questionLike;
+	private String questionMultiLikeOr;
+	private String questionMultiLikeAnd;
 
-    // questionLike:
-    public String getQuestionLike(){
-        return this.questionLike;
-    }
-    public void setQuestionLike(String questionLike){
-        this.questionLike = questionLike;
-    }
+	// questionLike:
+	public String getQuestionLike(){
+		return this.questionLike;
+	}
+	public void setQuestionLike(String questionLike){
+		this.questionLike = questionLike;
+	}
 
-    // questionMultiLikeOr:
-    public String getQuestionMultiLikeOr(){
-        return this.questionMultiLikeOr;
-    }
-    public void setQuestionMultiLikeOr(String questionMultiLikeOr){
-        this.questionMultiLikeOr = questionMultiLikeOr;
-    }
+	public void questionLike(String multirequestToken){
+		setToken("questionLike", multirequestToken);
+	}
 
-    // questionMultiLikeAnd:
-    public String getQuestionMultiLikeAnd(){
-        return this.questionMultiLikeAnd;
-    }
-    public void setQuestionMultiLikeAnd(String questionMultiLikeAnd){
-        this.questionMultiLikeAnd = questionMultiLikeAnd;
-    }
+	// questionMultiLikeOr:
+	public String getQuestionMultiLikeOr(){
+		return this.questionMultiLikeOr;
+	}
+	public void setQuestionMultiLikeOr(String questionMultiLikeOr){
+		this.questionMultiLikeOr = questionMultiLikeOr;
+	}
+
+	public void questionMultiLikeOr(String multirequestToken){
+		setToken("questionMultiLikeOr", multirequestToken);
+	}
+
+	// questionMultiLikeAnd:
+	public String getQuestionMultiLikeAnd(){
+		return this.questionMultiLikeAnd;
+	}
+	public void setQuestionMultiLikeAnd(String questionMultiLikeAnd){
+		this.questionMultiLikeAnd = questionMultiLikeAnd;
+	}
+
+	public void questionMultiLikeAnd(String multirequestToken){
+		setToken("questionMultiLikeAnd", multirequestToken);
+	}
 
 
-    public QuestionCuePointBaseFilter() {
-       super();
-    }
+	public QuestionCuePointBaseFilter() {
+		super();
+	}
 
-    public QuestionCuePointBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public QuestionCuePointBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        questionLike = GsonParser.parseString(jsonObject.get("questionLike"));
-        questionMultiLikeOr = GsonParser.parseString(jsonObject.get("questionMultiLikeOr"));
-        questionMultiLikeAnd = GsonParser.parseString(jsonObject.get("questionMultiLikeAnd"));
+		// set members values:
+		questionLike = GsonParser.parseString(jsonObject.get("questionLike"));
+		questionMultiLikeOr = GsonParser.parseString(jsonObject.get("questionMultiLikeOr"));
+		questionMultiLikeAnd = GsonParser.parseString(jsonObject.get("questionMultiLikeAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuestionCuePointBaseFilter");
-        kparams.add("questionLike", this.questionLike);
-        kparams.add("questionMultiLikeOr", this.questionMultiLikeOr);
-        kparams.add("questionMultiLikeAnd", this.questionMultiLikeAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuestionCuePointBaseFilter");
+		kparams.add("questionLike", this.questionLike);
+		kparams.add("questionMultiLikeOr", this.questionMultiLikeOr);
+		kparams.add("questionMultiLikeAnd", this.questionMultiLikeAnd);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryReferrerLiveStats.Tokenizer.class)
 public class EntryReferrerLiveStats extends EntryLiveStats {
+	
+	public interface Tokenizer extends EntryLiveStats.Tokenizer {
+		String referrer();
+	}
 
-    private String referrer;
+	private String referrer;
 
-    // referrer:
-    public String getReferrer(){
-        return this.referrer;
-    }
-    public void setReferrer(String referrer){
-        this.referrer = referrer;
-    }
+	// referrer:
+	public String getReferrer(){
+		return this.referrer;
+	}
+	public void setReferrer(String referrer){
+		this.referrer = referrer;
+	}
+
+	public void referrer(String multirequestToken){
+		setToken("referrer", multirequestToken);
+	}
 
 
-    public EntryReferrerLiveStats() {
-       super();
-    }
+	public EntryReferrerLiveStats() {
+		super();
+	}
 
-    public EntryReferrerLiveStats(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryReferrerLiveStats(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        referrer = GsonParser.parseString(jsonObject.get("referrer"));
+		// set members values:
+		referrer = GsonParser.parseString(jsonObject.get("referrer"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryReferrerLiveStats");
-        kparams.add("referrer", this.referrer);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryReferrerLiveStats");
+		kparams.add("referrer", this.referrer);
+		return kparams;
+	}
 
 }
 

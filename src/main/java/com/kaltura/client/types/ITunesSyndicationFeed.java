@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ITunesSyndicationFeedAdultValues;
 import com.kaltura.client.enums.ITunesSyndicationFeedCategories;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,144 +42,198 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ITunesSyndicationFeed.Tokenizer.class)
 public class ITunesSyndicationFeed extends BaseSyndicationFeed {
+	
+	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
+		String feedDescription();
+		String language();
+		String feedLandingPage();
+		String ownerName();
+		String ownerEmail();
+		String feedImageUrl();
+		String category();
+		String adultContent();
+		String feedAuthor();
+		String enforceOrder();
+	}
 
 	/**  feed description  */
-    private String feedDescription;
+	private String feedDescription;
 	/**  feed language  */
-    private String language;
+	private String language;
 	/**  feed landing page (i.e publisher website)  */
-    private String feedLandingPage;
+	private String feedLandingPage;
 	/**  author/publisher name  */
-    private String ownerName;
+	private String ownerName;
 	/**  publisher email  */
-    private String ownerEmail;
+	private String ownerEmail;
 	/**  podcast thumbnail  */
-    private String feedImageUrl;
-    private ITunesSyndicationFeedCategories category;
-    private ITunesSyndicationFeedAdultValues adultContent;
-    private String feedAuthor;
+	private String feedImageUrl;
+	private ITunesSyndicationFeedCategories category;
+	private ITunesSyndicationFeedAdultValues adultContent;
+	private String feedAuthor;
 	/**  true in case you want to enfore the palylist order on the  */
-    private Boolean enforceOrder;
+	private Boolean enforceOrder;
 
-    // feedDescription:
-    public String getFeedDescription(){
-        return this.feedDescription;
-    }
-    public void setFeedDescription(String feedDescription){
-        this.feedDescription = feedDescription;
-    }
+	// feedDescription:
+	public String getFeedDescription(){
+		return this.feedDescription;
+	}
+	public void setFeedDescription(String feedDescription){
+		this.feedDescription = feedDescription;
+	}
 
-    // language:
-    public String getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(String language){
-        this.language = language;
-    }
+	public void feedDescription(String multirequestToken){
+		setToken("feedDescription", multirequestToken);
+	}
 
-    // feedLandingPage:
-    public String getFeedLandingPage(){
-        return this.feedLandingPage;
-    }
-    public void setFeedLandingPage(String feedLandingPage){
-        this.feedLandingPage = feedLandingPage;
-    }
+	// language:
+	public String getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(String language){
+		this.language = language;
+	}
 
-    // ownerName:
-    public String getOwnerName(){
-        return this.ownerName;
-    }
-    public void setOwnerName(String ownerName){
-        this.ownerName = ownerName;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
 
-    // ownerEmail:
-    public String getOwnerEmail(){
-        return this.ownerEmail;
-    }
-    public void setOwnerEmail(String ownerEmail){
-        this.ownerEmail = ownerEmail;
-    }
+	// feedLandingPage:
+	public String getFeedLandingPage(){
+		return this.feedLandingPage;
+	}
+	public void setFeedLandingPage(String feedLandingPage){
+		this.feedLandingPage = feedLandingPage;
+	}
 
-    // feedImageUrl:
-    public String getFeedImageUrl(){
-        return this.feedImageUrl;
-    }
-    public void setFeedImageUrl(String feedImageUrl){
-        this.feedImageUrl = feedImageUrl;
-    }
+	public void feedLandingPage(String multirequestToken){
+		setToken("feedLandingPage", multirequestToken);
+	}
 
-    // category:
-    public ITunesSyndicationFeedCategories getCategory(){
-        return this.category;
-    }
-    public void setCategory(ITunesSyndicationFeedCategories category){
-        this.category = category;
-    }
+	// ownerName:
+	public String getOwnerName(){
+		return this.ownerName;
+	}
+	public void setOwnerName(String ownerName){
+		this.ownerName = ownerName;
+	}
 
-    // adultContent:
-    public ITunesSyndicationFeedAdultValues getAdultContent(){
-        return this.adultContent;
-    }
-    public void setAdultContent(ITunesSyndicationFeedAdultValues adultContent){
-        this.adultContent = adultContent;
-    }
+	public void ownerName(String multirequestToken){
+		setToken("ownerName", multirequestToken);
+	}
 
-    // feedAuthor:
-    public String getFeedAuthor(){
-        return this.feedAuthor;
-    }
-    public void setFeedAuthor(String feedAuthor){
-        this.feedAuthor = feedAuthor;
-    }
+	// ownerEmail:
+	public String getOwnerEmail(){
+		return this.ownerEmail;
+	}
+	public void setOwnerEmail(String ownerEmail){
+		this.ownerEmail = ownerEmail;
+	}
 
-    // enforceOrder:
-    public Boolean getEnforceOrder(){
-        return this.enforceOrder;
-    }
-    public void setEnforceOrder(Boolean enforceOrder){
-        this.enforceOrder = enforceOrder;
-    }
+	public void ownerEmail(String multirequestToken){
+		setToken("ownerEmail", multirequestToken);
+	}
+
+	// feedImageUrl:
+	public String getFeedImageUrl(){
+		return this.feedImageUrl;
+	}
+	public void setFeedImageUrl(String feedImageUrl){
+		this.feedImageUrl = feedImageUrl;
+	}
+
+	public void feedImageUrl(String multirequestToken){
+		setToken("feedImageUrl", multirequestToken);
+	}
+
+	// category:
+	public ITunesSyndicationFeedCategories getCategory(){
+		return this.category;
+	}
+	public void setCategory(ITunesSyndicationFeedCategories category){
+		this.category = category;
+	}
+
+	public void category(String multirequestToken){
+		setToken("category", multirequestToken);
+	}
+
+	// adultContent:
+	public ITunesSyndicationFeedAdultValues getAdultContent(){
+		return this.adultContent;
+	}
+	public void setAdultContent(ITunesSyndicationFeedAdultValues adultContent){
+		this.adultContent = adultContent;
+	}
+
+	public void adultContent(String multirequestToken){
+		setToken("adultContent", multirequestToken);
+	}
+
+	// feedAuthor:
+	public String getFeedAuthor(){
+		return this.feedAuthor;
+	}
+	public void setFeedAuthor(String feedAuthor){
+		this.feedAuthor = feedAuthor;
+	}
+
+	public void feedAuthor(String multirequestToken){
+		setToken("feedAuthor", multirequestToken);
+	}
+
+	// enforceOrder:
+	public Boolean getEnforceOrder(){
+		return this.enforceOrder;
+	}
+	public void setEnforceOrder(Boolean enforceOrder){
+		this.enforceOrder = enforceOrder;
+	}
+
+	public void enforceOrder(String multirequestToken){
+		setToken("enforceOrder", multirequestToken);
+	}
 
 
-    public ITunesSyndicationFeed() {
-       super();
-    }
+	public ITunesSyndicationFeed() {
+		super();
+	}
 
-    public ITunesSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ITunesSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
-        language = GsonParser.parseString(jsonObject.get("language"));
-        feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
-        ownerName = GsonParser.parseString(jsonObject.get("ownerName"));
-        ownerEmail = GsonParser.parseString(jsonObject.get("ownerEmail"));
-        feedImageUrl = GsonParser.parseString(jsonObject.get("feedImageUrl"));
-        category = ITunesSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
-        adultContent = ITunesSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
-        feedAuthor = GsonParser.parseString(jsonObject.get("feedAuthor"));
-        enforceOrder = GsonParser.parseBoolean(jsonObject.get("enforceOrder"));
+		// set members values:
+		feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
+		language = GsonParser.parseString(jsonObject.get("language"));
+		feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
+		ownerName = GsonParser.parseString(jsonObject.get("ownerName"));
+		ownerEmail = GsonParser.parseString(jsonObject.get("ownerEmail"));
+		feedImageUrl = GsonParser.parseString(jsonObject.get("feedImageUrl"));
+		category = ITunesSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
+		adultContent = ITunesSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
+		feedAuthor = GsonParser.parseString(jsonObject.get("feedAuthor"));
+		enforceOrder = GsonParser.parseBoolean(jsonObject.get("enforceOrder"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaITunesSyndicationFeed");
-        kparams.add("feedDescription", this.feedDescription);
-        kparams.add("language", this.language);
-        kparams.add("feedLandingPage", this.feedLandingPage);
-        kparams.add("ownerName", this.ownerName);
-        kparams.add("ownerEmail", this.ownerEmail);
-        kparams.add("feedImageUrl", this.feedImageUrl);
-        kparams.add("adultContent", this.adultContent);
-        kparams.add("feedAuthor", this.feedAuthor);
-        kparams.add("enforceOrder", this.enforceOrder);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaITunesSyndicationFeed");
+		kparams.add("feedDescription", this.feedDescription);
+		kparams.add("language", this.language);
+		kparams.add("feedLandingPage", this.feedLandingPage);
+		kparams.add("ownerName", this.ownerName);
+		kparams.add("ownerEmail", this.ownerEmail);
+		kparams.add("feedImageUrl", this.feedImageUrl);
+		kparams.add("adultContent", this.adultContent);
+		kparams.add("feedAuthor", this.feedAuthor);
+		kparams.add("enforceOrder", this.enforceOrder);
+		return kparams;
+	}
 
 }
 

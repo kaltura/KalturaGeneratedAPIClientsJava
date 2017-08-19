@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolderImportJobData.Tokenizer.class)
 public class DropFolderImportJobData extends SshImportJobData {
+	
+	public interface Tokenizer extends SshImportJobData.Tokenizer {
+		String dropFolderFileId();
+	}
 
-    private Integer dropFolderFileId;
+	private Integer dropFolderFileId;
 
-    // dropFolderFileId:
-    public Integer getDropFolderFileId(){
-        return this.dropFolderFileId;
-    }
-    public void setDropFolderFileId(Integer dropFolderFileId){
-        this.dropFolderFileId = dropFolderFileId;
-    }
+	// dropFolderFileId:
+	public Integer getDropFolderFileId(){
+		return this.dropFolderFileId;
+	}
+	public void setDropFolderFileId(Integer dropFolderFileId){
+		this.dropFolderFileId = dropFolderFileId;
+	}
+
+	public void dropFolderFileId(String multirequestToken){
+		setToken("dropFolderFileId", multirequestToken);
+	}
 
 
-    public DropFolderImportJobData() {
-       super();
-    }
+	public DropFolderImportJobData() {
+		super();
+	}
 
-    public DropFolderImportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolderImportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        dropFolderFileId = GsonParser.parseInt(jsonObject.get("dropFolderFileId"));
+		// set members values:
+		dropFolderFileId = GsonParser.parseInt(jsonObject.get("dropFolderFileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolderImportJobData");
-        kparams.add("dropFolderFileId", this.dropFolderFileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolderImportJobData");
+		kparams.add("dropFolderFileId", this.dropFolderFileId);
+		return kparams;
+	}
 
 }
 

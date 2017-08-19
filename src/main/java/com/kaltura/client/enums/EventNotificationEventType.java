@@ -34,48 +34,48 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationEventType implements EnumAsString {
-    BATCH_JOB_STATUS("1"),
-    OBJECT_ADDED("2"),
-    OBJECT_CHANGED("3"),
-    OBJECT_COPIED("4"),
-    OBJECT_CREATED("5"),
-    OBJECT_DATA_CHANGED("6"),
-    OBJECT_DELETED("7"),
-    OBJECT_ERASED("8"),
-    OBJECT_READY_FOR_REPLACMENT("9"),
-    OBJECT_SAVED("10"),
-    OBJECT_UPDATED("11"),
-    OBJECT_REPLACED("12"),
-    OBJECT_READY_FOR_INDEX("13");
+	BATCH_JOB_STATUS("1"),
+	OBJECT_ADDED("2"),
+	OBJECT_CHANGED("3"),
+	OBJECT_COPIED("4"),
+	OBJECT_CREATED("5"),
+	OBJECT_DATA_CHANGED("6"),
+	OBJECT_DELETED("7"),
+	OBJECT_ERASED("8"),
+	OBJECT_READY_FOR_REPLACMENT("9"),
+	OBJECT_SAVED("10"),
+	OBJECT_UPDATED("11"),
+	OBJECT_REPLACED("12"),
+	OBJECT_READY_FOR_INDEX("13");
 
-    private String value;
+	private String value;
 
-    EventNotificationEventType(String value) {
-        this.value = value;
-    }
+	EventNotificationEventType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EventNotificationEventType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EventNotificationEventType defined values and compare the inner value with the given one:
-        for(EventNotificationEventType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EventNotificationEventType.values().length > 0 ? EventNotificationEventType.values()[0]: null;
+	public static EventNotificationEventType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EventNotificationEventType defined values and compare the inner value with the given one:
+		for(EventNotificationEventType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EventNotificationEventType.values().length > 0 ? EventNotificationEventType.values()[0]: null;
    }
 }

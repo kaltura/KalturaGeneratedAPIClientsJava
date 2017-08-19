@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationTemplateStatus implements EnumAsInt {
-    DISABLED(1),
-    ACTIVE(2),
-    DELETED(3);
+	DISABLED(1),
+	ACTIVE(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    EventNotificationTemplateStatus(int value) {
-        this.value = value;
-    }
+	EventNotificationTemplateStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EventNotificationTemplateStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EventNotificationTemplateStatus defined values and compare the inner value with the given one:
-        for(EventNotificationTemplateStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EventNotificationTemplateStatus.values().length > 0 ? EventNotificationTemplateStatus.values()[0]: null;
+	public static EventNotificationTemplateStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EventNotificationTemplateStatus defined values and compare the inner value with the given one:
+		for(EventNotificationTemplateStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EventNotificationTemplateStatus.values().length > 0 ? EventNotificationTemplateStatus.values()[0]: null;
    }
 }

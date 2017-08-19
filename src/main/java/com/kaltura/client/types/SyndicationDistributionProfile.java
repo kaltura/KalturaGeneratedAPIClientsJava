@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,49 +40,63 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SyndicationDistributionProfile.Tokenizer.class)
 public class SyndicationDistributionProfile extends DistributionProfile {
+	
+	public interface Tokenizer extends DistributionProfile.Tokenizer {
+		String xsl();
+		String feedId();
+	}
 
-    private String xsl;
-    private String feedId;
+	private String xsl;
+	private String feedId;
 
-    // xsl:
-    public String getXsl(){
-        return this.xsl;
-    }
-    public void setXsl(String xsl){
-        this.xsl = xsl;
-    }
+	// xsl:
+	public String getXsl(){
+		return this.xsl;
+	}
+	public void setXsl(String xsl){
+		this.xsl = xsl;
+	}
 
-    // feedId:
-    public String getFeedId(){
-        return this.feedId;
-    }
-    public void setFeedId(String feedId){
-        this.feedId = feedId;
-    }
+	public void xsl(String multirequestToken){
+		setToken("xsl", multirequestToken);
+	}
+
+	// feedId:
+	public String getFeedId(){
+		return this.feedId;
+	}
+	public void setFeedId(String feedId){
+		this.feedId = feedId;
+	}
+
+	public void feedId(String multirequestToken){
+		setToken("feedId", multirequestToken);
+	}
 
 
-    public SyndicationDistributionProfile() {
-       super();
-    }
+	public SyndicationDistributionProfile() {
+		super();
+	}
 
-    public SyndicationDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SyndicationDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xsl = GsonParser.parseString(jsonObject.get("xsl"));
-        feedId = GsonParser.parseString(jsonObject.get("feedId"));
+		// set members values:
+		xsl = GsonParser.parseString(jsonObject.get("xsl"));
+		feedId = GsonParser.parseString(jsonObject.get("feedId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSyndicationDistributionProfile");
-        kparams.add("xsl", this.xsl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSyndicationDistributionProfile");
+		kparams.add("xsl", this.xsl);
+		return kparams;
+	}
 
 }
 

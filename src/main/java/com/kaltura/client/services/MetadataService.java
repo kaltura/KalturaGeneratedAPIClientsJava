@@ -29,10 +29,8 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.MetadataObjectType;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Metadata;
 import com.kaltura.client.types.MetadataFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -52,193 +50,366 @@ import java.io.InputStream;
 
 /**  Metadata service  */
 public class MetadataService {
+	
+	public static class AddMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, AddMetadataBuilder> {
+		
+		public AddMetadataBuilder(int metadataProfileId, MetadataObjectType objectType, String objectId, String xmlData) {
+			super(Metadata.class, "metadata_metadata", "add");
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			params.add("xmlData", xmlData);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+		
+		public void xmlData(String multirequestToken) {
+			params.add("xmlData", multirequestToken);
+		}
+	}
 
 	/**  Allows you to add a metadata object and metadata content associated with Kaltura
 	  object  */
-    public static RequestBuilder<Metadata> add(int metadataProfileId, MetadataObjectType objectType, String objectId, String xmlData)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfileId", metadataProfileId);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("xmlData", xmlData);
-
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "add", kparams);
-    }
+    public static AddMetadataBuilder add(int metadataProfileId, MetadataObjectType objectType, String objectId, String xmlData)  {
+		return new AddMetadataBuilder(metadataProfileId, objectType, objectId, xmlData);
+	}
+	
+	public static class AddFromBulkMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, AddFromBulkMetadataBuilder> {
+		
+		public AddFromBulkMetadataBuilder(int metadataProfileId, MetadataObjectType objectType, String objectId, String url) {
+			super(Metadata.class, "metadata_metadata", "addFromBulk");
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			params.add("url", url);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
 	/**  Allows you to add a metadata xml data from remote URL.   Enables different
 	  permissions than addFromUrl action.  */
-    public static RequestBuilder<Metadata> addFromBulk(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfileId", metadataProfileId);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("url", url);
+    public static AddFromBulkMetadataBuilder addFromBulk(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
+		return new AddFromBulkMetadataBuilder(metadataProfileId, objectType, objectId, url);
+	}
+	
+	public static class AddFromFileMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, AddFromFileMetadataBuilder> {
+		
+		public AddFromFileMetadataBuilder(int metadataProfileId, MetadataObjectType objectType, String objectId, FileHolder xmlFile) {
+			super(Metadata.class, "metadata_metadata", "addFromFile");
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			files = new Files();
+			files.add("xmlFile", xmlFile);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "addFromBulk", kparams);
-    }
+	public static AddFromFileMetadataBuilder addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, File xmlFile)  {
+		return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile));
+	}
 
-    public static RequestBuilder<Metadata> addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, File xmlFile)  {
-        return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile));
-    }
+	public static AddFromFileMetadataBuilder addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
+		return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName, xmlFileSize));
+	}
 
-    public static RequestBuilder<Metadata> addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
-        return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName, xmlFileSize));
-    }
-
-    public static RequestBuilder<Metadata> addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
-        return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
-    }
+	public static AddFromFileMetadataBuilder addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
+		return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
+	}
 
 	/**  Allows you to add a metadata object and metadata file associated with Kaltura
 	  object  */
-    public static RequestBuilder<Metadata> addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, FileHolder xmlFile)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfileId", metadataProfileId);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        Files kfiles = new Files();
-        kfiles.add("xmlFile", xmlFile);
-
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "addFromFile", kparams, kfiles);
-    }
+    public static AddFromFileMetadataBuilder addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, FileHolder xmlFile)  {
+		return new AddFromFileMetadataBuilder(metadataProfileId, objectType, objectId, xmlFile);
+	}
+	
+	public static class AddFromUrlMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, AddFromUrlMetadataBuilder> {
+		
+		public AddFromUrlMetadataBuilder(int metadataProfileId, MetadataObjectType objectType, String objectId, String url) {
+			super(Metadata.class, "metadata_metadata", "addFromUrl");
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			params.add("url", url);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+		
+		public void url(String multirequestToken) {
+			params.add("url", multirequestToken);
+		}
+	}
 
 	/**  Allows you to add a metadata xml data from remote URL  */
-    public static RequestBuilder<Metadata> addFromUrl(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfileId", metadataProfileId);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("url", url);
-
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "addFromUrl", kparams);
-    }
+    public static AddFromUrlMetadataBuilder addFromUrl(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
+		return new AddFromUrlMetadataBuilder(metadataProfileId, objectType, objectId, url);
+	}
+	
+	public static class DeleteMetadataBuilder extends NullRequestBuilder {
+		
+		public DeleteMetadataBuilder(int id) {
+			super("metadata_metadata", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete an existing metadata  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("metadata_metadata", "delete", kparams);
-    }
+    public static DeleteMetadataBuilder delete(int id)  {
+		return new DeleteMetadataBuilder(id);
+	}
+	
+	public static class GetMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, GetMetadataBuilder> {
+		
+		public GetMetadataBuilder(int id) {
+			super(Metadata.class, "metadata_metadata", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a metadata object by id  */
-    public static RequestBuilder<Metadata> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "get", kparams);
-    }
+    public static GetMetadataBuilder get(int id)  {
+		return new GetMetadataBuilder(id);
+	}
+	
+	public static class IndexMetadataBuilder extends RequestBuilder<Integer, String, IndexMetadataBuilder> {
+		
+		public IndexMetadataBuilder(String id, boolean shouldUpdate) {
+			super(Integer.class, "metadata_metadata", "index");
+			params.add("id", id);
+			params.add("shouldUpdate", shouldUpdate);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void shouldUpdate(String multirequestToken) {
+			params.add("shouldUpdate", multirequestToken);
+		}
+	}
 
 	/**  Index metadata by id, will also index the related object  */
-    public static RequestBuilder<Integer> index(String id, boolean shouldUpdate)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
+    public static IndexMetadataBuilder index(String id, boolean shouldUpdate)  {
+		return new IndexMetadataBuilder(id, shouldUpdate);
+	}
+	
+	public static class InvalidateMetadataBuilder extends NullRequestBuilder {
+		
+		public InvalidateMetadataBuilder(int id, int version) {
+			super("metadata_metadata", "invalidate");
+			params.add("id", id);
+			params.add("version", version);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "metadata_metadata", "index", kparams);
-    }
-
-    public static RequestBuilder<Void> invalidate(int id)  {
-        return invalidate(id, Integer.MIN_VALUE);
-    }
+	public static InvalidateMetadataBuilder invalidate(int id)  {
+		return invalidate(id, Integer.MIN_VALUE);
+	}
 
 	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
-    public static RequestBuilder<Void> invalidate(int id, int version)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("version", version);
+    public static InvalidateMetadataBuilder invalidate(int id, int version)  {
+		return new InvalidateMetadataBuilder(id, version);
+	}
+	
+	public static class ListMetadataBuilder extends ListResponseRequestBuilder<Metadata, Metadata.Tokenizer, ListMetadataBuilder> {
+		
+		public ListMetadataBuilder(MetadataFilter filter, FilterPager pager) {
+			super(Metadata.class, "metadata_metadata", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new NullRequestBuilder("metadata_metadata", "invalidate", kparams);
-    }
+	public static ListMetadataBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Metadata>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Metadata>> list(MetadataFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListMetadataBuilder list(MetadataFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List metadata objects by filter and pager  */
-    public static RequestBuilder<ListResponse<Metadata>> list(MetadataFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "list", kparams);
-    }
+    public static ListMetadataBuilder list(MetadataFilter filter, FilterPager pager)  {
+		return new ListMetadataBuilder(filter, pager);
+	}
+	
+	public static class ServeMetadataBuilder extends ServeRequestBuilder {
+		
+		public ServeMetadataBuilder(int id) {
+			super("metadata_metadata", "serve");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Serves metadata XML file  */
-    public static RequestBuilder<String> serve(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static ServeMetadataBuilder serve(int id)  {
+		return new ServeMetadataBuilder(id);
+	}
+	
+	public static class UpdateMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateMetadataBuilder> {
+		
+		public UpdateMetadataBuilder(int id, String xmlData, int version) {
+			super(Metadata.class, "metadata_metadata", "update");
+			params.add("id", id);
+			params.add("xmlData", xmlData);
+			params.add("version", version);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void xmlData(String multirequestToken) {
+			params.add("xmlData", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("metadata_metadata", "serve", kparams);
-    }
+	public static UpdateMetadataBuilder update(int id)  {
+		return update(id, null);
+	}
 
-    public static RequestBuilder<Metadata> update(int id)  {
-        return update(id, null);
-    }
-
-    public static RequestBuilder<Metadata> update(int id, String xmlData)  {
-        return update(id, xmlData, Integer.MIN_VALUE);
-    }
+	public static UpdateMetadataBuilder update(int id, String xmlData)  {
+		return update(id, xmlData, Integer.MIN_VALUE);
+	}
 
 	/**  Update an existing metadata object with new XML content  */
-    public static RequestBuilder<Metadata> update(int id, String xmlData, int version)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("xmlData", xmlData);
-        kparams.add("version", version);
+    public static UpdateMetadataBuilder update(int id, String xmlData, int version)  {
+		return new UpdateMetadataBuilder(id, xmlData, version);
+	}
+	
+	public static class UpdateFromFileMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateFromFileMetadataBuilder> {
+		
+		public UpdateFromFileMetadataBuilder(int id, FileHolder xmlFile) {
+			super(Metadata.class, "metadata_metadata", "updateFromFile");
+			params.add("id", id);
+			files = new Files();
+			files.add("xmlFile", xmlFile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "update", kparams);
-    }
+	public static UpdateFromFileMetadataBuilder updateFromFile(int id)  {
+		return updateFromFile(id, (FileHolder)null);
+	}
 
-    public static RequestBuilder<Metadata> updateFromFile(int id)  {
-        return updateFromFile(id, (FileHolder)null);
-    }
+	public static UpdateFromFileMetadataBuilder updateFromFile(int id, File xmlFile)  {
+		return updateFromFile(id, new FileHolder(xmlFile));
+	}
 
-    public static RequestBuilder<Metadata> updateFromFile(int id, File xmlFile)  {
-        return updateFromFile(id, new FileHolder(xmlFile));
-    }
+	public static UpdateFromFileMetadataBuilder updateFromFile(int id, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
+		return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName, xmlFileSize));
+	}
 
-    public static RequestBuilder<Metadata> updateFromFile(int id, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
-        return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName, xmlFileSize));
-    }
-
-    public static RequestBuilder<Metadata> updateFromFile(int id, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
-        return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
-    }
+	public static UpdateFromFileMetadataBuilder updateFromFile(int id, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
+		return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
+	}
 
 	/**  Update an existing metadata object with new XML file  */
-    public static RequestBuilder<Metadata> updateFromFile(int id, FileHolder xmlFile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        Files kfiles = new Files();
-        kfiles.add("xmlFile", xmlFile);
+    public static UpdateFromFileMetadataBuilder updateFromFile(int id, FileHolder xmlFile)  {
+		return new UpdateFromFileMetadataBuilder(id, xmlFile);
+	}
+	
+	public static class UpdateFromXSLMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateFromXSLMetadataBuilder> {
+		
+		public UpdateFromXSLMetadataBuilder(int id, FileHolder xslFile) {
+			super(Metadata.class, "metadata_metadata", "updateFromXSL");
+			params.add("id", id);
+			files = new Files();
+			files.add("xslFile", xslFile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "updateFromFile", kparams, kfiles);
-    }
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, File xslFile)  {
+		return updateFromXSL(id, new FileHolder(xslFile));
+	}
 
-    public static RequestBuilder<Metadata> updateFromXSL(int id, File xslFile)  {
-        return updateFromXSL(id, new FileHolder(xslFile));
-    }
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, InputStream xslFile, String xslFileMimeType, String xslFileName, long xslFileSize)  {
+		return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName, xslFileSize));
+	}
 
-    public static RequestBuilder<Metadata> updateFromXSL(int id, InputStream xslFile, String xslFileMimeType, String xslFileName, long xslFileSize)  {
-        return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName, xslFileSize));
-    }
-
-    public static RequestBuilder<Metadata> updateFromXSL(int id, FileInputStream xslFile, String xslFileMimeType, String xslFileName)  {
-        return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName));
-    }
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, FileInputStream xslFile, String xslFileMimeType, String xslFileName)  {
+		return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName));
+	}
 
 	/**  Action transforms current metadata object XML using a provided XSL.  */
-    public static RequestBuilder<Metadata> updateFromXSL(int id, FileHolder xslFile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        Files kfiles = new Files();
-        kfiles.add("xslFile", xslFile);
-
-        return new RequestBuilder<Metadata>(Metadata.class, "metadata_metadata", "updateFromXSL", kparams, kfiles);
-    }
+    public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, FileHolder xslFile)  {
+		return new UpdateFromXSLMetadataBuilder(id, xslFile);
+	}
 }

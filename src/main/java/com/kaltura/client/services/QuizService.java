@@ -27,10 +27,8 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.QuizOutputType;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Quiz;
 import com.kaltura.client.types.QuizFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -46,66 +44,124 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Allows user to handle quizzes  */
 public class QuizService {
+	
+	public static class AddQuizBuilder extends RequestBuilder<Quiz, Quiz.Tokenizer, AddQuizBuilder> {
+		
+		public AddQuizBuilder(String entryId, Quiz quiz) {
+			super(Quiz.class, "quiz_quiz", "add");
+			params.add("entryId", entryId);
+			params.add("quiz", quiz);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Allows to add a quiz to an entry  */
-    public static RequestBuilder<Quiz> add(String entryId, Quiz quiz)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("quiz", quiz);
-
-        return new RequestBuilder<Quiz>(Quiz.class, "quiz_quiz", "add", kparams);
-    }
+    public static AddQuizBuilder add(String entryId, Quiz quiz)  {
+		return new AddQuizBuilder(entryId, quiz);
+	}
+	
+	public static class GetQuizBuilder extends RequestBuilder<Quiz, Quiz.Tokenizer, GetQuizBuilder> {
+		
+		public GetQuizBuilder(String entryId) {
+			super(Quiz.class, "quiz_quiz", "get");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Allows to get a quiz  */
-    public static RequestBuilder<Quiz> get(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new RequestBuilder<Quiz>(Quiz.class, "quiz_quiz", "get", kparams);
-    }
+    public static GetQuizBuilder get(String entryId)  {
+		return new GetQuizBuilder(entryId);
+	}
+	
+	public static class GetUrlQuizBuilder extends RequestBuilder<String, String, GetUrlQuizBuilder> {
+		
+		public GetUrlQuizBuilder(String entryId, QuizOutputType quizOutputType) {
+			super(String.class, "quiz_quiz", "getUrl");
+			params.add("entryId", entryId);
+			params.add("quizOutputType", quizOutputType);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void quizOutputType(String multirequestToken) {
+			params.add("quizOutputType", multirequestToken);
+		}
+	}
 
 	/**  sends a with an api request for pdf from quiz object  */
-    public static RequestBuilder<String> getUrl(String entryId, QuizOutputType quizOutputType)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("quizOutputType", quizOutputType);
+    public static GetUrlQuizBuilder getUrl(String entryId, QuizOutputType quizOutputType)  {
+		return new GetUrlQuizBuilder(entryId, quizOutputType);
+	}
+	
+	public static class ListQuizBuilder extends ListResponseRequestBuilder<Quiz, Quiz.Tokenizer, ListQuizBuilder> {
+		
+		public ListQuizBuilder(QuizFilter filter, FilterPager pager) {
+			super(Quiz.class, "quiz_quiz", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "quiz_quiz", "getUrl", kparams);
-    }
+	public static ListQuizBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Quiz>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Quiz>> list(QuizFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListQuizBuilder list(QuizFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List quiz objects by filter and pager  */
-    public static RequestBuilder<ListResponse<Quiz>> list(QuizFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Quiz>(Quiz.class, "quiz_quiz", "list", kparams);
-    }
+    public static ListQuizBuilder list(QuizFilter filter, FilterPager pager)  {
+		return new ListQuizBuilder(filter, pager);
+	}
+	
+	public static class ServeQuizBuilder extends ServeRequestBuilder {
+		
+		public ServeQuizBuilder(String entryId, QuizOutputType quizOutputType) {
+			super("quiz_quiz", "serve");
+			params.add("entryId", entryId);
+			params.add("quizOutputType", quizOutputType);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void quizOutputType(String multirequestToken) {
+			params.add("quizOutputType", multirequestToken);
+		}
+	}
 
 	/**  creates a pdf from quiz object   The Output type defines the file format in
 	  which the quiz will be generated   Currently only PDF files are supported  */
-    public static RequestBuilder<String> serve(String entryId, QuizOutputType quizOutputType)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("quizOutputType", quizOutputType);
-
-        return new ServeRequestBuilder("quiz_quiz", "serve", kparams);
-    }
+    public static ServeQuizBuilder serve(String entryId, QuizOutputType quizOutputType)  {
+		return new ServeQuizBuilder(entryId, quizOutputType);
+	}
+	
+	public static class UpdateQuizBuilder extends RequestBuilder<Quiz, Quiz.Tokenizer, UpdateQuizBuilder> {
+		
+		public UpdateQuizBuilder(String entryId, Quiz quiz) {
+			super(Quiz.class, "quiz_quiz", "update");
+			params.add("entryId", entryId);
+			params.add("quiz", quiz);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Allows to update a quiz  */
-    public static RequestBuilder<Quiz> update(String entryId, Quiz quiz)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("quiz", quiz);
-
-        return new RequestBuilder<Quiz>(Quiz.class, "quiz_quiz", "update", kparams);
-    }
+    public static UpdateQuizBuilder update(String entryId, Quiz quiz)  {
+		return new UpdateQuizBuilder(entryId, quiz);
+	}
 }

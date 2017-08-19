@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ThumbCropType implements EnumAsInt {
-    RESIZE(1),
-    RESIZE_WITH_PADDING(2),
-    CROP(3),
-    CROP_FROM_TOP(4),
-    RESIZE_WITH_FORCE(5);
+	RESIZE(1),
+	RESIZE_WITH_PADDING(2),
+	CROP(3),
+	CROP_FROM_TOP(4),
+	RESIZE_WITH_FORCE(5);
 
-    private int value;
+	private int value;
 
-    ThumbCropType(int value) {
-        this.value = value;
-    }
+	ThumbCropType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ThumbCropType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ThumbCropType defined values and compare the inner value with the given one:
-        for(ThumbCropType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ThumbCropType.values().length > 0 ? ThumbCropType.values()[0]: null;
+	public static ThumbCropType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ThumbCropType defined values and compare the inner value with the given one:
+		for(ThumbCropType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ThumbCropType.values().length > 0 ? ThumbCropType.values()[0]: null;
    }
 }

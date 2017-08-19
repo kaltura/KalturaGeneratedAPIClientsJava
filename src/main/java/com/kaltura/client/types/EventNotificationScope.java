@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EventNotificationEventObjectType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventNotificationScope.Tokenizer.class)
 public class EventNotificationScope extends Scope {
+	
+	public interface Tokenizer extends Scope.Tokenizer {
+		String objectId();
+		String scopeObjectType();
+	}
 
-    private String objectId;
-    private EventNotificationEventObjectType scopeObjectType;
+	private String objectId;
+	private EventNotificationEventObjectType scopeObjectType;
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
 
-    // scopeObjectType:
-    public EventNotificationEventObjectType getScopeObjectType(){
-        return this.scopeObjectType;
-    }
-    public void setScopeObjectType(EventNotificationEventObjectType scopeObjectType){
-        this.scopeObjectType = scopeObjectType;
-    }
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
+
+	// scopeObjectType:
+	public EventNotificationEventObjectType getScopeObjectType(){
+		return this.scopeObjectType;
+	}
+	public void setScopeObjectType(EventNotificationEventObjectType scopeObjectType){
+		this.scopeObjectType = scopeObjectType;
+	}
+
+	public void scopeObjectType(String multirequestToken){
+		setToken("scopeObjectType", multirequestToken);
+	}
 
 
-    public EventNotificationScope() {
-       super();
-    }
+	public EventNotificationScope() {
+		super();
+	}
 
-    public EventNotificationScope(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventNotificationScope(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        scopeObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("scopeObjectType")));
+		// set members values:
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		scopeObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("scopeObjectType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventNotificationScope");
-        kparams.add("objectId", this.objectId);
-        kparams.add("scopeObjectType", this.scopeObjectType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventNotificationScope");
+		kparams.add("objectId", this.objectId);
+		kparams.add("scopeObjectType", this.scopeObjectType);
+		return kparams;
+	}
 
 }
 

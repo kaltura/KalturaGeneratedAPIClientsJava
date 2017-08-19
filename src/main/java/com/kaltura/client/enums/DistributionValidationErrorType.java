@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionValidationErrorType implements EnumAsInt {
-    CUSTOM_ERROR(0),
-    STRING_EMPTY(1),
-    STRING_TOO_LONG(2),
-    STRING_TOO_SHORT(3),
-    INVALID_FORMAT(4);
+	CUSTOM_ERROR(0),
+	STRING_EMPTY(1),
+	STRING_TOO_LONG(2),
+	STRING_TOO_SHORT(3),
+	INVALID_FORMAT(4);
 
-    private int value;
+	private int value;
 
-    DistributionValidationErrorType(int value) {
-        this.value = value;
-    }
+	DistributionValidationErrorType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DistributionValidationErrorType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionValidationErrorType defined values and compare the inner value with the given one:
-        for(DistributionValidationErrorType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionValidationErrorType.values().length > 0 ? DistributionValidationErrorType.values()[0]: null;
+	public static DistributionValidationErrorType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionValidationErrorType defined values and compare the inner value with the given one:
+		for(DistributionValidationErrorType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionValidationErrorType.values().length > 0 ? DistributionValidationErrorType.values()[0]: null;
    }
 }

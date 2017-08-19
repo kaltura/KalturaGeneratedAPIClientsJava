@@ -34,47 +34,47 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveStreamScheduleEventOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    END_DATE_ASC("+endDate"),
-    PRIORITY_ASC("+priority"),
-    START_DATE_ASC("+startDate"),
-    SUMMARY_ASC("+summary"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    END_DATE_DESC("-endDate"),
-    PRIORITY_DESC("-priority"),
-    START_DATE_DESC("-startDate"),
-    SUMMARY_DESC("-summary"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	END_DATE_ASC("+endDate"),
+	PRIORITY_ASC("+priority"),
+	START_DATE_ASC("+startDate"),
+	SUMMARY_ASC("+summary"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	END_DATE_DESC("-endDate"),
+	PRIORITY_DESC("-priority"),
+	START_DATE_DESC("-startDate"),
+	SUMMARY_DESC("-summary"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    LiveStreamScheduleEventOrderBy(String value) {
-        this.value = value;
-    }
+	LiveStreamScheduleEventOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveStreamScheduleEventOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveStreamScheduleEventOrderBy defined values and compare the inner value with the given one:
-        for(LiveStreamScheduleEventOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveStreamScheduleEventOrderBy.values().length > 0 ? LiveStreamScheduleEventOrderBy.values()[0]: null;
+	public static LiveStreamScheduleEventOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveStreamScheduleEventOrderBy defined values and compare the inner value with the given one:
+		for(LiveStreamScheduleEventOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveStreamScheduleEventOrderBy.values().length > 0 ? LiveStreamScheduleEventOrderBy.values()[0]: null;
    }
 }

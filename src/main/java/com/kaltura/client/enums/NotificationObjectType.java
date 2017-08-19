@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum NotificationObjectType implements EnumAsInt {
-    ENTRY(1),
-    KSHOW(2),
-    USER(3),
-    BATCH_JOB(4);
+	ENTRY(1),
+	KSHOW(2),
+	USER(3),
+	BATCH_JOB(4);
 
-    private int value;
+	private int value;
 
-    NotificationObjectType(int value) {
-        this.value = value;
-    }
+	NotificationObjectType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static NotificationObjectType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over NotificationObjectType defined values and compare the inner value with the given one:
-        for(NotificationObjectType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return NotificationObjectType.values().length > 0 ? NotificationObjectType.values()[0]: null;
+	public static NotificationObjectType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over NotificationObjectType defined values and compare the inner value with the given one:
+		for(NotificationObjectType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return NotificationObjectType.values().length > 0 ? NotificationObjectType.values()[0]: null;
    }
 }

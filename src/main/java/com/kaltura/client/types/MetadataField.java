@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,67 +40,86 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataField.Tokenizer.class)
 public class MetadataField extends StringField {
+	
+	public interface Tokenizer extends StringField.Tokenizer {
+		String xPath();
+		String profileId();
+		String profileSystemName();
+	}
 
 	/**  May contain the full xpath to the field in three formats   1. Slashed xPath,
 	  e.g. /metadata/myElementName   2. Using local-name function, e.g.
 	  /[local-name()='metadata']/[local-name()='myElementName']   3. Using only the
 	  field name, e.g. myElementName, it will be searched as //myElementName  */
-    private String xPath;
+	private String xPath;
 	/**  Metadata profile id  */
-    private Integer profileId;
+	private Integer profileId;
 	/**  Metadata profile system name  */
-    private String profileSystemName;
+	private String profileSystemName;
 
-    // xPath:
-    public String getXPath(){
-        return this.xPath;
-    }
-    public void setXPath(String xPath){
-        this.xPath = xPath;
-    }
+	// xPath:
+	public String getXPath(){
+		return this.xPath;
+	}
+	public void setXPath(String xPath){
+		this.xPath = xPath;
+	}
 
-    // profileId:
-    public Integer getProfileId(){
-        return this.profileId;
-    }
-    public void setProfileId(Integer profileId){
-        this.profileId = profileId;
-    }
+	public void xPath(String multirequestToken){
+		setToken("xPath", multirequestToken);
+	}
 
-    // profileSystemName:
-    public String getProfileSystemName(){
-        return this.profileSystemName;
-    }
-    public void setProfileSystemName(String profileSystemName){
-        this.profileSystemName = profileSystemName;
-    }
+	// profileId:
+	public Integer getProfileId(){
+		return this.profileId;
+	}
+	public void setProfileId(Integer profileId){
+		this.profileId = profileId;
+	}
+
+	public void profileId(String multirequestToken){
+		setToken("profileId", multirequestToken);
+	}
+
+	// profileSystemName:
+	public String getProfileSystemName(){
+		return this.profileSystemName;
+	}
+	public void setProfileSystemName(String profileSystemName){
+		this.profileSystemName = profileSystemName;
+	}
+
+	public void profileSystemName(String multirequestToken){
+		setToken("profileSystemName", multirequestToken);
+	}
 
 
-    public MetadataField() {
-       super();
-    }
+	public MetadataField() {
+		super();
+	}
 
-    public MetadataField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xPath = GsonParser.parseString(jsonObject.get("xPath"));
-        profileId = GsonParser.parseInt(jsonObject.get("profileId"));
-        profileSystemName = GsonParser.parseString(jsonObject.get("profileSystemName"));
+		// set members values:
+		xPath = GsonParser.parseString(jsonObject.get("xPath"));
+		profileId = GsonParser.parseInt(jsonObject.get("profileId"));
+		profileSystemName = GsonParser.parseString(jsonObject.get("profileSystemName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataField");
-        kparams.add("xPath", this.xPath);
-        kparams.add("profileId", this.profileId);
-        kparams.add("profileSystemName", this.profileSystemName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataField");
+		kparams.add("xPath", this.xPath);
+		kparams.add("profileId", this.profileId);
+		kparams.add("profileSystemName", this.profileSystemName);
+		return kparams;
+	}
 
 }
 

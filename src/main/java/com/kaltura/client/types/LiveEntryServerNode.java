@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,40 +42,45 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveEntryServerNode.Tokenizer.class)
 public class LiveEntryServerNode extends EntryServerNode {
+	
+	public interface Tokenizer extends EntryServerNode.Tokenizer {
+		RequestBuilder.ListTokenizer<LiveStreamParams.Tokenizer> streams();
+	}
 
 	/**  parameters of the stream we got  */
-    private List<LiveStreamParams> streams;
+	private List<LiveStreamParams> streams;
 
-    // streams:
-    public List<LiveStreamParams> getStreams(){
-        return this.streams;
-    }
-    public void setStreams(List<LiveStreamParams> streams){
-        this.streams = streams;
-    }
+	// streams:
+	public List<LiveStreamParams> getStreams(){
+		return this.streams;
+	}
+	public void setStreams(List<LiveStreamParams> streams){
+		this.streams = streams;
+	}
 
 
-    public LiveEntryServerNode() {
-       super();
-    }
+	public LiveEntryServerNode() {
+		super();
+	}
 
-    public LiveEntryServerNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveEntryServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), LiveStreamParams.class);
+		// set members values:
+		streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), LiveStreamParams.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveEntryServerNode");
-        kparams.add("streams", this.streams);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveEntryServerNode");
+		kparams.add("streams", this.streams);
+		return kparams;
+	}
 
 }
 

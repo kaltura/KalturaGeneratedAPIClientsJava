@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,40 +42,45 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetsParamsResourceContainers.Tokenizer.class)
 public class AssetsParamsResourceContainers extends Resource {
+	
+	public interface Tokenizer extends Resource.Tokenizer {
+		RequestBuilder.ListTokenizer<AssetParamsResourceContainer.Tokenizer> resources();
+	}
 
 	/**  Array of resources associated with asset params ids  */
-    private List<AssetParamsResourceContainer> resources;
+	private List<AssetParamsResourceContainer> resources;
 
-    // resources:
-    public List<AssetParamsResourceContainer> getResources(){
-        return this.resources;
-    }
-    public void setResources(List<AssetParamsResourceContainer> resources){
-        this.resources = resources;
-    }
+	// resources:
+	public List<AssetParamsResourceContainer> getResources(){
+		return this.resources;
+	}
+	public void setResources(List<AssetParamsResourceContainer> resources){
+		this.resources = resources;
+	}
 
 
-    public AssetsParamsResourceContainers() {
-       super();
-    }
+	public AssetsParamsResourceContainers() {
+		super();
+	}
 
-    public AssetsParamsResourceContainers(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetsParamsResourceContainers(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        resources = GsonParser.parseArray(jsonObject.getAsJsonArray("resources"), AssetParamsResourceContainer.class);
+		// set members values:
+		resources = GsonParser.parseArray(jsonObject.getAsJsonArray("resources"), AssetParamsResourceContainer.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetsParamsResourceContainers");
-        kparams.add("resources", this.resources);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetsParamsResourceContainers");
+		kparams.add("resources", this.resources);
+		return kparams;
+	}
 
 }
 

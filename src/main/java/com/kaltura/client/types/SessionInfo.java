@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,88 +42,122 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SessionInfo.Tokenizer.class)
 public class SessionInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String ks();
+		String sessionType();
+		String partnerId();
+		String userId();
+		String expiry();
+		String privileges();
+	}
 
-    private String ks;
-    private SessionType sessionType;
-    private Integer partnerId;
-    private String userId;
-    private Integer expiry;
-    private String privileges;
+	private String ks;
+	private SessionType sessionType;
+	private Integer partnerId;
+	private String userId;
+	private Integer expiry;
+	private String privileges;
 
-    // ks:
-    public String getKs(){
-        return this.ks;
-    }
-    public void setKs(String ks){
-        this.ks = ks;
-    }
+	// ks:
+	public String getKs(){
+		return this.ks;
+	}
+	public void setKs(String ks){
+		this.ks = ks;
+	}
 
-    // sessionType:
-    public SessionType getSessionType(){
-        return this.sessionType;
-    }
-    public void setSessionType(SessionType sessionType){
-        this.sessionType = sessionType;
-    }
+	public void ks(String multirequestToken){
+		setToken("ks", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// sessionType:
+	public SessionType getSessionType(){
+		return this.sessionType;
+	}
+	public void setSessionType(SessionType sessionType){
+		this.sessionType = sessionType;
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	public void sessionType(String multirequestToken){
+		setToken("sessionType", multirequestToken);
+	}
 
-    // expiry:
-    public Integer getExpiry(){
-        return this.expiry;
-    }
-    public void setExpiry(Integer expiry){
-        this.expiry = expiry;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // privileges:
-    public String getPrivileges(){
-        return this.privileges;
-    }
-    public void setPrivileges(String privileges){
-        this.privileges = privileges;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
+
+	// expiry:
+	public Integer getExpiry(){
+		return this.expiry;
+	}
+	public void setExpiry(Integer expiry){
+		this.expiry = expiry;
+	}
+
+	public void expiry(String multirequestToken){
+		setToken("expiry", multirequestToken);
+	}
+
+	// privileges:
+	public String getPrivileges(){
+		return this.privileges;
+	}
+	public void setPrivileges(String privileges){
+		this.privileges = privileges;
+	}
+
+	public void privileges(String multirequestToken){
+		setToken("privileges", multirequestToken);
+	}
 
 
-    public SessionInfo() {
-       super();
-    }
+	public SessionInfo() {
+		super();
+	}
 
-    public SessionInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SessionInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ks = GsonParser.parseString(jsonObject.get("ks"));
-        sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        expiry = GsonParser.parseInt(jsonObject.get("expiry"));
-        privileges = GsonParser.parseString(jsonObject.get("privileges"));
+		// set members values:
+		ks = GsonParser.parseString(jsonObject.get("ks"));
+		sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		expiry = GsonParser.parseInt(jsonObject.get("expiry"));
+		privileges = GsonParser.parseString(jsonObject.get("privileges"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSessionInfo");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSessionInfo");
+		return kparams;
+	}
 
 }
 

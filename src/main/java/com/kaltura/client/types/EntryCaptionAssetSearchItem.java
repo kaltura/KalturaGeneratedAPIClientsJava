@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryCaptionAssetSearchItem.Tokenizer.class)
 public class EntryCaptionAssetSearchItem extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String contentLike();
+		String contentMultiLikeOr();
+		String contentMultiLikeAnd();
+	}
 
-    private String contentLike;
-    private String contentMultiLikeOr;
-    private String contentMultiLikeAnd;
+	private String contentLike;
+	private String contentMultiLikeOr;
+	private String contentMultiLikeAnd;
 
-    // contentLike:
-    public String getContentLike(){
-        return this.contentLike;
-    }
-    public void setContentLike(String contentLike){
-        this.contentLike = contentLike;
-    }
+	// contentLike:
+	public String getContentLike(){
+		return this.contentLike;
+	}
+	public void setContentLike(String contentLike){
+		this.contentLike = contentLike;
+	}
 
-    // contentMultiLikeOr:
-    public String getContentMultiLikeOr(){
-        return this.contentMultiLikeOr;
-    }
-    public void setContentMultiLikeOr(String contentMultiLikeOr){
-        this.contentMultiLikeOr = contentMultiLikeOr;
-    }
+	public void contentLike(String multirequestToken){
+		setToken("contentLike", multirequestToken);
+	}
 
-    // contentMultiLikeAnd:
-    public String getContentMultiLikeAnd(){
-        return this.contentMultiLikeAnd;
-    }
-    public void setContentMultiLikeAnd(String contentMultiLikeAnd){
-        this.contentMultiLikeAnd = contentMultiLikeAnd;
-    }
+	// contentMultiLikeOr:
+	public String getContentMultiLikeOr(){
+		return this.contentMultiLikeOr;
+	}
+	public void setContentMultiLikeOr(String contentMultiLikeOr){
+		this.contentMultiLikeOr = contentMultiLikeOr;
+	}
+
+	public void contentMultiLikeOr(String multirequestToken){
+		setToken("contentMultiLikeOr", multirequestToken);
+	}
+
+	// contentMultiLikeAnd:
+	public String getContentMultiLikeAnd(){
+		return this.contentMultiLikeAnd;
+	}
+	public void setContentMultiLikeAnd(String contentMultiLikeAnd){
+		this.contentMultiLikeAnd = contentMultiLikeAnd;
+	}
+
+	public void contentMultiLikeAnd(String multirequestToken){
+		setToken("contentMultiLikeAnd", multirequestToken);
+	}
 
 
-    public EntryCaptionAssetSearchItem() {
-       super();
-    }
+	public EntryCaptionAssetSearchItem() {
+		super();
+	}
 
-    public EntryCaptionAssetSearchItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryCaptionAssetSearchItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        contentLike = GsonParser.parseString(jsonObject.get("contentLike"));
-        contentMultiLikeOr = GsonParser.parseString(jsonObject.get("contentMultiLikeOr"));
-        contentMultiLikeAnd = GsonParser.parseString(jsonObject.get("contentMultiLikeAnd"));
+		// set members values:
+		contentLike = GsonParser.parseString(jsonObject.get("contentLike"));
+		contentMultiLikeOr = GsonParser.parseString(jsonObject.get("contentMultiLikeOr"));
+		contentMultiLikeAnd = GsonParser.parseString(jsonObject.get("contentMultiLikeAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryCaptionAssetSearchItem");
-        kparams.add("contentLike", this.contentLike);
-        kparams.add("contentMultiLikeOr", this.contentMultiLikeOr);
-        kparams.add("contentMultiLikeAnd", this.contentMultiLikeAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryCaptionAssetSearchItem");
+		kparams.add("contentLike", this.contentLike);
+		kparams.add("contentMultiLikeOr", this.contentMultiLikeOr);
+		kparams.add("contentMultiLikeAnd", this.contentMultiLikeAnd);
+		return kparams;
+	}
 
 }
 

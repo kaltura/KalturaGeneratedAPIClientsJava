@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,215 +40,304 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetBaseFilter.Tokenizer.class)
 public abstract class AssetBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String entryIdEqual();
+		String entryIdIn();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String sizeGreaterThanOrEqual();
+		String sizeLessThanOrEqual();
+		String tagsLike();
+		String tagsMultiLikeOr();
+		String tagsMultiLikeAnd();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String deletedAtGreaterThanOrEqual();
+		String deletedAtLessThanOrEqual();
+	}
 
-    private String idEqual;
-    private String idIn;
-    private String entryIdEqual;
-    private String entryIdIn;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private Integer sizeGreaterThanOrEqual;
-    private Integer sizeLessThanOrEqual;
-    private String tagsLike;
-    private String tagsMultiLikeOr;
-    private String tagsMultiLikeAnd;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private Integer deletedAtGreaterThanOrEqual;
-    private Integer deletedAtLessThanOrEqual;
+	private String idEqual;
+	private String idIn;
+	private String entryIdEqual;
+	private String entryIdIn;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private Integer sizeGreaterThanOrEqual;
+	private Integer sizeLessThanOrEqual;
+	private String tagsLike;
+	private String tagsMultiLikeOr;
+	private String tagsMultiLikeAnd;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private Integer deletedAtGreaterThanOrEqual;
+	private Integer deletedAtLessThanOrEqual;
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // entryIdIn:
-    public String getEntryIdIn(){
-        return this.entryIdIn;
-    }
-    public void setEntryIdIn(String entryIdIn){
-        this.entryIdIn = entryIdIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
 
-    // sizeGreaterThanOrEqual:
-    public Integer getSizeGreaterThanOrEqual(){
-        return this.sizeGreaterThanOrEqual;
-    }
-    public void setSizeGreaterThanOrEqual(Integer sizeGreaterThanOrEqual){
-        this.sizeGreaterThanOrEqual = sizeGreaterThanOrEqual;
-    }
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
 
-    // sizeLessThanOrEqual:
-    public Integer getSizeLessThanOrEqual(){
-        return this.sizeLessThanOrEqual;
-    }
-    public void setSizeLessThanOrEqual(Integer sizeLessThanOrEqual){
-        this.sizeLessThanOrEqual = sizeLessThanOrEqual;
-    }
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
 
-    // tagsLike:
-    public String getTagsLike(){
-        return this.tagsLike;
-    }
-    public void setTagsLike(String tagsLike){
-        this.tagsLike = tagsLike;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // tagsMultiLikeOr:
-    public String getTagsMultiLikeOr(){
-        return this.tagsMultiLikeOr;
-    }
-    public void setTagsMultiLikeOr(String tagsMultiLikeOr){
-        this.tagsMultiLikeOr = tagsMultiLikeOr;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
 
-    // tagsMultiLikeAnd:
-    public String getTagsMultiLikeAnd(){
-        return this.tagsMultiLikeAnd;
-    }
-    public void setTagsMultiLikeAnd(String tagsMultiLikeAnd){
-        this.tagsMultiLikeAnd = tagsMultiLikeAnd;
-    }
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// sizeGreaterThanOrEqual:
+	public Integer getSizeGreaterThanOrEqual(){
+		return this.sizeGreaterThanOrEqual;
+	}
+	public void setSizeGreaterThanOrEqual(Integer sizeGreaterThanOrEqual){
+		this.sizeGreaterThanOrEqual = sizeGreaterThanOrEqual;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void sizeGreaterThanOrEqual(String multirequestToken){
+		setToken("sizeGreaterThanOrEqual", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// sizeLessThanOrEqual:
+	public Integer getSizeLessThanOrEqual(){
+		return this.sizeLessThanOrEqual;
+	}
+	public void setSizeLessThanOrEqual(Integer sizeLessThanOrEqual){
+		this.sizeLessThanOrEqual = sizeLessThanOrEqual;
+	}
 
-    // deletedAtGreaterThanOrEqual:
-    public Integer getDeletedAtGreaterThanOrEqual(){
-        return this.deletedAtGreaterThanOrEqual;
-    }
-    public void setDeletedAtGreaterThanOrEqual(Integer deletedAtGreaterThanOrEqual){
-        this.deletedAtGreaterThanOrEqual = deletedAtGreaterThanOrEqual;
-    }
+	public void sizeLessThanOrEqual(String multirequestToken){
+		setToken("sizeLessThanOrEqual", multirequestToken);
+	}
 
-    // deletedAtLessThanOrEqual:
-    public Integer getDeletedAtLessThanOrEqual(){
-        return this.deletedAtLessThanOrEqual;
-    }
-    public void setDeletedAtLessThanOrEqual(Integer deletedAtLessThanOrEqual){
-        this.deletedAtLessThanOrEqual = deletedAtLessThanOrEqual;
-    }
+	// tagsLike:
+	public String getTagsLike(){
+		return this.tagsLike;
+	}
+	public void setTagsLike(String tagsLike){
+		this.tagsLike = tagsLike;
+	}
+
+	public void tagsLike(String multirequestToken){
+		setToken("tagsLike", multirequestToken);
+	}
+
+	// tagsMultiLikeOr:
+	public String getTagsMultiLikeOr(){
+		return this.tagsMultiLikeOr;
+	}
+	public void setTagsMultiLikeOr(String tagsMultiLikeOr){
+		this.tagsMultiLikeOr = tagsMultiLikeOr;
+	}
+
+	public void tagsMultiLikeOr(String multirequestToken){
+		setToken("tagsMultiLikeOr", multirequestToken);
+	}
+
+	// tagsMultiLikeAnd:
+	public String getTagsMultiLikeAnd(){
+		return this.tagsMultiLikeAnd;
+	}
+	public void setTagsMultiLikeAnd(String tagsMultiLikeAnd){
+		this.tagsMultiLikeAnd = tagsMultiLikeAnd;
+	}
+
+	public void tagsMultiLikeAnd(String multirequestToken){
+		setToken("tagsMultiLikeAnd", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// deletedAtGreaterThanOrEqual:
+	public Integer getDeletedAtGreaterThanOrEqual(){
+		return this.deletedAtGreaterThanOrEqual;
+	}
+	public void setDeletedAtGreaterThanOrEqual(Integer deletedAtGreaterThanOrEqual){
+		this.deletedAtGreaterThanOrEqual = deletedAtGreaterThanOrEqual;
+	}
+
+	public void deletedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("deletedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// deletedAtLessThanOrEqual:
+	public Integer getDeletedAtLessThanOrEqual(){
+		return this.deletedAtLessThanOrEqual;
+	}
+	public void setDeletedAtLessThanOrEqual(Integer deletedAtLessThanOrEqual){
+		this.deletedAtLessThanOrEqual = deletedAtLessThanOrEqual;
+	}
+
+	public void deletedAtLessThanOrEqual(String multirequestToken){
+		setToken("deletedAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public AssetBaseFilter() {
-       super();
-    }
+	public AssetBaseFilter() {
+		super();
+	}
 
-    public AssetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        sizeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("sizeGreaterThanOrEqual"));
-        sizeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("sizeLessThanOrEqual"));
-        tagsLike = GsonParser.parseString(jsonObject.get("tagsLike"));
-        tagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsMultiLikeOr"));
-        tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        deletedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("deletedAtGreaterThanOrEqual"));
-        deletedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("deletedAtLessThanOrEqual"));
+		// set members values:
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		sizeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("sizeGreaterThanOrEqual"));
+		sizeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("sizeLessThanOrEqual"));
+		tagsLike = GsonParser.parseString(jsonObject.get("tagsLike"));
+		tagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsMultiLikeOr"));
+		tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		deletedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("deletedAtGreaterThanOrEqual"));
+		deletedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("deletedAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("sizeGreaterThanOrEqual", this.sizeGreaterThanOrEqual);
-        kparams.add("sizeLessThanOrEqual", this.sizeLessThanOrEqual);
-        kparams.add("tagsLike", this.tagsLike);
-        kparams.add("tagsMultiLikeOr", this.tagsMultiLikeOr);
-        kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("deletedAtGreaterThanOrEqual", this.deletedAtGreaterThanOrEqual);
-        kparams.add("deletedAtLessThanOrEqual", this.deletedAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("sizeGreaterThanOrEqual", this.sizeGreaterThanOrEqual);
+		kparams.add("sizeLessThanOrEqual", this.sizeLessThanOrEqual);
+		kparams.add("tagsLike", this.tagsLike);
+		kparams.add("tagsMultiLikeOr", this.tagsMultiLikeOr);
+		kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("deletedAtGreaterThanOrEqual", this.deletedAtGreaterThanOrEqual);
+		kparams.add("deletedAtLessThanOrEqual", this.deletedAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

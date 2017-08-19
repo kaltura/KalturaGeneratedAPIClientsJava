@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EditorType implements EnumAsInt {
-    SIMPLE(1),
-    ADVANCED(2);
+	SIMPLE(1),
+	ADVANCED(2);
 
-    private int value;
+	private int value;
 
-    EditorType(int value) {
-        this.value = value;
-    }
+	EditorType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EditorType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EditorType defined values and compare the inner value with the given one:
-        for(EditorType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EditorType.values().length > 0 ? EditorType.values()[0]: null;
+	public static EditorType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EditorType defined values and compare the inner value with the given one:
+		for(EditorType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EditorType.values().length > 0 ? EditorType.values()[0]: null;
    }
 }

@@ -27,13 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.MediaInfo;
 import com.kaltura.client.types.MediaInfoFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -44,21 +41,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Media Info service  */
 public class MediaInfoService {
+	
+	public static class ListMediaInfoBuilder extends ListResponseRequestBuilder<MediaInfo, MediaInfo.Tokenizer, ListMediaInfoBuilder> {
+		
+		public ListMediaInfoBuilder(MediaInfoFilter filter, FilterPager pager) {
+			super(MediaInfo.class, "mediainfo", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<MediaInfo>> list()  {
-        return list(null);
-    }
+	public static ListMediaInfoBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<MediaInfo>> list(MediaInfoFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListMediaInfoBuilder list(MediaInfoFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List media info objects by filter and pager  */
-    public static RequestBuilder<ListResponse<MediaInfo>> list(MediaInfoFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<MediaInfo>(MediaInfo.class, "mediainfo", "list", kparams);
-    }
+    public static ListMediaInfoBuilder list(MediaInfoFilter filter, FilterPager pager)  {
+		return new ListMediaInfoBuilder(filter, pager);
+	}
 }

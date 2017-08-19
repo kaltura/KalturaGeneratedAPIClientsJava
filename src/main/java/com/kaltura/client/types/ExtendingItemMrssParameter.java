@@ -33,6 +33,7 @@ import com.kaltura.client.enums.MrssExtensionMode;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.ObjectIdentifier;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,64 +43,79 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExtendingItemMrssParameter.Tokenizer.class)
 public class ExtendingItemMrssParameter extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String xpath();
+		ObjectIdentifier.Tokenizer identifier();
+		String extensionMode();
+	}
 
 	/**  XPath for the extending item  */
-    private String xpath;
+	private String xpath;
 	/**  Object identifier  */
-    private ObjectIdentifier identifier;
+	private ObjectIdentifier identifier;
 	/**  Mode of extension - append to MRSS or replace the xpath content.  */
-    private MrssExtensionMode extensionMode;
+	private MrssExtensionMode extensionMode;
 
-    // xpath:
-    public String getXpath(){
-        return this.xpath;
-    }
-    public void setXpath(String xpath){
-        this.xpath = xpath;
-    }
+	// xpath:
+	public String getXpath(){
+		return this.xpath;
+	}
+	public void setXpath(String xpath){
+		this.xpath = xpath;
+	}
 
-    // identifier:
-    public ObjectIdentifier getIdentifier(){
-        return this.identifier;
-    }
-    public void setIdentifier(ObjectIdentifier identifier){
-        this.identifier = identifier;
-    }
+	public void xpath(String multirequestToken){
+		setToken("xpath", multirequestToken);
+	}
 
-    // extensionMode:
-    public MrssExtensionMode getExtensionMode(){
-        return this.extensionMode;
-    }
-    public void setExtensionMode(MrssExtensionMode extensionMode){
-        this.extensionMode = extensionMode;
-    }
+	// identifier:
+	public ObjectIdentifier getIdentifier(){
+		return this.identifier;
+	}
+	public void setIdentifier(ObjectIdentifier identifier){
+		this.identifier = identifier;
+	}
+
+	// extensionMode:
+	public MrssExtensionMode getExtensionMode(){
+		return this.extensionMode;
+	}
+	public void setExtensionMode(MrssExtensionMode extensionMode){
+		this.extensionMode = extensionMode;
+	}
+
+	public void extensionMode(String multirequestToken){
+		setToken("extensionMode", multirequestToken);
+	}
 
 
-    public ExtendingItemMrssParameter() {
-       super();
-    }
+	public ExtendingItemMrssParameter() {
+		super();
+	}
 
-    public ExtendingItemMrssParameter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExtendingItemMrssParameter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xpath = GsonParser.parseString(jsonObject.get("xpath"));
-        identifier = GsonParser.parseObject(jsonObject.getAsJsonObject("identifier"), ObjectIdentifier.class);
-        extensionMode = MrssExtensionMode.get(GsonParser.parseInt(jsonObject.get("extensionMode")));
+		// set members values:
+		xpath = GsonParser.parseString(jsonObject.get("xpath"));
+		identifier = GsonParser.parseObject(jsonObject.getAsJsonObject("identifier"), ObjectIdentifier.class);
+		extensionMode = MrssExtensionMode.get(GsonParser.parseInt(jsonObject.get("extensionMode")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExtendingItemMrssParameter");
-        kparams.add("xpath", this.xpath);
-        kparams.add("identifier", this.identifier);
-        kparams.add("extensionMode", this.extensionMode);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExtendingItemMrssParameter");
+		kparams.add("xpath", this.xpath);
+		kparams.add("identifier", this.identifier);
+		kparams.add("extensionMode", this.extensionMode);
+		return kparams;
+	}
 
 }
 

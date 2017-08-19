@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryLiveStats.Tokenizer.class)
 public class EntryLiveStats extends LiveStats {
+	
+	public interface Tokenizer extends LiveStats.Tokenizer {
+		String entryId();
+		String peakAudience();
+		String peakDvrAudience();
+	}
 
-    private String entryId;
-    private Integer peakAudience;
-    private Integer peakDvrAudience;
+	private String entryId;
+	private Integer peakAudience;
+	private Integer peakDvrAudience;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // peakAudience:
-    public Integer getPeakAudience(){
-        return this.peakAudience;
-    }
-    public void setPeakAudience(Integer peakAudience){
-        this.peakAudience = peakAudience;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // peakDvrAudience:
-    public Integer getPeakDvrAudience(){
-        return this.peakDvrAudience;
-    }
-    public void setPeakDvrAudience(Integer peakDvrAudience){
-        this.peakDvrAudience = peakDvrAudience;
-    }
+	// peakAudience:
+	public Integer getPeakAudience(){
+		return this.peakAudience;
+	}
+	public void setPeakAudience(Integer peakAudience){
+		this.peakAudience = peakAudience;
+	}
+
+	public void peakAudience(String multirequestToken){
+		setToken("peakAudience", multirequestToken);
+	}
+
+	// peakDvrAudience:
+	public Integer getPeakDvrAudience(){
+		return this.peakDvrAudience;
+	}
+	public void setPeakDvrAudience(Integer peakDvrAudience){
+		this.peakDvrAudience = peakDvrAudience;
+	}
+
+	public void peakDvrAudience(String multirequestToken){
+		setToken("peakDvrAudience", multirequestToken);
+	}
 
 
-    public EntryLiveStats() {
-       super();
-    }
+	public EntryLiveStats() {
+		super();
+	}
 
-    public EntryLiveStats(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryLiveStats(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        peakAudience = GsonParser.parseInt(jsonObject.get("peakAudience"));
-        peakDvrAudience = GsonParser.parseInt(jsonObject.get("peakDvrAudience"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		peakAudience = GsonParser.parseInt(jsonObject.get("peakAudience"));
+		peakDvrAudience = GsonParser.parseInt(jsonObject.get("peakDvrAudience"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryLiveStats");
-        kparams.add("entryId", this.entryId);
-        kparams.add("peakAudience", this.peakAudience);
-        kparams.add("peakDvrAudience", this.peakDvrAudience);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryLiveStats");
+		kparams.add("entryId", this.entryId);
+		kparams.add("peakAudience", this.peakAudience);
+		kparams.add("peakDvrAudience", this.peakDvrAudience);
+		return kparams;
+	}
 
 }
 

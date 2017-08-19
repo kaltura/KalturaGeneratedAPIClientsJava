@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,53 +40,67 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DataEntry.Tokenizer.class)
 public class DataEntry extends BaseEntry {
+	
+	public interface Tokenizer extends BaseEntry.Tokenizer {
+		String dataContent();
+		String retrieveDataContentByGet();
+	}
 
 	/**  The data of the entry  */
-    private String dataContent;
+	private String dataContent;
 	/**  indicator whether to return the object for get action with the dataContent
 	  field.  */
-    private Boolean retrieveDataContentByGet;
+	private Boolean retrieveDataContentByGet;
 
-    // dataContent:
-    public String getDataContent(){
-        return this.dataContent;
-    }
-    public void setDataContent(String dataContent){
-        this.dataContent = dataContent;
-    }
+	// dataContent:
+	public String getDataContent(){
+		return this.dataContent;
+	}
+	public void setDataContent(String dataContent){
+		this.dataContent = dataContent;
+	}
 
-    // retrieveDataContentByGet:
-    public Boolean getRetrieveDataContentByGet(){
-        return this.retrieveDataContentByGet;
-    }
-    public void setRetrieveDataContentByGet(Boolean retrieveDataContentByGet){
-        this.retrieveDataContentByGet = retrieveDataContentByGet;
-    }
+	public void dataContent(String multirequestToken){
+		setToken("dataContent", multirequestToken);
+	}
+
+	// retrieveDataContentByGet:
+	public Boolean getRetrieveDataContentByGet(){
+		return this.retrieveDataContentByGet;
+	}
+	public void setRetrieveDataContentByGet(Boolean retrieveDataContentByGet){
+		this.retrieveDataContentByGet = retrieveDataContentByGet;
+	}
+
+	public void retrieveDataContentByGet(String multirequestToken){
+		setToken("retrieveDataContentByGet", multirequestToken);
+	}
 
 
-    public DataEntry() {
-       super();
-    }
+	public DataEntry() {
+		super();
+	}
 
-    public DataEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DataEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        dataContent = GsonParser.parseString(jsonObject.get("dataContent"));
-        retrieveDataContentByGet = GsonParser.parseBoolean(jsonObject.get("retrieveDataContentByGet"));
+		// set members values:
+		dataContent = GsonParser.parseString(jsonObject.get("dataContent"));
+		retrieveDataContentByGet = GsonParser.parseBoolean(jsonObject.get("retrieveDataContentByGet"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDataEntry");
-        kparams.add("dataContent", this.dataContent);
-        kparams.add("retrieveDataContentByGet", this.retrieveDataContentByGet);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDataEntry");
+		kparams.add("dataContent", this.dataContent);
+		kparams.add("retrieveDataContentByGet", this.retrieveDataContentByGet);
+		return kparams;
+	}
 
 }
 

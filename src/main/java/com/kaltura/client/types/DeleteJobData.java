@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.Filter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,45 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeleteJobData.Tokenizer.class)
 public class DeleteJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		Filter.Tokenizer filter();
+	}
 
 	/**  The filter should return the list of objects that need to be deleted.  */
-    private Filter filter;
+	private Filter filter;
 
-    // filter:
-    public Filter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(Filter filter){
-        this.filter = filter;
-    }
+	// filter:
+	public Filter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(Filter filter){
+		this.filter = filter;
+	}
 
 
-    public DeleteJobData() {
-       super();
-    }
+	public DeleteJobData() {
+		super();
+	}
 
-    public DeleteJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeleteJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeleteJobData");
-        kparams.add("filter", this.filter);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeleteJobData");
+		kparams.add("filter", this.filter);
+		return kparams;
+	}
 
 }
 

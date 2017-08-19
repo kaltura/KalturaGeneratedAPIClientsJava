@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DocumentEntryMatchAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaDocumentEntry attributes. Use
   KalturaDocumentEntryMatchAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DocumentEntryMatchAttributeCondition.Tokenizer.class)
 public class DocumentEntryMatchAttributeCondition extends SearchMatchAttributeCondition {
+	
+	public interface Tokenizer extends SearchMatchAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private DocumentEntryMatchAttribute attribute;
+	private DocumentEntryMatchAttribute attribute;
 
-    // attribute:
-    public DocumentEntryMatchAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(DocumentEntryMatchAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public DocumentEntryMatchAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(DocumentEntryMatchAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public DocumentEntryMatchAttributeCondition() {
-       super();
-    }
+	public DocumentEntryMatchAttributeCondition() {
+		super();
+	}
 
-    public DocumentEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DocumentEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = DocumentEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = DocumentEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDocumentEntryMatchAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDocumentEntryMatchAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

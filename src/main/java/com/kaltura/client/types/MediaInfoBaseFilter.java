@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaInfoBaseFilter.Tokenizer.class)
 public abstract class MediaInfoBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String flavorAssetIdEqual();
+	}
 
-    private String flavorAssetIdEqual;
+	private String flavorAssetIdEqual;
 
-    // flavorAssetIdEqual:
-    public String getFlavorAssetIdEqual(){
-        return this.flavorAssetIdEqual;
-    }
-    public void setFlavorAssetIdEqual(String flavorAssetIdEqual){
-        this.flavorAssetIdEqual = flavorAssetIdEqual;
-    }
+	// flavorAssetIdEqual:
+	public String getFlavorAssetIdEqual(){
+		return this.flavorAssetIdEqual;
+	}
+	public void setFlavorAssetIdEqual(String flavorAssetIdEqual){
+		this.flavorAssetIdEqual = flavorAssetIdEqual;
+	}
+
+	public void flavorAssetIdEqual(String multirequestToken){
+		setToken("flavorAssetIdEqual", multirequestToken);
+	}
 
 
-    public MediaInfoBaseFilter() {
-       super();
-    }
+	public MediaInfoBaseFilter() {
+		super();
+	}
 
-    public MediaInfoBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaInfoBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetIdEqual = GsonParser.parseString(jsonObject.get("flavorAssetIdEqual"));
+		// set members values:
+		flavorAssetIdEqual = GsonParser.parseString(jsonObject.get("flavorAssetIdEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaInfoBaseFilter");
-        kparams.add("flavorAssetIdEqual", this.flavorAssetIdEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaInfoBaseFilter");
+		kparams.add("flavorAssetIdEqual", this.flavorAssetIdEqual);
+		return kparams;
+	}
 
 }
 

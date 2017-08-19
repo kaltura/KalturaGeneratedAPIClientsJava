@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveChannelSegmentTriggerType implements EnumAsString {
-    CHANNEL_RELATIVE("1"),
-    ABSOLUTE_TIME("2"),
-    SEGMENT_START_RELATIVE("3"),
-    SEGMENT_END_RELATIVE("4");
+	CHANNEL_RELATIVE("1"),
+	ABSOLUTE_TIME("2"),
+	SEGMENT_START_RELATIVE("3"),
+	SEGMENT_END_RELATIVE("4");
 
-    private String value;
+	private String value;
 
-    LiveChannelSegmentTriggerType(String value) {
-        this.value = value;
-    }
+	LiveChannelSegmentTriggerType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveChannelSegmentTriggerType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveChannelSegmentTriggerType defined values and compare the inner value with the given one:
-        for(LiveChannelSegmentTriggerType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveChannelSegmentTriggerType.values().length > 0 ? LiveChannelSegmentTriggerType.values()[0]: null;
+	public static LiveChannelSegmentTriggerType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveChannelSegmentTriggerType defined values and compare the inner value with the given one:
+		for(LiveChannelSegmentTriggerType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveChannelSegmentTriggerType.values().length > 0 ? LiveChannelSegmentTriggerType.values()[0]: null;
    }
 }

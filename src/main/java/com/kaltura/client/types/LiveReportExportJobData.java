@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveReportExportJobData.Tokenizer.class)
 public class LiveReportExportJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String timeReference();
+		String timeZoneOffset();
+		String entryIds();
+		String outputPath();
+		String recipientEmail();
+	}
 
-    private Integer timeReference;
-    private Integer timeZoneOffset;
-    private String entryIds;
-    private String outputPath;
-    private String recipientEmail;
+	private Integer timeReference;
+	private Integer timeZoneOffset;
+	private String entryIds;
+	private String outputPath;
+	private String recipientEmail;
 
-    // timeReference:
-    public Integer getTimeReference(){
-        return this.timeReference;
-    }
-    public void setTimeReference(Integer timeReference){
-        this.timeReference = timeReference;
-    }
+	// timeReference:
+	public Integer getTimeReference(){
+		return this.timeReference;
+	}
+	public void setTimeReference(Integer timeReference){
+		this.timeReference = timeReference;
+	}
 
-    // timeZoneOffset:
-    public Integer getTimeZoneOffset(){
-        return this.timeZoneOffset;
-    }
-    public void setTimeZoneOffset(Integer timeZoneOffset){
-        this.timeZoneOffset = timeZoneOffset;
-    }
+	public void timeReference(String multirequestToken){
+		setToken("timeReference", multirequestToken);
+	}
 
-    // entryIds:
-    public String getEntryIds(){
-        return this.entryIds;
-    }
-    public void setEntryIds(String entryIds){
-        this.entryIds = entryIds;
-    }
+	// timeZoneOffset:
+	public Integer getTimeZoneOffset(){
+		return this.timeZoneOffset;
+	}
+	public void setTimeZoneOffset(Integer timeZoneOffset){
+		this.timeZoneOffset = timeZoneOffset;
+	}
 
-    // outputPath:
-    public String getOutputPath(){
-        return this.outputPath;
-    }
-    public void setOutputPath(String outputPath){
-        this.outputPath = outputPath;
-    }
+	public void timeZoneOffset(String multirequestToken){
+		setToken("timeZoneOffset", multirequestToken);
+	}
 
-    // recipientEmail:
-    public String getRecipientEmail(){
-        return this.recipientEmail;
-    }
-    public void setRecipientEmail(String recipientEmail){
-        this.recipientEmail = recipientEmail;
-    }
+	// entryIds:
+	public String getEntryIds(){
+		return this.entryIds;
+	}
+	public void setEntryIds(String entryIds){
+		this.entryIds = entryIds;
+	}
+
+	public void entryIds(String multirequestToken){
+		setToken("entryIds", multirequestToken);
+	}
+
+	// outputPath:
+	public String getOutputPath(){
+		return this.outputPath;
+	}
+	public void setOutputPath(String outputPath){
+		this.outputPath = outputPath;
+	}
+
+	public void outputPath(String multirequestToken){
+		setToken("outputPath", multirequestToken);
+	}
+
+	// recipientEmail:
+	public String getRecipientEmail(){
+		return this.recipientEmail;
+	}
+	public void setRecipientEmail(String recipientEmail){
+		this.recipientEmail = recipientEmail;
+	}
+
+	public void recipientEmail(String multirequestToken){
+		setToken("recipientEmail", multirequestToken);
+	}
 
 
-    public LiveReportExportJobData() {
-       super();
-    }
+	public LiveReportExportJobData() {
+		super();
+	}
 
-    public LiveReportExportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveReportExportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        timeReference = GsonParser.parseInt(jsonObject.get("timeReference"));
-        timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
-        entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-        outputPath = GsonParser.parseString(jsonObject.get("outputPath"));
-        recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
+		// set members values:
+		timeReference = GsonParser.parseInt(jsonObject.get("timeReference"));
+		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
+		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
+		outputPath = GsonParser.parseString(jsonObject.get("outputPath"));
+		recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveReportExportJobData");
-        kparams.add("timeReference", this.timeReference);
-        kparams.add("timeZoneOffset", this.timeZoneOffset);
-        kparams.add("entryIds", this.entryIds);
-        kparams.add("outputPath", this.outputPath);
-        kparams.add("recipientEmail", this.recipientEmail);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveReportExportJobData");
+		kparams.add("timeReference", this.timeReference);
+		kparams.add("timeZoneOffset", this.timeZoneOffset);
+		kparams.add("entryIds", this.entryIds);
+		kparams.add("outputPath", this.outputPath);
+		kparams.add("recipientEmail", this.recipientEmail);
+		return kparams;
+	}
 
 }
 

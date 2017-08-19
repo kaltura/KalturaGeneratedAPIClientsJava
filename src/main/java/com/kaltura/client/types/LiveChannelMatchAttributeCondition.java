@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveChannelMatchAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaLiveChannel attributes. Use
   KalturaLiveChannelMatchAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveChannelMatchAttributeCondition.Tokenizer.class)
 public class LiveChannelMatchAttributeCondition extends SearchMatchAttributeCondition {
+	
+	public interface Tokenizer extends SearchMatchAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private LiveChannelMatchAttribute attribute;
+	private LiveChannelMatchAttribute attribute;
 
-    // attribute:
-    public LiveChannelMatchAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(LiveChannelMatchAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public LiveChannelMatchAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(LiveChannelMatchAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public LiveChannelMatchAttributeCondition() {
-       super();
-    }
+	public LiveChannelMatchAttributeCondition() {
+		super();
+	}
 
-    public LiveChannelMatchAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveChannelMatchAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = LiveChannelMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = LiveChannelMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveChannelMatchAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveChannelMatchAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

@@ -33,6 +33,7 @@ import com.kaltura.client.enums.Cielo24Fidelity;
 import com.kaltura.client.enums.Cielo24Priority;
 import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,155 +43,214 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Cielo24JobProviderData.Tokenizer.class)
 public class Cielo24JobProviderData extends IntegrationJobProviderData {
+	
+	public interface Tokenizer extends IntegrationJobProviderData.Tokenizer {
+		String entryId();
+		String flavorAssetId();
+		String captionAssetFormats();
+		String priority();
+		String fidelity();
+		String username();
+		String password();
+		String baseUrl();
+		String spokenLanguage();
+		String replaceMediaContent();
+		String additionalParameters();
+	}
 
 	/**  Entry ID  */
-    private String entryId;
+	private String entryId;
 	/**  Flavor ID  */
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  Caption formats  */
-    private String captionAssetFormats;
-    private Cielo24Priority priority;
-    private Cielo24Fidelity fidelity;
+	private String captionAssetFormats;
+	private Cielo24Priority priority;
+	private Cielo24Fidelity fidelity;
 	/**  Api key for service provider  */
-    private String username;
+	private String username;
 	/**  Api key for service provider  */
-    private String password;
+	private String password;
 	/**  Base url for service provider  */
-    private String baseUrl;
+	private String baseUrl;
 	/**  Transcript content language  */
-    private Language spokenLanguage;
+	private Language spokenLanguage;
 	/**  should replace remote media content  */
-    private Boolean replaceMediaContent;
+	private Boolean replaceMediaContent;
 	/**  additional parameters to send to Cielo24  */
-    private String additionalParameters;
+	private String additionalParameters;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // captionAssetFormats:
-    public String getCaptionAssetFormats(){
-        return this.captionAssetFormats;
-    }
-    public void setCaptionAssetFormats(String captionAssetFormats){
-        this.captionAssetFormats = captionAssetFormats;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // priority:
-    public Cielo24Priority getPriority(){
-        return this.priority;
-    }
-    public void setPriority(Cielo24Priority priority){
-        this.priority = priority;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // fidelity:
-    public Cielo24Fidelity getFidelity(){
-        return this.fidelity;
-    }
-    public void setFidelity(Cielo24Fidelity fidelity){
-        this.fidelity = fidelity;
-    }
+	// captionAssetFormats:
+	public String getCaptionAssetFormats(){
+		return this.captionAssetFormats;
+	}
+	public void setCaptionAssetFormats(String captionAssetFormats){
+		this.captionAssetFormats = captionAssetFormats;
+	}
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	public void captionAssetFormats(String multirequestToken){
+		setToken("captionAssetFormats", multirequestToken);
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	// priority:
+	public Cielo24Priority getPriority(){
+		return this.priority;
+	}
+	public void setPriority(Cielo24Priority priority){
+		this.priority = priority;
+	}
 
-    // baseUrl:
-    public String getBaseUrl(){
-        return this.baseUrl;
-    }
-    public void setBaseUrl(String baseUrl){
-        this.baseUrl = baseUrl;
-    }
+	public void priority(String multirequestToken){
+		setToken("priority", multirequestToken);
+	}
 
-    // spokenLanguage:
-    public Language getSpokenLanguage(){
-        return this.spokenLanguage;
-    }
-    public void setSpokenLanguage(Language spokenLanguage){
-        this.spokenLanguage = spokenLanguage;
-    }
+	// fidelity:
+	public Cielo24Fidelity getFidelity(){
+		return this.fidelity;
+	}
+	public void setFidelity(Cielo24Fidelity fidelity){
+		this.fidelity = fidelity;
+	}
 
-    // replaceMediaContent:
-    public Boolean getReplaceMediaContent(){
-        return this.replaceMediaContent;
-    }
-    public void setReplaceMediaContent(Boolean replaceMediaContent){
-        this.replaceMediaContent = replaceMediaContent;
-    }
+	public void fidelity(String multirequestToken){
+		setToken("fidelity", multirequestToken);
+	}
 
-    // additionalParameters:
-    public String getAdditionalParameters(){
-        return this.additionalParameters;
-    }
-    public void setAdditionalParameters(String additionalParameters){
-        this.additionalParameters = additionalParameters;
-    }
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
+
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
+
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// baseUrl:
+	public String getBaseUrl(){
+		return this.baseUrl;
+	}
+	public void setBaseUrl(String baseUrl){
+		this.baseUrl = baseUrl;
+	}
+
+	public void baseUrl(String multirequestToken){
+		setToken("baseUrl", multirequestToken);
+	}
+
+	// spokenLanguage:
+	public Language getSpokenLanguage(){
+		return this.spokenLanguage;
+	}
+	public void setSpokenLanguage(Language spokenLanguage){
+		this.spokenLanguage = spokenLanguage;
+	}
+
+	public void spokenLanguage(String multirequestToken){
+		setToken("spokenLanguage", multirequestToken);
+	}
+
+	// replaceMediaContent:
+	public Boolean getReplaceMediaContent(){
+		return this.replaceMediaContent;
+	}
+	public void setReplaceMediaContent(Boolean replaceMediaContent){
+		this.replaceMediaContent = replaceMediaContent;
+	}
+
+	public void replaceMediaContent(String multirequestToken){
+		setToken("replaceMediaContent", multirequestToken);
+	}
+
+	// additionalParameters:
+	public String getAdditionalParameters(){
+		return this.additionalParameters;
+	}
+	public void setAdditionalParameters(String additionalParameters){
+		this.additionalParameters = additionalParameters;
+	}
+
+	public void additionalParameters(String multirequestToken){
+		setToken("additionalParameters", multirequestToken);
+	}
 
 
-    public Cielo24JobProviderData() {
-       super();
-    }
+	public Cielo24JobProviderData() {
+		super();
+	}
 
-    public Cielo24JobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Cielo24JobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        captionAssetFormats = GsonParser.parseString(jsonObject.get("captionAssetFormats"));
-        priority = Cielo24Priority.get(GsonParser.parseString(jsonObject.get("priority")));
-        fidelity = Cielo24Fidelity.get(GsonParser.parseString(jsonObject.get("fidelity")));
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        baseUrl = GsonParser.parseString(jsonObject.get("baseUrl"));
-        spokenLanguage = Language.get(GsonParser.parseString(jsonObject.get("spokenLanguage")));
-        replaceMediaContent = GsonParser.parseBoolean(jsonObject.get("replaceMediaContent"));
-        additionalParameters = GsonParser.parseString(jsonObject.get("additionalParameters"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		captionAssetFormats = GsonParser.parseString(jsonObject.get("captionAssetFormats"));
+		priority = Cielo24Priority.get(GsonParser.parseString(jsonObject.get("priority")));
+		fidelity = Cielo24Fidelity.get(GsonParser.parseString(jsonObject.get("fidelity")));
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		baseUrl = GsonParser.parseString(jsonObject.get("baseUrl"));
+		spokenLanguage = Language.get(GsonParser.parseString(jsonObject.get("spokenLanguage")));
+		replaceMediaContent = GsonParser.parseBoolean(jsonObject.get("replaceMediaContent"));
+		additionalParameters = GsonParser.parseString(jsonObject.get("additionalParameters"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCielo24JobProviderData");
-        kparams.add("entryId", this.entryId);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("captionAssetFormats", this.captionAssetFormats);
-        kparams.add("priority", this.priority);
-        kparams.add("fidelity", this.fidelity);
-        kparams.add("spokenLanguage", this.spokenLanguage);
-        kparams.add("replaceMediaContent", this.replaceMediaContent);
-        kparams.add("additionalParameters", this.additionalParameters);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCielo24JobProviderData");
+		kparams.add("entryId", this.entryId);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("captionAssetFormats", this.captionAssetFormats);
+		kparams.add("priority", this.priority);
+		kparams.add("fidelity", this.fidelity);
+		kparams.add("spokenLanguage", this.spokenLanguage);
+		kparams.add("replaceMediaContent", this.replaceMediaContent);
+		kparams.add("additionalParameters", this.additionalParameters);
+		return kparams;
+	}
 
 }
 

@@ -34,45 +34,45 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDistributionOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    SUBMITTED_AT_ASC("+submittedAt"),
-    SUNRISE_ASC("+sunrise"),
-    SUNSET_ASC("+sunset"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    SUBMITTED_AT_DESC("-submittedAt"),
-    SUNRISE_DESC("-sunrise"),
-    SUNSET_DESC("-sunset"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	SUBMITTED_AT_ASC("+submittedAt"),
+	SUNRISE_ASC("+sunrise"),
+	SUNSET_ASC("+sunset"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	SUBMITTED_AT_DESC("-submittedAt"),
+	SUNRISE_DESC("-sunrise"),
+	SUNSET_DESC("-sunset"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    EntryDistributionOrderBy(String value) {
-        this.value = value;
-    }
+	EntryDistributionOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryDistributionOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryDistributionOrderBy defined values and compare the inner value with the given one:
-        for(EntryDistributionOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryDistributionOrderBy.values().length > 0 ? EntryDistributionOrderBy.values()[0]: null;
+	public static EntryDistributionOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryDistributionOrderBy defined values and compare the inner value with the given one:
+		for(EntryDistributionOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryDistributionOrderBy.values().length > 0 ? EntryDistributionOrderBy.values()[0]: null;
    }
 }

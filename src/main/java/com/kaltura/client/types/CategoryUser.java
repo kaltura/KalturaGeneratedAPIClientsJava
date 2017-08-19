@@ -34,6 +34,7 @@ import com.kaltura.client.enums.CategoryUserStatus;
 import com.kaltura.client.enums.UpdateMethodType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,143 +44,197 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CategoryUser.Tokenizer.class)
 public class CategoryUser extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String categoryId();
+		String userId();
+		String partnerId();
+		String permissionLevel();
+		String status();
+		String createdAt();
+		String updatedAt();
+		String updateMethod();
+		String categoryFullIds();
+		String permissionNames();
+	}
 
-    private Integer categoryId;
+	private Integer categoryId;
 	/**  User id  */
-    private String userId;
+	private String userId;
 	/**  Partner id  */
-    private Integer partnerId;
+	private Integer partnerId;
 	/**  Permission level  */
-    private CategoryUserPermissionLevel permissionLevel;
+	private CategoryUserPermissionLevel permissionLevel;
 	/**  Status  */
-    private CategoryUserStatus status;
+	private CategoryUserStatus status;
 	/**  CategoryUser creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  CategoryUser update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 	/**  Update method can be either manual or automatic to distinguish between manual
 	  operations (for example in KMC) on automatic - using bulk upload  */
-    private UpdateMethodType updateMethod;
+	private UpdateMethodType updateMethod;
 	/**  The full ids of the Category  */
-    private String categoryFullIds;
+	private String categoryFullIds;
 	/**  Set of category-related permissions for the current category user.  */
-    private String permissionNames;
+	private String permissionNames;
 
-    // categoryId:
-    public Integer getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public Integer getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(Integer categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	public void categoryId(String multirequestToken){
+		setToken("categoryId", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // permissionLevel:
-    public CategoryUserPermissionLevel getPermissionLevel(){
-        return this.permissionLevel;
-    }
-    public void setPermissionLevel(CategoryUserPermissionLevel permissionLevel){
-        this.permissionLevel = permissionLevel;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // status:
-    public CategoryUserStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(CategoryUserStatus status){
-        this.status = status;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// permissionLevel:
+	public CategoryUserPermissionLevel getPermissionLevel(){
+		return this.permissionLevel;
+	}
+	public void setPermissionLevel(CategoryUserPermissionLevel permissionLevel){
+		this.permissionLevel = permissionLevel;
+	}
 
-    // updateMethod:
-    public UpdateMethodType getUpdateMethod(){
-        return this.updateMethod;
-    }
-    public void setUpdateMethod(UpdateMethodType updateMethod){
-        this.updateMethod = updateMethod;
-    }
+	public void permissionLevel(String multirequestToken){
+		setToken("permissionLevel", multirequestToken);
+	}
 
-    // categoryFullIds:
-    public String getCategoryFullIds(){
-        return this.categoryFullIds;
-    }
-    public void setCategoryFullIds(String categoryFullIds){
-        this.categoryFullIds = categoryFullIds;
-    }
+	// status:
+	public CategoryUserStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(CategoryUserStatus status){
+		this.status = status;
+	}
 
-    // permissionNames:
-    public String getPermissionNames(){
-        return this.permissionNames;
-    }
-    public void setPermissionNames(String permissionNames){
-        this.permissionNames = permissionNames;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// updateMethod:
+	public UpdateMethodType getUpdateMethod(){
+		return this.updateMethod;
+	}
+	public void setUpdateMethod(UpdateMethodType updateMethod){
+		this.updateMethod = updateMethod;
+	}
+
+	public void updateMethod(String multirequestToken){
+		setToken("updateMethod", multirequestToken);
+	}
+
+	// categoryFullIds:
+	public String getCategoryFullIds(){
+		return this.categoryFullIds;
+	}
+	public void setCategoryFullIds(String categoryFullIds){
+		this.categoryFullIds = categoryFullIds;
+	}
+
+	public void categoryFullIds(String multirequestToken){
+		setToken("categoryFullIds", multirequestToken);
+	}
+
+	// permissionNames:
+	public String getPermissionNames(){
+		return this.permissionNames;
+	}
+	public void setPermissionNames(String permissionNames){
+		this.permissionNames = permissionNames;
+	}
+
+	public void permissionNames(String multirequestToken){
+		setToken("permissionNames", multirequestToken);
+	}
 
 
-    public CategoryUser() {
-       super();
-    }
+	public CategoryUser() {
+		super();
+	}
 
-    public CategoryUser(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CategoryUser(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        permissionLevel = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("permissionLevel")));
-        status = CategoryUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        updateMethod = UpdateMethodType.get(GsonParser.parseInt(jsonObject.get("updateMethod")));
-        categoryFullIds = GsonParser.parseString(jsonObject.get("categoryFullIds"));
-        permissionNames = GsonParser.parseString(jsonObject.get("permissionNames"));
+		// set members values:
+		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		permissionLevel = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("permissionLevel")));
+		status = CategoryUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		updateMethod = UpdateMethodType.get(GsonParser.parseInt(jsonObject.get("updateMethod")));
+		categoryFullIds = GsonParser.parseString(jsonObject.get("categoryFullIds"));
+		permissionNames = GsonParser.parseString(jsonObject.get("permissionNames"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategoryUser");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("userId", this.userId);
-        kparams.add("permissionLevel", this.permissionLevel);
-        kparams.add("updateMethod", this.updateMethod);
-        kparams.add("permissionNames", this.permissionNames);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategoryUser");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("userId", this.userId);
+		kparams.add("permissionLevel", this.permissionLevel);
+		kparams.add("updateMethod", this.updateMethod);
+		kparams.add("permissionNames", this.permissionNames);
+		return kparams;
+	}
 
 }
 

@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,23 +41,27 @@ import com.kaltura.client.utils.GsonParser;
 /**  Is a unified way to add content to Kaltura whether it's an uploaded file, webcam
   recording, imported URL or existing file sync.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ContentResource.Tokenizer.class)
 public abstract class ContentResource extends Resource {
+	
+	public interface Tokenizer extends Resource.Tokenizer {
+	}
 
 
 
-    public ContentResource() {
-       super();
-    }
+	public ContentResource() {
+		super();
+	}
 
-    public ContentResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public ContentResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaContentResource");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaContentResource");
+		return kparams;
+	}
 
 }
 

@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +40,27 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Represents the current request user agent context  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserAgentContextField.Tokenizer.class)
 public class UserAgentContextField extends StringField {
+	
+	public interface Tokenizer extends StringField.Tokenizer {
+	}
 
 
 
-    public UserAgentContextField() {
-       super();
-    }
+	public UserAgentContextField() {
+		super();
+	}
 
-    public UserAgentContextField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public UserAgentContextField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserAgentContextField");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserAgentContextField");
+		return kparams;
+	}
 
 }
 

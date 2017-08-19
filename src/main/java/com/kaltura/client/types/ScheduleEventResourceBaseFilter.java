@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,116 +40,160 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleEventResourceBaseFilter.Tokenizer.class)
 public abstract class ScheduleEventResourceBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String eventIdEqual();
+		String eventIdIn();
+		String resourceIdEqual();
+		String resourceIdIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+	}
 
-    private Integer eventIdEqual;
-    private String eventIdIn;
-    private Integer resourceIdEqual;
-    private String resourceIdIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
+	private Integer eventIdEqual;
+	private String eventIdIn;
+	private Integer resourceIdEqual;
+	private String resourceIdIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
 
-    // eventIdEqual:
-    public Integer getEventIdEqual(){
-        return this.eventIdEqual;
-    }
-    public void setEventIdEqual(Integer eventIdEqual){
-        this.eventIdEqual = eventIdEqual;
-    }
+	// eventIdEqual:
+	public Integer getEventIdEqual(){
+		return this.eventIdEqual;
+	}
+	public void setEventIdEqual(Integer eventIdEqual){
+		this.eventIdEqual = eventIdEqual;
+	}
 
-    // eventIdIn:
-    public String getEventIdIn(){
-        return this.eventIdIn;
-    }
-    public void setEventIdIn(String eventIdIn){
-        this.eventIdIn = eventIdIn;
-    }
+	public void eventIdEqual(String multirequestToken){
+		setToken("eventIdEqual", multirequestToken);
+	}
 
-    // resourceIdEqual:
-    public Integer getResourceIdEqual(){
-        return this.resourceIdEqual;
-    }
-    public void setResourceIdEqual(Integer resourceIdEqual){
-        this.resourceIdEqual = resourceIdEqual;
-    }
+	// eventIdIn:
+	public String getEventIdIn(){
+		return this.eventIdIn;
+	}
+	public void setEventIdIn(String eventIdIn){
+		this.eventIdIn = eventIdIn;
+	}
 
-    // resourceIdIn:
-    public String getResourceIdIn(){
-        return this.resourceIdIn;
-    }
-    public void setResourceIdIn(String resourceIdIn){
-        this.resourceIdIn = resourceIdIn;
-    }
+	public void eventIdIn(String multirequestToken){
+		setToken("eventIdIn", multirequestToken);
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	// resourceIdEqual:
+	public Integer getResourceIdEqual(){
+		return this.resourceIdEqual;
+	}
+	public void setResourceIdEqual(Integer resourceIdEqual){
+		this.resourceIdEqual = resourceIdEqual;
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	public void resourceIdEqual(String multirequestToken){
+		setToken("resourceIdEqual", multirequestToken);
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	// resourceIdIn:
+	public String getResourceIdIn(){
+		return this.resourceIdIn;
+	}
+	public void setResourceIdIn(String resourceIdIn){
+		this.resourceIdIn = resourceIdIn;
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	public void resourceIdIn(String multirequestToken){
+		setToken("resourceIdIn", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public ScheduleEventResourceBaseFilter() {
-       super();
-    }
+	public ScheduleEventResourceBaseFilter() {
+		super();
+	}
 
-    public ScheduleEventResourceBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleEventResourceBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventIdEqual = GsonParser.parseInt(jsonObject.get("eventIdEqual"));
-        eventIdIn = GsonParser.parseString(jsonObject.get("eventIdIn"));
-        resourceIdEqual = GsonParser.parseInt(jsonObject.get("resourceIdEqual"));
-        resourceIdIn = GsonParser.parseString(jsonObject.get("resourceIdIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		// set members values:
+		eventIdEqual = GsonParser.parseInt(jsonObject.get("eventIdEqual"));
+		eventIdIn = GsonParser.parseString(jsonObject.get("eventIdIn"));
+		resourceIdEqual = GsonParser.parseInt(jsonObject.get("resourceIdEqual"));
+		resourceIdIn = GsonParser.parseString(jsonObject.get("resourceIdIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventResourceBaseFilter");
-        kparams.add("eventIdEqual", this.eventIdEqual);
-        kparams.add("eventIdIn", this.eventIdIn);
-        kparams.add("resourceIdEqual", this.resourceIdEqual);
-        kparams.add("resourceIdIn", this.resourceIdIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleEventResourceBaseFilter");
+		kparams.add("eventIdEqual", this.eventIdEqual);
+		kparams.add("eventIdIn", this.eventIdIn);
+		kparams.add("resourceIdEqual", this.resourceIdEqual);
+		kparams.add("resourceIdIn", this.resourceIdIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

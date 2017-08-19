@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.MixEntryCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaMixEntry attributes. Use
   KalturaMixEntryCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MixEntryCompareAttributeCondition.Tokenizer.class)
 public class MixEntryCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private MixEntryCompareAttribute attribute;
+	private MixEntryCompareAttribute attribute;
 
-    // attribute:
-    public MixEntryCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(MixEntryCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public MixEntryCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(MixEntryCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public MixEntryCompareAttributeCondition() {
-       super();
-    }
+	public MixEntryCompareAttributeCondition() {
+		super();
+	}
 
-    public MixEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MixEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = MixEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = MixEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMixEntryCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMixEntryCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

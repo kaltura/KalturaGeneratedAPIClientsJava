@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AssetFilter;
 import com.kaltura.client.types.CaptionAsset;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.RemotePath;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -48,136 +46,260 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Retrieve information and invoke actions on caption Asset  */
 public class CaptionAssetService {
+	
+	public static class AddCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, AddCaptionAssetBuilder> {
+		
+		public AddCaptionAssetBuilder(String entryId, CaptionAsset captionAsset) {
+			super(CaptionAsset.class, "caption_captionasset", "add");
+			params.add("entryId", entryId);
+			params.add("captionAsset", captionAsset);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Add caption asset  */
-    public static RequestBuilder<CaptionAsset> add(String entryId, CaptionAsset captionAsset)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("captionAsset", captionAsset);
+    public static AddCaptionAssetBuilder add(String entryId, CaptionAsset captionAsset)  {
+		return new AddCaptionAssetBuilder(entryId, captionAsset);
+	}
+	
+	public static class DeleteCaptionAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteCaptionAssetBuilder(String captionAssetId) {
+			super("caption_captionasset", "delete");
+			params.add("captionAssetId", captionAssetId);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<CaptionAsset>(CaptionAsset.class, "caption_captionasset", "add", kparams);
-    }
+    public static DeleteCaptionAssetBuilder delete(String captionAssetId)  {
+		return new DeleteCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class GetCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, GetCaptionAssetBuilder> {
+		
+		public GetCaptionAssetBuilder(String captionAssetId) {
+			super(CaptionAsset.class, "caption_captionasset", "get");
+			params.add("captionAssetId", captionAssetId);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Void> delete(String captionAssetId)  {
-        Params kparams = new Params();
-        kparams.add("captionAssetId", captionAssetId);
-
-        return new NullRequestBuilder("caption_captionasset", "delete", kparams);
-    }
-
-    public static RequestBuilder<CaptionAsset> get(String captionAssetId)  {
-        Params kparams = new Params();
-        kparams.add("captionAssetId", captionAssetId);
-
-        return new RequestBuilder<CaptionAsset>(CaptionAsset.class, "caption_captionasset", "get", kparams);
-    }
+    public static GetCaptionAssetBuilder get(String captionAssetId)  {
+		return new GetCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class GetRemotePathsCaptionAssetBuilder extends ListResponseRequestBuilder<RemotePath, RemotePath.Tokenizer, GetRemotePathsCaptionAssetBuilder> {
+		
+		public GetRemotePathsCaptionAssetBuilder(String id) {
+			super(RemotePath.class, "caption_captionasset", "getRemotePaths");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get remote storage existing paths for the asset  */
-    public static RequestBuilder<ListResponse<RemotePath>> getRemotePaths(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetRemotePathsCaptionAssetBuilder getRemotePaths(String id)  {
+		return new GetRemotePathsCaptionAssetBuilder(id);
+	}
+	
+	public static class GetUrlCaptionAssetBuilder extends RequestBuilder<String, String, GetUrlCaptionAssetBuilder> {
+		
+		public GetUrlCaptionAssetBuilder(String id, int storageId) {
+			super(String.class, "caption_captionasset", "getUrl");
+			params.add("id", id);
+			params.add("storageId", storageId);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void storageId(String multirequestToken) {
+			params.add("storageId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<RemotePath>(RemotePath.class, "caption_captionasset", "getRemotePaths", kparams);
-    }
-
-    public static RequestBuilder<String> getUrl(String id)  {
-        return getUrl(id, Integer.MIN_VALUE);
-    }
+	public static GetUrlCaptionAssetBuilder getUrl(String id)  {
+		return getUrl(id, Integer.MIN_VALUE);
+	}
 
 	/**  Get download URL for the asset  */
-    public static RequestBuilder<String> getUrl(String id, int storageId)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("storageId", storageId);
+    public static GetUrlCaptionAssetBuilder getUrl(String id, int storageId)  {
+		return new GetUrlCaptionAssetBuilder(id, storageId);
+	}
+	
+	public static class ListCaptionAssetBuilder extends ListResponseRequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, ListCaptionAssetBuilder> {
+		
+		public ListCaptionAssetBuilder(AssetFilter filter, FilterPager pager) {
+			super(CaptionAsset.class, "caption_captionasset", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "caption_captionasset", "getUrl", kparams);
-    }
+	public static ListCaptionAssetBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<CaptionAsset>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<CaptionAsset>> list(AssetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListCaptionAssetBuilder list(AssetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List caption Assets by filter and pager  */
-    public static RequestBuilder<ListResponse<CaptionAsset>> list(AssetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<CaptionAsset>(CaptionAsset.class, "caption_captionasset", "list", kparams);
-    }
+    public static ListCaptionAssetBuilder list(AssetFilter filter, FilterPager pager)  {
+		return new ListCaptionAssetBuilder(filter, pager);
+	}
+	
+	public static class ServeCaptionAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeCaptionAssetBuilder(String captionAssetId) {
+			super("caption_captionasset", "serve");
+			params.add("captionAssetId", captionAssetId);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
 
 	/**  Serves caption by its id  */
-    public static RequestBuilder<String> serve(String captionAssetId)  {
-        Params kparams = new Params();
-        kparams.add("captionAssetId", captionAssetId);
+    public static ServeCaptionAssetBuilder serve(String captionAssetId)  {
+		return new ServeCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class ServeByEntryIdCaptionAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeByEntryIdCaptionAssetBuilder(String entryId, int captionParamId) {
+			super("caption_captionasset", "serveByEntryId");
+			params.add("entryId", entryId);
+			params.add("captionParamId", captionParamId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void captionParamId(String multirequestToken) {
+			params.add("captionParamId", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("caption_captionasset", "serve", kparams);
-    }
-
-    public static RequestBuilder<String> serveByEntryId(String entryId)  {
-        return serveByEntryId(entryId, Integer.MIN_VALUE);
-    }
+	public static ServeByEntryIdCaptionAssetBuilder serveByEntryId(String entryId)  {
+		return serveByEntryId(entryId, Integer.MIN_VALUE);
+	}
 
 	/**  Serves caption by entry id and thumnail params id  */
-    public static RequestBuilder<String> serveByEntryId(String entryId, int captionParamId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("captionParamId", captionParamId);
+    public static ServeByEntryIdCaptionAssetBuilder serveByEntryId(String entryId, int captionParamId)  {
+		return new ServeByEntryIdCaptionAssetBuilder(entryId, captionParamId);
+	}
+	
+	public static class ServeWebVTTCaptionAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeWebVTTCaptionAssetBuilder(String captionAssetId, int segmentDuration, int segmentIndex, int localTimestamp) {
+			super("caption_captionasset", "serveWebVTT");
+			params.add("captionAssetId", captionAssetId);
+			params.add("segmentDuration", segmentDuration);
+			params.add("segmentIndex", segmentIndex);
+			params.add("localTimestamp", localTimestamp);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+		
+		public void segmentDuration(String multirequestToken) {
+			params.add("segmentDuration", multirequestToken);
+		}
+		
+		public void segmentIndex(String multirequestToken) {
+			params.add("segmentIndex", multirequestToken);
+		}
+		
+		public void localTimestamp(String multirequestToken) {
+			params.add("localTimestamp", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("caption_captionasset", "serveByEntryId", kparams);
-    }
+	public static ServeWebVTTCaptionAssetBuilder serveWebVTT(String captionAssetId)  {
+		return serveWebVTT(captionAssetId, 30);
+	}
 
-    public static RequestBuilder<String> serveWebVTT(String captionAssetId)  {
-        return serveWebVTT(captionAssetId, 30);
-    }
+	public static ServeWebVTTCaptionAssetBuilder serveWebVTT(String captionAssetId, int segmentDuration)  {
+		return serveWebVTT(captionAssetId, segmentDuration, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<String> serveWebVTT(String captionAssetId, int segmentDuration)  {
-        return serveWebVTT(captionAssetId, segmentDuration, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<String> serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex)  {
-        return serveWebVTT(captionAssetId, segmentDuration, segmentIndex, 10000);
-    }
+	public static ServeWebVTTCaptionAssetBuilder serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex)  {
+		return serveWebVTT(captionAssetId, segmentDuration, segmentIndex, 10000);
+	}
 
 	/**  Serves caption by its id converting it to segmented WebVTT  */
-    public static RequestBuilder<String> serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex, int localTimestamp)  {
-        Params kparams = new Params();
-        kparams.add("captionAssetId", captionAssetId);
-        kparams.add("segmentDuration", segmentDuration);
-        kparams.add("segmentIndex", segmentIndex);
-        kparams.add("localTimestamp", localTimestamp);
-
-        return new ServeRequestBuilder("caption_captionasset", "serveWebVTT", kparams);
-    }
+    public static ServeWebVTTCaptionAssetBuilder serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex, int localTimestamp)  {
+		return new ServeWebVTTCaptionAssetBuilder(captionAssetId, segmentDuration, segmentIndex, localTimestamp);
+	}
+	
+	public static class SetAsDefaultCaptionAssetBuilder extends NullRequestBuilder {
+		
+		public SetAsDefaultCaptionAssetBuilder(String captionAssetId) {
+			super("caption_captionasset", "setAsDefault");
+			params.add("captionAssetId", captionAssetId);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
 
 	/**  Markss the caption as default and removes that mark from all other caption
 	  assets of the entry.  */
-    public static RequestBuilder<Void> setAsDefault(String captionAssetId)  {
-        Params kparams = new Params();
-        kparams.add("captionAssetId", captionAssetId);
-
-        return new NullRequestBuilder("caption_captionasset", "setAsDefault", kparams);
-    }
+    public static SetAsDefaultCaptionAssetBuilder setAsDefault(String captionAssetId)  {
+		return new SetAsDefaultCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class SetContentCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, SetContentCaptionAssetBuilder> {
+		
+		public SetContentCaptionAssetBuilder(String id, ContentResource contentResource) {
+			super(CaptionAsset.class, "caption_captionasset", "setContent");
+			params.add("id", id);
+			params.add("contentResource", contentResource);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update content of caption asset  */
-    public static RequestBuilder<CaptionAsset> setContent(String id, ContentResource contentResource)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-
-        return new RequestBuilder<CaptionAsset>(CaptionAsset.class, "caption_captionasset", "setContent", kparams);
-    }
+    public static SetContentCaptionAssetBuilder setContent(String id, ContentResource contentResource)  {
+		return new SetContentCaptionAssetBuilder(id, contentResource);
+	}
+	
+	public static class UpdateCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, UpdateCaptionAssetBuilder> {
+		
+		public UpdateCaptionAssetBuilder(String id, CaptionAsset captionAsset) {
+			super(CaptionAsset.class, "caption_captionasset", "update");
+			params.add("id", id);
+			params.add("captionAsset", captionAsset);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update caption asset  */
-    public static RequestBuilder<CaptionAsset> update(String id, CaptionAsset captionAsset)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("captionAsset", captionAsset);
-
-        return new RequestBuilder<CaptionAsset>(CaptionAsset.class, "caption_captionasset", "update", kparams);
-    }
+    public static UpdateCaptionAssetBuilder update(String id, CaptionAsset captionAsset)  {
+		return new UpdateCaptionAssetBuilder(id, captionAsset);
+	}
 }

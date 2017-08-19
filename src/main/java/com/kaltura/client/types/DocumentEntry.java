@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DocumentType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,51 +41,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DocumentEntry.Tokenizer.class)
 public class DocumentEntry extends BaseEntry {
+	
+	public interface Tokenizer extends BaseEntry.Tokenizer {
+		String documentType();
+		String assetParamsIds();
+	}
 
 	/**  The type of the document  */
-    private DocumentType documentType;
+	private DocumentType documentType;
 	/**  Comma separated asset params ids that exists for this media entry  */
-    private String assetParamsIds;
+	private String assetParamsIds;
 
-    // documentType:
-    public DocumentType getDocumentType(){
-        return this.documentType;
-    }
-    public void setDocumentType(DocumentType documentType){
-        this.documentType = documentType;
-    }
+	// documentType:
+	public DocumentType getDocumentType(){
+		return this.documentType;
+	}
+	public void setDocumentType(DocumentType documentType){
+		this.documentType = documentType;
+	}
 
-    // assetParamsIds:
-    public String getAssetParamsIds(){
-        return this.assetParamsIds;
-    }
-    public void setAssetParamsIds(String assetParamsIds){
-        this.assetParamsIds = assetParamsIds;
-    }
+	public void documentType(String multirequestToken){
+		setToken("documentType", multirequestToken);
+	}
+
+	// assetParamsIds:
+	public String getAssetParamsIds(){
+		return this.assetParamsIds;
+	}
+	public void setAssetParamsIds(String assetParamsIds){
+		this.assetParamsIds = assetParamsIds;
+	}
+
+	public void assetParamsIds(String multirequestToken){
+		setToken("assetParamsIds", multirequestToken);
+	}
 
 
-    public DocumentEntry() {
-       super();
-    }
+	public DocumentEntry() {
+		super();
+	}
 
-    public DocumentEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DocumentEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        documentType = DocumentType.get(GsonParser.parseInt(jsonObject.get("documentType")));
-        assetParamsIds = GsonParser.parseString(jsonObject.get("assetParamsIds"));
+		// set members values:
+		documentType = DocumentType.get(GsonParser.parseInt(jsonObject.get("documentType")));
+		assetParamsIds = GsonParser.parseString(jsonObject.get("assetParamsIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDocumentEntry");
-        kparams.add("documentType", this.documentType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDocumentEntry");
+		kparams.add("documentType", this.documentType);
+		return kparams;
+	}
 
 }
 

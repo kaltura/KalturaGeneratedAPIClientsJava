@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionValidationErrorType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,63 +41,82 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionValidationErrorInvalidData.Tokenizer.class)
 public class DistributionValidationErrorInvalidData extends DistributionValidationError {
+	
+	public interface Tokenizer extends DistributionValidationError.Tokenizer {
+		String fieldName();
+		String validationErrorType();
+		String validationErrorParam();
+	}
 
-    private String fieldName;
-    private DistributionValidationErrorType validationErrorType;
+	private String fieldName;
+	private DistributionValidationErrorType validationErrorType;
 	/**  Parameter of the validation error   For example, minimum value for
 	  KalturaDistributionValidationErrorType::STRING_TOO_SHORT validation error  */
-    private String validationErrorParam;
+	private String validationErrorParam;
 
-    // fieldName:
-    public String getFieldName(){
-        return this.fieldName;
-    }
-    public void setFieldName(String fieldName){
-        this.fieldName = fieldName;
-    }
+	// fieldName:
+	public String getFieldName(){
+		return this.fieldName;
+	}
+	public void setFieldName(String fieldName){
+		this.fieldName = fieldName;
+	}
 
-    // validationErrorType:
-    public DistributionValidationErrorType getValidationErrorType(){
-        return this.validationErrorType;
-    }
-    public void setValidationErrorType(DistributionValidationErrorType validationErrorType){
-        this.validationErrorType = validationErrorType;
-    }
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
 
-    // validationErrorParam:
-    public String getValidationErrorParam(){
-        return this.validationErrorParam;
-    }
-    public void setValidationErrorParam(String validationErrorParam){
-        this.validationErrorParam = validationErrorParam;
-    }
+	// validationErrorType:
+	public DistributionValidationErrorType getValidationErrorType(){
+		return this.validationErrorType;
+	}
+	public void setValidationErrorType(DistributionValidationErrorType validationErrorType){
+		this.validationErrorType = validationErrorType;
+	}
+
+	public void validationErrorType(String multirequestToken){
+		setToken("validationErrorType", multirequestToken);
+	}
+
+	// validationErrorParam:
+	public String getValidationErrorParam(){
+		return this.validationErrorParam;
+	}
+	public void setValidationErrorParam(String validationErrorParam){
+		this.validationErrorParam = validationErrorParam;
+	}
+
+	public void validationErrorParam(String multirequestToken){
+		setToken("validationErrorParam", multirequestToken);
+	}
 
 
-    public DistributionValidationErrorInvalidData() {
-       super();
-    }
+	public DistributionValidationErrorInvalidData() {
+		super();
+	}
 
-    public DistributionValidationErrorInvalidData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionValidationErrorInvalidData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
-        validationErrorType = DistributionValidationErrorType.get(GsonParser.parseInt(jsonObject.get("validationErrorType")));
-        validationErrorParam = GsonParser.parseString(jsonObject.get("validationErrorParam"));
+		// set members values:
+		fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
+		validationErrorType = DistributionValidationErrorType.get(GsonParser.parseInt(jsonObject.get("validationErrorType")));
+		validationErrorParam = GsonParser.parseString(jsonObject.get("validationErrorParam"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionValidationErrorInvalidData");
-        kparams.add("fieldName", this.fieldName);
-        kparams.add("validationErrorType", this.validationErrorType);
-        kparams.add("validationErrorParam", this.validationErrorParam);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionValidationErrorInvalidData");
+		kparams.add("fieldName", this.fieldName);
+		kparams.add("validationErrorType", this.validationErrorType);
+		kparams.add("validationErrorParam", this.validationErrorParam);
+		return kparams;
+	}
 
 }
 

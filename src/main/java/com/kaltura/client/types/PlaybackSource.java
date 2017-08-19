@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,100 +43,130 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlaybackSource.Tokenizer.class)
 public class PlaybackSource extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String deliveryProfileId();
+		String format();
+		String protocols();
+		String flavorIds();
+		String url();
+		RequestBuilder.ListTokenizer<DrmPlaybackPluginData.Tokenizer> drm();
+	}
 
-    private String deliveryProfileId;
+	private String deliveryProfileId;
 	/**  source format according to delivery profile streamer type (applehttp, mpegdash
 	  etc.)  */
-    private String format;
+	private String format;
 	/**  comma separated string according to deliveryProfile media protocols
 	  ('http,https' etc.)  */
-    private String protocols;
+	private String protocols;
 	/**  comma separated string of flavor ids  */
-    private String flavorIds;
-    private String url;
+	private String flavorIds;
+	private String url;
 	/**  drm data object containing relevant license url ,scheme name and certificate  */
-    private List<DrmPlaybackPluginData> drm;
+	private List<DrmPlaybackPluginData> drm;
 
-    // deliveryProfileId:
-    public String getDeliveryProfileId(){
-        return this.deliveryProfileId;
-    }
-    public void setDeliveryProfileId(String deliveryProfileId){
-        this.deliveryProfileId = deliveryProfileId;
-    }
+	// deliveryProfileId:
+	public String getDeliveryProfileId(){
+		return this.deliveryProfileId;
+	}
+	public void setDeliveryProfileId(String deliveryProfileId){
+		this.deliveryProfileId = deliveryProfileId;
+	}
 
-    // format:
-    public String getFormat(){
-        return this.format;
-    }
-    public void setFormat(String format){
-        this.format = format;
-    }
+	public void deliveryProfileId(String multirequestToken){
+		setToken("deliveryProfileId", multirequestToken);
+	}
 
-    // protocols:
-    public String getProtocols(){
-        return this.protocols;
-    }
-    public void setProtocols(String protocols){
-        this.protocols = protocols;
-    }
+	// format:
+	public String getFormat(){
+		return this.format;
+	}
+	public void setFormat(String format){
+		this.format = format;
+	}
 
-    // flavorIds:
-    public String getFlavorIds(){
-        return this.flavorIds;
-    }
-    public void setFlavorIds(String flavorIds){
-        this.flavorIds = flavorIds;
-    }
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
 
-    // url:
-    public String getUrl(){
-        return this.url;
-    }
-    public void setUrl(String url){
-        this.url = url;
-    }
+	// protocols:
+	public String getProtocols(){
+		return this.protocols;
+	}
+	public void setProtocols(String protocols){
+		this.protocols = protocols;
+	}
 
-    // drm:
-    public List<DrmPlaybackPluginData> getDrm(){
-        return this.drm;
-    }
-    public void setDrm(List<DrmPlaybackPluginData> drm){
-        this.drm = drm;
-    }
+	public void protocols(String multirequestToken){
+		setToken("protocols", multirequestToken);
+	}
+
+	// flavorIds:
+	public String getFlavorIds(){
+		return this.flavorIds;
+	}
+	public void setFlavorIds(String flavorIds){
+		this.flavorIds = flavorIds;
+	}
+
+	public void flavorIds(String multirequestToken){
+		setToken("flavorIds", multirequestToken);
+	}
+
+	// url:
+	public String getUrl(){
+		return this.url;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
+
+	public void url(String multirequestToken){
+		setToken("url", multirequestToken);
+	}
+
+	// drm:
+	public List<DrmPlaybackPluginData> getDrm(){
+		return this.drm;
+	}
+	public void setDrm(List<DrmPlaybackPluginData> drm){
+		this.drm = drm;
+	}
 
 
-    public PlaybackSource() {
-       super();
-    }
+	public PlaybackSource() {
+		super();
+	}
 
-    public PlaybackSource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlaybackSource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        deliveryProfileId = GsonParser.parseString(jsonObject.get("deliveryProfileId"));
-        format = GsonParser.parseString(jsonObject.get("format"));
-        protocols = GsonParser.parseString(jsonObject.get("protocols"));
-        flavorIds = GsonParser.parseString(jsonObject.get("flavorIds"));
-        url = GsonParser.parseString(jsonObject.get("url"));
-        drm = GsonParser.parseArray(jsonObject.getAsJsonArray("drm"), DrmPlaybackPluginData.class);
+		// set members values:
+		deliveryProfileId = GsonParser.parseString(jsonObject.get("deliveryProfileId"));
+		format = GsonParser.parseString(jsonObject.get("format"));
+		protocols = GsonParser.parseString(jsonObject.get("protocols"));
+		flavorIds = GsonParser.parseString(jsonObject.get("flavorIds"));
+		url = GsonParser.parseString(jsonObject.get("url"));
+		drm = GsonParser.parseArray(jsonObject.getAsJsonArray("drm"), DrmPlaybackPluginData.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaybackSource");
-        kparams.add("deliveryProfileId", this.deliveryProfileId);
-        kparams.add("format", this.format);
-        kparams.add("protocols", this.protocols);
-        kparams.add("flavorIds", this.flavorIds);
-        kparams.add("url", this.url);
-        kparams.add("drm", this.drm);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlaybackSource");
+		kparams.add("deliveryProfileId", this.deliveryProfileId);
+		kparams.add("format", this.format);
+		kparams.add("protocols", this.protocols);
+		kparams.add("flavorIds", this.flavorIds);
+		kparams.add("url", this.url);
+		kparams.add("drm", this.drm);
+		return kparams;
+	}
 
 }
 

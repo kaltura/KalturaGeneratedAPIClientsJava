@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ChinaCacheAlgorithmType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerChinaCache.Tokenizer.class)
 public class UrlTokenizerChinaCache extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String algorithmId();
+		String keyId();
+	}
 
-    private ChinaCacheAlgorithmType algorithmId;
-    private Integer keyId;
+	private ChinaCacheAlgorithmType algorithmId;
+	private Integer keyId;
 
-    // algorithmId:
-    public ChinaCacheAlgorithmType getAlgorithmId(){
-        return this.algorithmId;
-    }
-    public void setAlgorithmId(ChinaCacheAlgorithmType algorithmId){
-        this.algorithmId = algorithmId;
-    }
+	// algorithmId:
+	public ChinaCacheAlgorithmType getAlgorithmId(){
+		return this.algorithmId;
+	}
+	public void setAlgorithmId(ChinaCacheAlgorithmType algorithmId){
+		this.algorithmId = algorithmId;
+	}
 
-    // keyId:
-    public Integer getKeyId(){
-        return this.keyId;
-    }
-    public void setKeyId(Integer keyId){
-        this.keyId = keyId;
-    }
+	public void algorithmId(String multirequestToken){
+		setToken("algorithmId", multirequestToken);
+	}
+
+	// keyId:
+	public Integer getKeyId(){
+		return this.keyId;
+	}
+	public void setKeyId(Integer keyId){
+		this.keyId = keyId;
+	}
+
+	public void keyId(String multirequestToken){
+		setToken("keyId", multirequestToken);
+	}
 
 
-    public UrlTokenizerChinaCache() {
-       super();
-    }
+	public UrlTokenizerChinaCache() {
+		super();
+	}
 
-    public UrlTokenizerChinaCache(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerChinaCache(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        algorithmId = ChinaCacheAlgorithmType.get(GsonParser.parseInt(jsonObject.get("algorithmId")));
-        keyId = GsonParser.parseInt(jsonObject.get("keyId"));
+		// set members values:
+		algorithmId = ChinaCacheAlgorithmType.get(GsonParser.parseInt(jsonObject.get("algorithmId")));
+		keyId = GsonParser.parseInt(jsonObject.get("keyId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerChinaCache");
-        kparams.add("algorithmId", this.algorithmId);
-        kparams.add("keyId", this.keyId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerChinaCache");
+		kparams.add("algorithmId", this.algorithmId);
+		kparams.add("keyId", this.keyId);
+		return kparams;
+	}
 
 }
 

@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ThumbCuePointSubType implements EnumAsInt {
-    SLIDE(1),
-    CHAPTER(2);
+	SLIDE(1),
+	CHAPTER(2);
 
-    private int value;
+	private int value;
 
-    ThumbCuePointSubType(int value) {
-        this.value = value;
-    }
+	ThumbCuePointSubType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ThumbCuePointSubType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ThumbCuePointSubType defined values and compare the inner value with the given one:
-        for(ThumbCuePointSubType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ThumbCuePointSubType.values().length > 0 ? ThumbCuePointSubType.values()[0]: null;
+	public static ThumbCuePointSubType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ThumbCuePointSubType defined values and compare the inner value with the given one:
+		for(ThumbCuePointSubType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ThumbCuePointSubType.values().length > 0 ? ThumbCuePointSubType.values()[0]: null;
    }
 }

@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ShortLink;
 import com.kaltura.client.types.ShortLinkFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -45,67 +43,117 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Short link service  */
 public class ShortLinkService {
+	
+	public static class AddShortLinkBuilder extends RequestBuilder<ShortLink, ShortLink.Tokenizer, AddShortLinkBuilder> {
+		
+		public AddShortLinkBuilder(ShortLink shortLink) {
+			super(ShortLink.class, "shortlink_shortlink", "add");
+			params.add("shortLink", shortLink);
+		}
+	}
 
 	/**  Allows you to add a short link object  */
-    public static RequestBuilder<ShortLink> add(ShortLink shortLink)  {
-        Params kparams = new Params();
-        kparams.add("shortLink", shortLink);
-
-        return new RequestBuilder<ShortLink>(ShortLink.class, "shortlink_shortlink", "add", kparams);
-    }
+    public static AddShortLinkBuilder add(ShortLink shortLink)  {
+		return new AddShortLinkBuilder(shortLink);
+	}
+	
+	public static class DeleteShortLinkBuilder extends RequestBuilder<ShortLink, ShortLink.Tokenizer, DeleteShortLinkBuilder> {
+		
+		public DeleteShortLinkBuilder(String id) {
+			super(ShortLink.class, "shortlink_shortlink", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Mark the short link as deleted  */
-    public static RequestBuilder<ShortLink> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<ShortLink>(ShortLink.class, "shortlink_shortlink", "delete", kparams);
-    }
+    public static DeleteShortLinkBuilder delete(String id)  {
+		return new DeleteShortLinkBuilder(id);
+	}
+	
+	public static class GetShortLinkBuilder extends RequestBuilder<ShortLink, ShortLink.Tokenizer, GetShortLinkBuilder> {
+		
+		public GetShortLinkBuilder(String id) {
+			super(ShortLink.class, "shortlink_shortlink", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve an short link object by id  */
-    public static RequestBuilder<ShortLink> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetShortLinkBuilder get(String id)  {
+		return new GetShortLinkBuilder(id);
+	}
+	
+	public static class GotoShortLinkBuilder extends ServeRequestBuilder {
+		
+		public GotoShortLinkBuilder(String id, boolean proxy) {
+			super("shortlink_shortlink", "goto");
+			params.add("id", id);
+			params.add("proxy", proxy);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void proxy(String multirequestToken) {
+			params.add("proxy", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ShortLink>(ShortLink.class, "shortlink_shortlink", "get", kparams);
-    }
-
-    public static RequestBuilder<String> goto_(String id)  {
-        return goto_(id, false);
-    }
+	public static GotoShortLinkBuilder goto_(String id)  {
+		return goto_(id, false);
+	}
 
 	/**  Serves short link  */
-    public static RequestBuilder<String> goto_(String id, boolean proxy)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("proxy", proxy);
+    public static GotoShortLinkBuilder goto_(String id, boolean proxy)  {
+		return new GotoShortLinkBuilder(id, proxy);
+	}
+	
+	public static class ListShortLinkBuilder extends ListResponseRequestBuilder<ShortLink, ShortLink.Tokenizer, ListShortLinkBuilder> {
+		
+		public ListShortLinkBuilder(ShortLinkFilter filter, FilterPager pager) {
+			super(ShortLink.class, "shortlink_shortlink", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ServeRequestBuilder("shortlink_shortlink", "goto_", kparams);
-    }
+	public static ListShortLinkBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ShortLink>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ShortLink>> list(ShortLinkFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListShortLinkBuilder list(ShortLinkFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List short link objects by filter and pager  */
-    public static RequestBuilder<ListResponse<ShortLink>> list(ShortLinkFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ShortLink>(ShortLink.class, "shortlink_shortlink", "list", kparams);
-    }
+    public static ListShortLinkBuilder list(ShortLinkFilter filter, FilterPager pager)  {
+		return new ListShortLinkBuilder(filter, pager);
+	}
+	
+	public static class UpdateShortLinkBuilder extends RequestBuilder<ShortLink, ShortLink.Tokenizer, UpdateShortLinkBuilder> {
+		
+		public UpdateShortLinkBuilder(String id, ShortLink shortLink) {
+			super(ShortLink.class, "shortlink_shortlink", "update");
+			params.add("id", id);
+			params.add("shortLink", shortLink);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update exisitng short link  */
-    public static RequestBuilder<ShortLink> update(String id, ShortLink shortLink)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("shortLink", shortLink);
-
-        return new RequestBuilder<ShortLink>(ShortLink.class, "shortlink_shortlink", "update", kparams);
-    }
+    public static UpdateShortLinkBuilder update(String id, ShortLink shortLink)  {
+		return new UpdateShortLinkBuilder(id, shortLink);
+	}
 }

@@ -34,57 +34,57 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlaylistOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    END_DATE_ASC("+endDate"),
-    MODERATION_COUNT_ASC("+moderationCount"),
-    NAME_ASC("+name"),
-    PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
-    RANK_ASC("+rank"),
-    RECENT_ASC("+recent"),
-    START_DATE_ASC("+startDate"),
-    TOTAL_RANK_ASC("+totalRank"),
-    UPDATED_AT_ASC("+updatedAt"),
-    WEIGHT_ASC("+weight"),
-    CREATED_AT_DESC("-createdAt"),
-    END_DATE_DESC("-endDate"),
-    MODERATION_COUNT_DESC("-moderationCount"),
-    NAME_DESC("-name"),
-    PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
-    RANK_DESC("-rank"),
-    RECENT_DESC("-recent"),
-    START_DATE_DESC("-startDate"),
-    TOTAL_RANK_DESC("-totalRank"),
-    UPDATED_AT_DESC("-updatedAt"),
-    WEIGHT_DESC("-weight");
+	CREATED_AT_ASC("+createdAt"),
+	END_DATE_ASC("+endDate"),
+	MODERATION_COUNT_ASC("+moderationCount"),
+	NAME_ASC("+name"),
+	PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
+	RANK_ASC("+rank"),
+	RECENT_ASC("+recent"),
+	START_DATE_ASC("+startDate"),
+	TOTAL_RANK_ASC("+totalRank"),
+	UPDATED_AT_ASC("+updatedAt"),
+	WEIGHT_ASC("+weight"),
+	CREATED_AT_DESC("-createdAt"),
+	END_DATE_DESC("-endDate"),
+	MODERATION_COUNT_DESC("-moderationCount"),
+	NAME_DESC("-name"),
+	PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
+	RANK_DESC("-rank"),
+	RECENT_DESC("-recent"),
+	START_DATE_DESC("-startDate"),
+	TOTAL_RANK_DESC("-totalRank"),
+	UPDATED_AT_DESC("-updatedAt"),
+	WEIGHT_DESC("-weight");
 
-    private String value;
+	private String value;
 
-    PlaylistOrderBy(String value) {
-        this.value = value;
-    }
+	PlaylistOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PlaylistOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlaylistOrderBy defined values and compare the inner value with the given one:
-        for(PlaylistOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlaylistOrderBy.values().length > 0 ? PlaylistOrderBy.values()[0]: null;
+	public static PlaylistOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlaylistOrderBy defined values and compare the inner value with the given one:
+		for(PlaylistOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlaylistOrderBy.values().length > 0 ? PlaylistOrderBy.values()[0]: null;
    }
 }

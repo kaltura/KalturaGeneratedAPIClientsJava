@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.BatchJobObjectType;
 import com.kaltura.client.types.IntegrationJobData;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -42,21 +41,43 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Integration service lets you dispatch integration tasks  */
 public class IntegrationService {
+	
+	public static class DispatchIntegrationBuilder extends RequestBuilder<Integer, String, DispatchIntegrationBuilder> {
+		
+		public DispatchIntegrationBuilder(IntegrationJobData data, BatchJobObjectType objectType, String objectId) {
+			super(Integer.class, "integration_integration", "dispatch");
+			params.add("data", data);
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+	}
 
 	/**  Dispatch integration task  */
-    public static RequestBuilder<Integer> dispatch(IntegrationJobData data, BatchJobObjectType objectType, String objectId)  {
-        Params kparams = new Params();
-        kparams.add("data", data);
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
+    public static DispatchIntegrationBuilder dispatch(IntegrationJobData data, BatchJobObjectType objectType, String objectId)  {
+		return new DispatchIntegrationBuilder(data, objectType, objectId);
+	}
+	
+	public static class NotifyIntegrationBuilder extends NullRequestBuilder {
+		
+		public NotifyIntegrationBuilder(int id) {
+			super("integration_integration", "notify");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "integration_integration", "dispatch", kparams);
-    }
-
-    public static RequestBuilder<Void> notify(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("integration_integration", "notify", kparams);
-    }
+    public static NotifyIntegrationBuilder notify_(int id)  {
+		return new NotifyIntegrationBuilder(id);
+	}
 }

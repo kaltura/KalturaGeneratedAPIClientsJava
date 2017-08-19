@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EmailNotificationRecipientProviderType implements EnumAsString {
-    STATIC_LIST("1"),
-    CATEGORY("2"),
-    USER("3");
+	STATIC_LIST("1"),
+	CATEGORY("2"),
+	USER("3");
 
-    private String value;
+	private String value;
 
-    EmailNotificationRecipientProviderType(String value) {
-        this.value = value;
-    }
+	EmailNotificationRecipientProviderType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EmailNotificationRecipientProviderType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EmailNotificationRecipientProviderType defined values and compare the inner value with the given one:
-        for(EmailNotificationRecipientProviderType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EmailNotificationRecipientProviderType.values().length > 0 ? EmailNotificationRecipientProviderType.values()[0]: null;
+	public static EmailNotificationRecipientProviderType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EmailNotificationRecipientProviderType defined values and compare the inner value with the given one:
+		for(EmailNotificationRecipientProviderType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EmailNotificationRecipientProviderType.values().length > 0 ? EmailNotificationRecipientProviderType.values()[0]: null;
    }
 }

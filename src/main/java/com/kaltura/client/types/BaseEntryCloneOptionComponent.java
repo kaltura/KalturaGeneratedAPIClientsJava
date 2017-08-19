@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.BaseEntryCloneOptions;
 import com.kaltura.client.enums.CloneComponentSelectorType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,51 +42,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BaseEntryCloneOptionComponent.Tokenizer.class)
 public class BaseEntryCloneOptionComponent extends BaseEntryCloneOptionItem {
+	
+	public interface Tokenizer extends BaseEntryCloneOptionItem.Tokenizer {
+		String itemType();
+		String rule();
+	}
 
-    private BaseEntryCloneOptions itemType;
+	private BaseEntryCloneOptions itemType;
 	/**  condition rule (include/exclude)  */
-    private CloneComponentSelectorType rule;
+	private CloneComponentSelectorType rule;
 
-    // itemType:
-    public BaseEntryCloneOptions getItemType(){
-        return this.itemType;
-    }
-    public void setItemType(BaseEntryCloneOptions itemType){
-        this.itemType = itemType;
-    }
+	// itemType:
+	public BaseEntryCloneOptions getItemType(){
+		return this.itemType;
+	}
+	public void setItemType(BaseEntryCloneOptions itemType){
+		this.itemType = itemType;
+	}
 
-    // rule:
-    public CloneComponentSelectorType getRule(){
-        return this.rule;
-    }
-    public void setRule(CloneComponentSelectorType rule){
-        this.rule = rule;
-    }
+	public void itemType(String multirequestToken){
+		setToken("itemType", multirequestToken);
+	}
+
+	// rule:
+	public CloneComponentSelectorType getRule(){
+		return this.rule;
+	}
+	public void setRule(CloneComponentSelectorType rule){
+		this.rule = rule;
+	}
+
+	public void rule(String multirequestToken){
+		setToken("rule", multirequestToken);
+	}
 
 
-    public BaseEntryCloneOptionComponent() {
-       super();
-    }
+	public BaseEntryCloneOptionComponent() {
+		super();
+	}
 
-    public BaseEntryCloneOptionComponent(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BaseEntryCloneOptionComponent(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        itemType = BaseEntryCloneOptions.get(GsonParser.parseString(jsonObject.get("itemType")));
-        rule = CloneComponentSelectorType.get(GsonParser.parseString(jsonObject.get("rule")));
+		// set members values:
+		itemType = BaseEntryCloneOptions.get(GsonParser.parseString(jsonObject.get("itemType")));
+		rule = CloneComponentSelectorType.get(GsonParser.parseString(jsonObject.get("rule")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBaseEntryCloneOptionComponent");
-        kparams.add("itemType", this.itemType);
-        kparams.add("rule", this.rule);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBaseEntryCloneOptionComponent");
+		kparams.add("itemType", this.itemType);
+		kparams.add("rule", this.rule);
+		return kparams;
+	}
 
 }
 

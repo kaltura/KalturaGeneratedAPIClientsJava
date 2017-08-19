@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum HttpNotificationMethod implements EnumAsInt {
-    GET(1),
-    POST(2),
-    PUT(3),
-    DELETE(4);
+	GET(1),
+	POST(2),
+	PUT(3),
+	DELETE(4);
 
-    private int value;
+	private int value;
 
-    HttpNotificationMethod(int value) {
-        this.value = value;
-    }
+	HttpNotificationMethod(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static HttpNotificationMethod get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over HttpNotificationMethod defined values and compare the inner value with the given one:
-        for(HttpNotificationMethod item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return HttpNotificationMethod.values().length > 0 ? HttpNotificationMethod.values()[0]: null;
+	public static HttpNotificationMethod get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over HttpNotificationMethod defined values and compare the inner value with the given one:
+		for(HttpNotificationMethod item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return HttpNotificationMethod.values().length > 0 ? HttpNotificationMethod.values()[0]: null;
    }
 }

@@ -33,6 +33,7 @@ import com.kaltura.client.enums.UserEntryExtendedStatus;
 import com.kaltura.client.enums.UserEntryStatus;
 import com.kaltura.client.enums.UserEntryType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,226 +43,320 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserEntryBaseFilter.Tokenizer.class)
 public abstract class UserEntryBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String idNotIn();
+		String entryIdEqual();
+		String entryIdIn();
+		String entryIdNotIn();
+		String userIdEqual();
+		String userIdIn();
+		String userIdNotIn();
+		String statusEqual();
+		String createdAtLessThanOrEqual();
+		String createdAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String typeEqual();
+		String extendedStatusEqual();
+		String extendedStatusIn();
+		String extendedStatusNotIn();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private String idNotIn;
-    private String entryIdEqual;
-    private String entryIdIn;
-    private String entryIdNotIn;
-    private String userIdEqual;
-    private String userIdIn;
-    private String userIdNotIn;
-    private UserEntryStatus statusEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private UserEntryType typeEqual;
-    private UserEntryExtendedStatus extendedStatusEqual;
-    private String extendedStatusIn;
-    private String extendedStatusNotIn;
+	private Integer idEqual;
+	private String idIn;
+	private String idNotIn;
+	private String entryIdEqual;
+	private String entryIdIn;
+	private String entryIdNotIn;
+	private String userIdEqual;
+	private String userIdIn;
+	private String userIdNotIn;
+	private UserEntryStatus statusEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private UserEntryType typeEqual;
+	private UserEntryExtendedStatus extendedStatusEqual;
+	private String extendedStatusIn;
+	private String extendedStatusNotIn;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // idNotIn:
-    public String getIdNotIn(){
-        return this.idNotIn;
-    }
-    public void setIdNotIn(String idNotIn){
-        this.idNotIn = idNotIn;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // entryIdIn:
-    public String getEntryIdIn(){
-        return this.entryIdIn;
-    }
-    public void setEntryIdIn(String entryIdIn){
-        this.entryIdIn = entryIdIn;
-    }
+	// idNotIn:
+	public String getIdNotIn(){
+		return this.idNotIn;
+	}
+	public void setIdNotIn(String idNotIn){
+		this.idNotIn = idNotIn;
+	}
 
-    // entryIdNotIn:
-    public String getEntryIdNotIn(){
-        return this.entryIdNotIn;
-    }
-    public void setEntryIdNotIn(String entryIdNotIn){
-        this.entryIdNotIn = entryIdNotIn;
-    }
+	public void idNotIn(String multirequestToken){
+		setToken("idNotIn", multirequestToken);
+	}
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // userIdIn:
-    public String getUserIdIn(){
-        return this.userIdIn;
-    }
-    public void setUserIdIn(String userIdIn){
-        this.userIdIn = userIdIn;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
 
-    // userIdNotIn:
-    public String getUserIdNotIn(){
-        return this.userIdNotIn;
-    }
-    public void setUserIdNotIn(String userIdNotIn){
-        this.userIdNotIn = userIdNotIn;
-    }
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
 
-    // statusEqual:
-    public UserEntryStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(UserEntryStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// entryIdNotIn:
+	public String getEntryIdNotIn(){
+		return this.entryIdNotIn;
+	}
+	public void setEntryIdNotIn(String entryIdNotIn){
+		this.entryIdNotIn = entryIdNotIn;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void entryIdNotIn(String multirequestToken){
+		setToken("entryIdNotIn", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
 
-    // typeEqual:
-    public UserEntryType getTypeEqual(){
-        return this.typeEqual;
-    }
-    public void setTypeEqual(UserEntryType typeEqual){
-        this.typeEqual = typeEqual;
-    }
+	// userIdIn:
+	public String getUserIdIn(){
+		return this.userIdIn;
+	}
+	public void setUserIdIn(String userIdIn){
+		this.userIdIn = userIdIn;
+	}
 
-    // extendedStatusEqual:
-    public UserEntryExtendedStatus getExtendedStatusEqual(){
-        return this.extendedStatusEqual;
-    }
-    public void setExtendedStatusEqual(UserEntryExtendedStatus extendedStatusEqual){
-        this.extendedStatusEqual = extendedStatusEqual;
-    }
+	public void userIdIn(String multirequestToken){
+		setToken("userIdIn", multirequestToken);
+	}
 
-    // extendedStatusIn:
-    public String getExtendedStatusIn(){
-        return this.extendedStatusIn;
-    }
-    public void setExtendedStatusIn(String extendedStatusIn){
-        this.extendedStatusIn = extendedStatusIn;
-    }
+	// userIdNotIn:
+	public String getUserIdNotIn(){
+		return this.userIdNotIn;
+	}
+	public void setUserIdNotIn(String userIdNotIn){
+		this.userIdNotIn = userIdNotIn;
+	}
 
-    // extendedStatusNotIn:
-    public String getExtendedStatusNotIn(){
-        return this.extendedStatusNotIn;
-    }
-    public void setExtendedStatusNotIn(String extendedStatusNotIn){
-        this.extendedStatusNotIn = extendedStatusNotIn;
-    }
+	public void userIdNotIn(String multirequestToken){
+		setToken("userIdNotIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public UserEntryStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(UserEntryStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// typeEqual:
+	public UserEntryType getTypeEqual(){
+		return this.typeEqual;
+	}
+	public void setTypeEqual(UserEntryType typeEqual){
+		this.typeEqual = typeEqual;
+	}
+
+	public void typeEqual(String multirequestToken){
+		setToken("typeEqual", multirequestToken);
+	}
+
+	// extendedStatusEqual:
+	public UserEntryExtendedStatus getExtendedStatusEqual(){
+		return this.extendedStatusEqual;
+	}
+	public void setExtendedStatusEqual(UserEntryExtendedStatus extendedStatusEqual){
+		this.extendedStatusEqual = extendedStatusEqual;
+	}
+
+	public void extendedStatusEqual(String multirequestToken){
+		setToken("extendedStatusEqual", multirequestToken);
+	}
+
+	// extendedStatusIn:
+	public String getExtendedStatusIn(){
+		return this.extendedStatusIn;
+	}
+	public void setExtendedStatusIn(String extendedStatusIn){
+		this.extendedStatusIn = extendedStatusIn;
+	}
+
+	public void extendedStatusIn(String multirequestToken){
+		setToken("extendedStatusIn", multirequestToken);
+	}
+
+	// extendedStatusNotIn:
+	public String getExtendedStatusNotIn(){
+		return this.extendedStatusNotIn;
+	}
+	public void setExtendedStatusNotIn(String extendedStatusNotIn){
+		this.extendedStatusNotIn = extendedStatusNotIn;
+	}
+
+	public void extendedStatusNotIn(String multirequestToken){
+		setToken("extendedStatusNotIn", multirequestToken);
+	}
 
 
-    public UserEntryBaseFilter() {
-       super();
-    }
+	public UserEntryBaseFilter() {
+		super();
+	}
 
-    public UserEntryBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserEntryBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-        entryIdNotIn = GsonParser.parseString(jsonObject.get("entryIdNotIn"));
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
-        userIdNotIn = GsonParser.parseString(jsonObject.get("userIdNotIn"));
-        statusEqual = UserEntryStatus.get(GsonParser.parseString(jsonObject.get("statusEqual")));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        typeEqual = UserEntryType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
-        extendedStatusEqual = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatusEqual")));
-        extendedStatusIn = GsonParser.parseString(jsonObject.get("extendedStatusIn"));
-        extendedStatusNotIn = GsonParser.parseString(jsonObject.get("extendedStatusNotIn"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		entryIdNotIn = GsonParser.parseString(jsonObject.get("entryIdNotIn"));
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
+		userIdNotIn = GsonParser.parseString(jsonObject.get("userIdNotIn"));
+		statusEqual = UserEntryStatus.get(GsonParser.parseString(jsonObject.get("statusEqual")));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		typeEqual = UserEntryType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
+		extendedStatusEqual = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatusEqual")));
+		extendedStatusIn = GsonParser.parseString(jsonObject.get("extendedStatusIn"));
+		extendedStatusNotIn = GsonParser.parseString(jsonObject.get("extendedStatusNotIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserEntryBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("idNotIn", this.idNotIn);
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("entryIdNotIn", this.entryIdNotIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("userIdIn", this.userIdIn);
-        kparams.add("userIdNotIn", this.userIdNotIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("typeEqual", this.typeEqual);
-        kparams.add("extendedStatusEqual", this.extendedStatusEqual);
-        kparams.add("extendedStatusIn", this.extendedStatusIn);
-        kparams.add("extendedStatusNotIn", this.extendedStatusNotIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserEntryBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("idNotIn", this.idNotIn);
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
+		kparams.add("entryIdNotIn", this.entryIdNotIn);
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("userIdIn", this.userIdIn);
+		kparams.add("userIdNotIn", this.userIdNotIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("typeEqual", this.typeEqual);
+		kparams.add("extendedStatusEqual", this.extendedStatusEqual);
+		kparams.add("extendedStatusIn", this.extendedStatusIn);
+		kparams.add("extendedStatusNotIn", this.extendedStatusNotIn);
+		return kparams;
+	}
 
 }
 

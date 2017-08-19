@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.CategoryIdentifierField;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CategoryIdentifier.Tokenizer.class)
 public class CategoryIdentifier extends ObjectIdentifier {
+	
+	public interface Tokenizer extends ObjectIdentifier.Tokenizer {
+		String identifier();
+	}
 
 	/**  Identifier of the object  */
-    private CategoryIdentifierField identifier;
+	private CategoryIdentifierField identifier;
 
-    // identifier:
-    public CategoryIdentifierField getIdentifier(){
-        return this.identifier;
-    }
-    public void setIdentifier(CategoryIdentifierField identifier){
-        this.identifier = identifier;
-    }
+	// identifier:
+	public CategoryIdentifierField getIdentifier(){
+		return this.identifier;
+	}
+	public void setIdentifier(CategoryIdentifierField identifier){
+		this.identifier = identifier;
+	}
+
+	public void identifier(String multirequestToken){
+		setToken("identifier", multirequestToken);
+	}
 
 
-    public CategoryIdentifier() {
-       super();
-    }
+	public CategoryIdentifier() {
+		super();
+	}
 
-    public CategoryIdentifier(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CategoryIdentifier(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        identifier = CategoryIdentifierField.get(GsonParser.parseString(jsonObject.get("identifier")));
+		// set members values:
+		identifier = CategoryIdentifierField.get(GsonParser.parseString(jsonObject.get("identifier")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategoryIdentifier");
-        kparams.add("identifier", this.identifier);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategoryIdentifier");
+		kparams.add("identifier", this.identifier);
+		return kparams;
+	}
 
 }
 

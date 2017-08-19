@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.FlavorAssetStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,83 +41,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorAssetBaseFilter.Tokenizer.class)
 public abstract class FlavorAssetBaseFilter extends AssetFilter {
+	
+	public interface Tokenizer extends AssetFilter.Tokenizer {
+		String flavorParamsIdEqual();
+		String flavorParamsIdIn();
+		String statusEqual();
+		String statusIn();
+		String statusNotIn();
+	}
 
-    private Integer flavorParamsIdEqual;
-    private String flavorParamsIdIn;
-    private FlavorAssetStatus statusEqual;
-    private String statusIn;
-    private String statusNotIn;
+	private Integer flavorParamsIdEqual;
+	private String flavorParamsIdIn;
+	private FlavorAssetStatus statusEqual;
+	private String statusIn;
+	private String statusNotIn;
 
-    // flavorParamsIdEqual:
-    public Integer getFlavorParamsIdEqual(){
-        return this.flavorParamsIdEqual;
-    }
-    public void setFlavorParamsIdEqual(Integer flavorParamsIdEqual){
-        this.flavorParamsIdEqual = flavorParamsIdEqual;
-    }
+	// flavorParamsIdEqual:
+	public Integer getFlavorParamsIdEqual(){
+		return this.flavorParamsIdEqual;
+	}
+	public void setFlavorParamsIdEqual(Integer flavorParamsIdEqual){
+		this.flavorParamsIdEqual = flavorParamsIdEqual;
+	}
 
-    // flavorParamsIdIn:
-    public String getFlavorParamsIdIn(){
-        return this.flavorParamsIdIn;
-    }
-    public void setFlavorParamsIdIn(String flavorParamsIdIn){
-        this.flavorParamsIdIn = flavorParamsIdIn;
-    }
+	public void flavorParamsIdEqual(String multirequestToken){
+		setToken("flavorParamsIdEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public FlavorAssetStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(FlavorAssetStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// flavorParamsIdIn:
+	public String getFlavorParamsIdIn(){
+		return this.flavorParamsIdIn;
+	}
+	public void setFlavorParamsIdIn(String flavorParamsIdIn){
+		this.flavorParamsIdIn = flavorParamsIdIn;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void flavorParamsIdIn(String multirequestToken){
+		setToken("flavorParamsIdIn", multirequestToken);
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	// statusEqual:
+	public FlavorAssetStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(FlavorAssetStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
+
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
 
 
-    public FlavorAssetBaseFilter() {
-       super();
-    }
+	public FlavorAssetBaseFilter() {
+		super();
+	}
 
-    public FlavorAssetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorAssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorParamsIdEqual = GsonParser.parseInt(jsonObject.get("flavorParamsIdEqual"));
-        flavorParamsIdIn = GsonParser.parseString(jsonObject.get("flavorParamsIdIn"));
-        statusEqual = FlavorAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		// set members values:
+		flavorParamsIdEqual = GsonParser.parseInt(jsonObject.get("flavorParamsIdEqual"));
+		flavorParamsIdIn = GsonParser.parseString(jsonObject.get("flavorParamsIdIn"));
+		statusEqual = FlavorAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorAssetBaseFilter");
-        kparams.add("flavorParamsIdEqual", this.flavorParamsIdEqual);
-        kparams.add("flavorParamsIdIn", this.flavorParamsIdIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorAssetBaseFilter");
+		kparams.add("flavorParamsIdEqual", this.flavorParamsIdEqual);
+		kparams.add("flavorParamsIdIn", this.flavorParamsIdIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		return kparams;
+	}
 
 }
 

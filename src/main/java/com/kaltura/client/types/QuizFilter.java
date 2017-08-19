@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,54 +40,68 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(QuizFilter.Tokenizer.class)
 public class QuizFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String entryIdEqual();
+		String entryIdIn();
+	}
 
 	/**  This filter should be in use for retrieving only a specific quiz entry
 	  (identified by its entryId).  */
-    private String entryIdEqual;
+	private String entryIdEqual;
 	/**  This filter should be in use for retrieving few specific quiz entries (string
 	  should include comma separated list of entryId strings).  */
-    private String entryIdIn;
+	private String entryIdIn;
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // entryIdIn:
-    public String getEntryIdIn(){
-        return this.entryIdIn;
-    }
-    public void setEntryIdIn(String entryIdIn){
-        this.entryIdIn = entryIdIn;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
+
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
+
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
 
 
-    public QuizFilter() {
-       super();
-    }
+	public QuizFilter() {
+		super();
+	}
 
-    public QuizFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public QuizFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		// set members values:
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuizFilter");
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuizFilter");
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
+		return kparams;
+	}
 
 }
 

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CategoryIdentifierField implements EnumAsString {
-    FULL_NAME("fullName"),
-    ID("id"),
-    REFERENCE_ID("referenceId");
+	FULL_NAME("fullName"),
+	ID("id"),
+	REFERENCE_ID("referenceId");
 
-    private String value;
+	private String value;
 
-    CategoryIdentifierField(String value) {
-        this.value = value;
-    }
+	CategoryIdentifierField(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static CategoryIdentifierField get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CategoryIdentifierField defined values and compare the inner value with the given one:
-        for(CategoryIdentifierField item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CategoryIdentifierField.values().length > 0 ? CategoryIdentifierField.values()[0]: null;
+	public static CategoryIdentifierField get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CategoryIdentifierField defined values and compare the inner value with the given one:
+		for(CategoryIdentifierField item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CategoryIdentifierField.values().length > 0 ? CategoryIdentifierField.values()[0]: null;
    }
 }

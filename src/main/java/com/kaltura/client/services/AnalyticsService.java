@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AnalyticsFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ReportResponse;
@@ -42,18 +41,23 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  api for getting analytics data  */
 public class AnalyticsService {
+	
+	public static class QueryAnalyticsBuilder extends RequestBuilder<ReportResponse, ReportResponse.Tokenizer, QueryAnalyticsBuilder> {
+		
+		public QueryAnalyticsBuilder(AnalyticsFilter filter, FilterPager pager) {
+			super(ReportResponse.class, "analytics", "query");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ReportResponse> query(AnalyticsFilter filter)  {
-        return query(filter, null);
-    }
+	public static QueryAnalyticsBuilder query(AnalyticsFilter filter)  {
+		return query(filter, null);
+	}
 
 	/**  report query action allows to get a analytics data for specific query
 	  dimensions, metrics and filters.  */
-    public static RequestBuilder<ReportResponse> query(AnalyticsFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new RequestBuilder<ReportResponse>(ReportResponse.class, "analytics", "query", kparams);
-    }
+    public static QueryAnalyticsBuilder query(AnalyticsFilter filter, FilterPager pager)  {
+		return new QueryAnalyticsBuilder(filter, pager);
+	}
 }

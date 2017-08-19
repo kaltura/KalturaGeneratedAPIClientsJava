@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,52 +44,66 @@ import com.kaltura.client.utils.GsonParser;
   a file sync of link type that will point to the existing file sync of the
   existing entry.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryResource.Tokenizer.class)
 public class EntryResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		String entryId();
+		String flavorParamsId();
+	}
 
 	/**  ID of the source entry  */
-    private String entryId;
+	private String entryId;
 	/**  ID of the source flavor params, set to null to use the source flavor  */
-    private Integer flavorParamsId;
+	private Integer flavorParamsId;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // flavorParamsId:
-    public Integer getFlavorParamsId(){
-        return this.flavorParamsId;
-    }
-    public void setFlavorParamsId(Integer flavorParamsId){
-        this.flavorParamsId = flavorParamsId;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
+
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
+
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
 
 
-    public EntryResource() {
-       super();
-    }
+	public EntryResource() {
+		super();
+	}
 
-    public EntryResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryResource");
-        kparams.add("entryId", this.entryId);
-        kparams.add("flavorParamsId", this.flavorParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryResource");
+		kparams.add("entryId", this.entryId);
+		kparams.add("flavorParamsId", this.flavorParamsId);
+		return kparams;
+	}
 
 }
 

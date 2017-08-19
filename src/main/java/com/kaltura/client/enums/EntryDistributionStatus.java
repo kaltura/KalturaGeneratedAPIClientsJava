@@ -34,48 +34,48 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDistributionStatus implements EnumAsInt {
-    PENDING(0),
-    QUEUED(1),
-    READY(2),
-    DELETED(3),
-    SUBMITTING(4),
-    UPDATING(5),
-    DELETING(6),
-    ERROR_SUBMITTING(7),
-    ERROR_UPDATING(8),
-    ERROR_DELETING(9),
-    REMOVED(10),
-    IMPORT_SUBMITTING(11),
-    IMPORT_UPDATING(12);
+	PENDING(0),
+	QUEUED(1),
+	READY(2),
+	DELETED(3),
+	SUBMITTING(4),
+	UPDATING(5),
+	DELETING(6),
+	ERROR_SUBMITTING(7),
+	ERROR_UPDATING(8),
+	ERROR_DELETING(9),
+	REMOVED(10),
+	IMPORT_SUBMITTING(11),
+	IMPORT_UPDATING(12);
 
-    private int value;
+	private int value;
 
-    EntryDistributionStatus(int value) {
-        this.value = value;
-    }
+	EntryDistributionStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryDistributionStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryDistributionStatus defined values and compare the inner value with the given one:
-        for(EntryDistributionStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryDistributionStatus.values().length > 0 ? EntryDistributionStatus.values()[0]: null;
+	public static EntryDistributionStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryDistributionStatus defined values and compare the inner value with the given one:
+		for(EntryDistributionStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryDistributionStatus.values().length > 0 ? EntryDistributionStatus.values()[0]: null;
    }
 }

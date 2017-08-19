@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SyndicationFeedType implements EnumAsInt {
-    GOOGLE_VIDEO(1),
-    YAHOO(2),
-    ITUNES(3),
-    TUBE_MOGUL(4),
-    KALTURA(5),
-    KALTURA_XSLT(6),
-    ROKU_DIRECT_PUBLISHER(7),
-    OPERA_TV_SNAP(8);
+	GOOGLE_VIDEO(1),
+	YAHOO(2),
+	ITUNES(3),
+	TUBE_MOGUL(4),
+	KALTURA(5),
+	KALTURA_XSLT(6),
+	ROKU_DIRECT_PUBLISHER(7),
+	OPERA_TV_SNAP(8);
 
-    private int value;
+	private int value;
 
-    SyndicationFeedType(int value) {
-        this.value = value;
-    }
+	SyndicationFeedType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static SyndicationFeedType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SyndicationFeedType defined values and compare the inner value with the given one:
-        for(SyndicationFeedType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SyndicationFeedType.values().length > 0 ? SyndicationFeedType.values()[0]: null;
+	public static SyndicationFeedType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SyndicationFeedType defined values and compare the inner value with the given one:
+		for(SyndicationFeedType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SyndicationFeedType.values().length > 0 ? SyndicationFeedType.values()[0]: null;
    }
 }

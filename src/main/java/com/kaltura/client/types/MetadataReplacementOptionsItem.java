@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Advanced metadata configuration for entry replacement process  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataReplacementOptionsItem.Tokenizer.class)
 public class MetadataReplacementOptionsItem extends PluginReplacementOptionsItem {
+	
+	public interface Tokenizer extends PluginReplacementOptionsItem.Tokenizer {
+		String shouldCopyMetadata();
+	}
 
 	/**  If true custom-metadata transferred to temp entry on entry replacement  */
-    private Boolean shouldCopyMetadata;
+	private Boolean shouldCopyMetadata;
 
-    // shouldCopyMetadata:
-    public Boolean getShouldCopyMetadata(){
-        return this.shouldCopyMetadata;
-    }
-    public void setShouldCopyMetadata(Boolean shouldCopyMetadata){
-        this.shouldCopyMetadata = shouldCopyMetadata;
-    }
+	// shouldCopyMetadata:
+	public Boolean getShouldCopyMetadata(){
+		return this.shouldCopyMetadata;
+	}
+	public void setShouldCopyMetadata(Boolean shouldCopyMetadata){
+		this.shouldCopyMetadata = shouldCopyMetadata;
+	}
+
+	public void shouldCopyMetadata(String multirequestToken){
+		setToken("shouldCopyMetadata", multirequestToken);
+	}
 
 
-    public MetadataReplacementOptionsItem() {
-       super();
-    }
+	public MetadataReplacementOptionsItem() {
+		super();
+	}
 
-    public MetadataReplacementOptionsItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataReplacementOptionsItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        shouldCopyMetadata = GsonParser.parseBoolean(jsonObject.get("shouldCopyMetadata"));
+		// set members values:
+		shouldCopyMetadata = GsonParser.parseBoolean(jsonObject.get("shouldCopyMetadata"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataReplacementOptionsItem");
-        kparams.add("shouldCopyMetadata", this.shouldCopyMetadata);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataReplacementOptionsItem");
+		kparams.add("shouldCopyMetadata", this.shouldCopyMetadata);
+		return kparams;
+	}
 
 }
 

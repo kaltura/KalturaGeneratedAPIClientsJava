@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IndexTagsByPrivacyContextJobData.Tokenizer.class)
 public class IndexTagsByPrivacyContextJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String changedCategoryId();
+		String deletedPrivacyContexts();
+		String addedPrivacyContexts();
+	}
 
-    private Integer changedCategoryId;
-    private String deletedPrivacyContexts;
-    private String addedPrivacyContexts;
+	private Integer changedCategoryId;
+	private String deletedPrivacyContexts;
+	private String addedPrivacyContexts;
 
-    // changedCategoryId:
-    public Integer getChangedCategoryId(){
-        return this.changedCategoryId;
-    }
-    public void setChangedCategoryId(Integer changedCategoryId){
-        this.changedCategoryId = changedCategoryId;
-    }
+	// changedCategoryId:
+	public Integer getChangedCategoryId(){
+		return this.changedCategoryId;
+	}
+	public void setChangedCategoryId(Integer changedCategoryId){
+		this.changedCategoryId = changedCategoryId;
+	}
 
-    // deletedPrivacyContexts:
-    public String getDeletedPrivacyContexts(){
-        return this.deletedPrivacyContexts;
-    }
-    public void setDeletedPrivacyContexts(String deletedPrivacyContexts){
-        this.deletedPrivacyContexts = deletedPrivacyContexts;
-    }
+	public void changedCategoryId(String multirequestToken){
+		setToken("changedCategoryId", multirequestToken);
+	}
 
-    // addedPrivacyContexts:
-    public String getAddedPrivacyContexts(){
-        return this.addedPrivacyContexts;
-    }
-    public void setAddedPrivacyContexts(String addedPrivacyContexts){
-        this.addedPrivacyContexts = addedPrivacyContexts;
-    }
+	// deletedPrivacyContexts:
+	public String getDeletedPrivacyContexts(){
+		return this.deletedPrivacyContexts;
+	}
+	public void setDeletedPrivacyContexts(String deletedPrivacyContexts){
+		this.deletedPrivacyContexts = deletedPrivacyContexts;
+	}
+
+	public void deletedPrivacyContexts(String multirequestToken){
+		setToken("deletedPrivacyContexts", multirequestToken);
+	}
+
+	// addedPrivacyContexts:
+	public String getAddedPrivacyContexts(){
+		return this.addedPrivacyContexts;
+	}
+	public void setAddedPrivacyContexts(String addedPrivacyContexts){
+		this.addedPrivacyContexts = addedPrivacyContexts;
+	}
+
+	public void addedPrivacyContexts(String multirequestToken){
+		setToken("addedPrivacyContexts", multirequestToken);
+	}
 
 
-    public IndexTagsByPrivacyContextJobData() {
-       super();
-    }
+	public IndexTagsByPrivacyContextJobData() {
+		super();
+	}
 
-    public IndexTagsByPrivacyContextJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IndexTagsByPrivacyContextJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        changedCategoryId = GsonParser.parseInt(jsonObject.get("changedCategoryId"));
-        deletedPrivacyContexts = GsonParser.parseString(jsonObject.get("deletedPrivacyContexts"));
-        addedPrivacyContexts = GsonParser.parseString(jsonObject.get("addedPrivacyContexts"));
+		// set members values:
+		changedCategoryId = GsonParser.parseInt(jsonObject.get("changedCategoryId"));
+		deletedPrivacyContexts = GsonParser.parseString(jsonObject.get("deletedPrivacyContexts"));
+		addedPrivacyContexts = GsonParser.parseString(jsonObject.get("addedPrivacyContexts"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIndexTagsByPrivacyContextJobData");
-        kparams.add("changedCategoryId", this.changedCategoryId);
-        kparams.add("deletedPrivacyContexts", this.deletedPrivacyContexts);
-        kparams.add("addedPrivacyContexts", this.addedPrivacyContexts);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIndexTagsByPrivacyContextJobData");
+		kparams.add("changedCategoryId", this.changedCategoryId);
+		kparams.add("deletedPrivacyContexts", this.deletedPrivacyContexts);
+		kparams.add("addedPrivacyContexts", this.addedPrivacyContexts);
+		return kparams;
+	}
 
 }
 

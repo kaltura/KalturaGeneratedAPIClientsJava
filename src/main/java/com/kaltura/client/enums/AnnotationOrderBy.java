@@ -34,49 +34,49 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AnnotationOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    DURATION_ASC("+duration"),
-    END_TIME_ASC("+endTime"),
-    PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
-    START_TIME_ASC("+startTime"),
-    TRIGGERED_AT_ASC("+triggeredAt"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    DURATION_DESC("-duration"),
-    END_TIME_DESC("-endTime"),
-    PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
-    START_TIME_DESC("-startTime"),
-    TRIGGERED_AT_DESC("-triggeredAt"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	DURATION_ASC("+duration"),
+	END_TIME_ASC("+endTime"),
+	PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
+	START_TIME_ASC("+startTime"),
+	TRIGGERED_AT_ASC("+triggeredAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	DURATION_DESC("-duration"),
+	END_TIME_DESC("-endTime"),
+	PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
+	START_TIME_DESC("-startTime"),
+	TRIGGERED_AT_DESC("-triggeredAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    AnnotationOrderBy(String value) {
-        this.value = value;
-    }
+	AnnotationOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AnnotationOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AnnotationOrderBy defined values and compare the inner value with the given one:
-        for(AnnotationOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AnnotationOrderBy.values().length > 0 ? AnnotationOrderBy.values()[0]: null;
+	public static AnnotationOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AnnotationOrderBy defined values and compare the inner value with the given one:
+		for(AnnotationOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AnnotationOrderBy.values().length > 0 ? AnnotationOrderBy.values()[0]: null;
    }
 }

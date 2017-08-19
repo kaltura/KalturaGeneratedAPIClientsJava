@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LikeBaseFilter.Tokenizer.class)
 public abstract class LikeBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String entryIdEqual();
+		String entryIdIn();
+		String userIdEqual();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+	}
 
-    private String entryIdEqual;
-    private String entryIdIn;
-    private String userIdEqual;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
+	private String entryIdEqual;
+	private String entryIdIn;
+	private String userIdEqual;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // entryIdIn:
-    public String getEntryIdIn(){
-        return this.entryIdIn;
-    }
-    public void setEntryIdIn(String entryIdIn){
-        this.entryIdIn = entryIdIn;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
+
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public LikeBaseFilter() {
-       super();
-    }
+	public LikeBaseFilter() {
+		super();
+	}
 
-    public LikeBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LikeBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		// set members values:
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLikeBaseFilter");
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("entryIdIn", this.entryIdIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLikeBaseFilter");
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GenericDistributionProviderParser implements EnumAsInt {
-    XSL(1),
-    XPATH(2),
-    REGEX(3);
+	XSL(1),
+	XPATH(2),
+	REGEX(3);
 
-    private int value;
+	private int value;
 
-    GenericDistributionProviderParser(int value) {
-        this.value = value;
-    }
+	GenericDistributionProviderParser(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static GenericDistributionProviderParser get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GenericDistributionProviderParser defined values and compare the inner value with the given one:
-        for(GenericDistributionProviderParser item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GenericDistributionProviderParser.values().length > 0 ? GenericDistributionProviderParser.values()[0]: null;
+	public static GenericDistributionProviderParser get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GenericDistributionProviderParser defined values and compare the inner value with the given one:
+		for(GenericDistributionProviderParser item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GenericDistributionProviderParser.values().length > 0 ? GenericDistributionProviderParser.values()[0]: null;
    }
 }

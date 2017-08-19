@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,40 +42,49 @@ import com.kaltura.client.utils.GsonParser;
 /**  Used to ingest media that streamed to the system and represented by token that
   returned from media server such as FMS or red5.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WebcamTokenResource.Tokenizer.class)
 public class WebcamTokenResource extends DataCenterContentResource {
+	
+	public interface Tokenizer extends DataCenterContentResource.Tokenizer {
+		String token();
+	}
 
 	/**  Token that returned from media server such as FMS or red5.  */
-    private String token;
+	private String token;
 
-    // token:
-    public String getToken(){
-        return this.token;
-    }
-    public void setToken(String token){
-        this.token = token;
-    }
+	// token:
+	public String getToken(){
+		return this.token;
+	}
+	public void setToken(String token){
+		this.token = token;
+	}
+
+	public void token(String multirequestToken){
+		setToken("token", multirequestToken);
+	}
 
 
-    public WebcamTokenResource() {
-       super();
-    }
+	public WebcamTokenResource() {
+		super();
+	}
 
-    public WebcamTokenResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WebcamTokenResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        token = GsonParser.parseString(jsonObject.get("token"));
+		// set members values:
+		token = GsonParser.parseString(jsonObject.get("token"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWebcamTokenResource");
-        kparams.add("token", this.token);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWebcamTokenResource");
+		kparams.add("token", this.token);
+		return kparams;
+	}
 
 }
 

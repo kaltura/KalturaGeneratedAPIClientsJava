@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,50 +43,60 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportResponse.Tokenizer.class)
 public class ReportResponse extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String columns();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> results();
+	}
 
-    private String columns;
-    private List<StringHolder> results;
+	private String columns;
+	private List<StringHolder> results;
 
-    // columns:
-    public String getColumns(){
-        return this.columns;
-    }
-    public void setColumns(String columns){
-        this.columns = columns;
-    }
+	// columns:
+	public String getColumns(){
+		return this.columns;
+	}
+	public void setColumns(String columns){
+		this.columns = columns;
+	}
 
-    // results:
-    public List<StringHolder> getResults(){
-        return this.results;
-    }
-    public void setResults(List<StringHolder> results){
-        this.results = results;
-    }
+	public void columns(String multirequestToken){
+		setToken("columns", multirequestToken);
+	}
+
+	// results:
+	public List<StringHolder> getResults(){
+		return this.results;
+	}
+	public void setResults(List<StringHolder> results){
+		this.results = results;
+	}
 
 
-    public ReportResponse() {
-       super();
-    }
+	public ReportResponse() {
+		super();
+	}
 
-    public ReportResponse(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        columns = GsonParser.parseString(jsonObject.get("columns"));
-        results = GsonParser.parseArray(jsonObject.getAsJsonArray("results"), StringHolder.class);
+		// set members values:
+		columns = GsonParser.parseString(jsonObject.get("columns"));
+		results = GsonParser.parseArray(jsonObject.getAsJsonArray("results"), StringHolder.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportResponse");
-        kparams.add("columns", this.columns);
-        kparams.add("results", this.results);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportResponse");
+		kparams.add("columns", this.columns);
+		kparams.add("results", this.results);
+		return kparams;
+	}
 
 }
 

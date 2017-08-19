@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,58 +41,77 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StartWidgetSessionResponse.Tokenizer.class)
 public class StartWidgetSessionResponse extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String partnerId();
+		String ks();
+		String userId();
+	}
 
-    private Integer partnerId;
-    private String ks;
-    private String userId;
+	private Integer partnerId;
+	private String ks;
+	private String userId;
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // ks:
-    public String getKs(){
-        return this.ks;
-    }
-    public void setKs(String ks){
-        this.ks = ks;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// ks:
+	public String getKs(){
+		return this.ks;
+	}
+	public void setKs(String ks){
+		this.ks = ks;
+	}
+
+	public void ks(String multirequestToken){
+		setToken("ks", multirequestToken);
+	}
+
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
 
-    public StartWidgetSessionResponse() {
-       super();
-    }
+	public StartWidgetSessionResponse() {
+		super();
+	}
 
-    public StartWidgetSessionResponse(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StartWidgetSessionResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        ks = GsonParser.parseString(jsonObject.get("ks"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
+		// set members values:
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		ks = GsonParser.parseString(jsonObject.get("ks"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStartWidgetSessionResponse");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStartWidgetSessionResponse");
+		return kparams;
+	}
 
 }
 

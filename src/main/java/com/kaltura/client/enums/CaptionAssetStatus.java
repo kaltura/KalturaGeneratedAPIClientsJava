@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CaptionAssetStatus implements EnumAsInt {
-    ERROR(-1),
-    QUEUED(0),
-    READY(2),
-    DELETED(3),
-    IMPORTING(7),
-    EXPORTING(9);
+	ERROR(-1),
+	QUEUED(0),
+	READY(2),
+	DELETED(3),
+	IMPORTING(7),
+	EXPORTING(9);
 
-    private int value;
+	private int value;
 
-    CaptionAssetStatus(int value) {
-        this.value = value;
-    }
+	CaptionAssetStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static CaptionAssetStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CaptionAssetStatus defined values and compare the inner value with the given one:
-        for(CaptionAssetStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CaptionAssetStatus.values().length > 0 ? CaptionAssetStatus.values()[0]: null;
+	public static CaptionAssetStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CaptionAssetStatus defined values and compare the inner value with the given one:
+		for(CaptionAssetStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CaptionAssetStatus.values().length > 0 ? CaptionAssetStatus.values()[0]: null;
    }
 }

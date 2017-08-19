@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DynamicObjectSearchItem.Tokenizer.class)
 public class DynamicObjectSearchItem extends SearchOperator {
+	
+	public interface Tokenizer extends SearchOperator.Tokenizer {
+		String field();
+	}
 
-    private String field;
+	private String field;
 
-    // field:
-    public String getField(){
-        return this.field;
-    }
-    public void setField(String field){
-        this.field = field;
-    }
+	// field:
+	public String getField(){
+		return this.field;
+	}
+	public void setField(String field){
+		this.field = field;
+	}
+
+	public void field(String multirequestToken){
+		setToken("field", multirequestToken);
+	}
 
 
-    public DynamicObjectSearchItem() {
-       super();
-    }
+	public DynamicObjectSearchItem() {
+		super();
+	}
 
-    public DynamicObjectSearchItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DynamicObjectSearchItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        field = GsonParser.parseString(jsonObject.get("field"));
+		// set members values:
+		field = GsonParser.parseString(jsonObject.get("field"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDynamicObjectSearchItem");
-        kparams.add("field", this.field);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDynamicObjectSearchItem");
+		kparams.add("field", this.field);
+		return kparams;
+	}
 
 }
 

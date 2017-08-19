@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.UploadTokenStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,105 +41,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UploadTokenBaseFilter.Tokenizer.class)
 public abstract class UploadTokenBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String userIdEqual();
+		String statusEqual();
+		String statusIn();
+		String fileNameEqual();
+		String fileSizeEqual();
+	}
 
-    private String idEqual;
-    private String idIn;
-    private String userIdEqual;
-    private UploadTokenStatus statusEqual;
-    private String statusIn;
-    private String fileNameEqual;
-    private Double fileSizeEqual;
+	private String idEqual;
+	private String idIn;
+	private String userIdEqual;
+	private UploadTokenStatus statusEqual;
+	private String statusIn;
+	private String fileNameEqual;
+	private Double fileSizeEqual;
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // statusEqual:
-    public UploadTokenStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(UploadTokenStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
 
-    // fileNameEqual:
-    public String getFileNameEqual(){
-        return this.fileNameEqual;
-    }
-    public void setFileNameEqual(String fileNameEqual){
-        this.fileNameEqual = fileNameEqual;
-    }
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
 
-    // fileSizeEqual:
-    public Double getFileSizeEqual(){
-        return this.fileSizeEqual;
-    }
-    public void setFileSizeEqual(Double fileSizeEqual){
-        this.fileSizeEqual = fileSizeEqual;
-    }
+	// statusEqual:
+	public UploadTokenStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(UploadTokenStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// fileNameEqual:
+	public String getFileNameEqual(){
+		return this.fileNameEqual;
+	}
+	public void setFileNameEqual(String fileNameEqual){
+		this.fileNameEqual = fileNameEqual;
+	}
+
+	public void fileNameEqual(String multirequestToken){
+		setToken("fileNameEqual", multirequestToken);
+	}
+
+	// fileSizeEqual:
+	public Double getFileSizeEqual(){
+		return this.fileSizeEqual;
+	}
+	public void setFileSizeEqual(Double fileSizeEqual){
+		this.fileSizeEqual = fileSizeEqual;
+	}
+
+	public void fileSizeEqual(String multirequestToken){
+		setToken("fileSizeEqual", multirequestToken);
+	}
 
 
-    public UploadTokenBaseFilter() {
-       super();
-    }
+	public UploadTokenBaseFilter() {
+		super();
+	}
 
-    public UploadTokenBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UploadTokenBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        statusEqual = UploadTokenStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        fileNameEqual = GsonParser.parseString(jsonObject.get("fileNameEqual"));
-        fileSizeEqual = GsonParser.parseDouble(jsonObject.get("fileSizeEqual"));
+		// set members values:
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		statusEqual = UploadTokenStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		fileNameEqual = GsonParser.parseString(jsonObject.get("fileNameEqual"));
+		fileSizeEqual = GsonParser.parseDouble(jsonObject.get("fileSizeEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUploadTokenBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("fileNameEqual", this.fileNameEqual);
-        kparams.add("fileSizeEqual", this.fileSizeEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUploadTokenBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("fileNameEqual", this.fileNameEqual);
+		kparams.add("fileSizeEqual", this.fileSizeEqual);
+		return kparams;
+	}
 
 }
 

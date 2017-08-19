@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.PlaylistType;
 import com.kaltura.client.types.BaseEntry;
 import com.kaltura.client.types.Context;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.MediaEntryFilterForPlaylist;
 import com.kaltura.client.types.Playlist;
 import com.kaltura.client.types.PlaylistFilter;
@@ -52,159 +50,273 @@ import java.util.List;
 /**  Playlist service lets you create,manage and play your playlists  Playlists could
   be static (containing a fixed list of entries) or dynamic (baseed on a filter)  */
 public class PlaylistService {
+	
+	public static class AddPlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, AddPlaylistBuilder> {
+		
+		public AddPlaylistBuilder(Playlist playlist, boolean updateStats) {
+			super(Playlist.class, "playlist", "add");
+			params.add("playlist", playlist);
+			params.add("updateStats", updateStats);
+		}
+		
+		public void updateStats(String multirequestToken) {
+			params.add("updateStats", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Playlist> add(Playlist playlist)  {
-        return add(playlist, false);
-    }
+	public static AddPlaylistBuilder add(Playlist playlist)  {
+		return add(playlist, false);
+	}
 
 	/**  Add new playlist   Note that all entries used in a playlist will become public
 	  and may appear in KalturaNetwork  */
-    public static RequestBuilder<Playlist> add(Playlist playlist, boolean updateStats)  {
-        Params kparams = new Params();
-        kparams.add("playlist", playlist);
-        kparams.add("updateStats", updateStats);
+    public static AddPlaylistBuilder add(Playlist playlist, boolean updateStats)  {
+		return new AddPlaylistBuilder(playlist, updateStats);
+	}
+	
+	public static class ClonePlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, ClonePlaylistBuilder> {
+		
+		public ClonePlaylistBuilder(String id, Playlist newPlaylist) {
+			super(Playlist.class, "playlist", "clone");
+			params.add("id", id);
+			params.add("newPlaylist", newPlaylist);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Playlist>(Playlist.class, "playlist", "add", kparams);
-    }
-
-    public static RequestBuilder<Playlist> clone(String id)  {
-        return clone(id, null);
-    }
+	public static ClonePlaylistBuilder clone(String id)  {
+		return clone(id, null);
+	}
 
 	/**  Clone an existing playlist  */
-    public static RequestBuilder<Playlist> clone(String id, Playlist newPlaylist)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("newPlaylist", newPlaylist);
-
-        return new RequestBuilder<Playlist>(Playlist.class, "playlist", "clone", kparams);
-    }
+    public static ClonePlaylistBuilder clone(String id, Playlist newPlaylist)  {
+		return new ClonePlaylistBuilder(id, newPlaylist);
+	}
+	
+	public static class DeletePlaylistBuilder extends NullRequestBuilder {
+		
+		public DeletePlaylistBuilder(String id) {
+			super("playlist", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete existing playlist  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static DeletePlaylistBuilder delete(String id)  {
+		return new DeletePlaylistBuilder(id);
+	}
+	
+	public static class ExecutePlaylistBuilder extends ArrayRequestBuilder<BaseEntry, BaseEntry.Tokenizer, ExecutePlaylistBuilder> {
+		
+		public ExecutePlaylistBuilder(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter, FilterPager pager) {
+			super(BaseEntry.class, "playlist", "execute");
+			params.add("id", id);
+			params.add("detailed", detailed);
+			params.add("playlistContext", playlistContext);
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void detailed(String multirequestToken) {
+			params.add("detailed", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("playlist", "delete", kparams);
-    }
+	public static ExecutePlaylistBuilder execute(String id)  {
+		return execute(id, "");
+	}
 
-    public static RequestBuilder<List<BaseEntry>> execute(String id)  {
-        return execute(id, "");
-    }
+	public static ExecutePlaylistBuilder execute(String id, String detailed)  {
+		return execute(id, detailed, null);
+	}
 
-    public static RequestBuilder<List<BaseEntry>> execute(String id, String detailed)  {
-        return execute(id, detailed, null);
-    }
+	public static ExecutePlaylistBuilder execute(String id, String detailed, Context playlistContext)  {
+		return execute(id, detailed, playlistContext, null);
+	}
 
-    public static RequestBuilder<List<BaseEntry>> execute(String id, String detailed, Context playlistContext)  {
-        return execute(id, detailed, playlistContext, null);
-    }
-
-    public static RequestBuilder<List<BaseEntry>> execute(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter)  {
-        return execute(id, detailed, playlistContext, filter, null);
-    }
+	public static ExecutePlaylistBuilder execute(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter)  {
+		return execute(id, detailed, playlistContext, filter, null);
+	}
 
 	/**  Retrieve playlist for playing purpose  */
-    public static RequestBuilder<List<BaseEntry>> execute(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("detailed", detailed);
-        kparams.add("playlistContext", playlistContext);
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ExecutePlaylistBuilder execute(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter, FilterPager pager)  {
+		return new ExecutePlaylistBuilder(id, detailed, playlistContext, filter, pager);
+	}
+	
+	public static class ExecuteFromContentPlaylistBuilder extends ArrayRequestBuilder<BaseEntry, BaseEntry.Tokenizer, ExecuteFromContentPlaylistBuilder> {
+		
+		public ExecuteFromContentPlaylistBuilder(PlaylistType playlistType, String playlistContent, String detailed, FilterPager pager) {
+			super(BaseEntry.class, "playlist", "executeFromContent");
+			params.add("playlistType", playlistType);
+			params.add("playlistContent", playlistContent);
+			params.add("detailed", detailed);
+			params.add("pager", pager);
+		}
+		
+		public void playlistType(String multirequestToken) {
+			params.add("playlistType", multirequestToken);
+		}
+		
+		public void playlistContent(String multirequestToken) {
+			params.add("playlistContent", multirequestToken);
+		}
+		
+		public void detailed(String multirequestToken) {
+			params.add("detailed", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<BaseEntry>(BaseEntry.class, "playlist", "execute", kparams);
-    }
+	public static ExecuteFromContentPlaylistBuilder executeFromContent(PlaylistType playlistType, String playlistContent)  {
+		return executeFromContent(playlistType, playlistContent, "");
+	}
 
-    public static RequestBuilder<List<BaseEntry>> executeFromContent(PlaylistType playlistType, String playlistContent)  {
-        return executeFromContent(playlistType, playlistContent, "");
-    }
-
-    public static RequestBuilder<List<BaseEntry>> executeFromContent(PlaylistType playlistType, String playlistContent, String detailed)  {
-        return executeFromContent(playlistType, playlistContent, detailed, null);
-    }
+	public static ExecuteFromContentPlaylistBuilder executeFromContent(PlaylistType playlistType, String playlistContent, String detailed)  {
+		return executeFromContent(playlistType, playlistContent, detailed, null);
+	}
 
 	/**  Retrieve playlist for playing purpose, based on content  */
-    public static RequestBuilder<List<BaseEntry>> executeFromContent(PlaylistType playlistType, String playlistContent, String detailed, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("playlistType", playlistType);
-        kparams.add("playlistContent", playlistContent);
-        kparams.add("detailed", detailed);
-        kparams.add("pager", pager);
+    public static ExecuteFromContentPlaylistBuilder executeFromContent(PlaylistType playlistType, String playlistContent, String detailed, FilterPager pager)  {
+		return new ExecuteFromContentPlaylistBuilder(playlistType, playlistContent, detailed, pager);
+	}
+	
+	public static class ExecuteFromFiltersPlaylistBuilder extends ArrayRequestBuilder<BaseEntry, BaseEntry.Tokenizer, ExecuteFromFiltersPlaylistBuilder> {
+		
+		public ExecuteFromFiltersPlaylistBuilder(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed, FilterPager pager) {
+			super(BaseEntry.class, "playlist", "executeFromFilters");
+			params.add("filters", filters);
+			params.add("totalResults", totalResults);
+			params.add("detailed", detailed);
+			params.add("pager", pager);
+		}
+		
+		public void totalResults(String multirequestToken) {
+			params.add("totalResults", multirequestToken);
+		}
+		
+		public void detailed(String multirequestToken) {
+			params.add("detailed", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<BaseEntry>(BaseEntry.class, "playlist", "executeFromContent", kparams);
-    }
+	public static ExecuteFromFiltersPlaylistBuilder executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults)  {
+		return executeFromFilters(filters, totalResults, "1");
+	}
 
-    public static RequestBuilder<List<BaseEntry>> executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults)  {
-        return executeFromFilters(filters, totalResults, "1");
-    }
-
-    public static RequestBuilder<List<BaseEntry>> executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed)  {
-        return executeFromFilters(filters, totalResults, detailed, null);
-    }
+	public static ExecuteFromFiltersPlaylistBuilder executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed)  {
+		return executeFromFilters(filters, totalResults, detailed, null);
+	}
 
 	/**  Revrieve playlist for playing purpose, based on media entry filters  */
-    public static RequestBuilder<List<BaseEntry>> executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filters", filters);
-        kparams.add("totalResults", totalResults);
-        kparams.add("detailed", detailed);
-        kparams.add("pager", pager);
+    public static ExecuteFromFiltersPlaylistBuilder executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed, FilterPager pager)  {
+		return new ExecuteFromFiltersPlaylistBuilder(filters, totalResults, detailed, pager);
+	}
+	
+	public static class GetPlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, GetPlaylistBuilder> {
+		
+		public GetPlaylistBuilder(String id, int version) {
+			super(Playlist.class, "playlist", "get");
+			params.add("id", id);
+			params.add("version", version);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<BaseEntry>(BaseEntry.class, "playlist", "executeFromFilters", kparams);
-    }
-
-    public static RequestBuilder<Playlist> get(String id)  {
-        return get(id, -1);
-    }
+	public static GetPlaylistBuilder get(String id)  {
+		return get(id, -1);
+	}
 
 	/**  Retrieve a playlist  */
-    public static RequestBuilder<Playlist> get(String id, int version)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("version", version);
-
-        return new RequestBuilder<Playlist>(Playlist.class, "playlist", "get", kparams);
-    }
+    public static GetPlaylistBuilder get(String id, int version)  {
+		return new GetPlaylistBuilder(id, version);
+	}
+	
+	public static class GetStatsFromContentPlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, GetStatsFromContentPlaylistBuilder> {
+		
+		public GetStatsFromContentPlaylistBuilder(PlaylistType playlistType, String playlistContent) {
+			super(Playlist.class, "playlist", "getStatsFromContent");
+			params.add("playlistType", playlistType);
+			params.add("playlistContent", playlistContent);
+		}
+		
+		public void playlistType(String multirequestToken) {
+			params.add("playlistType", multirequestToken);
+		}
+		
+		public void playlistContent(String multirequestToken) {
+			params.add("playlistContent", multirequestToken);
+		}
+	}
 
 	/**  Retrieve playlist statistics  */
-    public static RequestBuilder<Playlist> getStatsFromContent(PlaylistType playlistType, String playlistContent)  {
-        Params kparams = new Params();
-        kparams.add("playlistType", playlistType);
-        kparams.add("playlistContent", playlistContent);
+    public static GetStatsFromContentPlaylistBuilder getStatsFromContent(PlaylistType playlistType, String playlistContent)  {
+		return new GetStatsFromContentPlaylistBuilder(playlistType, playlistContent);
+	}
+	
+	public static class ListPlaylistBuilder extends ListResponseRequestBuilder<Playlist, Playlist.Tokenizer, ListPlaylistBuilder> {
+		
+		public ListPlaylistBuilder(PlaylistFilter filter, FilterPager pager) {
+			super(Playlist.class, "playlist", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<Playlist>(Playlist.class, "playlist", "getStatsFromContent", kparams);
-    }
+	public static ListPlaylistBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Playlist>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Playlist>> list(PlaylistFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListPlaylistBuilder list(PlaylistFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List available playlists  */
-    public static RequestBuilder<ListResponse<Playlist>> list(PlaylistFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListPlaylistBuilder list(PlaylistFilter filter, FilterPager pager)  {
+		return new ListPlaylistBuilder(filter, pager);
+	}
+	
+	public static class UpdatePlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, UpdatePlaylistBuilder> {
+		
+		public UpdatePlaylistBuilder(String id, Playlist playlist, boolean updateStats) {
+			super(Playlist.class, "playlist", "update");
+			params.add("id", id);
+			params.add("playlist", playlist);
+			params.add("updateStats", updateStats);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void updateStats(String multirequestToken) {
+			params.add("updateStats", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<Playlist>(Playlist.class, "playlist", "list", kparams);
-    }
-
-    public static RequestBuilder<Playlist> update(String id, Playlist playlist)  {
-        return update(id, playlist, false);
-    }
+	public static UpdatePlaylistBuilder update(String id, Playlist playlist)  {
+		return update(id, playlist, false);
+	}
 
 	/**  Update existing playlist   Note - you cannot change playlist type. updated
 	  playlist must be of the same type.  */
-    public static RequestBuilder<Playlist> update(String id, Playlist playlist, boolean updateStats)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("playlist", playlist);
-        kparams.add("updateStats", updateStats);
-
-        return new RequestBuilder<Playlist>(Playlist.class, "playlist", "update", kparams);
-    }
+    public static UpdatePlaylistBuilder update(String id, Playlist playlist, boolean updateStats)  {
+		return new UpdatePlaylistBuilder(id, playlist, updateStats);
+	}
 }

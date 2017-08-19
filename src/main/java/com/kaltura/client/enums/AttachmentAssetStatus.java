@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AttachmentAssetStatus implements EnumAsInt {
-    ERROR(-1),
-    QUEUED(0),
-    READY(2),
-    DELETED(3),
-    IMPORTING(7),
-    EXPORTING(9);
+	ERROR(-1),
+	QUEUED(0),
+	READY(2),
+	DELETED(3),
+	IMPORTING(7),
+	EXPORTING(9);
 
-    private int value;
+	private int value;
 
-    AttachmentAssetStatus(int value) {
-        this.value = value;
-    }
+	AttachmentAssetStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AttachmentAssetStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AttachmentAssetStatus defined values and compare the inner value with the given one:
-        for(AttachmentAssetStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AttachmentAssetStatus.values().length > 0 ? AttachmentAssetStatus.values()[0]: null;
+	public static AttachmentAssetStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AttachmentAssetStatus defined values and compare the inner value with the given one:
+		for(AttachmentAssetStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AttachmentAssetStatus.values().length > 0 ? AttachmentAssetStatus.values()[0]: null;
    }
 }

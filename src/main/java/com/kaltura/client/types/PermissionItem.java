@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.PermissionItemType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,89 +42,123 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PermissionItem.Tokenizer.class)
 public abstract class PermissionItem extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String type();
+		String partnerId();
+		String tags();
+		String createdAt();
+		String updatedAt();
+	}
 
-    private Integer id;
-    private PermissionItemType type;
-    private Integer partnerId;
-    private String tags;
-    private Integer createdAt;
-    private Integer updatedAt;
+	private Integer id;
+	private PermissionItemType type;
+	private Integer partnerId;
+	private String tags;
+	private Integer createdAt;
+	private Integer updatedAt;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // type:
-    public PermissionItemType getType(){
-        return this.type;
-    }
-    public void setType(PermissionItemType type){
-        this.type = type;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// type:
+	public PermissionItemType getType(){
+		return this.type;
+	}
+	public void setType(PermissionItemType type){
+		this.type = type;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
 
-    public PermissionItem() {
-       super();
-    }
+	public PermissionItem() {
+		super();
+	}
 
-    public PermissionItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PermissionItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        type = PermissionItemType.get(GsonParser.parseString(jsonObject.get("type")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		type = PermissionItemType.get(GsonParser.parseString(jsonObject.get("type")));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPermissionItem");
-        kparams.add("tags", this.tags);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPermissionItem");
+		kparams.add("tags", this.tags);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,54 +42,68 @@ import com.kaltura.client.utils.GsonParser;
 /**  Defines the condition to match a property and value on core asset object (or one
   if its inherited objects)  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetDistributionPropertyCondition.Tokenizer.class)
 public class AssetDistributionPropertyCondition extends AssetDistributionCondition {
+	
+	public interface Tokenizer extends AssetDistributionCondition.Tokenizer {
+		String propertyName();
+		String propertyValue();
+	}
 
 	/**  The property name to look for, this will match to a getter on the asset object. 
 	   Should be camelCase naming convention (defining "myPropertyName" will look for
 	  getMyPropertyName())  */
-    private String propertyName;
+	private String propertyName;
 	/**  The value to compare  */
-    private String propertyValue;
+	private String propertyValue;
 
-    // propertyName:
-    public String getPropertyName(){
-        return this.propertyName;
-    }
-    public void setPropertyName(String propertyName){
-        this.propertyName = propertyName;
-    }
+	// propertyName:
+	public String getPropertyName(){
+		return this.propertyName;
+	}
+	public void setPropertyName(String propertyName){
+		this.propertyName = propertyName;
+	}
 
-    // propertyValue:
-    public String getPropertyValue(){
-        return this.propertyValue;
-    }
-    public void setPropertyValue(String propertyValue){
-        this.propertyValue = propertyValue;
-    }
+	public void propertyName(String multirequestToken){
+		setToken("propertyName", multirequestToken);
+	}
+
+	// propertyValue:
+	public String getPropertyValue(){
+		return this.propertyValue;
+	}
+	public void setPropertyValue(String propertyValue){
+		this.propertyValue = propertyValue;
+	}
+
+	public void propertyValue(String multirequestToken){
+		setToken("propertyValue", multirequestToken);
+	}
 
 
-    public AssetDistributionPropertyCondition() {
-       super();
-    }
+	public AssetDistributionPropertyCondition() {
+		super();
+	}
 
-    public AssetDistributionPropertyCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetDistributionPropertyCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        propertyName = GsonParser.parseString(jsonObject.get("propertyName"));
-        propertyValue = GsonParser.parseString(jsonObject.get("propertyValue"));
+		// set members values:
+		propertyName = GsonParser.parseString(jsonObject.get("propertyName"));
+		propertyValue = GsonParser.parseString(jsonObject.get("propertyValue"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetDistributionPropertyCondition");
-        kparams.add("propertyName", this.propertyName);
-        kparams.add("propertyValue", this.propertyValue);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetDistributionPropertyCondition");
+		kparams.add("propertyName", this.propertyName);
+		kparams.add("propertyValue", this.propertyValue);
+		return kparams;
+	}
 
 }
 

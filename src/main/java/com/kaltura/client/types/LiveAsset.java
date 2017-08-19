@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveAsset.Tokenizer.class)
 public class LiveAsset extends FlavorAsset {
+	
+	public interface Tokenizer extends FlavorAsset.Tokenizer {
+		String multicastIP();
+		String multicastPort();
+	}
 
-    private String multicastIP;
-    private Integer multicastPort;
+	private String multicastIP;
+	private Integer multicastPort;
 
-    // multicastIP:
-    public String getMulticastIP(){
-        return this.multicastIP;
-    }
-    public void setMulticastIP(String multicastIP){
-        this.multicastIP = multicastIP;
-    }
+	// multicastIP:
+	public String getMulticastIP(){
+		return this.multicastIP;
+	}
+	public void setMulticastIP(String multicastIP){
+		this.multicastIP = multicastIP;
+	}
 
-    // multicastPort:
-    public Integer getMulticastPort(){
-        return this.multicastPort;
-    }
-    public void setMulticastPort(Integer multicastPort){
-        this.multicastPort = multicastPort;
-    }
+	public void multicastIP(String multirequestToken){
+		setToken("multicastIP", multirequestToken);
+	}
+
+	// multicastPort:
+	public Integer getMulticastPort(){
+		return this.multicastPort;
+	}
+	public void setMulticastPort(Integer multicastPort){
+		this.multicastPort = multicastPort;
+	}
+
+	public void multicastPort(String multirequestToken){
+		setToken("multicastPort", multirequestToken);
+	}
 
 
-    public LiveAsset() {
-       super();
-    }
+	public LiveAsset() {
+		super();
+	}
 
-    public LiveAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        multicastIP = GsonParser.parseString(jsonObject.get("multicastIP"));
-        multicastPort = GsonParser.parseInt(jsonObject.get("multicastPort"));
+		// set members values:
+		multicastIP = GsonParser.parseString(jsonObject.get("multicastIP"));
+		multicastPort = GsonParser.parseInt(jsonObject.get("multicastPort"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveAsset");
-        kparams.add("multicastIP", this.multicastIP);
-        kparams.add("multicastPort", this.multicastPort);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveAsset");
+		kparams.add("multicastIP", this.multicastIP);
+		kparams.add("multicastPort", this.multicastPort);
+		return kparams;
+	}
 
 }
 

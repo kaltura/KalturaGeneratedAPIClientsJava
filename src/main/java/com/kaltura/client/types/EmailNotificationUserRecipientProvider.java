@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.UserFilter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,44 @@ import com.kaltura.client.utils.GsonParser;
 /**  API class for recipient provider which constructs a dynamic list of recipients
   according to a user filter  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationUserRecipientProvider.Tokenizer.class)
 public class EmailNotificationUserRecipientProvider extends EmailNotificationRecipientProvider {
+	
+	public interface Tokenizer extends EmailNotificationRecipientProvider.Tokenizer {
+		UserFilter.Tokenizer filter();
+	}
 
-    private UserFilter filter;
+	private UserFilter filter;
 
-    // filter:
-    public UserFilter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(UserFilter filter){
-        this.filter = filter;
-    }
+	// filter:
+	public UserFilter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(UserFilter filter){
+		this.filter = filter;
+	}
 
 
-    public EmailNotificationUserRecipientProvider() {
-       super();
-    }
+	public EmailNotificationUserRecipientProvider() {
+		super();
+	}
 
-    public EmailNotificationUserRecipientProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationUserRecipientProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationUserRecipientProvider");
-        kparams.add("filter", this.filter);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationUserRecipientProvider");
+		kparams.add("filter", this.filter);
+		return kparams;
+	}
 
 }
 

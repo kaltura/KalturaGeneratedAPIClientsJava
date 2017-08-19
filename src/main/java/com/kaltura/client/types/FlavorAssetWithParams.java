@@ -33,6 +33,7 @@ import com.kaltura.client.types.FlavorAsset;
 import com.kaltura.client.types.FlavorParams;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,64 +43,75 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorAssetWithParams.Tokenizer.class)
 public class FlavorAssetWithParams extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		FlavorAsset.Tokenizer flavorAsset();
+		FlavorParams.Tokenizer flavorParams();
+		String entryId();
+	}
 
 	/**  The Flavor Asset (Can be null when there are params without asset)  */
-    private FlavorAsset flavorAsset;
+	private FlavorAsset flavorAsset;
 	/**  The Flavor Params  */
-    private FlavorParams flavorParams;
+	private FlavorParams flavorParams;
 	/**  The entry id  */
-    private String entryId;
+	private String entryId;
 
-    // flavorAsset:
-    public FlavorAsset getFlavorAsset(){
-        return this.flavorAsset;
-    }
-    public void setFlavorAsset(FlavorAsset flavorAsset){
-        this.flavorAsset = flavorAsset;
-    }
+	// flavorAsset:
+	public FlavorAsset getFlavorAsset(){
+		return this.flavorAsset;
+	}
+	public void setFlavorAsset(FlavorAsset flavorAsset){
+		this.flavorAsset = flavorAsset;
+	}
 
-    // flavorParams:
-    public FlavorParams getFlavorParams(){
-        return this.flavorParams;
-    }
-    public void setFlavorParams(FlavorParams flavorParams){
-        this.flavorParams = flavorParams;
-    }
+	// flavorParams:
+	public FlavorParams getFlavorParams(){
+		return this.flavorParams;
+	}
+	public void setFlavorParams(FlavorParams flavorParams){
+		this.flavorParams = flavorParams;
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
 
-    public FlavorAssetWithParams() {
-       super();
-    }
+	public FlavorAssetWithParams() {
+		super();
+	}
 
-    public FlavorAssetWithParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorAssetWithParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAsset = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorAsset"), FlavorAsset.class);
-        flavorParams = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorParams"), FlavorParams.class);
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		// set members values:
+		flavorAsset = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorAsset"), FlavorAsset.class);
+		flavorParams = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorParams"), FlavorParams.class);
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorAssetWithParams");
-        kparams.add("flavorAsset", this.flavorAsset);
-        kparams.add("flavorParams", this.flavorParams);
-        kparams.add("entryId", this.entryId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorAssetWithParams");
+		kparams.add("flavorAsset", this.flavorAsset);
+		kparams.add("flavorParams", this.flavorParams);
+		kparams.add("entryId", this.entryId);
+		return kparams;
+	}
 
 }
 

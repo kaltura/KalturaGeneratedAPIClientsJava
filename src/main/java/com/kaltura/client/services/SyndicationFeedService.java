@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BaseSyndicationFeed;
 import com.kaltura.client.types.BaseSyndicationFeedFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.SyndicationFeedEntryCount;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -46,71 +44,126 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage Syndication Feeds  */
 public class SyndicationFeedService {
+	
+	public static class AddSyndicationFeedBuilder extends RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.Tokenizer, AddSyndicationFeedBuilder> {
+		
+		public AddSyndicationFeedBuilder(BaseSyndicationFeed syndicationFeed) {
+			super(BaseSyndicationFeed.class, "syndicationfeed", "add");
+			params.add("syndicationFeed", syndicationFeed);
+		}
+	}
 
 	/**  Add new Syndication Feed  */
-    public static RequestBuilder<BaseSyndicationFeed> add(BaseSyndicationFeed syndicationFeed)  {
-        Params kparams = new Params();
-        kparams.add("syndicationFeed", syndicationFeed);
-
-        return new RequestBuilder<BaseSyndicationFeed>(BaseSyndicationFeed.class, "syndicationfeed", "add", kparams);
-    }
+    public static AddSyndicationFeedBuilder add(BaseSyndicationFeed syndicationFeed)  {
+		return new AddSyndicationFeedBuilder(syndicationFeed);
+	}
+	
+	public static class DeleteSyndicationFeedBuilder extends NullRequestBuilder {
+		
+		public DeleteSyndicationFeedBuilder(String id) {
+			super("syndicationfeed", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Syndication Feed by ID  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("syndicationfeed", "delete", kparams);
-    }
+    public static DeleteSyndicationFeedBuilder delete(String id)  {
+		return new DeleteSyndicationFeedBuilder(id);
+	}
+	
+	public static class GetSyndicationFeedBuilder extends RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.Tokenizer, GetSyndicationFeedBuilder> {
+		
+		public GetSyndicationFeedBuilder(String id) {
+			super(BaseSyndicationFeed.class, "syndicationfeed", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Syndication Feed by ID  */
-    public static RequestBuilder<BaseSyndicationFeed> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<BaseSyndicationFeed>(BaseSyndicationFeed.class, "syndicationfeed", "get", kparams);
-    }
+    public static GetSyndicationFeedBuilder get(String id)  {
+		return new GetSyndicationFeedBuilder(id);
+	}
+	
+	public static class GetEntryCountSyndicationFeedBuilder extends RequestBuilder<SyndicationFeedEntryCount, SyndicationFeedEntryCount.Tokenizer, GetEntryCountSyndicationFeedBuilder> {
+		
+		public GetEntryCountSyndicationFeedBuilder(String feedId) {
+			super(SyndicationFeedEntryCount.class, "syndicationfeed", "getEntryCount");
+			params.add("feedId", feedId);
+		}
+		
+		public void feedId(String multirequestToken) {
+			params.add("feedId", multirequestToken);
+		}
+	}
 
 	/**  get entry count for a syndication feed  */
-    public static RequestBuilder<SyndicationFeedEntryCount> getEntryCount(String feedId)  {
-        Params kparams = new Params();
-        kparams.add("feedId", feedId);
+    public static GetEntryCountSyndicationFeedBuilder getEntryCount(String feedId)  {
+		return new GetEntryCountSyndicationFeedBuilder(feedId);
+	}
+	
+	public static class ListSyndicationFeedBuilder extends ListResponseRequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.Tokenizer, ListSyndicationFeedBuilder> {
+		
+		public ListSyndicationFeedBuilder(BaseSyndicationFeedFilter filter, FilterPager pager) {
+			super(BaseSyndicationFeed.class, "syndicationfeed", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<SyndicationFeedEntryCount>(SyndicationFeedEntryCount.class, "syndicationfeed", "getEntryCount", kparams);
-    }
+	public static ListSyndicationFeedBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<BaseSyndicationFeed>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<BaseSyndicationFeed>> list(BaseSyndicationFeedFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListSyndicationFeedBuilder list(BaseSyndicationFeedFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Syndication Feeds by filter with paging support  */
-    public static RequestBuilder<ListResponse<BaseSyndicationFeed>> list(BaseSyndicationFeedFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<BaseSyndicationFeed>(BaseSyndicationFeed.class, "syndicationfeed", "list", kparams);
-    }
+    public static ListSyndicationFeedBuilder list(BaseSyndicationFeedFilter filter, FilterPager pager)  {
+		return new ListSyndicationFeedBuilder(filter, pager);
+	}
+	
+	public static class RequestConversionSyndicationFeedBuilder extends RequestBuilder<String, String, RequestConversionSyndicationFeedBuilder> {
+		
+		public RequestConversionSyndicationFeedBuilder(String feedId) {
+			super(String.class, "syndicationfeed", "requestConversion");
+			params.add("feedId", feedId);
+		}
+		
+		public void feedId(String multirequestToken) {
+			params.add("feedId", multirequestToken);
+		}
+	}
 
 	/**  request conversion for all entries that doesnt have the required flavor param  
 	  returns a comma-separated ids of conversion jobs  */
-    public static RequestBuilder<String> requestConversion(String feedId)  {
-        Params kparams = new Params();
-        kparams.add("feedId", feedId);
-
-        return new RequestBuilder<String>(String.class, "syndicationfeed", "requestConversion", kparams);
-    }
+    public static RequestConversionSyndicationFeedBuilder requestConversion(String feedId)  {
+		return new RequestConversionSyndicationFeedBuilder(feedId);
+	}
+	
+	public static class UpdateSyndicationFeedBuilder extends RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.Tokenizer, UpdateSyndicationFeedBuilder> {
+		
+		public UpdateSyndicationFeedBuilder(String id, BaseSyndicationFeed syndicationFeed) {
+			super(BaseSyndicationFeed.class, "syndicationfeed", "update");
+			params.add("id", id);
+			params.add("syndicationFeed", syndicationFeed);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Syndication Feed by ID  */
-    public static RequestBuilder<BaseSyndicationFeed> update(String id, BaseSyndicationFeed syndicationFeed)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("syndicationFeed", syndicationFeed);
-
-        return new RequestBuilder<BaseSyndicationFeed>(BaseSyndicationFeed.class, "syndicationfeed", "update", kparams);
-    }
+    public static UpdateSyndicationFeedBuilder update(String id, BaseSyndicationFeed syndicationFeed)  {
+		return new UpdateSyndicationFeedBuilder(id, syndicationFeed);
+	}
 }

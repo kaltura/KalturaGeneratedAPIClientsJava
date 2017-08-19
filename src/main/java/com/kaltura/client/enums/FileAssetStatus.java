@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileAssetStatus implements EnumAsString {
-    PENDING("0"),
-    UPLOADING("1"),
-    READY("2"),
-    DELETED("3"),
-    ERROR("4");
+	PENDING("0"),
+	UPLOADING("1"),
+	READY("2"),
+	DELETED("3"),
+	ERROR("4");
 
-    private String value;
+	private String value;
 
-    FileAssetStatus(String value) {
-        this.value = value;
-    }
+	FileAssetStatus(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static FileAssetStatus get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FileAssetStatus defined values and compare the inner value with the given one:
-        for(FileAssetStatus item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FileAssetStatus.values().length > 0 ? FileAssetStatus.values()[0]: null;
+	public static FileAssetStatus get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FileAssetStatus defined values and compare the inner value with the given one:
+		for(FileAssetStatus item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FileAssetStatus.values().length > 0 ? FileAssetStatus.values()[0]: null;
    }
 }

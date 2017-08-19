@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetParamsOrigin implements EnumAsInt {
-    CONVERT(0),
-    INGEST(1),
-    CONVERT_WHEN_MISSING(2);
+	CONVERT(0),
+	INGEST(1),
+	CONVERT_WHEN_MISSING(2);
 
-    private int value;
+	private int value;
 
-    AssetParamsOrigin(int value) {
-        this.value = value;
-    }
+	AssetParamsOrigin(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AssetParamsOrigin get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AssetParamsOrigin defined values and compare the inner value with the given one:
-        for(AssetParamsOrigin item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AssetParamsOrigin.values().length > 0 ? AssetParamsOrigin.values()[0]: null;
+	public static AssetParamsOrigin get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AssetParamsOrigin defined values and compare the inner value with the given one:
+		for(AssetParamsOrigin item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AssetParamsOrigin.values().length > 0 ? AssetParamsOrigin.values()[0]: null;
    }
 }

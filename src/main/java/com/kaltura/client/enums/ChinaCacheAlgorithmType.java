@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ChinaCacheAlgorithmType implements EnumAsInt {
-    SHA1(1),
-    SHA256(2);
+	SHA1(1),
+	SHA256(2);
 
-    private int value;
+	private int value;
 
-    ChinaCacheAlgorithmType(int value) {
-        this.value = value;
-    }
+	ChinaCacheAlgorithmType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ChinaCacheAlgorithmType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ChinaCacheAlgorithmType defined values and compare the inner value with the given one:
-        for(ChinaCacheAlgorithmType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ChinaCacheAlgorithmType.values().length > 0 ? ChinaCacheAlgorithmType.values()[0]: null;
+	public static ChinaCacheAlgorithmType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ChinaCacheAlgorithmType defined values and compare the inner value with the given one:
+		for(ChinaCacheAlgorithmType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ChinaCacheAlgorithmType.values().length > 0 ? ChinaCacheAlgorithmType.values()[0]: null;
    }
 }

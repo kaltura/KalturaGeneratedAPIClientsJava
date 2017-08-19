@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CloneComponentSelectorType implements EnumAsString {
-    INCLUDE_COMPONENT("0"),
-    EXCLUDE_COMPONENT("1");
+	INCLUDE_COMPONENT("0"),
+	EXCLUDE_COMPONENT("1");
 
-    private String value;
+	private String value;
 
-    CloneComponentSelectorType(String value) {
-        this.value = value;
-    }
+	CloneComponentSelectorType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static CloneComponentSelectorType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CloneComponentSelectorType defined values and compare the inner value with the given one:
-        for(CloneComponentSelectorType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CloneComponentSelectorType.values().length > 0 ? CloneComponentSelectorType.values()[0]: null;
+	public static CloneComponentSelectorType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CloneComponentSelectorType defined values and compare the inner value with the given one:
+		for(CloneComponentSelectorType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CloneComponentSelectorType.values().length > 0 ? CloneComponentSelectorType.values()[0]: null;
    }
 }

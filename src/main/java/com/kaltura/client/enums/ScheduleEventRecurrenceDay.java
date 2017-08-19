@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleEventRecurrenceDay implements EnumAsString {
-    FRIDAY("FR"),
-    MONDAY("MO"),
-    SATURDAY("SA"),
-    SUNDAY("SU"),
-    THURSDAY("TH"),
-    TUESDAY("TU"),
-    WEDNESDAY("WE");
+	FRIDAY("FR"),
+	MONDAY("MO"),
+	SATURDAY("SA"),
+	SUNDAY("SU"),
+	THURSDAY("TH"),
+	TUESDAY("TU"),
+	WEDNESDAY("WE");
 
-    private String value;
+	private String value;
 
-    ScheduleEventRecurrenceDay(String value) {
-        this.value = value;
-    }
+	ScheduleEventRecurrenceDay(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ScheduleEventRecurrenceDay get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleEventRecurrenceDay defined values and compare the inner value with the given one:
-        for(ScheduleEventRecurrenceDay item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleEventRecurrenceDay.values().length > 0 ? ScheduleEventRecurrenceDay.values()[0]: null;
+	public static ScheduleEventRecurrenceDay get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleEventRecurrenceDay defined values and compare the inner value with the given one:
+		for(ScheduleEventRecurrenceDay item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleEventRecurrenceDay.values().length > 0 ? ScheduleEventRecurrenceDay.values()[0]: null;
    }
 }

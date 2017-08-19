@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,51 +42,57 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventNotificationArrayParameter.Tokenizer.class)
 public class EventNotificationArrayParameter extends EventNotificationParameter {
+	
+	public interface Tokenizer extends EventNotificationParameter.Tokenizer {
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> values();
+		RequestBuilder.ListTokenizer<StringValue.Tokenizer> allowedValues();
+	}
 
-    private List<StringHolder> values;
+	private List<StringHolder> values;
 	/**  Used to restrict the values to close list  */
-    private List<StringValue> allowedValues;
+	private List<StringValue> allowedValues;
 
-    // values:
-    public List<StringHolder> getValues(){
-        return this.values;
-    }
-    public void setValues(List<StringHolder> values){
-        this.values = values;
-    }
+	// values:
+	public List<StringHolder> getValues(){
+		return this.values;
+	}
+	public void setValues(List<StringHolder> values){
+		this.values = values;
+	}
 
-    // allowedValues:
-    public List<StringValue> getAllowedValues(){
-        return this.allowedValues;
-    }
-    public void setAllowedValues(List<StringValue> allowedValues){
-        this.allowedValues = allowedValues;
-    }
+	// allowedValues:
+	public List<StringValue> getAllowedValues(){
+		return this.allowedValues;
+	}
+	public void setAllowedValues(List<StringValue> allowedValues){
+		this.allowedValues = allowedValues;
+	}
 
 
-    public EventNotificationArrayParameter() {
-       super();
-    }
+	public EventNotificationArrayParameter() {
+		super();
+	}
 
-    public EventNotificationArrayParameter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventNotificationArrayParameter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        values = GsonParser.parseArray(jsonObject.getAsJsonArray("values"), StringHolder.class);
-        allowedValues = GsonParser.parseArray(jsonObject.getAsJsonArray("allowedValues"), StringValue.class);
+		// set members values:
+		values = GsonParser.parseArray(jsonObject.getAsJsonArray("values"), StringHolder.class);
+		allowedValues = GsonParser.parseArray(jsonObject.getAsJsonArray("allowedValues"), StringValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventNotificationArrayParameter");
-        kparams.add("values", this.values);
-        kparams.add("allowedValues", this.allowedValues);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventNotificationArrayParameter");
+		kparams.add("values", this.values);
+		kparams.add("allowedValues", this.allowedValues);
+		return kparams;
+	}
 
 }
 

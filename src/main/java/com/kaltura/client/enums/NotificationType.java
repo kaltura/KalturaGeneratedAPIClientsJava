@@ -34,44 +34,44 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum NotificationType implements EnumAsInt {
-    ENTRY_ADD(1),
-    ENTR_UPDATE_PERMISSIONS(2),
-    ENTRY_DELETE(3),
-    ENTRY_BLOCK(4),
-    ENTRY_UPDATE(5),
-    ENTRY_UPDATE_THUMBNAIL(6),
-    ENTRY_UPDATE_MODERATION(7),
-    USER_ADD(21),
-    USER_BANNED(26);
+	ENTRY_ADD(1),
+	ENTR_UPDATE_PERMISSIONS(2),
+	ENTRY_DELETE(3),
+	ENTRY_BLOCK(4),
+	ENTRY_UPDATE(5),
+	ENTRY_UPDATE_THUMBNAIL(6),
+	ENTRY_UPDATE_MODERATION(7),
+	USER_ADD(21),
+	USER_BANNED(26);
 
-    private int value;
+	private int value;
 
-    NotificationType(int value) {
-        this.value = value;
-    }
+	NotificationType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static NotificationType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over NotificationType defined values and compare the inner value with the given one:
-        for(NotificationType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return NotificationType.values().length > 0 ? NotificationType.values()[0]: null;
+	public static NotificationType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over NotificationType defined values and compare the inner value with the given one:
+		for(NotificationType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return NotificationType.values().length > 0 ? NotificationType.values()[0]: null;
    }
 }

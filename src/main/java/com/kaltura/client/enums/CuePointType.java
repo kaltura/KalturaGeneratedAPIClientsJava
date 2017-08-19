@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CuePointType implements EnumAsString {
-    AD("adCuePoint.Ad"),
-    ANNOTATION("annotation.Annotation"),
-    CODE("codeCuePoint.Code"),
-    EVENT("eventCuePoint.Event"),
-    QUIZ_ANSWER("quiz.QUIZ_ANSWER"),
-    QUIZ_QUESTION("quiz.QUIZ_QUESTION"),
-    THUMB("thumbCuePoint.Thumb");
+	AD("adCuePoint.Ad"),
+	ANNOTATION("annotation.Annotation"),
+	CODE("codeCuePoint.Code"),
+	EVENT("eventCuePoint.Event"),
+	QUIZ_ANSWER("quiz.QUIZ_ANSWER"),
+	QUIZ_QUESTION("quiz.QUIZ_QUESTION"),
+	THUMB("thumbCuePoint.Thumb");
 
-    private String value;
+	private String value;
 
-    CuePointType(String value) {
-        this.value = value;
-    }
+	CuePointType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static CuePointType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CuePointType defined values and compare the inner value with the given one:
-        for(CuePointType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CuePointType.values().length > 0 ? CuePointType.values()[0]: null;
+	public static CuePointType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CuePointType defined values and compare the inner value with the given one:
+		for(CuePointType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CuePointType.values().length > 0 ? CuePointType.values()[0]: null;
    }
 }

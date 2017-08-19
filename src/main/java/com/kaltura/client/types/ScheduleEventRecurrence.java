@@ -33,6 +33,7 @@ import com.kaltura.client.enums.ScheduleEventRecurrenceDay;
 import com.kaltura.client.enums.ScheduleEventRecurrenceFrequency;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,21 +43,41 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleEventRecurrence.Tokenizer.class)
 public class ScheduleEventRecurrence extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String name();
+		String frequency();
+		String until();
+		String timeZone();
+		String count();
+		String interval();
+		String bySecond();
+		String byMinute();
+		String byHour();
+		String byDay();
+		String byMonthDay();
+		String byYearDay();
+		String byWeekNumber();
+		String byMonth();
+		String byOffset();
+		String weekStartDay();
+	}
 
-    private String name;
-    private ScheduleEventRecurrenceFrequency frequency;
-    private Integer until;
+	private String name;
+	private ScheduleEventRecurrenceFrequency frequency;
+	private Integer until;
 	/**  TimeZone String  */
-    private String timeZone;
-    private Integer count;
-    private Integer interval;
+	private String timeZone;
+	private Integer count;
+	private Integer interval;
 	/**  Comma separated numbers between 0 to 59  */
-    private String bySecond;
+	private String bySecond;
 	/**  Comma separated numbers between 0 to 59  */
-    private String byMinute;
+	private String byMinute;
 	/**  Comma separated numbers between 0 to 23  */
-    private String byHour;
+	private String byHour;
 	/**  Comma separated of KalturaScheduleEventRecurrenceDay   Each byDay value can also
 	  be preceded by a positive (+n) or negative (-n) integer.   If present, this
 	  indicates the nth occurrence of the specific day within the MONTHLY or YEARLY
@@ -65,23 +86,23 @@ public class ScheduleEventRecurrence extends ObjectBase {
 	  month.   If an integer modifier is not present, it means all days of this type
 	  within the specified frequency.   For example, within a MONTHLY rule, MO
 	  represents all Mondays within the month.  */
-    private String byDay;
+	private String byDay;
 	/**  Comma separated of numbers between -31 to 31, excluding 0.   For example, -10
 	  represents the tenth to the last day of the month.  */
-    private String byMonthDay;
+	private String byMonthDay;
 	/**  Comma separated of numbers between -366 to 366, excluding 0.   For example, -1
 	  represents the last day of the year (December 31st) and -306 represents the
 	  306th to the last day of the year (March 1st).  */
-    private String byYearDay;
+	private String byYearDay;
 	/**  Comma separated of numbers between -53 to 53, excluding 0.   This corresponds to
 	  weeks according to week numbering.   A week is defined as a seven day period,
 	  starting on the day of the week defined to be the week start.   Week number one
 	  of the calendar year is the first week which contains at least four (4) days in
 	  that calendar year.   This rule part is only valid for YEARLY frequency.   For
 	  example, 3 represents the third week of the year.  */
-    private String byWeekNumber;
+	private String byWeekNumber;
 	/**  Comma separated numbers between 1 to 12  */
-    private String byMonth;
+	private String byMonth;
 	/**  Comma separated of numbers between -366 to 366, excluding 0.   Corresponds to
 	  the nth occurrence within the set of events specified by the rule.   It must
 	  only be used in conjunction with another byrule part.   For example "the last
@@ -90,188 +111,252 @@ public class ScheduleEventRecurrence extends ObjectBase {
 	  include a positive (+n) or negative (-n) integer.   If present, this indicates
 	  the nth occurrence of the specific occurrence within the set of events specified
 	  by the rule.  */
-    private String byOffset;
-    private ScheduleEventRecurrenceDay weekStartDay;
+	private String byOffset;
+	private ScheduleEventRecurrenceDay weekStartDay;
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // frequency:
-    public ScheduleEventRecurrenceFrequency getFrequency(){
-        return this.frequency;
-    }
-    public void setFrequency(ScheduleEventRecurrenceFrequency frequency){
-        this.frequency = frequency;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // until:
-    public Integer getUntil(){
-        return this.until;
-    }
-    public void setUntil(Integer until){
-        this.until = until;
-    }
+	// frequency:
+	public ScheduleEventRecurrenceFrequency getFrequency(){
+		return this.frequency;
+	}
+	public void setFrequency(ScheduleEventRecurrenceFrequency frequency){
+		this.frequency = frequency;
+	}
 
-    // timeZone:
-    public String getTimeZone(){
-        return this.timeZone;
-    }
-    public void setTimeZone(String timeZone){
-        this.timeZone = timeZone;
-    }
+	public void frequency(String multirequestToken){
+		setToken("frequency", multirequestToken);
+	}
 
-    // count:
-    public Integer getCount(){
-        return this.count;
-    }
-    public void setCount(Integer count){
-        this.count = count;
-    }
+	// until:
+	public Integer getUntil(){
+		return this.until;
+	}
+	public void setUntil(Integer until){
+		this.until = until;
+	}
 
-    // interval:
-    public Integer getInterval(){
-        return this.interval;
-    }
-    public void setInterval(Integer interval){
-        this.interval = interval;
-    }
+	public void until(String multirequestToken){
+		setToken("until", multirequestToken);
+	}
 
-    // bySecond:
-    public String getBySecond(){
-        return this.bySecond;
-    }
-    public void setBySecond(String bySecond){
-        this.bySecond = bySecond;
-    }
+	// timeZone:
+	public String getTimeZone(){
+		return this.timeZone;
+	}
+	public void setTimeZone(String timeZone){
+		this.timeZone = timeZone;
+	}
 
-    // byMinute:
-    public String getByMinute(){
-        return this.byMinute;
-    }
-    public void setByMinute(String byMinute){
-        this.byMinute = byMinute;
-    }
+	public void timeZone(String multirequestToken){
+		setToken("timeZone", multirequestToken);
+	}
 
-    // byHour:
-    public String getByHour(){
-        return this.byHour;
-    }
-    public void setByHour(String byHour){
-        this.byHour = byHour;
-    }
+	// count:
+	public Integer getCount(){
+		return this.count;
+	}
+	public void setCount(Integer count){
+		this.count = count;
+	}
 
-    // byDay:
-    public String getByDay(){
-        return this.byDay;
-    }
-    public void setByDay(String byDay){
-        this.byDay = byDay;
-    }
+	public void count(String multirequestToken){
+		setToken("count", multirequestToken);
+	}
 
-    // byMonthDay:
-    public String getByMonthDay(){
-        return this.byMonthDay;
-    }
-    public void setByMonthDay(String byMonthDay){
-        this.byMonthDay = byMonthDay;
-    }
+	// interval:
+	public Integer getInterval(){
+		return this.interval;
+	}
+	public void setInterval(Integer interval){
+		this.interval = interval;
+	}
 
-    // byYearDay:
-    public String getByYearDay(){
-        return this.byYearDay;
-    }
-    public void setByYearDay(String byYearDay){
-        this.byYearDay = byYearDay;
-    }
+	public void interval(String multirequestToken){
+		setToken("interval", multirequestToken);
+	}
 
-    // byWeekNumber:
-    public String getByWeekNumber(){
-        return this.byWeekNumber;
-    }
-    public void setByWeekNumber(String byWeekNumber){
-        this.byWeekNumber = byWeekNumber;
-    }
+	// bySecond:
+	public String getBySecond(){
+		return this.bySecond;
+	}
+	public void setBySecond(String bySecond){
+		this.bySecond = bySecond;
+	}
 
-    // byMonth:
-    public String getByMonth(){
-        return this.byMonth;
-    }
-    public void setByMonth(String byMonth){
-        this.byMonth = byMonth;
-    }
+	public void bySecond(String multirequestToken){
+		setToken("bySecond", multirequestToken);
+	}
 
-    // byOffset:
-    public String getByOffset(){
-        return this.byOffset;
-    }
-    public void setByOffset(String byOffset){
-        this.byOffset = byOffset;
-    }
+	// byMinute:
+	public String getByMinute(){
+		return this.byMinute;
+	}
+	public void setByMinute(String byMinute){
+		this.byMinute = byMinute;
+	}
 
-    // weekStartDay:
-    public ScheduleEventRecurrenceDay getWeekStartDay(){
-        return this.weekStartDay;
-    }
-    public void setWeekStartDay(ScheduleEventRecurrenceDay weekStartDay){
-        this.weekStartDay = weekStartDay;
-    }
+	public void byMinute(String multirequestToken){
+		setToken("byMinute", multirequestToken);
+	}
+
+	// byHour:
+	public String getByHour(){
+		return this.byHour;
+	}
+	public void setByHour(String byHour){
+		this.byHour = byHour;
+	}
+
+	public void byHour(String multirequestToken){
+		setToken("byHour", multirequestToken);
+	}
+
+	// byDay:
+	public String getByDay(){
+		return this.byDay;
+	}
+	public void setByDay(String byDay){
+		this.byDay = byDay;
+	}
+
+	public void byDay(String multirequestToken){
+		setToken("byDay", multirequestToken);
+	}
+
+	// byMonthDay:
+	public String getByMonthDay(){
+		return this.byMonthDay;
+	}
+	public void setByMonthDay(String byMonthDay){
+		this.byMonthDay = byMonthDay;
+	}
+
+	public void byMonthDay(String multirequestToken){
+		setToken("byMonthDay", multirequestToken);
+	}
+
+	// byYearDay:
+	public String getByYearDay(){
+		return this.byYearDay;
+	}
+	public void setByYearDay(String byYearDay){
+		this.byYearDay = byYearDay;
+	}
+
+	public void byYearDay(String multirequestToken){
+		setToken("byYearDay", multirequestToken);
+	}
+
+	// byWeekNumber:
+	public String getByWeekNumber(){
+		return this.byWeekNumber;
+	}
+	public void setByWeekNumber(String byWeekNumber){
+		this.byWeekNumber = byWeekNumber;
+	}
+
+	public void byWeekNumber(String multirequestToken){
+		setToken("byWeekNumber", multirequestToken);
+	}
+
+	// byMonth:
+	public String getByMonth(){
+		return this.byMonth;
+	}
+	public void setByMonth(String byMonth){
+		this.byMonth = byMonth;
+	}
+
+	public void byMonth(String multirequestToken){
+		setToken("byMonth", multirequestToken);
+	}
+
+	// byOffset:
+	public String getByOffset(){
+		return this.byOffset;
+	}
+	public void setByOffset(String byOffset){
+		this.byOffset = byOffset;
+	}
+
+	public void byOffset(String multirequestToken){
+		setToken("byOffset", multirequestToken);
+	}
+
+	// weekStartDay:
+	public ScheduleEventRecurrenceDay getWeekStartDay(){
+		return this.weekStartDay;
+	}
+	public void setWeekStartDay(ScheduleEventRecurrenceDay weekStartDay){
+		this.weekStartDay = weekStartDay;
+	}
+
+	public void weekStartDay(String multirequestToken){
+		setToken("weekStartDay", multirequestToken);
+	}
 
 
-    public ScheduleEventRecurrence() {
-       super();
-    }
+	public ScheduleEventRecurrence() {
+		super();
+	}
 
-    public ScheduleEventRecurrence(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleEventRecurrence(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        name = GsonParser.parseString(jsonObject.get("name"));
-        frequency = ScheduleEventRecurrenceFrequency.get(GsonParser.parseString(jsonObject.get("frequency")));
-        until = GsonParser.parseInt(jsonObject.get("until"));
-        timeZone = GsonParser.parseString(jsonObject.get("timeZone"));
-        count = GsonParser.parseInt(jsonObject.get("count"));
-        interval = GsonParser.parseInt(jsonObject.get("interval"));
-        bySecond = GsonParser.parseString(jsonObject.get("bySecond"));
-        byMinute = GsonParser.parseString(jsonObject.get("byMinute"));
-        byHour = GsonParser.parseString(jsonObject.get("byHour"));
-        byDay = GsonParser.parseString(jsonObject.get("byDay"));
-        byMonthDay = GsonParser.parseString(jsonObject.get("byMonthDay"));
-        byYearDay = GsonParser.parseString(jsonObject.get("byYearDay"));
-        byWeekNumber = GsonParser.parseString(jsonObject.get("byWeekNumber"));
-        byMonth = GsonParser.parseString(jsonObject.get("byMonth"));
-        byOffset = GsonParser.parseString(jsonObject.get("byOffset"));
-        weekStartDay = ScheduleEventRecurrenceDay.get(GsonParser.parseString(jsonObject.get("weekStartDay")));
+		// set members values:
+		name = GsonParser.parseString(jsonObject.get("name"));
+		frequency = ScheduleEventRecurrenceFrequency.get(GsonParser.parseString(jsonObject.get("frequency")));
+		until = GsonParser.parseInt(jsonObject.get("until"));
+		timeZone = GsonParser.parseString(jsonObject.get("timeZone"));
+		count = GsonParser.parseInt(jsonObject.get("count"));
+		interval = GsonParser.parseInt(jsonObject.get("interval"));
+		bySecond = GsonParser.parseString(jsonObject.get("bySecond"));
+		byMinute = GsonParser.parseString(jsonObject.get("byMinute"));
+		byHour = GsonParser.parseString(jsonObject.get("byHour"));
+		byDay = GsonParser.parseString(jsonObject.get("byDay"));
+		byMonthDay = GsonParser.parseString(jsonObject.get("byMonthDay"));
+		byYearDay = GsonParser.parseString(jsonObject.get("byYearDay"));
+		byWeekNumber = GsonParser.parseString(jsonObject.get("byWeekNumber"));
+		byMonth = GsonParser.parseString(jsonObject.get("byMonth"));
+		byOffset = GsonParser.parseString(jsonObject.get("byOffset"));
+		weekStartDay = ScheduleEventRecurrenceDay.get(GsonParser.parseString(jsonObject.get("weekStartDay")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventRecurrence");
-        kparams.add("name", this.name);
-        kparams.add("frequency", this.frequency);
-        kparams.add("until", this.until);
-        kparams.add("timeZone", this.timeZone);
-        kparams.add("count", this.count);
-        kparams.add("interval", this.interval);
-        kparams.add("bySecond", this.bySecond);
-        kparams.add("byMinute", this.byMinute);
-        kparams.add("byHour", this.byHour);
-        kparams.add("byDay", this.byDay);
-        kparams.add("byMonthDay", this.byMonthDay);
-        kparams.add("byYearDay", this.byYearDay);
-        kparams.add("byWeekNumber", this.byWeekNumber);
-        kparams.add("byMonth", this.byMonth);
-        kparams.add("byOffset", this.byOffset);
-        kparams.add("weekStartDay", this.weekStartDay);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleEventRecurrence");
+		kparams.add("name", this.name);
+		kparams.add("frequency", this.frequency);
+		kparams.add("until", this.until);
+		kparams.add("timeZone", this.timeZone);
+		kparams.add("count", this.count);
+		kparams.add("interval", this.interval);
+		kparams.add("bySecond", this.bySecond);
+		kparams.add("byMinute", this.byMinute);
+		kparams.add("byHour", this.byHour);
+		kparams.add("byDay", this.byDay);
+		kparams.add("byMonthDay", this.byMonthDay);
+		kparams.add("byYearDay", this.byYearDay);
+		kparams.add("byWeekNumber", this.byWeekNumber);
+		kparams.add("byMonth", this.byMonth);
+		kparams.add("byOffset", this.byOffset);
+		kparams.add("weekStartDay", this.weekStartDay);
+		return kparams;
+	}
 
 }
 

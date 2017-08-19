@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ContainerFormat;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +41,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorParamsBaseFilter.Tokenizer.class)
 public abstract class FlavorParamsBaseFilter extends AssetParamsFilter {
+	
+	public interface Tokenizer extends AssetParamsFilter.Tokenizer {
+		String formatEqual();
+	}
 
-    private ContainerFormat formatEqual;
+	private ContainerFormat formatEqual;
 
-    // formatEqual:
-    public ContainerFormat getFormatEqual(){
-        return this.formatEqual;
-    }
-    public void setFormatEqual(ContainerFormat formatEqual){
-        this.formatEqual = formatEqual;
-    }
+	// formatEqual:
+	public ContainerFormat getFormatEqual(){
+		return this.formatEqual;
+	}
+	public void setFormatEqual(ContainerFormat formatEqual){
+		this.formatEqual = formatEqual;
+	}
+
+	public void formatEqual(String multirequestToken){
+		setToken("formatEqual", multirequestToken);
+	}
 
 
-    public FlavorParamsBaseFilter() {
-       super();
-    }
+	public FlavorParamsBaseFilter() {
+		super();
+	}
 
-    public FlavorParamsBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorParamsBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        formatEqual = ContainerFormat.get(GsonParser.parseString(jsonObject.get("formatEqual")));
+		// set members values:
+		formatEqual = ContainerFormat.get(GsonParser.parseString(jsonObject.get("formatEqual")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorParamsBaseFilter");
-        kparams.add("formatEqual", this.formatEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorParamsBaseFilter");
+		kparams.add("formatEqual", this.formatEqual);
+		return kparams;
+	}
 
 }
 

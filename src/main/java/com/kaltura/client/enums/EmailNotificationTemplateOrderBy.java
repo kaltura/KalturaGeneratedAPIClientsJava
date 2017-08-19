@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EmailNotificationTemplateOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    EmailNotificationTemplateOrderBy(String value) {
-        this.value = value;
-    }
+	EmailNotificationTemplateOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EmailNotificationTemplateOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EmailNotificationTemplateOrderBy defined values and compare the inner value with the given one:
-        for(EmailNotificationTemplateOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EmailNotificationTemplateOrderBy.values().length > 0 ? EmailNotificationTemplateOrderBy.values()[0]: null;
+	public static EmailNotificationTemplateOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EmailNotificationTemplateOrderBy defined values and compare the inner value with the given one:
+		for(EmailNotificationTemplateOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EmailNotificationTemplateOrderBy.values().length > 0 ? EmailNotificationTemplateOrderBy.values()[0]: null;
    }
 }

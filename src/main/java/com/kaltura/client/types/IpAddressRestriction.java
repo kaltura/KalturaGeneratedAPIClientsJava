@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.IpAddressRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IpAddressRestriction.Tokenizer.class)
 public class IpAddressRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String ipAddressRestrictionType();
+		String ipAddressList();
+	}
 
 	/**  Ip address restriction type (Allow or deny)  */
-    private IpAddressRestrictionType ipAddressRestrictionType;
+	private IpAddressRestrictionType ipAddressRestrictionType;
 	/**  Comma separated list of ip address to allow to deny  */
-    private String ipAddressList;
+	private String ipAddressList;
 
-    // ipAddressRestrictionType:
-    public IpAddressRestrictionType getIpAddressRestrictionType(){
-        return this.ipAddressRestrictionType;
-    }
-    public void setIpAddressRestrictionType(IpAddressRestrictionType ipAddressRestrictionType){
-        this.ipAddressRestrictionType = ipAddressRestrictionType;
-    }
+	// ipAddressRestrictionType:
+	public IpAddressRestrictionType getIpAddressRestrictionType(){
+		return this.ipAddressRestrictionType;
+	}
+	public void setIpAddressRestrictionType(IpAddressRestrictionType ipAddressRestrictionType){
+		this.ipAddressRestrictionType = ipAddressRestrictionType;
+	}
 
-    // ipAddressList:
-    public String getIpAddressList(){
-        return this.ipAddressList;
-    }
-    public void setIpAddressList(String ipAddressList){
-        this.ipAddressList = ipAddressList;
-    }
+	public void ipAddressRestrictionType(String multirequestToken){
+		setToken("ipAddressRestrictionType", multirequestToken);
+	}
+
+	// ipAddressList:
+	public String getIpAddressList(){
+		return this.ipAddressList;
+	}
+	public void setIpAddressList(String ipAddressList){
+		this.ipAddressList = ipAddressList;
+	}
+
+	public void ipAddressList(String multirequestToken){
+		setToken("ipAddressList", multirequestToken);
+	}
 
 
-    public IpAddressRestriction() {
-       super();
-    }
+	public IpAddressRestriction() {
+		super();
+	}
 
-    public IpAddressRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IpAddressRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ipAddressRestrictionType = IpAddressRestrictionType.get(GsonParser.parseInt(jsonObject.get("ipAddressRestrictionType")));
-        ipAddressList = GsonParser.parseString(jsonObject.get("ipAddressList"));
+		// set members values:
+		ipAddressRestrictionType = IpAddressRestrictionType.get(GsonParser.parseInt(jsonObject.get("ipAddressRestrictionType")));
+		ipAddressList = GsonParser.parseString(jsonObject.get("ipAddressList"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIpAddressRestriction");
-        kparams.add("ipAddressRestrictionType", this.ipAddressRestrictionType);
-        kparams.add("ipAddressList", this.ipAddressList);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIpAddressRestriction");
+		kparams.add("ipAddressRestrictionType", this.ipAddressRestrictionType);
+		kparams.add("ipAddressList", this.ipAddressList);
+		return kparams;
+	}
 
 }
 

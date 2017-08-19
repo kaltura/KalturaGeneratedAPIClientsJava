@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ThumbParamsOutput;
 import com.kaltura.client.types.ThumbParamsOutputFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -44,29 +42,43 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Thumbnail Params Output service  */
 public class ThumbParamsOutputService {
+	
+	public static class GetThumbParamsOutputBuilder extends RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.Tokenizer, GetThumbParamsOutputBuilder> {
+		
+		public GetThumbParamsOutputBuilder(int id) {
+			super(ThumbParamsOutput.class, "thumbparamsoutput", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get thumb params output object by ID  */
-    public static RequestBuilder<ThumbParamsOutput> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetThumbParamsOutputBuilder get(int id)  {
+		return new GetThumbParamsOutputBuilder(id);
+	}
+	
+	public static class ListThumbParamsOutputBuilder extends ListResponseRequestBuilder<ThumbParamsOutput, ThumbParamsOutput.Tokenizer, ListThumbParamsOutputBuilder> {
+		
+		public ListThumbParamsOutputBuilder(ThumbParamsOutputFilter filter, FilterPager pager) {
+			super(ThumbParamsOutput.class, "thumbparamsoutput", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ThumbParamsOutput>(ThumbParamsOutput.class, "thumbparamsoutput", "get", kparams);
-    }
+	public static ListThumbParamsOutputBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ThumbParamsOutput>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ThumbParamsOutput>> list(ThumbParamsOutputFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListThumbParamsOutputBuilder list(ThumbParamsOutputFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List thumb params output objects by filter and pager  */
-    public static RequestBuilder<ListResponse<ThumbParamsOutput>> list(ThumbParamsOutputFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ThumbParamsOutput>(ThumbParamsOutput.class, "thumbparamsoutput", "list", kparams);
-    }
+    public static ListThumbParamsOutputBuilder list(ThumbParamsOutputFilter filter, FilterPager pager)  {
+		return new ListThumbParamsOutputBuilder(filter, pager);
+	}
 }

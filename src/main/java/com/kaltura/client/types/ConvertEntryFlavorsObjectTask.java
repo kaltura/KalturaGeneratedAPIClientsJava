@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertEntryFlavorsObjectTask.Tokenizer.class)
 public class ConvertEntryFlavorsObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String flavorParamsIds();
+		String reconvert();
+	}
 
 	/**  Comma separated list of flavor param ids to convert  */
-    private String flavorParamsIds;
+	private String flavorParamsIds;
 	/**  Should reconvert when flavor already exists?  */
-    private Boolean reconvert;
+	private Boolean reconvert;
 
-    // flavorParamsIds:
-    public String getFlavorParamsIds(){
-        return this.flavorParamsIds;
-    }
-    public void setFlavorParamsIds(String flavorParamsIds){
-        this.flavorParamsIds = flavorParamsIds;
-    }
+	// flavorParamsIds:
+	public String getFlavorParamsIds(){
+		return this.flavorParamsIds;
+	}
+	public void setFlavorParamsIds(String flavorParamsIds){
+		this.flavorParamsIds = flavorParamsIds;
+	}
 
-    // reconvert:
-    public Boolean getReconvert(){
-        return this.reconvert;
-    }
-    public void setReconvert(Boolean reconvert){
-        this.reconvert = reconvert;
-    }
+	public void flavorParamsIds(String multirequestToken){
+		setToken("flavorParamsIds", multirequestToken);
+	}
+
+	// reconvert:
+	public Boolean getReconvert(){
+		return this.reconvert;
+	}
+	public void setReconvert(Boolean reconvert){
+		this.reconvert = reconvert;
+	}
+
+	public void reconvert(String multirequestToken){
+		setToken("reconvert", multirequestToken);
+	}
 
 
-    public ConvertEntryFlavorsObjectTask() {
-       super();
-    }
+	public ConvertEntryFlavorsObjectTask() {
+		super();
+	}
 
-    public ConvertEntryFlavorsObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertEntryFlavorsObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
-        reconvert = GsonParser.parseBoolean(jsonObject.get("reconvert"));
+		// set members values:
+		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		reconvert = GsonParser.parseBoolean(jsonObject.get("reconvert"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertEntryFlavorsObjectTask");
-        kparams.add("flavorParamsIds", this.flavorParamsIds);
-        kparams.add("reconvert", this.reconvert);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertEntryFlavorsObjectTask");
+		kparams.add("flavorParamsIds", this.flavorParamsIds);
+		kparams.add("reconvert", this.reconvert);
+		return kparams;
+	}
 
 }
 

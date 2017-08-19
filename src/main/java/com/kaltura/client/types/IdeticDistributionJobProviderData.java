@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IdeticDistributionJobProviderData.Tokenizer.class)
 public class IdeticDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String thumbnailUrl();
+		String flavorAssetUrl();
+	}
 
-    private String thumbnailUrl;
-    private String flavorAssetUrl;
+	private String thumbnailUrl;
+	private String flavorAssetUrl;
 
-    // thumbnailUrl:
-    public String getThumbnailUrl(){
-        return this.thumbnailUrl;
-    }
-    public void setThumbnailUrl(String thumbnailUrl){
-        this.thumbnailUrl = thumbnailUrl;
-    }
+	// thumbnailUrl:
+	public String getThumbnailUrl(){
+		return this.thumbnailUrl;
+	}
+	public void setThumbnailUrl(String thumbnailUrl){
+		this.thumbnailUrl = thumbnailUrl;
+	}
 
-    // flavorAssetUrl:
-    public String getFlavorAssetUrl(){
-        return this.flavorAssetUrl;
-    }
-    public void setFlavorAssetUrl(String flavorAssetUrl){
-        this.flavorAssetUrl = flavorAssetUrl;
-    }
+	public void thumbnailUrl(String multirequestToken){
+		setToken("thumbnailUrl", multirequestToken);
+	}
+
+	// flavorAssetUrl:
+	public String getFlavorAssetUrl(){
+		return this.flavorAssetUrl;
+	}
+	public void setFlavorAssetUrl(String flavorAssetUrl){
+		this.flavorAssetUrl = flavorAssetUrl;
+	}
+
+	public void flavorAssetUrl(String multirequestToken){
+		setToken("flavorAssetUrl", multirequestToken);
+	}
 
 
-    public IdeticDistributionJobProviderData() {
-       super();
-    }
+	public IdeticDistributionJobProviderData() {
+		super();
+	}
 
-    public IdeticDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IdeticDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        thumbnailUrl = GsonParser.parseString(jsonObject.get("thumbnailUrl"));
-        flavorAssetUrl = GsonParser.parseString(jsonObject.get("flavorAssetUrl"));
+		// set members values:
+		thumbnailUrl = GsonParser.parseString(jsonObject.get("thumbnailUrl"));
+		flavorAssetUrl = GsonParser.parseString(jsonObject.get("flavorAssetUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIdeticDistributionJobProviderData");
-        kparams.add("thumbnailUrl", this.thumbnailUrl);
-        kparams.add("flavorAssetUrl", this.flavorAssetUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIdeticDistributionJobProviderData");
+		kparams.add("thumbnailUrl", this.thumbnailUrl);
+		kparams.add("flavorAssetUrl", this.flavorAssetUrl);
+		return kparams;
+	}
 
 }
 

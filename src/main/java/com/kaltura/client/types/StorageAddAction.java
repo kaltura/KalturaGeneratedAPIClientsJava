@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StorageAddAction.Tokenizer.class)
 public class StorageAddAction extends RuleAction {
+	
+	public interface Tokenizer extends RuleAction.Tokenizer {
+	}
 
 
 
-    public StorageAddAction() {
-       super();
-    }
+	public StorageAddAction() {
+		super();
+	}
 
-    public StorageAddAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public StorageAddAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStorageAddAction");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStorageAddAction");
+		return kparams;
+	}
 
 }
 

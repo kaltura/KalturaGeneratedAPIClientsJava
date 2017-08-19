@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.ReportType;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.KeyValue;
@@ -51,149 +50,282 @@ import java.util.List;
 
 /**  api for getting reports data by the report type and some inputFilter  */
 public class ReportService {
+	
+	public static class ExecuteReportBuilder extends RequestBuilder<ReportResponse, ReportResponse.Tokenizer, ExecuteReportBuilder> {
+		
+		public ExecuteReportBuilder(int id, List<KeyValue> params_) {
+			super(ReportResponse.class, "report", "execute");
+			params.add("id", id);
+			params.add("params", params_);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ReportResponse> execute(int id)  {
-        return execute(id, null);
-    }
+	public static ExecuteReportBuilder execute(int id)  {
+		return execute(id, null);
+	}
 
-    public static RequestBuilder<ReportResponse> execute(int id, List<KeyValue> params)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("params", params);
+    public static ExecuteReportBuilder execute(int id, List<KeyValue> params)  {
+		return new ExecuteReportBuilder(id, params);
+	}
+	
+	public static class GetBaseTotalReportBuilder extends ArrayRequestBuilder<ReportBaseTotal, ReportBaseTotal.Tokenizer, GetBaseTotalReportBuilder> {
+		
+		public GetBaseTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds) {
+			super(ReportBaseTotal.class, "report", "getBaseTotal");
+			params.add("reportType", reportType);
+			params.add("reportInputFilter", reportInputFilter);
+			params.add("objectIds", objectIds);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+		
+		public void objectIds(String multirequestToken) {
+			params.add("objectIds", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ReportResponse>(ReportResponse.class, "report", "execute", kparams);
-    }
-
-    public static RequestBuilder<List<ReportBaseTotal>> getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter)  {
-        return getBaseTotal(reportType, reportInputFilter, null);
-    }
+	public static GetBaseTotalReportBuilder getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter)  {
+		return getBaseTotal(reportType, reportInputFilter, null);
+	}
 
 	/**  report getBaseTotal action allows to get a the total base for storage reports  */
-    public static RequestBuilder<List<ReportBaseTotal>> getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("objectIds", objectIds);
+    public static GetBaseTotalReportBuilder getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
+		return new GetBaseTotalReportBuilder(reportType, reportInputFilter, objectIds);
+	}
+	
+	public static class GetCsvReportBuilder extends ServeRequestBuilder {
+		
+		public GetCsvReportBuilder(int id, List<KeyValue> params_) {
+			super("report", "getCsv");
+			params.add("id", id);
+			params.add("params", params_);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<ReportBaseTotal>(ReportBaseTotal.class, "report", "getBaseTotal", kparams);
-    }
+	public static GetCsvReportBuilder getCsv(int id)  {
+		return getCsv(id, null);
+	}
 
-    public static RequestBuilder<String> getCsv(int id)  {
-        return getCsv(id, null);
-    }
+    public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params)  {
+		return new GetCsvReportBuilder(id, params);
+	}
+	
+	public static class GetCsvFromStringParamsReportBuilder extends ServeRequestBuilder {
+		
+		public GetCsvFromStringParamsReportBuilder(int id, String params_) {
+			super("report", "getCsvFromStringParams");
+			params.add("id", id);
+			params.add("params", params_);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void params(String multirequestToken) {
+			params.add("params", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> getCsv(int id, List<KeyValue> params)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("params", params);
-
-        return new ServeRequestBuilder("report", "getCsv", kparams);
-    }
-
-    public static RequestBuilder<String> getCsvFromStringParams(int id)  {
-        return getCsvFromStringParams(id, null);
-    }
+	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id)  {
+		return getCsvFromStringParams(id, null);
+	}
 
 	/**  Returns report CSV file executed by string params with the following convention:
 	  param1=value1;param2=value2  */
-    public static RequestBuilder<String> getCsvFromStringParams(int id, String params)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("params", params);
+    public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params)  {
+		return new GetCsvFromStringParamsReportBuilder(id, params);
+	}
+	
+	public static class GetGraphsReportBuilder extends ArrayRequestBuilder<ReportGraph, ReportGraph.Tokenizer, GetGraphsReportBuilder> {
+		
+		public GetGraphsReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds) {
+			super(ReportGraph.class, "report", "getGraphs");
+			params.add("reportType", reportType);
+			params.add("reportInputFilter", reportInputFilter);
+			params.add("dimension", dimension);
+			params.add("objectIds", objectIds);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+		
+		public void dimension(String multirequestToken) {
+			params.add("dimension", multirequestToken);
+		}
+		
+		public void objectIds(String multirequestToken) {
+			params.add("objectIds", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("report", "getCsvFromStringParams", kparams);
-    }
+	public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter)  {
+		return getGraphs(reportType, reportInputFilter, null);
+	}
 
-    public static RequestBuilder<List<ReportGraph>> getGraphs(ReportType reportType, ReportInputFilter reportInputFilter)  {
-        return getGraphs(reportType, reportInputFilter, null);
-    }
-
-    public static RequestBuilder<List<ReportGraph>> getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension)  {
-        return getGraphs(reportType, reportInputFilter, dimension, null);
-    }
+	public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension)  {
+		return getGraphs(reportType, reportInputFilter, dimension, null);
+	}
 
 	/**  report getGraphs action allows to get a graph data for a specific report.  */
-    public static RequestBuilder<List<ReportGraph>> getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("dimension", dimension);
-        kparams.add("objectIds", objectIds);
+    public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds)  {
+		return new GetGraphsReportBuilder(reportType, reportInputFilter, dimension, objectIds);
+	}
+	
+	public static class GetTableReportBuilder extends RequestBuilder<ReportTable, ReportTable.Tokenizer, GetTableReportBuilder> {
+		
+		public GetTableReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds) {
+			super(ReportTable.class, "report", "getTable");
+			params.add("reportType", reportType);
+			params.add("reportInputFilter", reportInputFilter);
+			params.add("pager", pager);
+			params.add("order", order);
+			params.add("objectIds", objectIds);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+		
+		public void order(String multirequestToken) {
+			params.add("order", multirequestToken);
+		}
+		
+		public void objectIds(String multirequestToken) {
+			params.add("objectIds", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<ReportGraph>(ReportGraph.class, "report", "getGraphs", kparams);
-    }
+	public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager)  {
+		return getTable(reportType, reportInputFilter, pager, null);
+	}
 
-    public static RequestBuilder<ReportTable> getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager)  {
-        return getTable(reportType, reportInputFilter, pager, null);
-    }
-
-    public static RequestBuilder<ReportTable> getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order)  {
-        return getTable(reportType, reportInputFilter, pager, order, null);
-    }
+	public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order)  {
+		return getTable(reportType, reportInputFilter, pager, order, null);
+	}
 
 	/**  report getTable action allows to get a graph data for a specific report.  */
-    public static RequestBuilder<ReportTable> getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("pager", pager);
-        kparams.add("order", order);
-        kparams.add("objectIds", objectIds);
+    public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds)  {
+		return new GetTableReportBuilder(reportType, reportInputFilter, pager, order, objectIds);
+	}
+	
+	public static class GetTotalReportBuilder extends RequestBuilder<ReportTotal, ReportTotal.Tokenizer, GetTotalReportBuilder> {
+		
+		public GetTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds) {
+			super(ReportTotal.class, "report", "getTotal");
+			params.add("reportType", reportType);
+			params.add("reportInputFilter", reportInputFilter);
+			params.add("objectIds", objectIds);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+		
+		public void objectIds(String multirequestToken) {
+			params.add("objectIds", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ReportTable>(ReportTable.class, "report", "getTable", kparams);
-    }
-
-    public static RequestBuilder<ReportTotal> getTotal(ReportType reportType, ReportInputFilter reportInputFilter)  {
-        return getTotal(reportType, reportInputFilter, null);
-    }
+	public static GetTotalReportBuilder getTotal(ReportType reportType, ReportInputFilter reportInputFilter)  {
+		return getTotal(reportType, reportInputFilter, null);
+	}
 
 	/**  report getTotal action allows to get a graph data for a specific report.  */
-    public static RequestBuilder<ReportTotal> getTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("objectIds", objectIds);
+    public static GetTotalReportBuilder getTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
+		return new GetTotalReportBuilder(reportType, reportInputFilter, objectIds);
+	}
+	
+	public static class GetUrlForReportAsCsvReportBuilder extends RequestBuilder<String, String, GetUrlForReportAsCsvReportBuilder> {
+		
+		public GetUrlForReportAsCsvReportBuilder(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds) {
+			super(String.class, "report", "getUrlForReportAsCsv");
+			params.add("reportTitle", reportTitle);
+			params.add("reportText", reportText);
+			params.add("headers", headers);
+			params.add("reportType", reportType);
+			params.add("reportInputFilter", reportInputFilter);
+			params.add("dimension", dimension);
+			params.add("pager", pager);
+			params.add("order", order);
+			params.add("objectIds", objectIds);
+		}
+		
+		public void reportTitle(String multirequestToken) {
+			params.add("reportTitle", multirequestToken);
+		}
+		
+		public void reportText(String multirequestToken) {
+			params.add("reportText", multirequestToken);
+		}
+		
+		public void headers(String multirequestToken) {
+			params.add("headers", multirequestToken);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+		
+		public void dimension(String multirequestToken) {
+			params.add("dimension", multirequestToken);
+		}
+		
+		public void order(String multirequestToken) {
+			params.add("order", multirequestToken);
+		}
+		
+		public void objectIds(String multirequestToken) {
+			params.add("objectIds", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ReportTotal>(ReportTotal.class, "report", "getTotal", kparams);
-    }
+	public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter)  {
+		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, null);
+	}
 
-    public static RequestBuilder<String> getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter)  {
-        return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, null);
-    }
+	public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension)  {
+		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, null);
+	}
 
-    public static RequestBuilder<String> getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension)  {
-        return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, null);
-    }
+	public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager)  {
+		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, null);
+	}
 
-    public static RequestBuilder<String> getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager)  {
-        return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, null);
-    }
-
-    public static RequestBuilder<String> getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order)  {
-        return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, null);
-    }
+	public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order)  {
+		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, null);
+	}
 
 	/**  will create a Csv file for the given report and return the URL to access it  */
-    public static RequestBuilder<String> getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds)  {
-        Params kparams = new Params();
-        kparams.add("reportTitle", reportTitle);
-        kparams.add("reportText", reportText);
-        kparams.add("headers", headers);
-        kparams.add("reportType", reportType);
-        kparams.add("reportInputFilter", reportInputFilter);
-        kparams.add("dimension", dimension);
-        kparams.add("pager", pager);
-        kparams.add("order", order);
-        kparams.add("objectIds", objectIds);
-
-        return new RequestBuilder<String>(String.class, "report", "getUrlForReportAsCsv", kparams);
-    }
+    public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds)  {
+		return new GetUrlForReportAsCsvReportBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds);
+	}
+	
+	public static class ServeReportBuilder extends RequestBuilder<String, String, ServeReportBuilder> {
+		
+		public ServeReportBuilder(String id) {
+			super(String.class, "report", "serve");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Will serve a requested report  */
-    public static RequestBuilder<String> serve(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<String>(String.class, "report", "serve", kparams);
-    }
+    public static ServeReportBuilder serve(String id)  {
+		return new ServeReportBuilder(id);
+	}
 }

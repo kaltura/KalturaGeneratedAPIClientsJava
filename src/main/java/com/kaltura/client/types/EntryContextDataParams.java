@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,76 +41,100 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Object which contains contextual entry-related data.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryContextDataParams.Tokenizer.class)
 public class EntryContextDataParams extends AccessControlScope {
+	
+	public interface Tokenizer extends AccessControlScope.Tokenizer {
+		String flavorAssetId();
+		String flavorTags();
+		String streamerType();
+		String mediaProtocol();
+	}
 
 	/**  Id of the current flavor.  */
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  The tags of the flavors that should be used for playback.  */
-    private String flavorTags;
+	private String flavorTags;
 	/**  Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.  */
-    private String streamerType;
+	private String streamerType;
 	/**  Protocol of the specific media object.  */
-    private String mediaProtocol;
+	private String mediaProtocol;
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // flavorTags:
-    public String getFlavorTags(){
-        return this.flavorTags;
-    }
-    public void setFlavorTags(String flavorTags){
-        this.flavorTags = flavorTags;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // streamerType:
-    public String getStreamerType(){
-        return this.streamerType;
-    }
-    public void setStreamerType(String streamerType){
-        this.streamerType = streamerType;
-    }
+	// flavorTags:
+	public String getFlavorTags(){
+		return this.flavorTags;
+	}
+	public void setFlavorTags(String flavorTags){
+		this.flavorTags = flavorTags;
+	}
 
-    // mediaProtocol:
-    public String getMediaProtocol(){
-        return this.mediaProtocol;
-    }
-    public void setMediaProtocol(String mediaProtocol){
-        this.mediaProtocol = mediaProtocol;
-    }
+	public void flavorTags(String multirequestToken){
+		setToken("flavorTags", multirequestToken);
+	}
+
+	// streamerType:
+	public String getStreamerType(){
+		return this.streamerType;
+	}
+	public void setStreamerType(String streamerType){
+		this.streamerType = streamerType;
+	}
+
+	public void streamerType(String multirequestToken){
+		setToken("streamerType", multirequestToken);
+	}
+
+	// mediaProtocol:
+	public String getMediaProtocol(){
+		return this.mediaProtocol;
+	}
+	public void setMediaProtocol(String mediaProtocol){
+		this.mediaProtocol = mediaProtocol;
+	}
+
+	public void mediaProtocol(String multirequestToken){
+		setToken("mediaProtocol", multirequestToken);
+	}
 
 
-    public EntryContextDataParams() {
-       super();
-    }
+	public EntryContextDataParams() {
+		super();
+	}
 
-    public EntryContextDataParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryContextDataParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        flavorTags = GsonParser.parseString(jsonObject.get("flavorTags"));
-        streamerType = GsonParser.parseString(jsonObject.get("streamerType"));
-        mediaProtocol = GsonParser.parseString(jsonObject.get("mediaProtocol"));
+		// set members values:
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		flavorTags = GsonParser.parseString(jsonObject.get("flavorTags"));
+		streamerType = GsonParser.parseString(jsonObject.get("streamerType"));
+		mediaProtocol = GsonParser.parseString(jsonObject.get("mediaProtocol"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryContextDataParams");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("flavorTags", this.flavorTags);
-        kparams.add("streamerType", this.streamerType);
-        kparams.add("mediaProtocol", this.mediaProtocol);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryContextDataParams");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("flavorTags", this.flavorTags);
+		kparams.add("streamerType", this.streamerType);
+		kparams.add("mediaProtocol", this.mediaProtocol);
+		return kparams;
+	}
 
 }
 

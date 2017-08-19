@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,89 +40,118 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataFieldChangedCondition.Tokenizer.class)
 public class MetadataFieldChangedCondition extends MatchCondition {
+	
+	public interface Tokenizer extends MatchCondition.Tokenizer {
+		String xPath();
+		String profileId();
+		String profileSystemName();
+		String versionA();
+		String versionB();
+	}
 
 	/**  May contain the full xpath to the field in three formats   1. Slashed xPath,
 	  e.g. /metadata/myElementName   2. Using local-name function, e.g.
 	  /[local-name()='metadata']/[local-name()='myElementName']   3. Using only the
 	  field name, e.g. myElementName, it will be searched as //myElementName  */
-    private String xPath;
+	private String xPath;
 	/**  Metadata profile id  */
-    private Integer profileId;
+	private Integer profileId;
 	/**  Metadata profile system name  */
-    private String profileSystemName;
-    private String versionA;
-    private String versionB;
+	private String profileSystemName;
+	private String versionA;
+	private String versionB;
 
-    // xPath:
-    public String getXPath(){
-        return this.xPath;
-    }
-    public void setXPath(String xPath){
-        this.xPath = xPath;
-    }
+	// xPath:
+	public String getXPath(){
+		return this.xPath;
+	}
+	public void setXPath(String xPath){
+		this.xPath = xPath;
+	}
 
-    // profileId:
-    public Integer getProfileId(){
-        return this.profileId;
-    }
-    public void setProfileId(Integer profileId){
-        this.profileId = profileId;
-    }
+	public void xPath(String multirequestToken){
+		setToken("xPath", multirequestToken);
+	}
 
-    // profileSystemName:
-    public String getProfileSystemName(){
-        return this.profileSystemName;
-    }
-    public void setProfileSystemName(String profileSystemName){
-        this.profileSystemName = profileSystemName;
-    }
+	// profileId:
+	public Integer getProfileId(){
+		return this.profileId;
+	}
+	public void setProfileId(Integer profileId){
+		this.profileId = profileId;
+	}
 
-    // versionA:
-    public String getVersionA(){
-        return this.versionA;
-    }
-    public void setVersionA(String versionA){
-        this.versionA = versionA;
-    }
+	public void profileId(String multirequestToken){
+		setToken("profileId", multirequestToken);
+	}
 
-    // versionB:
-    public String getVersionB(){
-        return this.versionB;
-    }
-    public void setVersionB(String versionB){
-        this.versionB = versionB;
-    }
+	// profileSystemName:
+	public String getProfileSystemName(){
+		return this.profileSystemName;
+	}
+	public void setProfileSystemName(String profileSystemName){
+		this.profileSystemName = profileSystemName;
+	}
+
+	public void profileSystemName(String multirequestToken){
+		setToken("profileSystemName", multirequestToken);
+	}
+
+	// versionA:
+	public String getVersionA(){
+		return this.versionA;
+	}
+	public void setVersionA(String versionA){
+		this.versionA = versionA;
+	}
+
+	public void versionA(String multirequestToken){
+		setToken("versionA", multirequestToken);
+	}
+
+	// versionB:
+	public String getVersionB(){
+		return this.versionB;
+	}
+	public void setVersionB(String versionB){
+		this.versionB = versionB;
+	}
+
+	public void versionB(String multirequestToken){
+		setToken("versionB", multirequestToken);
+	}
 
 
-    public MetadataFieldChangedCondition() {
-       super();
-    }
+	public MetadataFieldChangedCondition() {
+		super();
+	}
 
-    public MetadataFieldChangedCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataFieldChangedCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xPath = GsonParser.parseString(jsonObject.get("xPath"));
-        profileId = GsonParser.parseInt(jsonObject.get("profileId"));
-        profileSystemName = GsonParser.parseString(jsonObject.get("profileSystemName"));
-        versionA = GsonParser.parseString(jsonObject.get("versionA"));
-        versionB = GsonParser.parseString(jsonObject.get("versionB"));
+		// set members values:
+		xPath = GsonParser.parseString(jsonObject.get("xPath"));
+		profileId = GsonParser.parseInt(jsonObject.get("profileId"));
+		profileSystemName = GsonParser.parseString(jsonObject.get("profileSystemName"));
+		versionA = GsonParser.parseString(jsonObject.get("versionA"));
+		versionB = GsonParser.parseString(jsonObject.get("versionB"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataFieldChangedCondition");
-        kparams.add("xPath", this.xPath);
-        kparams.add("profileId", this.profileId);
-        kparams.add("profileSystemName", this.profileSystemName);
-        kparams.add("versionA", this.versionA);
-        kparams.add("versionB", this.versionB);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataFieldChangedCondition");
+		kparams.add("xPath", this.xPath);
+		kparams.add("profileId", this.profileId);
+		kparams.add("profileSystemName", this.profileSystemName);
+		kparams.add("versionA", this.versionA);
+		kparams.add("versionB", this.versionB);
+		return kparams;
+	}
 
 }
 

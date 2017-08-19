@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,62 +41,81 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FileSyncDescriptor.Tokenizer.class)
 public class FileSyncDescriptor extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String fileSyncLocalPath();
+		String fileSyncRemoteUrl();
+		String fileSyncObjectSubType();
+	}
 
-    private String fileSyncLocalPath;
+	private String fileSyncLocalPath;
 	/**  The translated path as used by the scheduler  */
-    private String fileSyncRemoteUrl;
-    private Integer fileSyncObjectSubType;
+	private String fileSyncRemoteUrl;
+	private Integer fileSyncObjectSubType;
 
-    // fileSyncLocalPath:
-    public String getFileSyncLocalPath(){
-        return this.fileSyncLocalPath;
-    }
-    public void setFileSyncLocalPath(String fileSyncLocalPath){
-        this.fileSyncLocalPath = fileSyncLocalPath;
-    }
+	// fileSyncLocalPath:
+	public String getFileSyncLocalPath(){
+		return this.fileSyncLocalPath;
+	}
+	public void setFileSyncLocalPath(String fileSyncLocalPath){
+		this.fileSyncLocalPath = fileSyncLocalPath;
+	}
 
-    // fileSyncRemoteUrl:
-    public String getFileSyncRemoteUrl(){
-        return this.fileSyncRemoteUrl;
-    }
-    public void setFileSyncRemoteUrl(String fileSyncRemoteUrl){
-        this.fileSyncRemoteUrl = fileSyncRemoteUrl;
-    }
+	public void fileSyncLocalPath(String multirequestToken){
+		setToken("fileSyncLocalPath", multirequestToken);
+	}
 
-    // fileSyncObjectSubType:
-    public Integer getFileSyncObjectSubType(){
-        return this.fileSyncObjectSubType;
-    }
-    public void setFileSyncObjectSubType(Integer fileSyncObjectSubType){
-        this.fileSyncObjectSubType = fileSyncObjectSubType;
-    }
+	// fileSyncRemoteUrl:
+	public String getFileSyncRemoteUrl(){
+		return this.fileSyncRemoteUrl;
+	}
+	public void setFileSyncRemoteUrl(String fileSyncRemoteUrl){
+		this.fileSyncRemoteUrl = fileSyncRemoteUrl;
+	}
+
+	public void fileSyncRemoteUrl(String multirequestToken){
+		setToken("fileSyncRemoteUrl", multirequestToken);
+	}
+
+	// fileSyncObjectSubType:
+	public Integer getFileSyncObjectSubType(){
+		return this.fileSyncObjectSubType;
+	}
+	public void setFileSyncObjectSubType(Integer fileSyncObjectSubType){
+		this.fileSyncObjectSubType = fileSyncObjectSubType;
+	}
+
+	public void fileSyncObjectSubType(String multirequestToken){
+		setToken("fileSyncObjectSubType", multirequestToken);
+	}
 
 
-    public FileSyncDescriptor() {
-       super();
-    }
+	public FileSyncDescriptor() {
+		super();
+	}
 
-    public FileSyncDescriptor(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FileSyncDescriptor(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fileSyncLocalPath = GsonParser.parseString(jsonObject.get("fileSyncLocalPath"));
-        fileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("fileSyncRemoteUrl"));
-        fileSyncObjectSubType = GsonParser.parseInt(jsonObject.get("fileSyncObjectSubType"));
+		// set members values:
+		fileSyncLocalPath = GsonParser.parseString(jsonObject.get("fileSyncLocalPath"));
+		fileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("fileSyncRemoteUrl"));
+		fileSyncObjectSubType = GsonParser.parseInt(jsonObject.get("fileSyncObjectSubType"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFileSyncDescriptor");
-        kparams.add("fileSyncLocalPath", this.fileSyncLocalPath);
-        kparams.add("fileSyncRemoteUrl", this.fileSyncRemoteUrl);
-        kparams.add("fileSyncObjectSubType", this.fileSyncObjectSubType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFileSyncDescriptor");
+		kparams.add("fileSyncLocalPath", this.fileSyncLocalPath);
+		kparams.add("fileSyncRemoteUrl", this.fileSyncRemoteUrl);
+		kparams.add("fileSyncObjectSubType", this.fileSyncObjectSubType);
+		return kparams;
+	}
 
 }
 

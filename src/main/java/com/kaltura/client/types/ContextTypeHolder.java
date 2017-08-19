@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ContextType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,40 +42,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ContextTypeHolder.Tokenizer.class)
 public class ContextTypeHolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+	}
 
 	/**  The type of the condition context  */
-    private ContextType type;
+	private ContextType type;
 
-    // type:
-    public ContextType getType(){
-        return this.type;
-    }
-    public void setType(ContextType type){
-        this.type = type;
-    }
+	// type:
+	public ContextType getType(){
+		return this.type;
+	}
+	public void setType(ContextType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public ContextTypeHolder() {
-       super();
-    }
+	public ContextTypeHolder() {
+		super();
+	}
 
-    public ContextTypeHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ContextTypeHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = ContextType.get(GsonParser.parseString(jsonObject.get("type")));
+		// set members values:
+		type = ContextType.get(GsonParser.parseString(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaContextTypeHolder");
-        kparams.add("type", this.type);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaContextTypeHolder");
+		kparams.add("type", this.type);
+		return kparams;
+	}
 
 }
 

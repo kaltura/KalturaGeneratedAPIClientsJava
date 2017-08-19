@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SystemPartnerFilter.Tokenizer.class)
 public class SystemPartnerFilter extends PartnerFilter {
+	
+	public interface Tokenizer extends PartnerFilter.Tokenizer {
+		String partnerParentIdEqual();
+		String partnerParentIdIn();
+	}
 
-    private Integer partnerParentIdEqual;
-    private String partnerParentIdIn;
+	private Integer partnerParentIdEqual;
+	private String partnerParentIdIn;
 
-    // partnerParentIdEqual:
-    public Integer getPartnerParentIdEqual(){
-        return this.partnerParentIdEqual;
-    }
-    public void setPartnerParentIdEqual(Integer partnerParentIdEqual){
-        this.partnerParentIdEqual = partnerParentIdEqual;
-    }
+	// partnerParentIdEqual:
+	public Integer getPartnerParentIdEqual(){
+		return this.partnerParentIdEqual;
+	}
+	public void setPartnerParentIdEqual(Integer partnerParentIdEqual){
+		this.partnerParentIdEqual = partnerParentIdEqual;
+	}
 
-    // partnerParentIdIn:
-    public String getPartnerParentIdIn(){
-        return this.partnerParentIdIn;
-    }
-    public void setPartnerParentIdIn(String partnerParentIdIn){
-        this.partnerParentIdIn = partnerParentIdIn;
-    }
+	public void partnerParentIdEqual(String multirequestToken){
+		setToken("partnerParentIdEqual", multirequestToken);
+	}
+
+	// partnerParentIdIn:
+	public String getPartnerParentIdIn(){
+		return this.partnerParentIdIn;
+	}
+	public void setPartnerParentIdIn(String partnerParentIdIn){
+		this.partnerParentIdIn = partnerParentIdIn;
+	}
+
+	public void partnerParentIdIn(String multirequestToken){
+		setToken("partnerParentIdIn", multirequestToken);
+	}
 
 
-    public SystemPartnerFilter() {
-       super();
-    }
+	public SystemPartnerFilter() {
+		super();
+	}
 
-    public SystemPartnerFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SystemPartnerFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        partnerParentIdEqual = GsonParser.parseInt(jsonObject.get("partnerParentIdEqual"));
-        partnerParentIdIn = GsonParser.parseString(jsonObject.get("partnerParentIdIn"));
+		// set members values:
+		partnerParentIdEqual = GsonParser.parseInt(jsonObject.get("partnerParentIdEqual"));
+		partnerParentIdIn = GsonParser.parseString(jsonObject.get("partnerParentIdIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSystemPartnerFilter");
-        kparams.add("partnerParentIdEqual", this.partnerParentIdEqual);
-        kparams.add("partnerParentIdIn", this.partnerParentIdIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSystemPartnerFilter");
+		kparams.add("partnerParentIdEqual", this.partnerParentIdEqual);
+		kparams.add("partnerParentIdIn", this.partnerParentIdIn);
+		return kparams;
+	}
 
 }
 

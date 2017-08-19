@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.ExternalMediaEntry;
 import com.kaltura.client.types.ExternalMediaEntryFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -46,66 +44,108 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  External media service lets you upload and manage embed codes and external
   playable content  */
 public class ExternalMediaService {
+	
+	public static class AddExternalMediaBuilder extends RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.Tokenizer, AddExternalMediaBuilder> {
+		
+		public AddExternalMediaBuilder(ExternalMediaEntry entry) {
+			super(ExternalMediaEntry.class, "externalmedia_externalmedia", "add");
+			params.add("entry", entry);
+		}
+	}
 
 	/**  Add external media entry  */
-    public static RequestBuilder<ExternalMediaEntry> add(ExternalMediaEntry entry)  {
-        Params kparams = new Params();
-        kparams.add("entry", entry);
+    public static AddExternalMediaBuilder add(ExternalMediaEntry entry)  {
+		return new AddExternalMediaBuilder(entry);
+	}
+	
+	public static class CountExternalMediaBuilder extends RequestBuilder<Integer, String, CountExternalMediaBuilder> {
+		
+		public CountExternalMediaBuilder(ExternalMediaEntryFilter filter) {
+			super(Integer.class, "externalmedia_externalmedia", "count");
+			params.add("filter", filter);
+		}
+	}
 
-        return new RequestBuilder<ExternalMediaEntry>(ExternalMediaEntry.class, "externalmedia_externalmedia", "add", kparams);
-    }
-
-    public static RequestBuilder<Integer> count()  {
-        return count(null);
-    }
+	public static CountExternalMediaBuilder count()  {
+		return count(null);
+	}
 
 	/**  Count media entries by filter.  */
-    public static RequestBuilder<Integer> count(ExternalMediaEntryFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-
-        return new RequestBuilder<Integer>(Integer.class, "externalmedia_externalmedia", "count", kparams);
-    }
+    public static CountExternalMediaBuilder count(ExternalMediaEntryFilter filter)  {
+		return new CountExternalMediaBuilder(filter);
+	}
+	
+	public static class DeleteExternalMediaBuilder extends NullRequestBuilder {
+		
+		public DeleteExternalMediaBuilder(String id) {
+			super("externalmedia_externalmedia", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete a external media entry.  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("externalmedia_externalmedia", "delete", kparams);
-    }
+    public static DeleteExternalMediaBuilder delete(String id)  {
+		return new DeleteExternalMediaBuilder(id);
+	}
+	
+	public static class GetExternalMediaBuilder extends RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.Tokenizer, GetExternalMediaBuilder> {
+		
+		public GetExternalMediaBuilder(String id) {
+			super(ExternalMediaEntry.class, "externalmedia_externalmedia", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get external media entry by ID.  */
-    public static RequestBuilder<ExternalMediaEntry> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetExternalMediaBuilder get(String id)  {
+		return new GetExternalMediaBuilder(id);
+	}
+	
+	public static class ListExternalMediaBuilder extends ListResponseRequestBuilder<ExternalMediaEntry, ExternalMediaEntry.Tokenizer, ListExternalMediaBuilder> {
+		
+		public ListExternalMediaBuilder(ExternalMediaEntryFilter filter, FilterPager pager) {
+			super(ExternalMediaEntry.class, "externalmedia_externalmedia", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ExternalMediaEntry>(ExternalMediaEntry.class, "externalmedia_externalmedia", "get", kparams);
-    }
+	public static ListExternalMediaBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ExternalMediaEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ExternalMediaEntry>> list(ExternalMediaEntryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListExternalMediaBuilder list(ExternalMediaEntryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List media entries by filter with paging support.  */
-    public static RequestBuilder<ListResponse<ExternalMediaEntry>> list(ExternalMediaEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ExternalMediaEntry>(ExternalMediaEntry.class, "externalmedia_externalmedia", "list", kparams);
-    }
+    public static ListExternalMediaBuilder list(ExternalMediaEntryFilter filter, FilterPager pager)  {
+		return new ListExternalMediaBuilder(filter, pager);
+	}
+	
+	public static class UpdateExternalMediaBuilder extends RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.Tokenizer, UpdateExternalMediaBuilder> {
+		
+		public UpdateExternalMediaBuilder(String id, ExternalMediaEntry entry) {
+			super(ExternalMediaEntry.class, "externalmedia_externalmedia", "update");
+			params.add("id", id);
+			params.add("entry", entry);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update external media entry. Only the properties that were set will be updated.  */
-    public static RequestBuilder<ExternalMediaEntry> update(String id, ExternalMediaEntry entry)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("entry", entry);
-
-        return new RequestBuilder<ExternalMediaEntry>(ExternalMediaEntry.class, "externalmedia_externalmedia", "update", kparams);
-    }
+    public static UpdateExternalMediaBuilder update(String id, ExternalMediaEntry entry)  {
+		return new UpdateExternalMediaBuilder(id, entry);
+	}
 }

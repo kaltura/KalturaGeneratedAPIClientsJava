@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveEntryFilter.Tokenizer.class)
 public class LiveEntryFilter extends LiveEntryBaseFilter {
+	
+	public interface Tokenizer extends LiveEntryBaseFilter.Tokenizer {
+		String isLive();
+		String isRecordedEntryIdEmpty();
+		String hasMediaServerHostname();
+	}
 
-    private Boolean isLive;
-    private Boolean isRecordedEntryIdEmpty;
-    private String hasMediaServerHostname;
+	private Boolean isLive;
+	private Boolean isRecordedEntryIdEmpty;
+	private String hasMediaServerHostname;
 
-    // isLive:
-    public Boolean getIsLive(){
-        return this.isLive;
-    }
-    public void setIsLive(Boolean isLive){
-        this.isLive = isLive;
-    }
+	// isLive:
+	public Boolean getIsLive(){
+		return this.isLive;
+	}
+	public void setIsLive(Boolean isLive){
+		this.isLive = isLive;
+	}
 
-    // isRecordedEntryIdEmpty:
-    public Boolean getIsRecordedEntryIdEmpty(){
-        return this.isRecordedEntryIdEmpty;
-    }
-    public void setIsRecordedEntryIdEmpty(Boolean isRecordedEntryIdEmpty){
-        this.isRecordedEntryIdEmpty = isRecordedEntryIdEmpty;
-    }
+	public void isLive(String multirequestToken){
+		setToken("isLive", multirequestToken);
+	}
 
-    // hasMediaServerHostname:
-    public String getHasMediaServerHostname(){
-        return this.hasMediaServerHostname;
-    }
-    public void setHasMediaServerHostname(String hasMediaServerHostname){
-        this.hasMediaServerHostname = hasMediaServerHostname;
-    }
+	// isRecordedEntryIdEmpty:
+	public Boolean getIsRecordedEntryIdEmpty(){
+		return this.isRecordedEntryIdEmpty;
+	}
+	public void setIsRecordedEntryIdEmpty(Boolean isRecordedEntryIdEmpty){
+		this.isRecordedEntryIdEmpty = isRecordedEntryIdEmpty;
+	}
+
+	public void isRecordedEntryIdEmpty(String multirequestToken){
+		setToken("isRecordedEntryIdEmpty", multirequestToken);
+	}
+
+	// hasMediaServerHostname:
+	public String getHasMediaServerHostname(){
+		return this.hasMediaServerHostname;
+	}
+	public void setHasMediaServerHostname(String hasMediaServerHostname){
+		this.hasMediaServerHostname = hasMediaServerHostname;
+	}
+
+	public void hasMediaServerHostname(String multirequestToken){
+		setToken("hasMediaServerHostname", multirequestToken);
+	}
 
 
-    public LiveEntryFilter() {
-       super();
-    }
+	public LiveEntryFilter() {
+		super();
+	}
 
-    public LiveEntryFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveEntryFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        isLive = GsonParser.parseBoolean(jsonObject.get("isLive"));
-        isRecordedEntryIdEmpty = GsonParser.parseBoolean(jsonObject.get("isRecordedEntryIdEmpty"));
-        hasMediaServerHostname = GsonParser.parseString(jsonObject.get("hasMediaServerHostname"));
+		// set members values:
+		isLive = GsonParser.parseBoolean(jsonObject.get("isLive"));
+		isRecordedEntryIdEmpty = GsonParser.parseBoolean(jsonObject.get("isRecordedEntryIdEmpty"));
+		hasMediaServerHostname = GsonParser.parseString(jsonObject.get("hasMediaServerHostname"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveEntryFilter");
-        kparams.add("isLive", this.isLive);
-        kparams.add("isRecordedEntryIdEmpty", this.isRecordedEntryIdEmpty);
-        kparams.add("hasMediaServerHostname", this.hasMediaServerHostname);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveEntryFilter");
+		kparams.add("isLive", this.isLive);
+		kparams.add("isRecordedEntryIdEmpty", this.isRecordedEntryIdEmpty);
+		kparams.add("hasMediaServerHostname", this.hasMediaServerHostname);
+		return kparams;
+	}
 
 }
 

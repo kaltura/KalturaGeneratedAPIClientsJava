@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduledTaskJobData.Tokenizer.class)
 public class ScheduledTaskJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String maxResults();
+		String resultsFilePath();
+		String referenceTime();
+	}
 
-    private Integer maxResults;
-    private String resultsFilePath;
-    private Integer referenceTime;
+	private Integer maxResults;
+	private String resultsFilePath;
+	private Integer referenceTime;
 
-    // maxResults:
-    public Integer getMaxResults(){
-        return this.maxResults;
-    }
-    public void setMaxResults(Integer maxResults){
-        this.maxResults = maxResults;
-    }
+	// maxResults:
+	public Integer getMaxResults(){
+		return this.maxResults;
+	}
+	public void setMaxResults(Integer maxResults){
+		this.maxResults = maxResults;
+	}
 
-    // resultsFilePath:
-    public String getResultsFilePath(){
-        return this.resultsFilePath;
-    }
-    public void setResultsFilePath(String resultsFilePath){
-        this.resultsFilePath = resultsFilePath;
-    }
+	public void maxResults(String multirequestToken){
+		setToken("maxResults", multirequestToken);
+	}
 
-    // referenceTime:
-    public Integer getReferenceTime(){
-        return this.referenceTime;
-    }
-    public void setReferenceTime(Integer referenceTime){
-        this.referenceTime = referenceTime;
-    }
+	// resultsFilePath:
+	public String getResultsFilePath(){
+		return this.resultsFilePath;
+	}
+	public void setResultsFilePath(String resultsFilePath){
+		this.resultsFilePath = resultsFilePath;
+	}
+
+	public void resultsFilePath(String multirequestToken){
+		setToken("resultsFilePath", multirequestToken);
+	}
+
+	// referenceTime:
+	public Integer getReferenceTime(){
+		return this.referenceTime;
+	}
+	public void setReferenceTime(Integer referenceTime){
+		this.referenceTime = referenceTime;
+	}
+
+	public void referenceTime(String multirequestToken){
+		setToken("referenceTime", multirequestToken);
+	}
 
 
-    public ScheduledTaskJobData() {
-       super();
-    }
+	public ScheduledTaskJobData() {
+		super();
+	}
 
-    public ScheduledTaskJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduledTaskJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        maxResults = GsonParser.parseInt(jsonObject.get("maxResults"));
-        resultsFilePath = GsonParser.parseString(jsonObject.get("resultsFilePath"));
-        referenceTime = GsonParser.parseInt(jsonObject.get("referenceTime"));
+		// set members values:
+		maxResults = GsonParser.parseInt(jsonObject.get("maxResults"));
+		resultsFilePath = GsonParser.parseString(jsonObject.get("resultsFilePath"));
+		referenceTime = GsonParser.parseInt(jsonObject.get("referenceTime"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduledTaskJobData");
-        kparams.add("maxResults", this.maxResults);
-        kparams.add("resultsFilePath", this.resultsFilePath);
-        kparams.add("referenceTime", this.referenceTime);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduledTaskJobData");
+		kparams.add("maxResults", this.maxResults);
+		kparams.add("resultsFilePath", this.resultsFilePath);
+		kparams.add("referenceTime", this.referenceTime);
+		return kparams;
+	}
 
 }
 

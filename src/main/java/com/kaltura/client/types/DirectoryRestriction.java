@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DirectoryRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DirectoryRestriction.Tokenizer.class)
 public class DirectoryRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String directoryRestrictionType();
+	}
 
 	/**  Kaltura directory restriction type  */
-    private DirectoryRestrictionType directoryRestrictionType;
+	private DirectoryRestrictionType directoryRestrictionType;
 
-    // directoryRestrictionType:
-    public DirectoryRestrictionType getDirectoryRestrictionType(){
-        return this.directoryRestrictionType;
-    }
-    public void setDirectoryRestrictionType(DirectoryRestrictionType directoryRestrictionType){
-        this.directoryRestrictionType = directoryRestrictionType;
-    }
+	// directoryRestrictionType:
+	public DirectoryRestrictionType getDirectoryRestrictionType(){
+		return this.directoryRestrictionType;
+	}
+	public void setDirectoryRestrictionType(DirectoryRestrictionType directoryRestrictionType){
+		this.directoryRestrictionType = directoryRestrictionType;
+	}
+
+	public void directoryRestrictionType(String multirequestToken){
+		setToken("directoryRestrictionType", multirequestToken);
+	}
 
 
-    public DirectoryRestriction() {
-       super();
-    }
+	public DirectoryRestriction() {
+		super();
+	}
 
-    public DirectoryRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DirectoryRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        directoryRestrictionType = DirectoryRestrictionType.get(GsonParser.parseInt(jsonObject.get("directoryRestrictionType")));
+		// set members values:
+		directoryRestrictionType = DirectoryRestrictionType.get(GsonParser.parseInt(jsonObject.get("directoryRestrictionType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDirectoryRestriction");
-        kparams.add("directoryRestrictionType", this.directoryRestrictionType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDirectoryRestriction");
+		kparams.add("directoryRestrictionType", this.directoryRestrictionType);
+		return kparams;
+	}
 
 }
 

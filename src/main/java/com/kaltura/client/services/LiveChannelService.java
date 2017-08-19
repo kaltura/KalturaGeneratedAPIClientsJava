@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.enums.EntryServerNodeType;
 import com.kaltura.client.types.DataCenterContentResource;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.LiveChannel;
 import com.kaltura.client.types.LiveChannelFilter;
 import com.kaltura.client.types.LiveEntry;
@@ -49,152 +47,320 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Live Channel service lets you manage live channels  */
 public class LiveChannelService {
+	
+	public static class AddLiveChannelBuilder extends RequestBuilder<LiveChannel, LiveChannel.Tokenizer, AddLiveChannelBuilder> {
+		
+		public AddLiveChannelBuilder(LiveChannel liveChannel) {
+			super(LiveChannel.class, "livechannel", "add");
+			params.add("liveChannel", liveChannel);
+		}
+	}
 
 	/**  Adds new live channel.  */
-    public static RequestBuilder<LiveChannel> add(LiveChannel liveChannel)  {
-        Params kparams = new Params();
-        kparams.add("liveChannel", liveChannel);
+    public static AddLiveChannelBuilder add(LiveChannel liveChannel)  {
+		return new AddLiveChannelBuilder(liveChannel);
+	}
+	
+	public static class AppendRecordingLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, AppendRecordingLiveChannelBuilder> {
+		
+		public AppendRecordingLiveChannelBuilder(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk) {
+			super(LiveEntry.class, "livechannel", "appendRecording");
+			params.add("entryId", entryId);
+			params.add("assetId", assetId);
+			params.add("mediaServerIndex", mediaServerIndex);
+			params.add("resource", resource);
+			params.add("duration", duration);
+			params.add("isLastChunk", isLastChunk);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+		
+		public void mediaServerIndex(String multirequestToken) {
+			params.add("mediaServerIndex", multirequestToken);
+		}
+		
+		public void duration(String multirequestToken) {
+			params.add("duration", multirequestToken);
+		}
+		
+		public void isLastChunk(String multirequestToken) {
+			params.add("isLastChunk", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<LiveChannel>(LiveChannel.class, "livechannel", "add", kparams);
-    }
-
-    public static RequestBuilder<LiveEntry> appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration)  {
-        return appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
-    }
+	public static AppendRecordingLiveChannelBuilder appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration)  {
+		return appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
+	}
 
 	/**  Append recorded video to live entry  */
-    public static RequestBuilder<LiveEntry> appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("assetId", assetId);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        kparams.add("resource", resource);
-        kparams.add("duration", duration);
-        kparams.add("isLastChunk", isLastChunk);
+    public static AppendRecordingLiveChannelBuilder appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk)  {
+		return new AppendRecordingLiveChannelBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
+	}
+	
+	public static class CreateRecordedEntryLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, CreateRecordedEntryLiveChannelBuilder> {
+		
+		public CreateRecordedEntryLiveChannelBuilder(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus) {
+			super(LiveEntry.class, "livechannel", "createRecordedEntry");
+			params.add("entryId", entryId);
+			params.add("mediaServerIndex", mediaServerIndex);
+			params.add("liveEntryStatus", liveEntryStatus);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void mediaServerIndex(String multirequestToken) {
+			params.add("mediaServerIndex", multirequestToken);
+		}
+		
+		public void liveEntryStatus(String multirequestToken) {
+			params.add("liveEntryStatus", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "appendRecording", kparams);
-    }
-
-    public static RequestBuilder<LiveEntry> createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        kparams.add("liveEntryStatus", liveEntryStatus);
-
-        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "createRecordedEntry", kparams);
-    }
+    public static CreateRecordedEntryLiveChannelBuilder createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
+		return new CreateRecordedEntryLiveChannelBuilder(entryId, mediaServerIndex, liveEntryStatus);
+	}
+	
+	public static class DeleteLiveChannelBuilder extends NullRequestBuilder {
+		
+		public DeleteLiveChannelBuilder(String id) {
+			super("livechannel", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete a live channel.  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("livechannel", "delete", kparams);
-    }
+    public static DeleteLiveChannelBuilder delete(String id)  {
+		return new DeleteLiveChannelBuilder(id);
+	}
+	
+	public static class GetLiveChannelBuilder extends RequestBuilder<LiveChannel, LiveChannel.Tokenizer, GetLiveChannelBuilder> {
+		
+		public GetLiveChannelBuilder(String id) {
+			super(LiveChannel.class, "livechannel", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get live channel by ID.  */
-    public static RequestBuilder<LiveChannel> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<LiveChannel>(LiveChannel.class, "livechannel", "get", kparams);
-    }
+    public static GetLiveChannelBuilder get(String id)  {
+		return new GetLiveChannelBuilder(id);
+	}
+	
+	public static class IsLiveLiveChannelBuilder extends RequestBuilder<Boolean, String, IsLiveLiveChannelBuilder> {
+		
+		public IsLiveLiveChannelBuilder(String id) {
+			super(Boolean.class, "livechannel", "isLive");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delivering the status of a live channel (on-air/offline)  */
-    public static RequestBuilder<Boolean> isLive(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static IsLiveLiveChannelBuilder isLive(String id)  {
+		return new IsLiveLiveChannelBuilder(id);
+	}
+	
+	public static class ListLiveChannelBuilder extends ListResponseRequestBuilder<LiveChannel, LiveChannel.Tokenizer, ListLiveChannelBuilder> {
+		
+		public ListLiveChannelBuilder(LiveChannelFilter filter, FilterPager pager) {
+			super(LiveChannel.class, "livechannel", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<Boolean>(Boolean.class, "livechannel", "isLive", kparams);
-    }
+	public static ListLiveChannelBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<LiveChannel>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<LiveChannel>> list(LiveChannelFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListLiveChannelBuilder list(LiveChannelFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List live channels by filter with paging support.  */
-    public static RequestBuilder<ListResponse<LiveChannel>> list(LiveChannelFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListLiveChannelBuilder list(LiveChannelFilter filter, FilterPager pager)  {
+		return new ListLiveChannelBuilder(filter, pager);
+	}
+	
+	public static class RegisterMediaServerLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, RegisterMediaServerLiveChannelBuilder> {
+		
+		public RegisterMediaServerLiveChannelBuilder(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry) {
+			super(LiveEntry.class, "livechannel", "registerMediaServer");
+			params.add("entryId", entryId);
+			params.add("hostname", hostname);
+			params.add("mediaServerIndex", mediaServerIndex);
+			params.add("applicationName", applicationName);
+			params.add("liveEntryStatus", liveEntryStatus);
+			params.add("shouldCreateRecordedEntry", shouldCreateRecordedEntry);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void hostname(String multirequestToken) {
+			params.add("hostname", multirequestToken);
+		}
+		
+		public void mediaServerIndex(String multirequestToken) {
+			params.add("mediaServerIndex", multirequestToken);
+		}
+		
+		public void applicationName(String multirequestToken) {
+			params.add("applicationName", multirequestToken);
+		}
+		
+		public void liveEntryStatus(String multirequestToken) {
+			params.add("liveEntryStatus", multirequestToken);
+		}
+		
+		public void shouldCreateRecordedEntry(String multirequestToken) {
+			params.add("shouldCreateRecordedEntry", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<LiveChannel>(LiveChannel.class, "livechannel", "list", kparams);
-    }
+	public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
+		return registerMediaServer(entryId, hostname, mediaServerIndex, null);
+	}
 
-    public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
-        return registerMediaServer(entryId, hostname, mediaServerIndex, null);
-    }
+	public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName)  {
+		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, EntryServerNodeStatus.get(1));
+	}
 
-    public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName)  {
-        return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, EntryServerNodeStatus.get(1));
-    }
-
-    public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus)  {
-        return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
-    }
+	public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus)  {
+		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
+	}
 
 	/**  Register media server to live entry  */
-    public static RequestBuilder<LiveEntry> registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("hostname", hostname);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        kparams.add("applicationName", applicationName);
-        kparams.add("liveEntryStatus", liveEntryStatus);
-        kparams.add("shouldCreateRecordedEntry", shouldCreateRecordedEntry);
+    public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
+		return new RegisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
+	}
+	
+	public static class SetRecordedContentLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, SetRecordedContentLiveChannelBuilder> {
+		
+		public SetRecordedContentLiveChannelBuilder(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId) {
+			super(LiveEntry.class, "livechannel", "setRecordedContent");
+			params.add("entryId", entryId);
+			params.add("mediaServerIndex", mediaServerIndex);
+			params.add("resource", resource);
+			params.add("duration", duration);
+			params.add("recordedEntryId", recordedEntryId);
+			params.add("flavorParamsId", flavorParamsId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void mediaServerIndex(String multirequestToken) {
+			params.add("mediaServerIndex", multirequestToken);
+		}
+		
+		public void duration(String multirequestToken) {
+			params.add("duration", multirequestToken);
+		}
+		
+		public void recordedEntryId(String multirequestToken) {
+			params.add("recordedEntryId", multirequestToken);
+		}
+		
+		public void flavorParamsId(String multirequestToken) {
+			params.add("flavorParamsId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "registerMediaServer", kparams);
-    }
+	public static SetRecordedContentLiveChannelBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration)  {
+		return setRecordedContent(entryId, mediaServerIndex, resource, duration, null);
+	}
 
-    public static RequestBuilder<LiveEntry> setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration)  {
-        return setRecordedContent(entryId, mediaServerIndex, resource, duration, null);
-    }
-
-    public static RequestBuilder<LiveEntry> setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId)  {
-        return setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
-    }
+	public static SetRecordedContentLiveChannelBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId)  {
+		return setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
+	}
 
 	/**  Sey recorded video to live entry  */
-    public static RequestBuilder<LiveEntry> setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-        kparams.add("resource", resource);
-        kparams.add("duration", duration);
-        kparams.add("recordedEntryId", recordedEntryId);
-        kparams.add("flavorParamsId", flavorParamsId);
-
-        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "setRecordedContent", kparams);
-    }
+    public static SetRecordedContentLiveChannelBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId)  {
+		return new SetRecordedContentLiveChannelBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
+	}
+	
+	public static class UnregisterMediaServerLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, UnregisterMediaServerLiveChannelBuilder> {
+		
+		public UnregisterMediaServerLiveChannelBuilder(String entryId, String hostname, EntryServerNodeType mediaServerIndex) {
+			super(LiveEntry.class, "livechannel", "unregisterMediaServer");
+			params.add("entryId", entryId);
+			params.add("hostname", hostname);
+			params.add("mediaServerIndex", mediaServerIndex);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void hostname(String multirequestToken) {
+			params.add("hostname", multirequestToken);
+		}
+		
+		public void mediaServerIndex(String multirequestToken) {
+			params.add("mediaServerIndex", multirequestToken);
+		}
+	}
 
 	/**  Unregister media server from live entry  */
-    public static RequestBuilder<LiveEntry> unregisterMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("hostname", hostname);
-        kparams.add("mediaServerIndex", mediaServerIndex);
-
-        return new RequestBuilder<LiveEntry>(LiveEntry.class, "livechannel", "unregisterMediaServer", kparams);
-    }
+    public static UnregisterMediaServerLiveChannelBuilder unregisterMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
+		return new UnregisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex);
+	}
+	
+	public static class UpdateLiveChannelBuilder extends RequestBuilder<LiveChannel, LiveChannel.Tokenizer, UpdateLiveChannelBuilder> {
+		
+		public UpdateLiveChannelBuilder(String id, LiveChannel liveChannel) {
+			super(LiveChannel.class, "livechannel", "update");
+			params.add("id", id);
+			params.add("liveChannel", liveChannel);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update live channel. Only the properties that were set will be updated.  */
-    public static RequestBuilder<LiveChannel> update(String id, LiveChannel liveChannel)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("liveChannel", liveChannel);
-
-        return new RequestBuilder<LiveChannel>(LiveChannel.class, "livechannel", "update", kparams);
-    }
+    public static UpdateLiveChannelBuilder update(String id, LiveChannel liveChannel)  {
+		return new UpdateLiveChannelBuilder(id, liveChannel);
+	}
+	
+	public static class ValidateRegisteredMediaServersLiveChannelBuilder extends NullRequestBuilder {
+		
+		public ValidateRegisteredMediaServersLiveChannelBuilder(String entryId) {
+			super("livechannel", "validateRegisteredMediaServers");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Validates all registered media servers  */
-    public static RequestBuilder<Void> validateRegisteredMediaServers(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new NullRequestBuilder("livechannel", "validateRegisteredMediaServers", kparams);
-    }
+    public static ValidateRegisteredMediaServersLiveChannelBuilder validateRegisteredMediaServers(String entryId)  {
+		return new ValidateRegisteredMediaServersLiveChannelBuilder(entryId);
+	}
 }

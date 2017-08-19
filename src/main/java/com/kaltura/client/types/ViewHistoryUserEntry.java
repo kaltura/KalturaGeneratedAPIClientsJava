@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,63 +40,82 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ViewHistoryUserEntry.Tokenizer.class)
 public class ViewHistoryUserEntry extends UserEntry {
+	
+	public interface Tokenizer extends UserEntry.Tokenizer {
+		String playbackContext();
+		String lastTimeReached();
+		String lastUpdateTime();
+	}
 
 	/**  Playback context  */
-    private String playbackContext;
+	private String playbackContext;
 	/**  Last playback time reached by user  */
-    private Integer lastTimeReached;
-    private Integer lastUpdateTime;
+	private Integer lastTimeReached;
+	private Integer lastUpdateTime;
 
-    // playbackContext:
-    public String getPlaybackContext(){
-        return this.playbackContext;
-    }
-    public void setPlaybackContext(String playbackContext){
-        this.playbackContext = playbackContext;
-    }
+	// playbackContext:
+	public String getPlaybackContext(){
+		return this.playbackContext;
+	}
+	public void setPlaybackContext(String playbackContext){
+		this.playbackContext = playbackContext;
+	}
 
-    // lastTimeReached:
-    public Integer getLastTimeReached(){
-        return this.lastTimeReached;
-    }
-    public void setLastTimeReached(Integer lastTimeReached){
-        this.lastTimeReached = lastTimeReached;
-    }
+	public void playbackContext(String multirequestToken){
+		setToken("playbackContext", multirequestToken);
+	}
 
-    // lastUpdateTime:
-    public Integer getLastUpdateTime(){
-        return this.lastUpdateTime;
-    }
-    public void setLastUpdateTime(Integer lastUpdateTime){
-        this.lastUpdateTime = lastUpdateTime;
-    }
+	// lastTimeReached:
+	public Integer getLastTimeReached(){
+		return this.lastTimeReached;
+	}
+	public void setLastTimeReached(Integer lastTimeReached){
+		this.lastTimeReached = lastTimeReached;
+	}
+
+	public void lastTimeReached(String multirequestToken){
+		setToken("lastTimeReached", multirequestToken);
+	}
+
+	// lastUpdateTime:
+	public Integer getLastUpdateTime(){
+		return this.lastUpdateTime;
+	}
+	public void setLastUpdateTime(Integer lastUpdateTime){
+		this.lastUpdateTime = lastUpdateTime;
+	}
+
+	public void lastUpdateTime(String multirequestToken){
+		setToken("lastUpdateTime", multirequestToken);
+	}
 
 
-    public ViewHistoryUserEntry() {
-       super();
-    }
+	public ViewHistoryUserEntry() {
+		super();
+	}
 
-    public ViewHistoryUserEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ViewHistoryUserEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
-        lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
-        lastUpdateTime = GsonParser.parseInt(jsonObject.get("lastUpdateTime"));
+		// set members values:
+		playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
+		lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
+		lastUpdateTime = GsonParser.parseInt(jsonObject.get("lastUpdateTime"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaViewHistoryUserEntry");
-        kparams.add("playbackContext", this.playbackContext);
-        kparams.add("lastTimeReached", this.lastTimeReached);
-        kparams.add("lastUpdateTime", this.lastUpdateTime);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaViewHistoryUserEntry");
+		kparams.add("playbackContext", this.playbackContext);
+		kparams.add("lastTimeReached", this.lastTimeReached);
+		kparams.add("lastUpdateTime", this.lastUpdateTime);
+		return kparams;
+	}
 
 }
 

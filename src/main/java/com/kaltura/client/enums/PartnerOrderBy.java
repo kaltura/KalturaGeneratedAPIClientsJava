@@ -34,49 +34,49 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PartnerOrderBy implements EnumAsString {
-    ADMIN_EMAIL_ASC("+adminEmail"),
-    ADMIN_NAME_ASC("+adminName"),
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    NAME_ASC("+name"),
-    STATUS_ASC("+status"),
-    WEBSITE_ASC("+website"),
-    ADMIN_EMAIL_DESC("-adminEmail"),
-    ADMIN_NAME_DESC("-adminName"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id"),
-    NAME_DESC("-name"),
-    STATUS_DESC("-status"),
-    WEBSITE_DESC("-website");
+	ADMIN_EMAIL_ASC("+adminEmail"),
+	ADMIN_NAME_ASC("+adminName"),
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	NAME_ASC("+name"),
+	STATUS_ASC("+status"),
+	WEBSITE_ASC("+website"),
+	ADMIN_EMAIL_DESC("-adminEmail"),
+	ADMIN_NAME_DESC("-adminName"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	NAME_DESC("-name"),
+	STATUS_DESC("-status"),
+	WEBSITE_DESC("-website");
 
-    private String value;
+	private String value;
 
-    PartnerOrderBy(String value) {
-        this.value = value;
-    }
+	PartnerOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PartnerOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PartnerOrderBy defined values and compare the inner value with the given one:
-        for(PartnerOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PartnerOrderBy.values().length > 0 ? PartnerOrderBy.values()[0]: null;
+	public static PartnerOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PartnerOrderBy defined values and compare the inner value with the given one:
+		for(PartnerOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PartnerOrderBy.values().length > 0 ? PartnerOrderBy.values()[0]: null;
    }
 }

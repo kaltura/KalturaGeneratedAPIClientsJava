@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileDeletePolicy implements EnumAsInt {
-    MANUAL_DELETE(1),
-    AUTO_DELETE(2),
-    AUTO_DELETE_WHEN_ENTRY_IS_READY(3);
+	MANUAL_DELETE(1),
+	AUTO_DELETE(2),
+	AUTO_DELETE_WHEN_ENTRY_IS_READY(3);
 
-    private int value;
+	private int value;
 
-    DropFolderFileDeletePolicy(int value) {
-        this.value = value;
-    }
+	DropFolderFileDeletePolicy(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DropFolderFileDeletePolicy get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderFileDeletePolicy defined values and compare the inner value with the given one:
-        for(DropFolderFileDeletePolicy item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderFileDeletePolicy.values().length > 0 ? DropFolderFileDeletePolicy.values()[0]: null;
+	public static DropFolderFileDeletePolicy get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderFileDeletePolicy defined values and compare the inner value with the given one:
+		for(DropFolderFileDeletePolicy item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderFileDeletePolicy.values().length > 0 ? DropFolderFileDeletePolicy.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,51 +40,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerAkamaiHttp.Tokenizer.class)
 public class UrlTokenizerAkamaiHttp extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String paramName();
+		String rootDir();
+	}
 
 	/**  param  */
-    private String paramName;
-    private String rootDir;
+	private String paramName;
+	private String rootDir;
 
-    // paramName:
-    public String getParamName(){
-        return this.paramName;
-    }
-    public void setParamName(String paramName){
-        this.paramName = paramName;
-    }
+	// paramName:
+	public String getParamName(){
+		return this.paramName;
+	}
+	public void setParamName(String paramName){
+		this.paramName = paramName;
+	}
 
-    // rootDir:
-    public String getRootDir(){
-        return this.rootDir;
-    }
-    public void setRootDir(String rootDir){
-        this.rootDir = rootDir;
-    }
+	public void paramName(String multirequestToken){
+		setToken("paramName", multirequestToken);
+	}
+
+	// rootDir:
+	public String getRootDir(){
+		return this.rootDir;
+	}
+	public void setRootDir(String rootDir){
+		this.rootDir = rootDir;
+	}
+
+	public void rootDir(String multirequestToken){
+		setToken("rootDir", multirequestToken);
+	}
 
 
-    public UrlTokenizerAkamaiHttp() {
-       super();
-    }
+	public UrlTokenizerAkamaiHttp() {
+		super();
+	}
 
-    public UrlTokenizerAkamaiHttp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerAkamaiHttp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        paramName = GsonParser.parseString(jsonObject.get("paramName"));
-        rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
+		// set members values:
+		paramName = GsonParser.parseString(jsonObject.get("paramName"));
+		rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerAkamaiHttp");
-        kparams.add("paramName", this.paramName);
-        kparams.add("rootDir", this.rootDir);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerAkamaiHttp");
+		kparams.add("paramName", this.paramName);
+		kparams.add("rootDir", this.rootDir);
+		return kparams;
+	}
 
 }
 

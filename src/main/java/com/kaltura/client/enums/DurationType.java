@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DurationType implements EnumAsString {
-    LONG("long"),
-    MEDIUM("medium"),
-    NOT_AVAILABLE("notavailable"),
-    SHORT("short");
+	LONG("long"),
+	MEDIUM("medium"),
+	NOT_AVAILABLE("notavailable"),
+	SHORT("short");
 
-    private String value;
+	private String value;
 
-    DurationType(String value) {
-        this.value = value;
-    }
+	DurationType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DurationType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DurationType defined values and compare the inner value with the given one:
-        for(DurationType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DurationType.values().length > 0 ? DurationType.values()[0]: null;
+	public static DurationType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DurationType defined values and compare the inner value with the given one:
+		for(DurationType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DurationType.values().length > 0 ? DurationType.values()[0]: null;
    }
 }

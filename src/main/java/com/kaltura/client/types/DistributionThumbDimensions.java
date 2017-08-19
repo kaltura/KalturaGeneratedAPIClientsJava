@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionThumbDimensions.Tokenizer.class)
 public class DistributionThumbDimensions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String width();
+		String height();
+	}
 
-    private Integer width;
-    private Integer height;
+	private Integer width;
+	private Integer height;
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
+
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
+
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
 
 
-    public DistributionThumbDimensions() {
-       super();
-    }
+	public DistributionThumbDimensions() {
+		super();
+	}
 
-    public DistributionThumbDimensions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionThumbDimensions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
+		// set members values:
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionThumbDimensions");
-        kparams.add("width", this.width);
-        kparams.add("height", this.height);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionThumbDimensions");
+		kparams.add("width", this.width);
+		kparams.add("height", this.height);
+		return kparams;
+	}
 
 }
 

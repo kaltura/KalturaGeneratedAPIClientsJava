@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,41 +40,50 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionDeleteJobData.Tokenizer.class)
 public class DistributionDeleteJobData extends DistributionJobData {
+	
+	public interface Tokenizer extends DistributionJobData.Tokenizer {
+		String keepDistributionItem();
+	}
 
 	/**  Flag signifying that the associated distribution item should not be moved to
 	  'removed' status  */
-    private Boolean keepDistributionItem;
+	private Boolean keepDistributionItem;
 
-    // keepDistributionItem:
-    public Boolean getKeepDistributionItem(){
-        return this.keepDistributionItem;
-    }
-    public void setKeepDistributionItem(Boolean keepDistributionItem){
-        this.keepDistributionItem = keepDistributionItem;
-    }
+	// keepDistributionItem:
+	public Boolean getKeepDistributionItem(){
+		return this.keepDistributionItem;
+	}
+	public void setKeepDistributionItem(Boolean keepDistributionItem){
+		this.keepDistributionItem = keepDistributionItem;
+	}
+
+	public void keepDistributionItem(String multirequestToken){
+		setToken("keepDistributionItem", multirequestToken);
+	}
 
 
-    public DistributionDeleteJobData() {
-       super();
-    }
+	public DistributionDeleteJobData() {
+		super();
+	}
 
-    public DistributionDeleteJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionDeleteJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keepDistributionItem = GsonParser.parseBoolean(jsonObject.get("keepDistributionItem"));
+		// set members values:
+		keepDistributionItem = GsonParser.parseBoolean(jsonObject.get("keepDistributionItem"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionDeleteJobData");
-        kparams.add("keepDistributionItem", this.keepDistributionItem);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionDeleteJobData");
+		kparams.add("keepDistributionItem", this.keepDistributionItem);
+		return kparams;
+	}
 
 }
 

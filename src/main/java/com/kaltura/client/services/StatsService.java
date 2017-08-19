@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.CEError;
 import com.kaltura.client.types.StatsEvent;
 import com.kaltura.client.types.StatsKmcEvent;
@@ -43,6 +42,14 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Stats Service  */
 public class StatsService {
+	
+	public static class CollectStatsBuilder extends RequestBuilder<Boolean, String, CollectStatsBuilder> {
+		
+		public CollectStatsBuilder(StatsEvent event) {
+			super(Boolean.class, "stats", "collect");
+			params.add("event", event);
+		}
+	}
 
 	/**  Will write to the event log a single line representing the event   client
 	  version - will help interprete the line structure. different client versions
@@ -53,44 +60,73 @@ public class StatsService {
 	  puser id as set by the ppartner current point - in milliseconds duration -
 	  milliseconds user ip process duration - in milliseconds control id seek new
 	  point referrer       KalturaStatsEvent $event  */
-    public static RequestBuilder<Boolean> collect(StatsEvent event)  {
-        Params kparams = new Params();
-        kparams.add("event", event);
-
-        return new RequestBuilder<Boolean>(Boolean.class, "stats", "collect", kparams);
-    }
+    public static CollectStatsBuilder collect(StatsEvent event)  {
+		return new CollectStatsBuilder(event);
+	}
+	
+	public static class KmcCollectStatsBuilder extends NullRequestBuilder {
+		
+		public KmcCollectStatsBuilder(StatsKmcEvent kmcEvent) {
+			super("stats", "kmcCollect");
+			params.add("kmcEvent", kmcEvent);
+		}
+	}
 
 	/**  Will collect the kmcEvent sent form the KMC client   // this will actually be an
 	  empty function because all events will be sent using GET and will anyway be
 	  logged in the apache log  */
-    public static RequestBuilder<Void> kmcCollect(StatsKmcEvent kmcEvent)  {
-        Params kparams = new Params();
-        kparams.add("kmcEvent", kmcEvent);
-
-        return new NullRequestBuilder("stats", "kmcCollect", kparams);
-    }
+    public static KmcCollectStatsBuilder kmcCollect(StatsKmcEvent kmcEvent)  {
+		return new KmcCollectStatsBuilder(kmcEvent);
+	}
+	
+	public static class ReportDeviceCapabilitiesStatsBuilder extends NullRequestBuilder {
+		
+		public ReportDeviceCapabilitiesStatsBuilder(String data) {
+			super("stats", "reportDeviceCapabilities");
+			params.add("data", data);
+		}
+		
+		public void data(String multirequestToken) {
+			params.add("data", multirequestToken);
+		}
+	}
 
 	/**  Use this action to report device capabilities to the kaltura server.  */
-    public static RequestBuilder<Void> reportDeviceCapabilities(String data)  {
-        Params kparams = new Params();
-        kparams.add("data", data);
-
-        return new NullRequestBuilder("stats", "reportDeviceCapabilities", kparams);
-    }
+    public static ReportDeviceCapabilitiesStatsBuilder reportDeviceCapabilities(String data)  {
+		return new ReportDeviceCapabilitiesStatsBuilder(data);
+	}
+	
+	public static class ReportErrorStatsBuilder extends NullRequestBuilder {
+		
+		public ReportErrorStatsBuilder(String errorCode, String errorMessage) {
+			super("stats", "reportError");
+			params.add("errorCode", errorCode);
+			params.add("errorMessage", errorMessage);
+		}
+		
+		public void errorCode(String multirequestToken) {
+			params.add("errorCode", multirequestToken);
+		}
+		
+		public void errorMessage(String multirequestToken) {
+			params.add("errorMessage", multirequestToken);
+		}
+	}
 
 	/**  Use this action to report errors to the kaltura server.  */
-    public static RequestBuilder<Void> reportError(String errorCode, String errorMessage)  {
-        Params kparams = new Params();
-        kparams.add("errorCode", errorCode);
-        kparams.add("errorMessage", errorMessage);
+    public static ReportErrorStatsBuilder reportError(String errorCode, String errorMessage)  {
+		return new ReportErrorStatsBuilder(errorCode, errorMessage);
+	}
+	
+	public static class ReportKceErrorStatsBuilder extends RequestBuilder<CEError, CEError.Tokenizer, ReportKceErrorStatsBuilder> {
+		
+		public ReportKceErrorStatsBuilder(CEError kalturaCEError) {
+			super(CEError.class, "stats", "reportKceError");
+			params.add("kalturaCEError", kalturaCEError);
+		}
+	}
 
-        return new NullRequestBuilder("stats", "reportError", kparams);
-    }
-
-    public static RequestBuilder<CEError> reportKceError(CEError kalturaCEError)  {
-        Params kparams = new Params();
-        kparams.add("kalturaCEError", kalturaCEError);
-
-        return new RequestBuilder<CEError>(CEError.class, "stats", "reportKceError", kparams);
-    }
+    public static ReportKceErrorStatsBuilder reportKceError(CEError kalturaCEError)  {
+		return new ReportKceErrorStatsBuilder(kalturaCEError);
+	}
 }

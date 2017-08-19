@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.ReportInterval;
 import com.kaltura.client.types.FeatureStatus;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Partner;
 import com.kaltura.client.types.PartnerFilter;
 import com.kaltura.client.types.PartnerStatistics;
@@ -49,158 +47,257 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  partner service allows you to change/manage your partner personal details and
   settings as well  */
 public class PartnerService {
+	
+	public static class CountPartnerBuilder extends RequestBuilder<Integer, String, CountPartnerBuilder> {
+		
+		public CountPartnerBuilder(PartnerFilter filter) {
+			super(Integer.class, "partner", "count");
+			params.add("filter", filter);
+		}
+	}
 
-    public static RequestBuilder<Integer> count()  {
-        return count(null);
-    }
+	public static CountPartnerBuilder count()  {
+		return count(null);
+	}
 
 	/**  Count partner's existing sub-publishers (count includes the partner itself).  */
-    public static RequestBuilder<Integer> count(PartnerFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
+    public static CountPartnerBuilder count(PartnerFilter filter)  {
+		return new CountPartnerBuilder(filter);
+	}
+	
+	public static class GetPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetPartnerBuilder> {
+		
+		public GetPartnerBuilder(int id) {
+			super(Partner.class, "partner", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "partner", "count", kparams);
-    }
-
-    public static RequestBuilder<Partner> get()  {
-        return get(Integer.MIN_VALUE);
-    }
+	public static GetPartnerBuilder get()  {
+		return get(Integer.MIN_VALUE);
+	}
 
 	/**  Retrieve partner object by Id  */
-    public static RequestBuilder<Partner> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<Partner>(Partner.class, "partner", "get", kparams);
-    }
+    public static GetPartnerBuilder get(int id)  {
+		return new GetPartnerBuilder(id);
+	}
+	
+	public static class GetInfoPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetInfoPartnerBuilder> {
+		
+		public GetInfoPartnerBuilder() {
+			super(Partner.class, "partner", "getInfo");
+		}
+	}
 
 	/**  Retrieve all info attributed to the partner   This action expects no parameters.
 	  It returns information for the current KS partnerId.  */
-    public static RequestBuilder<Partner> getInfo()  {
-        Params kparams = new Params();
-
-        return new RequestBuilder<Partner>(Partner.class, "partner", "getInfo", kparams);
-    }
+    public static GetInfoPartnerBuilder getInfo()  {
+		return new GetInfoPartnerBuilder();
+	}
+	
+	public static class GetSecretsPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetSecretsPartnerBuilder> {
+		
+		public GetSecretsPartnerBuilder(int partnerId, String adminEmail, String cmsPassword) {
+			super(Partner.class, "partner", "getSecrets");
+			params.add("partnerId", partnerId);
+			params.add("adminEmail", adminEmail);
+			params.add("cmsPassword", cmsPassword);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+		
+		public void adminEmail(String multirequestToken) {
+			params.add("adminEmail", multirequestToken);
+		}
+		
+		public void cmsPassword(String multirequestToken) {
+			params.add("cmsPassword", multirequestToken);
+		}
+	}
 
 	/**  Retrieve partner secret and admin secret  */
-    public static RequestBuilder<Partner> getSecrets(int partnerId, String adminEmail, String cmsPassword)  {
-        Params kparams = new Params();
-        kparams.add("partnerId", partnerId);
-        kparams.add("adminEmail", adminEmail);
-        kparams.add("cmsPassword", cmsPassword);
-
-        return new RequestBuilder<Partner>(Partner.class, "partner", "getSecrets", kparams);
-    }
+    public static GetSecretsPartnerBuilder getSecrets(int partnerId, String adminEmail, String cmsPassword)  {
+		return new GetSecretsPartnerBuilder(partnerId, adminEmail, cmsPassword);
+	}
+	
+	public static class GetStatisticsPartnerBuilder extends RequestBuilder<PartnerStatistics, PartnerStatistics.Tokenizer, GetStatisticsPartnerBuilder> {
+		
+		public GetStatisticsPartnerBuilder() {
+			super(PartnerStatistics.class, "partner", "getStatistics");
+		}
+	}
 
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
 	  package  */
-    public static RequestBuilder<PartnerStatistics> getStatistics()  {
-        Params kparams = new Params();
+    public static GetStatisticsPartnerBuilder getStatistics()  {
+		return new GetStatisticsPartnerBuilder();
+	}
+	
+	public static class GetUsagePartnerBuilder extends RequestBuilder<PartnerUsage, PartnerUsage.Tokenizer, GetUsagePartnerBuilder> {
+		
+		public GetUsagePartnerBuilder(int year, int month, ReportInterval resolution) {
+			super(PartnerUsage.class, "partner", "getUsage");
+			params.add("year", year);
+			params.add("month", month);
+			params.add("resolution", resolution);
+		}
+		
+		public void year(String multirequestToken) {
+			params.add("year", multirequestToken);
+		}
+		
+		public void month(String multirequestToken) {
+			params.add("month", multirequestToken);
+		}
+		
+		public void resolution(String multirequestToken) {
+			params.add("resolution", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<PartnerStatistics>(PartnerStatistics.class, "partner", "getStatistics", kparams);
-    }
+	public static GetUsagePartnerBuilder getUsage()  {
+		return getUsage();
+	}
 
-    public static RequestBuilder<PartnerUsage> getUsage()  {
-        return getUsage();
-    }
+	public static GetUsagePartnerBuilder getUsage(int year)  {
+		return getUsage(year, 1);
+	}
 
-    public static RequestBuilder<PartnerUsage> getUsage(int year)  {
-        return getUsage(year, 1);
-    }
-
-    public static RequestBuilder<PartnerUsage> getUsage(int year, int month)  {
-        return getUsage(year, month, null);
-    }
+	public static GetUsagePartnerBuilder getUsage(int year, int month)  {
+		return getUsage(year, month, null);
+	}
 
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
 	  package   Additional data returned is a graph points of streaming usage in a
 	  timeframe   The resolution can be "days" or "months"  */
-    public static RequestBuilder<PartnerUsage> getUsage(int year, int month, ReportInterval resolution)  {
-        Params kparams = new Params();
-        kparams.add("year", year);
-        kparams.add("month", month);
-        kparams.add("resolution", resolution);
+    public static GetUsagePartnerBuilder getUsage(int year, int month, ReportInterval resolution)  {
+		return new GetUsagePartnerBuilder(year, month, resolution);
+	}
+	
+	public static class ListPartnerBuilder extends ListResponseRequestBuilder<Partner, Partner.Tokenizer, ListPartnerBuilder> {
+		
+		public ListPartnerBuilder(PartnerFilter filter, FilterPager pager) {
+			super(Partner.class, "partner", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<PartnerUsage>(PartnerUsage.class, "partner", "getUsage", kparams);
-    }
+	public static ListPartnerBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Partner>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Partner>> list(PartnerFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListPartnerBuilder list(PartnerFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List partners by filter with paging support   Current implementation will only
 	  list the sub partners of the partner initiating the api call (using the current
 	  KS).   This action is only partially implemented to support listing sub partners
 	  of a VAR partner.  */
-    public static RequestBuilder<ListResponse<Partner>> list(PartnerFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Partner>(Partner.class, "partner", "list", kparams);
-    }
+    public static ListPartnerBuilder list(PartnerFilter filter, FilterPager pager)  {
+		return new ListPartnerBuilder(filter, pager);
+	}
+	
+	public static class ListFeatureStatusPartnerBuilder extends ListResponseRequestBuilder<FeatureStatus, FeatureStatus.Tokenizer, ListFeatureStatusPartnerBuilder> {
+		
+		public ListFeatureStatusPartnerBuilder() {
+			super(FeatureStatus.class, "partner", "listFeatureStatus");
+		}
+	}
 
 	/**  List partner's current processes' statuses  */
-    public static RequestBuilder<ListResponse<FeatureStatus>> listFeatureStatus()  {
-        Params kparams = new Params();
+    public static ListFeatureStatusPartnerBuilder listFeatureStatus()  {
+		return new ListFeatureStatusPartnerBuilder();
+	}
+	
+	public static class ListPartnersForUserPartnerBuilder extends ListResponseRequestBuilder<Partner, Partner.Tokenizer, ListPartnersForUserPartnerBuilder> {
+		
+		public ListPartnersForUserPartnerBuilder(PartnerFilter partnerFilter, FilterPager pager) {
+			super(Partner.class, "partner", "listPartnersForUser");
+			params.add("partnerFilter", partnerFilter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<FeatureStatus>(FeatureStatus.class, "partner", "listFeatureStatus", kparams);
-    }
+	public static ListPartnersForUserPartnerBuilder listPartnersForUser()  {
+		return listPartnersForUser(null);
+	}
 
-    public static RequestBuilder<ListResponse<Partner>> listPartnersForUser()  {
-        return listPartnersForUser(null);
-    }
-
-    public static RequestBuilder<ListResponse<Partner>> listPartnersForUser(PartnerFilter partnerFilter)  {
-        return listPartnersForUser(partnerFilter, null);
-    }
+	public static ListPartnersForUserPartnerBuilder listPartnersForUser(PartnerFilter partnerFilter)  {
+		return listPartnersForUser(partnerFilter, null);
+	}
 
 	/**  Retrieve a list of partner objects which the current user is allowed to access.  */
-    public static RequestBuilder<ListResponse<Partner>> listPartnersForUser(PartnerFilter partnerFilter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("partnerFilter", partnerFilter);
-        kparams.add("pager", pager);
+    public static ListPartnersForUserPartnerBuilder listPartnersForUser(PartnerFilter partnerFilter, FilterPager pager)  {
+		return new ListPartnersForUserPartnerBuilder(partnerFilter, pager);
+	}
+	
+	public static class RegisterPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, RegisterPartnerBuilder> {
+		
+		public RegisterPartnerBuilder(Partner partner, String cmsPassword, int templatePartnerId, boolean silent) {
+			super(Partner.class, "partner", "register");
+			params.add("partner", partner);
+			params.add("cmsPassword", cmsPassword);
+			params.add("templatePartnerId", templatePartnerId);
+			params.add("silent", silent);
+		}
+		
+		public void cmsPassword(String multirequestToken) {
+			params.add("cmsPassword", multirequestToken);
+		}
+		
+		public void templatePartnerId(String multirequestToken) {
+			params.add("templatePartnerId", multirequestToken);
+		}
+		
+		public void silent(String multirequestToken) {
+			params.add("silent", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<Partner>(Partner.class, "partner", "listPartnersForUser", kparams);
-    }
+	public static RegisterPartnerBuilder register(Partner partner)  {
+		return register(partner, "");
+	}
 
-    public static RequestBuilder<Partner> register(Partner partner)  {
-        return register(partner, "");
-    }
+	public static RegisterPartnerBuilder register(Partner partner, String cmsPassword)  {
+		return register(partner, cmsPassword, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<Partner> register(Partner partner, String cmsPassword)  {
-        return register(partner, cmsPassword, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<Partner> register(Partner partner, String cmsPassword, int templatePartnerId)  {
-        return register(partner, cmsPassword, templatePartnerId, false);
-    }
+	public static RegisterPartnerBuilder register(Partner partner, String cmsPassword, int templatePartnerId)  {
+		return register(partner, cmsPassword, templatePartnerId, false);
+	}
 
 	/**  Create a new Partner object  */
-    public static RequestBuilder<Partner> register(Partner partner, String cmsPassword, int templatePartnerId, boolean silent)  {
-        Params kparams = new Params();
-        kparams.add("partner", partner);
-        kparams.add("cmsPassword", cmsPassword);
-        kparams.add("templatePartnerId", templatePartnerId);
-        kparams.add("silent", silent);
+    public static RegisterPartnerBuilder register(Partner partner, String cmsPassword, int templatePartnerId, boolean silent)  {
+		return new RegisterPartnerBuilder(partner, cmsPassword, templatePartnerId, silent);
+	}
+	
+	public static class UpdatePartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, UpdatePartnerBuilder> {
+		
+		public UpdatePartnerBuilder(Partner partner, boolean allowEmpty) {
+			super(Partner.class, "partner", "update");
+			params.add("partner", partner);
+			params.add("allowEmpty", allowEmpty);
+		}
+		
+		public void allowEmpty(String multirequestToken) {
+			params.add("allowEmpty", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<Partner>(Partner.class, "partner", "register", kparams);
-    }
-
-    public static RequestBuilder<Partner> update(Partner partner)  {
-        return update(partner, false);
-    }
+	public static UpdatePartnerBuilder update(Partner partner)  {
+		return update(partner, false);
+	}
 
 	/**  Update details and settings of an existing partner  */
-    public static RequestBuilder<Partner> update(Partner partner, boolean allowEmpty)  {
-        Params kparams = new Params();
-        kparams.add("partner", partner);
-        kparams.add("allowEmpty", allowEmpty);
-
-        return new RequestBuilder<Partner>(Partner.class, "partner", "update", kparams);
-    }
+    public static UpdatePartnerBuilder update(Partner partner, boolean allowEmpty)  {
+		return new UpdatePartnerBuilder(partner, allowEmpty);
+	}
 }

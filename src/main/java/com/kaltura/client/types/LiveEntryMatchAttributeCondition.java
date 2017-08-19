@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveEntryMatchAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaLiveEntry attributes. Use
   KalturaLiveEntryMatchAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveEntryMatchAttributeCondition.Tokenizer.class)
 public class LiveEntryMatchAttributeCondition extends SearchMatchAttributeCondition {
+	
+	public interface Tokenizer extends SearchMatchAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private LiveEntryMatchAttribute attribute;
+	private LiveEntryMatchAttribute attribute;
 
-    // attribute:
-    public LiveEntryMatchAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(LiveEntryMatchAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public LiveEntryMatchAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(LiveEntryMatchAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public LiveEntryMatchAttributeCondition() {
-       super();
-    }
+	public LiveEntryMatchAttributeCondition() {
+		super();
+	}
 
-    public LiveEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveEntryMatchAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = LiveEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = LiveEntryMatchAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveEntryMatchAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveEntryMatchAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

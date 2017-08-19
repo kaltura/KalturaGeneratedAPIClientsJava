@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveReportExportType implements EnumAsInt {
-    PARTNER_TOTAL_ALL(1),
-    PARTNER_TOTAL_LIVE(2),
-    ENTRY_TIME_LINE_ALL(11),
-    ENTRY_TIME_LINE_LIVE(12),
-    LOCATION_ALL(21),
-    LOCATION_LIVE(22),
-    SYNDICATION_ALL(31),
-    SYNDICATION_LIVE(32);
+	PARTNER_TOTAL_ALL(1),
+	PARTNER_TOTAL_LIVE(2),
+	ENTRY_TIME_LINE_ALL(11),
+	ENTRY_TIME_LINE_LIVE(12),
+	LOCATION_ALL(21),
+	LOCATION_LIVE(22),
+	SYNDICATION_ALL(31),
+	SYNDICATION_LIVE(32);
 
-    private int value;
+	private int value;
 
-    LiveReportExportType(int value) {
-        this.value = value;
-    }
+	LiveReportExportType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static LiveReportExportType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveReportExportType defined values and compare the inner value with the given one:
-        for(LiveReportExportType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveReportExportType.values().length > 0 ? LiveReportExportType.values()[0]: null;
+	public static LiveReportExportType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveReportExportType defined values and compare the inner value with the given one:
+		for(LiveReportExportType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveReportExportType.values().length > 0 ? LiveReportExportType.values()[0]: null;
    }
 }

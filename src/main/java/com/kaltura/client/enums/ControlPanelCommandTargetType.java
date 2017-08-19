@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ControlPanelCommandTargetType implements EnumAsInt {
-    DATA_CENTER(1),
-    SCHEDULER(2),
-    JOB_TYPE(3),
-    JOB(4),
-    BATCH(5);
+	DATA_CENTER(1),
+	SCHEDULER(2),
+	JOB_TYPE(3),
+	JOB(4),
+	BATCH(5);
 
-    private int value;
+	private int value;
 
-    ControlPanelCommandTargetType(int value) {
-        this.value = value;
-    }
+	ControlPanelCommandTargetType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ControlPanelCommandTargetType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ControlPanelCommandTargetType defined values and compare the inner value with the given one:
-        for(ControlPanelCommandTargetType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ControlPanelCommandTargetType.values().length > 0 ? ControlPanelCommandTargetType.values()[0]: null;
+	public static ControlPanelCommandTargetType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ControlPanelCommandTargetType defined values and compare the inner value with the given one:
+		for(ControlPanelCommandTargetType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ControlPanelCommandTargetType.values().length > 0 ? ControlPanelCommandTargetType.values()[0]: null;
    }
 }

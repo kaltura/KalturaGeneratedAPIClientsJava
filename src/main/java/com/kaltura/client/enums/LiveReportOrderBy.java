@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveReportOrderBy implements EnumAsString {
-    NAME_ASC("+name"),
-    AUDIENCE_DESC("-audience"),
-    EVENT_TIME_DESC("-eventTime"),
-    PLAYS_DESC("-plays");
+	NAME_ASC("+name"),
+	AUDIENCE_DESC("-audience"),
+	EVENT_TIME_DESC("-eventTime"),
+	PLAYS_DESC("-plays");
 
-    private String value;
+	private String value;
 
-    LiveReportOrderBy(String value) {
-        this.value = value;
-    }
+	LiveReportOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveReportOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveReportOrderBy defined values and compare the inner value with the given one:
-        for(LiveReportOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveReportOrderBy.values().length > 0 ? LiveReportOrderBy.values()[0]: null;
+	public static LiveReportOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveReportOrderBy defined values and compare the inner value with the given one:
+		for(LiveReportOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveReportOrderBy.values().length > 0 ? LiveReportOrderBy.values()[0]: null;
    }
 }

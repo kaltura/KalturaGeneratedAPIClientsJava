@@ -34,48 +34,48 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlaylistMatchAttribute implements EnumAsString {
-    ADMIN_TAGS("adminTags"),
-    CATEGORIES_IDS("categoriesIds"),
-    CREATOR_ID("creatorId"),
-    DESCRIPTION("description"),
-    GROUP_ID("groupId"),
-    ID("id"),
-    NAME("name"),
-    REFERENCE_ID("referenceId"),
-    REPLACED_ENTRY_ID("replacedEntryId"),
-    REPLACING_ENTRY_ID("replacingEntryId"),
-    SEARCH_TEXT("searchText"),
-    TAGS("tags"),
-    USER_ID("userId");
+	ADMIN_TAGS("adminTags"),
+	CATEGORIES_IDS("categoriesIds"),
+	CREATOR_ID("creatorId"),
+	DESCRIPTION("description"),
+	GROUP_ID("groupId"),
+	ID("id"),
+	NAME("name"),
+	REFERENCE_ID("referenceId"),
+	REPLACED_ENTRY_ID("replacedEntryId"),
+	REPLACING_ENTRY_ID("replacingEntryId"),
+	SEARCH_TEXT("searchText"),
+	TAGS("tags"),
+	USER_ID("userId");
 
-    private String value;
+	private String value;
 
-    PlaylistMatchAttribute(String value) {
-        this.value = value;
-    }
+	PlaylistMatchAttribute(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PlaylistMatchAttribute get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlaylistMatchAttribute defined values and compare the inner value with the given one:
-        for(PlaylistMatchAttribute item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlaylistMatchAttribute.values().length > 0 ? PlaylistMatchAttribute.values()[0]: null;
+	public static PlaylistMatchAttribute get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlaylistMatchAttribute defined values and compare the inner value with the given one:
+		for(PlaylistMatchAttribute item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlaylistMatchAttribute.values().length > 0 ? PlaylistMatchAttribute.values()[0]: null;
    }
 }

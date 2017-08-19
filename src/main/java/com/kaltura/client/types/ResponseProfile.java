@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ResponseProfileStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,103 +41,142 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ResponseProfile.Tokenizer.class)
 public class ResponseProfile extends DetachedResponseProfile {
+	
+	public interface Tokenizer extends DetachedResponseProfile.Tokenizer {
+		String id();
+		String systemName();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String version();
+	}
 
 	/**  Auto generated numeric identifier  */
-    private Integer id;
+	private Integer id;
 	/**  Unique system name  */
-    private String systemName;
-    private Integer partnerId;
+	private String systemName;
+	private Integer partnerId;
 	/**  Creation time as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Update time as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
-    private ResponseProfileStatus status;
-    private Integer version;
+	private Integer updatedAt;
+	private ResponseProfileStatus status;
+	private Integer version;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // status:
-    public ResponseProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ResponseProfileStatus status){
-        this.status = status;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // version:
-    public Integer getVersion(){
-        return this.version;
-    }
-    public void setVersion(Integer version){
-        this.version = version;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// status:
+	public ResponseProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ResponseProfileStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// version:
+	public Integer getVersion(){
+		return this.version;
+	}
+	public void setVersion(Integer version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
 
-    public ResponseProfile() {
-       super();
-    }
+	public ResponseProfile() {
+		super();
+	}
 
-    public ResponseProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ResponseProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        status = ResponseProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        version = GsonParser.parseInt(jsonObject.get("version"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		status = ResponseProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		version = GsonParser.parseInt(jsonObject.get("version"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResponseProfile");
-        kparams.add("systemName", this.systemName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResponseProfile");
+		kparams.add("systemName", this.systemName);
+		return kparams;
+	}
 
 }
 

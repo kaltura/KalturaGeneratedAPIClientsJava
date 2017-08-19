@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionValidationErrorConditionNotMet.Tokenizer.class)
 public class DistributionValidationErrorConditionNotMet extends DistributionValidationError {
+	
+	public interface Tokenizer extends DistributionValidationError.Tokenizer {
+		String conditionName();
+	}
 
-    private String conditionName;
+	private String conditionName;
 
-    // conditionName:
-    public String getConditionName(){
-        return this.conditionName;
-    }
-    public void setConditionName(String conditionName){
-        this.conditionName = conditionName;
-    }
+	// conditionName:
+	public String getConditionName(){
+		return this.conditionName;
+	}
+	public void setConditionName(String conditionName){
+		this.conditionName = conditionName;
+	}
+
+	public void conditionName(String multirequestToken){
+		setToken("conditionName", multirequestToken);
+	}
 
 
-    public DistributionValidationErrorConditionNotMet() {
-       super();
-    }
+	public DistributionValidationErrorConditionNotMet() {
+		super();
+	}
 
-    public DistributionValidationErrorConditionNotMet(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionValidationErrorConditionNotMet(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        conditionName = GsonParser.parseString(jsonObject.get("conditionName"));
+		// set members values:
+		conditionName = GsonParser.parseString(jsonObject.get("conditionName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionValidationErrorConditionNotMet");
-        kparams.add("conditionName", this.conditionName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionValidationErrorConditionNotMet");
+		kparams.add("conditionName", this.conditionName);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,68 +41,92 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataProfileField.Tokenizer.class)
 public class MetadataProfileField extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String xPath();
+		String key();
+		String label();
+	}
 
-    private Integer id;
-    private String xPath;
-    private String key;
-    private String label;
+	private Integer id;
+	private String xPath;
+	private String key;
+	private String label;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // xPath:
-    public String getXPath(){
-        return this.xPath;
-    }
-    public void setXPath(String xPath){
-        this.xPath = xPath;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	// xPath:
+	public String getXPath(){
+		return this.xPath;
+	}
+	public void setXPath(String xPath){
+		this.xPath = xPath;
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	public void xPath(String multirequestToken){
+		setToken("xPath", multirequestToken);
+	}
+
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
+
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
+
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
 
 
-    public MetadataProfileField() {
-       super();
-    }
+	public MetadataProfileField() {
+		super();
+	}
 
-    public MetadataProfileField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataProfileField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        xPath = GsonParser.parseString(jsonObject.get("xPath"));
-        key = GsonParser.parseString(jsonObject.get("key"));
-        label = GsonParser.parseString(jsonObject.get("label"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		xPath = GsonParser.parseString(jsonObject.get("xPath"));
+		key = GsonParser.parseString(jsonObject.get("key"));
+		label = GsonParser.parseString(jsonObject.get("label"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataProfileField");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataProfileField");
+		return kparams;
+	}
 
 }
 

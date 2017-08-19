@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileVodPackagerPlayServer.Tokenizer.class)
 public class DeliveryProfileVodPackagerPlayServer extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String adStitchingEnabled();
+	}
 
-    private Boolean adStitchingEnabled;
+	private Boolean adStitchingEnabled;
 
-    // adStitchingEnabled:
-    public Boolean getAdStitchingEnabled(){
-        return this.adStitchingEnabled;
-    }
-    public void setAdStitchingEnabled(Boolean adStitchingEnabled){
-        this.adStitchingEnabled = adStitchingEnabled;
-    }
+	// adStitchingEnabled:
+	public Boolean getAdStitchingEnabled(){
+		return this.adStitchingEnabled;
+	}
+	public void setAdStitchingEnabled(Boolean adStitchingEnabled){
+		this.adStitchingEnabled = adStitchingEnabled;
+	}
+
+	public void adStitchingEnabled(String multirequestToken){
+		setToken("adStitchingEnabled", multirequestToken);
+	}
 
 
-    public DeliveryProfileVodPackagerPlayServer() {
-       super();
-    }
+	public DeliveryProfileVodPackagerPlayServer() {
+		super();
+	}
 
-    public DeliveryProfileVodPackagerPlayServer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileVodPackagerPlayServer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        adStitchingEnabled = GsonParser.parseBoolean(jsonObject.get("adStitchingEnabled"));
+		// set members values:
+		adStitchingEnabled = GsonParser.parseBoolean(jsonObject.get("adStitchingEnabled"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
-        kparams.add("adStitchingEnabled", this.adStitchingEnabled);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
+		kparams.add("adStitchingEnabled", this.adStitchingEnabled);
+		return kparams;
+	}
 
 }
 

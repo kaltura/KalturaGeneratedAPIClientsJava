@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ObjectTaskType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,49 +42,63 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ObjectTask.Tokenizer.class)
 public abstract class ObjectTask extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+		String stopProcessingOnError();
+	}
 
-    private ObjectTaskType type;
-    private Boolean stopProcessingOnError;
+	private ObjectTaskType type;
+	private Boolean stopProcessingOnError;
 
-    // type:
-    public ObjectTaskType getType(){
-        return this.type;
-    }
-    public void setType(ObjectTaskType type){
-        this.type = type;
-    }
+	// type:
+	public ObjectTaskType getType(){
+		return this.type;
+	}
+	public void setType(ObjectTaskType type){
+		this.type = type;
+	}
 
-    // stopProcessingOnError:
-    public Boolean getStopProcessingOnError(){
-        return this.stopProcessingOnError;
-    }
-    public void setStopProcessingOnError(Boolean stopProcessingOnError){
-        this.stopProcessingOnError = stopProcessingOnError;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// stopProcessingOnError:
+	public Boolean getStopProcessingOnError(){
+		return this.stopProcessingOnError;
+	}
+	public void setStopProcessingOnError(Boolean stopProcessingOnError){
+		this.stopProcessingOnError = stopProcessingOnError;
+	}
+
+	public void stopProcessingOnError(String multirequestToken){
+		setToken("stopProcessingOnError", multirequestToken);
+	}
 
 
-    public ObjectTask() {
-       super();
-    }
+	public ObjectTask() {
+		super();
+	}
 
-    public ObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = ObjectTaskType.get(GsonParser.parseString(jsonObject.get("type")));
-        stopProcessingOnError = GsonParser.parseBoolean(jsonObject.get("stopProcessingOnError"));
+		// set members values:
+		type = ObjectTaskType.get(GsonParser.parseString(jsonObject.get("type")));
+		stopProcessingOnError = GsonParser.parseBoolean(jsonObject.get("stopProcessingOnError"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaObjectTask");
-        kparams.add("stopProcessingOnError", this.stopProcessingOnError);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaObjectTask");
+		kparams.add("stopProcessingOnError", this.stopProcessingOnError);
+		return kparams;
+	}
 
 }
 

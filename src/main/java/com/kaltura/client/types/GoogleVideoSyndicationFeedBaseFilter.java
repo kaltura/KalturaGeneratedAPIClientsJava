@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GoogleVideoSyndicationFeedBaseFilter.Tokenizer.class)
 public abstract class GoogleVideoSyndicationFeedBaseFilter extends BaseSyndicationFeedFilter {
+	
+	public interface Tokenizer extends BaseSyndicationFeedFilter.Tokenizer {
+	}
 
 
 
-    public GoogleVideoSyndicationFeedBaseFilter() {
-       super();
-    }
+	public GoogleVideoSyndicationFeedBaseFilter() {
+		super();
+	}
 
-    public GoogleVideoSyndicationFeedBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public GoogleVideoSyndicationFeedBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGoogleVideoSyndicationFeedBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGoogleVideoSyndicationFeedBaseFilter");
+		return kparams;
+	}
 
 }
 

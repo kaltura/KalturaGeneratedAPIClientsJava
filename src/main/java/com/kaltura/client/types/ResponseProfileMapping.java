@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +41,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ResponseProfileMapping.Tokenizer.class)
 public class ResponseProfileMapping extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String parentProperty();
+		String filterProperty();
+		String allowNull();
+	}
 
-    private String parentProperty;
-    private String filterProperty;
-    private Boolean allowNull;
+	private String parentProperty;
+	private String filterProperty;
+	private Boolean allowNull;
 
-    // parentProperty:
-    public String getParentProperty(){
-        return this.parentProperty;
-    }
-    public void setParentProperty(String parentProperty){
-        this.parentProperty = parentProperty;
-    }
+	// parentProperty:
+	public String getParentProperty(){
+		return this.parentProperty;
+	}
+	public void setParentProperty(String parentProperty){
+		this.parentProperty = parentProperty;
+	}
 
-    // filterProperty:
-    public String getFilterProperty(){
-        return this.filterProperty;
-    }
-    public void setFilterProperty(String filterProperty){
-        this.filterProperty = filterProperty;
-    }
+	public void parentProperty(String multirequestToken){
+		setToken("parentProperty", multirequestToken);
+	}
 
-    // allowNull:
-    public Boolean getAllowNull(){
-        return this.allowNull;
-    }
-    public void setAllowNull(Boolean allowNull){
-        this.allowNull = allowNull;
-    }
+	// filterProperty:
+	public String getFilterProperty(){
+		return this.filterProperty;
+	}
+	public void setFilterProperty(String filterProperty){
+		this.filterProperty = filterProperty;
+	}
+
+	public void filterProperty(String multirequestToken){
+		setToken("filterProperty", multirequestToken);
+	}
+
+	// allowNull:
+	public Boolean getAllowNull(){
+		return this.allowNull;
+	}
+	public void setAllowNull(Boolean allowNull){
+		this.allowNull = allowNull;
+	}
+
+	public void allowNull(String multirequestToken){
+		setToken("allowNull", multirequestToken);
+	}
 
 
-    public ResponseProfileMapping() {
-       super();
-    }
+	public ResponseProfileMapping() {
+		super();
+	}
 
-    public ResponseProfileMapping(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ResponseProfileMapping(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentProperty = GsonParser.parseString(jsonObject.get("parentProperty"));
-        filterProperty = GsonParser.parseString(jsonObject.get("filterProperty"));
-        allowNull = GsonParser.parseBoolean(jsonObject.get("allowNull"));
+		// set members values:
+		parentProperty = GsonParser.parseString(jsonObject.get("parentProperty"));
+		filterProperty = GsonParser.parseString(jsonObject.get("filterProperty"));
+		allowNull = GsonParser.parseBoolean(jsonObject.get("allowNull"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResponseProfileMapping");
-        kparams.add("parentProperty", this.parentProperty);
-        kparams.add("filterProperty", this.filterProperty);
-        kparams.add("allowNull", this.allowNull);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResponseProfileMapping");
+		kparams.add("parentProperty", this.parentProperty);
+		kparams.add("filterProperty", this.filterProperty);
+		kparams.add("allowNull", this.allowNull);
+		return kparams;
+	}
 
 }
 

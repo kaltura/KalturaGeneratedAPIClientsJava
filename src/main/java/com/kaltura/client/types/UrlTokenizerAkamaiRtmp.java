@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,74 +40,98 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerAkamaiRtmp.Tokenizer.class)
 public class UrlTokenizerAkamaiRtmp extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String profile();
+		String type();
+		String aifp();
+		String usePrefix();
+	}
 
 	/**  profile  */
-    private String profile;
+	private String profile;
 	/**  Type  */
-    private String type;
-    private String aifp;
-    private Boolean usePrefix;
+	private String type;
+	private String aifp;
+	private Boolean usePrefix;
 
-    // profile:
-    public String getProfile(){
-        return this.profile;
-    }
-    public void setProfile(String profile){
-        this.profile = profile;
-    }
+	// profile:
+	public String getProfile(){
+		return this.profile;
+	}
+	public void setProfile(String profile){
+		this.profile = profile;
+	}
 
-    // type:
-    public String getType(){
-        return this.type;
-    }
-    public void setType(String type){
-        this.type = type;
-    }
+	public void profile(String multirequestToken){
+		setToken("profile", multirequestToken);
+	}
 
-    // aifp:
-    public String getAifp(){
-        return this.aifp;
-    }
-    public void setAifp(String aifp){
-        this.aifp = aifp;
-    }
+	// type:
+	public String getType(){
+		return this.type;
+	}
+	public void setType(String type){
+		this.type = type;
+	}
 
-    // usePrefix:
-    public Boolean getUsePrefix(){
-        return this.usePrefix;
-    }
-    public void setUsePrefix(Boolean usePrefix){
-        this.usePrefix = usePrefix;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// aifp:
+	public String getAifp(){
+		return this.aifp;
+	}
+	public void setAifp(String aifp){
+		this.aifp = aifp;
+	}
+
+	public void aifp(String multirequestToken){
+		setToken("aifp", multirequestToken);
+	}
+
+	// usePrefix:
+	public Boolean getUsePrefix(){
+		return this.usePrefix;
+	}
+	public void setUsePrefix(Boolean usePrefix){
+		this.usePrefix = usePrefix;
+	}
+
+	public void usePrefix(String multirequestToken){
+		setToken("usePrefix", multirequestToken);
+	}
 
 
-    public UrlTokenizerAkamaiRtmp() {
-       super();
-    }
+	public UrlTokenizerAkamaiRtmp() {
+		super();
+	}
 
-    public UrlTokenizerAkamaiRtmp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerAkamaiRtmp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        profile = GsonParser.parseString(jsonObject.get("profile"));
-        type = GsonParser.parseString(jsonObject.get("type"));
-        aifp = GsonParser.parseString(jsonObject.get("aifp"));
-        usePrefix = GsonParser.parseBoolean(jsonObject.get("usePrefix"));
+		// set members values:
+		profile = GsonParser.parseString(jsonObject.get("profile"));
+		type = GsonParser.parseString(jsonObject.get("type"));
+		aifp = GsonParser.parseString(jsonObject.get("aifp"));
+		usePrefix = GsonParser.parseBoolean(jsonObject.get("usePrefix"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerAkamaiRtmp");
-        kparams.add("profile", this.profile);
-        kparams.add("type", this.type);
-        kparams.add("aifp", this.aifp);
-        kparams.add("usePrefix", this.usePrefix);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerAkamaiRtmp");
+		kparams.add("profile", this.profile);
+		kparams.add("type", this.type);
+		kparams.add("aifp", this.aifp);
+		kparams.add("usePrefix", this.usePrefix);
+		return kparams;
+	}
 
 }
 

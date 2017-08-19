@@ -34,50 +34,50 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileStatus implements EnumAsInt {
-    UPLOADING(1),
-    PENDING(2),
-    WAITING(3),
-    HANDLED(4),
-    IGNORE(5),
-    DELETED(6),
-    PURGED(7),
-    NO_MATCH(8),
-    ERROR_HANDLING(9),
-    ERROR_DELETING(10),
-    DOWNLOADING(11),
-    ERROR_DOWNLOADING(12),
-    PROCESSING(13),
-    PARSED(14),
-    DETECTED(15);
+	UPLOADING(1),
+	PENDING(2),
+	WAITING(3),
+	HANDLED(4),
+	IGNORE(5),
+	DELETED(6),
+	PURGED(7),
+	NO_MATCH(8),
+	ERROR_HANDLING(9),
+	ERROR_DELETING(10),
+	DOWNLOADING(11),
+	ERROR_DOWNLOADING(12),
+	PROCESSING(13),
+	PARSED(14),
+	DETECTED(15);
 
-    private int value;
+	private int value;
 
-    DropFolderFileStatus(int value) {
-        this.value = value;
-    }
+	DropFolderFileStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DropFolderFileStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderFileStatus defined values and compare the inner value with the given one:
-        for(DropFolderFileStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderFileStatus.values().length > 0 ? DropFolderFileStatus.values()[0]: null;
+	public static DropFolderFileStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderFileStatus defined values and compare the inner value with the given one:
+		for(DropFolderFileStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderFileStatus.values().length > 0 ? DropFolderFileStatus.values()[0]: null;
    }
 }

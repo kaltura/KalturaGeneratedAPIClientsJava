@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.UploadErrorCode;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,72 +42,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UploadResponse.Tokenizer.class)
 public class UploadResponse extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String uploadTokenId();
+		String fileSize();
+		String errorCode();
+		String errorDescription();
+	}
 
-    private String uploadTokenId;
-    private Integer fileSize;
-    private UploadErrorCode errorCode;
-    private String errorDescription;
+	private String uploadTokenId;
+	private Integer fileSize;
+	private UploadErrorCode errorCode;
+	private String errorDescription;
 
-    // uploadTokenId:
-    public String getUploadTokenId(){
-        return this.uploadTokenId;
-    }
-    public void setUploadTokenId(String uploadTokenId){
-        this.uploadTokenId = uploadTokenId;
-    }
+	// uploadTokenId:
+	public String getUploadTokenId(){
+		return this.uploadTokenId;
+	}
+	public void setUploadTokenId(String uploadTokenId){
+		this.uploadTokenId = uploadTokenId;
+	}
 
-    // fileSize:
-    public Integer getFileSize(){
-        return this.fileSize;
-    }
-    public void setFileSize(Integer fileSize){
-        this.fileSize = fileSize;
-    }
+	public void uploadTokenId(String multirequestToken){
+		setToken("uploadTokenId", multirequestToken);
+	}
 
-    // errorCode:
-    public UploadErrorCode getErrorCode(){
-        return this.errorCode;
-    }
-    public void setErrorCode(UploadErrorCode errorCode){
-        this.errorCode = errorCode;
-    }
+	// fileSize:
+	public Integer getFileSize(){
+		return this.fileSize;
+	}
+	public void setFileSize(Integer fileSize){
+		this.fileSize = fileSize;
+	}
 
-    // errorDescription:
-    public String getErrorDescription(){
-        return this.errorDescription;
-    }
-    public void setErrorDescription(String errorDescription){
-        this.errorDescription = errorDescription;
-    }
+	public void fileSize(String multirequestToken){
+		setToken("fileSize", multirequestToken);
+	}
+
+	// errorCode:
+	public UploadErrorCode getErrorCode(){
+		return this.errorCode;
+	}
+	public void setErrorCode(UploadErrorCode errorCode){
+		this.errorCode = errorCode;
+	}
+
+	public void errorCode(String multirequestToken){
+		setToken("errorCode", multirequestToken);
+	}
+
+	// errorDescription:
+	public String getErrorDescription(){
+		return this.errorDescription;
+	}
+	public void setErrorDescription(String errorDescription){
+		this.errorDescription = errorDescription;
+	}
+
+	public void errorDescription(String multirequestToken){
+		setToken("errorDescription", multirequestToken);
+	}
 
 
-    public UploadResponse() {
-       super();
-    }
+	public UploadResponse() {
+		super();
+	}
 
-    public UploadResponse(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UploadResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        uploadTokenId = GsonParser.parseString(jsonObject.get("uploadTokenId"));
-        fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
-        errorCode = UploadErrorCode.get(GsonParser.parseInt(jsonObject.get("errorCode")));
-        errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
+		// set members values:
+		uploadTokenId = GsonParser.parseString(jsonObject.get("uploadTokenId"));
+		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
+		errorCode = UploadErrorCode.get(GsonParser.parseInt(jsonObject.get("errorCode")));
+		errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUploadResponse");
-        kparams.add("uploadTokenId", this.uploadTokenId);
-        kparams.add("fileSize", this.fileSize);
-        kparams.add("errorCode", this.errorCode);
-        kparams.add("errorDescription", this.errorDescription);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUploadResponse");
+		kparams.add("uploadTokenId", this.uploadTokenId);
+		kparams.add("fileSize", this.fileSize);
+		kparams.add("errorCode", this.errorCode);
+		kparams.add("errorDescription", this.errorDescription);
+		return kparams;
+	}
 
 }
 

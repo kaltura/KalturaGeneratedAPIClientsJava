@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DropFolderContentFileHandlerMatchPolicy;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,55 +41,69 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolderContentFileHandlerConfig.Tokenizer.class)
 public class DropFolderContentFileHandlerConfig extends DropFolderFileHandlerConfig {
+	
+	public interface Tokenizer extends DropFolderFileHandlerConfig.Tokenizer {
+		String contentMatchPolicy();
+		String slugRegex();
+	}
 
-    private DropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
+	private DropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
 	/**  Regular expression that defines valid file names to be handled.   The following
 	  might be extracted from the file name and used if defined:   -
 	  (?P&lt;referenceId&gt;\w+) - will be used as the drop folder file's parsed slug.
 	    - (?P&lt;flavorName&gt;\w+)  - will be used as the drop folder file's parsed
 	  flavor.  */
-    private String slugRegex;
+	private String slugRegex;
 
-    // contentMatchPolicy:
-    public DropFolderContentFileHandlerMatchPolicy getContentMatchPolicy(){
-        return this.contentMatchPolicy;
-    }
-    public void setContentMatchPolicy(DropFolderContentFileHandlerMatchPolicy contentMatchPolicy){
-        this.contentMatchPolicy = contentMatchPolicy;
-    }
+	// contentMatchPolicy:
+	public DropFolderContentFileHandlerMatchPolicy getContentMatchPolicy(){
+		return this.contentMatchPolicy;
+	}
+	public void setContentMatchPolicy(DropFolderContentFileHandlerMatchPolicy contentMatchPolicy){
+		this.contentMatchPolicy = contentMatchPolicy;
+	}
 
-    // slugRegex:
-    public String getSlugRegex(){
-        return this.slugRegex;
-    }
-    public void setSlugRegex(String slugRegex){
-        this.slugRegex = slugRegex;
-    }
+	public void contentMatchPolicy(String multirequestToken){
+		setToken("contentMatchPolicy", multirequestToken);
+	}
+
+	// slugRegex:
+	public String getSlugRegex(){
+		return this.slugRegex;
+	}
+	public void setSlugRegex(String slugRegex){
+		this.slugRegex = slugRegex;
+	}
+
+	public void slugRegex(String multirequestToken){
+		setToken("slugRegex", multirequestToken);
+	}
 
 
-    public DropFolderContentFileHandlerConfig() {
-       super();
-    }
+	public DropFolderContentFileHandlerConfig() {
+		super();
+	}
 
-    public DropFolderContentFileHandlerConfig(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolderContentFileHandlerConfig(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        contentMatchPolicy = DropFolderContentFileHandlerMatchPolicy.get(GsonParser.parseInt(jsonObject.get("contentMatchPolicy")));
-        slugRegex = GsonParser.parseString(jsonObject.get("slugRegex"));
+		// set members values:
+		contentMatchPolicy = DropFolderContentFileHandlerMatchPolicy.get(GsonParser.parseInt(jsonObject.get("contentMatchPolicy")));
+		slugRegex = GsonParser.parseString(jsonObject.get("slugRegex"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolderContentFileHandlerConfig");
-        kparams.add("contentMatchPolicy", this.contentMatchPolicy);
-        kparams.add("slugRegex", this.slugRegex);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolderContentFileHandlerConfig");
+		kparams.add("contentMatchPolicy", this.contentMatchPolicy);
+		kparams.add("slugRegex", this.slugRegex);
+		return kparams;
+	}
 
 }
 

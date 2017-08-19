@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeliveryStatus implements EnumAsInt {
-    ACTIVE(0),
-    DELETED(1),
-    STAGING_IN(2),
-    STAGING_OUT(3);
+	ACTIVE(0),
+	DELETED(1),
+	STAGING_IN(2),
+	STAGING_OUT(3);
 
-    private int value;
+	private int value;
 
-    DeliveryStatus(int value) {
-        this.value = value;
-    }
+	DeliveryStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DeliveryStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DeliveryStatus defined values and compare the inner value with the given one:
-        for(DeliveryStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DeliveryStatus.values().length > 0 ? DeliveryStatus.values()[0]: null;
+	public static DeliveryStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DeliveryStatus defined values and compare the inner value with the given one:
+		for(DeliveryStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DeliveryStatus.values().length > 0 ? DeliveryStatus.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TransformMetadataJobData.Tokenizer.class)
 public class TransformMetadataJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcXslPath();
+		String srcVersion();
+		String destVersion();
+		String destXsdPath();
+		String metadataProfileId();
+	}
 
-    private String srcXslPath;
-    private Integer srcVersion;
-    private Integer destVersion;
-    private String destXsdPath;
-    private Integer metadataProfileId;
+	private String srcXslPath;
+	private Integer srcVersion;
+	private Integer destVersion;
+	private String destXsdPath;
+	private Integer metadataProfileId;
 
-    // srcXslPath:
-    public String getSrcXslPath(){
-        return this.srcXslPath;
-    }
-    public void setSrcXslPath(String srcXslPath){
-        this.srcXslPath = srcXslPath;
-    }
+	// srcXslPath:
+	public String getSrcXslPath(){
+		return this.srcXslPath;
+	}
+	public void setSrcXslPath(String srcXslPath){
+		this.srcXslPath = srcXslPath;
+	}
 
-    // srcVersion:
-    public Integer getSrcVersion(){
-        return this.srcVersion;
-    }
-    public void setSrcVersion(Integer srcVersion){
-        this.srcVersion = srcVersion;
-    }
+	public void srcXslPath(String multirequestToken){
+		setToken("srcXslPath", multirequestToken);
+	}
 
-    // destVersion:
-    public Integer getDestVersion(){
-        return this.destVersion;
-    }
-    public void setDestVersion(Integer destVersion){
-        this.destVersion = destVersion;
-    }
+	// srcVersion:
+	public Integer getSrcVersion(){
+		return this.srcVersion;
+	}
+	public void setSrcVersion(Integer srcVersion){
+		this.srcVersion = srcVersion;
+	}
 
-    // destXsdPath:
-    public String getDestXsdPath(){
-        return this.destXsdPath;
-    }
-    public void setDestXsdPath(String destXsdPath){
-        this.destXsdPath = destXsdPath;
-    }
+	public void srcVersion(String multirequestToken){
+		setToken("srcVersion", multirequestToken);
+	}
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	// destVersion:
+	public Integer getDestVersion(){
+		return this.destVersion;
+	}
+	public void setDestVersion(Integer destVersion){
+		this.destVersion = destVersion;
+	}
+
+	public void destVersion(String multirequestToken){
+		setToken("destVersion", multirequestToken);
+	}
+
+	// destXsdPath:
+	public String getDestXsdPath(){
+		return this.destXsdPath;
+	}
+	public void setDestXsdPath(String destXsdPath){
+		this.destXsdPath = destXsdPath;
+	}
+
+	public void destXsdPath(String multirequestToken){
+		setToken("destXsdPath", multirequestToken);
+	}
+
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
 
 
-    public TransformMetadataJobData() {
-       super();
-    }
+	public TransformMetadataJobData() {
+		super();
+	}
 
-    public TransformMetadataJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TransformMetadataJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcXslPath = GsonParser.parseString(jsonObject.get("srcXslPath"));
-        srcVersion = GsonParser.parseInt(jsonObject.get("srcVersion"));
-        destVersion = GsonParser.parseInt(jsonObject.get("destVersion"));
-        destXsdPath = GsonParser.parseString(jsonObject.get("destXsdPath"));
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		// set members values:
+		srcXslPath = GsonParser.parseString(jsonObject.get("srcXslPath"));
+		srcVersion = GsonParser.parseInt(jsonObject.get("srcVersion"));
+		destVersion = GsonParser.parseInt(jsonObject.get("destVersion"));
+		destXsdPath = GsonParser.parseString(jsonObject.get("destXsdPath"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTransformMetadataJobData");
-        kparams.add("srcXslPath", this.srcXslPath);
-        kparams.add("srcVersion", this.srcVersion);
-        kparams.add("destVersion", this.destVersion);
-        kparams.add("destXsdPath", this.destXsdPath);
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTransformMetadataJobData");
+		kparams.add("srcXslPath", this.srcXslPath);
+		kparams.add("srcVersion", this.srcVersion);
+		kparams.add("destVersion", this.destVersion);
+		kparams.add("destXsdPath", this.destXsdPath);
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		return kparams;
+	}
 
 }
 

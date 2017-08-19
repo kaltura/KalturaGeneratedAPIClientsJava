@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,83 +43,108 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayerDeliveryType.Tokenizer.class)
 public class PlayerDeliveryType extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String label();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> flashvars();
+		String minVersion();
+		String enabledByDefault();
+	}
 
-    private String id;
-    private String label;
-    private List<KeyValue> flashvars;
-    private String minVersion;
-    private Boolean enabledByDefault;
+	private String id;
+	private String label;
+	private List<KeyValue> flashvars;
+	private String minVersion;
+	private Boolean enabledByDefault;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // flashvars:
-    public List<KeyValue> getFlashvars(){
-        return this.flashvars;
-    }
-    public void setFlashvars(List<KeyValue> flashvars){
-        this.flashvars = flashvars;
-    }
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
 
-    // minVersion:
-    public String getMinVersion(){
-        return this.minVersion;
-    }
-    public void setMinVersion(String minVersion){
-        this.minVersion = minVersion;
-    }
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
 
-    // enabledByDefault:
-    public Boolean getEnabledByDefault(){
-        return this.enabledByDefault;
-    }
-    public void setEnabledByDefault(Boolean enabledByDefault){
-        this.enabledByDefault = enabledByDefault;
-    }
+	// flashvars:
+	public List<KeyValue> getFlashvars(){
+		return this.flashvars;
+	}
+	public void setFlashvars(List<KeyValue> flashvars){
+		this.flashvars = flashvars;
+	}
+
+	// minVersion:
+	public String getMinVersion(){
+		return this.minVersion;
+	}
+	public void setMinVersion(String minVersion){
+		this.minVersion = minVersion;
+	}
+
+	public void minVersion(String multirequestToken){
+		setToken("minVersion", multirequestToken);
+	}
+
+	// enabledByDefault:
+	public Boolean getEnabledByDefault(){
+		return this.enabledByDefault;
+	}
+	public void setEnabledByDefault(Boolean enabledByDefault){
+		this.enabledByDefault = enabledByDefault;
+	}
+
+	public void enabledByDefault(String multirequestToken){
+		setToken("enabledByDefault", multirequestToken);
+	}
 
 
-    public PlayerDeliveryType() {
-       super();
-    }
+	public PlayerDeliveryType() {
+		super();
+	}
 
-    public PlayerDeliveryType(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayerDeliveryType(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        flashvars = GsonParser.parseArray(jsonObject.getAsJsonArray("flashvars"), KeyValue.class);
-        minVersion = GsonParser.parseString(jsonObject.get("minVersion"));
-        enabledByDefault = GsonParser.parseBoolean(jsonObject.get("enabledByDefault"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		flashvars = GsonParser.parseArray(jsonObject.getAsJsonArray("flashvars"), KeyValue.class);
+		minVersion = GsonParser.parseString(jsonObject.get("minVersion"));
+		enabledByDefault = GsonParser.parseBoolean(jsonObject.get("enabledByDefault"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayerDeliveryType");
-        kparams.add("id", this.id);
-        kparams.add("label", this.label);
-        kparams.add("flashvars", this.flashvars);
-        kparams.add("minVersion", this.minVersion);
-        kparams.add("enabledByDefault", this.enabledByDefault);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayerDeliveryType");
+		kparams.add("id", this.id);
+		kparams.add("label", this.label);
+		kparams.add("flashvars", this.flashvars);
+		kparams.add("minVersion", this.minVersion);
+		kparams.add("enabledByDefault", this.enabledByDefault);
+		return kparams;
+	}
 
 }
 

@@ -27,13 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.DistributionProvider;
 import com.kaltura.client.types.DistributionProviderFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -44,21 +41,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Distribution Provider service  */
 public class DistributionProviderService {
+	
+	public static class ListDistributionProviderBuilder extends ListResponseRequestBuilder<DistributionProvider, DistributionProvider.Tokenizer, ListDistributionProviderBuilder> {
+		
+		public ListDistributionProviderBuilder(DistributionProviderFilter filter, FilterPager pager) {
+			super(DistributionProvider.class, "contentdistribution_distributionprovider", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<DistributionProvider>> list()  {
-        return list(null);
-    }
+	public static ListDistributionProviderBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DistributionProvider>> list(DistributionProviderFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDistributionProviderBuilder list(DistributionProviderFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all distribution providers  */
-    public static RequestBuilder<ListResponse<DistributionProvider>> list(DistributionProviderFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DistributionProvider>(DistributionProvider.class, "contentdistribution_distributionprovider", "list", kparams);
-    }
+    public static ListDistributionProviderBuilder list(DistributionProviderFilter filter, FilterPager pager)  {
+		return new ListDistributionProviderBuilder(filter, pager);
+	}
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,52 +43,66 @@ import com.kaltura.client.utils.GsonParser;
   supplied URL, media file will be downloaded using import job in order to make
   the asset ready.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlResource.Tokenizer.class)
 public class UrlResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		String url();
+		String forceAsyncDownload();
+	}
 
 	/**  Remote URL, FTP, HTTP or HTTPS  */
-    private String url;
+	private String url;
 	/**  Force Import Job  */
-    private Boolean forceAsyncDownload;
+	private Boolean forceAsyncDownload;
 
-    // url:
-    public String getUrl(){
-        return this.url;
-    }
-    public void setUrl(String url){
-        this.url = url;
-    }
+	// url:
+	public String getUrl(){
+		return this.url;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
 
-    // forceAsyncDownload:
-    public Boolean getForceAsyncDownload(){
-        return this.forceAsyncDownload;
-    }
-    public void setForceAsyncDownload(Boolean forceAsyncDownload){
-        this.forceAsyncDownload = forceAsyncDownload;
-    }
+	public void url(String multirequestToken){
+		setToken("url", multirequestToken);
+	}
+
+	// forceAsyncDownload:
+	public Boolean getForceAsyncDownload(){
+		return this.forceAsyncDownload;
+	}
+	public void setForceAsyncDownload(Boolean forceAsyncDownload){
+		this.forceAsyncDownload = forceAsyncDownload;
+	}
+
+	public void forceAsyncDownload(String multirequestToken){
+		setToken("forceAsyncDownload", multirequestToken);
+	}
 
 
-    public UrlResource() {
-       super();
-    }
+	public UrlResource() {
+		super();
+	}
 
-    public UrlResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        url = GsonParser.parseString(jsonObject.get("url"));
-        forceAsyncDownload = GsonParser.parseBoolean(jsonObject.get("forceAsyncDownload"));
+		// set members values:
+		url = GsonParser.parseString(jsonObject.get("url"));
+		forceAsyncDownload = GsonParser.parseBoolean(jsonObject.get("forceAsyncDownload"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlResource");
-        kparams.add("url", this.url);
-        kparams.add("forceAsyncDownload", this.forceAsyncDownload);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlResource");
+		kparams.add("url", this.url);
+		kparams.add("forceAsyncDownload", this.forceAsyncDownload);
+		return kparams;
+	}
 
 }
 

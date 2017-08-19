@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.AssetParamsFilter;
 import com.kaltura.client.types.ConversionProfileFilter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,50 +42,56 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConversionProfileAssetParamsFilter.Tokenizer.class)
 public class ConversionProfileAssetParamsFilter extends ConversionProfileAssetParamsBaseFilter {
+	
+	public interface Tokenizer extends ConversionProfileAssetParamsBaseFilter.Tokenizer {
+		ConversionProfileFilter.Tokenizer conversionProfileIdFilter();
+		AssetParamsFilter.Tokenizer assetParamsIdFilter();
+	}
 
-    private ConversionProfileFilter conversionProfileIdFilter;
-    private AssetParamsFilter assetParamsIdFilter;
+	private ConversionProfileFilter conversionProfileIdFilter;
+	private AssetParamsFilter assetParamsIdFilter;
 
-    // conversionProfileIdFilter:
-    public ConversionProfileFilter getConversionProfileIdFilter(){
-        return this.conversionProfileIdFilter;
-    }
-    public void setConversionProfileIdFilter(ConversionProfileFilter conversionProfileIdFilter){
-        this.conversionProfileIdFilter = conversionProfileIdFilter;
-    }
+	// conversionProfileIdFilter:
+	public ConversionProfileFilter getConversionProfileIdFilter(){
+		return this.conversionProfileIdFilter;
+	}
+	public void setConversionProfileIdFilter(ConversionProfileFilter conversionProfileIdFilter){
+		this.conversionProfileIdFilter = conversionProfileIdFilter;
+	}
 
-    // assetParamsIdFilter:
-    public AssetParamsFilter getAssetParamsIdFilter(){
-        return this.assetParamsIdFilter;
-    }
-    public void setAssetParamsIdFilter(AssetParamsFilter assetParamsIdFilter){
-        this.assetParamsIdFilter = assetParamsIdFilter;
-    }
+	// assetParamsIdFilter:
+	public AssetParamsFilter getAssetParamsIdFilter(){
+		return this.assetParamsIdFilter;
+	}
+	public void setAssetParamsIdFilter(AssetParamsFilter assetParamsIdFilter){
+		this.assetParamsIdFilter = assetParamsIdFilter;
+	}
 
 
-    public ConversionProfileAssetParamsFilter() {
-       super();
-    }
+	public ConversionProfileAssetParamsFilter() {
+		super();
+	}
 
-    public ConversionProfileAssetParamsFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConversionProfileAssetParamsFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        conversionProfileIdFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("conversionProfileIdFilter"), ConversionProfileFilter.class);
-        assetParamsIdFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("assetParamsIdFilter"), AssetParamsFilter.class);
+		// set members values:
+		conversionProfileIdFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("conversionProfileIdFilter"), ConversionProfileFilter.class);
+		assetParamsIdFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("assetParamsIdFilter"), AssetParamsFilter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConversionProfileAssetParamsFilter");
-        kparams.add("conversionProfileIdFilter", this.conversionProfileIdFilter);
-        kparams.add("assetParamsIdFilter", this.assetParamsIdFilter);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConversionProfileAssetParamsFilter");
+		kparams.add("conversionProfileIdFilter", this.conversionProfileIdFilter);
+		kparams.add("assetParamsIdFilter", this.assetParamsIdFilter);
+		return kparams;
+	}
 
 }
 

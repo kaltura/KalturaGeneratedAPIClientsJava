@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,51 +40,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileGenericRtmp.Tokenizer.class)
 public class DeliveryProfileGenericRtmp extends DeliveryProfileRtmp {
+	
+	public interface Tokenizer extends DeliveryProfileRtmp.Tokenizer {
+		String pattern();
+		String rendererClass();
+	}
 
-    private String pattern;
+	private String pattern;
 	/**  rendererClass  */
-    private String rendererClass;
+	private String rendererClass;
 
-    // pattern:
-    public String getPattern(){
-        return this.pattern;
-    }
-    public void setPattern(String pattern){
-        this.pattern = pattern;
-    }
+	// pattern:
+	public String getPattern(){
+		return this.pattern;
+	}
+	public void setPattern(String pattern){
+		this.pattern = pattern;
+	}
 
-    // rendererClass:
-    public String getRendererClass(){
-        return this.rendererClass;
-    }
-    public void setRendererClass(String rendererClass){
-        this.rendererClass = rendererClass;
-    }
+	public void pattern(String multirequestToken){
+		setToken("pattern", multirequestToken);
+	}
+
+	// rendererClass:
+	public String getRendererClass(){
+		return this.rendererClass;
+	}
+	public void setRendererClass(String rendererClass){
+		this.rendererClass = rendererClass;
+	}
+
+	public void rendererClass(String multirequestToken){
+		setToken("rendererClass", multirequestToken);
+	}
 
 
-    public DeliveryProfileGenericRtmp() {
-       super();
-    }
+	public DeliveryProfileGenericRtmp() {
+		super();
+	}
 
-    public DeliveryProfileGenericRtmp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileGenericRtmp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        pattern = GsonParser.parseString(jsonObject.get("pattern"));
-        rendererClass = GsonParser.parseString(jsonObject.get("rendererClass"));
+		// set members values:
+		pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		rendererClass = GsonParser.parseString(jsonObject.get("rendererClass"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileGenericRtmp");
-        kparams.add("pattern", this.pattern);
-        kparams.add("rendererClass", this.rendererClass);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileGenericRtmp");
+		kparams.add("pattern", this.pattern);
+		kparams.add("rendererClass", this.rendererClass);
+		return kparams;
+	}
 
 }
 

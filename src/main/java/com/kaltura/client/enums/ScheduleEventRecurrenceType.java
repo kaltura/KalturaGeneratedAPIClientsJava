@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleEventRecurrenceType implements EnumAsInt {
-    NONE(0),
-    RECURRING(1),
-    RECURRENCE(2);
+	NONE(0),
+	RECURRING(1),
+	RECURRENCE(2);
 
-    private int value;
+	private int value;
 
-    ScheduleEventRecurrenceType(int value) {
-        this.value = value;
-    }
+	ScheduleEventRecurrenceType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduleEventRecurrenceType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleEventRecurrenceType defined values and compare the inner value with the given one:
-        for(ScheduleEventRecurrenceType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleEventRecurrenceType.values().length > 0 ? ScheduleEventRecurrenceType.values()[0]: null;
+	public static ScheduleEventRecurrenceType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleEventRecurrenceType defined values and compare the inner value with the given one:
+		for(ScheduleEventRecurrenceType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleEventRecurrenceType.values().length > 0 ? ScheduleEventRecurrenceType.values()[0]: null;
    }
 }

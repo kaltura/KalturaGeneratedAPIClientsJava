@@ -27,13 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.EventNotificationTemplateStatus;
 import com.kaltura.client.types.EventNotificationScope;
 import com.kaltura.client.types.EventNotificationTemplate;
 import com.kaltura.client.types.EventNotificationTemplateFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.PartnerFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -49,124 +47,202 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  Event notification template service lets you create and manage event
   notification templates  */
 public class EventNotificationTemplateService {
+	
+	public static class AddEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, AddEventNotificationTemplateBuilder> {
+		
+		public AddEventNotificationTemplateBuilder(EventNotificationTemplate eventNotificationTemplate) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "add");
+			params.add("eventNotificationTemplate", eventNotificationTemplate);
+		}
+	}
 
 	/**  This action allows for the creation of new backend event types in the system.
 	  This action requires access to the Kaltura server Admin Console. If you're
 	  looking to register to existing event types, please use the clone action
 	  instead.  */
-    public static RequestBuilder<EventNotificationTemplate> add(EventNotificationTemplate eventNotificationTemplate)  {
-        Params kparams = new Params();
-        kparams.add("eventNotificationTemplate", eventNotificationTemplate);
+    public static AddEventNotificationTemplateBuilder add(EventNotificationTemplate eventNotificationTemplate)  {
+		return new AddEventNotificationTemplateBuilder(eventNotificationTemplate);
+	}
+	
+	public static class CloneEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, CloneEventNotificationTemplateBuilder> {
+		
+		public CloneEventNotificationTemplateBuilder(int id, EventNotificationTemplate eventNotificationTemplate) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "clone");
+			params.add("id", id);
+			params.add("eventNotificationTemplate", eventNotificationTemplate);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "add", kparams);
-    }
-
-    public static RequestBuilder<EventNotificationTemplate> clone(int id)  {
-        return clone(id, null);
-    }
+	public static CloneEventNotificationTemplateBuilder clone(int id)  {
+		return clone(id, null);
+	}
 
 	/**  This action allows registering to various backend event. Use this action to
 	  create notifications that will react to events such as new video was uploaded or
 	  metadata field was updated. To see the list of available event types, call the
 	  listTemplates action.  */
-    public static RequestBuilder<EventNotificationTemplate> clone(int id, EventNotificationTemplate eventNotificationTemplate)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("eventNotificationTemplate", eventNotificationTemplate);
-
-        return new RequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "clone", kparams);
-    }
+    public static CloneEventNotificationTemplateBuilder clone(int id, EventNotificationTemplate eventNotificationTemplate)  {
+		return new CloneEventNotificationTemplateBuilder(id, eventNotificationTemplate);
+	}
+	
+	public static class DeleteEventNotificationTemplateBuilder extends NullRequestBuilder {
+		
+		public DeleteEventNotificationTemplateBuilder(int id) {
+			super("eventnotification_eventnotificationtemplate", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete an event notification template object  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("eventnotification_eventnotificationtemplate", "delete", kparams);
-    }
+    public static DeleteEventNotificationTemplateBuilder delete(int id)  {
+		return new DeleteEventNotificationTemplateBuilder(id);
+	}
+	
+	public static class DispatchEventNotificationTemplateBuilder extends RequestBuilder<Integer, String, DispatchEventNotificationTemplateBuilder> {
+		
+		public DispatchEventNotificationTemplateBuilder(int id, EventNotificationScope scope) {
+			super(Integer.class, "eventnotification_eventnotificationtemplate", "dispatch");
+			params.add("id", id);
+			params.add("scope", scope);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Dispatch event notification object by id  */
-    public static RequestBuilder<Integer> dispatch(int id, EventNotificationScope scope)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("scope", scope);
-
-        return new RequestBuilder<Integer>(Integer.class, "eventnotification_eventnotificationtemplate", "dispatch", kparams);
-    }
+    public static DispatchEventNotificationTemplateBuilder dispatch(int id, EventNotificationScope scope)  {
+		return new DispatchEventNotificationTemplateBuilder(id, scope);
+	}
+	
+	public static class GetEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, GetEventNotificationTemplateBuilder> {
+		
+		public GetEventNotificationTemplateBuilder(int id) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve an event notification template object by id  */
-    public static RequestBuilder<EventNotificationTemplate> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetEventNotificationTemplateBuilder get(int id)  {
+		return new GetEventNotificationTemplateBuilder(id);
+	}
+	
+	public static class ListEventNotificationTemplateBuilder extends ListResponseRequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, ListEventNotificationTemplateBuilder> {
+		
+		public ListEventNotificationTemplateBuilder(EventNotificationTemplateFilter filter, FilterPager pager) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "get", kparams);
-    }
+	public static ListEventNotificationTemplateBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> list(EventNotificationTemplateFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListEventNotificationTemplateBuilder list(EventNotificationTemplateFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  list event notification template objects  */
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> list(EventNotificationTemplateFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListEventNotificationTemplateBuilder list(EventNotificationTemplateFilter filter, FilterPager pager)  {
+		return new ListEventNotificationTemplateBuilder(filter, pager);
+	}
+	
+	public static class ListByPartnerEventNotificationTemplateBuilder extends ListResponseRequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, ListByPartnerEventNotificationTemplateBuilder> {
+		
+		public ListByPartnerEventNotificationTemplateBuilder(PartnerFilter filter, FilterPager pager) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "listByPartner");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "list", kparams);
-    }
+	public static ListByPartnerEventNotificationTemplateBuilder listByPartner()  {
+		return listByPartner(null);
+	}
 
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listByPartner()  {
-        return listByPartner(null);
-    }
+	public static ListByPartnerEventNotificationTemplateBuilder listByPartner(PartnerFilter filter)  {
+		return listByPartner(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listByPartner(PartnerFilter filter)  {
-        return listByPartner(filter, null);
-    }
+    public static ListByPartnerEventNotificationTemplateBuilder listByPartner(PartnerFilter filter, FilterPager pager)  {
+		return new ListByPartnerEventNotificationTemplateBuilder(filter, pager);
+	}
+	
+	public static class ListTemplatesEventNotificationTemplateBuilder extends ListResponseRequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, ListTemplatesEventNotificationTemplateBuilder> {
+		
+		public ListTemplatesEventNotificationTemplateBuilder(EventNotificationTemplateFilter filter, FilterPager pager) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "listTemplates");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listByPartner(PartnerFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+	public static ListTemplatesEventNotificationTemplateBuilder listTemplates()  {
+		return listTemplates(null);
+	}
 
-        return new ListResponseRequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "listByPartner", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listTemplates()  {
-        return listTemplates(null);
-    }
-
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listTemplates(EventNotificationTemplateFilter filter)  {
-        return listTemplates(filter, null);
-    }
+	public static ListTemplatesEventNotificationTemplateBuilder listTemplates(EventNotificationTemplateFilter filter)  {
+		return listTemplates(filter, null);
+	}
 
 	/**  Action lists the template partner event notification templates.  */
-    public static RequestBuilder<ListResponse<EventNotificationTemplate>> listTemplates(EventNotificationTemplateFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "listTemplates", kparams);
-    }
+    public static ListTemplatesEventNotificationTemplateBuilder listTemplates(EventNotificationTemplateFilter filter, FilterPager pager)  {
+		return new ListTemplatesEventNotificationTemplateBuilder(filter, pager);
+	}
+	
+	public static class UpdateEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, UpdateEventNotificationTemplateBuilder> {
+		
+		public UpdateEventNotificationTemplateBuilder(int id, EventNotificationTemplate eventNotificationTemplate) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "update");
+			params.add("id", id);
+			params.add("eventNotificationTemplate", eventNotificationTemplate);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update an existing event notification template object  */
-    public static RequestBuilder<EventNotificationTemplate> update(int id, EventNotificationTemplate eventNotificationTemplate)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("eventNotificationTemplate", eventNotificationTemplate);
-
-        return new RequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "update", kparams);
-    }
+    public static UpdateEventNotificationTemplateBuilder update(int id, EventNotificationTemplate eventNotificationTemplate)  {
+		return new UpdateEventNotificationTemplateBuilder(id, eventNotificationTemplate);
+	}
+	
+	public static class UpdateStatusEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, UpdateStatusEventNotificationTemplateBuilder> {
+		
+		public UpdateStatusEventNotificationTemplateBuilder(int id, EventNotificationTemplateStatus status) {
+			super(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Update event notification template status by id  */
-    public static RequestBuilder<EventNotificationTemplate> updateStatus(int id, EventNotificationTemplateStatus status)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("status", status);
-
-        return new RequestBuilder<EventNotificationTemplate>(EventNotificationTemplate.class, "eventnotification_eventnotificationtemplate", "updateStatus", kparams);
-    }
+    public static UpdateStatusEventNotificationTemplateBuilder updateStatus(int id, EventNotificationTemplateStatus status)  {
+		return new UpdateStatusEventNotificationTemplateBuilder(id, status);
+	}
 }

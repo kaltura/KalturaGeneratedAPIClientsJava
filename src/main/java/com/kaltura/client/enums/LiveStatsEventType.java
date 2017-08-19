@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveStatsEventType implements EnumAsInt {
-    LIVE(1),
-    DVR(2);
+	LIVE(1),
+	DVR(2);
 
-    private int value;
+	private int value;
 
-    LiveStatsEventType(int value) {
-        this.value = value;
-    }
+	LiveStatsEventType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static LiveStatsEventType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveStatsEventType defined values and compare the inner value with the given one:
-        for(LiveStatsEventType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveStatsEventType.values().length > 0 ? LiveStatsEventType.values()[0]: null;
+	public static LiveStatsEventType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveStatsEventType defined values and compare the inner value with the given one:
+		for(LiveStatsEventType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveStatsEventType.values().length > 0 ? LiveStatsEventType.values()[0]: null;
    }
 }

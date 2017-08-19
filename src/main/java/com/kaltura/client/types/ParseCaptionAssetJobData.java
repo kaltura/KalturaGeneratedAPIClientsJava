@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ParseCaptionAssetJobData.Tokenizer.class)
 public class ParseCaptionAssetJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String captionAssetId();
+	}
 
-    private String captionAssetId;
+	private String captionAssetId;
 
-    // captionAssetId:
-    public String getCaptionAssetId(){
-        return this.captionAssetId;
-    }
-    public void setCaptionAssetId(String captionAssetId){
-        this.captionAssetId = captionAssetId;
-    }
+	// captionAssetId:
+	public String getCaptionAssetId(){
+		return this.captionAssetId;
+	}
+	public void setCaptionAssetId(String captionAssetId){
+		this.captionAssetId = captionAssetId;
+	}
+
+	public void captionAssetId(String multirequestToken){
+		setToken("captionAssetId", multirequestToken);
+	}
 
 
-    public ParseCaptionAssetJobData() {
-       super();
-    }
+	public ParseCaptionAssetJobData() {
+		super();
+	}
 
-    public ParseCaptionAssetJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ParseCaptionAssetJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        captionAssetId = GsonParser.parseString(jsonObject.get("captionAssetId"));
+		// set members values:
+		captionAssetId = GsonParser.parseString(jsonObject.get("captionAssetId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaParseCaptionAssetJobData");
-        kparams.add("captionAssetId", this.captionAssetId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaParseCaptionAssetJobData");
+		kparams.add("captionAssetId", this.captionAssetId);
+		return kparams;
+	}
 
 }
 

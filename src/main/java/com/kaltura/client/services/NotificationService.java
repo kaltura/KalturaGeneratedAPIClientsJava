@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.NotificationType;
 import com.kaltura.client.types.ClientNotification;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -41,13 +40,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Notification Service  */
 public class NotificationService {
+	
+	public static class GetClientNotificationNotificationBuilder extends RequestBuilder<ClientNotification, ClientNotification.Tokenizer, GetClientNotificationNotificationBuilder> {
+		
+		public GetClientNotificationNotificationBuilder(String entryId, NotificationType type) {
+			super(ClientNotification.class, "notification", "getClientNotification");
+			params.add("entryId", entryId);
+			params.add("type", type);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void type(String multirequestToken) {
+			params.add("type", multirequestToken);
+		}
+	}
 
 	/**  Return the notifications for a specific entry id and type  */
-    public static RequestBuilder<ClientNotification> getClientNotification(String entryId, NotificationType type)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("type", type);
-
-        return new RequestBuilder<ClientNotification>(ClientNotification.class, "notification", "getClientNotification", kparams);
-    }
+    public static GetClientNotificationNotificationBuilder getClientNotification(String entryId, NotificationType type)  {
+		return new GetClientNotificationNotificationBuilder(entryId, type);
+	}
 }

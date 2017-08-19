@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.AttachmentAssetStatus;
 import com.kaltura.client.enums.AttachmentType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,75 +42,99 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttachmentAsset.Tokenizer.class)
 public class AttachmentAsset extends Asset {
+	
+	public interface Tokenizer extends Asset.Tokenizer {
+		String filename();
+		String title();
+		String format();
+		String status();
+	}
 
 	/**  The filename of the attachment asset content  */
-    private String filename;
+	private String filename;
 	/**  Attachment asset title  */
-    private String title;
+	private String title;
 	/**  The attachment format  */
-    private AttachmentType format;
+	private AttachmentType format;
 	/**  The status of the asset  */
-    private AttachmentAssetStatus status;
+	private AttachmentAssetStatus status;
 
-    // filename:
-    public String getFilename(){
-        return this.filename;
-    }
-    public void setFilename(String filename){
-        this.filename = filename;
-    }
+	// filename:
+	public String getFilename(){
+		return this.filename;
+	}
+	public void setFilename(String filename){
+		this.filename = filename;
+	}
 
-    // title:
-    public String getTitle(){
-        return this.title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+	public void filename(String multirequestToken){
+		setToken("filename", multirequestToken);
+	}
 
-    // format:
-    public AttachmentType getFormat(){
-        return this.format;
-    }
-    public void setFormat(AttachmentType format){
-        this.format = format;
-    }
+	// title:
+	public String getTitle(){
+		return this.title;
+	}
+	public void setTitle(String title){
+		this.title = title;
+	}
 
-    // status:
-    public AttachmentAssetStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(AttachmentAssetStatus status){
-        this.status = status;
-    }
+	public void title(String multirequestToken){
+		setToken("title", multirequestToken);
+	}
+
+	// format:
+	public AttachmentType getFormat(){
+		return this.format;
+	}
+	public void setFormat(AttachmentType format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
+
+	// status:
+	public AttachmentAssetStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(AttachmentAssetStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
 
-    public AttachmentAsset() {
-       super();
-    }
+	public AttachmentAsset() {
+		super();
+	}
 
-    public AttachmentAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttachmentAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filename = GsonParser.parseString(jsonObject.get("filename"));
-        title = GsonParser.parseString(jsonObject.get("title"));
-        format = AttachmentType.get(GsonParser.parseString(jsonObject.get("format")));
-        status = AttachmentAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		// set members values:
+		filename = GsonParser.parseString(jsonObject.get("filename"));
+		title = GsonParser.parseString(jsonObject.get("title"));
+		format = AttachmentType.get(GsonParser.parseString(jsonObject.get("format")));
+		status = AttachmentAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttachmentAsset");
-        kparams.add("filename", this.filename);
-        kparams.add("title", this.title);
-        kparams.add("format", this.format);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttachmentAsset");
+		kparams.add("filename", this.filename);
+		kparams.add("title", this.title);
+		kparams.add("format", this.format);
+		return kparams;
+	}
 
 }
 

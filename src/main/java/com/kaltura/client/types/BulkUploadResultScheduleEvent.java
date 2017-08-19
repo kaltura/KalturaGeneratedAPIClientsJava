@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadResultScheduleEvent.Tokenizer.class)
 public class BulkUploadResultScheduleEvent extends BulkUploadResult {
+	
+	public interface Tokenizer extends BulkUploadResult.Tokenizer {
+		String referenceId();
+	}
 
-    private String referenceId;
+	private String referenceId;
 
-    // referenceId:
-    public String getReferenceId(){
-        return this.referenceId;
-    }
-    public void setReferenceId(String referenceId){
-        this.referenceId = referenceId;
-    }
+	// referenceId:
+	public String getReferenceId(){
+		return this.referenceId;
+	}
+	public void setReferenceId(String referenceId){
+		this.referenceId = referenceId;
+	}
+
+	public void referenceId(String multirequestToken){
+		setToken("referenceId", multirequestToken);
+	}
 
 
-    public BulkUploadResultScheduleEvent() {
-       super();
-    }
+	public BulkUploadResultScheduleEvent() {
+		super();
+	}
 
-    public BulkUploadResultScheduleEvent(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadResultScheduleEvent(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
+		// set members values:
+		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadResultScheduleEvent");
-        kparams.add("referenceId", this.referenceId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadResultScheduleEvent");
+		kparams.add("referenceId", this.referenceId);
+		return kparams;
+	}
 
 }
 

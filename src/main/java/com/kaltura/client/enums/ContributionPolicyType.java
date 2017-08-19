@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ContributionPolicyType implements EnumAsInt {
-    ALL(1),
-    MEMBERS_WITH_CONTRIBUTION_PERMISSION(2);
+	ALL(1),
+	MEMBERS_WITH_CONTRIBUTION_PERMISSION(2);
 
-    private int value;
+	private int value;
 
-    ContributionPolicyType(int value) {
-        this.value = value;
-    }
+	ContributionPolicyType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ContributionPolicyType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ContributionPolicyType defined values and compare the inner value with the given one:
-        for(ContributionPolicyType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ContributionPolicyType.values().length > 0 ? ContributionPolicyType.values()[0]: null;
+	public static ContributionPolicyType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ContributionPolicyType defined values and compare the inner value with the given one:
+		for(ContributionPolicyType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ContributionPolicyType.values().length > 0 ? ContributionPolicyType.values()[0]: null;
    }
 }

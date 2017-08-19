@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,65 +40,84 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertProfileJobData.Tokenizer.class)
 public class ConvertProfileJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String inputFileSyncLocalPath();
+		String thumbHeight();
+		String thumbBitrate();
+	}
 
-    private String inputFileSyncLocalPath;
+	private String inputFileSyncLocalPath;
 	/**  The height of last created thumbnail, will be used to comapare if this thumbnail
 	  is the best we can have  */
-    private Integer thumbHeight;
+	private Integer thumbHeight;
 	/**  The bit rate of last created thumbnail, will be used to comapare if this
 	  thumbnail is the best we can have  */
-    private Integer thumbBitrate;
+	private Integer thumbBitrate;
 
-    // inputFileSyncLocalPath:
-    public String getInputFileSyncLocalPath(){
-        return this.inputFileSyncLocalPath;
-    }
-    public void setInputFileSyncLocalPath(String inputFileSyncLocalPath){
-        this.inputFileSyncLocalPath = inputFileSyncLocalPath;
-    }
+	// inputFileSyncLocalPath:
+	public String getInputFileSyncLocalPath(){
+		return this.inputFileSyncLocalPath;
+	}
+	public void setInputFileSyncLocalPath(String inputFileSyncLocalPath){
+		this.inputFileSyncLocalPath = inputFileSyncLocalPath;
+	}
 
-    // thumbHeight:
-    public Integer getThumbHeight(){
-        return this.thumbHeight;
-    }
-    public void setThumbHeight(Integer thumbHeight){
-        this.thumbHeight = thumbHeight;
-    }
+	public void inputFileSyncLocalPath(String multirequestToken){
+		setToken("inputFileSyncLocalPath", multirequestToken);
+	}
 
-    // thumbBitrate:
-    public Integer getThumbBitrate(){
-        return this.thumbBitrate;
-    }
-    public void setThumbBitrate(Integer thumbBitrate){
-        this.thumbBitrate = thumbBitrate;
-    }
+	// thumbHeight:
+	public Integer getThumbHeight(){
+		return this.thumbHeight;
+	}
+	public void setThumbHeight(Integer thumbHeight){
+		this.thumbHeight = thumbHeight;
+	}
+
+	public void thumbHeight(String multirequestToken){
+		setToken("thumbHeight", multirequestToken);
+	}
+
+	// thumbBitrate:
+	public Integer getThumbBitrate(){
+		return this.thumbBitrate;
+	}
+	public void setThumbBitrate(Integer thumbBitrate){
+		this.thumbBitrate = thumbBitrate;
+	}
+
+	public void thumbBitrate(String multirequestToken){
+		setToken("thumbBitrate", multirequestToken);
+	}
 
 
-    public ConvertProfileJobData() {
-       super();
-    }
+	public ConvertProfileJobData() {
+		super();
+	}
 
-    public ConvertProfileJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertProfileJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        inputFileSyncLocalPath = GsonParser.parseString(jsonObject.get("inputFileSyncLocalPath"));
-        thumbHeight = GsonParser.parseInt(jsonObject.get("thumbHeight"));
-        thumbBitrate = GsonParser.parseInt(jsonObject.get("thumbBitrate"));
+		// set members values:
+		inputFileSyncLocalPath = GsonParser.parseString(jsonObject.get("inputFileSyncLocalPath"));
+		thumbHeight = GsonParser.parseInt(jsonObject.get("thumbHeight"));
+		thumbBitrate = GsonParser.parseInt(jsonObject.get("thumbBitrate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertProfileJobData");
-        kparams.add("inputFileSyncLocalPath", this.inputFileSyncLocalPath);
-        kparams.add("thumbHeight", this.thumbHeight);
-        kparams.add("thumbBitrate", this.thumbBitrate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertProfileJobData");
+		kparams.add("inputFileSyncLocalPath", this.inputFileSyncLocalPath);
+		kparams.add("thumbHeight", this.thumbHeight);
+		kparams.add("thumbBitrate", this.thumbBitrate);
+		return kparams;
+	}
 
 }
 

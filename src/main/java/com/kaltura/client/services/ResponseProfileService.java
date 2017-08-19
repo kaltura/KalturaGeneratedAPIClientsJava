@@ -27,10 +27,8 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.ResponseProfileStatus;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ResponseProfile;
 import com.kaltura.client.types.ResponseProfileCacheRecalculateOptions;
 import com.kaltura.client.types.ResponseProfileCacheRecalculateResults;
@@ -48,80 +46,144 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage response profiles  */
 public class ResponseProfileService {
+	
+	public static class AddResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, AddResponseProfileBuilder> {
+		
+		public AddResponseProfileBuilder(ResponseProfile addResponseProfile) {
+			super(ResponseProfile.class, "responseprofile", "add");
+			params.add("addResponseProfile", addResponseProfile);
+		}
+	}
 
 	/**  Add new response profile  */
-    public static RequestBuilder<ResponseProfile> add(ResponseProfile addResponseProfile)  {
-        Params kparams = new Params();
-        kparams.add("addResponseProfile", addResponseProfile);
-
-        return new RequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "add", kparams);
-    }
+    public static AddResponseProfileBuilder add(ResponseProfile addResponseProfile)  {
+		return new AddResponseProfileBuilder(addResponseProfile);
+	}
+	
+	public static class CloneResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, CloneResponseProfileBuilder> {
+		
+		public CloneResponseProfileBuilder(int id, ResponseProfile profile) {
+			super(ResponseProfile.class, "responseprofile", "clone");
+			params.add("id", id);
+			params.add("profile", profile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Clone an existing response profile  */
-    public static RequestBuilder<ResponseProfile> clone(int id, ResponseProfile profile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("profile", profile);
-
-        return new RequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "clone", kparams);
-    }
+    public static CloneResponseProfileBuilder clone(int id, ResponseProfile profile)  {
+		return new CloneResponseProfileBuilder(id, profile);
+	}
+	
+	public static class DeleteResponseProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteResponseProfileBuilder(int id) {
+			super("responseprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete response profile by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("responseprofile", "delete", kparams);
-    }
+    public static DeleteResponseProfileBuilder delete(int id)  {
+		return new DeleteResponseProfileBuilder(id);
+	}
+	
+	public static class GetResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, GetResponseProfileBuilder> {
+		
+		public GetResponseProfileBuilder(int id) {
+			super(ResponseProfile.class, "responseprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get response profile by id  */
-    public static RequestBuilder<ResponseProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetResponseProfileBuilder get(int id)  {
+		return new GetResponseProfileBuilder(id);
+	}
+	
+	public static class ListResponseProfileBuilder extends ListResponseRequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, ListResponseProfileBuilder> {
+		
+		public ListResponseProfileBuilder(ResponseProfileFilter filter, FilterPager pager) {
+			super(ResponseProfile.class, "responseprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "get", kparams);
-    }
+	public static ListResponseProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ResponseProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ResponseProfile>> list(ResponseProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListResponseProfileBuilder list(ResponseProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List response profiles by filter and pager  */
-    public static RequestBuilder<ListResponse<ResponseProfile>> list(ResponseProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "list", kparams);
-    }
+    public static ListResponseProfileBuilder list(ResponseProfileFilter filter, FilterPager pager)  {
+		return new ListResponseProfileBuilder(filter, pager);
+	}
+	
+	public static class RecalculateResponseProfileBuilder extends RequestBuilder<ResponseProfileCacheRecalculateResults, ResponseProfileCacheRecalculateResults.Tokenizer, RecalculateResponseProfileBuilder> {
+		
+		public RecalculateResponseProfileBuilder(ResponseProfileCacheRecalculateOptions options) {
+			super(ResponseProfileCacheRecalculateResults.class, "responseprofile", "recalculate");
+			params.add("options", options);
+		}
+	}
 
 	/**  Recalculate response profile cached objects  */
-    public static RequestBuilder<ResponseProfileCacheRecalculateResults> recalculate(ResponseProfileCacheRecalculateOptions options)  {
-        Params kparams = new Params();
-        kparams.add("options", options);
-
-        return new RequestBuilder<ResponseProfileCacheRecalculateResults>(ResponseProfileCacheRecalculateResults.class, "responseprofile", "recalculate", kparams);
-    }
+    public static RecalculateResponseProfileBuilder recalculate(ResponseProfileCacheRecalculateOptions options)  {
+		return new RecalculateResponseProfileBuilder(options);
+	}
+	
+	public static class UpdateResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, UpdateResponseProfileBuilder> {
+		
+		public UpdateResponseProfileBuilder(int id, ResponseProfile updateResponseProfile) {
+			super(ResponseProfile.class, "responseprofile", "update");
+			params.add("id", id);
+			params.add("updateResponseProfile", updateResponseProfile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update response profile by id  */
-    public static RequestBuilder<ResponseProfile> update(int id, ResponseProfile updateResponseProfile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("updateResponseProfile", updateResponseProfile);
-
-        return new RequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "update", kparams);
-    }
+    public static UpdateResponseProfileBuilder update(int id, ResponseProfile updateResponseProfile)  {
+		return new UpdateResponseProfileBuilder(id, updateResponseProfile);
+	}
+	
+	public static class UpdateStatusResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, UpdateStatusResponseProfileBuilder> {
+		
+		public UpdateStatusResponseProfileBuilder(int id, ResponseProfileStatus status) {
+			super(ResponseProfile.class, "responseprofile", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Update response profile status by id  */
-    public static RequestBuilder<ResponseProfile> updateStatus(int id, ResponseProfileStatus status)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("status", status);
-
-        return new RequestBuilder<ResponseProfile>(ResponseProfile.class, "responseprofile", "updateStatus", kparams);
-    }
+    public static UpdateStatusResponseProfileBuilder updateStatus(int id, ResponseProfileStatus status)  {
+		return new UpdateStatusResponseProfileBuilder(id, status);
+	}
 }

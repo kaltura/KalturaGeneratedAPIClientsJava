@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderContentFileHandlerMatchPolicy implements EnumAsInt {
-    ADD_AS_NEW(1),
-    MATCH_EXISTING_OR_ADD_AS_NEW(2),
-    MATCH_EXISTING_OR_KEEP_IN_FOLDER(3);
+	ADD_AS_NEW(1),
+	MATCH_EXISTING_OR_ADD_AS_NEW(2),
+	MATCH_EXISTING_OR_KEEP_IN_FOLDER(3);
 
-    private int value;
+	private int value;
 
-    DropFolderContentFileHandlerMatchPolicy(int value) {
-        this.value = value;
-    }
+	DropFolderContentFileHandlerMatchPolicy(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DropFolderContentFileHandlerMatchPolicy get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderContentFileHandlerMatchPolicy defined values and compare the inner value with the given one:
-        for(DropFolderContentFileHandlerMatchPolicy item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderContentFileHandlerMatchPolicy.values().length > 0 ? DropFolderContentFileHandlerMatchPolicy.values()[0]: null;
+	public static DropFolderContentFileHandlerMatchPolicy get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderContentFileHandlerMatchPolicy defined values and compare the inner value with the given one:
+		for(DropFolderContentFileHandlerMatchPolicy item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderContentFileHandlerMatchPolicy.values().length > 0 ? DropFolderContentFileHandlerMatchPolicy.values()[0]: null;
    }
 }

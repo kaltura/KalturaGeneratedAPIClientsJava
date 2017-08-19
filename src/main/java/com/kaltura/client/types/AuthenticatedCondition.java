@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,40 +42,45 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuthenticatedCondition.Tokenizer.class)
 public class AuthenticatedCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		RequestBuilder.ListTokenizer<StringValue.Tokenizer> privileges();
+	}
 
 	/**  The privelege needed to remove the restriction  */
-    private List<StringValue> privileges;
+	private List<StringValue> privileges;
 
-    // privileges:
-    public List<StringValue> getPrivileges(){
-        return this.privileges;
-    }
-    public void setPrivileges(List<StringValue> privileges){
-        this.privileges = privileges;
-    }
+	// privileges:
+	public List<StringValue> getPrivileges(){
+		return this.privileges;
+	}
+	public void setPrivileges(List<StringValue> privileges){
+		this.privileges = privileges;
+	}
 
 
-    public AuthenticatedCondition() {
-       super();
-    }
+	public AuthenticatedCondition() {
+		super();
+	}
 
-    public AuthenticatedCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuthenticatedCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        privileges = GsonParser.parseArray(jsonObject.getAsJsonArray("privileges"), StringValue.class);
+		// set members values:
+		privileges = GsonParser.parseArray(jsonObject.getAsJsonArray("privileges"), StringValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuthenticatedCondition");
-        kparams.add("privileges", this.privileges);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuthenticatedCondition");
+		kparams.add("privileges", this.privileges);
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,40 +42,45 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryServerNode.Tokenizer.class)
 public abstract class DeliveryServerNode extends ServerNode {
+	
+	public interface Tokenizer extends ServerNode.Tokenizer {
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> deliveryProfileIds();
+	}
 
 	/**  Delivery profile ids  */
-    private List<KeyValue> deliveryProfileIds;
+	private List<KeyValue> deliveryProfileIds;
 
-    // deliveryProfileIds:
-    public List<KeyValue> getDeliveryProfileIds(){
-        return this.deliveryProfileIds;
-    }
-    public void setDeliveryProfileIds(List<KeyValue> deliveryProfileIds){
-        this.deliveryProfileIds = deliveryProfileIds;
-    }
+	// deliveryProfileIds:
+	public List<KeyValue> getDeliveryProfileIds(){
+		return this.deliveryProfileIds;
+	}
+	public void setDeliveryProfileIds(List<KeyValue> deliveryProfileIds){
+		this.deliveryProfileIds = deliveryProfileIds;
+	}
 
 
-    public DeliveryServerNode() {
-       super();
-    }
+	public DeliveryServerNode() {
+		super();
+	}
 
-    public DeliveryServerNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        deliveryProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("deliveryProfileIds"), KeyValue.class);
+		// set members values:
+		deliveryProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("deliveryProfileIds"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryServerNode");
-        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryServerNode");
+		kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+		return kparams;
+	}
 
 }
 

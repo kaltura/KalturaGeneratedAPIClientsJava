@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.DistributionThumbDimensions;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +41,44 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionValidationErrorMissingThumbnail.Tokenizer.class)
 public class DistributionValidationErrorMissingThumbnail extends DistributionValidationError {
+	
+	public interface Tokenizer extends DistributionValidationError.Tokenizer {
+		DistributionThumbDimensions.Tokenizer dimensions();
+	}
 
-    private DistributionThumbDimensions dimensions;
+	private DistributionThumbDimensions dimensions;
 
-    // dimensions:
-    public DistributionThumbDimensions getDimensions(){
-        return this.dimensions;
-    }
-    public void setDimensions(DistributionThumbDimensions dimensions){
-        this.dimensions = dimensions;
-    }
+	// dimensions:
+	public DistributionThumbDimensions getDimensions(){
+		return this.dimensions;
+	}
+	public void setDimensions(DistributionThumbDimensions dimensions){
+		this.dimensions = dimensions;
+	}
 
 
-    public DistributionValidationErrorMissingThumbnail() {
-       super();
-    }
+	public DistributionValidationErrorMissingThumbnail() {
+		super();
+	}
 
-    public DistributionValidationErrorMissingThumbnail(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionValidationErrorMissingThumbnail(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        dimensions = GsonParser.parseObject(jsonObject.getAsJsonObject("dimensions"), DistributionThumbDimensions.class);
+		// set members values:
+		dimensions = GsonParser.parseObject(jsonObject.getAsJsonObject("dimensions"), DistributionThumbDimensions.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionValidationErrorMissingThumbnail");
-        kparams.add("dimensions", this.dimensions);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionValidationErrorMissingThumbnail");
+		kparams.add("dimensions", this.dimensions);
+		return kparams;
+	}
 
 }
 

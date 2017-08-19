@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveReportExportResponse.Tokenizer.class)
 public class LiveReportExportResponse extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String referenceJobId();
+		String reportEmail();
+	}
 
-    private Long referenceJobId;
-    private String reportEmail;
+	private Long referenceJobId;
+	private String reportEmail;
 
-    // referenceJobId:
-    public Long getReferenceJobId(){
-        return this.referenceJobId;
-    }
-    public void setReferenceJobId(Long referenceJobId){
-        this.referenceJobId = referenceJobId;
-    }
+	// referenceJobId:
+	public Long getReferenceJobId(){
+		return this.referenceJobId;
+	}
+	public void setReferenceJobId(Long referenceJobId){
+		this.referenceJobId = referenceJobId;
+	}
 
-    // reportEmail:
-    public String getReportEmail(){
-        return this.reportEmail;
-    }
-    public void setReportEmail(String reportEmail){
-        this.reportEmail = reportEmail;
-    }
+	public void referenceJobId(String multirequestToken){
+		setToken("referenceJobId", multirequestToken);
+	}
+
+	// reportEmail:
+	public String getReportEmail(){
+		return this.reportEmail;
+	}
+	public void setReportEmail(String reportEmail){
+		this.reportEmail = reportEmail;
+	}
+
+	public void reportEmail(String multirequestToken){
+		setToken("reportEmail", multirequestToken);
+	}
 
 
-    public LiveReportExportResponse() {
-       super();
-    }
+	public LiveReportExportResponse() {
+		super();
+	}
 
-    public LiveReportExportResponse(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveReportExportResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        referenceJobId = GsonParser.parseLong(jsonObject.get("referenceJobId"));
-        reportEmail = GsonParser.parseString(jsonObject.get("reportEmail"));
+		// set members values:
+		referenceJobId = GsonParser.parseLong(jsonObject.get("referenceJobId"));
+		reportEmail = GsonParser.parseString(jsonObject.get("reportEmail"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveReportExportResponse");
-        kparams.add("referenceJobId", this.referenceJobId);
-        kparams.add("reportEmail", this.reportEmail);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveReportExportResponse");
+		kparams.add("referenceJobId", this.referenceJobId);
+		kparams.add("reportEmail", this.reportEmail);
+		return kparams;
+	}
 
 }
 

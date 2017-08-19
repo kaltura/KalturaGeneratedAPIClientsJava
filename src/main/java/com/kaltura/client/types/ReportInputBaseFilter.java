@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,76 +41,100 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportInputBaseFilter.Tokenizer.class)
 public class ReportInputBaseFilter extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String fromDate();
+		String toDate();
+		String fromDay();
+		String toDay();
+	}
 
 	/**  Start date as Unix timestamp (In seconds)  */
-    private Integer fromDate;
+	private Integer fromDate;
 	/**  End date as Unix timestamp (In seconds)  */
-    private Integer toDate;
+	private Integer toDate;
 	/**  Start day as string (YYYYMMDD)  */
-    private String fromDay;
+	private String fromDay;
 	/**  End date as string (YYYYMMDD)  */
-    private String toDay;
+	private String toDay;
 
-    // fromDate:
-    public Integer getFromDate(){
-        return this.fromDate;
-    }
-    public void setFromDate(Integer fromDate){
-        this.fromDate = fromDate;
-    }
+	// fromDate:
+	public Integer getFromDate(){
+		return this.fromDate;
+	}
+	public void setFromDate(Integer fromDate){
+		this.fromDate = fromDate;
+	}
 
-    // toDate:
-    public Integer getToDate(){
-        return this.toDate;
-    }
-    public void setToDate(Integer toDate){
-        this.toDate = toDate;
-    }
+	public void fromDate(String multirequestToken){
+		setToken("fromDate", multirequestToken);
+	}
 
-    // fromDay:
-    public String getFromDay(){
-        return this.fromDay;
-    }
-    public void setFromDay(String fromDay){
-        this.fromDay = fromDay;
-    }
+	// toDate:
+	public Integer getToDate(){
+		return this.toDate;
+	}
+	public void setToDate(Integer toDate){
+		this.toDate = toDate;
+	}
 
-    // toDay:
-    public String getToDay(){
-        return this.toDay;
-    }
-    public void setToDay(String toDay){
-        this.toDay = toDay;
-    }
+	public void toDate(String multirequestToken){
+		setToken("toDate", multirequestToken);
+	}
+
+	// fromDay:
+	public String getFromDay(){
+		return this.fromDay;
+	}
+	public void setFromDay(String fromDay){
+		this.fromDay = fromDay;
+	}
+
+	public void fromDay(String multirequestToken){
+		setToken("fromDay", multirequestToken);
+	}
+
+	// toDay:
+	public String getToDay(){
+		return this.toDay;
+	}
+	public void setToDay(String toDay){
+		this.toDay = toDay;
+	}
+
+	public void toDay(String multirequestToken){
+		setToken("toDay", multirequestToken);
+	}
 
 
-    public ReportInputBaseFilter() {
-       super();
-    }
+	public ReportInputBaseFilter() {
+		super();
+	}
 
-    public ReportInputBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportInputBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
-        toDate = GsonParser.parseInt(jsonObject.get("toDate"));
-        fromDay = GsonParser.parseString(jsonObject.get("fromDay"));
-        toDay = GsonParser.parseString(jsonObject.get("toDay"));
+		// set members values:
+		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
+		toDate = GsonParser.parseInt(jsonObject.get("toDate"));
+		fromDay = GsonParser.parseString(jsonObject.get("fromDay"));
+		toDay = GsonParser.parseString(jsonObject.get("toDay"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportInputBaseFilter");
-        kparams.add("fromDate", this.fromDate);
-        kparams.add("toDate", this.toDate);
-        kparams.add("fromDay", this.fromDay);
-        kparams.add("toDay", this.toDay);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportInputBaseFilter");
+		kparams.add("fromDate", this.fromDate);
+		kparams.add("toDate", this.toDate);
+		kparams.add("fromDay", this.fromDay);
+		kparams.add("toDay", this.toDay);
+		return kparams;
+	}
 
 }
 

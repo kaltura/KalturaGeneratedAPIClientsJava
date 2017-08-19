@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlaylistType implements EnumAsInt {
-    STATIC_LIST(3),
-    DYNAMIC(10),
-    EXTERNAL(101);
+	STATIC_LIST(3),
+	DYNAMIC(10),
+	EXTERNAL(101);
 
-    private int value;
+	private int value;
 
-    PlaylistType(int value) {
-        this.value = value;
-    }
+	PlaylistType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PlaylistType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlaylistType defined values and compare the inner value with the given one:
-        for(PlaylistType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlaylistType.values().length > 0 ? PlaylistType.values()[0]: null;
+	public static PlaylistType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlaylistType defined values and compare the inner value with the given one:
+		for(PlaylistType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlaylistType.values().length > 0 ? PlaylistType.values()[0]: null;
    }
 }

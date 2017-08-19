@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ScheduleEventType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,40 +42,49 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Represents the Bulk upload job data for iCal bulk upload  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadICalJobData.Tokenizer.class)
 public class BulkUploadICalJobData extends BulkUploadJobData {
+	
+	public interface Tokenizer extends BulkUploadJobData.Tokenizer {
+		String eventsType();
+	}
 
 	/**  The type of the events that ill be created by this upload  */
-    private ScheduleEventType eventsType;
+	private ScheduleEventType eventsType;
 
-    // eventsType:
-    public ScheduleEventType getEventsType(){
-        return this.eventsType;
-    }
-    public void setEventsType(ScheduleEventType eventsType){
-        this.eventsType = eventsType;
-    }
+	// eventsType:
+	public ScheduleEventType getEventsType(){
+		return this.eventsType;
+	}
+	public void setEventsType(ScheduleEventType eventsType){
+		this.eventsType = eventsType;
+	}
+
+	public void eventsType(String multirequestToken){
+		setToken("eventsType", multirequestToken);
+	}
 
 
-    public BulkUploadICalJobData() {
-       super();
-    }
+	public BulkUploadICalJobData() {
+		super();
+	}
 
-    public BulkUploadICalJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadICalJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventsType = ScheduleEventType.get(GsonParser.parseInt(jsonObject.get("eventsType")));
+		// set members values:
+		eventsType = ScheduleEventType.get(GsonParser.parseInt(jsonObject.get("eventsType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadICalJobData");
-        kparams.add("eventsType", this.eventsType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadICalJobData");
+		kparams.add("eventsType", this.eventsType);
+		return kparams;
+	}
 
 }
 

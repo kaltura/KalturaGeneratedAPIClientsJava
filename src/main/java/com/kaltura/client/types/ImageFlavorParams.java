@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ImageFlavorParams.Tokenizer.class)
 public class ImageFlavorParams extends FlavorParams {
+	
+	public interface Tokenizer extends FlavorParams.Tokenizer {
+		String densityWidth();
+		String densityHeight();
+		String sizeWidth();
+		String sizeHeight();
+		String depth();
+	}
 
-    private Integer densityWidth;
-    private Integer densityHeight;
-    private Integer sizeWidth;
-    private Integer sizeHeight;
-    private Integer depth;
+	private Integer densityWidth;
+	private Integer densityHeight;
+	private Integer sizeWidth;
+	private Integer sizeHeight;
+	private Integer depth;
 
-    // densityWidth:
-    public Integer getDensityWidth(){
-        return this.densityWidth;
-    }
-    public void setDensityWidth(Integer densityWidth){
-        this.densityWidth = densityWidth;
-    }
+	// densityWidth:
+	public Integer getDensityWidth(){
+		return this.densityWidth;
+	}
+	public void setDensityWidth(Integer densityWidth){
+		this.densityWidth = densityWidth;
+	}
 
-    // densityHeight:
-    public Integer getDensityHeight(){
-        return this.densityHeight;
-    }
-    public void setDensityHeight(Integer densityHeight){
-        this.densityHeight = densityHeight;
-    }
+	public void densityWidth(String multirequestToken){
+		setToken("densityWidth", multirequestToken);
+	}
 
-    // sizeWidth:
-    public Integer getSizeWidth(){
-        return this.sizeWidth;
-    }
-    public void setSizeWidth(Integer sizeWidth){
-        this.sizeWidth = sizeWidth;
-    }
+	// densityHeight:
+	public Integer getDensityHeight(){
+		return this.densityHeight;
+	}
+	public void setDensityHeight(Integer densityHeight){
+		this.densityHeight = densityHeight;
+	}
 
-    // sizeHeight:
-    public Integer getSizeHeight(){
-        return this.sizeHeight;
-    }
-    public void setSizeHeight(Integer sizeHeight){
-        this.sizeHeight = sizeHeight;
-    }
+	public void densityHeight(String multirequestToken){
+		setToken("densityHeight", multirequestToken);
+	}
 
-    // depth:
-    public Integer getDepth(){
-        return this.depth;
-    }
-    public void setDepth(Integer depth){
-        this.depth = depth;
-    }
+	// sizeWidth:
+	public Integer getSizeWidth(){
+		return this.sizeWidth;
+	}
+	public void setSizeWidth(Integer sizeWidth){
+		this.sizeWidth = sizeWidth;
+	}
+
+	public void sizeWidth(String multirequestToken){
+		setToken("sizeWidth", multirequestToken);
+	}
+
+	// sizeHeight:
+	public Integer getSizeHeight(){
+		return this.sizeHeight;
+	}
+	public void setSizeHeight(Integer sizeHeight){
+		this.sizeHeight = sizeHeight;
+	}
+
+	public void sizeHeight(String multirequestToken){
+		setToken("sizeHeight", multirequestToken);
+	}
+
+	// depth:
+	public Integer getDepth(){
+		return this.depth;
+	}
+	public void setDepth(Integer depth){
+		this.depth = depth;
+	}
+
+	public void depth(String multirequestToken){
+		setToken("depth", multirequestToken);
+	}
 
 
-    public ImageFlavorParams() {
-       super();
-    }
+	public ImageFlavorParams() {
+		super();
+	}
 
-    public ImageFlavorParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ImageFlavorParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        densityWidth = GsonParser.parseInt(jsonObject.get("densityWidth"));
-        densityHeight = GsonParser.parseInt(jsonObject.get("densityHeight"));
-        sizeWidth = GsonParser.parseInt(jsonObject.get("sizeWidth"));
-        sizeHeight = GsonParser.parseInt(jsonObject.get("sizeHeight"));
-        depth = GsonParser.parseInt(jsonObject.get("depth"));
+		// set members values:
+		densityWidth = GsonParser.parseInt(jsonObject.get("densityWidth"));
+		densityHeight = GsonParser.parseInt(jsonObject.get("densityHeight"));
+		sizeWidth = GsonParser.parseInt(jsonObject.get("sizeWidth"));
+		sizeHeight = GsonParser.parseInt(jsonObject.get("sizeHeight"));
+		depth = GsonParser.parseInt(jsonObject.get("depth"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaImageFlavorParams");
-        kparams.add("densityWidth", this.densityWidth);
-        kparams.add("densityHeight", this.densityHeight);
-        kparams.add("sizeWidth", this.sizeWidth);
-        kparams.add("sizeHeight", this.sizeHeight);
-        kparams.add("depth", this.depth);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaImageFlavorParams");
+		kparams.add("densityWidth", this.densityWidth);
+		kparams.add("densityHeight", this.densityHeight);
+		kparams.add("sizeWidth", this.sizeWidth);
+		kparams.add("sizeHeight", this.sizeHeight);
+		kparams.add("depth", this.depth);
+		return kparams;
+	}
 
 }
 

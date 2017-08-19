@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.DataCenterContentResource;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,40 +42,45 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Concat operation attributes  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConcatAttributes.Tokenizer.class)
 public class ConcatAttributes extends OperationAttributes {
+	
+	public interface Tokenizer extends OperationAttributes.Tokenizer {
+		DataCenterContentResource.Tokenizer resource();
+	}
 
 	/**  The resource to be concatenated  */
-    private DataCenterContentResource resource;
+	private DataCenterContentResource resource;
 
-    // resource:
-    public DataCenterContentResource getResource(){
-        return this.resource;
-    }
-    public void setResource(DataCenterContentResource resource){
-        this.resource = resource;
-    }
+	// resource:
+	public DataCenterContentResource getResource(){
+		return this.resource;
+	}
+	public void setResource(DataCenterContentResource resource){
+		this.resource = resource;
+	}
 
 
-    public ConcatAttributes() {
-       super();
-    }
+	public ConcatAttributes() {
+		super();
+	}
 
-    public ConcatAttributes(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConcatAttributes(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), DataCenterContentResource.class);
+		// set members values:
+		resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), DataCenterContentResource.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConcatAttributes");
-        kparams.add("resource", this.resource);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConcatAttributes");
+		kparams.add("resource", this.resource);
+		return kparams;
+	}
 
 }
 

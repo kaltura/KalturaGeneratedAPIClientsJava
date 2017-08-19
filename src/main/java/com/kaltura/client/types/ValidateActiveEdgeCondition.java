@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ValidateActiveEdgeCondition.Tokenizer.class)
 public class ValidateActiveEdgeCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		String edgeServerIds();
+	}
 
 	/**  Comma separated list of edge servers to validate are active  */
-    private String edgeServerIds;
+	private String edgeServerIds;
 
-    // edgeServerIds:
-    public String getEdgeServerIds(){
-        return this.edgeServerIds;
-    }
-    public void setEdgeServerIds(String edgeServerIds){
-        this.edgeServerIds = edgeServerIds;
-    }
+	// edgeServerIds:
+	public String getEdgeServerIds(){
+		return this.edgeServerIds;
+	}
+	public void setEdgeServerIds(String edgeServerIds){
+		this.edgeServerIds = edgeServerIds;
+	}
+
+	public void edgeServerIds(String multirequestToken){
+		setToken("edgeServerIds", multirequestToken);
+	}
 
 
-    public ValidateActiveEdgeCondition() {
-       super();
-    }
+	public ValidateActiveEdgeCondition() {
+		super();
+	}
 
-    public ValidateActiveEdgeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ValidateActiveEdgeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        edgeServerIds = GsonParser.parseString(jsonObject.get("edgeServerIds"));
+		// set members values:
+		edgeServerIds = GsonParser.parseString(jsonObject.get("edgeServerIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaValidateActiveEdgeCondition");
-        kparams.add("edgeServerIds", this.edgeServerIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaValidateActiveEdgeCondition");
+		kparams.add("edgeServerIds", this.edgeServerIds);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ReportInterval;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,100 +41,134 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportInputFilter.Tokenizer.class)
 public class ReportInputFilter extends ReportInputBaseFilter {
+	
+	public interface Tokenizer extends ReportInputBaseFilter.Tokenizer {
+		String keywords();
+		String searchInTags();
+		String searchInAdminTags();
+		String categories();
+		String timeZoneOffset();
+		String interval();
+	}
 
 	/**  Search keywords to filter objects  */
-    private String keywords;
+	private String keywords;
 	/**  Search keywords in onjects tags  */
-    private Boolean searchInTags;
+	private Boolean searchInTags;
 	/**  Search keywords in onjects admin tags  */
-    private Boolean searchInAdminTags;
+	private Boolean searchInAdminTags;
 	/**  Search onjects in specified categories  */
-    private String categories;
+	private String categories;
 	/**  Time zone offset in minutes  */
-    private Integer timeZoneOffset;
+	private Integer timeZoneOffset;
 	/**  Aggregated results according to interval  */
-    private ReportInterval interval;
+	private ReportInterval interval;
 
-    // keywords:
-    public String getKeywords(){
-        return this.keywords;
-    }
-    public void setKeywords(String keywords){
-        this.keywords = keywords;
-    }
+	// keywords:
+	public String getKeywords(){
+		return this.keywords;
+	}
+	public void setKeywords(String keywords){
+		this.keywords = keywords;
+	}
 
-    // searchInTags:
-    public Boolean getSearchInTags(){
-        return this.searchInTags;
-    }
-    public void setSearchInTags(Boolean searchInTags){
-        this.searchInTags = searchInTags;
-    }
+	public void keywords(String multirequestToken){
+		setToken("keywords", multirequestToken);
+	}
 
-    // searchInAdminTags:
-    public Boolean getSearchInAdminTags(){
-        return this.searchInAdminTags;
-    }
-    public void setSearchInAdminTags(Boolean searchInAdminTags){
-        this.searchInAdminTags = searchInAdminTags;
-    }
+	// searchInTags:
+	public Boolean getSearchInTags(){
+		return this.searchInTags;
+	}
+	public void setSearchInTags(Boolean searchInTags){
+		this.searchInTags = searchInTags;
+	}
 
-    // categories:
-    public String getCategories(){
-        return this.categories;
-    }
-    public void setCategories(String categories){
-        this.categories = categories;
-    }
+	public void searchInTags(String multirequestToken){
+		setToken("searchInTags", multirequestToken);
+	}
 
-    // timeZoneOffset:
-    public Integer getTimeZoneOffset(){
-        return this.timeZoneOffset;
-    }
-    public void setTimeZoneOffset(Integer timeZoneOffset){
-        this.timeZoneOffset = timeZoneOffset;
-    }
+	// searchInAdminTags:
+	public Boolean getSearchInAdminTags(){
+		return this.searchInAdminTags;
+	}
+	public void setSearchInAdminTags(Boolean searchInAdminTags){
+		this.searchInAdminTags = searchInAdminTags;
+	}
 
-    // interval:
-    public ReportInterval getInterval(){
-        return this.interval;
-    }
-    public void setInterval(ReportInterval interval){
-        this.interval = interval;
-    }
+	public void searchInAdminTags(String multirequestToken){
+		setToken("searchInAdminTags", multirequestToken);
+	}
+
+	// categories:
+	public String getCategories(){
+		return this.categories;
+	}
+	public void setCategories(String categories){
+		this.categories = categories;
+	}
+
+	public void categories(String multirequestToken){
+		setToken("categories", multirequestToken);
+	}
+
+	// timeZoneOffset:
+	public Integer getTimeZoneOffset(){
+		return this.timeZoneOffset;
+	}
+	public void setTimeZoneOffset(Integer timeZoneOffset){
+		this.timeZoneOffset = timeZoneOffset;
+	}
+
+	public void timeZoneOffset(String multirequestToken){
+		setToken("timeZoneOffset", multirequestToken);
+	}
+
+	// interval:
+	public ReportInterval getInterval(){
+		return this.interval;
+	}
+	public void setInterval(ReportInterval interval){
+		this.interval = interval;
+	}
+
+	public void interval(String multirequestToken){
+		setToken("interval", multirequestToken);
+	}
 
 
-    public ReportInputFilter() {
-       super();
-    }
+	public ReportInputFilter() {
+		super();
+	}
 
-    public ReportInputFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportInputFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keywords = GsonParser.parseString(jsonObject.get("keywords"));
-        searchInTags = GsonParser.parseBoolean(jsonObject.get("searchInTags"));
-        searchInAdminTags = GsonParser.parseBoolean(jsonObject.get("searchInAdminTags"));
-        categories = GsonParser.parseString(jsonObject.get("categories"));
-        timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
-        interval = ReportInterval.get(GsonParser.parseString(jsonObject.get("interval")));
+		// set members values:
+		keywords = GsonParser.parseString(jsonObject.get("keywords"));
+		searchInTags = GsonParser.parseBoolean(jsonObject.get("searchInTags"));
+		searchInAdminTags = GsonParser.parseBoolean(jsonObject.get("searchInAdminTags"));
+		categories = GsonParser.parseString(jsonObject.get("categories"));
+		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
+		interval = ReportInterval.get(GsonParser.parseString(jsonObject.get("interval")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportInputFilter");
-        kparams.add("keywords", this.keywords);
-        kparams.add("searchInTags", this.searchInTags);
-        kparams.add("searchInAdminTags", this.searchInAdminTags);
-        kparams.add("categories", this.categories);
-        kparams.add("timeZoneOffset", this.timeZoneOffset);
-        kparams.add("interval", this.interval);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportInputFilter");
+		kparams.add("keywords", this.keywords);
+		kparams.add("searchInTags", this.searchInTags);
+		kparams.add("searchInAdminTags", this.searchInAdminTags);
+		kparams.add("categories", this.categories);
+		kparams.add("timeZoneOffset", this.timeZoneOffset);
+		kparams.add("interval", this.interval);
+		return kparams;
+	}
 
 }
 

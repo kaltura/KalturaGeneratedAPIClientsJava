@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GroupUserStatus implements EnumAsInt {
-    ACTIVE(0),
-    DELETED(1);
+	ACTIVE(0),
+	DELETED(1);
 
-    private int value;
+	private int value;
 
-    GroupUserStatus(int value) {
-        this.value = value;
-    }
+	GroupUserStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static GroupUserStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GroupUserStatus defined values and compare the inner value with the given one:
-        for(GroupUserStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GroupUserStatus.values().length > 0 ? GroupUserStatus.values()[0]: null;
+	public static GroupUserStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GroupUserStatus defined values and compare the inner value with the given one:
+		for(GroupUserStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GroupUserStatus.values().length > 0 ? GroupUserStatus.values()[0]: null;
    }
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,72 +41,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayerEmbedCodeType.Tokenizer.class)
 public class PlayerEmbedCodeType extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String label();
+		String entryOnly();
+		String minVersion();
+	}
 
-    private String id;
-    private String label;
-    private Boolean entryOnly;
-    private String minVersion;
+	private String id;
+	private String label;
+	private Boolean entryOnly;
+	private String minVersion;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // entryOnly:
-    public Boolean getEntryOnly(){
-        return this.entryOnly;
-    }
-    public void setEntryOnly(Boolean entryOnly){
-        this.entryOnly = entryOnly;
-    }
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
 
-    // minVersion:
-    public String getMinVersion(){
-        return this.minVersion;
-    }
-    public void setMinVersion(String minVersion){
-        this.minVersion = minVersion;
-    }
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
+
+	// entryOnly:
+	public Boolean getEntryOnly(){
+		return this.entryOnly;
+	}
+	public void setEntryOnly(Boolean entryOnly){
+		this.entryOnly = entryOnly;
+	}
+
+	public void entryOnly(String multirequestToken){
+		setToken("entryOnly", multirequestToken);
+	}
+
+	// minVersion:
+	public String getMinVersion(){
+		return this.minVersion;
+	}
+	public void setMinVersion(String minVersion){
+		this.minVersion = minVersion;
+	}
+
+	public void minVersion(String multirequestToken){
+		setToken("minVersion", multirequestToken);
+	}
 
 
-    public PlayerEmbedCodeType() {
-       super();
-    }
+	public PlayerEmbedCodeType() {
+		super();
+	}
 
-    public PlayerEmbedCodeType(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayerEmbedCodeType(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        entryOnly = GsonParser.parseBoolean(jsonObject.get("entryOnly"));
-        minVersion = GsonParser.parseString(jsonObject.get("minVersion"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		entryOnly = GsonParser.parseBoolean(jsonObject.get("entryOnly"));
+		minVersion = GsonParser.parseString(jsonObject.get("minVersion"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayerEmbedCodeType");
-        kparams.add("id", this.id);
-        kparams.add("label", this.label);
-        kparams.add("entryOnly", this.entryOnly);
-        kparams.add("minVersion", this.minVersion);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayerEmbedCodeType");
+		kparams.add("id", this.id);
+		kparams.add("label", this.label);
+		kparams.add("entryOnly", this.entryOnly);
+		kparams.add("minVersion", this.minVersion);
+		return kparams;
+	}
 
 }
 

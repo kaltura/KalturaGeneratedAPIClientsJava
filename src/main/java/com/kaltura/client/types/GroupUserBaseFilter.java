@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GroupUserStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,138 +41,192 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GroupUserBaseFilter.Tokenizer.class)
 public abstract class GroupUserBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String userIdEqual();
+		String userIdIn();
+		String groupIdEqual();
+		String groupIdIn();
+		String statusEqual();
+		String statusIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+	}
 
-    private String userIdEqual;
-    private String userIdIn;
-    private String groupIdEqual;
-    private String groupIdIn;
-    private GroupUserStatus statusEqual;
-    private String statusIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
+	private String userIdEqual;
+	private String userIdIn;
+	private String groupIdEqual;
+	private String groupIdIn;
+	private GroupUserStatus statusEqual;
+	private String statusIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
 
-    // userIdIn:
-    public String getUserIdIn(){
-        return this.userIdIn;
-    }
-    public void setUserIdIn(String userIdIn){
-        this.userIdIn = userIdIn;
-    }
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
 
-    // groupIdEqual:
-    public String getGroupIdEqual(){
-        return this.groupIdEqual;
-    }
-    public void setGroupIdEqual(String groupIdEqual){
-        this.groupIdEqual = groupIdEqual;
-    }
+	// userIdIn:
+	public String getUserIdIn(){
+		return this.userIdIn;
+	}
+	public void setUserIdIn(String userIdIn){
+		this.userIdIn = userIdIn;
+	}
 
-    // groupIdIn:
-    public String getGroupIdIn(){
-        return this.groupIdIn;
-    }
-    public void setGroupIdIn(String groupIdIn){
-        this.groupIdIn = groupIdIn;
-    }
+	public void userIdIn(String multirequestToken){
+		setToken("userIdIn", multirequestToken);
+	}
 
-    // statusEqual:
-    public GroupUserStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(GroupUserStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// groupIdEqual:
+	public String getGroupIdEqual(){
+		return this.groupIdEqual;
+	}
+	public void setGroupIdEqual(String groupIdEqual){
+		this.groupIdEqual = groupIdEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void groupIdEqual(String multirequestToken){
+		setToken("groupIdEqual", multirequestToken);
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	// groupIdIn:
+	public String getGroupIdIn(){
+		return this.groupIdIn;
+	}
+	public void setGroupIdIn(String groupIdIn){
+		this.groupIdIn = groupIdIn;
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	public void groupIdIn(String multirequestToken){
+		setToken("groupIdIn", multirequestToken);
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	// statusEqual:
+	public GroupUserStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(GroupUserStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public GroupUserBaseFilter() {
-       super();
-    }
+	public GroupUserBaseFilter() {
+		super();
+	}
 
-    public GroupUserBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GroupUserBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
-        groupIdEqual = GsonParser.parseString(jsonObject.get("groupIdEqual"));
-        groupIdIn = GsonParser.parseString(jsonObject.get("groupIdIn"));
-        statusEqual = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		// set members values:
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
+		groupIdEqual = GsonParser.parseString(jsonObject.get("groupIdEqual"));
+		groupIdIn = GsonParser.parseString(jsonObject.get("groupIdIn"));
+		statusEqual = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGroupUserBaseFilter");
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("userIdIn", this.userIdIn);
-        kparams.add("groupIdEqual", this.groupIdEqual);
-        kparams.add("groupIdIn", this.groupIdIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGroupUserBaseFilter");
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("userIdIn", this.userIdIn);
+		kparams.add("groupIdEqual", this.groupIdEqual);
+		kparams.add("groupIdIn", this.groupIdIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

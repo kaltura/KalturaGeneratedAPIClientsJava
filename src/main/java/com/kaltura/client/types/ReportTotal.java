@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportTotal.Tokenizer.class)
 public class ReportTotal extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String header();
+		String data();
+	}
 
-    private String header;
-    private String data;
+	private String header;
+	private String data;
 
-    // header:
-    public String getHeader(){
-        return this.header;
-    }
-    public void setHeader(String header){
-        this.header = header;
-    }
+	// header:
+	public String getHeader(){
+		return this.header;
+	}
+	public void setHeader(String header){
+		this.header = header;
+	}
 
-    // data:
-    public String getData(){
-        return this.data;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
+	public void header(String multirequestToken){
+		setToken("header", multirequestToken);
+	}
+
+	// data:
+	public String getData(){
+		return this.data;
+	}
+	public void setData(String data){
+		this.data = data;
+	}
+
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
+	}
 
 
-    public ReportTotal() {
-       super();
-    }
+	public ReportTotal() {
+		super();
+	}
 
-    public ReportTotal(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportTotal(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        header = GsonParser.parseString(jsonObject.get("header"));
-        data = GsonParser.parseString(jsonObject.get("data"));
+		// set members values:
+		header = GsonParser.parseString(jsonObject.get("header"));
+		data = GsonParser.parseString(jsonObject.get("data"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportTotal");
-        kparams.add("header", this.header);
-        kparams.add("data", this.data);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportTotal");
+		kparams.add("header", this.header);
+		kparams.add("data", this.data);
+		return kparams;
+	}
 
 }
 

@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetParamsDeletePolicy implements EnumAsInt {
-    KEEP(0),
-    DELETE(1);
+	KEEP(0),
+	DELETE(1);
 
-    private int value;
+	private int value;
 
-    AssetParamsDeletePolicy(int value) {
-        this.value = value;
-    }
+	AssetParamsDeletePolicy(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AssetParamsDeletePolicy get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AssetParamsDeletePolicy defined values and compare the inner value with the given one:
-        for(AssetParamsDeletePolicy item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AssetParamsDeletePolicy.values().length > 0 ? AssetParamsDeletePolicy.values()[0]: null;
+	public static AssetParamsDeletePolicy get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AssetParamsDeletePolicy defined values and compare the inner value with the given one:
+		for(AssetParamsDeletePolicy item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AssetParamsDeletePolicy.values().length > 0 ? AssetParamsDeletePolicy.values()[0]: null;
    }
 }

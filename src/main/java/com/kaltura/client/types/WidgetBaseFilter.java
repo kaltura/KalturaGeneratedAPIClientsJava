@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,160 +40,224 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WidgetBaseFilter.Tokenizer.class)
 public abstract class WidgetBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String sourceWidgetIdEqual();
+		String rootWidgetIdEqual();
+		String partnerIdEqual();
+		String entryIdEqual();
+		String uiConfIdEqual();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String partnerDataLike();
+	}
 
-    private String idEqual;
-    private String idIn;
-    private String sourceWidgetIdEqual;
-    private String rootWidgetIdEqual;
-    private Integer partnerIdEqual;
-    private String entryIdEqual;
-    private Integer uiConfIdEqual;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private String partnerDataLike;
+	private String idEqual;
+	private String idIn;
+	private String sourceWidgetIdEqual;
+	private String rootWidgetIdEqual;
+	private Integer partnerIdEqual;
+	private String entryIdEqual;
+	private Integer uiConfIdEqual;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private String partnerDataLike;
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // sourceWidgetIdEqual:
-    public String getSourceWidgetIdEqual(){
-        return this.sourceWidgetIdEqual;
-    }
-    public void setSourceWidgetIdEqual(String sourceWidgetIdEqual){
-        this.sourceWidgetIdEqual = sourceWidgetIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // rootWidgetIdEqual:
-    public String getRootWidgetIdEqual(){
-        return this.rootWidgetIdEqual;
-    }
-    public void setRootWidgetIdEqual(String rootWidgetIdEqual){
-        this.rootWidgetIdEqual = rootWidgetIdEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// sourceWidgetIdEqual:
+	public String getSourceWidgetIdEqual(){
+		return this.sourceWidgetIdEqual;
+	}
+	public void setSourceWidgetIdEqual(String sourceWidgetIdEqual){
+		this.sourceWidgetIdEqual = sourceWidgetIdEqual;
+	}
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	public void sourceWidgetIdEqual(String multirequestToken){
+		setToken("sourceWidgetIdEqual", multirequestToken);
+	}
 
-    // uiConfIdEqual:
-    public Integer getUiConfIdEqual(){
-        return this.uiConfIdEqual;
-    }
-    public void setUiConfIdEqual(Integer uiConfIdEqual){
-        this.uiConfIdEqual = uiConfIdEqual;
-    }
+	// rootWidgetIdEqual:
+	public String getRootWidgetIdEqual(){
+		return this.rootWidgetIdEqual;
+	}
+	public void setRootWidgetIdEqual(String rootWidgetIdEqual){
+		this.rootWidgetIdEqual = rootWidgetIdEqual;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void rootWidgetIdEqual(String multirequestToken){
+		setToken("rootWidgetIdEqual", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
 
-    // partnerDataLike:
-    public String getPartnerDataLike(){
-        return this.partnerDataLike;
-    }
-    public void setPartnerDataLike(String partnerDataLike){
-        this.partnerDataLike = partnerDataLike;
-    }
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
+
+	// uiConfIdEqual:
+	public Integer getUiConfIdEqual(){
+		return this.uiConfIdEqual;
+	}
+	public void setUiConfIdEqual(Integer uiConfIdEqual){
+		this.uiConfIdEqual = uiConfIdEqual;
+	}
+
+	public void uiConfIdEqual(String multirequestToken){
+		setToken("uiConfIdEqual", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// partnerDataLike:
+	public String getPartnerDataLike(){
+		return this.partnerDataLike;
+	}
+	public void setPartnerDataLike(String partnerDataLike){
+		this.partnerDataLike = partnerDataLike;
+	}
+
+	public void partnerDataLike(String multirequestToken){
+		setToken("partnerDataLike", multirequestToken);
+	}
 
 
-    public WidgetBaseFilter() {
-       super();
-    }
+	public WidgetBaseFilter() {
+		super();
+	}
 
-    public WidgetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WidgetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        sourceWidgetIdEqual = GsonParser.parseString(jsonObject.get("sourceWidgetIdEqual"));
-        rootWidgetIdEqual = GsonParser.parseString(jsonObject.get("rootWidgetIdEqual"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        uiConfIdEqual = GsonParser.parseInt(jsonObject.get("uiConfIdEqual"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        partnerDataLike = GsonParser.parseString(jsonObject.get("partnerDataLike"));
+		// set members values:
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		sourceWidgetIdEqual = GsonParser.parseString(jsonObject.get("sourceWidgetIdEqual"));
+		rootWidgetIdEqual = GsonParser.parseString(jsonObject.get("rootWidgetIdEqual"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		uiConfIdEqual = GsonParser.parseInt(jsonObject.get("uiConfIdEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		partnerDataLike = GsonParser.parseString(jsonObject.get("partnerDataLike"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWidgetBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("sourceWidgetIdEqual", this.sourceWidgetIdEqual);
-        kparams.add("rootWidgetIdEqual", this.rootWidgetIdEqual);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("uiConfIdEqual", this.uiConfIdEqual);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("partnerDataLike", this.partnerDataLike);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWidgetBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("sourceWidgetIdEqual", this.sourceWidgetIdEqual);
+		kparams.add("rootWidgetIdEqual", this.rootWidgetIdEqual);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("uiConfIdEqual", this.uiConfIdEqual);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("partnerDataLike", this.partnerDataLike);
+		return kparams;
+	}
 
 }
 

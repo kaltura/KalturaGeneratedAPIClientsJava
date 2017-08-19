@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.CaptionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CaptionParamsBaseFilter.Tokenizer.class)
 public abstract class CaptionParamsBaseFilter extends AssetParamsFilter {
+	
+	public interface Tokenizer extends AssetParamsFilter.Tokenizer {
+		String formatEqual();
+		String formatIn();
+	}
 
-    private CaptionType formatEqual;
-    private String formatIn;
+	private CaptionType formatEqual;
+	private String formatIn;
 
-    // formatEqual:
-    public CaptionType getFormatEqual(){
-        return this.formatEqual;
-    }
-    public void setFormatEqual(CaptionType formatEqual){
-        this.formatEqual = formatEqual;
-    }
+	// formatEqual:
+	public CaptionType getFormatEqual(){
+		return this.formatEqual;
+	}
+	public void setFormatEqual(CaptionType formatEqual){
+		this.formatEqual = formatEqual;
+	}
 
-    // formatIn:
-    public String getFormatIn(){
-        return this.formatIn;
-    }
-    public void setFormatIn(String formatIn){
-        this.formatIn = formatIn;
-    }
+	public void formatEqual(String multirequestToken){
+		setToken("formatEqual", multirequestToken);
+	}
+
+	// formatIn:
+	public String getFormatIn(){
+		return this.formatIn;
+	}
+	public void setFormatIn(String formatIn){
+		this.formatIn = formatIn;
+	}
+
+	public void formatIn(String multirequestToken){
+		setToken("formatIn", multirequestToken);
+	}
 
 
-    public CaptionParamsBaseFilter() {
-       super();
-    }
+	public CaptionParamsBaseFilter() {
+		super();
+	}
 
-    public CaptionParamsBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CaptionParamsBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        formatEqual = CaptionType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
-        formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
+		// set members values:
+		formatEqual = CaptionType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
+		formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCaptionParamsBaseFilter");
-        kparams.add("formatEqual", this.formatEqual);
-        kparams.add("formatIn", this.formatIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCaptionParamsBaseFilter");
+		kparams.add("formatEqual", this.formatEqual);
+		kparams.add("formatIn", this.formatIn);
+		return kparams;
+	}
 
 }
 

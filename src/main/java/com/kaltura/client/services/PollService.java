@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -41,52 +40,113 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  Poll service  The poll service works against the cache entirely no DB instance
   should be used here  */
 public class PollService {
+	
+	public static class AddPollBuilder extends RequestBuilder<String, String, AddPollBuilder> {
+		
+		public AddPollBuilder(String pollType) {
+			super(String.class, "poll_poll", "add");
+			params.add("pollType", pollType);
+		}
+		
+		public void pollType(String multirequestToken) {
+			params.add("pollType", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> add()  {
-        return add("SINGLE_ANONYMOUS");
-    }
+	public static AddPollBuilder add()  {
+		return add("SINGLE_ANONYMOUS");
+	}
 
 	/**  Add Action  */
-    public static RequestBuilder<String> add(String pollType)  {
-        Params kparams = new Params();
-        kparams.add("pollType", pollType);
-
-        return new RequestBuilder<String>(String.class, "poll_poll", "add", kparams);
-    }
+    public static AddPollBuilder add(String pollType)  {
+		return new AddPollBuilder(pollType);
+	}
+	
+	public static class GetVotePollBuilder extends RequestBuilder<String, String, GetVotePollBuilder> {
+		
+		public GetVotePollBuilder(String pollId, String userId) {
+			super(String.class, "poll_poll", "getVote");
+			params.add("pollId", pollId);
+			params.add("userId", userId);
+		}
+		
+		public void pollId(String multirequestToken) {
+			params.add("pollId", multirequestToken);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
 	/**  Vote Action  */
-    public static RequestBuilder<String> getVote(String pollId, String userId)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-        kparams.add("userId", userId);
-
-        return new RequestBuilder<String>(String.class, "poll_poll", "getVote", kparams);
-    }
+    public static GetVotePollBuilder getVote(String pollId, String userId)  {
+		return new GetVotePollBuilder(pollId, userId);
+	}
+	
+	public static class GetVotesPollBuilder extends RequestBuilder<String, String, GetVotesPollBuilder> {
+		
+		public GetVotesPollBuilder(String pollId, String answerIds) {
+			super(String.class, "poll_poll", "getVotes");
+			params.add("pollId", pollId);
+			params.add("answerIds", answerIds);
+		}
+		
+		public void pollId(String multirequestToken) {
+			params.add("pollId", multirequestToken);
+		}
+		
+		public void answerIds(String multirequestToken) {
+			params.add("answerIds", multirequestToken);
+		}
+	}
 
 	/**  Get Votes Action  */
-    public static RequestBuilder<String> getVotes(String pollId, String answerIds)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-        kparams.add("answerIds", answerIds);
-
-        return new RequestBuilder<String>(String.class, "poll_poll", "getVotes", kparams);
-    }
+    public static GetVotesPollBuilder getVotes(String pollId, String answerIds)  {
+		return new GetVotesPollBuilder(pollId, answerIds);
+	}
+	
+	public static class ResetVotesPollBuilder extends NullRequestBuilder {
+		
+		public ResetVotesPollBuilder(String pollId) {
+			super("poll_poll", "resetVotes");
+			params.add("pollId", pollId);
+		}
+		
+		public void pollId(String multirequestToken) {
+			params.add("pollId", multirequestToken);
+		}
+	}
 
 	/**  Get resetVotes Action  */
-    public static RequestBuilder<Void> resetVotes(String pollId)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-
-        return new NullRequestBuilder("poll_poll", "resetVotes", kparams);
-    }
+    public static ResetVotesPollBuilder resetVotes(String pollId)  {
+		return new ResetVotesPollBuilder(pollId);
+	}
+	
+	public static class VotePollBuilder extends RequestBuilder<String, String, VotePollBuilder> {
+		
+		public VotePollBuilder(String pollId, String userId, String answerIds) {
+			super(String.class, "poll_poll", "vote");
+			params.add("pollId", pollId);
+			params.add("userId", userId);
+			params.add("answerIds", answerIds);
+		}
+		
+		public void pollId(String multirequestToken) {
+			params.add("pollId", multirequestToken);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void answerIds(String multirequestToken) {
+			params.add("answerIds", multirequestToken);
+		}
+	}
 
 	/**  Vote Action  */
-    public static RequestBuilder<String> vote(String pollId, String userId, String answerIds)  {
-        Params kparams = new Params();
-        kparams.add("pollId", pollId);
-        kparams.add("userId", userId);
-        kparams.add("answerIds", answerIds);
-
-        return new RequestBuilder<String>(String.class, "poll_poll", "vote", kparams);
-    }
+    public static VotePollBuilder vote(String pollId, String userId, String answerIds)  {
+		return new VotePollBuilder(pollId, userId, answerIds);
+	}
 }

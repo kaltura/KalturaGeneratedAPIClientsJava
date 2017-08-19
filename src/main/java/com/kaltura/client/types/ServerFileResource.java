@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Used to ingest media file that is already accessible on the shared disc.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ServerFileResource.Tokenizer.class)
 public class ServerFileResource extends GenericDataCenterContentResource {
+	
+	public interface Tokenizer extends GenericDataCenterContentResource.Tokenizer {
+		String localFilePath();
+		String keepOriginalFile();
+	}
 
 	/**  Full path to the local file  */
-    private String localFilePath;
+	private String localFilePath;
 	/**  Should keep original file (false = mv, true = cp)  */
-    private Boolean keepOriginalFile;
+	private Boolean keepOriginalFile;
 
-    // localFilePath:
-    public String getLocalFilePath(){
-        return this.localFilePath;
-    }
-    public void setLocalFilePath(String localFilePath){
-        this.localFilePath = localFilePath;
-    }
+	// localFilePath:
+	public String getLocalFilePath(){
+		return this.localFilePath;
+	}
+	public void setLocalFilePath(String localFilePath){
+		this.localFilePath = localFilePath;
+	}
 
-    // keepOriginalFile:
-    public Boolean getKeepOriginalFile(){
-        return this.keepOriginalFile;
-    }
-    public void setKeepOriginalFile(Boolean keepOriginalFile){
-        this.keepOriginalFile = keepOriginalFile;
-    }
+	public void localFilePath(String multirequestToken){
+		setToken("localFilePath", multirequestToken);
+	}
+
+	// keepOriginalFile:
+	public Boolean getKeepOriginalFile(){
+		return this.keepOriginalFile;
+	}
+	public void setKeepOriginalFile(Boolean keepOriginalFile){
+		this.keepOriginalFile = keepOriginalFile;
+	}
+
+	public void keepOriginalFile(String multirequestToken){
+		setToken("keepOriginalFile", multirequestToken);
+	}
 
 
-    public ServerFileResource() {
-       super();
-    }
+	public ServerFileResource() {
+		super();
+	}
 
-    public ServerFileResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ServerFileResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
-        keepOriginalFile = GsonParser.parseBoolean(jsonObject.get("keepOriginalFile"));
+		// set members values:
+		localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
+		keepOriginalFile = GsonParser.parseBoolean(jsonObject.get("keepOriginalFile"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaServerFileResource");
-        kparams.add("localFilePath", this.localFilePath);
-        kparams.add("keepOriginalFile", this.keepOriginalFile);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaServerFileResource");
+		kparams.add("localFilePath", this.localFilePath);
+		kparams.add("keepOriginalFile", this.keepOriginalFile);
+		return kparams;
+	}
 
 }
 

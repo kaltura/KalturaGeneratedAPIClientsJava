@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,65 +41,84 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SyndicationFeedEntryCount.Tokenizer.class)
 public class SyndicationFeedEntryCount extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String totalEntryCount();
+		String actualEntryCount();
+		String requireTranscodingCount();
+	}
 
 	/**  the total count of entries that should appear in the feed without flavor
 	  filtering  */
-    private Integer totalEntryCount;
+	private Integer totalEntryCount;
 	/**  count of entries that will appear in the feed (including all relevant filters)  */
-    private Integer actualEntryCount;
+	private Integer actualEntryCount;
 	/**  count of entries that requires transcoding in order to be included in feed  */
-    private Integer requireTranscodingCount;
+	private Integer requireTranscodingCount;
 
-    // totalEntryCount:
-    public Integer getTotalEntryCount(){
-        return this.totalEntryCount;
-    }
-    public void setTotalEntryCount(Integer totalEntryCount){
-        this.totalEntryCount = totalEntryCount;
-    }
+	// totalEntryCount:
+	public Integer getTotalEntryCount(){
+		return this.totalEntryCount;
+	}
+	public void setTotalEntryCount(Integer totalEntryCount){
+		this.totalEntryCount = totalEntryCount;
+	}
 
-    // actualEntryCount:
-    public Integer getActualEntryCount(){
-        return this.actualEntryCount;
-    }
-    public void setActualEntryCount(Integer actualEntryCount){
-        this.actualEntryCount = actualEntryCount;
-    }
+	public void totalEntryCount(String multirequestToken){
+		setToken("totalEntryCount", multirequestToken);
+	}
 
-    // requireTranscodingCount:
-    public Integer getRequireTranscodingCount(){
-        return this.requireTranscodingCount;
-    }
-    public void setRequireTranscodingCount(Integer requireTranscodingCount){
-        this.requireTranscodingCount = requireTranscodingCount;
-    }
+	// actualEntryCount:
+	public Integer getActualEntryCount(){
+		return this.actualEntryCount;
+	}
+	public void setActualEntryCount(Integer actualEntryCount){
+		this.actualEntryCount = actualEntryCount;
+	}
+
+	public void actualEntryCount(String multirequestToken){
+		setToken("actualEntryCount", multirequestToken);
+	}
+
+	// requireTranscodingCount:
+	public Integer getRequireTranscodingCount(){
+		return this.requireTranscodingCount;
+	}
+	public void setRequireTranscodingCount(Integer requireTranscodingCount){
+		this.requireTranscodingCount = requireTranscodingCount;
+	}
+
+	public void requireTranscodingCount(String multirequestToken){
+		setToken("requireTranscodingCount", multirequestToken);
+	}
 
 
-    public SyndicationFeedEntryCount() {
-       super();
-    }
+	public SyndicationFeedEntryCount() {
+		super();
+	}
 
-    public SyndicationFeedEntryCount(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SyndicationFeedEntryCount(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        totalEntryCount = GsonParser.parseInt(jsonObject.get("totalEntryCount"));
-        actualEntryCount = GsonParser.parseInt(jsonObject.get("actualEntryCount"));
-        requireTranscodingCount = GsonParser.parseInt(jsonObject.get("requireTranscodingCount"));
+		// set members values:
+		totalEntryCount = GsonParser.parseInt(jsonObject.get("totalEntryCount"));
+		actualEntryCount = GsonParser.parseInt(jsonObject.get("actualEntryCount"));
+		requireTranscodingCount = GsonParser.parseInt(jsonObject.get("requireTranscodingCount"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSyndicationFeedEntryCount");
-        kparams.add("totalEntryCount", this.totalEntryCount);
-        kparams.add("actualEntryCount", this.actualEntryCount);
-        kparams.add("requireTranscodingCount", this.requireTranscodingCount);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSyndicationFeedEntryCount");
+		kparams.add("totalEntryCount", this.totalEntryCount);
+		kparams.add("actualEntryCount", this.actualEntryCount);
+		kparams.add("requireTranscodingCount", this.requireTranscodingCount);
+		return kparams;
+	}
 
 }
 

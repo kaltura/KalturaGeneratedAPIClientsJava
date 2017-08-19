@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileDeliveryStatus implements EnumAsInt {
-    ACTIVE(1),
-    BLOCKED(2);
+	ACTIVE(1),
+	BLOCKED(2);
 
-    private int value;
+	private int value;
 
-    StorageProfileDeliveryStatus(int value) {
-        this.value = value;
-    }
+	StorageProfileDeliveryStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static StorageProfileDeliveryStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over StorageProfileDeliveryStatus defined values and compare the inner value with the given one:
-        for(StorageProfileDeliveryStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return StorageProfileDeliveryStatus.values().length > 0 ? StorageProfileDeliveryStatus.values()[0]: null;
+	public static StorageProfileDeliveryStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over StorageProfileDeliveryStatus defined values and compare the inner value with the given one:
+		for(StorageProfileDeliveryStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return StorageProfileDeliveryStatus.values().length > 0 ? StorageProfileDeliveryStatus.values()[0]: null;
    }
 }

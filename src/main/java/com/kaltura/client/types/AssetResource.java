@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,40 +44,49 @@ import com.kaltura.client.utils.GsonParser;
   using a file sync of link type that will point to the existing file sync of the
   existing flavor asset.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetResource.Tokenizer.class)
 public class AssetResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		String assetId();
+	}
 
 	/**  ID of the source asset  */
-    private String assetId;
+	private String assetId;
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
 
-    public AssetResource() {
-       super();
-    }
+	public AssetResource() {
+		super();
+	}
 
-    public AssetResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		// set members values:
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetResource");
-        kparams.add("assetId", this.assetId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetResource");
+		kparams.add("assetId", this.assetId);
+		return kparams;
+	}
 
 }
 

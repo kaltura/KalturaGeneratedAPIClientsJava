@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LicenseType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,149 +41,208 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchResult.Tokenizer.class)
 public class SearchResult extends Search {
+	
+	public interface Tokenizer extends Search.Tokenizer {
+		String id();
+		String title();
+		String thumbUrl();
+		String description();
+		String tags();
+		String url();
+		String sourceLink();
+		String credit();
+		String licenseType();
+		String flashPlaybackType();
+		String fileExt();
+	}
 
-    private String id;
-    private String title;
-    private String thumbUrl;
-    private String description;
-    private String tags;
-    private String url;
-    private String sourceLink;
-    private String credit;
-    private LicenseType licenseType;
-    private String flashPlaybackType;
-    private String fileExt;
+	private String id;
+	private String title;
+	private String thumbUrl;
+	private String description;
+	private String tags;
+	private String url;
+	private String sourceLink;
+	private String credit;
+	private LicenseType licenseType;
+	private String flashPlaybackType;
+	private String fileExt;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // title:
-    public String getTitle(){
-        return this.title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // thumbUrl:
-    public String getThumbUrl(){
-        return this.thumbUrl;
-    }
-    public void setThumbUrl(String thumbUrl){
-        this.thumbUrl = thumbUrl;
-    }
+	// title:
+	public String getTitle(){
+		return this.title;
+	}
+	public void setTitle(String title){
+		this.title = title;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void title(String multirequestToken){
+		setToken("title", multirequestToken);
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	// thumbUrl:
+	public String getThumbUrl(){
+		return this.thumbUrl;
+	}
+	public void setThumbUrl(String thumbUrl){
+		this.thumbUrl = thumbUrl;
+	}
 
-    // url:
-    public String getUrl(){
-        return this.url;
-    }
-    public void setUrl(String url){
-        this.url = url;
-    }
+	public void thumbUrl(String multirequestToken){
+		setToken("thumbUrl", multirequestToken);
+	}
 
-    // sourceLink:
-    public String getSourceLink(){
-        return this.sourceLink;
-    }
-    public void setSourceLink(String sourceLink){
-        this.sourceLink = sourceLink;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // credit:
-    public String getCredit(){
-        return this.credit;
-    }
-    public void setCredit(String credit){
-        this.credit = credit;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // licenseType:
-    public LicenseType getLicenseType(){
-        return this.licenseType;
-    }
-    public void setLicenseType(LicenseType licenseType){
-        this.licenseType = licenseType;
-    }
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
 
-    // flashPlaybackType:
-    public String getFlashPlaybackType(){
-        return this.flashPlaybackType;
-    }
-    public void setFlashPlaybackType(String flashPlaybackType){
-        this.flashPlaybackType = flashPlaybackType;
-    }
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
-    // fileExt:
-    public String getFileExt(){
-        return this.fileExt;
-    }
-    public void setFileExt(String fileExt){
-        this.fileExt = fileExt;
-    }
+	// url:
+	public String getUrl(){
+		return this.url;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
+
+	public void url(String multirequestToken){
+		setToken("url", multirequestToken);
+	}
+
+	// sourceLink:
+	public String getSourceLink(){
+		return this.sourceLink;
+	}
+	public void setSourceLink(String sourceLink){
+		this.sourceLink = sourceLink;
+	}
+
+	public void sourceLink(String multirequestToken){
+		setToken("sourceLink", multirequestToken);
+	}
+
+	// credit:
+	public String getCredit(){
+		return this.credit;
+	}
+	public void setCredit(String credit){
+		this.credit = credit;
+	}
+
+	public void credit(String multirequestToken){
+		setToken("credit", multirequestToken);
+	}
+
+	// licenseType:
+	public LicenseType getLicenseType(){
+		return this.licenseType;
+	}
+	public void setLicenseType(LicenseType licenseType){
+		this.licenseType = licenseType;
+	}
+
+	public void licenseType(String multirequestToken){
+		setToken("licenseType", multirequestToken);
+	}
+
+	// flashPlaybackType:
+	public String getFlashPlaybackType(){
+		return this.flashPlaybackType;
+	}
+	public void setFlashPlaybackType(String flashPlaybackType){
+		this.flashPlaybackType = flashPlaybackType;
+	}
+
+	public void flashPlaybackType(String multirequestToken){
+		setToken("flashPlaybackType", multirequestToken);
+	}
+
+	// fileExt:
+	public String getFileExt(){
+		return this.fileExt;
+	}
+	public void setFileExt(String fileExt){
+		this.fileExt = fileExt;
+	}
+
+	public void fileExt(String multirequestToken){
+		setToken("fileExt", multirequestToken);
+	}
 
 
-    public SearchResult() {
-       super();
-    }
+	public SearchResult() {
+		super();
+	}
 
-    public SearchResult(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchResult(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        title = GsonParser.parseString(jsonObject.get("title"));
-        thumbUrl = GsonParser.parseString(jsonObject.get("thumbUrl"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        url = GsonParser.parseString(jsonObject.get("url"));
-        sourceLink = GsonParser.parseString(jsonObject.get("sourceLink"));
-        credit = GsonParser.parseString(jsonObject.get("credit"));
-        licenseType = LicenseType.get(GsonParser.parseInt(jsonObject.get("licenseType")));
-        flashPlaybackType = GsonParser.parseString(jsonObject.get("flashPlaybackType"));
-        fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		title = GsonParser.parseString(jsonObject.get("title"));
+		thumbUrl = GsonParser.parseString(jsonObject.get("thumbUrl"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		url = GsonParser.parseString(jsonObject.get("url"));
+		sourceLink = GsonParser.parseString(jsonObject.get("sourceLink"));
+		credit = GsonParser.parseString(jsonObject.get("credit"));
+		licenseType = LicenseType.get(GsonParser.parseInt(jsonObject.get("licenseType")));
+		flashPlaybackType = GsonParser.parseString(jsonObject.get("flashPlaybackType"));
+		fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchResult");
-        kparams.add("id", this.id);
-        kparams.add("title", this.title);
-        kparams.add("thumbUrl", this.thumbUrl);
-        kparams.add("description", this.description);
-        kparams.add("tags", this.tags);
-        kparams.add("url", this.url);
-        kparams.add("sourceLink", this.sourceLink);
-        kparams.add("credit", this.credit);
-        kparams.add("licenseType", this.licenseType);
-        kparams.add("flashPlaybackType", this.flashPlaybackType);
-        kparams.add("fileExt", this.fileExt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchResult");
+		kparams.add("id", this.id);
+		kparams.add("title", this.title);
+		kparams.add("thumbUrl", this.thumbUrl);
+		kparams.add("description", this.description);
+		kparams.add("tags", this.tags);
+		kparams.add("url", this.url);
+		kparams.add("sourceLink", this.sourceLink);
+		kparams.add("credit", this.credit);
+		kparams.add("licenseType", this.licenseType);
+		kparams.add("flashPlaybackType", this.flashPlaybackType);
+		kparams.add("fileExt", this.fileExt);
+		return kparams;
+	}
 
 }
 

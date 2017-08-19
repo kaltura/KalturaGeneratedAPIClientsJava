@@ -34,64 +34,64 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ContainerFormat implements EnumAsString {
-    _3GP("3gp"),
-    APPLEHTTP("applehttp"),
-    AVI("avi"),
-    BMP("bmp"),
-    COPY("copy"),
-    FLV("flv"),
-    HLS("hls"),
-    ISMA("isma"),
-    ISMV("ismv"),
-    JPG("jpg"),
-    M2TS("m2ts"),
-    M4V("m4v"),
-    MKV("mkv"),
-    MOV("mov"),
-    MP3("mp3"),
-    MP4("mp4"),
-    MPEG("mpeg"),
-    MPEGTS("mpegts"),
-    MXF("mxf"),
-    OGG("ogg"),
-    OGV("ogv"),
-    PDF("pdf"),
-    PNG("png"),
-    SWF("swf"),
-    WAV("wav"),
-    WEBM("webm"),
-    WMA("wma"),
-    WMV("wmv"),
-    WVM("wvm");
+	_3GP("3gp"),
+	APPLEHTTP("applehttp"),
+	AVI("avi"),
+	BMP("bmp"),
+	COPY("copy"),
+	FLV("flv"),
+	HLS("hls"),
+	ISMA("isma"),
+	ISMV("ismv"),
+	JPG("jpg"),
+	M2TS("m2ts"),
+	M4V("m4v"),
+	MKV("mkv"),
+	MOV("mov"),
+	MP3("mp3"),
+	MP4("mp4"),
+	MPEG("mpeg"),
+	MPEGTS("mpegts"),
+	MXF("mxf"),
+	OGG("ogg"),
+	OGV("ogv"),
+	PDF("pdf"),
+	PNG("png"),
+	SWF("swf"),
+	WAV("wav"),
+	WEBM("webm"),
+	WMA("wma"),
+	WMV("wmv"),
+	WVM("wvm");
 
-    private String value;
+	private String value;
 
-    ContainerFormat(String value) {
-        this.value = value;
-    }
+	ContainerFormat(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ContainerFormat get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ContainerFormat defined values and compare the inner value with the given one:
-        for(ContainerFormat item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ContainerFormat.values().length > 0 ? ContainerFormat.values()[0]: null;
+	public static ContainerFormat get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ContainerFormat defined values and compare the inner value with the given one:
+		for(ContainerFormat item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ContainerFormat.values().length > 0 ? ContainerFormat.values()[0]: null;
    }
 }

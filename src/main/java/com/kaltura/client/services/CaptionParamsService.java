@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.CaptionParams;
 import com.kaltura.client.types.CaptionParamsFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,55 +43,92 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage Caption Params  */
 public class CaptionParamsService {
+	
+	public static class AddCaptionParamsBuilder extends RequestBuilder<CaptionParams, CaptionParams.Tokenizer, AddCaptionParamsBuilder> {
+		
+		public AddCaptionParamsBuilder(CaptionParams captionParams) {
+			super(CaptionParams.class, "caption_captionparams", "add");
+			params.add("captionParams", captionParams);
+		}
+	}
 
 	/**  Add new Caption Params  */
-    public static RequestBuilder<CaptionParams> add(CaptionParams captionParams)  {
-        Params kparams = new Params();
-        kparams.add("captionParams", captionParams);
-
-        return new RequestBuilder<CaptionParams>(CaptionParams.class, "caption_captionparams", "add", kparams);
-    }
+    public static AddCaptionParamsBuilder add(CaptionParams captionParams)  {
+		return new AddCaptionParamsBuilder(captionParams);
+	}
+	
+	public static class DeleteCaptionParamsBuilder extends NullRequestBuilder {
+		
+		public DeleteCaptionParamsBuilder(int id) {
+			super("caption_captionparams", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Caption Params by ID  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("caption_captionparams", "delete", kparams);
-    }
+    public static DeleteCaptionParamsBuilder delete(int id)  {
+		return new DeleteCaptionParamsBuilder(id);
+	}
+	
+	public static class GetCaptionParamsBuilder extends RequestBuilder<CaptionParams, CaptionParams.Tokenizer, GetCaptionParamsBuilder> {
+		
+		public GetCaptionParamsBuilder(int id) {
+			super(CaptionParams.class, "caption_captionparams", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Caption Params by ID  */
-    public static RequestBuilder<CaptionParams> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetCaptionParamsBuilder get(int id)  {
+		return new GetCaptionParamsBuilder(id);
+	}
+	
+	public static class ListCaptionParamsBuilder extends ListResponseRequestBuilder<CaptionParams, CaptionParams.Tokenizer, ListCaptionParamsBuilder> {
+		
+		public ListCaptionParamsBuilder(CaptionParamsFilter filter, FilterPager pager) {
+			super(CaptionParams.class, "caption_captionparams", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<CaptionParams>(CaptionParams.class, "caption_captionparams", "get", kparams);
-    }
+	public static ListCaptionParamsBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<CaptionParams>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<CaptionParams>> list(CaptionParamsFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListCaptionParamsBuilder list(CaptionParamsFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Caption Params by filter with paging support (By default - all system
 	  default params will be listed too)  */
-    public static RequestBuilder<ListResponse<CaptionParams>> list(CaptionParamsFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<CaptionParams>(CaptionParams.class, "caption_captionparams", "list", kparams);
-    }
+    public static ListCaptionParamsBuilder list(CaptionParamsFilter filter, FilterPager pager)  {
+		return new ListCaptionParamsBuilder(filter, pager);
+	}
+	
+	public static class UpdateCaptionParamsBuilder extends RequestBuilder<CaptionParams, CaptionParams.Tokenizer, UpdateCaptionParamsBuilder> {
+		
+		public UpdateCaptionParamsBuilder(int id, CaptionParams captionParams) {
+			super(CaptionParams.class, "caption_captionparams", "update");
+			params.add("id", id);
+			params.add("captionParams", captionParams);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Caption Params by ID  */
-    public static RequestBuilder<CaptionParams> update(int id, CaptionParams captionParams)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("captionParams", captionParams);
-
-        return new RequestBuilder<CaptionParams>(CaptionParams.class, "caption_captionparams", "update", kparams);
-    }
+    public static UpdateCaptionParamsBuilder update(int id, CaptionParams captionParams)  {
+		return new UpdateCaptionParamsBuilder(id, captionParams);
+	}
 }

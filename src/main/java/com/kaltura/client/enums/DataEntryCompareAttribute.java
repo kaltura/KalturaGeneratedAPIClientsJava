@@ -34,49 +34,49 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DataEntryCompareAttribute implements EnumAsString {
-    ACCESS_CONTROL_ID("accessControlId"),
-    CREATED_AT("createdAt"),
-    END_DATE("endDate"),
-    MODERATION_COUNT("moderationCount"),
-    MODERATION_STATUS("moderationStatus"),
-    PARTNER_ID("partnerId"),
-    PARTNER_SORT_VALUE("partnerSortValue"),
-    RANK("rank"),
-    REPLACEMENT_STATUS("replacementStatus"),
-    START_DATE("startDate"),
-    STATUS("status"),
-    TOTAL_RANK("totalRank"),
-    TYPE("type"),
-    UPDATED_AT("updatedAt");
+	ACCESS_CONTROL_ID("accessControlId"),
+	CREATED_AT("createdAt"),
+	END_DATE("endDate"),
+	MODERATION_COUNT("moderationCount"),
+	MODERATION_STATUS("moderationStatus"),
+	PARTNER_ID("partnerId"),
+	PARTNER_SORT_VALUE("partnerSortValue"),
+	RANK("rank"),
+	REPLACEMENT_STATUS("replacementStatus"),
+	START_DATE("startDate"),
+	STATUS("status"),
+	TOTAL_RANK("totalRank"),
+	TYPE("type"),
+	UPDATED_AT("updatedAt");
 
-    private String value;
+	private String value;
 
-    DataEntryCompareAttribute(String value) {
-        this.value = value;
-    }
+	DataEntryCompareAttribute(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DataEntryCompareAttribute get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DataEntryCompareAttribute defined values and compare the inner value with the given one:
-        for(DataEntryCompareAttribute item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DataEntryCompareAttribute.values().length > 0 ? DataEntryCompareAttribute.values()[0]: null;
+	public static DataEntryCompareAttribute get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DataEntryCompareAttribute defined values and compare the inner value with the given one:
+		for(DataEntryCompareAttribute item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DataEntryCompareAttribute.values().length > 0 ? DataEntryCompareAttribute.values()[0]: null;
    }
 }

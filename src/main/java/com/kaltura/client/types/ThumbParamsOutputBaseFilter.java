@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbParamsOutputBaseFilter.Tokenizer.class)
 public abstract class ThumbParamsOutputBaseFilter extends ThumbParamsFilter {
+	
+	public interface Tokenizer extends ThumbParamsFilter.Tokenizer {
+		String thumbParamsIdEqual();
+		String thumbParamsVersionEqual();
+		String thumbAssetIdEqual();
+		String thumbAssetVersionEqual();
+	}
 
-    private Integer thumbParamsIdEqual;
-    private String thumbParamsVersionEqual;
-    private String thumbAssetIdEqual;
-    private String thumbAssetVersionEqual;
+	private Integer thumbParamsIdEqual;
+	private String thumbParamsVersionEqual;
+	private String thumbAssetIdEqual;
+	private String thumbAssetVersionEqual;
 
-    // thumbParamsIdEqual:
-    public Integer getThumbParamsIdEqual(){
-        return this.thumbParamsIdEqual;
-    }
-    public void setThumbParamsIdEqual(Integer thumbParamsIdEqual){
-        this.thumbParamsIdEqual = thumbParamsIdEqual;
-    }
+	// thumbParamsIdEqual:
+	public Integer getThumbParamsIdEqual(){
+		return this.thumbParamsIdEqual;
+	}
+	public void setThumbParamsIdEqual(Integer thumbParamsIdEqual){
+		this.thumbParamsIdEqual = thumbParamsIdEqual;
+	}
 
-    // thumbParamsVersionEqual:
-    public String getThumbParamsVersionEqual(){
-        return this.thumbParamsVersionEqual;
-    }
-    public void setThumbParamsVersionEqual(String thumbParamsVersionEqual){
-        this.thumbParamsVersionEqual = thumbParamsVersionEqual;
-    }
+	public void thumbParamsIdEqual(String multirequestToken){
+		setToken("thumbParamsIdEqual", multirequestToken);
+	}
 
-    // thumbAssetIdEqual:
-    public String getThumbAssetIdEqual(){
-        return this.thumbAssetIdEqual;
-    }
-    public void setThumbAssetIdEqual(String thumbAssetIdEqual){
-        this.thumbAssetIdEqual = thumbAssetIdEqual;
-    }
+	// thumbParamsVersionEqual:
+	public String getThumbParamsVersionEqual(){
+		return this.thumbParamsVersionEqual;
+	}
+	public void setThumbParamsVersionEqual(String thumbParamsVersionEqual){
+		this.thumbParamsVersionEqual = thumbParamsVersionEqual;
+	}
 
-    // thumbAssetVersionEqual:
-    public String getThumbAssetVersionEqual(){
-        return this.thumbAssetVersionEqual;
-    }
-    public void setThumbAssetVersionEqual(String thumbAssetVersionEqual){
-        this.thumbAssetVersionEqual = thumbAssetVersionEqual;
-    }
+	public void thumbParamsVersionEqual(String multirequestToken){
+		setToken("thumbParamsVersionEqual", multirequestToken);
+	}
+
+	// thumbAssetIdEqual:
+	public String getThumbAssetIdEqual(){
+		return this.thumbAssetIdEqual;
+	}
+	public void setThumbAssetIdEqual(String thumbAssetIdEqual){
+		this.thumbAssetIdEqual = thumbAssetIdEqual;
+	}
+
+	public void thumbAssetIdEqual(String multirequestToken){
+		setToken("thumbAssetIdEqual", multirequestToken);
+	}
+
+	// thumbAssetVersionEqual:
+	public String getThumbAssetVersionEqual(){
+		return this.thumbAssetVersionEqual;
+	}
+	public void setThumbAssetVersionEqual(String thumbAssetVersionEqual){
+		this.thumbAssetVersionEqual = thumbAssetVersionEqual;
+	}
+
+	public void thumbAssetVersionEqual(String multirequestToken){
+		setToken("thumbAssetVersionEqual", multirequestToken);
+	}
 
 
-    public ThumbParamsOutputBaseFilter() {
-       super();
-    }
+	public ThumbParamsOutputBaseFilter() {
+		super();
+	}
 
-    public ThumbParamsOutputBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbParamsOutputBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        thumbParamsIdEqual = GsonParser.parseInt(jsonObject.get("thumbParamsIdEqual"));
-        thumbParamsVersionEqual = GsonParser.parseString(jsonObject.get("thumbParamsVersionEqual"));
-        thumbAssetIdEqual = GsonParser.parseString(jsonObject.get("thumbAssetIdEqual"));
-        thumbAssetVersionEqual = GsonParser.parseString(jsonObject.get("thumbAssetVersionEqual"));
+		// set members values:
+		thumbParamsIdEqual = GsonParser.parseInt(jsonObject.get("thumbParamsIdEqual"));
+		thumbParamsVersionEqual = GsonParser.parseString(jsonObject.get("thumbParamsVersionEqual"));
+		thumbAssetIdEqual = GsonParser.parseString(jsonObject.get("thumbAssetIdEqual"));
+		thumbAssetVersionEqual = GsonParser.parseString(jsonObject.get("thumbAssetVersionEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbParamsOutputBaseFilter");
-        kparams.add("thumbParamsIdEqual", this.thumbParamsIdEqual);
-        kparams.add("thumbParamsVersionEqual", this.thumbParamsVersionEqual);
-        kparams.add("thumbAssetIdEqual", this.thumbAssetIdEqual);
-        kparams.add("thumbAssetVersionEqual", this.thumbAssetVersionEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbParamsOutputBaseFilter");
+		kparams.add("thumbParamsIdEqual", this.thumbParamsIdEqual);
+		kparams.add("thumbParamsVersionEqual", this.thumbParamsVersionEqual);
+		kparams.add("thumbAssetIdEqual", this.thumbAssetIdEqual);
+		kparams.add("thumbAssetVersionEqual", this.thumbAssetVersionEqual);
+		return kparams;
+	}
 
 }
 

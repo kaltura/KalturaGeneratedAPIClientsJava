@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AppearInListType implements EnumAsInt {
-    PARTNER_ONLY(1),
-    CATEGORY_MEMBERS_ONLY(3);
+	PARTNER_ONLY(1),
+	CATEGORY_MEMBERS_ONLY(3);
 
-    private int value;
+	private int value;
 
-    AppearInListType(int value) {
-        this.value = value;
-    }
+	AppearInListType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AppearInListType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AppearInListType defined values and compare the inner value with the given one:
-        for(AppearInListType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AppearInListType.values().length > 0 ? AppearInListType.values()[0]: null;
+	public static AppearInListType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AppearInListType defined values and compare the inner value with the given one:
+		for(AppearInListType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AppearInListType.values().length > 0 ? AppearInListType.values()[0]: null;
    }
 }

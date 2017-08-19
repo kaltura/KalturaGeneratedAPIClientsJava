@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryExtendedStatus implements EnumAsString {
-    PLAYBACK_COMPLETE("viewHistory.PLAYBACK_COMPLETE"),
-    PLAYBACK_STARTED("viewHistory.PLAYBACK_STARTED"),
-    VIEWED("viewHistory.VIEWED");
+	PLAYBACK_COMPLETE("viewHistory.PLAYBACK_COMPLETE"),
+	PLAYBACK_STARTED("viewHistory.PLAYBACK_STARTED"),
+	VIEWED("viewHistory.VIEWED");
 
-    private String value;
+	private String value;
 
-    UserEntryExtendedStatus(String value) {
-        this.value = value;
-    }
+	UserEntryExtendedStatus(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static UserEntryExtendedStatus get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserEntryExtendedStatus defined values and compare the inner value with the given one:
-        for(UserEntryExtendedStatus item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserEntryExtendedStatus.values().length > 0 ? UserEntryExtendedStatus.values()[0]: null;
+	public static UserEntryExtendedStatus get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserEntryExtendedStatus defined values and compare the inner value with the given one:
+		for(UserEntryExtendedStatus item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserEntryExtendedStatus.values().length > 0 ? UserEntryExtendedStatus.values()[0]: null;
    }
 }

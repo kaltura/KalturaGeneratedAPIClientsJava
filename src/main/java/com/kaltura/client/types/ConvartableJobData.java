@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.FlavorParamsOutput;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,150 +43,197 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvartableJobData.Tokenizer.class)
 public class ConvartableJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcFileSyncLocalPath();
+		String actualSrcFileSyncLocalPath();
+		String srcFileSyncRemoteUrl();
+		RequestBuilder.ListTokenizer<SourceFileSyncDescriptor.Tokenizer> srcFileSyncs();
+		String engineVersion();
+		String flavorParamsOutputId();
+		FlavorParamsOutput.Tokenizer flavorParamsOutput();
+		String mediaInfoId();
+		String currentOperationSet();
+		String currentOperationIndex();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> pluginData();
+	}
 
-    private String srcFileSyncLocalPath;
+	private String srcFileSyncLocalPath;
 	/**  The translated path as used by the scheduler  */
-    private String actualSrcFileSyncLocalPath;
-    private String srcFileSyncRemoteUrl;
-    private List<SourceFileSyncDescriptor> srcFileSyncs;
-    private Integer engineVersion;
-    private Integer flavorParamsOutputId;
-    private FlavorParamsOutput flavorParamsOutput;
-    private Integer mediaInfoId;
-    private Integer currentOperationSet;
-    private Integer currentOperationIndex;
-    private List<KeyValue> pluginData;
+	private String actualSrcFileSyncLocalPath;
+	private String srcFileSyncRemoteUrl;
+	private List<SourceFileSyncDescriptor> srcFileSyncs;
+	private Integer engineVersion;
+	private Integer flavorParamsOutputId;
+	private FlavorParamsOutput flavorParamsOutput;
+	private Integer mediaInfoId;
+	private Integer currentOperationSet;
+	private Integer currentOperationIndex;
+	private List<KeyValue> pluginData;
 
-    // srcFileSyncLocalPath:
-    public String getSrcFileSyncLocalPath(){
-        return this.srcFileSyncLocalPath;
-    }
-    public void setSrcFileSyncLocalPath(String srcFileSyncLocalPath){
-        this.srcFileSyncLocalPath = srcFileSyncLocalPath;
-    }
+	// srcFileSyncLocalPath:
+	public String getSrcFileSyncLocalPath(){
+		return this.srcFileSyncLocalPath;
+	}
+	public void setSrcFileSyncLocalPath(String srcFileSyncLocalPath){
+		this.srcFileSyncLocalPath = srcFileSyncLocalPath;
+	}
 
-    // actualSrcFileSyncLocalPath:
-    public String getActualSrcFileSyncLocalPath(){
-        return this.actualSrcFileSyncLocalPath;
-    }
-    public void setActualSrcFileSyncLocalPath(String actualSrcFileSyncLocalPath){
-        this.actualSrcFileSyncLocalPath = actualSrcFileSyncLocalPath;
-    }
+	public void srcFileSyncLocalPath(String multirequestToken){
+		setToken("srcFileSyncLocalPath", multirequestToken);
+	}
 
-    // srcFileSyncRemoteUrl:
-    public String getSrcFileSyncRemoteUrl(){
-        return this.srcFileSyncRemoteUrl;
-    }
-    public void setSrcFileSyncRemoteUrl(String srcFileSyncRemoteUrl){
-        this.srcFileSyncRemoteUrl = srcFileSyncRemoteUrl;
-    }
+	// actualSrcFileSyncLocalPath:
+	public String getActualSrcFileSyncLocalPath(){
+		return this.actualSrcFileSyncLocalPath;
+	}
+	public void setActualSrcFileSyncLocalPath(String actualSrcFileSyncLocalPath){
+		this.actualSrcFileSyncLocalPath = actualSrcFileSyncLocalPath;
+	}
 
-    // srcFileSyncs:
-    public List<SourceFileSyncDescriptor> getSrcFileSyncs(){
-        return this.srcFileSyncs;
-    }
-    public void setSrcFileSyncs(List<SourceFileSyncDescriptor> srcFileSyncs){
-        this.srcFileSyncs = srcFileSyncs;
-    }
+	public void actualSrcFileSyncLocalPath(String multirequestToken){
+		setToken("actualSrcFileSyncLocalPath", multirequestToken);
+	}
 
-    // engineVersion:
-    public Integer getEngineVersion(){
-        return this.engineVersion;
-    }
-    public void setEngineVersion(Integer engineVersion){
-        this.engineVersion = engineVersion;
-    }
+	// srcFileSyncRemoteUrl:
+	public String getSrcFileSyncRemoteUrl(){
+		return this.srcFileSyncRemoteUrl;
+	}
+	public void setSrcFileSyncRemoteUrl(String srcFileSyncRemoteUrl){
+		this.srcFileSyncRemoteUrl = srcFileSyncRemoteUrl;
+	}
 
-    // flavorParamsOutputId:
-    public Integer getFlavorParamsOutputId(){
-        return this.flavorParamsOutputId;
-    }
-    public void setFlavorParamsOutputId(Integer flavorParamsOutputId){
-        this.flavorParamsOutputId = flavorParamsOutputId;
-    }
+	public void srcFileSyncRemoteUrl(String multirequestToken){
+		setToken("srcFileSyncRemoteUrl", multirequestToken);
+	}
 
-    // flavorParamsOutput:
-    public FlavorParamsOutput getFlavorParamsOutput(){
-        return this.flavorParamsOutput;
-    }
-    public void setFlavorParamsOutput(FlavorParamsOutput flavorParamsOutput){
-        this.flavorParamsOutput = flavorParamsOutput;
-    }
+	// srcFileSyncs:
+	public List<SourceFileSyncDescriptor> getSrcFileSyncs(){
+		return this.srcFileSyncs;
+	}
+	public void setSrcFileSyncs(List<SourceFileSyncDescriptor> srcFileSyncs){
+		this.srcFileSyncs = srcFileSyncs;
+	}
 
-    // mediaInfoId:
-    public Integer getMediaInfoId(){
-        return this.mediaInfoId;
-    }
-    public void setMediaInfoId(Integer mediaInfoId){
-        this.mediaInfoId = mediaInfoId;
-    }
+	// engineVersion:
+	public Integer getEngineVersion(){
+		return this.engineVersion;
+	}
+	public void setEngineVersion(Integer engineVersion){
+		this.engineVersion = engineVersion;
+	}
 
-    // currentOperationSet:
-    public Integer getCurrentOperationSet(){
-        return this.currentOperationSet;
-    }
-    public void setCurrentOperationSet(Integer currentOperationSet){
-        this.currentOperationSet = currentOperationSet;
-    }
+	public void engineVersion(String multirequestToken){
+		setToken("engineVersion", multirequestToken);
+	}
 
-    // currentOperationIndex:
-    public Integer getCurrentOperationIndex(){
-        return this.currentOperationIndex;
-    }
-    public void setCurrentOperationIndex(Integer currentOperationIndex){
-        this.currentOperationIndex = currentOperationIndex;
-    }
+	// flavorParamsOutputId:
+	public Integer getFlavorParamsOutputId(){
+		return this.flavorParamsOutputId;
+	}
+	public void setFlavorParamsOutputId(Integer flavorParamsOutputId){
+		this.flavorParamsOutputId = flavorParamsOutputId;
+	}
 
-    // pluginData:
-    public List<KeyValue> getPluginData(){
-        return this.pluginData;
-    }
-    public void setPluginData(List<KeyValue> pluginData){
-        this.pluginData = pluginData;
-    }
+	public void flavorParamsOutputId(String multirequestToken){
+		setToken("flavorParamsOutputId", multirequestToken);
+	}
+
+	// flavorParamsOutput:
+	public FlavorParamsOutput getFlavorParamsOutput(){
+		return this.flavorParamsOutput;
+	}
+	public void setFlavorParamsOutput(FlavorParamsOutput flavorParamsOutput){
+		this.flavorParamsOutput = flavorParamsOutput;
+	}
+
+	// mediaInfoId:
+	public Integer getMediaInfoId(){
+		return this.mediaInfoId;
+	}
+	public void setMediaInfoId(Integer mediaInfoId){
+		this.mediaInfoId = mediaInfoId;
+	}
+
+	public void mediaInfoId(String multirequestToken){
+		setToken("mediaInfoId", multirequestToken);
+	}
+
+	// currentOperationSet:
+	public Integer getCurrentOperationSet(){
+		return this.currentOperationSet;
+	}
+	public void setCurrentOperationSet(Integer currentOperationSet){
+		this.currentOperationSet = currentOperationSet;
+	}
+
+	public void currentOperationSet(String multirequestToken){
+		setToken("currentOperationSet", multirequestToken);
+	}
+
+	// currentOperationIndex:
+	public Integer getCurrentOperationIndex(){
+		return this.currentOperationIndex;
+	}
+	public void setCurrentOperationIndex(Integer currentOperationIndex){
+		this.currentOperationIndex = currentOperationIndex;
+	}
+
+	public void currentOperationIndex(String multirequestToken){
+		setToken("currentOperationIndex", multirequestToken);
+	}
+
+	// pluginData:
+	public List<KeyValue> getPluginData(){
+		return this.pluginData;
+	}
+	public void setPluginData(List<KeyValue> pluginData){
+		this.pluginData = pluginData;
+	}
 
 
-    public ConvartableJobData() {
-       super();
-    }
+	public ConvartableJobData() {
+		super();
+	}
 
-    public ConvartableJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvartableJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcFileSyncLocalPath = GsonParser.parseString(jsonObject.get("srcFileSyncLocalPath"));
-        actualSrcFileSyncLocalPath = GsonParser.parseString(jsonObject.get("actualSrcFileSyncLocalPath"));
-        srcFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("srcFileSyncRemoteUrl"));
-        srcFileSyncs = GsonParser.parseArray(jsonObject.getAsJsonArray("srcFileSyncs"), SourceFileSyncDescriptor.class);
-        engineVersion = GsonParser.parseInt(jsonObject.get("engineVersion"));
-        flavorParamsOutputId = GsonParser.parseInt(jsonObject.get("flavorParamsOutputId"));
-        flavorParamsOutput = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorParamsOutput"), FlavorParamsOutput.class);
-        mediaInfoId = GsonParser.parseInt(jsonObject.get("mediaInfoId"));
-        currentOperationSet = GsonParser.parseInt(jsonObject.get("currentOperationSet"));
-        currentOperationIndex = GsonParser.parseInt(jsonObject.get("currentOperationIndex"));
-        pluginData = GsonParser.parseArray(jsonObject.getAsJsonArray("pluginData"), KeyValue.class);
+		// set members values:
+		srcFileSyncLocalPath = GsonParser.parseString(jsonObject.get("srcFileSyncLocalPath"));
+		actualSrcFileSyncLocalPath = GsonParser.parseString(jsonObject.get("actualSrcFileSyncLocalPath"));
+		srcFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("srcFileSyncRemoteUrl"));
+		srcFileSyncs = GsonParser.parseArray(jsonObject.getAsJsonArray("srcFileSyncs"), SourceFileSyncDescriptor.class);
+		engineVersion = GsonParser.parseInt(jsonObject.get("engineVersion"));
+		flavorParamsOutputId = GsonParser.parseInt(jsonObject.get("flavorParamsOutputId"));
+		flavorParamsOutput = GsonParser.parseObject(jsonObject.getAsJsonObject("flavorParamsOutput"), FlavorParamsOutput.class);
+		mediaInfoId = GsonParser.parseInt(jsonObject.get("mediaInfoId"));
+		currentOperationSet = GsonParser.parseInt(jsonObject.get("currentOperationSet"));
+		currentOperationIndex = GsonParser.parseInt(jsonObject.get("currentOperationIndex"));
+		pluginData = GsonParser.parseArray(jsonObject.getAsJsonArray("pluginData"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvartableJobData");
-        kparams.add("srcFileSyncLocalPath", this.srcFileSyncLocalPath);
-        kparams.add("actualSrcFileSyncLocalPath", this.actualSrcFileSyncLocalPath);
-        kparams.add("srcFileSyncRemoteUrl", this.srcFileSyncRemoteUrl);
-        kparams.add("srcFileSyncs", this.srcFileSyncs);
-        kparams.add("engineVersion", this.engineVersion);
-        kparams.add("flavorParamsOutputId", this.flavorParamsOutputId);
-        kparams.add("flavorParamsOutput", this.flavorParamsOutput);
-        kparams.add("mediaInfoId", this.mediaInfoId);
-        kparams.add("currentOperationSet", this.currentOperationSet);
-        kparams.add("currentOperationIndex", this.currentOperationIndex);
-        kparams.add("pluginData", this.pluginData);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvartableJobData");
+		kparams.add("srcFileSyncLocalPath", this.srcFileSyncLocalPath);
+		kparams.add("actualSrcFileSyncLocalPath", this.actualSrcFileSyncLocalPath);
+		kparams.add("srcFileSyncRemoteUrl", this.srcFileSyncRemoteUrl);
+		kparams.add("srcFileSyncs", this.srcFileSyncs);
+		kparams.add("engineVersion", this.engineVersion);
+		kparams.add("flavorParamsOutputId", this.flavorParamsOutputId);
+		kparams.add("flavorParamsOutput", this.flavorParamsOutput);
+		kparams.add("mediaInfoId", this.mediaInfoId);
+		kparams.add("currentOperationSet", this.currentOperationSet);
+		kparams.add("currentOperationIndex", this.currentOperationIndex);
+		kparams.add("pluginData", this.pluginData);
+		return kparams;
+	}
 
 }
 

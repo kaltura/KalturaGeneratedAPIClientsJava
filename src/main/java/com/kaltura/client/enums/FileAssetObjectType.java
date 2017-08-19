@@ -34,36 +34,36 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileAssetObjectType implements EnumAsString {
-    UI_CONF("2");
+	UI_CONF("2");
 
-    private String value;
+	private String value;
 
-    FileAssetObjectType(String value) {
-        this.value = value;
-    }
+	FileAssetObjectType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static FileAssetObjectType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FileAssetObjectType defined values and compare the inner value with the given one:
-        for(FileAssetObjectType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FileAssetObjectType.values().length > 0 ? FileAssetObjectType.values()[0]: null;
+	public static FileAssetObjectType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FileAssetObjectType defined values and compare the inner value with the given one:
+		for(FileAssetObjectType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FileAssetObjectType.values().length > 0 ? FileAssetObjectType.values()[0]: null;
    }
 }

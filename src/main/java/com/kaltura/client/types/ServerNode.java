@@ -33,6 +33,7 @@ import com.kaltura.client.enums.ServerNodeStatus;
 import com.kaltura.client.enums.ServerNodeType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,180 +43,254 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ServerNode.Tokenizer.class)
 public abstract class ServerNode extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String heartbeatTime();
+		String name();
+		String systemName();
+		String description();
+		String hostName();
+		String status();
+		String type();
+		String tags();
+		String dc();
+		String parentId();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private Integer heartbeatTime;
+	private Integer id;
+	private Integer partnerId;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private Integer heartbeatTime;
 	/**  serverNode name  */
-    private String name;
+	private String name;
 	/**  serverNode uniqe system name  */
-    private String systemName;
-    private String description;
+	private String systemName;
+	private String description;
 	/**  serverNode hostName  */
-    private String hostName;
-    private ServerNodeStatus status;
-    private ServerNodeType type;
+	private String hostName;
+	private ServerNodeStatus status;
+	private ServerNodeType type;
 	/**  serverNode tags  */
-    private String tags;
+	private String tags;
 	/**  DC where the serverNode is located  */
-    private Integer dc;
+	private Integer dc;
 	/**  Id of the parent serverNode  */
-    private String parentId;
+	private String parentId;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // heartbeatTime:
-    public Integer getHeartbeatTime(){
-        return this.heartbeatTime;
-    }
-    public void setHeartbeatTime(Integer heartbeatTime){
-        this.heartbeatTime = heartbeatTime;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // hostName:
-    public String getHostName(){
-        return this.hostName;
-    }
-    public void setHostName(String hostName){
-        this.hostName = hostName;
-    }
+	// heartbeatTime:
+	public Integer getHeartbeatTime(){
+		return this.heartbeatTime;
+	}
+	public void setHeartbeatTime(Integer heartbeatTime){
+		this.heartbeatTime = heartbeatTime;
+	}
 
-    // status:
-    public ServerNodeStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ServerNodeStatus status){
-        this.status = status;
-    }
+	public void heartbeatTime(String multirequestToken){
+		setToken("heartbeatTime", multirequestToken);
+	}
 
-    // type:
-    public ServerNodeType getType(){
-        return this.type;
-    }
-    public void setType(ServerNodeType type){
-        this.type = type;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // dc:
-    public Integer getDc(){
-        return this.dc;
-    }
-    public void setDc(Integer dc){
-        this.dc = dc;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // parentId:
-    public String getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(String parentId){
-        this.parentId = parentId;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// hostName:
+	public String getHostName(){
+		return this.hostName;
+	}
+	public void setHostName(String hostName){
+		this.hostName = hostName;
+	}
+
+	public void hostName(String multirequestToken){
+		setToken("hostName", multirequestToken);
+	}
+
+	// status:
+	public ServerNodeStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ServerNodeStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// type:
+	public ServerNodeType getType(){
+		return this.type;
+	}
+	public void setType(ServerNodeType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
+
+	// dc:
+	public Integer getDc(){
+		return this.dc;
+	}
+	public void setDc(Integer dc){
+		this.dc = dc;
+	}
+
+	public void dc(String multirequestToken){
+		setToken("dc", multirequestToken);
+	}
+
+	// parentId:
+	public String getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(String parentId){
+		this.parentId = parentId;
+	}
+
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
 
 
-    public ServerNode() {
-       super();
-    }
+	public ServerNode() {
+		super();
+	}
 
-    public ServerNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        heartbeatTime = GsonParser.parseInt(jsonObject.get("heartbeatTime"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        hostName = GsonParser.parseString(jsonObject.get("hostName"));
-        status = ServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        type = ServerNodeType.get(GsonParser.parseString(jsonObject.get("type")));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        dc = GsonParser.parseInt(jsonObject.get("dc"));
-        parentId = GsonParser.parseString(jsonObject.get("parentId"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		heartbeatTime = GsonParser.parseInt(jsonObject.get("heartbeatTime"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		hostName = GsonParser.parseString(jsonObject.get("hostName"));
+		status = ServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		type = ServerNodeType.get(GsonParser.parseString(jsonObject.get("type")));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		dc = GsonParser.parseInt(jsonObject.get("dc"));
+		parentId = GsonParser.parseString(jsonObject.get("parentId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaServerNode");
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("hostName", this.hostName);
-        kparams.add("tags", this.tags);
-        kparams.add("parentId", this.parentId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaServerNode");
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("hostName", this.hostName);
+		kparams.add("tags", this.tags);
+		kparams.add("parentId", this.parentId);
+		return kparams;
+	}
 
 }
 

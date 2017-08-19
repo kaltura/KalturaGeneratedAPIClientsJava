@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,83 +40,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ThumbParamsOutput.Tokenizer.class)
 public class ThumbParamsOutput extends ThumbParams {
+	
+	public interface Tokenizer extends ThumbParams.Tokenizer {
+		String thumbParamsId();
+		String thumbParamsVersion();
+		String thumbAssetId();
+		String thumbAssetVersion();
+		String rotate();
+	}
 
-    private Integer thumbParamsId;
-    private String thumbParamsVersion;
-    private String thumbAssetId;
-    private String thumbAssetVersion;
-    private Integer rotate;
+	private Integer thumbParamsId;
+	private String thumbParamsVersion;
+	private String thumbAssetId;
+	private String thumbAssetVersion;
+	private Integer rotate;
 
-    // thumbParamsId:
-    public Integer getThumbParamsId(){
-        return this.thumbParamsId;
-    }
-    public void setThumbParamsId(Integer thumbParamsId){
-        this.thumbParamsId = thumbParamsId;
-    }
+	// thumbParamsId:
+	public Integer getThumbParamsId(){
+		return this.thumbParamsId;
+	}
+	public void setThumbParamsId(Integer thumbParamsId){
+		this.thumbParamsId = thumbParamsId;
+	}
 
-    // thumbParamsVersion:
-    public String getThumbParamsVersion(){
-        return this.thumbParamsVersion;
-    }
-    public void setThumbParamsVersion(String thumbParamsVersion){
-        this.thumbParamsVersion = thumbParamsVersion;
-    }
+	public void thumbParamsId(String multirequestToken){
+		setToken("thumbParamsId", multirequestToken);
+	}
 
-    // thumbAssetId:
-    public String getThumbAssetId(){
-        return this.thumbAssetId;
-    }
-    public void setThumbAssetId(String thumbAssetId){
-        this.thumbAssetId = thumbAssetId;
-    }
+	// thumbParamsVersion:
+	public String getThumbParamsVersion(){
+		return this.thumbParamsVersion;
+	}
+	public void setThumbParamsVersion(String thumbParamsVersion){
+		this.thumbParamsVersion = thumbParamsVersion;
+	}
 
-    // thumbAssetVersion:
-    public String getThumbAssetVersion(){
-        return this.thumbAssetVersion;
-    }
-    public void setThumbAssetVersion(String thumbAssetVersion){
-        this.thumbAssetVersion = thumbAssetVersion;
-    }
+	public void thumbParamsVersion(String multirequestToken){
+		setToken("thumbParamsVersion", multirequestToken);
+	}
 
-    // rotate:
-    public Integer getRotate(){
-        return this.rotate;
-    }
-    public void setRotate(Integer rotate){
-        this.rotate = rotate;
-    }
+	// thumbAssetId:
+	public String getThumbAssetId(){
+		return this.thumbAssetId;
+	}
+	public void setThumbAssetId(String thumbAssetId){
+		this.thumbAssetId = thumbAssetId;
+	}
+
+	public void thumbAssetId(String multirequestToken){
+		setToken("thumbAssetId", multirequestToken);
+	}
+
+	// thumbAssetVersion:
+	public String getThumbAssetVersion(){
+		return this.thumbAssetVersion;
+	}
+	public void setThumbAssetVersion(String thumbAssetVersion){
+		this.thumbAssetVersion = thumbAssetVersion;
+	}
+
+	public void thumbAssetVersion(String multirequestToken){
+		setToken("thumbAssetVersion", multirequestToken);
+	}
+
+	// rotate:
+	public Integer getRotate(){
+		return this.rotate;
+	}
+	public void setRotate(Integer rotate){
+		this.rotate = rotate;
+	}
+
+	public void rotate(String multirequestToken){
+		setToken("rotate", multirequestToken);
+	}
 
 
-    public ThumbParamsOutput() {
-       super();
-    }
+	public ThumbParamsOutput() {
+		super();
+	}
 
-    public ThumbParamsOutput(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ThumbParamsOutput(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        thumbParamsId = GsonParser.parseInt(jsonObject.get("thumbParamsId"));
-        thumbParamsVersion = GsonParser.parseString(jsonObject.get("thumbParamsVersion"));
-        thumbAssetId = GsonParser.parseString(jsonObject.get("thumbAssetId"));
-        thumbAssetVersion = GsonParser.parseString(jsonObject.get("thumbAssetVersion"));
-        rotate = GsonParser.parseInt(jsonObject.get("rotate"));
+		// set members values:
+		thumbParamsId = GsonParser.parseInt(jsonObject.get("thumbParamsId"));
+		thumbParamsVersion = GsonParser.parseString(jsonObject.get("thumbParamsVersion"));
+		thumbAssetId = GsonParser.parseString(jsonObject.get("thumbAssetId"));
+		thumbAssetVersion = GsonParser.parseString(jsonObject.get("thumbAssetVersion"));
+		rotate = GsonParser.parseInt(jsonObject.get("rotate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaThumbParamsOutput");
-        kparams.add("thumbParamsId", this.thumbParamsId);
-        kparams.add("thumbParamsVersion", this.thumbParamsVersion);
-        kparams.add("thumbAssetId", this.thumbAssetId);
-        kparams.add("thumbAssetVersion", this.thumbAssetVersion);
-        kparams.add("rotate", this.rotate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaThumbParamsOutput");
+		kparams.add("thumbParamsId", this.thumbParamsId);
+		kparams.add("thumbParamsVersion", this.thumbParamsVersion);
+		kparams.add("thumbAssetId", this.thumbAssetId);
+		kparams.add("thumbAssetVersion", this.thumbAssetVersion);
+		kparams.add("rotate", this.rotate);
+		return kparams;
+	}
 
 }
 

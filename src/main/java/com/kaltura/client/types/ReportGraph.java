@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportGraph.Tokenizer.class)
 public class ReportGraph extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String data();
+	}
 
-    private String id;
-    private String data;
+	private String id;
+	private String data;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // data:
-    public String getData(){
-        return this.data;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
+
+	// data:
+	public String getData(){
+		return this.data;
+	}
+	public void setData(String data){
+		this.data = data;
+	}
+
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
+	}
 
 
-    public ReportGraph() {
-       super();
-    }
+	public ReportGraph() {
+		super();
+	}
 
-    public ReportGraph(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportGraph(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        data = GsonParser.parseString(jsonObject.get("data"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		data = GsonParser.parseString(jsonObject.get("data"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportGraph");
-        kparams.add("id", this.id);
-        kparams.add("data", this.data);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportGraph");
+		kparams.add("id", this.id);
+		kparams.add("data", this.data);
+		return kparams;
+	}
 
 }
 

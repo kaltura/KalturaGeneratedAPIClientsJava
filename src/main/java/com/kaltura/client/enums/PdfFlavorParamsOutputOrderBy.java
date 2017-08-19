@@ -34,24 +34,24 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PdfFlavorParamsOutputOrderBy implements EnumAsString {
-    /** Place holder for future values */;
+	/** Place holder for future values */;
 
-    private String value;
+	private String value;
 
-    PdfFlavorParamsOutputOrderBy(String value) {
-        this.value = value;
-    }
+	PdfFlavorParamsOutputOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PdfFlavorParamsOutputOrderBy get(String value) {
-    	return null;
-    }
+	public static PdfFlavorParamsOutputOrderBy get(String value) {
+		return null;
+	}
 }

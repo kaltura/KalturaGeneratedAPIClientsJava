@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveStreamEntryCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaLiveStreamEntry attributes. Use
   KalturaLiveStreamEntryCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamEntryCompareAttributeCondition.Tokenizer.class)
 public class LiveStreamEntryCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private LiveStreamEntryCompareAttribute attribute;
+	private LiveStreamEntryCompareAttribute attribute;
 
-    // attribute:
-    public LiveStreamEntryCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(LiveStreamEntryCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public LiveStreamEntryCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(LiveStreamEntryCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public LiveStreamEntryCompareAttributeCondition() {
-       super();
-    }
+	public LiveStreamEntryCompareAttributeCondition() {
+		super();
+	}
 
-    public LiveStreamEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStreamEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = LiveStreamEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = LiveStreamEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamEntryCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamEntryCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SftpDropFolderBaseFilter.Tokenizer.class)
 public abstract class SftpDropFolderBaseFilter extends SshDropFolderFilter {
+	
+	public interface Tokenizer extends SshDropFolderFilter.Tokenizer {
+	}
 
 
 
-    public SftpDropFolderBaseFilter() {
-       super();
-    }
+	public SftpDropFolderBaseFilter() {
+		super();
+	}
 
-    public SftpDropFolderBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public SftpDropFolderBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSftpDropFolderBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSftpDropFolderBaseFilter");
+		return kparams;
+	}
 
 }
 

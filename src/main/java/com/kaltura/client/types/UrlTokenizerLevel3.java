@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerLevel3.Tokenizer.class)
 public class UrlTokenizerLevel3 extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String paramName();
+		String expiryName();
+		String gen();
+	}
 
 	/**  paramName  */
-    private String paramName;
+	private String paramName;
 	/**  expiryName  */
-    private String expiryName;
+	private String expiryName;
 	/**  gen  */
-    private String gen;
+	private String gen;
 
-    // paramName:
-    public String getParamName(){
-        return this.paramName;
-    }
-    public void setParamName(String paramName){
-        this.paramName = paramName;
-    }
+	// paramName:
+	public String getParamName(){
+		return this.paramName;
+	}
+	public void setParamName(String paramName){
+		this.paramName = paramName;
+	}
 
-    // expiryName:
-    public String getExpiryName(){
-        return this.expiryName;
-    }
-    public void setExpiryName(String expiryName){
-        this.expiryName = expiryName;
-    }
+	public void paramName(String multirequestToken){
+		setToken("paramName", multirequestToken);
+	}
 
-    // gen:
-    public String getGen(){
-        return this.gen;
-    }
-    public void setGen(String gen){
-        this.gen = gen;
-    }
+	// expiryName:
+	public String getExpiryName(){
+		return this.expiryName;
+	}
+	public void setExpiryName(String expiryName){
+		this.expiryName = expiryName;
+	}
+
+	public void expiryName(String multirequestToken){
+		setToken("expiryName", multirequestToken);
+	}
+
+	// gen:
+	public String getGen(){
+		return this.gen;
+	}
+	public void setGen(String gen){
+		this.gen = gen;
+	}
+
+	public void gen(String multirequestToken){
+		setToken("gen", multirequestToken);
+	}
 
 
-    public UrlTokenizerLevel3() {
-       super();
-    }
+	public UrlTokenizerLevel3() {
+		super();
+	}
 
-    public UrlTokenizerLevel3(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerLevel3(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        paramName = GsonParser.parseString(jsonObject.get("paramName"));
-        expiryName = GsonParser.parseString(jsonObject.get("expiryName"));
-        gen = GsonParser.parseString(jsonObject.get("gen"));
+		// set members values:
+		paramName = GsonParser.parseString(jsonObject.get("paramName"));
+		expiryName = GsonParser.parseString(jsonObject.get("expiryName"));
+		gen = GsonParser.parseString(jsonObject.get("gen"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerLevel3");
-        kparams.add("paramName", this.paramName);
-        kparams.add("expiryName", this.expiryName);
-        kparams.add("gen", this.gen);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerLevel3");
+		kparams.add("paramName", this.paramName);
+		kparams.add("expiryName", this.expiryName);
+		kparams.add("gen", this.gen);
+		return kparams;
+	}
 
 }
 

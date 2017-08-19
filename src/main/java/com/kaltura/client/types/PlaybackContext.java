@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,74 +43,82 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlaybackContext.Tokenizer.class)
 public class PlaybackContext extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		RequestBuilder.ListTokenizer<PlaybackSource.Tokenizer> sources();
+		RequestBuilder.ListTokenizer<FlavorAsset.Tokenizer> flavorAssets();
+		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
+		RequestBuilder.ListTokenizer<AccessControlMessage.Tokenizer> messages();
+	}
 
-    private List<PlaybackSource> sources;
-    private List<FlavorAsset> flavorAssets;
+	private List<PlaybackSource> sources;
+	private List<FlavorAsset> flavorAssets;
 	/**  Array of actions as received from the rules that invalidated  */
-    private List<RuleAction> actions;
+	private List<RuleAction> actions;
 	/**  Array of actions as received from the rules that invalidated  */
-    private List<AccessControlMessage> messages;
+	private List<AccessControlMessage> messages;
 
-    // sources:
-    public List<PlaybackSource> getSources(){
-        return this.sources;
-    }
-    public void setSources(List<PlaybackSource> sources){
-        this.sources = sources;
-    }
+	// sources:
+	public List<PlaybackSource> getSources(){
+		return this.sources;
+	}
+	public void setSources(List<PlaybackSource> sources){
+		this.sources = sources;
+	}
 
-    // flavorAssets:
-    public List<FlavorAsset> getFlavorAssets(){
-        return this.flavorAssets;
-    }
-    public void setFlavorAssets(List<FlavorAsset> flavorAssets){
-        this.flavorAssets = flavorAssets;
-    }
+	// flavorAssets:
+	public List<FlavorAsset> getFlavorAssets(){
+		return this.flavorAssets;
+	}
+	public void setFlavorAssets(List<FlavorAsset> flavorAssets){
+		this.flavorAssets = flavorAssets;
+	}
 
-    // actions:
-    public List<RuleAction> getActions(){
-        return this.actions;
-    }
-    public void setActions(List<RuleAction> actions){
-        this.actions = actions;
-    }
+	// actions:
+	public List<RuleAction> getActions(){
+		return this.actions;
+	}
+	public void setActions(List<RuleAction> actions){
+		this.actions = actions;
+	}
 
-    // messages:
-    public List<AccessControlMessage> getMessages(){
-        return this.messages;
-    }
-    public void setMessages(List<AccessControlMessage> messages){
-        this.messages = messages;
-    }
+	// messages:
+	public List<AccessControlMessage> getMessages(){
+		return this.messages;
+	}
+	public void setMessages(List<AccessControlMessage> messages){
+		this.messages = messages;
+	}
 
 
-    public PlaybackContext() {
-       super();
-    }
+	public PlaybackContext() {
+		super();
+	}
 
-    public PlaybackContext(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlaybackContext(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        sources = GsonParser.parseArray(jsonObject.getAsJsonArray("sources"), PlaybackSource.class);
-        flavorAssets = GsonParser.parseArray(jsonObject.getAsJsonArray("flavorAssets"), FlavorAsset.class);
-        actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
-        messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), AccessControlMessage.class);
+		// set members values:
+		sources = GsonParser.parseArray(jsonObject.getAsJsonArray("sources"), PlaybackSource.class);
+		flavorAssets = GsonParser.parseArray(jsonObject.getAsJsonArray("flavorAssets"), FlavorAsset.class);
+		actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
+		messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), AccessControlMessage.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaybackContext");
-        kparams.add("sources", this.sources);
-        kparams.add("flavorAssets", this.flavorAssets);
-        kparams.add("actions", this.actions);
-        kparams.add("messages", this.messages);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlaybackContext");
+		kparams.add("sources", this.sources);
+		kparams.add("flavorAssets", this.flavorAssets);
+		kparams.add("actions", this.actions);
+		kparams.add("messages", this.messages);
+		return kparams;
+	}
 
 }
 

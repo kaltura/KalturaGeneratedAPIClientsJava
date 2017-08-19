@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryStatus implements EnumAsString {
-    QUIZ_SUBMITTED("quiz.3"),
-    ACTIVE("1"),
-    DELETED("2");
+	QUIZ_SUBMITTED("quiz.3"),
+	ACTIVE("1"),
+	DELETED("2");
 
-    private String value;
+	private String value;
 
-    UserEntryStatus(String value) {
-        this.value = value;
-    }
+	UserEntryStatus(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static UserEntryStatus get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserEntryStatus defined values and compare the inner value with the given one:
-        for(UserEntryStatus item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserEntryStatus.values().length > 0 ? UserEntryStatus.values()[0]: null;
+	public static UserEntryStatus get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserEntryStatus defined values and compare the inner value with the given one:
+		for(UserEntryStatus item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserEntryStatus.values().length > 0 ? UserEntryStatus.values()[0]: null;
    }
 }

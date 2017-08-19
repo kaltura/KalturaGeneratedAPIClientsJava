@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,41 +42,50 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Configuration for extended item in the Kaltura MRSS feeds  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ObjectIdentifier.Tokenizer.class)
 public abstract class ObjectIdentifier extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String extendedFeatures();
+	}
 
 	/**  Comma separated string of enum values denoting which features of the item need
 	  to be included in the MRSS  */
-    private String extendedFeatures;
+	private String extendedFeatures;
 
-    // extendedFeatures:
-    public String getExtendedFeatures(){
-        return this.extendedFeatures;
-    }
-    public void setExtendedFeatures(String extendedFeatures){
-        this.extendedFeatures = extendedFeatures;
-    }
+	// extendedFeatures:
+	public String getExtendedFeatures(){
+		return this.extendedFeatures;
+	}
+	public void setExtendedFeatures(String extendedFeatures){
+		this.extendedFeatures = extendedFeatures;
+	}
+
+	public void extendedFeatures(String multirequestToken){
+		setToken("extendedFeatures", multirequestToken);
+	}
 
 
-    public ObjectIdentifier() {
-       super();
-    }
+	public ObjectIdentifier() {
+		super();
+	}
 
-    public ObjectIdentifier(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ObjectIdentifier(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        extendedFeatures = GsonParser.parseString(jsonObject.get("extendedFeatures"));
+		// set members values:
+		extendedFeatures = GsonParser.parseString(jsonObject.get("extendedFeatures"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaObjectIdentifier");
-        kparams.add("extendedFeatures", this.extendedFeatures);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaObjectIdentifier");
+		kparams.add("extendedFeatures", this.extendedFeatures);
+		return kparams;
+	}
 
 }
 

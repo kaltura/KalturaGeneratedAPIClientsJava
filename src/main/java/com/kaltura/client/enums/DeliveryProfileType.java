@@ -34,84 +34,84 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeliveryProfileType implements EnumAsString {
-    EDGE_CAST_HTTP("edgeCast.EDGE_CAST_HTTP"),
-    EDGE_CAST_RTMP("edgeCast.EDGE_CAST_RTMP"),
-    KONTIKI_HTTP("kontiki.KONTIKI_HTTP"),
-    VELOCIX_HDS("velocix.VELOCIX_HDS"),
-    VELOCIX_HLS("velocix.VELOCIX_HLS"),
-    APPLE_HTTP("1"),
-    HDS("3"),
-    HTTP("4"),
-    RTMP("5"),
-    RTSP("6"),
-    SILVER_LIGHT("7"),
-    AKAMAI_HLS_DIRECT("10"),
-    AKAMAI_HLS_MANIFEST("11"),
-    AKAMAI_HD("12"),
-    AKAMAI_HDS("13"),
-    AKAMAI_HTTP("14"),
-    AKAMAI_RTMP("15"),
-    AKAMAI_RTSP("16"),
-    AKAMAI_SS("17"),
-    GENERIC_HLS("21"),
-    GENERIC_HDS("23"),
-    GENERIC_HTTP("24"),
-    GENERIC_HLS_MANIFEST("25"),
-    GENERIC_HDS_MANIFEST("26"),
-    GENERIC_SS("27"),
-    GENERIC_RTMP("28"),
-    LEVEL3_HLS("31"),
-    LEVEL3_HTTP("34"),
-    LEVEL3_RTMP("35"),
-    LIMELIGHT_HTTP("44"),
-    LIMELIGHT_RTMP("45"),
-    LOCAL_PATH_APPLE_HTTP("51"),
-    LOCAL_PATH_HDS("53"),
-    LOCAL_PATH_HTTP("54"),
-    LOCAL_PATH_RTMP("55"),
-    VOD_PACKAGER_HLS("61"),
-    VOD_PACKAGER_HDS("63"),
-    VOD_PACKAGER_MSS("67"),
-    VOD_PACKAGER_DASH("68"),
-    LIVE_HLS("1001"),
-    LIVE_HDS("1002"),
-    LIVE_DASH("1003"),
-    LIVE_RTMP("1005"),
-    LIVE_HLS_TO_MULTICAST("1006"),
-    LIVE_PACKAGER_HLS("1007"),
-    LIVE_PACKAGER_HDS("1008"),
-    LIVE_PACKAGER_DASH("1009"),
-    LIVE_PACKAGER_MSS("1010"),
-    LIVE_AKAMAI_HDS("1013");
+	EDGE_CAST_HTTP("edgeCast.EDGE_CAST_HTTP"),
+	EDGE_CAST_RTMP("edgeCast.EDGE_CAST_RTMP"),
+	KONTIKI_HTTP("kontiki.KONTIKI_HTTP"),
+	VELOCIX_HDS("velocix.VELOCIX_HDS"),
+	VELOCIX_HLS("velocix.VELOCIX_HLS"),
+	APPLE_HTTP("1"),
+	HDS("3"),
+	HTTP("4"),
+	RTMP("5"),
+	RTSP("6"),
+	SILVER_LIGHT("7"),
+	AKAMAI_HLS_DIRECT("10"),
+	AKAMAI_HLS_MANIFEST("11"),
+	AKAMAI_HD("12"),
+	AKAMAI_HDS("13"),
+	AKAMAI_HTTP("14"),
+	AKAMAI_RTMP("15"),
+	AKAMAI_RTSP("16"),
+	AKAMAI_SS("17"),
+	GENERIC_HLS("21"),
+	GENERIC_HDS("23"),
+	GENERIC_HTTP("24"),
+	GENERIC_HLS_MANIFEST("25"),
+	GENERIC_HDS_MANIFEST("26"),
+	GENERIC_SS("27"),
+	GENERIC_RTMP("28"),
+	LEVEL3_HLS("31"),
+	LEVEL3_HTTP("34"),
+	LEVEL3_RTMP("35"),
+	LIMELIGHT_HTTP("44"),
+	LIMELIGHT_RTMP("45"),
+	LOCAL_PATH_APPLE_HTTP("51"),
+	LOCAL_PATH_HDS("53"),
+	LOCAL_PATH_HTTP("54"),
+	LOCAL_PATH_RTMP("55"),
+	VOD_PACKAGER_HLS("61"),
+	VOD_PACKAGER_HDS("63"),
+	VOD_PACKAGER_MSS("67"),
+	VOD_PACKAGER_DASH("68"),
+	LIVE_HLS("1001"),
+	LIVE_HDS("1002"),
+	LIVE_DASH("1003"),
+	LIVE_RTMP("1005"),
+	LIVE_HLS_TO_MULTICAST("1006"),
+	LIVE_PACKAGER_HLS("1007"),
+	LIVE_PACKAGER_HDS("1008"),
+	LIVE_PACKAGER_DASH("1009"),
+	LIVE_PACKAGER_MSS("1010"),
+	LIVE_AKAMAI_HDS("1013");
 
-    private String value;
+	private String value;
 
-    DeliveryProfileType(String value) {
-        this.value = value;
-    }
+	DeliveryProfileType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DeliveryProfileType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DeliveryProfileType defined values and compare the inner value with the given one:
-        for(DeliveryProfileType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DeliveryProfileType.values().length > 0 ? DeliveryProfileType.values()[0]: null;
+	public static DeliveryProfileType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DeliveryProfileType defined values and compare the inner value with the given one:
+		for(DeliveryProfileType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DeliveryProfileType.values().length > 0 ? DeliveryProfileType.values()[0]: null;
    }
 }

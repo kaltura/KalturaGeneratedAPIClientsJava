@@ -34,44 +34,44 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryType implements EnumAsString {
-    AUTOMATIC("-1"),
-    EXTERNAL_MEDIA("externalMedia.externalMedia"),
-    MEDIA_CLIP("1"),
-    MIX("2"),
-    PLAYLIST("5"),
-    DATA("6"),
-    LIVE_STREAM("7"),
-    LIVE_CHANNEL("8"),
-    DOCUMENT("10");
+	AUTOMATIC("-1"),
+	EXTERNAL_MEDIA("externalMedia.externalMedia"),
+	MEDIA_CLIP("1"),
+	MIX("2"),
+	PLAYLIST("5"),
+	DATA("6"),
+	LIVE_STREAM("7"),
+	LIVE_CHANNEL("8"),
+	DOCUMENT("10");
 
-    private String value;
+	private String value;
 
-    EntryType(String value) {
-        this.value = value;
-    }
+	EntryType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryType defined values and compare the inner value with the given one:
-        for(EntryType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryType.values().length > 0 ? EntryType.values()[0]: null;
+	public static EntryType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryType defined values and compare the inner value with the given one:
+		for(EntryType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryType.values().length > 0 ? EntryType.values()[0]: null;
    }
 }

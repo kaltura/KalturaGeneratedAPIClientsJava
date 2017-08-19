@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionFieldRequiredStatus implements EnumAsInt {
-    NOT_REQUIRED(0),
-    REQUIRED_BY_PROVIDER(1),
-    REQUIRED_BY_PARTNER(2),
-    REQUIRED_FOR_AUTOMATIC_DISTRIBUTION(3);
+	NOT_REQUIRED(0),
+	REQUIRED_BY_PROVIDER(1),
+	REQUIRED_BY_PARTNER(2),
+	REQUIRED_FOR_AUTOMATIC_DISTRIBUTION(3);
 
-    private int value;
+	private int value;
 
-    DistributionFieldRequiredStatus(int value) {
-        this.value = value;
-    }
+	DistributionFieldRequiredStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DistributionFieldRequiredStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionFieldRequiredStatus defined values and compare the inner value with the given one:
-        for(DistributionFieldRequiredStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionFieldRequiredStatus.values().length > 0 ? DistributionFieldRequiredStatus.values()[0]: null;
+	public static DistributionFieldRequiredStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionFieldRequiredStatus defined values and compare the inner value with the given one:
+		for(DistributionFieldRequiredStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionFieldRequiredStatus.values().length > 0 ? DistributionFieldRequiredStatus.values()[0]: null;
    }
 }

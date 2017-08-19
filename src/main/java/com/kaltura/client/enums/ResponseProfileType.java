@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ResponseProfileType implements EnumAsInt {
-    INCLUDE_FIELDS(1),
-    EXCLUDE_FIELDS(2);
+	INCLUDE_FIELDS(1),
+	EXCLUDE_FIELDS(2);
 
-    private int value;
+	private int value;
 
-    ResponseProfileType(int value) {
-        this.value = value;
-    }
+	ResponseProfileType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ResponseProfileType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ResponseProfileType defined values and compare the inner value with the given one:
-        for(ResponseProfileType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ResponseProfileType.values().length > 0 ? ResponseProfileType.values()[0]: null;
+	public static ResponseProfileType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ResponseProfileType defined values and compare the inner value with the given one:
+		for(ResponseProfileType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ResponseProfileType.values().length > 0 ? ResponseProfileType.values()[0]: null;
    }
 }

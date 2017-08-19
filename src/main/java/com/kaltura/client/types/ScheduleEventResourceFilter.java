@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,41 +40,50 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleEventResourceFilter.Tokenizer.class)
 public class ScheduleEventResourceFilter extends ScheduleEventResourceBaseFilter {
+	
+	public interface Tokenizer extends ScheduleEventResourceBaseFilter.Tokenizer {
+		String eventIdOrItsParentIdEqual();
+	}
 
 	/**  Find event-resource objects that associated with the event, if none found, find
 	  by its parent event  */
-    private Integer eventIdOrItsParentIdEqual;
+	private Integer eventIdOrItsParentIdEqual;
 
-    // eventIdOrItsParentIdEqual:
-    public Integer getEventIdOrItsParentIdEqual(){
-        return this.eventIdOrItsParentIdEqual;
-    }
-    public void setEventIdOrItsParentIdEqual(Integer eventIdOrItsParentIdEqual){
-        this.eventIdOrItsParentIdEqual = eventIdOrItsParentIdEqual;
-    }
+	// eventIdOrItsParentIdEqual:
+	public Integer getEventIdOrItsParentIdEqual(){
+		return this.eventIdOrItsParentIdEqual;
+	}
+	public void setEventIdOrItsParentIdEqual(Integer eventIdOrItsParentIdEqual){
+		this.eventIdOrItsParentIdEqual = eventIdOrItsParentIdEqual;
+	}
+
+	public void eventIdOrItsParentIdEqual(String multirequestToken){
+		setToken("eventIdOrItsParentIdEqual", multirequestToken);
+	}
 
 
-    public ScheduleEventResourceFilter() {
-       super();
-    }
+	public ScheduleEventResourceFilter() {
+		super();
+	}
 
-    public ScheduleEventResourceFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleEventResourceFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventIdOrItsParentIdEqual = GsonParser.parseInt(jsonObject.get("eventIdOrItsParentIdEqual"));
+		// set members values:
+		eventIdOrItsParentIdEqual = GsonParser.parseInt(jsonObject.get("eventIdOrItsParentIdEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventResourceFilter");
-        kparams.add("eventIdOrItsParentIdEqual", this.eventIdOrItsParentIdEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleEventResourceFilter");
+		kparams.add("eventIdOrItsParentIdEqual", this.eventIdOrItsParentIdEqual);
+		return kparams;
+	}
 
 }
 

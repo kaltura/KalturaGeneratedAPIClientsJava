@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ScheduleEventResource;
 import com.kaltura.client.types.ScheduleEventResourceFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -47,57 +45,106 @@ import com.kaltura.client.utils.request.RequestBuilder;
   retrieve, etc.) the connections between recording events and the resources
   required for these events (cameras, capture devices, etc.).  */
 public class ScheduleEventResourceService {
+	
+	public static class AddScheduleEventResourceBuilder extends RequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, AddScheduleEventResourceBuilder> {
+		
+		public AddScheduleEventResourceBuilder(ScheduleEventResource scheduleEventResource) {
+			super(ScheduleEventResource.class, "schedule_scheduleeventresource", "add");
+			params.add("scheduleEventResource", scheduleEventResource);
+		}
+	}
 
 	/**  Allows you to add a new KalturaScheduleEventResource object  */
-    public static RequestBuilder<ScheduleEventResource> add(ScheduleEventResource scheduleEventResource)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventResource", scheduleEventResource);
-
-        return new RequestBuilder<ScheduleEventResource>(ScheduleEventResource.class, "schedule_scheduleeventresource", "add", kparams);
-    }
+    public static AddScheduleEventResourceBuilder add(ScheduleEventResource scheduleEventResource)  {
+		return new AddScheduleEventResourceBuilder(scheduleEventResource);
+	}
+	
+	public static class DeleteScheduleEventResourceBuilder extends NullRequestBuilder {
+		
+		public DeleteScheduleEventResourceBuilder(int scheduleEventId, int scheduleResourceId) {
+			super("schedule_scheduleeventresource", "delete");
+			params.add("scheduleEventId", scheduleEventId);
+			params.add("scheduleResourceId", scheduleResourceId);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+		
+		public void scheduleResourceId(String multirequestToken) {
+			params.add("scheduleResourceId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaScheduleEventResource object as deleted  */
-    public static RequestBuilder<Void> delete(int scheduleEventId, int scheduleResourceId)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleResourceId", scheduleResourceId);
-
-        return new NullRequestBuilder("schedule_scheduleeventresource", "delete", kparams);
-    }
+    public static DeleteScheduleEventResourceBuilder delete(int scheduleEventId, int scheduleResourceId)  {
+		return new DeleteScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId);
+	}
+	
+	public static class GetScheduleEventResourceBuilder extends RequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, GetScheduleEventResourceBuilder> {
+		
+		public GetScheduleEventResourceBuilder(int scheduleEventId, int scheduleResourceId) {
+			super(ScheduleEventResource.class, "schedule_scheduleeventresource", "get");
+			params.add("scheduleEventId", scheduleEventId);
+			params.add("scheduleResourceId", scheduleResourceId);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+		
+		public void scheduleResourceId(String multirequestToken) {
+			params.add("scheduleResourceId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaScheduleEventResource object by ID  */
-    public static RequestBuilder<ScheduleEventResource> get(int scheduleEventId, int scheduleResourceId)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleResourceId", scheduleResourceId);
+    public static GetScheduleEventResourceBuilder get(int scheduleEventId, int scheduleResourceId)  {
+		return new GetScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId);
+	}
+	
+	public static class ListScheduleEventResourceBuilder extends ListResponseRequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, ListScheduleEventResourceBuilder> {
+		
+		public ListScheduleEventResourceBuilder(ScheduleEventResourceFilter filter, FilterPager pager) {
+			super(ScheduleEventResource.class, "schedule_scheduleeventresource", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ScheduleEventResource>(ScheduleEventResource.class, "schedule_scheduleeventresource", "get", kparams);
-    }
+	public static ListScheduleEventResourceBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ScheduleEventResource>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ScheduleEventResource>> list(ScheduleEventResourceFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaScheduleEventResource objects  */
-    public static RequestBuilder<ListResponse<ScheduleEventResource>> list(ScheduleEventResourceFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ScheduleEventResource>(ScheduleEventResource.class, "schedule_scheduleeventresource", "list", kparams);
-    }
+    public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter, FilterPager pager)  {
+		return new ListScheduleEventResourceBuilder(filter, pager);
+	}
+	
+	public static class UpdateScheduleEventResourceBuilder extends RequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, UpdateScheduleEventResourceBuilder> {
+		
+		public UpdateScheduleEventResourceBuilder(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource) {
+			super(ScheduleEventResource.class, "schedule_scheduleeventresource", "update");
+			params.add("scheduleEventId", scheduleEventId);
+			params.add("scheduleResourceId", scheduleResourceId);
+			params.add("scheduleEventResource", scheduleEventResource);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+		
+		public void scheduleResourceId(String multirequestToken) {
+			params.add("scheduleResourceId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaScheduleEventResource object  */
-    public static RequestBuilder<ScheduleEventResource> update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleResourceId", scheduleResourceId);
-        kparams.add("scheduleEventResource", scheduleEventResource);
-
-        return new RequestBuilder<ScheduleEventResource>(ScheduleEventResource.class, "schedule_scheduleeventresource", "update", kparams);
-    }
+    public static UpdateScheduleEventResourceBuilder update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)  {
+		return new UpdateScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId, scheduleEventResource);
+	}
 }

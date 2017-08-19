@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,94 +40,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetParamsBaseFilter.Tokenizer.class)
 public abstract class AssetParamsBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String systemNameEqual();
+		String systemNameIn();
+		String isSystemDefaultEqual();
+		String tagsEqual();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private String systemNameEqual;
-    private String systemNameIn;
-    private Boolean isSystemDefaultEqual;
-    private String tagsEqual;
+	private Integer idEqual;
+	private String idIn;
+	private String systemNameEqual;
+	private String systemNameIn;
+	private Boolean isSystemDefaultEqual;
+	private String tagsEqual;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // systemNameEqual:
-    public String getSystemNameEqual(){
-        return this.systemNameEqual;
-    }
-    public void setSystemNameEqual(String systemNameEqual){
-        this.systemNameEqual = systemNameEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // systemNameIn:
-    public String getSystemNameIn(){
-        return this.systemNameIn;
-    }
-    public void setSystemNameIn(String systemNameIn){
-        this.systemNameIn = systemNameIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // isSystemDefaultEqual:
-    public Boolean getIsSystemDefaultEqual(){
-        return this.isSystemDefaultEqual;
-    }
-    public void setIsSystemDefaultEqual(Boolean isSystemDefaultEqual){
-        this.isSystemDefaultEqual = isSystemDefaultEqual;
-    }
+	// systemNameEqual:
+	public String getSystemNameEqual(){
+		return this.systemNameEqual;
+	}
+	public void setSystemNameEqual(String systemNameEqual){
+		this.systemNameEqual = systemNameEqual;
+	}
 
-    // tagsEqual:
-    public String getTagsEqual(){
-        return this.tagsEqual;
-    }
-    public void setTagsEqual(String tagsEqual){
-        this.tagsEqual = tagsEqual;
-    }
+	public void systemNameEqual(String multirequestToken){
+		setToken("systemNameEqual", multirequestToken);
+	}
+
+	// systemNameIn:
+	public String getSystemNameIn(){
+		return this.systemNameIn;
+	}
+	public void setSystemNameIn(String systemNameIn){
+		this.systemNameIn = systemNameIn;
+	}
+
+	public void systemNameIn(String multirequestToken){
+		setToken("systemNameIn", multirequestToken);
+	}
+
+	// isSystemDefaultEqual:
+	public Boolean getIsSystemDefaultEqual(){
+		return this.isSystemDefaultEqual;
+	}
+	public void setIsSystemDefaultEqual(Boolean isSystemDefaultEqual){
+		this.isSystemDefaultEqual = isSystemDefaultEqual;
+	}
+
+	public void isSystemDefaultEqual(String multirequestToken){
+		setToken("isSystemDefaultEqual", multirequestToken);
+	}
+
+	// tagsEqual:
+	public String getTagsEqual(){
+		return this.tagsEqual;
+	}
+	public void setTagsEqual(String tagsEqual){
+		this.tagsEqual = tagsEqual;
+	}
+
+	public void tagsEqual(String multirequestToken){
+		setToken("tagsEqual", multirequestToken);
+	}
 
 
-    public AssetParamsBaseFilter() {
-       super();
-    }
+	public AssetParamsBaseFilter() {
+		super();
+	}
 
-    public AssetParamsBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetParamsBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
-        systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
-        isSystemDefaultEqual = GsonParser.parseBoolean(jsonObject.get("isSystemDefaultEqual"));
-        tagsEqual = GsonParser.parseString(jsonObject.get("tagsEqual"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
+		systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
+		isSystemDefaultEqual = GsonParser.parseBoolean(jsonObject.get("isSystemDefaultEqual"));
+		tagsEqual = GsonParser.parseString(jsonObject.get("tagsEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetParamsBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("systemNameEqual", this.systemNameEqual);
-        kparams.add("systemNameIn", this.systemNameIn);
-        kparams.add("isSystemDefaultEqual", this.isSystemDefaultEqual);
-        kparams.add("tagsEqual", this.tagsEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetParamsBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("systemNameEqual", this.systemNameEqual);
+		kparams.add("systemNameIn", this.systemNameIn);
+		kparams.add("isSystemDefaultEqual", this.isSystemDefaultEqual);
+		kparams.add("tagsEqual", this.tagsEqual);
+		return kparams;
+	}
 
 }
 

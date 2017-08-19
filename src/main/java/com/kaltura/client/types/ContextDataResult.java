@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,52 +43,58 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ContextDataResult.Tokenizer.class)
 public class ContextDataResult extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> messages();
+		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
+	}
 
 	/**  Array of messages as received from the rules that invalidated  */
-    private List<StringHolder> messages;
+	private List<StringHolder> messages;
 	/**  Array of actions as received from the rules that invalidated  */
-    private List<RuleAction> actions;
+	private List<RuleAction> actions;
 
-    // messages:
-    public List<StringHolder> getMessages(){
-        return this.messages;
-    }
-    public void setMessages(List<StringHolder> messages){
-        this.messages = messages;
-    }
+	// messages:
+	public List<StringHolder> getMessages(){
+		return this.messages;
+	}
+	public void setMessages(List<StringHolder> messages){
+		this.messages = messages;
+	}
 
-    // actions:
-    public List<RuleAction> getActions(){
-        return this.actions;
-    }
-    public void setActions(List<RuleAction> actions){
-        this.actions = actions;
-    }
+	// actions:
+	public List<RuleAction> getActions(){
+		return this.actions;
+	}
+	public void setActions(List<RuleAction> actions){
+		this.actions = actions;
+	}
 
 
-    public ContextDataResult() {
-       super();
-    }
+	public ContextDataResult() {
+		super();
+	}
 
-    public ContextDataResult(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ContextDataResult(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), StringHolder.class);
-        actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
+		// set members values:
+		messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), StringHolder.class);
+		actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaContextDataResult");
-        kparams.add("messages", this.messages);
-        kparams.add("actions", this.actions);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaContextDataResult");
+		kparams.add("messages", this.messages);
+		kparams.add("actions", this.actions);
+		return kparams;
+	}
 
 }
 

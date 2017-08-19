@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AmazonS3StorageProfileOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    AmazonS3StorageProfileOrderBy(String value) {
-        this.value = value;
-    }
+	AmazonS3StorageProfileOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AmazonS3StorageProfileOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AmazonS3StorageProfileOrderBy defined values and compare the inner value with the given one:
-        for(AmazonS3StorageProfileOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AmazonS3StorageProfileOrderBy.values().length > 0 ? AmazonS3StorageProfileOrderBy.values()[0]: null;
+	public static AmazonS3StorageProfileOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AmazonS3StorageProfileOrderBy defined values and compare the inner value with the given one:
+		for(AmazonS3StorageProfileOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AmazonS3StorageProfileOrderBy.values().length > 0 ? AmazonS3StorageProfileOrderBy.values()[0]: null;
    }
 }

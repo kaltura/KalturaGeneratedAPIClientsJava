@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +40,27 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Object which contains contextual entry-related data.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlaybackContextOptions.Tokenizer.class)
 public class PlaybackContextOptions extends EntryContextDataParams {
+	
+	public interface Tokenizer extends EntryContextDataParams.Tokenizer {
+	}
 
 
 
-    public PlaybackContextOptions() {
-       super();
-    }
+	public PlaybackContextOptions() {
+		super();
+	}
 
-    public PlaybackContextOptions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public PlaybackContextOptions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlaybackContextOptions");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlaybackContextOptions");
+		return kparams;
+	}
 
 }
 

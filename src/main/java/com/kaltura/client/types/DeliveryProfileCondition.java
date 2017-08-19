@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,40 +42,45 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileCondition.Tokenizer.class)
 public class DeliveryProfileCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		RequestBuilder.ListTokenizer<IntegerValue.Tokenizer> deliveryProfileIds();
+	}
 
 	/**  The delivery ids that are accepted by this condition  */
-    private List<IntegerValue> deliveryProfileIds;
+	private List<IntegerValue> deliveryProfileIds;
 
-    // deliveryProfileIds:
-    public List<IntegerValue> getDeliveryProfileIds(){
-        return this.deliveryProfileIds;
-    }
-    public void setDeliveryProfileIds(List<IntegerValue> deliveryProfileIds){
-        this.deliveryProfileIds = deliveryProfileIds;
-    }
+	// deliveryProfileIds:
+	public List<IntegerValue> getDeliveryProfileIds(){
+		return this.deliveryProfileIds;
+	}
+	public void setDeliveryProfileIds(List<IntegerValue> deliveryProfileIds){
+		this.deliveryProfileIds = deliveryProfileIds;
+	}
 
 
-    public DeliveryProfileCondition() {
-       super();
-    }
+	public DeliveryProfileCondition() {
+		super();
+	}
 
-    public DeliveryProfileCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        deliveryProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("deliveryProfileIds"), IntegerValue.class);
+		// set members values:
+		deliveryProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("deliveryProfileIds"), IntegerValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileCondition");
-        kparams.add("deliveryProfileIds", this.deliveryProfileIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileCondition");
+		kparams.add("deliveryProfileIds", this.deliveryProfileIds);
+		return kparams;
+	}
 
 }
 

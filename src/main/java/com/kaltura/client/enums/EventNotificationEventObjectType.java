@@ -34,80 +34,80 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationEventObjectType implements EnumAsString {
-    AD_CUE_POINT("adCuePointEventNotifications.AdCuePoint"),
-    ANNOTATION("annotationEventNotifications.Annotation"),
-    ATTACHMENT_ASSET("attachmentAssetEventNotifications.AttachmentAsset"),
-    CAPTION_ASSET("captionAssetEventNotifications.CaptionAsset"),
-    CODE_CUE_POINT("codeCuePointEventNotifications.CodeCuePoint"),
-    DISTRIBUTION_PROFILE("contentDistributionEventNotifications.DistributionProfile"),
-    ENTRY_DISTRIBUTION("contentDistributionEventNotifications.EntryDistribution"),
-    CUE_POINT("cuePointEventNotifications.CuePoint"),
-    DROP_FOLDER("dropFolderEventNotifications.DropFolder"),
-    DROP_FOLDER_FILE("dropFolderEventNotifications.DropFolderFile"),
-    METADATA("metadataEventNotifications.Metadata"),
-    TRANSCRIPT_ASSET("transcriptAssetEventNotifications.TranscriptAsset"),
-    ENTRY("1"),
-    CATEGORY("2"),
-    ASSET("3"),
-    FLAVORASSET("4"),
-    THUMBASSET("5"),
-    KUSER("8"),
-    ACCESSCONTROL("9"),
-    BATCHJOB("10"),
-    BULKUPLOADRESULT("11"),
-    CATEGORYKUSER("12"),
-    CONVERSIONPROFILE2("14"),
-    FLAVORPARAMS("15"),
-    FLAVORPARAMSCONVERSIONPROFILE("16"),
-    FLAVORPARAMSOUTPUT("17"),
-    GENERICSYNDICATIONFEED("18"),
-    KUSERTOUSERROLE("19"),
-    PARTNER("20"),
-    PERMISSION("21"),
-    PERMISSIONITEM("22"),
-    PERMISSIONTOPERMISSIONITEM("23"),
-    SCHEDULER("24"),
-    SCHEDULERCONFIG("25"),
-    SCHEDULERSTATUS("26"),
-    SCHEDULERWORKER("27"),
-    STORAGEPROFILE("28"),
-    SYNDICATIONFEED("29"),
-    THUMBPARAMS("31"),
-    THUMBPARAMSOUTPUT("32"),
-    UPLOADTOKEN("33"),
-    USERLOGINDATA("34"),
-    USERROLE("35"),
-    WIDGET("36"),
-    CATEGORYENTRY("37");
+	AD_CUE_POINT("adCuePointEventNotifications.AdCuePoint"),
+	ANNOTATION("annotationEventNotifications.Annotation"),
+	ATTACHMENT_ASSET("attachmentAssetEventNotifications.AttachmentAsset"),
+	CAPTION_ASSET("captionAssetEventNotifications.CaptionAsset"),
+	CODE_CUE_POINT("codeCuePointEventNotifications.CodeCuePoint"),
+	DISTRIBUTION_PROFILE("contentDistributionEventNotifications.DistributionProfile"),
+	ENTRY_DISTRIBUTION("contentDistributionEventNotifications.EntryDistribution"),
+	CUE_POINT("cuePointEventNotifications.CuePoint"),
+	DROP_FOLDER("dropFolderEventNotifications.DropFolder"),
+	DROP_FOLDER_FILE("dropFolderEventNotifications.DropFolderFile"),
+	METADATA("metadataEventNotifications.Metadata"),
+	TRANSCRIPT_ASSET("transcriptAssetEventNotifications.TranscriptAsset"),
+	ENTRY("1"),
+	CATEGORY("2"),
+	ASSET("3"),
+	FLAVORASSET("4"),
+	THUMBASSET("5"),
+	KUSER("8"),
+	ACCESSCONTROL("9"),
+	BATCHJOB("10"),
+	BULKUPLOADRESULT("11"),
+	CATEGORYKUSER("12"),
+	CONVERSIONPROFILE2("14"),
+	FLAVORPARAMS("15"),
+	FLAVORPARAMSCONVERSIONPROFILE("16"),
+	FLAVORPARAMSOUTPUT("17"),
+	GENERICSYNDICATIONFEED("18"),
+	KUSERTOUSERROLE("19"),
+	PARTNER("20"),
+	PERMISSION("21"),
+	PERMISSIONITEM("22"),
+	PERMISSIONTOPERMISSIONITEM("23"),
+	SCHEDULER("24"),
+	SCHEDULERCONFIG("25"),
+	SCHEDULERSTATUS("26"),
+	SCHEDULERWORKER("27"),
+	STORAGEPROFILE("28"),
+	SYNDICATIONFEED("29"),
+	THUMBPARAMS("31"),
+	THUMBPARAMSOUTPUT("32"),
+	UPLOADTOKEN("33"),
+	USERLOGINDATA("34"),
+	USERROLE("35"),
+	WIDGET("36"),
+	CATEGORYENTRY("37");
 
-    private String value;
+	private String value;
 
-    EventNotificationEventObjectType(String value) {
-        this.value = value;
-    }
+	EventNotificationEventObjectType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EventNotificationEventObjectType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EventNotificationEventObjectType defined values and compare the inner value with the given one:
-        for(EventNotificationEventObjectType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EventNotificationEventObjectType.values().length > 0 ? EventNotificationEventObjectType.values()[0]: null;
+	public static EventNotificationEventObjectType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EventNotificationEventObjectType defined values and compare the inner value with the given one:
+		for(EventNotificationEventObjectType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EventNotificationEventObjectType.values().length > 0 ? EventNotificationEventObjectType.values()[0]: null;
    }
 }

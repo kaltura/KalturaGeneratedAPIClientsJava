@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Represents the current time context on Kaltura servers  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TimeContextField.Tokenizer.class)
 public class TimeContextField extends IntegerField {
+	
+	public interface Tokenizer extends IntegerField.Tokenizer {
+		String offset();
+	}
 
 	/**  Time offset in seconds since current time  */
-    private Integer offset;
+	private Integer offset;
 
-    // offset:
-    public Integer getOffset(){
-        return this.offset;
-    }
-    public void setOffset(Integer offset){
-        this.offset = offset;
-    }
+	// offset:
+	public Integer getOffset(){
+		return this.offset;
+	}
+	public void setOffset(Integer offset){
+		this.offset = offset;
+	}
+
+	public void offset(String multirequestToken){
+		setToken("offset", multirequestToken);
+	}
 
 
-    public TimeContextField() {
-       super();
-    }
+	public TimeContextField() {
+		super();
+	}
 
-    public TimeContextField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TimeContextField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        offset = GsonParser.parseInt(jsonObject.get("offset"));
+		// set members values:
+		offset = GsonParser.parseInt(jsonObject.get("offset"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTimeContextField");
-        kparams.add("offset", this.offset);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTimeContextField");
+		kparams.add("offset", this.offset);
+		return kparams;
+	}
 
 }
 

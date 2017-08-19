@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BitRateMode implements EnumAsInt {
-    CBR(1),
-    VBR(2);
+	CBR(1),
+	VBR(2);
 
-    private int value;
+	private int value;
 
-    BitRateMode(int value) {
-        this.value = value;
-    }
+	BitRateMode(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static BitRateMode get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BitRateMode defined values and compare the inner value with the given one:
-        for(BitRateMode item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BitRateMode.values().length > 0 ? BitRateMode.values()[0]: null;
+	public static BitRateMode get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BitRateMode defined values and compare the inner value with the given one:
+		for(BitRateMode item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BitRateMode.values().length > 0 ? BitRateMode.values()[0]: null;
    }
 }

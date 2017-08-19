@@ -33,6 +33,7 @@ import com.kaltura.client.enums.BatchJobType;
 import com.kaltura.client.enums.SchedulerStatusType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,121 +43,165 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SchedulerStatus.Tokenizer.class)
 public class SchedulerStatus extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String schedulerConfiguredId();
+		String workerConfiguredId();
+		String workerType();
+		String type();
+		String value();
+		String schedulerId();
+		String workerId();
+	}
 
 	/**  The id of the Category  */
-    private Integer id;
+	private Integer id;
 	/**  The configured id of the scheduler  */
-    private Integer schedulerConfiguredId;
+	private Integer schedulerConfiguredId;
 	/**  The configured id of the job worker  */
-    private Integer workerConfiguredId;
+	private Integer workerConfiguredId;
 	/**  The type of the job worker.  */
-    private BatchJobType workerType;
+	private BatchJobType workerType;
 	/**  The status type  */
-    private SchedulerStatusType type;
+	private SchedulerStatusType type;
 	/**  The status value  */
-    private Integer value;
+	private Integer value;
 	/**  The id of the scheduler  */
-    private Integer schedulerId;
+	private Integer schedulerId;
 	/**  The id of the worker  */
-    private Integer workerId;
+	private Integer workerId;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // schedulerConfiguredId:
-    public Integer getSchedulerConfiguredId(){
-        return this.schedulerConfiguredId;
-    }
-    public void setSchedulerConfiguredId(Integer schedulerConfiguredId){
-        this.schedulerConfiguredId = schedulerConfiguredId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // workerConfiguredId:
-    public Integer getWorkerConfiguredId(){
-        return this.workerConfiguredId;
-    }
-    public void setWorkerConfiguredId(Integer workerConfiguredId){
-        this.workerConfiguredId = workerConfiguredId;
-    }
+	// schedulerConfiguredId:
+	public Integer getSchedulerConfiguredId(){
+		return this.schedulerConfiguredId;
+	}
+	public void setSchedulerConfiguredId(Integer schedulerConfiguredId){
+		this.schedulerConfiguredId = schedulerConfiguredId;
+	}
 
-    // workerType:
-    public BatchJobType getWorkerType(){
-        return this.workerType;
-    }
-    public void setWorkerType(BatchJobType workerType){
-        this.workerType = workerType;
-    }
+	public void schedulerConfiguredId(String multirequestToken){
+		setToken("schedulerConfiguredId", multirequestToken);
+	}
 
-    // type:
-    public SchedulerStatusType getType(){
-        return this.type;
-    }
-    public void setType(SchedulerStatusType type){
-        this.type = type;
-    }
+	// workerConfiguredId:
+	public Integer getWorkerConfiguredId(){
+		return this.workerConfiguredId;
+	}
+	public void setWorkerConfiguredId(Integer workerConfiguredId){
+		this.workerConfiguredId = workerConfiguredId;
+	}
 
-    // value:
-    public Integer getValue(){
-        return this.value;
-    }
-    public void setValue(Integer value){
-        this.value = value;
-    }
+	public void workerConfiguredId(String multirequestToken){
+		setToken("workerConfiguredId", multirequestToken);
+	}
 
-    // schedulerId:
-    public Integer getSchedulerId(){
-        return this.schedulerId;
-    }
-    public void setSchedulerId(Integer schedulerId){
-        this.schedulerId = schedulerId;
-    }
+	// workerType:
+	public BatchJobType getWorkerType(){
+		return this.workerType;
+	}
+	public void setWorkerType(BatchJobType workerType){
+		this.workerType = workerType;
+	}
 
-    // workerId:
-    public Integer getWorkerId(){
-        return this.workerId;
-    }
-    public void setWorkerId(Integer workerId){
-        this.workerId = workerId;
-    }
+	public void workerType(String multirequestToken){
+		setToken("workerType", multirequestToken);
+	}
+
+	// type:
+	public SchedulerStatusType getType(){
+		return this.type;
+	}
+	public void setType(SchedulerStatusType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// value:
+	public Integer getValue(){
+		return this.value;
+	}
+	public void setValue(Integer value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
+
+	// schedulerId:
+	public Integer getSchedulerId(){
+		return this.schedulerId;
+	}
+	public void setSchedulerId(Integer schedulerId){
+		this.schedulerId = schedulerId;
+	}
+
+	public void schedulerId(String multirequestToken){
+		setToken("schedulerId", multirequestToken);
+	}
+
+	// workerId:
+	public Integer getWorkerId(){
+		return this.workerId;
+	}
+	public void setWorkerId(Integer workerId){
+		this.workerId = workerId;
+	}
+
+	public void workerId(String multirequestToken){
+		setToken("workerId", multirequestToken);
+	}
 
 
-    public SchedulerStatus() {
-       super();
-    }
+	public SchedulerStatus() {
+		super();
+	}
 
-    public SchedulerStatus(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SchedulerStatus(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        schedulerConfiguredId = GsonParser.parseInt(jsonObject.get("schedulerConfiguredId"));
-        workerConfiguredId = GsonParser.parseInt(jsonObject.get("workerConfiguredId"));
-        workerType = BatchJobType.get(GsonParser.parseString(jsonObject.get("workerType")));
-        type = SchedulerStatusType.get(GsonParser.parseInt(jsonObject.get("type")));
-        value = GsonParser.parseInt(jsonObject.get("value"));
-        schedulerId = GsonParser.parseInt(jsonObject.get("schedulerId"));
-        workerId = GsonParser.parseInt(jsonObject.get("workerId"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		schedulerConfiguredId = GsonParser.parseInt(jsonObject.get("schedulerConfiguredId"));
+		workerConfiguredId = GsonParser.parseInt(jsonObject.get("workerConfiguredId"));
+		workerType = BatchJobType.get(GsonParser.parseString(jsonObject.get("workerType")));
+		type = SchedulerStatusType.get(GsonParser.parseInt(jsonObject.get("type")));
+		value = GsonParser.parseInt(jsonObject.get("value"));
+		schedulerId = GsonParser.parseInt(jsonObject.get("schedulerId"));
+		workerId = GsonParser.parseInt(jsonObject.get("workerId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSchedulerStatus");
-        kparams.add("schedulerConfiguredId", this.schedulerConfiguredId);
-        kparams.add("workerConfiguredId", this.workerConfiguredId);
-        kparams.add("workerType", this.workerType);
-        kparams.add("type", this.type);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSchedulerStatus");
+		kparams.add("schedulerConfiguredId", this.schedulerConfiguredId);
+		kparams.add("workerConfiguredId", this.workerConfiguredId);
+		kparams.add("workerType", this.workerType);
+		kparams.add("type", this.type);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

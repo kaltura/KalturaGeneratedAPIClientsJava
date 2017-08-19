@@ -34,6 +34,7 @@ import com.kaltura.client.enums.IntegrationTriggerType;
 import com.kaltura.client.types.IntegrationJobProviderData;
 import com.kaltura.client.types.IntegrationJobTriggerData;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,84 +44,105 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IntegrationJobData.Tokenizer.class)
 public class IntegrationJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String callbackNotificationUrl();
+		String providerType();
+		IntegrationJobProviderData.Tokenizer providerData();
+		String triggerType();
+		IntegrationJobTriggerData.Tokenizer triggerData();
+	}
 
-    private String callbackNotificationUrl;
-    private IntegrationProviderType providerType;
+	private String callbackNotificationUrl;
+	private IntegrationProviderType providerType;
 	/**  Additional data that relevant for the provider only  */
-    private IntegrationJobProviderData providerData;
-    private IntegrationTriggerType triggerType;
+	private IntegrationJobProviderData providerData;
+	private IntegrationTriggerType triggerType;
 	/**  Additional data that relevant for the trigger only  */
-    private IntegrationJobTriggerData triggerData;
+	private IntegrationJobTriggerData triggerData;
 
-    // callbackNotificationUrl:
-    public String getCallbackNotificationUrl(){
-        return this.callbackNotificationUrl;
-    }
-    public void setCallbackNotificationUrl(String callbackNotificationUrl){
-        this.callbackNotificationUrl = callbackNotificationUrl;
-    }
+	// callbackNotificationUrl:
+	public String getCallbackNotificationUrl(){
+		return this.callbackNotificationUrl;
+	}
+	public void setCallbackNotificationUrl(String callbackNotificationUrl){
+		this.callbackNotificationUrl = callbackNotificationUrl;
+	}
 
-    // providerType:
-    public IntegrationProviderType getProviderType(){
-        return this.providerType;
-    }
-    public void setProviderType(IntegrationProviderType providerType){
-        this.providerType = providerType;
-    }
+	public void callbackNotificationUrl(String multirequestToken){
+		setToken("callbackNotificationUrl", multirequestToken);
+	}
 
-    // providerData:
-    public IntegrationJobProviderData getProviderData(){
-        return this.providerData;
-    }
-    public void setProviderData(IntegrationJobProviderData providerData){
-        this.providerData = providerData;
-    }
+	// providerType:
+	public IntegrationProviderType getProviderType(){
+		return this.providerType;
+	}
+	public void setProviderType(IntegrationProviderType providerType){
+		this.providerType = providerType;
+	}
 
-    // triggerType:
-    public IntegrationTriggerType getTriggerType(){
-        return this.triggerType;
-    }
-    public void setTriggerType(IntegrationTriggerType triggerType){
-        this.triggerType = triggerType;
-    }
+	public void providerType(String multirequestToken){
+		setToken("providerType", multirequestToken);
+	}
 
-    // triggerData:
-    public IntegrationJobTriggerData getTriggerData(){
-        return this.triggerData;
-    }
-    public void setTriggerData(IntegrationJobTriggerData triggerData){
-        this.triggerData = triggerData;
-    }
+	// providerData:
+	public IntegrationJobProviderData getProviderData(){
+		return this.providerData;
+	}
+	public void setProviderData(IntegrationJobProviderData providerData){
+		this.providerData = providerData;
+	}
+
+	// triggerType:
+	public IntegrationTriggerType getTriggerType(){
+		return this.triggerType;
+	}
+	public void setTriggerType(IntegrationTriggerType triggerType){
+		this.triggerType = triggerType;
+	}
+
+	public void triggerType(String multirequestToken){
+		setToken("triggerType", multirequestToken);
+	}
+
+	// triggerData:
+	public IntegrationJobTriggerData getTriggerData(){
+		return this.triggerData;
+	}
+	public void setTriggerData(IntegrationJobTriggerData triggerData){
+		this.triggerData = triggerData;
+	}
 
 
-    public IntegrationJobData() {
-       super();
-    }
+	public IntegrationJobData() {
+		super();
+	}
 
-    public IntegrationJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IntegrationJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        callbackNotificationUrl = GsonParser.parseString(jsonObject.get("callbackNotificationUrl"));
-        providerType = IntegrationProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
-        providerData = GsonParser.parseObject(jsonObject.getAsJsonObject("providerData"), IntegrationJobProviderData.class);
-        triggerType = IntegrationTriggerType.get(GsonParser.parseString(jsonObject.get("triggerType")));
-        triggerData = GsonParser.parseObject(jsonObject.getAsJsonObject("triggerData"), IntegrationJobTriggerData.class);
+		// set members values:
+		callbackNotificationUrl = GsonParser.parseString(jsonObject.get("callbackNotificationUrl"));
+		providerType = IntegrationProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
+		providerData = GsonParser.parseObject(jsonObject.getAsJsonObject("providerData"), IntegrationJobProviderData.class);
+		triggerType = IntegrationTriggerType.get(GsonParser.parseString(jsonObject.get("triggerType")));
+		triggerData = GsonParser.parseObject(jsonObject.getAsJsonObject("triggerData"), IntegrationJobTriggerData.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIntegrationJobData");
-        kparams.add("providerType", this.providerType);
-        kparams.add("providerData", this.providerData);
-        kparams.add("triggerType", this.triggerType);
-        kparams.add("triggerData", this.triggerData);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIntegrationJobData");
+		kparams.add("providerType", this.providerType);
+		kparams.add("providerData", this.providerData);
+		kparams.add("triggerType", this.triggerType);
+		kparams.add("triggerData", this.triggerData);
+		return kparams;
+	}
 
 }
 

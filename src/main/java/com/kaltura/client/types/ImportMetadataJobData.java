@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ImportMetadataJobData.Tokenizer.class)
 public class ImportMetadataJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcFileUrl();
+		String destFileLocalPath();
+		String metadataId();
+	}
 
-    private String srcFileUrl;
-    private String destFileLocalPath;
-    private Integer metadataId;
+	private String srcFileUrl;
+	private String destFileLocalPath;
+	private Integer metadataId;
 
-    // srcFileUrl:
-    public String getSrcFileUrl(){
-        return this.srcFileUrl;
-    }
-    public void setSrcFileUrl(String srcFileUrl){
-        this.srcFileUrl = srcFileUrl;
-    }
+	// srcFileUrl:
+	public String getSrcFileUrl(){
+		return this.srcFileUrl;
+	}
+	public void setSrcFileUrl(String srcFileUrl){
+		this.srcFileUrl = srcFileUrl;
+	}
 
-    // destFileLocalPath:
-    public String getDestFileLocalPath(){
-        return this.destFileLocalPath;
-    }
-    public void setDestFileLocalPath(String destFileLocalPath){
-        this.destFileLocalPath = destFileLocalPath;
-    }
+	public void srcFileUrl(String multirequestToken){
+		setToken("srcFileUrl", multirequestToken);
+	}
 
-    // metadataId:
-    public Integer getMetadataId(){
-        return this.metadataId;
-    }
-    public void setMetadataId(Integer metadataId){
-        this.metadataId = metadataId;
-    }
+	// destFileLocalPath:
+	public String getDestFileLocalPath(){
+		return this.destFileLocalPath;
+	}
+	public void setDestFileLocalPath(String destFileLocalPath){
+		this.destFileLocalPath = destFileLocalPath;
+	}
+
+	public void destFileLocalPath(String multirequestToken){
+		setToken("destFileLocalPath", multirequestToken);
+	}
+
+	// metadataId:
+	public Integer getMetadataId(){
+		return this.metadataId;
+	}
+	public void setMetadataId(Integer metadataId){
+		this.metadataId = metadataId;
+	}
+
+	public void metadataId(String multirequestToken){
+		setToken("metadataId", multirequestToken);
+	}
 
 
-    public ImportMetadataJobData() {
-       super();
-    }
+	public ImportMetadataJobData() {
+		super();
+	}
 
-    public ImportMetadataJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ImportMetadataJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcFileUrl = GsonParser.parseString(jsonObject.get("srcFileUrl"));
-        destFileLocalPath = GsonParser.parseString(jsonObject.get("destFileLocalPath"));
-        metadataId = GsonParser.parseInt(jsonObject.get("metadataId"));
+		// set members values:
+		srcFileUrl = GsonParser.parseString(jsonObject.get("srcFileUrl"));
+		destFileLocalPath = GsonParser.parseString(jsonObject.get("destFileLocalPath"));
+		metadataId = GsonParser.parseInt(jsonObject.get("metadataId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaImportMetadataJobData");
-        kparams.add("srcFileUrl", this.srcFileUrl);
-        kparams.add("destFileLocalPath", this.destFileLocalPath);
-        kparams.add("metadataId", this.metadataId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaImportMetadataJobData");
+		kparams.add("srcFileUrl", this.srcFileUrl);
+		kparams.add("destFileLocalPath", this.destFileLocalPath);
+		kparams.add("metadataId", this.metadataId);
+		return kparams;
+	}
 
 }
 

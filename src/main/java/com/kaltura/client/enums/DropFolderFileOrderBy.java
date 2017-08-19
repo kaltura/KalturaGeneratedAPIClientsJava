@@ -34,51 +34,51 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    FILE_NAME_ASC("+fileName"),
-    FILE_SIZE_ASC("+fileSize"),
-    FILE_SIZE_LAST_SET_AT_ASC("+fileSizeLastSetAt"),
-    ID_ASC("+id"),
-    PARSED_FLAVOR_ASC("+parsedFlavor"),
-    PARSED_SLUG_ASC("+parsedSlug"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    FILE_NAME_DESC("-fileName"),
-    FILE_SIZE_DESC("-fileSize"),
-    FILE_SIZE_LAST_SET_AT_DESC("-fileSizeLastSetAt"),
-    ID_DESC("-id"),
-    PARSED_FLAVOR_DESC("-parsedFlavor"),
-    PARSED_SLUG_DESC("-parsedSlug"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	FILE_NAME_ASC("+fileName"),
+	FILE_SIZE_ASC("+fileSize"),
+	FILE_SIZE_LAST_SET_AT_ASC("+fileSizeLastSetAt"),
+	ID_ASC("+id"),
+	PARSED_FLAVOR_ASC("+parsedFlavor"),
+	PARSED_SLUG_ASC("+parsedSlug"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	FILE_NAME_DESC("-fileName"),
+	FILE_SIZE_DESC("-fileSize"),
+	FILE_SIZE_LAST_SET_AT_DESC("-fileSizeLastSetAt"),
+	ID_DESC("-id"),
+	PARSED_FLAVOR_DESC("-parsedFlavor"),
+	PARSED_SLUG_DESC("-parsedSlug"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    DropFolderFileOrderBy(String value) {
-        this.value = value;
-    }
+	DropFolderFileOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DropFolderFileOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderFileOrderBy defined values and compare the inner value with the given one:
-        for(DropFolderFileOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderFileOrderBy.values().length > 0 ? DropFolderFileOrderBy.values()[0]: null;
+	public static DropFolderFileOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderFileOrderBy defined values and compare the inner value with the given one:
+		for(DropFolderFileOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderFileOrderBy.values().length > 0 ? DropFolderFileOrderBy.values()[0]: null;
    }
 }

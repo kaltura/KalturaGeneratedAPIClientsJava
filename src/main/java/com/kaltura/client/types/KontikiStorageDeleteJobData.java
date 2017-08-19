@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,51 +40,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(KontikiStorageDeleteJobData.Tokenizer.class)
 public class KontikiStorageDeleteJobData extends StorageDeleteJobData {
+	
+	public interface Tokenizer extends StorageDeleteJobData.Tokenizer {
+		String contentMoid();
+		String serviceToken();
+	}
 
 	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
-    private String contentMoid;
-    private String serviceToken;
+	private String contentMoid;
+	private String serviceToken;
 
-    // contentMoid:
-    public String getContentMoid(){
-        return this.contentMoid;
-    }
-    public void setContentMoid(String contentMoid){
-        this.contentMoid = contentMoid;
-    }
+	// contentMoid:
+	public String getContentMoid(){
+		return this.contentMoid;
+	}
+	public void setContentMoid(String contentMoid){
+		this.contentMoid = contentMoid;
+	}
 
-    // serviceToken:
-    public String getServiceToken(){
-        return this.serviceToken;
-    }
-    public void setServiceToken(String serviceToken){
-        this.serviceToken = serviceToken;
-    }
+	public void contentMoid(String multirequestToken){
+		setToken("contentMoid", multirequestToken);
+	}
+
+	// serviceToken:
+	public String getServiceToken(){
+		return this.serviceToken;
+	}
+	public void setServiceToken(String serviceToken){
+		this.serviceToken = serviceToken;
+	}
+
+	public void serviceToken(String multirequestToken){
+		setToken("serviceToken", multirequestToken);
+	}
 
 
-    public KontikiStorageDeleteJobData() {
-       super();
-    }
+	public KontikiStorageDeleteJobData() {
+		super();
+	}
 
-    public KontikiStorageDeleteJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public KontikiStorageDeleteJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        contentMoid = GsonParser.parseString(jsonObject.get("contentMoid"));
-        serviceToken = GsonParser.parseString(jsonObject.get("serviceToken"));
+		// set members values:
+		contentMoid = GsonParser.parseString(jsonObject.get("contentMoid"));
+		serviceToken = GsonParser.parseString(jsonObject.get("serviceToken"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaKontikiStorageDeleteJobData");
-        kparams.add("contentMoid", this.contentMoid);
-        kparams.add("serviceToken", this.serviceToken);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaKontikiStorageDeleteJobData");
+		kparams.add("contentMoid", this.contentMoid);
+		kparams.add("serviceToken", this.serviceToken);
+		return kparams;
+	}
 
 }
 

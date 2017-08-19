@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,63 +42,78 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventNotificationParameter.Tokenizer.class)
 public class EventNotificationParameter extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String key();
+		String description();
+		StringValue.Tokenizer value();
+	}
 
 	/**  The key in the subject and body to be replaced with the dynamic value  */
-    private String key;
-    private String description;
+	private String key;
+	private String description;
 	/**  The dynamic value to be placed in the final output  */
-    private StringValue value;
+	private StringValue value;
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
 
-    // value:
-    public StringValue getValue(){
-        return this.value;
-    }
-    public void setValue(StringValue value){
-        this.value = value;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// value:
+	public StringValue getValue(){
+		return this.value;
+	}
+	public void setValue(StringValue value){
+		this.value = value;
+	}
 
 
-    public EventNotificationParameter() {
-       super();
-    }
+	public EventNotificationParameter() {
+		super();
+	}
 
-    public EventNotificationParameter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventNotificationParameter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        key = GsonParser.parseString(jsonObject.get("key"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        value = GsonParser.parseObject(jsonObject.getAsJsonObject("value"), StringValue.class);
+		// set members values:
+		key = GsonParser.parseString(jsonObject.get("key"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		value = GsonParser.parseObject(jsonObject.getAsJsonObject("value"), StringValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventNotificationParameter");
-        kparams.add("key", this.key);
-        kparams.add("description", this.description);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventNotificationParameter");
+		kparams.add("key", this.key);
+		kparams.add("description", this.description);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

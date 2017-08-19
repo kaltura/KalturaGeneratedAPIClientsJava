@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.UserEntryExtendedStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,116 +41,160 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ViewHistoryUserEntryAdvancedFilter.Tokenizer.class)
 public class ViewHistoryUserEntryAdvancedFilter extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String idEqual();
+		String idIn();
+		String userIdEqual();
+		String userIdIn();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String extendedStatusEqual();
+		String extendedStatusIn();
+	}
 
-    private String idEqual;
-    private String idIn;
-    private String userIdEqual;
-    private String userIdIn;
-    private String updatedAtGreaterThanOrEqual;
-    private String updatedAtLessThanOrEqual;
-    private UserEntryExtendedStatus extendedStatusEqual;
-    private String extendedStatusIn;
+	private String idEqual;
+	private String idIn;
+	private String userIdEqual;
+	private String userIdIn;
+	private String updatedAtGreaterThanOrEqual;
+	private String updatedAtLessThanOrEqual;
+	private UserEntryExtendedStatus extendedStatusEqual;
+	private String extendedStatusIn;
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // userIdIn:
-    public String getUserIdIn(){
-        return this.userIdIn;
-    }
-    public void setUserIdIn(String userIdIn){
-        this.userIdIn = userIdIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public String getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(String updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
 
-    // updatedAtLessThanOrEqual:
-    public String getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(String updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
 
-    // extendedStatusEqual:
-    public UserEntryExtendedStatus getExtendedStatusEqual(){
-        return this.extendedStatusEqual;
-    }
-    public void setExtendedStatusEqual(UserEntryExtendedStatus extendedStatusEqual){
-        this.extendedStatusEqual = extendedStatusEqual;
-    }
+	// userIdIn:
+	public String getUserIdIn(){
+		return this.userIdIn;
+	}
+	public void setUserIdIn(String userIdIn){
+		this.userIdIn = userIdIn;
+	}
 
-    // extendedStatusIn:
-    public String getExtendedStatusIn(){
-        return this.extendedStatusIn;
-    }
-    public void setExtendedStatusIn(String extendedStatusIn){
-        this.extendedStatusIn = extendedStatusIn;
-    }
+	public void userIdIn(String multirequestToken){
+		setToken("userIdIn", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public String getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(String updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public String getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(String updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// extendedStatusEqual:
+	public UserEntryExtendedStatus getExtendedStatusEqual(){
+		return this.extendedStatusEqual;
+	}
+	public void setExtendedStatusEqual(UserEntryExtendedStatus extendedStatusEqual){
+		this.extendedStatusEqual = extendedStatusEqual;
+	}
+
+	public void extendedStatusEqual(String multirequestToken){
+		setToken("extendedStatusEqual", multirequestToken);
+	}
+
+	// extendedStatusIn:
+	public String getExtendedStatusIn(){
+		return this.extendedStatusIn;
+	}
+	public void setExtendedStatusIn(String extendedStatusIn){
+		this.extendedStatusIn = extendedStatusIn;
+	}
+
+	public void extendedStatusIn(String multirequestToken){
+		setToken("extendedStatusIn", multirequestToken);
+	}
 
 
-    public ViewHistoryUserEntryAdvancedFilter() {
-       super();
-    }
+	public ViewHistoryUserEntryAdvancedFilter() {
+		super();
+	}
 
-    public ViewHistoryUserEntryAdvancedFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ViewHistoryUserEntryAdvancedFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseString(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseString(jsonObject.get("updatedAtLessThanOrEqual"));
-        extendedStatusEqual = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatusEqual")));
-        extendedStatusIn = GsonParser.parseString(jsonObject.get("extendedStatusIn"));
+		// set members values:
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseString(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseString(jsonObject.get("updatedAtLessThanOrEqual"));
+		extendedStatusEqual = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatusEqual")));
+		extendedStatusIn = GsonParser.parseString(jsonObject.get("extendedStatusIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaViewHistoryUserEntryAdvancedFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("userIdIn", this.userIdIn);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("extendedStatusEqual", this.extendedStatusEqual);
-        kparams.add("extendedStatusIn", this.extendedStatusIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaViewHistoryUserEntryAdvancedFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("userIdIn", this.userIdIn);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("extendedStatusEqual", this.extendedStatusEqual);
+		kparams.add("extendedStatusIn", this.extendedStatusIn);
+		return kparams;
+	}
 
 }
 

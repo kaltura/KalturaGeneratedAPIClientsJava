@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Widget;
 import com.kaltura.client.types.WidgetFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -44,54 +42,87 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  widget service for full widget management  */
 public class WidgetService {
+	
+	public static class AddWidgetBuilder extends RequestBuilder<Widget, Widget.Tokenizer, AddWidgetBuilder> {
+		
+		public AddWidgetBuilder(Widget widget) {
+			super(Widget.class, "widget", "add");
+			params.add("widget", widget);
+		}
+	}
 
 	/**  Add new widget, can be attached to entry or kshow   SourceWidget is ignored.  */
-    public static RequestBuilder<Widget> add(Widget widget)  {
-        Params kparams = new Params();
-        kparams.add("widget", widget);
-
-        return new RequestBuilder<Widget>(Widget.class, "widget", "add", kparams);
-    }
+    public static AddWidgetBuilder add(Widget widget)  {
+		return new AddWidgetBuilder(widget);
+	}
+	
+	public static class CloneWidgetBuilder extends RequestBuilder<Widget, Widget.Tokenizer, CloneWidgetBuilder> {
+		
+		public CloneWidgetBuilder(Widget widget) {
+			super(Widget.class, "widget", "clone");
+			params.add("widget", widget);
+		}
+	}
 
 	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
-    public static RequestBuilder<Widget> clone(Widget widget)  {
-        Params kparams = new Params();
-        kparams.add("widget", widget);
-
-        return new RequestBuilder<Widget>(Widget.class, "widget", "clone", kparams);
-    }
+    public static CloneWidgetBuilder clone(Widget widget)  {
+		return new CloneWidgetBuilder(widget);
+	}
+	
+	public static class GetWidgetBuilder extends RequestBuilder<Widget, Widget.Tokenizer, GetWidgetBuilder> {
+		
+		public GetWidgetBuilder(String id) {
+			super(Widget.class, "widget", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get widget by id  */
-    public static RequestBuilder<Widget> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetWidgetBuilder get(String id)  {
+		return new GetWidgetBuilder(id);
+	}
+	
+	public static class ListWidgetBuilder extends ListResponseRequestBuilder<Widget, Widget.Tokenizer, ListWidgetBuilder> {
+		
+		public ListWidgetBuilder(WidgetFilter filter, FilterPager pager) {
+			super(Widget.class, "widget", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<Widget>(Widget.class, "widget", "get", kparams);
-    }
+	public static ListWidgetBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<Widget>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<Widget>> list(WidgetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListWidgetBuilder list(WidgetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Retrieve a list of available widget depends on the filter given  */
-    public static RequestBuilder<ListResponse<Widget>> list(WidgetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<Widget>(Widget.class, "widget", "list", kparams);
-    }
+    public static ListWidgetBuilder list(WidgetFilter filter, FilterPager pager)  {
+		return new ListWidgetBuilder(filter, pager);
+	}
+	
+	public static class UpdateWidgetBuilder extends RequestBuilder<Widget, Widget.Tokenizer, UpdateWidgetBuilder> {
+		
+		public UpdateWidgetBuilder(String id, Widget widget) {
+			super(Widget.class, "widget", "update");
+			params.add("id", id);
+			params.add("widget", widget);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update exisiting widget  */
-    public static RequestBuilder<Widget> update(String id, Widget widget)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("widget", widget);
-
-        return new RequestBuilder<Widget>(Widget.class, "widget", "update", kparams);
-    }
+    public static UpdateWidgetBuilder update(String id, Widget widget)  {
+		return new UpdateWidgetBuilder(id, widget);
+	}
 }

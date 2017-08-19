@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,64 +45,75 @@ import java.util.List;
 /**  A resource that perform operation (transcoding, clipping, cropping) before the
   flavor is ready.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(OperationResource.Tokenizer.class)
 public class OperationResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		ContentResource.Tokenizer resource();
+		RequestBuilder.ListTokenizer<OperationAttributes.Tokenizer> operationAttributes();
+		String assetParamsId();
+	}
 
 	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
-    private ContentResource resource;
-    private List<OperationAttributes> operationAttributes;
+	private ContentResource resource;
+	private List<OperationAttributes> operationAttributes;
 	/**  ID of alternative asset params to be used instead of the system default flavor
 	  params  */
-    private Integer assetParamsId;
+	private Integer assetParamsId;
 
-    // resource:
-    public ContentResource getResource(){
-        return this.resource;
-    }
-    public void setResource(ContentResource resource){
-        this.resource = resource;
-    }
+	// resource:
+	public ContentResource getResource(){
+		return this.resource;
+	}
+	public void setResource(ContentResource resource){
+		this.resource = resource;
+	}
 
-    // operationAttributes:
-    public List<OperationAttributes> getOperationAttributes(){
-        return this.operationAttributes;
-    }
-    public void setOperationAttributes(List<OperationAttributes> operationAttributes){
-        this.operationAttributes = operationAttributes;
-    }
+	// operationAttributes:
+	public List<OperationAttributes> getOperationAttributes(){
+		return this.operationAttributes;
+	}
+	public void setOperationAttributes(List<OperationAttributes> operationAttributes){
+		this.operationAttributes = operationAttributes;
+	}
 
-    // assetParamsId:
-    public Integer getAssetParamsId(){
-        return this.assetParamsId;
-    }
-    public void setAssetParamsId(Integer assetParamsId){
-        this.assetParamsId = assetParamsId;
-    }
+	// assetParamsId:
+	public Integer getAssetParamsId(){
+		return this.assetParamsId;
+	}
+	public void setAssetParamsId(Integer assetParamsId){
+		this.assetParamsId = assetParamsId;
+	}
+
+	public void assetParamsId(String multirequestToken){
+		setToken("assetParamsId", multirequestToken);
+	}
 
 
-    public OperationResource() {
-       super();
-    }
+	public OperationResource() {
+		super();
+	}
 
-    public OperationResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public OperationResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), ContentResource.class);
-        operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), OperationAttributes.class);
-        assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
+		// set members values:
+		resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), ContentResource.class);
+		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), OperationAttributes.class);
+		assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaOperationResource");
-        kparams.add("resource", this.resource);
-        kparams.add("operationAttributes", this.operationAttributes);
-        kparams.add("assetParamsId", this.assetParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaOperationResource");
+		kparams.add("resource", this.resource);
+		kparams.add("operationAttributes", this.operationAttributes);
+		kparams.add("assetParamsId", this.assetParamsId);
+		return kparams;
+	}
 
 }
 

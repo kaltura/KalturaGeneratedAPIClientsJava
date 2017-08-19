@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.HashMap;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.Map;
 
 /**
@@ -41,73 +42,93 @@ import java.util.Map;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(QuestionCuePoint.Tokenizer.class)
 public class QuestionCuePoint extends CuePoint {
+	
+	public interface Tokenizer extends CuePoint.Tokenizer {
+		RequestBuilder.MapTokenizer<OptionalAnswer.Tokenizer> optionalAnswers();
+		String hint();
+		String question();
+		String explanation();
+	}
 
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
-    private Map<String, OptionalAnswer> optionalAnswers;
-    private String hint;
-    private String question;
-    private String explanation;
+	private Map<String, OptionalAnswer> optionalAnswers;
+	private String hint;
+	private String question;
+	private String explanation;
 
-    // optionalAnswers:
-    public Map<String, OptionalAnswer> getOptionalAnswers(){
-        return this.optionalAnswers;
-    }
-    public void setOptionalAnswers(Map<String, OptionalAnswer> optionalAnswers){
-        this.optionalAnswers = optionalAnswers;
-    }
+	// optionalAnswers:
+	public Map<String, OptionalAnswer> getOptionalAnswers(){
+		return this.optionalAnswers;
+	}
+	public void setOptionalAnswers(Map<String, OptionalAnswer> optionalAnswers){
+		this.optionalAnswers = optionalAnswers;
+	}
 
-    // hint:
-    public String getHint(){
-        return this.hint;
-    }
-    public void setHint(String hint){
-        this.hint = hint;
-    }
+	// hint:
+	public String getHint(){
+		return this.hint;
+	}
+	public void setHint(String hint){
+		this.hint = hint;
+	}
 
-    // question:
-    public String getQuestion(){
-        return this.question;
-    }
-    public void setQuestion(String question){
-        this.question = question;
-    }
+	public void hint(String multirequestToken){
+		setToken("hint", multirequestToken);
+	}
 
-    // explanation:
-    public String getExplanation(){
-        return this.explanation;
-    }
-    public void setExplanation(String explanation){
-        this.explanation = explanation;
-    }
+	// question:
+	public String getQuestion(){
+		return this.question;
+	}
+	public void setQuestion(String question){
+		this.question = question;
+	}
+
+	public void question(String multirequestToken){
+		setToken("question", multirequestToken);
+	}
+
+	// explanation:
+	public String getExplanation(){
+		return this.explanation;
+	}
+	public void setExplanation(String explanation){
+		this.explanation = explanation;
+	}
+
+	public void explanation(String multirequestToken){
+		setToken("explanation", multirequestToken);
+	}
 
 
-    public QuestionCuePoint() {
-       super();
-    }
+	public QuestionCuePoint() {
+		super();
+	}
 
-    public QuestionCuePoint(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public QuestionCuePoint(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        optionalAnswers = GsonParser.parseMap(jsonObject.getAsJsonObject("optionalAnswers"), OptionalAnswer.class);
-        hint = GsonParser.parseString(jsonObject.get("hint"));
-        question = GsonParser.parseString(jsonObject.get("question"));
-        explanation = GsonParser.parseString(jsonObject.get("explanation"));
+		// set members values:
+		optionalAnswers = GsonParser.parseMap(jsonObject.getAsJsonObject("optionalAnswers"), OptionalAnswer.class);
+		hint = GsonParser.parseString(jsonObject.get("hint"));
+		question = GsonParser.parseString(jsonObject.get("question"));
+		explanation = GsonParser.parseString(jsonObject.get("explanation"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuestionCuePoint");
-        kparams.add("optionalAnswers", this.optionalAnswers);
-        kparams.add("hint", this.hint);
-        kparams.add("question", this.question);
-        kparams.add("explanation", this.explanation);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuestionCuePoint");
+		kparams.add("optionalAnswers", this.optionalAnswers);
+		kparams.add("hint", this.hint);
+		kparams.add("question", this.question);
+		kparams.add("explanation", this.explanation);
+		return kparams;
+	}
 
 }
 

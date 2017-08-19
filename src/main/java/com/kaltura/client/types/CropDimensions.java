@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,76 +41,100 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CropDimensions.Tokenizer.class)
 public class CropDimensions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String left();
+		String top();
+		String width();
+		String height();
+	}
 
 	/**  Crop left point  */
-    private Integer left;
+	private Integer left;
 	/**  Crop top point  */
-    private Integer top;
+	private Integer top;
 	/**  Crop width  */
-    private Integer width;
+	private Integer width;
 	/**  Crop height  */
-    private Integer height;
+	private Integer height;
 
-    // left:
-    public Integer getLeft(){
-        return this.left;
-    }
-    public void setLeft(Integer left){
-        this.left = left;
-    }
+	// left:
+	public Integer getLeft(){
+		return this.left;
+	}
+	public void setLeft(Integer left){
+		this.left = left;
+	}
 
-    // top:
-    public Integer getTop(){
-        return this.top;
-    }
-    public void setTop(Integer top){
-        this.top = top;
-    }
+	public void left(String multirequestToken){
+		setToken("left", multirequestToken);
+	}
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	// top:
+	public Integer getTop(){
+		return this.top;
+	}
+	public void setTop(Integer top){
+		this.top = top;
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	public void top(String multirequestToken){
+		setToken("top", multirequestToken);
+	}
+
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
+
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
+
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
+
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
 
 
-    public CropDimensions() {
-       super();
-    }
+	public CropDimensions() {
+		super();
+	}
 
-    public CropDimensions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CropDimensions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        left = GsonParser.parseInt(jsonObject.get("left"));
-        top = GsonParser.parseInt(jsonObject.get("top"));
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
+		// set members values:
+		left = GsonParser.parseInt(jsonObject.get("left"));
+		top = GsonParser.parseInt(jsonObject.get("top"));
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCropDimensions");
-        kparams.add("left", this.left);
-        kparams.add("top", this.top);
-        kparams.add("width", this.width);
-        kparams.add("height", this.height);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCropDimensions");
+		kparams.add("left", this.left);
+		kparams.add("top", this.top);
+		kparams.add("width", this.width);
+		kparams.add("height", this.height);
+		return kparams;
+	}
 
 }
 

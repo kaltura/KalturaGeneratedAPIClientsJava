@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,130 +40,179 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Annotation.Tokenizer.class)
 public class Annotation extends CuePoint {
+	
+	public interface Tokenizer extends CuePoint.Tokenizer {
+		String parentId();
+		String text();
+		String endTime();
+		String duration();
+		String depth();
+		String childrenCount();
+		String directChildrenCount();
+		String isPublic();
+		String searchableOnEntry();
+	}
 
-    private String parentId;
-    private String text;
+	private String parentId;
+	private String text;
 	/**  End time in milliseconds  */
-    private Integer endTime;
+	private Integer endTime;
 	/**  Duration in milliseconds  */
-    private Integer duration;
+	private Integer duration;
 	/**  Depth in the tree  */
-    private Integer depth;
+	private Integer depth;
 	/**  Number of all descendants  */
-    private Integer childrenCount;
+	private Integer childrenCount;
 	/**  Number of children, first generation only.  */
-    private Integer directChildrenCount;
+	private Integer directChildrenCount;
 	/**  Is the annotation public.  */
-    private Boolean isPublic;
+	private Boolean isPublic;
 	/**  Should the cue point get indexed on the entry.  */
-    private Boolean searchableOnEntry;
+	private Boolean searchableOnEntry;
 
-    // parentId:
-    public String getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(String parentId){
-        this.parentId = parentId;
-    }
+	// parentId:
+	public String getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(String parentId){
+		this.parentId = parentId;
+	}
 
-    // text:
-    public String getText(){
-        return this.text;
-    }
-    public void setText(String text){
-        this.text = text;
-    }
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
 
-    // endTime:
-    public Integer getEndTime(){
-        return this.endTime;
-    }
-    public void setEndTime(Integer endTime){
-        this.endTime = endTime;
-    }
+	// text:
+	public String getText(){
+		return this.text;
+	}
+	public void setText(String text){
+		this.text = text;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void text(String multirequestToken){
+		setToken("text", multirequestToken);
+	}
 
-    // depth:
-    public Integer getDepth(){
-        return this.depth;
-    }
-    public void setDepth(Integer depth){
-        this.depth = depth;
-    }
+	// endTime:
+	public Integer getEndTime(){
+		return this.endTime;
+	}
+	public void setEndTime(Integer endTime){
+		this.endTime = endTime;
+	}
 
-    // childrenCount:
-    public Integer getChildrenCount(){
-        return this.childrenCount;
-    }
-    public void setChildrenCount(Integer childrenCount){
-        this.childrenCount = childrenCount;
-    }
+	public void endTime(String multirequestToken){
+		setToken("endTime", multirequestToken);
+	}
 
-    // directChildrenCount:
-    public Integer getDirectChildrenCount(){
-        return this.directChildrenCount;
-    }
-    public void setDirectChildrenCount(Integer directChildrenCount){
-        this.directChildrenCount = directChildrenCount;
-    }
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
 
-    // isPublic:
-    public Boolean getIsPublic(){
-        return this.isPublic;
-    }
-    public void setIsPublic(Boolean isPublic){
-        this.isPublic = isPublic;
-    }
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
 
-    // searchableOnEntry:
-    public Boolean getSearchableOnEntry(){
-        return this.searchableOnEntry;
-    }
-    public void setSearchableOnEntry(Boolean searchableOnEntry){
-        this.searchableOnEntry = searchableOnEntry;
-    }
+	// depth:
+	public Integer getDepth(){
+		return this.depth;
+	}
+	public void setDepth(Integer depth){
+		this.depth = depth;
+	}
+
+	public void depth(String multirequestToken){
+		setToken("depth", multirequestToken);
+	}
+
+	// childrenCount:
+	public Integer getChildrenCount(){
+		return this.childrenCount;
+	}
+	public void setChildrenCount(Integer childrenCount){
+		this.childrenCount = childrenCount;
+	}
+
+	public void childrenCount(String multirequestToken){
+		setToken("childrenCount", multirequestToken);
+	}
+
+	// directChildrenCount:
+	public Integer getDirectChildrenCount(){
+		return this.directChildrenCount;
+	}
+	public void setDirectChildrenCount(Integer directChildrenCount){
+		this.directChildrenCount = directChildrenCount;
+	}
+
+	public void directChildrenCount(String multirequestToken){
+		setToken("directChildrenCount", multirequestToken);
+	}
+
+	// isPublic:
+	public Boolean getIsPublic(){
+		return this.isPublic;
+	}
+	public void setIsPublic(Boolean isPublic){
+		this.isPublic = isPublic;
+	}
+
+	public void isPublic(String multirequestToken){
+		setToken("isPublic", multirequestToken);
+	}
+
+	// searchableOnEntry:
+	public Boolean getSearchableOnEntry(){
+		return this.searchableOnEntry;
+	}
+	public void setSearchableOnEntry(Boolean searchableOnEntry){
+		this.searchableOnEntry = searchableOnEntry;
+	}
+
+	public void searchableOnEntry(String multirequestToken){
+		setToken("searchableOnEntry", multirequestToken);
+	}
 
 
-    public Annotation() {
-       super();
-    }
+	public Annotation() {
+		super();
+	}
 
-    public Annotation(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Annotation(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentId = GsonParser.parseString(jsonObject.get("parentId"));
-        text = GsonParser.parseString(jsonObject.get("text"));
-        endTime = GsonParser.parseInt(jsonObject.get("endTime"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
-        depth = GsonParser.parseInt(jsonObject.get("depth"));
-        childrenCount = GsonParser.parseInt(jsonObject.get("childrenCount"));
-        directChildrenCount = GsonParser.parseInt(jsonObject.get("directChildrenCount"));
-        isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
-        searchableOnEntry = GsonParser.parseBoolean(jsonObject.get("searchableOnEntry"));
+		// set members values:
+		parentId = GsonParser.parseString(jsonObject.get("parentId"));
+		text = GsonParser.parseString(jsonObject.get("text"));
+		endTime = GsonParser.parseInt(jsonObject.get("endTime"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		depth = GsonParser.parseInt(jsonObject.get("depth"));
+		childrenCount = GsonParser.parseInt(jsonObject.get("childrenCount"));
+		directChildrenCount = GsonParser.parseInt(jsonObject.get("directChildrenCount"));
+		isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
+		searchableOnEntry = GsonParser.parseBoolean(jsonObject.get("searchableOnEntry"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAnnotation");
-        kparams.add("parentId", this.parentId);
-        kparams.add("text", this.text);
-        kparams.add("endTime", this.endTime);
-        kparams.add("isPublic", this.isPublic);
-        kparams.add("searchableOnEntry", this.searchableOnEntry);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAnnotation");
+		kparams.add("parentId", this.parentId);
+		kparams.add("text", this.text);
+		kparams.add("endTime", this.endTime);
+		kparams.add("isPublic", this.isPublic);
+		kparams.add("searchableOnEntry", this.searchableOnEntry);
+		return kparams;
+	}
 
 }
 

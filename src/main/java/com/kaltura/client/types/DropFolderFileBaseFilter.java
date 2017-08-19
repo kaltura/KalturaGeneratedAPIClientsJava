@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.DropFolderFileErrorCode;
 import com.kaltura.client.enums.DropFolderFileStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,325 +42,464 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolderFileBaseFilter.Tokenizer.class)
 public abstract class DropFolderFileBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String dropFolderIdEqual();
+		String dropFolderIdIn();
+		String fileNameEqual();
+		String fileNameIn();
+		String fileNameLike();
+		String statusEqual();
+		String statusIn();
+		String statusNotIn();
+		String parsedSlugEqual();
+		String parsedSlugIn();
+		String parsedSlugLike();
+		String parsedFlavorEqual();
+		String parsedFlavorIn();
+		String parsedFlavorLike();
+		String leadDropFolderFileIdEqual();
+		String deletedDropFolderFileIdEqual();
+		String entryIdEqual();
+		String errorCodeEqual();
+		String errorCodeIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private Integer dropFolderIdEqual;
-    private String dropFolderIdIn;
-    private String fileNameEqual;
-    private String fileNameIn;
-    private String fileNameLike;
-    private DropFolderFileStatus statusEqual;
-    private String statusIn;
-    private String statusNotIn;
-    private String parsedSlugEqual;
-    private String parsedSlugIn;
-    private String parsedSlugLike;
-    private String parsedFlavorEqual;
-    private String parsedFlavorIn;
-    private String parsedFlavorLike;
-    private Integer leadDropFolderFileIdEqual;
-    private Integer deletedDropFolderFileIdEqual;
-    private String entryIdEqual;
-    private DropFolderFileErrorCode errorCodeEqual;
-    private String errorCodeIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
+	private Integer idEqual;
+	private String idIn;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private Integer dropFolderIdEqual;
+	private String dropFolderIdIn;
+	private String fileNameEqual;
+	private String fileNameIn;
+	private String fileNameLike;
+	private DropFolderFileStatus statusEqual;
+	private String statusIn;
+	private String statusNotIn;
+	private String parsedSlugEqual;
+	private String parsedSlugIn;
+	private String parsedSlugLike;
+	private String parsedFlavorEqual;
+	private String parsedFlavorIn;
+	private String parsedFlavorLike;
+	private Integer leadDropFolderFileIdEqual;
+	private Integer deletedDropFolderFileIdEqual;
+	private String entryIdEqual;
+	private DropFolderFileErrorCode errorCodeEqual;
+	private String errorCodeIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // dropFolderIdEqual:
-    public Integer getDropFolderIdEqual(){
-        return this.dropFolderIdEqual;
-    }
-    public void setDropFolderIdEqual(Integer dropFolderIdEqual){
-        this.dropFolderIdEqual = dropFolderIdEqual;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // dropFolderIdIn:
-    public String getDropFolderIdIn(){
-        return this.dropFolderIdIn;
-    }
-    public void setDropFolderIdIn(String dropFolderIdIn){
-        this.dropFolderIdIn = dropFolderIdIn;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
 
-    // fileNameEqual:
-    public String getFileNameEqual(){
-        return this.fileNameEqual;
-    }
-    public void setFileNameEqual(String fileNameEqual){
-        this.fileNameEqual = fileNameEqual;
-    }
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
 
-    // fileNameIn:
-    public String getFileNameIn(){
-        return this.fileNameIn;
-    }
-    public void setFileNameIn(String fileNameIn){
-        this.fileNameIn = fileNameIn;
-    }
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
 
-    // fileNameLike:
-    public String getFileNameLike(){
-        return this.fileNameLike;
-    }
-    public void setFileNameLike(String fileNameLike){
-        this.fileNameLike = fileNameLike;
-    }
+	// dropFolderIdEqual:
+	public Integer getDropFolderIdEqual(){
+		return this.dropFolderIdEqual;
+	}
+	public void setDropFolderIdEqual(Integer dropFolderIdEqual){
+		this.dropFolderIdEqual = dropFolderIdEqual;
+	}
 
-    // statusEqual:
-    public DropFolderFileStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(DropFolderFileStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void dropFolderIdEqual(String multirequestToken){
+		setToken("dropFolderIdEqual", multirequestToken);
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	// dropFolderIdIn:
+	public String getDropFolderIdIn(){
+		return this.dropFolderIdIn;
+	}
+	public void setDropFolderIdIn(String dropFolderIdIn){
+		this.dropFolderIdIn = dropFolderIdIn;
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	public void dropFolderIdIn(String multirequestToken){
+		setToken("dropFolderIdIn", multirequestToken);
+	}
 
-    // parsedSlugEqual:
-    public String getParsedSlugEqual(){
-        return this.parsedSlugEqual;
-    }
-    public void setParsedSlugEqual(String parsedSlugEqual){
-        this.parsedSlugEqual = parsedSlugEqual;
-    }
+	// fileNameEqual:
+	public String getFileNameEqual(){
+		return this.fileNameEqual;
+	}
+	public void setFileNameEqual(String fileNameEqual){
+		this.fileNameEqual = fileNameEqual;
+	}
 
-    // parsedSlugIn:
-    public String getParsedSlugIn(){
-        return this.parsedSlugIn;
-    }
-    public void setParsedSlugIn(String parsedSlugIn){
-        this.parsedSlugIn = parsedSlugIn;
-    }
+	public void fileNameEqual(String multirequestToken){
+		setToken("fileNameEqual", multirequestToken);
+	}
 
-    // parsedSlugLike:
-    public String getParsedSlugLike(){
-        return this.parsedSlugLike;
-    }
-    public void setParsedSlugLike(String parsedSlugLike){
-        this.parsedSlugLike = parsedSlugLike;
-    }
+	// fileNameIn:
+	public String getFileNameIn(){
+		return this.fileNameIn;
+	}
+	public void setFileNameIn(String fileNameIn){
+		this.fileNameIn = fileNameIn;
+	}
 
-    // parsedFlavorEqual:
-    public String getParsedFlavorEqual(){
-        return this.parsedFlavorEqual;
-    }
-    public void setParsedFlavorEqual(String parsedFlavorEqual){
-        this.parsedFlavorEqual = parsedFlavorEqual;
-    }
+	public void fileNameIn(String multirequestToken){
+		setToken("fileNameIn", multirequestToken);
+	}
 
-    // parsedFlavorIn:
-    public String getParsedFlavorIn(){
-        return this.parsedFlavorIn;
-    }
-    public void setParsedFlavorIn(String parsedFlavorIn){
-        this.parsedFlavorIn = parsedFlavorIn;
-    }
+	// fileNameLike:
+	public String getFileNameLike(){
+		return this.fileNameLike;
+	}
+	public void setFileNameLike(String fileNameLike){
+		this.fileNameLike = fileNameLike;
+	}
 
-    // parsedFlavorLike:
-    public String getParsedFlavorLike(){
-        return this.parsedFlavorLike;
-    }
-    public void setParsedFlavorLike(String parsedFlavorLike){
-        this.parsedFlavorLike = parsedFlavorLike;
-    }
+	public void fileNameLike(String multirequestToken){
+		setToken("fileNameLike", multirequestToken);
+	}
 
-    // leadDropFolderFileIdEqual:
-    public Integer getLeadDropFolderFileIdEqual(){
-        return this.leadDropFolderFileIdEqual;
-    }
-    public void setLeadDropFolderFileIdEqual(Integer leadDropFolderFileIdEqual){
-        this.leadDropFolderFileIdEqual = leadDropFolderFileIdEqual;
-    }
+	// statusEqual:
+	public DropFolderFileStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(DropFolderFileStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
 
-    // deletedDropFolderFileIdEqual:
-    public Integer getDeletedDropFolderFileIdEqual(){
-        return this.deletedDropFolderFileIdEqual;
-    }
-    public void setDeletedDropFolderFileIdEqual(Integer deletedDropFolderFileIdEqual){
-        this.deletedDropFolderFileIdEqual = deletedDropFolderFileIdEqual;
-    }
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
 
-    // entryIdEqual:
-    public String getEntryIdEqual(){
-        return this.entryIdEqual;
-    }
-    public void setEntryIdEqual(String entryIdEqual){
-        this.entryIdEqual = entryIdEqual;
-    }
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
 
-    // errorCodeEqual:
-    public DropFolderFileErrorCode getErrorCodeEqual(){
-        return this.errorCodeEqual;
-    }
-    public void setErrorCodeEqual(DropFolderFileErrorCode errorCodeEqual){
-        this.errorCodeEqual = errorCodeEqual;
-    }
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
 
-    // errorCodeIn:
-    public String getErrorCodeIn(){
-        return this.errorCodeIn;
-    }
-    public void setErrorCodeIn(String errorCodeIn){
-        this.errorCodeIn = errorCodeIn;
-    }
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// parsedSlugEqual:
+	public String getParsedSlugEqual(){
+		return this.parsedSlugEqual;
+	}
+	public void setParsedSlugEqual(String parsedSlugEqual){
+		this.parsedSlugEqual = parsedSlugEqual;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void parsedSlugEqual(String multirequestToken){
+		setToken("parsedSlugEqual", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// parsedSlugIn:
+	public String getParsedSlugIn(){
+		return this.parsedSlugIn;
+	}
+	public void setParsedSlugIn(String parsedSlugIn){
+		this.parsedSlugIn = parsedSlugIn;
+	}
+
+	public void parsedSlugIn(String multirequestToken){
+		setToken("parsedSlugIn", multirequestToken);
+	}
+
+	// parsedSlugLike:
+	public String getParsedSlugLike(){
+		return this.parsedSlugLike;
+	}
+	public void setParsedSlugLike(String parsedSlugLike){
+		this.parsedSlugLike = parsedSlugLike;
+	}
+
+	public void parsedSlugLike(String multirequestToken){
+		setToken("parsedSlugLike", multirequestToken);
+	}
+
+	// parsedFlavorEqual:
+	public String getParsedFlavorEqual(){
+		return this.parsedFlavorEqual;
+	}
+	public void setParsedFlavorEqual(String parsedFlavorEqual){
+		this.parsedFlavorEqual = parsedFlavorEqual;
+	}
+
+	public void parsedFlavorEqual(String multirequestToken){
+		setToken("parsedFlavorEqual", multirequestToken);
+	}
+
+	// parsedFlavorIn:
+	public String getParsedFlavorIn(){
+		return this.parsedFlavorIn;
+	}
+	public void setParsedFlavorIn(String parsedFlavorIn){
+		this.parsedFlavorIn = parsedFlavorIn;
+	}
+
+	public void parsedFlavorIn(String multirequestToken){
+		setToken("parsedFlavorIn", multirequestToken);
+	}
+
+	// parsedFlavorLike:
+	public String getParsedFlavorLike(){
+		return this.parsedFlavorLike;
+	}
+	public void setParsedFlavorLike(String parsedFlavorLike){
+		this.parsedFlavorLike = parsedFlavorLike;
+	}
+
+	public void parsedFlavorLike(String multirequestToken){
+		setToken("parsedFlavorLike", multirequestToken);
+	}
+
+	// leadDropFolderFileIdEqual:
+	public Integer getLeadDropFolderFileIdEqual(){
+		return this.leadDropFolderFileIdEqual;
+	}
+	public void setLeadDropFolderFileIdEqual(Integer leadDropFolderFileIdEqual){
+		this.leadDropFolderFileIdEqual = leadDropFolderFileIdEqual;
+	}
+
+	public void leadDropFolderFileIdEqual(String multirequestToken){
+		setToken("leadDropFolderFileIdEqual", multirequestToken);
+	}
+
+	// deletedDropFolderFileIdEqual:
+	public Integer getDeletedDropFolderFileIdEqual(){
+		return this.deletedDropFolderFileIdEqual;
+	}
+	public void setDeletedDropFolderFileIdEqual(Integer deletedDropFolderFileIdEqual){
+		this.deletedDropFolderFileIdEqual = deletedDropFolderFileIdEqual;
+	}
+
+	public void deletedDropFolderFileIdEqual(String multirequestToken){
+		setToken("deletedDropFolderFileIdEqual", multirequestToken);
+	}
+
+	// entryIdEqual:
+	public String getEntryIdEqual(){
+		return this.entryIdEqual;
+	}
+	public void setEntryIdEqual(String entryIdEqual){
+		this.entryIdEqual = entryIdEqual;
+	}
+
+	public void entryIdEqual(String multirequestToken){
+		setToken("entryIdEqual", multirequestToken);
+	}
+
+	// errorCodeEqual:
+	public DropFolderFileErrorCode getErrorCodeEqual(){
+		return this.errorCodeEqual;
+	}
+	public void setErrorCodeEqual(DropFolderFileErrorCode errorCodeEqual){
+		this.errorCodeEqual = errorCodeEqual;
+	}
+
+	public void errorCodeEqual(String multirequestToken){
+		setToken("errorCodeEqual", multirequestToken);
+	}
+
+	// errorCodeIn:
+	public String getErrorCodeIn(){
+		return this.errorCodeIn;
+	}
+	public void setErrorCodeIn(String errorCodeIn){
+		this.errorCodeIn = errorCodeIn;
+	}
+
+	public void errorCodeIn(String multirequestToken){
+		setToken("errorCodeIn", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public DropFolderFileBaseFilter() {
-       super();
-    }
+	public DropFolderFileBaseFilter() {
+		super();
+	}
 
-    public DropFolderFileBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolderFileBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        dropFolderIdEqual = GsonParser.parseInt(jsonObject.get("dropFolderIdEqual"));
-        dropFolderIdIn = GsonParser.parseString(jsonObject.get("dropFolderIdIn"));
-        fileNameEqual = GsonParser.parseString(jsonObject.get("fileNameEqual"));
-        fileNameIn = GsonParser.parseString(jsonObject.get("fileNameIn"));
-        fileNameLike = GsonParser.parseString(jsonObject.get("fileNameLike"));
-        statusEqual = DropFolderFileStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
-        parsedSlugEqual = GsonParser.parseString(jsonObject.get("parsedSlugEqual"));
-        parsedSlugIn = GsonParser.parseString(jsonObject.get("parsedSlugIn"));
-        parsedSlugLike = GsonParser.parseString(jsonObject.get("parsedSlugLike"));
-        parsedFlavorEqual = GsonParser.parseString(jsonObject.get("parsedFlavorEqual"));
-        parsedFlavorIn = GsonParser.parseString(jsonObject.get("parsedFlavorIn"));
-        parsedFlavorLike = GsonParser.parseString(jsonObject.get("parsedFlavorLike"));
-        leadDropFolderFileIdEqual = GsonParser.parseInt(jsonObject.get("leadDropFolderFileIdEqual"));
-        deletedDropFolderFileIdEqual = GsonParser.parseInt(jsonObject.get("deletedDropFolderFileIdEqual"));
-        entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
-        errorCodeEqual = DropFolderFileErrorCode.get(GsonParser.parseString(jsonObject.get("errorCodeEqual")));
-        errorCodeIn = GsonParser.parseString(jsonObject.get("errorCodeIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		dropFolderIdEqual = GsonParser.parseInt(jsonObject.get("dropFolderIdEqual"));
+		dropFolderIdIn = GsonParser.parseString(jsonObject.get("dropFolderIdIn"));
+		fileNameEqual = GsonParser.parseString(jsonObject.get("fileNameEqual"));
+		fileNameIn = GsonParser.parseString(jsonObject.get("fileNameIn"));
+		fileNameLike = GsonParser.parseString(jsonObject.get("fileNameLike"));
+		statusEqual = DropFolderFileStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		parsedSlugEqual = GsonParser.parseString(jsonObject.get("parsedSlugEqual"));
+		parsedSlugIn = GsonParser.parseString(jsonObject.get("parsedSlugIn"));
+		parsedSlugLike = GsonParser.parseString(jsonObject.get("parsedSlugLike"));
+		parsedFlavorEqual = GsonParser.parseString(jsonObject.get("parsedFlavorEqual"));
+		parsedFlavorIn = GsonParser.parseString(jsonObject.get("parsedFlavorIn"));
+		parsedFlavorLike = GsonParser.parseString(jsonObject.get("parsedFlavorLike"));
+		leadDropFolderFileIdEqual = GsonParser.parseInt(jsonObject.get("leadDropFolderFileIdEqual"));
+		deletedDropFolderFileIdEqual = GsonParser.parseInt(jsonObject.get("deletedDropFolderFileIdEqual"));
+		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
+		errorCodeEqual = DropFolderFileErrorCode.get(GsonParser.parseString(jsonObject.get("errorCodeEqual")));
+		errorCodeIn = GsonParser.parseString(jsonObject.get("errorCodeIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolderFileBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("dropFolderIdEqual", this.dropFolderIdEqual);
-        kparams.add("dropFolderIdIn", this.dropFolderIdIn);
-        kparams.add("fileNameEqual", this.fileNameEqual);
-        kparams.add("fileNameIn", this.fileNameIn);
-        kparams.add("fileNameLike", this.fileNameLike);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        kparams.add("parsedSlugEqual", this.parsedSlugEqual);
-        kparams.add("parsedSlugIn", this.parsedSlugIn);
-        kparams.add("parsedSlugLike", this.parsedSlugLike);
-        kparams.add("parsedFlavorEqual", this.parsedFlavorEqual);
-        kparams.add("parsedFlavorIn", this.parsedFlavorIn);
-        kparams.add("parsedFlavorLike", this.parsedFlavorLike);
-        kparams.add("leadDropFolderFileIdEqual", this.leadDropFolderFileIdEqual);
-        kparams.add("deletedDropFolderFileIdEqual", this.deletedDropFolderFileIdEqual);
-        kparams.add("entryIdEqual", this.entryIdEqual);
-        kparams.add("errorCodeEqual", this.errorCodeEqual);
-        kparams.add("errorCodeIn", this.errorCodeIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolderFileBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("dropFolderIdEqual", this.dropFolderIdEqual);
+		kparams.add("dropFolderIdIn", this.dropFolderIdIn);
+		kparams.add("fileNameEqual", this.fileNameEqual);
+		kparams.add("fileNameIn", this.fileNameIn);
+		kparams.add("fileNameLike", this.fileNameLike);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		kparams.add("parsedSlugEqual", this.parsedSlugEqual);
+		kparams.add("parsedSlugIn", this.parsedSlugIn);
+		kparams.add("parsedSlugLike", this.parsedSlugLike);
+		kparams.add("parsedFlavorEqual", this.parsedFlavorEqual);
+		kparams.add("parsedFlavorIn", this.parsedFlavorIn);
+		kparams.add("parsedFlavorLike", this.parsedFlavorLike);
+		kparams.add("leadDropFolderFileIdEqual", this.leadDropFolderFileIdEqual);
+		kparams.add("deletedDropFolderFileIdEqual", this.deletedDropFolderFileIdEqual);
+		kparams.add("entryIdEqual", this.entryIdEqual);
+		kparams.add("errorCodeEqual", this.errorCodeEqual);
+		kparams.add("errorCodeIn", this.errorCodeIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

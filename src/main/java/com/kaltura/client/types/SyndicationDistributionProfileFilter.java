@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SyndicationDistributionProfileFilter.Tokenizer.class)
 public class SyndicationDistributionProfileFilter extends SyndicationDistributionProfileBaseFilter {
+	
+	public interface Tokenizer extends SyndicationDistributionProfileBaseFilter.Tokenizer {
+	}
 
 
 
-    public SyndicationDistributionProfileFilter() {
-       super();
-    }
+	public SyndicationDistributionProfileFilter() {
+		super();
+	}
 
-    public SyndicationDistributionProfileFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public SyndicationDistributionProfileFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSyndicationDistributionProfileFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSyndicationDistributionProfileFilter");
+		return kparams;
+	}
 
 }
 

@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum TaggedObjectType implements EnumAsString {
-    ENTRY("1"),
-    CATEGORY("2");
+	ENTRY("1"),
+	CATEGORY("2");
 
-    private String value;
+	private String value;
 
-    TaggedObjectType(String value) {
-        this.value = value;
-    }
+	TaggedObjectType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static TaggedObjectType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over TaggedObjectType defined values and compare the inner value with the given one:
-        for(TaggedObjectType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return TaggedObjectType.values().length > 0 ? TaggedObjectType.values()[0]: null;
+	public static TaggedObjectType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over TaggedObjectType defined values and compare the inner value with the given one:
+		for(TaggedObjectType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return TaggedObjectType.values().length > 0 ? TaggedObjectType.values()[0]: null;
    }
 }

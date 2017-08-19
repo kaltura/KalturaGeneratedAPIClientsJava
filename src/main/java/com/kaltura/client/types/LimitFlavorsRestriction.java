@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LimitFlavorsRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LimitFlavorsRestriction.Tokenizer.class)
 public class LimitFlavorsRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String limitFlavorsRestrictionType();
+		String flavorParamsIds();
+	}
 
 	/**  Limit flavors restriction type (Allow or deny)  */
-    private LimitFlavorsRestrictionType limitFlavorsRestrictionType;
+	private LimitFlavorsRestrictionType limitFlavorsRestrictionType;
 	/**  Comma separated list of flavor params ids to allow to deny  */
-    private String flavorParamsIds;
+	private String flavorParamsIds;
 
-    // limitFlavorsRestrictionType:
-    public LimitFlavorsRestrictionType getLimitFlavorsRestrictionType(){
-        return this.limitFlavorsRestrictionType;
-    }
-    public void setLimitFlavorsRestrictionType(LimitFlavorsRestrictionType limitFlavorsRestrictionType){
-        this.limitFlavorsRestrictionType = limitFlavorsRestrictionType;
-    }
+	// limitFlavorsRestrictionType:
+	public LimitFlavorsRestrictionType getLimitFlavorsRestrictionType(){
+		return this.limitFlavorsRestrictionType;
+	}
+	public void setLimitFlavorsRestrictionType(LimitFlavorsRestrictionType limitFlavorsRestrictionType){
+		this.limitFlavorsRestrictionType = limitFlavorsRestrictionType;
+	}
 
-    // flavorParamsIds:
-    public String getFlavorParamsIds(){
-        return this.flavorParamsIds;
-    }
-    public void setFlavorParamsIds(String flavorParamsIds){
-        this.flavorParamsIds = flavorParamsIds;
-    }
+	public void limitFlavorsRestrictionType(String multirequestToken){
+		setToken("limitFlavorsRestrictionType", multirequestToken);
+	}
+
+	// flavorParamsIds:
+	public String getFlavorParamsIds(){
+		return this.flavorParamsIds;
+	}
+	public void setFlavorParamsIds(String flavorParamsIds){
+		this.flavorParamsIds = flavorParamsIds;
+	}
+
+	public void flavorParamsIds(String multirequestToken){
+		setToken("flavorParamsIds", multirequestToken);
+	}
 
 
-    public LimitFlavorsRestriction() {
-       super();
-    }
+	public LimitFlavorsRestriction() {
+		super();
+	}
 
-    public LimitFlavorsRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LimitFlavorsRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        limitFlavorsRestrictionType = LimitFlavorsRestrictionType.get(GsonParser.parseInt(jsonObject.get("limitFlavorsRestrictionType")));
-        flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		// set members values:
+		limitFlavorsRestrictionType = LimitFlavorsRestrictionType.get(GsonParser.parseInt(jsonObject.get("limitFlavorsRestrictionType")));
+		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLimitFlavorsRestriction");
-        kparams.add("limitFlavorsRestrictionType", this.limitFlavorsRestrictionType);
-        kparams.add("flavorParamsIds", this.flavorParamsIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLimitFlavorsRestriction");
+		kparams.add("limitFlavorsRestrictionType", this.limitFlavorsRestrictionType);
+		kparams.add("flavorParamsIds", this.flavorParamsIds);
+		return kparams;
+	}
 
 }
 

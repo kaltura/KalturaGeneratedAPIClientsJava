@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleEventRecurrenceFrequency implements EnumAsString {
-    DAILY("days"),
-    HOURLY("hours"),
-    MINUTELY("minutes"),
-    MONTHLY("months"),
-    SECONDLY("seconds"),
-    WEEKLY("weeks"),
-    YEARLY("years");
+	DAILY("days"),
+	HOURLY("hours"),
+	MINUTELY("minutes"),
+	MONTHLY("months"),
+	SECONDLY("seconds"),
+	WEEKLY("weeks"),
+	YEARLY("years");
 
-    private String value;
+	private String value;
 
-    ScheduleEventRecurrenceFrequency(String value) {
-        this.value = value;
-    }
+	ScheduleEventRecurrenceFrequency(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ScheduleEventRecurrenceFrequency get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleEventRecurrenceFrequency defined values and compare the inner value with the given one:
-        for(ScheduleEventRecurrenceFrequency item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleEventRecurrenceFrequency.values().length > 0 ? ScheduleEventRecurrenceFrequency.values()[0]: null;
+	public static ScheduleEventRecurrenceFrequency get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleEventRecurrenceFrequency defined values and compare the inner value with the given one:
+		for(ScheduleEventRecurrenceFrequency item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleEventRecurrenceFrequency.values().length > 0 ? ScheduleEventRecurrenceFrequency.values()[0]: null;
    }
 }

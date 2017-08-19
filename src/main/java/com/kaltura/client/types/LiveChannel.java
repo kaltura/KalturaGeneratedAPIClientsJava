@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveChannel.Tokenizer.class)
 public class LiveChannel extends LiveEntry {
+	
+	public interface Tokenizer extends LiveEntry.Tokenizer {
+		String playlistId();
+		String repeat();
+	}
 
 	/**  Playlist id to be played  */
-    private String playlistId;
+	private String playlistId;
 	/**  Indicates that the segments should be repeated for ever  */
-    private Boolean repeat;
+	private Boolean repeat;
 
-    // playlistId:
-    public String getPlaylistId(){
-        return this.playlistId;
-    }
-    public void setPlaylistId(String playlistId){
-        this.playlistId = playlistId;
-    }
+	// playlistId:
+	public String getPlaylistId(){
+		return this.playlistId;
+	}
+	public void setPlaylistId(String playlistId){
+		this.playlistId = playlistId;
+	}
 
-    // repeat:
-    public Boolean getRepeat(){
-        return this.repeat;
-    }
-    public void setRepeat(Boolean repeat){
-        this.repeat = repeat;
-    }
+	public void playlistId(String multirequestToken){
+		setToken("playlistId", multirequestToken);
+	}
+
+	// repeat:
+	public Boolean getRepeat(){
+		return this.repeat;
+	}
+	public void setRepeat(Boolean repeat){
+		this.repeat = repeat;
+	}
+
+	public void repeat(String multirequestToken){
+		setToken("repeat", multirequestToken);
+	}
 
 
-    public LiveChannel() {
-       super();
-    }
+	public LiveChannel() {
+		super();
+	}
 
-    public LiveChannel(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveChannel(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        playlistId = GsonParser.parseString(jsonObject.get("playlistId"));
-        repeat = GsonParser.parseBoolean(jsonObject.get("repeat"));
+		// set members values:
+		playlistId = GsonParser.parseString(jsonObject.get("playlistId"));
+		repeat = GsonParser.parseBoolean(jsonObject.get("repeat"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveChannel");
-        kparams.add("playlistId", this.playlistId);
-        kparams.add("repeat", this.repeat);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveChannel");
+		kparams.add("playlistId", this.playlistId);
+		kparams.add("repeat", this.repeat);
+		return kparams;
+	}
 
 }
 

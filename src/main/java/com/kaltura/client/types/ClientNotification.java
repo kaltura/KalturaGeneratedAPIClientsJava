@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,52 +43,66 @@ import com.kaltura.client.utils.GsonParser;
 /**  Client notification object to hold the notification url and the data when
   sending client side notifications  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ClientNotification.Tokenizer.class)
 public class ClientNotification extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String url();
+		String data();
+	}
 
 	/**  The URL where the notification should be sent to  */
-    private String url;
+	private String url;
 	/**  The serialized notification data to send  */
-    private String data;
+	private String data;
 
-    // url:
-    public String getUrl(){
-        return this.url;
-    }
-    public void setUrl(String url){
-        this.url = url;
-    }
+	// url:
+	public String getUrl(){
+		return this.url;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
 
-    // data:
-    public String getData(){
-        return this.data;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
+	public void url(String multirequestToken){
+		setToken("url", multirequestToken);
+	}
+
+	// data:
+	public String getData(){
+		return this.data;
+	}
+	public void setData(String data){
+		this.data = data;
+	}
+
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
+	}
 
 
-    public ClientNotification() {
-       super();
-    }
+	public ClientNotification() {
+		super();
+	}
 
-    public ClientNotification(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ClientNotification(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        url = GsonParser.parseString(jsonObject.get("url"));
-        data = GsonParser.parseString(jsonObject.get("data"));
+		// set members values:
+		url = GsonParser.parseString(jsonObject.get("url"));
+		data = GsonParser.parseString(jsonObject.get("data"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaClientNotification");
-        kparams.add("url", this.url);
-        kparams.add("data", this.data);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaClientNotification");
+		kparams.add("url", this.url);
+		kparams.add("data", this.data);
+		return kparams;
+	}
 
 }
 

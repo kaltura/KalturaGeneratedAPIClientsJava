@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerKs.Tokenizer.class)
 public class UrlTokenizerKs extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String usePath();
+		String additionalUris();
+	}
 
-    private Boolean usePath;
-    private String additionalUris;
+	private Boolean usePath;
+	private String additionalUris;
 
-    // usePath:
-    public Boolean getUsePath(){
-        return this.usePath;
-    }
-    public void setUsePath(Boolean usePath){
-        this.usePath = usePath;
-    }
+	// usePath:
+	public Boolean getUsePath(){
+		return this.usePath;
+	}
+	public void setUsePath(Boolean usePath){
+		this.usePath = usePath;
+	}
 
-    // additionalUris:
-    public String getAdditionalUris(){
-        return this.additionalUris;
-    }
-    public void setAdditionalUris(String additionalUris){
-        this.additionalUris = additionalUris;
-    }
+	public void usePath(String multirequestToken){
+		setToken("usePath", multirequestToken);
+	}
+
+	// additionalUris:
+	public String getAdditionalUris(){
+		return this.additionalUris;
+	}
+	public void setAdditionalUris(String additionalUris){
+		this.additionalUris = additionalUris;
+	}
+
+	public void additionalUris(String multirequestToken){
+		setToken("additionalUris", multirequestToken);
+	}
 
 
-    public UrlTokenizerKs() {
-       super();
-    }
+	public UrlTokenizerKs() {
+		super();
+	}
 
-    public UrlTokenizerKs(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerKs(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        usePath = GsonParser.parseBoolean(jsonObject.get("usePath"));
-        additionalUris = GsonParser.parseString(jsonObject.get("additionalUris"));
+		// set members values:
+		usePath = GsonParser.parseBoolean(jsonObject.get("usePath"));
+		additionalUris = GsonParser.parseString(jsonObject.get("additionalUris"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerKs");
-        kparams.add("usePath", this.usePath);
-        kparams.add("additionalUris", this.additionalUris);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerKs");
+		kparams.add("usePath", this.usePath);
+		kparams.add("additionalUris", this.additionalUris);
+		return kparams;
+	}
 
 }
 

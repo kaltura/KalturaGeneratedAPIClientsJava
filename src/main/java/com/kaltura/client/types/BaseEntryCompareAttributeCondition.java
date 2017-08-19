@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.BaseEntryCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaBaseEntry attributes. Use
   KalturaBaseEntryCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BaseEntryCompareAttributeCondition.Tokenizer.class)
 public class BaseEntryCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private BaseEntryCompareAttribute attribute;
+	private BaseEntryCompareAttribute attribute;
 
-    // attribute:
-    public BaseEntryCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(BaseEntryCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public BaseEntryCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(BaseEntryCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public BaseEntryCompareAttributeCondition() {
-       super();
-    }
+	public BaseEntryCompareAttributeCondition() {
+		super();
+	}
 
-    public BaseEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BaseEntryCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = BaseEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = BaseEntryCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBaseEntryCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBaseEntryCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

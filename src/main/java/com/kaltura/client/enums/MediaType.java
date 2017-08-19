@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MediaType implements EnumAsInt {
-    VIDEO(1),
-    IMAGE(2),
-    AUDIO(5),
-    LIVE_STREAM_FLASH(201),
-    LIVE_STREAM_WINDOWS_MEDIA(202),
-    LIVE_STREAM_REAL_MEDIA(203),
-    LIVE_STREAM_QUICKTIME(204);
+	VIDEO(1),
+	IMAGE(2),
+	AUDIO(5),
+	LIVE_STREAM_FLASH(201),
+	LIVE_STREAM_WINDOWS_MEDIA(202),
+	LIVE_STREAM_REAL_MEDIA(203),
+	LIVE_STREAM_QUICKTIME(204);
 
-    private int value;
+	private int value;
 
-    MediaType(int value) {
-        this.value = value;
-    }
+	MediaType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static MediaType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MediaType defined values and compare the inner value with the given one:
-        for(MediaType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MediaType.values().length > 0 ? MediaType.values()[0]: null;
+	public static MediaType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MediaType defined values and compare the inner value with the given one:
+		for(MediaType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MediaType.values().length > 0 ? MediaType.values()[0]: null;
    }
 }

@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum TrackEntryEventType implements EnumAsInt {
-    UPLOADED_FILE(1),
-    WEBCAM_COMPLETED(2),
-    IMPORT_STARTED(3),
-    ADD_ENTRY(4),
-    UPDATE_ENTRY(5),
-    DELETED_ENTRY(6);
+	UPLOADED_FILE(1),
+	WEBCAM_COMPLETED(2),
+	IMPORT_STARTED(3),
+	ADD_ENTRY(4),
+	UPDATE_ENTRY(5),
+	DELETED_ENTRY(6);
 
-    private int value;
+	private int value;
 
-    TrackEntryEventType(int value) {
-        this.value = value;
-    }
+	TrackEntryEventType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static TrackEntryEventType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over TrackEntryEventType defined values and compare the inner value with the given one:
-        for(TrackEntryEventType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return TrackEntryEventType.values().length > 0 ? TrackEntryEventType.values()[0]: null;
+	public static TrackEntryEventType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over TrackEntryEventType defined values and compare the inner value with the given one:
+		for(TrackEntryEventType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return TrackEntryEventType.values().length > 0 ? TrackEntryEventType.values()[0]: null;
    }
 }

@@ -33,7 +33,8 @@ import com.kaltura.client.enums.ResponseProfileType;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.RelatedFilter;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,107 +45,130 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DetachedResponseProfile.Tokenizer.class)
 public class DetachedResponseProfile extends BaseResponseProfile {
+	
+	public interface Tokenizer extends BaseResponseProfile.Tokenizer {
+		String name();
+		String type();
+		String fields();
+		RelatedFilter.Tokenizer filter();
+		FilterPager.Tokenizer pager();
+		RequestBuilder.ListTokenizer<DetachedResponseProfile.Tokenizer> relatedProfiles();
+		RequestBuilder.ListTokenizer<ResponseProfileMapping.Tokenizer> mappings();
+	}
 
 	/**  Friendly name  */
-    private String name;
-    private ResponseProfileType type;
+	private String name;
+	private ResponseProfileType type;
 	/**  Comma separated fields list to be included or excluded  */
-    private String fields;
-    private RelatedFilter filter;
-    private FilterPager pager;
-    private List<DetachedResponseProfile> relatedProfiles;
-    private List<ResponseProfileMapping> mappings;
+	private String fields;
+	private RelatedFilter filter;
+	private FilterPager pager;
+	private List<DetachedResponseProfile> relatedProfiles;
+	private List<ResponseProfileMapping> mappings;
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // type:
-    public ResponseProfileType getType(){
-        return this.type;
-    }
-    public void setType(ResponseProfileType type){
-        this.type = type;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // fields:
-    public String getFields(){
-        return this.fields;
-    }
-    public void setFields(String fields){
-        this.fields = fields;
-    }
+	// type:
+	public ResponseProfileType getType(){
+		return this.type;
+	}
+	public void setType(ResponseProfileType type){
+		this.type = type;
+	}
 
-    // filter:
-    public RelatedFilter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(RelatedFilter filter){
-        this.filter = filter;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // pager:
-    public FilterPager getPager(){
-        return this.pager;
-    }
-    public void setPager(FilterPager pager){
-        this.pager = pager;
-    }
+	// fields:
+	public String getFields(){
+		return this.fields;
+	}
+	public void setFields(String fields){
+		this.fields = fields;
+	}
 
-    // relatedProfiles:
-    public List<DetachedResponseProfile> getRelatedProfiles(){
-        return this.relatedProfiles;
-    }
-    public void setRelatedProfiles(List<DetachedResponseProfile> relatedProfiles){
-        this.relatedProfiles = relatedProfiles;
-    }
+	public void fields(String multirequestToken){
+		setToken("fields", multirequestToken);
+	}
 
-    // mappings:
-    public List<ResponseProfileMapping> getMappings(){
-        return this.mappings;
-    }
-    public void setMappings(List<ResponseProfileMapping> mappings){
-        this.mappings = mappings;
-    }
+	// filter:
+	public RelatedFilter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(RelatedFilter filter){
+		this.filter = filter;
+	}
+
+	// pager:
+	public FilterPager getPager(){
+		return this.pager;
+	}
+	public void setPager(FilterPager pager){
+		this.pager = pager;
+	}
+
+	// relatedProfiles:
+	public List<DetachedResponseProfile> getRelatedProfiles(){
+		return this.relatedProfiles;
+	}
+	public void setRelatedProfiles(List<DetachedResponseProfile> relatedProfiles){
+		this.relatedProfiles = relatedProfiles;
+	}
+
+	// mappings:
+	public List<ResponseProfileMapping> getMappings(){
+		return this.mappings;
+	}
+	public void setMappings(List<ResponseProfileMapping> mappings){
+		this.mappings = mappings;
+	}
 
 
-    public DetachedResponseProfile() {
-       super();
-    }
+	public DetachedResponseProfile() {
+		super();
+	}
 
-    public DetachedResponseProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DetachedResponseProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        name = GsonParser.parseString(jsonObject.get("name"));
-        type = ResponseProfileType.get(GsonParser.parseInt(jsonObject.get("type")));
-        fields = GsonParser.parseString(jsonObject.get("fields"));
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), RelatedFilter.class);
-        pager = GsonParser.parseObject(jsonObject.getAsJsonObject("pager"), FilterPager.class);
-        relatedProfiles = GsonParser.parseArray(jsonObject.getAsJsonArray("relatedProfiles"), DetachedResponseProfile.class);
-        mappings = GsonParser.parseArray(jsonObject.getAsJsonArray("mappings"), ResponseProfileMapping.class);
+		// set members values:
+		name = GsonParser.parseString(jsonObject.get("name"));
+		type = ResponseProfileType.get(GsonParser.parseInt(jsonObject.get("type")));
+		fields = GsonParser.parseString(jsonObject.get("fields"));
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), RelatedFilter.class);
+		pager = GsonParser.parseObject(jsonObject.getAsJsonObject("pager"), FilterPager.class);
+		relatedProfiles = GsonParser.parseArray(jsonObject.getAsJsonArray("relatedProfiles"), DetachedResponseProfile.class);
+		mappings = GsonParser.parseArray(jsonObject.getAsJsonArray("mappings"), ResponseProfileMapping.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDetachedResponseProfile");
-        kparams.add("name", this.name);
-        kparams.add("type", this.type);
-        kparams.add("fields", this.fields);
-        kparams.add("filter", this.filter);
-        kparams.add("pager", this.pager);
-        kparams.add("relatedProfiles", this.relatedProfiles);
-        kparams.add("mappings", this.mappings);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDetachedResponseProfile");
+		kparams.add("name", this.name);
+		kparams.add("type", this.type);
+		kparams.add("fields", this.fields);
+		kparams.add("filter", this.filter);
+		kparams.add("pager", this.pager);
+		kparams.add("relatedProfiles", this.relatedProfiles);
+		kparams.add("mappings", this.mappings);
+		return kparams;
+	}
 
 }
 

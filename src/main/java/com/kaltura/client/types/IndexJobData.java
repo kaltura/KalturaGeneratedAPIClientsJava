@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.Filter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,79 +41,99 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IndexJobData.Tokenizer.class)
 public class IndexJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		Filter.Tokenizer filter();
+		String lastIndexId();
+		String lastIndexDepth();
+		String shouldUpdate();
+	}
 
 	/**  The filter should return the list of objects that need to be reindexed.  */
-    private Filter filter;
+	private Filter filter;
 	/**  Indicates the last id that reindexed, used when the batch crached, to re-run
 	  from the last crash point.  */
-    private Integer lastIndexId;
+	private Integer lastIndexId;
 	/**  Indicates the last depth that reindexed, used when the batch crached, to re-run
 	  from the last crash point.  */
-    private Integer lastIndexDepth;
+	private Integer lastIndexDepth;
 	/**  Indicates that the object columns and attributes values should be recalculated
 	  before reindexed.  */
-    private Boolean shouldUpdate;
+	private Boolean shouldUpdate;
 
-    // filter:
-    public Filter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(Filter filter){
-        this.filter = filter;
-    }
+	// filter:
+	public Filter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(Filter filter){
+		this.filter = filter;
+	}
 
-    // lastIndexId:
-    public Integer getLastIndexId(){
-        return this.lastIndexId;
-    }
-    public void setLastIndexId(Integer lastIndexId){
-        this.lastIndexId = lastIndexId;
-    }
+	// lastIndexId:
+	public Integer getLastIndexId(){
+		return this.lastIndexId;
+	}
+	public void setLastIndexId(Integer lastIndexId){
+		this.lastIndexId = lastIndexId;
+	}
 
-    // lastIndexDepth:
-    public Integer getLastIndexDepth(){
-        return this.lastIndexDepth;
-    }
-    public void setLastIndexDepth(Integer lastIndexDepth){
-        this.lastIndexDepth = lastIndexDepth;
-    }
+	public void lastIndexId(String multirequestToken){
+		setToken("lastIndexId", multirequestToken);
+	}
 
-    // shouldUpdate:
-    public Boolean getShouldUpdate(){
-        return this.shouldUpdate;
-    }
-    public void setShouldUpdate(Boolean shouldUpdate){
-        this.shouldUpdate = shouldUpdate;
-    }
+	// lastIndexDepth:
+	public Integer getLastIndexDepth(){
+		return this.lastIndexDepth;
+	}
+	public void setLastIndexDepth(Integer lastIndexDepth){
+		this.lastIndexDepth = lastIndexDepth;
+	}
+
+	public void lastIndexDepth(String multirequestToken){
+		setToken("lastIndexDepth", multirequestToken);
+	}
+
+	// shouldUpdate:
+	public Boolean getShouldUpdate(){
+		return this.shouldUpdate;
+	}
+	public void setShouldUpdate(Boolean shouldUpdate){
+		this.shouldUpdate = shouldUpdate;
+	}
+
+	public void shouldUpdate(String multirequestToken){
+		setToken("shouldUpdate", multirequestToken);
+	}
 
 
-    public IndexJobData() {
-       super();
-    }
+	public IndexJobData() {
+		super();
+	}
 
-    public IndexJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IndexJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
-        lastIndexId = GsonParser.parseInt(jsonObject.get("lastIndexId"));
-        lastIndexDepth = GsonParser.parseInt(jsonObject.get("lastIndexDepth"));
-        shouldUpdate = GsonParser.parseBoolean(jsonObject.get("shouldUpdate"));
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
+		lastIndexId = GsonParser.parseInt(jsonObject.get("lastIndexId"));
+		lastIndexDepth = GsonParser.parseInt(jsonObject.get("lastIndexDepth"));
+		shouldUpdate = GsonParser.parseBoolean(jsonObject.get("shouldUpdate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIndexJobData");
-        kparams.add("filter", this.filter);
-        kparams.add("lastIndexId", this.lastIndexId);
-        kparams.add("lastIndexDepth", this.lastIndexDepth);
-        kparams.add("shouldUpdate", this.shouldUpdate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIndexJobData");
+		kparams.add("filter", this.filter);
+		kparams.add("lastIndexId", this.lastIndexId);
+		kparams.add("lastIndexDepth", this.lastIndexDepth);
+		kparams.add("shouldUpdate", this.shouldUpdate);
+		return kparams;
+	}
 
 }
 

@@ -33,6 +33,7 @@ import com.kaltura.client.enums.DistributionAction;
 import com.kaltura.client.enums.DistributionErrorType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,61 +43,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionValidationError.Tokenizer.class)
 public abstract class DistributionValidationError extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String action();
+		String errorType();
+		String description();
+	}
 
-    private DistributionAction action;
-    private DistributionErrorType errorType;
-    private String description;
+	private DistributionAction action;
+	private DistributionErrorType errorType;
+	private String description;
 
-    // action:
-    public DistributionAction getAction(){
-        return this.action;
-    }
-    public void setAction(DistributionAction action){
-        this.action = action;
-    }
+	// action:
+	public DistributionAction getAction(){
+		return this.action;
+	}
+	public void setAction(DistributionAction action){
+		this.action = action;
+	}
 
-    // errorType:
-    public DistributionErrorType getErrorType(){
-        return this.errorType;
-    }
-    public void setErrorType(DistributionErrorType errorType){
-        this.errorType = errorType;
-    }
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// errorType:
+	public DistributionErrorType getErrorType(){
+		return this.errorType;
+	}
+	public void setErrorType(DistributionErrorType errorType){
+		this.errorType = errorType;
+	}
+
+	public void errorType(String multirequestToken){
+		setToken("errorType", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
 
-    public DistributionValidationError() {
-       super();
-    }
+	public DistributionValidationError() {
+		super();
+	}
 
-    public DistributionValidationError(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionValidationError(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        action = DistributionAction.get(GsonParser.parseInt(jsonObject.get("action")));
-        errorType = DistributionErrorType.get(GsonParser.parseInt(jsonObject.get("errorType")));
-        description = GsonParser.parseString(jsonObject.get("description"));
+		// set members values:
+		action = DistributionAction.get(GsonParser.parseInt(jsonObject.get("action")));
+		errorType = DistributionErrorType.get(GsonParser.parseInt(jsonObject.get("errorType")));
+		description = GsonParser.parseString(jsonObject.get("description"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionValidationError");
-        kparams.add("action", this.action);
-        kparams.add("errorType", this.errorType);
-        kparams.add("description", this.description);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionValidationError");
+		kparams.add("action", this.action);
+		kparams.add("errorType", this.errorType);
+		kparams.add("description", this.description);
+		return kparams;
+	}
 
 }
 

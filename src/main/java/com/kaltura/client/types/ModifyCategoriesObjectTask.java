@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ScheduledTaskAddOrRemoveType;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,52 +43,62 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ModifyCategoriesObjectTask.Tokenizer.class)
 public class ModifyCategoriesObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String addRemoveType();
+		RequestBuilder.ListTokenizer<IntegerValue.Tokenizer> categoryIds();
+	}
 
 	/**  Should the object task add or remove categories?  */
-    private ScheduledTaskAddOrRemoveType addRemoveType;
+	private ScheduledTaskAddOrRemoveType addRemoveType;
 	/**  The list of category ids to add or remove  */
-    private List<IntegerValue> categoryIds;
+	private List<IntegerValue> categoryIds;
 
-    // addRemoveType:
-    public ScheduledTaskAddOrRemoveType getAddRemoveType(){
-        return this.addRemoveType;
-    }
-    public void setAddRemoveType(ScheduledTaskAddOrRemoveType addRemoveType){
-        this.addRemoveType = addRemoveType;
-    }
+	// addRemoveType:
+	public ScheduledTaskAddOrRemoveType getAddRemoveType(){
+		return this.addRemoveType;
+	}
+	public void setAddRemoveType(ScheduledTaskAddOrRemoveType addRemoveType){
+		this.addRemoveType = addRemoveType;
+	}
 
-    // categoryIds:
-    public List<IntegerValue> getCategoryIds(){
-        return this.categoryIds;
-    }
-    public void setCategoryIds(List<IntegerValue> categoryIds){
-        this.categoryIds = categoryIds;
-    }
+	public void addRemoveType(String multirequestToken){
+		setToken("addRemoveType", multirequestToken);
+	}
+
+	// categoryIds:
+	public List<IntegerValue> getCategoryIds(){
+		return this.categoryIds;
+	}
+	public void setCategoryIds(List<IntegerValue> categoryIds){
+		this.categoryIds = categoryIds;
+	}
 
 
-    public ModifyCategoriesObjectTask() {
-       super();
-    }
+	public ModifyCategoriesObjectTask() {
+		super();
+	}
 
-    public ModifyCategoriesObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ModifyCategoriesObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        addRemoveType = ScheduledTaskAddOrRemoveType.get(GsonParser.parseInt(jsonObject.get("addRemoveType")));
-        categoryIds = GsonParser.parseArray(jsonObject.getAsJsonArray("categoryIds"), IntegerValue.class);
+		// set members values:
+		addRemoveType = ScheduledTaskAddOrRemoveType.get(GsonParser.parseInt(jsonObject.get("addRemoveType")));
+		categoryIds = GsonParser.parseArray(jsonObject.getAsJsonArray("categoryIds"), IntegerValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaModifyCategoriesObjectTask");
-        kparams.add("addRemoveType", this.addRemoveType);
-        kparams.add("categoryIds", this.categoryIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaModifyCategoriesObjectTask");
+		kparams.add("addRemoveType", this.addRemoveType);
+		kparams.add("categoryIds", this.categoryIds);
+		return kparams;
+	}
 
 }
 

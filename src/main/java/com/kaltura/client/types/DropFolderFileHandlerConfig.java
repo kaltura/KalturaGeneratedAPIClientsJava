@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.DropFolderFileHandlerType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,38 +42,47 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolderFileHandlerConfig.Tokenizer.class)
 public abstract class DropFolderFileHandlerConfig extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String handlerType();
+	}
 
-    private DropFolderFileHandlerType handlerType;
+	private DropFolderFileHandlerType handlerType;
 
-    // handlerType:
-    public DropFolderFileHandlerType getHandlerType(){
-        return this.handlerType;
-    }
-    public void setHandlerType(DropFolderFileHandlerType handlerType){
-        this.handlerType = handlerType;
-    }
+	// handlerType:
+	public DropFolderFileHandlerType getHandlerType(){
+		return this.handlerType;
+	}
+	public void setHandlerType(DropFolderFileHandlerType handlerType){
+		this.handlerType = handlerType;
+	}
+
+	public void handlerType(String multirequestToken){
+		setToken("handlerType", multirequestToken);
+	}
 
 
-    public DropFolderFileHandlerConfig() {
-       super();
-    }
+	public DropFolderFileHandlerConfig() {
+		super();
+	}
 
-    public DropFolderFileHandlerConfig(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolderFileHandlerConfig(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        handlerType = DropFolderFileHandlerType.get(GsonParser.parseString(jsonObject.get("handlerType")));
+		// set members values:
+		handlerType = DropFolderFileHandlerType.get(GsonParser.parseString(jsonObject.get("handlerType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolderFileHandlerConfig");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolderFileHandlerConfig");
+		return kparams;
+	}
 
 }
 

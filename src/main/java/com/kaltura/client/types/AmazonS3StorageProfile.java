@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.AmazonS3StorageProfileFilesPermissionLevel;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,94 +41,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AmazonS3StorageProfile.Tokenizer.class)
 public class AmazonS3StorageProfile extends StorageProfile {
+	
+	public interface Tokenizer extends StorageProfile.Tokenizer {
+		String filesPermissionInS3();
+		String s3Region();
+		String sseType();
+		String sseKmsKeyId();
+		String signatureType();
+		String endPoint();
+	}
 
-    private AmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3;
-    private String s3Region;
-    private String sseType;
-    private String sseKmsKeyId;
-    private String signatureType;
-    private String endPoint;
+	private AmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3;
+	private String s3Region;
+	private String sseType;
+	private String sseKmsKeyId;
+	private String signatureType;
+	private String endPoint;
 
-    // filesPermissionInS3:
-    public AmazonS3StorageProfileFilesPermissionLevel getFilesPermissionInS3(){
-        return this.filesPermissionInS3;
-    }
-    public void setFilesPermissionInS3(AmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3){
-        this.filesPermissionInS3 = filesPermissionInS3;
-    }
+	// filesPermissionInS3:
+	public AmazonS3StorageProfileFilesPermissionLevel getFilesPermissionInS3(){
+		return this.filesPermissionInS3;
+	}
+	public void setFilesPermissionInS3(AmazonS3StorageProfileFilesPermissionLevel filesPermissionInS3){
+		this.filesPermissionInS3 = filesPermissionInS3;
+	}
 
-    // s3Region:
-    public String getS3Region(){
-        return this.s3Region;
-    }
-    public void setS3Region(String s3Region){
-        this.s3Region = s3Region;
-    }
+	public void filesPermissionInS3(String multirequestToken){
+		setToken("filesPermissionInS3", multirequestToken);
+	}
 
-    // sseType:
-    public String getSseType(){
-        return this.sseType;
-    }
-    public void setSseType(String sseType){
-        this.sseType = sseType;
-    }
+	// s3Region:
+	public String getS3Region(){
+		return this.s3Region;
+	}
+	public void setS3Region(String s3Region){
+		this.s3Region = s3Region;
+	}
 
-    // sseKmsKeyId:
-    public String getSseKmsKeyId(){
-        return this.sseKmsKeyId;
-    }
-    public void setSseKmsKeyId(String sseKmsKeyId){
-        this.sseKmsKeyId = sseKmsKeyId;
-    }
+	public void s3Region(String multirequestToken){
+		setToken("s3Region", multirequestToken);
+	}
 
-    // signatureType:
-    public String getSignatureType(){
-        return this.signatureType;
-    }
-    public void setSignatureType(String signatureType){
-        this.signatureType = signatureType;
-    }
+	// sseType:
+	public String getSseType(){
+		return this.sseType;
+	}
+	public void setSseType(String sseType){
+		this.sseType = sseType;
+	}
 
-    // endPoint:
-    public String getEndPoint(){
-        return this.endPoint;
-    }
-    public void setEndPoint(String endPoint){
-        this.endPoint = endPoint;
-    }
+	public void sseType(String multirequestToken){
+		setToken("sseType", multirequestToken);
+	}
+
+	// sseKmsKeyId:
+	public String getSseKmsKeyId(){
+		return this.sseKmsKeyId;
+	}
+	public void setSseKmsKeyId(String sseKmsKeyId){
+		this.sseKmsKeyId = sseKmsKeyId;
+	}
+
+	public void sseKmsKeyId(String multirequestToken){
+		setToken("sseKmsKeyId", multirequestToken);
+	}
+
+	// signatureType:
+	public String getSignatureType(){
+		return this.signatureType;
+	}
+	public void setSignatureType(String signatureType){
+		this.signatureType = signatureType;
+	}
+
+	public void signatureType(String multirequestToken){
+		setToken("signatureType", multirequestToken);
+	}
+
+	// endPoint:
+	public String getEndPoint(){
+		return this.endPoint;
+	}
+	public void setEndPoint(String endPoint){
+		this.endPoint = endPoint;
+	}
+
+	public void endPoint(String multirequestToken){
+		setToken("endPoint", multirequestToken);
+	}
 
 
-    public AmazonS3StorageProfile() {
-       super();
-    }
+	public AmazonS3StorageProfile() {
+		super();
+	}
 
-    public AmazonS3StorageProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AmazonS3StorageProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filesPermissionInS3 = AmazonS3StorageProfileFilesPermissionLevel.get(GsonParser.parseString(jsonObject.get("filesPermissionInS3")));
-        s3Region = GsonParser.parseString(jsonObject.get("s3Region"));
-        sseType = GsonParser.parseString(jsonObject.get("sseType"));
-        sseKmsKeyId = GsonParser.parseString(jsonObject.get("sseKmsKeyId"));
-        signatureType = GsonParser.parseString(jsonObject.get("signatureType"));
-        endPoint = GsonParser.parseString(jsonObject.get("endPoint"));
+		// set members values:
+		filesPermissionInS3 = AmazonS3StorageProfileFilesPermissionLevel.get(GsonParser.parseString(jsonObject.get("filesPermissionInS3")));
+		s3Region = GsonParser.parseString(jsonObject.get("s3Region"));
+		sseType = GsonParser.parseString(jsonObject.get("sseType"));
+		sseKmsKeyId = GsonParser.parseString(jsonObject.get("sseKmsKeyId"));
+		signatureType = GsonParser.parseString(jsonObject.get("signatureType"));
+		endPoint = GsonParser.parseString(jsonObject.get("endPoint"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAmazonS3StorageProfile");
-        kparams.add("filesPermissionInS3", this.filesPermissionInS3);
-        kparams.add("s3Region", this.s3Region);
-        kparams.add("sseType", this.sseType);
-        kparams.add("sseKmsKeyId", this.sseKmsKeyId);
-        kparams.add("signatureType", this.signatureType);
-        kparams.add("endPoint", this.endPoint);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAmazonS3StorageProfile");
+		kparams.add("filesPermissionInS3", this.filesPermissionInS3);
+		kparams.add("s3Region", this.s3Region);
+		kparams.add("sseType", this.sseType);
+		kparams.add("sseKmsKeyId", this.sseKmsKeyId);
+		kparams.add("signatureType", this.signatureType);
+		kparams.add("endPoint", this.endPoint);
+		return kparams;
+	}
 
 }
 

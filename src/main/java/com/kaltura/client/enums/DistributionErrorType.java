@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionErrorType implements EnumAsInt {
-    MISSING_FLAVOR(1),
-    MISSING_THUMBNAIL(2),
-    MISSING_METADATA(3),
-    INVALID_DATA(4),
-    MISSING_ASSET(5),
-    CONDITION_NOT_MET(6);
+	MISSING_FLAVOR(1),
+	MISSING_THUMBNAIL(2),
+	MISSING_METADATA(3),
+	INVALID_DATA(4),
+	MISSING_ASSET(5),
+	CONDITION_NOT_MET(6);
 
-    private int value;
+	private int value;
 
-    DistributionErrorType(int value) {
-        this.value = value;
-    }
+	DistributionErrorType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DistributionErrorType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionErrorType defined values and compare the inner value with the given one:
-        for(DistributionErrorType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionErrorType.values().length > 0 ? DistributionErrorType.values()[0]: null;
+	public static DistributionErrorType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionErrorType defined values and compare the inner value with the given one:
+		for(DistributionErrorType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionErrorType.values().length > 0 ? DistributionErrorType.values()[0]: null;
    }
 }

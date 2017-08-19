@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.BaseEntryFilter;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,76 +41,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericSyndicationFeed.Tokenizer.class)
 public class GenericSyndicationFeed extends BaseSyndicationFeed {
+	
+	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
+		String feedDescription();
+		String feedLandingPage();
+		BaseEntryFilter.Tokenizer entryFilter();
+		String pageSize();
+	}
 
 	/**  feed description  */
-    private String feedDescription;
+	private String feedDescription;
 	/**  feed landing page (i.e publisher website)  */
-    private String feedLandingPage;
+	private String feedLandingPage;
 	/**  entry filter  */
-    private BaseEntryFilter entryFilter;
+	private BaseEntryFilter entryFilter;
 	/**  page size  */
-    private Integer pageSize;
+	private Integer pageSize;
 
-    // feedDescription:
-    public String getFeedDescription(){
-        return this.feedDescription;
-    }
-    public void setFeedDescription(String feedDescription){
-        this.feedDescription = feedDescription;
-    }
+	// feedDescription:
+	public String getFeedDescription(){
+		return this.feedDescription;
+	}
+	public void setFeedDescription(String feedDescription){
+		this.feedDescription = feedDescription;
+	}
 
-    // feedLandingPage:
-    public String getFeedLandingPage(){
-        return this.feedLandingPage;
-    }
-    public void setFeedLandingPage(String feedLandingPage){
-        this.feedLandingPage = feedLandingPage;
-    }
+	public void feedDescription(String multirequestToken){
+		setToken("feedDescription", multirequestToken);
+	}
 
-    // entryFilter:
-    public BaseEntryFilter getEntryFilter(){
-        return this.entryFilter;
-    }
-    public void setEntryFilter(BaseEntryFilter entryFilter){
-        this.entryFilter = entryFilter;
-    }
+	// feedLandingPage:
+	public String getFeedLandingPage(){
+		return this.feedLandingPage;
+	}
+	public void setFeedLandingPage(String feedLandingPage){
+		this.feedLandingPage = feedLandingPage;
+	}
 
-    // pageSize:
-    public Integer getPageSize(){
-        return this.pageSize;
-    }
-    public void setPageSize(Integer pageSize){
-        this.pageSize = pageSize;
-    }
+	public void feedLandingPage(String multirequestToken){
+		setToken("feedLandingPage", multirequestToken);
+	}
+
+	// entryFilter:
+	public BaseEntryFilter getEntryFilter(){
+		return this.entryFilter;
+	}
+	public void setEntryFilter(BaseEntryFilter entryFilter){
+		this.entryFilter = entryFilter;
+	}
+
+	// pageSize:
+	public Integer getPageSize(){
+		return this.pageSize;
+	}
+	public void setPageSize(Integer pageSize){
+		this.pageSize = pageSize;
+	}
+
+	public void pageSize(String multirequestToken){
+		setToken("pageSize", multirequestToken);
+	}
 
 
-    public GenericSyndicationFeed() {
-       super();
-    }
+	public GenericSyndicationFeed() {
+		super();
+	}
 
-    public GenericSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
-        feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
-        entryFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("entryFilter"), BaseEntryFilter.class);
-        pageSize = GsonParser.parseInt(jsonObject.get("pageSize"));
+		// set members values:
+		feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
+		feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
+		entryFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("entryFilter"), BaseEntryFilter.class);
+		pageSize = GsonParser.parseInt(jsonObject.get("pageSize"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericSyndicationFeed");
-        kparams.add("feedDescription", this.feedDescription);
-        kparams.add("feedLandingPage", this.feedLandingPage);
-        kparams.add("entryFilter", this.entryFilter);
-        kparams.add("pageSize", this.pageSize);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericSyndicationFeed");
+		kparams.add("feedDescription", this.feedDescription);
+		kparams.add("feedLandingPage", this.feedLandingPage);
+		kparams.add("entryFilter", this.entryFilter);
+		kparams.add("pageSize", this.pageSize);
+		return kparams;
+	}
 
 }
 

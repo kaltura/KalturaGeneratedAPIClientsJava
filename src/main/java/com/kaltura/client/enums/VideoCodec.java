@@ -34,59 +34,59 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VideoCodec implements EnumAsString {
-    NONE(""),
-    APCH("apch"),
-    APCN("apcn"),
-    APCO("apco"),
-    APCS("apcs"),
-    COPY("copy"),
-    DNXHD("dnxhd"),
-    DV("dv"),
-    FLV("flv"),
-    H263("h263"),
-    H264("h264"),
-    H264B("h264b"),
-    H264H("h264h"),
-    H264M("h264m"),
-    H265("h265"),
-    MPEG2("mpeg2"),
-    MPEG4("mpeg4"),
-    THEORA("theora"),
-    VP6("vp6"),
-    VP8("vp8"),
-    VP9("vp9"),
-    WMV2("wmv2"),
-    WMV3("wmv3"),
-    WVC1A("wvc1a");
+	NONE(""),
+	APCH("apch"),
+	APCN("apcn"),
+	APCO("apco"),
+	APCS("apcs"),
+	COPY("copy"),
+	DNXHD("dnxhd"),
+	DV("dv"),
+	FLV("flv"),
+	H263("h263"),
+	H264("h264"),
+	H264B("h264b"),
+	H264H("h264h"),
+	H264M("h264m"),
+	H265("h265"),
+	MPEG2("mpeg2"),
+	MPEG4("mpeg4"),
+	THEORA("theora"),
+	VP6("vp6"),
+	VP8("vp8"),
+	VP9("vp9"),
+	WMV2("wmv2"),
+	WMV3("wmv3"),
+	WVC1A("wvc1a");
 
-    private String value;
+	private String value;
 
-    VideoCodec(String value) {
-        this.value = value;
-    }
+	VideoCodec(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static VideoCodec get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over VideoCodec defined values and compare the inner value with the given one:
-        for(VideoCodec item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return VideoCodec.values().length > 0 ? VideoCodec.values()[0]: null;
+	public static VideoCodec get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over VideoCodec defined values and compare the inner value with the given one:
+		for(VideoCodec item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return VideoCodec.values().length > 0 ? VideoCodec.values()[0]: null;
    }
 }

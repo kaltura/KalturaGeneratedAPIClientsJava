@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryScheduleEventFilter.Tokenizer.class)
 public class EntryScheduleEventFilter extends EntryScheduleEventBaseFilter {
+	
+	public interface Tokenizer extends EntryScheduleEventBaseFilter.Tokenizer {
+		String parentCategoryIdsLike();
+		String parentCategoryIdsMultiLikeOr();
+		String parentCategoryIdsMultiLikeAnd();
+	}
 
-    private String parentCategoryIdsLike;
-    private String parentCategoryIdsMultiLikeOr;
-    private String parentCategoryIdsMultiLikeAnd;
+	private String parentCategoryIdsLike;
+	private String parentCategoryIdsMultiLikeOr;
+	private String parentCategoryIdsMultiLikeAnd;
 
-    // parentCategoryIdsLike:
-    public String getParentCategoryIdsLike(){
-        return this.parentCategoryIdsLike;
-    }
-    public void setParentCategoryIdsLike(String parentCategoryIdsLike){
-        this.parentCategoryIdsLike = parentCategoryIdsLike;
-    }
+	// parentCategoryIdsLike:
+	public String getParentCategoryIdsLike(){
+		return this.parentCategoryIdsLike;
+	}
+	public void setParentCategoryIdsLike(String parentCategoryIdsLike){
+		this.parentCategoryIdsLike = parentCategoryIdsLike;
+	}
 
-    // parentCategoryIdsMultiLikeOr:
-    public String getParentCategoryIdsMultiLikeOr(){
-        return this.parentCategoryIdsMultiLikeOr;
-    }
-    public void setParentCategoryIdsMultiLikeOr(String parentCategoryIdsMultiLikeOr){
-        this.parentCategoryIdsMultiLikeOr = parentCategoryIdsMultiLikeOr;
-    }
+	public void parentCategoryIdsLike(String multirequestToken){
+		setToken("parentCategoryIdsLike", multirequestToken);
+	}
 
-    // parentCategoryIdsMultiLikeAnd:
-    public String getParentCategoryIdsMultiLikeAnd(){
-        return this.parentCategoryIdsMultiLikeAnd;
-    }
-    public void setParentCategoryIdsMultiLikeAnd(String parentCategoryIdsMultiLikeAnd){
-        this.parentCategoryIdsMultiLikeAnd = parentCategoryIdsMultiLikeAnd;
-    }
+	// parentCategoryIdsMultiLikeOr:
+	public String getParentCategoryIdsMultiLikeOr(){
+		return this.parentCategoryIdsMultiLikeOr;
+	}
+	public void setParentCategoryIdsMultiLikeOr(String parentCategoryIdsMultiLikeOr){
+		this.parentCategoryIdsMultiLikeOr = parentCategoryIdsMultiLikeOr;
+	}
+
+	public void parentCategoryIdsMultiLikeOr(String multirequestToken){
+		setToken("parentCategoryIdsMultiLikeOr", multirequestToken);
+	}
+
+	// parentCategoryIdsMultiLikeAnd:
+	public String getParentCategoryIdsMultiLikeAnd(){
+		return this.parentCategoryIdsMultiLikeAnd;
+	}
+	public void setParentCategoryIdsMultiLikeAnd(String parentCategoryIdsMultiLikeAnd){
+		this.parentCategoryIdsMultiLikeAnd = parentCategoryIdsMultiLikeAnd;
+	}
+
+	public void parentCategoryIdsMultiLikeAnd(String multirequestToken){
+		setToken("parentCategoryIdsMultiLikeAnd", multirequestToken);
+	}
 
 
-    public EntryScheduleEventFilter() {
-       super();
-    }
+	public EntryScheduleEventFilter() {
+		super();
+	}
 
-    public EntryScheduleEventFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryScheduleEventFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentCategoryIdsLike = GsonParser.parseString(jsonObject.get("parentCategoryIdsLike"));
-        parentCategoryIdsMultiLikeOr = GsonParser.parseString(jsonObject.get("parentCategoryIdsMultiLikeOr"));
-        parentCategoryIdsMultiLikeAnd = GsonParser.parseString(jsonObject.get("parentCategoryIdsMultiLikeAnd"));
+		// set members values:
+		parentCategoryIdsLike = GsonParser.parseString(jsonObject.get("parentCategoryIdsLike"));
+		parentCategoryIdsMultiLikeOr = GsonParser.parseString(jsonObject.get("parentCategoryIdsMultiLikeOr"));
+		parentCategoryIdsMultiLikeAnd = GsonParser.parseString(jsonObject.get("parentCategoryIdsMultiLikeAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryScheduleEventFilter");
-        kparams.add("parentCategoryIdsLike", this.parentCategoryIdsLike);
-        kparams.add("parentCategoryIdsMultiLikeOr", this.parentCategoryIdsMultiLikeOr);
-        kparams.add("parentCategoryIdsMultiLikeAnd", this.parentCategoryIdsMultiLikeAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryScheduleEventFilter");
+		kparams.add("parentCategoryIdsLike", this.parentCategoryIdsLike);
+		kparams.add("parentCategoryIdsMultiLikeOr", this.parentCategoryIdsMultiLikeOr);
+		kparams.add("parentCategoryIdsMultiLikeAnd", this.parentCategoryIdsMultiLikeAnd);
+		return kparams;
+	}
 
 }
 

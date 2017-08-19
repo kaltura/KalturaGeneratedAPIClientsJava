@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionProviderType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionProviderBaseFilter.Tokenizer.class)
 public abstract class DistributionProviderBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String typeEqual();
+		String typeIn();
+	}
 
-    private DistributionProviderType typeEqual;
-    private String typeIn;
+	private DistributionProviderType typeEqual;
+	private String typeIn;
 
-    // typeEqual:
-    public DistributionProviderType getTypeEqual(){
-        return this.typeEqual;
-    }
-    public void setTypeEqual(DistributionProviderType typeEqual){
-        this.typeEqual = typeEqual;
-    }
+	// typeEqual:
+	public DistributionProviderType getTypeEqual(){
+		return this.typeEqual;
+	}
+	public void setTypeEqual(DistributionProviderType typeEqual){
+		this.typeEqual = typeEqual;
+	}
 
-    // typeIn:
-    public String getTypeIn(){
-        return this.typeIn;
-    }
-    public void setTypeIn(String typeIn){
-        this.typeIn = typeIn;
-    }
+	public void typeEqual(String multirequestToken){
+		setToken("typeEqual", multirequestToken);
+	}
+
+	// typeIn:
+	public String getTypeIn(){
+		return this.typeIn;
+	}
+	public void setTypeIn(String typeIn){
+		this.typeIn = typeIn;
+	}
+
+	public void typeIn(String multirequestToken){
+		setToken("typeIn", multirequestToken);
+	}
 
 
-    public DistributionProviderBaseFilter() {
-       super();
-    }
+	public DistributionProviderBaseFilter() {
+		super();
+	}
 
-    public DistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        typeEqual = DistributionProviderType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
-        typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
+		// set members values:
+		typeEqual = DistributionProviderType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
+		typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionProviderBaseFilter");
-        kparams.add("typeEqual", this.typeEqual);
-        kparams.add("typeIn", this.typeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionProviderBaseFilter");
+		kparams.add("typeEqual", this.typeEqual);
+		kparams.add("typeIn", this.typeIn);
+		return kparams;
+	}
 
 }
 

@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AdminUserOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id");
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id");
 
-    private String value;
+	private String value;
 
-    AdminUserOrderBy(String value) {
-        this.value = value;
-    }
+	AdminUserOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AdminUserOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AdminUserOrderBy defined values and compare the inner value with the given one:
-        for(AdminUserOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AdminUserOrderBy.values().length > 0 ? AdminUserOrderBy.values()[0]: null;
+	public static AdminUserOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AdminUserOrderBy defined values and compare the inner value with the given one:
+		for(AdminUserOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AdminUserOrderBy.values().length > 0 ? AdminUserOrderBy.values()[0]: null;
    }
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadPluginData.Tokenizer.class)
 public class BulkUploadPluginData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String field();
+		String value();
+	}
 
-    private String field;
-    private String value;
+	private String field;
+	private String value;
 
-    // field:
-    public String getField(){
-        return this.field;
-    }
-    public void setField(String field){
-        this.field = field;
-    }
+	// field:
+	public String getField(){
+		return this.field;
+	}
+	public void setField(String field){
+		this.field = field;
+	}
 
-    // value:
-    public String getValue(){
-        return this.value;
-    }
-    public void setValue(String value){
-        this.value = value;
-    }
+	public void field(String multirequestToken){
+		setToken("field", multirequestToken);
+	}
+
+	// value:
+	public String getValue(){
+		return this.value;
+	}
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public BulkUploadPluginData() {
-       super();
-    }
+	public BulkUploadPluginData() {
+		super();
+	}
 
-    public BulkUploadPluginData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadPluginData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        field = GsonParser.parseString(jsonObject.get("field"));
-        value = GsonParser.parseString(jsonObject.get("value"));
+		// set members values:
+		field = GsonParser.parseString(jsonObject.get("field"));
+		value = GsonParser.parseString(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadPluginData");
-        kparams.add("field", this.field);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadPluginData");
+		kparams.add("field", this.field);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

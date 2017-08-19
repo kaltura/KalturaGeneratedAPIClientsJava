@@ -27,20 +27,17 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AssetFilter;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.FlavorAsset;
 import com.kaltura.client.types.FlavorAssetUrlOptions;
 import com.kaltura.client.types.FlavorAssetWithParams;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.RemotePath;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -51,198 +48,388 @@ import java.util.List;
 
 /**  Retrieve information and invoke actions on Flavor Asset  */
 public class FlavorAssetService {
+	
+	public static class AddFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, AddFlavorAssetBuilder> {
+		
+		public AddFlavorAssetBuilder(String entryId, FlavorAsset flavorAsset) {
+			super(FlavorAsset.class, "flavorasset", "add");
+			params.add("entryId", entryId);
+			params.add("flavorAsset", flavorAsset);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Add flavor asset  */
-    public static RequestBuilder<FlavorAsset> add(String entryId, FlavorAsset flavorAsset)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorAsset", flavorAsset);
+    public static AddFlavorAssetBuilder add(String entryId, FlavorAsset flavorAsset)  {
+		return new AddFlavorAssetBuilder(entryId, flavorAsset);
+	}
+	
+	public static class ConvertFlavorAssetBuilder extends NullRequestBuilder {
+		
+		public ConvertFlavorAssetBuilder(String entryId, int flavorParamsId, int priority) {
+			super("flavorasset", "convert");
+			params.add("entryId", entryId);
+			params.add("flavorParamsId", flavorParamsId);
+			params.add("priority", priority);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void flavorParamsId(String multirequestToken) {
+			params.add("flavorParamsId", multirequestToken);
+		}
+		
+		public void priority(String multirequestToken) {
+			params.add("priority", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "add", kparams);
-    }
-
-    public static RequestBuilder<Void> convert(String entryId, int flavorParamsId)  {
-        return convert(entryId, flavorParamsId, 0);
-    }
+	public static ConvertFlavorAssetBuilder convert(String entryId, int flavorParamsId)  {
+		return convert(entryId, flavorParamsId, 0);
+	}
 
 	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
-    public static RequestBuilder<Void> convert(String entryId, int flavorParamsId, int priority)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorParamsId", flavorParamsId);
-        kparams.add("priority", priority);
-
-        return new NullRequestBuilder("flavorasset", "convert", kparams);
-    }
+    public static ConvertFlavorAssetBuilder convert(String entryId, int flavorParamsId, int priority)  {
+		return new ConvertFlavorAssetBuilder(entryId, flavorParamsId, priority);
+	}
+	
+	public static class DeleteFlavorAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteFlavorAssetBuilder(String id) {
+			super("flavorasset", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Flavor Asset by ID  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("flavorasset", "delete", kparams);
-    }
+    public static DeleteFlavorAssetBuilder delete(String id)  {
+		return new DeleteFlavorAssetBuilder(id);
+	}
+	
+	public static class DeleteLocalContentFlavorAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteLocalContentFlavorAssetBuilder(String assetId) {
+			super("flavorasset", "deleteLocalContent");
+			params.add("assetId", assetId);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+	}
 
 	/**  delete all local file syncs for this asset  */
-    public static RequestBuilder<Void> deleteLocalContent(String assetId)  {
-        Params kparams = new Params();
-        kparams.add("assetId", assetId);
-
-        return new NullRequestBuilder("flavorasset", "deleteLocalContent", kparams);
-    }
+    public static DeleteLocalContentFlavorAssetBuilder deleteLocalContent(String assetId)  {
+		return new DeleteLocalContentFlavorAssetBuilder(assetId);
+	}
+	
+	public static class ExportFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, ExportFlavorAssetBuilder> {
+		
+		public ExportFlavorAssetBuilder(String assetId, int storageProfileId) {
+			super(FlavorAsset.class, "flavorasset", "export");
+			params.add("assetId", assetId);
+			params.add("storageProfileId", storageProfileId);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+		
+		public void storageProfileId(String multirequestToken) {
+			params.add("storageProfileId", multirequestToken);
+		}
+	}
 
 	/**  manually export an asset  */
-    public static RequestBuilder<FlavorAsset> export(String assetId, int storageProfileId)  {
-        Params kparams = new Params();
-        kparams.add("assetId", assetId);
-        kparams.add("storageProfileId", storageProfileId);
-
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "export", kparams);
-    }
+    public static ExportFlavorAssetBuilder export(String assetId, int storageProfileId)  {
+		return new ExportFlavorAssetBuilder(assetId, storageProfileId);
+	}
+	
+	public static class GetFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, GetFlavorAssetBuilder> {
+		
+		public GetFlavorAssetBuilder(String id) {
+			super(FlavorAsset.class, "flavorasset", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Flavor Asset by ID  */
-    public static RequestBuilder<FlavorAsset> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "get", kparams);
-    }
+    public static GetFlavorAssetBuilder get(String id)  {
+		return new GetFlavorAssetBuilder(id);
+	}
+	
+	public static class GetByEntryIdFlavorAssetBuilder extends ArrayRequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, GetByEntryIdFlavorAssetBuilder> {
+		
+		public GetByEntryIdFlavorAssetBuilder(String entryId) {
+			super(FlavorAsset.class, "flavorasset", "getByEntryId");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Get Flavor Assets for Entry  */
-    public static RequestBuilder<List<FlavorAsset>> getByEntryId(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static GetByEntryIdFlavorAssetBuilder getByEntryId(String entryId)  {
+		return new GetByEntryIdFlavorAssetBuilder(entryId);
+	}
+	
+	public static class GetDownloadUrlFlavorAssetBuilder extends RequestBuilder<String, String, GetDownloadUrlFlavorAssetBuilder> {
+		
+		public GetDownloadUrlFlavorAssetBuilder(String id, boolean useCdn) {
+			super(String.class, "flavorasset", "getDownloadUrl");
+			params.add("id", id);
+			params.add("useCdn", useCdn);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void useCdn(String multirequestToken) {
+			params.add("useCdn", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "getByEntryId", kparams);
-    }
-
-    public static RequestBuilder<String> getDownloadUrl(String id)  {
-        return getDownloadUrl(id, false);
-    }
+	public static GetDownloadUrlFlavorAssetBuilder getDownloadUrl(String id)  {
+		return getDownloadUrl(id, false);
+	}
 
 	/**  Get download URL for the Flavor Asset  */
-    public static RequestBuilder<String> getDownloadUrl(String id, boolean useCdn)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("useCdn", useCdn);
-
-        return new RequestBuilder<String>(String.class, "flavorasset", "getDownloadUrl", kparams);
-    }
+    public static GetDownloadUrlFlavorAssetBuilder getDownloadUrl(String id, boolean useCdn)  {
+		return new GetDownloadUrlFlavorAssetBuilder(id, useCdn);
+	}
+	
+	public static class GetFlavorAssetsWithParamsFlavorAssetBuilder extends ArrayRequestBuilder<FlavorAssetWithParams, FlavorAssetWithParams.Tokenizer, GetFlavorAssetsWithParamsFlavorAssetBuilder> {
+		
+		public GetFlavorAssetsWithParamsFlavorAssetBuilder(String entryId) {
+			super(FlavorAssetWithParams.class, "flavorasset", "getFlavorAssetsWithParams");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Get Flavor Asset with the relevant Flavor Params (Flavor Params can exist
 	  without Flavor Asset &amp; vice versa)  */
-    public static RequestBuilder<List<FlavorAssetWithParams>> getFlavorAssetsWithParams(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new ArrayRequestBuilder<FlavorAssetWithParams>(FlavorAssetWithParams.class, "flavorasset", "getFlavorAssetsWithParams", kparams);
-    }
+    public static GetFlavorAssetsWithParamsFlavorAssetBuilder getFlavorAssetsWithParams(String entryId)  {
+		return new GetFlavorAssetsWithParamsFlavorAssetBuilder(entryId);
+	}
+	
+	public static class GetRemotePathsFlavorAssetBuilder extends ListResponseRequestBuilder<RemotePath, RemotePath.Tokenizer, GetRemotePathsFlavorAssetBuilder> {
+		
+		public GetRemotePathsFlavorAssetBuilder(String id) {
+			super(RemotePath.class, "flavorasset", "getRemotePaths");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get remote storage existing paths for the asset  */
-    public static RequestBuilder<ListResponse<RemotePath>> getRemotePaths(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetRemotePathsFlavorAssetBuilder getRemotePaths(String id)  {
+		return new GetRemotePathsFlavorAssetBuilder(id);
+	}
+	
+	public static class GetUrlFlavorAssetBuilder extends RequestBuilder<String, String, GetUrlFlavorAssetBuilder> {
+		
+		public GetUrlFlavorAssetBuilder(String id, int storageId, boolean forceProxy, FlavorAssetUrlOptions options) {
+			super(String.class, "flavorasset", "getUrl");
+			params.add("id", id);
+			params.add("storageId", storageId);
+			params.add("forceProxy", forceProxy);
+			params.add("options", options);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void storageId(String multirequestToken) {
+			params.add("storageId", multirequestToken);
+		}
+		
+		public void forceProxy(String multirequestToken) {
+			params.add("forceProxy", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<RemotePath>(RemotePath.class, "flavorasset", "getRemotePaths", kparams);
-    }
+	public static GetUrlFlavorAssetBuilder getUrl(String id)  {
+		return getUrl(id, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<String> getUrl(String id)  {
-        return getUrl(id, Integer.MIN_VALUE);
-    }
+	public static GetUrlFlavorAssetBuilder getUrl(String id, int storageId)  {
+		return getUrl(id, storageId, false);
+	}
 
-    public static RequestBuilder<String> getUrl(String id, int storageId)  {
-        return getUrl(id, storageId, false);
-    }
-
-    public static RequestBuilder<String> getUrl(String id, int storageId, boolean forceProxy)  {
-        return getUrl(id, storageId, forceProxy, null);
-    }
+	public static GetUrlFlavorAssetBuilder getUrl(String id, int storageId, boolean forceProxy)  {
+		return getUrl(id, storageId, forceProxy, null);
+	}
 
 	/**  Get download URL for the asset  */
-    public static RequestBuilder<String> getUrl(String id, int storageId, boolean forceProxy, FlavorAssetUrlOptions options)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("storageId", storageId);
-        kparams.add("forceProxy", forceProxy);
-        kparams.add("options", options);
-
-        return new RequestBuilder<String>(String.class, "flavorasset", "getUrl", kparams);
-    }
+    public static GetUrlFlavorAssetBuilder getUrl(String id, int storageId, boolean forceProxy, FlavorAssetUrlOptions options)  {
+		return new GetUrlFlavorAssetBuilder(id, storageId, forceProxy, options);
+	}
+	
+	public static class GetWebPlayableByEntryIdFlavorAssetBuilder extends ArrayRequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, GetWebPlayableByEntryIdFlavorAssetBuilder> {
+		
+		public GetWebPlayableByEntryIdFlavorAssetBuilder(String entryId) {
+			super(FlavorAsset.class, "flavorasset", "getWebPlayableByEntryId");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Get web playable Flavor Assets for Entry  */
-    public static RequestBuilder<List<FlavorAsset>> getWebPlayableByEntryId(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static GetWebPlayableByEntryIdFlavorAssetBuilder getWebPlayableByEntryId(String entryId)  {
+		return new GetWebPlayableByEntryIdFlavorAssetBuilder(entryId);
+	}
+	
+	public static class ListFlavorAssetBuilder extends ListResponseRequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, ListFlavorAssetBuilder> {
+		
+		public ListFlavorAssetBuilder(AssetFilter filter, FilterPager pager) {
+			super(FlavorAsset.class, "flavorasset", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ArrayRequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "getWebPlayableByEntryId", kparams);
-    }
+	public static ListFlavorAssetBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<FlavorAsset>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<FlavorAsset>> list(AssetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListFlavorAssetBuilder list(AssetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Flavor Assets by filter and pager  */
-    public static RequestBuilder<ListResponse<FlavorAsset>> list(AssetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "list", kparams);
-    }
+    public static ListFlavorAssetBuilder list(AssetFilter filter, FilterPager pager)  {
+		return new ListFlavorAssetBuilder(filter, pager);
+	}
+	
+	public static class ReconvertFlavorAssetBuilder extends NullRequestBuilder {
+		
+		public ReconvertFlavorAssetBuilder(String id) {
+			super("flavorasset", "reconvert");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Reconvert Flavor Asset by ID  */
-    public static RequestBuilder<Void> reconvert(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static ReconvertFlavorAssetBuilder reconvert(String id)  {
+		return new ReconvertFlavorAssetBuilder(id);
+	}
+	
+	public static class ServeAdStitchCmdFlavorAssetBuilder extends RequestBuilder<String, String, ServeAdStitchCmdFlavorAssetBuilder> {
+		
+		public ServeAdStitchCmdFlavorAssetBuilder(String assetId, String ffprobeJson, String duration) {
+			super(String.class, "flavorasset", "serveAdStitchCmd");
+			params.add("assetId", assetId);
+			params.add("ffprobeJson", ffprobeJson);
+			params.add("duration", duration);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+		
+		public void ffprobeJson(String multirequestToken) {
+			params.add("ffprobeJson", multirequestToken);
+		}
+		
+		public void duration(String multirequestToken) {
+			params.add("duration", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("flavorasset", "reconvert", kparams);
-    }
+	public static ServeAdStitchCmdFlavorAssetBuilder serveAdStitchCmd(String assetId)  {
+		return serveAdStitchCmd(assetId, null);
+	}
 
-    public static RequestBuilder<String> serveAdStitchCmd(String assetId)  {
-        return serveAdStitchCmd(assetId, null);
-    }
-
-    public static RequestBuilder<String> serveAdStitchCmd(String assetId, String ffprobeJson)  {
-        return serveAdStitchCmd(assetId, ffprobeJson, null);
-    }
+	public static ServeAdStitchCmdFlavorAssetBuilder serveAdStitchCmd(String assetId, String ffprobeJson)  {
+		return serveAdStitchCmd(assetId, ffprobeJson, null);
+	}
 
 	/**  serve cmd line to transcode the ad  */
-    public static RequestBuilder<String> serveAdStitchCmd(String assetId, String ffprobeJson, String duration)  {
-        Params kparams = new Params();
-        kparams.add("assetId", assetId);
-        kparams.add("ffprobeJson", ffprobeJson);
-        kparams.add("duration", duration);
-
-        return new RequestBuilder<String>(String.class, "flavorasset", "serveAdStitchCmd", kparams);
-    }
+    public static ServeAdStitchCmdFlavorAssetBuilder serveAdStitchCmd(String assetId, String ffprobeJson, String duration)  {
+		return new ServeAdStitchCmdFlavorAssetBuilder(assetId, ffprobeJson, duration);
+	}
+	
+	public static class SetAsSourceFlavorAssetBuilder extends NullRequestBuilder {
+		
+		public SetAsSourceFlavorAssetBuilder(String assetId) {
+			super("flavorasset", "setAsSource");
+			params.add("assetId", assetId);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+	}
 
 	/**  Set a given flavor as the original flavor  */
-    public static RequestBuilder<Void> setAsSource(String assetId)  {
-        Params kparams = new Params();
-        kparams.add("assetId", assetId);
-
-        return new NullRequestBuilder("flavorasset", "setAsSource", kparams);
-    }
+    public static SetAsSourceFlavorAssetBuilder setAsSource(String assetId)  {
+		return new SetAsSourceFlavorAssetBuilder(assetId);
+	}
+	
+	public static class SetContentFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, SetContentFlavorAssetBuilder> {
+		
+		public SetContentFlavorAssetBuilder(String id, ContentResource contentResource) {
+			super(FlavorAsset.class, "flavorasset", "setContent");
+			params.add("id", id);
+			params.add("contentResource", contentResource);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update content of flavor asset  */
-    public static RequestBuilder<FlavorAsset> setContent(String id, ContentResource contentResource)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "setContent", kparams);
-    }
+    public static SetContentFlavorAssetBuilder setContent(String id, ContentResource contentResource)  {
+		return new SetContentFlavorAssetBuilder(id, contentResource);
+	}
+	
+	public static class UpdateFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, UpdateFlavorAssetBuilder> {
+		
+		public UpdateFlavorAssetBuilder(String id, FlavorAsset flavorAsset) {
+			super(FlavorAsset.class, "flavorasset", "update");
+			params.add("id", id);
+			params.add("flavorAsset", flavorAsset);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update flavor asset  */
-    public static RequestBuilder<FlavorAsset> update(String id, FlavorAsset flavorAsset)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("flavorAsset", flavorAsset);
-
-        return new RequestBuilder<FlavorAsset>(FlavorAsset.class, "flavorasset", "update", kparams);
-    }
+    public static UpdateFlavorAssetBuilder update(String id, FlavorAsset flavorAsset)  {
+		return new UpdateFlavorAssetBuilder(id, flavorAsset);
+	}
 }

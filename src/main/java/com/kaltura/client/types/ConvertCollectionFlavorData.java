@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,105 +41,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertCollectionFlavorData.Tokenizer.class)
 public class ConvertCollectionFlavorData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String flavorAssetId();
+		String flavorParamsOutputId();
+		String readyBehavior();
+		String videoBitrate();
+		String audioBitrate();
+		String destFileSyncLocalPath();
+		String destFileSyncRemoteUrl();
+	}
 
-    private String flavorAssetId;
-    private Integer flavorParamsOutputId;
-    private Integer readyBehavior;
-    private Integer videoBitrate;
-    private Integer audioBitrate;
-    private String destFileSyncLocalPath;
-    private String destFileSyncRemoteUrl;
+	private String flavorAssetId;
+	private Integer flavorParamsOutputId;
+	private Integer readyBehavior;
+	private Integer videoBitrate;
+	private Integer audioBitrate;
+	private String destFileSyncLocalPath;
+	private String destFileSyncRemoteUrl;
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // flavorParamsOutputId:
-    public Integer getFlavorParamsOutputId(){
-        return this.flavorParamsOutputId;
-    }
-    public void setFlavorParamsOutputId(Integer flavorParamsOutputId){
-        this.flavorParamsOutputId = flavorParamsOutputId;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // readyBehavior:
-    public Integer getReadyBehavior(){
-        return this.readyBehavior;
-    }
-    public void setReadyBehavior(Integer readyBehavior){
-        this.readyBehavior = readyBehavior;
-    }
+	// flavorParamsOutputId:
+	public Integer getFlavorParamsOutputId(){
+		return this.flavorParamsOutputId;
+	}
+	public void setFlavorParamsOutputId(Integer flavorParamsOutputId){
+		this.flavorParamsOutputId = flavorParamsOutputId;
+	}
 
-    // videoBitrate:
-    public Integer getVideoBitrate(){
-        return this.videoBitrate;
-    }
-    public void setVideoBitrate(Integer videoBitrate){
-        this.videoBitrate = videoBitrate;
-    }
+	public void flavorParamsOutputId(String multirequestToken){
+		setToken("flavorParamsOutputId", multirequestToken);
+	}
 
-    // audioBitrate:
-    public Integer getAudioBitrate(){
-        return this.audioBitrate;
-    }
-    public void setAudioBitrate(Integer audioBitrate){
-        this.audioBitrate = audioBitrate;
-    }
+	// readyBehavior:
+	public Integer getReadyBehavior(){
+		return this.readyBehavior;
+	}
+	public void setReadyBehavior(Integer readyBehavior){
+		this.readyBehavior = readyBehavior;
+	}
 
-    // destFileSyncLocalPath:
-    public String getDestFileSyncLocalPath(){
-        return this.destFileSyncLocalPath;
-    }
-    public void setDestFileSyncLocalPath(String destFileSyncLocalPath){
-        this.destFileSyncLocalPath = destFileSyncLocalPath;
-    }
+	public void readyBehavior(String multirequestToken){
+		setToken("readyBehavior", multirequestToken);
+	}
 
-    // destFileSyncRemoteUrl:
-    public String getDestFileSyncRemoteUrl(){
-        return this.destFileSyncRemoteUrl;
-    }
-    public void setDestFileSyncRemoteUrl(String destFileSyncRemoteUrl){
-        this.destFileSyncRemoteUrl = destFileSyncRemoteUrl;
-    }
+	// videoBitrate:
+	public Integer getVideoBitrate(){
+		return this.videoBitrate;
+	}
+	public void setVideoBitrate(Integer videoBitrate){
+		this.videoBitrate = videoBitrate;
+	}
+
+	public void videoBitrate(String multirequestToken){
+		setToken("videoBitrate", multirequestToken);
+	}
+
+	// audioBitrate:
+	public Integer getAudioBitrate(){
+		return this.audioBitrate;
+	}
+	public void setAudioBitrate(Integer audioBitrate){
+		this.audioBitrate = audioBitrate;
+	}
+
+	public void audioBitrate(String multirequestToken){
+		setToken("audioBitrate", multirequestToken);
+	}
+
+	// destFileSyncLocalPath:
+	public String getDestFileSyncLocalPath(){
+		return this.destFileSyncLocalPath;
+	}
+	public void setDestFileSyncLocalPath(String destFileSyncLocalPath){
+		this.destFileSyncLocalPath = destFileSyncLocalPath;
+	}
+
+	public void destFileSyncLocalPath(String multirequestToken){
+		setToken("destFileSyncLocalPath", multirequestToken);
+	}
+
+	// destFileSyncRemoteUrl:
+	public String getDestFileSyncRemoteUrl(){
+		return this.destFileSyncRemoteUrl;
+	}
+	public void setDestFileSyncRemoteUrl(String destFileSyncRemoteUrl){
+		this.destFileSyncRemoteUrl = destFileSyncRemoteUrl;
+	}
+
+	public void destFileSyncRemoteUrl(String multirequestToken){
+		setToken("destFileSyncRemoteUrl", multirequestToken);
+	}
 
 
-    public ConvertCollectionFlavorData() {
-       super();
-    }
+	public ConvertCollectionFlavorData() {
+		super();
+	}
 
-    public ConvertCollectionFlavorData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertCollectionFlavorData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        flavorParamsOutputId = GsonParser.parseInt(jsonObject.get("flavorParamsOutputId"));
-        readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
-        videoBitrate = GsonParser.parseInt(jsonObject.get("videoBitrate"));
-        audioBitrate = GsonParser.parseInt(jsonObject.get("audioBitrate"));
-        destFileSyncLocalPath = GsonParser.parseString(jsonObject.get("destFileSyncLocalPath"));
-        destFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("destFileSyncRemoteUrl"));
+		// set members values:
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		flavorParamsOutputId = GsonParser.parseInt(jsonObject.get("flavorParamsOutputId"));
+		readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
+		videoBitrate = GsonParser.parseInt(jsonObject.get("videoBitrate"));
+		audioBitrate = GsonParser.parseInt(jsonObject.get("audioBitrate"));
+		destFileSyncLocalPath = GsonParser.parseString(jsonObject.get("destFileSyncLocalPath"));
+		destFileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("destFileSyncRemoteUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertCollectionFlavorData");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("flavorParamsOutputId", this.flavorParamsOutputId);
-        kparams.add("readyBehavior", this.readyBehavior);
-        kparams.add("videoBitrate", this.videoBitrate);
-        kparams.add("audioBitrate", this.audioBitrate);
-        kparams.add("destFileSyncLocalPath", this.destFileSyncLocalPath);
-        kparams.add("destFileSyncRemoteUrl", this.destFileSyncRemoteUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertCollectionFlavorData");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("flavorParamsOutputId", this.flavorParamsOutputId);
+		kparams.add("readyBehavior", this.readyBehavior);
+		kparams.add("videoBitrate", this.videoBitrate);
+		kparams.add("audioBitrate", this.audioBitrate);
+		kparams.add("destFileSyncLocalPath", this.destFileSyncLocalPath);
+		kparams.add("destFileSyncRemoteUrl", this.destFileSyncRemoteUrl);
+		return kparams;
+	}
 
 }
 

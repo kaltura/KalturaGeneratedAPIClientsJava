@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,132 +43,177 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControl.Tokenizer.class)
 public class AccessControl extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String name();
+		String systemName();
+		String description();
+		String createdAt();
+		String isDefault();
+		RequestBuilder.ListTokenizer<BaseRestriction.Tokenizer> restrictions();
+		String containsUnsuportedRestrictions();
+	}
 
 	/**  The id of the Access Control Profile  */
-    private Integer id;
-    private Integer partnerId;
+	private Integer id;
+	private Integer partnerId;
 	/**  The name of the Access Control Profile  */
-    private String name;
+	private String name;
 	/**  System name of the Access Control Profile  */
-    private String systemName;
+	private String systemName;
 	/**  The description of the Access Control Profile  */
-    private String description;
+	private String description;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  True if this Conversion Profile is the default  */
-    private Boolean isDefault;
+	private Boolean isDefault;
 	/**  Array of Access Control Restrictions  */
-    private List<BaseRestriction> restrictions;
+	private List<BaseRestriction> restrictions;
 	/**  Indicates that the access control profile is new and should be handled using
 	  KalturaAccessControlProfile object and accessControlProfile service  */
-    private Boolean containsUnsuportedRestrictions;
+	private Boolean containsUnsuportedRestrictions;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // restrictions:
-    public List<BaseRestriction> getRestrictions(){
-        return this.restrictions;
-    }
-    public void setRestrictions(List<BaseRestriction> restrictions){
-        this.restrictions = restrictions;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // containsUnsuportedRestrictions:
-    public Boolean getContainsUnsuportedRestrictions(){
-        return this.containsUnsuportedRestrictions;
-    }
-    public void setContainsUnsuportedRestrictions(Boolean containsUnsuportedRestrictions){
-        this.containsUnsuportedRestrictions = containsUnsuportedRestrictions;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
+
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
+
+	// restrictions:
+	public List<BaseRestriction> getRestrictions(){
+		return this.restrictions;
+	}
+	public void setRestrictions(List<BaseRestriction> restrictions){
+		this.restrictions = restrictions;
+	}
+
+	// containsUnsuportedRestrictions:
+	public Boolean getContainsUnsuportedRestrictions(){
+		return this.containsUnsuportedRestrictions;
+	}
+	public void setContainsUnsuportedRestrictions(Boolean containsUnsuportedRestrictions){
+		this.containsUnsuportedRestrictions = containsUnsuportedRestrictions;
+	}
+
+	public void containsUnsuportedRestrictions(String multirequestToken){
+		setToken("containsUnsuportedRestrictions", multirequestToken);
+	}
 
 
-    public AccessControl() {
-       super();
-    }
+	public AccessControl() {
+		super();
+	}
 
-    public AccessControl(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControl(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        restrictions = GsonParser.parseArray(jsonObject.getAsJsonArray("restrictions"), BaseRestriction.class);
-        containsUnsuportedRestrictions = GsonParser.parseBoolean(jsonObject.get("containsUnsuportedRestrictions"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		restrictions = GsonParser.parseArray(jsonObject.getAsJsonArray("restrictions"), BaseRestriction.class);
+		containsUnsuportedRestrictions = GsonParser.parseBoolean(jsonObject.get("containsUnsuportedRestrictions"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControl");
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("isDefault", this.isDefault);
-        kparams.add("restrictions", this.restrictions);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControl");
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("isDefault", this.isDefault);
+		kparams.add("restrictions", this.restrictions);
+		return kparams;
+	}
 
 }
 

@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadType implements EnumAsString {
-    CSV("bulkUploadCsv.CSV"),
-    FILTER("bulkUploadFilter.FILTER"),
-    XML("bulkUploadXml.XML"),
-    DROP_FOLDER_XML("dropFolderXmlBulkUpload.DROP_FOLDER_XML"),
-    ICAL("scheduleBulkUpload.ICAL"),
-    DROP_FOLDER_ICAL("scheduleDropFolder.DROP_FOLDER_ICAL");
+	CSV("bulkUploadCsv.CSV"),
+	FILTER("bulkUploadFilter.FILTER"),
+	XML("bulkUploadXml.XML"),
+	DROP_FOLDER_XML("dropFolderXmlBulkUpload.DROP_FOLDER_XML"),
+	ICAL("scheduleBulkUpload.ICAL"),
+	DROP_FOLDER_ICAL("scheduleDropFolder.DROP_FOLDER_ICAL");
 
-    private String value;
+	private String value;
 
-    BulkUploadType(String value) {
-        this.value = value;
-    }
+	BulkUploadType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static BulkUploadType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BulkUploadType defined values and compare the inner value with the given one:
-        for(BulkUploadType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BulkUploadType.values().length > 0 ? BulkUploadType.values()[0]: null;
+	public static BulkUploadType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BulkUploadType defined values and compare the inner value with the given one:
+		for(BulkUploadType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BulkUploadType.values().length > 0 ? BulkUploadType.values()[0]: null;
    }
 }

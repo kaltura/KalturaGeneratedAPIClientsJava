@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,72 +41,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamBitrate.Tokenizer.class)
 public class LiveStreamBitrate extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String bitrate();
+		String width();
+		String height();
+		String tags();
+	}
 
-    private Integer bitrate;
-    private Integer width;
-    private Integer height;
-    private String tags;
+	private Integer bitrate;
+	private Integer width;
+	private Integer height;
+	private String tags;
 
-    // bitrate:
-    public Integer getBitrate(){
-        return this.bitrate;
-    }
-    public void setBitrate(Integer bitrate){
-        this.bitrate = bitrate;
-    }
+	// bitrate:
+	public Integer getBitrate(){
+		return this.bitrate;
+	}
+	public void setBitrate(Integer bitrate){
+		this.bitrate = bitrate;
+	}
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	public void bitrate(String multirequestToken){
+		setToken("bitrate", multirequestToken);
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
+
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
+
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
 
-    public LiveStreamBitrate() {
-       super();
-    }
+	public LiveStreamBitrate() {
+		super();
+	}
 
-    public LiveStreamBitrate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStreamBitrate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        bitrate = GsonParser.parseInt(jsonObject.get("bitrate"));
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
+		// set members values:
+		bitrate = GsonParser.parseInt(jsonObject.get("bitrate"));
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamBitrate");
-        kparams.add("bitrate", this.bitrate);
-        kparams.add("width", this.width);
-        kparams.add("height", this.height);
-        kparams.add("tags", this.tags);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamBitrate");
+		kparams.add("bitrate", this.bitrate);
+		kparams.add("width", this.width);
+		kparams.add("height", this.height);
+		kparams.add("tags", this.tags);
+		return kparams;
+	}
 
 }
 

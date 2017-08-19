@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,65 +40,84 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CategoryUserFilter.Tokenizer.class)
 public class CategoryUserFilter extends CategoryUserBaseFilter {
+	
+	public interface Tokenizer extends CategoryUserBaseFilter.Tokenizer {
+		String categoryDirectMembers();
+		String freeText();
+		String relatedGroupsByUserId();
+	}
 
 	/**  Return the list of categoryUser that are not inherited from parent category -
 	  only the direct categoryUsers.  */
-    private Boolean categoryDirectMembers;
+	private Boolean categoryDirectMembers;
 	/**  Free text search on user id or screen name  */
-    private String freeText;
+	private String freeText;
 	/**  Return a list of categoryUser that related to the userId in this field by groups  */
-    private String relatedGroupsByUserId;
+	private String relatedGroupsByUserId;
 
-    // categoryDirectMembers:
-    public Boolean getCategoryDirectMembers(){
-        return this.categoryDirectMembers;
-    }
-    public void setCategoryDirectMembers(Boolean categoryDirectMembers){
-        this.categoryDirectMembers = categoryDirectMembers;
-    }
+	// categoryDirectMembers:
+	public Boolean getCategoryDirectMembers(){
+		return this.categoryDirectMembers;
+	}
+	public void setCategoryDirectMembers(Boolean categoryDirectMembers){
+		this.categoryDirectMembers = categoryDirectMembers;
+	}
 
-    // freeText:
-    public String getFreeText(){
-        return this.freeText;
-    }
-    public void setFreeText(String freeText){
-        this.freeText = freeText;
-    }
+	public void categoryDirectMembers(String multirequestToken){
+		setToken("categoryDirectMembers", multirequestToken);
+	}
 
-    // relatedGroupsByUserId:
-    public String getRelatedGroupsByUserId(){
-        return this.relatedGroupsByUserId;
-    }
-    public void setRelatedGroupsByUserId(String relatedGroupsByUserId){
-        this.relatedGroupsByUserId = relatedGroupsByUserId;
-    }
+	// freeText:
+	public String getFreeText(){
+		return this.freeText;
+	}
+	public void setFreeText(String freeText){
+		this.freeText = freeText;
+	}
+
+	public void freeText(String multirequestToken){
+		setToken("freeText", multirequestToken);
+	}
+
+	// relatedGroupsByUserId:
+	public String getRelatedGroupsByUserId(){
+		return this.relatedGroupsByUserId;
+	}
+	public void setRelatedGroupsByUserId(String relatedGroupsByUserId){
+		this.relatedGroupsByUserId = relatedGroupsByUserId;
+	}
+
+	public void relatedGroupsByUserId(String multirequestToken){
+		setToken("relatedGroupsByUserId", multirequestToken);
+	}
 
 
-    public CategoryUserFilter() {
-       super();
-    }
+	public CategoryUserFilter() {
+		super();
+	}
 
-    public CategoryUserFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CategoryUserFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryDirectMembers = GsonParser.parseBoolean(jsonObject.get("categoryDirectMembers"));
-        freeText = GsonParser.parseString(jsonObject.get("freeText"));
-        relatedGroupsByUserId = GsonParser.parseString(jsonObject.get("relatedGroupsByUserId"));
+		// set members values:
+		categoryDirectMembers = GsonParser.parseBoolean(jsonObject.get("categoryDirectMembers"));
+		freeText = GsonParser.parseString(jsonObject.get("freeText"));
+		relatedGroupsByUserId = GsonParser.parseString(jsonObject.get("relatedGroupsByUserId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategoryUserFilter");
-        kparams.add("categoryDirectMembers", this.categoryDirectMembers);
-        kparams.add("freeText", this.freeText);
-        kparams.add("relatedGroupsByUserId", this.relatedGroupsByUserId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategoryUserFilter");
+		kparams.add("categoryDirectMembers", this.categoryDirectMembers);
+		kparams.add("freeText", this.freeText);
+		kparams.add("relatedGroupsByUserId", this.relatedGroupsByUserId);
+		return kparams;
+	}
 
 }
 

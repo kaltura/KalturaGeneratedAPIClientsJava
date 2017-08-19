@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LivePublishStatus implements EnumAsInt {
-    DISABLED(0),
-    ENABLED(1);
+	DISABLED(0),
+	ENABLED(1);
 
-    private int value;
+	private int value;
 
-    LivePublishStatus(int value) {
-        this.value = value;
-    }
+	LivePublishStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static LivePublishStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LivePublishStatus defined values and compare the inner value with the given one:
-        for(LivePublishStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LivePublishStatus.values().length > 0 ? LivePublishStatus.values()[0]: null;
+	public static LivePublishStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LivePublishStatus defined values and compare the inner value with the given one:
+		for(LivePublishStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LivePublishStatus.values().length > 0 ? LivePublishStatus.values()[0]: null;
    }
 }

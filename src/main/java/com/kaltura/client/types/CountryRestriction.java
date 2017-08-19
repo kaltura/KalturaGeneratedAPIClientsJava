@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.CountryRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CountryRestriction.Tokenizer.class)
 public class CountryRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String countryRestrictionType();
+		String countryList();
+	}
 
 	/**  Country restriction type (Allow or deny)  */
-    private CountryRestrictionType countryRestrictionType;
+	private CountryRestrictionType countryRestrictionType;
 	/**  Comma separated list of country codes to allow to deny  */
-    private String countryList;
+	private String countryList;
 
-    // countryRestrictionType:
-    public CountryRestrictionType getCountryRestrictionType(){
-        return this.countryRestrictionType;
-    }
-    public void setCountryRestrictionType(CountryRestrictionType countryRestrictionType){
-        this.countryRestrictionType = countryRestrictionType;
-    }
+	// countryRestrictionType:
+	public CountryRestrictionType getCountryRestrictionType(){
+		return this.countryRestrictionType;
+	}
+	public void setCountryRestrictionType(CountryRestrictionType countryRestrictionType){
+		this.countryRestrictionType = countryRestrictionType;
+	}
 
-    // countryList:
-    public String getCountryList(){
-        return this.countryList;
-    }
-    public void setCountryList(String countryList){
-        this.countryList = countryList;
-    }
+	public void countryRestrictionType(String multirequestToken){
+		setToken("countryRestrictionType", multirequestToken);
+	}
+
+	// countryList:
+	public String getCountryList(){
+		return this.countryList;
+	}
+	public void setCountryList(String countryList){
+		this.countryList = countryList;
+	}
+
+	public void countryList(String multirequestToken){
+		setToken("countryList", multirequestToken);
+	}
 
 
-    public CountryRestriction() {
-       super();
-    }
+	public CountryRestriction() {
+		super();
+	}
 
-    public CountryRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CountryRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        countryRestrictionType = CountryRestrictionType.get(GsonParser.parseInt(jsonObject.get("countryRestrictionType")));
-        countryList = GsonParser.parseString(jsonObject.get("countryList"));
+		// set members values:
+		countryRestrictionType = CountryRestrictionType.get(GsonParser.parseInt(jsonObject.get("countryRestrictionType")));
+		countryList = GsonParser.parseString(jsonObject.get("countryList"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCountryRestriction");
-        kparams.add("countryRestrictionType", this.countryRestrictionType);
-        kparams.add("countryList", this.countryList);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCountryRestriction");
+		kparams.add("countryRestrictionType", this.countryRestrictionType);
+		kparams.add("countryList", this.countryList);
+		return kparams;
+	}
 
 }
 

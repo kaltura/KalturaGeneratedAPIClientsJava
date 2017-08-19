@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,62 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetParamsResourceContainer.Tokenizer.class)
 public class AssetParamsResourceContainer extends Resource {
+	
+	public interface Tokenizer extends Resource.Tokenizer {
+		ContentResource.Tokenizer resource();
+		String assetParamsId();
+	}
 
 	/**  The content resource to associate with asset params  */
-    private ContentResource resource;
+	private ContentResource resource;
 	/**  The asset params to associate with the reaource  */
-    private Integer assetParamsId;
+	private Integer assetParamsId;
 
-    // resource:
-    public ContentResource getResource(){
-        return this.resource;
-    }
-    public void setResource(ContentResource resource){
-        this.resource = resource;
-    }
+	// resource:
+	public ContentResource getResource(){
+		return this.resource;
+	}
+	public void setResource(ContentResource resource){
+		this.resource = resource;
+	}
 
-    // assetParamsId:
-    public Integer getAssetParamsId(){
-        return this.assetParamsId;
-    }
-    public void setAssetParamsId(Integer assetParamsId){
-        this.assetParamsId = assetParamsId;
-    }
+	// assetParamsId:
+	public Integer getAssetParamsId(){
+		return this.assetParamsId;
+	}
+	public void setAssetParamsId(Integer assetParamsId){
+		this.assetParamsId = assetParamsId;
+	}
+
+	public void assetParamsId(String multirequestToken){
+		setToken("assetParamsId", multirequestToken);
+	}
 
 
-    public AssetParamsResourceContainer() {
-       super();
-    }
+	public AssetParamsResourceContainer() {
+		super();
+	}
 
-    public AssetParamsResourceContainer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetParamsResourceContainer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), ContentResource.class);
-        assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
+		// set members values:
+		resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), ContentResource.class);
+		assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetParamsResourceContainer");
-        kparams.add("resource", this.resource);
-        kparams.add("assetParamsId", this.assetParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetParamsResourceContainer");
+		kparams.add("resource", this.resource);
+		kparams.add("assetParamsId", this.assetParamsId);
+		return kparams;
+	}
 
 }
 

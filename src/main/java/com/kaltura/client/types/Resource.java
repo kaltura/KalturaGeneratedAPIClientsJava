@@ -30,7 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,23 +42,27 @@ import com.kaltura.client.utils.GsonParser;
 /**  Used to ingest entry object, as single resource or list of resources accompanied
   by asset params ids.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Resource.Tokenizer.class)
 public abstract class Resource extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+	}
 
 
 
-    public Resource() {
-       super();
-    }
+	public Resource() {
+		super();
+	}
 
-    public Resource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public Resource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaResource");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaResource");
+		return kparams;
+	}
 
 }
 

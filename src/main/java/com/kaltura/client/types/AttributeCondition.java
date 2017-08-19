@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttributeCondition.Tokenizer.class)
 public abstract class AttributeCondition extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String value();
+	}
 
-    private String value;
+	private String value;
 
-    // value:
-    public String getValue(){
-        return this.value;
-    }
-    public void setValue(String value){
-        this.value = value;
-    }
+	// value:
+	public String getValue(){
+		return this.value;
+	}
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public AttributeCondition() {
-       super();
-    }
+	public AttributeCondition() {
+		super();
+	}
 
-    public AttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        value = GsonParser.parseString(jsonObject.get("value"));
+		// set members values:
+		value = GsonParser.parseString(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttributeCondition");
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttributeCondition");
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

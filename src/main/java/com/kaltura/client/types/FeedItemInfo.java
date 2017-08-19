@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,127 +41,176 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FeedItemInfo.Tokenizer.class)
 public class FeedItemInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String itemXPath();
+		String itemPublishDateXPath();
+		String itemUniqueIdentifierXPath();
+		String itemContentFileSizeXPath();
+		String itemContentUrlXPath();
+		String itemContentBitrateXPath();
+		String itemHashXPath();
+		String itemContentXpath();
+		String contentBitrateAttributeName();
+	}
 
-    private String itemXPath;
-    private String itemPublishDateXPath;
-    private String itemUniqueIdentifierXPath;
-    private String itemContentFileSizeXPath;
-    private String itemContentUrlXPath;
-    private String itemContentBitrateXPath;
-    private String itemHashXPath;
-    private String itemContentXpath;
-    private String contentBitrateAttributeName;
+	private String itemXPath;
+	private String itemPublishDateXPath;
+	private String itemUniqueIdentifierXPath;
+	private String itemContentFileSizeXPath;
+	private String itemContentUrlXPath;
+	private String itemContentBitrateXPath;
+	private String itemHashXPath;
+	private String itemContentXpath;
+	private String contentBitrateAttributeName;
 
-    // itemXPath:
-    public String getItemXPath(){
-        return this.itemXPath;
-    }
-    public void setItemXPath(String itemXPath){
-        this.itemXPath = itemXPath;
-    }
+	// itemXPath:
+	public String getItemXPath(){
+		return this.itemXPath;
+	}
+	public void setItemXPath(String itemXPath){
+		this.itemXPath = itemXPath;
+	}
 
-    // itemPublishDateXPath:
-    public String getItemPublishDateXPath(){
-        return this.itemPublishDateXPath;
-    }
-    public void setItemPublishDateXPath(String itemPublishDateXPath){
-        this.itemPublishDateXPath = itemPublishDateXPath;
-    }
+	public void itemXPath(String multirequestToken){
+		setToken("itemXPath", multirequestToken);
+	}
 
-    // itemUniqueIdentifierXPath:
-    public String getItemUniqueIdentifierXPath(){
-        return this.itemUniqueIdentifierXPath;
-    }
-    public void setItemUniqueIdentifierXPath(String itemUniqueIdentifierXPath){
-        this.itemUniqueIdentifierXPath = itemUniqueIdentifierXPath;
-    }
+	// itemPublishDateXPath:
+	public String getItemPublishDateXPath(){
+		return this.itemPublishDateXPath;
+	}
+	public void setItemPublishDateXPath(String itemPublishDateXPath){
+		this.itemPublishDateXPath = itemPublishDateXPath;
+	}
 
-    // itemContentFileSizeXPath:
-    public String getItemContentFileSizeXPath(){
-        return this.itemContentFileSizeXPath;
-    }
-    public void setItemContentFileSizeXPath(String itemContentFileSizeXPath){
-        this.itemContentFileSizeXPath = itemContentFileSizeXPath;
-    }
+	public void itemPublishDateXPath(String multirequestToken){
+		setToken("itemPublishDateXPath", multirequestToken);
+	}
 
-    // itemContentUrlXPath:
-    public String getItemContentUrlXPath(){
-        return this.itemContentUrlXPath;
-    }
-    public void setItemContentUrlXPath(String itemContentUrlXPath){
-        this.itemContentUrlXPath = itemContentUrlXPath;
-    }
+	// itemUniqueIdentifierXPath:
+	public String getItemUniqueIdentifierXPath(){
+		return this.itemUniqueIdentifierXPath;
+	}
+	public void setItemUniqueIdentifierXPath(String itemUniqueIdentifierXPath){
+		this.itemUniqueIdentifierXPath = itemUniqueIdentifierXPath;
+	}
 
-    // itemContentBitrateXPath:
-    public String getItemContentBitrateXPath(){
-        return this.itemContentBitrateXPath;
-    }
-    public void setItemContentBitrateXPath(String itemContentBitrateXPath){
-        this.itemContentBitrateXPath = itemContentBitrateXPath;
-    }
+	public void itemUniqueIdentifierXPath(String multirequestToken){
+		setToken("itemUniqueIdentifierXPath", multirequestToken);
+	}
 
-    // itemHashXPath:
-    public String getItemHashXPath(){
-        return this.itemHashXPath;
-    }
-    public void setItemHashXPath(String itemHashXPath){
-        this.itemHashXPath = itemHashXPath;
-    }
+	// itemContentFileSizeXPath:
+	public String getItemContentFileSizeXPath(){
+		return this.itemContentFileSizeXPath;
+	}
+	public void setItemContentFileSizeXPath(String itemContentFileSizeXPath){
+		this.itemContentFileSizeXPath = itemContentFileSizeXPath;
+	}
 
-    // itemContentXpath:
-    public String getItemContentXpath(){
-        return this.itemContentXpath;
-    }
-    public void setItemContentXpath(String itemContentXpath){
-        this.itemContentXpath = itemContentXpath;
-    }
+	public void itemContentFileSizeXPath(String multirequestToken){
+		setToken("itemContentFileSizeXPath", multirequestToken);
+	}
 
-    // contentBitrateAttributeName:
-    public String getContentBitrateAttributeName(){
-        return this.contentBitrateAttributeName;
-    }
-    public void setContentBitrateAttributeName(String contentBitrateAttributeName){
-        this.contentBitrateAttributeName = contentBitrateAttributeName;
-    }
+	// itemContentUrlXPath:
+	public String getItemContentUrlXPath(){
+		return this.itemContentUrlXPath;
+	}
+	public void setItemContentUrlXPath(String itemContentUrlXPath){
+		this.itemContentUrlXPath = itemContentUrlXPath;
+	}
+
+	public void itemContentUrlXPath(String multirequestToken){
+		setToken("itemContentUrlXPath", multirequestToken);
+	}
+
+	// itemContentBitrateXPath:
+	public String getItemContentBitrateXPath(){
+		return this.itemContentBitrateXPath;
+	}
+	public void setItemContentBitrateXPath(String itemContentBitrateXPath){
+		this.itemContentBitrateXPath = itemContentBitrateXPath;
+	}
+
+	public void itemContentBitrateXPath(String multirequestToken){
+		setToken("itemContentBitrateXPath", multirequestToken);
+	}
+
+	// itemHashXPath:
+	public String getItemHashXPath(){
+		return this.itemHashXPath;
+	}
+	public void setItemHashXPath(String itemHashXPath){
+		this.itemHashXPath = itemHashXPath;
+	}
+
+	public void itemHashXPath(String multirequestToken){
+		setToken("itemHashXPath", multirequestToken);
+	}
+
+	// itemContentXpath:
+	public String getItemContentXpath(){
+		return this.itemContentXpath;
+	}
+	public void setItemContentXpath(String itemContentXpath){
+		this.itemContentXpath = itemContentXpath;
+	}
+
+	public void itemContentXpath(String multirequestToken){
+		setToken("itemContentXpath", multirequestToken);
+	}
+
+	// contentBitrateAttributeName:
+	public String getContentBitrateAttributeName(){
+		return this.contentBitrateAttributeName;
+	}
+	public void setContentBitrateAttributeName(String contentBitrateAttributeName){
+		this.contentBitrateAttributeName = contentBitrateAttributeName;
+	}
+
+	public void contentBitrateAttributeName(String multirequestToken){
+		setToken("contentBitrateAttributeName", multirequestToken);
+	}
 
 
-    public FeedItemInfo() {
-       super();
-    }
+	public FeedItemInfo() {
+		super();
+	}
 
-    public FeedItemInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FeedItemInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        itemXPath = GsonParser.parseString(jsonObject.get("itemXPath"));
-        itemPublishDateXPath = GsonParser.parseString(jsonObject.get("itemPublishDateXPath"));
-        itemUniqueIdentifierXPath = GsonParser.parseString(jsonObject.get("itemUniqueIdentifierXPath"));
-        itemContentFileSizeXPath = GsonParser.parseString(jsonObject.get("itemContentFileSizeXPath"));
-        itemContentUrlXPath = GsonParser.parseString(jsonObject.get("itemContentUrlXPath"));
-        itemContentBitrateXPath = GsonParser.parseString(jsonObject.get("itemContentBitrateXPath"));
-        itemHashXPath = GsonParser.parseString(jsonObject.get("itemHashXPath"));
-        itemContentXpath = GsonParser.parseString(jsonObject.get("itemContentXpath"));
-        contentBitrateAttributeName = GsonParser.parseString(jsonObject.get("contentBitrateAttributeName"));
+		// set members values:
+		itemXPath = GsonParser.parseString(jsonObject.get("itemXPath"));
+		itemPublishDateXPath = GsonParser.parseString(jsonObject.get("itemPublishDateXPath"));
+		itemUniqueIdentifierXPath = GsonParser.parseString(jsonObject.get("itemUniqueIdentifierXPath"));
+		itemContentFileSizeXPath = GsonParser.parseString(jsonObject.get("itemContentFileSizeXPath"));
+		itemContentUrlXPath = GsonParser.parseString(jsonObject.get("itemContentUrlXPath"));
+		itemContentBitrateXPath = GsonParser.parseString(jsonObject.get("itemContentBitrateXPath"));
+		itemHashXPath = GsonParser.parseString(jsonObject.get("itemHashXPath"));
+		itemContentXpath = GsonParser.parseString(jsonObject.get("itemContentXpath"));
+		contentBitrateAttributeName = GsonParser.parseString(jsonObject.get("contentBitrateAttributeName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFeedItemInfo");
-        kparams.add("itemXPath", this.itemXPath);
-        kparams.add("itemPublishDateXPath", this.itemPublishDateXPath);
-        kparams.add("itemUniqueIdentifierXPath", this.itemUniqueIdentifierXPath);
-        kparams.add("itemContentFileSizeXPath", this.itemContentFileSizeXPath);
-        kparams.add("itemContentUrlXPath", this.itemContentUrlXPath);
-        kparams.add("itemContentBitrateXPath", this.itemContentBitrateXPath);
-        kparams.add("itemHashXPath", this.itemHashXPath);
-        kparams.add("itemContentXpath", this.itemContentXpath);
-        kparams.add("contentBitrateAttributeName", this.contentBitrateAttributeName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFeedItemInfo");
+		kparams.add("itemXPath", this.itemXPath);
+		kparams.add("itemPublishDateXPath", this.itemPublishDateXPath);
+		kparams.add("itemUniqueIdentifierXPath", this.itemUniqueIdentifierXPath);
+		kparams.add("itemContentFileSizeXPath", this.itemContentFileSizeXPath);
+		kparams.add("itemContentUrlXPath", this.itemContentUrlXPath);
+		kparams.add("itemContentBitrateXPath", this.itemContentBitrateXPath);
+		kparams.add("itemHashXPath", this.itemHashXPath);
+		kparams.add("itemContentXpath", this.itemContentXpath);
+		kparams.add("contentBitrateAttributeName", this.contentBitrateAttributeName);
+		return kparams;
+	}
 
 }
 

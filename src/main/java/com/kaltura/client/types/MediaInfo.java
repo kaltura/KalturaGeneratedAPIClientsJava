@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.BitRateMode;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,439 +42,618 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaInfo.Tokenizer.class)
 public class MediaInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String flavorAssetId();
+		String fileSize();
+		String containerFormat();
+		String containerId();
+		String containerProfile();
+		String containerDuration();
+		String containerBitRate();
+		String videoFormat();
+		String videoCodecId();
+		String videoDuration();
+		String videoBitRate();
+		String videoBitRateMode();
+		String videoWidth();
+		String videoHeight();
+		String videoFrameRate();
+		String videoDar();
+		String videoRotation();
+		String audioFormat();
+		String audioCodecId();
+		String audioDuration();
+		String audioBitRate();
+		String audioBitRateMode();
+		String audioChannels();
+		String audioSamplingRate();
+		String audioResolution();
+		String writingLib();
+		String rawData();
+		String multiStreamInfo();
+		String scanType();
+		String multiStream();
+		String isFastStart();
+		String contentStreams();
+		String complexityValue();
+		String maxGOP();
+	}
 
 	/**  The id of the media info  */
-    private Integer id;
+	private Integer id;
 	/**  The id of the related flavor asset  */
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  The file size  */
-    private Integer fileSize;
+	private Integer fileSize;
 	/**  The container format  */
-    private String containerFormat;
+	private String containerFormat;
 	/**  The container id  */
-    private String containerId;
+	private String containerId;
 	/**  The container profile  */
-    private String containerProfile;
+	private String containerProfile;
 	/**  The container duration  */
-    private Integer containerDuration;
+	private Integer containerDuration;
 	/**  The container bit rate  */
-    private Integer containerBitRate;
+	private Integer containerBitRate;
 	/**  The video format  */
-    private String videoFormat;
+	private String videoFormat;
 	/**  The video codec id  */
-    private String videoCodecId;
+	private String videoCodecId;
 	/**  The video duration  */
-    private Integer videoDuration;
+	private Integer videoDuration;
 	/**  The video bit rate  */
-    private Integer videoBitRate;
+	private Integer videoBitRate;
 	/**  The video bit rate mode  */
-    private BitRateMode videoBitRateMode;
+	private BitRateMode videoBitRateMode;
 	/**  The video width  */
-    private Integer videoWidth;
+	private Integer videoWidth;
 	/**  The video height  */
-    private Integer videoHeight;
+	private Integer videoHeight;
 	/**  The video frame rate  */
-    private Double videoFrameRate;
+	private Double videoFrameRate;
 	/**  The video display aspect ratio (dar)  */
-    private Double videoDar;
-    private Integer videoRotation;
+	private Double videoDar;
+	private Integer videoRotation;
 	/**  The audio format  */
-    private String audioFormat;
+	private String audioFormat;
 	/**  The audio codec id  */
-    private String audioCodecId;
+	private String audioCodecId;
 	/**  The audio duration  */
-    private Integer audioDuration;
+	private Integer audioDuration;
 	/**  The audio bit rate  */
-    private Integer audioBitRate;
+	private Integer audioBitRate;
 	/**  The audio bit rate mode  */
-    private BitRateMode audioBitRateMode;
+	private BitRateMode audioBitRateMode;
 	/**  The number of audio channels  */
-    private Integer audioChannels;
+	private Integer audioChannels;
 	/**  The audio sampling rate  */
-    private Integer audioSamplingRate;
+	private Integer audioSamplingRate;
 	/**  The audio resolution  */
-    private Integer audioResolution;
+	private Integer audioResolution;
 	/**  The writing library  */
-    private String writingLib;
+	private String writingLib;
 	/**  The data as returned by the mediainfo command line  */
-    private String rawData;
-    private String multiStreamInfo;
-    private Integer scanType;
-    private String multiStream;
-    private Integer isFastStart;
-    private String contentStreams;
-    private Integer complexityValue;
-    private Double maxGOP;
+	private String rawData;
+	private String multiStreamInfo;
+	private Integer scanType;
+	private String multiStream;
+	private Integer isFastStart;
+	private String contentStreams;
+	private Integer complexityValue;
+	private Double maxGOP;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // fileSize:
-    public Integer getFileSize(){
-        return this.fileSize;
-    }
-    public void setFileSize(Integer fileSize){
-        this.fileSize = fileSize;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // containerFormat:
-    public String getContainerFormat(){
-        return this.containerFormat;
-    }
-    public void setContainerFormat(String containerFormat){
-        this.containerFormat = containerFormat;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // containerId:
-    public String getContainerId(){
-        return this.containerId;
-    }
-    public void setContainerId(String containerId){
-        this.containerId = containerId;
-    }
+	// fileSize:
+	public Integer getFileSize(){
+		return this.fileSize;
+	}
+	public void setFileSize(Integer fileSize){
+		this.fileSize = fileSize;
+	}
 
-    // containerProfile:
-    public String getContainerProfile(){
-        return this.containerProfile;
-    }
-    public void setContainerProfile(String containerProfile){
-        this.containerProfile = containerProfile;
-    }
+	public void fileSize(String multirequestToken){
+		setToken("fileSize", multirequestToken);
+	}
 
-    // containerDuration:
-    public Integer getContainerDuration(){
-        return this.containerDuration;
-    }
-    public void setContainerDuration(Integer containerDuration){
-        this.containerDuration = containerDuration;
-    }
+	// containerFormat:
+	public String getContainerFormat(){
+		return this.containerFormat;
+	}
+	public void setContainerFormat(String containerFormat){
+		this.containerFormat = containerFormat;
+	}
 
-    // containerBitRate:
-    public Integer getContainerBitRate(){
-        return this.containerBitRate;
-    }
-    public void setContainerBitRate(Integer containerBitRate){
-        this.containerBitRate = containerBitRate;
-    }
+	public void containerFormat(String multirequestToken){
+		setToken("containerFormat", multirequestToken);
+	}
 
-    // videoFormat:
-    public String getVideoFormat(){
-        return this.videoFormat;
-    }
-    public void setVideoFormat(String videoFormat){
-        this.videoFormat = videoFormat;
-    }
+	// containerId:
+	public String getContainerId(){
+		return this.containerId;
+	}
+	public void setContainerId(String containerId){
+		this.containerId = containerId;
+	}
 
-    // videoCodecId:
-    public String getVideoCodecId(){
-        return this.videoCodecId;
-    }
-    public void setVideoCodecId(String videoCodecId){
-        this.videoCodecId = videoCodecId;
-    }
+	public void containerId(String multirequestToken){
+		setToken("containerId", multirequestToken);
+	}
 
-    // videoDuration:
-    public Integer getVideoDuration(){
-        return this.videoDuration;
-    }
-    public void setVideoDuration(Integer videoDuration){
-        this.videoDuration = videoDuration;
-    }
+	// containerProfile:
+	public String getContainerProfile(){
+		return this.containerProfile;
+	}
+	public void setContainerProfile(String containerProfile){
+		this.containerProfile = containerProfile;
+	}
 
-    // videoBitRate:
-    public Integer getVideoBitRate(){
-        return this.videoBitRate;
-    }
-    public void setVideoBitRate(Integer videoBitRate){
-        this.videoBitRate = videoBitRate;
-    }
+	public void containerProfile(String multirequestToken){
+		setToken("containerProfile", multirequestToken);
+	}
 
-    // videoBitRateMode:
-    public BitRateMode getVideoBitRateMode(){
-        return this.videoBitRateMode;
-    }
-    public void setVideoBitRateMode(BitRateMode videoBitRateMode){
-        this.videoBitRateMode = videoBitRateMode;
-    }
+	// containerDuration:
+	public Integer getContainerDuration(){
+		return this.containerDuration;
+	}
+	public void setContainerDuration(Integer containerDuration){
+		this.containerDuration = containerDuration;
+	}
 
-    // videoWidth:
-    public Integer getVideoWidth(){
-        return this.videoWidth;
-    }
-    public void setVideoWidth(Integer videoWidth){
-        this.videoWidth = videoWidth;
-    }
+	public void containerDuration(String multirequestToken){
+		setToken("containerDuration", multirequestToken);
+	}
 
-    // videoHeight:
-    public Integer getVideoHeight(){
-        return this.videoHeight;
-    }
-    public void setVideoHeight(Integer videoHeight){
-        this.videoHeight = videoHeight;
-    }
+	// containerBitRate:
+	public Integer getContainerBitRate(){
+		return this.containerBitRate;
+	}
+	public void setContainerBitRate(Integer containerBitRate){
+		this.containerBitRate = containerBitRate;
+	}
 
-    // videoFrameRate:
-    public Double getVideoFrameRate(){
-        return this.videoFrameRate;
-    }
-    public void setVideoFrameRate(Double videoFrameRate){
-        this.videoFrameRate = videoFrameRate;
-    }
+	public void containerBitRate(String multirequestToken){
+		setToken("containerBitRate", multirequestToken);
+	}
 
-    // videoDar:
-    public Double getVideoDar(){
-        return this.videoDar;
-    }
-    public void setVideoDar(Double videoDar){
-        this.videoDar = videoDar;
-    }
+	// videoFormat:
+	public String getVideoFormat(){
+		return this.videoFormat;
+	}
+	public void setVideoFormat(String videoFormat){
+		this.videoFormat = videoFormat;
+	}
 
-    // videoRotation:
-    public Integer getVideoRotation(){
-        return this.videoRotation;
-    }
-    public void setVideoRotation(Integer videoRotation){
-        this.videoRotation = videoRotation;
-    }
+	public void videoFormat(String multirequestToken){
+		setToken("videoFormat", multirequestToken);
+	}
 
-    // audioFormat:
-    public String getAudioFormat(){
-        return this.audioFormat;
-    }
-    public void setAudioFormat(String audioFormat){
-        this.audioFormat = audioFormat;
-    }
+	// videoCodecId:
+	public String getVideoCodecId(){
+		return this.videoCodecId;
+	}
+	public void setVideoCodecId(String videoCodecId){
+		this.videoCodecId = videoCodecId;
+	}
 
-    // audioCodecId:
-    public String getAudioCodecId(){
-        return this.audioCodecId;
-    }
-    public void setAudioCodecId(String audioCodecId){
-        this.audioCodecId = audioCodecId;
-    }
+	public void videoCodecId(String multirequestToken){
+		setToken("videoCodecId", multirequestToken);
+	}
 
-    // audioDuration:
-    public Integer getAudioDuration(){
-        return this.audioDuration;
-    }
-    public void setAudioDuration(Integer audioDuration){
-        this.audioDuration = audioDuration;
-    }
+	// videoDuration:
+	public Integer getVideoDuration(){
+		return this.videoDuration;
+	}
+	public void setVideoDuration(Integer videoDuration){
+		this.videoDuration = videoDuration;
+	}
 
-    // audioBitRate:
-    public Integer getAudioBitRate(){
-        return this.audioBitRate;
-    }
-    public void setAudioBitRate(Integer audioBitRate){
-        this.audioBitRate = audioBitRate;
-    }
+	public void videoDuration(String multirequestToken){
+		setToken("videoDuration", multirequestToken);
+	}
 
-    // audioBitRateMode:
-    public BitRateMode getAudioBitRateMode(){
-        return this.audioBitRateMode;
-    }
-    public void setAudioBitRateMode(BitRateMode audioBitRateMode){
-        this.audioBitRateMode = audioBitRateMode;
-    }
+	// videoBitRate:
+	public Integer getVideoBitRate(){
+		return this.videoBitRate;
+	}
+	public void setVideoBitRate(Integer videoBitRate){
+		this.videoBitRate = videoBitRate;
+	}
 
-    // audioChannels:
-    public Integer getAudioChannels(){
-        return this.audioChannels;
-    }
-    public void setAudioChannels(Integer audioChannels){
-        this.audioChannels = audioChannels;
-    }
+	public void videoBitRate(String multirequestToken){
+		setToken("videoBitRate", multirequestToken);
+	}
 
-    // audioSamplingRate:
-    public Integer getAudioSamplingRate(){
-        return this.audioSamplingRate;
-    }
-    public void setAudioSamplingRate(Integer audioSamplingRate){
-        this.audioSamplingRate = audioSamplingRate;
-    }
+	// videoBitRateMode:
+	public BitRateMode getVideoBitRateMode(){
+		return this.videoBitRateMode;
+	}
+	public void setVideoBitRateMode(BitRateMode videoBitRateMode){
+		this.videoBitRateMode = videoBitRateMode;
+	}
 
-    // audioResolution:
-    public Integer getAudioResolution(){
-        return this.audioResolution;
-    }
-    public void setAudioResolution(Integer audioResolution){
-        this.audioResolution = audioResolution;
-    }
+	public void videoBitRateMode(String multirequestToken){
+		setToken("videoBitRateMode", multirequestToken);
+	}
 
-    // writingLib:
-    public String getWritingLib(){
-        return this.writingLib;
-    }
-    public void setWritingLib(String writingLib){
-        this.writingLib = writingLib;
-    }
+	// videoWidth:
+	public Integer getVideoWidth(){
+		return this.videoWidth;
+	}
+	public void setVideoWidth(Integer videoWidth){
+		this.videoWidth = videoWidth;
+	}
 
-    // rawData:
-    public String getRawData(){
-        return this.rawData;
-    }
-    public void setRawData(String rawData){
-        this.rawData = rawData;
-    }
+	public void videoWidth(String multirequestToken){
+		setToken("videoWidth", multirequestToken);
+	}
 
-    // multiStreamInfo:
-    public String getMultiStreamInfo(){
-        return this.multiStreamInfo;
-    }
-    public void setMultiStreamInfo(String multiStreamInfo){
-        this.multiStreamInfo = multiStreamInfo;
-    }
+	// videoHeight:
+	public Integer getVideoHeight(){
+		return this.videoHeight;
+	}
+	public void setVideoHeight(Integer videoHeight){
+		this.videoHeight = videoHeight;
+	}
 
-    // scanType:
-    public Integer getScanType(){
-        return this.scanType;
-    }
-    public void setScanType(Integer scanType){
-        this.scanType = scanType;
-    }
+	public void videoHeight(String multirequestToken){
+		setToken("videoHeight", multirequestToken);
+	}
 
-    // multiStream:
-    public String getMultiStream(){
-        return this.multiStream;
-    }
-    public void setMultiStream(String multiStream){
-        this.multiStream = multiStream;
-    }
+	// videoFrameRate:
+	public Double getVideoFrameRate(){
+		return this.videoFrameRate;
+	}
+	public void setVideoFrameRate(Double videoFrameRate){
+		this.videoFrameRate = videoFrameRate;
+	}
 
-    // isFastStart:
-    public Integer getIsFastStart(){
-        return this.isFastStart;
-    }
-    public void setIsFastStart(Integer isFastStart){
-        this.isFastStart = isFastStart;
-    }
+	public void videoFrameRate(String multirequestToken){
+		setToken("videoFrameRate", multirequestToken);
+	}
 
-    // contentStreams:
-    public String getContentStreams(){
-        return this.contentStreams;
-    }
-    public void setContentStreams(String contentStreams){
-        this.contentStreams = contentStreams;
-    }
+	// videoDar:
+	public Double getVideoDar(){
+		return this.videoDar;
+	}
+	public void setVideoDar(Double videoDar){
+		this.videoDar = videoDar;
+	}
 
-    // complexityValue:
-    public Integer getComplexityValue(){
-        return this.complexityValue;
-    }
-    public void setComplexityValue(Integer complexityValue){
-        this.complexityValue = complexityValue;
-    }
+	public void videoDar(String multirequestToken){
+		setToken("videoDar", multirequestToken);
+	}
 
-    // maxGOP:
-    public Double getMaxGOP(){
-        return this.maxGOP;
-    }
-    public void setMaxGOP(Double maxGOP){
-        this.maxGOP = maxGOP;
-    }
+	// videoRotation:
+	public Integer getVideoRotation(){
+		return this.videoRotation;
+	}
+	public void setVideoRotation(Integer videoRotation){
+		this.videoRotation = videoRotation;
+	}
+
+	public void videoRotation(String multirequestToken){
+		setToken("videoRotation", multirequestToken);
+	}
+
+	// audioFormat:
+	public String getAudioFormat(){
+		return this.audioFormat;
+	}
+	public void setAudioFormat(String audioFormat){
+		this.audioFormat = audioFormat;
+	}
+
+	public void audioFormat(String multirequestToken){
+		setToken("audioFormat", multirequestToken);
+	}
+
+	// audioCodecId:
+	public String getAudioCodecId(){
+		return this.audioCodecId;
+	}
+	public void setAudioCodecId(String audioCodecId){
+		this.audioCodecId = audioCodecId;
+	}
+
+	public void audioCodecId(String multirequestToken){
+		setToken("audioCodecId", multirequestToken);
+	}
+
+	// audioDuration:
+	public Integer getAudioDuration(){
+		return this.audioDuration;
+	}
+	public void setAudioDuration(Integer audioDuration){
+		this.audioDuration = audioDuration;
+	}
+
+	public void audioDuration(String multirequestToken){
+		setToken("audioDuration", multirequestToken);
+	}
+
+	// audioBitRate:
+	public Integer getAudioBitRate(){
+		return this.audioBitRate;
+	}
+	public void setAudioBitRate(Integer audioBitRate){
+		this.audioBitRate = audioBitRate;
+	}
+
+	public void audioBitRate(String multirequestToken){
+		setToken("audioBitRate", multirequestToken);
+	}
+
+	// audioBitRateMode:
+	public BitRateMode getAudioBitRateMode(){
+		return this.audioBitRateMode;
+	}
+	public void setAudioBitRateMode(BitRateMode audioBitRateMode){
+		this.audioBitRateMode = audioBitRateMode;
+	}
+
+	public void audioBitRateMode(String multirequestToken){
+		setToken("audioBitRateMode", multirequestToken);
+	}
+
+	// audioChannels:
+	public Integer getAudioChannels(){
+		return this.audioChannels;
+	}
+	public void setAudioChannels(Integer audioChannels){
+		this.audioChannels = audioChannels;
+	}
+
+	public void audioChannels(String multirequestToken){
+		setToken("audioChannels", multirequestToken);
+	}
+
+	// audioSamplingRate:
+	public Integer getAudioSamplingRate(){
+		return this.audioSamplingRate;
+	}
+	public void setAudioSamplingRate(Integer audioSamplingRate){
+		this.audioSamplingRate = audioSamplingRate;
+	}
+
+	public void audioSamplingRate(String multirequestToken){
+		setToken("audioSamplingRate", multirequestToken);
+	}
+
+	// audioResolution:
+	public Integer getAudioResolution(){
+		return this.audioResolution;
+	}
+	public void setAudioResolution(Integer audioResolution){
+		this.audioResolution = audioResolution;
+	}
+
+	public void audioResolution(String multirequestToken){
+		setToken("audioResolution", multirequestToken);
+	}
+
+	// writingLib:
+	public String getWritingLib(){
+		return this.writingLib;
+	}
+	public void setWritingLib(String writingLib){
+		this.writingLib = writingLib;
+	}
+
+	public void writingLib(String multirequestToken){
+		setToken("writingLib", multirequestToken);
+	}
+
+	// rawData:
+	public String getRawData(){
+		return this.rawData;
+	}
+	public void setRawData(String rawData){
+		this.rawData = rawData;
+	}
+
+	public void rawData(String multirequestToken){
+		setToken("rawData", multirequestToken);
+	}
+
+	// multiStreamInfo:
+	public String getMultiStreamInfo(){
+		return this.multiStreamInfo;
+	}
+	public void setMultiStreamInfo(String multiStreamInfo){
+		this.multiStreamInfo = multiStreamInfo;
+	}
+
+	public void multiStreamInfo(String multirequestToken){
+		setToken("multiStreamInfo", multirequestToken);
+	}
+
+	// scanType:
+	public Integer getScanType(){
+		return this.scanType;
+	}
+	public void setScanType(Integer scanType){
+		this.scanType = scanType;
+	}
+
+	public void scanType(String multirequestToken){
+		setToken("scanType", multirequestToken);
+	}
+
+	// multiStream:
+	public String getMultiStream(){
+		return this.multiStream;
+	}
+	public void setMultiStream(String multiStream){
+		this.multiStream = multiStream;
+	}
+
+	public void multiStream(String multirequestToken){
+		setToken("multiStream", multirequestToken);
+	}
+
+	// isFastStart:
+	public Integer getIsFastStart(){
+		return this.isFastStart;
+	}
+	public void setIsFastStart(Integer isFastStart){
+		this.isFastStart = isFastStart;
+	}
+
+	public void isFastStart(String multirequestToken){
+		setToken("isFastStart", multirequestToken);
+	}
+
+	// contentStreams:
+	public String getContentStreams(){
+		return this.contentStreams;
+	}
+	public void setContentStreams(String contentStreams){
+		this.contentStreams = contentStreams;
+	}
+
+	public void contentStreams(String multirequestToken){
+		setToken("contentStreams", multirequestToken);
+	}
+
+	// complexityValue:
+	public Integer getComplexityValue(){
+		return this.complexityValue;
+	}
+	public void setComplexityValue(Integer complexityValue){
+		this.complexityValue = complexityValue;
+	}
+
+	public void complexityValue(String multirequestToken){
+		setToken("complexityValue", multirequestToken);
+	}
+
+	// maxGOP:
+	public Double getMaxGOP(){
+		return this.maxGOP;
+	}
+	public void setMaxGOP(Double maxGOP){
+		this.maxGOP = maxGOP;
+	}
+
+	public void maxGOP(String multirequestToken){
+		setToken("maxGOP", multirequestToken);
+	}
 
 
-    public MediaInfo() {
-       super();
-    }
+	public MediaInfo() {
+		super();
+	}
 
-    public MediaInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
-        containerFormat = GsonParser.parseString(jsonObject.get("containerFormat"));
-        containerId = GsonParser.parseString(jsonObject.get("containerId"));
-        containerProfile = GsonParser.parseString(jsonObject.get("containerProfile"));
-        containerDuration = GsonParser.parseInt(jsonObject.get("containerDuration"));
-        containerBitRate = GsonParser.parseInt(jsonObject.get("containerBitRate"));
-        videoFormat = GsonParser.parseString(jsonObject.get("videoFormat"));
-        videoCodecId = GsonParser.parseString(jsonObject.get("videoCodecId"));
-        videoDuration = GsonParser.parseInt(jsonObject.get("videoDuration"));
-        videoBitRate = GsonParser.parseInt(jsonObject.get("videoBitRate"));
-        videoBitRateMode = BitRateMode.get(GsonParser.parseInt(jsonObject.get("videoBitRateMode")));
-        videoWidth = GsonParser.parseInt(jsonObject.get("videoWidth"));
-        videoHeight = GsonParser.parseInt(jsonObject.get("videoHeight"));
-        videoFrameRate = GsonParser.parseDouble(jsonObject.get("videoFrameRate"));
-        videoDar = GsonParser.parseDouble(jsonObject.get("videoDar"));
-        videoRotation = GsonParser.parseInt(jsonObject.get("videoRotation"));
-        audioFormat = GsonParser.parseString(jsonObject.get("audioFormat"));
-        audioCodecId = GsonParser.parseString(jsonObject.get("audioCodecId"));
-        audioDuration = GsonParser.parseInt(jsonObject.get("audioDuration"));
-        audioBitRate = GsonParser.parseInt(jsonObject.get("audioBitRate"));
-        audioBitRateMode = BitRateMode.get(GsonParser.parseInt(jsonObject.get("audioBitRateMode")));
-        audioChannels = GsonParser.parseInt(jsonObject.get("audioChannels"));
-        audioSamplingRate = GsonParser.parseInt(jsonObject.get("audioSamplingRate"));
-        audioResolution = GsonParser.parseInt(jsonObject.get("audioResolution"));
-        writingLib = GsonParser.parseString(jsonObject.get("writingLib"));
-        rawData = GsonParser.parseString(jsonObject.get("rawData"));
-        multiStreamInfo = GsonParser.parseString(jsonObject.get("multiStreamInfo"));
-        scanType = GsonParser.parseInt(jsonObject.get("scanType"));
-        multiStream = GsonParser.parseString(jsonObject.get("multiStream"));
-        isFastStart = GsonParser.parseInt(jsonObject.get("isFastStart"));
-        contentStreams = GsonParser.parseString(jsonObject.get("contentStreams"));
-        complexityValue = GsonParser.parseInt(jsonObject.get("complexityValue"));
-        maxGOP = GsonParser.parseDouble(jsonObject.get("maxGOP"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
+		containerFormat = GsonParser.parseString(jsonObject.get("containerFormat"));
+		containerId = GsonParser.parseString(jsonObject.get("containerId"));
+		containerProfile = GsonParser.parseString(jsonObject.get("containerProfile"));
+		containerDuration = GsonParser.parseInt(jsonObject.get("containerDuration"));
+		containerBitRate = GsonParser.parseInt(jsonObject.get("containerBitRate"));
+		videoFormat = GsonParser.parseString(jsonObject.get("videoFormat"));
+		videoCodecId = GsonParser.parseString(jsonObject.get("videoCodecId"));
+		videoDuration = GsonParser.parseInt(jsonObject.get("videoDuration"));
+		videoBitRate = GsonParser.parseInt(jsonObject.get("videoBitRate"));
+		videoBitRateMode = BitRateMode.get(GsonParser.parseInt(jsonObject.get("videoBitRateMode")));
+		videoWidth = GsonParser.parseInt(jsonObject.get("videoWidth"));
+		videoHeight = GsonParser.parseInt(jsonObject.get("videoHeight"));
+		videoFrameRate = GsonParser.parseDouble(jsonObject.get("videoFrameRate"));
+		videoDar = GsonParser.parseDouble(jsonObject.get("videoDar"));
+		videoRotation = GsonParser.parseInt(jsonObject.get("videoRotation"));
+		audioFormat = GsonParser.parseString(jsonObject.get("audioFormat"));
+		audioCodecId = GsonParser.parseString(jsonObject.get("audioCodecId"));
+		audioDuration = GsonParser.parseInt(jsonObject.get("audioDuration"));
+		audioBitRate = GsonParser.parseInt(jsonObject.get("audioBitRate"));
+		audioBitRateMode = BitRateMode.get(GsonParser.parseInt(jsonObject.get("audioBitRateMode")));
+		audioChannels = GsonParser.parseInt(jsonObject.get("audioChannels"));
+		audioSamplingRate = GsonParser.parseInt(jsonObject.get("audioSamplingRate"));
+		audioResolution = GsonParser.parseInt(jsonObject.get("audioResolution"));
+		writingLib = GsonParser.parseString(jsonObject.get("writingLib"));
+		rawData = GsonParser.parseString(jsonObject.get("rawData"));
+		multiStreamInfo = GsonParser.parseString(jsonObject.get("multiStreamInfo"));
+		scanType = GsonParser.parseInt(jsonObject.get("scanType"));
+		multiStream = GsonParser.parseString(jsonObject.get("multiStream"));
+		isFastStart = GsonParser.parseInt(jsonObject.get("isFastStart"));
+		contentStreams = GsonParser.parseString(jsonObject.get("contentStreams"));
+		complexityValue = GsonParser.parseInt(jsonObject.get("complexityValue"));
+		maxGOP = GsonParser.parseDouble(jsonObject.get("maxGOP"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaInfo");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("fileSize", this.fileSize);
-        kparams.add("containerFormat", this.containerFormat);
-        kparams.add("containerId", this.containerId);
-        kparams.add("containerProfile", this.containerProfile);
-        kparams.add("containerDuration", this.containerDuration);
-        kparams.add("containerBitRate", this.containerBitRate);
-        kparams.add("videoFormat", this.videoFormat);
-        kparams.add("videoCodecId", this.videoCodecId);
-        kparams.add("videoDuration", this.videoDuration);
-        kparams.add("videoBitRate", this.videoBitRate);
-        kparams.add("videoBitRateMode", this.videoBitRateMode);
-        kparams.add("videoWidth", this.videoWidth);
-        kparams.add("videoHeight", this.videoHeight);
-        kparams.add("videoFrameRate", this.videoFrameRate);
-        kparams.add("videoDar", this.videoDar);
-        kparams.add("videoRotation", this.videoRotation);
-        kparams.add("audioFormat", this.audioFormat);
-        kparams.add("audioCodecId", this.audioCodecId);
-        kparams.add("audioDuration", this.audioDuration);
-        kparams.add("audioBitRate", this.audioBitRate);
-        kparams.add("audioBitRateMode", this.audioBitRateMode);
-        kparams.add("audioChannels", this.audioChannels);
-        kparams.add("audioSamplingRate", this.audioSamplingRate);
-        kparams.add("audioResolution", this.audioResolution);
-        kparams.add("writingLib", this.writingLib);
-        kparams.add("rawData", this.rawData);
-        kparams.add("multiStreamInfo", this.multiStreamInfo);
-        kparams.add("scanType", this.scanType);
-        kparams.add("multiStream", this.multiStream);
-        kparams.add("isFastStart", this.isFastStart);
-        kparams.add("contentStreams", this.contentStreams);
-        kparams.add("complexityValue", this.complexityValue);
-        kparams.add("maxGOP", this.maxGOP);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaInfo");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("fileSize", this.fileSize);
+		kparams.add("containerFormat", this.containerFormat);
+		kparams.add("containerId", this.containerId);
+		kparams.add("containerProfile", this.containerProfile);
+		kparams.add("containerDuration", this.containerDuration);
+		kparams.add("containerBitRate", this.containerBitRate);
+		kparams.add("videoFormat", this.videoFormat);
+		kparams.add("videoCodecId", this.videoCodecId);
+		kparams.add("videoDuration", this.videoDuration);
+		kparams.add("videoBitRate", this.videoBitRate);
+		kparams.add("videoBitRateMode", this.videoBitRateMode);
+		kparams.add("videoWidth", this.videoWidth);
+		kparams.add("videoHeight", this.videoHeight);
+		kparams.add("videoFrameRate", this.videoFrameRate);
+		kparams.add("videoDar", this.videoDar);
+		kparams.add("videoRotation", this.videoRotation);
+		kparams.add("audioFormat", this.audioFormat);
+		kparams.add("audioCodecId", this.audioCodecId);
+		kparams.add("audioDuration", this.audioDuration);
+		kparams.add("audioBitRate", this.audioBitRate);
+		kparams.add("audioBitRateMode", this.audioBitRateMode);
+		kparams.add("audioChannels", this.audioChannels);
+		kparams.add("audioSamplingRate", this.audioSamplingRate);
+		kparams.add("audioResolution", this.audioResolution);
+		kparams.add("writingLib", this.writingLib);
+		kparams.add("rawData", this.rawData);
+		kparams.add("multiStreamInfo", this.multiStreamInfo);
+		kparams.add("scanType", this.scanType);
+		kparams.add("multiStream", this.multiStream);
+		kparams.add("isFastStart", this.isFastStart);
+		kparams.add("contentStreams", this.contentStreams);
+		kparams.add("complexityValue", this.complexityValue);
+		kparams.add("maxGOP", this.maxGOP);
+		return kparams;
+	}
 
 }
 

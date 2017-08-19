@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum HttpNotificationAuthenticationMethod implements EnumAsInt {
-    ANYSAFE(-18),
-    ANY(-17),
-    BASIC(1),
-    DIGEST(2),
-    GSSNEGOTIATE(4),
-    NTLM(8);
+	ANYSAFE(-18),
+	ANY(-17),
+	BASIC(1),
+	DIGEST(2),
+	GSSNEGOTIATE(4),
+	NTLM(8);
 
-    private int value;
+	private int value;
 
-    HttpNotificationAuthenticationMethod(int value) {
-        this.value = value;
-    }
+	HttpNotificationAuthenticationMethod(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static HttpNotificationAuthenticationMethod get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over HttpNotificationAuthenticationMethod defined values and compare the inner value with the given one:
-        for(HttpNotificationAuthenticationMethod item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return HttpNotificationAuthenticationMethod.values().length > 0 ? HttpNotificationAuthenticationMethod.values()[0]: null;
+	public static HttpNotificationAuthenticationMethod get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over HttpNotificationAuthenticationMethod defined values and compare the inner value with the given one:
+		for(HttpNotificationAuthenticationMethod item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return HttpNotificationAuthenticationMethod.values().length > 0 ? HttpNotificationAuthenticationMethod.values()[0]: null;
    }
 }

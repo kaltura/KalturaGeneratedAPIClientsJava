@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AmazonS3StorageProfileFilesPermissionLevel implements EnumAsString {
-    ACL_AUTHENTICATED_READ("authenticated-read"),
-    ACL_PRIVATE("private"),
-    ACL_PUBLIC_READ("public-read"),
-    ACL_PUBLIC_READ_WRITE("public-read-write");
+	ACL_AUTHENTICATED_READ("authenticated-read"),
+	ACL_PRIVATE("private"),
+	ACL_PUBLIC_READ("public-read"),
+	ACL_PUBLIC_READ_WRITE("public-read-write");
 
-    private String value;
+	private String value;
 
-    AmazonS3StorageProfileFilesPermissionLevel(String value) {
-        this.value = value;
-    }
+	AmazonS3StorageProfileFilesPermissionLevel(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AmazonS3StorageProfileFilesPermissionLevel get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AmazonS3StorageProfileFilesPermissionLevel defined values and compare the inner value with the given one:
-        for(AmazonS3StorageProfileFilesPermissionLevel item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AmazonS3StorageProfileFilesPermissionLevel.values().length > 0 ? AmazonS3StorageProfileFilesPermissionLevel.values()[0]: null;
+	public static AmazonS3StorageProfileFilesPermissionLevel get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AmazonS3StorageProfileFilesPermissionLevel defined values and compare the inner value with the given one:
+		for(AmazonS3StorageProfileFilesPermissionLevel item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AmazonS3StorageProfileFilesPermissionLevel.values().length > 0 ? AmazonS3StorageProfileFilesPermissionLevel.values()[0]: null;
    }
 }

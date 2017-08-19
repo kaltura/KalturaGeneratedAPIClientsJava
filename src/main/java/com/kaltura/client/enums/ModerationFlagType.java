@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ModerationFlagType implements EnumAsInt {
-    SEXUAL_CONTENT(1),
-    VIOLENT_REPULSIVE(2),
-    HARMFUL_DANGEROUS(3),
-    SPAM_COMMERCIALS(4),
-    COPYRIGHT(5),
-    TERMS_OF_USE_VIOLATION(6);
+	SEXUAL_CONTENT(1),
+	VIOLENT_REPULSIVE(2),
+	HARMFUL_DANGEROUS(3),
+	SPAM_COMMERCIALS(4),
+	COPYRIGHT(5),
+	TERMS_OF_USE_VIOLATION(6);
 
-    private int value;
+	private int value;
 
-    ModerationFlagType(int value) {
-        this.value = value;
-    }
+	ModerationFlagType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ModerationFlagType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ModerationFlagType defined values and compare the inner value with the given one:
-        for(ModerationFlagType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ModerationFlagType.values().length > 0 ? ModerationFlagType.values()[0]: null;
+	public static ModerationFlagType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ModerationFlagType defined values and compare the inner value with the given one:
+		for(ModerationFlagType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ModerationFlagType.values().length > 0 ? ModerationFlagType.values()[0]: null;
    }
 }

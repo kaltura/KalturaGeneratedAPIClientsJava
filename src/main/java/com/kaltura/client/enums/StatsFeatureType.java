@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StatsFeatureType implements EnumAsInt {
-    NONE(0),
-    RELATED(1);
+	NONE(0),
+	RELATED(1);
 
-    private int value;
+	private int value;
 
-    StatsFeatureType(int value) {
-        this.value = value;
-    }
+	StatsFeatureType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static StatsFeatureType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over StatsFeatureType defined values and compare the inner value with the given one:
-        for(StatsFeatureType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return StatsFeatureType.values().length > 0 ? StatsFeatureType.values()[0]: null;
+	public static StatsFeatureType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over StatsFeatureType defined values and compare the inner value with the given one:
+		for(StatsFeatureType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return StatsFeatureType.values().length > 0 ? StatsFeatureType.values()[0]: null;
    }
 }

@@ -27,14 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BulkServiceData;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadCategoryEntryData;
 import com.kaltura.client.types.CategoryEntry;
 import com.kaltura.client.types.CategoryEntryFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -48,91 +46,175 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage CategoryEntry - assign entry to category  */
 public class CategoryEntryService {
+	
+	public static class ActivateCategoryEntryBuilder extends NullRequestBuilder {
+		
+		public ActivateCategoryEntryBuilder(String entryId, int categoryId) {
+			super("categoryentry", "activate");
+			params.add("entryId", entryId);
+			params.add("categoryId", categoryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+	}
 
 	/**  activate CategoryEntry when it is pending moderation  */
-    public static RequestBuilder<Void> activate(String entryId, int categoryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-
-        return new NullRequestBuilder("categoryentry", "activate", kparams);
-    }
+    public static ActivateCategoryEntryBuilder activate(String entryId, int categoryId)  {
+		return new ActivateCategoryEntryBuilder(entryId, categoryId);
+	}
+	
+	public static class AddCategoryEntryBuilder extends RequestBuilder<CategoryEntry, CategoryEntry.Tokenizer, AddCategoryEntryBuilder> {
+		
+		public AddCategoryEntryBuilder(CategoryEntry categoryEntry) {
+			super(CategoryEntry.class, "categoryentry", "add");
+			params.add("categoryEntry", categoryEntry);
+		}
+	}
 
 	/**  Add new CategoryEntry  */
-    public static RequestBuilder<CategoryEntry> add(CategoryEntry categoryEntry)  {
-        Params kparams = new Params();
-        kparams.add("categoryEntry", categoryEntry);
+    public static AddCategoryEntryBuilder add(CategoryEntry categoryEntry)  {
+		return new AddCategoryEntryBuilder(categoryEntry);
+	}
+	
+	public static class AddFromBulkUploadCategoryEntryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadCategoryEntryBuilder> {
+		
+		public AddFromBulkUploadCategoryEntryBuilder(BulkServiceData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData) {
+			super(BulkUpload.class, "categoryentry", "addFromBulkUpload");
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
+		}
+	}
 
-        return new RequestBuilder<CategoryEntry>(CategoryEntry.class, "categoryentry", "add", kparams);
-    }
+	public static AddFromBulkUploadCategoryEntryBuilder addFromBulkUpload(BulkServiceData bulkUploadData)  {
+		return addFromBulkUpload(bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(BulkServiceData bulkUploadData)  {
-        return addFromBulkUpload(bulkUploadData, null);
-    }
-
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(BulkServiceData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
-        Params kparams = new Params();
-        kparams.add("bulkUploadData", bulkUploadData);
-        kparams.add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "categoryentry", "addFromBulkUpload", kparams);
-    }
+    public static AddFromBulkUploadCategoryEntryBuilder addFromBulkUpload(BulkServiceData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return new AddFromBulkUploadCategoryEntryBuilder(bulkUploadData, bulkUploadCategoryEntryData);
+	}
+	
+	public static class DeleteCategoryEntryBuilder extends NullRequestBuilder {
+		
+		public DeleteCategoryEntryBuilder(String entryId, int categoryId) {
+			super("categoryentry", "delete");
+			params.add("entryId", entryId);
+			params.add("categoryId", categoryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+	}
 
 	/**  Delete CategoryEntry  */
-    public static RequestBuilder<Void> delete(String entryId, int categoryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
+    public static DeleteCategoryEntryBuilder delete(String entryId, int categoryId)  {
+		return new DeleteCategoryEntryBuilder(entryId, categoryId);
+	}
+	
+	public static class IndexCategoryEntryBuilder extends RequestBuilder<Integer, String, IndexCategoryEntryBuilder> {
+		
+		public IndexCategoryEntryBuilder(String entryId, int categoryId, boolean shouldUpdate) {
+			super(Integer.class, "categoryentry", "index");
+			params.add("entryId", entryId);
+			params.add("categoryId", categoryId);
+			params.add("shouldUpdate", shouldUpdate);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+		
+		public void shouldUpdate(String multirequestToken) {
+			params.add("shouldUpdate", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("categoryentry", "delete", kparams);
-    }
-
-    public static RequestBuilder<Integer> index(String entryId, int categoryId)  {
-        return index(entryId, categoryId, true);
-    }
+	public static IndexCategoryEntryBuilder index(String entryId, int categoryId)  {
+		return index(entryId, categoryId, true);
+	}
 
 	/**  Index CategoryEntry by Id  */
-    public static RequestBuilder<Integer> index(String entryId, int categoryId, boolean shouldUpdate)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-        kparams.add("shouldUpdate", shouldUpdate);
+    public static IndexCategoryEntryBuilder index(String entryId, int categoryId, boolean shouldUpdate)  {
+		return new IndexCategoryEntryBuilder(entryId, categoryId, shouldUpdate);
+	}
+	
+	public static class ListCategoryEntryBuilder extends ListResponseRequestBuilder<CategoryEntry, CategoryEntry.Tokenizer, ListCategoryEntryBuilder> {
+		
+		public ListCategoryEntryBuilder(CategoryEntryFilter filter, FilterPager pager) {
+			super(CategoryEntry.class, "categoryentry", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "categoryentry", "index", kparams);
-    }
+	public static ListCategoryEntryBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<CategoryEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<CategoryEntry>> list(CategoryEntryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListCategoryEntryBuilder list(CategoryEntryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all categoryEntry  */
-    public static RequestBuilder<ListResponse<CategoryEntry>> list(CategoryEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<CategoryEntry>(CategoryEntry.class, "categoryentry", "list", kparams);
-    }
+    public static ListCategoryEntryBuilder list(CategoryEntryFilter filter, FilterPager pager)  {
+		return new ListCategoryEntryBuilder(filter, pager);
+	}
+	
+	public static class RejectCategoryEntryBuilder extends NullRequestBuilder {
+		
+		public RejectCategoryEntryBuilder(String entryId, int categoryId) {
+			super("categoryentry", "reject");
+			params.add("entryId", entryId);
+			params.add("categoryId", categoryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+	}
 
 	/**  activate CategoryEntry when it is pending moderation  */
-    public static RequestBuilder<Void> reject(String entryId, int categoryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-
-        return new NullRequestBuilder("categoryentry", "reject", kparams);
-    }
+    public static RejectCategoryEntryBuilder reject(String entryId, int categoryId)  {
+		return new RejectCategoryEntryBuilder(entryId, categoryId);
+	}
+	
+	public static class SyncPrivacyContextCategoryEntryBuilder extends NullRequestBuilder {
+		
+		public SyncPrivacyContextCategoryEntryBuilder(String entryId, int categoryId) {
+			super("categoryentry", "syncPrivacyContext");
+			params.add("entryId", entryId);
+			params.add("categoryId", categoryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+	}
 
 	/**  update privacy context from the category  */
-    public static RequestBuilder<Void> syncPrivacyContext(String entryId, int categoryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("categoryId", categoryId);
-
-        return new NullRequestBuilder("categoryentry", "syncPrivacyContext", kparams);
-    }
+    public static SyncPrivacyContextCategoryEntryBuilder syncPrivacyContext(String entryId, int categoryId)  {
+		return new SyncPrivacyContextCategoryEntryBuilder(entryId, categoryId);
+	}
 }

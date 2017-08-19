@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,63 +40,82 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(KontikiStorageExportJobData.Tokenizer.class)
 public class KontikiStorageExportJobData extends StorageExportJobData {
+	
+	public interface Tokenizer extends StorageExportJobData.Tokenizer {
+		String flavorAssetId();
+		String contentMoid();
+		String serviceToken();
+	}
 
 	/**  Holds the id of the exported asset  */
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
-    private String contentMoid;
-    private String serviceToken;
+	private String contentMoid;
+	private String serviceToken;
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // contentMoid:
-    public String getContentMoid(){
-        return this.contentMoid;
-    }
-    public void setContentMoid(String contentMoid){
-        this.contentMoid = contentMoid;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // serviceToken:
-    public String getServiceToken(){
-        return this.serviceToken;
-    }
-    public void setServiceToken(String serviceToken){
-        this.serviceToken = serviceToken;
-    }
+	// contentMoid:
+	public String getContentMoid(){
+		return this.contentMoid;
+	}
+	public void setContentMoid(String contentMoid){
+		this.contentMoid = contentMoid;
+	}
+
+	public void contentMoid(String multirequestToken){
+		setToken("contentMoid", multirequestToken);
+	}
+
+	// serviceToken:
+	public String getServiceToken(){
+		return this.serviceToken;
+	}
+	public void setServiceToken(String serviceToken){
+		this.serviceToken = serviceToken;
+	}
+
+	public void serviceToken(String multirequestToken){
+		setToken("serviceToken", multirequestToken);
+	}
 
 
-    public KontikiStorageExportJobData() {
-       super();
-    }
+	public KontikiStorageExportJobData() {
+		super();
+	}
 
-    public KontikiStorageExportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public KontikiStorageExportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        contentMoid = GsonParser.parseString(jsonObject.get("contentMoid"));
-        serviceToken = GsonParser.parseString(jsonObject.get("serviceToken"));
+		// set members values:
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		contentMoid = GsonParser.parseString(jsonObject.get("contentMoid"));
+		serviceToken = GsonParser.parseString(jsonObject.get("serviceToken"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaKontikiStorageExportJobData");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("contentMoid", this.contentMoid);
-        kparams.add("serviceToken", this.serviceToken);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaKontikiStorageExportJobData");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("contentMoid", this.contentMoid);
+		kparams.add("serviceToken", this.serviceToken);
+		return kparams;
+	}
 
 }
 

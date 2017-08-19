@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GenericDistributionProviderStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,160 +41,224 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericDistributionProviderBaseFilter.Tokenizer.class)
 public abstract class GenericDistributionProviderBaseFilter extends DistributionProviderFilter {
+	
+	public interface Tokenizer extends DistributionProviderFilter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String isDefaultEqual();
+		String isDefaultIn();
+		String statusEqual();
+		String statusIn();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private Boolean isDefaultEqual;
-    private String isDefaultIn;
-    private GenericDistributionProviderStatus statusEqual;
-    private String statusIn;
+	private Integer idEqual;
+	private String idIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private Boolean isDefaultEqual;
+	private String isDefaultIn;
+	private GenericDistributionProviderStatus statusEqual;
+	private String statusIn;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
 
-    // isDefaultEqual:
-    public Boolean getIsDefaultEqual(){
-        return this.isDefaultEqual;
-    }
-    public void setIsDefaultEqual(Boolean isDefaultEqual){
-        this.isDefaultEqual = isDefaultEqual;
-    }
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
 
-    // isDefaultIn:
-    public String getIsDefaultIn(){
-        return this.isDefaultIn;
-    }
-    public void setIsDefaultIn(String isDefaultIn){
-        this.isDefaultIn = isDefaultIn;
-    }
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public GenericDistributionProviderStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(GenericDistributionProviderStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
+
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
+
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
+
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
+
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
+
+	// isDefaultEqual:
+	public Boolean getIsDefaultEqual(){
+		return this.isDefaultEqual;
+	}
+	public void setIsDefaultEqual(Boolean isDefaultEqual){
+		this.isDefaultEqual = isDefaultEqual;
+	}
+
+	public void isDefaultEqual(String multirequestToken){
+		setToken("isDefaultEqual", multirequestToken);
+	}
+
+	// isDefaultIn:
+	public String getIsDefaultIn(){
+		return this.isDefaultIn;
+	}
+	public void setIsDefaultIn(String isDefaultIn){
+		this.isDefaultIn = isDefaultIn;
+	}
+
+	public void isDefaultIn(String multirequestToken){
+		setToken("isDefaultIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public GenericDistributionProviderStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(GenericDistributionProviderStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
 
 
-    public GenericDistributionProviderBaseFilter() {
-       super();
-    }
+	public GenericDistributionProviderBaseFilter() {
+		super();
+	}
 
-    public GenericDistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericDistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        isDefaultEqual = GsonParser.parseBoolean(jsonObject.get("isDefaultEqual"));
-        isDefaultIn = GsonParser.parseString(jsonObject.get("isDefaultIn"));
-        statusEqual = GenericDistributionProviderStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		isDefaultEqual = GsonParser.parseBoolean(jsonObject.get("isDefaultEqual"));
+		isDefaultIn = GsonParser.parseString(jsonObject.get("isDefaultIn"));
+		statusEqual = GenericDistributionProviderStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericDistributionProviderBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("isDefaultEqual", this.isDefaultEqual);
-        kparams.add("isDefaultIn", this.isDefaultIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericDistributionProviderBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("isDefaultEqual", this.isDefaultEqual);
+		kparams.add("isDefaultIn", this.isDefaultIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		return kparams;
+	}
 
 }
 

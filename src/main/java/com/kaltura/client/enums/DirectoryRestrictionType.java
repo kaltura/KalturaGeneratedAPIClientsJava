@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DirectoryRestrictionType implements EnumAsInt {
-    DONT_DISPLAY(0),
-    DISPLAY_WITH_LINK(1);
+	DONT_DISPLAY(0),
+	DISPLAY_WITH_LINK(1);
 
-    private int value;
+	private int value;
 
-    DirectoryRestrictionType(int value) {
-        this.value = value;
-    }
+	DirectoryRestrictionType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DirectoryRestrictionType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DirectoryRestrictionType defined values and compare the inner value with the given one:
-        for(DirectoryRestrictionType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DirectoryRestrictionType.values().length > 0 ? DirectoryRestrictionType.values()[0]: null;
+	public static DirectoryRestrictionType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DirectoryRestrictionType defined values and compare the inner value with the given one:
+		for(DirectoryRestrictionType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DirectoryRestrictionType.values().length > 0 ? DirectoryRestrictionType.values()[0]: null;
    }
 }

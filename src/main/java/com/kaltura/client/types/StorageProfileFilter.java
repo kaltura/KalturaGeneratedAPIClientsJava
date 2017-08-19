@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StorageProfileFilter.Tokenizer.class)
 public class StorageProfileFilter extends StorageProfileBaseFilter {
+	
+	public interface Tokenizer extends StorageProfileBaseFilter.Tokenizer {
+	}
 
 
 
-    public StorageProfileFilter() {
-       super();
-    }
+	public StorageProfileFilter() {
+		super();
+	}
 
-    public StorageProfileFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public StorageProfileFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStorageProfileFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStorageProfileFilter");
+		return kparams;
+	}
 
 }
 

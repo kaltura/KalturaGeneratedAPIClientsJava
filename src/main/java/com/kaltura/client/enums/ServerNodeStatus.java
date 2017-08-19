@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ServerNodeStatus implements EnumAsInt {
-    ACTIVE(1),
-    DISABLED(2),
-    DELETED(3),
-    NOT_REGISTERED(4);
+	ACTIVE(1),
+	DISABLED(2),
+	DELETED(3),
+	NOT_REGISTERED(4);
 
-    private int value;
+	private int value;
 
-    ServerNodeStatus(int value) {
-        this.value = value;
-    }
+	ServerNodeStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ServerNodeStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ServerNodeStatus defined values and compare the inner value with the given one:
-        for(ServerNodeStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ServerNodeStatus.values().length > 0 ? ServerNodeStatus.values()[0]: null;
+	public static ServerNodeStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ServerNodeStatus defined values and compare the inner value with the given one:
+		for(ServerNodeStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ServerNodeStatus.values().length > 0 ? ServerNodeStatus.values()[0]: null;
    }
 }

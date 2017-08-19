@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ParseMultiLanguageCaptionAssetJobData.Tokenizer.class)
 public class ParseMultiLanguageCaptionAssetJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String multiLanaguageCaptionAssetId();
+		String entryId();
+		String fileLocation();
+	}
 
-    private String multiLanaguageCaptionAssetId;
-    private String entryId;
-    private String fileLocation;
+	private String multiLanaguageCaptionAssetId;
+	private String entryId;
+	private String fileLocation;
 
-    // multiLanaguageCaptionAssetId:
-    public String getMultiLanaguageCaptionAssetId(){
-        return this.multiLanaguageCaptionAssetId;
-    }
-    public void setMultiLanaguageCaptionAssetId(String multiLanaguageCaptionAssetId){
-        this.multiLanaguageCaptionAssetId = multiLanaguageCaptionAssetId;
-    }
+	// multiLanaguageCaptionAssetId:
+	public String getMultiLanaguageCaptionAssetId(){
+		return this.multiLanaguageCaptionAssetId;
+	}
+	public void setMultiLanaguageCaptionAssetId(String multiLanaguageCaptionAssetId){
+		this.multiLanaguageCaptionAssetId = multiLanaguageCaptionAssetId;
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	public void multiLanaguageCaptionAssetId(String multirequestToken){
+		setToken("multiLanaguageCaptionAssetId", multirequestToken);
+	}
 
-    // fileLocation:
-    public String getFileLocation(){
-        return this.fileLocation;
-    }
-    public void setFileLocation(String fileLocation){
-        this.fileLocation = fileLocation;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
+
+	// fileLocation:
+	public String getFileLocation(){
+		return this.fileLocation;
+	}
+	public void setFileLocation(String fileLocation){
+		this.fileLocation = fileLocation;
+	}
+
+	public void fileLocation(String multirequestToken){
+		setToken("fileLocation", multirequestToken);
+	}
 
 
-    public ParseMultiLanguageCaptionAssetJobData() {
-       super();
-    }
+	public ParseMultiLanguageCaptionAssetJobData() {
+		super();
+	}
 
-    public ParseMultiLanguageCaptionAssetJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ParseMultiLanguageCaptionAssetJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        multiLanaguageCaptionAssetId = GsonParser.parseString(jsonObject.get("multiLanaguageCaptionAssetId"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        fileLocation = GsonParser.parseString(jsonObject.get("fileLocation"));
+		// set members values:
+		multiLanaguageCaptionAssetId = GsonParser.parseString(jsonObject.get("multiLanaguageCaptionAssetId"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		fileLocation = GsonParser.parseString(jsonObject.get("fileLocation"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaParseMultiLanguageCaptionAssetJobData");
-        kparams.add("multiLanaguageCaptionAssetId", this.multiLanaguageCaptionAssetId);
-        kparams.add("entryId", this.entryId);
-        kparams.add("fileLocation", this.fileLocation);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaParseMultiLanguageCaptionAssetJobData");
+		kparams.add("multiLanaguageCaptionAssetId", this.multiLanaguageCaptionAssetId);
+		kparams.add("entryId", this.entryId);
+		kparams.add("fileLocation", this.fileLocation);
+		return kparams;
+	}
 
 }
 

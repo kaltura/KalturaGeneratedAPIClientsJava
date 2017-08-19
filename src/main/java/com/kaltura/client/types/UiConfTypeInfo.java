@@ -32,7 +32,8 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.UiConfObjType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,76 +45,96 @@ import java.util.List;
 
 /**  Info about uiconf type  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UiConfTypeInfo.Tokenizer.class)
 public class UiConfTypeInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> versions();
+		String directory();
+		String filename();
+	}
 
 	/**  UiConf Type  */
-    private UiConfObjType type;
+	private UiConfObjType type;
 	/**  Available versions  */
-    private List<StringHolder> versions;
+	private List<StringHolder> versions;
 	/**  The direcotry this type is saved at  */
-    private String directory;
+	private String directory;
 	/**  Filename for this UiConf type  */
-    private String filename;
+	private String filename;
 
-    // type:
-    public UiConfObjType getType(){
-        return this.type;
-    }
-    public void setType(UiConfObjType type){
-        this.type = type;
-    }
+	// type:
+	public UiConfObjType getType(){
+		return this.type;
+	}
+	public void setType(UiConfObjType type){
+		this.type = type;
+	}
 
-    // versions:
-    public List<StringHolder> getVersions(){
-        return this.versions;
-    }
-    public void setVersions(List<StringHolder> versions){
-        this.versions = versions;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // directory:
-    public String getDirectory(){
-        return this.directory;
-    }
-    public void setDirectory(String directory){
-        this.directory = directory;
-    }
+	// versions:
+	public List<StringHolder> getVersions(){
+		return this.versions;
+	}
+	public void setVersions(List<StringHolder> versions){
+		this.versions = versions;
+	}
 
-    // filename:
-    public String getFilename(){
-        return this.filename;
-    }
-    public void setFilename(String filename){
-        this.filename = filename;
-    }
+	// directory:
+	public String getDirectory(){
+		return this.directory;
+	}
+	public void setDirectory(String directory){
+		this.directory = directory;
+	}
+
+	public void directory(String multirequestToken){
+		setToken("directory", multirequestToken);
+	}
+
+	// filename:
+	public String getFilename(){
+		return this.filename;
+	}
+	public void setFilename(String filename){
+		this.filename = filename;
+	}
+
+	public void filename(String multirequestToken){
+		setToken("filename", multirequestToken);
+	}
 
 
-    public UiConfTypeInfo() {
-       super();
-    }
+	public UiConfTypeInfo() {
+		super();
+	}
 
-    public UiConfTypeInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UiConfTypeInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = UiConfObjType.get(GsonParser.parseInt(jsonObject.get("type")));
-        versions = GsonParser.parseArray(jsonObject.getAsJsonArray("versions"), StringHolder.class);
-        directory = GsonParser.parseString(jsonObject.get("directory"));
-        filename = GsonParser.parseString(jsonObject.get("filename"));
+		// set members values:
+		type = UiConfObjType.get(GsonParser.parseInt(jsonObject.get("type")));
+		versions = GsonParser.parseArray(jsonObject.getAsJsonArray("versions"), StringHolder.class);
+		directory = GsonParser.parseString(jsonObject.get("directory"));
+		filename = GsonParser.parseString(jsonObject.get("filename"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUiConfTypeInfo");
-        kparams.add("type", this.type);
-        kparams.add("versions", this.versions);
-        kparams.add("directory", this.directory);
-        kparams.add("filename", this.filename);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUiConfTypeInfo");
+		kparams.add("type", this.type);
+		kparams.add("versions", this.versions);
+		kparams.add("directory", this.directory);
+		kparams.add("filename", this.filename);
+		return kparams;
+	}
 
 }
 

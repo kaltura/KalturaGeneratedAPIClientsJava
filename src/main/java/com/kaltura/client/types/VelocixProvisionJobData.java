@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,61 +42,76 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VelocixProvisionJobData.Tokenizer.class)
 public class VelocixProvisionJobData extends ProvisionJobData {
+	
+	public interface Tokenizer extends ProvisionJobData.Tokenizer {
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> provisioningParams();
+		String userName();
+		String password();
+	}
 
-    private List<KeyValue> provisioningParams;
-    private String userName;
-    private String password;
+	private List<KeyValue> provisioningParams;
+	private String userName;
+	private String password;
 
-    // provisioningParams:
-    public List<KeyValue> getProvisioningParams(){
-        return this.provisioningParams;
-    }
-    public void setProvisioningParams(List<KeyValue> provisioningParams){
-        this.provisioningParams = provisioningParams;
-    }
+	// provisioningParams:
+	public List<KeyValue> getProvisioningParams(){
+		return this.provisioningParams;
+	}
+	public void setProvisioningParams(List<KeyValue> provisioningParams){
+		this.provisioningParams = provisioningParams;
+	}
 
-    // userName:
-    public String getUserName(){
-        return this.userName;
-    }
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
+	// userName:
+	public String getUserName(){
+		return this.userName;
+	}
+	public void setUserName(String userName){
+		this.userName = userName;
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	public void userName(String multirequestToken){
+		setToken("userName", multirequestToken);
+	}
+
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
 
 
-    public VelocixProvisionJobData() {
-       super();
-    }
+	public VelocixProvisionJobData() {
+		super();
+	}
 
-    public VelocixProvisionJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public VelocixProvisionJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        provisioningParams = GsonParser.parseArray(jsonObject.getAsJsonArray("provisioningParams"), KeyValue.class);
-        userName = GsonParser.parseString(jsonObject.get("userName"));
-        password = GsonParser.parseString(jsonObject.get("password"));
+		// set members values:
+		provisioningParams = GsonParser.parseArray(jsonObject.getAsJsonArray("provisioningParams"), KeyValue.class);
+		userName = GsonParser.parseString(jsonObject.get("userName"));
+		password = GsonParser.parseString(jsonObject.get("password"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaVelocixProvisionJobData");
-        kparams.add("provisioningParams", this.provisioningParams);
-        kparams.add("userName", this.userName);
-        kparams.add("password", this.password);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVelocixProvisionJobData");
+		kparams.add("provisioningParams", this.provisioningParams);
+		kparams.add("userName", this.userName);
+		kparams.add("password", this.password);
+		return kparams;
+	}
 
 }
 

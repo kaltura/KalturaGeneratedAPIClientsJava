@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,50 +42,60 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericXsltSyndicationFeed.Tokenizer.class)
 public class GenericXsltSyndicationFeed extends GenericSyndicationFeed {
+	
+	public interface Tokenizer extends GenericSyndicationFeed.Tokenizer {
+		String xslt();
+		RequestBuilder.ListTokenizer<ExtendingItemMrssParameter.Tokenizer> itemXpathsToExtend();
+	}
 
-    private String xslt;
-    private List<ExtendingItemMrssParameter> itemXpathsToExtend;
+	private String xslt;
+	private List<ExtendingItemMrssParameter> itemXpathsToExtend;
 
-    // xslt:
-    public String getXslt(){
-        return this.xslt;
-    }
-    public void setXslt(String xslt){
-        this.xslt = xslt;
-    }
+	// xslt:
+	public String getXslt(){
+		return this.xslt;
+	}
+	public void setXslt(String xslt){
+		this.xslt = xslt;
+	}
 
-    // itemXpathsToExtend:
-    public List<ExtendingItemMrssParameter> getItemXpathsToExtend(){
-        return this.itemXpathsToExtend;
-    }
-    public void setItemXpathsToExtend(List<ExtendingItemMrssParameter> itemXpathsToExtend){
-        this.itemXpathsToExtend = itemXpathsToExtend;
-    }
+	public void xslt(String multirequestToken){
+		setToken("xslt", multirequestToken);
+	}
+
+	// itemXpathsToExtend:
+	public List<ExtendingItemMrssParameter> getItemXpathsToExtend(){
+		return this.itemXpathsToExtend;
+	}
+	public void setItemXpathsToExtend(List<ExtendingItemMrssParameter> itemXpathsToExtend){
+		this.itemXpathsToExtend = itemXpathsToExtend;
+	}
 
 
-    public GenericXsltSyndicationFeed() {
-       super();
-    }
+	public GenericXsltSyndicationFeed() {
+		super();
+	}
 
-    public GenericXsltSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericXsltSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xslt = GsonParser.parseString(jsonObject.get("xslt"));
-        itemXpathsToExtend = GsonParser.parseArray(jsonObject.getAsJsonArray("itemXpathsToExtend"), ExtendingItemMrssParameter.class);
+		// set members values:
+		xslt = GsonParser.parseString(jsonObject.get("xslt"));
+		itemXpathsToExtend = GsonParser.parseArray(jsonObject.getAsJsonArray("itemXpathsToExtend"), ExtendingItemMrssParameter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericXsltSyndicationFeed");
-        kparams.add("xslt", this.xslt);
-        kparams.add("itemXpathsToExtend", this.itemXpathsToExtend);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericXsltSyndicationFeed");
+		kparams.add("xslt", this.xslt);
+		kparams.add("itemXpathsToExtend", this.itemXpathsToExtend);
+		return kparams;
+	}
 
 }
 

@@ -34,56 +34,56 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UiConfObjType implements EnumAsInt {
-    PLAYER(1),
-    CONTRIBUTION_WIZARD(2),
-    SIMPLE_EDITOR(3),
-    ADVANCED_EDITOR(4),
-    PLAYLIST(5),
-    APP_STUDIO(6),
-    KRECORD(7),
-    PLAYER_V3(8),
-    KMC_ACCOUNT(9),
-    KMC_ANALYTICS(10),
-    KMC_CONTENT(11),
-    KMC_DASHBOARD(12),
-    KMC_LOGIN(13),
-    PLAYER_SL(14),
-    CLIENTSIDE_ENCODER(15),
-    KMC_GENERAL(16),
-    KMC_ROLES_AND_PERMISSIONS(17),
-    CLIPPER(18),
-    KSR(19),
-    KUPLOAD(20),
-    WEBCASTING(21);
+	PLAYER(1),
+	CONTRIBUTION_WIZARD(2),
+	SIMPLE_EDITOR(3),
+	ADVANCED_EDITOR(4),
+	PLAYLIST(5),
+	APP_STUDIO(6),
+	KRECORD(7),
+	PLAYER_V3(8),
+	KMC_ACCOUNT(9),
+	KMC_ANALYTICS(10),
+	KMC_CONTENT(11),
+	KMC_DASHBOARD(12),
+	KMC_LOGIN(13),
+	PLAYER_SL(14),
+	CLIENTSIDE_ENCODER(15),
+	KMC_GENERAL(16),
+	KMC_ROLES_AND_PERMISSIONS(17),
+	CLIPPER(18),
+	KSR(19),
+	KUPLOAD(20),
+	WEBCASTING(21);
 
-    private int value;
+	private int value;
 
-    UiConfObjType(int value) {
-        this.value = value;
-    }
+	UiConfObjType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UiConfObjType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UiConfObjType defined values and compare the inner value with the given one:
-        for(UiConfObjType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UiConfObjType.values().length > 0 ? UiConfObjType.values()[0]: null;
+	public static UiConfObjType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UiConfObjType defined values and compare the inner value with the given one:
+		for(UiConfObjType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UiConfObjType.values().length > 0 ? UiConfObjType.values()[0]: null;
    }
 }

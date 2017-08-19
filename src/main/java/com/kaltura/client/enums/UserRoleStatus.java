@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserRoleStatus implements EnumAsInt {
-    ACTIVE(1),
-    BLOCKED(2),
-    DELETED(3);
+	ACTIVE(1),
+	BLOCKED(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    UserRoleStatus(int value) {
-        this.value = value;
-    }
+	UserRoleStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UserRoleStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserRoleStatus defined values and compare the inner value with the given one:
-        for(UserRoleStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserRoleStatus.values().length > 0 ? UserRoleStatus.values()[0]: null;
+	public static UserRoleStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserRoleStatus defined values and compare the inner value with the given one:
+		for(UserRoleStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserRoleStatus.values().length > 0 ? UserRoleStatus.values()[0]: null;
    }
 }

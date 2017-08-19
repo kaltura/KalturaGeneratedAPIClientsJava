@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.MetadataObjectType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +41,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExecuteMetadataXsltObjectTask.Tokenizer.class)
 public class ExecuteMetadataXsltObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String metadataProfileId();
+		String metadataObjectType();
+		String xslt();
+	}
 
 	/**  Metadata profile id to lookup the metadata object  */
-    private Integer metadataProfileId;
+	private Integer metadataProfileId;
 	/**  Metadata object type to lookup the metadata object  */
-    private MetadataObjectType metadataObjectType;
+	private MetadataObjectType metadataObjectType;
 	/**  The XSLT to execute  */
-    private String xslt;
+	private String xslt;
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
 
-    // metadataObjectType:
-    public MetadataObjectType getMetadataObjectType(){
-        return this.metadataObjectType;
-    }
-    public void setMetadataObjectType(MetadataObjectType metadataObjectType){
-        this.metadataObjectType = metadataObjectType;
-    }
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
 
-    // xslt:
-    public String getXslt(){
-        return this.xslt;
-    }
-    public void setXslt(String xslt){
-        this.xslt = xslt;
-    }
+	// metadataObjectType:
+	public MetadataObjectType getMetadataObjectType(){
+		return this.metadataObjectType;
+	}
+	public void setMetadataObjectType(MetadataObjectType metadataObjectType){
+		this.metadataObjectType = metadataObjectType;
+	}
+
+	public void metadataObjectType(String multirequestToken){
+		setToken("metadataObjectType", multirequestToken);
+	}
+
+	// xslt:
+	public String getXslt(){
+		return this.xslt;
+	}
+	public void setXslt(String xslt){
+		this.xslt = xslt;
+	}
+
+	public void xslt(String multirequestToken){
+		setToken("xslt", multirequestToken);
+	}
 
 
-    public ExecuteMetadataXsltObjectTask() {
-       super();
-    }
+	public ExecuteMetadataXsltObjectTask() {
+		super();
+	}
 
-    public ExecuteMetadataXsltObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExecuteMetadataXsltObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-        metadataObjectType = MetadataObjectType.get(GsonParser.parseString(jsonObject.get("metadataObjectType")));
-        xslt = GsonParser.parseString(jsonObject.get("xslt"));
+		// set members values:
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		metadataObjectType = MetadataObjectType.get(GsonParser.parseString(jsonObject.get("metadataObjectType")));
+		xslt = GsonParser.parseString(jsonObject.get("xslt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExecuteMetadataXsltObjectTask");
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        kparams.add("metadataObjectType", this.metadataObjectType);
-        kparams.add("xslt", this.xslt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExecuteMetadataXsltObjectTask");
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("metadataObjectType", this.metadataObjectType);
+		kparams.add("xslt", this.xslt);
+		return kparams;
+	}
 
 }
 

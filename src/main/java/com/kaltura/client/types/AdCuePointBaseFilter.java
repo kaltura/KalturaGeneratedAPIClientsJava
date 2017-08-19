@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.AdProtocolType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,127 +41,176 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AdCuePointBaseFilter.Tokenizer.class)
 public abstract class AdCuePointBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String protocolTypeEqual();
+		String protocolTypeIn();
+		String titleLike();
+		String titleMultiLikeOr();
+		String titleMultiLikeAnd();
+		String endTimeGreaterThanOrEqual();
+		String endTimeLessThanOrEqual();
+		String durationGreaterThanOrEqual();
+		String durationLessThanOrEqual();
+	}
 
-    private AdProtocolType protocolTypeEqual;
-    private String protocolTypeIn;
-    private String titleLike;
-    private String titleMultiLikeOr;
-    private String titleMultiLikeAnd;
-    private Integer endTimeGreaterThanOrEqual;
-    private Integer endTimeLessThanOrEqual;
-    private Integer durationGreaterThanOrEqual;
-    private Integer durationLessThanOrEqual;
+	private AdProtocolType protocolTypeEqual;
+	private String protocolTypeIn;
+	private String titleLike;
+	private String titleMultiLikeOr;
+	private String titleMultiLikeAnd;
+	private Integer endTimeGreaterThanOrEqual;
+	private Integer endTimeLessThanOrEqual;
+	private Integer durationGreaterThanOrEqual;
+	private Integer durationLessThanOrEqual;
 
-    // protocolTypeEqual:
-    public AdProtocolType getProtocolTypeEqual(){
-        return this.protocolTypeEqual;
-    }
-    public void setProtocolTypeEqual(AdProtocolType protocolTypeEqual){
-        this.protocolTypeEqual = protocolTypeEqual;
-    }
+	// protocolTypeEqual:
+	public AdProtocolType getProtocolTypeEqual(){
+		return this.protocolTypeEqual;
+	}
+	public void setProtocolTypeEqual(AdProtocolType protocolTypeEqual){
+		this.protocolTypeEqual = protocolTypeEqual;
+	}
 
-    // protocolTypeIn:
-    public String getProtocolTypeIn(){
-        return this.protocolTypeIn;
-    }
-    public void setProtocolTypeIn(String protocolTypeIn){
-        this.protocolTypeIn = protocolTypeIn;
-    }
+	public void protocolTypeEqual(String multirequestToken){
+		setToken("protocolTypeEqual", multirequestToken);
+	}
 
-    // titleLike:
-    public String getTitleLike(){
-        return this.titleLike;
-    }
-    public void setTitleLike(String titleLike){
-        this.titleLike = titleLike;
-    }
+	// protocolTypeIn:
+	public String getProtocolTypeIn(){
+		return this.protocolTypeIn;
+	}
+	public void setProtocolTypeIn(String protocolTypeIn){
+		this.protocolTypeIn = protocolTypeIn;
+	}
 
-    // titleMultiLikeOr:
-    public String getTitleMultiLikeOr(){
-        return this.titleMultiLikeOr;
-    }
-    public void setTitleMultiLikeOr(String titleMultiLikeOr){
-        this.titleMultiLikeOr = titleMultiLikeOr;
-    }
+	public void protocolTypeIn(String multirequestToken){
+		setToken("protocolTypeIn", multirequestToken);
+	}
 
-    // titleMultiLikeAnd:
-    public String getTitleMultiLikeAnd(){
-        return this.titleMultiLikeAnd;
-    }
-    public void setTitleMultiLikeAnd(String titleMultiLikeAnd){
-        this.titleMultiLikeAnd = titleMultiLikeAnd;
-    }
+	// titleLike:
+	public String getTitleLike(){
+		return this.titleLike;
+	}
+	public void setTitleLike(String titleLike){
+		this.titleLike = titleLike;
+	}
 
-    // endTimeGreaterThanOrEqual:
-    public Integer getEndTimeGreaterThanOrEqual(){
-        return this.endTimeGreaterThanOrEqual;
-    }
-    public void setEndTimeGreaterThanOrEqual(Integer endTimeGreaterThanOrEqual){
-        this.endTimeGreaterThanOrEqual = endTimeGreaterThanOrEqual;
-    }
+	public void titleLike(String multirequestToken){
+		setToken("titleLike", multirequestToken);
+	}
 
-    // endTimeLessThanOrEqual:
-    public Integer getEndTimeLessThanOrEqual(){
-        return this.endTimeLessThanOrEqual;
-    }
-    public void setEndTimeLessThanOrEqual(Integer endTimeLessThanOrEqual){
-        this.endTimeLessThanOrEqual = endTimeLessThanOrEqual;
-    }
+	// titleMultiLikeOr:
+	public String getTitleMultiLikeOr(){
+		return this.titleMultiLikeOr;
+	}
+	public void setTitleMultiLikeOr(String titleMultiLikeOr){
+		this.titleMultiLikeOr = titleMultiLikeOr;
+	}
 
-    // durationGreaterThanOrEqual:
-    public Integer getDurationGreaterThanOrEqual(){
-        return this.durationGreaterThanOrEqual;
-    }
-    public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
-        this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
-    }
+	public void titleMultiLikeOr(String multirequestToken){
+		setToken("titleMultiLikeOr", multirequestToken);
+	}
 
-    // durationLessThanOrEqual:
-    public Integer getDurationLessThanOrEqual(){
-        return this.durationLessThanOrEqual;
-    }
-    public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
-        this.durationLessThanOrEqual = durationLessThanOrEqual;
-    }
+	// titleMultiLikeAnd:
+	public String getTitleMultiLikeAnd(){
+		return this.titleMultiLikeAnd;
+	}
+	public void setTitleMultiLikeAnd(String titleMultiLikeAnd){
+		this.titleMultiLikeAnd = titleMultiLikeAnd;
+	}
+
+	public void titleMultiLikeAnd(String multirequestToken){
+		setToken("titleMultiLikeAnd", multirequestToken);
+	}
+
+	// endTimeGreaterThanOrEqual:
+	public Integer getEndTimeGreaterThanOrEqual(){
+		return this.endTimeGreaterThanOrEqual;
+	}
+	public void setEndTimeGreaterThanOrEqual(Integer endTimeGreaterThanOrEqual){
+		this.endTimeGreaterThanOrEqual = endTimeGreaterThanOrEqual;
+	}
+
+	public void endTimeGreaterThanOrEqual(String multirequestToken){
+		setToken("endTimeGreaterThanOrEqual", multirequestToken);
+	}
+
+	// endTimeLessThanOrEqual:
+	public Integer getEndTimeLessThanOrEqual(){
+		return this.endTimeLessThanOrEqual;
+	}
+	public void setEndTimeLessThanOrEqual(Integer endTimeLessThanOrEqual){
+		this.endTimeLessThanOrEqual = endTimeLessThanOrEqual;
+	}
+
+	public void endTimeLessThanOrEqual(String multirequestToken){
+		setToken("endTimeLessThanOrEqual", multirequestToken);
+	}
+
+	// durationGreaterThanOrEqual:
+	public Integer getDurationGreaterThanOrEqual(){
+		return this.durationGreaterThanOrEqual;
+	}
+	public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
+		this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
+	}
+
+	public void durationGreaterThanOrEqual(String multirequestToken){
+		setToken("durationGreaterThanOrEqual", multirequestToken);
+	}
+
+	// durationLessThanOrEqual:
+	public Integer getDurationLessThanOrEqual(){
+		return this.durationLessThanOrEqual;
+	}
+	public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
+		this.durationLessThanOrEqual = durationLessThanOrEqual;
+	}
+
+	public void durationLessThanOrEqual(String multirequestToken){
+		setToken("durationLessThanOrEqual", multirequestToken);
+	}
 
 
-    public AdCuePointBaseFilter() {
-       super();
-    }
+	public AdCuePointBaseFilter() {
+		super();
+	}
 
-    public AdCuePointBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AdCuePointBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        protocolTypeEqual = AdProtocolType.get(GsonParser.parseString(jsonObject.get("protocolTypeEqual")));
-        protocolTypeIn = GsonParser.parseString(jsonObject.get("protocolTypeIn"));
-        titleLike = GsonParser.parseString(jsonObject.get("titleLike"));
-        titleMultiLikeOr = GsonParser.parseString(jsonObject.get("titleMultiLikeOr"));
-        titleMultiLikeAnd = GsonParser.parseString(jsonObject.get("titleMultiLikeAnd"));
-        endTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeGreaterThanOrEqual"));
-        endTimeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeLessThanOrEqual"));
-        durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
-        durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
+		// set members values:
+		protocolTypeEqual = AdProtocolType.get(GsonParser.parseString(jsonObject.get("protocolTypeEqual")));
+		protocolTypeIn = GsonParser.parseString(jsonObject.get("protocolTypeIn"));
+		titleLike = GsonParser.parseString(jsonObject.get("titleLike"));
+		titleMultiLikeOr = GsonParser.parseString(jsonObject.get("titleMultiLikeOr"));
+		titleMultiLikeAnd = GsonParser.parseString(jsonObject.get("titleMultiLikeAnd"));
+		endTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeGreaterThanOrEqual"));
+		endTimeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeLessThanOrEqual"));
+		durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
+		durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAdCuePointBaseFilter");
-        kparams.add("protocolTypeEqual", this.protocolTypeEqual);
-        kparams.add("protocolTypeIn", this.protocolTypeIn);
-        kparams.add("titleLike", this.titleLike);
-        kparams.add("titleMultiLikeOr", this.titleMultiLikeOr);
-        kparams.add("titleMultiLikeAnd", this.titleMultiLikeAnd);
-        kparams.add("endTimeGreaterThanOrEqual", this.endTimeGreaterThanOrEqual);
-        kparams.add("endTimeLessThanOrEqual", this.endTimeLessThanOrEqual);
-        kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
-        kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAdCuePointBaseFilter");
+		kparams.add("protocolTypeEqual", this.protocolTypeEqual);
+		kparams.add("protocolTypeIn", this.protocolTypeIn);
+		kparams.add("titleLike", this.titleLike);
+		kparams.add("titleMultiLikeOr", this.titleMultiLikeOr);
+		kparams.add("titleMultiLikeAnd", this.titleMultiLikeAnd);
+		kparams.add("endTimeGreaterThanOrEqual", this.endTimeGreaterThanOrEqual);
+		kparams.add("endTimeLessThanOrEqual", this.endTimeLessThanOrEqual);
+		kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
+		kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

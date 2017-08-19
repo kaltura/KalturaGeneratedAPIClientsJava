@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.TaggedObjectType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,83 +41,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TagFilter.Tokenizer.class)
 public class TagFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String objectTypeEqual();
+		String tagEqual();
+		String tagStartsWith();
+		String instanceCountEqual();
+		String instanceCountIn();
+	}
 
-    private TaggedObjectType objectTypeEqual;
-    private String tagEqual;
-    private String tagStartsWith;
-    private Integer instanceCountEqual;
-    private Integer instanceCountIn;
+	private TaggedObjectType objectTypeEqual;
+	private String tagEqual;
+	private String tagStartsWith;
+	private Integer instanceCountEqual;
+	private Integer instanceCountIn;
 
-    // objectTypeEqual:
-    public TaggedObjectType getObjectTypeEqual(){
-        return this.objectTypeEqual;
-    }
-    public void setObjectTypeEqual(TaggedObjectType objectTypeEqual){
-        this.objectTypeEqual = objectTypeEqual;
-    }
+	// objectTypeEqual:
+	public TaggedObjectType getObjectTypeEqual(){
+		return this.objectTypeEqual;
+	}
+	public void setObjectTypeEqual(TaggedObjectType objectTypeEqual){
+		this.objectTypeEqual = objectTypeEqual;
+	}
 
-    // tagEqual:
-    public String getTagEqual(){
-        return this.tagEqual;
-    }
-    public void setTagEqual(String tagEqual){
-        this.tagEqual = tagEqual;
-    }
+	public void objectTypeEqual(String multirequestToken){
+		setToken("objectTypeEqual", multirequestToken);
+	}
 
-    // tagStartsWith:
-    public String getTagStartsWith(){
-        return this.tagStartsWith;
-    }
-    public void setTagStartsWith(String tagStartsWith){
-        this.tagStartsWith = tagStartsWith;
-    }
+	// tagEqual:
+	public String getTagEqual(){
+		return this.tagEqual;
+	}
+	public void setTagEqual(String tagEqual){
+		this.tagEqual = tagEqual;
+	}
 
-    // instanceCountEqual:
-    public Integer getInstanceCountEqual(){
-        return this.instanceCountEqual;
-    }
-    public void setInstanceCountEqual(Integer instanceCountEqual){
-        this.instanceCountEqual = instanceCountEqual;
-    }
+	public void tagEqual(String multirequestToken){
+		setToken("tagEqual", multirequestToken);
+	}
 
-    // instanceCountIn:
-    public Integer getInstanceCountIn(){
-        return this.instanceCountIn;
-    }
-    public void setInstanceCountIn(Integer instanceCountIn){
-        this.instanceCountIn = instanceCountIn;
-    }
+	// tagStartsWith:
+	public String getTagStartsWith(){
+		return this.tagStartsWith;
+	}
+	public void setTagStartsWith(String tagStartsWith){
+		this.tagStartsWith = tagStartsWith;
+	}
+
+	public void tagStartsWith(String multirequestToken){
+		setToken("tagStartsWith", multirequestToken);
+	}
+
+	// instanceCountEqual:
+	public Integer getInstanceCountEqual(){
+		return this.instanceCountEqual;
+	}
+	public void setInstanceCountEqual(Integer instanceCountEqual){
+		this.instanceCountEqual = instanceCountEqual;
+	}
+
+	public void instanceCountEqual(String multirequestToken){
+		setToken("instanceCountEqual", multirequestToken);
+	}
+
+	// instanceCountIn:
+	public Integer getInstanceCountIn(){
+		return this.instanceCountIn;
+	}
+	public void setInstanceCountIn(Integer instanceCountIn){
+		this.instanceCountIn = instanceCountIn;
+	}
+
+	public void instanceCountIn(String multirequestToken){
+		setToken("instanceCountIn", multirequestToken);
+	}
 
 
-    public TagFilter() {
-       super();
-    }
+	public TagFilter() {
+		super();
+	}
 
-    public TagFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TagFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        objectTypeEqual = TaggedObjectType.get(GsonParser.parseString(jsonObject.get("objectTypeEqual")));
-        tagEqual = GsonParser.parseString(jsonObject.get("tagEqual"));
-        tagStartsWith = GsonParser.parseString(jsonObject.get("tagStartsWith"));
-        instanceCountEqual = GsonParser.parseInt(jsonObject.get("instanceCountEqual"));
-        instanceCountIn = GsonParser.parseInt(jsonObject.get("instanceCountIn"));
+		// set members values:
+		objectTypeEqual = TaggedObjectType.get(GsonParser.parseString(jsonObject.get("objectTypeEqual")));
+		tagEqual = GsonParser.parseString(jsonObject.get("tagEqual"));
+		tagStartsWith = GsonParser.parseString(jsonObject.get("tagStartsWith"));
+		instanceCountEqual = GsonParser.parseInt(jsonObject.get("instanceCountEqual"));
+		instanceCountIn = GsonParser.parseInt(jsonObject.get("instanceCountIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTagFilter");
-        kparams.add("objectTypeEqual", this.objectTypeEqual);
-        kparams.add("tagEqual", this.tagEqual);
-        kparams.add("tagStartsWith", this.tagStartsWith);
-        kparams.add("instanceCountEqual", this.instanceCountEqual);
-        kparams.add("instanceCountIn", this.instanceCountIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTagFilter");
+		kparams.add("objectTypeEqual", this.objectTypeEqual);
+		kparams.add("tagEqual", this.tagEqual);
+		kparams.add("tagStartsWith", this.tagStartsWith);
+		kparams.add("instanceCountEqual", this.instanceCountEqual);
+		kparams.add("instanceCountIn", this.instanceCountIn);
+		return kparams;
+	}
 
 }
 

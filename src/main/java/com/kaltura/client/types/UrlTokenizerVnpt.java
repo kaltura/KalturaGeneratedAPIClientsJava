@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerVnpt.Tokenizer.class)
 public class UrlTokenizerVnpt extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String tokenizationFormat();
+		String shouldIncludeClientIp();
+	}
 
-    private Integer tokenizationFormat;
-    private Boolean shouldIncludeClientIp;
+	private Integer tokenizationFormat;
+	private Boolean shouldIncludeClientIp;
 
-    // tokenizationFormat:
-    public Integer getTokenizationFormat(){
-        return this.tokenizationFormat;
-    }
-    public void setTokenizationFormat(Integer tokenizationFormat){
-        this.tokenizationFormat = tokenizationFormat;
-    }
+	// tokenizationFormat:
+	public Integer getTokenizationFormat(){
+		return this.tokenizationFormat;
+	}
+	public void setTokenizationFormat(Integer tokenizationFormat){
+		this.tokenizationFormat = tokenizationFormat;
+	}
 
-    // shouldIncludeClientIp:
-    public Boolean getShouldIncludeClientIp(){
-        return this.shouldIncludeClientIp;
-    }
-    public void setShouldIncludeClientIp(Boolean shouldIncludeClientIp){
-        this.shouldIncludeClientIp = shouldIncludeClientIp;
-    }
+	public void tokenizationFormat(String multirequestToken){
+		setToken("tokenizationFormat", multirequestToken);
+	}
+
+	// shouldIncludeClientIp:
+	public Boolean getShouldIncludeClientIp(){
+		return this.shouldIncludeClientIp;
+	}
+	public void setShouldIncludeClientIp(Boolean shouldIncludeClientIp){
+		this.shouldIncludeClientIp = shouldIncludeClientIp;
+	}
+
+	public void shouldIncludeClientIp(String multirequestToken){
+		setToken("shouldIncludeClientIp", multirequestToken);
+	}
 
 
-    public UrlTokenizerVnpt() {
-       super();
-    }
+	public UrlTokenizerVnpt() {
+		super();
+	}
 
-    public UrlTokenizerVnpt(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerVnpt(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        tokenizationFormat = GsonParser.parseInt(jsonObject.get("tokenizationFormat"));
-        shouldIncludeClientIp = GsonParser.parseBoolean(jsonObject.get("shouldIncludeClientIp"));
+		// set members values:
+		tokenizationFormat = GsonParser.parseInt(jsonObject.get("tokenizationFormat"));
+		shouldIncludeClientIp = GsonParser.parseBoolean(jsonObject.get("shouldIncludeClientIp"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerVnpt");
-        kparams.add("tokenizationFormat", this.tokenizationFormat);
-        kparams.add("shouldIncludeClientIp", this.shouldIncludeClientIp);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerVnpt");
+		kparams.add("tokenizationFormat", this.tokenizationFormat);
+		kparams.add("shouldIncludeClientIp", this.shouldIncludeClientIp);
+		return kparams;
+	}
 
 }
 

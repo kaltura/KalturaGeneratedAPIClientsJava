@@ -34,46 +34,46 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ObjectTaskType implements EnumAsString {
-    DISTRIBUTE("scheduledTaskContentDistribution.Distribute"),
-    DISPATCH_EVENT_NOTIFICATION("scheduledTaskEventNotification.DispatchEventNotification"),
-    EXECUTE_METADATA_XSLT("scheduledTaskMetadata.ExecuteMetadataXslt"),
-    DELETE_ENTRY("1"),
-    MODIFY_CATEGORIES("2"),
-    DELETE_ENTRY_FLAVORS("3"),
-    CONVERT_ENTRY_FLAVORS("4"),
-    DELETE_LOCAL_CONTENT("5"),
-    STORAGE_EXPORT("6"),
-    MODIFY_ENTRY("7"),
-    MAIL_NOTIFICATION("8");
+	DISTRIBUTE("scheduledTaskContentDistribution.Distribute"),
+	DISPATCH_EVENT_NOTIFICATION("scheduledTaskEventNotification.DispatchEventNotification"),
+	EXECUTE_METADATA_XSLT("scheduledTaskMetadata.ExecuteMetadataXslt"),
+	DELETE_ENTRY("1"),
+	MODIFY_CATEGORIES("2"),
+	DELETE_ENTRY_FLAVORS("3"),
+	CONVERT_ENTRY_FLAVORS("4"),
+	DELETE_LOCAL_CONTENT("5"),
+	STORAGE_EXPORT("6"),
+	MODIFY_ENTRY("7"),
+	MAIL_NOTIFICATION("8");
 
-    private String value;
+	private String value;
 
-    ObjectTaskType(String value) {
-        this.value = value;
-    }
+	ObjectTaskType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ObjectTaskType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ObjectTaskType defined values and compare the inner value with the given one:
-        for(ObjectTaskType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ObjectTaskType.values().length > 0 ? ObjectTaskType.values()[0]: null;
+	public static ObjectTaskType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ObjectTaskType defined values and compare the inner value with the given one:
+		for(ObjectTaskType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ObjectTaskType.values().length > 0 ? ObjectTaskType.values()[0]: null;
    }
 }

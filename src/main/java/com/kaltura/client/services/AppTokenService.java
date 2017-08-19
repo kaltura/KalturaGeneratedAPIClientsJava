@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.AppToken;
 import com.kaltura.client.types.AppTokenFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.SessionInfo;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -47,78 +45,140 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage application authentication tokens  */
 public class AppTokenService {
+	
+	public static class AddAppTokenBuilder extends RequestBuilder<AppToken, AppToken.Tokenizer, AddAppTokenBuilder> {
+		
+		public AddAppTokenBuilder(AppToken appToken) {
+			super(AppToken.class, "apptoken", "add");
+			params.add("appToken", appToken);
+		}
+	}
 
 	/**  Add new application authentication token  */
-    public static RequestBuilder<AppToken> add(AppToken appToken)  {
-        Params kparams = new Params();
-        kparams.add("appToken", appToken);
-
-        return new RequestBuilder<AppToken>(AppToken.class, "apptoken", "add", kparams);
-    }
+    public static AddAppTokenBuilder add(AppToken appToken)  {
+		return new AddAppTokenBuilder(appToken);
+	}
+	
+	public static class DeleteAppTokenBuilder extends NullRequestBuilder {
+		
+		public DeleteAppTokenBuilder(String id) {
+			super("apptoken", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete application authentication token by id  */
-    public static RequestBuilder<Void> delete(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("apptoken", "delete", kparams);
-    }
+    public static DeleteAppTokenBuilder delete(String id)  {
+		return new DeleteAppTokenBuilder(id);
+	}
+	
+	public static class GetAppTokenBuilder extends RequestBuilder<AppToken, AppToken.Tokenizer, GetAppTokenBuilder> {
+		
+		public GetAppTokenBuilder(String id) {
+			super(AppToken.class, "apptoken", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get application authentication token by id  */
-    public static RequestBuilder<AppToken> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetAppTokenBuilder get(String id)  {
+		return new GetAppTokenBuilder(id);
+	}
+	
+	public static class ListAppTokenBuilder extends ListResponseRequestBuilder<AppToken, AppToken.Tokenizer, ListAppTokenBuilder> {
+		
+		public ListAppTokenBuilder(AppTokenFilter filter, FilterPager pager) {
+			super(AppToken.class, "apptoken", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<AppToken>(AppToken.class, "apptoken", "get", kparams);
-    }
+	public static ListAppTokenBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<AppToken>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AppToken>> list(AppTokenFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListAppTokenBuilder list(AppTokenFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List application authentication tokens by filter and pager  */
-    public static RequestBuilder<ListResponse<AppToken>> list(AppTokenFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListAppTokenBuilder list(AppTokenFilter filter, FilterPager pager)  {
+		return new ListAppTokenBuilder(filter, pager);
+	}
+	
+	public static class StartSessionAppTokenBuilder extends RequestBuilder<SessionInfo, SessionInfo.Tokenizer, StartSessionAppTokenBuilder> {
+		
+		public StartSessionAppTokenBuilder(String id, String tokenHash, String userId, SessionType type, int expiry) {
+			super(SessionInfo.class, "apptoken", "startSession");
+			params.add("id", id);
+			params.add("tokenHash", tokenHash);
+			params.add("userId", userId);
+			params.add("type", type);
+			params.add("expiry", expiry);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void tokenHash(String multirequestToken) {
+			params.add("tokenHash", multirequestToken);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void type(String multirequestToken) {
+			params.add("type", multirequestToken);
+		}
+		
+		public void expiry(String multirequestToken) {
+			params.add("expiry", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<AppToken>(AppToken.class, "apptoken", "list", kparams);
-    }
+	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash)  {
+		return startSession(id, tokenHash, null);
+	}
 
-    public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash)  {
-        return startSession(id, tokenHash, null);
-    }
+	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId)  {
+		return startSession(id, tokenHash, userId, SessionType.get(Integer.MIN_VALUE));
+	}
 
-    public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash, String userId)  {
-        return startSession(id, tokenHash, userId, SessionType.get(Integer.MIN_VALUE));
-    }
-
-    public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash, String userId, SessionType type)  {
-        return startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
-    }
+	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type)  {
+		return startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
+	}
 
 	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
-    public static RequestBuilder<SessionInfo> startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("tokenHash", tokenHash);
-        kparams.add("userId", userId);
-        kparams.add("type", type);
-        kparams.add("expiry", expiry);
-
-        return new RequestBuilder<SessionInfo>(SessionInfo.class, "apptoken", "startSession", kparams);
-    }
+    public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
+		return new StartSessionAppTokenBuilder(id, tokenHash, userId, type, expiry);
+	}
+	
+	public static class UpdateAppTokenBuilder extends RequestBuilder<AppToken, AppToken.Tokenizer, UpdateAppTokenBuilder> {
+		
+		public UpdateAppTokenBuilder(String id, AppToken appToken) {
+			super(AppToken.class, "apptoken", "update");
+			params.add("id", id);
+			params.add("appToken", appToken);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update application authentication token by id  */
-    public static RequestBuilder<AppToken> update(String id, AppToken appToken)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("appToken", appToken);
-
-        return new RequestBuilder<AppToken>(AppToken.class, "apptoken", "update", kparams);
-    }
+    public static UpdateAppTokenBuilder update(String id, AppToken appToken)  {
+		return new UpdateAppTokenBuilder(id, appToken);
+	}
 }

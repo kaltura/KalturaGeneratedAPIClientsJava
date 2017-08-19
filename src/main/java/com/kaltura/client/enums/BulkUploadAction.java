@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadAction implements EnumAsString {
-    CANCEL("scheduleBulkUpload.CANCEL"),
-    ADD("1"),
-    UPDATE("2"),
-    DELETE("3"),
-    REPLACE("4"),
-    TRANSFORM_XSLT("5"),
-    ADD_OR_UPDATE("6");
+	CANCEL("scheduleBulkUpload.CANCEL"),
+	ADD("1"),
+	UPDATE("2"),
+	DELETE("3"),
+	REPLACE("4"),
+	TRANSFORM_XSLT("5"),
+	ADD_OR_UPDATE("6");
 
-    private String value;
+	private String value;
 
-    BulkUploadAction(String value) {
-        this.value = value;
-    }
+	BulkUploadAction(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static BulkUploadAction get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BulkUploadAction defined values and compare the inner value with the given one:
-        for(BulkUploadAction item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BulkUploadAction.values().length > 0 ? BulkUploadAction.values()[0]: null;
+	public static BulkUploadAction get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BulkUploadAction defined values and compare the inner value with the given one:
+		for(BulkUploadAction item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BulkUploadAction.values().length > 0 ? BulkUploadAction.values()[0]: null;
    }
 }

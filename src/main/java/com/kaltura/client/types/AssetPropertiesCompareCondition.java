@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,41 +42,46 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetPropertiesCompareCondition.Tokenizer.class)
 public class AssetPropertiesCompareCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> properties();
+	}
 
 	/**  Array of key/value objects that holds the property and the value to find and
 	  compare on an asset object  */
-    private List<KeyValue> properties;
+	private List<KeyValue> properties;
 
-    // properties:
-    public List<KeyValue> getProperties(){
-        return this.properties;
-    }
-    public void setProperties(List<KeyValue> properties){
-        this.properties = properties;
-    }
+	// properties:
+	public List<KeyValue> getProperties(){
+		return this.properties;
+	}
+	public void setProperties(List<KeyValue> properties){
+		this.properties = properties;
+	}
 
 
-    public AssetPropertiesCompareCondition() {
-       super();
-    }
+	public AssetPropertiesCompareCondition() {
+		super();
+	}
 
-    public AssetPropertiesCompareCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetPropertiesCompareCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        properties = GsonParser.parseArray(jsonObject.getAsJsonArray("properties"), KeyValue.class);
+		// set members values:
+		properties = GsonParser.parseArray(jsonObject.getAsJsonArray("properties"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetPropertiesCompareCondition");
-        kparams.add("properties", this.properties);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetPropertiesCompareCondition");
+		kparams.add("properties", this.properties);
+		return kparams;
+	}
 
 }
 

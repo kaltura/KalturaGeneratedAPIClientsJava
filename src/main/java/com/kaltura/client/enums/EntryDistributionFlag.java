@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDistributionFlag implements EnumAsInt {
-    NONE(0),
-    SUBMIT_REQUIRED(1),
-    DELETE_REQUIRED(2),
-    UPDATE_REQUIRED(3),
-    ENABLE_REQUIRED(4),
-    DISABLE_REQUIRED(5);
+	NONE(0),
+	SUBMIT_REQUIRED(1),
+	DELETE_REQUIRED(2),
+	UPDATE_REQUIRED(3),
+	ENABLE_REQUIRED(4),
+	DISABLE_REQUIRED(5);
 
-    private int value;
+	private int value;
 
-    EntryDistributionFlag(int value) {
-        this.value = value;
-    }
+	EntryDistributionFlag(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryDistributionFlag get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryDistributionFlag defined values and compare the inner value with the given one:
-        for(EntryDistributionFlag item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryDistributionFlag.values().length > 0 ? EntryDistributionFlag.values()[0]: null;
+	public static EntryDistributionFlag get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryDistributionFlag defined values and compare the inner value with the given one:
+		for(EntryDistributionFlag item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryDistributionFlag.values().length > 0 ? EntryDistributionFlag.values()[0]: null;
    }
 }

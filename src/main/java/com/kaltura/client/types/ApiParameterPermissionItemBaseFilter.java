@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ApiParameterPermissionItemBaseFilter.Tokenizer.class)
 public abstract class ApiParameterPermissionItemBaseFilter extends PermissionItemFilter {
+	
+	public interface Tokenizer extends PermissionItemFilter.Tokenizer {
+	}
 
 
 
-    public ApiParameterPermissionItemBaseFilter() {
-       super();
-    }
+	public ApiParameterPermissionItemBaseFilter() {
+		super();
+	}
 
-    public ApiParameterPermissionItemBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public ApiParameterPermissionItemBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaApiParameterPermissionItemBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaApiParameterPermissionItemBaseFilter");
+		return kparams;
+	}
 
 }
 

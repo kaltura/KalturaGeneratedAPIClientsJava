@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,50 +43,64 @@ import com.kaltura.client.utils.GsonParser;
 /**  A key value pair representation to return an array of key-value pairs
   (associative array)  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(KeyValue.Tokenizer.class)
 public class KeyValue extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String key();
+		String value();
+	}
 
-    private String key;
-    private String value;
+	private String key;
+	private String value;
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
 
-    // value:
-    public String getValue(){
-        return this.value;
-    }
-    public void setValue(String value){
-        this.value = value;
-    }
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
+
+	// value:
+	public String getValue(){
+		return this.value;
+	}
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public KeyValue() {
-       super();
-    }
+	public KeyValue() {
+		super();
+	}
 
-    public KeyValue(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public KeyValue(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        key = GsonParser.parseString(jsonObject.get("key"));
-        value = GsonParser.parseString(jsonObject.get("value"));
+		// set members values:
+		key = GsonParser.parseString(jsonObject.get("key"));
+		value = GsonParser.parseString(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaKeyValue");
-        kparams.add("key", this.key);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaKeyValue");
+		kparams.add("key", this.key);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

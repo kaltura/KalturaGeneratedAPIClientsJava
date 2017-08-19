@@ -34,45 +34,45 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ITunesSyndicationFeedOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    NAME_ASC("+name"),
-    PLAYLIST_ID_ASC("+playlistId"),
-    TYPE_ASC("+type"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    NAME_DESC("-name"),
-    PLAYLIST_ID_DESC("-playlistId"),
-    TYPE_DESC("-type"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	NAME_ASC("+name"),
+	PLAYLIST_ID_ASC("+playlistId"),
+	TYPE_ASC("+type"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	NAME_DESC("-name"),
+	PLAYLIST_ID_DESC("-playlistId"),
+	TYPE_DESC("-type"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    ITunesSyndicationFeedOrderBy(String value) {
-        this.value = value;
-    }
+	ITunesSyndicationFeedOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ITunesSyndicationFeedOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ITunesSyndicationFeedOrderBy defined values and compare the inner value with the given one:
-        for(ITunesSyndicationFeedOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ITunesSyndicationFeedOrderBy.values().length > 0 ? ITunesSyndicationFeedOrderBy.values()[0]: null;
+	public static ITunesSyndicationFeedOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ITunesSyndicationFeedOrderBy defined values and compare the inner value with the given one:
+		for(ITunesSyndicationFeedOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ITunesSyndicationFeedOrderBy.values().length > 0 ? ITunesSyndicationFeedOrderBy.values()[0]: null;
    }
 }

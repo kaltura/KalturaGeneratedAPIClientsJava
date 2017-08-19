@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CodeCuePoint.Tokenizer.class)
 public class CodeCuePoint extends CuePoint {
+	
+	public interface Tokenizer extends CuePoint.Tokenizer {
+		String code();
+		String description();
+		String endTime();
+		String duration();
+	}
 
-    private String code;
-    private String description;
-    private Integer endTime;
+	private String code;
+	private String description;
+	private Integer endTime;
 	/**  Duration in milliseconds  */
-    private Integer duration;
+	private Integer duration;
 
-    // code:
-    public String getCode(){
-        return this.code;
-    }
-    public void setCode(String code){
-        this.code = code;
-    }
+	// code:
+	public String getCode(){
+		return this.code;
+	}
+	public void setCode(String code){
+		this.code = code;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void code(String multirequestToken){
+		setToken("code", multirequestToken);
+	}
 
-    // endTime:
-    public Integer getEndTime(){
-        return this.endTime;
-    }
-    public void setEndTime(Integer endTime){
-        this.endTime = endTime;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// endTime:
+	public Integer getEndTime(){
+		return this.endTime;
+	}
+	public void setEndTime(Integer endTime){
+		this.endTime = endTime;
+	}
+
+	public void endTime(String multirequestToken){
+		setToken("endTime", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
 
 
-    public CodeCuePoint() {
-       super();
-    }
+	public CodeCuePoint() {
+		super();
+	}
 
-    public CodeCuePoint(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CodeCuePoint(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        code = GsonParser.parseString(jsonObject.get("code"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        endTime = GsonParser.parseInt(jsonObject.get("endTime"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
+		// set members values:
+		code = GsonParser.parseString(jsonObject.get("code"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		endTime = GsonParser.parseInt(jsonObject.get("endTime"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCodeCuePoint");
-        kparams.add("code", this.code);
-        kparams.add("description", this.description);
-        kparams.add("endTime", this.endTime);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCodeCuePoint");
+		kparams.add("code", this.code);
+		kparams.add("description", this.description);
+		kparams.add("endTime", this.endTime);
+		return kparams;
+	}
 
 }
 

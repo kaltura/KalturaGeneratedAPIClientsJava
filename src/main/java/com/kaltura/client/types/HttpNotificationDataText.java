@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +41,44 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HttpNotificationDataText.Tokenizer.class)
 public class HttpNotificationDataText extends HttpNotificationData {
+	
+	public interface Tokenizer extends HttpNotificationData.Tokenizer {
+		StringValue.Tokenizer content();
+	}
 
-    private StringValue content;
+	private StringValue content;
 
-    // content:
-    public StringValue getContent(){
-        return this.content;
-    }
-    public void setContent(StringValue content){
-        this.content = content;
-    }
+	// content:
+	public StringValue getContent(){
+		return this.content;
+	}
+	public void setContent(StringValue content){
+		this.content = content;
+	}
 
 
-    public HttpNotificationDataText() {
-       super();
-    }
+	public HttpNotificationDataText() {
+		super();
+	}
 
-    public HttpNotificationDataText(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public HttpNotificationDataText(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        content = GsonParser.parseObject(jsonObject.getAsJsonObject("content"), StringValue.class);
+		// set members values:
+		content = GsonParser.parseObject(jsonObject.getAsJsonObject("content"), StringValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHttpNotificationDataText");
-        kparams.add("content", this.content);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHttpNotificationDataText");
+		kparams.add("content", this.content);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SshImportJobData.Tokenizer.class)
 public class SshImportJobData extends ImportJobData {
+	
+	public interface Tokenizer extends ImportJobData.Tokenizer {
+		String privateKey();
+		String publicKey();
+		String passPhrase();
+	}
 
-    private String privateKey;
-    private String publicKey;
-    private String passPhrase;
+	private String privateKey;
+	private String publicKey;
+	private String passPhrase;
 
-    // privateKey:
-    public String getPrivateKey(){
-        return this.privateKey;
-    }
-    public void setPrivateKey(String privateKey){
-        this.privateKey = privateKey;
-    }
+	// privateKey:
+	public String getPrivateKey(){
+		return this.privateKey;
+	}
+	public void setPrivateKey(String privateKey){
+		this.privateKey = privateKey;
+	}
 
-    // publicKey:
-    public String getPublicKey(){
-        return this.publicKey;
-    }
-    public void setPublicKey(String publicKey){
-        this.publicKey = publicKey;
-    }
+	public void privateKey(String multirequestToken){
+		setToken("privateKey", multirequestToken);
+	}
 
-    // passPhrase:
-    public String getPassPhrase(){
-        return this.passPhrase;
-    }
-    public void setPassPhrase(String passPhrase){
-        this.passPhrase = passPhrase;
-    }
+	// publicKey:
+	public String getPublicKey(){
+		return this.publicKey;
+	}
+	public void setPublicKey(String publicKey){
+		this.publicKey = publicKey;
+	}
+
+	public void publicKey(String multirequestToken){
+		setToken("publicKey", multirequestToken);
+	}
+
+	// passPhrase:
+	public String getPassPhrase(){
+		return this.passPhrase;
+	}
+	public void setPassPhrase(String passPhrase){
+		this.passPhrase = passPhrase;
+	}
+
+	public void passPhrase(String multirequestToken){
+		setToken("passPhrase", multirequestToken);
+	}
 
 
-    public SshImportJobData() {
-       super();
-    }
+	public SshImportJobData() {
+		super();
+	}
 
-    public SshImportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SshImportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        privateKey = GsonParser.parseString(jsonObject.get("privateKey"));
-        publicKey = GsonParser.parseString(jsonObject.get("publicKey"));
-        passPhrase = GsonParser.parseString(jsonObject.get("passPhrase"));
+		// set members values:
+		privateKey = GsonParser.parseString(jsonObject.get("privateKey"));
+		publicKey = GsonParser.parseString(jsonObject.get("publicKey"));
+		passPhrase = GsonParser.parseString(jsonObject.get("passPhrase"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSshImportJobData");
-        kparams.add("privateKey", this.privateKey);
-        kparams.add("publicKey", this.publicKey);
-        kparams.add("passPhrase", this.passPhrase);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSshImportJobData");
+		kparams.add("privateKey", this.privateKey);
+		kparams.add("publicKey", this.publicKey);
+		kparams.add("passPhrase", this.passPhrase);
+		return kparams;
+	}
 
 }
 

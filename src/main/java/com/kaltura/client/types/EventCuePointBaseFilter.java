@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EventType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventCuePointBaseFilter.Tokenizer.class)
 public abstract class EventCuePointBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String eventTypeEqual();
+		String eventTypeIn();
+	}
 
-    private EventType eventTypeEqual;
-    private String eventTypeIn;
+	private EventType eventTypeEqual;
+	private String eventTypeIn;
 
-    // eventTypeEqual:
-    public EventType getEventTypeEqual(){
-        return this.eventTypeEqual;
-    }
-    public void setEventTypeEqual(EventType eventTypeEqual){
-        this.eventTypeEqual = eventTypeEqual;
-    }
+	// eventTypeEqual:
+	public EventType getEventTypeEqual(){
+		return this.eventTypeEqual;
+	}
+	public void setEventTypeEqual(EventType eventTypeEqual){
+		this.eventTypeEqual = eventTypeEqual;
+	}
 
-    // eventTypeIn:
-    public String getEventTypeIn(){
-        return this.eventTypeIn;
-    }
-    public void setEventTypeIn(String eventTypeIn){
-        this.eventTypeIn = eventTypeIn;
-    }
+	public void eventTypeEqual(String multirequestToken){
+		setToken("eventTypeEqual", multirequestToken);
+	}
+
+	// eventTypeIn:
+	public String getEventTypeIn(){
+		return this.eventTypeIn;
+	}
+	public void setEventTypeIn(String eventTypeIn){
+		this.eventTypeIn = eventTypeIn;
+	}
+
+	public void eventTypeIn(String multirequestToken){
+		setToken("eventTypeIn", multirequestToken);
+	}
 
 
-    public EventCuePointBaseFilter() {
-       super();
-    }
+	public EventCuePointBaseFilter() {
+		super();
+	}
 
-    public EventCuePointBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventCuePointBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventTypeEqual = EventType.get(GsonParser.parseString(jsonObject.get("eventTypeEqual")));
-        eventTypeIn = GsonParser.parseString(jsonObject.get("eventTypeIn"));
+		// set members values:
+		eventTypeEqual = EventType.get(GsonParser.parseString(jsonObject.get("eventTypeEqual")));
+		eventTypeIn = GsonParser.parseString(jsonObject.get("eventTypeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventCuePointBaseFilter");
-        kparams.add("eventTypeEqual", this.eventTypeEqual);
-        kparams.add("eventTypeIn", this.eventTypeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventCuePointBaseFilter");
+		kparams.add("eventTypeEqual", this.eventTypeEqual);
+		kparams.add("eventTypeIn", this.eventTypeIn);
+		return kparams;
+	}
 
 }
 

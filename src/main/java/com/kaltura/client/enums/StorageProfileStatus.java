@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileStatus implements EnumAsInt {
-    DISABLED(1),
-    AUTOMATIC(2),
-    MANUAL(3);
+	DISABLED(1),
+	AUTOMATIC(2),
+	MANUAL(3);
 
-    private int value;
+	private int value;
 
-    StorageProfileStatus(int value) {
-        this.value = value;
-    }
+	StorageProfileStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static StorageProfileStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over StorageProfileStatus defined values and compare the inner value with the given one:
-        for(StorageProfileStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return StorageProfileStatus.values().length > 0 ? StorageProfileStatus.values()[0]: null;
+	public static StorageProfileStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over StorageProfileStatus defined values and compare the inner value with the given one:
+		for(StorageProfileStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return StorageProfileStatus.values().length > 0 ? StorageProfileStatus.values()[0]: null;
    }
 }

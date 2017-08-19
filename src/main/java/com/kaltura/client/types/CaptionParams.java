@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.CaptionType;
 import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,89 +42,118 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CaptionParams.Tokenizer.class)
 public class CaptionParams extends AssetParams {
+	
+	public interface Tokenizer extends AssetParams.Tokenizer {
+		String language();
+		String isDefault();
+		String label();
+		String format();
+		String sourceParamsId();
+	}
 
 	/**  The language of the caption content  */
-    private Language language;
+	private Language language;
 	/**  Is default caption asset of the entry  */
-    private Boolean isDefault;
+	private Boolean isDefault;
 	/**  Friendly label  */
-    private String label;
+	private String label;
 	/**  The caption format  */
-    private CaptionType format;
+	private CaptionType format;
 	/**  Id of the caption params or the flavor params to be used as source for the
 	  caption creation  */
-    private Integer sourceParamsId;
+	private Integer sourceParamsId;
 
-    // language:
-    public Language getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(Language language){
-        this.language = language;
-    }
+	// language:
+	public Language getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(Language language){
+		this.language = language;
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
 
-    // format:
-    public CaptionType getFormat(){
-        return this.format;
-    }
-    public void setFormat(CaptionType format){
-        this.format = format;
-    }
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
 
-    // sourceParamsId:
-    public Integer getSourceParamsId(){
-        return this.sourceParamsId;
-    }
-    public void setSourceParamsId(Integer sourceParamsId){
-        this.sourceParamsId = sourceParamsId;
-    }
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
+
+	// format:
+	public CaptionType getFormat(){
+		return this.format;
+	}
+	public void setFormat(CaptionType format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
+
+	// sourceParamsId:
+	public Integer getSourceParamsId(){
+		return this.sourceParamsId;
+	}
+	public void setSourceParamsId(Integer sourceParamsId){
+		this.sourceParamsId = sourceParamsId;
+	}
+
+	public void sourceParamsId(String multirequestToken){
+		setToken("sourceParamsId", multirequestToken);
+	}
 
 
-    public CaptionParams() {
-       super();
-    }
+	public CaptionParams() {
+		super();
+	}
 
-    public CaptionParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CaptionParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        language = Language.get(GsonParser.parseString(jsonObject.get("language")));
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        format = CaptionType.get(GsonParser.parseString(jsonObject.get("format")));
-        sourceParamsId = GsonParser.parseInt(jsonObject.get("sourceParamsId"));
+		// set members values:
+		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		format = CaptionType.get(GsonParser.parseString(jsonObject.get("format")));
+		sourceParamsId = GsonParser.parseInt(jsonObject.get("sourceParamsId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCaptionParams");
-        kparams.add("language", this.language);
-        kparams.add("isDefault", this.isDefault);
-        kparams.add("label", this.label);
-        kparams.add("format", this.format);
-        kparams.add("sourceParamsId", this.sourceParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCaptionParams");
+		kparams.add("language", this.language);
+		kparams.add("isDefault", this.isDefault);
+		kparams.add("label", this.label);
+		kparams.add("format", this.format);
+		kparams.add("sourceParamsId", this.sourceParamsId);
+		return kparams;
+	}
 
 }
 

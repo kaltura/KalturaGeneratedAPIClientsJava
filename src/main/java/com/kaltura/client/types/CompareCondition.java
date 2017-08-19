@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.SearchConditionComparison;
 import com.kaltura.client.types.IntegerValue;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,52 +42,62 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CompareCondition.Tokenizer.class)
 public abstract class CompareCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		IntegerValue.Tokenizer value();
+		String comparison();
+	}
 
 	/**  Value to evaluate against the field and operator  */
-    private IntegerValue value;
+	private IntegerValue value;
 	/**  Comparing operator  */
-    private SearchConditionComparison comparison;
+	private SearchConditionComparison comparison;
 
-    // value:
-    public IntegerValue getValue(){
-        return this.value;
-    }
-    public void setValue(IntegerValue value){
-        this.value = value;
-    }
+	// value:
+	public IntegerValue getValue(){
+		return this.value;
+	}
+	public void setValue(IntegerValue value){
+		this.value = value;
+	}
 
-    // comparison:
-    public SearchConditionComparison getComparison(){
-        return this.comparison;
-    }
-    public void setComparison(SearchConditionComparison comparison){
-        this.comparison = comparison;
-    }
+	// comparison:
+	public SearchConditionComparison getComparison(){
+		return this.comparison;
+	}
+	public void setComparison(SearchConditionComparison comparison){
+		this.comparison = comparison;
+	}
+
+	public void comparison(String multirequestToken){
+		setToken("comparison", multirequestToken);
+	}
 
 
-    public CompareCondition() {
-       super();
-    }
+	public CompareCondition() {
+		super();
+	}
 
-    public CompareCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CompareCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        value = GsonParser.parseObject(jsonObject.getAsJsonObject("value"), IntegerValue.class);
-        comparison = SearchConditionComparison.get(GsonParser.parseString(jsonObject.get("comparison")));
+		// set members values:
+		value = GsonParser.parseObject(jsonObject.getAsJsonObject("value"), IntegerValue.class);
+		comparison = SearchConditionComparison.get(GsonParser.parseString(jsonObject.get("comparison")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCompareCondition");
-        kparams.add("value", this.value);
-        kparams.add("comparison", this.comparison);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCompareCondition");
+		kparams.add("value", this.value);
+		kparams.add("comparison", this.comparison);
+		return kparams;
+	}
 
 }
 

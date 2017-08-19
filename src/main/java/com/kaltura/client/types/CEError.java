@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,137 +41,191 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CEError.Tokenizer.class)
 public class CEError extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String browser();
+		String serverIp();
+		String serverOs();
+		String phpVersion();
+		String ceAdminEmail();
+		String type();
+		String description();
+		String data();
+	}
 
-    private String id;
-    private Integer partnerId;
-    private String browser;
-    private String serverIp;
-    private String serverOs;
-    private String phpVersion;
-    private String ceAdminEmail;
-    private String type;
-    private String description;
-    private String data;
+	private String id;
+	private Integer partnerId;
+	private String browser;
+	private String serverIp;
+	private String serverOs;
+	private String phpVersion;
+	private String ceAdminEmail;
+	private String type;
+	private String description;
+	private String data;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // browser:
-    public String getBrowser(){
-        return this.browser;
-    }
-    public void setBrowser(String browser){
-        this.browser = browser;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // serverIp:
-    public String getServerIp(){
-        return this.serverIp;
-    }
-    public void setServerIp(String serverIp){
-        this.serverIp = serverIp;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // serverOs:
-    public String getServerOs(){
-        return this.serverOs;
-    }
-    public void setServerOs(String serverOs){
-        this.serverOs = serverOs;
-    }
+	// browser:
+	public String getBrowser(){
+		return this.browser;
+	}
+	public void setBrowser(String browser){
+		this.browser = browser;
+	}
 
-    // phpVersion:
-    public String getPhpVersion(){
-        return this.phpVersion;
-    }
-    public void setPhpVersion(String phpVersion){
-        this.phpVersion = phpVersion;
-    }
+	public void browser(String multirequestToken){
+		setToken("browser", multirequestToken);
+	}
 
-    // ceAdminEmail:
-    public String getCeAdminEmail(){
-        return this.ceAdminEmail;
-    }
-    public void setCeAdminEmail(String ceAdminEmail){
-        this.ceAdminEmail = ceAdminEmail;
-    }
+	// serverIp:
+	public String getServerIp(){
+		return this.serverIp;
+	}
+	public void setServerIp(String serverIp){
+		this.serverIp = serverIp;
+	}
 
-    // type:
-    public String getType(){
-        return this.type;
-    }
-    public void setType(String type){
-        this.type = type;
-    }
+	public void serverIp(String multirequestToken){
+		setToken("serverIp", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// serverOs:
+	public String getServerOs(){
+		return this.serverOs;
+	}
+	public void setServerOs(String serverOs){
+		this.serverOs = serverOs;
+	}
 
-    // data:
-    public String getData(){
-        return this.data;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
+	public void serverOs(String multirequestToken){
+		setToken("serverOs", multirequestToken);
+	}
+
+	// phpVersion:
+	public String getPhpVersion(){
+		return this.phpVersion;
+	}
+	public void setPhpVersion(String phpVersion){
+		this.phpVersion = phpVersion;
+	}
+
+	public void phpVersion(String multirequestToken){
+		setToken("phpVersion", multirequestToken);
+	}
+
+	// ceAdminEmail:
+	public String getCeAdminEmail(){
+		return this.ceAdminEmail;
+	}
+	public void setCeAdminEmail(String ceAdminEmail){
+		this.ceAdminEmail = ceAdminEmail;
+	}
+
+	public void ceAdminEmail(String multirequestToken){
+		setToken("ceAdminEmail", multirequestToken);
+	}
+
+	// type:
+	public String getType(){
+		return this.type;
+	}
+	public void setType(String type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// data:
+	public String getData(){
+		return this.data;
+	}
+	public void setData(String data){
+		this.data = data;
+	}
+
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
+	}
 
 
-    public CEError() {
-       super();
-    }
+	public CEError() {
+		super();
+	}
 
-    public CEError(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CEError(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        browser = GsonParser.parseString(jsonObject.get("browser"));
-        serverIp = GsonParser.parseString(jsonObject.get("serverIp"));
-        serverOs = GsonParser.parseString(jsonObject.get("serverOs"));
-        phpVersion = GsonParser.parseString(jsonObject.get("phpVersion"));
-        ceAdminEmail = GsonParser.parseString(jsonObject.get("ceAdminEmail"));
-        type = GsonParser.parseString(jsonObject.get("type"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        data = GsonParser.parseString(jsonObject.get("data"));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		browser = GsonParser.parseString(jsonObject.get("browser"));
+		serverIp = GsonParser.parseString(jsonObject.get("serverIp"));
+		serverOs = GsonParser.parseString(jsonObject.get("serverOs"));
+		phpVersion = GsonParser.parseString(jsonObject.get("phpVersion"));
+		ceAdminEmail = GsonParser.parseString(jsonObject.get("ceAdminEmail"));
+		type = GsonParser.parseString(jsonObject.get("type"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		data = GsonParser.parseString(jsonObject.get("data"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCEError");
-        kparams.add("partnerId", this.partnerId);
-        kparams.add("browser", this.browser);
-        kparams.add("serverIp", this.serverIp);
-        kparams.add("serverOs", this.serverOs);
-        kparams.add("phpVersion", this.phpVersion);
-        kparams.add("ceAdminEmail", this.ceAdminEmail);
-        kparams.add("type", this.type);
-        kparams.add("description", this.description);
-        kparams.add("data", this.data);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCEError");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("browser", this.browser);
+		kparams.add("serverIp", this.serverIp);
+		kparams.add("serverOs", this.serverOs);
+		kparams.add("phpVersion", this.phpVersion);
+		kparams.add("ceAdminEmail", this.ceAdminEmail);
+		kparams.add("type", this.type);
+		kparams.add("description", this.description);
+		kparams.add("data", this.data);
+		return kparams;
+	}
 
 }
 

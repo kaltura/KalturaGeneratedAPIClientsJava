@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IdeticDistributionProvider.Tokenizer.class)
 public class IdeticDistributionProvider extends DistributionProvider {
+	
+	public interface Tokenizer extends DistributionProvider.Tokenizer {
+	}
 
 
 
-    public IdeticDistributionProvider() {
-       super();
-    }
+	public IdeticDistributionProvider() {
+		super();
+	}
 
-    public IdeticDistributionProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public IdeticDistributionProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIdeticDistributionProvider");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIdeticDistributionProvider");
+		return kparams;
+	}
 
 }
 

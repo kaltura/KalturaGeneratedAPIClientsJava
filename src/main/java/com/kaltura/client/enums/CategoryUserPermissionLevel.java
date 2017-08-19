@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CategoryUserPermissionLevel implements EnumAsInt {
-    MANAGER(0),
-    MODERATOR(1),
-    CONTRIBUTOR(2),
-    MEMBER(3),
-    NONE(4);
+	MANAGER(0),
+	MODERATOR(1),
+	CONTRIBUTOR(2),
+	MEMBER(3),
+	NONE(4);
 
-    private int value;
+	private int value;
 
-    CategoryUserPermissionLevel(int value) {
-        this.value = value;
-    }
+	CategoryUserPermissionLevel(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static CategoryUserPermissionLevel get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CategoryUserPermissionLevel defined values and compare the inner value with the given one:
-        for(CategoryUserPermissionLevel item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CategoryUserPermissionLevel.values().length > 0 ? CategoryUserPermissionLevel.values()[0]: null;
+	public static CategoryUserPermissionLevel get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CategoryUserPermissionLevel defined values and compare the inner value with the given one:
+		for(CategoryUserPermissionLevel item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CategoryUserPermissionLevel.values().length > 0 ? CategoryUserPermissionLevel.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionValidationErrorMissingMetadata.Tokenizer.class)
 public class DistributionValidationErrorMissingMetadata extends DistributionValidationError {
+	
+	public interface Tokenizer extends DistributionValidationError.Tokenizer {
+		String fieldName();
+	}
 
-    private String fieldName;
+	private String fieldName;
 
-    // fieldName:
-    public String getFieldName(){
-        return this.fieldName;
-    }
-    public void setFieldName(String fieldName){
-        this.fieldName = fieldName;
-    }
+	// fieldName:
+	public String getFieldName(){
+		return this.fieldName;
+	}
+	public void setFieldName(String fieldName){
+		this.fieldName = fieldName;
+	}
+
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
 
 
-    public DistributionValidationErrorMissingMetadata() {
-       super();
-    }
+	public DistributionValidationErrorMissingMetadata() {
+		super();
+	}
 
-    public DistributionValidationErrorMissingMetadata(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionValidationErrorMissingMetadata(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
+		// set members values:
+		fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionValidationErrorMissingMetadata");
-        kparams.add("fieldName", this.fieldName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionValidationErrorMissingMetadata");
+		kparams.add("fieldName", this.fieldName);
+		return kparams;
+	}
 
 }
 

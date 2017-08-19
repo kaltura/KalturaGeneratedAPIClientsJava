@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.CategoryEntryAdvancedOrderBy;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,72 +41,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CategoryEntryAdvancedFilter.Tokenizer.class)
 public class CategoryEntryAdvancedFilter extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String categoriesMatchOr();
+		String categoryEntryStatusIn();
+		String orderBy();
+		String categoryIdEqual();
+	}
 
-    private String categoriesMatchOr;
-    private String categoryEntryStatusIn;
-    private CategoryEntryAdvancedOrderBy orderBy;
-    private Integer categoryIdEqual;
+	private String categoriesMatchOr;
+	private String categoryEntryStatusIn;
+	private CategoryEntryAdvancedOrderBy orderBy;
+	private Integer categoryIdEqual;
 
-    // categoriesMatchOr:
-    public String getCategoriesMatchOr(){
-        return this.categoriesMatchOr;
-    }
-    public void setCategoriesMatchOr(String categoriesMatchOr){
-        this.categoriesMatchOr = categoriesMatchOr;
-    }
+	// categoriesMatchOr:
+	public String getCategoriesMatchOr(){
+		return this.categoriesMatchOr;
+	}
+	public void setCategoriesMatchOr(String categoriesMatchOr){
+		this.categoriesMatchOr = categoriesMatchOr;
+	}
 
-    // categoryEntryStatusIn:
-    public String getCategoryEntryStatusIn(){
-        return this.categoryEntryStatusIn;
-    }
-    public void setCategoryEntryStatusIn(String categoryEntryStatusIn){
-        this.categoryEntryStatusIn = categoryEntryStatusIn;
-    }
+	public void categoriesMatchOr(String multirequestToken){
+		setToken("categoriesMatchOr", multirequestToken);
+	}
 
-    // orderBy:
-    public CategoryEntryAdvancedOrderBy getOrderBy(){
-        return this.orderBy;
-    }
-    public void setOrderBy(CategoryEntryAdvancedOrderBy orderBy){
-        this.orderBy = orderBy;
-    }
+	// categoryEntryStatusIn:
+	public String getCategoryEntryStatusIn(){
+		return this.categoryEntryStatusIn;
+	}
+	public void setCategoryEntryStatusIn(String categoryEntryStatusIn){
+		this.categoryEntryStatusIn = categoryEntryStatusIn;
+	}
 
-    // categoryIdEqual:
-    public Integer getCategoryIdEqual(){
-        return this.categoryIdEqual;
-    }
-    public void setCategoryIdEqual(Integer categoryIdEqual){
-        this.categoryIdEqual = categoryIdEqual;
-    }
+	public void categoryEntryStatusIn(String multirequestToken){
+		setToken("categoryEntryStatusIn", multirequestToken);
+	}
+
+	// orderBy:
+	public CategoryEntryAdvancedOrderBy getOrderBy(){
+		return this.orderBy;
+	}
+	public void setOrderBy(CategoryEntryAdvancedOrderBy orderBy){
+		this.orderBy = orderBy;
+	}
+
+	public void orderBy(String multirequestToken){
+		setToken("orderBy", multirequestToken);
+	}
+
+	// categoryIdEqual:
+	public Integer getCategoryIdEqual(){
+		return this.categoryIdEqual;
+	}
+	public void setCategoryIdEqual(Integer categoryIdEqual){
+		this.categoryIdEqual = categoryIdEqual;
+	}
+
+	public void categoryIdEqual(String multirequestToken){
+		setToken("categoryIdEqual", multirequestToken);
+	}
 
 
-    public CategoryEntryAdvancedFilter() {
-       super();
-    }
+	public CategoryEntryAdvancedFilter() {
+		super();
+	}
 
-    public CategoryEntryAdvancedFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CategoryEntryAdvancedFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoriesMatchOr = GsonParser.parseString(jsonObject.get("categoriesMatchOr"));
-        categoryEntryStatusIn = GsonParser.parseString(jsonObject.get("categoryEntryStatusIn"));
-        orderBy = CategoryEntryAdvancedOrderBy.get(GsonParser.parseString(jsonObject.get("orderBy")));
-        categoryIdEqual = GsonParser.parseInt(jsonObject.get("categoryIdEqual"));
+		// set members values:
+		categoriesMatchOr = GsonParser.parseString(jsonObject.get("categoriesMatchOr"));
+		categoryEntryStatusIn = GsonParser.parseString(jsonObject.get("categoryEntryStatusIn"));
+		orderBy = CategoryEntryAdvancedOrderBy.get(GsonParser.parseString(jsonObject.get("orderBy")));
+		categoryIdEqual = GsonParser.parseInt(jsonObject.get("categoryIdEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCategoryEntryAdvancedFilter");
-        kparams.add("categoriesMatchOr", this.categoriesMatchOr);
-        kparams.add("categoryEntryStatusIn", this.categoryEntryStatusIn);
-        kparams.add("orderBy", this.orderBy);
-        kparams.add("categoryIdEqual", this.categoryIdEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCategoryEntryAdvancedFilter");
+		kparams.add("categoriesMatchOr", this.categoriesMatchOr);
+		kparams.add("categoryEntryStatusIn", this.categoryEntryStatusIn);
+		kparams.add("orderBy", this.orderBy);
+		kparams.add("categoryIdEqual", this.categoryIdEqual);
+		return kparams;
+	}
 
 }
 

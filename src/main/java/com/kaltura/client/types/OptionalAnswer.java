@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,72 +42,96 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  A representation of an optional answer for question cue point  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(OptionalAnswer.Tokenizer.class)
 public class OptionalAnswer extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String key();
+		String text();
+		String weight();
+		String isCorrect();
+	}
 
-    private String key;
-    private String text;
-    private Double weight;
-    private Boolean isCorrect;
+	private String key;
+	private String text;
+	private Double weight;
+	private Boolean isCorrect;
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
 
-    // text:
-    public String getText(){
-        return this.text;
-    }
-    public void setText(String text){
-        this.text = text;
-    }
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
 
-    // weight:
-    public Double getWeight(){
-        return this.weight;
-    }
-    public void setWeight(Double weight){
-        this.weight = weight;
-    }
+	// text:
+	public String getText(){
+		return this.text;
+	}
+	public void setText(String text){
+		this.text = text;
+	}
 
-    // isCorrect:
-    public Boolean getIsCorrect(){
-        return this.isCorrect;
-    }
-    public void setIsCorrect(Boolean isCorrect){
-        this.isCorrect = isCorrect;
-    }
+	public void text(String multirequestToken){
+		setToken("text", multirequestToken);
+	}
+
+	// weight:
+	public Double getWeight(){
+		return this.weight;
+	}
+	public void setWeight(Double weight){
+		this.weight = weight;
+	}
+
+	public void weight(String multirequestToken){
+		setToken("weight", multirequestToken);
+	}
+
+	// isCorrect:
+	public Boolean getIsCorrect(){
+		return this.isCorrect;
+	}
+	public void setIsCorrect(Boolean isCorrect){
+		this.isCorrect = isCorrect;
+	}
+
+	public void isCorrect(String multirequestToken){
+		setToken("isCorrect", multirequestToken);
+	}
 
 
-    public OptionalAnswer() {
-       super();
-    }
+	public OptionalAnswer() {
+		super();
+	}
 
-    public OptionalAnswer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public OptionalAnswer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        key = GsonParser.parseString(jsonObject.get("key"));
-        text = GsonParser.parseString(jsonObject.get("text"));
-        weight = GsonParser.parseDouble(jsonObject.get("weight"));
-        isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
+		// set members values:
+		key = GsonParser.parseString(jsonObject.get("key"));
+		text = GsonParser.parseString(jsonObject.get("text"));
+		weight = GsonParser.parseDouble(jsonObject.get("weight"));
+		isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaOptionalAnswer");
-        kparams.add("key", this.key);
-        kparams.add("text", this.text);
-        kparams.add("weight", this.weight);
-        kparams.add("isCorrect", this.isCorrect);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaOptionalAnswer");
+		kparams.add("key", this.key);
+		kparams.add("text", this.text);
+		kparams.add("weight", this.weight);
+		kparams.add("isCorrect", this.isCorrect);
+		return kparams;
+	}
 
 }
 

@@ -34,6 +34,7 @@ import com.kaltura.client.enums.UserEntryStatus;
 import com.kaltura.client.enums.UserEntryType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,122 +44,171 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserEntry.Tokenizer.class)
 public abstract class UserEntry extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String entryId();
+		String userId();
+		String partnerId();
+		String status();
+		String createdAt();
+		String updatedAt();
+		String type();
+		String extendedStatus();
+	}
 
 	/**  unique auto-generated identifier  */
-    private Integer id;
-    private String entryId;
-    private String userId;
-    private Integer partnerId;
-    private UserEntryStatus status;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private UserEntryType type;
-    private UserEntryExtendedStatus extendedStatus;
+	private Integer id;
+	private String entryId;
+	private String userId;
+	private Integer partnerId;
+	private UserEntryStatus status;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private UserEntryType type;
+	private UserEntryExtendedStatus extendedStatus;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // status:
-    public UserEntryStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(UserEntryStatus status){
-        this.status = status;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // type:
-    public UserEntryType getType(){
-        return this.type;
-    }
-    public void setType(UserEntryType type){
-        this.type = type;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // extendedStatus:
-    public UserEntryExtendedStatus getExtendedStatus(){
-        return this.extendedStatus;
-    }
-    public void setExtendedStatus(UserEntryExtendedStatus extendedStatus){
-        this.extendedStatus = extendedStatus;
-    }
+	// status:
+	public UserEntryStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(UserEntryStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// type:
+	public UserEntryType getType(){
+		return this.type;
+	}
+	public void setType(UserEntryType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// extendedStatus:
+	public UserEntryExtendedStatus getExtendedStatus(){
+		return this.extendedStatus;
+	}
+	public void setExtendedStatus(UserEntryExtendedStatus extendedStatus){
+		this.extendedStatus = extendedStatus;
+	}
+
+	public void extendedStatus(String multirequestToken){
+		setToken("extendedStatus", multirequestToken);
+	}
 
 
-    public UserEntry() {
-       super();
-    }
+	public UserEntry() {
+		super();
+	}
 
-    public UserEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        status = UserEntryStatus.get(GsonParser.parseString(jsonObject.get("status")));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        type = UserEntryType.get(GsonParser.parseString(jsonObject.get("type")));
-        extendedStatus = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatus")));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		status = UserEntryStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		type = UserEntryType.get(GsonParser.parseString(jsonObject.get("type")));
+		extendedStatus = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatus")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserEntry");
-        kparams.add("entryId", this.entryId);
-        kparams.add("userId", this.userId);
-        kparams.add("extendedStatus", this.extendedStatus);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserEntry");
+		kparams.add("entryId", this.entryId);
+		kparams.add("userId", this.userId);
+		kparams.add("extendedStatus", this.extendedStatus);
+		return kparams;
+	}
 
 }
 

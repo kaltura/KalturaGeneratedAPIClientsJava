@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileRtmp.Tokenizer.class)
 public class DeliveryProfileRtmp extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String enforceRtmpe();
+		String prefix();
+	}
 
 	/**  enforceRtmpe  */
-    private Boolean enforceRtmpe;
+	private Boolean enforceRtmpe;
 	/**  a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)  */
-    private String prefix;
+	private String prefix;
 
-    // enforceRtmpe:
-    public Boolean getEnforceRtmpe(){
-        return this.enforceRtmpe;
-    }
-    public void setEnforceRtmpe(Boolean enforceRtmpe){
-        this.enforceRtmpe = enforceRtmpe;
-    }
+	// enforceRtmpe:
+	public Boolean getEnforceRtmpe(){
+		return this.enforceRtmpe;
+	}
+	public void setEnforceRtmpe(Boolean enforceRtmpe){
+		this.enforceRtmpe = enforceRtmpe;
+	}
 
-    // prefix:
-    public String getPrefix(){
-        return this.prefix;
-    }
-    public void setPrefix(String prefix){
-        this.prefix = prefix;
-    }
+	public void enforceRtmpe(String multirequestToken){
+		setToken("enforceRtmpe", multirequestToken);
+	}
+
+	// prefix:
+	public String getPrefix(){
+		return this.prefix;
+	}
+	public void setPrefix(String prefix){
+		this.prefix = prefix;
+	}
+
+	public void prefix(String multirequestToken){
+		setToken("prefix", multirequestToken);
+	}
 
 
-    public DeliveryProfileRtmp() {
-       super();
-    }
+	public DeliveryProfileRtmp() {
+		super();
+	}
 
-    public DeliveryProfileRtmp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileRtmp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        enforceRtmpe = GsonParser.parseBoolean(jsonObject.get("enforceRtmpe"));
-        prefix = GsonParser.parseString(jsonObject.get("prefix"));
+		// set members values:
+		enforceRtmpe = GsonParser.parseBoolean(jsonObject.get("enforceRtmpe"));
+		prefix = GsonParser.parseString(jsonObject.get("prefix"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileRtmp");
-        kparams.add("enforceRtmpe", this.enforceRtmpe);
-        kparams.add("prefix", this.prefix);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileRtmp");
+		kparams.add("enforceRtmpe", this.enforceRtmpe);
+		kparams.add("prefix", this.prefix);
+		return kparams;
+	}
 
 }
 

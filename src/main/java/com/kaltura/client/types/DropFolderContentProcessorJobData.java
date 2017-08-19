@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DropFolderContentFileHandlerMatchPolicy;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,94 +41,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DropFolderContentProcessorJobData.Tokenizer.class)
 public class DropFolderContentProcessorJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String dropFolderId();
+		String dropFolderFileIds();
+		String parsedSlug();
+		String contentMatchPolicy();
+		String conversionProfileId();
+		String parsedUserId();
+	}
 
-    private Integer dropFolderId;
-    private String dropFolderFileIds;
-    private String parsedSlug;
-    private DropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
-    private Integer conversionProfileId;
-    private String parsedUserId;
+	private Integer dropFolderId;
+	private String dropFolderFileIds;
+	private String parsedSlug;
+	private DropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
+	private Integer conversionProfileId;
+	private String parsedUserId;
 
-    // dropFolderId:
-    public Integer getDropFolderId(){
-        return this.dropFolderId;
-    }
-    public void setDropFolderId(Integer dropFolderId){
-        this.dropFolderId = dropFolderId;
-    }
+	// dropFolderId:
+	public Integer getDropFolderId(){
+		return this.dropFolderId;
+	}
+	public void setDropFolderId(Integer dropFolderId){
+		this.dropFolderId = dropFolderId;
+	}
 
-    // dropFolderFileIds:
-    public String getDropFolderFileIds(){
-        return this.dropFolderFileIds;
-    }
-    public void setDropFolderFileIds(String dropFolderFileIds){
-        this.dropFolderFileIds = dropFolderFileIds;
-    }
+	public void dropFolderId(String multirequestToken){
+		setToken("dropFolderId", multirequestToken);
+	}
 
-    // parsedSlug:
-    public String getParsedSlug(){
-        return this.parsedSlug;
-    }
-    public void setParsedSlug(String parsedSlug){
-        this.parsedSlug = parsedSlug;
-    }
+	// dropFolderFileIds:
+	public String getDropFolderFileIds(){
+		return this.dropFolderFileIds;
+	}
+	public void setDropFolderFileIds(String dropFolderFileIds){
+		this.dropFolderFileIds = dropFolderFileIds;
+	}
 
-    // contentMatchPolicy:
-    public DropFolderContentFileHandlerMatchPolicy getContentMatchPolicy(){
-        return this.contentMatchPolicy;
-    }
-    public void setContentMatchPolicy(DropFolderContentFileHandlerMatchPolicy contentMatchPolicy){
-        this.contentMatchPolicy = contentMatchPolicy;
-    }
+	public void dropFolderFileIds(String multirequestToken){
+		setToken("dropFolderFileIds", multirequestToken);
+	}
 
-    // conversionProfileId:
-    public Integer getConversionProfileId(){
-        return this.conversionProfileId;
-    }
-    public void setConversionProfileId(Integer conversionProfileId){
-        this.conversionProfileId = conversionProfileId;
-    }
+	// parsedSlug:
+	public String getParsedSlug(){
+		return this.parsedSlug;
+	}
+	public void setParsedSlug(String parsedSlug){
+		this.parsedSlug = parsedSlug;
+	}
 
-    // parsedUserId:
-    public String getParsedUserId(){
-        return this.parsedUserId;
-    }
-    public void setParsedUserId(String parsedUserId){
-        this.parsedUserId = parsedUserId;
-    }
+	public void parsedSlug(String multirequestToken){
+		setToken("parsedSlug", multirequestToken);
+	}
+
+	// contentMatchPolicy:
+	public DropFolderContentFileHandlerMatchPolicy getContentMatchPolicy(){
+		return this.contentMatchPolicy;
+	}
+	public void setContentMatchPolicy(DropFolderContentFileHandlerMatchPolicy contentMatchPolicy){
+		this.contentMatchPolicy = contentMatchPolicy;
+	}
+
+	public void contentMatchPolicy(String multirequestToken){
+		setToken("contentMatchPolicy", multirequestToken);
+	}
+
+	// conversionProfileId:
+	public Integer getConversionProfileId(){
+		return this.conversionProfileId;
+	}
+	public void setConversionProfileId(Integer conversionProfileId){
+		this.conversionProfileId = conversionProfileId;
+	}
+
+	public void conversionProfileId(String multirequestToken){
+		setToken("conversionProfileId", multirequestToken);
+	}
+
+	// parsedUserId:
+	public String getParsedUserId(){
+		return this.parsedUserId;
+	}
+	public void setParsedUserId(String parsedUserId){
+		this.parsedUserId = parsedUserId;
+	}
+
+	public void parsedUserId(String multirequestToken){
+		setToken("parsedUserId", multirequestToken);
+	}
 
 
-    public DropFolderContentProcessorJobData() {
-       super();
-    }
+	public DropFolderContentProcessorJobData() {
+		super();
+	}
 
-    public DropFolderContentProcessorJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DropFolderContentProcessorJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        dropFolderId = GsonParser.parseInt(jsonObject.get("dropFolderId"));
-        dropFolderFileIds = GsonParser.parseString(jsonObject.get("dropFolderFileIds"));
-        parsedSlug = GsonParser.parseString(jsonObject.get("parsedSlug"));
-        contentMatchPolicy = DropFolderContentFileHandlerMatchPolicy.get(GsonParser.parseInt(jsonObject.get("contentMatchPolicy")));
-        conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
-        parsedUserId = GsonParser.parseString(jsonObject.get("parsedUserId"));
+		// set members values:
+		dropFolderId = GsonParser.parseInt(jsonObject.get("dropFolderId"));
+		dropFolderFileIds = GsonParser.parseString(jsonObject.get("dropFolderFileIds"));
+		parsedSlug = GsonParser.parseString(jsonObject.get("parsedSlug"));
+		contentMatchPolicy = DropFolderContentFileHandlerMatchPolicy.get(GsonParser.parseInt(jsonObject.get("contentMatchPolicy")));
+		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
+		parsedUserId = GsonParser.parseString(jsonObject.get("parsedUserId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDropFolderContentProcessorJobData");
-        kparams.add("dropFolderId", this.dropFolderId);
-        kparams.add("dropFolderFileIds", this.dropFolderFileIds);
-        kparams.add("parsedSlug", this.parsedSlug);
-        kparams.add("contentMatchPolicy", this.contentMatchPolicy);
-        kparams.add("conversionProfileId", this.conversionProfileId);
-        kparams.add("parsedUserId", this.parsedUserId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDropFolderContentProcessorJobData");
+		kparams.add("dropFolderId", this.dropFolderId);
+		kparams.add("dropFolderFileIds", this.dropFolderFileIds);
+		kparams.add("parsedSlug", this.parsedSlug);
+		kparams.add("contentMatchPolicy", this.contentMatchPolicy);
+		kparams.add("conversionProfileId", this.conversionProfileId);
+		kparams.add("parsedUserId", this.parsedUserId);
+		return kparams;
+	}
 
 }
 

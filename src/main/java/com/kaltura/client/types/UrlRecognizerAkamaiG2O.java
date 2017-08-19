@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,76 +40,100 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlRecognizerAkamaiG2O.Tokenizer.class)
 public class UrlRecognizerAkamaiG2O extends UrlRecognizer {
+	
+	public interface Tokenizer extends UrlRecognizer.Tokenizer {
+		String headerData();
+		String headerSign();
+		String timeout();
+		String salt();
+	}
 
 	/**  headerData  */
-    private String headerData;
+	private String headerData;
 	/**  headerSign  */
-    private String headerSign;
+	private String headerSign;
 	/**  timeout  */
-    private Integer timeout;
+	private Integer timeout;
 	/**  salt  */
-    private String salt;
+	private String salt;
 
-    // headerData:
-    public String getHeaderData(){
-        return this.headerData;
-    }
-    public void setHeaderData(String headerData){
-        this.headerData = headerData;
-    }
+	// headerData:
+	public String getHeaderData(){
+		return this.headerData;
+	}
+	public void setHeaderData(String headerData){
+		this.headerData = headerData;
+	}
 
-    // headerSign:
-    public String getHeaderSign(){
-        return this.headerSign;
-    }
-    public void setHeaderSign(String headerSign){
-        this.headerSign = headerSign;
-    }
+	public void headerData(String multirequestToken){
+		setToken("headerData", multirequestToken);
+	}
 
-    // timeout:
-    public Integer getTimeout(){
-        return this.timeout;
-    }
-    public void setTimeout(Integer timeout){
-        this.timeout = timeout;
-    }
+	// headerSign:
+	public String getHeaderSign(){
+		return this.headerSign;
+	}
+	public void setHeaderSign(String headerSign){
+		this.headerSign = headerSign;
+	}
 
-    // salt:
-    public String getSalt(){
-        return this.salt;
-    }
-    public void setSalt(String salt){
-        this.salt = salt;
-    }
+	public void headerSign(String multirequestToken){
+		setToken("headerSign", multirequestToken);
+	}
+
+	// timeout:
+	public Integer getTimeout(){
+		return this.timeout;
+	}
+	public void setTimeout(Integer timeout){
+		this.timeout = timeout;
+	}
+
+	public void timeout(String multirequestToken){
+		setToken("timeout", multirequestToken);
+	}
+
+	// salt:
+	public String getSalt(){
+		return this.salt;
+	}
+	public void setSalt(String salt){
+		this.salt = salt;
+	}
+
+	public void salt(String multirequestToken){
+		setToken("salt", multirequestToken);
+	}
 
 
-    public UrlRecognizerAkamaiG2O() {
-       super();
-    }
+	public UrlRecognizerAkamaiG2O() {
+		super();
+	}
 
-    public UrlRecognizerAkamaiG2O(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlRecognizerAkamaiG2O(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        headerData = GsonParser.parseString(jsonObject.get("headerData"));
-        headerSign = GsonParser.parseString(jsonObject.get("headerSign"));
-        timeout = GsonParser.parseInt(jsonObject.get("timeout"));
-        salt = GsonParser.parseString(jsonObject.get("salt"));
+		// set members values:
+		headerData = GsonParser.parseString(jsonObject.get("headerData"));
+		headerSign = GsonParser.parseString(jsonObject.get("headerSign"));
+		timeout = GsonParser.parseInt(jsonObject.get("timeout"));
+		salt = GsonParser.parseString(jsonObject.get("salt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlRecognizerAkamaiG2O");
-        kparams.add("headerData", this.headerData);
-        kparams.add("headerSign", this.headerSign);
-        kparams.add("timeout", this.timeout);
-        kparams.add("salt", this.salt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlRecognizerAkamaiG2O");
+		kparams.add("headerData", this.headerData);
+		kparams.add("headerSign", this.headerSign);
+		kparams.add("timeout", this.timeout);
+		kparams.add("salt", this.salt);
+		return kparams;
+	}
 
 }
 

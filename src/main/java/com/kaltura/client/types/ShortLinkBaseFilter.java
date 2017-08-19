@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ShortLinkStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,204 +41,288 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ShortLinkBaseFilter.Tokenizer.class)
 public abstract class ShortLinkBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String expiresAtGreaterThanOrEqual();
+		String expiresAtLessThanOrEqual();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String userIdEqual();
+		String userIdIn();
+		String systemNameEqual();
+		String systemNameIn();
+		String statusEqual();
+		String statusIn();
+	}
 
-    private String idEqual;
-    private String idIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private Integer expiresAtGreaterThanOrEqual;
-    private Integer expiresAtLessThanOrEqual;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private String userIdEqual;
-    private String userIdIn;
-    private String systemNameEqual;
-    private String systemNameIn;
-    private ShortLinkStatus statusEqual;
-    private String statusIn;
+	private String idEqual;
+	private String idIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private Integer expiresAtGreaterThanOrEqual;
+	private Integer expiresAtLessThanOrEqual;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private String userIdEqual;
+	private String userIdIn;
+	private String systemNameEqual;
+	private String systemNameIn;
+	private ShortLinkStatus statusEqual;
+	private String statusIn;
 
-    // idEqual:
-    public String getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(String idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public String getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(String idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // expiresAtGreaterThanOrEqual:
-    public Integer getExpiresAtGreaterThanOrEqual(){
-        return this.expiresAtGreaterThanOrEqual;
-    }
-    public void setExpiresAtGreaterThanOrEqual(Integer expiresAtGreaterThanOrEqual){
-        this.expiresAtGreaterThanOrEqual = expiresAtGreaterThanOrEqual;
-    }
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
 
-    // expiresAtLessThanOrEqual:
-    public Integer getExpiresAtLessThanOrEqual(){
-        return this.expiresAtLessThanOrEqual;
-    }
-    public void setExpiresAtLessThanOrEqual(Integer expiresAtLessThanOrEqual){
-        this.expiresAtLessThanOrEqual = expiresAtLessThanOrEqual;
-    }
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // userIdEqual:
-    public String getUserIdEqual(){
-        return this.userIdEqual;
-    }
-    public void setUserIdEqual(String userIdEqual){
-        this.userIdEqual = userIdEqual;
-    }
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
 
-    // userIdIn:
-    public String getUserIdIn(){
-        return this.userIdIn;
-    }
-    public void setUserIdIn(String userIdIn){
-        this.userIdIn = userIdIn;
-    }
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
-    // systemNameEqual:
-    public String getSystemNameEqual(){
-        return this.systemNameEqual;
-    }
-    public void setSystemNameEqual(String systemNameEqual){
-        this.systemNameEqual = systemNameEqual;
-    }
+	// expiresAtGreaterThanOrEqual:
+	public Integer getExpiresAtGreaterThanOrEqual(){
+		return this.expiresAtGreaterThanOrEqual;
+	}
+	public void setExpiresAtGreaterThanOrEqual(Integer expiresAtGreaterThanOrEqual){
+		this.expiresAtGreaterThanOrEqual = expiresAtGreaterThanOrEqual;
+	}
 
-    // systemNameIn:
-    public String getSystemNameIn(){
-        return this.systemNameIn;
-    }
-    public void setSystemNameIn(String systemNameIn){
-        this.systemNameIn = systemNameIn;
-    }
+	public void expiresAtGreaterThanOrEqual(String multirequestToken){
+		setToken("expiresAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public ShortLinkStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(ShortLinkStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// expiresAtLessThanOrEqual:
+	public Integer getExpiresAtLessThanOrEqual(){
+		return this.expiresAtLessThanOrEqual;
+	}
+	public void setExpiresAtLessThanOrEqual(Integer expiresAtLessThanOrEqual){
+		this.expiresAtLessThanOrEqual = expiresAtLessThanOrEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void expiresAtLessThanOrEqual(String multirequestToken){
+		setToken("expiresAtLessThanOrEqual", multirequestToken);
+	}
+
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
+
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
+
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
+
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
+
+	// userIdEqual:
+	public String getUserIdEqual(){
+		return this.userIdEqual;
+	}
+	public void setUserIdEqual(String userIdEqual){
+		this.userIdEqual = userIdEqual;
+	}
+
+	public void userIdEqual(String multirequestToken){
+		setToken("userIdEqual", multirequestToken);
+	}
+
+	// userIdIn:
+	public String getUserIdIn(){
+		return this.userIdIn;
+	}
+	public void setUserIdIn(String userIdIn){
+		this.userIdIn = userIdIn;
+	}
+
+	public void userIdIn(String multirequestToken){
+		setToken("userIdIn", multirequestToken);
+	}
+
+	// systemNameEqual:
+	public String getSystemNameEqual(){
+		return this.systemNameEqual;
+	}
+	public void setSystemNameEqual(String systemNameEqual){
+		this.systemNameEqual = systemNameEqual;
+	}
+
+	public void systemNameEqual(String multirequestToken){
+		setToken("systemNameEqual", multirequestToken);
+	}
+
+	// systemNameIn:
+	public String getSystemNameIn(){
+		return this.systemNameIn;
+	}
+	public void setSystemNameIn(String systemNameIn){
+		this.systemNameIn = systemNameIn;
+	}
+
+	public void systemNameIn(String multirequestToken){
+		setToken("systemNameIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public ShortLinkStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(ShortLinkStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
 
 
-    public ShortLinkBaseFilter() {
-       super();
-    }
+	public ShortLinkBaseFilter() {
+		super();
+	}
 
-    public ShortLinkBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ShortLinkBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        expiresAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("expiresAtGreaterThanOrEqual"));
-        expiresAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("expiresAtLessThanOrEqual"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-        userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
-        systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
-        systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
-        statusEqual = ShortLinkStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		// set members values:
+		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		expiresAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("expiresAtGreaterThanOrEqual"));
+		expiresAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("expiresAtLessThanOrEqual"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
+		userIdIn = GsonParser.parseString(jsonObject.get("userIdIn"));
+		systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
+		systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
+		statusEqual = ShortLinkStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaShortLinkBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("expiresAtGreaterThanOrEqual", this.expiresAtGreaterThanOrEqual);
-        kparams.add("expiresAtLessThanOrEqual", this.expiresAtLessThanOrEqual);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("userIdEqual", this.userIdEqual);
-        kparams.add("userIdIn", this.userIdIn);
-        kparams.add("systemNameEqual", this.systemNameEqual);
-        kparams.add("systemNameIn", this.systemNameIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaShortLinkBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("expiresAtGreaterThanOrEqual", this.expiresAtGreaterThanOrEqual);
+		kparams.add("expiresAtLessThanOrEqual", this.expiresAtLessThanOrEqual);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("userIdEqual", this.userIdEqual);
+		kparams.add("userIdIn", this.userIdIn);
+		kparams.add("systemNameEqual", this.systemNameEqual);
+		kparams.add("systemNameIn", this.systemNameIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		return kparams;
+	}
 
 }
 

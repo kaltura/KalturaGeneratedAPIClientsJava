@@ -34,55 +34,55 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType implements EnumAsString {
-    EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
-    EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
-    METADATA_FIELD_CHANGED("metadata.FieldChanged"),
-    METADATA_FIELD_COMPARE("metadata.FieldCompare"),
-    METADATA_FIELD_MATCH("metadata.FieldMatch"),
-    AUTHENTICATED("1"),
-    COUNTRY("2"),
-    IP_ADDRESS("3"),
-    SITE("4"),
-    USER_AGENT("5"),
-    FIELD_MATCH("6"),
-    FIELD_COMPARE("7"),
-    ASSET_PROPERTIES_COMPARE("8"),
-    USER_ROLE("9"),
-    GEO_DISTANCE("10"),
-    OR_OPERATOR("11"),
-    HASH("12"),
-    DELIVERY_PROFILE("13"),
-    ACTIVE_EDGE_VALIDATE("14"),
-    ANONYMOUS_IP("15");
+	EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
+	EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
+	METADATA_FIELD_CHANGED("metadata.FieldChanged"),
+	METADATA_FIELD_COMPARE("metadata.FieldCompare"),
+	METADATA_FIELD_MATCH("metadata.FieldMatch"),
+	AUTHENTICATED("1"),
+	COUNTRY("2"),
+	IP_ADDRESS("3"),
+	SITE("4"),
+	USER_AGENT("5"),
+	FIELD_MATCH("6"),
+	FIELD_COMPARE("7"),
+	ASSET_PROPERTIES_COMPARE("8"),
+	USER_ROLE("9"),
+	GEO_DISTANCE("10"),
+	OR_OPERATOR("11"),
+	HASH("12"),
+	DELIVERY_PROFILE("13"),
+	ACTIVE_EDGE_VALIDATE("14"),
+	ANONYMOUS_IP("15");
 
-    private String value;
+	private String value;
 
-    ConditionType(String value) {
-        this.value = value;
-    }
+	ConditionType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ConditionType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ConditionType defined values and compare the inner value with the given one:
-        for(ConditionType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ConditionType.values().length > 0 ? ConditionType.values()[0]: null;
+	public static ConditionType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ConditionType defined values and compare the inner value with the given one:
+		for(ConditionType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ConditionType.values().length > 0 ? ConditionType.values()[0]: null;
    }
 }

@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryServerNodeType implements EnumAsString {
-    LIVE_PRIMARY("0"),
-    LIVE_BACKUP("1");
+	LIVE_PRIMARY("0"),
+	LIVE_BACKUP("1");
 
-    private String value;
+	private String value;
 
-    EntryServerNodeType(String value) {
-        this.value = value;
-    }
+	EntryServerNodeType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryServerNodeType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryServerNodeType defined values and compare the inner value with the given one:
-        for(EntryServerNodeType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryServerNodeType.values().length > 0 ? EntryServerNodeType.values()[0]: null;
+	public static EntryServerNodeType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryServerNodeType defined values and compare the inner value with the given one:
+		for(EntryServerNodeType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryServerNodeType.values().length > 0 ? EntryServerNodeType.values()[0]: null;
    }
 }

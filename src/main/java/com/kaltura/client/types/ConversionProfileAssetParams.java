@@ -34,6 +34,7 @@ import com.kaltura.client.enums.AssetParamsOrigin;
 import com.kaltura.client.enums.FlavorReadyBehaviorType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,166 +44,230 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConversionProfileAssetParams.Tokenizer.class)
 public class ConversionProfileAssetParams extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String conversionProfileId();
+		String assetParamsId();
+		String readyBehavior();
+		String origin();
+		String systemName();
+		String forceNoneComplied();
+		String deletePolicy();
+		String isEncrypted();
+		String contentAwareness();
+		String chunkedEncodeMode();
+		String twoPass();
+		String tags();
+	}
 
 	/**  The id of the conversion profile  */
-    private Integer conversionProfileId;
+	private Integer conversionProfileId;
 	/**  The id of the asset params  */
-    private Integer assetParamsId;
+	private Integer assetParamsId;
 	/**  The ingestion origin of the asset params  */
-    private FlavorReadyBehaviorType readyBehavior;
+	private FlavorReadyBehaviorType readyBehavior;
 	/**  The ingestion origin of the asset params  */
-    private AssetParamsOrigin origin;
+	private AssetParamsOrigin origin;
 	/**  Asset params system name  */
-    private String systemName;
+	private String systemName;
 	/**  Starts conversion even if the decision layer reduced the configuration to comply
 	  with the source  */
-    private Boolean forceNoneComplied;
+	private Boolean forceNoneComplied;
 	/**  Specifies how to treat the flavor after conversion is finished  */
-    private AssetParamsDeletePolicy deletePolicy;
-    private Boolean isEncrypted;
-    private Double contentAwareness;
-    private Integer chunkedEncodeMode;
-    private Boolean twoPass;
-    private String tags;
+	private AssetParamsDeletePolicy deletePolicy;
+	private Boolean isEncrypted;
+	private Double contentAwareness;
+	private Integer chunkedEncodeMode;
+	private Boolean twoPass;
+	private String tags;
 
-    // conversionProfileId:
-    public Integer getConversionProfileId(){
-        return this.conversionProfileId;
-    }
-    public void setConversionProfileId(Integer conversionProfileId){
-        this.conversionProfileId = conversionProfileId;
-    }
+	// conversionProfileId:
+	public Integer getConversionProfileId(){
+		return this.conversionProfileId;
+	}
+	public void setConversionProfileId(Integer conversionProfileId){
+		this.conversionProfileId = conversionProfileId;
+	}
 
-    // assetParamsId:
-    public Integer getAssetParamsId(){
-        return this.assetParamsId;
-    }
-    public void setAssetParamsId(Integer assetParamsId){
-        this.assetParamsId = assetParamsId;
-    }
+	public void conversionProfileId(String multirequestToken){
+		setToken("conversionProfileId", multirequestToken);
+	}
 
-    // readyBehavior:
-    public FlavorReadyBehaviorType getReadyBehavior(){
-        return this.readyBehavior;
-    }
-    public void setReadyBehavior(FlavorReadyBehaviorType readyBehavior){
-        this.readyBehavior = readyBehavior;
-    }
+	// assetParamsId:
+	public Integer getAssetParamsId(){
+		return this.assetParamsId;
+	}
+	public void setAssetParamsId(Integer assetParamsId){
+		this.assetParamsId = assetParamsId;
+	}
 
-    // origin:
-    public AssetParamsOrigin getOrigin(){
-        return this.origin;
-    }
-    public void setOrigin(AssetParamsOrigin origin){
-        this.origin = origin;
-    }
+	public void assetParamsId(String multirequestToken){
+		setToken("assetParamsId", multirequestToken);
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	// readyBehavior:
+	public FlavorReadyBehaviorType getReadyBehavior(){
+		return this.readyBehavior;
+	}
+	public void setReadyBehavior(FlavorReadyBehaviorType readyBehavior){
+		this.readyBehavior = readyBehavior;
+	}
 
-    // forceNoneComplied:
-    public Boolean getForceNoneComplied(){
-        return this.forceNoneComplied;
-    }
-    public void setForceNoneComplied(Boolean forceNoneComplied){
-        this.forceNoneComplied = forceNoneComplied;
-    }
+	public void readyBehavior(String multirequestToken){
+		setToken("readyBehavior", multirequestToken);
+	}
 
-    // deletePolicy:
-    public AssetParamsDeletePolicy getDeletePolicy(){
-        return this.deletePolicy;
-    }
-    public void setDeletePolicy(AssetParamsDeletePolicy deletePolicy){
-        this.deletePolicy = deletePolicy;
-    }
+	// origin:
+	public AssetParamsOrigin getOrigin(){
+		return this.origin;
+	}
+	public void setOrigin(AssetParamsOrigin origin){
+		this.origin = origin;
+	}
 
-    // isEncrypted:
-    public Boolean getIsEncrypted(){
-        return this.isEncrypted;
-    }
-    public void setIsEncrypted(Boolean isEncrypted){
-        this.isEncrypted = isEncrypted;
-    }
+	public void origin(String multirequestToken){
+		setToken("origin", multirequestToken);
+	}
 
-    // contentAwareness:
-    public Double getContentAwareness(){
-        return this.contentAwareness;
-    }
-    public void setContentAwareness(Double contentAwareness){
-        this.contentAwareness = contentAwareness;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // chunkedEncodeMode:
-    public Integer getChunkedEncodeMode(){
-        return this.chunkedEncodeMode;
-    }
-    public void setChunkedEncodeMode(Integer chunkedEncodeMode){
-        this.chunkedEncodeMode = chunkedEncodeMode;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // twoPass:
-    public Boolean getTwoPass(){
-        return this.twoPass;
-    }
-    public void setTwoPass(Boolean twoPass){
-        this.twoPass = twoPass;
-    }
+	// forceNoneComplied:
+	public Boolean getForceNoneComplied(){
+		return this.forceNoneComplied;
+	}
+	public void setForceNoneComplied(Boolean forceNoneComplied){
+		this.forceNoneComplied = forceNoneComplied;
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	public void forceNoneComplied(String multirequestToken){
+		setToken("forceNoneComplied", multirequestToken);
+	}
+
+	// deletePolicy:
+	public AssetParamsDeletePolicy getDeletePolicy(){
+		return this.deletePolicy;
+	}
+	public void setDeletePolicy(AssetParamsDeletePolicy deletePolicy){
+		this.deletePolicy = deletePolicy;
+	}
+
+	public void deletePolicy(String multirequestToken){
+		setToken("deletePolicy", multirequestToken);
+	}
+
+	// isEncrypted:
+	public Boolean getIsEncrypted(){
+		return this.isEncrypted;
+	}
+	public void setIsEncrypted(Boolean isEncrypted){
+		this.isEncrypted = isEncrypted;
+	}
+
+	public void isEncrypted(String multirequestToken){
+		setToken("isEncrypted", multirequestToken);
+	}
+
+	// contentAwareness:
+	public Double getContentAwareness(){
+		return this.contentAwareness;
+	}
+	public void setContentAwareness(Double contentAwareness){
+		this.contentAwareness = contentAwareness;
+	}
+
+	public void contentAwareness(String multirequestToken){
+		setToken("contentAwareness", multirequestToken);
+	}
+
+	// chunkedEncodeMode:
+	public Integer getChunkedEncodeMode(){
+		return this.chunkedEncodeMode;
+	}
+	public void setChunkedEncodeMode(Integer chunkedEncodeMode){
+		this.chunkedEncodeMode = chunkedEncodeMode;
+	}
+
+	public void chunkedEncodeMode(String multirequestToken){
+		setToken("chunkedEncodeMode", multirequestToken);
+	}
+
+	// twoPass:
+	public Boolean getTwoPass(){
+		return this.twoPass;
+	}
+	public void setTwoPass(Boolean twoPass){
+		this.twoPass = twoPass;
+	}
+
+	public void twoPass(String multirequestToken){
+		setToken("twoPass", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
 
-    public ConversionProfileAssetParams() {
-       super();
-    }
+	public ConversionProfileAssetParams() {
+		super();
+	}
 
-    public ConversionProfileAssetParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConversionProfileAssetParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
-        assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
-        readyBehavior = FlavorReadyBehaviorType.get(GsonParser.parseInt(jsonObject.get("readyBehavior")));
-        origin = AssetParamsOrigin.get(GsonParser.parseInt(jsonObject.get("origin")));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        forceNoneComplied = GsonParser.parseBoolean(jsonObject.get("forceNoneComplied"));
-        deletePolicy = AssetParamsDeletePolicy.get(GsonParser.parseInt(jsonObject.get("deletePolicy")));
-        isEncrypted = GsonParser.parseBoolean(jsonObject.get("isEncrypted"));
-        contentAwareness = GsonParser.parseDouble(jsonObject.get("contentAwareness"));
-        chunkedEncodeMode = GsonParser.parseInt(jsonObject.get("chunkedEncodeMode"));
-        twoPass = GsonParser.parseBoolean(jsonObject.get("twoPass"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
+		// set members values:
+		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
+		assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
+		readyBehavior = FlavorReadyBehaviorType.get(GsonParser.parseInt(jsonObject.get("readyBehavior")));
+		origin = AssetParamsOrigin.get(GsonParser.parseInt(jsonObject.get("origin")));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		forceNoneComplied = GsonParser.parseBoolean(jsonObject.get("forceNoneComplied"));
+		deletePolicy = AssetParamsDeletePolicy.get(GsonParser.parseInt(jsonObject.get("deletePolicy")));
+		isEncrypted = GsonParser.parseBoolean(jsonObject.get("isEncrypted"));
+		contentAwareness = GsonParser.parseDouble(jsonObject.get("contentAwareness"));
+		chunkedEncodeMode = GsonParser.parseInt(jsonObject.get("chunkedEncodeMode"));
+		twoPass = GsonParser.parseBoolean(jsonObject.get("twoPass"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConversionProfileAssetParams");
-        kparams.add("readyBehavior", this.readyBehavior);
-        kparams.add("origin", this.origin);
-        kparams.add("systemName", this.systemName);
-        kparams.add("forceNoneComplied", this.forceNoneComplied);
-        kparams.add("deletePolicy", this.deletePolicy);
-        kparams.add("isEncrypted", this.isEncrypted);
-        kparams.add("contentAwareness", this.contentAwareness);
-        kparams.add("chunkedEncodeMode", this.chunkedEncodeMode);
-        kparams.add("twoPass", this.twoPass);
-        kparams.add("tags", this.tags);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConversionProfileAssetParams");
+		kparams.add("readyBehavior", this.readyBehavior);
+		kparams.add("origin", this.origin);
+		kparams.add("systemName", this.systemName);
+		kparams.add("forceNoneComplied", this.forceNoneComplied);
+		kparams.add("deletePolicy", this.deletePolicy);
+		kparams.add("isEncrypted", this.isEncrypted);
+		kparams.add("contentAwareness", this.contentAwareness);
+		kparams.add("chunkedEncodeMode", this.chunkedEncodeMode);
+		kparams.add("twoPass", this.twoPass);
+		kparams.add("tags", this.tags);
+		return kparams;
+	}
 
 }
 

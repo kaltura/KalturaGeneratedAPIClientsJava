@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerCloudFront.Tokenizer.class)
 public class UrlTokenizerCloudFront extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String keyPairId();
+		String rootDir();
+	}
 
-    private String keyPairId;
-    private String rootDir;
+	private String keyPairId;
+	private String rootDir;
 
-    // keyPairId:
-    public String getKeyPairId(){
-        return this.keyPairId;
-    }
-    public void setKeyPairId(String keyPairId){
-        this.keyPairId = keyPairId;
-    }
+	// keyPairId:
+	public String getKeyPairId(){
+		return this.keyPairId;
+	}
+	public void setKeyPairId(String keyPairId){
+		this.keyPairId = keyPairId;
+	}
 
-    // rootDir:
-    public String getRootDir(){
-        return this.rootDir;
-    }
-    public void setRootDir(String rootDir){
-        this.rootDir = rootDir;
-    }
+	public void keyPairId(String multirequestToken){
+		setToken("keyPairId", multirequestToken);
+	}
+
+	// rootDir:
+	public String getRootDir(){
+		return this.rootDir;
+	}
+	public void setRootDir(String rootDir){
+		this.rootDir = rootDir;
+	}
+
+	public void rootDir(String multirequestToken){
+		setToken("rootDir", multirequestToken);
+	}
 
 
-    public UrlTokenizerCloudFront() {
-       super();
-    }
+	public UrlTokenizerCloudFront() {
+		super();
+	}
 
-    public UrlTokenizerCloudFront(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerCloudFront(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keyPairId = GsonParser.parseString(jsonObject.get("keyPairId"));
-        rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
+		// set members values:
+		keyPairId = GsonParser.parseString(jsonObject.get("keyPairId"));
+		rootDir = GsonParser.parseString(jsonObject.get("rootDir"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerCloudFront");
-        kparams.add("keyPairId", this.keyPairId);
-        kparams.add("rootDir", this.rootDir);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerCloudFront");
+		kparams.add("keyPairId", this.keyPairId);
+		kparams.add("rootDir", this.rootDir);
+		return kparams;
+	}
 
 }
 

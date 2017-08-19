@@ -34,71 +34,71 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveChannelOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    DURATION_ASC("+duration"),
-    END_DATE_ASC("+endDate"),
-    FIRST_BROADCAST_ASC("+firstBroadcast"),
-    LAST_BROADCAST_ASC("+lastBroadcast"),
-    LAST_PLAYED_AT_ASC("+lastPlayedAt"),
-    MEDIA_TYPE_ASC("+mediaType"),
-    MODERATION_COUNT_ASC("+moderationCount"),
-    NAME_ASC("+name"),
-    PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
-    PLAYS_ASC("+plays"),
-    RANK_ASC("+rank"),
-    RECENT_ASC("+recent"),
-    START_DATE_ASC("+startDate"),
-    TOTAL_RANK_ASC("+totalRank"),
-    UPDATED_AT_ASC("+updatedAt"),
-    VIEWS_ASC("+views"),
-    WEIGHT_ASC("+weight"),
-    CREATED_AT_DESC("-createdAt"),
-    DURATION_DESC("-duration"),
-    END_DATE_DESC("-endDate"),
-    FIRST_BROADCAST_DESC("-firstBroadcast"),
-    LAST_BROADCAST_DESC("-lastBroadcast"),
-    LAST_PLAYED_AT_DESC("-lastPlayedAt"),
-    MEDIA_TYPE_DESC("-mediaType"),
-    MODERATION_COUNT_DESC("-moderationCount"),
-    NAME_DESC("-name"),
-    PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
-    PLAYS_DESC("-plays"),
-    RANK_DESC("-rank"),
-    RECENT_DESC("-recent"),
-    START_DATE_DESC("-startDate"),
-    TOTAL_RANK_DESC("-totalRank"),
-    UPDATED_AT_DESC("-updatedAt"),
-    VIEWS_DESC("-views"),
-    WEIGHT_DESC("-weight");
+	CREATED_AT_ASC("+createdAt"),
+	DURATION_ASC("+duration"),
+	END_DATE_ASC("+endDate"),
+	FIRST_BROADCAST_ASC("+firstBroadcast"),
+	LAST_BROADCAST_ASC("+lastBroadcast"),
+	LAST_PLAYED_AT_ASC("+lastPlayedAt"),
+	MEDIA_TYPE_ASC("+mediaType"),
+	MODERATION_COUNT_ASC("+moderationCount"),
+	NAME_ASC("+name"),
+	PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
+	PLAYS_ASC("+plays"),
+	RANK_ASC("+rank"),
+	RECENT_ASC("+recent"),
+	START_DATE_ASC("+startDate"),
+	TOTAL_RANK_ASC("+totalRank"),
+	UPDATED_AT_ASC("+updatedAt"),
+	VIEWS_ASC("+views"),
+	WEIGHT_ASC("+weight"),
+	CREATED_AT_DESC("-createdAt"),
+	DURATION_DESC("-duration"),
+	END_DATE_DESC("-endDate"),
+	FIRST_BROADCAST_DESC("-firstBroadcast"),
+	LAST_BROADCAST_DESC("-lastBroadcast"),
+	LAST_PLAYED_AT_DESC("-lastPlayedAt"),
+	MEDIA_TYPE_DESC("-mediaType"),
+	MODERATION_COUNT_DESC("-moderationCount"),
+	NAME_DESC("-name"),
+	PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
+	PLAYS_DESC("-plays"),
+	RANK_DESC("-rank"),
+	RECENT_DESC("-recent"),
+	START_DATE_DESC("-startDate"),
+	TOTAL_RANK_DESC("-totalRank"),
+	UPDATED_AT_DESC("-updatedAt"),
+	VIEWS_DESC("-views"),
+	WEIGHT_DESC("-weight");
 
-    private String value;
+	private String value;
 
-    LiveChannelOrderBy(String value) {
-        this.value = value;
-    }
+	LiveChannelOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveChannelOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveChannelOrderBy defined values and compare the inner value with the given one:
-        for(LiveChannelOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveChannelOrderBy.values().length > 0 ? LiveChannelOrderBy.values()[0]: null;
+	public static LiveChannelOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveChannelOrderBy defined values and compare the inner value with the given one:
+		for(LiveChannelOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveChannelOrderBy.values().length > 0 ? LiveChannelOrderBy.values()[0]: null;
    }
 }

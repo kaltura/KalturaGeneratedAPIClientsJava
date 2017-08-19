@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DurationType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,117 +41,161 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayableEntry.Tokenizer.class)
 public class PlayableEntry extends BaseEntry {
+	
+	public interface Tokenizer extends BaseEntry.Tokenizer {
+		String plays();
+		String views();
+		String lastPlayedAt();
+		String width();
+		String height();
+		String duration();
+		String msDuration();
+		String durationType();
+	}
 
 	/**  Number of plays  */
-    private Integer plays;
+	private Integer plays;
 	/**  Number of views  */
-    private Integer views;
+	private Integer views;
 	/**  The last time the entry was played  */
-    private Integer lastPlayedAt;
+	private Integer lastPlayedAt;
 	/**  The width in pixels  */
-    private Integer width;
+	private Integer width;
 	/**  The height in pixels  */
-    private Integer height;
+	private Integer height;
 	/**  The duration in seconds  */
-    private Integer duration;
+	private Integer duration;
 	/**  The duration in miliseconds  */
-    private Integer msDuration;
+	private Integer msDuration;
 	/**  The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins)  */
-    private DurationType durationType;
+	private DurationType durationType;
 
-    // plays:
-    public Integer getPlays(){
-        return this.plays;
-    }
-    public void setPlays(Integer plays){
-        this.plays = plays;
-    }
+	// plays:
+	public Integer getPlays(){
+		return this.plays;
+	}
+	public void setPlays(Integer plays){
+		this.plays = plays;
+	}
 
-    // views:
-    public Integer getViews(){
-        return this.views;
-    }
-    public void setViews(Integer views){
-        this.views = views;
-    }
+	public void plays(String multirequestToken){
+		setToken("plays", multirequestToken);
+	}
 
-    // lastPlayedAt:
-    public Integer getLastPlayedAt(){
-        return this.lastPlayedAt;
-    }
-    public void setLastPlayedAt(Integer lastPlayedAt){
-        this.lastPlayedAt = lastPlayedAt;
-    }
+	// views:
+	public Integer getViews(){
+		return this.views;
+	}
+	public void setViews(Integer views){
+		this.views = views;
+	}
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	public void views(String multirequestToken){
+		setToken("views", multirequestToken);
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	// lastPlayedAt:
+	public Integer getLastPlayedAt(){
+		return this.lastPlayedAt;
+	}
+	public void setLastPlayedAt(Integer lastPlayedAt){
+		this.lastPlayedAt = lastPlayedAt;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void lastPlayedAt(String multirequestToken){
+		setToken("lastPlayedAt", multirequestToken);
+	}
 
-    // msDuration:
-    public Integer getMsDuration(){
-        return this.msDuration;
-    }
-    public void setMsDuration(Integer msDuration){
-        this.msDuration = msDuration;
-    }
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
 
-    // durationType:
-    public DurationType getDurationType(){
-        return this.durationType;
-    }
-    public void setDurationType(DurationType durationType){
-        this.durationType = durationType;
-    }
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
+
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
+
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+	// msDuration:
+	public Integer getMsDuration(){
+		return this.msDuration;
+	}
+	public void setMsDuration(Integer msDuration){
+		this.msDuration = msDuration;
+	}
+
+	public void msDuration(String multirequestToken){
+		setToken("msDuration", multirequestToken);
+	}
+
+	// durationType:
+	public DurationType getDurationType(){
+		return this.durationType;
+	}
+	public void setDurationType(DurationType durationType){
+		this.durationType = durationType;
+	}
+
+	public void durationType(String multirequestToken){
+		setToken("durationType", multirequestToken);
+	}
 
 
-    public PlayableEntry() {
-       super();
-    }
+	public PlayableEntry() {
+		super();
+	}
 
-    public PlayableEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayableEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        plays = GsonParser.parseInt(jsonObject.get("plays"));
-        views = GsonParser.parseInt(jsonObject.get("views"));
-        lastPlayedAt = GsonParser.parseInt(jsonObject.get("lastPlayedAt"));
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
-        msDuration = GsonParser.parseInt(jsonObject.get("msDuration"));
-        durationType = DurationType.get(GsonParser.parseString(jsonObject.get("durationType")));
+		// set members values:
+		plays = GsonParser.parseInt(jsonObject.get("plays"));
+		views = GsonParser.parseInt(jsonObject.get("views"));
+		lastPlayedAt = GsonParser.parseInt(jsonObject.get("lastPlayedAt"));
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		msDuration = GsonParser.parseInt(jsonObject.get("msDuration"));
+		durationType = DurationType.get(GsonParser.parseString(jsonObject.get("durationType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayableEntry");
-        kparams.add("msDuration", this.msDuration);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayableEntry");
+		kparams.add("msDuration", this.msDuration);
+		return kparams;
+	}
 
 }
 

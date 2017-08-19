@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.DropFolderFileStatus;
 import com.kaltura.client.types.DropFolderFile;
 import com.kaltura.client.types.DropFolderFileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -45,72 +43,131 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  DropFolderFile service lets you create and manage drop folder files  */
 public class DropFolderFileService {
+	
+	public static class AddDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, AddDropFolderFileBuilder> {
+		
+		public AddDropFolderFileBuilder(DropFolderFile dropFolderFile) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "add");
+			params.add("dropFolderFile", dropFolderFile);
+		}
+	}
 
 	/**  Allows you to add a new KalturaDropFolderFile object  */
-    public static RequestBuilder<DropFolderFile> add(DropFolderFile dropFolderFile)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFile", dropFolderFile);
-
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "add", kparams);
-    }
+    public static AddDropFolderFileBuilder add(DropFolderFile dropFolderFile)  {
+		return new AddDropFolderFileBuilder(dropFolderFile);
+	}
+	
+	public static class DeleteDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, DeleteDropFolderFileBuilder> {
+		
+		public DeleteDropFolderFileBuilder(int dropFolderFileId) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "delete");
+			params.add("dropFolderFileId", dropFolderFileId);
+		}
+		
+		public void dropFolderFileId(String multirequestToken) {
+			params.add("dropFolderFileId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaDropFolderFile object as deleted  */
-    public static RequestBuilder<DropFolderFile> delete(int dropFolderFileId)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "delete", kparams);
-    }
+    public static DeleteDropFolderFileBuilder delete(int dropFolderFileId)  {
+		return new DeleteDropFolderFileBuilder(dropFolderFileId);
+	}
+	
+	public static class GetDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, GetDropFolderFileBuilder> {
+		
+		public GetDropFolderFileBuilder(int dropFolderFileId) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "get");
+			params.add("dropFolderFileId", dropFolderFileId);
+		}
+		
+		public void dropFolderFileId(String multirequestToken) {
+			params.add("dropFolderFileId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaDropFolderFile object by ID  */
-    public static RequestBuilder<DropFolderFile> get(int dropFolderFileId)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "get", kparams);
-    }
+    public static GetDropFolderFileBuilder get(int dropFolderFileId)  {
+		return new GetDropFolderFileBuilder(dropFolderFileId);
+	}
+	
+	public static class IgnoreDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, IgnoreDropFolderFileBuilder> {
+		
+		public IgnoreDropFolderFileBuilder(int dropFolderFileId) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "ignore");
+			params.add("dropFolderFileId", dropFolderFileId);
+		}
+		
+		public void dropFolderFileId(String multirequestToken) {
+			params.add("dropFolderFileId", multirequestToken);
+		}
+	}
 
 	/**  Set the KalturaDropFolderFile status to ignore
 	  (KalturaDropFolderFileStatus::IGNORE)  */
-    public static RequestBuilder<DropFolderFile> ignore(int dropFolderFileId)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFileId", dropFolderFileId);
+    public static IgnoreDropFolderFileBuilder ignore(int dropFolderFileId)  {
+		return new IgnoreDropFolderFileBuilder(dropFolderFileId);
+	}
+	
+	public static class ListDropFolderFileBuilder extends ListResponseRequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, ListDropFolderFileBuilder> {
+		
+		public ListDropFolderFileBuilder(DropFolderFileFilter filter, FilterPager pager) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "ignore", kparams);
-    }
+	public static ListDropFolderFileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DropFolderFile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DropFolderFile>> list(DropFolderFileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDropFolderFileBuilder list(DropFolderFileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaDropFolderFile objects  */
-    public static RequestBuilder<ListResponse<DropFolderFile>> list(DropFolderFileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "list", kparams);
-    }
+    public static ListDropFolderFileBuilder list(DropFolderFileFilter filter, FilterPager pager)  {
+		return new ListDropFolderFileBuilder(filter, pager);
+	}
+	
+	public static class UpdateDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, UpdateDropFolderFileBuilder> {
+		
+		public UpdateDropFolderFileBuilder(int dropFolderFileId, DropFolderFile dropFolderFile) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "update");
+			params.add("dropFolderFileId", dropFolderFileId);
+			params.add("dropFolderFile", dropFolderFile);
+		}
+		
+		public void dropFolderFileId(String multirequestToken) {
+			params.add("dropFolderFileId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaDropFolderFile object  */
-    public static RequestBuilder<DropFolderFile> update(int dropFolderFileId, DropFolderFile dropFolderFile)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-        kparams.add("dropFolderFile", dropFolderFile);
-
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "update", kparams);
-    }
+    public static UpdateDropFolderFileBuilder update(int dropFolderFileId, DropFolderFile dropFolderFile)  {
+		return new UpdateDropFolderFileBuilder(dropFolderFileId, dropFolderFile);
+	}
+	
+	public static class UpdateStatusDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, UpdateStatusDropFolderFileBuilder> {
+		
+		public UpdateStatusDropFolderFileBuilder(int dropFolderFileId, DropFolderFileStatus status) {
+			super(DropFolderFile.class, "dropfolder_dropfolderfile", "updateStatus");
+			params.add("dropFolderFileId", dropFolderFileId);
+			params.add("status", status);
+		}
+		
+		public void dropFolderFileId(String multirequestToken) {
+			params.add("dropFolderFileId", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
 	/**  Update status of KalturaDropFolderFile  */
-    public static RequestBuilder<DropFolderFile> updateStatus(int dropFolderFileId, DropFolderFileStatus status)  {
-        Params kparams = new Params();
-        kparams.add("dropFolderFileId", dropFolderFileId);
-        kparams.add("status", status);
-
-        return new RequestBuilder<DropFolderFile>(DropFolderFile.class, "dropfolder_dropfolderfile", "updateStatus", kparams);
-    }
+    public static UpdateStatusDropFolderFileBuilder updateStatus(int dropFolderFileId, DropFolderFileStatus status)  {
+		return new UpdateStatusDropFolderFileBuilder(dropFolderFileId, status);
+	}
 }

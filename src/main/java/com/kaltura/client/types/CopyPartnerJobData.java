@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CopyPartnerJobData.Tokenizer.class)
 public class CopyPartnerJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String fromPartnerId();
+		String toPartnerId();
+	}
 
 	/**  Id of the partner to copy from  */
-    private Integer fromPartnerId;
+	private Integer fromPartnerId;
 	/**  Id of the partner to copy to  */
-    private Integer toPartnerId;
+	private Integer toPartnerId;
 
-    // fromPartnerId:
-    public Integer getFromPartnerId(){
-        return this.fromPartnerId;
-    }
-    public void setFromPartnerId(Integer fromPartnerId){
-        this.fromPartnerId = fromPartnerId;
-    }
+	// fromPartnerId:
+	public Integer getFromPartnerId(){
+		return this.fromPartnerId;
+	}
+	public void setFromPartnerId(Integer fromPartnerId){
+		this.fromPartnerId = fromPartnerId;
+	}
 
-    // toPartnerId:
-    public Integer getToPartnerId(){
-        return this.toPartnerId;
-    }
-    public void setToPartnerId(Integer toPartnerId){
-        this.toPartnerId = toPartnerId;
-    }
+	public void fromPartnerId(String multirequestToken){
+		setToken("fromPartnerId", multirequestToken);
+	}
+
+	// toPartnerId:
+	public Integer getToPartnerId(){
+		return this.toPartnerId;
+	}
+	public void setToPartnerId(Integer toPartnerId){
+		this.toPartnerId = toPartnerId;
+	}
+
+	public void toPartnerId(String multirequestToken){
+		setToken("toPartnerId", multirequestToken);
+	}
 
 
-    public CopyPartnerJobData() {
-       super();
-    }
+	public CopyPartnerJobData() {
+		super();
+	}
 
-    public CopyPartnerJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CopyPartnerJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fromPartnerId = GsonParser.parseInt(jsonObject.get("fromPartnerId"));
-        toPartnerId = GsonParser.parseInt(jsonObject.get("toPartnerId"));
+		// set members values:
+		fromPartnerId = GsonParser.parseInt(jsonObject.get("fromPartnerId"));
+		toPartnerId = GsonParser.parseInt(jsonObject.get("toPartnerId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCopyPartnerJobData");
-        kparams.add("fromPartnerId", this.fromPartnerId);
-        kparams.add("toPartnerId", this.toPartnerId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCopyPartnerJobData");
+		kparams.add("fromPartnerId", this.fromPartnerId);
+		kparams.add("toPartnerId", this.toPartnerId);
+		return kparams;
+	}
 
 }
 

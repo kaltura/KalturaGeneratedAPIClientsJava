@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.EntryServerNode;
 import com.kaltura.client.types.EntryServerNodeFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,43 +43,75 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Base class for entry server node  */
 public class EntryServerNodeService {
+	
+	public static class GetEntryServerNodeBuilder extends RequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, GetEntryServerNodeBuilder> {
+		
+		public GetEntryServerNodeBuilder(String id) {
+			super(EntryServerNode.class, "entryservernode", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<EntryServerNode> get(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetEntryServerNodeBuilder get(String id)  {
+		return new GetEntryServerNodeBuilder(id);
+	}
+	
+	public static class ListEntryServerNodeBuilder extends ListResponseRequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, ListEntryServerNodeBuilder> {
+		
+		public ListEntryServerNodeBuilder(EntryServerNodeFilter filter, FilterPager pager) {
+			super(EntryServerNode.class, "entryservernode", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<EntryServerNode>(EntryServerNode.class, "entryservernode", "get", kparams);
-    }
+	public static ListEntryServerNodeBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<EntryServerNode>> list()  {
-        return list(null);
-    }
+	public static ListEntryServerNodeBuilder list(EntryServerNodeFilter filter)  {
+		return list(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<EntryServerNode>> list(EntryServerNodeFilter filter)  {
-        return list(filter, null);
-    }
+    public static ListEntryServerNodeBuilder list(EntryServerNodeFilter filter, FilterPager pager)  {
+		return new ListEntryServerNodeBuilder(filter, pager);
+	}
+	
+	public static class UpdateEntryServerNodeBuilder extends RequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, UpdateEntryServerNodeBuilder> {
+		
+		public UpdateEntryServerNodeBuilder(int id, EntryServerNode entryServerNode) {
+			super(EntryServerNode.class, "entryservernode", "update");
+			params.add("id", id);
+			params.add("entryServerNode", entryServerNode);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<EntryServerNode>> list(EntryServerNodeFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<EntryServerNode>(EntryServerNode.class, "entryservernode", "list", kparams);
-    }
-
-    public static RequestBuilder<EntryServerNode> update(int id, EntryServerNode entryServerNode)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("entryServerNode", entryServerNode);
-
-        return new RequestBuilder<EntryServerNode>(EntryServerNode.class, "entryservernode", "update", kparams);
-    }
+    public static UpdateEntryServerNodeBuilder update(int id, EntryServerNode entryServerNode)  {
+		return new UpdateEntryServerNodeBuilder(id, entryServerNode);
+	}
+	
+	public static class ValidateRegisteredEntryServerNodeEntryServerNodeBuilder extends NullRequestBuilder {
+		
+		public ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(int id) {
+			super("entryservernode", "validateRegisteredEntryServerNode");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Validates server node still registered on entry  */
-    public static RequestBuilder<Void> validateRegisteredEntryServerNode(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("entryservernode", "validateRegisteredEntryServerNode", kparams);
-    }
+    public static ValidateRegisteredEntryServerNodeEntryServerNodeBuilder validateRegisteredEntryServerNode(int id)  {
+		return new ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(id);
+	}
 }

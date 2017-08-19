@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileReadyBehavior implements EnumAsInt {
-    NO_IMPACT(0),
-    REQUIRED(1);
+	NO_IMPACT(0),
+	REQUIRED(1);
 
-    private int value;
+	private int value;
 
-    StorageProfileReadyBehavior(int value) {
-        this.value = value;
-    }
+	StorageProfileReadyBehavior(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static StorageProfileReadyBehavior get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over StorageProfileReadyBehavior defined values and compare the inner value with the given one:
-        for(StorageProfileReadyBehavior item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return StorageProfileReadyBehavior.values().length > 0 ? StorageProfileReadyBehavior.values()[0]: null;
+	public static StorageProfileReadyBehavior get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over StorageProfileReadyBehavior defined values and compare the inner value with the given one:
+		for(StorageProfileReadyBehavior item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return StorageProfileReadyBehavior.values().length > 0 ? StorageProfileReadyBehavior.values()[0]: null;
    }
 }

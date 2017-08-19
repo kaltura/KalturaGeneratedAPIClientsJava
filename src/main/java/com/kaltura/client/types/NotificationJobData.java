@@ -33,6 +33,7 @@ import com.kaltura.client.enums.NotificationObjectType;
 import com.kaltura.client.enums.NotificationStatus;
 import com.kaltura.client.enums.NotificationType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,127 +43,176 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(NotificationJobData.Tokenizer.class)
 public class NotificationJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String userId();
+		String type();
+		String typeAsString();
+		String objectId();
+		String status();
+		String data();
+		String numberOfAttempts();
+		String notificationResult();
+		String objType();
+	}
 
-    private String userId;
-    private NotificationType type;
-    private String typeAsString;
-    private String objectId;
-    private NotificationStatus status;
-    private String data;
-    private Integer numberOfAttempts;
-    private String notificationResult;
-    private NotificationObjectType objType;
+	private String userId;
+	private NotificationType type;
+	private String typeAsString;
+	private String objectId;
+	private NotificationStatus status;
+	private String data;
+	private Integer numberOfAttempts;
+	private String notificationResult;
+	private NotificationObjectType objType;
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // type:
-    public NotificationType getType(){
-        return this.type;
-    }
-    public void setType(NotificationType type){
-        this.type = type;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // typeAsString:
-    public String getTypeAsString(){
-        return this.typeAsString;
-    }
-    public void setTypeAsString(String typeAsString){
-        this.typeAsString = typeAsString;
-    }
+	// type:
+	public NotificationType getType(){
+		return this.type;
+	}
+	public void setType(NotificationType type){
+		this.type = type;
+	}
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // status:
-    public NotificationStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(NotificationStatus status){
-        this.status = status;
-    }
+	// typeAsString:
+	public String getTypeAsString(){
+		return this.typeAsString;
+	}
+	public void setTypeAsString(String typeAsString){
+		this.typeAsString = typeAsString;
+	}
 
-    // data:
-    public String getData(){
-        return this.data;
-    }
-    public void setData(String data){
-        this.data = data;
-    }
+	public void typeAsString(String multirequestToken){
+		setToken("typeAsString", multirequestToken);
+	}
 
-    // numberOfAttempts:
-    public Integer getNumberOfAttempts(){
-        return this.numberOfAttempts;
-    }
-    public void setNumberOfAttempts(Integer numberOfAttempts){
-        this.numberOfAttempts = numberOfAttempts;
-    }
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
 
-    // notificationResult:
-    public String getNotificationResult(){
-        return this.notificationResult;
-    }
-    public void setNotificationResult(String notificationResult){
-        this.notificationResult = notificationResult;
-    }
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
 
-    // objType:
-    public NotificationObjectType getObjType(){
-        return this.objType;
-    }
-    public void setObjType(NotificationObjectType objType){
-        this.objType = objType;
-    }
+	// status:
+	public NotificationStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(NotificationStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// data:
+	public String getData(){
+		return this.data;
+	}
+	public void setData(String data){
+		this.data = data;
+	}
+
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
+	}
+
+	// numberOfAttempts:
+	public Integer getNumberOfAttempts(){
+		return this.numberOfAttempts;
+	}
+	public void setNumberOfAttempts(Integer numberOfAttempts){
+		this.numberOfAttempts = numberOfAttempts;
+	}
+
+	public void numberOfAttempts(String multirequestToken){
+		setToken("numberOfAttempts", multirequestToken);
+	}
+
+	// notificationResult:
+	public String getNotificationResult(){
+		return this.notificationResult;
+	}
+	public void setNotificationResult(String notificationResult){
+		this.notificationResult = notificationResult;
+	}
+
+	public void notificationResult(String multirequestToken){
+		setToken("notificationResult", multirequestToken);
+	}
+
+	// objType:
+	public NotificationObjectType getObjType(){
+		return this.objType;
+	}
+	public void setObjType(NotificationObjectType objType){
+		this.objType = objType;
+	}
+
+	public void objType(String multirequestToken){
+		setToken("objType", multirequestToken);
+	}
 
 
-    public NotificationJobData() {
-       super();
-    }
+	public NotificationJobData() {
+		super();
+	}
 
-    public NotificationJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public NotificationJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        type = NotificationType.get(GsonParser.parseInt(jsonObject.get("type")));
-        typeAsString = GsonParser.parseString(jsonObject.get("typeAsString"));
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        status = NotificationStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        data = GsonParser.parseString(jsonObject.get("data"));
-        numberOfAttempts = GsonParser.parseInt(jsonObject.get("numberOfAttempts"));
-        notificationResult = GsonParser.parseString(jsonObject.get("notificationResult"));
-        objType = NotificationObjectType.get(GsonParser.parseInt(jsonObject.get("objType")));
+		// set members values:
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		type = NotificationType.get(GsonParser.parseInt(jsonObject.get("type")));
+		typeAsString = GsonParser.parseString(jsonObject.get("typeAsString"));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		status = NotificationStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		data = GsonParser.parseString(jsonObject.get("data"));
+		numberOfAttempts = GsonParser.parseInt(jsonObject.get("numberOfAttempts"));
+		notificationResult = GsonParser.parseString(jsonObject.get("notificationResult"));
+		objType = NotificationObjectType.get(GsonParser.parseInt(jsonObject.get("objType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaNotificationJobData");
-        kparams.add("userId", this.userId);
-        kparams.add("type", this.type);
-        kparams.add("typeAsString", this.typeAsString);
-        kparams.add("objectId", this.objectId);
-        kparams.add("status", this.status);
-        kparams.add("data", this.data);
-        kparams.add("numberOfAttempts", this.numberOfAttempts);
-        kparams.add("notificationResult", this.notificationResult);
-        kparams.add("objType", this.objType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaNotificationJobData");
+		kparams.add("userId", this.userId);
+		kparams.add("type", this.type);
+		kparams.add("typeAsString", this.typeAsString);
+		kparams.add("objectId", this.objectId);
+		kparams.add("status", this.status);
+		kparams.add("data", this.data);
+		kparams.add("numberOfAttempts", this.numberOfAttempts);
+		kparams.add("notificationResult", this.notificationResult);
+		kparams.add("objType", this.objType);
+		return kparams;
+	}
 
 }
 

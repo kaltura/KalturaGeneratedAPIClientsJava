@@ -29,9 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.MetadataProfile;
 import com.kaltura.client.types.MetadataProfileField;
 import com.kaltura.client.types.MetadataProfileFilter;
@@ -52,210 +50,335 @@ import java.io.InputStream;
 
 /**  Metadata Profile service  */
 public class MetadataProfileService {
+	
+	public static class AddMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, AddMetadataProfileBuilder> {
+		
+		public AddMetadataProfileBuilder(MetadataProfile metadataProfile, String xsdData, String viewsData) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "add");
+			params.add("metadataProfile", metadataProfile);
+			params.add("xsdData", xsdData);
+			params.add("viewsData", viewsData);
+		}
+		
+		public void xsdData(String multirequestToken) {
+			params.add("xsdData", multirequestToken);
+		}
+		
+		public void viewsData(String multirequestToken) {
+			params.add("viewsData", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<MetadataProfile> add(MetadataProfile metadataProfile, String xsdData)  {
-        return add(metadataProfile, xsdData, null);
-    }
+	public static AddMetadataProfileBuilder add(MetadataProfile metadataProfile, String xsdData)  {
+		return add(metadataProfile, xsdData, null);
+	}
 
 	/**  Allows you to add a metadata profile object and metadata profile content
 	  associated with Kaltura object type  */
-    public static RequestBuilder<MetadataProfile> add(MetadataProfile metadataProfile, String xsdData, String viewsData)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfile", metadataProfile);
-        kparams.add("xsdData", xsdData);
-        kparams.add("viewsData", viewsData);
+    public static AddMetadataProfileBuilder add(MetadataProfile metadataProfile, String xsdData, String viewsData)  {
+		return new AddMetadataProfileBuilder(metadataProfile, xsdData, viewsData);
+	}
+	
+	public static class AddFromFileMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, AddFromFileMetadataProfileBuilder> {
+		
+		public AddFromFileMetadataProfileBuilder(MetadataProfile metadataProfile, FileHolder xsdFile, FileHolder viewsFile) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "addFromFile");
+			params.add("metadataProfile", metadataProfile);
+			files = new Files();
+			files.add("xsdFile", xsdFile);
+			files.add("viewsFile", viewsFile);
+		}
+	}
 
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "add", kparams);
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, FileHolder xsdFile)  {
+		return addFromFile(metadataProfile, xsdFile, (FileHolder)null);
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, FileHolder xsdFile)  {
-        return addFromFile(metadataProfile, xsdFile, (FileHolder)null);
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, File xsdFile)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile), (FileHolder)null);
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, File xsdFile)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile), (FileHolder)null);
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize), (FileHolder)null);
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize), (FileHolder)null);
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName), (FileHolder)null);
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName), (FileHolder)null);
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, File xsdFile, File viewsFile)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile), new FileHolder(viewsFile));
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, File xsdFile, File viewsFile)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile), new FileHolder(viewsFile));
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize, InputStream viewsFile, String viewsFileMimeType, String viewsFileName, long viewsFileSize)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize), new FileHolder(viewsFile, viewsFileMimeType, viewsFileName, viewsFileSize));
+	}
 
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize, InputStream viewsFile, String viewsFileMimeType, String viewsFileName, long viewsFileSize)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize), new FileHolder(viewsFile, viewsFileMimeType, viewsFileName, viewsFileSize));
-    }
-
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName, FileInputStream viewsFile, String viewsFileMimeType, String viewsFileName)  {
-        return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName), new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
-    }
+	public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName, FileInputStream viewsFile, String viewsFileMimeType, String viewsFileName)  {
+		return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName), new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
+	}
 
 	/**  Allows you to add a metadata profile object and metadata profile file associated
 	  with Kaltura object type  */
-    public static RequestBuilder<MetadataProfile> addFromFile(MetadataProfile metadataProfile, FileHolder xsdFile, FileHolder viewsFile)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfile", metadataProfile);
-        Files kfiles = new Files();
-        kfiles.add("xsdFile", xsdFile);
-        kfiles.add("viewsFile", viewsFile);
-
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "addFromFile", kparams, kfiles);
-    }
+    public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, FileHolder xsdFile, FileHolder viewsFile)  {
+		return new AddFromFileMetadataProfileBuilder(metadataProfile, xsdFile, viewsFile);
+	}
+	
+	public static class DeleteMetadataProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteMetadataProfileBuilder(int id) {
+			super("metadata_metadataprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete an existing metadata profile  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("metadata_metadataprofile", "delete", kparams);
-    }
+    public static DeleteMetadataProfileBuilder delete(int id)  {
+		return new DeleteMetadataProfileBuilder(id);
+	}
+	
+	public static class GetMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, GetMetadataProfileBuilder> {
+		
+		public GetMetadataProfileBuilder(int id) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a metadata profile object by id  */
-    public static RequestBuilder<MetadataProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetMetadataProfileBuilder get(int id)  {
+		return new GetMetadataProfileBuilder(id);
+	}
+	
+	public static class ListMetadataProfileBuilder extends ListResponseRequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, ListMetadataProfileBuilder> {
+		
+		public ListMetadataProfileBuilder(MetadataProfileFilter filter, FilterPager pager) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "get", kparams);
-    }
+	public static ListMetadataProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<MetadataProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<MetadataProfile>> list(MetadataProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListMetadataProfileBuilder list(MetadataProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List metadata profile objects by filter and pager  */
-    public static RequestBuilder<ListResponse<MetadataProfile>> list(MetadataProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "list", kparams);
-    }
+    public static ListMetadataProfileBuilder list(MetadataProfileFilter filter, FilterPager pager)  {
+		return new ListMetadataProfileBuilder(filter, pager);
+	}
+	
+	public static class ListFieldsMetadataProfileBuilder extends ListResponseRequestBuilder<MetadataProfileField, MetadataProfileField.Tokenizer, ListFieldsMetadataProfileBuilder> {
+		
+		public ListFieldsMetadataProfileBuilder(int metadataProfileId) {
+			super(MetadataProfileField.class, "metadata_metadataprofile", "listFields");
+			params.add("metadataProfileId", metadataProfileId);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+	}
 
 	/**  List metadata profile fields by metadata profile id  */
-    public static RequestBuilder<ListResponse<MetadataProfileField>> listFields(int metadataProfileId)  {
-        Params kparams = new Params();
-        kparams.add("metadataProfileId", metadataProfileId);
-
-        return new ListResponseRequestBuilder<MetadataProfileField>(MetadataProfileField.class, "metadata_metadataprofile", "listFields", kparams);
-    }
+    public static ListFieldsMetadataProfileBuilder listFields(int metadataProfileId)  {
+		return new ListFieldsMetadataProfileBuilder(metadataProfileId);
+	}
+	
+	public static class RevertMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, RevertMetadataProfileBuilder> {
+		
+		public RevertMetadataProfileBuilder(int id, int toVersion) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "revert");
+			params.add("id", id);
+			params.add("toVersion", toVersion);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void toVersion(String multirequestToken) {
+			params.add("toVersion", multirequestToken);
+		}
+	}
 
 	/**  Update an existing metadata object definition file  */
-    public static RequestBuilder<MetadataProfile> revert(int id, int toVersion)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("toVersion", toVersion);
-
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "revert", kparams);
-    }
+    public static RevertMetadataProfileBuilder revert(int id, int toVersion)  {
+		return new RevertMetadataProfileBuilder(id, toVersion);
+	}
+	
+	public static class ServeMetadataProfileBuilder extends ServeRequestBuilder {
+		
+		public ServeMetadataProfileBuilder(int id) {
+			super("metadata_metadataprofile", "serve");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Serves metadata profile XSD file  */
-    public static RequestBuilder<String> serve(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new ServeRequestBuilder("metadata_metadataprofile", "serve", kparams);
-    }
+    public static ServeMetadataProfileBuilder serve(int id)  {
+		return new ServeMetadataProfileBuilder(id);
+	}
+	
+	public static class ServeViewMetadataProfileBuilder extends ServeRequestBuilder {
+		
+		public ServeViewMetadataProfileBuilder(int id) {
+			super("metadata_metadataprofile", "serveView");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Serves metadata profile view file  */
-    public static RequestBuilder<String> serveView(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static ServeViewMetadataProfileBuilder serveView(int id)  {
+		return new ServeViewMetadataProfileBuilder(id);
+	}
+	
+	public static class UpdateMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, UpdateMetadataProfileBuilder> {
+		
+		public UpdateMetadataProfileBuilder(int id, MetadataProfile metadataProfile, String xsdData, String viewsData) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "update");
+			params.add("id", id);
+			params.add("metadataProfile", metadataProfile);
+			params.add("xsdData", xsdData);
+			params.add("viewsData", viewsData);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void xsdData(String multirequestToken) {
+			params.add("xsdData", multirequestToken);
+		}
+		
+		public void viewsData(String multirequestToken) {
+			params.add("viewsData", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("metadata_metadataprofile", "serveView", kparams);
-    }
+	public static UpdateMetadataProfileBuilder update(int id, MetadataProfile metadataProfile)  {
+		return update(id, metadataProfile, null);
+	}
 
-    public static RequestBuilder<MetadataProfile> update(int id, MetadataProfile metadataProfile)  {
-        return update(id, metadataProfile, null);
-    }
-
-    public static RequestBuilder<MetadataProfile> update(int id, MetadataProfile metadataProfile, String xsdData)  {
-        return update(id, metadataProfile, xsdData, null);
-    }
+	public static UpdateMetadataProfileBuilder update(int id, MetadataProfile metadataProfile, String xsdData)  {
+		return update(id, metadataProfile, xsdData, null);
+	}
 
 	/**  Update an existing metadata object  */
-    public static RequestBuilder<MetadataProfile> update(int id, MetadataProfile metadataProfile, String xsdData, String viewsData)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("metadataProfile", metadataProfile);
-        kparams.add("xsdData", xsdData);
-        kparams.add("viewsData", viewsData);
+    public static UpdateMetadataProfileBuilder update(int id, MetadataProfile metadataProfile, String xsdData, String viewsData)  {
+		return new UpdateMetadataProfileBuilder(id, metadataProfile, xsdData, viewsData);
+	}
+	
+	public static class UpdateDefinitionFromFileMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, UpdateDefinitionFromFileMetadataProfileBuilder> {
+		
+		public UpdateDefinitionFromFileMetadataProfileBuilder(int id, FileHolder xsdFile) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "updateDefinitionFromFile");
+			params.add("id", id);
+			files = new Files();
+			files.add("xsdFile", xsdFile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "update", kparams);
-    }
+	public static UpdateDefinitionFromFileMetadataProfileBuilder updateDefinitionFromFile(int id, File xsdFile)  {
+		return updateDefinitionFromFile(id, new FileHolder(xsdFile));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateDefinitionFromFile(int id, File xsdFile)  {
-        return updateDefinitionFromFile(id, new FileHolder(xsdFile));
-    }
+	public static UpdateDefinitionFromFileMetadataProfileBuilder updateDefinitionFromFile(int id, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize)  {
+		return updateDefinitionFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateDefinitionFromFile(int id, InputStream xsdFile, String xsdFileMimeType, String xsdFileName, long xsdFileSize)  {
-        return updateDefinitionFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName, xsdFileSize));
-    }
-
-    public static RequestBuilder<MetadataProfile> updateDefinitionFromFile(int id, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName)  {
-        return updateDefinitionFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName));
-    }
+	public static UpdateDefinitionFromFileMetadataProfileBuilder updateDefinitionFromFile(int id, FileInputStream xsdFile, String xsdFileMimeType, String xsdFileName)  {
+		return updateDefinitionFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName));
+	}
 
 	/**  Update an existing metadata object definition file  */
-    public static RequestBuilder<MetadataProfile> updateDefinitionFromFile(int id, FileHolder xsdFile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        Files kfiles = new Files();
-        kfiles.add("xsdFile", xsdFile);
+    public static UpdateDefinitionFromFileMetadataProfileBuilder updateDefinitionFromFile(int id, FileHolder xsdFile)  {
+		return new UpdateDefinitionFromFileMetadataProfileBuilder(id, xsdFile);
+	}
+	
+	public static class UpdateTransformationFromFileMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, UpdateTransformationFromFileMetadataProfileBuilder> {
+		
+		public UpdateTransformationFromFileMetadataProfileBuilder(int id, FileHolder xsltFile) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "updateTransformationFromFile");
+			params.add("id", id);
+			files = new Files();
+			files.add("xsltFile", xsltFile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "updateDefinitionFromFile", kparams, kfiles);
-    }
+	public static UpdateTransformationFromFileMetadataProfileBuilder updateTransformationFromFile(int id, File xsltFile)  {
+		return updateTransformationFromFile(id, new FileHolder(xsltFile));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateTransformationFromFile(int id, File xsltFile)  {
-        return updateTransformationFromFile(id, new FileHolder(xsltFile));
-    }
+	public static UpdateTransformationFromFileMetadataProfileBuilder updateTransformationFromFile(int id, InputStream xsltFile, String xsltFileMimeType, String xsltFileName, long xsltFileSize)  {
+		return updateTransformationFromFile(id, new FileHolder(xsltFile, xsltFileMimeType, xsltFileName, xsltFileSize));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateTransformationFromFile(int id, InputStream xsltFile, String xsltFileMimeType, String xsltFileName, long xsltFileSize)  {
-        return updateTransformationFromFile(id, new FileHolder(xsltFile, xsltFileMimeType, xsltFileName, xsltFileSize));
-    }
-
-    public static RequestBuilder<MetadataProfile> updateTransformationFromFile(int id, FileInputStream xsltFile, String xsltFileMimeType, String xsltFileName)  {
-        return updateTransformationFromFile(id, new FileHolder(xsltFile, xsltFileMimeType, xsltFileName));
-    }
+	public static UpdateTransformationFromFileMetadataProfileBuilder updateTransformationFromFile(int id, FileInputStream xsltFile, String xsltFileMimeType, String xsltFileName)  {
+		return updateTransformationFromFile(id, new FileHolder(xsltFile, xsltFileMimeType, xsltFileName));
+	}
 
 	/**  Update an existing metadata object xslt file  */
-    public static RequestBuilder<MetadataProfile> updateTransformationFromFile(int id, FileHolder xsltFile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        Files kfiles = new Files();
-        kfiles.add("xsltFile", xsltFile);
+    public static UpdateTransformationFromFileMetadataProfileBuilder updateTransformationFromFile(int id, FileHolder xsltFile)  {
+		return new UpdateTransformationFromFileMetadataProfileBuilder(id, xsltFile);
+	}
+	
+	public static class UpdateViewsFromFileMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, UpdateViewsFromFileMetadataProfileBuilder> {
+		
+		public UpdateViewsFromFileMetadataProfileBuilder(int id, FileHolder viewsFile) {
+			super(MetadataProfile.class, "metadata_metadataprofile", "updateViewsFromFile");
+			params.add("id", id);
+			files = new Files();
+			files.add("viewsFile", viewsFile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "updateTransformationFromFile", kparams, kfiles);
-    }
+	public static UpdateViewsFromFileMetadataProfileBuilder updateViewsFromFile(int id, File viewsFile)  {
+		return updateViewsFromFile(id, new FileHolder(viewsFile));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateViewsFromFile(int id, File viewsFile)  {
-        return updateViewsFromFile(id, new FileHolder(viewsFile));
-    }
+	public static UpdateViewsFromFileMetadataProfileBuilder updateViewsFromFile(int id, InputStream viewsFile, String viewsFileMimeType, String viewsFileName, long viewsFileSize)  {
+		return updateViewsFromFile(id, new FileHolder(viewsFile, viewsFileMimeType, viewsFileName, viewsFileSize));
+	}
 
-    public static RequestBuilder<MetadataProfile> updateViewsFromFile(int id, InputStream viewsFile, String viewsFileMimeType, String viewsFileName, long viewsFileSize)  {
-        return updateViewsFromFile(id, new FileHolder(viewsFile, viewsFileMimeType, viewsFileName, viewsFileSize));
-    }
-
-    public static RequestBuilder<MetadataProfile> updateViewsFromFile(int id, FileInputStream viewsFile, String viewsFileMimeType, String viewsFileName)  {
-        return updateViewsFromFile(id, new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
-    }
+	public static UpdateViewsFromFileMetadataProfileBuilder updateViewsFromFile(int id, FileInputStream viewsFile, String viewsFileMimeType, String viewsFileName)  {
+		return updateViewsFromFile(id, new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
+	}
 
 	/**  Update an existing metadata object views file  */
-    public static RequestBuilder<MetadataProfile> updateViewsFromFile(int id, FileHolder viewsFile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        Files kfiles = new Files();
-        kfiles.add("viewsFile", viewsFile);
-
-        return new RequestBuilder<MetadataProfile>(MetadataProfile.class, "metadata_metadataprofile", "updateViewsFromFile", kparams, kfiles);
-    }
+    public static UpdateViewsFromFileMetadataProfileBuilder updateViewsFromFile(int id, FileHolder viewsFile)  {
+		return new UpdateViewsFromFileMetadataProfileBuilder(id, viewsFile);
+	}
 }

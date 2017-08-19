@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.RuleActionType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,39 +42,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(RuleAction.Tokenizer.class)
 public abstract class RuleAction extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+	}
 
 	/**  The type of the action  */
-    private RuleActionType type;
+	private RuleActionType type;
 
-    // type:
-    public RuleActionType getType(){
-        return this.type;
-    }
-    public void setType(RuleActionType type){
-        this.type = type;
-    }
+	// type:
+	public RuleActionType getType(){
+		return this.type;
+	}
+	public void setType(RuleActionType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public RuleAction() {
-       super();
-    }
+	public RuleAction() {
+		super();
+	}
 
-    public RuleAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public RuleAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = RuleActionType.get(GsonParser.parseString(jsonObject.get("type")));
+		// set members values:
+		type = RuleActionType.get(GsonParser.parseString(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaRuleAction");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaRuleAction");
+		return kparams;
+	}
 
 }
 

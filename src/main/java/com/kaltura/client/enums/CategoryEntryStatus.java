@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CategoryEntryStatus implements EnumAsInt {
-    PENDING(1),
-    ACTIVE(2),
-    DELETED(3),
-    REJECTED(4);
+	PENDING(1),
+	ACTIVE(2),
+	DELETED(3),
+	REJECTED(4);
 
-    private int value;
+	private int value;
 
-    CategoryEntryStatus(int value) {
-        this.value = value;
-    }
+	CategoryEntryStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static CategoryEntryStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CategoryEntryStatus defined values and compare the inner value with the given one:
-        for(CategoryEntryStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CategoryEntryStatus.values().length > 0 ? CategoryEntryStatus.values()[0]: null;
+	public static CategoryEntryStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CategoryEntryStatus defined values and compare the inner value with the given one:
+		for(CategoryEntryStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CategoryEntryStatus.values().length > 0 ? CategoryEntryStatus.values()[0]: null;
    }
 }

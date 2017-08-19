@@ -34,6 +34,7 @@ import com.kaltura.client.enums.CaptionType;
 import com.kaltura.client.enums.Language;
 import com.kaltura.client.enums.LanguageCode;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,134 +44,183 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CaptionAsset.Tokenizer.class)
 public class CaptionAsset extends Asset {
+	
+	public interface Tokenizer extends Asset.Tokenizer {
+		String captionParamsId();
+		String language();
+		String languageCode();
+		String isDefault();
+		String label();
+		String format();
+		String status();
+		String parentId();
+		String accuracy();
+	}
 
 	/**  The Caption Params used to create this Caption Asset  */
-    private Integer captionParamsId;
+	private Integer captionParamsId;
 	/**  The language of the caption asset content  */
-    private Language language;
+	private Language language;
 	/**  The language of the caption asset content  */
-    private LanguageCode languageCode;
+	private LanguageCode languageCode;
 	/**  Is default caption asset of the entry  */
-    private Boolean isDefault;
+	private Boolean isDefault;
 	/**  Friendly label  */
-    private String label;
+	private String label;
 	/**  The caption format  */
-    private CaptionType format;
+	private CaptionType format;
 	/**  The status of the asset  */
-    private CaptionAssetStatus status;
+	private CaptionAssetStatus status;
 	/**  The parent id of the asset  */
-    private String parentId;
+	private String parentId;
 	/**  The Accuracy of the caption content  */
-    private Integer accuracy;
+	private Integer accuracy;
 
-    // captionParamsId:
-    public Integer getCaptionParamsId(){
-        return this.captionParamsId;
-    }
-    public void setCaptionParamsId(Integer captionParamsId){
-        this.captionParamsId = captionParamsId;
-    }
+	// captionParamsId:
+	public Integer getCaptionParamsId(){
+		return this.captionParamsId;
+	}
+	public void setCaptionParamsId(Integer captionParamsId){
+		this.captionParamsId = captionParamsId;
+	}
 
-    // language:
-    public Language getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(Language language){
-        this.language = language;
-    }
+	public void captionParamsId(String multirequestToken){
+		setToken("captionParamsId", multirequestToken);
+	}
 
-    // languageCode:
-    public LanguageCode getLanguageCode(){
-        return this.languageCode;
-    }
-    public void setLanguageCode(LanguageCode languageCode){
-        this.languageCode = languageCode;
-    }
+	// language:
+	public Language getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(Language language){
+		this.language = language;
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	// languageCode:
+	public LanguageCode getLanguageCode(){
+		return this.languageCode;
+	}
+	public void setLanguageCode(LanguageCode languageCode){
+		this.languageCode = languageCode;
+	}
 
-    // format:
-    public CaptionType getFormat(){
-        return this.format;
-    }
-    public void setFormat(CaptionType format){
-        this.format = format;
-    }
+	public void languageCode(String multirequestToken){
+		setToken("languageCode", multirequestToken);
+	}
 
-    // status:
-    public CaptionAssetStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(CaptionAssetStatus status){
-        this.status = status;
-    }
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
 
-    // parentId:
-    public String getParentId(){
-        return this.parentId;
-    }
-    public void setParentId(String parentId){
-        this.parentId = parentId;
-    }
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
 
-    // accuracy:
-    public Integer getAccuracy(){
-        return this.accuracy;
-    }
-    public void setAccuracy(Integer accuracy){
-        this.accuracy = accuracy;
-    }
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
+
+	// format:
+	public CaptionType getFormat(){
+		return this.format;
+	}
+	public void setFormat(CaptionType format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
+
+	// status:
+	public CaptionAssetStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(CaptionAssetStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// parentId:
+	public String getParentId(){
+		return this.parentId;
+	}
+	public void setParentId(String parentId){
+		this.parentId = parentId;
+	}
+
+	public void parentId(String multirequestToken){
+		setToken("parentId", multirequestToken);
+	}
+
+	// accuracy:
+	public Integer getAccuracy(){
+		return this.accuracy;
+	}
+	public void setAccuracy(Integer accuracy){
+		this.accuracy = accuracy;
+	}
+
+	public void accuracy(String multirequestToken){
+		setToken("accuracy", multirequestToken);
+	}
 
 
-    public CaptionAsset() {
-       super();
-    }
+	public CaptionAsset() {
+		super();
+	}
 
-    public CaptionAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CaptionAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        captionParamsId = GsonParser.parseInt(jsonObject.get("captionParamsId"));
-        language = Language.get(GsonParser.parseString(jsonObject.get("language")));
-        languageCode = LanguageCode.get(GsonParser.parseString(jsonObject.get("languageCode")));
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        format = CaptionType.get(GsonParser.parseString(jsonObject.get("format")));
-        status = CaptionAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        parentId = GsonParser.parseString(jsonObject.get("parentId"));
-        accuracy = GsonParser.parseInt(jsonObject.get("accuracy"));
+		// set members values:
+		captionParamsId = GsonParser.parseInt(jsonObject.get("captionParamsId"));
+		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
+		languageCode = LanguageCode.get(GsonParser.parseString(jsonObject.get("languageCode")));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		format = CaptionType.get(GsonParser.parseString(jsonObject.get("format")));
+		status = CaptionAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		parentId = GsonParser.parseString(jsonObject.get("parentId"));
+		accuracy = GsonParser.parseInt(jsonObject.get("accuracy"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCaptionAsset");
-        kparams.add("captionParamsId", this.captionParamsId);
-        kparams.add("language", this.language);
-        kparams.add("isDefault", this.isDefault);
-        kparams.add("label", this.label);
-        kparams.add("format", this.format);
-        kparams.add("parentId", this.parentId);
-        kparams.add("accuracy", this.accuracy);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCaptionAsset");
+		kparams.add("captionParamsId", this.captionParamsId);
+		kparams.add("language", this.language);
+		kparams.add("isDefault", this.isDefault);
+		kparams.add("label", this.label);
+		kparams.add("format", this.format);
+		kparams.add("parentId", this.parentId);
+		kparams.add("accuracy", this.accuracy);
+		return kparams;
+	}
 
 }
 

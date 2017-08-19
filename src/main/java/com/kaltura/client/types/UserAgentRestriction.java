@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.UserAgentRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserAgentRestriction.Tokenizer.class)
 public class UserAgentRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String userAgentRestrictionType();
+		String userAgentRegexList();
+	}
 
 	/**  User agent restriction type (Allow or deny)  */
-    private UserAgentRestrictionType userAgentRestrictionType;
+	private UserAgentRestrictionType userAgentRestrictionType;
 	/**  A comma seperated list of user agent regular expressions  */
-    private String userAgentRegexList;
+	private String userAgentRegexList;
 
-    // userAgentRestrictionType:
-    public UserAgentRestrictionType getUserAgentRestrictionType(){
-        return this.userAgentRestrictionType;
-    }
-    public void setUserAgentRestrictionType(UserAgentRestrictionType userAgentRestrictionType){
-        this.userAgentRestrictionType = userAgentRestrictionType;
-    }
+	// userAgentRestrictionType:
+	public UserAgentRestrictionType getUserAgentRestrictionType(){
+		return this.userAgentRestrictionType;
+	}
+	public void setUserAgentRestrictionType(UserAgentRestrictionType userAgentRestrictionType){
+		this.userAgentRestrictionType = userAgentRestrictionType;
+	}
 
-    // userAgentRegexList:
-    public String getUserAgentRegexList(){
-        return this.userAgentRegexList;
-    }
-    public void setUserAgentRegexList(String userAgentRegexList){
-        this.userAgentRegexList = userAgentRegexList;
-    }
+	public void userAgentRestrictionType(String multirequestToken){
+		setToken("userAgentRestrictionType", multirequestToken);
+	}
+
+	// userAgentRegexList:
+	public String getUserAgentRegexList(){
+		return this.userAgentRegexList;
+	}
+	public void setUserAgentRegexList(String userAgentRegexList){
+		this.userAgentRegexList = userAgentRegexList;
+	}
+
+	public void userAgentRegexList(String multirequestToken){
+		setToken("userAgentRegexList", multirequestToken);
+	}
 
 
-    public UserAgentRestriction() {
-       super();
-    }
+	public UserAgentRestriction() {
+		super();
+	}
 
-    public UserAgentRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserAgentRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userAgentRestrictionType = UserAgentRestrictionType.get(GsonParser.parseInt(jsonObject.get("userAgentRestrictionType")));
-        userAgentRegexList = GsonParser.parseString(jsonObject.get("userAgentRegexList"));
+		// set members values:
+		userAgentRestrictionType = UserAgentRestrictionType.get(GsonParser.parseInt(jsonObject.get("userAgentRestrictionType")));
+		userAgentRegexList = GsonParser.parseString(jsonObject.get("userAgentRegexList"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserAgentRestriction");
-        kparams.add("userAgentRestrictionType", this.userAgentRestrictionType);
-        kparams.add("userAgentRegexList", this.userAgentRegexList);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserAgentRestriction");
+		kparams.add("userAgentRestrictionType", this.userAgentRestrictionType);
+		kparams.add("userAgentRegexList", this.userAgentRegexList);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerAkamaiRtsp.Tokenizer.class)
 public class UrlTokenizerAkamaiRtsp extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String host();
+		String cpcode();
+	}
 
 	/**  host  */
-    private String host;
+	private String host;
 	/**  Cp-Code  */
-    private Integer cpcode;
+	private Integer cpcode;
 
-    // host:
-    public String getHost(){
-        return this.host;
-    }
-    public void setHost(String host){
-        this.host = host;
-    }
+	// host:
+	public String getHost(){
+		return this.host;
+	}
+	public void setHost(String host){
+		this.host = host;
+	}
 
-    // cpcode:
-    public Integer getCpcode(){
-        return this.cpcode;
-    }
-    public void setCpcode(Integer cpcode){
-        this.cpcode = cpcode;
-    }
+	public void host(String multirequestToken){
+		setToken("host", multirequestToken);
+	}
+
+	// cpcode:
+	public Integer getCpcode(){
+		return this.cpcode;
+	}
+	public void setCpcode(Integer cpcode){
+		this.cpcode = cpcode;
+	}
+
+	public void cpcode(String multirequestToken){
+		setToken("cpcode", multirequestToken);
+	}
 
 
-    public UrlTokenizerAkamaiRtsp() {
-       super();
-    }
+	public UrlTokenizerAkamaiRtsp() {
+		super();
+	}
 
-    public UrlTokenizerAkamaiRtsp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerAkamaiRtsp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        host = GsonParser.parseString(jsonObject.get("host"));
-        cpcode = GsonParser.parseInt(jsonObject.get("cpcode"));
+		// set members values:
+		host = GsonParser.parseString(jsonObject.get("host"));
+		cpcode = GsonParser.parseInt(jsonObject.get("cpcode"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerAkamaiRtsp");
-        kparams.add("host", this.host);
-        kparams.add("cpcode", this.cpcode);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerAkamaiRtsp");
+		kparams.add("host", this.host);
+		kparams.add("cpcode", this.cpcode);
+		return kparams;
+	}
 
 }
 

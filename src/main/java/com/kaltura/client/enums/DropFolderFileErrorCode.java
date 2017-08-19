@@ -34,55 +34,55 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileErrorCode implements EnumAsString {
-    ERROR_ADDING_BULK_UPLOAD("dropFolderXmlBulkUpload.ERROR_ADDING_BULK_UPLOAD"),
-    ERROR_ADD_CONTENT_RESOURCE("dropFolderXmlBulkUpload.ERROR_ADD_CONTENT_RESOURCE"),
-    ERROR_IN_BULK_UPLOAD("dropFolderXmlBulkUpload.ERROR_IN_BULK_UPLOAD"),
-    ERROR_WRITING_TEMP_FILE("dropFolderXmlBulkUpload.ERROR_WRITING_TEMP_FILE"),
-    LOCAL_FILE_WRONG_CHECKSUM("dropFolderXmlBulkUpload.LOCAL_FILE_WRONG_CHECKSUM"),
-    LOCAL_FILE_WRONG_SIZE("dropFolderXmlBulkUpload.LOCAL_FILE_WRONG_SIZE"),
-    MALFORMED_XML_FILE("dropFolderXmlBulkUpload.MALFORMED_XML_FILE"),
-    XML_FILE_SIZE_EXCEED_LIMIT("dropFolderXmlBulkUpload.XML_FILE_SIZE_EXCEED_LIMIT"),
-    ERROR_UPDATE_ENTRY("1"),
-    ERROR_ADD_ENTRY("2"),
-    FLAVOR_NOT_FOUND("3"),
-    FLAVOR_MISSING_IN_FILE_NAME("4"),
-    SLUG_REGEX_NO_MATCH("5"),
-    ERROR_READING_FILE("6"),
-    ERROR_DOWNLOADING_FILE("7"),
-    ERROR_UPDATE_FILE("8"),
-    ERROR_ADDING_CONTENT_PROCESSOR("10"),
-    ERROR_IN_CONTENT_PROCESSOR("11"),
-    ERROR_DELETING_FILE("12"),
-    FILE_NO_MATCH("13");
+	ERROR_ADDING_BULK_UPLOAD("dropFolderXmlBulkUpload.ERROR_ADDING_BULK_UPLOAD"),
+	ERROR_ADD_CONTENT_RESOURCE("dropFolderXmlBulkUpload.ERROR_ADD_CONTENT_RESOURCE"),
+	ERROR_IN_BULK_UPLOAD("dropFolderXmlBulkUpload.ERROR_IN_BULK_UPLOAD"),
+	ERROR_WRITING_TEMP_FILE("dropFolderXmlBulkUpload.ERROR_WRITING_TEMP_FILE"),
+	LOCAL_FILE_WRONG_CHECKSUM("dropFolderXmlBulkUpload.LOCAL_FILE_WRONG_CHECKSUM"),
+	LOCAL_FILE_WRONG_SIZE("dropFolderXmlBulkUpload.LOCAL_FILE_WRONG_SIZE"),
+	MALFORMED_XML_FILE("dropFolderXmlBulkUpload.MALFORMED_XML_FILE"),
+	XML_FILE_SIZE_EXCEED_LIMIT("dropFolderXmlBulkUpload.XML_FILE_SIZE_EXCEED_LIMIT"),
+	ERROR_UPDATE_ENTRY("1"),
+	ERROR_ADD_ENTRY("2"),
+	FLAVOR_NOT_FOUND("3"),
+	FLAVOR_MISSING_IN_FILE_NAME("4"),
+	SLUG_REGEX_NO_MATCH("5"),
+	ERROR_READING_FILE("6"),
+	ERROR_DOWNLOADING_FILE("7"),
+	ERROR_UPDATE_FILE("8"),
+	ERROR_ADDING_CONTENT_PROCESSOR("10"),
+	ERROR_IN_CONTENT_PROCESSOR("11"),
+	ERROR_DELETING_FILE("12"),
+	FILE_NO_MATCH("13");
 
-    private String value;
+	private String value;
 
-    DropFolderFileErrorCode(String value) {
-        this.value = value;
-    }
+	DropFolderFileErrorCode(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DropFolderFileErrorCode get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DropFolderFileErrorCode defined values and compare the inner value with the given one:
-        for(DropFolderFileErrorCode item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DropFolderFileErrorCode.values().length > 0 ? DropFolderFileErrorCode.values()[0]: null;
+	public static DropFolderFileErrorCode get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DropFolderFileErrorCode defined values and compare the inner value with the given one:
+		for(DropFolderFileErrorCode item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DropFolderFileErrorCode.values().length > 0 ? DropFolderFileErrorCode.values()[0]: null;
    }
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.DeleteFlavorsLogicType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeleteEntryFlavorsObjectTask.Tokenizer.class)
 public class DeleteEntryFlavorsObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String deleteType();
+		String flavorParamsIds();
+	}
 
 	/**  The logic to use to choose the flavors for deletion  */
-    private DeleteFlavorsLogicType deleteType;
+	private DeleteFlavorsLogicType deleteType;
 	/**  Comma separated list of flavor param ids to delete or keep  */
-    private String flavorParamsIds;
+	private String flavorParamsIds;
 
-    // deleteType:
-    public DeleteFlavorsLogicType getDeleteType(){
-        return this.deleteType;
-    }
-    public void setDeleteType(DeleteFlavorsLogicType deleteType){
-        this.deleteType = deleteType;
-    }
+	// deleteType:
+	public DeleteFlavorsLogicType getDeleteType(){
+		return this.deleteType;
+	}
+	public void setDeleteType(DeleteFlavorsLogicType deleteType){
+		this.deleteType = deleteType;
+	}
 
-    // flavorParamsIds:
-    public String getFlavorParamsIds(){
-        return this.flavorParamsIds;
-    }
-    public void setFlavorParamsIds(String flavorParamsIds){
-        this.flavorParamsIds = flavorParamsIds;
-    }
+	public void deleteType(String multirequestToken){
+		setToken("deleteType", multirequestToken);
+	}
+
+	// flavorParamsIds:
+	public String getFlavorParamsIds(){
+		return this.flavorParamsIds;
+	}
+	public void setFlavorParamsIds(String flavorParamsIds){
+		this.flavorParamsIds = flavorParamsIds;
+	}
+
+	public void flavorParamsIds(String multirequestToken){
+		setToken("flavorParamsIds", multirequestToken);
+	}
 
 
-    public DeleteEntryFlavorsObjectTask() {
-       super();
-    }
+	public DeleteEntryFlavorsObjectTask() {
+		super();
+	}
 
-    public DeleteEntryFlavorsObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeleteEntryFlavorsObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        deleteType = DeleteFlavorsLogicType.get(GsonParser.parseInt(jsonObject.get("deleteType")));
-        flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		// set members values:
+		deleteType = DeleteFlavorsLogicType.get(GsonParser.parseInt(jsonObject.get("deleteType")));
+		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeleteEntryFlavorsObjectTask");
-        kparams.add("deleteType", this.deleteType);
-        kparams.add("flavorParamsIds", this.flavorParamsIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeleteEntryFlavorsObjectTask");
+		kparams.add("deleteType", this.deleteType);
+		kparams.add("flavorParamsIds", this.flavorParamsIds);
+		return kparams;
+	}
 
 }
 

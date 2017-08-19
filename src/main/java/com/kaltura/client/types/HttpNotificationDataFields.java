@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,23 +41,27 @@ import com.kaltura.client.utils.GsonParser;
 /**  If this class used as the template data, the fields will be taken from the
   content parameters  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HttpNotificationDataFields.Tokenizer.class)
 public class HttpNotificationDataFields extends HttpNotificationData {
+	
+	public interface Tokenizer extends HttpNotificationData.Tokenizer {
+	}
 
 
 
-    public HttpNotificationDataFields() {
-       super();
-    }
+	public HttpNotificationDataFields() {
+		super();
+	}
 
-    public HttpNotificationDataFields(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public HttpNotificationDataFields(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHttpNotificationDataFields");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHttpNotificationDataFields");
+		return kparams;
+	}
 
 }
 

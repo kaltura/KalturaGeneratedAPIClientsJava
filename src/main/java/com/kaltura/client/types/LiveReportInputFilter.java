@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveReportOrderBy;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,83 +42,112 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveReportInputFilter.Tokenizer.class)
 public class LiveReportInputFilter extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String entryIds();
+		String fromTime();
+		String toTime();
+		String live();
+		String orderBy();
+	}
 
-    private String entryIds;
-    private Integer fromTime;
-    private Integer toTime;
-    private Boolean live;
-    private LiveReportOrderBy orderBy;
+	private String entryIds;
+	private Integer fromTime;
+	private Integer toTime;
+	private Boolean live;
+	private LiveReportOrderBy orderBy;
 
-    // entryIds:
-    public String getEntryIds(){
-        return this.entryIds;
-    }
-    public void setEntryIds(String entryIds){
-        this.entryIds = entryIds;
-    }
+	// entryIds:
+	public String getEntryIds(){
+		return this.entryIds;
+	}
+	public void setEntryIds(String entryIds){
+		this.entryIds = entryIds;
+	}
 
-    // fromTime:
-    public Integer getFromTime(){
-        return this.fromTime;
-    }
-    public void setFromTime(Integer fromTime){
-        this.fromTime = fromTime;
-    }
+	public void entryIds(String multirequestToken){
+		setToken("entryIds", multirequestToken);
+	}
 
-    // toTime:
-    public Integer getToTime(){
-        return this.toTime;
-    }
-    public void setToTime(Integer toTime){
-        this.toTime = toTime;
-    }
+	// fromTime:
+	public Integer getFromTime(){
+		return this.fromTime;
+	}
+	public void setFromTime(Integer fromTime){
+		this.fromTime = fromTime;
+	}
 
-    // live:
-    public Boolean getLive(){
-        return this.live;
-    }
-    public void setLive(Boolean live){
-        this.live = live;
-    }
+	public void fromTime(String multirequestToken){
+		setToken("fromTime", multirequestToken);
+	}
 
-    // orderBy:
-    public LiveReportOrderBy getOrderBy(){
-        return this.orderBy;
-    }
-    public void setOrderBy(LiveReportOrderBy orderBy){
-        this.orderBy = orderBy;
-    }
+	// toTime:
+	public Integer getToTime(){
+		return this.toTime;
+	}
+	public void setToTime(Integer toTime){
+		this.toTime = toTime;
+	}
+
+	public void toTime(String multirequestToken){
+		setToken("toTime", multirequestToken);
+	}
+
+	// live:
+	public Boolean getLive(){
+		return this.live;
+	}
+	public void setLive(Boolean live){
+		this.live = live;
+	}
+
+	public void live(String multirequestToken){
+		setToken("live", multirequestToken);
+	}
+
+	// orderBy:
+	public LiveReportOrderBy getOrderBy(){
+		return this.orderBy;
+	}
+	public void setOrderBy(LiveReportOrderBy orderBy){
+		this.orderBy = orderBy;
+	}
+
+	public void orderBy(String multirequestToken){
+		setToken("orderBy", multirequestToken);
+	}
 
 
-    public LiveReportInputFilter() {
-       super();
-    }
+	public LiveReportInputFilter() {
+		super();
+	}
 
-    public LiveReportInputFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveReportInputFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-        fromTime = GsonParser.parseInt(jsonObject.get("fromTime"));
-        toTime = GsonParser.parseInt(jsonObject.get("toTime"));
-        live = GsonParser.parseBoolean(jsonObject.get("live"));
-        orderBy = LiveReportOrderBy.get(GsonParser.parseString(jsonObject.get("orderBy")));
+		// set members values:
+		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
+		fromTime = GsonParser.parseInt(jsonObject.get("fromTime"));
+		toTime = GsonParser.parseInt(jsonObject.get("toTime"));
+		live = GsonParser.parseBoolean(jsonObject.get("live"));
+		orderBy = LiveReportOrderBy.get(GsonParser.parseString(jsonObject.get("orderBy")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveReportInputFilter");
-        kparams.add("entryIds", this.entryIds);
-        kparams.add("fromTime", this.fromTime);
-        kparams.add("toTime", this.toTime);
-        kparams.add("live", this.live);
-        kparams.add("orderBy", this.orderBy);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveReportInputFilter");
+		kparams.add("entryIds", this.entryIds);
+		kparams.add("fromTime", this.fromTime);
+		kparams.add("toTime", this.toTime);
+		kparams.add("live", this.live);
+		kparams.add("orderBy", this.orderBy);
+		return kparams;
+	}
 
 }
 

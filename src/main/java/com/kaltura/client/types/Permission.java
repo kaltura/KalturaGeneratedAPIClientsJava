@@ -33,6 +33,7 @@ import com.kaltura.client.enums.PermissionStatus;
 import com.kaltura.client.enums.PermissionType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,166 +43,235 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Permission.Tokenizer.class)
 public class Permission extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String type();
+		String name();
+		String friendlyName();
+		String description();
+		String status();
+		String partnerId();
+		String dependsOnPermissionNames();
+		String tags();
+		String permissionItemsIds();
+		String createdAt();
+		String updatedAt();
+		String partnerGroup();
+	}
 
-    private Integer id;
-    private PermissionType type;
-    private String name;
-    private String friendlyName;
-    private String description;
-    private PermissionStatus status;
-    private Integer partnerId;
-    private String dependsOnPermissionNames;
-    private String tags;
-    private String permissionItemsIds;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private String partnerGroup;
+	private Integer id;
+	private PermissionType type;
+	private String name;
+	private String friendlyName;
+	private String description;
+	private PermissionStatus status;
+	private Integer partnerId;
+	private String dependsOnPermissionNames;
+	private String tags;
+	private String permissionItemsIds;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private String partnerGroup;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // type:
-    public PermissionType getType(){
-        return this.type;
-    }
-    public void setType(PermissionType type){
-        this.type = type;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// type:
+	public PermissionType getType(){
+		return this.type;
+	}
+	public void setType(PermissionType type){
+		this.type = type;
+	}
 
-    // friendlyName:
-    public String getFriendlyName(){
-        return this.friendlyName;
-    }
-    public void setFriendlyName(String friendlyName){
-        this.friendlyName = friendlyName;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // status:
-    public PermissionStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(PermissionStatus status){
-        this.status = status;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// friendlyName:
+	public String getFriendlyName(){
+		return this.friendlyName;
+	}
+	public void setFriendlyName(String friendlyName){
+		this.friendlyName = friendlyName;
+	}
 
-    // dependsOnPermissionNames:
-    public String getDependsOnPermissionNames(){
-        return this.dependsOnPermissionNames;
-    }
-    public void setDependsOnPermissionNames(String dependsOnPermissionNames){
-        this.dependsOnPermissionNames = dependsOnPermissionNames;
-    }
+	public void friendlyName(String multirequestToken){
+		setToken("friendlyName", multirequestToken);
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // permissionItemsIds:
-    public String getPermissionItemsIds(){
-        return this.permissionItemsIds;
-    }
-    public void setPermissionItemsIds(String permissionItemsIds){
-        this.permissionItemsIds = permissionItemsIds;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// status:
+	public PermissionStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(PermissionStatus status){
+		this.status = status;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // partnerGroup:
-    public String getPartnerGroup(){
-        return this.partnerGroup;
-    }
-    public void setPartnerGroup(String partnerGroup){
-        this.partnerGroup = partnerGroup;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
+
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
+	// dependsOnPermissionNames:
+	public String getDependsOnPermissionNames(){
+		return this.dependsOnPermissionNames;
+	}
+	public void setDependsOnPermissionNames(String dependsOnPermissionNames){
+		this.dependsOnPermissionNames = dependsOnPermissionNames;
+	}
+
+	public void dependsOnPermissionNames(String multirequestToken){
+		setToken("dependsOnPermissionNames", multirequestToken);
+	}
+
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
+
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
+
+	// permissionItemsIds:
+	public String getPermissionItemsIds(){
+		return this.permissionItemsIds;
+	}
+	public void setPermissionItemsIds(String permissionItemsIds){
+		this.permissionItemsIds = permissionItemsIds;
+	}
+
+	public void permissionItemsIds(String multirequestToken){
+		setToken("permissionItemsIds", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// partnerGroup:
+	public String getPartnerGroup(){
+		return this.partnerGroup;
+	}
+	public void setPartnerGroup(String partnerGroup){
+		this.partnerGroup = partnerGroup;
+	}
+
+	public void partnerGroup(String multirequestToken){
+		setToken("partnerGroup", multirequestToken);
+	}
 
 
-    public Permission() {
-       super();
-    }
+	public Permission() {
+		super();
+	}
 
-    public Permission(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Permission(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        type = PermissionType.get(GsonParser.parseInt(jsonObject.get("type")));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        friendlyName = GsonParser.parseString(jsonObject.get("friendlyName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        status = PermissionStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        dependsOnPermissionNames = GsonParser.parseString(jsonObject.get("dependsOnPermissionNames"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        permissionItemsIds = GsonParser.parseString(jsonObject.get("permissionItemsIds"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        partnerGroup = GsonParser.parseString(jsonObject.get("partnerGroup"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		type = PermissionType.get(GsonParser.parseInt(jsonObject.get("type")));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		friendlyName = GsonParser.parseString(jsonObject.get("friendlyName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		status = PermissionStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		dependsOnPermissionNames = GsonParser.parseString(jsonObject.get("dependsOnPermissionNames"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		permissionItemsIds = GsonParser.parseString(jsonObject.get("permissionItemsIds"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		partnerGroup = GsonParser.parseString(jsonObject.get("partnerGroup"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPermission");
-        kparams.add("name", this.name);
-        kparams.add("friendlyName", this.friendlyName);
-        kparams.add("description", this.description);
-        kparams.add("status", this.status);
-        kparams.add("dependsOnPermissionNames", this.dependsOnPermissionNames);
-        kparams.add("tags", this.tags);
-        kparams.add("permissionItemsIds", this.permissionItemsIds);
-        kparams.add("partnerGroup", this.partnerGroup);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPermission");
+		kparams.add("name", this.name);
+		kparams.add("friendlyName", this.friendlyName);
+		kparams.add("description", this.description);
+		kparams.add("status", this.status);
+		kparams.add("dependsOnPermissionNames", this.dependsOnPermissionNames);
+		kparams.add("tags", this.tags);
+		kparams.add("permissionItemsIds", this.permissionItemsIds);
+		kparams.add("partnerGroup", this.partnerGroup);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConfigurableDistributionJobProviderData.Tokenizer.class)
 public abstract class ConfigurableDistributionJobProviderData extends DistributionJobProviderData {
+	
+	public interface Tokenizer extends DistributionJobProviderData.Tokenizer {
+		String fieldValues();
+	}
 
-    private String fieldValues;
+	private String fieldValues;
 
-    // fieldValues:
-    public String getFieldValues(){
-        return this.fieldValues;
-    }
-    public void setFieldValues(String fieldValues){
-        this.fieldValues = fieldValues;
-    }
+	// fieldValues:
+	public String getFieldValues(){
+		return this.fieldValues;
+	}
+	public void setFieldValues(String fieldValues){
+		this.fieldValues = fieldValues;
+	}
+
+	public void fieldValues(String multirequestToken){
+		setToken("fieldValues", multirequestToken);
+	}
 
 
-    public ConfigurableDistributionJobProviderData() {
-       super();
-    }
+	public ConfigurableDistributionJobProviderData() {
+		super();
+	}
 
-    public ConfigurableDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConfigurableDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fieldValues = GsonParser.parseString(jsonObject.get("fieldValues"));
+		// set members values:
+		fieldValues = GsonParser.parseString(jsonObject.get("fieldValues"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConfigurableDistributionJobProviderData");
-        kparams.add("fieldValues", this.fieldValues);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConfigurableDistributionJobProviderData");
+		kparams.add("fieldValues", this.fieldValues);
+		return kparams;
+	}
 
 }
 

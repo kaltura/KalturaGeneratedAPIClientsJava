@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UiConfAdmin.Tokenizer.class)
 public class UiConfAdmin extends UiConf {
+	
+	public interface Tokenizer extends UiConf.Tokenizer {
+		String isPublic();
+	}
 
-    private Boolean isPublic;
+	private Boolean isPublic;
 
-    // isPublic:
-    public Boolean getIsPublic(){
-        return this.isPublic;
-    }
-    public void setIsPublic(Boolean isPublic){
-        this.isPublic = isPublic;
-    }
+	// isPublic:
+	public Boolean getIsPublic(){
+		return this.isPublic;
+	}
+	public void setIsPublic(Boolean isPublic){
+		this.isPublic = isPublic;
+	}
+
+	public void isPublic(String multirequestToken){
+		setToken("isPublic", multirequestToken);
+	}
 
 
-    public UiConfAdmin() {
-       super();
-    }
+	public UiConfAdmin() {
+		super();
+	}
 
-    public UiConfAdmin(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UiConfAdmin(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
+		// set members values:
+		isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUiConfAdmin");
-        kparams.add("isPublic", this.isPublic);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUiConfAdmin");
+		kparams.add("isPublic", this.isPublic);
+		return kparams;
+	}
 
 }
 

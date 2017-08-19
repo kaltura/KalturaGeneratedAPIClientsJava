@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,48 +43,58 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchResultResponse.Tokenizer.class)
 public class SearchResultResponse extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		RequestBuilder.ListTokenizer<SearchResult.Tokenizer> objects();
+		String needMediaInfo();
+	}
 
-    private List<SearchResult> objects;
-    private Boolean needMediaInfo;
+	private List<SearchResult> objects;
+	private Boolean needMediaInfo;
 
-    // objects:
-    public List<SearchResult> getObjects(){
-        return this.objects;
-    }
-    public void setObjects(List<SearchResult> objects){
-        this.objects = objects;
-    }
+	// objects:
+	public List<SearchResult> getObjects(){
+		return this.objects;
+	}
+	public void setObjects(List<SearchResult> objects){
+		this.objects = objects;
+	}
 
-    // needMediaInfo:
-    public Boolean getNeedMediaInfo(){
-        return this.needMediaInfo;
-    }
-    public void setNeedMediaInfo(Boolean needMediaInfo){
-        this.needMediaInfo = needMediaInfo;
-    }
+	// needMediaInfo:
+	public Boolean getNeedMediaInfo(){
+		return this.needMediaInfo;
+	}
+	public void setNeedMediaInfo(Boolean needMediaInfo){
+		this.needMediaInfo = needMediaInfo;
+	}
+
+	public void needMediaInfo(String multirequestToken){
+		setToken("needMediaInfo", multirequestToken);
+	}
 
 
-    public SearchResultResponse() {
-       super();
-    }
+	public SearchResultResponse() {
+		super();
+	}
 
-    public SearchResultResponse(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchResultResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), SearchResult.class);
-        needMediaInfo = GsonParser.parseBoolean(jsonObject.get("needMediaInfo"));
+		// set members values:
+		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), SearchResult.class);
+		needMediaInfo = GsonParser.parseBoolean(jsonObject.get("needMediaInfo"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchResultResponse");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchResultResponse");
+		return kparams;
+	}
 
 }
 

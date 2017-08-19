@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,94 +41,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StreamContainer.Tokenizer.class)
 public class StreamContainer extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+		String trackIndex();
+		String language();
+		String channelIndex();
+		String label();
+		String channelLayout();
+	}
 
-    private String type;
-    private Integer trackIndex;
-    private String language;
-    private Integer channelIndex;
-    private String label;
-    private String channelLayout;
+	private String type;
+	private Integer trackIndex;
+	private String language;
+	private Integer channelIndex;
+	private String label;
+	private String channelLayout;
 
-    // type:
-    public String getType(){
-        return this.type;
-    }
-    public void setType(String type){
-        this.type = type;
-    }
+	// type:
+	public String getType(){
+		return this.type;
+	}
+	public void setType(String type){
+		this.type = type;
+	}
 
-    // trackIndex:
-    public Integer getTrackIndex(){
-        return this.trackIndex;
-    }
-    public void setTrackIndex(Integer trackIndex){
-        this.trackIndex = trackIndex;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // language:
-    public String getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(String language){
-        this.language = language;
-    }
+	// trackIndex:
+	public Integer getTrackIndex(){
+		return this.trackIndex;
+	}
+	public void setTrackIndex(Integer trackIndex){
+		this.trackIndex = trackIndex;
+	}
 
-    // channelIndex:
-    public Integer getChannelIndex(){
-        return this.channelIndex;
-    }
-    public void setChannelIndex(Integer channelIndex){
-        this.channelIndex = channelIndex;
-    }
+	public void trackIndex(String multirequestToken){
+		setToken("trackIndex", multirequestToken);
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	// language:
+	public String getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(String language){
+		this.language = language;
+	}
 
-    // channelLayout:
-    public String getChannelLayout(){
-        return this.channelLayout;
-    }
-    public void setChannelLayout(String channelLayout){
-        this.channelLayout = channelLayout;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
+
+	// channelIndex:
+	public Integer getChannelIndex(){
+		return this.channelIndex;
+	}
+	public void setChannelIndex(Integer channelIndex){
+		this.channelIndex = channelIndex;
+	}
+
+	public void channelIndex(String multirequestToken){
+		setToken("channelIndex", multirequestToken);
+	}
+
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
+
+	// channelLayout:
+	public String getChannelLayout(){
+		return this.channelLayout;
+	}
+	public void setChannelLayout(String channelLayout){
+		this.channelLayout = channelLayout;
+	}
+
+	public void channelLayout(String multirequestToken){
+		setToken("channelLayout", multirequestToken);
+	}
 
 
-    public StreamContainer() {
-       super();
-    }
+	public StreamContainer() {
+		super();
+	}
 
-    public StreamContainer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StreamContainer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = GsonParser.parseString(jsonObject.get("type"));
-        trackIndex = GsonParser.parseInt(jsonObject.get("trackIndex"));
-        language = GsonParser.parseString(jsonObject.get("language"));
-        channelIndex = GsonParser.parseInt(jsonObject.get("channelIndex"));
-        label = GsonParser.parseString(jsonObject.get("label"));
-        channelLayout = GsonParser.parseString(jsonObject.get("channelLayout"));
+		// set members values:
+		type = GsonParser.parseString(jsonObject.get("type"));
+		trackIndex = GsonParser.parseInt(jsonObject.get("trackIndex"));
+		language = GsonParser.parseString(jsonObject.get("language"));
+		channelIndex = GsonParser.parseInt(jsonObject.get("channelIndex"));
+		label = GsonParser.parseString(jsonObject.get("label"));
+		channelLayout = GsonParser.parseString(jsonObject.get("channelLayout"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStreamContainer");
-        kparams.add("type", this.type);
-        kparams.add("trackIndex", this.trackIndex);
-        kparams.add("language", this.language);
-        kparams.add("channelIndex", this.channelIndex);
-        kparams.add("label", this.label);
-        kparams.add("channelLayout", this.channelLayout);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStreamContainer");
+		kparams.add("type", this.type);
+		kparams.add("trackIndex", this.trackIndex);
+		kparams.add("language", this.language);
+		kparams.add("channelIndex", this.channelIndex);
+		kparams.add("label", this.label);
+		kparams.add("channelLayout", this.channelLayout);
+		return kparams;
+	}
 
 }
 

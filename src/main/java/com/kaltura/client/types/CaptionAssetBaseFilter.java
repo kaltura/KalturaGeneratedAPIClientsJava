@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.CaptionAssetStatus;
 import com.kaltura.client.enums.CaptionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,105 +42,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CaptionAssetBaseFilter.Tokenizer.class)
 public abstract class CaptionAssetBaseFilter extends AssetFilter {
+	
+	public interface Tokenizer extends AssetFilter.Tokenizer {
+		String captionParamsIdEqual();
+		String captionParamsIdIn();
+		String formatEqual();
+		String formatIn();
+		String statusEqual();
+		String statusIn();
+		String statusNotIn();
+	}
 
-    private Integer captionParamsIdEqual;
-    private String captionParamsIdIn;
-    private CaptionType formatEqual;
-    private String formatIn;
-    private CaptionAssetStatus statusEqual;
-    private String statusIn;
-    private String statusNotIn;
+	private Integer captionParamsIdEqual;
+	private String captionParamsIdIn;
+	private CaptionType formatEqual;
+	private String formatIn;
+	private CaptionAssetStatus statusEqual;
+	private String statusIn;
+	private String statusNotIn;
 
-    // captionParamsIdEqual:
-    public Integer getCaptionParamsIdEqual(){
-        return this.captionParamsIdEqual;
-    }
-    public void setCaptionParamsIdEqual(Integer captionParamsIdEqual){
-        this.captionParamsIdEqual = captionParamsIdEqual;
-    }
+	// captionParamsIdEqual:
+	public Integer getCaptionParamsIdEqual(){
+		return this.captionParamsIdEqual;
+	}
+	public void setCaptionParamsIdEqual(Integer captionParamsIdEqual){
+		this.captionParamsIdEqual = captionParamsIdEqual;
+	}
 
-    // captionParamsIdIn:
-    public String getCaptionParamsIdIn(){
-        return this.captionParamsIdIn;
-    }
-    public void setCaptionParamsIdIn(String captionParamsIdIn){
-        this.captionParamsIdIn = captionParamsIdIn;
-    }
+	public void captionParamsIdEqual(String multirequestToken){
+		setToken("captionParamsIdEqual", multirequestToken);
+	}
 
-    // formatEqual:
-    public CaptionType getFormatEqual(){
-        return this.formatEqual;
-    }
-    public void setFormatEqual(CaptionType formatEqual){
-        this.formatEqual = formatEqual;
-    }
+	// captionParamsIdIn:
+	public String getCaptionParamsIdIn(){
+		return this.captionParamsIdIn;
+	}
+	public void setCaptionParamsIdIn(String captionParamsIdIn){
+		this.captionParamsIdIn = captionParamsIdIn;
+	}
 
-    // formatIn:
-    public String getFormatIn(){
-        return this.formatIn;
-    }
-    public void setFormatIn(String formatIn){
-        this.formatIn = formatIn;
-    }
+	public void captionParamsIdIn(String multirequestToken){
+		setToken("captionParamsIdIn", multirequestToken);
+	}
 
-    // statusEqual:
-    public CaptionAssetStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(CaptionAssetStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// formatEqual:
+	public CaptionType getFormatEqual(){
+		return this.formatEqual;
+	}
+	public void setFormatEqual(CaptionType formatEqual){
+		this.formatEqual = formatEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void formatEqual(String multirequestToken){
+		setToken("formatEqual", multirequestToken);
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	// formatIn:
+	public String getFormatIn(){
+		return this.formatIn;
+	}
+	public void setFormatIn(String formatIn){
+		this.formatIn = formatIn;
+	}
+
+	public void formatIn(String multirequestToken){
+		setToken("formatIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public CaptionAssetStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(CaptionAssetStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
+
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
 
 
-    public CaptionAssetBaseFilter() {
-       super();
-    }
+	public CaptionAssetBaseFilter() {
+		super();
+	}
 
-    public CaptionAssetBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CaptionAssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        captionParamsIdEqual = GsonParser.parseInt(jsonObject.get("captionParamsIdEqual"));
-        captionParamsIdIn = GsonParser.parseString(jsonObject.get("captionParamsIdIn"));
-        formatEqual = CaptionType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
-        formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
-        statusEqual = CaptionAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		// set members values:
+		captionParamsIdEqual = GsonParser.parseInt(jsonObject.get("captionParamsIdEqual"));
+		captionParamsIdIn = GsonParser.parseString(jsonObject.get("captionParamsIdIn"));
+		formatEqual = CaptionType.get(GsonParser.parseString(jsonObject.get("formatEqual")));
+		formatIn = GsonParser.parseString(jsonObject.get("formatIn"));
+		statusEqual = CaptionAssetStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCaptionAssetBaseFilter");
-        kparams.add("captionParamsIdEqual", this.captionParamsIdEqual);
-        kparams.add("captionParamsIdIn", this.captionParamsIdIn);
-        kparams.add("formatEqual", this.formatEqual);
-        kparams.add("formatIn", this.formatIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCaptionAssetBaseFilter");
+		kparams.add("captionParamsIdEqual", this.captionParamsIdEqual);
+		kparams.add("captionParamsIdIn", this.captionParamsIdIn);
+		kparams.add("formatEqual", this.formatEqual);
+		kparams.add("formatIn", this.formatIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		return kparams;
+	}
 
 }
 

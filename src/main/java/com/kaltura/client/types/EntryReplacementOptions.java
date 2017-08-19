@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -43,52 +44,62 @@ import java.util.List;
 
 /**  Advanced configuration for entry replacement process  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryReplacementOptions.Tokenizer.class)
 public class EntryReplacementOptions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String keepManualThumbnails();
+		RequestBuilder.ListTokenizer<PluginReplacementOptionsItem.Tokenizer> pluginOptionItems();
+	}
 
 	/**  If true manually created thumbnails will not be deleted on entry replacement  */
-    private Integer keepManualThumbnails;
+	private Integer keepManualThumbnails;
 	/**  Array of plugin replacement options  */
-    private List<PluginReplacementOptionsItem> pluginOptionItems;
+	private List<PluginReplacementOptionsItem> pluginOptionItems;
 
-    // keepManualThumbnails:
-    public Integer getKeepManualThumbnails(){
-        return this.keepManualThumbnails;
-    }
-    public void setKeepManualThumbnails(Integer keepManualThumbnails){
-        this.keepManualThumbnails = keepManualThumbnails;
-    }
+	// keepManualThumbnails:
+	public Integer getKeepManualThumbnails(){
+		return this.keepManualThumbnails;
+	}
+	public void setKeepManualThumbnails(Integer keepManualThumbnails){
+		this.keepManualThumbnails = keepManualThumbnails;
+	}
 
-    // pluginOptionItems:
-    public List<PluginReplacementOptionsItem> getPluginOptionItems(){
-        return this.pluginOptionItems;
-    }
-    public void setPluginOptionItems(List<PluginReplacementOptionsItem> pluginOptionItems){
-        this.pluginOptionItems = pluginOptionItems;
-    }
+	public void keepManualThumbnails(String multirequestToken){
+		setToken("keepManualThumbnails", multirequestToken);
+	}
+
+	// pluginOptionItems:
+	public List<PluginReplacementOptionsItem> getPluginOptionItems(){
+		return this.pluginOptionItems;
+	}
+	public void setPluginOptionItems(List<PluginReplacementOptionsItem> pluginOptionItems){
+		this.pluginOptionItems = pluginOptionItems;
+	}
 
 
-    public EntryReplacementOptions() {
-       super();
-    }
+	public EntryReplacementOptions() {
+		super();
+	}
 
-    public EntryReplacementOptions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryReplacementOptions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keepManualThumbnails = GsonParser.parseInt(jsonObject.get("keepManualThumbnails"));
-        pluginOptionItems = GsonParser.parseArray(jsonObject.getAsJsonArray("pluginOptionItems"), PluginReplacementOptionsItem.class);
+		// set members values:
+		keepManualThumbnails = GsonParser.parseInt(jsonObject.get("keepManualThumbnails"));
+		pluginOptionItems = GsonParser.parseArray(jsonObject.getAsJsonArray("pluginOptionItems"), PluginReplacementOptionsItem.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryReplacementOptions");
-        kparams.add("keepManualThumbnails", this.keepManualThumbnails);
-        kparams.add("pluginOptionItems", this.pluginOptionItems);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryReplacementOptions");
+		kparams.add("keepManualThumbnails", this.keepManualThumbnails);
+		kparams.add("pluginOptionItems", this.pluginOptionItems);
+		return kparams;
+	}
 
 }
 

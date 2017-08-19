@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveChannelCompareAttribute;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,39 +43,48 @@ import com.kaltura.client.utils.GsonParser;
 /**  Auto-generated class.  Used to search KalturaLiveChannel attributes. Use
   KalturaLiveChannelCompareAttribute enum to provide attribute name. /  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveChannelCompareAttributeCondition.Tokenizer.class)
 public class LiveChannelCompareAttributeCondition extends SearchComparableAttributeCondition {
+	
+	public interface Tokenizer extends SearchComparableAttributeCondition.Tokenizer {
+		String attribute();
+	}
 
-    private LiveChannelCompareAttribute attribute;
+	private LiveChannelCompareAttribute attribute;
 
-    // attribute:
-    public LiveChannelCompareAttribute getAttribute(){
-        return this.attribute;
-    }
-    public void setAttribute(LiveChannelCompareAttribute attribute){
-        this.attribute = attribute;
-    }
+	// attribute:
+	public LiveChannelCompareAttribute getAttribute(){
+		return this.attribute;
+	}
+	public void setAttribute(LiveChannelCompareAttribute attribute){
+		this.attribute = attribute;
+	}
+
+	public void attribute(String multirequestToken){
+		setToken("attribute", multirequestToken);
+	}
 
 
-    public LiveChannelCompareAttributeCondition() {
-       super();
-    }
+	public LiveChannelCompareAttributeCondition() {
+		super();
+	}
 
-    public LiveChannelCompareAttributeCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveChannelCompareAttributeCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        attribute = LiveChannelCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
+		// set members values:
+		attribute = LiveChannelCompareAttribute.get(GsonParser.parseString(jsonObject.get("attribute")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveChannelCompareAttributeCondition");
-        kparams.add("attribute", this.attribute);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveChannelCompareAttributeCondition");
+		kparams.add("attribute", this.attribute);
+		return kparams;
+	}
 
 }
 

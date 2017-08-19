@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobErrorTypes implements EnumAsInt {
-    APP(0),
-    RUNTIME(1),
-    HTTP(2),
-    CURL(3),
-    KALTURA_API(4),
-    KALTURA_CLIENT(5);
+	APP(0),
+	RUNTIME(1),
+	HTTP(2),
+	CURL(3),
+	KALTURA_API(4),
+	KALTURA_CLIENT(5);
 
-    private int value;
+	private int value;
 
-    BatchJobErrorTypes(int value) {
-        this.value = value;
-    }
+	BatchJobErrorTypes(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static BatchJobErrorTypes get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BatchJobErrorTypes defined values and compare the inner value with the given one:
-        for(BatchJobErrorTypes item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BatchJobErrorTypes.values().length > 0 ? BatchJobErrorTypes.values()[0]: null;
+	public static BatchJobErrorTypes get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BatchJobErrorTypes defined values and compare the inner value with the given one:
+		for(BatchJobErrorTypes item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BatchJobErrorTypes.values().length > 0 ? BatchJobErrorTypes.values()[0]: null;
    }
 }

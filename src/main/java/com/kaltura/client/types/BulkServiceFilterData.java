@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.Filter;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,52 +43,58 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Represents the Bulk service input for filter bulk upload  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkServiceFilterData.Tokenizer.class)
 public class BulkServiceFilterData extends BulkServiceData {
+	
+	public interface Tokenizer extends BulkServiceData.Tokenizer {
+		Filter.Tokenizer filter();
+		ObjectBase.Tokenizer templateObject();
+	}
 
 	/**  Filter for extracting the objects list to upload  */
-    private Filter filter;
+	private Filter filter;
 	/**  Template object for new object creation  */
-    private ObjectBase templateObject;
+	private ObjectBase templateObject;
 
-    // filter:
-    public Filter getFilter(){
-        return this.filter;
-    }
-    public void setFilter(Filter filter){
-        this.filter = filter;
-    }
+	// filter:
+	public Filter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(Filter filter){
+		this.filter = filter;
+	}
 
-    // templateObject:
-    public ObjectBase getTemplateObject(){
-        return this.templateObject;
-    }
-    public void setTemplateObject(ObjectBase templateObject){
-        this.templateObject = templateObject;
-    }
+	// templateObject:
+	public ObjectBase getTemplateObject(){
+		return this.templateObject;
+	}
+	public void setTemplateObject(ObjectBase templateObject){
+		this.templateObject = templateObject;
+	}
 
 
-    public BulkServiceFilterData() {
-       super();
-    }
+	public BulkServiceFilterData() {
+		super();
+	}
 
-    public BulkServiceFilterData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkServiceFilterData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
-        templateObject = GsonParser.parseObject(jsonObject.getAsJsonObject("templateObject"), ObjectBase.class);
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
+		templateObject = GsonParser.parseObject(jsonObject.getAsJsonObject("templateObject"), ObjectBase.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkServiceFilterData");
-        kparams.add("filter", this.filter);
-        kparams.add("templateObject", this.templateObject);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkServiceFilterData");
+		kparams.add("filter", this.filter);
+		kparams.add("templateObject", this.templateObject);
+		return kparams;
+	}
 
 }
 

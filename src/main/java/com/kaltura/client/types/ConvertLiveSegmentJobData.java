@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryServerNodeType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,123 +41,167 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertLiveSegmentJobData.Tokenizer.class)
 public class ConvertLiveSegmentJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String entryId();
+		String assetId();
+		String mediaServerIndex();
+		String fileIndex();
+		String srcFilePath();
+		String destFilePath();
+		String endTime();
+		String destDataFilePath();
+	}
 
 	/**  Live stream entry id  */
-    private String entryId;
-    private String assetId;
+	private String entryId;
+	private String assetId;
 	/**  Primary or secondary media server  */
-    private EntryServerNodeType mediaServerIndex;
+	private EntryServerNodeType mediaServerIndex;
 	/**  The index of the file within the entry  */
-    private Integer fileIndex;
+	private Integer fileIndex;
 	/**  The recorded live media  */
-    private String srcFilePath;
+	private String srcFilePath;
 	/**  The output file  */
-    private String destFilePath;
+	private String destFilePath;
 	/**  Duration of the live entry including all recorded segments including the current  */
-    private Double endTime;
+	private Double endTime;
 	/**  The data output file  */
-    private String destDataFilePath;
+	private String destDataFilePath;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // mediaServerIndex:
-    public EntryServerNodeType getMediaServerIndex(){
-        return this.mediaServerIndex;
-    }
-    public void setMediaServerIndex(EntryServerNodeType mediaServerIndex){
-        this.mediaServerIndex = mediaServerIndex;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
 
-    // fileIndex:
-    public Integer getFileIndex(){
-        return this.fileIndex;
-    }
-    public void setFileIndex(Integer fileIndex){
-        this.fileIndex = fileIndex;
-    }
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
-    // srcFilePath:
-    public String getSrcFilePath(){
-        return this.srcFilePath;
-    }
-    public void setSrcFilePath(String srcFilePath){
-        this.srcFilePath = srcFilePath;
-    }
+	// mediaServerIndex:
+	public EntryServerNodeType getMediaServerIndex(){
+		return this.mediaServerIndex;
+	}
+	public void setMediaServerIndex(EntryServerNodeType mediaServerIndex){
+		this.mediaServerIndex = mediaServerIndex;
+	}
 
-    // destFilePath:
-    public String getDestFilePath(){
-        return this.destFilePath;
-    }
-    public void setDestFilePath(String destFilePath){
-        this.destFilePath = destFilePath;
-    }
+	public void mediaServerIndex(String multirequestToken){
+		setToken("mediaServerIndex", multirequestToken);
+	}
 
-    // endTime:
-    public Double getEndTime(){
-        return this.endTime;
-    }
-    public void setEndTime(Double endTime){
-        this.endTime = endTime;
-    }
+	// fileIndex:
+	public Integer getFileIndex(){
+		return this.fileIndex;
+	}
+	public void setFileIndex(Integer fileIndex){
+		this.fileIndex = fileIndex;
+	}
 
-    // destDataFilePath:
-    public String getDestDataFilePath(){
-        return this.destDataFilePath;
-    }
-    public void setDestDataFilePath(String destDataFilePath){
-        this.destDataFilePath = destDataFilePath;
-    }
+	public void fileIndex(String multirequestToken){
+		setToken("fileIndex", multirequestToken);
+	}
+
+	// srcFilePath:
+	public String getSrcFilePath(){
+		return this.srcFilePath;
+	}
+	public void setSrcFilePath(String srcFilePath){
+		this.srcFilePath = srcFilePath;
+	}
+
+	public void srcFilePath(String multirequestToken){
+		setToken("srcFilePath", multirequestToken);
+	}
+
+	// destFilePath:
+	public String getDestFilePath(){
+		return this.destFilePath;
+	}
+	public void setDestFilePath(String destFilePath){
+		this.destFilePath = destFilePath;
+	}
+
+	public void destFilePath(String multirequestToken){
+		setToken("destFilePath", multirequestToken);
+	}
+
+	// endTime:
+	public Double getEndTime(){
+		return this.endTime;
+	}
+	public void setEndTime(Double endTime){
+		this.endTime = endTime;
+	}
+
+	public void endTime(String multirequestToken){
+		setToken("endTime", multirequestToken);
+	}
+
+	// destDataFilePath:
+	public String getDestDataFilePath(){
+		return this.destDataFilePath;
+	}
+	public void setDestDataFilePath(String destDataFilePath){
+		this.destDataFilePath = destDataFilePath;
+	}
+
+	public void destDataFilePath(String multirequestToken){
+		setToken("destDataFilePath", multirequestToken);
+	}
 
 
-    public ConvertLiveSegmentJobData() {
-       super();
-    }
+	public ConvertLiveSegmentJobData() {
+		super();
+	}
 
-    public ConvertLiveSegmentJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertLiveSegmentJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        mediaServerIndex = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("mediaServerIndex")));
-        fileIndex = GsonParser.parseInt(jsonObject.get("fileIndex"));
-        srcFilePath = GsonParser.parseString(jsonObject.get("srcFilePath"));
-        destFilePath = GsonParser.parseString(jsonObject.get("destFilePath"));
-        endTime = GsonParser.parseDouble(jsonObject.get("endTime"));
-        destDataFilePath = GsonParser.parseString(jsonObject.get("destDataFilePath"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		mediaServerIndex = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("mediaServerIndex")));
+		fileIndex = GsonParser.parseInt(jsonObject.get("fileIndex"));
+		srcFilePath = GsonParser.parseString(jsonObject.get("srcFilePath"));
+		destFilePath = GsonParser.parseString(jsonObject.get("destFilePath"));
+		endTime = GsonParser.parseDouble(jsonObject.get("endTime"));
+		destDataFilePath = GsonParser.parseString(jsonObject.get("destDataFilePath"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertLiveSegmentJobData");
-        kparams.add("entryId", this.entryId);
-        kparams.add("assetId", this.assetId);
-        kparams.add("mediaServerIndex", this.mediaServerIndex);
-        kparams.add("fileIndex", this.fileIndex);
-        kparams.add("srcFilePath", this.srcFilePath);
-        kparams.add("destFilePath", this.destFilePath);
-        kparams.add("endTime", this.endTime);
-        kparams.add("destDataFilePath", this.destDataFilePath);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertLiveSegmentJobData");
+		kparams.add("entryId", this.entryId);
+		kparams.add("assetId", this.assetId);
+		kparams.add("mediaServerIndex", this.mediaServerIndex);
+		kparams.add("fileIndex", this.fileIndex);
+		kparams.add("srcFilePath", this.srcFilePath);
+		kparams.add("destFilePath", this.destFilePath);
+		kparams.add("endTime", this.endTime);
+		kparams.add("destDataFilePath", this.destDataFilePath);
+		return kparams;
+	}
 
 }
 

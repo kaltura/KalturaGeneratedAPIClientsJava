@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SearchOperatorType implements EnumAsInt {
-    SEARCH_AND(1),
-    SEARCH_OR(2);
+	SEARCH_AND(1),
+	SEARCH_OR(2);
 
-    private int value;
+	private int value;
 
-    SearchOperatorType(int value) {
-        this.value = value;
-    }
+	SearchOperatorType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static SearchOperatorType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over SearchOperatorType defined values and compare the inner value with the given one:
-        for(SearchOperatorType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return SearchOperatorType.values().length > 0 ? SearchOperatorType.values()[0]: null;
+	public static SearchOperatorType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over SearchOperatorType defined values and compare the inner value with the given one:
+		for(SearchOperatorType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return SearchOperatorType.values().length > 0 ? SearchOperatorType.values()[0]: null;
    }
 }

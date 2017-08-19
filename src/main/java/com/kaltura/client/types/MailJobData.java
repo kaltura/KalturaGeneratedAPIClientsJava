@@ -33,6 +33,7 @@ import com.kaltura.client.enums.LanguageCode;
 import com.kaltura.client.enums.MailJobStatus;
 import com.kaltura.client.enums.MailType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,205 +43,289 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MailJobData.Tokenizer.class)
 public class MailJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String mailType();
+		String mailPriority();
+		String status();
+		String recipientName();
+		String recipientEmail();
+		String recipientId();
+		String fromName();
+		String fromEmail();
+		String bodyParams();
+		String subjectParams();
+		String templatePath();
+		String language();
+		String campaignId();
+		String minSendDate();
+		String isHtml();
+		String separator();
+	}
 
-    private MailType mailType;
-    private Integer mailPriority;
-    private MailJobStatus status;
-    private String recipientName;
-    private String recipientEmail;
+	private MailType mailType;
+	private Integer mailPriority;
+	private MailJobStatus status;
+	private String recipientName;
+	private String recipientEmail;
 	/**  kuserId  */
-    private Integer recipientId;
-    private String fromName;
-    private String fromEmail;
-    private String bodyParams;
-    private String subjectParams;
-    private String templatePath;
-    private LanguageCode language;
-    private Integer campaignId;
-    private Integer minSendDate;
-    private Boolean isHtml;
-    private String separator;
+	private Integer recipientId;
+	private String fromName;
+	private String fromEmail;
+	private String bodyParams;
+	private String subjectParams;
+	private String templatePath;
+	private LanguageCode language;
+	private Integer campaignId;
+	private Integer minSendDate;
+	private Boolean isHtml;
+	private String separator;
 
-    // mailType:
-    public MailType getMailType(){
-        return this.mailType;
-    }
-    public void setMailType(MailType mailType){
-        this.mailType = mailType;
-    }
+	// mailType:
+	public MailType getMailType(){
+		return this.mailType;
+	}
+	public void setMailType(MailType mailType){
+		this.mailType = mailType;
+	}
 
-    // mailPriority:
-    public Integer getMailPriority(){
-        return this.mailPriority;
-    }
-    public void setMailPriority(Integer mailPriority){
-        this.mailPriority = mailPriority;
-    }
+	public void mailType(String multirequestToken){
+		setToken("mailType", multirequestToken);
+	}
 
-    // status:
-    public MailJobStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(MailJobStatus status){
-        this.status = status;
-    }
+	// mailPriority:
+	public Integer getMailPriority(){
+		return this.mailPriority;
+	}
+	public void setMailPriority(Integer mailPriority){
+		this.mailPriority = mailPriority;
+	}
 
-    // recipientName:
-    public String getRecipientName(){
-        return this.recipientName;
-    }
-    public void setRecipientName(String recipientName){
-        this.recipientName = recipientName;
-    }
+	public void mailPriority(String multirequestToken){
+		setToken("mailPriority", multirequestToken);
+	}
 
-    // recipientEmail:
-    public String getRecipientEmail(){
-        return this.recipientEmail;
-    }
-    public void setRecipientEmail(String recipientEmail){
-        this.recipientEmail = recipientEmail;
-    }
+	// status:
+	public MailJobStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(MailJobStatus status){
+		this.status = status;
+	}
 
-    // recipientId:
-    public Integer getRecipientId(){
-        return this.recipientId;
-    }
-    public void setRecipientId(Integer recipientId){
-        this.recipientId = recipientId;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // fromName:
-    public String getFromName(){
-        return this.fromName;
-    }
-    public void setFromName(String fromName){
-        this.fromName = fromName;
-    }
+	// recipientName:
+	public String getRecipientName(){
+		return this.recipientName;
+	}
+	public void setRecipientName(String recipientName){
+		this.recipientName = recipientName;
+	}
 
-    // fromEmail:
-    public String getFromEmail(){
-        return this.fromEmail;
-    }
-    public void setFromEmail(String fromEmail){
-        this.fromEmail = fromEmail;
-    }
+	public void recipientName(String multirequestToken){
+		setToken("recipientName", multirequestToken);
+	}
 
-    // bodyParams:
-    public String getBodyParams(){
-        return this.bodyParams;
-    }
-    public void setBodyParams(String bodyParams){
-        this.bodyParams = bodyParams;
-    }
+	// recipientEmail:
+	public String getRecipientEmail(){
+		return this.recipientEmail;
+	}
+	public void setRecipientEmail(String recipientEmail){
+		this.recipientEmail = recipientEmail;
+	}
 
-    // subjectParams:
-    public String getSubjectParams(){
-        return this.subjectParams;
-    }
-    public void setSubjectParams(String subjectParams){
-        this.subjectParams = subjectParams;
-    }
+	public void recipientEmail(String multirequestToken){
+		setToken("recipientEmail", multirequestToken);
+	}
 
-    // templatePath:
-    public String getTemplatePath(){
-        return this.templatePath;
-    }
-    public void setTemplatePath(String templatePath){
-        this.templatePath = templatePath;
-    }
+	// recipientId:
+	public Integer getRecipientId(){
+		return this.recipientId;
+	}
+	public void setRecipientId(Integer recipientId){
+		this.recipientId = recipientId;
+	}
 
-    // language:
-    public LanguageCode getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(LanguageCode language){
-        this.language = language;
-    }
+	public void recipientId(String multirequestToken){
+		setToken("recipientId", multirequestToken);
+	}
 
-    // campaignId:
-    public Integer getCampaignId(){
-        return this.campaignId;
-    }
-    public void setCampaignId(Integer campaignId){
-        this.campaignId = campaignId;
-    }
+	// fromName:
+	public String getFromName(){
+		return this.fromName;
+	}
+	public void setFromName(String fromName){
+		this.fromName = fromName;
+	}
 
-    // minSendDate:
-    public Integer getMinSendDate(){
-        return this.minSendDate;
-    }
-    public void setMinSendDate(Integer minSendDate){
-        this.minSendDate = minSendDate;
-    }
+	public void fromName(String multirequestToken){
+		setToken("fromName", multirequestToken);
+	}
 
-    // isHtml:
-    public Boolean getIsHtml(){
-        return this.isHtml;
-    }
-    public void setIsHtml(Boolean isHtml){
-        this.isHtml = isHtml;
-    }
+	// fromEmail:
+	public String getFromEmail(){
+		return this.fromEmail;
+	}
+	public void setFromEmail(String fromEmail){
+		this.fromEmail = fromEmail;
+	}
 
-    // separator:
-    public String getSeparator(){
-        return this.separator;
-    }
-    public void setSeparator(String separator){
-        this.separator = separator;
-    }
+	public void fromEmail(String multirequestToken){
+		setToken("fromEmail", multirequestToken);
+	}
+
+	// bodyParams:
+	public String getBodyParams(){
+		return this.bodyParams;
+	}
+	public void setBodyParams(String bodyParams){
+		this.bodyParams = bodyParams;
+	}
+
+	public void bodyParams(String multirequestToken){
+		setToken("bodyParams", multirequestToken);
+	}
+
+	// subjectParams:
+	public String getSubjectParams(){
+		return this.subjectParams;
+	}
+	public void setSubjectParams(String subjectParams){
+		this.subjectParams = subjectParams;
+	}
+
+	public void subjectParams(String multirequestToken){
+		setToken("subjectParams", multirequestToken);
+	}
+
+	// templatePath:
+	public String getTemplatePath(){
+		return this.templatePath;
+	}
+	public void setTemplatePath(String templatePath){
+		this.templatePath = templatePath;
+	}
+
+	public void templatePath(String multirequestToken){
+		setToken("templatePath", multirequestToken);
+	}
+
+	// language:
+	public LanguageCode getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(LanguageCode language){
+		this.language = language;
+	}
+
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
+
+	// campaignId:
+	public Integer getCampaignId(){
+		return this.campaignId;
+	}
+	public void setCampaignId(Integer campaignId){
+		this.campaignId = campaignId;
+	}
+
+	public void campaignId(String multirequestToken){
+		setToken("campaignId", multirequestToken);
+	}
+
+	// minSendDate:
+	public Integer getMinSendDate(){
+		return this.minSendDate;
+	}
+	public void setMinSendDate(Integer minSendDate){
+		this.minSendDate = minSendDate;
+	}
+
+	public void minSendDate(String multirequestToken){
+		setToken("minSendDate", multirequestToken);
+	}
+
+	// isHtml:
+	public Boolean getIsHtml(){
+		return this.isHtml;
+	}
+	public void setIsHtml(Boolean isHtml){
+		this.isHtml = isHtml;
+	}
+
+	public void isHtml(String multirequestToken){
+		setToken("isHtml", multirequestToken);
+	}
+
+	// separator:
+	public String getSeparator(){
+		return this.separator;
+	}
+	public void setSeparator(String separator){
+		this.separator = separator;
+	}
+
+	public void separator(String multirequestToken){
+		setToken("separator", multirequestToken);
+	}
 
 
-    public MailJobData() {
-       super();
-    }
+	public MailJobData() {
+		super();
+	}
 
-    public MailJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MailJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        mailType = MailType.get(GsonParser.parseString(jsonObject.get("mailType")));
-        mailPriority = GsonParser.parseInt(jsonObject.get("mailPriority"));
-        status = MailJobStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        recipientName = GsonParser.parseString(jsonObject.get("recipientName"));
-        recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
-        recipientId = GsonParser.parseInt(jsonObject.get("recipientId"));
-        fromName = GsonParser.parseString(jsonObject.get("fromName"));
-        fromEmail = GsonParser.parseString(jsonObject.get("fromEmail"));
-        bodyParams = GsonParser.parseString(jsonObject.get("bodyParams"));
-        subjectParams = GsonParser.parseString(jsonObject.get("subjectParams"));
-        templatePath = GsonParser.parseString(jsonObject.get("templatePath"));
-        language = LanguageCode.get(GsonParser.parseString(jsonObject.get("language")));
-        campaignId = GsonParser.parseInt(jsonObject.get("campaignId"));
-        minSendDate = GsonParser.parseInt(jsonObject.get("minSendDate"));
-        isHtml = GsonParser.parseBoolean(jsonObject.get("isHtml"));
-        separator = GsonParser.parseString(jsonObject.get("separator"));
+		// set members values:
+		mailType = MailType.get(GsonParser.parseString(jsonObject.get("mailType")));
+		mailPriority = GsonParser.parseInt(jsonObject.get("mailPriority"));
+		status = MailJobStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		recipientName = GsonParser.parseString(jsonObject.get("recipientName"));
+		recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
+		recipientId = GsonParser.parseInt(jsonObject.get("recipientId"));
+		fromName = GsonParser.parseString(jsonObject.get("fromName"));
+		fromEmail = GsonParser.parseString(jsonObject.get("fromEmail"));
+		bodyParams = GsonParser.parseString(jsonObject.get("bodyParams"));
+		subjectParams = GsonParser.parseString(jsonObject.get("subjectParams"));
+		templatePath = GsonParser.parseString(jsonObject.get("templatePath"));
+		language = LanguageCode.get(GsonParser.parseString(jsonObject.get("language")));
+		campaignId = GsonParser.parseInt(jsonObject.get("campaignId"));
+		minSendDate = GsonParser.parseInt(jsonObject.get("minSendDate"));
+		isHtml = GsonParser.parseBoolean(jsonObject.get("isHtml"));
+		separator = GsonParser.parseString(jsonObject.get("separator"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMailJobData");
-        kparams.add("mailType", this.mailType);
-        kparams.add("mailPriority", this.mailPriority);
-        kparams.add("status", this.status);
-        kparams.add("recipientName", this.recipientName);
-        kparams.add("recipientEmail", this.recipientEmail);
-        kparams.add("recipientId", this.recipientId);
-        kparams.add("fromName", this.fromName);
-        kparams.add("fromEmail", this.fromEmail);
-        kparams.add("bodyParams", this.bodyParams);
-        kparams.add("subjectParams", this.subjectParams);
-        kparams.add("templatePath", this.templatePath);
-        kparams.add("language", this.language);
-        kparams.add("campaignId", this.campaignId);
-        kparams.add("minSendDate", this.minSendDate);
-        kparams.add("isHtml", this.isHtml);
-        kparams.add("separator", this.separator);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMailJobData");
+		kparams.add("mailType", this.mailType);
+		kparams.add("mailPriority", this.mailPriority);
+		kparams.add("status", this.status);
+		kparams.add("recipientName", this.recipientName);
+		kparams.add("recipientEmail", this.recipientEmail);
+		kparams.add("recipientId", this.recipientId);
+		kparams.add("fromName", this.fromName);
+		kparams.add("fromEmail", this.fromEmail);
+		kparams.add("bodyParams", this.bodyParams);
+		kparams.add("subjectParams", this.subjectParams);
+		kparams.add("templatePath", this.templatePath);
+		kparams.add("language", this.language);
+		kparams.add("campaignId", this.campaignId);
+		kparams.add("minSendDate", this.minSendDate);
+		kparams.add("isHtml", this.isHtml);
+		kparams.add("separator", this.separator);
+		return kparams;
+	}
 
 }
 

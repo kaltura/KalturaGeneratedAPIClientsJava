@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileFilter.Tokenizer.class)
 public class DeliveryProfileFilter extends DeliveryProfileBaseFilter {
+	
+	public interface Tokenizer extends DeliveryProfileBaseFilter.Tokenizer {
+		String isLive();
+	}
 
-    private Boolean isLive;
+	private Boolean isLive;
 
-    // isLive:
-    public Boolean getIsLive(){
-        return this.isLive;
-    }
-    public void setIsLive(Boolean isLive){
-        this.isLive = isLive;
-    }
+	// isLive:
+	public Boolean getIsLive(){
+		return this.isLive;
+	}
+	public void setIsLive(Boolean isLive){
+		this.isLive = isLive;
+	}
+
+	public void isLive(String multirequestToken){
+		setToken("isLive", multirequestToken);
+	}
 
 
-    public DeliveryProfileFilter() {
-       super();
-    }
+	public DeliveryProfileFilter() {
+		super();
+	}
 
-    public DeliveryProfileFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        isLive = GsonParser.parseBoolean(jsonObject.get("isLive"));
+		// set members values:
+		isLive = GsonParser.parseBoolean(jsonObject.get("isLive"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileFilter");
-        kparams.add("isLive", this.isLive);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileFilter");
+		kparams.add("isLive", this.isLive);
+		return kparams;
+	}
 
 }
 

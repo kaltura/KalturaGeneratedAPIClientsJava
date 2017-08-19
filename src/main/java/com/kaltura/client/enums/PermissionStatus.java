@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PermissionStatus implements EnumAsInt {
-    ACTIVE(1),
-    BLOCKED(2),
-    DELETED(3);
+	ACTIVE(1),
+	BLOCKED(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    PermissionStatus(int value) {
-        this.value = value;
-    }
+	PermissionStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PermissionStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PermissionStatus defined values and compare the inner value with the given one:
-        for(PermissionStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PermissionStatus.values().length > 0 ? PermissionStatus.values()[0]: null;
+	public static PermissionStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PermissionStatus defined values and compare the inner value with the given one:
+		for(PermissionStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PermissionStatus.values().length > 0 ? PermissionStatus.values()[0]: null;
    }
 }

@@ -34,55 +34,55 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveEntryCompareAttribute implements EnumAsString {
-    ACCESS_CONTROL_ID("accessControlId"),
-    CREATED_AT("createdAt"),
-    END_DATE("endDate"),
-    LAST_PLAYED_AT("lastPlayedAt"),
-    MEDIA_DATE("mediaDate"),
-    MEDIA_TYPE("mediaType"),
-    MODERATION_COUNT("moderationCount"),
-    MODERATION_STATUS("moderationStatus"),
-    MS_DURATION("msDuration"),
-    PARTNER_ID("partnerId"),
-    PARTNER_SORT_VALUE("partnerSortValue"),
-    PLAYS("plays"),
-    RANK("rank"),
-    REPLACEMENT_STATUS("replacementStatus"),
-    START_DATE("startDate"),
-    STATUS("status"),
-    TOTAL_RANK("totalRank"),
-    TYPE("type"),
-    UPDATED_AT("updatedAt"),
-    VIEWS("views");
+	ACCESS_CONTROL_ID("accessControlId"),
+	CREATED_AT("createdAt"),
+	END_DATE("endDate"),
+	LAST_PLAYED_AT("lastPlayedAt"),
+	MEDIA_DATE("mediaDate"),
+	MEDIA_TYPE("mediaType"),
+	MODERATION_COUNT("moderationCount"),
+	MODERATION_STATUS("moderationStatus"),
+	MS_DURATION("msDuration"),
+	PARTNER_ID("partnerId"),
+	PARTNER_SORT_VALUE("partnerSortValue"),
+	PLAYS("plays"),
+	RANK("rank"),
+	REPLACEMENT_STATUS("replacementStatus"),
+	START_DATE("startDate"),
+	STATUS("status"),
+	TOTAL_RANK("totalRank"),
+	TYPE("type"),
+	UPDATED_AT("updatedAt"),
+	VIEWS("views");
 
-    private String value;
+	private String value;
 
-    LiveEntryCompareAttribute(String value) {
-        this.value = value;
-    }
+	LiveEntryCompareAttribute(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveEntryCompareAttribute get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveEntryCompareAttribute defined values and compare the inner value with the given one:
-        for(LiveEntryCompareAttribute item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveEntryCompareAttribute.values().length > 0 ? LiveEntryCompareAttribute.values()[0]: null;
+	public static LiveEntryCompareAttribute get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveEntryCompareAttribute defined values and compare the inner value with the given one:
+		for(LiveEntryCompareAttribute item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveEntryCompareAttribute.values().length > 0 ? LiveEntryCompareAttribute.values()[0]: null;
    }
 }

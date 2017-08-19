@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaEntryFilterForPlaylist.Tokenizer.class)
 public class MediaEntryFilterForPlaylist extends MediaEntryFilter {
+	
+	public interface Tokenizer extends MediaEntryFilter.Tokenizer {
+		String limit();
+	}
 
-    private Integer limit;
+	private Integer limit;
 
-    // limit:
-    public Integer getLimit(){
-        return this.limit;
-    }
-    public void setLimit(Integer limit){
-        this.limit = limit;
-    }
+	// limit:
+	public Integer getLimit(){
+		return this.limit;
+	}
+	public void setLimit(Integer limit){
+		this.limit = limit;
+	}
+
+	public void limit(String multirequestToken){
+		setToken("limit", multirequestToken);
+	}
 
 
-    public MediaEntryFilterForPlaylist() {
-       super();
-    }
+	public MediaEntryFilterForPlaylist() {
+		super();
+	}
 
-    public MediaEntryFilterForPlaylist(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaEntryFilterForPlaylist(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        limit = GsonParser.parseInt(jsonObject.get("limit"));
+		// set members values:
+		limit = GsonParser.parseInt(jsonObject.get("limit"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaEntryFilterForPlaylist");
-        kparams.add("limit", this.limit);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaEntryFilterForPlaylist");
+		kparams.add("limit", this.limit);
+		return kparams;
+	}
 
 }
 

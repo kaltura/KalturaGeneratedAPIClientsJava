@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,115 +40,154 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MoveCategoryEntriesJobData.Tokenizer.class)
 public class MoveCategoryEntriesJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcCategoryId();
+		String destCategoryId();
+		String lastMovedCategoryId();
+		String lastMovedCategoryPageIndex();
+		String lastMovedCategoryEntryPageIndex();
+		String moveFromChildren();
+		String destCategoryFullIds();
+	}
 
 	/**  Source category id  */
-    private Integer srcCategoryId;
+	private Integer srcCategoryId;
 	/**  Destination category id  */
-    private Integer destCategoryId;
+	private Integer destCategoryId;
 	/**  Saves the last category id that its entries moved completely      In case of
 	  crash the batch will restart from that point  */
-    private Integer lastMovedCategoryId;
+	private Integer lastMovedCategoryId;
 	/**  Saves the last page index of the child categories filter pager      In case of
 	  crash the batch will restart from that point  */
-    private Integer lastMovedCategoryPageIndex;
+	private Integer lastMovedCategoryPageIndex;
 	/**  Saves the last page index of the category entries filter pager      In case of
 	  crash the batch will restart from that point  */
-    private Integer lastMovedCategoryEntryPageIndex;
+	private Integer lastMovedCategoryEntryPageIndex;
 	/**  All entries from all child categories will be moved as well  */
-    private Boolean moveFromChildren;
+	private Boolean moveFromChildren;
 	/**  Destination categories fallback ids  */
-    private String destCategoryFullIds;
+	private String destCategoryFullIds;
 
-    // srcCategoryId:
-    public Integer getSrcCategoryId(){
-        return this.srcCategoryId;
-    }
-    public void setSrcCategoryId(Integer srcCategoryId){
-        this.srcCategoryId = srcCategoryId;
-    }
+	// srcCategoryId:
+	public Integer getSrcCategoryId(){
+		return this.srcCategoryId;
+	}
+	public void setSrcCategoryId(Integer srcCategoryId){
+		this.srcCategoryId = srcCategoryId;
+	}
 
-    // destCategoryId:
-    public Integer getDestCategoryId(){
-        return this.destCategoryId;
-    }
-    public void setDestCategoryId(Integer destCategoryId){
-        this.destCategoryId = destCategoryId;
-    }
+	public void srcCategoryId(String multirequestToken){
+		setToken("srcCategoryId", multirequestToken);
+	}
 
-    // lastMovedCategoryId:
-    public Integer getLastMovedCategoryId(){
-        return this.lastMovedCategoryId;
-    }
-    public void setLastMovedCategoryId(Integer lastMovedCategoryId){
-        this.lastMovedCategoryId = lastMovedCategoryId;
-    }
+	// destCategoryId:
+	public Integer getDestCategoryId(){
+		return this.destCategoryId;
+	}
+	public void setDestCategoryId(Integer destCategoryId){
+		this.destCategoryId = destCategoryId;
+	}
 
-    // lastMovedCategoryPageIndex:
-    public Integer getLastMovedCategoryPageIndex(){
-        return this.lastMovedCategoryPageIndex;
-    }
-    public void setLastMovedCategoryPageIndex(Integer lastMovedCategoryPageIndex){
-        this.lastMovedCategoryPageIndex = lastMovedCategoryPageIndex;
-    }
+	public void destCategoryId(String multirequestToken){
+		setToken("destCategoryId", multirequestToken);
+	}
 
-    // lastMovedCategoryEntryPageIndex:
-    public Integer getLastMovedCategoryEntryPageIndex(){
-        return this.lastMovedCategoryEntryPageIndex;
-    }
-    public void setLastMovedCategoryEntryPageIndex(Integer lastMovedCategoryEntryPageIndex){
-        this.lastMovedCategoryEntryPageIndex = lastMovedCategoryEntryPageIndex;
-    }
+	// lastMovedCategoryId:
+	public Integer getLastMovedCategoryId(){
+		return this.lastMovedCategoryId;
+	}
+	public void setLastMovedCategoryId(Integer lastMovedCategoryId){
+		this.lastMovedCategoryId = lastMovedCategoryId;
+	}
 
-    // moveFromChildren:
-    public Boolean getMoveFromChildren(){
-        return this.moveFromChildren;
-    }
-    public void setMoveFromChildren(Boolean moveFromChildren){
-        this.moveFromChildren = moveFromChildren;
-    }
+	public void lastMovedCategoryId(String multirequestToken){
+		setToken("lastMovedCategoryId", multirequestToken);
+	}
 
-    // destCategoryFullIds:
-    public String getDestCategoryFullIds(){
-        return this.destCategoryFullIds;
-    }
-    public void setDestCategoryFullIds(String destCategoryFullIds){
-        this.destCategoryFullIds = destCategoryFullIds;
-    }
+	// lastMovedCategoryPageIndex:
+	public Integer getLastMovedCategoryPageIndex(){
+		return this.lastMovedCategoryPageIndex;
+	}
+	public void setLastMovedCategoryPageIndex(Integer lastMovedCategoryPageIndex){
+		this.lastMovedCategoryPageIndex = lastMovedCategoryPageIndex;
+	}
+
+	public void lastMovedCategoryPageIndex(String multirequestToken){
+		setToken("lastMovedCategoryPageIndex", multirequestToken);
+	}
+
+	// lastMovedCategoryEntryPageIndex:
+	public Integer getLastMovedCategoryEntryPageIndex(){
+		return this.lastMovedCategoryEntryPageIndex;
+	}
+	public void setLastMovedCategoryEntryPageIndex(Integer lastMovedCategoryEntryPageIndex){
+		this.lastMovedCategoryEntryPageIndex = lastMovedCategoryEntryPageIndex;
+	}
+
+	public void lastMovedCategoryEntryPageIndex(String multirequestToken){
+		setToken("lastMovedCategoryEntryPageIndex", multirequestToken);
+	}
+
+	// moveFromChildren:
+	public Boolean getMoveFromChildren(){
+		return this.moveFromChildren;
+	}
+	public void setMoveFromChildren(Boolean moveFromChildren){
+		this.moveFromChildren = moveFromChildren;
+	}
+
+	public void moveFromChildren(String multirequestToken){
+		setToken("moveFromChildren", multirequestToken);
+	}
+
+	// destCategoryFullIds:
+	public String getDestCategoryFullIds(){
+		return this.destCategoryFullIds;
+	}
+	public void setDestCategoryFullIds(String destCategoryFullIds){
+		this.destCategoryFullIds = destCategoryFullIds;
+	}
+
+	public void destCategoryFullIds(String multirequestToken){
+		setToken("destCategoryFullIds", multirequestToken);
+	}
 
 
-    public MoveCategoryEntriesJobData() {
-       super();
-    }
+	public MoveCategoryEntriesJobData() {
+		super();
+	}
 
-    public MoveCategoryEntriesJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MoveCategoryEntriesJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcCategoryId = GsonParser.parseInt(jsonObject.get("srcCategoryId"));
-        destCategoryId = GsonParser.parseInt(jsonObject.get("destCategoryId"));
-        lastMovedCategoryId = GsonParser.parseInt(jsonObject.get("lastMovedCategoryId"));
-        lastMovedCategoryPageIndex = GsonParser.parseInt(jsonObject.get("lastMovedCategoryPageIndex"));
-        lastMovedCategoryEntryPageIndex = GsonParser.parseInt(jsonObject.get("lastMovedCategoryEntryPageIndex"));
-        moveFromChildren = GsonParser.parseBoolean(jsonObject.get("moveFromChildren"));
-        destCategoryFullIds = GsonParser.parseString(jsonObject.get("destCategoryFullIds"));
+		// set members values:
+		srcCategoryId = GsonParser.parseInt(jsonObject.get("srcCategoryId"));
+		destCategoryId = GsonParser.parseInt(jsonObject.get("destCategoryId"));
+		lastMovedCategoryId = GsonParser.parseInt(jsonObject.get("lastMovedCategoryId"));
+		lastMovedCategoryPageIndex = GsonParser.parseInt(jsonObject.get("lastMovedCategoryPageIndex"));
+		lastMovedCategoryEntryPageIndex = GsonParser.parseInt(jsonObject.get("lastMovedCategoryEntryPageIndex"));
+		moveFromChildren = GsonParser.parseBoolean(jsonObject.get("moveFromChildren"));
+		destCategoryFullIds = GsonParser.parseString(jsonObject.get("destCategoryFullIds"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMoveCategoryEntriesJobData");
-        kparams.add("srcCategoryId", this.srcCategoryId);
-        kparams.add("destCategoryId", this.destCategoryId);
-        kparams.add("lastMovedCategoryId", this.lastMovedCategoryId);
-        kparams.add("lastMovedCategoryPageIndex", this.lastMovedCategoryPageIndex);
-        kparams.add("lastMovedCategoryEntryPageIndex", this.lastMovedCategoryEntryPageIndex);
-        kparams.add("moveFromChildren", this.moveFromChildren);
-        kparams.add("destCategoryFullIds", this.destCategoryFullIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMoveCategoryEntriesJobData");
+		kparams.add("srcCategoryId", this.srcCategoryId);
+		kparams.add("destCategoryId", this.destCategoryId);
+		kparams.add("lastMovedCategoryId", this.lastMovedCategoryId);
+		kparams.add("lastMovedCategoryPageIndex", this.lastMovedCategoryPageIndex);
+		kparams.add("lastMovedCategoryEntryPageIndex", this.lastMovedCategoryEntryPageIndex);
+		kparams.add("moveFromChildren", this.moveFromChildren);
+		kparams.add("destCategoryFullIds", this.destCategoryFullIds);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataSearchItem.Tokenizer.class)
 public class MetadataSearchItem extends SearchOperator {
+	
+	public interface Tokenizer extends SearchOperator.Tokenizer {
+		String metadataProfileId();
+		String orderBy();
+	}
 
-    private Integer metadataProfileId;
-    private String orderBy;
+	private Integer metadataProfileId;
+	private String orderBy;
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
 
-    // orderBy:
-    public String getOrderBy(){
-        return this.orderBy;
-    }
-    public void setOrderBy(String orderBy){
-        this.orderBy = orderBy;
-    }
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
+
+	// orderBy:
+	public String getOrderBy(){
+		return this.orderBy;
+	}
+	public void setOrderBy(String orderBy){
+		this.orderBy = orderBy;
+	}
+
+	public void orderBy(String multirequestToken){
+		setToken("orderBy", multirequestToken);
+	}
 
 
-    public MetadataSearchItem() {
-       super();
-    }
+	public MetadataSearchItem() {
+		super();
+	}
 
-    public MetadataSearchItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataSearchItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-        orderBy = GsonParser.parseString(jsonObject.get("orderBy"));
+		// set members values:
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		orderBy = GsonParser.parseString(jsonObject.get("orderBy"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataSearchItem");
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        kparams.add("orderBy", this.orderBy);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataSearchItem");
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("orderBy", this.orderBy);
+		return kparams;
+	}
 
 }
 

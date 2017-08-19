@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionProtocol;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,116 +42,160 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GenericDistributionProfileAction.Tokenizer.class)
 public class GenericDistributionProfileAction extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String protocol();
+		String serverUrl();
+		String serverPath();
+		String username();
+		String password();
+		String ftpPassiveMode();
+		String httpFieldName();
+		String httpFileName();
+	}
 
-    private DistributionProtocol protocol;
-    private String serverUrl;
-    private String serverPath;
-    private String username;
-    private String password;
-    private Boolean ftpPassiveMode;
-    private String httpFieldName;
-    private String httpFileName;
+	private DistributionProtocol protocol;
+	private String serverUrl;
+	private String serverPath;
+	private String username;
+	private String password;
+	private Boolean ftpPassiveMode;
+	private String httpFieldName;
+	private String httpFileName;
 
-    // protocol:
-    public DistributionProtocol getProtocol(){
-        return this.protocol;
-    }
-    public void setProtocol(DistributionProtocol protocol){
-        this.protocol = protocol;
-    }
+	// protocol:
+	public DistributionProtocol getProtocol(){
+		return this.protocol;
+	}
+	public void setProtocol(DistributionProtocol protocol){
+		this.protocol = protocol;
+	}
 
-    // serverUrl:
-    public String getServerUrl(){
-        return this.serverUrl;
-    }
-    public void setServerUrl(String serverUrl){
-        this.serverUrl = serverUrl;
-    }
+	public void protocol(String multirequestToken){
+		setToken("protocol", multirequestToken);
+	}
 
-    // serverPath:
-    public String getServerPath(){
-        return this.serverPath;
-    }
-    public void setServerPath(String serverPath){
-        this.serverPath = serverPath;
-    }
+	// serverUrl:
+	public String getServerUrl(){
+		return this.serverUrl;
+	}
+	public void setServerUrl(String serverUrl){
+		this.serverUrl = serverUrl;
+	}
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	public void serverUrl(String multirequestToken){
+		setToken("serverUrl", multirequestToken);
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	// serverPath:
+	public String getServerPath(){
+		return this.serverPath;
+	}
+	public void setServerPath(String serverPath){
+		this.serverPath = serverPath;
+	}
 
-    // ftpPassiveMode:
-    public Boolean getFtpPassiveMode(){
-        return this.ftpPassiveMode;
-    }
-    public void setFtpPassiveMode(Boolean ftpPassiveMode){
-        this.ftpPassiveMode = ftpPassiveMode;
-    }
+	public void serverPath(String multirequestToken){
+		setToken("serverPath", multirequestToken);
+	}
 
-    // httpFieldName:
-    public String getHttpFieldName(){
-        return this.httpFieldName;
-    }
-    public void setHttpFieldName(String httpFieldName){
-        this.httpFieldName = httpFieldName;
-    }
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
 
-    // httpFileName:
-    public String getHttpFileName(){
-        return this.httpFileName;
-    }
-    public void setHttpFileName(String httpFileName){
-        this.httpFileName = httpFileName;
-    }
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
+
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// ftpPassiveMode:
+	public Boolean getFtpPassiveMode(){
+		return this.ftpPassiveMode;
+	}
+	public void setFtpPassiveMode(Boolean ftpPassiveMode){
+		this.ftpPassiveMode = ftpPassiveMode;
+	}
+
+	public void ftpPassiveMode(String multirequestToken){
+		setToken("ftpPassiveMode", multirequestToken);
+	}
+
+	// httpFieldName:
+	public String getHttpFieldName(){
+		return this.httpFieldName;
+	}
+	public void setHttpFieldName(String httpFieldName){
+		this.httpFieldName = httpFieldName;
+	}
+
+	public void httpFieldName(String multirequestToken){
+		setToken("httpFieldName", multirequestToken);
+	}
+
+	// httpFileName:
+	public String getHttpFileName(){
+		return this.httpFileName;
+	}
+	public void setHttpFileName(String httpFileName){
+		this.httpFileName = httpFileName;
+	}
+
+	public void httpFileName(String multirequestToken){
+		setToken("httpFileName", multirequestToken);
+	}
 
 
-    public GenericDistributionProfileAction() {
-       super();
-    }
+	public GenericDistributionProfileAction() {
+		super();
+	}
 
-    public GenericDistributionProfileAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GenericDistributionProfileAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        protocol = DistributionProtocol.get(GsonParser.parseInt(jsonObject.get("protocol")));
-        serverUrl = GsonParser.parseString(jsonObject.get("serverUrl"));
-        serverPath = GsonParser.parseString(jsonObject.get("serverPath"));
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        ftpPassiveMode = GsonParser.parseBoolean(jsonObject.get("ftpPassiveMode"));
-        httpFieldName = GsonParser.parseString(jsonObject.get("httpFieldName"));
-        httpFileName = GsonParser.parseString(jsonObject.get("httpFileName"));
+		// set members values:
+		protocol = DistributionProtocol.get(GsonParser.parseInt(jsonObject.get("protocol")));
+		serverUrl = GsonParser.parseString(jsonObject.get("serverUrl"));
+		serverPath = GsonParser.parseString(jsonObject.get("serverPath"));
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		ftpPassiveMode = GsonParser.parseBoolean(jsonObject.get("ftpPassiveMode"));
+		httpFieldName = GsonParser.parseString(jsonObject.get("httpFieldName"));
+		httpFileName = GsonParser.parseString(jsonObject.get("httpFileName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGenericDistributionProfileAction");
-        kparams.add("protocol", this.protocol);
-        kparams.add("serverUrl", this.serverUrl);
-        kparams.add("serverPath", this.serverPath);
-        kparams.add("username", this.username);
-        kparams.add("password", this.password);
-        kparams.add("ftpPassiveMode", this.ftpPassiveMode);
-        kparams.add("httpFieldName", this.httpFieldName);
-        kparams.add("httpFileName", this.httpFileName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGenericDistributionProfileAction");
+		kparams.add("protocol", this.protocol);
+		kparams.add("serverUrl", this.serverUrl);
+		kparams.add("serverPath", this.serverPath);
+		kparams.add("username", this.username);
+		kparams.add("password", this.password);
+		kparams.add("ftpPassiveMode", this.ftpPassiveMode);
+		kparams.add("httpFieldName", this.httpFieldName);
+		kparams.add("httpFileName", this.httpFileName);
+		return kparams;
+	}
 
 }
 

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleEventClassificationType implements EnumAsInt {
-    PUBLIC_EVENT(1),
-    PRIVATE_EVENT(2),
-    CONFIDENTIAL_EVENT(3);
+	PUBLIC_EVENT(1),
+	PRIVATE_EVENT(2),
+	CONFIDENTIAL_EVENT(3);
 
-    private int value;
+	private int value;
 
-    ScheduleEventClassificationType(int value) {
-        this.value = value;
-    }
+	ScheduleEventClassificationType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduleEventClassificationType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleEventClassificationType defined values and compare the inner value with the given one:
-        for(ScheduleEventClassificationType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleEventClassificationType.values().length > 0 ? ScheduleEventClassificationType.values()[0]: null;
+	public static ScheduleEventClassificationType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleEventClassificationType defined values and compare the inner value with the given one:
+		for(ScheduleEventClassificationType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleEventClassificationType.values().length > 0 ? ScheduleEventClassificationType.values()[0]: null;
    }
 }

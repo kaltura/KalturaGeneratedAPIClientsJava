@@ -29,12 +29,10 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.ConversionAttribute;
 import com.kaltura.client.types.DocumentEntry;
 import com.kaltura.client.types.DocumentEntryFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.Resource;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -54,207 +52,366 @@ import java.util.List;
 
 /**  Document service lets you upload and manage document files  */
 public class DocumentsService {
+	
+	public static class AddFromEntryDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddFromEntryDocumentsBuilder> {
+		
+		public AddFromEntryDocumentsBuilder(String sourceEntryId, DocumentEntry documentEntry, int sourceFlavorParamsId) {
+			super(DocumentEntry.class, "document_documents", "addFromEntry");
+			params.add("sourceEntryId", sourceEntryId);
+			params.add("documentEntry", documentEntry);
+			params.add("sourceFlavorParamsId", sourceFlavorParamsId);
+		}
+		
+		public void sourceEntryId(String multirequestToken) {
+			params.add("sourceEntryId", multirequestToken);
+		}
+		
+		public void sourceFlavorParamsId(String multirequestToken) {
+			params.add("sourceFlavorParamsId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<DocumentEntry> addFromEntry(String sourceEntryId)  {
-        return addFromEntry(sourceEntryId, null);
-    }
+	public static AddFromEntryDocumentsBuilder addFromEntry(String sourceEntryId)  {
+		return addFromEntry(sourceEntryId, null);
+	}
 
-    public static RequestBuilder<DocumentEntry> addFromEntry(String sourceEntryId, DocumentEntry documentEntry)  {
-        return addFromEntry(sourceEntryId, documentEntry, Integer.MIN_VALUE);
-    }
+	public static AddFromEntryDocumentsBuilder addFromEntry(String sourceEntryId, DocumentEntry documentEntry)  {
+		return addFromEntry(sourceEntryId, documentEntry, Integer.MIN_VALUE);
+	}
 
 	/**  Copy entry into new entry  */
-    public static RequestBuilder<DocumentEntry> addFromEntry(String sourceEntryId, DocumentEntry documentEntry, int sourceFlavorParamsId)  {
-        Params kparams = new Params();
-        kparams.add("sourceEntryId", sourceEntryId);
-        kparams.add("documentEntry", documentEntry);
-        kparams.add("sourceFlavorParamsId", sourceFlavorParamsId);
+    public static AddFromEntryDocumentsBuilder addFromEntry(String sourceEntryId, DocumentEntry documentEntry, int sourceFlavorParamsId)  {
+		return new AddFromEntryDocumentsBuilder(sourceEntryId, documentEntry, sourceFlavorParamsId);
+	}
+	
+	public static class AddFromFlavorAssetDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddFromFlavorAssetDocumentsBuilder> {
+		
+		public AddFromFlavorAssetDocumentsBuilder(String sourceFlavorAssetId, DocumentEntry documentEntry) {
+			super(DocumentEntry.class, "document_documents", "addFromFlavorAsset");
+			params.add("sourceFlavorAssetId", sourceFlavorAssetId);
+			params.add("documentEntry", documentEntry);
+		}
+		
+		public void sourceFlavorAssetId(String multirequestToken) {
+			params.add("sourceFlavorAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "addFromEntry", kparams);
-    }
-
-    public static RequestBuilder<DocumentEntry> addFromFlavorAsset(String sourceFlavorAssetId)  {
-        return addFromFlavorAsset(sourceFlavorAssetId, null);
-    }
+	public static AddFromFlavorAssetDocumentsBuilder addFromFlavorAsset(String sourceFlavorAssetId)  {
+		return addFromFlavorAsset(sourceFlavorAssetId, null);
+	}
 
 	/**  Copy flavor asset into new entry  */
-    public static RequestBuilder<DocumentEntry> addFromFlavorAsset(String sourceFlavorAssetId, DocumentEntry documentEntry)  {
-        Params kparams = new Params();
-        kparams.add("sourceFlavorAssetId", sourceFlavorAssetId);
-        kparams.add("documentEntry", documentEntry);
-
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "addFromFlavorAsset", kparams);
-    }
+    public static AddFromFlavorAssetDocumentsBuilder addFromFlavorAsset(String sourceFlavorAssetId, DocumentEntry documentEntry)  {
+		return new AddFromFlavorAssetDocumentsBuilder(sourceFlavorAssetId, documentEntry);
+	}
+	
+	public static class AddFromUploadedFileDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddFromUploadedFileDocumentsBuilder> {
+		
+		public AddFromUploadedFileDocumentsBuilder(DocumentEntry documentEntry, String uploadTokenId) {
+			super(DocumentEntry.class, "document_documents", "addFromUploadedFile");
+			params.add("documentEntry", documentEntry);
+			params.add("uploadTokenId", uploadTokenId);
+		}
+		
+		public void uploadTokenId(String multirequestToken) {
+			params.add("uploadTokenId", multirequestToken);
+		}
+	}
 
 	/**  Add new document entry after the specific document file was uploaded and the
 	  upload token id exists  */
-    public static RequestBuilder<DocumentEntry> addFromUploadedFile(DocumentEntry documentEntry, String uploadTokenId)  {
-        Params kparams = new Params();
-        kparams.add("documentEntry", documentEntry);
-        kparams.add("uploadTokenId", uploadTokenId);
-
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "addFromUploadedFile", kparams);
-    }
+    public static AddFromUploadedFileDocumentsBuilder addFromUploadedFile(DocumentEntry documentEntry, String uploadTokenId)  {
+		return new AddFromUploadedFileDocumentsBuilder(documentEntry, uploadTokenId);
+	}
+	
+	public static class ApproveReplaceDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, ApproveReplaceDocumentsBuilder> {
+		
+		public ApproveReplaceDocumentsBuilder(String entryId) {
+			super(DocumentEntry.class, "document_documents", "approveReplace");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Approves document replacement  */
-    public static RequestBuilder<DocumentEntry> approveReplace(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "approveReplace", kparams);
-    }
+    public static ApproveReplaceDocumentsBuilder approveReplace(String entryId)  {
+		return new ApproveReplaceDocumentsBuilder(entryId);
+	}
+	
+	public static class CancelReplaceDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, CancelReplaceDocumentsBuilder> {
+		
+		public CancelReplaceDocumentsBuilder(String entryId) {
+			super(DocumentEntry.class, "document_documents", "cancelReplace");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Cancels document replacement  */
-    public static RequestBuilder<DocumentEntry> cancelReplace(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static CancelReplaceDocumentsBuilder cancelReplace(String entryId)  {
+		return new CancelReplaceDocumentsBuilder(entryId);
+	}
+	
+	public static class ConvertDocumentsBuilder extends RequestBuilder<Long, String, ConvertDocumentsBuilder> {
+		
+		public ConvertDocumentsBuilder(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes) {
+			super(Long.class, "document_documents", "convert");
+			params.add("entryId", entryId);
+			params.add("conversionProfileId", conversionProfileId);
+			params.add("dynamicConversionAttributes", dynamicConversionAttributes);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "cancelReplace", kparams);
-    }
+	public static ConvertDocumentsBuilder convert(String entryId)  {
+		return convert(entryId, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<Long> convert(String entryId)  {
-        return convert(entryId, Integer.MIN_VALUE);
-    }
-
-    public static RequestBuilder<Long> convert(String entryId, int conversionProfileId)  {
-        return convert(entryId, conversionProfileId, null);
-    }
+	public static ConvertDocumentsBuilder convert(String entryId, int conversionProfileId)  {
+		return convert(entryId, conversionProfileId, null);
+	}
 
 	/**  Convert entry  */
-    public static RequestBuilder<Long> convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("conversionProfileId", conversionProfileId);
-        kparams.add("dynamicConversionAttributes", dynamicConversionAttributes);
-
-        return new RequestBuilder<Long>(Long.class, "document_documents", "convert", kparams);
-    }
+    public static ConvertDocumentsBuilder convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
+		return new ConvertDocumentsBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
+	}
+	
+	public static class ConvertPptToSwfDocumentsBuilder extends RequestBuilder<String, String, ConvertPptToSwfDocumentsBuilder> {
+		
+		public ConvertPptToSwfDocumentsBuilder(String entryId) {
+			super(String.class, "document_documents", "convertPptToSwf");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  This will queue a batch job for converting the document file to swf   Returns
 	  the URL where the new swf will be available  */
-    public static RequestBuilder<String> convertPptToSwf(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-
-        return new RequestBuilder<String>(String.class, "document_documents", "convertPptToSwf", kparams);
-    }
+    public static ConvertPptToSwfDocumentsBuilder convertPptToSwf(String entryId)  {
+		return new ConvertPptToSwfDocumentsBuilder(entryId);
+	}
+	
+	public static class DeleteDocumentsBuilder extends NullRequestBuilder {
+		
+		public DeleteDocumentsBuilder(String entryId) {
+			super("document_documents", "delete");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Delete a document entry.  */
-    public static RequestBuilder<Void> delete(String entryId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
+    public static DeleteDocumentsBuilder delete(String entryId)  {
+		return new DeleteDocumentsBuilder(entryId);
+	}
+	
+	public static class GetDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, GetDocumentsBuilder> {
+		
+		public GetDocumentsBuilder(String entryId, int version) {
+			super(DocumentEntry.class, "document_documents", "get");
+			params.add("entryId", entryId);
+			params.add("version", version);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void version(String multirequestToken) {
+			params.add("version", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("document_documents", "delete", kparams);
-    }
-
-    public static RequestBuilder<DocumentEntry> get(String entryId)  {
-        return get(entryId, -1);
-    }
+	public static GetDocumentsBuilder get(String entryId)  {
+		return get(entryId, -1);
+	}
 
 	/**  Get document entry by ID.  */
-    public static RequestBuilder<DocumentEntry> get(String entryId, int version)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("version", version);
+    public static GetDocumentsBuilder get(String entryId, int version)  {
+		return new GetDocumentsBuilder(entryId, version);
+	}
+	
+	public static class ListDocumentsBuilder extends ListResponseRequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, ListDocumentsBuilder> {
+		
+		public ListDocumentsBuilder(DocumentEntryFilter filter, FilterPager pager) {
+			super(DocumentEntry.class, "document_documents", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "get", kparams);
-    }
+	public static ListDocumentsBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DocumentEntry>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DocumentEntry>> list(DocumentEntryFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDocumentsBuilder list(DocumentEntryFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List document entries by filter with paging support.  */
-    public static RequestBuilder<ListResponse<DocumentEntry>> list(DocumentEntryFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListDocumentsBuilder list(DocumentEntryFilter filter, FilterPager pager)  {
+		return new ListDocumentsBuilder(filter, pager);
+	}
+	
+	public static class ServeDocumentsBuilder extends ServeRequestBuilder {
+		
+		public ServeDocumentsBuilder(String entryId, String flavorAssetId, boolean forceProxy) {
+			super("document_documents", "serve");
+			params.add("entryId", entryId);
+			params.add("flavorAssetId", flavorAssetId);
+			params.add("forceProxy", forceProxy);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void flavorAssetId(String multirequestToken) {
+			params.add("flavorAssetId", multirequestToken);
+		}
+		
+		public void forceProxy(String multirequestToken) {
+			params.add("forceProxy", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "list", kparams);
-    }
+	public static ServeDocumentsBuilder serve(String entryId)  {
+		return serve(entryId, null);
+	}
 
-    public static RequestBuilder<String> serve(String entryId)  {
-        return serve(entryId, null);
-    }
-
-    public static RequestBuilder<String> serve(String entryId, String flavorAssetId)  {
-        return serve(entryId, flavorAssetId, false);
-    }
+	public static ServeDocumentsBuilder serve(String entryId, String flavorAssetId)  {
+		return serve(entryId, flavorAssetId, false);
+	}
 
 	/**  Serves the file content  */
-    public static RequestBuilder<String> serve(String entryId, String flavorAssetId, boolean forceProxy)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorAssetId", flavorAssetId);
-        kparams.add("forceProxy", forceProxy);
+    public static ServeDocumentsBuilder serve(String entryId, String flavorAssetId, boolean forceProxy)  {
+		return new ServeDocumentsBuilder(entryId, flavorAssetId, forceProxy);
+	}
+	
+	public static class ServeByFlavorParamsIdDocumentsBuilder extends ServeRequestBuilder {
+		
+		public ServeByFlavorParamsIdDocumentsBuilder(String entryId, String flavorParamsId, boolean forceProxy) {
+			super("document_documents", "serveByFlavorParamsId");
+			params.add("entryId", entryId);
+			params.add("flavorParamsId", flavorParamsId);
+			params.add("forceProxy", forceProxy);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void flavorParamsId(String multirequestToken) {
+			params.add("flavorParamsId", multirequestToken);
+		}
+		
+		public void forceProxy(String multirequestToken) {
+			params.add("forceProxy", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("document_documents", "serve", kparams);
-    }
+	public static ServeByFlavorParamsIdDocumentsBuilder serveByFlavorParamsId(String entryId)  {
+		return serveByFlavorParamsId(entryId, null);
+	}
 
-    public static RequestBuilder<String> serveByFlavorParamsId(String entryId)  {
-        return serveByFlavorParamsId(entryId, null);
-    }
-
-    public static RequestBuilder<String> serveByFlavorParamsId(String entryId, String flavorParamsId)  {
-        return serveByFlavorParamsId(entryId, flavorParamsId, false);
-    }
+	public static ServeByFlavorParamsIdDocumentsBuilder serveByFlavorParamsId(String entryId, String flavorParamsId)  {
+		return serveByFlavorParamsId(entryId, flavorParamsId, false);
+	}
 
 	/**  Serves the file content  */
-    public static RequestBuilder<String> serveByFlavorParamsId(String entryId, String flavorParamsId, boolean forceProxy)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorParamsId", flavorParamsId);
-        kparams.add("forceProxy", forceProxy);
-
-        return new ServeRequestBuilder("document_documents", "serveByFlavorParamsId", kparams);
-    }
+    public static ServeByFlavorParamsIdDocumentsBuilder serveByFlavorParamsId(String entryId, String flavorParamsId, boolean forceProxy)  {
+		return new ServeByFlavorParamsIdDocumentsBuilder(entryId, flavorParamsId, forceProxy);
+	}
+	
+	public static class UpdateDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, UpdateDocumentsBuilder> {
+		
+		public UpdateDocumentsBuilder(String entryId, DocumentEntry documentEntry) {
+			super(DocumentEntry.class, "document_documents", "update");
+			params.add("entryId", entryId);
+			params.add("documentEntry", documentEntry);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Update document entry. Only the properties that were set will be updated.  */
-    public static RequestBuilder<DocumentEntry> update(String entryId, DocumentEntry documentEntry)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("documentEntry", documentEntry);
+    public static UpdateDocumentsBuilder update(String entryId, DocumentEntry documentEntry)  {
+		return new UpdateDocumentsBuilder(entryId, documentEntry);
+	}
+	
+	public static class UpdateContentDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, UpdateContentDocumentsBuilder> {
+		
+		public UpdateContentDocumentsBuilder(String entryId, Resource resource, int conversionProfileId) {
+			super(DocumentEntry.class, "document_documents", "updateContent");
+			params.add("entryId", entryId);
+			params.add("resource", resource);
+			params.add("conversionProfileId", conversionProfileId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "update", kparams);
-    }
-
-    public static RequestBuilder<DocumentEntry> updateContent(String entryId, Resource resource)  {
-        return updateContent(entryId, resource, Integer.MIN_VALUE);
-    }
+	public static UpdateContentDocumentsBuilder updateContent(String entryId, Resource resource)  {
+		return updateContent(entryId, resource, Integer.MIN_VALUE);
+	}
 
 	/**  Replace content associated with the given document entry.  */
-    public static RequestBuilder<DocumentEntry> updateContent(String entryId, Resource resource, int conversionProfileId)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("resource", resource);
-        kparams.add("conversionProfileId", conversionProfileId);
+    public static UpdateContentDocumentsBuilder updateContent(String entryId, Resource resource, int conversionProfileId)  {
+		return new UpdateContentDocumentsBuilder(entryId, resource, conversionProfileId);
+	}
+	
+	public static class UploadDocumentsBuilder extends RequestBuilder<String, String, UploadDocumentsBuilder> {
+		
+		public UploadDocumentsBuilder(FileHolder fileData) {
+			super(String.class, "document_documents", "upload");
+			files = new Files();
+			files.add("fileData", fileData);
+		}
+	}
 
-        return new RequestBuilder<DocumentEntry>(DocumentEntry.class, "document_documents", "updateContent", kparams);
-    }
+	public static UploadDocumentsBuilder upload(File fileData)  {
+		return upload(new FileHolder(fileData));
+	}
 
-    public static RequestBuilder<String> upload(File fileData)  {
-        return upload(new FileHolder(fileData));
-    }
+	public static UploadDocumentsBuilder upload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
+	}
 
-    public static RequestBuilder<String> upload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return upload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize));
-    }
-
-    public static RequestBuilder<String> upload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
-    }
+	public static UploadDocumentsBuilder upload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
+	}
 
 	/**  Upload a document file to Kaltura, then the file can be used to create a
 	  document entry.  */
-    public static RequestBuilder<String> upload(FileHolder fileData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-
-        return new RequestBuilder<String>(String.class, "document_documents", "upload", kparams, kfiles);
-    }
+    public static UploadDocumentsBuilder upload(FileHolder fileData)  {
+		return new UploadDocumentsBuilder(fileData);
+	}
 }

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.YahooSyndicationFeedAdultValues;
 import com.kaltura.client.enums.YahooSyndicationFeedCategories;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,73 +42,97 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YahooSyndicationFeed.Tokenizer.class)
 public class YahooSyndicationFeed extends BaseSyndicationFeed {
+	
+	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
+		String category();
+		String adultContent();
+		String feedDescription();
+		String feedLandingPage();
+	}
 
-    private YahooSyndicationFeedCategories category;
-    private YahooSyndicationFeedAdultValues adultContent;
+	private YahooSyndicationFeedCategories category;
+	private YahooSyndicationFeedAdultValues adultContent;
 	/**  feed description  */
-    private String feedDescription;
+	private String feedDescription;
 	/**  feed landing page (i.e publisher website)  */
-    private String feedLandingPage;
+	private String feedLandingPage;
 
-    // category:
-    public YahooSyndicationFeedCategories getCategory(){
-        return this.category;
-    }
-    public void setCategory(YahooSyndicationFeedCategories category){
-        this.category = category;
-    }
+	// category:
+	public YahooSyndicationFeedCategories getCategory(){
+		return this.category;
+	}
+	public void setCategory(YahooSyndicationFeedCategories category){
+		this.category = category;
+	}
 
-    // adultContent:
-    public YahooSyndicationFeedAdultValues getAdultContent(){
-        return this.adultContent;
-    }
-    public void setAdultContent(YahooSyndicationFeedAdultValues adultContent){
-        this.adultContent = adultContent;
-    }
+	public void category(String multirequestToken){
+		setToken("category", multirequestToken);
+	}
 
-    // feedDescription:
-    public String getFeedDescription(){
-        return this.feedDescription;
-    }
-    public void setFeedDescription(String feedDescription){
-        this.feedDescription = feedDescription;
-    }
+	// adultContent:
+	public YahooSyndicationFeedAdultValues getAdultContent(){
+		return this.adultContent;
+	}
+	public void setAdultContent(YahooSyndicationFeedAdultValues adultContent){
+		this.adultContent = adultContent;
+	}
 
-    // feedLandingPage:
-    public String getFeedLandingPage(){
-        return this.feedLandingPage;
-    }
-    public void setFeedLandingPage(String feedLandingPage){
-        this.feedLandingPage = feedLandingPage;
-    }
+	public void adultContent(String multirequestToken){
+		setToken("adultContent", multirequestToken);
+	}
+
+	// feedDescription:
+	public String getFeedDescription(){
+		return this.feedDescription;
+	}
+	public void setFeedDescription(String feedDescription){
+		this.feedDescription = feedDescription;
+	}
+
+	public void feedDescription(String multirequestToken){
+		setToken("feedDescription", multirequestToken);
+	}
+
+	// feedLandingPage:
+	public String getFeedLandingPage(){
+		return this.feedLandingPage;
+	}
+	public void setFeedLandingPage(String feedLandingPage){
+		this.feedLandingPage = feedLandingPage;
+	}
+
+	public void feedLandingPage(String multirequestToken){
+		setToken("feedLandingPage", multirequestToken);
+	}
 
 
-    public YahooSyndicationFeed() {
-       super();
-    }
+	public YahooSyndicationFeed() {
+		super();
+	}
 
-    public YahooSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YahooSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        category = YahooSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
-        adultContent = YahooSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
-        feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
-        feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
+		// set members values:
+		category = YahooSyndicationFeedCategories.get(GsonParser.parseString(jsonObject.get("category")));
+		adultContent = YahooSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
+		feedDescription = GsonParser.parseString(jsonObject.get("feedDescription"));
+		feedLandingPage = GsonParser.parseString(jsonObject.get("feedLandingPage"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYahooSyndicationFeed");
-        kparams.add("adultContent", this.adultContent);
-        kparams.add("feedDescription", this.feedDescription);
-        kparams.add("feedLandingPage", this.feedLandingPage);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYahooSyndicationFeed");
+		kparams.add("adultContent", this.adultContent);
+		kparams.add("feedDescription", this.feedDescription);
+		kparams.add("feedLandingPage", this.feedLandingPage);
+		return kparams;
+	}
 
 }
 

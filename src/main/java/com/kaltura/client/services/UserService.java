@@ -29,12 +29,10 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.User;
 import com.kaltura.client.types.UserFilter;
 import com.kaltura.client.types.UserLoginDataFilter;
@@ -56,284 +54,497 @@ import java.io.InputStream;
   in the partner's system, and the [partnerId,Id] couple are unique key in
   kaltura's DB  */
 public class UserService {
+	
+	public static class AddUserBuilder extends RequestBuilder<User, User.Tokenizer, AddUserBuilder> {
+		
+		public AddUserBuilder(User user) {
+			super(User.class, "user", "add");
+			params.add("user", user);
+		}
+	}
 
 	/**  Adds a new user to an existing account in the Kaltura database.   Input param
 	  $id is the unique identifier in the partner's system.  */
-    public static RequestBuilder<User> add(User user)  {
-        Params kparams = new Params();
-        kparams.add("user", user);
+    public static AddUserBuilder add(User user)  {
+		return new AddUserBuilder(user);
+	}
+	
+	public static class AddFromBulkUploadUserBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadUserBuilder> {
+		
+		public AddFromBulkUploadUserBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData) {
+			super(BulkUpload.class, "user", "addFromBulkUpload");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadUserData", bulkUploadUserData);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "add", kparams);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileHolder fileData)  {
+		return addFromBulkUpload(fileData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData)  {
-        return addFromBulkUpload(fileData, null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(File fileData)  {
+		return addFromBulkUpload(new FileHolder(fileData), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData)  {
-        return addFromBulkUpload(new FileHolder(fileData), null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(fileData, bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(fileData, bulkUploadData, null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, bulkUploadUserData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
-        return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, bulkUploadUserData);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadUserData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadUserData);
-    }
+	public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadUserData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadUserData);
-    }
-
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-        kparams.add("bulkUploadData", bulkUploadData);
-        kparams.add("bulkUploadUserData", bulkUploadUserData);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "user", "addFromBulkUpload", kparams, kfiles);
-    }
+    public static AddFromBulkUploadUserBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadUserData bulkUploadUserData)  {
+		return new AddFromBulkUploadUserBuilder(fileData, bulkUploadData, bulkUploadUserData);
+	}
+	
+	public static class CheckLoginDataExistsUserBuilder extends RequestBuilder<Boolean, String, CheckLoginDataExistsUserBuilder> {
+		
+		public CheckLoginDataExistsUserBuilder(UserLoginDataFilter filter) {
+			super(Boolean.class, "user", "checkLoginDataExists");
+			params.add("filter", filter);
+		}
+	}
 
 	/**  Action which checks whther user login  */
-    public static RequestBuilder<Boolean> checkLoginDataExists(UserLoginDataFilter filter)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-
-        return new RequestBuilder<Boolean>(Boolean.class, "user", "checkLoginDataExists", kparams);
-    }
+    public static CheckLoginDataExistsUserBuilder checkLoginDataExists(UserLoginDataFilter filter)  {
+		return new CheckLoginDataExistsUserBuilder(filter);
+	}
+	
+	public static class DeleteUserBuilder extends RequestBuilder<User, User.Tokenizer, DeleteUserBuilder> {
+		
+		public DeleteUserBuilder(String userId) {
+			super(User.class, "user", "delete");
+			params.add("userId", userId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
 	/**  Deletes a user from a partner account.  */
-    public static RequestBuilder<User> delete(String userId)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
+    public static DeleteUserBuilder delete(String userId)  {
+		return new DeleteUserBuilder(userId);
+	}
+	
+	public static class DisableLoginUserBuilder extends RequestBuilder<User, User.Tokenizer, DisableLoginUserBuilder> {
+		
+		public DisableLoginUserBuilder(String userId, String loginId) {
+			super(User.class, "user", "disableLogin");
+			params.add("userId", userId);
+			params.add("loginId", loginId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void loginId(String multirequestToken) {
+			params.add("loginId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "delete", kparams);
-    }
+	public static DisableLoginUserBuilder disableLogin()  {
+		return disableLogin(null);
+	}
 
-    public static RequestBuilder<User> disableLogin()  {
-        return disableLogin(null);
-    }
-
-    public static RequestBuilder<User> disableLogin(String userId)  {
-        return disableLogin(userId, null);
-    }
+	public static DisableLoginUserBuilder disableLogin(String userId)  {
+		return disableLogin(userId, null);
+	}
 
 	/**  Disables a user's ability to log into a partner account using an email address
 	  and a password.   You may use either a userId or a loginId parameter for this
 	  action.  */
-    public static RequestBuilder<User> disableLogin(String userId, String loginId)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-        kparams.add("loginId", loginId);
+    public static DisableLoginUserBuilder disableLogin(String userId, String loginId)  {
+		return new DisableLoginUserBuilder(userId, loginId);
+	}
+	
+	public static class EnableLoginUserBuilder extends RequestBuilder<User, User.Tokenizer, EnableLoginUserBuilder> {
+		
+		public EnableLoginUserBuilder(String userId, String loginId, String password) {
+			super(User.class, "user", "enableLogin");
+			params.add("userId", userId);
+			params.add("loginId", loginId);
+			params.add("password", password);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void loginId(String multirequestToken) {
+			params.add("loginId", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "disableLogin", kparams);
-    }
-
-    public static RequestBuilder<User> enableLogin(String userId, String loginId)  {
-        return enableLogin(userId, loginId, null);
-    }
+	public static EnableLoginUserBuilder enableLogin(String userId, String loginId)  {
+		return enableLogin(userId, loginId, null);
+	}
 
 	/**  Enables a user to log into a partner account using an email address and a
 	  password  */
-    public static RequestBuilder<User> enableLogin(String userId, String loginId, String password)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-        kparams.add("loginId", loginId);
-        kparams.add("password", password);
+    public static EnableLoginUserBuilder enableLogin(String userId, String loginId, String password)  {
+		return new EnableLoginUserBuilder(userId, loginId, password);
+	}
+	
+	public static class GetUserBuilder extends RequestBuilder<User, User.Tokenizer, GetUserBuilder> {
+		
+		public GetUserBuilder(String userId) {
+			super(User.class, "user", "get");
+			params.add("userId", userId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "enableLogin", kparams);
-    }
-
-    public static RequestBuilder<User> get()  {
-        return get(null);
-    }
+	public static GetUserBuilder get()  {
+		return get(null);
+	}
 
 	/**  Retrieves a user object for a specified user ID.  */
-    public static RequestBuilder<User> get(String userId)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-
-        return new RequestBuilder<User>(User.class, "user", "get", kparams);
-    }
+    public static GetUserBuilder get(String userId)  {
+		return new GetUserBuilder(userId);
+	}
+	
+	public static class GetByLoginIdUserBuilder extends RequestBuilder<User, User.Tokenizer, GetByLoginIdUserBuilder> {
+		
+		public GetByLoginIdUserBuilder(String loginId) {
+			super(User.class, "user", "getByLoginId");
+			params.add("loginId", loginId);
+		}
+		
+		public void loginId(String multirequestToken) {
+			params.add("loginId", multirequestToken);
+		}
+	}
 
 	/**  Retrieves a user object for a user's login ID and partner ID.   A login ID is
 	  the email address used by a user to log into the system.  */
-    public static RequestBuilder<User> getByLoginId(String loginId)  {
-        Params kparams = new Params();
-        kparams.add("loginId", loginId);
+    public static GetByLoginIdUserBuilder getByLoginId(String loginId)  {
+		return new GetByLoginIdUserBuilder(loginId);
+	}
+	
+	public static class IndexUserBuilder extends RequestBuilder<String, String, IndexUserBuilder> {
+		
+		public IndexUserBuilder(String id, boolean shouldUpdate) {
+			super(String.class, "user", "index");
+			params.add("id", id);
+			params.add("shouldUpdate", shouldUpdate);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void shouldUpdate(String multirequestToken) {
+			params.add("shouldUpdate", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "getByLoginId", kparams);
-    }
-
-    public static RequestBuilder<String> index(String id)  {
-        return index(id, true);
-    }
+	public static IndexUserBuilder index(String id)  {
+		return index(id, true);
+	}
 
 	/**  Index an entry by id.  */
-    public static RequestBuilder<String> index(String id, boolean shouldUpdate)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("shouldUpdate", shouldUpdate);
+    public static IndexUserBuilder index(String id, boolean shouldUpdate)  {
+		return new IndexUserBuilder(id, shouldUpdate);
+	}
+	
+	public static class ListUserBuilder extends ListResponseRequestBuilder<User, User.Tokenizer, ListUserBuilder> {
+		
+		public ListUserBuilder(UserFilter filter, FilterPager pager) {
+			super(User.class, "user", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "user", "index", kparams);
-    }
+	public static ListUserBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<User>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<User>> list(UserFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListUserBuilder list(UserFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Lists user objects that are associated with an account.   Blocked users are
 	  listed unless you use a filter to exclude them.   Deleted users are not listed
 	  unless you use a filter to include them.  */
-    public static RequestBuilder<ListResponse<User>> list(UserFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListUserBuilder list(UserFilter filter, FilterPager pager)  {
+		return new ListUserBuilder(filter, pager);
+	}
+	
+	public static class LoginUserBuilder extends RequestBuilder<String, String, LoginUserBuilder> {
+		
+		public LoginUserBuilder(int partnerId, String userId, String password, int expiry, String privileges) {
+			super(String.class, "user", "login");
+			params.add("partnerId", partnerId);
+			params.add("userId", userId);
+			params.add("password", password);
+			params.add("expiry", expiry);
+			params.add("privileges", privileges);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+		
+		public void expiry(String multirequestToken) {
+			params.add("expiry", multirequestToken);
+		}
+		
+		public void privileges(String multirequestToken) {
+			params.add("privileges", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<User>(User.class, "user", "list", kparams);
-    }
+	public static LoginUserBuilder login(int partnerId, String userId, String password)  {
+		return login(partnerId, userId, password, 86400);
+	}
 
-    public static RequestBuilder<String> login(int partnerId, String userId, String password)  {
-        return login(partnerId, userId, password, 86400);
-    }
-
-    public static RequestBuilder<String> login(int partnerId, String userId, String password, int expiry)  {
-        return login(partnerId, userId, password, expiry, "*");
-    }
+	public static LoginUserBuilder login(int partnerId, String userId, String password, int expiry)  {
+		return login(partnerId, userId, password, expiry, "*");
+	}
 
 	/**  Logs a user into a partner account with a partner ID, a partner user ID (puser),
 	  and a user password.  */
-    public static RequestBuilder<String> login(int partnerId, String userId, String password, int expiry, String privileges)  {
-        Params kparams = new Params();
-        kparams.add("partnerId", partnerId);
-        kparams.add("userId", userId);
-        kparams.add("password", password);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
+    public static LoginUserBuilder login(int partnerId, String userId, String password, int expiry, String privileges)  {
+		return new LoginUserBuilder(partnerId, userId, password, expiry, privileges);
+	}
+	
+	public static class LoginByLoginIdUserBuilder extends RequestBuilder<String, String, LoginByLoginIdUserBuilder> {
+		
+		public LoginByLoginIdUserBuilder(String loginId, String password, int partnerId, int expiry, String privileges, String otp) {
+			super(String.class, "user", "loginByLoginId");
+			params.add("loginId", loginId);
+			params.add("password", password);
+			params.add("partnerId", partnerId);
+			params.add("expiry", expiry);
+			params.add("privileges", privileges);
+			params.add("otp", otp);
+		}
+		
+		public void loginId(String multirequestToken) {
+			params.add("loginId", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+		
+		public void expiry(String multirequestToken) {
+			params.add("expiry", multirequestToken);
+		}
+		
+		public void privileges(String multirequestToken) {
+			params.add("privileges", multirequestToken);
+		}
+		
+		public void otp(String multirequestToken) {
+			params.add("otp", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "user", "login", kparams);
-    }
+	public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password)  {
+		return loginByLoginId(loginId, password, Integer.MIN_VALUE);
+	}
 
-    public static RequestBuilder<String> loginByLoginId(String loginId, String password)  {
-        return loginByLoginId(loginId, password, Integer.MIN_VALUE);
-    }
+	public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId)  {
+		return loginByLoginId(loginId, password, partnerId, 86400);
+	}
 
-    public static RequestBuilder<String> loginByLoginId(String loginId, String password, int partnerId)  {
-        return loginByLoginId(loginId, password, partnerId, 86400);
-    }
+	public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId, int expiry)  {
+		return loginByLoginId(loginId, password, partnerId, expiry, "*");
+	}
 
-    public static RequestBuilder<String> loginByLoginId(String loginId, String password, int partnerId, int expiry)  {
-        return loginByLoginId(loginId, password, partnerId, expiry, "*");
-    }
-
-    public static RequestBuilder<String> loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges)  {
-        return loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
-    }
+	public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges)  {
+		return loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
+	}
 
 	/**  Logs a user into a partner account with a user login ID and a user password.  */
-    public static RequestBuilder<String> loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp)  {
-        Params kparams = new Params();
-        kparams.add("loginId", loginId);
-        kparams.add("password", password);
-        kparams.add("partnerId", partnerId);
-        kparams.add("expiry", expiry);
-        kparams.add("privileges", privileges);
-        kparams.add("otp", otp);
-
-        return new RequestBuilder<String>(String.class, "user", "loginByLoginId", kparams);
-    }
+    public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp)  {
+		return new LoginByLoginIdUserBuilder(loginId, password, partnerId, expiry, privileges, otp);
+	}
+	
+	public static class NotifyBanUserBuilder extends NullRequestBuilder {
+		
+		public NotifyBanUserBuilder(String userId) {
+			super("user", "notifyBan");
+			params.add("userId", userId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
 	/**  Notifies that a user is banned from an account.  */
-    public static RequestBuilder<Void> notifyBan(String userId)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-
-        return new NullRequestBuilder("user", "notifyBan", kparams);
-    }
+    public static NotifyBanUserBuilder notifyBan(String userId)  {
+		return new NotifyBanUserBuilder(userId);
+	}
+	
+	public static class ResetPasswordUserBuilder extends NullRequestBuilder {
+		
+		public ResetPasswordUserBuilder(String email) {
+			super("user", "resetPassword");
+			params.add("email", email);
+		}
+		
+		public void email(String multirequestToken) {
+			params.add("email", multirequestToken);
+		}
+	}
 
 	/**  Reset user's password and send the user an email to generate a new one.  */
-    public static RequestBuilder<Void> resetPassword(String email)  {
-        Params kparams = new Params();
-        kparams.add("email", email);
-
-        return new NullRequestBuilder("user", "resetPassword", kparams);
-    }
+    public static ResetPasswordUserBuilder resetPassword(String email)  {
+		return new ResetPasswordUserBuilder(email);
+	}
+	
+	public static class SetInitialPasswordUserBuilder extends NullRequestBuilder {
+		
+		public SetInitialPasswordUserBuilder(String hashKey, String newPassword) {
+			super("user", "setInitialPassword");
+			params.add("hashKey", hashKey);
+			params.add("newPassword", newPassword);
+		}
+		
+		public void hashKey(String multirequestToken) {
+			params.add("hashKey", multirequestToken);
+		}
+		
+		public void newPassword(String multirequestToken) {
+			params.add("newPassword", multirequestToken);
+		}
+	}
 
 	/**  Set initial users password  */
-    public static RequestBuilder<Void> setInitialPassword(String hashKey, String newPassword)  {
-        Params kparams = new Params();
-        kparams.add("hashKey", hashKey);
-        kparams.add("newPassword", newPassword);
-
-        return new NullRequestBuilder("user", "setInitialPassword", kparams);
-    }
+    public static SetInitialPasswordUserBuilder setInitialPassword(String hashKey, String newPassword)  {
+		return new SetInitialPasswordUserBuilder(hashKey, newPassword);
+	}
+	
+	public static class UpdateUserBuilder extends RequestBuilder<User, User.Tokenizer, UpdateUserBuilder> {
+		
+		public UpdateUserBuilder(String userId, User user) {
+			super(User.class, "user", "update");
+			params.add("userId", userId);
+			params.add("user", user);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
 
 	/**  Updates an existing user object.   You can also use this action to update the
 	  userId.  */
-    public static RequestBuilder<User> update(String userId, User user)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-        kparams.add("user", user);
+    public static UpdateUserBuilder update(String userId, User user)  {
+		return new UpdateUserBuilder(userId, user);
+	}
+	
+	public static class UpdateLoginDataUserBuilder extends NullRequestBuilder {
+		
+		public UpdateLoginDataUserBuilder(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName) {
+			super("user", "updateLoginData");
+			params.add("oldLoginId", oldLoginId);
+			params.add("password", password);
+			params.add("newLoginId", newLoginId);
+			params.add("newPassword", newPassword);
+			params.add("newFirstName", newFirstName);
+			params.add("newLastName", newLastName);
+		}
+		
+		public void oldLoginId(String multirequestToken) {
+			params.add("oldLoginId", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+		
+		public void newLoginId(String multirequestToken) {
+			params.add("newLoginId", multirequestToken);
+		}
+		
+		public void newPassword(String multirequestToken) {
+			params.add("newPassword", multirequestToken);
+		}
+		
+		public void newFirstName(String multirequestToken) {
+			params.add("newFirstName", multirequestToken);
+		}
+		
+		public void newLastName(String multirequestToken) {
+			params.add("newLastName", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<User>(User.class, "user", "update", kparams);
-    }
+	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password)  {
+		return updateLoginData(oldLoginId, password, "");
+	}
 
-    public static RequestBuilder<Void> updateLoginData(String oldLoginId, String password)  {
-        return updateLoginData(oldLoginId, password, "");
-    }
+	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId)  {
+		return updateLoginData(oldLoginId, password, newLoginId, "");
+	}
 
-    public static RequestBuilder<Void> updateLoginData(String oldLoginId, String password, String newLoginId)  {
-        return updateLoginData(oldLoginId, password, newLoginId, "");
-    }
+	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword)  {
+		return updateLoginData(oldLoginId, password, newLoginId, newPassword, null);
+	}
 
-    public static RequestBuilder<Void> updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword)  {
-        return updateLoginData(oldLoginId, password, newLoginId, newPassword, null);
-    }
-
-    public static RequestBuilder<Void> updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName)  {
-        return updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
-    }
+	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName)  {
+		return updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
+	}
 
 	/**  Updates a user's login data: email, password, name.  */
-    public static RequestBuilder<Void> updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName)  {
-        Params kparams = new Params();
-        kparams.add("oldLoginId", oldLoginId);
-        kparams.add("password", password);
-        kparams.add("newLoginId", newLoginId);
-        kparams.add("newPassword", newPassword);
-        kparams.add("newFirstName", newFirstName);
-        kparams.add("newLastName", newLastName);
-
-        return new NullRequestBuilder("user", "updateLoginData", kparams);
-    }
+    public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName)  {
+		return new UpdateLoginDataUserBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
+	}
 }

@@ -34,57 +34,57 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DataEntryOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    END_DATE_ASC("+endDate"),
-    MODERATION_COUNT_ASC("+moderationCount"),
-    NAME_ASC("+name"),
-    PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
-    RANK_ASC("+rank"),
-    RECENT_ASC("+recent"),
-    START_DATE_ASC("+startDate"),
-    TOTAL_RANK_ASC("+totalRank"),
-    UPDATED_AT_ASC("+updatedAt"),
-    WEIGHT_ASC("+weight"),
-    CREATED_AT_DESC("-createdAt"),
-    END_DATE_DESC("-endDate"),
-    MODERATION_COUNT_DESC("-moderationCount"),
-    NAME_DESC("-name"),
-    PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
-    RANK_DESC("-rank"),
-    RECENT_DESC("-recent"),
-    START_DATE_DESC("-startDate"),
-    TOTAL_RANK_DESC("-totalRank"),
-    UPDATED_AT_DESC("-updatedAt"),
-    WEIGHT_DESC("-weight");
+	CREATED_AT_ASC("+createdAt"),
+	END_DATE_ASC("+endDate"),
+	MODERATION_COUNT_ASC("+moderationCount"),
+	NAME_ASC("+name"),
+	PARTNER_SORT_VALUE_ASC("+partnerSortValue"),
+	RANK_ASC("+rank"),
+	RECENT_ASC("+recent"),
+	START_DATE_ASC("+startDate"),
+	TOTAL_RANK_ASC("+totalRank"),
+	UPDATED_AT_ASC("+updatedAt"),
+	WEIGHT_ASC("+weight"),
+	CREATED_AT_DESC("-createdAt"),
+	END_DATE_DESC("-endDate"),
+	MODERATION_COUNT_DESC("-moderationCount"),
+	NAME_DESC("-name"),
+	PARTNER_SORT_VALUE_DESC("-partnerSortValue"),
+	RANK_DESC("-rank"),
+	RECENT_DESC("-recent"),
+	START_DATE_DESC("-startDate"),
+	TOTAL_RANK_DESC("-totalRank"),
+	UPDATED_AT_DESC("-updatedAt"),
+	WEIGHT_DESC("-weight");
 
-    private String value;
+	private String value;
 
-    DataEntryOrderBy(String value) {
-        this.value = value;
-    }
+	DataEntryOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DataEntryOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DataEntryOrderBy defined values and compare the inner value with the given one:
-        for(DataEntryOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DataEntryOrderBy.values().length > 0 ? DataEntryOrderBy.values()[0]: null;
+	public static DataEntryOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DataEntryOrderBy defined values and compare the inner value with the given one:
+		for(DataEntryOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DataEntryOrderBy.values().length > 0 ? DataEntryOrderBy.values()[0]: null;
    }
 }

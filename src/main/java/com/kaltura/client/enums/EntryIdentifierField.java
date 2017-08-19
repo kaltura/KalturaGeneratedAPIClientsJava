@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryIdentifierField implements EnumAsString {
-    ID("id"),
-    REFERENCE_ID("referenceId");
+	ID("id"),
+	REFERENCE_ID("referenceId");
 
-    private String value;
+	private String value;
 
-    EntryIdentifierField(String value) {
-        this.value = value;
-    }
+	EntryIdentifierField(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryIdentifierField get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryIdentifierField defined values and compare the inner value with the given one:
-        for(EntryIdentifierField item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryIdentifierField.values().length > 0 ? EntryIdentifierField.values()[0]: null;
+	public static EntryIdentifierField get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryIdentifierField defined values and compare the inner value with the given one:
+		for(EntryIdentifierField item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryIdentifierField.values().length > 0 ? EntryIdentifierField.values()[0]: null;
    }
 }

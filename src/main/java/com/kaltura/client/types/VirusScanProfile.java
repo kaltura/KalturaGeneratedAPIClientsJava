@@ -35,6 +35,7 @@ import com.kaltura.client.enums.VirusScanProfileStatus;
 import com.kaltura.client.types.BaseEntryFilter;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -44,123 +45,168 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VirusScanProfile.Tokenizer.class)
 public class VirusScanProfile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
+		String name();
+		String status();
+		String engineType();
+		BaseEntryFilter.Tokenizer entryFilter();
+		String actionIfInfected();
+	}
 
-    private Integer id;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private Integer partnerId;
-    private String name;
-    private VirusScanProfileStatus status;
-    private VirusScanEngineType engineType;
-    private BaseEntryFilter entryFilter;
-    private VirusFoundAction actionIfInfected;
+	private Integer id;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private Integer partnerId;
+	private String name;
+	private VirusScanProfileStatus status;
+	private VirusScanEngineType engineType;
+	private BaseEntryFilter entryFilter;
+	private VirusFoundAction actionIfInfected;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // status:
-    public VirusScanProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(VirusScanProfileStatus status){
-        this.status = status;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // engineType:
-    public VirusScanEngineType getEngineType(){
-        return this.engineType;
-    }
-    public void setEngineType(VirusScanEngineType engineType){
-        this.engineType = engineType;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // entryFilter:
-    public BaseEntryFilter getEntryFilter(){
-        return this.entryFilter;
-    }
-    public void setEntryFilter(BaseEntryFilter entryFilter){
-        this.entryFilter = entryFilter;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // actionIfInfected:
-    public VirusFoundAction getActionIfInfected(){
-        return this.actionIfInfected;
-    }
-    public void setActionIfInfected(VirusFoundAction actionIfInfected){
-        this.actionIfInfected = actionIfInfected;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
+
+	// status:
+	public VirusScanProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(VirusScanProfileStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// engineType:
+	public VirusScanEngineType getEngineType(){
+		return this.engineType;
+	}
+	public void setEngineType(VirusScanEngineType engineType){
+		this.engineType = engineType;
+	}
+
+	public void engineType(String multirequestToken){
+		setToken("engineType", multirequestToken);
+	}
+
+	// entryFilter:
+	public BaseEntryFilter getEntryFilter(){
+		return this.entryFilter;
+	}
+	public void setEntryFilter(BaseEntryFilter entryFilter){
+		this.entryFilter = entryFilter;
+	}
+
+	// actionIfInfected:
+	public VirusFoundAction getActionIfInfected(){
+		return this.actionIfInfected;
+	}
+	public void setActionIfInfected(VirusFoundAction actionIfInfected){
+		this.actionIfInfected = actionIfInfected;
+	}
+
+	public void actionIfInfected(String multirequestToken){
+		setToken("actionIfInfected", multirequestToken);
+	}
 
 
-    public VirusScanProfile() {
-       super();
-    }
+	public VirusScanProfile() {
+		super();
+	}
 
-    public VirusScanProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public VirusScanProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        status = VirusScanProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        engineType = VirusScanEngineType.get(GsonParser.parseString(jsonObject.get("engineType")));
-        entryFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("entryFilter"), BaseEntryFilter.class);
-        actionIfInfected = VirusFoundAction.get(GsonParser.parseInt(jsonObject.get("actionIfInfected")));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		status = VirusScanProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		engineType = VirusScanEngineType.get(GsonParser.parseString(jsonObject.get("engineType")));
+		entryFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("entryFilter"), BaseEntryFilter.class);
+		actionIfInfected = VirusFoundAction.get(GsonParser.parseInt(jsonObject.get("actionIfInfected")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaVirusScanProfile");
-        kparams.add("name", this.name);
-        kparams.add("status", this.status);
-        kparams.add("engineType", this.engineType);
-        kparams.add("entryFilter", this.entryFilter);
-        kparams.add("actionIfInfected", this.actionIfInfected);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVirusScanProfile");
+		kparams.add("name", this.name);
+		kparams.add("status", this.status);
+		kparams.add("engineType", this.engineType);
+		kparams.add("entryFilter", this.entryFilter);
+		kparams.add("actionIfInfected", this.actionIfInfected);
+		return kparams;
+	}
 
 }
 

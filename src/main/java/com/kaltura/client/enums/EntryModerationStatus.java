@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryModerationStatus implements EnumAsInt {
-    PENDING_MODERATION(1),
-    APPROVED(2),
-    REJECTED(3),
-    DELETED(4),
-    FLAGGED_FOR_REVIEW(5),
-    AUTO_APPROVED(6);
+	PENDING_MODERATION(1),
+	APPROVED(2),
+	REJECTED(3),
+	DELETED(4),
+	FLAGGED_FOR_REVIEW(5),
+	AUTO_APPROVED(6);
 
-    private int value;
+	private int value;
 
-    EntryModerationStatus(int value) {
-        this.value = value;
-    }
+	EntryModerationStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryModerationStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryModerationStatus defined values and compare the inner value with the given one:
-        for(EntryModerationStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryModerationStatus.values().length > 0 ? EntryModerationStatus.values()[0]: null;
+	public static EntryModerationStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryModerationStatus defined values and compare the inner value with the given one:
+		for(EntryModerationStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryModerationStatus.values().length > 0 ? EntryModerationStatus.values()[0]: null;
    }
 }

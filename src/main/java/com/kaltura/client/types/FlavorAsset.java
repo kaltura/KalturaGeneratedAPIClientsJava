@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.FlavorAssetStatus;
 import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,163 +42,227 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorAsset.Tokenizer.class)
 public class FlavorAsset extends Asset {
+	
+	public interface Tokenizer extends Asset.Tokenizer {
+		String flavorParamsId();
+		String width();
+		String height();
+		String bitrate();
+		String frameRate();
+		String isOriginal();
+		String isWeb();
+		String containerFormat();
+		String videoCodecId();
+		String status();
+		String language();
+		String label();
+	}
 
 	/**  The Flavor Params used to create this Flavor Asset  */
-    private Integer flavorParamsId;
+	private Integer flavorParamsId;
 	/**  The width of the Flavor Asset  */
-    private Integer width;
+	private Integer width;
 	/**  The height of the Flavor Asset  */
-    private Integer height;
+	private Integer height;
 	/**  The overall bitrate (in KBits) of the Flavor Asset  */
-    private Integer bitrate;
+	private Integer bitrate;
 	/**  The frame rate (in FPS) of the Flavor Asset  */
-    private Double frameRate;
+	private Double frameRate;
 	/**  True if this Flavor Asset is the original source  */
-    private Boolean isOriginal;
+	private Boolean isOriginal;
 	/**  True if this Flavor Asset is playable in KDP  */
-    private Boolean isWeb;
+	private Boolean isWeb;
 	/**  The container format  */
-    private String containerFormat;
+	private String containerFormat;
 	/**  The video codec  */
-    private String videoCodecId;
+	private String videoCodecId;
 	/**  The status of the Flavor Asset  */
-    private FlavorAssetStatus status;
+	private FlavorAssetStatus status;
 	/**  The language of the flavor asset  */
-    private Language language;
+	private Language language;
 	/**  The label of the flavor asset  */
-    private String label;
+	private String label;
 
-    // flavorParamsId:
-    public Integer getFlavorParamsId(){
-        return this.flavorParamsId;
-    }
-    public void setFlavorParamsId(Integer flavorParamsId){
-        this.flavorParamsId = flavorParamsId;
-    }
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
 
-    // width:
-    public Integer getWidth(){
-        return this.width;
-    }
-    public void setWidth(Integer width){
-        this.width = width;
-    }
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
 
-    // height:
-    public Integer getHeight(){
-        return this.height;
-    }
-    public void setHeight(Integer height){
-        this.height = height;
-    }
+	// width:
+	public Integer getWidth(){
+		return this.width;
+	}
+	public void setWidth(Integer width){
+		this.width = width;
+	}
 
-    // bitrate:
-    public Integer getBitrate(){
-        return this.bitrate;
-    }
-    public void setBitrate(Integer bitrate){
-        this.bitrate = bitrate;
-    }
+	public void width(String multirequestToken){
+		setToken("width", multirequestToken);
+	}
 
-    // frameRate:
-    public Double getFrameRate(){
-        return this.frameRate;
-    }
-    public void setFrameRate(Double frameRate){
-        this.frameRate = frameRate;
-    }
+	// height:
+	public Integer getHeight(){
+		return this.height;
+	}
+	public void setHeight(Integer height){
+		this.height = height;
+	}
 
-    // isOriginal:
-    public Boolean getIsOriginal(){
-        return this.isOriginal;
-    }
-    public void setIsOriginal(Boolean isOriginal){
-        this.isOriginal = isOriginal;
-    }
+	public void height(String multirequestToken){
+		setToken("height", multirequestToken);
+	}
 
-    // isWeb:
-    public Boolean getIsWeb(){
-        return this.isWeb;
-    }
-    public void setIsWeb(Boolean isWeb){
-        this.isWeb = isWeb;
-    }
+	// bitrate:
+	public Integer getBitrate(){
+		return this.bitrate;
+	}
+	public void setBitrate(Integer bitrate){
+		this.bitrate = bitrate;
+	}
 
-    // containerFormat:
-    public String getContainerFormat(){
-        return this.containerFormat;
-    }
-    public void setContainerFormat(String containerFormat){
-        this.containerFormat = containerFormat;
-    }
+	public void bitrate(String multirequestToken){
+		setToken("bitrate", multirequestToken);
+	}
 
-    // videoCodecId:
-    public String getVideoCodecId(){
-        return this.videoCodecId;
-    }
-    public void setVideoCodecId(String videoCodecId){
-        this.videoCodecId = videoCodecId;
-    }
+	// frameRate:
+	public Double getFrameRate(){
+		return this.frameRate;
+	}
+	public void setFrameRate(Double frameRate){
+		this.frameRate = frameRate;
+	}
 
-    // status:
-    public FlavorAssetStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(FlavorAssetStatus status){
-        this.status = status;
-    }
+	public void frameRate(String multirequestToken){
+		setToken("frameRate", multirequestToken);
+	}
 
-    // language:
-    public Language getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(Language language){
-        this.language = language;
-    }
+	// isOriginal:
+	public Boolean getIsOriginal(){
+		return this.isOriginal;
+	}
+	public void setIsOriginal(Boolean isOriginal){
+		this.isOriginal = isOriginal;
+	}
 
-    // label:
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
+	public void isOriginal(String multirequestToken){
+		setToken("isOriginal", multirequestToken);
+	}
+
+	// isWeb:
+	public Boolean getIsWeb(){
+		return this.isWeb;
+	}
+	public void setIsWeb(Boolean isWeb){
+		this.isWeb = isWeb;
+	}
+
+	public void isWeb(String multirequestToken){
+		setToken("isWeb", multirequestToken);
+	}
+
+	// containerFormat:
+	public String getContainerFormat(){
+		return this.containerFormat;
+	}
+	public void setContainerFormat(String containerFormat){
+		this.containerFormat = containerFormat;
+	}
+
+	public void containerFormat(String multirequestToken){
+		setToken("containerFormat", multirequestToken);
+	}
+
+	// videoCodecId:
+	public String getVideoCodecId(){
+		return this.videoCodecId;
+	}
+	public void setVideoCodecId(String videoCodecId){
+		this.videoCodecId = videoCodecId;
+	}
+
+	public void videoCodecId(String multirequestToken){
+		setToken("videoCodecId", multirequestToken);
+	}
+
+	// status:
+	public FlavorAssetStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(FlavorAssetStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// language:
+	public Language getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(Language language){
+		this.language = language;
+	}
+
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
+
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
 
 
-    public FlavorAsset() {
-       super();
-    }
+	public FlavorAsset() {
+		super();
+	}
 
-    public FlavorAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
-        width = GsonParser.parseInt(jsonObject.get("width"));
-        height = GsonParser.parseInt(jsonObject.get("height"));
-        bitrate = GsonParser.parseInt(jsonObject.get("bitrate"));
-        frameRate = GsonParser.parseDouble(jsonObject.get("frameRate"));
-        isOriginal = GsonParser.parseBoolean(jsonObject.get("isOriginal"));
-        isWeb = GsonParser.parseBoolean(jsonObject.get("isWeb"));
-        containerFormat = GsonParser.parseString(jsonObject.get("containerFormat"));
-        videoCodecId = GsonParser.parseString(jsonObject.get("videoCodecId"));
-        status = FlavorAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        language = Language.get(GsonParser.parseString(jsonObject.get("language")));
-        label = GsonParser.parseString(jsonObject.get("label"));
+		// set members values:
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		width = GsonParser.parseInt(jsonObject.get("width"));
+		height = GsonParser.parseInt(jsonObject.get("height"));
+		bitrate = GsonParser.parseInt(jsonObject.get("bitrate"));
+		frameRate = GsonParser.parseDouble(jsonObject.get("frameRate"));
+		isOriginal = GsonParser.parseBoolean(jsonObject.get("isOriginal"));
+		isWeb = GsonParser.parseBoolean(jsonObject.get("isWeb"));
+		containerFormat = GsonParser.parseString(jsonObject.get("containerFormat"));
+		videoCodecId = GsonParser.parseString(jsonObject.get("videoCodecId"));
+		status = FlavorAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
+		label = GsonParser.parseString(jsonObject.get("label"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorAsset");
-        kparams.add("flavorParamsId", this.flavorParamsId);
-        kparams.add("language", this.language);
-        kparams.add("label", this.label);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorAsset");
+		kparams.add("flavorParamsId", this.flavorParamsId);
+		kparams.add("language", this.language);
+		kparams.add("label", this.label);
+		return kparams;
+	}
 
 }
 

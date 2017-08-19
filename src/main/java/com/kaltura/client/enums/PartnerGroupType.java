@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PartnerGroupType implements EnumAsInt {
-    PUBLISHER(1),
-    VAR_GROUP(2),
-    GROUP(3),
-    TEMPLATE(4);
+	PUBLISHER(1),
+	VAR_GROUP(2),
+	GROUP(3),
+	TEMPLATE(4);
 
-    private int value;
+	private int value;
 
-    PartnerGroupType(int value) {
-        this.value = value;
-    }
+	PartnerGroupType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PartnerGroupType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PartnerGroupType defined values and compare the inner value with the given one:
-        for(PartnerGroupType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PartnerGroupType.values().length > 0 ? PartnerGroupType.values()[0]: null;
+	public static PartnerGroupType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PartnerGroupType defined values and compare the inner value with the given one:
+		for(PartnerGroupType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PartnerGroupType.values().length > 0 ? PartnerGroupType.values()[0]: null;
    }
 }

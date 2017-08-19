@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GenericDistributionProviderActionOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    GenericDistributionProviderActionOrderBy(String value) {
-        this.value = value;
-    }
+	GenericDistributionProviderActionOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static GenericDistributionProviderActionOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GenericDistributionProviderActionOrderBy defined values and compare the inner value with the given one:
-        for(GenericDistributionProviderActionOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GenericDistributionProviderActionOrderBy.values().length > 0 ? GenericDistributionProviderActionOrderBy.values()[0]: null;
+	public static GenericDistributionProviderActionOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GenericDistributionProviderActionOrderBy defined values and compare the inner value with the given one:
+		for(GenericDistributionProviderActionOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GenericDistributionProviderActionOrderBy.values().length > 0 ? GenericDistributionProviderActionOrderBy.values()[0]: null;
    }
 }

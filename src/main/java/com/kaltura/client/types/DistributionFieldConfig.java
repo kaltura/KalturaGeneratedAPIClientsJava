@@ -32,7 +32,8 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionFieldRequiredStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -43,128 +44,168 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionFieldConfig.Tokenizer.class)
 public class DistributionFieldConfig extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String fieldName();
+		String userFriendlyFieldName();
+		String entryMrssXslt();
+		String isRequired();
+		String updateOnChange();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> updateParams();
+		String isDefault();
+		String triggerDeleteOnError();
+	}
 
 	/**  A value taken from a connector field enum which associates the current
 	  configuration to that connector field      Field enum class should be returned
 	  by the provider's getFieldEnumClass function.  */
-    private String fieldName;
+	private String fieldName;
 	/**  A string that will be shown to the user as the field name in error messages
 	  related to the current field  */
-    private String userFriendlyFieldName;
+	private String userFriendlyFieldName;
 	/**  An XSLT string that extracts the right value from the Kaltura entry MRSS XML.   
 	    The value of the current connector field will be the one that is returned from
 	  transforming the Kaltura entry MRSS XML using this XSLT string.  */
-    private String entryMrssXslt;
+	private String entryMrssXslt;
 	/**  Is the field required to have a value for submission ?  */
-    private DistributionFieldRequiredStatus isRequired;
+	private DistributionFieldRequiredStatus isRequired;
 	/**  Trigger distribution update when this field changes or not ?  */
-    private Boolean updateOnChange;
+	private Boolean updateOnChange;
 	/**  Entry column or metadata xpath that should trigger an update  */
-    private List<StringHolder> updateParams;
+	private List<StringHolder> updateParams;
 	/**  Is this field config is the default for the distribution provider?  */
-    private Boolean isDefault;
+	private Boolean isDefault;
 	/**  Is an error on this field going to trigger deletion of distributed content?  */
-    private Boolean triggerDeleteOnError;
+	private Boolean triggerDeleteOnError;
 
-    // fieldName:
-    public String getFieldName(){
-        return this.fieldName;
-    }
-    public void setFieldName(String fieldName){
-        this.fieldName = fieldName;
-    }
+	// fieldName:
+	public String getFieldName(){
+		return this.fieldName;
+	}
+	public void setFieldName(String fieldName){
+		this.fieldName = fieldName;
+	}
 
-    // userFriendlyFieldName:
-    public String getUserFriendlyFieldName(){
-        return this.userFriendlyFieldName;
-    }
-    public void setUserFriendlyFieldName(String userFriendlyFieldName){
-        this.userFriendlyFieldName = userFriendlyFieldName;
-    }
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
 
-    // entryMrssXslt:
-    public String getEntryMrssXslt(){
-        return this.entryMrssXslt;
-    }
-    public void setEntryMrssXslt(String entryMrssXslt){
-        this.entryMrssXslt = entryMrssXslt;
-    }
+	// userFriendlyFieldName:
+	public String getUserFriendlyFieldName(){
+		return this.userFriendlyFieldName;
+	}
+	public void setUserFriendlyFieldName(String userFriendlyFieldName){
+		this.userFriendlyFieldName = userFriendlyFieldName;
+	}
 
-    // isRequired:
-    public DistributionFieldRequiredStatus getIsRequired(){
-        return this.isRequired;
-    }
-    public void setIsRequired(DistributionFieldRequiredStatus isRequired){
-        this.isRequired = isRequired;
-    }
+	public void userFriendlyFieldName(String multirequestToken){
+		setToken("userFriendlyFieldName", multirequestToken);
+	}
 
-    // updateOnChange:
-    public Boolean getUpdateOnChange(){
-        return this.updateOnChange;
-    }
-    public void setUpdateOnChange(Boolean updateOnChange){
-        this.updateOnChange = updateOnChange;
-    }
+	// entryMrssXslt:
+	public String getEntryMrssXslt(){
+		return this.entryMrssXslt;
+	}
+	public void setEntryMrssXslt(String entryMrssXslt){
+		this.entryMrssXslt = entryMrssXslt;
+	}
 
-    // updateParams:
-    public List<StringHolder> getUpdateParams(){
-        return this.updateParams;
-    }
-    public void setUpdateParams(List<StringHolder> updateParams){
-        this.updateParams = updateParams;
-    }
+	public void entryMrssXslt(String multirequestToken){
+		setToken("entryMrssXslt", multirequestToken);
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	// isRequired:
+	public DistributionFieldRequiredStatus getIsRequired(){
+		return this.isRequired;
+	}
+	public void setIsRequired(DistributionFieldRequiredStatus isRequired){
+		this.isRequired = isRequired;
+	}
 
-    // triggerDeleteOnError:
-    public Boolean getTriggerDeleteOnError(){
-        return this.triggerDeleteOnError;
-    }
-    public void setTriggerDeleteOnError(Boolean triggerDeleteOnError){
-        this.triggerDeleteOnError = triggerDeleteOnError;
-    }
+	public void isRequired(String multirequestToken){
+		setToken("isRequired", multirequestToken);
+	}
+
+	// updateOnChange:
+	public Boolean getUpdateOnChange(){
+		return this.updateOnChange;
+	}
+	public void setUpdateOnChange(Boolean updateOnChange){
+		this.updateOnChange = updateOnChange;
+	}
+
+	public void updateOnChange(String multirequestToken){
+		setToken("updateOnChange", multirequestToken);
+	}
+
+	// updateParams:
+	public List<StringHolder> getUpdateParams(){
+		return this.updateParams;
+	}
+	public void setUpdateParams(List<StringHolder> updateParams){
+		this.updateParams = updateParams;
+	}
+
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
+
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
+
+	// triggerDeleteOnError:
+	public Boolean getTriggerDeleteOnError(){
+		return this.triggerDeleteOnError;
+	}
+	public void setTriggerDeleteOnError(Boolean triggerDeleteOnError){
+		this.triggerDeleteOnError = triggerDeleteOnError;
+	}
+
+	public void triggerDeleteOnError(String multirequestToken){
+		setToken("triggerDeleteOnError", multirequestToken);
+	}
 
 
-    public DistributionFieldConfig() {
-       super();
-    }
+	public DistributionFieldConfig() {
+		super();
+	}
 
-    public DistributionFieldConfig(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionFieldConfig(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
-        userFriendlyFieldName = GsonParser.parseString(jsonObject.get("userFriendlyFieldName"));
-        entryMrssXslt = GsonParser.parseString(jsonObject.get("entryMrssXslt"));
-        isRequired = DistributionFieldRequiredStatus.get(GsonParser.parseInt(jsonObject.get("isRequired")));
-        updateOnChange = GsonParser.parseBoolean(jsonObject.get("updateOnChange"));
-        updateParams = GsonParser.parseArray(jsonObject.getAsJsonArray("updateParams"), StringHolder.class);
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        triggerDeleteOnError = GsonParser.parseBoolean(jsonObject.get("triggerDeleteOnError"));
+		// set members values:
+		fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
+		userFriendlyFieldName = GsonParser.parseString(jsonObject.get("userFriendlyFieldName"));
+		entryMrssXslt = GsonParser.parseString(jsonObject.get("entryMrssXslt"));
+		isRequired = DistributionFieldRequiredStatus.get(GsonParser.parseInt(jsonObject.get("isRequired")));
+		updateOnChange = GsonParser.parseBoolean(jsonObject.get("updateOnChange"));
+		updateParams = GsonParser.parseArray(jsonObject.getAsJsonArray("updateParams"), StringHolder.class);
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		triggerDeleteOnError = GsonParser.parseBoolean(jsonObject.get("triggerDeleteOnError"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionFieldConfig");
-        kparams.add("fieldName", this.fieldName);
-        kparams.add("userFriendlyFieldName", this.userFriendlyFieldName);
-        kparams.add("entryMrssXslt", this.entryMrssXslt);
-        kparams.add("isRequired", this.isRequired);
-        kparams.add("updateOnChange", this.updateOnChange);
-        kparams.add("updateParams", this.updateParams);
-        kparams.add("triggerDeleteOnError", this.triggerDeleteOnError);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionFieldConfig");
+		kparams.add("fieldName", this.fieldName);
+		kparams.add("userFriendlyFieldName", this.userFriendlyFieldName);
+		kparams.add("entryMrssXslt", this.entryMrssXslt);
+		kparams.add("isRequired", this.isRequired);
+		kparams.add("updateOnChange", this.updateOnChange);
+		kparams.add("updateParams", this.updateParams);
+		kparams.add("triggerDeleteOnError", this.triggerDeleteOnError);
+		return kparams;
+	}
 
 }
 

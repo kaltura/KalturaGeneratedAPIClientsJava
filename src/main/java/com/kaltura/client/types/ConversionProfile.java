@@ -35,6 +35,7 @@ import com.kaltura.client.enums.MediaParserType;
 import com.kaltura.client.types.CropDimensions;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -44,311 +45,431 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConversionProfile.Tokenizer.class)
 public class ConversionProfile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String status();
+		String type();
+		String name();
+		String systemName();
+		String tags();
+		String description();
+		String defaultEntryId();
+		String createdAt();
+		String flavorParamsIds();
+		String isDefault();
+		String isPartnerDefault();
+		CropDimensions.Tokenizer cropDimensions();
+		String clipStart();
+		String clipDuration();
+		String xslTransformation();
+		String storageProfileId();
+		String mediaParserType();
+		String calculateComplexity();
+		String collectionTags();
+		String conditionalProfiles();
+		String detectGOP();
+		String mediaInfoXslTransformation();
+	}
 
 	/**  The id of the Conversion Profile  */
-    private Integer id;
-    private Integer partnerId;
-    private ConversionProfileStatus status;
-    private ConversionProfileType type;
+	private Integer id;
+	private Integer partnerId;
+	private ConversionProfileStatus status;
+	private ConversionProfileType type;
 	/**  The name of the Conversion Profile  */
-    private String name;
+	private String name;
 	/**  System name of the Conversion Profile  */
-    private String systemName;
+	private String systemName;
 	/**  Comma separated tags  */
-    private String tags;
+	private String tags;
 	/**  The description of the Conversion Profile  */
-    private String description;
+	private String description;
 	/**  ID of the default entry to be used for template data  */
-    private String defaultEntryId;
+	private String defaultEntryId;
 	/**  Creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  List of included flavor ids (comma separated)  */
-    private String flavorParamsIds;
+	private String flavorParamsIds;
 	/**  Indicates that this conversion profile is system default  */
-    private Boolean isDefault;
+	private Boolean isDefault;
 	/**  Indicates that this conversion profile is partner default  */
-    private Boolean isPartnerDefault;
+	private Boolean isPartnerDefault;
 	/**  Cropping dimensions  */
-    private CropDimensions cropDimensions;
+	private CropDimensions cropDimensions;
 	/**  Clipping start position (in miliseconds)  */
-    private Integer clipStart;
+	private Integer clipStart;
 	/**  Clipping duration (in miliseconds)  */
-    private Integer clipDuration;
+	private Integer clipDuration;
 	/**  XSL to transform ingestion MRSS XML  */
-    private String xslTransformation;
+	private String xslTransformation;
 	/**  ID of default storage profile to be used for linked net-storage file syncs  */
-    private Integer storageProfileId;
+	private Integer storageProfileId;
 	/**  Media parser type to be used for extract media  */
-    private MediaParserType mediaParserType;
+	private MediaParserType mediaParserType;
 	/**  Should calculate file conversion complexity  */
-    private Boolean calculateComplexity;
+	private Boolean calculateComplexity;
 	/**  Defines the tags that should be used to define 'collective'/group/multi-flavor
 	  processing,   like 'mbr' or 'ism'  */
-    private String collectionTags;
+	private String collectionTags;
 	/**  JSON string with array of "condition,profile-id" pairs.  */
-    private String conditionalProfiles;
+	private String conditionalProfiles;
 	/**  When set, the ExtractMedia job should detect the source file GOP using this
 	  value as the max calculated period  */
-    private Integer detectGOP;
+	private Integer detectGOP;
 	/**  XSL to transform ingestion Media Info XML  */
-    private String mediaInfoXslTransformation;
+	private String mediaInfoXslTransformation;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // status:
-    public ConversionProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(ConversionProfileStatus status){
-        this.status = status;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // type:
-    public ConversionProfileType getType(){
-        return this.type;
-    }
-    public void setType(ConversionProfileType type){
-        this.type = type;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// status:
+	public ConversionProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(ConversionProfileStatus status){
+		this.status = status;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // tags:
-    public String getTags(){
-        return this.tags;
-    }
-    public void setTags(String tags){
-        this.tags = tags;
-    }
+	// type:
+	public ConversionProfileType getType(){
+		return this.type;
+	}
+	public void setType(ConversionProfileType type){
+		this.type = type;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
-    // defaultEntryId:
-    public String getDefaultEntryId(){
-        return this.defaultEntryId;
-    }
-    public void setDefaultEntryId(String defaultEntryId){
-        this.defaultEntryId = defaultEntryId;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // flavorParamsIds:
-    public String getFlavorParamsIds(){
-        return this.flavorParamsIds;
-    }
-    public void setFlavorParamsIds(String flavorParamsIds){
-        this.flavorParamsIds = flavorParamsIds;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // isDefault:
-    public Boolean getIsDefault(){
-        return this.isDefault;
-    }
-    public void setIsDefault(Boolean isDefault){
-        this.isDefault = isDefault;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // isPartnerDefault:
-    public Boolean getIsPartnerDefault(){
-        return this.isPartnerDefault;
-    }
-    public void setIsPartnerDefault(Boolean isPartnerDefault){
-        this.isPartnerDefault = isPartnerDefault;
-    }
+	// tags:
+	public String getTags(){
+		return this.tags;
+	}
+	public void setTags(String tags){
+		this.tags = tags;
+	}
 
-    // cropDimensions:
-    public CropDimensions getCropDimensions(){
-        return this.cropDimensions;
-    }
-    public void setCropDimensions(CropDimensions cropDimensions){
-        this.cropDimensions = cropDimensions;
-    }
+	public void tags(String multirequestToken){
+		setToken("tags", multirequestToken);
+	}
 
-    // clipStart:
-    public Integer getClipStart(){
-        return this.clipStart;
-    }
-    public void setClipStart(Integer clipStart){
-        this.clipStart = clipStart;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // clipDuration:
-    public Integer getClipDuration(){
-        return this.clipDuration;
-    }
-    public void setClipDuration(Integer clipDuration){
-        this.clipDuration = clipDuration;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // xslTransformation:
-    public String getXslTransformation(){
-        return this.xslTransformation;
-    }
-    public void setXslTransformation(String xslTransformation){
-        this.xslTransformation = xslTransformation;
-    }
+	// defaultEntryId:
+	public String getDefaultEntryId(){
+		return this.defaultEntryId;
+	}
+	public void setDefaultEntryId(String defaultEntryId){
+		this.defaultEntryId = defaultEntryId;
+	}
 
-    // storageProfileId:
-    public Integer getStorageProfileId(){
-        return this.storageProfileId;
-    }
-    public void setStorageProfileId(Integer storageProfileId){
-        this.storageProfileId = storageProfileId;
-    }
+	public void defaultEntryId(String multirequestToken){
+		setToken("defaultEntryId", multirequestToken);
+	}
 
-    // mediaParserType:
-    public MediaParserType getMediaParserType(){
-        return this.mediaParserType;
-    }
-    public void setMediaParserType(MediaParserType mediaParserType){
-        this.mediaParserType = mediaParserType;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // calculateComplexity:
-    public Boolean getCalculateComplexity(){
-        return this.calculateComplexity;
-    }
-    public void setCalculateComplexity(Boolean calculateComplexity){
-        this.calculateComplexity = calculateComplexity;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // collectionTags:
-    public String getCollectionTags(){
-        return this.collectionTags;
-    }
-    public void setCollectionTags(String collectionTags){
-        this.collectionTags = collectionTags;
-    }
+	// flavorParamsIds:
+	public String getFlavorParamsIds(){
+		return this.flavorParamsIds;
+	}
+	public void setFlavorParamsIds(String flavorParamsIds){
+		this.flavorParamsIds = flavorParamsIds;
+	}
 
-    // conditionalProfiles:
-    public String getConditionalProfiles(){
-        return this.conditionalProfiles;
-    }
-    public void setConditionalProfiles(String conditionalProfiles){
-        this.conditionalProfiles = conditionalProfiles;
-    }
+	public void flavorParamsIds(String multirequestToken){
+		setToken("flavorParamsIds", multirequestToken);
+	}
 
-    // detectGOP:
-    public Integer getDetectGOP(){
-        return this.detectGOP;
-    }
-    public void setDetectGOP(Integer detectGOP){
-        this.detectGOP = detectGOP;
-    }
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
 
-    // mediaInfoXslTransformation:
-    public String getMediaInfoXslTransformation(){
-        return this.mediaInfoXslTransformation;
-    }
-    public void setMediaInfoXslTransformation(String mediaInfoXslTransformation){
-        this.mediaInfoXslTransformation = mediaInfoXslTransformation;
-    }
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
+
+	// isPartnerDefault:
+	public Boolean getIsPartnerDefault(){
+		return this.isPartnerDefault;
+	}
+	public void setIsPartnerDefault(Boolean isPartnerDefault){
+		this.isPartnerDefault = isPartnerDefault;
+	}
+
+	public void isPartnerDefault(String multirequestToken){
+		setToken("isPartnerDefault", multirequestToken);
+	}
+
+	// cropDimensions:
+	public CropDimensions getCropDimensions(){
+		return this.cropDimensions;
+	}
+	public void setCropDimensions(CropDimensions cropDimensions){
+		this.cropDimensions = cropDimensions;
+	}
+
+	// clipStart:
+	public Integer getClipStart(){
+		return this.clipStart;
+	}
+	public void setClipStart(Integer clipStart){
+		this.clipStart = clipStart;
+	}
+
+	public void clipStart(String multirequestToken){
+		setToken("clipStart", multirequestToken);
+	}
+
+	// clipDuration:
+	public Integer getClipDuration(){
+		return this.clipDuration;
+	}
+	public void setClipDuration(Integer clipDuration){
+		this.clipDuration = clipDuration;
+	}
+
+	public void clipDuration(String multirequestToken){
+		setToken("clipDuration", multirequestToken);
+	}
+
+	// xslTransformation:
+	public String getXslTransformation(){
+		return this.xslTransformation;
+	}
+	public void setXslTransformation(String xslTransformation){
+		this.xslTransformation = xslTransformation;
+	}
+
+	public void xslTransformation(String multirequestToken){
+		setToken("xslTransformation", multirequestToken);
+	}
+
+	// storageProfileId:
+	public Integer getStorageProfileId(){
+		return this.storageProfileId;
+	}
+	public void setStorageProfileId(Integer storageProfileId){
+		this.storageProfileId = storageProfileId;
+	}
+
+	public void storageProfileId(String multirequestToken){
+		setToken("storageProfileId", multirequestToken);
+	}
+
+	// mediaParserType:
+	public MediaParserType getMediaParserType(){
+		return this.mediaParserType;
+	}
+	public void setMediaParserType(MediaParserType mediaParserType){
+		this.mediaParserType = mediaParserType;
+	}
+
+	public void mediaParserType(String multirequestToken){
+		setToken("mediaParserType", multirequestToken);
+	}
+
+	// calculateComplexity:
+	public Boolean getCalculateComplexity(){
+		return this.calculateComplexity;
+	}
+	public void setCalculateComplexity(Boolean calculateComplexity){
+		this.calculateComplexity = calculateComplexity;
+	}
+
+	public void calculateComplexity(String multirequestToken){
+		setToken("calculateComplexity", multirequestToken);
+	}
+
+	// collectionTags:
+	public String getCollectionTags(){
+		return this.collectionTags;
+	}
+	public void setCollectionTags(String collectionTags){
+		this.collectionTags = collectionTags;
+	}
+
+	public void collectionTags(String multirequestToken){
+		setToken("collectionTags", multirequestToken);
+	}
+
+	// conditionalProfiles:
+	public String getConditionalProfiles(){
+		return this.conditionalProfiles;
+	}
+	public void setConditionalProfiles(String conditionalProfiles){
+		this.conditionalProfiles = conditionalProfiles;
+	}
+
+	public void conditionalProfiles(String multirequestToken){
+		setToken("conditionalProfiles", multirequestToken);
+	}
+
+	// detectGOP:
+	public Integer getDetectGOP(){
+		return this.detectGOP;
+	}
+	public void setDetectGOP(Integer detectGOP){
+		this.detectGOP = detectGOP;
+	}
+
+	public void detectGOP(String multirequestToken){
+		setToken("detectGOP", multirequestToken);
+	}
+
+	// mediaInfoXslTransformation:
+	public String getMediaInfoXslTransformation(){
+		return this.mediaInfoXslTransformation;
+	}
+	public void setMediaInfoXslTransformation(String mediaInfoXslTransformation){
+		this.mediaInfoXslTransformation = mediaInfoXslTransformation;
+	}
+
+	public void mediaInfoXslTransformation(String multirequestToken){
+		setToken("mediaInfoXslTransformation", multirequestToken);
+	}
 
 
-    public ConversionProfile() {
-       super();
-    }
+	public ConversionProfile() {
+		super();
+	}
 
-    public ConversionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConversionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        status = ConversionProfileStatus.get(GsonParser.parseString(jsonObject.get("status")));
-        type = ConversionProfileType.get(GsonParser.parseString(jsonObject.get("type")));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        tags = GsonParser.parseString(jsonObject.get("tags"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        defaultEntryId = GsonParser.parseString(jsonObject.get("defaultEntryId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
-        isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
-        isPartnerDefault = GsonParser.parseBoolean(jsonObject.get("isPartnerDefault"));
-        cropDimensions = GsonParser.parseObject(jsonObject.getAsJsonObject("cropDimensions"), CropDimensions.class);
-        clipStart = GsonParser.parseInt(jsonObject.get("clipStart"));
-        clipDuration = GsonParser.parseInt(jsonObject.get("clipDuration"));
-        xslTransformation = GsonParser.parseString(jsonObject.get("xslTransformation"));
-        storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
-        mediaParserType = MediaParserType.get(GsonParser.parseString(jsonObject.get("mediaParserType")));
-        calculateComplexity = GsonParser.parseBoolean(jsonObject.get("calculateComplexity"));
-        collectionTags = GsonParser.parseString(jsonObject.get("collectionTags"));
-        conditionalProfiles = GsonParser.parseString(jsonObject.get("conditionalProfiles"));
-        detectGOP = GsonParser.parseInt(jsonObject.get("detectGOP"));
-        mediaInfoXslTransformation = GsonParser.parseString(jsonObject.get("mediaInfoXslTransformation"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		status = ConversionProfileStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		type = ConversionProfileType.get(GsonParser.parseString(jsonObject.get("type")));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		tags = GsonParser.parseString(jsonObject.get("tags"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		defaultEntryId = GsonParser.parseString(jsonObject.get("defaultEntryId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		isPartnerDefault = GsonParser.parseBoolean(jsonObject.get("isPartnerDefault"));
+		cropDimensions = GsonParser.parseObject(jsonObject.getAsJsonObject("cropDimensions"), CropDimensions.class);
+		clipStart = GsonParser.parseInt(jsonObject.get("clipStart"));
+		clipDuration = GsonParser.parseInt(jsonObject.get("clipDuration"));
+		xslTransformation = GsonParser.parseString(jsonObject.get("xslTransformation"));
+		storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
+		mediaParserType = MediaParserType.get(GsonParser.parseString(jsonObject.get("mediaParserType")));
+		calculateComplexity = GsonParser.parseBoolean(jsonObject.get("calculateComplexity"));
+		collectionTags = GsonParser.parseString(jsonObject.get("collectionTags"));
+		conditionalProfiles = GsonParser.parseString(jsonObject.get("conditionalProfiles"));
+		detectGOP = GsonParser.parseInt(jsonObject.get("detectGOP"));
+		mediaInfoXslTransformation = GsonParser.parseString(jsonObject.get("mediaInfoXslTransformation"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConversionProfile");
-        kparams.add("status", this.status);
-        kparams.add("type", this.type);
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("tags", this.tags);
-        kparams.add("description", this.description);
-        kparams.add("defaultEntryId", this.defaultEntryId);
-        kparams.add("flavorParamsIds", this.flavorParamsIds);
-        kparams.add("isDefault", this.isDefault);
-        kparams.add("cropDimensions", this.cropDimensions);
-        kparams.add("clipStart", this.clipStart);
-        kparams.add("clipDuration", this.clipDuration);
-        kparams.add("xslTransformation", this.xslTransformation);
-        kparams.add("storageProfileId", this.storageProfileId);
-        kparams.add("mediaParserType", this.mediaParserType);
-        kparams.add("calculateComplexity", this.calculateComplexity);
-        kparams.add("collectionTags", this.collectionTags);
-        kparams.add("conditionalProfiles", this.conditionalProfiles);
-        kparams.add("detectGOP", this.detectGOP);
-        kparams.add("mediaInfoXslTransformation", this.mediaInfoXslTransformation);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConversionProfile");
+		kparams.add("status", this.status);
+		kparams.add("type", this.type);
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("tags", this.tags);
+		kparams.add("description", this.description);
+		kparams.add("defaultEntryId", this.defaultEntryId);
+		kparams.add("flavorParamsIds", this.flavorParamsIds);
+		kparams.add("isDefault", this.isDefault);
+		kparams.add("cropDimensions", this.cropDimensions);
+		kparams.add("clipStart", this.clipStart);
+		kparams.add("clipDuration", this.clipDuration);
+		kparams.add("xslTransformation", this.xslTransformation);
+		kparams.add("storageProfileId", this.storageProfileId);
+		kparams.add("mediaParserType", this.mediaParserType);
+		kparams.add("calculateComplexity", this.calculateComplexity);
+		kparams.add("collectionTags", this.collectionTags);
+		kparams.add("conditionalProfiles", this.conditionalProfiles);
+		kparams.add("detectGOP", this.detectGOP);
+		kparams.add("mediaInfoXslTransformation", this.mediaInfoXslTransformation);
+		return kparams;
+	}
 
 }
 

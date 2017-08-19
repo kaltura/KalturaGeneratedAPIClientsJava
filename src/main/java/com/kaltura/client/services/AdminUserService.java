@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AdminUser;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -41,55 +40,115 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Manage details for the administrative user  */
 public class AdminUserService {
+	
+	public static class LoginAdminUserBuilder extends RequestBuilder<String, String, LoginAdminUserBuilder> {
+		
+		public LoginAdminUserBuilder(String email, String password, int partnerId) {
+			super(String.class, "adminuser", "login");
+			params.add("email", email);
+			params.add("password", password);
+			params.add("partnerId", partnerId);
+		}
+		
+		public void email(String multirequestToken) {
+			params.add("email", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> login(String email, String password)  {
-        return login(email, password, Integer.MIN_VALUE);
-    }
+	public static LoginAdminUserBuilder login(String email, String password)  {
+		return login(email, password, Integer.MIN_VALUE);
+	}
 
 	/**  Get an admin session using admin email and password (Used for login to the KMC
 	  application)  */
-    public static RequestBuilder<String> login(String email, String password, int partnerId)  {
-        Params kparams = new Params();
-        kparams.add("email", email);
-        kparams.add("password", password);
-        kparams.add("partnerId", partnerId);
-
-        return new RequestBuilder<String>(String.class, "adminuser", "login", kparams);
-    }
+    public static LoginAdminUserBuilder login(String email, String password, int partnerId)  {
+		return new LoginAdminUserBuilder(email, password, partnerId);
+	}
+	
+	public static class ResetPasswordAdminUserBuilder extends NullRequestBuilder {
+		
+		public ResetPasswordAdminUserBuilder(String email) {
+			super("adminuser", "resetPassword");
+			params.add("email", email);
+		}
+		
+		public void email(String multirequestToken) {
+			params.add("email", multirequestToken);
+		}
+	}
 
 	/**  Reset admin user password and send it to the users email address  */
-    public static RequestBuilder<Void> resetPassword(String email)  {
-        Params kparams = new Params();
-        kparams.add("email", email);
-
-        return new NullRequestBuilder("adminuser", "resetPassword", kparams);
-    }
+    public static ResetPasswordAdminUserBuilder resetPassword(String email)  {
+		return new ResetPasswordAdminUserBuilder(email);
+	}
+	
+	public static class SetInitialPasswordAdminUserBuilder extends NullRequestBuilder {
+		
+		public SetInitialPasswordAdminUserBuilder(String hashKey, String newPassword) {
+			super("adminuser", "setInitialPassword");
+			params.add("hashKey", hashKey);
+			params.add("newPassword", newPassword);
+		}
+		
+		public void hashKey(String multirequestToken) {
+			params.add("hashKey", multirequestToken);
+		}
+		
+		public void newPassword(String multirequestToken) {
+			params.add("newPassword", multirequestToken);
+		}
+	}
 
 	/**  Set initial users password  */
-    public static RequestBuilder<Void> setInitialPassword(String hashKey, String newPassword)  {
-        Params kparams = new Params();
-        kparams.add("hashKey", hashKey);
-        kparams.add("newPassword", newPassword);
+    public static SetInitialPasswordAdminUserBuilder setInitialPassword(String hashKey, String newPassword)  {
+		return new SetInitialPasswordAdminUserBuilder(hashKey, newPassword);
+	}
+	
+	public static class UpdatePasswordAdminUserBuilder extends RequestBuilder<AdminUser, AdminUser.Tokenizer, UpdatePasswordAdminUserBuilder> {
+		
+		public UpdatePasswordAdminUserBuilder(String email, String password, String newEmail, String newPassword) {
+			super(AdminUser.class, "adminuser", "updatePassword");
+			params.add("email", email);
+			params.add("password", password);
+			params.add("newEmail", newEmail);
+			params.add("newPassword", newPassword);
+		}
+		
+		public void email(String multirequestToken) {
+			params.add("email", multirequestToken);
+		}
+		
+		public void password(String multirequestToken) {
+			params.add("password", multirequestToken);
+		}
+		
+		public void newEmail(String multirequestToken) {
+			params.add("newEmail", multirequestToken);
+		}
+		
+		public void newPassword(String multirequestToken) {
+			params.add("newPassword", multirequestToken);
+		}
+	}
 
-        return new NullRequestBuilder("adminuser", "setInitialPassword", kparams);
-    }
+	public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password)  {
+		return updatePassword(email, password, "");
+	}
 
-    public static RequestBuilder<AdminUser> updatePassword(String email, String password)  {
-        return updatePassword(email, password, "");
-    }
-
-    public static RequestBuilder<AdminUser> updatePassword(String email, String password, String newEmail)  {
-        return updatePassword(email, password, newEmail, "");
-    }
+	public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail)  {
+		return updatePassword(email, password, newEmail, "");
+	}
 
 	/**  Update admin user password and email  */
-    public static RequestBuilder<AdminUser> updatePassword(String email, String password, String newEmail, String newPassword)  {
-        Params kparams = new Params();
-        kparams.add("email", email);
-        kparams.add("password", password);
-        kparams.add("newEmail", newEmail);
-        kparams.add("newPassword", newPassword);
-
-        return new RequestBuilder<AdminUser>(AdminUser.class, "adminuser", "updatePassword", kparams);
-    }
+    public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail, String newPassword)  {
+		return new UpdatePasswordAdminUserBuilder(email, password, newEmail, newPassword);
+	}
 }

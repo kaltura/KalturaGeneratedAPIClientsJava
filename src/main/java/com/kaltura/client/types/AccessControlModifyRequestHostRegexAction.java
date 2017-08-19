@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,64 +40,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControlModifyRequestHostRegexAction.Tokenizer.class)
 public class AccessControlModifyRequestHostRegexAction extends RuleAction {
+	
+	public interface Tokenizer extends RuleAction.Tokenizer {
+		String pattern();
+		String replacement();
+		String replacmenServerNodeId();
+	}
 
 	/**  Request host regex pattern  */
-    private String pattern;
+	private String pattern;
 	/**  Request host regex replacment  */
-    private String replacement;
+	private String replacement;
 	/**  serverNodeId to generate replacment host from  */
-    private Integer replacmenServerNodeId;
+	private Integer replacmenServerNodeId;
 
-    // pattern:
-    public String getPattern(){
-        return this.pattern;
-    }
-    public void setPattern(String pattern){
-        this.pattern = pattern;
-    }
+	// pattern:
+	public String getPattern(){
+		return this.pattern;
+	}
+	public void setPattern(String pattern){
+		this.pattern = pattern;
+	}
 
-    // replacement:
-    public String getReplacement(){
-        return this.replacement;
-    }
-    public void setReplacement(String replacement){
-        this.replacement = replacement;
-    }
+	public void pattern(String multirequestToken){
+		setToken("pattern", multirequestToken);
+	}
 
-    // replacmenServerNodeId:
-    public Integer getReplacmenServerNodeId(){
-        return this.replacmenServerNodeId;
-    }
-    public void setReplacmenServerNodeId(Integer replacmenServerNodeId){
-        this.replacmenServerNodeId = replacmenServerNodeId;
-    }
+	// replacement:
+	public String getReplacement(){
+		return this.replacement;
+	}
+	public void setReplacement(String replacement){
+		this.replacement = replacement;
+	}
+
+	public void replacement(String multirequestToken){
+		setToken("replacement", multirequestToken);
+	}
+
+	// replacmenServerNodeId:
+	public Integer getReplacmenServerNodeId(){
+		return this.replacmenServerNodeId;
+	}
+	public void setReplacmenServerNodeId(Integer replacmenServerNodeId){
+		this.replacmenServerNodeId = replacmenServerNodeId;
+	}
+
+	public void replacmenServerNodeId(String multirequestToken){
+		setToken("replacmenServerNodeId", multirequestToken);
+	}
 
 
-    public AccessControlModifyRequestHostRegexAction() {
-       super();
-    }
+	public AccessControlModifyRequestHostRegexAction() {
+		super();
+	}
 
-    public AccessControlModifyRequestHostRegexAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControlModifyRequestHostRegexAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        pattern = GsonParser.parseString(jsonObject.get("pattern"));
-        replacement = GsonParser.parseString(jsonObject.get("replacement"));
-        replacmenServerNodeId = GsonParser.parseInt(jsonObject.get("replacmenServerNodeId"));
+		// set members values:
+		pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		replacement = GsonParser.parseString(jsonObject.get("replacement"));
+		replacmenServerNodeId = GsonParser.parseInt(jsonObject.get("replacmenServerNodeId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
-        kparams.add("pattern", this.pattern);
-        kparams.add("replacement", this.replacement);
-        kparams.add("replacmenServerNodeId", this.replacmenServerNodeId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControlModifyRequestHostRegexAction");
+		kparams.add("pattern", this.pattern);
+		kparams.add("replacement", this.replacement);
+		kparams.add("replacmenServerNodeId", this.replacmenServerNodeId);
+		return kparams;
+	}
 
 }
 

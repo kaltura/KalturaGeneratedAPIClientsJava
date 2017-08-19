@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ApiParameterPermissionItemAction;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +41,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ApiParameterPermissionItem.Tokenizer.class)
 public class ApiParameterPermissionItem extends PermissionItem {
+	
+	public interface Tokenizer extends PermissionItem.Tokenizer {
+		String object();
+		String parameter();
+		String action();
+	}
 
-    private String object;
-    private String parameter;
-    private ApiParameterPermissionItemAction action;
+	private String object;
+	private String parameter;
+	private ApiParameterPermissionItemAction action;
 
-    // object:
-    public String getObject(){
-        return this.object;
-    }
-    public void setObject(String object){
-        this.object = object;
-    }
+	// object:
+	public String getObject(){
+		return this.object;
+	}
+	public void setObject(String object){
+		this.object = object;
+	}
 
-    // parameter:
-    public String getParameter(){
-        return this.parameter;
-    }
-    public void setParameter(String parameter){
-        this.parameter = parameter;
-    }
+	public void object(String multirequestToken){
+		setToken("object", multirequestToken);
+	}
 
-    // action:
-    public ApiParameterPermissionItemAction getAction(){
-        return this.action;
-    }
-    public void setAction(ApiParameterPermissionItemAction action){
-        this.action = action;
-    }
+	// parameter:
+	public String getParameter(){
+		return this.parameter;
+	}
+	public void setParameter(String parameter){
+		this.parameter = parameter;
+	}
+
+	public void parameter(String multirequestToken){
+		setToken("parameter", multirequestToken);
+	}
+
+	// action:
+	public ApiParameterPermissionItemAction getAction(){
+		return this.action;
+	}
+	public void setAction(ApiParameterPermissionItemAction action){
+		this.action = action;
+	}
+
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
 
 
-    public ApiParameterPermissionItem() {
-       super();
-    }
+	public ApiParameterPermissionItem() {
+		super();
+	}
 
-    public ApiParameterPermissionItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ApiParameterPermissionItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        object = GsonParser.parseString(jsonObject.get("object"));
-        parameter = GsonParser.parseString(jsonObject.get("parameter"));
-        action = ApiParameterPermissionItemAction.get(GsonParser.parseString(jsonObject.get("action")));
+		// set members values:
+		object = GsonParser.parseString(jsonObject.get("object"));
+		parameter = GsonParser.parseString(jsonObject.get("parameter"));
+		action = ApiParameterPermissionItemAction.get(GsonParser.parseString(jsonObject.get("action")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaApiParameterPermissionItem");
-        kparams.add("object", this.object);
-        kparams.add("parameter", this.parameter);
-        kparams.add("action", this.action);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaApiParameterPermissionItem");
+		kparams.add("object", this.object);
+		kparams.add("parameter", this.parameter);
+		kparams.add("action", this.action);
+		return kparams;
+	}
 
 }
 

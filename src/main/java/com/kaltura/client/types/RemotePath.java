@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,48 +41,62 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(RemotePath.Tokenizer.class)
 public class RemotePath extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String storageProfileId();
+		String uri();
+	}
 
-    private Integer storageProfileId;
-    private String uri;
+	private Integer storageProfileId;
+	private String uri;
 
-    // storageProfileId:
-    public Integer getStorageProfileId(){
-        return this.storageProfileId;
-    }
-    public void setStorageProfileId(Integer storageProfileId){
-        this.storageProfileId = storageProfileId;
-    }
+	// storageProfileId:
+	public Integer getStorageProfileId(){
+		return this.storageProfileId;
+	}
+	public void setStorageProfileId(Integer storageProfileId){
+		this.storageProfileId = storageProfileId;
+	}
 
-    // uri:
-    public String getUri(){
-        return this.uri;
-    }
-    public void setUri(String uri){
-        this.uri = uri;
-    }
+	public void storageProfileId(String multirequestToken){
+		setToken("storageProfileId", multirequestToken);
+	}
+
+	// uri:
+	public String getUri(){
+		return this.uri;
+	}
+	public void setUri(String uri){
+		this.uri = uri;
+	}
+
+	public void uri(String multirequestToken){
+		setToken("uri", multirequestToken);
+	}
 
 
-    public RemotePath() {
-       super();
-    }
+	public RemotePath() {
+		super();
+	}
 
-    public RemotePath(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public RemotePath(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
-        uri = GsonParser.parseString(jsonObject.get("uri"));
+		// set members values:
+		storageProfileId = GsonParser.parseInt(jsonObject.get("storageProfileId"));
+		uri = GsonParser.parseString(jsonObject.get("uri"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaRemotePath");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaRemotePath");
+		return kparams;
+	}
 
 }
 

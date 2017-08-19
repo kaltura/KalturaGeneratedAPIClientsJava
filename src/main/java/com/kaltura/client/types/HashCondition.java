@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HashCondition.Tokenizer.class)
 public class HashCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		String hashName();
+		String hashSecret();
+	}
 
 	/**  hash name  */
-    private String hashName;
+	private String hashName;
 	/**  hash secret  */
-    private String hashSecret;
+	private String hashSecret;
 
-    // hashName:
-    public String getHashName(){
-        return this.hashName;
-    }
-    public void setHashName(String hashName){
-        this.hashName = hashName;
-    }
+	// hashName:
+	public String getHashName(){
+		return this.hashName;
+	}
+	public void setHashName(String hashName){
+		this.hashName = hashName;
+	}
 
-    // hashSecret:
-    public String getHashSecret(){
-        return this.hashSecret;
-    }
-    public void setHashSecret(String hashSecret){
-        this.hashSecret = hashSecret;
-    }
+	public void hashName(String multirequestToken){
+		setToken("hashName", multirequestToken);
+	}
+
+	// hashSecret:
+	public String getHashSecret(){
+		return this.hashSecret;
+	}
+	public void setHashSecret(String hashSecret){
+		this.hashSecret = hashSecret;
+	}
+
+	public void hashSecret(String multirequestToken){
+		setToken("hashSecret", multirequestToken);
+	}
 
 
-    public HashCondition() {
-       super();
-    }
+	public HashCondition() {
+		super();
+	}
 
-    public HashCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public HashCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hashName = GsonParser.parseString(jsonObject.get("hashName"));
-        hashSecret = GsonParser.parseString(jsonObject.get("hashSecret"));
+		// set members values:
+		hashName = GsonParser.parseString(jsonObject.get("hashName"));
+		hashSecret = GsonParser.parseString(jsonObject.get("hashSecret"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHashCondition");
-        kparams.add("hashName", this.hashName);
-        kparams.add("hashSecret", this.hashSecret);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHashCondition");
+		kparams.add("hashName", this.hashName);
+		kparams.add("hashSecret", this.hashSecret);
+		return kparams;
+	}
 
 }
 

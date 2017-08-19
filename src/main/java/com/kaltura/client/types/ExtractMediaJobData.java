@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,84 +40,113 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExtractMediaJobData.Tokenizer.class)
 public class ExtractMediaJobData extends ConvartableJobData {
+	
+	public interface Tokenizer extends ConvartableJobData.Tokenizer {
+		String flavorAssetId();
+		String calculateComplexity();
+		String extractId3Tags();
+		String destDataFilePath();
+		String detectGOP();
+	}
 
-    private String flavorAssetId;
-    private Boolean calculateComplexity;
-    private Boolean extractId3Tags;
+	private String flavorAssetId;
+	private Boolean calculateComplexity;
+	private Boolean extractId3Tags;
 	/**  The data output file  */
-    private String destDataFilePath;
-    private Integer detectGOP;
+	private String destDataFilePath;
+	private Integer detectGOP;
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // calculateComplexity:
-    public Boolean getCalculateComplexity(){
-        return this.calculateComplexity;
-    }
-    public void setCalculateComplexity(Boolean calculateComplexity){
-        this.calculateComplexity = calculateComplexity;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // extractId3Tags:
-    public Boolean getExtractId3Tags(){
-        return this.extractId3Tags;
-    }
-    public void setExtractId3Tags(Boolean extractId3Tags){
-        this.extractId3Tags = extractId3Tags;
-    }
+	// calculateComplexity:
+	public Boolean getCalculateComplexity(){
+		return this.calculateComplexity;
+	}
+	public void setCalculateComplexity(Boolean calculateComplexity){
+		this.calculateComplexity = calculateComplexity;
+	}
 
-    // destDataFilePath:
-    public String getDestDataFilePath(){
-        return this.destDataFilePath;
-    }
-    public void setDestDataFilePath(String destDataFilePath){
-        this.destDataFilePath = destDataFilePath;
-    }
+	public void calculateComplexity(String multirequestToken){
+		setToken("calculateComplexity", multirequestToken);
+	}
 
-    // detectGOP:
-    public Integer getDetectGOP(){
-        return this.detectGOP;
-    }
-    public void setDetectGOP(Integer detectGOP){
-        this.detectGOP = detectGOP;
-    }
+	// extractId3Tags:
+	public Boolean getExtractId3Tags(){
+		return this.extractId3Tags;
+	}
+	public void setExtractId3Tags(Boolean extractId3Tags){
+		this.extractId3Tags = extractId3Tags;
+	}
+
+	public void extractId3Tags(String multirequestToken){
+		setToken("extractId3Tags", multirequestToken);
+	}
+
+	// destDataFilePath:
+	public String getDestDataFilePath(){
+		return this.destDataFilePath;
+	}
+	public void setDestDataFilePath(String destDataFilePath){
+		this.destDataFilePath = destDataFilePath;
+	}
+
+	public void destDataFilePath(String multirequestToken){
+		setToken("destDataFilePath", multirequestToken);
+	}
+
+	// detectGOP:
+	public Integer getDetectGOP(){
+		return this.detectGOP;
+	}
+	public void setDetectGOP(Integer detectGOP){
+		this.detectGOP = detectGOP;
+	}
+
+	public void detectGOP(String multirequestToken){
+		setToken("detectGOP", multirequestToken);
+	}
 
 
-    public ExtractMediaJobData() {
-       super();
-    }
+	public ExtractMediaJobData() {
+		super();
+	}
 
-    public ExtractMediaJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExtractMediaJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        calculateComplexity = GsonParser.parseBoolean(jsonObject.get("calculateComplexity"));
-        extractId3Tags = GsonParser.parseBoolean(jsonObject.get("extractId3Tags"));
-        destDataFilePath = GsonParser.parseString(jsonObject.get("destDataFilePath"));
-        detectGOP = GsonParser.parseInt(jsonObject.get("detectGOP"));
+		// set members values:
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		calculateComplexity = GsonParser.parseBoolean(jsonObject.get("calculateComplexity"));
+		extractId3Tags = GsonParser.parseBoolean(jsonObject.get("extractId3Tags"));
+		destDataFilePath = GsonParser.parseString(jsonObject.get("destDataFilePath"));
+		detectGOP = GsonParser.parseInt(jsonObject.get("detectGOP"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExtractMediaJobData");
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("calculateComplexity", this.calculateComplexity);
-        kparams.add("extractId3Tags", this.extractId3Tags);
-        kparams.add("destDataFilePath", this.destDataFilePath);
-        kparams.add("detectGOP", this.detectGOP);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExtractMediaJobData");
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("calculateComplexity", this.calculateComplexity);
+		kparams.add("extractId3Tags", this.extractId3Tags);
+		kparams.add("destDataFilePath", this.destDataFilePath);
+		kparams.add("detectGOP", this.detectGOP);
+		return kparams;
+	}
 
 }
 

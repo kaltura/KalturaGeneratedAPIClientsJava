@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.DistributionAction;
 import com.kaltura.client.types.EntryDistribution;
 import com.kaltura.client.types.EntryDistributionFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -47,125 +45,246 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Entry Distribution service  */
 public class EntryDistributionService {
+	
+	public static class AddEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, AddEntryDistributionBuilder> {
+		
+		public AddEntryDistributionBuilder(EntryDistribution entryDistribution) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "add");
+			params.add("entryDistribution", entryDistribution);
+		}
+	}
 
 	/**  Add new Entry Distribution  */
-    public static RequestBuilder<EntryDistribution> add(EntryDistribution entryDistribution)  {
-        Params kparams = new Params();
-        kparams.add("entryDistribution", entryDistribution);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "add", kparams);
-    }
+    public static AddEntryDistributionBuilder add(EntryDistribution entryDistribution)  {
+		return new AddEntryDistributionBuilder(entryDistribution);
+	}
+	
+	public static class DeleteEntryDistributionBuilder extends NullRequestBuilder {
+		
+		public DeleteEntryDistributionBuilder(int id) {
+			super("contentdistribution_entrydistribution", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Entry Distribution by id  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("contentdistribution_entrydistribution", "delete", kparams);
-    }
+    public static DeleteEntryDistributionBuilder delete(int id)  {
+		return new DeleteEntryDistributionBuilder(id);
+	}
+	
+	public static class GetEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, GetEntryDistributionBuilder> {
+		
+		public GetEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Entry Distribution by id  */
-    public static RequestBuilder<EntryDistribution> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetEntryDistributionBuilder get(int id)  {
+		return new GetEntryDistributionBuilder(id);
+	}
+	
+	public static class ListEntryDistributionBuilder extends ListResponseRequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, ListEntryDistributionBuilder> {
+		
+		public ListEntryDistributionBuilder(EntryDistributionFilter filter, FilterPager pager) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "get", kparams);
-    }
+	public static ListEntryDistributionBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<EntryDistribution>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<EntryDistribution>> list(EntryDistributionFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListEntryDistributionBuilder list(EntryDistributionFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all distribution providers  */
-    public static RequestBuilder<ListResponse<EntryDistribution>> list(EntryDistributionFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "list", kparams);
-    }
+    public static ListEntryDistributionBuilder list(EntryDistributionFilter filter, FilterPager pager)  {
+		return new ListEntryDistributionBuilder(filter, pager);
+	}
+	
+	public static class RetrySubmitEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, RetrySubmitEntryDistributionBuilder> {
+		
+		public RetrySubmitEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "retrySubmit");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retries last submit action  */
-    public static RequestBuilder<EntryDistribution> retrySubmit(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "retrySubmit", kparams);
-    }
+    public static RetrySubmitEntryDistributionBuilder retrySubmit(int id)  {
+		return new RetrySubmitEntryDistributionBuilder(id);
+	}
+	
+	public static class ServeReturnedDataEntryDistributionBuilder extends ServeRequestBuilder {
+		
+		public ServeReturnedDataEntryDistributionBuilder(int id, DistributionAction actionType) {
+			super("contentdistribution_entrydistribution", "serveReturnedData");
+			params.add("id", id);
+			params.add("actionType", actionType);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void actionType(String multirequestToken) {
+			params.add("actionType", multirequestToken);
+		}
+	}
 
 	/**  Serves entry distribution returned data  */
-    public static RequestBuilder<String> serveReturnedData(int id, DistributionAction actionType)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("actionType", actionType);
-
-        return new ServeRequestBuilder("contentdistribution_entrydistribution", "serveReturnedData", kparams);
-    }
+    public static ServeReturnedDataEntryDistributionBuilder serveReturnedData(int id, DistributionAction actionType)  {
+		return new ServeReturnedDataEntryDistributionBuilder(id, actionType);
+	}
+	
+	public static class ServeSentDataEntryDistributionBuilder extends ServeRequestBuilder {
+		
+		public ServeSentDataEntryDistributionBuilder(int id, DistributionAction actionType) {
+			super("contentdistribution_entrydistribution", "serveSentData");
+			params.add("id", id);
+			params.add("actionType", actionType);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void actionType(String multirequestToken) {
+			params.add("actionType", multirequestToken);
+		}
+	}
 
 	/**  Serves entry distribution sent data  */
-    public static RequestBuilder<String> serveSentData(int id, DistributionAction actionType)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("actionType", actionType);
+    public static ServeSentDataEntryDistributionBuilder serveSentData(int id, DistributionAction actionType)  {
+		return new ServeSentDataEntryDistributionBuilder(id, actionType);
+	}
+	
+	public static class SubmitAddEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, SubmitAddEntryDistributionBuilder> {
+		
+		public SubmitAddEntryDistributionBuilder(int id, boolean submitWhenReady) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "submitAdd");
+			params.add("id", id);
+			params.add("submitWhenReady", submitWhenReady);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void submitWhenReady(String multirequestToken) {
+			params.add("submitWhenReady", multirequestToken);
+		}
+	}
 
-        return new ServeRequestBuilder("contentdistribution_entrydistribution", "serveSentData", kparams);
-    }
-
-    public static RequestBuilder<EntryDistribution> submitAdd(int id)  {
-        return submitAdd(id, false);
-    }
+	public static SubmitAddEntryDistributionBuilder submitAdd(int id)  {
+		return submitAdd(id, false);
+	}
 
 	/**  Submits Entry Distribution to the remote destination  */
-    public static RequestBuilder<EntryDistribution> submitAdd(int id, boolean submitWhenReady)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("submitWhenReady", submitWhenReady);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "submitAdd", kparams);
-    }
+    public static SubmitAddEntryDistributionBuilder submitAdd(int id, boolean submitWhenReady)  {
+		return new SubmitAddEntryDistributionBuilder(id, submitWhenReady);
+	}
+	
+	public static class SubmitDeleteEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, SubmitDeleteEntryDistributionBuilder> {
+		
+		public SubmitDeleteEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "submitDelete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Deletes Entry Distribution from the remote destination  */
-    public static RequestBuilder<EntryDistribution> submitDelete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "submitDelete", kparams);
-    }
+    public static SubmitDeleteEntryDistributionBuilder submitDelete(int id)  {
+		return new SubmitDeleteEntryDistributionBuilder(id);
+	}
+	
+	public static class SubmitFetchReportEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, SubmitFetchReportEntryDistributionBuilder> {
+		
+		public SubmitFetchReportEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "submitFetchReport");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Submits Entry Distribution report request  */
-    public static RequestBuilder<EntryDistribution> submitFetchReport(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "submitFetchReport", kparams);
-    }
+    public static SubmitFetchReportEntryDistributionBuilder submitFetchReport(int id)  {
+		return new SubmitFetchReportEntryDistributionBuilder(id);
+	}
+	
+	public static class SubmitUpdateEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, SubmitUpdateEntryDistributionBuilder> {
+		
+		public SubmitUpdateEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "submitUpdate");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Submits Entry Distribution changes to the remote destination  */
-    public static RequestBuilder<EntryDistribution> submitUpdate(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "submitUpdate", kparams);
-    }
+    public static SubmitUpdateEntryDistributionBuilder submitUpdate(int id)  {
+		return new SubmitUpdateEntryDistributionBuilder(id);
+	}
+	
+	public static class UpdateEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, UpdateEntryDistributionBuilder> {
+		
+		public UpdateEntryDistributionBuilder(int id, EntryDistribution entryDistribution) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "update");
+			params.add("id", id);
+			params.add("entryDistribution", entryDistribution);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Entry Distribution by id  */
-    public static RequestBuilder<EntryDistribution> update(int id, EntryDistribution entryDistribution)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("entryDistribution", entryDistribution);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "update", kparams);
-    }
+    public static UpdateEntryDistributionBuilder update(int id, EntryDistribution entryDistribution)  {
+		return new UpdateEntryDistributionBuilder(id, entryDistribution);
+	}
+	
+	public static class ValidateEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, ValidateEntryDistributionBuilder> {
+		
+		public ValidateEntryDistributionBuilder(int id) {
+			super(EntryDistribution.class, "contentdistribution_entrydistribution", "validate");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Validates Entry Distribution by id for submission  */
-    public static RequestBuilder<EntryDistribution> validate(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<EntryDistribution>(EntryDistribution.class, "contentdistribution_entrydistribution", "validate", kparams);
-    }
+    public static ValidateEntryDistributionBuilder validate(int id)  {
+		return new ValidateEntryDistributionBuilder(id);
+	}
 }

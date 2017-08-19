@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VirusScanJobResult implements EnumAsInt {
-    SCAN_ERROR(1),
-    FILE_IS_CLEAN(2),
-    FILE_WAS_CLEANED(3),
-    FILE_INFECTED(4);
+	SCAN_ERROR(1),
+	FILE_IS_CLEAN(2),
+	FILE_WAS_CLEANED(3),
+	FILE_INFECTED(4);
 
-    private int value;
+	private int value;
 
-    VirusScanJobResult(int value) {
-        this.value = value;
-    }
+	VirusScanJobResult(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static VirusScanJobResult get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over VirusScanJobResult defined values and compare the inner value with the given one:
-        for(VirusScanJobResult item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return VirusScanJobResult.values().length > 0 ? VirusScanJobResult.values()[0]: null;
+	public static VirusScanJobResult get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over VirusScanJobResult defined values and compare the inner value with the given one:
+		for(VirusScanJobResult item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return VirusScanJobResult.values().length > 0 ? VirusScanJobResult.values()[0]: null;
    }
 }

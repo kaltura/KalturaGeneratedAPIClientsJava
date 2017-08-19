@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IpAddressCondition.Tokenizer.class)
 public class IpAddressCondition extends MatchCondition {
+	
+	public interface Tokenizer extends MatchCondition.Tokenizer {
+		String acceptInternalIps();
+		String httpHeader();
+	}
 
 	/**  allow internal ips  */
-    private Boolean acceptInternalIps;
+	private Boolean acceptInternalIps;
 	/**  http header name for extracting the ip  */
-    private String httpHeader;
+	private String httpHeader;
 
-    // acceptInternalIps:
-    public Boolean getAcceptInternalIps(){
-        return this.acceptInternalIps;
-    }
-    public void setAcceptInternalIps(Boolean acceptInternalIps){
-        this.acceptInternalIps = acceptInternalIps;
-    }
+	// acceptInternalIps:
+	public Boolean getAcceptInternalIps(){
+		return this.acceptInternalIps;
+	}
+	public void setAcceptInternalIps(Boolean acceptInternalIps){
+		this.acceptInternalIps = acceptInternalIps;
+	}
 
-    // httpHeader:
-    public String getHttpHeader(){
-        return this.httpHeader;
-    }
-    public void setHttpHeader(String httpHeader){
-        this.httpHeader = httpHeader;
-    }
+	public void acceptInternalIps(String multirequestToken){
+		setToken("acceptInternalIps", multirequestToken);
+	}
+
+	// httpHeader:
+	public String getHttpHeader(){
+		return this.httpHeader;
+	}
+	public void setHttpHeader(String httpHeader){
+		this.httpHeader = httpHeader;
+	}
+
+	public void httpHeader(String multirequestToken){
+		setToken("httpHeader", multirequestToken);
+	}
 
 
-    public IpAddressCondition() {
-       super();
-    }
+	public IpAddressCondition() {
+		super();
+	}
 
-    public IpAddressCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IpAddressCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        acceptInternalIps = GsonParser.parseBoolean(jsonObject.get("acceptInternalIps"));
-        httpHeader = GsonParser.parseString(jsonObject.get("httpHeader"));
+		// set members values:
+		acceptInternalIps = GsonParser.parseBoolean(jsonObject.get("acceptInternalIps"));
+		httpHeader = GsonParser.parseString(jsonObject.get("httpHeader"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIpAddressCondition");
-        kparams.add("acceptInternalIps", this.acceptInternalIps);
-        kparams.add("httpHeader", this.httpHeader);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIpAddressCondition");
+		kparams.add("acceptInternalIps", this.acceptInternalIps);
+		kparams.add("httpHeader", this.httpHeader);
+		return kparams;
+	}
 
 }
 

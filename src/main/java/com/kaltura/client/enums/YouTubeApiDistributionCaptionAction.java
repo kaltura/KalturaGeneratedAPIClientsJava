@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum YouTubeApiDistributionCaptionAction implements EnumAsInt {
-    UPDATE_ACTION(1),
-    SUBMIT_ACTION(2),
-    DELETE_ACTION(3);
+	UPDATE_ACTION(1),
+	SUBMIT_ACTION(2),
+	DELETE_ACTION(3);
 
-    private int value;
+	private int value;
 
-    YouTubeApiDistributionCaptionAction(int value) {
-        this.value = value;
-    }
+	YouTubeApiDistributionCaptionAction(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static YouTubeApiDistributionCaptionAction get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over YouTubeApiDistributionCaptionAction defined values and compare the inner value with the given one:
-        for(YouTubeApiDistributionCaptionAction item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return YouTubeApiDistributionCaptionAction.values().length > 0 ? YouTubeApiDistributionCaptionAction.values()[0]: null;
+	public static YouTubeApiDistributionCaptionAction get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over YouTubeApiDistributionCaptionAction defined values and compare the inner value with the given one:
+		for(YouTubeApiDistributionCaptionAction item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return YouTubeApiDistributionCaptionAction.values().length > 0 ? YouTubeApiDistributionCaptionAction.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,63 +40,82 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileGenericAppleHttp.Tokenizer.class)
 public class DeliveryProfileGenericAppleHttp extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String pattern();
+		String rendererClass();
+		String manifestRedirect();
+	}
 
-    private String pattern;
+	private String pattern;
 	/**  rendererClass  */
-    private String rendererClass;
+	private String rendererClass;
 	/**  Enable to make playManifest redirect to the domain of the delivery profile  */
-    private Boolean manifestRedirect;
+	private Boolean manifestRedirect;
 
-    // pattern:
-    public String getPattern(){
-        return this.pattern;
-    }
-    public void setPattern(String pattern){
-        this.pattern = pattern;
-    }
+	// pattern:
+	public String getPattern(){
+		return this.pattern;
+	}
+	public void setPattern(String pattern){
+		this.pattern = pattern;
+	}
 
-    // rendererClass:
-    public String getRendererClass(){
-        return this.rendererClass;
-    }
-    public void setRendererClass(String rendererClass){
-        this.rendererClass = rendererClass;
-    }
+	public void pattern(String multirequestToken){
+		setToken("pattern", multirequestToken);
+	}
 
-    // manifestRedirect:
-    public Boolean getManifestRedirect(){
-        return this.manifestRedirect;
-    }
-    public void setManifestRedirect(Boolean manifestRedirect){
-        this.manifestRedirect = manifestRedirect;
-    }
+	// rendererClass:
+	public String getRendererClass(){
+		return this.rendererClass;
+	}
+	public void setRendererClass(String rendererClass){
+		this.rendererClass = rendererClass;
+	}
+
+	public void rendererClass(String multirequestToken){
+		setToken("rendererClass", multirequestToken);
+	}
+
+	// manifestRedirect:
+	public Boolean getManifestRedirect(){
+		return this.manifestRedirect;
+	}
+	public void setManifestRedirect(Boolean manifestRedirect){
+		this.manifestRedirect = manifestRedirect;
+	}
+
+	public void manifestRedirect(String multirequestToken){
+		setToken("manifestRedirect", multirequestToken);
+	}
 
 
-    public DeliveryProfileGenericAppleHttp() {
-       super();
-    }
+	public DeliveryProfileGenericAppleHttp() {
+		super();
+	}
 
-    public DeliveryProfileGenericAppleHttp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileGenericAppleHttp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        pattern = GsonParser.parseString(jsonObject.get("pattern"));
-        rendererClass = GsonParser.parseString(jsonObject.get("rendererClass"));
-        manifestRedirect = GsonParser.parseBoolean(jsonObject.get("manifestRedirect"));
+		// set members values:
+		pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		rendererClass = GsonParser.parseString(jsonObject.get("rendererClass"));
+		manifestRedirect = GsonParser.parseBoolean(jsonObject.get("manifestRedirect"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileGenericAppleHttp");
-        kparams.add("pattern", this.pattern);
-        kparams.add("rendererClass", this.rendererClass);
-        kparams.add("manifestRedirect", this.manifestRedirect);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileGenericAppleHttp");
+		kparams.add("pattern", this.pattern);
+		kparams.add("rendererClass", this.rendererClass);
+		kparams.add("manifestRedirect", this.manifestRedirect);
+		return kparams;
+	}
 
 }
 

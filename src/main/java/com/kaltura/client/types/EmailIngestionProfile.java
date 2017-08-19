@@ -33,6 +33,7 @@ import com.kaltura.client.enums.EmailIngestionProfileStatus;
 import com.kaltura.client.enums.EntryModerationStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,200 +43,284 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailIngestionProfile.Tokenizer.class)
 public class EmailIngestionProfile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String name();
+		String description();
+		String emailAddress();
+		String mailboxId();
+		String partnerId();
+		String conversionProfile2Id();
+		String moderationStatus();
+		String status();
+		String createdAt();
+		String defaultCategory();
+		String defaultUserId();
+		String defaultTags();
+		String defaultAdminTags();
+		String maxAttachmentSizeKbytes();
+		String maxAttachmentsPerMail();
+	}
 
-    private Integer id;
-    private String name;
-    private String description;
-    private String emailAddress;
-    private String mailboxId;
-    private Integer partnerId;
-    private Integer conversionProfile2Id;
-    private EntryModerationStatus moderationStatus;
-    private EmailIngestionProfileStatus status;
-    private String createdAt;
-    private String defaultCategory;
-    private String defaultUserId;
-    private String defaultTags;
-    private String defaultAdminTags;
-    private Integer maxAttachmentSizeKbytes;
-    private Integer maxAttachmentsPerMail;
+	private Integer id;
+	private String name;
+	private String description;
+	private String emailAddress;
+	private String mailboxId;
+	private Integer partnerId;
+	private Integer conversionProfile2Id;
+	private EntryModerationStatus moderationStatus;
+	private EmailIngestionProfileStatus status;
+	private String createdAt;
+	private String defaultCategory;
+	private String defaultUserId;
+	private String defaultTags;
+	private String defaultAdminTags;
+	private Integer maxAttachmentSizeKbytes;
+	private Integer maxAttachmentsPerMail;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // emailAddress:
-    public String getEmailAddress(){
-        return this.emailAddress;
-    }
-    public void setEmailAddress(String emailAddress){
-        this.emailAddress = emailAddress;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // mailboxId:
-    public String getMailboxId(){
-        return this.mailboxId;
-    }
-    public void setMailboxId(String mailboxId){
-        this.mailboxId = mailboxId;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // conversionProfile2Id:
-    public Integer getConversionProfile2Id(){
-        return this.conversionProfile2Id;
-    }
-    public void setConversionProfile2Id(Integer conversionProfile2Id){
-        this.conversionProfile2Id = conversionProfile2Id;
-    }
+	// emailAddress:
+	public String getEmailAddress(){
+		return this.emailAddress;
+	}
+	public void setEmailAddress(String emailAddress){
+		this.emailAddress = emailAddress;
+	}
 
-    // moderationStatus:
-    public EntryModerationStatus getModerationStatus(){
-        return this.moderationStatus;
-    }
-    public void setModerationStatus(EntryModerationStatus moderationStatus){
-        this.moderationStatus = moderationStatus;
-    }
+	public void emailAddress(String multirequestToken){
+		setToken("emailAddress", multirequestToken);
+	}
 
-    // status:
-    public EmailIngestionProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(EmailIngestionProfileStatus status){
-        this.status = status;
-    }
+	// mailboxId:
+	public String getMailboxId(){
+		return this.mailboxId;
+	}
+	public void setMailboxId(String mailboxId){
+		this.mailboxId = mailboxId;
+	}
 
-    // createdAt:
-    public String getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(String createdAt){
-        this.createdAt = createdAt;
-    }
+	public void mailboxId(String multirequestToken){
+		setToken("mailboxId", multirequestToken);
+	}
 
-    // defaultCategory:
-    public String getDefaultCategory(){
-        return this.defaultCategory;
-    }
-    public void setDefaultCategory(String defaultCategory){
-        this.defaultCategory = defaultCategory;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // defaultUserId:
-    public String getDefaultUserId(){
-        return this.defaultUserId;
-    }
-    public void setDefaultUserId(String defaultUserId){
-        this.defaultUserId = defaultUserId;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // defaultTags:
-    public String getDefaultTags(){
-        return this.defaultTags;
-    }
-    public void setDefaultTags(String defaultTags){
-        this.defaultTags = defaultTags;
-    }
+	// conversionProfile2Id:
+	public Integer getConversionProfile2Id(){
+		return this.conversionProfile2Id;
+	}
+	public void setConversionProfile2Id(Integer conversionProfile2Id){
+		this.conversionProfile2Id = conversionProfile2Id;
+	}
 
-    // defaultAdminTags:
-    public String getDefaultAdminTags(){
-        return this.defaultAdminTags;
-    }
-    public void setDefaultAdminTags(String defaultAdminTags){
-        this.defaultAdminTags = defaultAdminTags;
-    }
+	public void conversionProfile2Id(String multirequestToken){
+		setToken("conversionProfile2Id", multirequestToken);
+	}
 
-    // maxAttachmentSizeKbytes:
-    public Integer getMaxAttachmentSizeKbytes(){
-        return this.maxAttachmentSizeKbytes;
-    }
-    public void setMaxAttachmentSizeKbytes(Integer maxAttachmentSizeKbytes){
-        this.maxAttachmentSizeKbytes = maxAttachmentSizeKbytes;
-    }
+	// moderationStatus:
+	public EntryModerationStatus getModerationStatus(){
+		return this.moderationStatus;
+	}
+	public void setModerationStatus(EntryModerationStatus moderationStatus){
+		this.moderationStatus = moderationStatus;
+	}
 
-    // maxAttachmentsPerMail:
-    public Integer getMaxAttachmentsPerMail(){
-        return this.maxAttachmentsPerMail;
-    }
-    public void setMaxAttachmentsPerMail(Integer maxAttachmentsPerMail){
-        this.maxAttachmentsPerMail = maxAttachmentsPerMail;
-    }
+	public void moderationStatus(String multirequestToken){
+		setToken("moderationStatus", multirequestToken);
+	}
+
+	// status:
+	public EmailIngestionProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(EmailIngestionProfileStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// createdAt:
+	public String getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(String createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// defaultCategory:
+	public String getDefaultCategory(){
+		return this.defaultCategory;
+	}
+	public void setDefaultCategory(String defaultCategory){
+		this.defaultCategory = defaultCategory;
+	}
+
+	public void defaultCategory(String multirequestToken){
+		setToken("defaultCategory", multirequestToken);
+	}
+
+	// defaultUserId:
+	public String getDefaultUserId(){
+		return this.defaultUserId;
+	}
+	public void setDefaultUserId(String defaultUserId){
+		this.defaultUserId = defaultUserId;
+	}
+
+	public void defaultUserId(String multirequestToken){
+		setToken("defaultUserId", multirequestToken);
+	}
+
+	// defaultTags:
+	public String getDefaultTags(){
+		return this.defaultTags;
+	}
+	public void setDefaultTags(String defaultTags){
+		this.defaultTags = defaultTags;
+	}
+
+	public void defaultTags(String multirequestToken){
+		setToken("defaultTags", multirequestToken);
+	}
+
+	// defaultAdminTags:
+	public String getDefaultAdminTags(){
+		return this.defaultAdminTags;
+	}
+	public void setDefaultAdminTags(String defaultAdminTags){
+		this.defaultAdminTags = defaultAdminTags;
+	}
+
+	public void defaultAdminTags(String multirequestToken){
+		setToken("defaultAdminTags", multirequestToken);
+	}
+
+	// maxAttachmentSizeKbytes:
+	public Integer getMaxAttachmentSizeKbytes(){
+		return this.maxAttachmentSizeKbytes;
+	}
+	public void setMaxAttachmentSizeKbytes(Integer maxAttachmentSizeKbytes){
+		this.maxAttachmentSizeKbytes = maxAttachmentSizeKbytes;
+	}
+
+	public void maxAttachmentSizeKbytes(String multirequestToken){
+		setToken("maxAttachmentSizeKbytes", multirequestToken);
+	}
+
+	// maxAttachmentsPerMail:
+	public Integer getMaxAttachmentsPerMail(){
+		return this.maxAttachmentsPerMail;
+	}
+	public void setMaxAttachmentsPerMail(Integer maxAttachmentsPerMail){
+		this.maxAttachmentsPerMail = maxAttachmentsPerMail;
+	}
+
+	public void maxAttachmentsPerMail(String multirequestToken){
+		setToken("maxAttachmentsPerMail", multirequestToken);
+	}
 
 
-    public EmailIngestionProfile() {
-       super();
-    }
+	public EmailIngestionProfile() {
+		super();
+	}
 
-    public EmailIngestionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailIngestionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        emailAddress = GsonParser.parseString(jsonObject.get("emailAddress"));
-        mailboxId = GsonParser.parseString(jsonObject.get("mailboxId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        conversionProfile2Id = GsonParser.parseInt(jsonObject.get("conversionProfile2Id"));
-        moderationStatus = EntryModerationStatus.get(GsonParser.parseInt(jsonObject.get("moderationStatus")));
-        status = EmailIngestionProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        createdAt = GsonParser.parseString(jsonObject.get("createdAt"));
-        defaultCategory = GsonParser.parseString(jsonObject.get("defaultCategory"));
-        defaultUserId = GsonParser.parseString(jsonObject.get("defaultUserId"));
-        defaultTags = GsonParser.parseString(jsonObject.get("defaultTags"));
-        defaultAdminTags = GsonParser.parseString(jsonObject.get("defaultAdminTags"));
-        maxAttachmentSizeKbytes = GsonParser.parseInt(jsonObject.get("maxAttachmentSizeKbytes"));
-        maxAttachmentsPerMail = GsonParser.parseInt(jsonObject.get("maxAttachmentsPerMail"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		emailAddress = GsonParser.parseString(jsonObject.get("emailAddress"));
+		mailboxId = GsonParser.parseString(jsonObject.get("mailboxId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		conversionProfile2Id = GsonParser.parseInt(jsonObject.get("conversionProfile2Id"));
+		moderationStatus = EntryModerationStatus.get(GsonParser.parseInt(jsonObject.get("moderationStatus")));
+		status = EmailIngestionProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		createdAt = GsonParser.parseString(jsonObject.get("createdAt"));
+		defaultCategory = GsonParser.parseString(jsonObject.get("defaultCategory"));
+		defaultUserId = GsonParser.parseString(jsonObject.get("defaultUserId"));
+		defaultTags = GsonParser.parseString(jsonObject.get("defaultTags"));
+		defaultAdminTags = GsonParser.parseString(jsonObject.get("defaultAdminTags"));
+		maxAttachmentSizeKbytes = GsonParser.parseInt(jsonObject.get("maxAttachmentSizeKbytes"));
+		maxAttachmentsPerMail = GsonParser.parseInt(jsonObject.get("maxAttachmentsPerMail"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailIngestionProfile");
-        kparams.add("name", this.name);
-        kparams.add("description", this.description);
-        kparams.add("emailAddress", this.emailAddress);
-        kparams.add("mailboxId", this.mailboxId);
-        kparams.add("conversionProfile2Id", this.conversionProfile2Id);
-        kparams.add("moderationStatus", this.moderationStatus);
-        kparams.add("defaultCategory", this.defaultCategory);
-        kparams.add("defaultUserId", this.defaultUserId);
-        kparams.add("defaultTags", this.defaultTags);
-        kparams.add("defaultAdminTags", this.defaultAdminTags);
-        kparams.add("maxAttachmentSizeKbytes", this.maxAttachmentSizeKbytes);
-        kparams.add("maxAttachmentsPerMail", this.maxAttachmentsPerMail);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailIngestionProfile");
+		kparams.add("name", this.name);
+		kparams.add("description", this.description);
+		kparams.add("emailAddress", this.emailAddress);
+		kparams.add("mailboxId", this.mailboxId);
+		kparams.add("conversionProfile2Id", this.conversionProfile2Id);
+		kparams.add("moderationStatus", this.moderationStatus);
+		kparams.add("defaultCategory", this.defaultCategory);
+		kparams.add("defaultUserId", this.defaultUserId);
+		kparams.add("defaultTags", this.defaultTags);
+		kparams.add("defaultAdminTags", this.defaultAdminTags);
+		kparams.add("maxAttachmentSizeKbytes", this.maxAttachmentSizeKbytes);
+		kparams.add("maxAttachmentsPerMail", this.maxAttachmentsPerMail);
+		return kparams;
+	}
 
 }
 

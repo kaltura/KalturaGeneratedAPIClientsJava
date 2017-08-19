@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserType implements EnumAsInt {
-    USER(0),
-    GROUP(1);
+	USER(0),
+	GROUP(1);
 
-    private int value;
+	private int value;
 
-    UserType(int value) {
-        this.value = value;
-    }
+	UserType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UserType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserType defined values and compare the inner value with the given one:
-        for(UserType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserType.values().length > 0 ? UserType.values()[0]: null;
+	public static UserType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserType defined values and compare the inner value with the given one:
+		for(UserType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserType.values().length > 0 ? UserType.values()[0]: null;
    }
 }

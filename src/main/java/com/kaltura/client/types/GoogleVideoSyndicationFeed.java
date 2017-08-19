@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GoogleSyndicationFeedAdultValues;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +41,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GoogleVideoSyndicationFeed.Tokenizer.class)
 public class GoogleVideoSyndicationFeed extends BaseSyndicationFeed {
+	
+	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
+		String adultContent();
+	}
 
-    private GoogleSyndicationFeedAdultValues adultContent;
+	private GoogleSyndicationFeedAdultValues adultContent;
 
-    // adultContent:
-    public GoogleSyndicationFeedAdultValues getAdultContent(){
-        return this.adultContent;
-    }
-    public void setAdultContent(GoogleSyndicationFeedAdultValues adultContent){
-        this.adultContent = adultContent;
-    }
+	// adultContent:
+	public GoogleSyndicationFeedAdultValues getAdultContent(){
+		return this.adultContent;
+	}
+	public void setAdultContent(GoogleSyndicationFeedAdultValues adultContent){
+		this.adultContent = adultContent;
+	}
+
+	public void adultContent(String multirequestToken){
+		setToken("adultContent", multirequestToken);
+	}
 
 
-    public GoogleVideoSyndicationFeed() {
-       super();
-    }
+	public GoogleVideoSyndicationFeed() {
+		super();
+	}
 
-    public GoogleVideoSyndicationFeed(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public GoogleVideoSyndicationFeed(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        adultContent = GoogleSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
+		// set members values:
+		adultContent = GoogleSyndicationFeedAdultValues.get(GsonParser.parseString(jsonObject.get("adultContent")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaGoogleVideoSyndicationFeed");
-        kparams.add("adultContent", this.adultContent);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGoogleVideoSyndicationFeed");
+		kparams.add("adultContent", this.adultContent);
+		return kparams;
+	}
 
 }
 

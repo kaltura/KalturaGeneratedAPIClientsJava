@@ -34,55 +34,55 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum LiveStreamAdminEntryCompareAttribute implements EnumAsString {
-    ACCESS_CONTROL_ID("accessControlId"),
-    CREATED_AT("createdAt"),
-    END_DATE("endDate"),
-    LAST_PLAYED_AT("lastPlayedAt"),
-    MEDIA_DATE("mediaDate"),
-    MEDIA_TYPE("mediaType"),
-    MODERATION_COUNT("moderationCount"),
-    MODERATION_STATUS("moderationStatus"),
-    MS_DURATION("msDuration"),
-    PARTNER_ID("partnerId"),
-    PARTNER_SORT_VALUE("partnerSortValue"),
-    PLAYS("plays"),
-    RANK("rank"),
-    REPLACEMENT_STATUS("replacementStatus"),
-    START_DATE("startDate"),
-    STATUS("status"),
-    TOTAL_RANK("totalRank"),
-    TYPE("type"),
-    UPDATED_AT("updatedAt"),
-    VIEWS("views");
+	ACCESS_CONTROL_ID("accessControlId"),
+	CREATED_AT("createdAt"),
+	END_DATE("endDate"),
+	LAST_PLAYED_AT("lastPlayedAt"),
+	MEDIA_DATE("mediaDate"),
+	MEDIA_TYPE("mediaType"),
+	MODERATION_COUNT("moderationCount"),
+	MODERATION_STATUS("moderationStatus"),
+	MS_DURATION("msDuration"),
+	PARTNER_ID("partnerId"),
+	PARTNER_SORT_VALUE("partnerSortValue"),
+	PLAYS("plays"),
+	RANK("rank"),
+	REPLACEMENT_STATUS("replacementStatus"),
+	START_DATE("startDate"),
+	STATUS("status"),
+	TOTAL_RANK("totalRank"),
+	TYPE("type"),
+	UPDATED_AT("updatedAt"),
+	VIEWS("views");
 
-    private String value;
+	private String value;
 
-    LiveStreamAdminEntryCompareAttribute(String value) {
-        this.value = value;
-    }
+	LiveStreamAdminEntryCompareAttribute(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static LiveStreamAdminEntryCompareAttribute get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over LiveStreamAdminEntryCompareAttribute defined values and compare the inner value with the given one:
-        for(LiveStreamAdminEntryCompareAttribute item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return LiveStreamAdminEntryCompareAttribute.values().length > 0 ? LiveStreamAdminEntryCompareAttribute.values()[0]: null;
+	public static LiveStreamAdminEntryCompareAttribute get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveStreamAdminEntryCompareAttribute defined values and compare the inner value with the given one:
+		for(LiveStreamAdminEntryCompareAttribute item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveStreamAdminEntryCompareAttribute.values().length > 0 ? LiveStreamAdminEntryCompareAttribute.values()[0]: null;
    }
 }

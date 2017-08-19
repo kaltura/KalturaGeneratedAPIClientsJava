@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,66 +40,85 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SyncCategoryPrivacyContextJobData.Tokenizer.class)
 public class SyncCategoryPrivacyContextJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String categoryId();
+		String lastUpdatedCategoryEntryCreatedAt();
+		String lastUpdatedCategoryCreatedAt();
+	}
 
 	/**  category id  */
-    private Integer categoryId;
+	private Integer categoryId;
 	/**  Saves the last category entry creation date that was updated      In case of
 	  crash the batch will restart from that point  */
-    private Integer lastUpdatedCategoryEntryCreatedAt;
+	private Integer lastUpdatedCategoryEntryCreatedAt;
 	/**  Saves the last sub category creation date that was updated      In case of crash
 	  the batch will restart from that point  */
-    private Integer lastUpdatedCategoryCreatedAt;
+	private Integer lastUpdatedCategoryCreatedAt;
 
-    // categoryId:
-    public Integer getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public Integer getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(Integer categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // lastUpdatedCategoryEntryCreatedAt:
-    public Integer getLastUpdatedCategoryEntryCreatedAt(){
-        return this.lastUpdatedCategoryEntryCreatedAt;
-    }
-    public void setLastUpdatedCategoryEntryCreatedAt(Integer lastUpdatedCategoryEntryCreatedAt){
-        this.lastUpdatedCategoryEntryCreatedAt = lastUpdatedCategoryEntryCreatedAt;
-    }
+	public void categoryId(String multirequestToken){
+		setToken("categoryId", multirequestToken);
+	}
 
-    // lastUpdatedCategoryCreatedAt:
-    public Integer getLastUpdatedCategoryCreatedAt(){
-        return this.lastUpdatedCategoryCreatedAt;
-    }
-    public void setLastUpdatedCategoryCreatedAt(Integer lastUpdatedCategoryCreatedAt){
-        this.lastUpdatedCategoryCreatedAt = lastUpdatedCategoryCreatedAt;
-    }
+	// lastUpdatedCategoryEntryCreatedAt:
+	public Integer getLastUpdatedCategoryEntryCreatedAt(){
+		return this.lastUpdatedCategoryEntryCreatedAt;
+	}
+	public void setLastUpdatedCategoryEntryCreatedAt(Integer lastUpdatedCategoryEntryCreatedAt){
+		this.lastUpdatedCategoryEntryCreatedAt = lastUpdatedCategoryEntryCreatedAt;
+	}
+
+	public void lastUpdatedCategoryEntryCreatedAt(String multirequestToken){
+		setToken("lastUpdatedCategoryEntryCreatedAt", multirequestToken);
+	}
+
+	// lastUpdatedCategoryCreatedAt:
+	public Integer getLastUpdatedCategoryCreatedAt(){
+		return this.lastUpdatedCategoryCreatedAt;
+	}
+	public void setLastUpdatedCategoryCreatedAt(Integer lastUpdatedCategoryCreatedAt){
+		this.lastUpdatedCategoryCreatedAt = lastUpdatedCategoryCreatedAt;
+	}
+
+	public void lastUpdatedCategoryCreatedAt(String multirequestToken){
+		setToken("lastUpdatedCategoryCreatedAt", multirequestToken);
+	}
 
 
-    public SyncCategoryPrivacyContextJobData() {
-       super();
-    }
+	public SyncCategoryPrivacyContextJobData() {
+		super();
+	}
 
-    public SyncCategoryPrivacyContextJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SyncCategoryPrivacyContextJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
-        lastUpdatedCategoryEntryCreatedAt = GsonParser.parseInt(jsonObject.get("lastUpdatedCategoryEntryCreatedAt"));
-        lastUpdatedCategoryCreatedAt = GsonParser.parseInt(jsonObject.get("lastUpdatedCategoryCreatedAt"));
+		// set members values:
+		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		lastUpdatedCategoryEntryCreatedAt = GsonParser.parseInt(jsonObject.get("lastUpdatedCategoryEntryCreatedAt"));
+		lastUpdatedCategoryCreatedAt = GsonParser.parseInt(jsonObject.get("lastUpdatedCategoryCreatedAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSyncCategoryPrivacyContextJobData");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("lastUpdatedCategoryEntryCreatedAt", this.lastUpdatedCategoryEntryCreatedAt);
-        kparams.add("lastUpdatedCategoryCreatedAt", this.lastUpdatedCategoryCreatedAt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSyncCategoryPrivacyContextJobData");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("lastUpdatedCategoryEntryCreatedAt", this.lastUpdatedCategoryEntryCreatedAt);
+		kparams.add("lastUpdatedCategoryCreatedAt", this.lastUpdatedCategoryCreatedAt);
+		return kparams;
+	}
 
 }
 

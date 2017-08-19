@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum GoogleSyndicationFeedAdultValues implements EnumAsString {
-    NO("No"),
-    YES("Yes");
+	NO("No"),
+	YES("Yes");
 
-    private String value;
+	private String value;
 
-    GoogleSyndicationFeedAdultValues(String value) {
-        this.value = value;
-    }
+	GoogleSyndicationFeedAdultValues(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static GoogleSyndicationFeedAdultValues get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over GoogleSyndicationFeedAdultValues defined values and compare the inner value with the given one:
-        for(GoogleSyndicationFeedAdultValues item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return GoogleSyndicationFeedAdultValues.values().length > 0 ? GoogleSyndicationFeedAdultValues.values()[0]: null;
+	public static GoogleSyndicationFeedAdultValues get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GoogleSyndicationFeedAdultValues defined values and compare the inner value with the given one:
+		for(GoogleSyndicationFeedAdultValues item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GoogleSyndicationFeedAdultValues.values().length > 0 ? GoogleSyndicationFeedAdultValues.values()[0]: null;
    }
 }

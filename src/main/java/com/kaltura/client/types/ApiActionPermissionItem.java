@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ApiActionPermissionItem.Tokenizer.class)
 public class ApiActionPermissionItem extends PermissionItem {
+	
+	public interface Tokenizer extends PermissionItem.Tokenizer {
+		String service();
+		String action();
+	}
 
-    private String service;
-    private String action;
+	private String service;
+	private String action;
 
-    // service:
-    public String getService(){
-        return this.service;
-    }
-    public void setService(String service){
-        this.service = service;
-    }
+	// service:
+	public String getService(){
+		return this.service;
+	}
+	public void setService(String service){
+		this.service = service;
+	}
 
-    // action:
-    public String getAction(){
-        return this.action;
-    }
-    public void setAction(String action){
-        this.action = action;
-    }
+	public void service(String multirequestToken){
+		setToken("service", multirequestToken);
+	}
+
+	// action:
+	public String getAction(){
+		return this.action;
+	}
+	public void setAction(String action){
+		this.action = action;
+	}
+
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
 
 
-    public ApiActionPermissionItem() {
-       super();
-    }
+	public ApiActionPermissionItem() {
+		super();
+	}
 
-    public ApiActionPermissionItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ApiActionPermissionItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        service = GsonParser.parseString(jsonObject.get("service"));
-        action = GsonParser.parseString(jsonObject.get("action"));
+		// set members values:
+		service = GsonParser.parseString(jsonObject.get("service"));
+		action = GsonParser.parseString(jsonObject.get("action"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaApiActionPermissionItem");
-        kparams.add("service", this.service);
-        kparams.add("action", this.action);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaApiActionPermissionItem");
+		kparams.add("service", this.service);
+		kparams.add("action", this.action);
+		return kparams;
+	}
 
 }
 

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ReportFilter.Tokenizer.class)
 public class ReportFilter extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String dimension();
+		String values();
+	}
 
 	/**  The dimension whose values should be filtered  */
-    private String dimension;
+	private String dimension;
 	/**  The (comma separated) values to include in the filter  */
-    private String values;
+	private String values;
 
-    // dimension:
-    public String getDimension(){
-        return this.dimension;
-    }
-    public void setDimension(String dimension){
-        this.dimension = dimension;
-    }
+	// dimension:
+	public String getDimension(){
+		return this.dimension;
+	}
+	public void setDimension(String dimension){
+		this.dimension = dimension;
+	}
 
-    // values:
-    public String getValues(){
-        return this.values;
-    }
-    public void setValues(String values){
-        this.values = values;
-    }
+	public void dimension(String multirequestToken){
+		setToken("dimension", multirequestToken);
+	}
+
+	// values:
+	public String getValues(){
+		return this.values;
+	}
+	public void setValues(String values){
+		this.values = values;
+	}
+
+	public void values(String multirequestToken){
+		setToken("values", multirequestToken);
+	}
 
 
-    public ReportFilter() {
-       super();
-    }
+	public ReportFilter() {
+		super();
+	}
 
-    public ReportFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ReportFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        dimension = GsonParser.parseString(jsonObject.get("dimension"));
-        values = GsonParser.parseString(jsonObject.get("values"));
+		// set members values:
+		dimension = GsonParser.parseString(jsonObject.get("dimension"));
+		values = GsonParser.parseString(jsonObject.get("values"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaReportFilter");
-        kparams.add("dimension", this.dimension);
-        kparams.add("values", this.values);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaReportFilter");
+		kparams.add("dimension", this.dimension);
+		kparams.add("values", this.values);
+		return kparams;
+	}
 
 }
 

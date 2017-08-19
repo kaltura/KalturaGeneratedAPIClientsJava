@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.PermissionItem;
 import com.kaltura.client.types.PermissionItemFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -44,57 +42,94 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  PermissionItem service lets you create and manage permission items  */
 public class PermissionItemService {
+	
+	public static class AddPermissionItemBuilder extends RequestBuilder<PermissionItem, PermissionItem.Tokenizer, AddPermissionItemBuilder> {
+		
+		public AddPermissionItemBuilder(PermissionItem permissionItem) {
+			super(PermissionItem.class, "permissionitem", "add");
+			params.add("permissionItem", permissionItem);
+		}
+	}
 
 	/**  Adds a new permission item object to the account.   This action is available
 	  only to Kaltura system administrators.  */
-    public static RequestBuilder<PermissionItem> add(PermissionItem permissionItem)  {
-        Params kparams = new Params();
-        kparams.add("permissionItem", permissionItem);
-
-        return new RequestBuilder<PermissionItem>(PermissionItem.class, "permissionitem", "add", kparams);
-    }
+    public static AddPermissionItemBuilder add(PermissionItem permissionItem)  {
+		return new AddPermissionItemBuilder(permissionItem);
+	}
+	
+	public static class DeletePermissionItemBuilder extends RequestBuilder<PermissionItem, PermissionItem.Tokenizer, DeletePermissionItemBuilder> {
+		
+		public DeletePermissionItemBuilder(int permissionItemId) {
+			super(PermissionItem.class, "permissionitem", "delete");
+			params.add("permissionItemId", permissionItemId);
+		}
+		
+		public void permissionItemId(String multirequestToken) {
+			params.add("permissionItemId", multirequestToken);
+		}
+	}
 
 	/**  Deletes an existing permission item object.   This action is available only to
 	  Kaltura system administrators.  */
-    public static RequestBuilder<PermissionItem> delete(int permissionItemId)  {
-        Params kparams = new Params();
-        kparams.add("permissionItemId", permissionItemId);
-
-        return new RequestBuilder<PermissionItem>(PermissionItem.class, "permissionitem", "delete", kparams);
-    }
+    public static DeletePermissionItemBuilder delete(int permissionItemId)  {
+		return new DeletePermissionItemBuilder(permissionItemId);
+	}
+	
+	public static class GetPermissionItemBuilder extends RequestBuilder<PermissionItem, PermissionItem.Tokenizer, GetPermissionItemBuilder> {
+		
+		public GetPermissionItemBuilder(int permissionItemId) {
+			super(PermissionItem.class, "permissionitem", "get");
+			params.add("permissionItemId", permissionItemId);
+		}
+		
+		public void permissionItemId(String multirequestToken) {
+			params.add("permissionItemId", multirequestToken);
+		}
+	}
 
 	/**  Retrieves a permission item object using its ID.  */
-    public static RequestBuilder<PermissionItem> get(int permissionItemId)  {
-        Params kparams = new Params();
-        kparams.add("permissionItemId", permissionItemId);
+    public static GetPermissionItemBuilder get(int permissionItemId)  {
+		return new GetPermissionItemBuilder(permissionItemId);
+	}
+	
+	public static class ListPermissionItemBuilder extends ListResponseRequestBuilder<PermissionItem, PermissionItem.Tokenizer, ListPermissionItemBuilder> {
+		
+		public ListPermissionItemBuilder(PermissionItemFilter filter, FilterPager pager) {
+			super(PermissionItem.class, "permissionitem", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<PermissionItem>(PermissionItem.class, "permissionitem", "get", kparams);
-    }
+	public static ListPermissionItemBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<PermissionItem>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<PermissionItem>> list(PermissionItemFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListPermissionItemBuilder list(PermissionItemFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  Lists permission item objects that are associated with an account.  */
-    public static RequestBuilder<ListResponse<PermissionItem>> list(PermissionItemFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<PermissionItem>(PermissionItem.class, "permissionitem", "list", kparams);
-    }
+    public static ListPermissionItemBuilder list(PermissionItemFilter filter, FilterPager pager)  {
+		return new ListPermissionItemBuilder(filter, pager);
+	}
+	
+	public static class UpdatePermissionItemBuilder extends RequestBuilder<PermissionItem, PermissionItem.Tokenizer, UpdatePermissionItemBuilder> {
+		
+		public UpdatePermissionItemBuilder(int permissionItemId, PermissionItem permissionItem) {
+			super(PermissionItem.class, "permissionitem", "update");
+			params.add("permissionItemId", permissionItemId);
+			params.add("permissionItem", permissionItem);
+		}
+		
+		public void permissionItemId(String multirequestToken) {
+			params.add("permissionItemId", multirequestToken);
+		}
+	}
 
 	/**  Updates an existing permission item object.   This action is available only to
 	  Kaltura system administrators.  */
-    public static RequestBuilder<PermissionItem> update(int permissionItemId, PermissionItem permissionItem)  {
-        Params kparams = new Params();
-        kparams.add("permissionItemId", permissionItemId);
-        kparams.add("permissionItem", permissionItem);
-
-        return new RequestBuilder<PermissionItem>(PermissionItem.class, "permissionitem", "update", kparams);
-    }
+    public static UpdatePermissionItemBuilder update(int permissionItemId, PermissionItem permissionItem)  {
+		return new UpdatePermissionItemBuilder(permissionItemId, permissionItem);
+	}
 }

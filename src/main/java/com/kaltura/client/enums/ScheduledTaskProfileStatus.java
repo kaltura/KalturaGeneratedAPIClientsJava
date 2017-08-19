@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduledTaskProfileStatus implements EnumAsInt {
-    DISABLED(1),
-    ACTIVE(2),
-    DELETED(3),
-    SUSPENDED(4),
-    DRY_RUN_ONLY(5);
+	DISABLED(1),
+	ACTIVE(2),
+	DELETED(3),
+	SUSPENDED(4),
+	DRY_RUN_ONLY(5);
 
-    private int value;
+	private int value;
 
-    ScheduledTaskProfileStatus(int value) {
-        this.value = value;
-    }
+	ScheduledTaskProfileStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduledTaskProfileStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduledTaskProfileStatus defined values and compare the inner value with the given one:
-        for(ScheduledTaskProfileStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduledTaskProfileStatus.values().length > 0 ? ScheduledTaskProfileStatus.values()[0]: null;
+	public static ScheduledTaskProfileStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduledTaskProfileStatus defined values and compare the inner value with the given one:
+		for(ScheduledTaskProfileStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduledTaskProfileStatus.values().length > 0 ? ScheduledTaskProfileStatus.values()[0]: null;
    }
 }

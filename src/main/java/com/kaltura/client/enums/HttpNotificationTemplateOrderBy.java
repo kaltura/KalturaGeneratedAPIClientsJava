@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum HttpNotificationTemplateOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    HttpNotificationTemplateOrderBy(String value) {
-        this.value = value;
-    }
+	HttpNotificationTemplateOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static HttpNotificationTemplateOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over HttpNotificationTemplateOrderBy defined values and compare the inner value with the given one:
-        for(HttpNotificationTemplateOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return HttpNotificationTemplateOrderBy.values().length > 0 ? HttpNotificationTemplateOrderBy.values()[0]: null;
+	public static HttpNotificationTemplateOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over HttpNotificationTemplateOrderBy defined values and compare the inner value with the given one:
+		for(HttpNotificationTemplateOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return HttpNotificationTemplateOrderBy.values().length > 0 ? HttpNotificationTemplateOrderBy.values()[0]: null;
    }
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EndUserReportInputFilter.Tokenizer.class)
 public class EndUserReportInputFilter extends ReportInputFilter {
+	
+	public interface Tokenizer extends ReportInputFilter.Tokenizer {
+		String application();
+		String userIds();
+		String playbackContext();
+		String ancestorPlaybackContext();
+	}
 
-    private String application;
-    private String userIds;
-    private String playbackContext;
-    private String ancestorPlaybackContext;
+	private String application;
+	private String userIds;
+	private String playbackContext;
+	private String ancestorPlaybackContext;
 
-    // application:
-    public String getApplication(){
-        return this.application;
-    }
-    public void setApplication(String application){
-        this.application = application;
-    }
+	// application:
+	public String getApplication(){
+		return this.application;
+	}
+	public void setApplication(String application){
+		this.application = application;
+	}
 
-    // userIds:
-    public String getUserIds(){
-        return this.userIds;
-    }
-    public void setUserIds(String userIds){
-        this.userIds = userIds;
-    }
+	public void application(String multirequestToken){
+		setToken("application", multirequestToken);
+	}
 
-    // playbackContext:
-    public String getPlaybackContext(){
-        return this.playbackContext;
-    }
-    public void setPlaybackContext(String playbackContext){
-        this.playbackContext = playbackContext;
-    }
+	// userIds:
+	public String getUserIds(){
+		return this.userIds;
+	}
+	public void setUserIds(String userIds){
+		this.userIds = userIds;
+	}
 
-    // ancestorPlaybackContext:
-    public String getAncestorPlaybackContext(){
-        return this.ancestorPlaybackContext;
-    }
-    public void setAncestorPlaybackContext(String ancestorPlaybackContext){
-        this.ancestorPlaybackContext = ancestorPlaybackContext;
-    }
+	public void userIds(String multirequestToken){
+		setToken("userIds", multirequestToken);
+	}
+
+	// playbackContext:
+	public String getPlaybackContext(){
+		return this.playbackContext;
+	}
+	public void setPlaybackContext(String playbackContext){
+		this.playbackContext = playbackContext;
+	}
+
+	public void playbackContext(String multirequestToken){
+		setToken("playbackContext", multirequestToken);
+	}
+
+	// ancestorPlaybackContext:
+	public String getAncestorPlaybackContext(){
+		return this.ancestorPlaybackContext;
+	}
+	public void setAncestorPlaybackContext(String ancestorPlaybackContext){
+		this.ancestorPlaybackContext = ancestorPlaybackContext;
+	}
+
+	public void ancestorPlaybackContext(String multirequestToken){
+		setToken("ancestorPlaybackContext", multirequestToken);
+	}
 
 
-    public EndUserReportInputFilter() {
-       super();
-    }
+	public EndUserReportInputFilter() {
+		super();
+	}
 
-    public EndUserReportInputFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EndUserReportInputFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        application = GsonParser.parseString(jsonObject.get("application"));
-        userIds = GsonParser.parseString(jsonObject.get("userIds"));
-        playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
-        ancestorPlaybackContext = GsonParser.parseString(jsonObject.get("ancestorPlaybackContext"));
+		// set members values:
+		application = GsonParser.parseString(jsonObject.get("application"));
+		userIds = GsonParser.parseString(jsonObject.get("userIds"));
+		playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
+		ancestorPlaybackContext = GsonParser.parseString(jsonObject.get("ancestorPlaybackContext"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEndUserReportInputFilter");
-        kparams.add("application", this.application);
-        kparams.add("userIds", this.userIds);
-        kparams.add("playbackContext", this.playbackContext);
-        kparams.add("ancestorPlaybackContext", this.ancestorPlaybackContext);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEndUserReportInputFilter");
+		kparams.add("application", this.application);
+		kparams.add("userIds", this.userIds);
+		kparams.add("playbackContext", this.playbackContext);
+		kparams.add("ancestorPlaybackContext", this.ancestorPlaybackContext);
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,100 +42,130 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConcatJobData.Tokenizer.class)
 public class ConcatJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> srcFiles();
+		String destFilePath();
+		String flavorAssetId();
+		String offset();
+		String duration();
+		String concatenatedDuration();
+	}
 
 	/**  Source files to be concatenated  */
-    private List<StringHolder> srcFiles;
+	private List<StringHolder> srcFiles;
 	/**  Output file  */
-    private String destFilePath;
+	private String destFilePath;
 	/**  Flavor asset to be ingested with the output  */
-    private String flavorAssetId;
+	private String flavorAssetId;
 	/**  Clipping offset in seconds  */
-    private Double offset;
+	private Double offset;
 	/**  Clipping duration in seconds  */
-    private Double duration;
+	private Double duration;
 	/**  duration of the concated video  */
-    private Double concatenatedDuration;
+	private Double concatenatedDuration;
 
-    // srcFiles:
-    public List<StringHolder> getSrcFiles(){
-        return this.srcFiles;
-    }
-    public void setSrcFiles(List<StringHolder> srcFiles){
-        this.srcFiles = srcFiles;
-    }
+	// srcFiles:
+	public List<StringHolder> getSrcFiles(){
+		return this.srcFiles;
+	}
+	public void setSrcFiles(List<StringHolder> srcFiles){
+		this.srcFiles = srcFiles;
+	}
 
-    // destFilePath:
-    public String getDestFilePath(){
-        return this.destFilePath;
-    }
-    public void setDestFilePath(String destFilePath){
-        this.destFilePath = destFilePath;
-    }
+	// destFilePath:
+	public String getDestFilePath(){
+		return this.destFilePath;
+	}
+	public void setDestFilePath(String destFilePath){
+		this.destFilePath = destFilePath;
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	public void destFilePath(String multirequestToken){
+		setToken("destFilePath", multirequestToken);
+	}
 
-    // offset:
-    public Double getOffset(){
-        return this.offset;
-    }
-    public void setOffset(Double offset){
-        this.offset = offset;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // duration:
-    public Double getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Double duration){
-        this.duration = duration;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
 
-    // concatenatedDuration:
-    public Double getConcatenatedDuration(){
-        return this.concatenatedDuration;
-    }
-    public void setConcatenatedDuration(Double concatenatedDuration){
-        this.concatenatedDuration = concatenatedDuration;
-    }
+	// offset:
+	public Double getOffset(){
+		return this.offset;
+	}
+	public void setOffset(Double offset){
+		this.offset = offset;
+	}
+
+	public void offset(String multirequestToken){
+		setToken("offset", multirequestToken);
+	}
+
+	// duration:
+	public Double getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Double duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+	// concatenatedDuration:
+	public Double getConcatenatedDuration(){
+		return this.concatenatedDuration;
+	}
+	public void setConcatenatedDuration(Double concatenatedDuration){
+		this.concatenatedDuration = concatenatedDuration;
+	}
+
+	public void concatenatedDuration(String multirequestToken){
+		setToken("concatenatedDuration", multirequestToken);
+	}
 
 
-    public ConcatJobData() {
-       super();
-    }
+	public ConcatJobData() {
+		super();
+	}
 
-    public ConcatJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConcatJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcFiles = GsonParser.parseArray(jsonObject.getAsJsonArray("srcFiles"), StringHolder.class);
-        destFilePath = GsonParser.parseString(jsonObject.get("destFilePath"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        offset = GsonParser.parseDouble(jsonObject.get("offset"));
-        duration = GsonParser.parseDouble(jsonObject.get("duration"));
-        concatenatedDuration = GsonParser.parseDouble(jsonObject.get("concatenatedDuration"));
+		// set members values:
+		srcFiles = GsonParser.parseArray(jsonObject.getAsJsonArray("srcFiles"), StringHolder.class);
+		destFilePath = GsonParser.parseString(jsonObject.get("destFilePath"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		offset = GsonParser.parseDouble(jsonObject.get("offset"));
+		duration = GsonParser.parseDouble(jsonObject.get("duration"));
+		concatenatedDuration = GsonParser.parseDouble(jsonObject.get("concatenatedDuration"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConcatJobData");
-        kparams.add("srcFiles", this.srcFiles);
-        kparams.add("destFilePath", this.destFilePath);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("offset", this.offset);
-        kparams.add("duration", this.duration);
-        kparams.add("concatenatedDuration", this.concatenatedDuration);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConcatJobData");
+		kparams.add("srcFiles", this.srcFiles);
+		kparams.add("destFilePath", this.destFilePath);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("offset", this.offset);
+		kparams.add("duration", this.duration);
+		kparams.add("concatenatedDuration", this.concatenatedDuration);
+		return kparams;
+	}
 
 }
 

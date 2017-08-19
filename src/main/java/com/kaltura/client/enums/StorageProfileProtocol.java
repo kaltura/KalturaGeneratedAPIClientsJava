@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileProtocol implements EnumAsString {
-    KONTIKI("kontiki.KONTIKI"),
-    KALTURA_DC("0"),
-    FTP("1"),
-    SCP("2"),
-    SFTP("3"),
-    S3("6"),
-    LOCAL("7");
+	KONTIKI("kontiki.KONTIKI"),
+	KALTURA_DC("0"),
+	FTP("1"),
+	SCP("2"),
+	SFTP("3"),
+	S3("6"),
+	LOCAL("7");
 
-    private String value;
+	private String value;
 
-    StorageProfileProtocol(String value) {
-        this.value = value;
-    }
+	StorageProfileProtocol(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static StorageProfileProtocol get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over StorageProfileProtocol defined values and compare the inner value with the given one:
-        for(StorageProfileProtocol item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return StorageProfileProtocol.values().length > 0 ? StorageProfileProtocol.values()[0]: null;
+	public static StorageProfileProtocol get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over StorageProfileProtocol defined values and compare the inner value with the given one:
+		for(StorageProfileProtocol item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return StorageProfileProtocol.values().length > 0 ? StorageProfileProtocol.values()[0]: null;
    }
 }

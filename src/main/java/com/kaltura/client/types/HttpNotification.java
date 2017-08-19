@@ -33,6 +33,7 @@ import com.kaltura.client.enums.EventNotificationEventObjectType;
 import com.kaltura.client.enums.EventNotificationEventType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,112 +44,147 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Wrapper for sent notifications  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HttpNotification.Tokenizer.class)
 public class HttpNotification extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		ObjectBase.Tokenizer object();
+		String eventObjectType();
+		String eventNotificationJobId();
+		String templateId();
+		String templateName();
+		String templateSystemName();
+		String eventType();
+	}
 
 	/**  Object that triggered the notification  */
-    private ObjectBase object;
+	private ObjectBase object;
 	/**  Object type that triggered the notification  */
-    private EventNotificationEventObjectType eventObjectType;
+	private EventNotificationEventObjectType eventObjectType;
 	/**  ID of the batch job that execute the notification  */
-    private Long eventNotificationJobId;
+	private Long eventNotificationJobId;
 	/**  ID of the template that triggered the notification  */
-    private Integer templateId;
+	private Integer templateId;
 	/**  Name of the template that triggered the notification  */
-    private String templateName;
+	private String templateName;
 	/**  System name of the template that triggered the notification  */
-    private String templateSystemName;
+	private String templateSystemName;
 	/**  Ecent type that triggered the notification  */
-    private EventNotificationEventType eventType;
+	private EventNotificationEventType eventType;
 
-    // object:
-    public ObjectBase getObject(){
-        return this.object;
-    }
-    public void setObject(ObjectBase object){
-        this.object = object;
-    }
+	// object:
+	public ObjectBase getObject(){
+		return this.object;
+	}
+	public void setObject(ObjectBase object){
+		this.object = object;
+	}
 
-    // eventObjectType:
-    public EventNotificationEventObjectType getEventObjectType(){
-        return this.eventObjectType;
-    }
-    public void setEventObjectType(EventNotificationEventObjectType eventObjectType){
-        this.eventObjectType = eventObjectType;
-    }
+	// eventObjectType:
+	public EventNotificationEventObjectType getEventObjectType(){
+		return this.eventObjectType;
+	}
+	public void setEventObjectType(EventNotificationEventObjectType eventObjectType){
+		this.eventObjectType = eventObjectType;
+	}
 
-    // eventNotificationJobId:
-    public Long getEventNotificationJobId(){
-        return this.eventNotificationJobId;
-    }
-    public void setEventNotificationJobId(Long eventNotificationJobId){
-        this.eventNotificationJobId = eventNotificationJobId;
-    }
+	public void eventObjectType(String multirequestToken){
+		setToken("eventObjectType", multirequestToken);
+	}
 
-    // templateId:
-    public Integer getTemplateId(){
-        return this.templateId;
-    }
-    public void setTemplateId(Integer templateId){
-        this.templateId = templateId;
-    }
+	// eventNotificationJobId:
+	public Long getEventNotificationJobId(){
+		return this.eventNotificationJobId;
+	}
+	public void setEventNotificationJobId(Long eventNotificationJobId){
+		this.eventNotificationJobId = eventNotificationJobId;
+	}
 
-    // templateName:
-    public String getTemplateName(){
-        return this.templateName;
-    }
-    public void setTemplateName(String templateName){
-        this.templateName = templateName;
-    }
+	public void eventNotificationJobId(String multirequestToken){
+		setToken("eventNotificationJobId", multirequestToken);
+	}
 
-    // templateSystemName:
-    public String getTemplateSystemName(){
-        return this.templateSystemName;
-    }
-    public void setTemplateSystemName(String templateSystemName){
-        this.templateSystemName = templateSystemName;
-    }
+	// templateId:
+	public Integer getTemplateId(){
+		return this.templateId;
+	}
+	public void setTemplateId(Integer templateId){
+		this.templateId = templateId;
+	}
 
-    // eventType:
-    public EventNotificationEventType getEventType(){
-        return this.eventType;
-    }
-    public void setEventType(EventNotificationEventType eventType){
-        this.eventType = eventType;
-    }
+	public void templateId(String multirequestToken){
+		setToken("templateId", multirequestToken);
+	}
+
+	// templateName:
+	public String getTemplateName(){
+		return this.templateName;
+	}
+	public void setTemplateName(String templateName){
+		this.templateName = templateName;
+	}
+
+	public void templateName(String multirequestToken){
+		setToken("templateName", multirequestToken);
+	}
+
+	// templateSystemName:
+	public String getTemplateSystemName(){
+		return this.templateSystemName;
+	}
+	public void setTemplateSystemName(String templateSystemName){
+		this.templateSystemName = templateSystemName;
+	}
+
+	public void templateSystemName(String multirequestToken){
+		setToken("templateSystemName", multirequestToken);
+	}
+
+	// eventType:
+	public EventNotificationEventType getEventType(){
+		return this.eventType;
+	}
+	public void setEventType(EventNotificationEventType eventType){
+		this.eventType = eventType;
+	}
+
+	public void eventType(String multirequestToken){
+		setToken("eventType", multirequestToken);
+	}
 
 
-    public HttpNotification() {
-       super();
-    }
+	public HttpNotification() {
+		super();
+	}
 
-    public HttpNotification(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public HttpNotification(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), ObjectBase.class);
-        eventObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("eventObjectType")));
-        eventNotificationJobId = GsonParser.parseLong(jsonObject.get("eventNotificationJobId"));
-        templateId = GsonParser.parseInt(jsonObject.get("templateId"));
-        templateName = GsonParser.parseString(jsonObject.get("templateName"));
-        templateSystemName = GsonParser.parseString(jsonObject.get("templateSystemName"));
-        eventType = EventNotificationEventType.get(GsonParser.parseString(jsonObject.get("eventType")));
+		// set members values:
+		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), ObjectBase.class);
+		eventObjectType = EventNotificationEventObjectType.get(GsonParser.parseString(jsonObject.get("eventObjectType")));
+		eventNotificationJobId = GsonParser.parseLong(jsonObject.get("eventNotificationJobId"));
+		templateId = GsonParser.parseInt(jsonObject.get("templateId"));
+		templateName = GsonParser.parseString(jsonObject.get("templateName"));
+		templateSystemName = GsonParser.parseString(jsonObject.get("templateSystemName"));
+		eventType = EventNotificationEventType.get(GsonParser.parseString(jsonObject.get("eventType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHttpNotification");
-        kparams.add("object", this.object);
-        kparams.add("eventObjectType", this.eventObjectType);
-        kparams.add("eventNotificationJobId", this.eventNotificationJobId);
-        kparams.add("templateId", this.templateId);
-        kparams.add("templateName", this.templateName);
-        kparams.add("templateSystemName", this.templateSystemName);
-        kparams.add("eventType", this.eventType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHttpNotification");
+		kparams.add("object", this.object);
+		kparams.add("eventObjectType", this.eventObjectType);
+		kparams.add("eventNotificationJobId", this.eventNotificationJobId);
+		kparams.add("templateId", this.templateId);
+		kparams.add("templateName", this.templateName);
+		kparams.add("templateSystemName", this.templateSystemName);
+		kparams.add("eventType", this.eventType);
+		return kparams;
+	}
 
 }
 

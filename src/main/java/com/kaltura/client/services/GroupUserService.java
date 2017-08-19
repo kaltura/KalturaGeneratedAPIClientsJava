@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.GroupUser;
 import com.kaltura.client.types.GroupUserFilter;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -45,38 +43,61 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Add &amp; Manage GroupUser  */
 public class GroupUserService {
+	
+	public static class AddGroupUserBuilder extends RequestBuilder<GroupUser, GroupUser.Tokenizer, AddGroupUserBuilder> {
+		
+		public AddGroupUserBuilder(GroupUser groupUser) {
+			super(GroupUser.class, "groupuser", "add");
+			params.add("groupUser", groupUser);
+		}
+	}
 
 	/**  Add new GroupUser  */
-    public static RequestBuilder<GroupUser> add(GroupUser groupUser)  {
-        Params kparams = new Params();
-        kparams.add("groupUser", groupUser);
-
-        return new RequestBuilder<GroupUser>(GroupUser.class, "groupuser", "add", kparams);
-    }
+    public static AddGroupUserBuilder add(GroupUser groupUser)  {
+		return new AddGroupUserBuilder(groupUser);
+	}
+	
+	public static class DeleteGroupUserBuilder extends NullRequestBuilder {
+		
+		public DeleteGroupUserBuilder(String userId, String groupId) {
+			super("groupuser", "delete");
+			params.add("userId", userId);
+			params.add("groupId", groupId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void groupId(String multirequestToken) {
+			params.add("groupId", multirequestToken);
+		}
+	}
 
 	/**  delete by userId and groupId  */
-    public static RequestBuilder<Void> delete(String userId, String groupId)  {
-        Params kparams = new Params();
-        kparams.add("userId", userId);
-        kparams.add("groupId", groupId);
+    public static DeleteGroupUserBuilder delete(String userId, String groupId)  {
+		return new DeleteGroupUserBuilder(userId, groupId);
+	}
+	
+	public static class ListGroupUserBuilder extends ListResponseRequestBuilder<GroupUser, GroupUser.Tokenizer, ListGroupUserBuilder> {
+		
+		public ListGroupUserBuilder(GroupUserFilter filter, FilterPager pager) {
+			super(GroupUser.class, "groupuser", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new NullRequestBuilder("groupuser", "delete", kparams);
-    }
+	public static ListGroupUserBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<GroupUser>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<GroupUser>> list(GroupUserFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListGroupUserBuilder list(GroupUserFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List all GroupUsers  */
-    public static RequestBuilder<ListResponse<GroupUser>> list(GroupUserFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<GroupUser>(GroupUser.class, "groupuser", "list", kparams);
-    }
+    public static ListGroupUserBuilder list(GroupUserFilter filter, FilterPager pager)  {
+		return new ListGroupUserBuilder(filter, pager);
+	}
 }

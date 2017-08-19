@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,63 +42,74 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConfigurableDistributionProfile.Tokenizer.class)
 public abstract class ConfigurableDistributionProfile extends DistributionProfile {
+	
+	public interface Tokenizer extends DistributionProfile.Tokenizer {
+		RequestBuilder.ListTokenizer<DistributionFieldConfig.Tokenizer> fieldConfigArray();
+		RequestBuilder.ListTokenizer<ExtendingItemMrssParameter.Tokenizer> itemXpathsToExtend();
+		String useCategoryEntries();
+	}
 
-    private List<DistributionFieldConfig> fieldConfigArray;
-    private List<ExtendingItemMrssParameter> itemXpathsToExtend;
+	private List<DistributionFieldConfig> fieldConfigArray;
+	private List<ExtendingItemMrssParameter> itemXpathsToExtend;
 	/**  When checking custom XSLT conditions using the fieldConfigArray - address only
 	  categories associated with the entry via the categoryEntry object  */
-    private Boolean useCategoryEntries;
+	private Boolean useCategoryEntries;
 
-    // fieldConfigArray:
-    public List<DistributionFieldConfig> getFieldConfigArray(){
-        return this.fieldConfigArray;
-    }
-    public void setFieldConfigArray(List<DistributionFieldConfig> fieldConfigArray){
-        this.fieldConfigArray = fieldConfigArray;
-    }
+	// fieldConfigArray:
+	public List<DistributionFieldConfig> getFieldConfigArray(){
+		return this.fieldConfigArray;
+	}
+	public void setFieldConfigArray(List<DistributionFieldConfig> fieldConfigArray){
+		this.fieldConfigArray = fieldConfigArray;
+	}
 
-    // itemXpathsToExtend:
-    public List<ExtendingItemMrssParameter> getItemXpathsToExtend(){
-        return this.itemXpathsToExtend;
-    }
-    public void setItemXpathsToExtend(List<ExtendingItemMrssParameter> itemXpathsToExtend){
-        this.itemXpathsToExtend = itemXpathsToExtend;
-    }
+	// itemXpathsToExtend:
+	public List<ExtendingItemMrssParameter> getItemXpathsToExtend(){
+		return this.itemXpathsToExtend;
+	}
+	public void setItemXpathsToExtend(List<ExtendingItemMrssParameter> itemXpathsToExtend){
+		this.itemXpathsToExtend = itemXpathsToExtend;
+	}
 
-    // useCategoryEntries:
-    public Boolean getUseCategoryEntries(){
-        return this.useCategoryEntries;
-    }
-    public void setUseCategoryEntries(Boolean useCategoryEntries){
-        this.useCategoryEntries = useCategoryEntries;
-    }
+	// useCategoryEntries:
+	public Boolean getUseCategoryEntries(){
+		return this.useCategoryEntries;
+	}
+	public void setUseCategoryEntries(Boolean useCategoryEntries){
+		this.useCategoryEntries = useCategoryEntries;
+	}
+
+	public void useCategoryEntries(String multirequestToken){
+		setToken("useCategoryEntries", multirequestToken);
+	}
 
 
-    public ConfigurableDistributionProfile() {
-       super();
-    }
+	public ConfigurableDistributionProfile() {
+		super();
+	}
 
-    public ConfigurableDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConfigurableDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fieldConfigArray = GsonParser.parseArray(jsonObject.getAsJsonArray("fieldConfigArray"), DistributionFieldConfig.class);
-        itemXpathsToExtend = GsonParser.parseArray(jsonObject.getAsJsonArray("itemXpathsToExtend"), ExtendingItemMrssParameter.class);
-        useCategoryEntries = GsonParser.parseBoolean(jsonObject.get("useCategoryEntries"));
+		// set members values:
+		fieldConfigArray = GsonParser.parseArray(jsonObject.getAsJsonArray("fieldConfigArray"), DistributionFieldConfig.class);
+		itemXpathsToExtend = GsonParser.parseArray(jsonObject.getAsJsonArray("itemXpathsToExtend"), ExtendingItemMrssParameter.class);
+		useCategoryEntries = GsonParser.parseBoolean(jsonObject.get("useCategoryEntries"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConfigurableDistributionProfile");
-        kparams.add("fieldConfigArray", this.fieldConfigArray);
-        kparams.add("itemXpathsToExtend", this.itemXpathsToExtend);
-        kparams.add("useCategoryEntries", this.useCategoryEntries);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConfigurableDistributionProfile");
+		kparams.add("fieldConfigArray", this.fieldConfigArray);
+		kparams.add("itemXpathsToExtend", this.itemXpathsToExtend);
+		kparams.add("useCategoryEntries", this.useCategoryEntries);
+		return kparams;
+	}
 
 }
 

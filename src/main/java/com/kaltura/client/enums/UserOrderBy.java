@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id");
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id");
 
-    private String value;
+	private String value;
 
-    UserOrderBy(String value) {
-        this.value = value;
-    }
+	UserOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static UserOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UserOrderBy defined values and compare the inner value with the given one:
-        for(UserOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UserOrderBy.values().length > 0 ? UserOrderBy.values()[0]: null;
+	public static UserOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UserOrderBy defined values and compare the inner value with the given one:
+		for(UserOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UserOrderBy.values().length > 0 ? UserOrderBy.values()[0]: null;
    }
 }

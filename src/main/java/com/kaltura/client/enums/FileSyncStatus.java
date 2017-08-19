@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileSyncStatus implements EnumAsInt {
-    ERROR(-1),
-    PENDING(1),
-    READY(2),
-    DELETED(3),
-    PURGED(4);
+	ERROR(-1),
+	PENDING(1),
+	READY(2),
+	DELETED(3),
+	PURGED(4);
 
-    private int value;
+	private int value;
 
-    FileSyncStatus(int value) {
-        this.value = value;
-    }
+	FileSyncStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static FileSyncStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FileSyncStatus defined values and compare the inner value with the given one:
-        for(FileSyncStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FileSyncStatus.values().length > 0 ? FileSyncStatus.values()[0]: null;
+	public static FileSyncStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FileSyncStatus defined values and compare the inner value with the given one:
+		for(FileSyncStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FileSyncStatus.values().length > 0 ? FileSyncStatus.values()[0]: null;
    }
 }

@@ -34,41 +34,41 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProtocol implements EnumAsInt {
-    FTP(1),
-    SCP(2),
-    SFTP(3),
-    HTTP(4),
-    HTTPS(5),
-    ASPERA(10);
+	FTP(1),
+	SCP(2),
+	SFTP(3),
+	HTTP(4),
+	HTTPS(5),
+	ASPERA(10);
 
-    private int value;
+	private int value;
 
-    DistributionProtocol(int value) {
-        this.value = value;
-    }
+	DistributionProtocol(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DistributionProtocol get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DistributionProtocol defined values and compare the inner value with the given one:
-        for(DistributionProtocol item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DistributionProtocol.values().length > 0 ? DistributionProtocol.values()[0]: null;
+	public static DistributionProtocol get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DistributionProtocol defined values and compare the inner value with the given one:
+		for(DistributionProtocol item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DistributionProtocol.values().length > 0 ? DistributionProtocol.values()[0]: null;
    }
 }

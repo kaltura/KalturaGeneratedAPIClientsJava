@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.BatchJobStatus;
 import com.kaltura.client.enums.BulkUploadObjectType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,105 +42,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadBaseFilter.Tokenizer.class)
 public abstract class BulkUploadBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String uploadedOnGreaterThanOrEqual();
+		String uploadedOnLessThanOrEqual();
+		String uploadedOnEqual();
+		String statusIn();
+		String statusEqual();
+		String bulkUploadObjectTypeEqual();
+		String bulkUploadObjectTypeIn();
+	}
 
-    private Integer uploadedOnGreaterThanOrEqual;
-    private Integer uploadedOnLessThanOrEqual;
-    private Integer uploadedOnEqual;
-    private String statusIn;
-    private BatchJobStatus statusEqual;
-    private BulkUploadObjectType bulkUploadObjectTypeEqual;
-    private String bulkUploadObjectTypeIn;
+	private Integer uploadedOnGreaterThanOrEqual;
+	private Integer uploadedOnLessThanOrEqual;
+	private Integer uploadedOnEqual;
+	private String statusIn;
+	private BatchJobStatus statusEqual;
+	private BulkUploadObjectType bulkUploadObjectTypeEqual;
+	private String bulkUploadObjectTypeIn;
 
-    // uploadedOnGreaterThanOrEqual:
-    public Integer getUploadedOnGreaterThanOrEqual(){
-        return this.uploadedOnGreaterThanOrEqual;
-    }
-    public void setUploadedOnGreaterThanOrEqual(Integer uploadedOnGreaterThanOrEqual){
-        this.uploadedOnGreaterThanOrEqual = uploadedOnGreaterThanOrEqual;
-    }
+	// uploadedOnGreaterThanOrEqual:
+	public Integer getUploadedOnGreaterThanOrEqual(){
+		return this.uploadedOnGreaterThanOrEqual;
+	}
+	public void setUploadedOnGreaterThanOrEqual(Integer uploadedOnGreaterThanOrEqual){
+		this.uploadedOnGreaterThanOrEqual = uploadedOnGreaterThanOrEqual;
+	}
 
-    // uploadedOnLessThanOrEqual:
-    public Integer getUploadedOnLessThanOrEqual(){
-        return this.uploadedOnLessThanOrEqual;
-    }
-    public void setUploadedOnLessThanOrEqual(Integer uploadedOnLessThanOrEqual){
-        this.uploadedOnLessThanOrEqual = uploadedOnLessThanOrEqual;
-    }
+	public void uploadedOnGreaterThanOrEqual(String multirequestToken){
+		setToken("uploadedOnGreaterThanOrEqual", multirequestToken);
+	}
 
-    // uploadedOnEqual:
-    public Integer getUploadedOnEqual(){
-        return this.uploadedOnEqual;
-    }
-    public void setUploadedOnEqual(Integer uploadedOnEqual){
-        this.uploadedOnEqual = uploadedOnEqual;
-    }
+	// uploadedOnLessThanOrEqual:
+	public Integer getUploadedOnLessThanOrEqual(){
+		return this.uploadedOnLessThanOrEqual;
+	}
+	public void setUploadedOnLessThanOrEqual(Integer uploadedOnLessThanOrEqual){
+		this.uploadedOnLessThanOrEqual = uploadedOnLessThanOrEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void uploadedOnLessThanOrEqual(String multirequestToken){
+		setToken("uploadedOnLessThanOrEqual", multirequestToken);
+	}
 
-    // statusEqual:
-    public BatchJobStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(BatchJobStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// uploadedOnEqual:
+	public Integer getUploadedOnEqual(){
+		return this.uploadedOnEqual;
+	}
+	public void setUploadedOnEqual(Integer uploadedOnEqual){
+		this.uploadedOnEqual = uploadedOnEqual;
+	}
 
-    // bulkUploadObjectTypeEqual:
-    public BulkUploadObjectType getBulkUploadObjectTypeEqual(){
-        return this.bulkUploadObjectTypeEqual;
-    }
-    public void setBulkUploadObjectTypeEqual(BulkUploadObjectType bulkUploadObjectTypeEqual){
-        this.bulkUploadObjectTypeEqual = bulkUploadObjectTypeEqual;
-    }
+	public void uploadedOnEqual(String multirequestToken){
+		setToken("uploadedOnEqual", multirequestToken);
+	}
 
-    // bulkUploadObjectTypeIn:
-    public String getBulkUploadObjectTypeIn(){
-        return this.bulkUploadObjectTypeIn;
-    }
-    public void setBulkUploadObjectTypeIn(String bulkUploadObjectTypeIn){
-        this.bulkUploadObjectTypeIn = bulkUploadObjectTypeIn;
-    }
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public BatchJobStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(BatchJobStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// bulkUploadObjectTypeEqual:
+	public BulkUploadObjectType getBulkUploadObjectTypeEqual(){
+		return this.bulkUploadObjectTypeEqual;
+	}
+	public void setBulkUploadObjectTypeEqual(BulkUploadObjectType bulkUploadObjectTypeEqual){
+		this.bulkUploadObjectTypeEqual = bulkUploadObjectTypeEqual;
+	}
+
+	public void bulkUploadObjectTypeEqual(String multirequestToken){
+		setToken("bulkUploadObjectTypeEqual", multirequestToken);
+	}
+
+	// bulkUploadObjectTypeIn:
+	public String getBulkUploadObjectTypeIn(){
+		return this.bulkUploadObjectTypeIn;
+	}
+	public void setBulkUploadObjectTypeIn(String bulkUploadObjectTypeIn){
+		this.bulkUploadObjectTypeIn = bulkUploadObjectTypeIn;
+	}
+
+	public void bulkUploadObjectTypeIn(String multirequestToken){
+		setToken("bulkUploadObjectTypeIn", multirequestToken);
+	}
 
 
-    public BulkUploadBaseFilter() {
-       super();
-    }
+	public BulkUploadBaseFilter() {
+		super();
+	}
 
-    public BulkUploadBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        uploadedOnGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("uploadedOnGreaterThanOrEqual"));
-        uploadedOnLessThanOrEqual = GsonParser.parseInt(jsonObject.get("uploadedOnLessThanOrEqual"));
-        uploadedOnEqual = GsonParser.parseInt(jsonObject.get("uploadedOnEqual"));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusEqual = BatchJobStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        bulkUploadObjectTypeEqual = BulkUploadObjectType.get(GsonParser.parseString(jsonObject.get("bulkUploadObjectTypeEqual")));
-        bulkUploadObjectTypeIn = GsonParser.parseString(jsonObject.get("bulkUploadObjectTypeIn"));
+		// set members values:
+		uploadedOnGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("uploadedOnGreaterThanOrEqual"));
+		uploadedOnLessThanOrEqual = GsonParser.parseInt(jsonObject.get("uploadedOnLessThanOrEqual"));
+		uploadedOnEqual = GsonParser.parseInt(jsonObject.get("uploadedOnEqual"));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusEqual = BatchJobStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		bulkUploadObjectTypeEqual = BulkUploadObjectType.get(GsonParser.parseString(jsonObject.get("bulkUploadObjectTypeEqual")));
+		bulkUploadObjectTypeIn = GsonParser.parseString(jsonObject.get("bulkUploadObjectTypeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadBaseFilter");
-        kparams.add("uploadedOnGreaterThanOrEqual", this.uploadedOnGreaterThanOrEqual);
-        kparams.add("uploadedOnLessThanOrEqual", this.uploadedOnLessThanOrEqual);
-        kparams.add("uploadedOnEqual", this.uploadedOnEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("bulkUploadObjectTypeEqual", this.bulkUploadObjectTypeEqual);
-        kparams.add("bulkUploadObjectTypeIn", this.bulkUploadObjectTypeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadBaseFilter");
+		kparams.add("uploadedOnGreaterThanOrEqual", this.uploadedOnGreaterThanOrEqual);
+		kparams.add("uploadedOnLessThanOrEqual", this.uploadedOnLessThanOrEqual);
+		kparams.add("uploadedOnEqual", this.uploadedOnEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("bulkUploadObjectTypeEqual", this.bulkUploadObjectTypeEqual);
+		kparams.add("bulkUploadObjectTypeIn", this.bulkUploadObjectTypeIn);
+		return kparams;
+	}
 
 }
 

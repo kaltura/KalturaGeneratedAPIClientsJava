@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PreviewRestriction.Tokenizer.class)
 public class PreviewRestriction extends SessionRestriction {
+	
+	public interface Tokenizer extends SessionRestriction.Tokenizer {
+		String previewLength();
+	}
 
 	/**  The preview restriction length  */
-    private Integer previewLength;
+	private Integer previewLength;
 
-    // previewLength:
-    public Integer getPreviewLength(){
-        return this.previewLength;
-    }
-    public void setPreviewLength(Integer previewLength){
-        this.previewLength = previewLength;
-    }
+	// previewLength:
+	public Integer getPreviewLength(){
+		return this.previewLength;
+	}
+	public void setPreviewLength(Integer previewLength){
+		this.previewLength = previewLength;
+	}
+
+	public void previewLength(String multirequestToken){
+		setToken("previewLength", multirequestToken);
+	}
 
 
-    public PreviewRestriction() {
-       super();
-    }
+	public PreviewRestriction() {
+		super();
+	}
 
-    public PreviewRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PreviewRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        previewLength = GsonParser.parseInt(jsonObject.get("previewLength"));
+		// set members values:
+		previewLength = GsonParser.parseInt(jsonObject.get("previewLength"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPreviewRestriction");
-        kparams.add("previewLength", this.previewLength);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPreviewRestriction");
+		kparams.add("previewLength", this.previewLength);
+		return kparams;
+	}
 
 }
 

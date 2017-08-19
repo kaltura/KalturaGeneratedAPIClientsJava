@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Evaluates PHP statement, depends on the execution context  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EvalBooleanField.Tokenizer.class)
 public class EvalBooleanField extends BooleanField {
+	
+	public interface Tokenizer extends BooleanField.Tokenizer {
+		String code();
+	}
 
 	/**  PHP code  */
-    private String code;
+	private String code;
 
-    // code:
-    public String getCode(){
-        return this.code;
-    }
-    public void setCode(String code){
-        this.code = code;
-    }
+	// code:
+	public String getCode(){
+		return this.code;
+	}
+	public void setCode(String code){
+		this.code = code;
+	}
+
+	public void code(String multirequestToken){
+		setToken("code", multirequestToken);
+	}
 
 
-    public EvalBooleanField() {
-       super();
-    }
+	public EvalBooleanField() {
+		super();
+	}
 
-    public EvalBooleanField(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EvalBooleanField(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        code = GsonParser.parseString(jsonObject.get("code"));
+		// set members values:
+		code = GsonParser.parseString(jsonObject.get("code"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEvalBooleanField");
-        kparams.add("code", this.code);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEvalBooleanField");
+		kparams.add("code", this.code);
+		return kparams;
+	}
 
 }
 

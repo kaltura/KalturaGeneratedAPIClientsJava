@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.MatchConditionType;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,50 +43,60 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MatchCondition.Tokenizer.class)
 public abstract class MatchCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		RequestBuilder.ListTokenizer<StringValue.Tokenizer> values();
+		String matchType();
+	}
 
-    private List<StringValue> values;
-    private MatchConditionType matchType;
+	private List<StringValue> values;
+	private MatchConditionType matchType;
 
-    // values:
-    public List<StringValue> getValues(){
-        return this.values;
-    }
-    public void setValues(List<StringValue> values){
-        this.values = values;
-    }
+	// values:
+	public List<StringValue> getValues(){
+		return this.values;
+	}
+	public void setValues(List<StringValue> values){
+		this.values = values;
+	}
 
-    // matchType:
-    public MatchConditionType getMatchType(){
-        return this.matchType;
-    }
-    public void setMatchType(MatchConditionType matchType){
-        this.matchType = matchType;
-    }
+	// matchType:
+	public MatchConditionType getMatchType(){
+		return this.matchType;
+	}
+	public void setMatchType(MatchConditionType matchType){
+		this.matchType = matchType;
+	}
+
+	public void matchType(String multirequestToken){
+		setToken("matchType", multirequestToken);
+	}
 
 
-    public MatchCondition() {
-       super();
-    }
+	public MatchCondition() {
+		super();
+	}
 
-    public MatchCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MatchCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        values = GsonParser.parseArray(jsonObject.getAsJsonArray("values"), StringValue.class);
-        matchType = MatchConditionType.get(GsonParser.parseString(jsonObject.get("matchType")));
+		// set members values:
+		values = GsonParser.parseArray(jsonObject.getAsJsonArray("values"), StringValue.class);
+		matchType = MatchConditionType.get(GsonParser.parseString(jsonObject.get("matchType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMatchCondition");
-        kparams.add("values", this.values);
-        kparams.add("matchType", this.matchType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMatchCondition");
+		kparams.add("values", this.values);
+		kparams.add("matchType", this.matchType);
+		return kparams;
+	}
 
 }
 

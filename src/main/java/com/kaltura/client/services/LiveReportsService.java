@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.LiveReportExportType;
 import com.kaltura.client.enums.LiveReportType;
 import com.kaltura.client.types.FilterPager;
@@ -37,7 +36,6 @@ import com.kaltura.client.types.LiveReportInputFilter;
 import com.kaltura.client.types.ReportGraph;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -47,37 +45,64 @@ import java.util.List;
  */
 
 public class LiveReportsService {
+	
+	public static class ExportToCsvLiveReportsBuilder extends RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.Tokenizer, ExportToCsvLiveReportsBuilder> {
+		
+		public ExportToCsvLiveReportsBuilder(LiveReportExportType reportType, LiveReportExportParams params_) {
+			super(LiveReportExportResponse.class, "livereports", "exportToCsv");
+			params.add("reportType", reportType);
+			params.add("params", params_);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<LiveReportExportResponse> exportToCsv(LiveReportExportType reportType, LiveReportExportParams params)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("params", params);
+    public static ExportToCsvLiveReportsBuilder exportToCsv(LiveReportExportType reportType, LiveReportExportParams params)  {
+		return new ExportToCsvLiveReportsBuilder(reportType, params);
+	}
+	
+	public static class GetEventsLiveReportsBuilder extends ArrayRequestBuilder<ReportGraph, ReportGraph.Tokenizer, GetEventsLiveReportsBuilder> {
+		
+		public GetEventsLiveReportsBuilder(LiveReportType reportType, LiveReportInputFilter filter, FilterPager pager) {
+			super(ReportGraph.class, "livereports", "getEvents");
+			params.add("reportType", reportType);
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+		
+		public void reportType(String multirequestToken) {
+			params.add("reportType", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<LiveReportExportResponse>(LiveReportExportResponse.class, "livereports", "exportToCsv", kparams);
-    }
+	public static GetEventsLiveReportsBuilder getEvents(LiveReportType reportType)  {
+		return getEvents(reportType, null);
+	}
 
-    public static RequestBuilder<List<ReportGraph>> getEvents(LiveReportType reportType)  {
-        return getEvents(reportType, null);
-    }
+	public static GetEventsLiveReportsBuilder getEvents(LiveReportType reportType, LiveReportInputFilter filter)  {
+		return getEvents(reportType, filter, null);
+	}
 
-    public static RequestBuilder<List<ReportGraph>> getEvents(LiveReportType reportType, LiveReportInputFilter filter)  {
-        return getEvents(reportType, filter, null);
-    }
-
-    public static RequestBuilder<List<ReportGraph>> getEvents(LiveReportType reportType, LiveReportInputFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("reportType", reportType);
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ArrayRequestBuilder<ReportGraph>(ReportGraph.class, "livereports", "getEvents", kparams);
-    }
+    public static GetEventsLiveReportsBuilder getEvents(LiveReportType reportType, LiveReportInputFilter filter, FilterPager pager)  {
+		return new GetEventsLiveReportsBuilder(reportType, filter, pager);
+	}
+	
+	public static class ServeReportLiveReportsBuilder extends RequestBuilder<String, String, ServeReportLiveReportsBuilder> {
+		
+		public ServeReportLiveReportsBuilder(String id) {
+			super(String.class, "livereports", "serveReport");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Will serve a requested report  */
-    public static RequestBuilder<String> serveReport(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<String>(String.class, "livereports", "serveReport", kparams);
-    }
+    public static ServeReportLiveReportsBuilder serveReport(String id)  {
+		return new ServeReportLiveReportsBuilder(id);
+	}
 }

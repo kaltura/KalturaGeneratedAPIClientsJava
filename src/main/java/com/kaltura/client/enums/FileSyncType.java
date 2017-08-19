@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileSyncType implements EnumAsInt {
-    FILE(1),
-    LINK(2),
-    URL(3);
+	FILE(1),
+	LINK(2),
+	URL(3);
 
-    private int value;
+	private int value;
 
-    FileSyncType(int value) {
-        this.value = value;
-    }
+	FileSyncType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static FileSyncType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FileSyncType defined values and compare the inner value with the given one:
-        for(FileSyncType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FileSyncType.values().length > 0 ? FileSyncType.values()[0]: null;
+	public static FileSyncType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FileSyncType defined values and compare the inner value with the given one:
+		for(FileSyncType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FileSyncType.values().length > 0 ? FileSyncType.values()[0]: null;
    }
 }

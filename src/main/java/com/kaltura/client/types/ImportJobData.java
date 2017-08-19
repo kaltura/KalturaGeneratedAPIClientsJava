@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ImportJobData.Tokenizer.class)
 public class ImportJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcFileUrl();
+		String destFileLocalPath();
+		String flavorAssetId();
+		String fileSize();
+	}
 
-    private String srcFileUrl;
-    private String destFileLocalPath;
-    private String flavorAssetId;
-    private Integer fileSize;
+	private String srcFileUrl;
+	private String destFileLocalPath;
+	private String flavorAssetId;
+	private Integer fileSize;
 
-    // srcFileUrl:
-    public String getSrcFileUrl(){
-        return this.srcFileUrl;
-    }
-    public void setSrcFileUrl(String srcFileUrl){
-        this.srcFileUrl = srcFileUrl;
-    }
+	// srcFileUrl:
+	public String getSrcFileUrl(){
+		return this.srcFileUrl;
+	}
+	public void setSrcFileUrl(String srcFileUrl){
+		this.srcFileUrl = srcFileUrl;
+	}
 
-    // destFileLocalPath:
-    public String getDestFileLocalPath(){
-        return this.destFileLocalPath;
-    }
-    public void setDestFileLocalPath(String destFileLocalPath){
-        this.destFileLocalPath = destFileLocalPath;
-    }
+	public void srcFileUrl(String multirequestToken){
+		setToken("srcFileUrl", multirequestToken);
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	// destFileLocalPath:
+	public String getDestFileLocalPath(){
+		return this.destFileLocalPath;
+	}
+	public void setDestFileLocalPath(String destFileLocalPath){
+		this.destFileLocalPath = destFileLocalPath;
+	}
 
-    // fileSize:
-    public Integer getFileSize(){
-        return this.fileSize;
-    }
-    public void setFileSize(Integer fileSize){
-        this.fileSize = fileSize;
-    }
+	public void destFileLocalPath(String multirequestToken){
+		setToken("destFileLocalPath", multirequestToken);
+	}
+
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
+
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
+
+	// fileSize:
+	public Integer getFileSize(){
+		return this.fileSize;
+	}
+	public void setFileSize(Integer fileSize){
+		this.fileSize = fileSize;
+	}
+
+	public void fileSize(String multirequestToken){
+		setToken("fileSize", multirequestToken);
+	}
 
 
-    public ImportJobData() {
-       super();
-    }
+	public ImportJobData() {
+		super();
+	}
 
-    public ImportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ImportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcFileUrl = GsonParser.parseString(jsonObject.get("srcFileUrl"));
-        destFileLocalPath = GsonParser.parseString(jsonObject.get("destFileLocalPath"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
+		// set members values:
+		srcFileUrl = GsonParser.parseString(jsonObject.get("srcFileUrl"));
+		destFileLocalPath = GsonParser.parseString(jsonObject.get("destFileLocalPath"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaImportJobData");
-        kparams.add("srcFileUrl", this.srcFileUrl);
-        kparams.add("destFileLocalPath", this.destFileLocalPath);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("fileSize", this.fileSize);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaImportJobData");
+		kparams.add("srcFileUrl", this.srcFileUrl);
+		kparams.add("destFileLocalPath", this.destFileLocalPath);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("fileSize", this.fileSize);
+		return kparams;
+	}
 
 }
 

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.CategoryUserProviderFilter;
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,51 +43,57 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  API object which provides the recipients of category related notifications.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationCategoryRecipientProvider.Tokenizer.class)
 public class EmailNotificationCategoryRecipientProvider extends EmailNotificationRecipientProvider {
+	
+	public interface Tokenizer extends EmailNotificationRecipientProvider.Tokenizer {
+		StringValue.Tokenizer categoryId();
+		CategoryUserProviderFilter.Tokenizer categoryUserFilter();
+	}
 
 	/**  The ID of the category whose subscribers should receive the email notification.  */
-    private StringValue categoryId;
-    private CategoryUserProviderFilter categoryUserFilter;
+	private StringValue categoryId;
+	private CategoryUserProviderFilter categoryUserFilter;
 
-    // categoryId:
-    public StringValue getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(StringValue categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public StringValue getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(StringValue categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // categoryUserFilter:
-    public CategoryUserProviderFilter getCategoryUserFilter(){
-        return this.categoryUserFilter;
-    }
-    public void setCategoryUserFilter(CategoryUserProviderFilter categoryUserFilter){
-        this.categoryUserFilter = categoryUserFilter;
-    }
+	// categoryUserFilter:
+	public CategoryUserProviderFilter getCategoryUserFilter(){
+		return this.categoryUserFilter;
+	}
+	public void setCategoryUserFilter(CategoryUserProviderFilter categoryUserFilter){
+		this.categoryUserFilter = categoryUserFilter;
+	}
 
 
-    public EmailNotificationCategoryRecipientProvider() {
-       super();
-    }
+	public EmailNotificationCategoryRecipientProvider() {
+		super();
+	}
 
-    public EmailNotificationCategoryRecipientProvider(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationCategoryRecipientProvider(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseObject(jsonObject.getAsJsonObject("categoryId"), StringValue.class);
-        categoryUserFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("categoryUserFilter"), CategoryUserProviderFilter.class);
+		// set members values:
+		categoryId = GsonParser.parseObject(jsonObject.getAsJsonObject("categoryId"), StringValue.class);
+		categoryUserFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("categoryUserFilter"), CategoryUserProviderFilter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationCategoryRecipientProvider");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("categoryUserFilter", this.categoryUserFilter);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationCategoryRecipientProvider");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("categoryUserFilter", this.categoryUserFilter);
+		return kparams;
+	}
 
 }
 

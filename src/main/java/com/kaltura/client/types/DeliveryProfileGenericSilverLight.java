@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileGenericSilverLight.Tokenizer.class)
 public class DeliveryProfileGenericSilverLight extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String pattern();
+	}
 
-    private String pattern;
+	private String pattern;
 
-    // pattern:
-    public String getPattern(){
-        return this.pattern;
-    }
-    public void setPattern(String pattern){
-        this.pattern = pattern;
-    }
+	// pattern:
+	public String getPattern(){
+		return this.pattern;
+	}
+	public void setPattern(String pattern){
+		this.pattern = pattern;
+	}
+
+	public void pattern(String multirequestToken){
+		setToken("pattern", multirequestToken);
+	}
 
 
-    public DeliveryProfileGenericSilverLight() {
-       super();
-    }
+	public DeliveryProfileGenericSilverLight() {
+		super();
+	}
 
-    public DeliveryProfileGenericSilverLight(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileGenericSilverLight(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		// set members values:
+		pattern = GsonParser.parseString(jsonObject.get("pattern"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileGenericSilverLight");
-        kparams.add("pattern", this.pattern);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileGenericSilverLight");
+		kparams.add("pattern", this.pattern);
+		return kparams;
+	}
 
 }
 

@@ -33,7 +33,8 @@ import com.kaltura.client.enums.EmailNotificationFormat;
 import com.kaltura.client.enums.EmailNotificationTemplatePriority;
 import com.kaltura.client.types.EmailNotificationRecipientProvider;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,199 +45,253 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationTemplate.Tokenizer.class)
 public class EmailNotificationTemplate extends EventNotificationTemplate {
+	
+	public interface Tokenizer extends EventNotificationTemplate.Tokenizer {
+		String format();
+		String subject();
+		String body();
+		String fromEmail();
+		String fromName();
+		EmailNotificationRecipientProvider.Tokenizer to();
+		EmailNotificationRecipientProvider.Tokenizer cc();
+		EmailNotificationRecipientProvider.Tokenizer bcc();
+		EmailNotificationRecipientProvider.Tokenizer replyTo();
+		String priority();
+		String confirmReadingTo();
+		String hostname();
+		String messageID();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> customHeaders();
+	}
 
 	/**  Define the email body format  */
-    private EmailNotificationFormat format;
+	private EmailNotificationFormat format;
 	/**  Define the email subject  */
-    private String subject;
+	private String subject;
 	/**  Define the email body content  */
-    private String body;
+	private String body;
 	/**  Define the email sender email  */
-    private String fromEmail;
+	private String fromEmail;
 	/**  Define the email sender name  */
-    private String fromName;
+	private String fromName;
 	/**  Email recipient emails and names  */
-    private EmailNotificationRecipientProvider to;
+	private EmailNotificationRecipientProvider to;
 	/**  Email recipient emails and names  */
-    private EmailNotificationRecipientProvider cc;
+	private EmailNotificationRecipientProvider cc;
 	/**  Email recipient emails and names  */
-    private EmailNotificationRecipientProvider bcc;
+	private EmailNotificationRecipientProvider bcc;
 	/**  Default email addresses to whom the reply should be sent.  */
-    private EmailNotificationRecipientProvider replyTo;
+	private EmailNotificationRecipientProvider replyTo;
 	/**  Define the email priority  */
-    private EmailNotificationTemplatePriority priority;
+	private EmailNotificationTemplatePriority priority;
 	/**  Email address that a reading confirmation will be sent  */
-    private String confirmReadingTo;
+	private String confirmReadingTo;
 	/**  Hostname to use in Message-Id and Received headers and as default HELLO string. 
 	    If empty, the value returned by SERVER_NAME is used or
 	  'localhost.localdomain'.  */
-    private String hostname;
+	private String hostname;
 	/**  Sets the message ID to be used in the Message-Id header.   If empty, a unique id
 	  will be generated.  */
-    private String messageID;
+	private String messageID;
 	/**  Adds a e-mail custom header  */
-    private List<KeyValue> customHeaders;
+	private List<KeyValue> customHeaders;
 
-    // format:
-    public EmailNotificationFormat getFormat(){
-        return this.format;
-    }
-    public void setFormat(EmailNotificationFormat format){
-        this.format = format;
-    }
+	// format:
+	public EmailNotificationFormat getFormat(){
+		return this.format;
+	}
+	public void setFormat(EmailNotificationFormat format){
+		this.format = format;
+	}
 
-    // subject:
-    public String getSubject(){
-        return this.subject;
-    }
-    public void setSubject(String subject){
-        this.subject = subject;
-    }
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
 
-    // body:
-    public String getBody(){
-        return this.body;
-    }
-    public void setBody(String body){
-        this.body = body;
-    }
+	// subject:
+	public String getSubject(){
+		return this.subject;
+	}
+	public void setSubject(String subject){
+		this.subject = subject;
+	}
 
-    // fromEmail:
-    public String getFromEmail(){
-        return this.fromEmail;
-    }
-    public void setFromEmail(String fromEmail){
-        this.fromEmail = fromEmail;
-    }
+	public void subject(String multirequestToken){
+		setToken("subject", multirequestToken);
+	}
 
-    // fromName:
-    public String getFromName(){
-        return this.fromName;
-    }
-    public void setFromName(String fromName){
-        this.fromName = fromName;
-    }
+	// body:
+	public String getBody(){
+		return this.body;
+	}
+	public void setBody(String body){
+		this.body = body;
+	}
 
-    // to:
-    public EmailNotificationRecipientProvider getTo(){
-        return this.to;
-    }
-    public void setTo(EmailNotificationRecipientProvider to){
-        this.to = to;
-    }
+	public void body(String multirequestToken){
+		setToken("body", multirequestToken);
+	}
 
-    // cc:
-    public EmailNotificationRecipientProvider getCc(){
-        return this.cc;
-    }
-    public void setCc(EmailNotificationRecipientProvider cc){
-        this.cc = cc;
-    }
+	// fromEmail:
+	public String getFromEmail(){
+		return this.fromEmail;
+	}
+	public void setFromEmail(String fromEmail){
+		this.fromEmail = fromEmail;
+	}
 
-    // bcc:
-    public EmailNotificationRecipientProvider getBcc(){
-        return this.bcc;
-    }
-    public void setBcc(EmailNotificationRecipientProvider bcc){
-        this.bcc = bcc;
-    }
+	public void fromEmail(String multirequestToken){
+		setToken("fromEmail", multirequestToken);
+	}
 
-    // replyTo:
-    public EmailNotificationRecipientProvider getReplyTo(){
-        return this.replyTo;
-    }
-    public void setReplyTo(EmailNotificationRecipientProvider replyTo){
-        this.replyTo = replyTo;
-    }
+	// fromName:
+	public String getFromName(){
+		return this.fromName;
+	}
+	public void setFromName(String fromName){
+		this.fromName = fromName;
+	}
 
-    // priority:
-    public EmailNotificationTemplatePriority getPriority(){
-        return this.priority;
-    }
-    public void setPriority(EmailNotificationTemplatePriority priority){
-        this.priority = priority;
-    }
+	public void fromName(String multirequestToken){
+		setToken("fromName", multirequestToken);
+	}
 
-    // confirmReadingTo:
-    public String getConfirmReadingTo(){
-        return this.confirmReadingTo;
-    }
-    public void setConfirmReadingTo(String confirmReadingTo){
-        this.confirmReadingTo = confirmReadingTo;
-    }
+	// to:
+	public EmailNotificationRecipientProvider getTo(){
+		return this.to;
+	}
+	public void setTo(EmailNotificationRecipientProvider to){
+		this.to = to;
+	}
 
-    // hostname:
-    public String getHostname(){
-        return this.hostname;
-    }
-    public void setHostname(String hostname){
-        this.hostname = hostname;
-    }
+	// cc:
+	public EmailNotificationRecipientProvider getCc(){
+		return this.cc;
+	}
+	public void setCc(EmailNotificationRecipientProvider cc){
+		this.cc = cc;
+	}
 
-    // messageID:
-    public String getMessageID(){
-        return this.messageID;
-    }
-    public void setMessageID(String messageID){
-        this.messageID = messageID;
-    }
+	// bcc:
+	public EmailNotificationRecipientProvider getBcc(){
+		return this.bcc;
+	}
+	public void setBcc(EmailNotificationRecipientProvider bcc){
+		this.bcc = bcc;
+	}
 
-    // customHeaders:
-    public List<KeyValue> getCustomHeaders(){
-        return this.customHeaders;
-    }
-    public void setCustomHeaders(List<KeyValue> customHeaders){
-        this.customHeaders = customHeaders;
-    }
+	// replyTo:
+	public EmailNotificationRecipientProvider getReplyTo(){
+		return this.replyTo;
+	}
+	public void setReplyTo(EmailNotificationRecipientProvider replyTo){
+		this.replyTo = replyTo;
+	}
+
+	// priority:
+	public EmailNotificationTemplatePriority getPriority(){
+		return this.priority;
+	}
+	public void setPriority(EmailNotificationTemplatePriority priority){
+		this.priority = priority;
+	}
+
+	public void priority(String multirequestToken){
+		setToken("priority", multirequestToken);
+	}
+
+	// confirmReadingTo:
+	public String getConfirmReadingTo(){
+		return this.confirmReadingTo;
+	}
+	public void setConfirmReadingTo(String confirmReadingTo){
+		this.confirmReadingTo = confirmReadingTo;
+	}
+
+	public void confirmReadingTo(String multirequestToken){
+		setToken("confirmReadingTo", multirequestToken);
+	}
+
+	// hostname:
+	public String getHostname(){
+		return this.hostname;
+	}
+	public void setHostname(String hostname){
+		this.hostname = hostname;
+	}
+
+	public void hostname(String multirequestToken){
+		setToken("hostname", multirequestToken);
+	}
+
+	// messageID:
+	public String getMessageID(){
+		return this.messageID;
+	}
+	public void setMessageID(String messageID){
+		this.messageID = messageID;
+	}
+
+	public void messageID(String multirequestToken){
+		setToken("messageID", multirequestToken);
+	}
+
+	// customHeaders:
+	public List<KeyValue> getCustomHeaders(){
+		return this.customHeaders;
+	}
+	public void setCustomHeaders(List<KeyValue> customHeaders){
+		this.customHeaders = customHeaders;
+	}
 
 
-    public EmailNotificationTemplate() {
-       super();
-    }
+	public EmailNotificationTemplate() {
+		super();
+	}
 
-    public EmailNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EmailNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        format = EmailNotificationFormat.get(GsonParser.parseString(jsonObject.get("format")));
-        subject = GsonParser.parseString(jsonObject.get("subject"));
-        body = GsonParser.parseString(jsonObject.get("body"));
-        fromEmail = GsonParser.parseString(jsonObject.get("fromEmail"));
-        fromName = GsonParser.parseString(jsonObject.get("fromName"));
-        to = GsonParser.parseObject(jsonObject.getAsJsonObject("to"), EmailNotificationRecipientProvider.class);
-        cc = GsonParser.parseObject(jsonObject.getAsJsonObject("cc"), EmailNotificationRecipientProvider.class);
-        bcc = GsonParser.parseObject(jsonObject.getAsJsonObject("bcc"), EmailNotificationRecipientProvider.class);
-        replyTo = GsonParser.parseObject(jsonObject.getAsJsonObject("replyTo"), EmailNotificationRecipientProvider.class);
-        priority = EmailNotificationTemplatePriority.get(GsonParser.parseInt(jsonObject.get("priority")));
-        confirmReadingTo = GsonParser.parseString(jsonObject.get("confirmReadingTo"));
-        hostname = GsonParser.parseString(jsonObject.get("hostname"));
-        messageID = GsonParser.parseString(jsonObject.get("messageID"));
-        customHeaders = GsonParser.parseArray(jsonObject.getAsJsonArray("customHeaders"), KeyValue.class);
+		// set members values:
+		format = EmailNotificationFormat.get(GsonParser.parseString(jsonObject.get("format")));
+		subject = GsonParser.parseString(jsonObject.get("subject"));
+		body = GsonParser.parseString(jsonObject.get("body"));
+		fromEmail = GsonParser.parseString(jsonObject.get("fromEmail"));
+		fromName = GsonParser.parseString(jsonObject.get("fromName"));
+		to = GsonParser.parseObject(jsonObject.getAsJsonObject("to"), EmailNotificationRecipientProvider.class);
+		cc = GsonParser.parseObject(jsonObject.getAsJsonObject("cc"), EmailNotificationRecipientProvider.class);
+		bcc = GsonParser.parseObject(jsonObject.getAsJsonObject("bcc"), EmailNotificationRecipientProvider.class);
+		replyTo = GsonParser.parseObject(jsonObject.getAsJsonObject("replyTo"), EmailNotificationRecipientProvider.class);
+		priority = EmailNotificationTemplatePriority.get(GsonParser.parseInt(jsonObject.get("priority")));
+		confirmReadingTo = GsonParser.parseString(jsonObject.get("confirmReadingTo"));
+		hostname = GsonParser.parseString(jsonObject.get("hostname"));
+		messageID = GsonParser.parseString(jsonObject.get("messageID"));
+		customHeaders = GsonParser.parseArray(jsonObject.getAsJsonArray("customHeaders"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEmailNotificationTemplate");
-        kparams.add("format", this.format);
-        kparams.add("subject", this.subject);
-        kparams.add("body", this.body);
-        kparams.add("fromEmail", this.fromEmail);
-        kparams.add("fromName", this.fromName);
-        kparams.add("to", this.to);
-        kparams.add("cc", this.cc);
-        kparams.add("bcc", this.bcc);
-        kparams.add("replyTo", this.replyTo);
-        kparams.add("priority", this.priority);
-        kparams.add("confirmReadingTo", this.confirmReadingTo);
-        kparams.add("hostname", this.hostname);
-        kparams.add("messageID", this.messageID);
-        kparams.add("customHeaders", this.customHeaders);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationTemplate");
+		kparams.add("format", this.format);
+		kparams.add("subject", this.subject);
+		kparams.add("body", this.body);
+		kparams.add("fromEmail", this.fromEmail);
+		kparams.add("fromName", this.fromName);
+		kparams.add("to", this.to);
+		kparams.add("cc", this.cc);
+		kparams.add("bcc", this.bcc);
+		kparams.add("replyTo", this.replyTo);
+		kparams.add("priority", this.priority);
+		kparams.add("confirmReadingTo", this.confirmReadingTo);
+		kparams.add("hostname", this.hostname);
+		kparams.add("messageID", this.messageID);
+		kparams.add("customHeaders", this.customHeaders);
+		return kparams;
+	}
 
 }
 

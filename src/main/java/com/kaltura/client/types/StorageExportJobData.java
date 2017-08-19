@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StorageExportJobData.Tokenizer.class)
 public class StorageExportJobData extends StorageJobData {
+	
+	public interface Tokenizer extends StorageJobData.Tokenizer {
+		String force();
+		String createLink();
+	}
 
-    private Boolean force;
-    private Boolean createLink;
+	private Boolean force;
+	private Boolean createLink;
 
-    // force:
-    public Boolean getForce(){
-        return this.force;
-    }
-    public void setForce(Boolean force){
-        this.force = force;
-    }
+	// force:
+	public Boolean getForce(){
+		return this.force;
+	}
+	public void setForce(Boolean force){
+		this.force = force;
+	}
 
-    // createLink:
-    public Boolean getCreateLink(){
-        return this.createLink;
-    }
-    public void setCreateLink(Boolean createLink){
-        this.createLink = createLink;
-    }
+	public void force(String multirequestToken){
+		setToken("force", multirequestToken);
+	}
+
+	// createLink:
+	public Boolean getCreateLink(){
+		return this.createLink;
+	}
+	public void setCreateLink(Boolean createLink){
+		this.createLink = createLink;
+	}
+
+	public void createLink(String multirequestToken){
+		setToken("createLink", multirequestToken);
+	}
 
 
-    public StorageExportJobData() {
-       super();
-    }
+	public StorageExportJobData() {
+		super();
+	}
 
-    public StorageExportJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StorageExportJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        force = GsonParser.parseBoolean(jsonObject.get("force"));
-        createLink = GsonParser.parseBoolean(jsonObject.get("createLink"));
+		// set members values:
+		force = GsonParser.parseBoolean(jsonObject.get("force"));
+		createLink = GsonParser.parseBoolean(jsonObject.get("createLink"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStorageExportJobData");
-        kparams.add("force", this.force);
-        kparams.add("createLink", this.createLink);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStorageExportJobData");
+		kparams.add("force", this.force);
+		kparams.add("createLink", this.createLink);
+		return kparams;
+	}
 
 }
 

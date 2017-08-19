@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.SchemaType;
-import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
@@ -42,12 +40,21 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 /**  Expose the schema definitions for syndication MRSS, bulk upload XML and other
   schema types.  */
 public class SchemaService {
+	
+	public static class ServeSchemaBuilder extends ServeRequestBuilder {
+		
+		public ServeSchemaBuilder(SchemaType type) {
+			super("schema", "serve");
+			params.add("type", type);
+		}
+		
+		public void type(String multirequestToken) {
+			params.add("type", multirequestToken);
+		}
+	}
 
 	/**  Serves the requested XSD according to the type and name.  */
-    public static RequestBuilder<String> serve(SchemaType type)  {
-        Params kparams = new Params();
-        kparams.add("type", type);
-
-        return new ServeRequestBuilder("schema", "serve", kparams);
-    }
+    public static ServeSchemaBuilder serve(SchemaType type)  {
+		return new ServeSchemaBuilder(type);
+	}
 }

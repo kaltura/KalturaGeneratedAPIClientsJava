@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributeObjectTask.Tokenizer.class)
 public class DistributeObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String distributionProfileId();
+	}
 
 	/**  Distribution profile id  */
-    private String distributionProfileId;
+	private String distributionProfileId;
 
-    // distributionProfileId:
-    public String getDistributionProfileId(){
-        return this.distributionProfileId;
-    }
-    public void setDistributionProfileId(String distributionProfileId){
-        this.distributionProfileId = distributionProfileId;
-    }
+	// distributionProfileId:
+	public String getDistributionProfileId(){
+		return this.distributionProfileId;
+	}
+	public void setDistributionProfileId(String distributionProfileId){
+		this.distributionProfileId = distributionProfileId;
+	}
+
+	public void distributionProfileId(String multirequestToken){
+		setToken("distributionProfileId", multirequestToken);
+	}
 
 
-    public DistributeObjectTask() {
-       super();
-    }
+	public DistributeObjectTask() {
+		super();
+	}
 
-    public DistributeObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributeObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        distributionProfileId = GsonParser.parseString(jsonObject.get("distributionProfileId"));
+		// set members values:
+		distributionProfileId = GsonParser.parseString(jsonObject.get("distributionProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributeObjectTask");
-        kparams.add("distributionProfileId", this.distributionProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributeObjectTask");
+		kparams.add("distributionProfileId", this.distributionProfileId);
+		return kparams;
+	}
 
 }
 

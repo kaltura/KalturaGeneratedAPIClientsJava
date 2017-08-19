@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PermissionType implements EnumAsInt {
-    NORMAL(1),
-    SPECIAL_FEATURE(2),
-    PLUGIN(3),
-    PARTNER_GROUP(4);
+	NORMAL(1),
+	SPECIAL_FEATURE(2),
+	PLUGIN(3),
+	PARTNER_GROUP(4);
 
-    private int value;
+	private int value;
 
-    PermissionType(int value) {
-        this.value = value;
-    }
+	PermissionType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PermissionType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PermissionType defined values and compare the inner value with the given one:
-        for(PermissionType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PermissionType.values().length > 0 ? PermissionType.values()[0]: null;
+	public static PermissionType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PermissionType defined values and compare the inner value with the given one:
+		for(PermissionType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PermissionType.values().length > 0 ? PermissionType.values()[0]: null;
    }
 }

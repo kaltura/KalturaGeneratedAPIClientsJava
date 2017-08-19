@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,138 +40,192 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AnnotationBaseFilter.Tokenizer.class)
 public abstract class AnnotationBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String parentIdEqual();
+		String parentIdIn();
+		String textLike();
+		String textMultiLikeOr();
+		String textMultiLikeAnd();
+		String endTimeGreaterThanOrEqual();
+		String endTimeLessThanOrEqual();
+		String durationGreaterThanOrEqual();
+		String durationLessThanOrEqual();
+		String isPublicEqual();
+	}
 
-    private String parentIdEqual;
-    private String parentIdIn;
-    private String textLike;
-    private String textMultiLikeOr;
-    private String textMultiLikeAnd;
-    private Integer endTimeGreaterThanOrEqual;
-    private Integer endTimeLessThanOrEqual;
-    private Integer durationGreaterThanOrEqual;
-    private Integer durationLessThanOrEqual;
-    private Boolean isPublicEqual;
+	private String parentIdEqual;
+	private String parentIdIn;
+	private String textLike;
+	private String textMultiLikeOr;
+	private String textMultiLikeAnd;
+	private Integer endTimeGreaterThanOrEqual;
+	private Integer endTimeLessThanOrEqual;
+	private Integer durationGreaterThanOrEqual;
+	private Integer durationLessThanOrEqual;
+	private Boolean isPublicEqual;
 
-    // parentIdEqual:
-    public String getParentIdEqual(){
-        return this.parentIdEqual;
-    }
-    public void setParentIdEqual(String parentIdEqual){
-        this.parentIdEqual = parentIdEqual;
-    }
+	// parentIdEqual:
+	public String getParentIdEqual(){
+		return this.parentIdEqual;
+	}
+	public void setParentIdEqual(String parentIdEqual){
+		this.parentIdEqual = parentIdEqual;
+	}
 
-    // parentIdIn:
-    public String getParentIdIn(){
-        return this.parentIdIn;
-    }
-    public void setParentIdIn(String parentIdIn){
-        this.parentIdIn = parentIdIn;
-    }
+	public void parentIdEqual(String multirequestToken){
+		setToken("parentIdEqual", multirequestToken);
+	}
 
-    // textLike:
-    public String getTextLike(){
-        return this.textLike;
-    }
-    public void setTextLike(String textLike){
-        this.textLike = textLike;
-    }
+	// parentIdIn:
+	public String getParentIdIn(){
+		return this.parentIdIn;
+	}
+	public void setParentIdIn(String parentIdIn){
+		this.parentIdIn = parentIdIn;
+	}
 
-    // textMultiLikeOr:
-    public String getTextMultiLikeOr(){
-        return this.textMultiLikeOr;
-    }
-    public void setTextMultiLikeOr(String textMultiLikeOr){
-        this.textMultiLikeOr = textMultiLikeOr;
-    }
+	public void parentIdIn(String multirequestToken){
+		setToken("parentIdIn", multirequestToken);
+	}
 
-    // textMultiLikeAnd:
-    public String getTextMultiLikeAnd(){
-        return this.textMultiLikeAnd;
-    }
-    public void setTextMultiLikeAnd(String textMultiLikeAnd){
-        this.textMultiLikeAnd = textMultiLikeAnd;
-    }
+	// textLike:
+	public String getTextLike(){
+		return this.textLike;
+	}
+	public void setTextLike(String textLike){
+		this.textLike = textLike;
+	}
 
-    // endTimeGreaterThanOrEqual:
-    public Integer getEndTimeGreaterThanOrEqual(){
-        return this.endTimeGreaterThanOrEqual;
-    }
-    public void setEndTimeGreaterThanOrEqual(Integer endTimeGreaterThanOrEqual){
-        this.endTimeGreaterThanOrEqual = endTimeGreaterThanOrEqual;
-    }
+	public void textLike(String multirequestToken){
+		setToken("textLike", multirequestToken);
+	}
 
-    // endTimeLessThanOrEqual:
-    public Integer getEndTimeLessThanOrEqual(){
-        return this.endTimeLessThanOrEqual;
-    }
-    public void setEndTimeLessThanOrEqual(Integer endTimeLessThanOrEqual){
-        this.endTimeLessThanOrEqual = endTimeLessThanOrEqual;
-    }
+	// textMultiLikeOr:
+	public String getTextMultiLikeOr(){
+		return this.textMultiLikeOr;
+	}
+	public void setTextMultiLikeOr(String textMultiLikeOr){
+		this.textMultiLikeOr = textMultiLikeOr;
+	}
 
-    // durationGreaterThanOrEqual:
-    public Integer getDurationGreaterThanOrEqual(){
-        return this.durationGreaterThanOrEqual;
-    }
-    public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
-        this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
-    }
+	public void textMultiLikeOr(String multirequestToken){
+		setToken("textMultiLikeOr", multirequestToken);
+	}
 
-    // durationLessThanOrEqual:
-    public Integer getDurationLessThanOrEqual(){
-        return this.durationLessThanOrEqual;
-    }
-    public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
-        this.durationLessThanOrEqual = durationLessThanOrEqual;
-    }
+	// textMultiLikeAnd:
+	public String getTextMultiLikeAnd(){
+		return this.textMultiLikeAnd;
+	}
+	public void setTextMultiLikeAnd(String textMultiLikeAnd){
+		this.textMultiLikeAnd = textMultiLikeAnd;
+	}
 
-    // isPublicEqual:
-    public Boolean getIsPublicEqual(){
-        return this.isPublicEqual;
-    }
-    public void setIsPublicEqual(Boolean isPublicEqual){
-        this.isPublicEqual = isPublicEqual;
-    }
+	public void textMultiLikeAnd(String multirequestToken){
+		setToken("textMultiLikeAnd", multirequestToken);
+	}
+
+	// endTimeGreaterThanOrEqual:
+	public Integer getEndTimeGreaterThanOrEqual(){
+		return this.endTimeGreaterThanOrEqual;
+	}
+	public void setEndTimeGreaterThanOrEqual(Integer endTimeGreaterThanOrEqual){
+		this.endTimeGreaterThanOrEqual = endTimeGreaterThanOrEqual;
+	}
+
+	public void endTimeGreaterThanOrEqual(String multirequestToken){
+		setToken("endTimeGreaterThanOrEqual", multirequestToken);
+	}
+
+	// endTimeLessThanOrEqual:
+	public Integer getEndTimeLessThanOrEqual(){
+		return this.endTimeLessThanOrEqual;
+	}
+	public void setEndTimeLessThanOrEqual(Integer endTimeLessThanOrEqual){
+		this.endTimeLessThanOrEqual = endTimeLessThanOrEqual;
+	}
+
+	public void endTimeLessThanOrEqual(String multirequestToken){
+		setToken("endTimeLessThanOrEqual", multirequestToken);
+	}
+
+	// durationGreaterThanOrEqual:
+	public Integer getDurationGreaterThanOrEqual(){
+		return this.durationGreaterThanOrEqual;
+	}
+	public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
+		this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
+	}
+
+	public void durationGreaterThanOrEqual(String multirequestToken){
+		setToken("durationGreaterThanOrEqual", multirequestToken);
+	}
+
+	// durationLessThanOrEqual:
+	public Integer getDurationLessThanOrEqual(){
+		return this.durationLessThanOrEqual;
+	}
+	public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
+		this.durationLessThanOrEqual = durationLessThanOrEqual;
+	}
+
+	public void durationLessThanOrEqual(String multirequestToken){
+		setToken("durationLessThanOrEqual", multirequestToken);
+	}
+
+	// isPublicEqual:
+	public Boolean getIsPublicEqual(){
+		return this.isPublicEqual;
+	}
+	public void setIsPublicEqual(Boolean isPublicEqual){
+		this.isPublicEqual = isPublicEqual;
+	}
+
+	public void isPublicEqual(String multirequestToken){
+		setToken("isPublicEqual", multirequestToken);
+	}
 
 
-    public AnnotationBaseFilter() {
-       super();
-    }
+	public AnnotationBaseFilter() {
+		super();
+	}
 
-    public AnnotationBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AnnotationBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentIdEqual = GsonParser.parseString(jsonObject.get("parentIdEqual"));
-        parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
-        textLike = GsonParser.parseString(jsonObject.get("textLike"));
-        textMultiLikeOr = GsonParser.parseString(jsonObject.get("textMultiLikeOr"));
-        textMultiLikeAnd = GsonParser.parseString(jsonObject.get("textMultiLikeAnd"));
-        endTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeGreaterThanOrEqual"));
-        endTimeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeLessThanOrEqual"));
-        durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
-        durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
-        isPublicEqual = GsonParser.parseBoolean(jsonObject.get("isPublicEqual"));
+		// set members values:
+		parentIdEqual = GsonParser.parseString(jsonObject.get("parentIdEqual"));
+		parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
+		textLike = GsonParser.parseString(jsonObject.get("textLike"));
+		textMultiLikeOr = GsonParser.parseString(jsonObject.get("textMultiLikeOr"));
+		textMultiLikeAnd = GsonParser.parseString(jsonObject.get("textMultiLikeAnd"));
+		endTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeGreaterThanOrEqual"));
+		endTimeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endTimeLessThanOrEqual"));
+		durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
+		durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
+		isPublicEqual = GsonParser.parseBoolean(jsonObject.get("isPublicEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAnnotationBaseFilter");
-        kparams.add("parentIdEqual", this.parentIdEqual);
-        kparams.add("parentIdIn", this.parentIdIn);
-        kparams.add("textLike", this.textLike);
-        kparams.add("textMultiLikeOr", this.textMultiLikeOr);
-        kparams.add("textMultiLikeAnd", this.textMultiLikeAnd);
-        kparams.add("endTimeGreaterThanOrEqual", this.endTimeGreaterThanOrEqual);
-        kparams.add("endTimeLessThanOrEqual", this.endTimeLessThanOrEqual);
-        kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
-        kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
-        kparams.add("isPublicEqual", this.isPublicEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAnnotationBaseFilter");
+		kparams.add("parentIdEqual", this.parentIdEqual);
+		kparams.add("parentIdIn", this.parentIdIn);
+		kparams.add("textLike", this.textLike);
+		kparams.add("textMultiLikeOr", this.textMultiLikeOr);
+		kparams.add("textMultiLikeAnd", this.textMultiLikeAnd);
+		kparams.add("endTimeGreaterThanOrEqual", this.endTimeGreaterThanOrEqual);
+		kparams.add("endTimeLessThanOrEqual", this.endTimeLessThanOrEqual);
+		kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
+		kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
+		kparams.add("isPublicEqual", this.isPublicEqual);
+		return kparams;
+	}
 
 }
 

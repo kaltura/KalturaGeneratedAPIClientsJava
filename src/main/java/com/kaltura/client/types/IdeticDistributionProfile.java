@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IdeticDistributionProfile.Tokenizer.class)
 public class IdeticDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String ftpPath();
+		String username();
+		String password();
+		String domain();
+	}
 
-    private String ftpPath;
-    private String username;
-    private String password;
-    private String domain;
+	private String ftpPath;
+	private String username;
+	private String password;
+	private String domain;
 
-    // ftpPath:
-    public String getFtpPath(){
-        return this.ftpPath;
-    }
-    public void setFtpPath(String ftpPath){
-        this.ftpPath = ftpPath;
-    }
+	// ftpPath:
+	public String getFtpPath(){
+		return this.ftpPath;
+	}
+	public void setFtpPath(String ftpPath){
+		this.ftpPath = ftpPath;
+	}
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	public void ftpPath(String multirequestToken){
+		setToken("ftpPath", multirequestToken);
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
 
-    // domain:
-    public String getDomain(){
-        return this.domain;
-    }
-    public void setDomain(String domain){
-        this.domain = domain;
-    }
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
+
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// domain:
+	public String getDomain(){
+		return this.domain;
+	}
+	public void setDomain(String domain){
+		this.domain = domain;
+	}
+
+	public void domain(String multirequestToken){
+		setToken("domain", multirequestToken);
+	}
 
 
-    public IdeticDistributionProfile() {
-       super();
-    }
+	public IdeticDistributionProfile() {
+		super();
+	}
 
-    public IdeticDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IdeticDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        domain = GsonParser.parseString(jsonObject.get("domain"));
+		// set members values:
+		ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		domain = GsonParser.parseString(jsonObject.get("domain"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIdeticDistributionProfile");
-        kparams.add("ftpPath", this.ftpPath);
-        kparams.add("username", this.username);
-        kparams.add("password", this.password);
-        kparams.add("domain", this.domain);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIdeticDistributionProfile");
+		kparams.add("ftpPath", this.ftpPath);
+		kparams.add("username", this.username);
+		kparams.add("password", this.password);
+		kparams.add("domain", this.domain);
+		return kparams;
+	}
 
 }
 

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,42 +40,51 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmEntryContextPluginData.Tokenizer.class)
 public class DrmEntryContextPluginData extends PluginData {
+	
+	public interface Tokenizer extends PluginData.Tokenizer {
+		String flavorData();
+	}
 
 	/**  For the uDRM we give the drm context data which is a json encoding of an array
 	  containing the uDRM data      for each flavor that is required from this
 	  getContextData request.  */
-    private String flavorData;
+	private String flavorData;
 
-    // flavorData:
-    public String getFlavorData(){
-        return this.flavorData;
-    }
-    public void setFlavorData(String flavorData){
-        this.flavorData = flavorData;
-    }
+	// flavorData:
+	public String getFlavorData(){
+		return this.flavorData;
+	}
+	public void setFlavorData(String flavorData){
+		this.flavorData = flavorData;
+	}
+
+	public void flavorData(String multirequestToken){
+		setToken("flavorData", multirequestToken);
+	}
 
 
-    public DrmEntryContextPluginData() {
-       super();
-    }
+	public DrmEntryContextPluginData() {
+		super();
+	}
 
-    public DrmEntryContextPluginData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmEntryContextPluginData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorData = GsonParser.parseString(jsonObject.get("flavorData"));
+		// set members values:
+		flavorData = GsonParser.parseString(jsonObject.get("flavorData"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmEntryContextPluginData");
-        kparams.add("flavorData", this.flavorData);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmEntryContextPluginData");
+		kparams.add("flavorData", this.flavorData);
+		return kparams;
+	}
 
 }
 

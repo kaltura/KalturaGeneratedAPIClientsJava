@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileLiveAppleHttp.Tokenizer.class)
 public class DeliveryProfileLiveAppleHttp extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String disableExtraAttributes();
+		String forceProxy();
+	}
 
-    private Boolean disableExtraAttributes;
-    private Boolean forceProxy;
+	private Boolean disableExtraAttributes;
+	private Boolean forceProxy;
 
-    // disableExtraAttributes:
-    public Boolean getDisableExtraAttributes(){
-        return this.disableExtraAttributes;
-    }
-    public void setDisableExtraAttributes(Boolean disableExtraAttributes){
-        this.disableExtraAttributes = disableExtraAttributes;
-    }
+	// disableExtraAttributes:
+	public Boolean getDisableExtraAttributes(){
+		return this.disableExtraAttributes;
+	}
+	public void setDisableExtraAttributes(Boolean disableExtraAttributes){
+		this.disableExtraAttributes = disableExtraAttributes;
+	}
 
-    // forceProxy:
-    public Boolean getForceProxy(){
-        return this.forceProxy;
-    }
-    public void setForceProxy(Boolean forceProxy){
-        this.forceProxy = forceProxy;
-    }
+	public void disableExtraAttributes(String multirequestToken){
+		setToken("disableExtraAttributes", multirequestToken);
+	}
+
+	// forceProxy:
+	public Boolean getForceProxy(){
+		return this.forceProxy;
+	}
+	public void setForceProxy(Boolean forceProxy){
+		this.forceProxy = forceProxy;
+	}
+
+	public void forceProxy(String multirequestToken){
+		setToken("forceProxy", multirequestToken);
+	}
 
 
-    public DeliveryProfileLiveAppleHttp() {
-       super();
-    }
+	public DeliveryProfileLiveAppleHttp() {
+		super();
+	}
 
-    public DeliveryProfileLiveAppleHttp(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileLiveAppleHttp(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        disableExtraAttributes = GsonParser.parseBoolean(jsonObject.get("disableExtraAttributes"));
-        forceProxy = GsonParser.parseBoolean(jsonObject.get("forceProxy"));
+		// set members values:
+		disableExtraAttributes = GsonParser.parseBoolean(jsonObject.get("disableExtraAttributes"));
+		forceProxy = GsonParser.parseBoolean(jsonObject.get("forceProxy"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileLiveAppleHttp");
-        kparams.add("disableExtraAttributes", this.disableExtraAttributes);
-        kparams.add("forceProxy", this.forceProxy);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileLiveAppleHttp");
+		kparams.add("disableExtraAttributes", this.disableExtraAttributes);
+		kparams.add("forceProxy", this.forceProxy);
+		return kparams;
+	}
 
 }
 

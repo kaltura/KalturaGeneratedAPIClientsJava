@@ -34,42 +34,42 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum NotificationStatus implements EnumAsInt {
-    PENDING(1),
-    SENT(2),
-    ERROR(3),
-    SHOULD_RESEND(4),
-    ERROR_RESENDING(5),
-    SENT_SYNCH(6),
-    QUEUED(7);
+	PENDING(1),
+	SENT(2),
+	ERROR(3),
+	SHOULD_RESEND(4),
+	ERROR_RESENDING(5),
+	SENT_SYNCH(6),
+	QUEUED(7);
 
-    private int value;
+	private int value;
 
-    NotificationStatus(int value) {
-        this.value = value;
-    }
+	NotificationStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static NotificationStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over NotificationStatus defined values and compare the inner value with the given one:
-        for(NotificationStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return NotificationStatus.values().length > 0 ? NotificationStatus.values()[0]: null;
+	public static NotificationStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over NotificationStatus defined values and compare the inner value with the given one:
+		for(NotificationStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return NotificationStatus.values().length > 0 ? NotificationStatus.values()[0]: null;
    }
 }

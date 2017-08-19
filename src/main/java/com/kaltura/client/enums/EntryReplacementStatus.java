@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryReplacementStatus implements EnumAsString {
-    NONE("0"),
-    APPROVED_BUT_NOT_READY("1"),
-    READY_BUT_NOT_APPROVED("2"),
-    NOT_READY_AND_NOT_APPROVED("3"),
-    FAILED("4");
+	NONE("0"),
+	APPROVED_BUT_NOT_READY("1"),
+	READY_BUT_NOT_APPROVED("2"),
+	NOT_READY_AND_NOT_APPROVED("3"),
+	FAILED("4");
 
-    private String value;
+	private String value;
 
-    EntryReplacementStatus(String value) {
-        this.value = value;
-    }
+	EntryReplacementStatus(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static EntryReplacementStatus get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryReplacementStatus defined values and compare the inner value with the given one:
-        for(EntryReplacementStatus item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryReplacementStatus.values().length > 0 ? EntryReplacementStatus.values()[0]: null;
+	public static EntryReplacementStatus get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryReplacementStatus defined values and compare the inner value with the given one:
+		for(EntryReplacementStatus item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryReplacementStatus.values().length > 0 ? EntryReplacementStatus.values()[0]: null;
    }
 }

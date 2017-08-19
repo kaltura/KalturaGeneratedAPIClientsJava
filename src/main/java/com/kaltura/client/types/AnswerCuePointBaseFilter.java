@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AnswerCuePointBaseFilter.Tokenizer.class)
 public abstract class AnswerCuePointBaseFilter extends CuePointFilter {
+	
+	public interface Tokenizer extends CuePointFilter.Tokenizer {
+		String parentIdEqual();
+		String parentIdIn();
+		String quizUserEntryIdEqual();
+		String quizUserEntryIdIn();
+	}
 
-    private String parentIdEqual;
-    private String parentIdIn;
-    private String quizUserEntryIdEqual;
-    private String quizUserEntryIdIn;
+	private String parentIdEqual;
+	private String parentIdIn;
+	private String quizUserEntryIdEqual;
+	private String quizUserEntryIdIn;
 
-    // parentIdEqual:
-    public String getParentIdEqual(){
-        return this.parentIdEqual;
-    }
-    public void setParentIdEqual(String parentIdEqual){
-        this.parentIdEqual = parentIdEqual;
-    }
+	// parentIdEqual:
+	public String getParentIdEqual(){
+		return this.parentIdEqual;
+	}
+	public void setParentIdEqual(String parentIdEqual){
+		this.parentIdEqual = parentIdEqual;
+	}
 
-    // parentIdIn:
-    public String getParentIdIn(){
-        return this.parentIdIn;
-    }
-    public void setParentIdIn(String parentIdIn){
-        this.parentIdIn = parentIdIn;
-    }
+	public void parentIdEqual(String multirequestToken){
+		setToken("parentIdEqual", multirequestToken);
+	}
 
-    // quizUserEntryIdEqual:
-    public String getQuizUserEntryIdEqual(){
-        return this.quizUserEntryIdEqual;
-    }
-    public void setQuizUserEntryIdEqual(String quizUserEntryIdEqual){
-        this.quizUserEntryIdEqual = quizUserEntryIdEqual;
-    }
+	// parentIdIn:
+	public String getParentIdIn(){
+		return this.parentIdIn;
+	}
+	public void setParentIdIn(String parentIdIn){
+		this.parentIdIn = parentIdIn;
+	}
 
-    // quizUserEntryIdIn:
-    public String getQuizUserEntryIdIn(){
-        return this.quizUserEntryIdIn;
-    }
-    public void setQuizUserEntryIdIn(String quizUserEntryIdIn){
-        this.quizUserEntryIdIn = quizUserEntryIdIn;
-    }
+	public void parentIdIn(String multirequestToken){
+		setToken("parentIdIn", multirequestToken);
+	}
+
+	// quizUserEntryIdEqual:
+	public String getQuizUserEntryIdEqual(){
+		return this.quizUserEntryIdEqual;
+	}
+	public void setQuizUserEntryIdEqual(String quizUserEntryIdEqual){
+		this.quizUserEntryIdEqual = quizUserEntryIdEqual;
+	}
+
+	public void quizUserEntryIdEqual(String multirequestToken){
+		setToken("quizUserEntryIdEqual", multirequestToken);
+	}
+
+	// quizUserEntryIdIn:
+	public String getQuizUserEntryIdIn(){
+		return this.quizUserEntryIdIn;
+	}
+	public void setQuizUserEntryIdIn(String quizUserEntryIdIn){
+		this.quizUserEntryIdIn = quizUserEntryIdIn;
+	}
+
+	public void quizUserEntryIdIn(String multirequestToken){
+		setToken("quizUserEntryIdIn", multirequestToken);
+	}
 
 
-    public AnswerCuePointBaseFilter() {
-       super();
-    }
+	public AnswerCuePointBaseFilter() {
+		super();
+	}
 
-    public AnswerCuePointBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AnswerCuePointBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        parentIdEqual = GsonParser.parseString(jsonObject.get("parentIdEqual"));
-        parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
-        quizUserEntryIdEqual = GsonParser.parseString(jsonObject.get("quizUserEntryIdEqual"));
-        quizUserEntryIdIn = GsonParser.parseString(jsonObject.get("quizUserEntryIdIn"));
+		// set members values:
+		parentIdEqual = GsonParser.parseString(jsonObject.get("parentIdEqual"));
+		parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
+		quizUserEntryIdEqual = GsonParser.parseString(jsonObject.get("quizUserEntryIdEqual"));
+		quizUserEntryIdIn = GsonParser.parseString(jsonObject.get("quizUserEntryIdIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAnswerCuePointBaseFilter");
-        kparams.add("parentIdEqual", this.parentIdEqual);
-        kparams.add("parentIdIn", this.parentIdIn);
-        kparams.add("quizUserEntryIdEqual", this.quizUserEntryIdEqual);
-        kparams.add("quizUserEntryIdIn", this.quizUserEntryIdIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAnswerCuePointBaseFilter");
+		kparams.add("parentIdEqual", this.parentIdEqual);
+		kparams.add("parentIdIn", this.parentIdIn);
+		kparams.add("quizUserEntryIdEqual", this.quizUserEntryIdEqual);
+		kparams.add("quizUserEntryIdIn", this.quizUserEntryIdIn);
+		return kparams;
+	}
 
 }
 

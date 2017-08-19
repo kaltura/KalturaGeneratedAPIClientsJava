@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CategoryEntryAdvancedOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    CREATED_AT_DESC("-createdAt");
+	CREATED_AT_ASC("+createdAt"),
+	CREATED_AT_DESC("-createdAt");
 
-    private String value;
+	private String value;
 
-    CategoryEntryAdvancedOrderBy(String value) {
-        this.value = value;
-    }
+	CategoryEntryAdvancedOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static CategoryEntryAdvancedOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CategoryEntryAdvancedOrderBy defined values and compare the inner value with the given one:
-        for(CategoryEntryAdvancedOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CategoryEntryAdvancedOrderBy.values().length > 0 ? CategoryEntryAdvancedOrderBy.values()[0]: null;
+	public static CategoryEntryAdvancedOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CategoryEntryAdvancedOrderBy defined values and compare the inner value with the given one:
+		for(CategoryEntryAdvancedOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CategoryEntryAdvancedOrderBy.values().length > 0 ? CategoryEntryAdvancedOrderBy.values()[0]: null;
    }
 }

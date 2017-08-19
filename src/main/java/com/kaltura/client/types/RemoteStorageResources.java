@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,40 +45,45 @@ import java.util.List;
   supplied URL, the media file won't be downloaded but a file sync object of URL
   type will point to the media URL.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(RemoteStorageResources.Tokenizer.class)
 public class RemoteStorageResources extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		RequestBuilder.ListTokenizer<RemoteStorageResource.Tokenizer> resources();
+	}
 
 	/**  Array of remote stoage resources  */
-    private List<RemoteStorageResource> resources;
+	private List<RemoteStorageResource> resources;
 
-    // resources:
-    public List<RemoteStorageResource> getResources(){
-        return this.resources;
-    }
-    public void setResources(List<RemoteStorageResource> resources){
-        this.resources = resources;
-    }
+	// resources:
+	public List<RemoteStorageResource> getResources(){
+		return this.resources;
+	}
+	public void setResources(List<RemoteStorageResource> resources){
+		this.resources = resources;
+	}
 
 
-    public RemoteStorageResources() {
-       super();
-    }
+	public RemoteStorageResources() {
+		super();
+	}
 
-    public RemoteStorageResources(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public RemoteStorageResources(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        resources = GsonParser.parseArray(jsonObject.getAsJsonArray("resources"), RemoteStorageResource.class);
+		// set members values:
+		resources = GsonParser.parseArray(jsonObject.getAsJsonArray("resources"), RemoteStorageResource.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaRemoteStorageResources");
-        kparams.add("resources", this.resources);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaRemoteStorageResources");
+		kparams.add("resources", this.resources);
+		return kparams;
+	}
 
 }
 

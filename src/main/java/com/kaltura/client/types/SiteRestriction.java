@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SiteRestrictionType;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SiteRestriction.Tokenizer.class)
 public class SiteRestriction extends BaseRestriction {
+	
+	public interface Tokenizer extends BaseRestriction.Tokenizer {
+		String siteRestrictionType();
+		String siteList();
+	}
 
 	/**  The site restriction type (allow or deny)  */
-    private SiteRestrictionType siteRestrictionType;
+	private SiteRestrictionType siteRestrictionType;
 	/**  Comma separated list of sites (domains) to allow or deny  */
-    private String siteList;
+	private String siteList;
 
-    // siteRestrictionType:
-    public SiteRestrictionType getSiteRestrictionType(){
-        return this.siteRestrictionType;
-    }
-    public void setSiteRestrictionType(SiteRestrictionType siteRestrictionType){
-        this.siteRestrictionType = siteRestrictionType;
-    }
+	// siteRestrictionType:
+	public SiteRestrictionType getSiteRestrictionType(){
+		return this.siteRestrictionType;
+	}
+	public void setSiteRestrictionType(SiteRestrictionType siteRestrictionType){
+		this.siteRestrictionType = siteRestrictionType;
+	}
 
-    // siteList:
-    public String getSiteList(){
-        return this.siteList;
-    }
-    public void setSiteList(String siteList){
-        this.siteList = siteList;
-    }
+	public void siteRestrictionType(String multirequestToken){
+		setToken("siteRestrictionType", multirequestToken);
+	}
+
+	// siteList:
+	public String getSiteList(){
+		return this.siteList;
+	}
+	public void setSiteList(String siteList){
+		this.siteList = siteList;
+	}
+
+	public void siteList(String multirequestToken){
+		setToken("siteList", multirequestToken);
+	}
 
 
-    public SiteRestriction() {
-       super();
-    }
+	public SiteRestriction() {
+		super();
+	}
 
-    public SiteRestriction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SiteRestriction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        siteRestrictionType = SiteRestrictionType.get(GsonParser.parseInt(jsonObject.get("siteRestrictionType")));
-        siteList = GsonParser.parseString(jsonObject.get("siteList"));
+		// set members values:
+		siteRestrictionType = SiteRestrictionType.get(GsonParser.parseInt(jsonObject.get("siteRestrictionType")));
+		siteList = GsonParser.parseString(jsonObject.get("siteList"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSiteRestriction");
-        kparams.add("siteRestrictionType", this.siteRestrictionType);
-        kparams.add("siteList", this.siteList);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSiteRestriction");
+		kparams.add("siteRestrictionType", this.siteRestrictionType);
+		kparams.add("siteList", this.siteList);
+		return kparams;
+	}
 
 }
 

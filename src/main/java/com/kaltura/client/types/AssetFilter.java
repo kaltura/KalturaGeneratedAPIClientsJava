@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetFilter.Tokenizer.class)
 public class AssetFilter extends AssetBaseFilter {
+	
+	public interface Tokenizer extends AssetBaseFilter.Tokenizer {
+		String typeIn();
+	}
 
-    private String typeIn;
+	private String typeIn;
 
-    // typeIn:
-    public String getTypeIn(){
-        return this.typeIn;
-    }
-    public void setTypeIn(String typeIn){
-        this.typeIn = typeIn;
-    }
+	// typeIn:
+	public String getTypeIn(){
+		return this.typeIn;
+	}
+	public void setTypeIn(String typeIn){
+		this.typeIn = typeIn;
+	}
+
+	public void typeIn(String multirequestToken){
+		setToken("typeIn", multirequestToken);
+	}
 
 
-    public AssetFilter() {
-       super();
-    }
+	public AssetFilter() {
+		super();
+	}
 
-    public AssetFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
+		// set members values:
+		typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetFilter");
-        kparams.add("typeIn", this.typeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetFilter");
+		kparams.add("typeIn", this.typeIn);
+		return kparams;
+	}
 
 }
 

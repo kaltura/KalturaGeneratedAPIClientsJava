@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,62 +40,81 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SourceFileSyncDescriptor.Tokenizer.class)
 public class SourceFileSyncDescriptor extends FileSyncDescriptor {
+	
+	public interface Tokenizer extends FileSyncDescriptor.Tokenizer {
+		String actualFileSyncLocalPath();
+		String assetId();
+		String assetParamsId();
+	}
 
 	/**  The translated path as used by the scheduler  */
-    private String actualFileSyncLocalPath;
-    private String assetId;
-    private Integer assetParamsId;
+	private String actualFileSyncLocalPath;
+	private String assetId;
+	private Integer assetParamsId;
 
-    // actualFileSyncLocalPath:
-    public String getActualFileSyncLocalPath(){
-        return this.actualFileSyncLocalPath;
-    }
-    public void setActualFileSyncLocalPath(String actualFileSyncLocalPath){
-        this.actualFileSyncLocalPath = actualFileSyncLocalPath;
-    }
+	// actualFileSyncLocalPath:
+	public String getActualFileSyncLocalPath(){
+		return this.actualFileSyncLocalPath;
+	}
+	public void setActualFileSyncLocalPath(String actualFileSyncLocalPath){
+		this.actualFileSyncLocalPath = actualFileSyncLocalPath;
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	public void actualFileSyncLocalPath(String multirequestToken){
+		setToken("actualFileSyncLocalPath", multirequestToken);
+	}
 
-    // assetParamsId:
-    public Integer getAssetParamsId(){
-        return this.assetParamsId;
-    }
-    public void setAssetParamsId(Integer assetParamsId){
-        this.assetParamsId = assetParamsId;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
+
+	// assetParamsId:
+	public Integer getAssetParamsId(){
+		return this.assetParamsId;
+	}
+	public void setAssetParamsId(Integer assetParamsId){
+		this.assetParamsId = assetParamsId;
+	}
+
+	public void assetParamsId(String multirequestToken){
+		setToken("assetParamsId", multirequestToken);
+	}
 
 
-    public SourceFileSyncDescriptor() {
-       super();
-    }
+	public SourceFileSyncDescriptor() {
+		super();
+	}
 
-    public SourceFileSyncDescriptor(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SourceFileSyncDescriptor(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        actualFileSyncLocalPath = GsonParser.parseString(jsonObject.get("actualFileSyncLocalPath"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
+		// set members values:
+		actualFileSyncLocalPath = GsonParser.parseString(jsonObject.get("actualFileSyncLocalPath"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		assetParamsId = GsonParser.parseInt(jsonObject.get("assetParamsId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSourceFileSyncDescriptor");
-        kparams.add("actualFileSyncLocalPath", this.actualFileSyncLocalPath);
-        kparams.add("assetId", this.assetId);
-        kparams.add("assetParamsId", this.assetParamsId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSourceFileSyncDescriptor");
+		kparams.add("actualFileSyncLocalPath", this.actualFileSyncLocalPath);
+		kparams.add("assetId", this.assetId);
+		kparams.add("assetParamsId", this.assetParamsId);
+		return kparams;
+	}
 
 }
 

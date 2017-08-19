@@ -27,16 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ThumbParams;
 import com.kaltura.client.types.ThumbParamsFilter;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -47,63 +44,109 @@ import java.util.List;
 
 /**  Add &amp; Manage Thumb Params  */
 public class ThumbParamsService {
+	
+	public static class AddThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, AddThumbParamsBuilder> {
+		
+		public AddThumbParamsBuilder(ThumbParams thumbParams) {
+			super(ThumbParams.class, "thumbparams", "add");
+			params.add("thumbParams", thumbParams);
+		}
+	}
 
 	/**  Add new Thumb Params  */
-    public static RequestBuilder<ThumbParams> add(ThumbParams thumbParams)  {
-        Params kparams = new Params();
-        kparams.add("thumbParams", thumbParams);
-
-        return new RequestBuilder<ThumbParams>(ThumbParams.class, "thumbparams", "add", kparams);
-    }
+    public static AddThumbParamsBuilder add(ThumbParams thumbParams)  {
+		return new AddThumbParamsBuilder(thumbParams);
+	}
+	
+	public static class DeleteThumbParamsBuilder extends NullRequestBuilder {
+		
+		public DeleteThumbParamsBuilder(int id) {
+			super("thumbparams", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete Thumb Params by ID  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("thumbparams", "delete", kparams);
-    }
+    public static DeleteThumbParamsBuilder delete(int id)  {
+		return new DeleteThumbParamsBuilder(id);
+	}
+	
+	public static class GetThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, GetThumbParamsBuilder> {
+		
+		public GetThumbParamsBuilder(int id) {
+			super(ThumbParams.class, "thumbparams", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get Thumb Params by ID  */
-    public static RequestBuilder<ThumbParams> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new RequestBuilder<ThumbParams>(ThumbParams.class, "thumbparams", "get", kparams);
-    }
+    public static GetThumbParamsBuilder get(int id)  {
+		return new GetThumbParamsBuilder(id);
+	}
+	
+	public static class GetByConversionProfileIdThumbParamsBuilder extends ArrayRequestBuilder<ThumbParams, ThumbParams.Tokenizer, GetByConversionProfileIdThumbParamsBuilder> {
+		
+		public GetByConversionProfileIdThumbParamsBuilder(int conversionProfileId) {
+			super(ThumbParams.class, "thumbparams", "getByConversionProfileId");
+			params.add("conversionProfileId", conversionProfileId);
+		}
+		
+		public void conversionProfileId(String multirequestToken) {
+			params.add("conversionProfileId", multirequestToken);
+		}
+	}
 
 	/**  Get Thumb Params by Conversion Profile ID  */
-    public static RequestBuilder<List<ThumbParams>> getByConversionProfileId(int conversionProfileId)  {
-        Params kparams = new Params();
-        kparams.add("conversionProfileId", conversionProfileId);
+    public static GetByConversionProfileIdThumbParamsBuilder getByConversionProfileId(int conversionProfileId)  {
+		return new GetByConversionProfileIdThumbParamsBuilder(conversionProfileId);
+	}
+	
+	public static class ListThumbParamsBuilder extends ListResponseRequestBuilder<ThumbParams, ThumbParams.Tokenizer, ListThumbParamsBuilder> {
+		
+		public ListThumbParamsBuilder(ThumbParamsFilter filter, FilterPager pager) {
+			super(ThumbParams.class, "thumbparams", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ArrayRequestBuilder<ThumbParams>(ThumbParams.class, "thumbparams", "getByConversionProfileId", kparams);
-    }
+	public static ListThumbParamsBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ThumbParams>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ThumbParams>> list(ThumbParamsFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListThumbParamsBuilder list(ThumbParamsFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List Thumb Params by filter with paging support (By default - all system default
 	  params will be listed too)  */
-    public static RequestBuilder<ListResponse<ThumbParams>> list(ThumbParamsFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ThumbParams>(ThumbParams.class, "thumbparams", "list", kparams);
-    }
+    public static ListThumbParamsBuilder list(ThumbParamsFilter filter, FilterPager pager)  {
+		return new ListThumbParamsBuilder(filter, pager);
+	}
+	
+	public static class UpdateThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, UpdateThumbParamsBuilder> {
+		
+		public UpdateThumbParamsBuilder(int id, ThumbParams thumbParams) {
+			super(ThumbParams.class, "thumbparams", "update");
+			params.add("id", id);
+			params.add("thumbParams", thumbParams);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update Thumb Params by ID  */
-    public static RequestBuilder<ThumbParams> update(int id, ThumbParams thumbParams)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("thumbParams", thumbParams);
-
-        return new RequestBuilder<ThumbParams>(ThumbParams.class, "thumbparams", "update", kparams);
-    }
+    public static UpdateThumbParamsBuilder update(int id, ThumbParams thumbParams)  {
+		return new UpdateThumbParamsBuilder(id, thumbParams);
+	}
 }

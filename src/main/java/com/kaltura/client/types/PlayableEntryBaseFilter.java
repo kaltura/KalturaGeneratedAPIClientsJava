@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,105 +40,144 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayableEntryBaseFilter.Tokenizer.class)
 public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
+	
+	public interface Tokenizer extends BaseEntryFilter.Tokenizer {
+		String lastPlayedAtGreaterThanOrEqual();
+		String lastPlayedAtLessThanOrEqual();
+		String durationLessThan();
+		String durationGreaterThan();
+		String durationLessThanOrEqual();
+		String durationGreaterThanOrEqual();
+		String durationTypeMatchOr();
+	}
 
-    private Integer lastPlayedAtGreaterThanOrEqual;
-    private Integer lastPlayedAtLessThanOrEqual;
-    private Integer durationLessThan;
-    private Integer durationGreaterThan;
-    private Integer durationLessThanOrEqual;
-    private Integer durationGreaterThanOrEqual;
-    private String durationTypeMatchOr;
+	private Integer lastPlayedAtGreaterThanOrEqual;
+	private Integer lastPlayedAtLessThanOrEqual;
+	private Integer durationLessThan;
+	private Integer durationGreaterThan;
+	private Integer durationLessThanOrEqual;
+	private Integer durationGreaterThanOrEqual;
+	private String durationTypeMatchOr;
 
-    // lastPlayedAtGreaterThanOrEqual:
-    public Integer getLastPlayedAtGreaterThanOrEqual(){
-        return this.lastPlayedAtGreaterThanOrEqual;
-    }
-    public void setLastPlayedAtGreaterThanOrEqual(Integer lastPlayedAtGreaterThanOrEqual){
-        this.lastPlayedAtGreaterThanOrEqual = lastPlayedAtGreaterThanOrEqual;
-    }
+	// lastPlayedAtGreaterThanOrEqual:
+	public Integer getLastPlayedAtGreaterThanOrEqual(){
+		return this.lastPlayedAtGreaterThanOrEqual;
+	}
+	public void setLastPlayedAtGreaterThanOrEqual(Integer lastPlayedAtGreaterThanOrEqual){
+		this.lastPlayedAtGreaterThanOrEqual = lastPlayedAtGreaterThanOrEqual;
+	}
 
-    // lastPlayedAtLessThanOrEqual:
-    public Integer getLastPlayedAtLessThanOrEqual(){
-        return this.lastPlayedAtLessThanOrEqual;
-    }
-    public void setLastPlayedAtLessThanOrEqual(Integer lastPlayedAtLessThanOrEqual){
-        this.lastPlayedAtLessThanOrEqual = lastPlayedAtLessThanOrEqual;
-    }
+	public void lastPlayedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("lastPlayedAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // durationLessThan:
-    public Integer getDurationLessThan(){
-        return this.durationLessThan;
-    }
-    public void setDurationLessThan(Integer durationLessThan){
-        this.durationLessThan = durationLessThan;
-    }
+	// lastPlayedAtLessThanOrEqual:
+	public Integer getLastPlayedAtLessThanOrEqual(){
+		return this.lastPlayedAtLessThanOrEqual;
+	}
+	public void setLastPlayedAtLessThanOrEqual(Integer lastPlayedAtLessThanOrEqual){
+		this.lastPlayedAtLessThanOrEqual = lastPlayedAtLessThanOrEqual;
+	}
 
-    // durationGreaterThan:
-    public Integer getDurationGreaterThan(){
-        return this.durationGreaterThan;
-    }
-    public void setDurationGreaterThan(Integer durationGreaterThan){
-        this.durationGreaterThan = durationGreaterThan;
-    }
+	public void lastPlayedAtLessThanOrEqual(String multirequestToken){
+		setToken("lastPlayedAtLessThanOrEqual", multirequestToken);
+	}
 
-    // durationLessThanOrEqual:
-    public Integer getDurationLessThanOrEqual(){
-        return this.durationLessThanOrEqual;
-    }
-    public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
-        this.durationLessThanOrEqual = durationLessThanOrEqual;
-    }
+	// durationLessThan:
+	public Integer getDurationLessThan(){
+		return this.durationLessThan;
+	}
+	public void setDurationLessThan(Integer durationLessThan){
+		this.durationLessThan = durationLessThan;
+	}
 
-    // durationGreaterThanOrEqual:
-    public Integer getDurationGreaterThanOrEqual(){
-        return this.durationGreaterThanOrEqual;
-    }
-    public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
-        this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
-    }
+	public void durationLessThan(String multirequestToken){
+		setToken("durationLessThan", multirequestToken);
+	}
 
-    // durationTypeMatchOr:
-    public String getDurationTypeMatchOr(){
-        return this.durationTypeMatchOr;
-    }
-    public void setDurationTypeMatchOr(String durationTypeMatchOr){
-        this.durationTypeMatchOr = durationTypeMatchOr;
-    }
+	// durationGreaterThan:
+	public Integer getDurationGreaterThan(){
+		return this.durationGreaterThan;
+	}
+	public void setDurationGreaterThan(Integer durationGreaterThan){
+		this.durationGreaterThan = durationGreaterThan;
+	}
+
+	public void durationGreaterThan(String multirequestToken){
+		setToken("durationGreaterThan", multirequestToken);
+	}
+
+	// durationLessThanOrEqual:
+	public Integer getDurationLessThanOrEqual(){
+		return this.durationLessThanOrEqual;
+	}
+	public void setDurationLessThanOrEqual(Integer durationLessThanOrEqual){
+		this.durationLessThanOrEqual = durationLessThanOrEqual;
+	}
+
+	public void durationLessThanOrEqual(String multirequestToken){
+		setToken("durationLessThanOrEqual", multirequestToken);
+	}
+
+	// durationGreaterThanOrEqual:
+	public Integer getDurationGreaterThanOrEqual(){
+		return this.durationGreaterThanOrEqual;
+	}
+	public void setDurationGreaterThanOrEqual(Integer durationGreaterThanOrEqual){
+		this.durationGreaterThanOrEqual = durationGreaterThanOrEqual;
+	}
+
+	public void durationGreaterThanOrEqual(String multirequestToken){
+		setToken("durationGreaterThanOrEqual", multirequestToken);
+	}
+
+	// durationTypeMatchOr:
+	public String getDurationTypeMatchOr(){
+		return this.durationTypeMatchOr;
+	}
+	public void setDurationTypeMatchOr(String durationTypeMatchOr){
+		this.durationTypeMatchOr = durationTypeMatchOr;
+	}
+
+	public void durationTypeMatchOr(String multirequestToken){
+		setToken("durationTypeMatchOr", multirequestToken);
+	}
 
 
-    public PlayableEntryBaseFilter() {
-       super();
-    }
+	public PlayableEntryBaseFilter() {
+		super();
+	}
 
-    public PlayableEntryBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayableEntryBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        lastPlayedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtGreaterThanOrEqual"));
-        lastPlayedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtLessThanOrEqual"));
-        durationLessThan = GsonParser.parseInt(jsonObject.get("durationLessThan"));
-        durationGreaterThan = GsonParser.parseInt(jsonObject.get("durationGreaterThan"));
-        durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
-        durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
-        durationTypeMatchOr = GsonParser.parseString(jsonObject.get("durationTypeMatchOr"));
+		// set members values:
+		lastPlayedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtGreaterThanOrEqual"));
+		lastPlayedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtLessThanOrEqual"));
+		durationLessThan = GsonParser.parseInt(jsonObject.get("durationLessThan"));
+		durationGreaterThan = GsonParser.parseInt(jsonObject.get("durationGreaterThan"));
+		durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));
+		durationGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("durationGreaterThanOrEqual"));
+		durationTypeMatchOr = GsonParser.parseString(jsonObject.get("durationTypeMatchOr"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayableEntryBaseFilter");
-        kparams.add("lastPlayedAtGreaterThanOrEqual", this.lastPlayedAtGreaterThanOrEqual);
-        kparams.add("lastPlayedAtLessThanOrEqual", this.lastPlayedAtLessThanOrEqual);
-        kparams.add("durationLessThan", this.durationLessThan);
-        kparams.add("durationGreaterThan", this.durationGreaterThan);
-        kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
-        kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
-        kparams.add("durationTypeMatchOr", this.durationTypeMatchOr);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayableEntryBaseFilter");
+		kparams.add("lastPlayedAtGreaterThanOrEqual", this.lastPlayedAtGreaterThanOrEqual);
+		kparams.add("lastPlayedAtLessThanOrEqual", this.lastPlayedAtLessThanOrEqual);
+		kparams.add("durationLessThan", this.durationLessThan);
+		kparams.add("durationGreaterThan", this.durationGreaterThan);
+		kparams.add("durationLessThanOrEqual", this.durationLessThanOrEqual);
+		kparams.add("durationGreaterThanOrEqual", this.durationGreaterThanOrEqual);
+		kparams.add("durationTypeMatchOr", this.durationTypeMatchOr);
+		return kparams;
+	}
 
 }
 

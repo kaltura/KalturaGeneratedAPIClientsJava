@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,38 +40,47 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
 public class QuizUserEntry extends UserEntry {
+	
+	public interface Tokenizer extends UserEntry.Tokenizer {
+		String score();
+	}
 
-    private Double score;
+	private Double score;
 
-    // score:
-    public Double getScore(){
-        return this.score;
-    }
-    public void setScore(Double score){
-        this.score = score;
-    }
+	// score:
+	public Double getScore(){
+		return this.score;
+	}
+	public void setScore(Double score){
+		this.score = score;
+	}
+
+	public void score(String multirequestToken){
+		setToken("score", multirequestToken);
+	}
 
 
-    public QuizUserEntry() {
-       super();
-    }
+	public QuizUserEntry() {
+		super();
+	}
 
-    public QuizUserEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        score = GsonParser.parseDouble(jsonObject.get("score"));
+		// set members values:
+		score = GsonParser.parseDouble(jsonObject.get("score"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuizUserEntry");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuizUserEntry");
+		return kparams;
+	}
 
 }
 

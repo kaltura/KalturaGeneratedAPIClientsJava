@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.ScheduledTaskProfile;
 import com.kaltura.client.types.ScheduledTaskProfileFilter;
@@ -46,73 +44,132 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Schedule task service lets you create and manage scheduled task profiles  */
 public class ScheduledTaskProfileService {
+	
+	public static class AddScheduledTaskProfileBuilder extends RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, AddScheduledTaskProfileBuilder> {
+		
+		public AddScheduledTaskProfileBuilder(ScheduledTaskProfile scheduledTaskProfile) {
+			super(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "add");
+			params.add("scheduledTaskProfile", scheduledTaskProfile);
+		}
+	}
 
 	/**  Add a new scheduled task profile  */
-    public static RequestBuilder<ScheduledTaskProfile> add(ScheduledTaskProfile scheduledTaskProfile)  {
-        Params kparams = new Params();
-        kparams.add("scheduledTaskProfile", scheduledTaskProfile);
-
-        return new RequestBuilder<ScheduledTaskProfile>(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "add", kparams);
-    }
+    public static AddScheduledTaskProfileBuilder add(ScheduledTaskProfile scheduledTaskProfile)  {
+		return new AddScheduledTaskProfileBuilder(scheduledTaskProfile);
+	}
+	
+	public static class DeleteScheduledTaskProfileBuilder extends NullRequestBuilder {
+		
+		public DeleteScheduledTaskProfileBuilder(int id) {
+			super("scheduledtask_scheduledtaskprofile", "delete");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Delete a scheduled task profile  */
-    public static RequestBuilder<Void> delete(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("scheduledtask_scheduledtaskprofile", "delete", kparams);
-    }
+    public static DeleteScheduledTaskProfileBuilder delete(int id)  {
+		return new DeleteScheduledTaskProfileBuilder(id);
+	}
+	
+	public static class GetScheduledTaskProfileBuilder extends RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, GetScheduledTaskProfileBuilder> {
+		
+		public GetScheduledTaskProfileBuilder(int id) {
+			super(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a scheduled task profile by id  */
-    public static RequestBuilder<ScheduledTaskProfile> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetScheduledTaskProfileBuilder get(int id)  {
+		return new GetScheduledTaskProfileBuilder(id);
+	}
+	
+	public static class GetDryRunResultsScheduledTaskProfileBuilder extends ListResponseRequestBuilder<ObjectBase, ObjectBase.Tokenizer, GetDryRunResultsScheduledTaskProfileBuilder> {
+		
+		public GetDryRunResultsScheduledTaskProfileBuilder(int requestId) {
+			super(ObjectBase.class, "scheduledtask_scheduledtaskprofile", "getDryRunResults");
+			params.add("requestId", requestId);
+		}
+		
+		public void requestId(String multirequestToken) {
+			params.add("requestId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ScheduledTaskProfile>(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "get", kparams);
-    }
+    public static GetDryRunResultsScheduledTaskProfileBuilder getDryRunResults(int requestId)  {
+		return new GetDryRunResultsScheduledTaskProfileBuilder(requestId);
+	}
+	
+	public static class ListScheduledTaskProfileBuilder extends ListResponseRequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, ListScheduledTaskProfileBuilder> {
+		
+		public ListScheduledTaskProfileBuilder(ScheduledTaskProfileFilter filter, FilterPager pager) {
+			super(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<ObjectBase>> getDryRunResults(int requestId)  {
-        Params kparams = new Params();
-        kparams.add("requestId", requestId);
+	public static ListScheduledTaskProfileBuilder list()  {
+		return list(null);
+	}
 
-        return new ListResponseRequestBuilder<ObjectBase>(ObjectBase.class, "scheduledtask_scheduledtaskprofile", "getDryRunResults", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<ScheduledTaskProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ScheduledTaskProfile>> list(ScheduledTaskProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListScheduledTaskProfileBuilder list(ScheduledTaskProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List scheduled task profiles  */
-    public static RequestBuilder<ListResponse<ScheduledTaskProfile>> list(ScheduledTaskProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListScheduledTaskProfileBuilder list(ScheduledTaskProfileFilter filter, FilterPager pager)  {
+		return new ListScheduledTaskProfileBuilder(filter, pager);
+	}
+	
+	public static class RequestDryRunScheduledTaskProfileBuilder extends RequestBuilder<Integer, String, RequestDryRunScheduledTaskProfileBuilder> {
+		
+		public RequestDryRunScheduledTaskProfileBuilder(int scheduledTaskProfileId, int maxResults) {
+			super(Integer.class, "scheduledtask_scheduledtaskprofile", "requestDryRun");
+			params.add("scheduledTaskProfileId", scheduledTaskProfileId);
+			params.add("maxResults", maxResults);
+		}
+		
+		public void scheduledTaskProfileId(String multirequestToken) {
+			params.add("scheduledTaskProfileId", multirequestToken);
+		}
+		
+		public void maxResults(String multirequestToken) {
+			params.add("maxResults", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<ScheduledTaskProfile>(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "list", kparams);
-    }
+	public static RequestDryRunScheduledTaskProfileBuilder requestDryRun(int scheduledTaskProfileId)  {
+		return requestDryRun(scheduledTaskProfileId, 500);
+	}
 
-    public static RequestBuilder<Integer> requestDryRun(int scheduledTaskProfileId)  {
-        return requestDryRun(scheduledTaskProfileId, 500);
-    }
-
-    public static RequestBuilder<Integer> requestDryRun(int scheduledTaskProfileId, int maxResults)  {
-        Params kparams = new Params();
-        kparams.add("scheduledTaskProfileId", scheduledTaskProfileId);
-        kparams.add("maxResults", maxResults);
-
-        return new RequestBuilder<Integer>(Integer.class, "scheduledtask_scheduledtaskprofile", "requestDryRun", kparams);
-    }
+    public static RequestDryRunScheduledTaskProfileBuilder requestDryRun(int scheduledTaskProfileId, int maxResults)  {
+		return new RequestDryRunScheduledTaskProfileBuilder(scheduledTaskProfileId, maxResults);
+	}
+	
+	public static class UpdateScheduledTaskProfileBuilder extends RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, UpdateScheduledTaskProfileBuilder> {
+		
+		public UpdateScheduledTaskProfileBuilder(int id, ScheduledTaskProfile scheduledTaskProfile) {
+			super(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "update");
+			params.add("id", id);
+			params.add("scheduledTaskProfile", scheduledTaskProfile);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update an existing scheduled task profile  */
-    public static RequestBuilder<ScheduledTaskProfile> update(int id, ScheduledTaskProfile scheduledTaskProfile)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("scheduledTaskProfile", scheduledTaskProfile);
-
-        return new RequestBuilder<ScheduledTaskProfile>(ScheduledTaskProfile.class, "scheduledtask_scheduledtaskprofile", "update", kparams);
-    }
+    public static UpdateScheduledTaskProfileBuilder update(int id, ScheduledTaskProfile scheduledTaskProfile)  {
+		return new UpdateScheduledTaskProfileBuilder(id, scheduledTaskProfile);
+	}
 }

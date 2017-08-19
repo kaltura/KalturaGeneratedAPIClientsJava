@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PartnerStatus implements EnumAsInt {
-    DELETED(0),
-    ACTIVE(1),
-    BLOCKED(2),
-    FULL_BLOCK(3);
+	DELETED(0),
+	ACTIVE(1),
+	BLOCKED(2),
+	FULL_BLOCK(3);
 
-    private int value;
+	private int value;
 
-    PartnerStatus(int value) {
-        this.value = value;
-    }
+	PartnerStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PartnerStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PartnerStatus defined values and compare the inner value with the given one:
-        for(PartnerStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PartnerStatus.values().length > 0 ? PartnerStatus.values()[0]: null;
+	public static PartnerStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PartnerStatus defined values and compare the inner value with the given one:
+		for(PartnerStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PartnerStatus.values().length > 0 ? PartnerStatus.values()[0]: null;
    }
 }

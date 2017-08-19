@@ -33,6 +33,7 @@ import com.kaltura.client.enums.BulkUploadObjectType;
 import com.kaltura.client.enums.BulkUploadType;
 import com.kaltura.client.types.BulkUploadObjectData;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,184 +43,254 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadJobData.Tokenizer.class)
 public class BulkUploadJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String userId();
+		String uploadedBy();
+		String conversionProfileId();
+		String resultsFileLocalPath();
+		String resultsFileUrl();
+		String numOfEntries();
+		String numOfObjects();
+		String filePath();
+		String bulkUploadObjectType();
+		String fileName();
+		BulkUploadObjectData.Tokenizer objectData();
+		String type();
+		String emailRecipients();
+		String numOfErrorObjects();
+	}
 
-    private String userId;
+	private String userId;
 	/**  The screen name of the user  */
-    private String uploadedBy;
+	private String uploadedBy;
 	/**  Selected profile id for all bulk entries  */
-    private Integer conversionProfileId;
+	private Integer conversionProfileId;
 	/**  Created by the API  */
-    private String resultsFileLocalPath;
+	private String resultsFileLocalPath;
 	/**  Created by the API  */
-    private String resultsFileUrl;
+	private String resultsFileUrl;
 	/**  Number of created entries  */
-    private Integer numOfEntries;
+	private Integer numOfEntries;
 	/**  Number of created objects  */
-    private Integer numOfObjects;
+	private Integer numOfObjects;
 	/**  The bulk upload file path  */
-    private String filePath;
+	private String filePath;
 	/**  Type of object for bulk upload  */
-    private BulkUploadObjectType bulkUploadObjectType;
+	private BulkUploadObjectType bulkUploadObjectType;
 	/**  Friendly name of the file, used to be recognized later in the logs.  */
-    private String fileName;
+	private String fileName;
 	/**  Data pertaining to the objects being uploaded  */
-    private BulkUploadObjectData objectData;
+	private BulkUploadObjectData objectData;
 	/**  Type of bulk upload  */
-    private BulkUploadType type;
+	private BulkUploadType type;
 	/**  Recipients of the email for bulk upload success/failure  */
-    private String emailRecipients;
+	private String emailRecipients;
 	/**  Number of objects that finished on error status  */
-    private Integer numOfErrorObjects;
+	private Integer numOfErrorObjects;
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // uploadedBy:
-    public String getUploadedBy(){
-        return this.uploadedBy;
-    }
-    public void setUploadedBy(String uploadedBy){
-        this.uploadedBy = uploadedBy;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // conversionProfileId:
-    public Integer getConversionProfileId(){
-        return this.conversionProfileId;
-    }
-    public void setConversionProfileId(Integer conversionProfileId){
-        this.conversionProfileId = conversionProfileId;
-    }
+	// uploadedBy:
+	public String getUploadedBy(){
+		return this.uploadedBy;
+	}
+	public void setUploadedBy(String uploadedBy){
+		this.uploadedBy = uploadedBy;
+	}
 
-    // resultsFileLocalPath:
-    public String getResultsFileLocalPath(){
-        return this.resultsFileLocalPath;
-    }
-    public void setResultsFileLocalPath(String resultsFileLocalPath){
-        this.resultsFileLocalPath = resultsFileLocalPath;
-    }
+	public void uploadedBy(String multirequestToken){
+		setToken("uploadedBy", multirequestToken);
+	}
 
-    // resultsFileUrl:
-    public String getResultsFileUrl(){
-        return this.resultsFileUrl;
-    }
-    public void setResultsFileUrl(String resultsFileUrl){
-        this.resultsFileUrl = resultsFileUrl;
-    }
+	// conversionProfileId:
+	public Integer getConversionProfileId(){
+		return this.conversionProfileId;
+	}
+	public void setConversionProfileId(Integer conversionProfileId){
+		this.conversionProfileId = conversionProfileId;
+	}
 
-    // numOfEntries:
-    public Integer getNumOfEntries(){
-        return this.numOfEntries;
-    }
-    public void setNumOfEntries(Integer numOfEntries){
-        this.numOfEntries = numOfEntries;
-    }
+	public void conversionProfileId(String multirequestToken){
+		setToken("conversionProfileId", multirequestToken);
+	}
 
-    // numOfObjects:
-    public Integer getNumOfObjects(){
-        return this.numOfObjects;
-    }
-    public void setNumOfObjects(Integer numOfObjects){
-        this.numOfObjects = numOfObjects;
-    }
+	// resultsFileLocalPath:
+	public String getResultsFileLocalPath(){
+		return this.resultsFileLocalPath;
+	}
+	public void setResultsFileLocalPath(String resultsFileLocalPath){
+		this.resultsFileLocalPath = resultsFileLocalPath;
+	}
 
-    // filePath:
-    public String getFilePath(){
-        return this.filePath;
-    }
-    public void setFilePath(String filePath){
-        this.filePath = filePath;
-    }
+	public void resultsFileLocalPath(String multirequestToken){
+		setToken("resultsFileLocalPath", multirequestToken);
+	}
 
-    // bulkUploadObjectType:
-    public BulkUploadObjectType getBulkUploadObjectType(){
-        return this.bulkUploadObjectType;
-    }
-    public void setBulkUploadObjectType(BulkUploadObjectType bulkUploadObjectType){
-        this.bulkUploadObjectType = bulkUploadObjectType;
-    }
+	// resultsFileUrl:
+	public String getResultsFileUrl(){
+		return this.resultsFileUrl;
+	}
+	public void setResultsFileUrl(String resultsFileUrl){
+		this.resultsFileUrl = resultsFileUrl;
+	}
 
-    // fileName:
-    public String getFileName(){
-        return this.fileName;
-    }
-    public void setFileName(String fileName){
-        this.fileName = fileName;
-    }
+	public void resultsFileUrl(String multirequestToken){
+		setToken("resultsFileUrl", multirequestToken);
+	}
 
-    // objectData:
-    public BulkUploadObjectData getObjectData(){
-        return this.objectData;
-    }
-    public void setObjectData(BulkUploadObjectData objectData){
-        this.objectData = objectData;
-    }
+	// numOfEntries:
+	public Integer getNumOfEntries(){
+		return this.numOfEntries;
+	}
+	public void setNumOfEntries(Integer numOfEntries){
+		this.numOfEntries = numOfEntries;
+	}
 
-    // type:
-    public BulkUploadType getType(){
-        return this.type;
-    }
-    public void setType(BulkUploadType type){
-        this.type = type;
-    }
+	public void numOfEntries(String multirequestToken){
+		setToken("numOfEntries", multirequestToken);
+	}
 
-    // emailRecipients:
-    public String getEmailRecipients(){
-        return this.emailRecipients;
-    }
-    public void setEmailRecipients(String emailRecipients){
-        this.emailRecipients = emailRecipients;
-    }
+	// numOfObjects:
+	public Integer getNumOfObjects(){
+		return this.numOfObjects;
+	}
+	public void setNumOfObjects(Integer numOfObjects){
+		this.numOfObjects = numOfObjects;
+	}
 
-    // numOfErrorObjects:
-    public Integer getNumOfErrorObjects(){
-        return this.numOfErrorObjects;
-    }
-    public void setNumOfErrorObjects(Integer numOfErrorObjects){
-        this.numOfErrorObjects = numOfErrorObjects;
-    }
+	public void numOfObjects(String multirequestToken){
+		setToken("numOfObjects", multirequestToken);
+	}
+
+	// filePath:
+	public String getFilePath(){
+		return this.filePath;
+	}
+	public void setFilePath(String filePath){
+		this.filePath = filePath;
+	}
+
+	public void filePath(String multirequestToken){
+		setToken("filePath", multirequestToken);
+	}
+
+	// bulkUploadObjectType:
+	public BulkUploadObjectType getBulkUploadObjectType(){
+		return this.bulkUploadObjectType;
+	}
+	public void setBulkUploadObjectType(BulkUploadObjectType bulkUploadObjectType){
+		this.bulkUploadObjectType = bulkUploadObjectType;
+	}
+
+	public void bulkUploadObjectType(String multirequestToken){
+		setToken("bulkUploadObjectType", multirequestToken);
+	}
+
+	// fileName:
+	public String getFileName(){
+		return this.fileName;
+	}
+	public void setFileName(String fileName){
+		this.fileName = fileName;
+	}
+
+	public void fileName(String multirequestToken){
+		setToken("fileName", multirequestToken);
+	}
+
+	// objectData:
+	public BulkUploadObjectData getObjectData(){
+		return this.objectData;
+	}
+	public void setObjectData(BulkUploadObjectData objectData){
+		this.objectData = objectData;
+	}
+
+	// type:
+	public BulkUploadType getType(){
+		return this.type;
+	}
+	public void setType(BulkUploadType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// emailRecipients:
+	public String getEmailRecipients(){
+		return this.emailRecipients;
+	}
+	public void setEmailRecipients(String emailRecipients){
+		this.emailRecipients = emailRecipients;
+	}
+
+	public void emailRecipients(String multirequestToken){
+		setToken("emailRecipients", multirequestToken);
+	}
+
+	// numOfErrorObjects:
+	public Integer getNumOfErrorObjects(){
+		return this.numOfErrorObjects;
+	}
+	public void setNumOfErrorObjects(Integer numOfErrorObjects){
+		this.numOfErrorObjects = numOfErrorObjects;
+	}
+
+	public void numOfErrorObjects(String multirequestToken){
+		setToken("numOfErrorObjects", multirequestToken);
+	}
 
 
-    public BulkUploadJobData() {
-       super();
-    }
+	public BulkUploadJobData() {
+		super();
+	}
 
-    public BulkUploadJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        uploadedBy = GsonParser.parseString(jsonObject.get("uploadedBy"));
-        conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
-        resultsFileLocalPath = GsonParser.parseString(jsonObject.get("resultsFileLocalPath"));
-        resultsFileUrl = GsonParser.parseString(jsonObject.get("resultsFileUrl"));
-        numOfEntries = GsonParser.parseInt(jsonObject.get("numOfEntries"));
-        numOfObjects = GsonParser.parseInt(jsonObject.get("numOfObjects"));
-        filePath = GsonParser.parseString(jsonObject.get("filePath"));
-        bulkUploadObjectType = BulkUploadObjectType.get(GsonParser.parseString(jsonObject.get("bulkUploadObjectType")));
-        fileName = GsonParser.parseString(jsonObject.get("fileName"));
-        objectData = GsonParser.parseObject(jsonObject.getAsJsonObject("objectData"), BulkUploadObjectData.class);
-        type = BulkUploadType.get(GsonParser.parseString(jsonObject.get("type")));
-        emailRecipients = GsonParser.parseString(jsonObject.get("emailRecipients"));
-        numOfErrorObjects = GsonParser.parseInt(jsonObject.get("numOfErrorObjects"));
+		// set members values:
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		uploadedBy = GsonParser.parseString(jsonObject.get("uploadedBy"));
+		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
+		resultsFileLocalPath = GsonParser.parseString(jsonObject.get("resultsFileLocalPath"));
+		resultsFileUrl = GsonParser.parseString(jsonObject.get("resultsFileUrl"));
+		numOfEntries = GsonParser.parseInt(jsonObject.get("numOfEntries"));
+		numOfObjects = GsonParser.parseInt(jsonObject.get("numOfObjects"));
+		filePath = GsonParser.parseString(jsonObject.get("filePath"));
+		bulkUploadObjectType = BulkUploadObjectType.get(GsonParser.parseString(jsonObject.get("bulkUploadObjectType")));
+		fileName = GsonParser.parseString(jsonObject.get("fileName"));
+		objectData = GsonParser.parseObject(jsonObject.getAsJsonObject("objectData"), BulkUploadObjectData.class);
+		type = BulkUploadType.get(GsonParser.parseString(jsonObject.get("type")));
+		emailRecipients = GsonParser.parseString(jsonObject.get("emailRecipients"));
+		numOfErrorObjects = GsonParser.parseInt(jsonObject.get("numOfErrorObjects"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadJobData");
-        kparams.add("fileName", this.fileName);
-        kparams.add("emailRecipients", this.emailRecipients);
-        kparams.add("numOfErrorObjects", this.numOfErrorObjects);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadJobData");
+		kparams.add("fileName", this.fileName);
+		kparams.add("emailRecipients", this.emailRecipients);
+		kparams.add("numOfErrorObjects", this.numOfErrorObjects);
+		return kparams;
+	}
 
 }
 

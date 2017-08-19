@@ -34,46 +34,46 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PartnerType implements EnumAsInt {
-    KMC(1),
-    WIKI(100),
-    WORDPRESS(101),
-    DRUPAL(102),
-    DEKIWIKI(103),
-    MOODLE(104),
-    COMMUNITY_EDITION(105),
-    JOOMLA(106),
-    BLACKBOARD(107),
-    SAKAI(108),
-    ADMIN_CONSOLE(109);
+	KMC(1),
+	WIKI(100),
+	WORDPRESS(101),
+	DRUPAL(102),
+	DEKIWIKI(103),
+	MOODLE(104),
+	COMMUNITY_EDITION(105),
+	JOOMLA(106),
+	BLACKBOARD(107),
+	SAKAI(108),
+	ADMIN_CONSOLE(109);
 
-    private int value;
+	private int value;
 
-    PartnerType(int value) {
-        this.value = value;
-    }
+	PartnerType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PartnerType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PartnerType defined values and compare the inner value with the given one:
-        for(PartnerType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PartnerType.values().length > 0 ? PartnerType.values()[0]: null;
+	public static PartnerType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PartnerType defined values and compare the inner value with the given one:
+		for(PartnerType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PartnerType.values().length > 0 ? PartnerType.values()[0]: null;
    }
 }

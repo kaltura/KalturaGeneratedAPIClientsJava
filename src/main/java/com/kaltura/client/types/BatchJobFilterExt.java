@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BatchJobFilterExt.Tokenizer.class)
 public class BatchJobFilterExt extends BatchJobFilter {
+	
+	public interface Tokenizer extends BatchJobFilter.Tokenizer {
+		String jobTypeAndSubTypeIn();
+	}
 
-    private String jobTypeAndSubTypeIn;
+	private String jobTypeAndSubTypeIn;
 
-    // jobTypeAndSubTypeIn:
-    public String getJobTypeAndSubTypeIn(){
-        return this.jobTypeAndSubTypeIn;
-    }
-    public void setJobTypeAndSubTypeIn(String jobTypeAndSubTypeIn){
-        this.jobTypeAndSubTypeIn = jobTypeAndSubTypeIn;
-    }
+	// jobTypeAndSubTypeIn:
+	public String getJobTypeAndSubTypeIn(){
+		return this.jobTypeAndSubTypeIn;
+	}
+	public void setJobTypeAndSubTypeIn(String jobTypeAndSubTypeIn){
+		this.jobTypeAndSubTypeIn = jobTypeAndSubTypeIn;
+	}
+
+	public void jobTypeAndSubTypeIn(String multirequestToken){
+		setToken("jobTypeAndSubTypeIn", multirequestToken);
+	}
 
 
-    public BatchJobFilterExt() {
-       super();
-    }
+	public BatchJobFilterExt() {
+		super();
+	}
 
-    public BatchJobFilterExt(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BatchJobFilterExt(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        jobTypeAndSubTypeIn = GsonParser.parseString(jsonObject.get("jobTypeAndSubTypeIn"));
+		// set members values:
+		jobTypeAndSubTypeIn = GsonParser.parseString(jsonObject.get("jobTypeAndSubTypeIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBatchJobFilterExt");
-        kparams.add("jobTypeAndSubTypeIn", this.jobTypeAndSubTypeIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBatchJobFilterExt");
+		kparams.add("jobTypeAndSubTypeIn", this.jobTypeAndSubTypeIn);
+		return kparams;
+	}
 
 }
 

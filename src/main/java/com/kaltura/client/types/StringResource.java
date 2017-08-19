@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +41,49 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Used to ingest string content.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StringResource.Tokenizer.class)
 public class StringResource extends ContentResource {
+	
+	public interface Tokenizer extends ContentResource.Tokenizer {
+		String content();
+	}
 
 	/**  Textual content  */
-    private String content;
+	private String content;
 
-    // content:
-    public String getContent(){
-        return this.content;
-    }
-    public void setContent(String content){
-        this.content = content;
-    }
+	// content:
+	public String getContent(){
+		return this.content;
+	}
+	public void setContent(String content){
+		this.content = content;
+	}
+
+	public void content(String multirequestToken){
+		setToken("content", multirequestToken);
+	}
 
 
-    public StringResource() {
-       super();
-    }
+	public StringResource() {
+		super();
+	}
 
-    public StringResource(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StringResource(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        content = GsonParser.parseString(jsonObject.get("content"));
+		// set members values:
+		content = GsonParser.parseString(jsonObject.get("content"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStringResource");
-        kparams.add("content", this.content);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStringResource");
+		kparams.add("content", this.content);
+		return kparams;
+	}
 
 }
 

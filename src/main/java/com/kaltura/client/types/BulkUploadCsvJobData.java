@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.BulkUploadCsvVersion;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -43,51 +44,61 @@ import java.util.List;
 
 /**  Represents the Bulk upload job data for xml bulk upload  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadCsvJobData.Tokenizer.class)
 public class BulkUploadCsvJobData extends BulkUploadJobData {
+	
+	public interface Tokenizer extends BulkUploadJobData.Tokenizer {
+		String csvVersion();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> columns();
+	}
 
 	/**  The version of the csv file  */
-    private BulkUploadCsvVersion csvVersion;
+	private BulkUploadCsvVersion csvVersion;
 	/**  Array containing CSV headers  */
-    private List<StringHolder> columns;
+	private List<StringHolder> columns;
 
-    // csvVersion:
-    public BulkUploadCsvVersion getCsvVersion(){
-        return this.csvVersion;
-    }
-    public void setCsvVersion(BulkUploadCsvVersion csvVersion){
-        this.csvVersion = csvVersion;
-    }
+	// csvVersion:
+	public BulkUploadCsvVersion getCsvVersion(){
+		return this.csvVersion;
+	}
+	public void setCsvVersion(BulkUploadCsvVersion csvVersion){
+		this.csvVersion = csvVersion;
+	}
 
-    // columns:
-    public List<StringHolder> getColumns(){
-        return this.columns;
-    }
-    public void setColumns(List<StringHolder> columns){
-        this.columns = columns;
-    }
+	public void csvVersion(String multirequestToken){
+		setToken("csvVersion", multirequestToken);
+	}
+
+	// columns:
+	public List<StringHolder> getColumns(){
+		return this.columns;
+	}
+	public void setColumns(List<StringHolder> columns){
+		this.columns = columns;
+	}
 
 
-    public BulkUploadCsvJobData() {
-       super();
-    }
+	public BulkUploadCsvJobData() {
+		super();
+	}
 
-    public BulkUploadCsvJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadCsvJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        csvVersion = BulkUploadCsvVersion.get(GsonParser.parseInt(jsonObject.get("csvVersion")));
-        columns = GsonParser.parseArray(jsonObject.getAsJsonArray("columns"), StringHolder.class);
+		// set members values:
+		csvVersion = BulkUploadCsvVersion.get(GsonParser.parseInt(jsonObject.get("csvVersion")));
+		columns = GsonParser.parseArray(jsonObject.getAsJsonArray("columns"), StringHolder.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadCsvJobData");
-        kparams.add("columns", this.columns);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadCsvJobData");
+		kparams.add("columns", this.columns);
+		return kparams;
+	}
 
 }
 

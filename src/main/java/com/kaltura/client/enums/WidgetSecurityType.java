@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum WidgetSecurityType implements EnumAsInt {
-    NONE(1),
-    TIMEHASH(2);
+	NONE(1),
+	TIMEHASH(2);
 
-    private int value;
+	private int value;
 
-    WidgetSecurityType(int value) {
-        this.value = value;
-    }
+	WidgetSecurityType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static WidgetSecurityType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over WidgetSecurityType defined values and compare the inner value with the given one:
-        for(WidgetSecurityType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return WidgetSecurityType.values().length > 0 ? WidgetSecurityType.values()[0]: null;
+	public static WidgetSecurityType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over WidgetSecurityType defined values and compare the inner value with the given one:
+		for(WidgetSecurityType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return WidgetSecurityType.values().length > 0 ? WidgetSecurityType.values()[0]: null;
    }
 }

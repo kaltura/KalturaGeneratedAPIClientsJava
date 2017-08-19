@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,23 +41,27 @@ import com.kaltura.client.utils.GsonParser;
 /**  The KalturaFilterPager object enables paging management to be applied upon
   service list actions.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FilterPager.Tokenizer.class)
 public class FilterPager extends Pager {
+	
+	public interface Tokenizer extends Pager.Tokenizer {
+	}
 
 
 
-    public FilterPager() {
-       super();
-    }
+	public FilterPager() {
+		super();
+	}
 
-    public FilterPager(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public FilterPager(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFilterPager");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFilterPager");
+		return kparams;
+	}
 
 }
 

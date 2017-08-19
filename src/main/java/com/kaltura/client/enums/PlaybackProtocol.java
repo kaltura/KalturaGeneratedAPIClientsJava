@@ -34,49 +34,49 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlaybackProtocol implements EnumAsString {
-    APPLE_HTTP("applehttp"),
-    APPLE_HTTP_TO_MC("applehttp_to_mc"),
-    AUTO("auto"),
-    AKAMAI_HD("hdnetwork"),
-    AKAMAI_HDS("hdnetworkmanifest"),
-    HDS("hds"),
-    HLS("hls"),
-    HTTP("http"),
-    MPEG_DASH("mpegdash"),
-    MULTICAST_SL("multicast_silverlight"),
-    RTMP("rtmp"),
-    RTSP("rtsp"),
-    SILVER_LIGHT("sl"),
-    URL("url");
+	APPLE_HTTP("applehttp"),
+	APPLE_HTTP_TO_MC("applehttp_to_mc"),
+	AUTO("auto"),
+	AKAMAI_HD("hdnetwork"),
+	AKAMAI_HDS("hdnetworkmanifest"),
+	HDS("hds"),
+	HLS("hls"),
+	HTTP("http"),
+	MPEG_DASH("mpegdash"),
+	MULTICAST_SL("multicast_silverlight"),
+	RTMP("rtmp"),
+	RTSP("rtsp"),
+	SILVER_LIGHT("sl"),
+	URL("url");
 
-    private String value;
+	private String value;
 
-    PlaybackProtocol(String value) {
-        this.value = value;
-    }
+	PlaybackProtocol(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PlaybackProtocol get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlaybackProtocol defined values and compare the inner value with the given one:
-        for(PlaybackProtocol item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlaybackProtocol.values().length > 0 ? PlaybackProtocol.values()[0]: null;
+	public static PlaybackProtocol get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlaybackProtocol defined values and compare the inner value with the given one:
+		for(PlaybackProtocol item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlaybackProtocol.values().length > 0 ? PlaybackProtocol.values()[0]: null;
    }
 }

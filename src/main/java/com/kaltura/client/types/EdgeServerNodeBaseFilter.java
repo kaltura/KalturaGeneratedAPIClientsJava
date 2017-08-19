@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EdgeServerNodeBaseFilter.Tokenizer.class)
 public abstract class EdgeServerNodeBaseFilter extends DeliveryServerNodeFilter {
+	
+	public interface Tokenizer extends DeliveryServerNodeFilter.Tokenizer {
+		String playbackDomainLike();
+		String playbackDomainMultiLikeOr();
+		String playbackDomainMultiLikeAnd();
+	}
 
-    private String playbackDomainLike;
-    private String playbackDomainMultiLikeOr;
-    private String playbackDomainMultiLikeAnd;
+	private String playbackDomainLike;
+	private String playbackDomainMultiLikeOr;
+	private String playbackDomainMultiLikeAnd;
 
-    // playbackDomainLike:
-    public String getPlaybackDomainLike(){
-        return this.playbackDomainLike;
-    }
-    public void setPlaybackDomainLike(String playbackDomainLike){
-        this.playbackDomainLike = playbackDomainLike;
-    }
+	// playbackDomainLike:
+	public String getPlaybackDomainLike(){
+		return this.playbackDomainLike;
+	}
+	public void setPlaybackDomainLike(String playbackDomainLike){
+		this.playbackDomainLike = playbackDomainLike;
+	}
 
-    // playbackDomainMultiLikeOr:
-    public String getPlaybackDomainMultiLikeOr(){
-        return this.playbackDomainMultiLikeOr;
-    }
-    public void setPlaybackDomainMultiLikeOr(String playbackDomainMultiLikeOr){
-        this.playbackDomainMultiLikeOr = playbackDomainMultiLikeOr;
-    }
+	public void playbackDomainLike(String multirequestToken){
+		setToken("playbackDomainLike", multirequestToken);
+	}
 
-    // playbackDomainMultiLikeAnd:
-    public String getPlaybackDomainMultiLikeAnd(){
-        return this.playbackDomainMultiLikeAnd;
-    }
-    public void setPlaybackDomainMultiLikeAnd(String playbackDomainMultiLikeAnd){
-        this.playbackDomainMultiLikeAnd = playbackDomainMultiLikeAnd;
-    }
+	// playbackDomainMultiLikeOr:
+	public String getPlaybackDomainMultiLikeOr(){
+		return this.playbackDomainMultiLikeOr;
+	}
+	public void setPlaybackDomainMultiLikeOr(String playbackDomainMultiLikeOr){
+		this.playbackDomainMultiLikeOr = playbackDomainMultiLikeOr;
+	}
+
+	public void playbackDomainMultiLikeOr(String multirequestToken){
+		setToken("playbackDomainMultiLikeOr", multirequestToken);
+	}
+
+	// playbackDomainMultiLikeAnd:
+	public String getPlaybackDomainMultiLikeAnd(){
+		return this.playbackDomainMultiLikeAnd;
+	}
+	public void setPlaybackDomainMultiLikeAnd(String playbackDomainMultiLikeAnd){
+		this.playbackDomainMultiLikeAnd = playbackDomainMultiLikeAnd;
+	}
+
+	public void playbackDomainMultiLikeAnd(String multirequestToken){
+		setToken("playbackDomainMultiLikeAnd", multirequestToken);
+	}
 
 
-    public EdgeServerNodeBaseFilter() {
-       super();
-    }
+	public EdgeServerNodeBaseFilter() {
+		super();
+	}
 
-    public EdgeServerNodeBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EdgeServerNodeBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        playbackDomainLike = GsonParser.parseString(jsonObject.get("playbackDomainLike"));
-        playbackDomainMultiLikeOr = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeOr"));
-        playbackDomainMultiLikeAnd = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeAnd"));
+		// set members values:
+		playbackDomainLike = GsonParser.parseString(jsonObject.get("playbackDomainLike"));
+		playbackDomainMultiLikeOr = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeOr"));
+		playbackDomainMultiLikeAnd = GsonParser.parseString(jsonObject.get("playbackDomainMultiLikeAnd"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEdgeServerNodeBaseFilter");
-        kparams.add("playbackDomainLike", this.playbackDomainLike);
-        kparams.add("playbackDomainMultiLikeOr", this.playbackDomainMultiLikeOr);
-        kparams.add("playbackDomainMultiLikeAnd", this.playbackDomainMultiLikeAnd);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEdgeServerNodeBaseFilter");
+		kparams.add("playbackDomainLike", this.playbackDomainLike);
+		kparams.add("playbackDomainMultiLikeOr", this.playbackDomainMultiLikeOr);
+		kparams.add("playbackDomainMultiLikeAnd", this.playbackDomainMultiLikeAnd);
+		return kparams;
+	}
 
 }
 

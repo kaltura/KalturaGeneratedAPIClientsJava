@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,61 +40,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CuePointFilter.Tokenizer.class)
 public class CuePointFilter extends CuePointBaseFilter {
+	
+	public interface Tokenizer extends CuePointBaseFilter.Tokenizer {
+		String freeText();
+		String userIdEqualCurrent();
+		String userIdCurrent();
+	}
 
-    private String freeText;
-    private Boolean userIdEqualCurrent;
-    private Boolean userIdCurrent;
+	private String freeText;
+	private Boolean userIdEqualCurrent;
+	private Boolean userIdCurrent;
 
-    // freeText:
-    public String getFreeText(){
-        return this.freeText;
-    }
-    public void setFreeText(String freeText){
-        this.freeText = freeText;
-    }
+	// freeText:
+	public String getFreeText(){
+		return this.freeText;
+	}
+	public void setFreeText(String freeText){
+		this.freeText = freeText;
+	}
 
-    // userIdEqualCurrent:
-    public Boolean getUserIdEqualCurrent(){
-        return this.userIdEqualCurrent;
-    }
-    public void setUserIdEqualCurrent(Boolean userIdEqualCurrent){
-        this.userIdEqualCurrent = userIdEqualCurrent;
-    }
+	public void freeText(String multirequestToken){
+		setToken("freeText", multirequestToken);
+	}
 
-    // userIdCurrent:
-    public Boolean getUserIdCurrent(){
-        return this.userIdCurrent;
-    }
-    public void setUserIdCurrent(Boolean userIdCurrent){
-        this.userIdCurrent = userIdCurrent;
-    }
+	// userIdEqualCurrent:
+	public Boolean getUserIdEqualCurrent(){
+		return this.userIdEqualCurrent;
+	}
+	public void setUserIdEqualCurrent(Boolean userIdEqualCurrent){
+		this.userIdEqualCurrent = userIdEqualCurrent;
+	}
+
+	public void userIdEqualCurrent(String multirequestToken){
+		setToken("userIdEqualCurrent", multirequestToken);
+	}
+
+	// userIdCurrent:
+	public Boolean getUserIdCurrent(){
+		return this.userIdCurrent;
+	}
+	public void setUserIdCurrent(Boolean userIdCurrent){
+		this.userIdCurrent = userIdCurrent;
+	}
+
+	public void userIdCurrent(String multirequestToken){
+		setToken("userIdCurrent", multirequestToken);
+	}
 
 
-    public CuePointFilter() {
-       super();
-    }
+	public CuePointFilter() {
+		super();
+	}
 
-    public CuePointFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CuePointFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        freeText = GsonParser.parseString(jsonObject.get("freeText"));
-        userIdEqualCurrent = GsonParser.parseBoolean(jsonObject.get("userIdEqualCurrent"));
-        userIdCurrent = GsonParser.parseBoolean(jsonObject.get("userIdCurrent"));
+		// set members values:
+		freeText = GsonParser.parseString(jsonObject.get("freeText"));
+		userIdEqualCurrent = GsonParser.parseBoolean(jsonObject.get("userIdEqualCurrent"));
+		userIdCurrent = GsonParser.parseBoolean(jsonObject.get("userIdCurrent"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCuePointFilter");
-        kparams.add("freeText", this.freeText);
-        kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
-        kparams.add("userIdCurrent", this.userIdCurrent);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCuePointFilter");
+		kparams.add("freeText", this.freeText);
+		kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
+		kparams.add("userIdCurrent", this.userIdCurrent);
+		return kparams;
+	}
 
 }
 

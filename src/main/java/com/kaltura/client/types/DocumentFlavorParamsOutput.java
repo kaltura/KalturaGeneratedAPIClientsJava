@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DocumentFlavorParamsOutput.Tokenizer.class)
 public class DocumentFlavorParamsOutput extends FlavorParamsOutput {
+	
+	public interface Tokenizer extends FlavorParamsOutput.Tokenizer {
+	}
 
 
 
-    public DocumentFlavorParamsOutput() {
-       super();
-    }
+	public DocumentFlavorParamsOutput() {
+		super();
+	}
 
-    public DocumentFlavorParamsOutput(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public DocumentFlavorParamsOutput(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDocumentFlavorParamsOutput");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDocumentFlavorParamsOutput");
+		return kparams;
+	}
 
 }
 

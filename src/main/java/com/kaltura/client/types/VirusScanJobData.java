@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.VirusFoundAction;
 import com.kaltura.client.enums.VirusScanJobResult;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,72 +42,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VirusScanJobData.Tokenizer.class)
 public class VirusScanJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String srcFilePath();
+		String flavorAssetId();
+		String scanResult();
+		String virusFoundAction();
+	}
 
-    private String srcFilePath;
-    private String flavorAssetId;
-    private VirusScanJobResult scanResult;
-    private VirusFoundAction virusFoundAction;
+	private String srcFilePath;
+	private String flavorAssetId;
+	private VirusScanJobResult scanResult;
+	private VirusFoundAction virusFoundAction;
 
-    // srcFilePath:
-    public String getSrcFilePath(){
-        return this.srcFilePath;
-    }
-    public void setSrcFilePath(String srcFilePath){
-        this.srcFilePath = srcFilePath;
-    }
+	// srcFilePath:
+	public String getSrcFilePath(){
+		return this.srcFilePath;
+	}
+	public void setSrcFilePath(String srcFilePath){
+		this.srcFilePath = srcFilePath;
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	public void srcFilePath(String multirequestToken){
+		setToken("srcFilePath", multirequestToken);
+	}
 
-    // scanResult:
-    public VirusScanJobResult getScanResult(){
-        return this.scanResult;
-    }
-    public void setScanResult(VirusScanJobResult scanResult){
-        this.scanResult = scanResult;
-    }
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
 
-    // virusFoundAction:
-    public VirusFoundAction getVirusFoundAction(){
-        return this.virusFoundAction;
-    }
-    public void setVirusFoundAction(VirusFoundAction virusFoundAction){
-        this.virusFoundAction = virusFoundAction;
-    }
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
+
+	// scanResult:
+	public VirusScanJobResult getScanResult(){
+		return this.scanResult;
+	}
+	public void setScanResult(VirusScanJobResult scanResult){
+		this.scanResult = scanResult;
+	}
+
+	public void scanResult(String multirequestToken){
+		setToken("scanResult", multirequestToken);
+	}
+
+	// virusFoundAction:
+	public VirusFoundAction getVirusFoundAction(){
+		return this.virusFoundAction;
+	}
+	public void setVirusFoundAction(VirusFoundAction virusFoundAction){
+		this.virusFoundAction = virusFoundAction;
+	}
+
+	public void virusFoundAction(String multirequestToken){
+		setToken("virusFoundAction", multirequestToken);
+	}
 
 
-    public VirusScanJobData() {
-       super();
-    }
+	public VirusScanJobData() {
+		super();
+	}
 
-    public VirusScanJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public VirusScanJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        srcFilePath = GsonParser.parseString(jsonObject.get("srcFilePath"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        scanResult = VirusScanJobResult.get(GsonParser.parseInt(jsonObject.get("scanResult")));
-        virusFoundAction = VirusFoundAction.get(GsonParser.parseInt(jsonObject.get("virusFoundAction")));
+		// set members values:
+		srcFilePath = GsonParser.parseString(jsonObject.get("srcFilePath"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		scanResult = VirusScanJobResult.get(GsonParser.parseInt(jsonObject.get("scanResult")));
+		virusFoundAction = VirusFoundAction.get(GsonParser.parseInt(jsonObject.get("virusFoundAction")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaVirusScanJobData");
-        kparams.add("srcFilePath", this.srcFilePath);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("scanResult", this.scanResult);
-        kparams.add("virusFoundAction", this.virusFoundAction);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVirusScanJobData");
+		kparams.add("srcFilePath", this.srcFilePath);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("scanResult", this.scanResult);
+		kparams.add("virusFoundAction", this.virusFoundAction);
+		return kparams;
+	}
 
 }
 

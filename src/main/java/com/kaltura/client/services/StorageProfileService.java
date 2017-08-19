@@ -27,10 +27,8 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.StorageProfileStatus;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.StorageProfile;
 import com.kaltura.client.types.StorageProfileFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -46,53 +44,94 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Storage Profiles service  */
 public class StorageProfileService {
+	
+	public static class AddStorageProfileBuilder extends RequestBuilder<StorageProfile, StorageProfile.Tokenizer, AddStorageProfileBuilder> {
+		
+		public AddStorageProfileBuilder(StorageProfile storageProfile) {
+			super(StorageProfile.class, "storageprofile", "add");
+			params.add("storageProfile", storageProfile);
+		}
+	}
 
 	/**  Adds a storage profile to the Kaltura DB.  */
-    public static RequestBuilder<StorageProfile> add(StorageProfile storageProfile)  {
-        Params kparams = new Params();
-        kparams.add("storageProfile", storageProfile);
-
-        return new RequestBuilder<StorageProfile>(StorageProfile.class, "storageprofile", "add", kparams);
-    }
+    public static AddStorageProfileBuilder add(StorageProfile storageProfile)  {
+		return new AddStorageProfileBuilder(storageProfile);
+	}
+	
+	public static class GetStorageProfileBuilder extends RequestBuilder<StorageProfile, StorageProfile.Tokenizer, GetStorageProfileBuilder> {
+		
+		public GetStorageProfileBuilder(int storageProfileId) {
+			super(StorageProfile.class, "storageprofile", "get");
+			params.add("storageProfileId", storageProfileId);
+		}
+		
+		public void storageProfileId(String multirequestToken) {
+			params.add("storageProfileId", multirequestToken);
+		}
+	}
 
 	/**  Get storage profile by id  */
-    public static RequestBuilder<StorageProfile> get(int storageProfileId)  {
-        Params kparams = new Params();
-        kparams.add("storageProfileId", storageProfileId);
+    public static GetStorageProfileBuilder get(int storageProfileId)  {
+		return new GetStorageProfileBuilder(storageProfileId);
+	}
+	
+	public static class ListStorageProfileBuilder extends ListResponseRequestBuilder<StorageProfile, StorageProfile.Tokenizer, ListStorageProfileBuilder> {
+		
+		public ListStorageProfileBuilder(StorageProfileFilter filter, FilterPager pager) {
+			super(StorageProfile.class, "storageprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<StorageProfile>(StorageProfile.class, "storageprofile", "get", kparams);
-    }
+	public static ListStorageProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<StorageProfile>> list()  {
-        return list(null);
-    }
+	public static ListStorageProfileBuilder list(StorageProfileFilter filter)  {
+		return list(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<StorageProfile>> list(StorageProfileFilter filter)  {
-        return list(filter, null);
-    }
-
-    public static RequestBuilder<ListResponse<StorageProfile>> list(StorageProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<StorageProfile>(StorageProfile.class, "storageprofile", "list", kparams);
-    }
+    public static ListStorageProfileBuilder list(StorageProfileFilter filter, FilterPager pager)  {
+		return new ListStorageProfileBuilder(filter, pager);
+	}
+	
+	public static class UpdateStorageProfileBuilder extends RequestBuilder<StorageProfile, StorageProfile.Tokenizer, UpdateStorageProfileBuilder> {
+		
+		public UpdateStorageProfileBuilder(int storageProfileId, StorageProfile storageProfile) {
+			super(StorageProfile.class, "storageprofile", "update");
+			params.add("storageProfileId", storageProfileId);
+			params.add("storageProfile", storageProfile);
+		}
+		
+		public void storageProfileId(String multirequestToken) {
+			params.add("storageProfileId", multirequestToken);
+		}
+	}
 
 	/**  Update storage profile by id  */
-    public static RequestBuilder<StorageProfile> update(int storageProfileId, StorageProfile storageProfile)  {
-        Params kparams = new Params();
-        kparams.add("storageProfileId", storageProfileId);
-        kparams.add("storageProfile", storageProfile);
+    public static UpdateStorageProfileBuilder update(int storageProfileId, StorageProfile storageProfile)  {
+		return new UpdateStorageProfileBuilder(storageProfileId, storageProfile);
+	}
+	
+	public static class UpdateStatusStorageProfileBuilder extends NullRequestBuilder {
+		
+		public UpdateStatusStorageProfileBuilder(int storageId, StorageProfileStatus status) {
+			super("storageprofile", "updateStatus");
+			params.add("storageId", storageId);
+			params.add("status", status);
+		}
+		
+		public void storageId(String multirequestToken) {
+			params.add("storageId", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<StorageProfile>(StorageProfile.class, "storageprofile", "update", kparams);
-    }
-
-    public static RequestBuilder<Void> updateStatus(int storageId, StorageProfileStatus status)  {
-        Params kparams = new Params();
-        kparams.add("storageId", storageId);
-        kparams.add("status", status);
-
-        return new NullRequestBuilder("storageprofile", "updateStatus", kparams);
-    }
+    public static UpdateStatusStorageProfileBuilder updateStatus(int storageId, StorageProfileStatus status)  {
+		return new UpdateStatusStorageProfileBuilder(storageId, status);
+	}
 }

@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VirusFoundAction implements EnumAsInt {
-    NONE(0),
-    DELETE(1),
-    CLEAN_NONE(2),
-    CLEAN_DELETE(3);
+	NONE(0),
+	DELETE(1),
+	CLEAN_NONE(2),
+	CLEAN_DELETE(3);
 
-    private int value;
+	private int value;
 
-    VirusFoundAction(int value) {
-        this.value = value;
-    }
+	VirusFoundAction(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static VirusFoundAction get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over VirusFoundAction defined values and compare the inner value with the given one:
-        for(VirusFoundAction item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return VirusFoundAction.values().length > 0 ? VirusFoundAction.values()[0]: null;
+	public static VirusFoundAction get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over VirusFoundAction defined values and compare the inner value with the given one:
+		for(VirusFoundAction item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return VirusFoundAction.values().length > 0 ? VirusFoundAction.values()[0]: null;
    }
 }

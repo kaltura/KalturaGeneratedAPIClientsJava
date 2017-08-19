@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataProfileStatus implements EnumAsInt {
-    ACTIVE(1),
-    DEPRECATED(2),
-    TRANSFORMING(3);
+	ACTIVE(1),
+	DEPRECATED(2),
+	TRANSFORMING(3);
 
-    private int value;
+	private int value;
 
-    MetadataProfileStatus(int value) {
-        this.value = value;
-    }
+	MetadataProfileStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static MetadataProfileStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MetadataProfileStatus defined values and compare the inner value with the given one:
-        for(MetadataProfileStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MetadataProfileStatus.values().length > 0 ? MetadataProfileStatus.values()[0]: null;
+	public static MetadataProfileStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MetadataProfileStatus defined values and compare the inner value with the given one:
+		for(MetadataProfileStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MetadataProfileStatus.values().length > 0 ? MetadataProfileStatus.values()[0]: null;
    }
 }

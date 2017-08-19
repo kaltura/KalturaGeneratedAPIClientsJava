@@ -34,46 +34,46 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetType implements EnumAsString {
-    ATTACHMENT("attachment.Attachment"),
-    CAPTION("caption.Caption"),
-    DOCUMENT("document.Document"),
-    IMAGE("document.Image"),
-    PDF("document.PDF"),
-    SWF("document.SWF"),
-    TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
-    TRANSCRIPT("transcript.Transcript"),
-    FLAVOR("1"),
-    THUMBNAIL("2"),
-    LIVE("3");
+	ATTACHMENT("attachment.Attachment"),
+	CAPTION("caption.Caption"),
+	DOCUMENT("document.Document"),
+	IMAGE("document.Image"),
+	PDF("document.PDF"),
+	SWF("document.SWF"),
+	TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
+	TRANSCRIPT("transcript.Transcript"),
+	FLAVOR("1"),
+	THUMBNAIL("2"),
+	LIVE("3");
 
-    private String value;
+	private String value;
 
-    AssetType(String value) {
-        this.value = value;
-    }
+	AssetType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AssetType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AssetType defined values and compare the inner value with the given one:
-        for(AssetType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AssetType.values().length > 0 ? AssetType.values()[0]: null;
+	public static AssetType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AssetType defined values and compare the inner value with the given one:
+		for(AssetType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AssetType.values().length > 0 ? AssetType.values()[0]: null;
    }
 }

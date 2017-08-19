@@ -29,11 +29,9 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadICalJobData;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ScheduleEvent;
 import com.kaltura.client.types.ScheduleEventFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -52,114 +50,178 @@ import java.io.InputStream;
 /**  The ScheduleEvent service enables you to create and manage (update, delete,
   retrieve, etc.) scheduled recording events.  */
 public class ScheduleEventService {
+	
+	public static class AddScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, AddScheduleEventBuilder> {
+		
+		public AddScheduleEventBuilder(ScheduleEvent scheduleEvent) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "add");
+			params.add("scheduleEvent", scheduleEvent);
+		}
+	}
 
 	/**  Allows you to add a new KalturaScheduleEvent object  */
-    public static RequestBuilder<ScheduleEvent> add(ScheduleEvent scheduleEvent)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEvent", scheduleEvent);
+    public static AddScheduleEventBuilder add(ScheduleEvent scheduleEvent)  {
+		return new AddScheduleEventBuilder(scheduleEvent);
+	}
+	
+	public static class AddFromBulkUploadScheduleEventBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadScheduleEventBuilder> {
+		
+		public AddFromBulkUploadScheduleEventBuilder(FileHolder fileData, BulkUploadICalJobData bulkUploadData) {
+			super(BulkUpload.class, "schedule_scheduleevent", "addFromBulkUpload");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+		}
+	}
 
-        return new RequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "add", kparams);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileHolder fileData)  {
+		return addFromBulkUpload(fileData, null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData)  {
-        return addFromBulkUpload(fileData, null);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(File fileData)  {
+		return addFromBulkUpload(new FileHolder(fileData), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData)  {
-        return addFromBulkUpload(new FileHolder(fileData), null);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(File fileData, BulkUploadICalJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(File fileData, BulkUploadICalJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData), bulkUploadData);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadICalJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData);
+	}
 
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadICalJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData);
-    }
-
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadICalJobData bulkUploadData)  {
-        return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData);
-    }
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadICalJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData);
+	}
 
 	/**  Add new bulk upload batch job  */
-    public static RequestBuilder<BulkUpload> addFromBulkUpload(FileHolder fileData, BulkUploadICalJobData bulkUploadData)  {
-        Params kparams = new Params();
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-        kparams.add("bulkUploadData", bulkUploadData);
-
-        return new RequestBuilder<BulkUpload>(BulkUpload.class, "schedule_scheduleevent", "addFromBulkUpload", kparams, kfiles);
-    }
+    public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileHolder fileData, BulkUploadICalJobData bulkUploadData)  {
+		return new AddFromBulkUploadScheduleEventBuilder(fileData, bulkUploadData);
+	}
+	
+	public static class CancelScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, CancelScheduleEventBuilder> {
+		
+		public CancelScheduleEventBuilder(int scheduleEventId) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "cancel");
+			params.add("scheduleEventId", scheduleEventId);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaScheduleEvent object as cancelled  */
-    public static RequestBuilder<ScheduleEvent> cancel(int scheduleEventId)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-
-        return new RequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "cancel", kparams);
-    }
+    public static CancelScheduleEventBuilder cancel(int scheduleEventId)  {
+		return new CancelScheduleEventBuilder(scheduleEventId);
+	}
+	
+	public static class DeleteScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, DeleteScheduleEventBuilder> {
+		
+		public DeleteScheduleEventBuilder(int scheduleEventId) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "delete");
+			params.add("scheduleEventId", scheduleEventId);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaScheduleEvent object as deleted  */
-    public static RequestBuilder<ScheduleEvent> delete(int scheduleEventId)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-
-        return new RequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "delete", kparams);
-    }
+    public static DeleteScheduleEventBuilder delete(int scheduleEventId)  {
+		return new DeleteScheduleEventBuilder(scheduleEventId);
+	}
+	
+	public static class GetScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, GetScheduleEventBuilder> {
+		
+		public GetScheduleEventBuilder(int scheduleEventId) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "get");
+			params.add("scheduleEventId", scheduleEventId);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaScheduleEvent object by ID  */
-    public static RequestBuilder<ScheduleEvent> get(int scheduleEventId)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
+    public static GetScheduleEventBuilder get(int scheduleEventId)  {
+		return new GetScheduleEventBuilder(scheduleEventId);
+	}
+	
+	public static class GetConflictsScheduleEventBuilder extends ListResponseRequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, GetConflictsScheduleEventBuilder> {
+		
+		public GetConflictsScheduleEventBuilder(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "getConflicts");
+			params.add("resourceIds", resourceIds);
+			params.add("scheduleEvent", scheduleEvent);
+			params.add("scheduleEventIdToIgnore", scheduleEventIdToIgnore);
+		}
+		
+		public void resourceIds(String multirequestToken) {
+			params.add("resourceIds", multirequestToken);
+		}
+		
+		public void scheduleEventIdToIgnore(String multirequestToken) {
+			params.add("scheduleEventIdToIgnore", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "get", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<ScheduleEvent>> getConflicts(String resourceIds, ScheduleEvent scheduleEvent)  {
-        return getConflicts(resourceIds, scheduleEvent, null);
-    }
+	public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent)  {
+		return getConflicts(resourceIds, scheduleEvent, null);
+	}
 
 	/**  List conflicting events for resourcesIds by event's dates  */
-    public static RequestBuilder<ListResponse<ScheduleEvent>> getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore)  {
-        Params kparams = new Params();
-        kparams.add("resourceIds", resourceIds);
-        kparams.add("scheduleEvent", scheduleEvent);
-        kparams.add("scheduleEventIdToIgnore", scheduleEventIdToIgnore);
+    public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore)  {
+		return new GetConflictsScheduleEventBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore);
+	}
+	
+	public static class ListScheduleEventBuilder extends ListResponseRequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, ListScheduleEventBuilder> {
+		
+		public ListScheduleEventBuilder(ScheduleEventFilter filter, FilterPager pager) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "getConflicts", kparams);
-    }
+	public static ListScheduleEventBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ScheduleEvent>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<ScheduleEvent>> list(ScheduleEventFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListScheduleEventBuilder list(ScheduleEventFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaScheduleEvent objects  */
-    public static RequestBuilder<ListResponse<ScheduleEvent>> list(ScheduleEventFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "list", kparams);
-    }
+    public static ListScheduleEventBuilder list(ScheduleEventFilter filter, FilterPager pager)  {
+		return new ListScheduleEventBuilder(filter, pager);
+	}
+	
+	public static class UpdateScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, UpdateScheduleEventBuilder> {
+		
+		public UpdateScheduleEventBuilder(int scheduleEventId, ScheduleEvent scheduleEvent) {
+			super(ScheduleEvent.class, "schedule_scheduleevent", "update");
+			params.add("scheduleEventId", scheduleEventId);
+			params.add("scheduleEvent", scheduleEvent);
+		}
+		
+		public void scheduleEventId(String multirequestToken) {
+			params.add("scheduleEventId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaScheduleEvent object  */
-    public static RequestBuilder<ScheduleEvent> update(int scheduleEventId, ScheduleEvent scheduleEvent)  {
-        Params kparams = new Params();
-        kparams.add("scheduleEventId", scheduleEventId);
-        kparams.add("scheduleEvent", scheduleEvent);
-
-        return new RequestBuilder<ScheduleEvent>(ScheduleEvent.class, "schedule_scheduleevent", "update", kparams);
-    }
+    public static UpdateScheduleEventBuilder update(int scheduleEventId, ScheduleEvent scheduleEvent)  {
+		return new UpdateScheduleEventBuilder(scheduleEventId, scheduleEvent);
+	}
 }

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AssetServeOptions.Tokenizer.class)
 public class AssetServeOptions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String download();
+		String referrer();
+	}
 
-    private Boolean download;
-    private String referrer;
+	private Boolean download;
+	private String referrer;
 
-    // download:
-    public Boolean getDownload(){
-        return this.download;
-    }
-    public void setDownload(Boolean download){
-        this.download = download;
-    }
+	// download:
+	public Boolean getDownload(){
+		return this.download;
+	}
+	public void setDownload(Boolean download){
+		this.download = download;
+	}
 
-    // referrer:
-    public String getReferrer(){
-        return this.referrer;
-    }
-    public void setReferrer(String referrer){
-        this.referrer = referrer;
-    }
+	public void download(String multirequestToken){
+		setToken("download", multirequestToken);
+	}
+
+	// referrer:
+	public String getReferrer(){
+		return this.referrer;
+	}
+	public void setReferrer(String referrer){
+		this.referrer = referrer;
+	}
+
+	public void referrer(String multirequestToken){
+		setToken("referrer", multirequestToken);
+	}
 
 
-    public AssetServeOptions() {
-       super();
-    }
+	public AssetServeOptions() {
+		super();
+	}
 
-    public AssetServeOptions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AssetServeOptions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        download = GsonParser.parseBoolean(jsonObject.get("download"));
-        referrer = GsonParser.parseString(jsonObject.get("referrer"));
+		// set members values:
+		download = GsonParser.parseBoolean(jsonObject.get("download"));
+		referrer = GsonParser.parseString(jsonObject.get("referrer"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAssetServeOptions");
-        kparams.add("download", this.download);
-        kparams.add("referrer", this.referrer);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAssetServeOptions");
+		kparams.add("download", this.download);
+		kparams.add("referrer", this.referrer);
+		return kparams;
+	}
 
 }
 

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.FeatureStatusType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,50 +42,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FeatureStatus.Tokenizer.class)
 public class FeatureStatus extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+		String value();
+	}
 
-    private FeatureStatusType type;
-    private Integer value;
+	private FeatureStatusType type;
+	private Integer value;
 
-    // type:
-    public FeatureStatusType getType(){
-        return this.type;
-    }
-    public void setType(FeatureStatusType type){
-        this.type = type;
-    }
+	// type:
+	public FeatureStatusType getType(){
+		return this.type;
+	}
+	public void setType(FeatureStatusType type){
+		this.type = type;
+	}
 
-    // value:
-    public Integer getValue(){
-        return this.value;
-    }
-    public void setValue(Integer value){
-        this.value = value;
-    }
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// value:
+	public Integer getValue(){
+		return this.value;
+	}
+	public void setValue(Integer value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public FeatureStatus() {
-       super();
-    }
+	public FeatureStatus() {
+		super();
+	}
 
-    public FeatureStatus(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FeatureStatus(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = FeatureStatusType.get(GsonParser.parseInt(jsonObject.get("type")));
-        value = GsonParser.parseInt(jsonObject.get("value"));
+		// set members values:
+		type = FeatureStatusType.get(GsonParser.parseInt(jsonObject.get("type")));
+		value = GsonParser.parseInt(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFeatureStatus");
-        kparams.add("type", this.type);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFeatureStatus");
+		kparams.add("type", this.type);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

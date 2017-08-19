@@ -34,6 +34,7 @@ import com.kaltura.client.enums.MetadataProfileCreateMode;
 import com.kaltura.client.enums.MetadataProfileStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,184 +44,263 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetadataProfile.Tokenizer.class)
 public class MetadataProfile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String metadataObjectType();
+		String version();
+		String name();
+		String systemName();
+		String description();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String xsd();
+		String views();
+		String xslt();
+		String createMode();
+		String disableReIndexing();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private MetadataObjectType metadataObjectType;
-    private Integer version;
-    private String name;
-    private String systemName;
-    private String description;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private MetadataProfileStatus status;
-    private String xsd;
-    private String views;
-    private String xslt;
-    private MetadataProfileCreateMode createMode;
-    private Boolean disableReIndexing;
+	private Integer id;
+	private Integer partnerId;
+	private MetadataObjectType metadataObjectType;
+	private Integer version;
+	private String name;
+	private String systemName;
+	private String description;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private MetadataProfileStatus status;
+	private String xsd;
+	private String views;
+	private String xslt;
+	private MetadataProfileCreateMode createMode;
+	private Boolean disableReIndexing;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // metadataObjectType:
-    public MetadataObjectType getMetadataObjectType(){
-        return this.metadataObjectType;
-    }
-    public void setMetadataObjectType(MetadataObjectType metadataObjectType){
-        this.metadataObjectType = metadataObjectType;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // version:
-    public Integer getVersion(){
-        return this.version;
-    }
-    public void setVersion(Integer version){
-        this.version = version;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// metadataObjectType:
+	public MetadataObjectType getMetadataObjectType(){
+		return this.metadataObjectType;
+	}
+	public void setMetadataObjectType(MetadataObjectType metadataObjectType){
+		this.metadataObjectType = metadataObjectType;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void metadataObjectType(String multirequestToken){
+		setToken("metadataObjectType", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// version:
+	public Integer getVersion(){
+		return this.version;
+	}
+	public void setVersion(Integer version){
+		this.version = version;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // status:
-    public MetadataProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(MetadataProfileStatus status){
-        this.status = status;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // xsd:
-    public String getXsd(){
-        return this.xsd;
-    }
-    public void setXsd(String xsd){
-        this.xsd = xsd;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // views:
-    public String getViews(){
-        return this.views;
-    }
-    public void setViews(String views){
-        this.views = views;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // xslt:
-    public String getXslt(){
-        return this.xslt;
-    }
-    public void setXslt(String xslt){
-        this.xslt = xslt;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // createMode:
-    public MetadataProfileCreateMode getCreateMode(){
-        return this.createMode;
-    }
-    public void setCreateMode(MetadataProfileCreateMode createMode){
-        this.createMode = createMode;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // disableReIndexing:
-    public Boolean getDisableReIndexing(){
-        return this.disableReIndexing;
-    }
-    public void setDisableReIndexing(Boolean disableReIndexing){
-        this.disableReIndexing = disableReIndexing;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// status:
+	public MetadataProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(MetadataProfileStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// xsd:
+	public String getXsd(){
+		return this.xsd;
+	}
+	public void setXsd(String xsd){
+		this.xsd = xsd;
+	}
+
+	public void xsd(String multirequestToken){
+		setToken("xsd", multirequestToken);
+	}
+
+	// views:
+	public String getViews(){
+		return this.views;
+	}
+	public void setViews(String views){
+		this.views = views;
+	}
+
+	public void views(String multirequestToken){
+		setToken("views", multirequestToken);
+	}
+
+	// xslt:
+	public String getXslt(){
+		return this.xslt;
+	}
+	public void setXslt(String xslt){
+		this.xslt = xslt;
+	}
+
+	public void xslt(String multirequestToken){
+		setToken("xslt", multirequestToken);
+	}
+
+	// createMode:
+	public MetadataProfileCreateMode getCreateMode(){
+		return this.createMode;
+	}
+	public void setCreateMode(MetadataProfileCreateMode createMode){
+		this.createMode = createMode;
+	}
+
+	public void createMode(String multirequestToken){
+		setToken("createMode", multirequestToken);
+	}
+
+	// disableReIndexing:
+	public Boolean getDisableReIndexing(){
+		return this.disableReIndexing;
+	}
+	public void setDisableReIndexing(Boolean disableReIndexing){
+		this.disableReIndexing = disableReIndexing;
+	}
+
+	public void disableReIndexing(String multirequestToken){
+		setToken("disableReIndexing", multirequestToken);
+	}
 
 
-    public MetadataProfile() {
-       super();
-    }
+	public MetadataProfile() {
+		super();
+	}
 
-    public MetadataProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetadataProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        metadataObjectType = MetadataObjectType.get(GsonParser.parseString(jsonObject.get("metadataObjectType")));
-        version = GsonParser.parseInt(jsonObject.get("version"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        status = MetadataProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        xsd = GsonParser.parseString(jsonObject.get("xsd"));
-        views = GsonParser.parseString(jsonObject.get("views"));
-        xslt = GsonParser.parseString(jsonObject.get("xslt"));
-        createMode = MetadataProfileCreateMode.get(GsonParser.parseInt(jsonObject.get("createMode")));
-        disableReIndexing = GsonParser.parseBoolean(jsonObject.get("disableReIndexing"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		metadataObjectType = MetadataObjectType.get(GsonParser.parseString(jsonObject.get("metadataObjectType")));
+		version = GsonParser.parseInt(jsonObject.get("version"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		status = MetadataProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		xsd = GsonParser.parseString(jsonObject.get("xsd"));
+		views = GsonParser.parseString(jsonObject.get("views"));
+		xslt = GsonParser.parseString(jsonObject.get("xslt"));
+		createMode = MetadataProfileCreateMode.get(GsonParser.parseInt(jsonObject.get("createMode")));
+		disableReIndexing = GsonParser.parseBoolean(jsonObject.get("disableReIndexing"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetadataProfile");
-        kparams.add("metadataObjectType", this.metadataObjectType);
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("createMode", this.createMode);
-        kparams.add("disableReIndexing", this.disableReIndexing);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetadataProfile");
+		kparams.add("metadataObjectType", this.metadataObjectType);
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("createMode", this.createMode);
+		kparams.add("disableReIndexing", this.disableReIndexing);
+		return kparams;
+	}
 
 }
 

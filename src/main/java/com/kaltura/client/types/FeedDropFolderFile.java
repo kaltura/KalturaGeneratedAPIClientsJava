@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FeedDropFolderFile.Tokenizer.class)
 public class FeedDropFolderFile extends DropFolderFile {
+	
+	public interface Tokenizer extends DropFolderFile.Tokenizer {
+		String hash();
+		String feedXmlPath();
+	}
 
 	/**  MD5 or Sha1 encrypted string  */
-    private String hash;
+	private String hash;
 	/**  Path of the original Feed content XML  */
-    private String feedXmlPath;
+	private String feedXmlPath;
 
-    // hash:
-    public String getHash(){
-        return this.hash;
-    }
-    public void setHash(String hash){
-        this.hash = hash;
-    }
+	// hash:
+	public String getHash(){
+		return this.hash;
+	}
+	public void setHash(String hash){
+		this.hash = hash;
+	}
 
-    // feedXmlPath:
-    public String getFeedXmlPath(){
-        return this.feedXmlPath;
-    }
-    public void setFeedXmlPath(String feedXmlPath){
-        this.feedXmlPath = feedXmlPath;
-    }
+	public void hash(String multirequestToken){
+		setToken("hash", multirequestToken);
+	}
+
+	// feedXmlPath:
+	public String getFeedXmlPath(){
+		return this.feedXmlPath;
+	}
+	public void setFeedXmlPath(String feedXmlPath){
+		this.feedXmlPath = feedXmlPath;
+	}
+
+	public void feedXmlPath(String multirequestToken){
+		setToken("feedXmlPath", multirequestToken);
+	}
 
 
-    public FeedDropFolderFile() {
-       super();
-    }
+	public FeedDropFolderFile() {
+		super();
+	}
 
-    public FeedDropFolderFile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FeedDropFolderFile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hash = GsonParser.parseString(jsonObject.get("hash"));
-        feedXmlPath = GsonParser.parseString(jsonObject.get("feedXmlPath"));
+		// set members values:
+		hash = GsonParser.parseString(jsonObject.get("hash"));
+		feedXmlPath = GsonParser.parseString(jsonObject.get("feedXmlPath"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFeedDropFolderFile");
-        kparams.add("hash", this.hash);
-        kparams.add("feedXmlPath", this.feedXmlPath);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFeedDropFolderFile");
+		kparams.add("hash", this.hash);
+		kparams.add("feedXmlPath", this.feedXmlPath);
+		return kparams;
+	}
 
 }
 

@@ -34,40 +34,40 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryServerNodeStatus implements EnumAsInt {
-    STOPPED(0),
-    PLAYABLE(1),
-    BROADCASTING(2),
-    AUTHENTICATED(3),
-    MARKED_FOR_DELETION(4);
+	STOPPED(0),
+	PLAYABLE(1),
+	BROADCASTING(2),
+	AUTHENTICATED(3),
+	MARKED_FOR_DELETION(4);
 
-    private int value;
+	private int value;
 
-    EntryServerNodeStatus(int value) {
-        this.value = value;
-    }
+	EntryServerNodeStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryServerNodeStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryServerNodeStatus defined values and compare the inner value with the given one:
-        for(EntryServerNodeStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryServerNodeStatus.values().length > 0 ? EntryServerNodeStatus.values()[0]: null;
+	public static EntryServerNodeStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryServerNodeStatus defined values and compare the inner value with the given one:
+		for(EntryServerNodeStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryServerNodeStatus.values().length > 0 ? EntryServerNodeStatus.values()[0]: null;
    }
 }

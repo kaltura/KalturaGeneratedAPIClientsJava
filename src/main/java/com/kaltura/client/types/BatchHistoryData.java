@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,127 +41,176 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BatchHistoryData.Tokenizer.class)
 public class BatchHistoryData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String schedulerId();
+		String workerId();
+		String batchIndex();
+		String timeStamp();
+		String message();
+		String errType();
+		String errNumber();
+		String hostName();
+		String sessionId();
+	}
 
-    private Integer schedulerId;
-    private Integer workerId;
-    private Integer batchIndex;
-    private Integer timeStamp;
-    private String message;
-    private Integer errType;
-    private Integer errNumber;
-    private String hostName;
-    private String sessionId;
+	private Integer schedulerId;
+	private Integer workerId;
+	private Integer batchIndex;
+	private Integer timeStamp;
+	private String message;
+	private Integer errType;
+	private Integer errNumber;
+	private String hostName;
+	private String sessionId;
 
-    // schedulerId:
-    public Integer getSchedulerId(){
-        return this.schedulerId;
-    }
-    public void setSchedulerId(Integer schedulerId){
-        this.schedulerId = schedulerId;
-    }
+	// schedulerId:
+	public Integer getSchedulerId(){
+		return this.schedulerId;
+	}
+	public void setSchedulerId(Integer schedulerId){
+		this.schedulerId = schedulerId;
+	}
 
-    // workerId:
-    public Integer getWorkerId(){
-        return this.workerId;
-    }
-    public void setWorkerId(Integer workerId){
-        this.workerId = workerId;
-    }
+	public void schedulerId(String multirequestToken){
+		setToken("schedulerId", multirequestToken);
+	}
 
-    // batchIndex:
-    public Integer getBatchIndex(){
-        return this.batchIndex;
-    }
-    public void setBatchIndex(Integer batchIndex){
-        this.batchIndex = batchIndex;
-    }
+	// workerId:
+	public Integer getWorkerId(){
+		return this.workerId;
+	}
+	public void setWorkerId(Integer workerId){
+		this.workerId = workerId;
+	}
 
-    // timeStamp:
-    public Integer getTimeStamp(){
-        return this.timeStamp;
-    }
-    public void setTimeStamp(Integer timeStamp){
-        this.timeStamp = timeStamp;
-    }
+	public void workerId(String multirequestToken){
+		setToken("workerId", multirequestToken);
+	}
 
-    // message:
-    public String getMessage(){
-        return this.message;
-    }
-    public void setMessage(String message){
-        this.message = message;
-    }
+	// batchIndex:
+	public Integer getBatchIndex(){
+		return this.batchIndex;
+	}
+	public void setBatchIndex(Integer batchIndex){
+		this.batchIndex = batchIndex;
+	}
 
-    // errType:
-    public Integer getErrType(){
-        return this.errType;
-    }
-    public void setErrType(Integer errType){
-        this.errType = errType;
-    }
+	public void batchIndex(String multirequestToken){
+		setToken("batchIndex", multirequestToken);
+	}
 
-    // errNumber:
-    public Integer getErrNumber(){
-        return this.errNumber;
-    }
-    public void setErrNumber(Integer errNumber){
-        this.errNumber = errNumber;
-    }
+	// timeStamp:
+	public Integer getTimeStamp(){
+		return this.timeStamp;
+	}
+	public void setTimeStamp(Integer timeStamp){
+		this.timeStamp = timeStamp;
+	}
 
-    // hostName:
-    public String getHostName(){
-        return this.hostName;
-    }
-    public void setHostName(String hostName){
-        this.hostName = hostName;
-    }
+	public void timeStamp(String multirequestToken){
+		setToken("timeStamp", multirequestToken);
+	}
 
-    // sessionId:
-    public String getSessionId(){
-        return this.sessionId;
-    }
-    public void setSessionId(String sessionId){
-        this.sessionId = sessionId;
-    }
+	// message:
+	public String getMessage(){
+		return this.message;
+	}
+	public void setMessage(String message){
+		this.message = message;
+	}
+
+	public void message(String multirequestToken){
+		setToken("message", multirequestToken);
+	}
+
+	// errType:
+	public Integer getErrType(){
+		return this.errType;
+	}
+	public void setErrType(Integer errType){
+		this.errType = errType;
+	}
+
+	public void errType(String multirequestToken){
+		setToken("errType", multirequestToken);
+	}
+
+	// errNumber:
+	public Integer getErrNumber(){
+		return this.errNumber;
+	}
+	public void setErrNumber(Integer errNumber){
+		this.errNumber = errNumber;
+	}
+
+	public void errNumber(String multirequestToken){
+		setToken("errNumber", multirequestToken);
+	}
+
+	// hostName:
+	public String getHostName(){
+		return this.hostName;
+	}
+	public void setHostName(String hostName){
+		this.hostName = hostName;
+	}
+
+	public void hostName(String multirequestToken){
+		setToken("hostName", multirequestToken);
+	}
+
+	// sessionId:
+	public String getSessionId(){
+		return this.sessionId;
+	}
+	public void setSessionId(String sessionId){
+		this.sessionId = sessionId;
+	}
+
+	public void sessionId(String multirequestToken){
+		setToken("sessionId", multirequestToken);
+	}
 
 
-    public BatchHistoryData() {
-       super();
-    }
+	public BatchHistoryData() {
+		super();
+	}
 
-    public BatchHistoryData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BatchHistoryData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        schedulerId = GsonParser.parseInt(jsonObject.get("schedulerId"));
-        workerId = GsonParser.parseInt(jsonObject.get("workerId"));
-        batchIndex = GsonParser.parseInt(jsonObject.get("batchIndex"));
-        timeStamp = GsonParser.parseInt(jsonObject.get("timeStamp"));
-        message = GsonParser.parseString(jsonObject.get("message"));
-        errType = GsonParser.parseInt(jsonObject.get("errType"));
-        errNumber = GsonParser.parseInt(jsonObject.get("errNumber"));
-        hostName = GsonParser.parseString(jsonObject.get("hostName"));
-        sessionId = GsonParser.parseString(jsonObject.get("sessionId"));
+		// set members values:
+		schedulerId = GsonParser.parseInt(jsonObject.get("schedulerId"));
+		workerId = GsonParser.parseInt(jsonObject.get("workerId"));
+		batchIndex = GsonParser.parseInt(jsonObject.get("batchIndex"));
+		timeStamp = GsonParser.parseInt(jsonObject.get("timeStamp"));
+		message = GsonParser.parseString(jsonObject.get("message"));
+		errType = GsonParser.parseInt(jsonObject.get("errType"));
+		errNumber = GsonParser.parseInt(jsonObject.get("errNumber"));
+		hostName = GsonParser.parseString(jsonObject.get("hostName"));
+		sessionId = GsonParser.parseString(jsonObject.get("sessionId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBatchHistoryData");
-        kparams.add("schedulerId", this.schedulerId);
-        kparams.add("workerId", this.workerId);
-        kparams.add("batchIndex", this.batchIndex);
-        kparams.add("timeStamp", this.timeStamp);
-        kparams.add("message", this.message);
-        kparams.add("errType", this.errType);
-        kparams.add("errNumber", this.errNumber);
-        kparams.add("hostName", this.hostName);
-        kparams.add("sessionId", this.sessionId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBatchHistoryData");
+		kparams.add("schedulerId", this.schedulerId);
+		kparams.add("workerId", this.workerId);
+		kparams.add("batchIndex", this.batchIndex);
+		kparams.add("timeStamp", this.timeStamp);
+		kparams.add("message", this.message);
+		kparams.add("errType", this.errType);
+		kparams.add("errNumber", this.errNumber);
+		kparams.add("hostName", this.hostName);
+		kparams.add("sessionId", this.sessionId);
+		return kparams;
+	}
 
 }
 

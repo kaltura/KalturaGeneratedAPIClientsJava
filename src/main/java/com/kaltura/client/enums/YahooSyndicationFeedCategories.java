@@ -34,55 +34,55 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum YahooSyndicationFeedCategories implements EnumAsString {
-    ACTION("Action"),
-    ANIMALS("Animals"),
-    ART_AND_ANIMATION("Art &amp; Animation"),
-    COMMERCIALS("Commercials"),
-    ENTERTAINMENT_AND_TV("Entertainment &amp; TV"),
-    FAMILY("Family"),
-    FOOD("Food"),
-    FUNNY_VIDEOS("Funny Videos"),
-    GAMES("Games"),
-    HEALTH_AND_BEAUTY("Health &amp; Beauty"),
-    HOW_TO("How-To"),
-    MOVIES_AND_SHORTS("Movies &amp; Shorts"),
-    MUSIC("Music"),
-    NEWS_AND_POLITICS("News &amp; Politics"),
-    PEOPLE_AND_VLOGS("People &amp; Vlogs"),
-    PRODUCTS_AND_TECH("Products &amp; Tech."),
-    SCIENCE_AND_ENVIRONMENT("Science &amp; Environment"),
-    SPORTS("Sports"),
-    TRANSPORTATION("Transportation"),
-    TRAVEL("Travel");
+	ACTION("Action"),
+	ANIMALS("Animals"),
+	ART_AND_ANIMATION("Art &amp; Animation"),
+	COMMERCIALS("Commercials"),
+	ENTERTAINMENT_AND_TV("Entertainment &amp; TV"),
+	FAMILY("Family"),
+	FOOD("Food"),
+	FUNNY_VIDEOS("Funny Videos"),
+	GAMES("Games"),
+	HEALTH_AND_BEAUTY("Health &amp; Beauty"),
+	HOW_TO("How-To"),
+	MOVIES_AND_SHORTS("Movies &amp; Shorts"),
+	MUSIC("Music"),
+	NEWS_AND_POLITICS("News &amp; Politics"),
+	PEOPLE_AND_VLOGS("People &amp; Vlogs"),
+	PRODUCTS_AND_TECH("Products &amp; Tech."),
+	SCIENCE_AND_ENVIRONMENT("Science &amp; Environment"),
+	SPORTS("Sports"),
+	TRANSPORTATION("Transportation"),
+	TRAVEL("Travel");
 
-    private String value;
+	private String value;
 
-    YahooSyndicationFeedCategories(String value) {
-        this.value = value;
-    }
+	YahooSyndicationFeedCategories(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static YahooSyndicationFeedCategories get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over YahooSyndicationFeedCategories defined values and compare the inner value with the given one:
-        for(YahooSyndicationFeedCategories item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return YahooSyndicationFeedCategories.values().length > 0 ? YahooSyndicationFeedCategories.values()[0]: null;
+	public static YahooSyndicationFeedCategories get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over YahooSyndicationFeedCategories defined values and compare the inner value with the given one:
+		for(YahooSyndicationFeedCategories item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return YahooSyndicationFeedCategories.values().length > 0 ? YahooSyndicationFeedCategories.values()[0]: null;
    }
 }

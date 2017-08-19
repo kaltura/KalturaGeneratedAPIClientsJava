@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,74 +41,98 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveReportExportParams.Tokenizer.class)
 public class LiveReportExportParams extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String entryIds();
+		String recpientEmail();
+		String timeZoneOffset();
+		String applicationUrlTemplate();
+	}
 
-    private String entryIds;
-    private String recpientEmail;
+	private String entryIds;
+	private String recpientEmail;
 	/**  Time zone offset in minutes (between client to UTC)  */
-    private Integer timeZoneOffset;
+	private Integer timeZoneOffset;
 	/**  Optional argument that allows controlling the prefix of the exported csv url  */
-    private String applicationUrlTemplate;
+	private String applicationUrlTemplate;
 
-    // entryIds:
-    public String getEntryIds(){
-        return this.entryIds;
-    }
-    public void setEntryIds(String entryIds){
-        this.entryIds = entryIds;
-    }
+	// entryIds:
+	public String getEntryIds(){
+		return this.entryIds;
+	}
+	public void setEntryIds(String entryIds){
+		this.entryIds = entryIds;
+	}
 
-    // recpientEmail:
-    public String getRecpientEmail(){
-        return this.recpientEmail;
-    }
-    public void setRecpientEmail(String recpientEmail){
-        this.recpientEmail = recpientEmail;
-    }
+	public void entryIds(String multirequestToken){
+		setToken("entryIds", multirequestToken);
+	}
 
-    // timeZoneOffset:
-    public Integer getTimeZoneOffset(){
-        return this.timeZoneOffset;
-    }
-    public void setTimeZoneOffset(Integer timeZoneOffset){
-        this.timeZoneOffset = timeZoneOffset;
-    }
+	// recpientEmail:
+	public String getRecpientEmail(){
+		return this.recpientEmail;
+	}
+	public void setRecpientEmail(String recpientEmail){
+		this.recpientEmail = recpientEmail;
+	}
 
-    // applicationUrlTemplate:
-    public String getApplicationUrlTemplate(){
-        return this.applicationUrlTemplate;
-    }
-    public void setApplicationUrlTemplate(String applicationUrlTemplate){
-        this.applicationUrlTemplate = applicationUrlTemplate;
-    }
+	public void recpientEmail(String multirequestToken){
+		setToken("recpientEmail", multirequestToken);
+	}
+
+	// timeZoneOffset:
+	public Integer getTimeZoneOffset(){
+		return this.timeZoneOffset;
+	}
+	public void setTimeZoneOffset(Integer timeZoneOffset){
+		this.timeZoneOffset = timeZoneOffset;
+	}
+
+	public void timeZoneOffset(String multirequestToken){
+		setToken("timeZoneOffset", multirequestToken);
+	}
+
+	// applicationUrlTemplate:
+	public String getApplicationUrlTemplate(){
+		return this.applicationUrlTemplate;
+	}
+	public void setApplicationUrlTemplate(String applicationUrlTemplate){
+		this.applicationUrlTemplate = applicationUrlTemplate;
+	}
+
+	public void applicationUrlTemplate(String multirequestToken){
+		setToken("applicationUrlTemplate", multirequestToken);
+	}
 
 
-    public LiveReportExportParams() {
-       super();
-    }
+	public LiveReportExportParams() {
+		super();
+	}
 
-    public LiveReportExportParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveReportExportParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-        recpientEmail = GsonParser.parseString(jsonObject.get("recpientEmail"));
-        timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
-        applicationUrlTemplate = GsonParser.parseString(jsonObject.get("applicationUrlTemplate"));
+		// set members values:
+		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
+		recpientEmail = GsonParser.parseString(jsonObject.get("recpientEmail"));
+		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
+		applicationUrlTemplate = GsonParser.parseString(jsonObject.get("applicationUrlTemplate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveReportExportParams");
-        kparams.add("entryIds", this.entryIds);
-        kparams.add("recpientEmail", this.recpientEmail);
-        kparams.add("timeZoneOffset", this.timeZoneOffset);
-        kparams.add("applicationUrlTemplate", this.applicationUrlTemplate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveReportExportParams");
+		kparams.add("entryIds", this.entryIds);
+		kparams.add("recpientEmail", this.recpientEmail);
+		kparams.add("timeZoneOffset", this.timeZoneOffset);
+		kparams.add("applicationUrlTemplate", this.applicationUrlTemplate);
+		return kparams;
+	}
 
 }
 

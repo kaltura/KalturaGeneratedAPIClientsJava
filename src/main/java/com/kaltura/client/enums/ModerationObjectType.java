@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ModerationObjectType implements EnumAsString {
-    ENTRY("2"),
-    USER("3");
+	ENTRY("2"),
+	USER("3");
 
-    private String value;
+	private String value;
 
-    ModerationObjectType(String value) {
-        this.value = value;
-    }
+	ModerationObjectType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ModerationObjectType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ModerationObjectType defined values and compare the inner value with the given one:
-        for(ModerationObjectType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ModerationObjectType.values().length > 0 ? ModerationObjectType.values()[0]: null;
+	public static ModerationObjectType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ModerationObjectType defined values and compare the inner value with the given one:
+		for(ModerationObjectType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ModerationObjectType.values().length > 0 ? ModerationObjectType.values()[0]: null;
    }
 }

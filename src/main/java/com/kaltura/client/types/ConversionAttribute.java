@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +41,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConversionAttribute.Tokenizer.class)
 public class ConversionAttribute extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String flavorParamsId();
+		String name();
+		String value();
+	}
 
 	/**  The id of the flavor params, set to null for source flavor  */
-    private Integer flavorParamsId;
+	private Integer flavorParamsId;
 	/**  Attribute name  */
-    private String name;
+	private String name;
 	/**  Attribute value  */
-    private String value;
+	private String value;
 
-    // flavorParamsId:
-    public Integer getFlavorParamsId(){
-        return this.flavorParamsId;
-    }
-    public void setFlavorParamsId(Integer flavorParamsId){
-        this.flavorParamsId = flavorParamsId;
-    }
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
 
-    // value:
-    public String getValue(){
-        return this.value;
-    }
-    public void setValue(String value){
-        this.value = value;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
+
+	// value:
+	public String getValue(){
+		return this.value;
+	}
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
+	}
 
 
-    public ConversionAttribute() {
-       super();
-    }
+	public ConversionAttribute() {
+		super();
+	}
 
-    public ConversionAttribute(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConversionAttribute(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        value = GsonParser.parseString(jsonObject.get("value"));
+		// set members values:
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		value = GsonParser.parseString(jsonObject.get("value"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConversionAttribute");
-        kparams.add("flavorParamsId", this.flavorParamsId);
-        kparams.add("name", this.name);
-        kparams.add("value", this.value);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConversionAttribute");
+		kparams.add("flavorParamsId", this.flavorParamsId);
+		kparams.add("name", this.name);
+		kparams.add("value", this.value);
+		return kparams;
+	}
 
 }
 

@@ -34,46 +34,46 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataObjectType implements EnumAsString {
-    AD_CUE_POINT("adCuePointMetadata.AdCuePoint"),
-    ANNOTATION("annotationMetadata.Annotation"),
-    CODE_CUE_POINT("codeCuePointMetadata.CodeCuePoint"),
-    ANSWER_CUE_POINT("quiz.AnswerCuePoint"),
-    QUESTION_CUE_POINT("quiz.QuestionCuePoint"),
-    THUMB_CUE_POINT("thumbCuePointMetadata.thumbCuePoint"),
-    ENTRY("1"),
-    CATEGORY("2"),
-    USER("3"),
-    PARTNER("4"),
-    DYNAMIC_OBJECT("5");
+	AD_CUE_POINT("adCuePointMetadata.AdCuePoint"),
+	ANNOTATION("annotationMetadata.Annotation"),
+	CODE_CUE_POINT("codeCuePointMetadata.CodeCuePoint"),
+	ANSWER_CUE_POINT("quiz.AnswerCuePoint"),
+	QUESTION_CUE_POINT("quiz.QuestionCuePoint"),
+	THUMB_CUE_POINT("thumbCuePointMetadata.thumbCuePoint"),
+	ENTRY("1"),
+	CATEGORY("2"),
+	USER("3"),
+	PARTNER("4"),
+	DYNAMIC_OBJECT("5");
 
-    private String value;
+	private String value;
 
-    MetadataObjectType(String value) {
-        this.value = value;
-    }
+	MetadataObjectType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static MetadataObjectType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MetadataObjectType defined values and compare the inner value with the given one:
-        for(MetadataObjectType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MetadataObjectType.values().length > 0 ? MetadataObjectType.values()[0]: null;
+	public static MetadataObjectType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MetadataObjectType defined values and compare the inner value with the given one:
+		for(MetadataObjectType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MetadataObjectType.values().length > 0 ? MetadataObjectType.values()[0]: null;
    }
 }

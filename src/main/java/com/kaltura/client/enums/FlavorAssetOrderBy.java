@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FlavorAssetOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    DELETED_AT_ASC("+deletedAt"),
-    SIZE_ASC("+size"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    DELETED_AT_DESC("-deletedAt"),
-    SIZE_DESC("-size"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	DELETED_AT_ASC("+deletedAt"),
+	SIZE_ASC("+size"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	DELETED_AT_DESC("-deletedAt"),
+	SIZE_DESC("-size"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    FlavorAssetOrderBy(String value) {
-        this.value = value;
-    }
+	FlavorAssetOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static FlavorAssetOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over FlavorAssetOrderBy defined values and compare the inner value with the given one:
-        for(FlavorAssetOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return FlavorAssetOrderBy.values().length > 0 ? FlavorAssetOrderBy.values()[0]: null;
+	public static FlavorAssetOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over FlavorAssetOrderBy defined values and compare the inner value with the given one:
+		for(FlavorAssetOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return FlavorAssetOrderBy.values().length > 0 ? FlavorAssetOrderBy.values()[0]: null;
    }
 }

@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadCsvVersion implements EnumAsInt {
-    V1(1),
-    V2(2),
-    V3(3);
+	V1(1),
+	V2(2),
+	V3(3);
 
-    private int value;
+	private int value;
 
-    BulkUploadCsvVersion(int value) {
-        this.value = value;
-    }
+	BulkUploadCsvVersion(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static BulkUploadCsvVersion get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BulkUploadCsvVersion defined values and compare the inner value with the given one:
-        for(BulkUploadCsvVersion item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BulkUploadCsvVersion.values().length > 0 ? BulkUploadCsvVersion.values()[0]: null;
+	public static BulkUploadCsvVersion get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BulkUploadCsvVersion defined values and compare the inner value with the given one:
+		for(BulkUploadCsvVersion item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BulkUploadCsvVersion.values().length > 0 ? BulkUploadCsvVersion.values()[0]: null;
    }
 }

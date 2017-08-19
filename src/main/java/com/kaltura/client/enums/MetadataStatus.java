@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataStatus implements EnumAsInt {
-    VALID(1),
-    INVALID(2),
-    DELETED(3);
+	VALID(1),
+	INVALID(2),
+	DELETED(3);
 
-    private int value;
+	private int value;
 
-    MetadataStatus(int value) {
-        this.value = value;
-    }
+	MetadataStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static MetadataStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MetadataStatus defined values and compare the inner value with the given one:
-        for(MetadataStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MetadataStatus.values().length > 0 ? MetadataStatus.values()[0]: null;
+	public static MetadataStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MetadataStatus defined values and compare the inner value with the given one:
+		for(MetadataStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MetadataStatus.values().length > 0 ? MetadataStatus.values()[0]: null;
    }
 }

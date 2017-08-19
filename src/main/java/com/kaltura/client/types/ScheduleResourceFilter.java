@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,23 +39,27 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleResourceFilter.Tokenizer.class)
 public class ScheduleResourceFilter extends ScheduleResourceBaseFilter {
+	
+	public interface Tokenizer extends ScheduleResourceBaseFilter.Tokenizer {
+	}
 
 
 
-    public ScheduleResourceFilter() {
-       super();
-    }
+	public ScheduleResourceFilter() {
+		super();
+	}
 
-    public ScheduleResourceFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public ScheduleResourceFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleResourceFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleResourceFilter");
+		return kparams;
+	}
 
 }
 

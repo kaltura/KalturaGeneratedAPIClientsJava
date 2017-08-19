@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,94 +40,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadResultCategoryUser.Tokenizer.class)
 public class BulkUploadResultCategoryUser extends BulkUploadResult {
+	
+	public interface Tokenizer extends BulkUploadResult.Tokenizer {
+		String categoryId();
+		String categoryReferenceId();
+		String userId();
+		String permissionLevel();
+		String updateMethod();
+		String requiredObjectStatus();
+	}
 
-    private Integer categoryId;
-    private String categoryReferenceId;
-    private String userId;
-    private Integer permissionLevel;
-    private Integer updateMethod;
-    private Integer requiredObjectStatus;
+	private Integer categoryId;
+	private String categoryReferenceId;
+	private String userId;
+	private Integer permissionLevel;
+	private Integer updateMethod;
+	private Integer requiredObjectStatus;
 
-    // categoryId:
-    public Integer getCategoryId(){
-        return this.categoryId;
-    }
-    public void setCategoryId(Integer categoryId){
-        this.categoryId = categoryId;
-    }
+	// categoryId:
+	public Integer getCategoryId(){
+		return this.categoryId;
+	}
+	public void setCategoryId(Integer categoryId){
+		this.categoryId = categoryId;
+	}
 
-    // categoryReferenceId:
-    public String getCategoryReferenceId(){
-        return this.categoryReferenceId;
-    }
-    public void setCategoryReferenceId(String categoryReferenceId){
-        this.categoryReferenceId = categoryReferenceId;
-    }
+	public void categoryId(String multirequestToken){
+		setToken("categoryId", multirequestToken);
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// categoryReferenceId:
+	public String getCategoryReferenceId(){
+		return this.categoryReferenceId;
+	}
+	public void setCategoryReferenceId(String categoryReferenceId){
+		this.categoryReferenceId = categoryReferenceId;
+	}
 
-    // permissionLevel:
-    public Integer getPermissionLevel(){
-        return this.permissionLevel;
-    }
-    public void setPermissionLevel(Integer permissionLevel){
-        this.permissionLevel = permissionLevel;
-    }
+	public void categoryReferenceId(String multirequestToken){
+		setToken("categoryReferenceId", multirequestToken);
+	}
 
-    // updateMethod:
-    public Integer getUpdateMethod(){
-        return this.updateMethod;
-    }
-    public void setUpdateMethod(Integer updateMethod){
-        this.updateMethod = updateMethod;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // requiredObjectStatus:
-    public Integer getRequiredObjectStatus(){
-        return this.requiredObjectStatus;
-    }
-    public void setRequiredObjectStatus(Integer requiredObjectStatus){
-        this.requiredObjectStatus = requiredObjectStatus;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
+
+	// permissionLevel:
+	public Integer getPermissionLevel(){
+		return this.permissionLevel;
+	}
+	public void setPermissionLevel(Integer permissionLevel){
+		this.permissionLevel = permissionLevel;
+	}
+
+	public void permissionLevel(String multirequestToken){
+		setToken("permissionLevel", multirequestToken);
+	}
+
+	// updateMethod:
+	public Integer getUpdateMethod(){
+		return this.updateMethod;
+	}
+	public void setUpdateMethod(Integer updateMethod){
+		this.updateMethod = updateMethod;
+	}
+
+	public void updateMethod(String multirequestToken){
+		setToken("updateMethod", multirequestToken);
+	}
+
+	// requiredObjectStatus:
+	public Integer getRequiredObjectStatus(){
+		return this.requiredObjectStatus;
+	}
+	public void setRequiredObjectStatus(Integer requiredObjectStatus){
+		this.requiredObjectStatus = requiredObjectStatus;
+	}
+
+	public void requiredObjectStatus(String multirequestToken){
+		setToken("requiredObjectStatus", multirequestToken);
+	}
 
 
-    public BulkUploadResultCategoryUser() {
-       super();
-    }
+	public BulkUploadResultCategoryUser() {
+		super();
+	}
 
-    public BulkUploadResultCategoryUser(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BulkUploadResultCategoryUser(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
-        categoryReferenceId = GsonParser.parseString(jsonObject.get("categoryReferenceId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        permissionLevel = GsonParser.parseInt(jsonObject.get("permissionLevel"));
-        updateMethod = GsonParser.parseInt(jsonObject.get("updateMethod"));
-        requiredObjectStatus = GsonParser.parseInt(jsonObject.get("requiredObjectStatus"));
+		// set members values:
+		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		categoryReferenceId = GsonParser.parseString(jsonObject.get("categoryReferenceId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		permissionLevel = GsonParser.parseInt(jsonObject.get("permissionLevel"));
+		updateMethod = GsonParser.parseInt(jsonObject.get("updateMethod"));
+		requiredObjectStatus = GsonParser.parseInt(jsonObject.get("requiredObjectStatus"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadResultCategoryUser");
-        kparams.add("categoryId", this.categoryId);
-        kparams.add("categoryReferenceId", this.categoryReferenceId);
-        kparams.add("userId", this.userId);
-        kparams.add("permissionLevel", this.permissionLevel);
-        kparams.add("updateMethod", this.updateMethod);
-        kparams.add("requiredObjectStatus", this.requiredObjectStatus);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadResultCategoryUser");
+		kparams.add("categoryId", this.categoryId);
+		kparams.add("categoryReferenceId", this.categoryReferenceId);
+		kparams.add("userId", this.userId);
+		kparams.add("permissionLevel", this.permissionLevel);
+		kparams.add("updateMethod", this.updateMethod);
+		kparams.add("requiredObjectStatus", this.requiredObjectStatus);
+		return kparams;
+	}
 
 }
 

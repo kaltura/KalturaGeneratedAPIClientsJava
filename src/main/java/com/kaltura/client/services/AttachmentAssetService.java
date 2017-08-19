@@ -27,13 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AssetFilter;
 import com.kaltura.client.types.AttachmentAsset;
 import com.kaltura.client.types.AttachmentServeOptions;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.RemotePath;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -49,96 +47,177 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Retrieve information and invoke actions on attachment Asset  */
 public class AttachmentAssetService {
+	
+	public static class AddAttachmentAssetBuilder extends RequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, AddAttachmentAssetBuilder> {
+		
+		public AddAttachmentAssetBuilder(String entryId, AttachmentAsset attachmentAsset) {
+			super(AttachmentAsset.class, "attachment_attachmentasset", "add");
+			params.add("entryId", entryId);
+			params.add("attachmentAsset", attachmentAsset);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
 
 	/**  Add attachment asset  */
-    public static RequestBuilder<AttachmentAsset> add(String entryId, AttachmentAsset attachmentAsset)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("attachmentAsset", attachmentAsset);
+    public static AddAttachmentAssetBuilder add(String entryId, AttachmentAsset attachmentAsset)  {
+		return new AddAttachmentAssetBuilder(entryId, attachmentAsset);
+	}
+	
+	public static class DeleteAttachmentAssetBuilder extends NullRequestBuilder {
+		
+		public DeleteAttachmentAssetBuilder(String attachmentAssetId) {
+			super("attachment_attachmentasset", "delete");
+			params.add("attachmentAssetId", attachmentAssetId);
+		}
+		
+		public void attachmentAssetId(String multirequestToken) {
+			params.add("attachmentAssetId", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<AttachmentAsset>(AttachmentAsset.class, "attachment_attachmentasset", "add", kparams);
-    }
+    public static DeleteAttachmentAssetBuilder delete(String attachmentAssetId)  {
+		return new DeleteAttachmentAssetBuilder(attachmentAssetId);
+	}
+	
+	public static class GetAttachmentAssetBuilder extends RequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, GetAttachmentAssetBuilder> {
+		
+		public GetAttachmentAssetBuilder(String attachmentAssetId) {
+			super(AttachmentAsset.class, "attachment_attachmentasset", "get");
+			params.add("attachmentAssetId", attachmentAssetId);
+		}
+		
+		public void attachmentAssetId(String multirequestToken) {
+			params.add("attachmentAssetId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Void> delete(String attachmentAssetId)  {
-        Params kparams = new Params();
-        kparams.add("attachmentAssetId", attachmentAssetId);
-
-        return new NullRequestBuilder("attachment_attachmentasset", "delete", kparams);
-    }
-
-    public static RequestBuilder<AttachmentAsset> get(String attachmentAssetId)  {
-        Params kparams = new Params();
-        kparams.add("attachmentAssetId", attachmentAssetId);
-
-        return new RequestBuilder<AttachmentAsset>(AttachmentAsset.class, "attachment_attachmentasset", "get", kparams);
-    }
+    public static GetAttachmentAssetBuilder get(String attachmentAssetId)  {
+		return new GetAttachmentAssetBuilder(attachmentAssetId);
+	}
+	
+	public static class GetRemotePathsAttachmentAssetBuilder extends ListResponseRequestBuilder<RemotePath, RemotePath.Tokenizer, GetRemotePathsAttachmentAssetBuilder> {
+		
+		public GetRemotePathsAttachmentAssetBuilder(String id) {
+			super(RemotePath.class, "attachment_attachmentasset", "getRemotePaths");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get remote storage existing paths for the asset  */
-    public static RequestBuilder<ListResponse<RemotePath>> getRemotePaths(String id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetRemotePathsAttachmentAssetBuilder getRemotePaths(String id)  {
+		return new GetRemotePathsAttachmentAssetBuilder(id);
+	}
+	
+	public static class GetUrlAttachmentAssetBuilder extends RequestBuilder<String, String, GetUrlAttachmentAssetBuilder> {
+		
+		public GetUrlAttachmentAssetBuilder(String id, int storageId) {
+			super(String.class, "attachment_attachmentasset", "getUrl");
+			params.add("id", id);
+			params.add("storageId", storageId);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void storageId(String multirequestToken) {
+			params.add("storageId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<RemotePath>(RemotePath.class, "attachment_attachmentasset", "getRemotePaths", kparams);
-    }
-
-    public static RequestBuilder<String> getUrl(String id)  {
-        return getUrl(id, Integer.MIN_VALUE);
-    }
+	public static GetUrlAttachmentAssetBuilder getUrl(String id)  {
+		return getUrl(id, Integer.MIN_VALUE);
+	}
 
 	/**  Get download URL for the asset  */
-    public static RequestBuilder<String> getUrl(String id, int storageId)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("storageId", storageId);
+    public static GetUrlAttachmentAssetBuilder getUrl(String id, int storageId)  {
+		return new GetUrlAttachmentAssetBuilder(id, storageId);
+	}
+	
+	public static class ListAttachmentAssetBuilder extends ListResponseRequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, ListAttachmentAssetBuilder> {
+		
+		public ListAttachmentAssetBuilder(AssetFilter filter, FilterPager pager) {
+			super(AttachmentAsset.class, "attachment_attachmentasset", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "attachment_attachmentasset", "getUrl", kparams);
-    }
+	public static ListAttachmentAssetBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<AttachmentAsset>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AttachmentAsset>> list(AssetFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListAttachmentAssetBuilder list(AssetFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List attachment Assets by filter and pager  */
-    public static RequestBuilder<ListResponse<AttachmentAsset>> list(AssetFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListAttachmentAssetBuilder list(AssetFilter filter, FilterPager pager)  {
+		return new ListAttachmentAssetBuilder(filter, pager);
+	}
+	
+	public static class ServeAttachmentAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeAttachmentAssetBuilder(String attachmentAssetId, AttachmentServeOptions serveOptions) {
+			super("attachment_attachmentasset", "serve");
+			params.add("attachmentAssetId", attachmentAssetId);
+			params.add("serveOptions", serveOptions);
+		}
+		
+		public void attachmentAssetId(String multirequestToken) {
+			params.add("attachmentAssetId", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<AttachmentAsset>(AttachmentAsset.class, "attachment_attachmentasset", "list", kparams);
-    }
-
-    public static RequestBuilder<String> serve(String attachmentAssetId)  {
-        return serve(attachmentAssetId, null);
-    }
+	public static ServeAttachmentAssetBuilder serve(String attachmentAssetId)  {
+		return serve(attachmentAssetId, null);
+	}
 
 	/**  Serves attachment by its id  */
-    public static RequestBuilder<String> serve(String attachmentAssetId, AttachmentServeOptions serveOptions)  {
-        Params kparams = new Params();
-        kparams.add("attachmentAssetId", attachmentAssetId);
-        kparams.add("serveOptions", serveOptions);
-
-        return new ServeRequestBuilder("attachment_attachmentasset", "serve", kparams);
-    }
+    public static ServeAttachmentAssetBuilder serve(String attachmentAssetId, AttachmentServeOptions serveOptions)  {
+		return new ServeAttachmentAssetBuilder(attachmentAssetId, serveOptions);
+	}
+	
+	public static class SetContentAttachmentAssetBuilder extends RequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, SetContentAttachmentAssetBuilder> {
+		
+		public SetContentAttachmentAssetBuilder(String id, ContentResource contentResource) {
+			super(AttachmentAsset.class, "attachment_attachmentasset", "setContent");
+			params.add("id", id);
+			params.add("contentResource", contentResource);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update content of attachment asset  */
-    public static RequestBuilder<AttachmentAsset> setContent(String id, ContentResource contentResource)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("contentResource", contentResource);
-
-        return new RequestBuilder<AttachmentAsset>(AttachmentAsset.class, "attachment_attachmentasset", "setContent", kparams);
-    }
+    public static SetContentAttachmentAssetBuilder setContent(String id, ContentResource contentResource)  {
+		return new SetContentAttachmentAssetBuilder(id, contentResource);
+	}
+	
+	public static class UpdateAttachmentAssetBuilder extends RequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, UpdateAttachmentAssetBuilder> {
+		
+		public UpdateAttachmentAssetBuilder(String id, AttachmentAsset attachmentAsset) {
+			super(AttachmentAsset.class, "attachment_attachmentasset", "update");
+			params.add("id", id);
+			params.add("attachmentAsset", attachmentAsset);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Update attachment asset  */
-    public static RequestBuilder<AttachmentAsset> update(String id, AttachmentAsset attachmentAsset)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-        kparams.add("attachmentAsset", attachmentAsset);
-
-        return new RequestBuilder<AttachmentAsset>(AttachmentAsset.class, "attachment_attachmentasset", "update", kparams);
-    }
+    public static UpdateAttachmentAssetBuilder update(String id, AttachmentAsset attachmentAsset)  {
+		return new UpdateAttachmentAssetBuilder(id, attachmentAsset);
+	}
 }

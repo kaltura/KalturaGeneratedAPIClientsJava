@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(StorageExportObjectTask.Tokenizer.class)
 public class StorageExportObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String storageId();
+	}
 
 	/**  Storage profile id  */
-    private String storageId;
+	private String storageId;
 
-    // storageId:
-    public String getStorageId(){
-        return this.storageId;
-    }
-    public void setStorageId(String storageId){
-        this.storageId = storageId;
-    }
+	// storageId:
+	public String getStorageId(){
+		return this.storageId;
+	}
+	public void setStorageId(String storageId){
+		this.storageId = storageId;
+	}
+
+	public void storageId(String multirequestToken){
+		setToken("storageId", multirequestToken);
+	}
 
 
-    public StorageExportObjectTask() {
-       super();
-    }
+	public StorageExportObjectTask() {
+		super();
+	}
 
-    public StorageExportObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public StorageExportObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        storageId = GsonParser.parseString(jsonObject.get("storageId"));
+		// set members values:
+		storageId = GsonParser.parseString(jsonObject.get("storageId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaStorageExportObjectTask");
-        kparams.add("storageId", this.storageId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaStorageExportObjectTask");
+		kparams.add("storageId", this.storageId);
+		return kparams;
+	}
 
 }
 

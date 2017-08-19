@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum HttpNotificationSslVersion implements EnumAsInt {
-    V2(2),
-    V3(3);
+	V2(2),
+	V3(3);
 
-    private int value;
+	private int value;
 
-    HttpNotificationSslVersion(int value) {
-        this.value = value;
-    }
+	HttpNotificationSslVersion(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static HttpNotificationSslVersion get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over HttpNotificationSslVersion defined values and compare the inner value with the given one:
-        for(HttpNotificationSslVersion item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return HttpNotificationSslVersion.values().length > 0 ? HttpNotificationSslVersion.values()[0]: null;
+	public static HttpNotificationSslVersion get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over HttpNotificationSslVersion defined values and compare the inner value with the given one:
+		for(HttpNotificationSslVersion item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return HttpNotificationSslVersion.values().length > 0 ? HttpNotificationSslVersion.values()[0]: null;
    }
 }

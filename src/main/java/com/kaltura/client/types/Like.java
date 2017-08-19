@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +41,83 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Like.Tokenizer.class)
 public class Like extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String entryId();
+		String userId();
+		String createdAt();
+	}
 
 	/**  The id of the entry that the like belongs to  */
-    private String entryId;
+	private String entryId;
 	/**  The id of user that the like belongs to  */
-    private String userId;
+	private String userId;
 	/**  The date of the like's creation  */
-    private Integer createdAt;
+	private Integer createdAt;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
 
-    public Like() {
-       super();
-    }
+	public Like() {
+		super();
+	}
 
-    public Like(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Like(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLike");
-        kparams.add("entryId", this.entryId);
-        kparams.add("userId", this.userId);
-        kparams.add("createdAt", this.createdAt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLike");
+		kparams.add("entryId", this.entryId);
+		kparams.add("userId", this.userId);
+		kparams.add("createdAt", this.createdAt);
+		return kparams;
+	}
 
 }
 

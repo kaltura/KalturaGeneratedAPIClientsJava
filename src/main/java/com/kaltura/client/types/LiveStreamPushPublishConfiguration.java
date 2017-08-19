@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,61 +42,80 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Basic push-publish configuration for Kaltura live stream entry  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamPushPublishConfiguration.Tokenizer.class)
 public class LiveStreamPushPublishConfiguration extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String publishUrl();
+		String backupPublishUrl();
+		String port();
+	}
 
-    private String publishUrl;
-    private String backupPublishUrl;
-    private String port;
+	private String publishUrl;
+	private String backupPublishUrl;
+	private String port;
 
-    // publishUrl:
-    public String getPublishUrl(){
-        return this.publishUrl;
-    }
-    public void setPublishUrl(String publishUrl){
-        this.publishUrl = publishUrl;
-    }
+	// publishUrl:
+	public String getPublishUrl(){
+		return this.publishUrl;
+	}
+	public void setPublishUrl(String publishUrl){
+		this.publishUrl = publishUrl;
+	}
 
-    // backupPublishUrl:
-    public String getBackupPublishUrl(){
-        return this.backupPublishUrl;
-    }
-    public void setBackupPublishUrl(String backupPublishUrl){
-        this.backupPublishUrl = backupPublishUrl;
-    }
+	public void publishUrl(String multirequestToken){
+		setToken("publishUrl", multirequestToken);
+	}
 
-    // port:
-    public String getPort(){
-        return this.port;
-    }
-    public void setPort(String port){
-        this.port = port;
-    }
+	// backupPublishUrl:
+	public String getBackupPublishUrl(){
+		return this.backupPublishUrl;
+	}
+	public void setBackupPublishUrl(String backupPublishUrl){
+		this.backupPublishUrl = backupPublishUrl;
+	}
+
+	public void backupPublishUrl(String multirequestToken){
+		setToken("backupPublishUrl", multirequestToken);
+	}
+
+	// port:
+	public String getPort(){
+		return this.port;
+	}
+	public void setPort(String port){
+		this.port = port;
+	}
+
+	public void port(String multirequestToken){
+		setToken("port", multirequestToken);
+	}
 
 
-    public LiveStreamPushPublishConfiguration() {
-       super();
-    }
+	public LiveStreamPushPublishConfiguration() {
+		super();
+	}
 
-    public LiveStreamPushPublishConfiguration(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStreamPushPublishConfiguration(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        publishUrl = GsonParser.parseString(jsonObject.get("publishUrl"));
-        backupPublishUrl = GsonParser.parseString(jsonObject.get("backupPublishUrl"));
-        port = GsonParser.parseString(jsonObject.get("port"));
+		// set members values:
+		publishUrl = GsonParser.parseString(jsonObject.get("publishUrl"));
+		backupPublishUrl = GsonParser.parseString(jsonObject.get("backupPublishUrl"));
+		port = GsonParser.parseString(jsonObject.get("port"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamPushPublishConfiguration");
-        kparams.add("publishUrl", this.publishUrl);
-        kparams.add("backupPublishUrl", this.backupPublishUrl);
-        kparams.add("port", this.port);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamPushPublishConfiguration");
+		kparams.add("publishUrl", this.publishUrl);
+		kparams.add("backupPublishUrl", this.backupPublishUrl);
+		kparams.add("port", this.port);
+		return kparams;
+	}
 
 }
 

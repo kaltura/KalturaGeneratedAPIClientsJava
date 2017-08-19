@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SearchMatchCondition.Tokenizer.class)
 public class SearchMatchCondition extends SearchCondition {
+	
+	public interface Tokenizer extends SearchCondition.Tokenizer {
+		String not();
+	}
 
-    private Boolean not;
+	private Boolean not;
 
-    // not:
-    public Boolean getNot(){
-        return this.not;
-    }
-    public void setNot(Boolean not){
-        this.not = not;
-    }
+	// not:
+	public Boolean getNot(){
+		return this.not;
+	}
+	public void setNot(Boolean not){
+		this.not = not;
+	}
+
+	public void not(String multirequestToken){
+		setToken("not", multirequestToken);
+	}
 
 
-    public SearchMatchCondition() {
-       super();
-    }
+	public SearchMatchCondition() {
+		super();
+	}
 
-    public SearchMatchCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SearchMatchCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        not = GsonParser.parseBoolean(jsonObject.get("not"));
+		// set members values:
+		not = GsonParser.parseBoolean(jsonObject.get("not"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSearchMatchCondition");
-        kparams.add("not", this.not);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSearchMatchCondition");
+		kparams.add("not", this.not);
+		return kparams;
+	}
 
 }
 

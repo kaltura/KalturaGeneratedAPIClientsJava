@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FileSyncFilter.Tokenizer.class)
 public class FileSyncFilter extends FileSyncBaseFilter {
+	
+	public interface Tokenizer extends FileSyncBaseFilter.Tokenizer {
+		String currentDc();
+	}
 
-    private Boolean currentDc;
+	private Boolean currentDc;
 
-    // currentDc:
-    public Boolean getCurrentDc(){
-        return this.currentDc;
-    }
-    public void setCurrentDc(Boolean currentDc){
-        this.currentDc = currentDc;
-    }
+	// currentDc:
+	public Boolean getCurrentDc(){
+		return this.currentDc;
+	}
+	public void setCurrentDc(Boolean currentDc){
+		this.currentDc = currentDc;
+	}
+
+	public void currentDc(String multirequestToken){
+		setToken("currentDc", multirequestToken);
+	}
 
 
-    public FileSyncFilter() {
-       super();
-    }
+	public FileSyncFilter() {
+		super();
+	}
 
-    public FileSyncFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FileSyncFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        currentDc = GsonParser.parseBoolean(jsonObject.get("currentDc"));
+		// set members values:
+		currentDc = GsonParser.parseBoolean(jsonObject.get("currentDc"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFileSyncFilter");
-        kparams.add("currentDc", this.currentDc);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFileSyncFilter");
+		kparams.add("currentDc", this.currentDc);
+		return kparams;
+	}
 
 }
 

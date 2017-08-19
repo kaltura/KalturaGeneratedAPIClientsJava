@@ -34,6 +34,7 @@ import com.kaltura.client.enums.AppTokenStatus;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,166 +44,230 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AppToken.Tokenizer.class)
 public class AppToken extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String token();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String expiry();
+		String sessionType();
+		String sessionUserId();
+		String sessionDuration();
+		String sessionPrivileges();
+		String hashType();
+	}
 
 	/**  The id of the application token  */
-    private String id;
+	private String id;
 	/**  The application token  */
-    private String token;
-    private Integer partnerId;
+	private String token;
+	private Integer partnerId;
 	/**  Creation time as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Update time as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
+	private Integer updatedAt;
 	/**  Application token status  */
-    private AppTokenStatus status;
+	private AppTokenStatus status;
 	/**  Expiry time of current token (unix timestamp in seconds)  */
-    private Integer expiry;
+	private Integer expiry;
 	/**  Type of KS (Kaltura Session) that created using the current token  */
-    private SessionType sessionType;
+	private SessionType sessionType;
 	/**  User id of KS (Kaltura Session) that created using the current token  */
-    private String sessionUserId;
+	private String sessionUserId;
 	/**  Expiry duration of KS (Kaltura Session) that created using the current token (in
 	  seconds)  */
-    private Integer sessionDuration;
+	private Integer sessionDuration;
 	/**  Comma separated privileges to be applied on KS (Kaltura Session) that created
 	  using the current token  */
-    private String sessionPrivileges;
-    private AppTokenHashType hashType;
+	private String sessionPrivileges;
+	private AppTokenHashType hashType;
 
-    // id:
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
+	// id:
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 
-    // token:
-    public String getToken(){
-        return this.token;
-    }
-    public void setToken(String token){
-        this.token = token;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// token:
+	public String getToken(){
+		return this.token;
+	}
+	public void setToken(String token){
+		this.token = token;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void token(String multirequestToken){
+		setToken("token", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // status:
-    public AppTokenStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(AppTokenStatus status){
-        this.status = status;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // expiry:
-    public Integer getExpiry(){
-        return this.expiry;
-    }
-    public void setExpiry(Integer expiry){
-        this.expiry = expiry;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // sessionType:
-    public SessionType getSessionType(){
-        return this.sessionType;
-    }
-    public void setSessionType(SessionType sessionType){
-        this.sessionType = sessionType;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // sessionUserId:
-    public String getSessionUserId(){
-        return this.sessionUserId;
-    }
-    public void setSessionUserId(String sessionUserId){
-        this.sessionUserId = sessionUserId;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // sessionDuration:
-    public Integer getSessionDuration(){
-        return this.sessionDuration;
-    }
-    public void setSessionDuration(Integer sessionDuration){
-        this.sessionDuration = sessionDuration;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // sessionPrivileges:
-    public String getSessionPrivileges(){
-        return this.sessionPrivileges;
-    }
-    public void setSessionPrivileges(String sessionPrivileges){
-        this.sessionPrivileges = sessionPrivileges;
-    }
+	// status:
+	public AppTokenStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(AppTokenStatus status){
+		this.status = status;
+	}
 
-    // hashType:
-    public AppTokenHashType getHashType(){
-        return this.hashType;
-    }
-    public void setHashType(AppTokenHashType hashType){
-        this.hashType = hashType;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// expiry:
+	public Integer getExpiry(){
+		return this.expiry;
+	}
+	public void setExpiry(Integer expiry){
+		this.expiry = expiry;
+	}
+
+	public void expiry(String multirequestToken){
+		setToken("expiry", multirequestToken);
+	}
+
+	// sessionType:
+	public SessionType getSessionType(){
+		return this.sessionType;
+	}
+	public void setSessionType(SessionType sessionType){
+		this.sessionType = sessionType;
+	}
+
+	public void sessionType(String multirequestToken){
+		setToken("sessionType", multirequestToken);
+	}
+
+	// sessionUserId:
+	public String getSessionUserId(){
+		return this.sessionUserId;
+	}
+	public void setSessionUserId(String sessionUserId){
+		this.sessionUserId = sessionUserId;
+	}
+
+	public void sessionUserId(String multirequestToken){
+		setToken("sessionUserId", multirequestToken);
+	}
+
+	// sessionDuration:
+	public Integer getSessionDuration(){
+		return this.sessionDuration;
+	}
+	public void setSessionDuration(Integer sessionDuration){
+		this.sessionDuration = sessionDuration;
+	}
+
+	public void sessionDuration(String multirequestToken){
+		setToken("sessionDuration", multirequestToken);
+	}
+
+	// sessionPrivileges:
+	public String getSessionPrivileges(){
+		return this.sessionPrivileges;
+	}
+	public void setSessionPrivileges(String sessionPrivileges){
+		this.sessionPrivileges = sessionPrivileges;
+	}
+
+	public void sessionPrivileges(String multirequestToken){
+		setToken("sessionPrivileges", multirequestToken);
+	}
+
+	// hashType:
+	public AppTokenHashType getHashType(){
+		return this.hashType;
+	}
+	public void setHashType(AppTokenHashType hashType){
+		this.hashType = hashType;
+	}
+
+	public void hashType(String multirequestToken){
+		setToken("hashType", multirequestToken);
+	}
 
 
-    public AppToken() {
-       super();
-    }
+	public AppToken() {
+		super();
+	}
 
-    public AppToken(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AppToken(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseString(jsonObject.get("id"));
-        token = GsonParser.parseString(jsonObject.get("token"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        status = AppTokenStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        expiry = GsonParser.parseInt(jsonObject.get("expiry"));
-        sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
-        sessionUserId = GsonParser.parseString(jsonObject.get("sessionUserId"));
-        sessionDuration = GsonParser.parseInt(jsonObject.get("sessionDuration"));
-        sessionPrivileges = GsonParser.parseString(jsonObject.get("sessionPrivileges"));
-        hashType = AppTokenHashType.get(GsonParser.parseString(jsonObject.get("hashType")));
+		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
+		token = GsonParser.parseString(jsonObject.get("token"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		status = AppTokenStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		expiry = GsonParser.parseInt(jsonObject.get("expiry"));
+		sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
+		sessionUserId = GsonParser.parseString(jsonObject.get("sessionUserId"));
+		sessionDuration = GsonParser.parseInt(jsonObject.get("sessionDuration"));
+		sessionPrivileges = GsonParser.parseString(jsonObject.get("sessionPrivileges"));
+		hashType = AppTokenHashType.get(GsonParser.parseString(jsonObject.get("hashType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAppToken");
-        kparams.add("expiry", this.expiry);
-        kparams.add("sessionType", this.sessionType);
-        kparams.add("sessionUserId", this.sessionUserId);
-        kparams.add("sessionDuration", this.sessionDuration);
-        kparams.add("sessionPrivileges", this.sessionPrivileges);
-        kparams.add("hashType", this.hashType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAppToken");
+		kparams.add("expiry", this.expiry);
+		kparams.add("sessionType", this.sessionType);
+		kparams.add("sessionUserId", this.sessionUserId);
+		kparams.add("sessionDuration", this.sessionDuration);
+		kparams.add("sessionPrivileges", this.sessionPrivileges);
+		kparams.add("hashType", this.hashType);
+		return kparams;
+	}
 
 }
 

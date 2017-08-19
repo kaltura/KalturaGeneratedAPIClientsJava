@@ -34,36 +34,36 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VirusScanEngineType implements EnumAsString {
-    CLAMAV_SCAN_ENGINE("clamAVScanEngine.ClamAV");
+	CLAMAV_SCAN_ENGINE("clamAVScanEngine.ClamAV");
 
-    private String value;
+	private String value;
 
-    VirusScanEngineType(String value) {
-        this.value = value;
-    }
+	VirusScanEngineType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static VirusScanEngineType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over VirusScanEngineType defined values and compare the inner value with the given one:
-        for(VirusScanEngineType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return VirusScanEngineType.values().length > 0 ? VirusScanEngineType.values()[0]: null;
+	public static VirusScanEngineType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over VirusScanEngineType defined values and compare the inner value with the given one:
+		for(VirusScanEngineType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return VirusScanEngineType.values().length > 0 ? VirusScanEngineType.values()[0]: null;
    }
 }

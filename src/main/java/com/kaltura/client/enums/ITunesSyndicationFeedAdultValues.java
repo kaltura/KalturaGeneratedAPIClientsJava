@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ITunesSyndicationFeedAdultValues implements EnumAsString {
-    CLEAN("clean"),
-    NO("no"),
-    YES("yes");
+	CLEAN("clean"),
+	NO("no"),
+	YES("yes");
 
-    private String value;
+	private String value;
 
-    ITunesSyndicationFeedAdultValues(String value) {
-        this.value = value;
-    }
+	ITunesSyndicationFeedAdultValues(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ITunesSyndicationFeedAdultValues get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ITunesSyndicationFeedAdultValues defined values and compare the inner value with the given one:
-        for(ITunesSyndicationFeedAdultValues item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ITunesSyndicationFeedAdultValues.values().length > 0 ? ITunesSyndicationFeedAdultValues.values()[0]: null;
+	public static ITunesSyndicationFeedAdultValues get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ITunesSyndicationFeedAdultValues defined values and compare the inner value with the given one:
+		for(ITunesSyndicationFeedAdultValues item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ITunesSyndicationFeedAdultValues.values().length > 0 ? ITunesSyndicationFeedAdultValues.values()[0]: null;
    }
 }

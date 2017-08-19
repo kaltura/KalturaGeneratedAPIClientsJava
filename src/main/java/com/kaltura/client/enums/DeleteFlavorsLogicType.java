@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeleteFlavorsLogicType implements EnumAsInt {
-    KEEP_LIST_DELETE_OTHERS(1),
-    DELETE_LIST(2),
-    DELETE_KEEP_SMALLEST(3);
+	KEEP_LIST_DELETE_OTHERS(1),
+	DELETE_LIST(2),
+	DELETE_KEEP_SMALLEST(3);
 
-    private int value;
+	private int value;
 
-    DeleteFlavorsLogicType(int value) {
-        this.value = value;
-    }
+	DeleteFlavorsLogicType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DeleteFlavorsLogicType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DeleteFlavorsLogicType defined values and compare the inner value with the given one:
-        for(DeleteFlavorsLogicType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DeleteFlavorsLogicType.values().length > 0 ? DeleteFlavorsLogicType.values()[0]: null;
+	public static DeleteFlavorsLogicType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DeleteFlavorsLogicType defined values and compare the inner value with the given one:
+		for(DeleteFlavorsLogicType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DeleteFlavorsLogicType.values().length > 0 ? DeleteFlavorsLogicType.values()[0]: null;
    }
 }

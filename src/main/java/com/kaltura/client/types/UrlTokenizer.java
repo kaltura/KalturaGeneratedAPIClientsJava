@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,63 +41,82 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizer.Tokenizer.class)
 public class UrlTokenizer extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String window();
+		String key();
+		String limitIpAddress();
+	}
 
 	/**  Window  */
-    private Integer window;
+	private Integer window;
 	/**  key  */
-    private String key;
-    private Boolean limitIpAddress;
+	private String key;
+	private Boolean limitIpAddress;
 
-    // window:
-    public Integer getWindow(){
-        return this.window;
-    }
-    public void setWindow(Integer window){
-        this.window = window;
-    }
+	// window:
+	public Integer getWindow(){
+		return this.window;
+	}
+	public void setWindow(Integer window){
+		this.window = window;
+	}
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	public void window(String multirequestToken){
+		setToken("window", multirequestToken);
+	}
 
-    // limitIpAddress:
-    public Boolean getLimitIpAddress(){
-        return this.limitIpAddress;
-    }
-    public void setLimitIpAddress(Boolean limitIpAddress){
-        this.limitIpAddress = limitIpAddress;
-    }
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
+
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
+
+	// limitIpAddress:
+	public Boolean getLimitIpAddress(){
+		return this.limitIpAddress;
+	}
+	public void setLimitIpAddress(Boolean limitIpAddress){
+		this.limitIpAddress = limitIpAddress;
+	}
+
+	public void limitIpAddress(String multirequestToken){
+		setToken("limitIpAddress", multirequestToken);
+	}
 
 
-    public UrlTokenizer() {
-       super();
-    }
+	public UrlTokenizer() {
+		super();
+	}
 
-    public UrlTokenizer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        window = GsonParser.parseInt(jsonObject.get("window"));
-        key = GsonParser.parseString(jsonObject.get("key"));
-        limitIpAddress = GsonParser.parseBoolean(jsonObject.get("limitIpAddress"));
+		// set members values:
+		window = GsonParser.parseInt(jsonObject.get("window"));
+		key = GsonParser.parseString(jsonObject.get("key"));
+		limitIpAddress = GsonParser.parseBoolean(jsonObject.get("limitIpAddress"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizer");
-        kparams.add("window", this.window);
-        kparams.add("key", this.key);
-        kparams.add("limitIpAddress", this.limitIpAddress);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizer");
+		kparams.add("window", this.window);
+		kparams.add("key", this.key);
+		kparams.add("limitIpAddress", this.limitIpAddress);
+		return kparams;
+	}
 
 }
 

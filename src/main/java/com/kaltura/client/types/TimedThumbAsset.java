@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TimedThumbAsset.Tokenizer.class)
 public class TimedThumbAsset extends ThumbAsset {
+	
+	public interface Tokenizer extends ThumbAsset.Tokenizer {
+		String cuePointId();
+	}
 
 	/**  Associated thumb cue point ID  */
-    private String cuePointId;
+	private String cuePointId;
 
-    // cuePointId:
-    public String getCuePointId(){
-        return this.cuePointId;
-    }
-    public void setCuePointId(String cuePointId){
-        this.cuePointId = cuePointId;
-    }
+	// cuePointId:
+	public String getCuePointId(){
+		return this.cuePointId;
+	}
+	public void setCuePointId(String cuePointId){
+		this.cuePointId = cuePointId;
+	}
+
+	public void cuePointId(String multirequestToken){
+		setToken("cuePointId", multirequestToken);
+	}
 
 
-    public TimedThumbAsset() {
-       super();
-    }
+	public TimedThumbAsset() {
+		super();
+	}
 
-    public TimedThumbAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TimedThumbAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        cuePointId = GsonParser.parseString(jsonObject.get("cuePointId"));
+		// set members values:
+		cuePointId = GsonParser.parseString(jsonObject.get("cuePointId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTimedThumbAsset");
-        kparams.add("cuePointId", this.cuePointId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTimedThumbAsset");
+		kparams.add("cuePointId", this.cuePointId);
+		return kparams;
+	}
 
 }
 

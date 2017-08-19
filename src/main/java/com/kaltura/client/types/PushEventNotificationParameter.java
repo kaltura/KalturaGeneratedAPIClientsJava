@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,39 +40,48 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PushEventNotificationParameter.Tokenizer.class)
 public class PushEventNotificationParameter extends EventNotificationParameter {
+	
+	public interface Tokenizer extends EventNotificationParameter.Tokenizer {
+		String queueKeyToken();
+	}
 
-    private String queueKeyToken;
+	private String queueKeyToken;
 
-    // queueKeyToken:
-    public String getQueueKeyToken(){
-        return this.queueKeyToken;
-    }
-    public void setQueueKeyToken(String queueKeyToken){
-        this.queueKeyToken = queueKeyToken;
-    }
+	// queueKeyToken:
+	public String getQueueKeyToken(){
+		return this.queueKeyToken;
+	}
+	public void setQueueKeyToken(String queueKeyToken){
+		this.queueKeyToken = queueKeyToken;
+	}
+
+	public void queueKeyToken(String multirequestToken){
+		setToken("queueKeyToken", multirequestToken);
+	}
 
 
-    public PushEventNotificationParameter() {
-       super();
-    }
+	public PushEventNotificationParameter() {
+		super();
+	}
 
-    public PushEventNotificationParameter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PushEventNotificationParameter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        queueKeyToken = GsonParser.parseString(jsonObject.get("queueKeyToken"));
+		// set members values:
+		queueKeyToken = GsonParser.parseString(jsonObject.get("queueKeyToken"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPushEventNotificationParameter");
-        kparams.add("queueKeyToken", this.queueKeyToken);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPushEventNotificationParameter");
+		kparams.add("queueKeyToken", this.queueKeyToken);
+		return kparams;
+	}
 
 }
 

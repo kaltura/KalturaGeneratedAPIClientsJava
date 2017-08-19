@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DocumentType implements EnumAsInt {
-    DOCUMENT(11),
-    SWF(12),
-    PDF(13);
+	DOCUMENT(11),
+	SWF(12),
+	PDF(13);
 
-    private int value;
+	private int value;
 
-    DocumentType(int value) {
-        this.value = value;
-    }
+	DocumentType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DocumentType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DocumentType defined values and compare the inner value with the given one:
-        for(DocumentType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DocumentType.values().length > 0 ? DocumentType.values()[0]: null;
+	public static DocumentType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DocumentType defined values and compare the inner value with the given one:
+		for(DocumentType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DocumentType.values().length > 0 ? DocumentType.values()[0]: null;
    }
 }

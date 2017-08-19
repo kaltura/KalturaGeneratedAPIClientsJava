@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -40,28 +39,48 @@ import com.kaltura.client.utils.request.RequestBuilder;
 /**  System service is used for internal system helpers &amp; to retrieve system
   level information  */
 public class SystemService {
+	
+	public static class GetTimeSystemBuilder extends RequestBuilder<Integer, String, GetTimeSystemBuilder> {
+		
+		public GetTimeSystemBuilder() {
+			super(Integer.class, "system", "getTime");
+		}
+	}
 
-    public static RequestBuilder<Integer> getTime()  {
-        Params kparams = new Params();
+    public static GetTimeSystemBuilder getTime()  {
+		return new GetTimeSystemBuilder();
+	}
+	
+	public static class GetVersionSystemBuilder extends RequestBuilder<String, String, GetVersionSystemBuilder> {
+		
+		public GetVersionSystemBuilder() {
+			super(String.class, "system", "getVersion");
+		}
+	}
 
-        return new RequestBuilder<Integer>(Integer.class, "system", "getTime", kparams);
-    }
+    public static GetVersionSystemBuilder getVersion()  {
+		return new GetVersionSystemBuilder();
+	}
+	
+	public static class PingSystemBuilder extends RequestBuilder<Boolean, String, PingSystemBuilder> {
+		
+		public PingSystemBuilder() {
+			super(Boolean.class, "system", "ping");
+		}
+	}
 
-    public static RequestBuilder<String> getVersion()  {
-        Params kparams = new Params();
+    public static PingSystemBuilder ping()  {
+		return new PingSystemBuilder();
+	}
+	
+	public static class PingDatabaseSystemBuilder extends RequestBuilder<Boolean, String, PingDatabaseSystemBuilder> {
+		
+		public PingDatabaseSystemBuilder() {
+			super(Boolean.class, "system", "pingDatabase");
+		}
+	}
 
-        return new RequestBuilder<String>(String.class, "system", "getVersion", kparams);
-    }
-
-    public static RequestBuilder<Boolean> ping()  {
-        Params kparams = new Params();
-
-        return new RequestBuilder<Boolean>(Boolean.class, "system", "ping", kparams);
-    }
-
-    public static RequestBuilder<Boolean> pingDatabase()  {
-        Params kparams = new Params();
-
-        return new RequestBuilder<Boolean>(Boolean.class, "system", "pingDatabase", kparams);
-    }
+    public static PingDatabaseSystemBuilder pingDatabase()  {
+		return new PingDatabaseSystemBuilder();
+	}
 }

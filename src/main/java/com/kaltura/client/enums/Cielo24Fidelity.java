@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum Cielo24Fidelity implements EnumAsString {
-    MECHANICAL("MECHANICAL"),
-    PREMIUM("PREMIUM"),
-    PROFESSIONAL("PROFESSIONAL");
+	MECHANICAL("MECHANICAL"),
+	PREMIUM("PREMIUM"),
+	PROFESSIONAL("PROFESSIONAL");
 
-    private String value;
+	private String value;
 
-    Cielo24Fidelity(String value) {
-        this.value = value;
-    }
+	Cielo24Fidelity(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static Cielo24Fidelity get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over Cielo24Fidelity defined values and compare the inner value with the given one:
-        for(Cielo24Fidelity item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return Cielo24Fidelity.values().length > 0 ? Cielo24Fidelity.values()[0]: null;
+	public static Cielo24Fidelity get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over Cielo24Fidelity defined values and compare the inner value with the given one:
+		for(Cielo24Fidelity item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return Cielo24Fidelity.values().length > 0 ? Cielo24Fidelity.values()[0]: null;
    }
 }

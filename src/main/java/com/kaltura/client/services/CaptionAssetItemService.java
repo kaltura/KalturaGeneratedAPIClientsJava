@@ -27,15 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.BaseEntry;
 import com.kaltura.client.types.BaseEntryFilter;
 import com.kaltura.client.types.CaptionAssetItem;
 import com.kaltura.client.types.CaptionAssetItemFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -46,48 +43,58 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Search caption asset items  */
 public class CaptionAssetItemService {
+	
+	public static class SearchCaptionAssetItemBuilder extends ListResponseRequestBuilder<CaptionAssetItem, CaptionAssetItem.Tokenizer, SearchCaptionAssetItemBuilder> {
+		
+		public SearchCaptionAssetItemBuilder(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager) {
+			super(CaptionAssetItem.class, "captionsearch_captionassetitem", "search");
+			params.add("entryFilter", entryFilter);
+			params.add("captionAssetItemFilter", captionAssetItemFilter);
+			params.add("captionAssetItemPager", captionAssetItemPager);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<CaptionAssetItem>> search()  {
-        return search(null);
-    }
+	public static SearchCaptionAssetItemBuilder search()  {
+		return search(null);
+	}
 
-    public static RequestBuilder<ListResponse<CaptionAssetItem>> search(BaseEntryFilter entryFilter)  {
-        return search(entryFilter, null);
-    }
+	public static SearchCaptionAssetItemBuilder search(BaseEntryFilter entryFilter)  {
+		return search(entryFilter, null);
+	}
 
-    public static RequestBuilder<ListResponse<CaptionAssetItem>> search(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter)  {
-        return search(entryFilter, captionAssetItemFilter, null);
-    }
-
-	/**  Search caption asset items by filter, pager and free text  */
-    public static RequestBuilder<ListResponse<CaptionAssetItem>> search(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
-        Params kparams = new Params();
-        kparams.add("entryFilter", entryFilter);
-        kparams.add("captionAssetItemFilter", captionAssetItemFilter);
-        kparams.add("captionAssetItemPager", captionAssetItemPager);
-
-        return new ListResponseRequestBuilder<CaptionAssetItem>(CaptionAssetItem.class, "captionsearch_captionassetitem", "search", kparams);
-    }
-
-    public static RequestBuilder<ListResponse<BaseEntry>> searchEntries()  {
-        return searchEntries(null);
-    }
-
-    public static RequestBuilder<ListResponse<BaseEntry>> searchEntries(BaseEntryFilter entryFilter)  {
-        return searchEntries(entryFilter, null);
-    }
-
-    public static RequestBuilder<ListResponse<BaseEntry>> searchEntries(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter)  {
-        return searchEntries(entryFilter, captionAssetItemFilter, null);
-    }
+	public static SearchCaptionAssetItemBuilder search(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter)  {
+		return search(entryFilter, captionAssetItemFilter, null);
+	}
 
 	/**  Search caption asset items by filter, pager and free text  */
-    public static RequestBuilder<ListResponse<BaseEntry>> searchEntries(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
-        Params kparams = new Params();
-        kparams.add("entryFilter", entryFilter);
-        kparams.add("captionAssetItemFilter", captionAssetItemFilter);
-        kparams.add("captionAssetItemPager", captionAssetItemPager);
+    public static SearchCaptionAssetItemBuilder search(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
+		return new SearchCaptionAssetItemBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
+	}
+	
+	public static class SearchEntriesCaptionAssetItemBuilder extends ListResponseRequestBuilder<BaseEntry, BaseEntry.Tokenizer, SearchEntriesCaptionAssetItemBuilder> {
+		
+		public SearchEntriesCaptionAssetItemBuilder(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager) {
+			super(BaseEntry.class, "captionsearch_captionassetitem", "searchEntries");
+			params.add("entryFilter", entryFilter);
+			params.add("captionAssetItemFilter", captionAssetItemFilter);
+			params.add("captionAssetItemPager", captionAssetItemPager);
+		}
+	}
 
-        return new ListResponseRequestBuilder<BaseEntry>(BaseEntry.class, "captionsearch_captionassetitem", "searchEntries", kparams);
-    }
+	public static SearchEntriesCaptionAssetItemBuilder searchEntries()  {
+		return searchEntries(null);
+	}
+
+	public static SearchEntriesCaptionAssetItemBuilder searchEntries(BaseEntryFilter entryFilter)  {
+		return searchEntries(entryFilter, null);
+	}
+
+	public static SearchEntriesCaptionAssetItemBuilder searchEntries(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter)  {
+		return searchEntries(entryFilter, captionAssetItemFilter, null);
+	}
+
+	/**  Search caption asset items by filter, pager and free text  */
+    public static SearchEntriesCaptionAssetItemBuilder searchEntries(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
+		return new SearchEntriesCaptionAssetItemBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
+	}
 }

@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AppTokenHashType implements EnumAsString {
-    MD5("MD5"),
-    SHA1("SHA1"),
-    SHA256("SHA256"),
-    SHA512("SHA512");
+	MD5("MD5"),
+	SHA1("SHA1"),
+	SHA256("SHA256"),
+	SHA512("SHA512");
 
-    private String value;
+	private String value;
 
-    AppTokenHashType(String value) {
-        this.value = value;
-    }
+	AppTokenHashType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AppTokenHashType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AppTokenHashType defined values and compare the inner value with the given one:
-        for(AppTokenHashType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AppTokenHashType.values().length > 0 ? AppTokenHashType.values()[0]: null;
+	public static AppTokenHashType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AppTokenHashType defined values and compare the inner value with the given one:
+		for(AppTokenHashType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AppTokenHashType.values().length > 0 ? AppTokenHashType.values()[0]: null;
    }
 }

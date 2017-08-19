@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +41,80 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionRemoteMediaFile.Tokenizer.class)
 public class DistributionRemoteMediaFile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String version();
+		String assetId();
+		String remoteId();
+	}
 
-    private String version;
-    private String assetId;
-    private String remoteId;
+	private String version;
+	private String assetId;
+	private String remoteId;
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
-    // remoteId:
-    public String getRemoteId(){
-        return this.remoteId;
-    }
-    public void setRemoteId(String remoteId){
-        this.remoteId = remoteId;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
+
+	// remoteId:
+	public String getRemoteId(){
+		return this.remoteId;
+	}
+	public void setRemoteId(String remoteId){
+		this.remoteId = remoteId;
+	}
+
+	public void remoteId(String multirequestToken){
+		setToken("remoteId", multirequestToken);
+	}
 
 
-    public DistributionRemoteMediaFile() {
-       super();
-    }
+	public DistributionRemoteMediaFile() {
+		super();
+	}
 
-    public DistributionRemoteMediaFile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionRemoteMediaFile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        version = GsonParser.parseString(jsonObject.get("version"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
+		// set members values:
+		version = GsonParser.parseString(jsonObject.get("version"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionRemoteMediaFile");
-        kparams.add("version", this.version);
-        kparams.add("assetId", this.assetId);
-        kparams.add("remoteId", this.remoteId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionRemoteMediaFile");
+		kparams.add("version", this.version);
+		kparams.add("assetId", this.assetId);
+		kparams.add("remoteId", this.remoteId);
+		return kparams;
+	}
 
 }
 

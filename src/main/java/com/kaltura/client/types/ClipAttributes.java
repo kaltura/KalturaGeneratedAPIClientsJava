@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  Clip operation attributes  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ClipAttributes.Tokenizer.class)
 public class ClipAttributes extends OperationAttributes {
+	
+	public interface Tokenizer extends OperationAttributes.Tokenizer {
+		String offset();
+		String duration();
+	}
 
 	/**  Offset in milliseconds  */
-    private Integer offset;
+	private Integer offset;
 	/**  Duration in milliseconds  */
-    private Integer duration;
+	private Integer duration;
 
-    // offset:
-    public Integer getOffset(){
-        return this.offset;
-    }
-    public void setOffset(Integer offset){
-        this.offset = offset;
-    }
+	// offset:
+	public Integer getOffset(){
+		return this.offset;
+	}
+	public void setOffset(Integer offset){
+		this.offset = offset;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void offset(String multirequestToken){
+		setToken("offset", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
 
 
-    public ClipAttributes() {
-       super();
-    }
+	public ClipAttributes() {
+		super();
+	}
 
-    public ClipAttributes(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ClipAttributes(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        offset = GsonParser.parseInt(jsonObject.get("offset"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
+		// set members values:
+		offset = GsonParser.parseInt(jsonObject.get("offset"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaClipAttributes");
-        kparams.add("offset", this.offset);
-        kparams.add("duration", this.duration);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaClipAttributes");
+		kparams.add("offset", this.offset);
+		kparams.add("duration", this.duration);
+		return kparams;
+	}
 
 }
 

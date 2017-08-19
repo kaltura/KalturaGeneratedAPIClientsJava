@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +40,27 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  This class represents object-specific data passed to the   bulk upload job.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadUserData.Tokenizer.class)
 public class BulkUploadUserData extends BulkUploadObjectData {
+	
+	public interface Tokenizer extends BulkUploadObjectData.Tokenizer {
+	}
 
 
 
-    public BulkUploadUserData() {
-       super();
-    }
+	public BulkUploadUserData() {
+		super();
+	}
 
-    public BulkUploadUserData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public BulkUploadUserData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBulkUploadUserData");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadUserData");
+		return kparams;
+	}
 
 }
 

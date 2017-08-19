@@ -34,7 +34,8 @@ import com.kaltura.client.types.DistributionJobProviderData;
 import com.kaltura.client.types.DistributionProfile;
 import com.kaltura.client.types.EntryDistribution;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -45,144 +46,182 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DistributionJobData.Tokenizer.class)
 public class DistributionJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String distributionProfileId();
+		DistributionProfile.Tokenizer distributionProfile();
+		String entryDistributionId();
+		EntryDistribution.Tokenizer entryDistribution();
+		String remoteId();
+		String providerType();
+		DistributionJobProviderData.Tokenizer providerData();
+		String results();
+		String sentData();
+		RequestBuilder.ListTokenizer<DistributionRemoteMediaFile.Tokenizer> mediaFiles();
+	}
 
-    private Integer distributionProfileId;
-    private DistributionProfile distributionProfile;
-    private Integer entryDistributionId;
-    private EntryDistribution entryDistribution;
+	private Integer distributionProfileId;
+	private DistributionProfile distributionProfile;
+	private Integer entryDistributionId;
+	private EntryDistribution entryDistribution;
 	/**  Id of the media in the remote system  */
-    private String remoteId;
-    private DistributionProviderType providerType;
+	private String remoteId;
+	private DistributionProviderType providerType;
 	/**  Additional data that relevant for the provider only  */
-    private DistributionJobProviderData providerData;
+	private DistributionJobProviderData providerData;
 	/**  The results as returned from the remote destination  */
-    private String results;
+	private String results;
 	/**  The data as sent to the remote destination  */
-    private String sentData;
+	private String sentData;
 	/**  Stores array of media files that submitted to the destination site   Could be
 	  used later for media update  */
-    private List<DistributionRemoteMediaFile> mediaFiles;
+	private List<DistributionRemoteMediaFile> mediaFiles;
 
-    // distributionProfileId:
-    public Integer getDistributionProfileId(){
-        return this.distributionProfileId;
-    }
-    public void setDistributionProfileId(Integer distributionProfileId){
-        this.distributionProfileId = distributionProfileId;
-    }
+	// distributionProfileId:
+	public Integer getDistributionProfileId(){
+		return this.distributionProfileId;
+	}
+	public void setDistributionProfileId(Integer distributionProfileId){
+		this.distributionProfileId = distributionProfileId;
+	}
 
-    // distributionProfile:
-    public DistributionProfile getDistributionProfile(){
-        return this.distributionProfile;
-    }
-    public void setDistributionProfile(DistributionProfile distributionProfile){
-        this.distributionProfile = distributionProfile;
-    }
+	public void distributionProfileId(String multirequestToken){
+		setToken("distributionProfileId", multirequestToken);
+	}
 
-    // entryDistributionId:
-    public Integer getEntryDistributionId(){
-        return this.entryDistributionId;
-    }
-    public void setEntryDistributionId(Integer entryDistributionId){
-        this.entryDistributionId = entryDistributionId;
-    }
+	// distributionProfile:
+	public DistributionProfile getDistributionProfile(){
+		return this.distributionProfile;
+	}
+	public void setDistributionProfile(DistributionProfile distributionProfile){
+		this.distributionProfile = distributionProfile;
+	}
 
-    // entryDistribution:
-    public EntryDistribution getEntryDistribution(){
-        return this.entryDistribution;
-    }
-    public void setEntryDistribution(EntryDistribution entryDistribution){
-        this.entryDistribution = entryDistribution;
-    }
+	// entryDistributionId:
+	public Integer getEntryDistributionId(){
+		return this.entryDistributionId;
+	}
+	public void setEntryDistributionId(Integer entryDistributionId){
+		this.entryDistributionId = entryDistributionId;
+	}
 
-    // remoteId:
-    public String getRemoteId(){
-        return this.remoteId;
-    }
-    public void setRemoteId(String remoteId){
-        this.remoteId = remoteId;
-    }
+	public void entryDistributionId(String multirequestToken){
+		setToken("entryDistributionId", multirequestToken);
+	}
 
-    // providerType:
-    public DistributionProviderType getProviderType(){
-        return this.providerType;
-    }
-    public void setProviderType(DistributionProviderType providerType){
-        this.providerType = providerType;
-    }
+	// entryDistribution:
+	public EntryDistribution getEntryDistribution(){
+		return this.entryDistribution;
+	}
+	public void setEntryDistribution(EntryDistribution entryDistribution){
+		this.entryDistribution = entryDistribution;
+	}
 
-    // providerData:
-    public DistributionJobProviderData getProviderData(){
-        return this.providerData;
-    }
-    public void setProviderData(DistributionJobProviderData providerData){
-        this.providerData = providerData;
-    }
+	// remoteId:
+	public String getRemoteId(){
+		return this.remoteId;
+	}
+	public void setRemoteId(String remoteId){
+		this.remoteId = remoteId;
+	}
 
-    // results:
-    public String getResults(){
-        return this.results;
-    }
-    public void setResults(String results){
-        this.results = results;
-    }
+	public void remoteId(String multirequestToken){
+		setToken("remoteId", multirequestToken);
+	}
 
-    // sentData:
-    public String getSentData(){
-        return this.sentData;
-    }
-    public void setSentData(String sentData){
-        this.sentData = sentData;
-    }
+	// providerType:
+	public DistributionProviderType getProviderType(){
+		return this.providerType;
+	}
+	public void setProviderType(DistributionProviderType providerType){
+		this.providerType = providerType;
+	}
 
-    // mediaFiles:
-    public List<DistributionRemoteMediaFile> getMediaFiles(){
-        return this.mediaFiles;
-    }
-    public void setMediaFiles(List<DistributionRemoteMediaFile> mediaFiles){
-        this.mediaFiles = mediaFiles;
-    }
+	public void providerType(String multirequestToken){
+		setToken("providerType", multirequestToken);
+	}
+
+	// providerData:
+	public DistributionJobProviderData getProviderData(){
+		return this.providerData;
+	}
+	public void setProviderData(DistributionJobProviderData providerData){
+		this.providerData = providerData;
+	}
+
+	// results:
+	public String getResults(){
+		return this.results;
+	}
+	public void setResults(String results){
+		this.results = results;
+	}
+
+	public void results(String multirequestToken){
+		setToken("results", multirequestToken);
+	}
+
+	// sentData:
+	public String getSentData(){
+		return this.sentData;
+	}
+	public void setSentData(String sentData){
+		this.sentData = sentData;
+	}
+
+	public void sentData(String multirequestToken){
+		setToken("sentData", multirequestToken);
+	}
+
+	// mediaFiles:
+	public List<DistributionRemoteMediaFile> getMediaFiles(){
+		return this.mediaFiles;
+	}
+	public void setMediaFiles(List<DistributionRemoteMediaFile> mediaFiles){
+		this.mediaFiles = mediaFiles;
+	}
 
 
-    public DistributionJobData() {
-       super();
-    }
+	public DistributionJobData() {
+		super();
+	}
 
-    public DistributionJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DistributionJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        distributionProfileId = GsonParser.parseInt(jsonObject.get("distributionProfileId"));
-        distributionProfile = GsonParser.parseObject(jsonObject.getAsJsonObject("distributionProfile"), DistributionProfile.class);
-        entryDistributionId = GsonParser.parseInt(jsonObject.get("entryDistributionId"));
-        entryDistribution = GsonParser.parseObject(jsonObject.getAsJsonObject("entryDistribution"), EntryDistribution.class);
-        remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
-        providerType = DistributionProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
-        providerData = GsonParser.parseObject(jsonObject.getAsJsonObject("providerData"), DistributionJobProviderData.class);
-        results = GsonParser.parseString(jsonObject.get("results"));
-        sentData = GsonParser.parseString(jsonObject.get("sentData"));
-        mediaFiles = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaFiles"), DistributionRemoteMediaFile.class);
+		// set members values:
+		distributionProfileId = GsonParser.parseInt(jsonObject.get("distributionProfileId"));
+		distributionProfile = GsonParser.parseObject(jsonObject.getAsJsonObject("distributionProfile"), DistributionProfile.class);
+		entryDistributionId = GsonParser.parseInt(jsonObject.get("entryDistributionId"));
+		entryDistribution = GsonParser.parseObject(jsonObject.getAsJsonObject("entryDistribution"), EntryDistribution.class);
+		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
+		providerType = DistributionProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
+		providerData = GsonParser.parseObject(jsonObject.getAsJsonObject("providerData"), DistributionJobProviderData.class);
+		results = GsonParser.parseString(jsonObject.get("results"));
+		sentData = GsonParser.parseString(jsonObject.get("sentData"));
+		mediaFiles = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaFiles"), DistributionRemoteMediaFile.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDistributionJobData");
-        kparams.add("distributionProfileId", this.distributionProfileId);
-        kparams.add("distributionProfile", this.distributionProfile);
-        kparams.add("entryDistributionId", this.entryDistributionId);
-        kparams.add("entryDistribution", this.entryDistribution);
-        kparams.add("remoteId", this.remoteId);
-        kparams.add("providerType", this.providerType);
-        kparams.add("providerData", this.providerData);
-        kparams.add("results", this.results);
-        kparams.add("sentData", this.sentData);
-        kparams.add("mediaFiles", this.mediaFiles);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDistributionJobData");
+		kparams.add("distributionProfileId", this.distributionProfileId);
+		kparams.add("distributionProfile", this.distributionProfile);
+		kparams.add("entryDistributionId", this.entryDistributionId);
+		kparams.add("entryDistribution", this.entryDistribution);
+		kparams.add("remoteId", this.remoteId);
+		kparams.add("providerType", this.providerType);
+		kparams.add("providerData", this.providerData);
+		kparams.add("results", this.results);
+		kparams.add("sentData", this.sentData);
+		kparams.add("mediaFiles", this.mediaFiles);
+		return kparams;
+	}
 
 }
 

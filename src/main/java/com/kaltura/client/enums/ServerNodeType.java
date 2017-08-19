@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ServerNodeType implements EnumAsString {
-    WOWZA_MEDIA_SERVER("wowza.WOWZA_MEDIA_SERVER"),
-    EDGE("1");
+	WOWZA_MEDIA_SERVER("wowza.WOWZA_MEDIA_SERVER"),
+	EDGE("1");
 
-    private String value;
+	private String value;
 
-    ServerNodeType(String value) {
-        this.value = value;
-    }
+	ServerNodeType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static ServerNodeType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ServerNodeType defined values and compare the inner value with the given one:
-        for(ServerNodeType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ServerNodeType.values().length > 0 ? ServerNodeType.values()[0]: null;
+	public static ServerNodeType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ServerNodeType defined values and compare the inner value with the given one:
+		for(ServerNodeType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ServerNodeType.values().length > 0 ? ServerNodeType.values()[0]: null;
    }
 }

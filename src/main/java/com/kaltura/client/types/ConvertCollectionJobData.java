@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,105 +42,140 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConvertCollectionJobData.Tokenizer.class)
 public class ConvertCollectionJobData extends ConvartableJobData {
+	
+	public interface Tokenizer extends ConvartableJobData.Tokenizer {
+		String destDirLocalPath();
+		String destDirRemoteUrl();
+		String destFileName();
+		String inputXmlLocalPath();
+		String inputXmlRemoteUrl();
+		String commandLinesStr();
+		RequestBuilder.ListTokenizer<ConvertCollectionFlavorData.Tokenizer> flavors();
+	}
 
-    private String destDirLocalPath;
-    private String destDirRemoteUrl;
-    private String destFileName;
-    private String inputXmlLocalPath;
-    private String inputXmlRemoteUrl;
-    private String commandLinesStr;
-    private List<ConvertCollectionFlavorData> flavors;
+	private String destDirLocalPath;
+	private String destDirRemoteUrl;
+	private String destFileName;
+	private String inputXmlLocalPath;
+	private String inputXmlRemoteUrl;
+	private String commandLinesStr;
+	private List<ConvertCollectionFlavorData> flavors;
 
-    // destDirLocalPath:
-    public String getDestDirLocalPath(){
-        return this.destDirLocalPath;
-    }
-    public void setDestDirLocalPath(String destDirLocalPath){
-        this.destDirLocalPath = destDirLocalPath;
-    }
+	// destDirLocalPath:
+	public String getDestDirLocalPath(){
+		return this.destDirLocalPath;
+	}
+	public void setDestDirLocalPath(String destDirLocalPath){
+		this.destDirLocalPath = destDirLocalPath;
+	}
 
-    // destDirRemoteUrl:
-    public String getDestDirRemoteUrl(){
-        return this.destDirRemoteUrl;
-    }
-    public void setDestDirRemoteUrl(String destDirRemoteUrl){
-        this.destDirRemoteUrl = destDirRemoteUrl;
-    }
+	public void destDirLocalPath(String multirequestToken){
+		setToken("destDirLocalPath", multirequestToken);
+	}
 
-    // destFileName:
-    public String getDestFileName(){
-        return this.destFileName;
-    }
-    public void setDestFileName(String destFileName){
-        this.destFileName = destFileName;
-    }
+	// destDirRemoteUrl:
+	public String getDestDirRemoteUrl(){
+		return this.destDirRemoteUrl;
+	}
+	public void setDestDirRemoteUrl(String destDirRemoteUrl){
+		this.destDirRemoteUrl = destDirRemoteUrl;
+	}
 
-    // inputXmlLocalPath:
-    public String getInputXmlLocalPath(){
-        return this.inputXmlLocalPath;
-    }
-    public void setInputXmlLocalPath(String inputXmlLocalPath){
-        this.inputXmlLocalPath = inputXmlLocalPath;
-    }
+	public void destDirRemoteUrl(String multirequestToken){
+		setToken("destDirRemoteUrl", multirequestToken);
+	}
 
-    // inputXmlRemoteUrl:
-    public String getInputXmlRemoteUrl(){
-        return this.inputXmlRemoteUrl;
-    }
-    public void setInputXmlRemoteUrl(String inputXmlRemoteUrl){
-        this.inputXmlRemoteUrl = inputXmlRemoteUrl;
-    }
+	// destFileName:
+	public String getDestFileName(){
+		return this.destFileName;
+	}
+	public void setDestFileName(String destFileName){
+		this.destFileName = destFileName;
+	}
 
-    // commandLinesStr:
-    public String getCommandLinesStr(){
-        return this.commandLinesStr;
-    }
-    public void setCommandLinesStr(String commandLinesStr){
-        this.commandLinesStr = commandLinesStr;
-    }
+	public void destFileName(String multirequestToken){
+		setToken("destFileName", multirequestToken);
+	}
 
-    // flavors:
-    public List<ConvertCollectionFlavorData> getFlavors(){
-        return this.flavors;
-    }
-    public void setFlavors(List<ConvertCollectionFlavorData> flavors){
-        this.flavors = flavors;
-    }
+	// inputXmlLocalPath:
+	public String getInputXmlLocalPath(){
+		return this.inputXmlLocalPath;
+	}
+	public void setInputXmlLocalPath(String inputXmlLocalPath){
+		this.inputXmlLocalPath = inputXmlLocalPath;
+	}
+
+	public void inputXmlLocalPath(String multirequestToken){
+		setToken("inputXmlLocalPath", multirequestToken);
+	}
+
+	// inputXmlRemoteUrl:
+	public String getInputXmlRemoteUrl(){
+		return this.inputXmlRemoteUrl;
+	}
+	public void setInputXmlRemoteUrl(String inputXmlRemoteUrl){
+		this.inputXmlRemoteUrl = inputXmlRemoteUrl;
+	}
+
+	public void inputXmlRemoteUrl(String multirequestToken){
+		setToken("inputXmlRemoteUrl", multirequestToken);
+	}
+
+	// commandLinesStr:
+	public String getCommandLinesStr(){
+		return this.commandLinesStr;
+	}
+	public void setCommandLinesStr(String commandLinesStr){
+		this.commandLinesStr = commandLinesStr;
+	}
+
+	public void commandLinesStr(String multirequestToken){
+		setToken("commandLinesStr", multirequestToken);
+	}
+
+	// flavors:
+	public List<ConvertCollectionFlavorData> getFlavors(){
+		return this.flavors;
+	}
+	public void setFlavors(List<ConvertCollectionFlavorData> flavors){
+		this.flavors = flavors;
+	}
 
 
-    public ConvertCollectionJobData() {
-       super();
-    }
+	public ConvertCollectionJobData() {
+		super();
+	}
 
-    public ConvertCollectionJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ConvertCollectionJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        destDirLocalPath = GsonParser.parseString(jsonObject.get("destDirLocalPath"));
-        destDirRemoteUrl = GsonParser.parseString(jsonObject.get("destDirRemoteUrl"));
-        destFileName = GsonParser.parseString(jsonObject.get("destFileName"));
-        inputXmlLocalPath = GsonParser.parseString(jsonObject.get("inputXmlLocalPath"));
-        inputXmlRemoteUrl = GsonParser.parseString(jsonObject.get("inputXmlRemoteUrl"));
-        commandLinesStr = GsonParser.parseString(jsonObject.get("commandLinesStr"));
-        flavors = GsonParser.parseArray(jsonObject.getAsJsonArray("flavors"), ConvertCollectionFlavorData.class);
+		// set members values:
+		destDirLocalPath = GsonParser.parseString(jsonObject.get("destDirLocalPath"));
+		destDirRemoteUrl = GsonParser.parseString(jsonObject.get("destDirRemoteUrl"));
+		destFileName = GsonParser.parseString(jsonObject.get("destFileName"));
+		inputXmlLocalPath = GsonParser.parseString(jsonObject.get("inputXmlLocalPath"));
+		inputXmlRemoteUrl = GsonParser.parseString(jsonObject.get("inputXmlRemoteUrl"));
+		commandLinesStr = GsonParser.parseString(jsonObject.get("commandLinesStr"));
+		flavors = GsonParser.parseArray(jsonObject.getAsJsonArray("flavors"), ConvertCollectionFlavorData.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaConvertCollectionJobData");
-        kparams.add("destDirLocalPath", this.destDirLocalPath);
-        kparams.add("destDirRemoteUrl", this.destDirRemoteUrl);
-        kparams.add("destFileName", this.destFileName);
-        kparams.add("inputXmlLocalPath", this.inputXmlLocalPath);
-        kparams.add("inputXmlRemoteUrl", this.inputXmlRemoteUrl);
-        kparams.add("commandLinesStr", this.commandLinesStr);
-        kparams.add("flavors", this.flavors);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConvertCollectionJobData");
+		kparams.add("destDirLocalPath", this.destDirLocalPath);
+		kparams.add("destDirRemoteUrl", this.destDirRemoteUrl);
+		kparams.add("destFileName", this.destFileName);
+		kparams.add("inputXmlLocalPath", this.inputXmlLocalPath);
+		kparams.add("inputXmlRemoteUrl", this.inputXmlRemoteUrl);
+		kparams.add("commandLinesStr", this.commandLinesStr);
+		kparams.add("flavors", this.flavors);
+		return kparams;
+	}
 
 }
 

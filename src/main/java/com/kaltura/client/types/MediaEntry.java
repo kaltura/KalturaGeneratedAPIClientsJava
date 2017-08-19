@@ -33,7 +33,8 @@ import com.kaltura.client.enums.MediaType;
 import com.kaltura.client.enums.SearchProviderType;
 import com.kaltura.client.enums.SourceType;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -44,169 +45,229 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MediaEntry.Tokenizer.class)
 public class MediaEntry extends PlayableEntry {
+	
+	public interface Tokenizer extends PlayableEntry.Tokenizer {
+		String mediaType();
+		String conversionQuality();
+		String sourceType();
+		String searchProviderType();
+		String searchProviderId();
+		String creditUserName();
+		String creditUrl();
+		String mediaDate();
+		String dataUrl();
+		String flavorParamsIds();
+		String isTrimDisabled();
+		RequestBuilder.ListTokenizer<StreamContainer.Tokenizer> streams();
+	}
 
 	/**  The media type of the entry  */
-    private MediaType mediaType;
+	private MediaType mediaType;
 	/**  Override the default conversion quality  */
-    private String conversionQuality;
+	private String conversionQuality;
 	/**  The source type of the entry  */
-    private SourceType sourceType;
+	private SourceType sourceType;
 	/**  The search provider type used to import this entry  */
-    private SearchProviderType searchProviderType;
+	private SearchProviderType searchProviderType;
 	/**  The ID of the media in the importing site  */
-    private String searchProviderId;
+	private String searchProviderId;
 	/**  The user name used for credits  */
-    private String creditUserName;
+	private String creditUserName;
 	/**  The URL for credits  */
-    private String creditUrl;
+	private String creditUrl;
 	/**  The media date extracted from EXIF data (For images) as Unix timestamp (In
 	  seconds)  */
-    private Integer mediaDate;
+	private Integer mediaDate;
 	/**  The URL used for playback. This is not the download URL.  */
-    private String dataUrl;
+	private String dataUrl;
 	/**  Comma separated flavor params ids that exists for this media entry  */
-    private String flavorParamsIds;
+	private String flavorParamsIds;
 	/**  True if trim action is disabled for this entry  */
-    private Boolean isTrimDisabled;
+	private Boolean isTrimDisabled;
 	/**  Array of streams that exists on the entry  */
-    private List<StreamContainer> streams;
+	private List<StreamContainer> streams;
 
-    // mediaType:
-    public MediaType getMediaType(){
-        return this.mediaType;
-    }
-    public void setMediaType(MediaType mediaType){
-        this.mediaType = mediaType;
-    }
+	// mediaType:
+	public MediaType getMediaType(){
+		return this.mediaType;
+	}
+	public void setMediaType(MediaType mediaType){
+		this.mediaType = mediaType;
+	}
 
-    // conversionQuality:
-    public String getConversionQuality(){
-        return this.conversionQuality;
-    }
-    public void setConversionQuality(String conversionQuality){
-        this.conversionQuality = conversionQuality;
-    }
+	public void mediaType(String multirequestToken){
+		setToken("mediaType", multirequestToken);
+	}
 
-    // sourceType:
-    public SourceType getSourceType(){
-        return this.sourceType;
-    }
-    public void setSourceType(SourceType sourceType){
-        this.sourceType = sourceType;
-    }
+	// conversionQuality:
+	public String getConversionQuality(){
+		return this.conversionQuality;
+	}
+	public void setConversionQuality(String conversionQuality){
+		this.conversionQuality = conversionQuality;
+	}
 
-    // searchProviderType:
-    public SearchProviderType getSearchProviderType(){
-        return this.searchProviderType;
-    }
-    public void setSearchProviderType(SearchProviderType searchProviderType){
-        this.searchProviderType = searchProviderType;
-    }
+	public void conversionQuality(String multirequestToken){
+		setToken("conversionQuality", multirequestToken);
+	}
 
-    // searchProviderId:
-    public String getSearchProviderId(){
-        return this.searchProviderId;
-    }
-    public void setSearchProviderId(String searchProviderId){
-        this.searchProviderId = searchProviderId;
-    }
+	// sourceType:
+	public SourceType getSourceType(){
+		return this.sourceType;
+	}
+	public void setSourceType(SourceType sourceType){
+		this.sourceType = sourceType;
+	}
 
-    // creditUserName:
-    public String getCreditUserName(){
-        return this.creditUserName;
-    }
-    public void setCreditUserName(String creditUserName){
-        this.creditUserName = creditUserName;
-    }
+	public void sourceType(String multirequestToken){
+		setToken("sourceType", multirequestToken);
+	}
 
-    // creditUrl:
-    public String getCreditUrl(){
-        return this.creditUrl;
-    }
-    public void setCreditUrl(String creditUrl){
-        this.creditUrl = creditUrl;
-    }
+	// searchProviderType:
+	public SearchProviderType getSearchProviderType(){
+		return this.searchProviderType;
+	}
+	public void setSearchProviderType(SearchProviderType searchProviderType){
+		this.searchProviderType = searchProviderType;
+	}
 
-    // mediaDate:
-    public Integer getMediaDate(){
-        return this.mediaDate;
-    }
-    public void setMediaDate(Integer mediaDate){
-        this.mediaDate = mediaDate;
-    }
+	public void searchProviderType(String multirequestToken){
+		setToken("searchProviderType", multirequestToken);
+	}
 
-    // dataUrl:
-    public String getDataUrl(){
-        return this.dataUrl;
-    }
-    public void setDataUrl(String dataUrl){
-        this.dataUrl = dataUrl;
-    }
+	// searchProviderId:
+	public String getSearchProviderId(){
+		return this.searchProviderId;
+	}
+	public void setSearchProviderId(String searchProviderId){
+		this.searchProviderId = searchProviderId;
+	}
 
-    // flavorParamsIds:
-    public String getFlavorParamsIds(){
-        return this.flavorParamsIds;
-    }
-    public void setFlavorParamsIds(String flavorParamsIds){
-        this.flavorParamsIds = flavorParamsIds;
-    }
+	public void searchProviderId(String multirequestToken){
+		setToken("searchProviderId", multirequestToken);
+	}
 
-    // isTrimDisabled:
-    public Boolean getIsTrimDisabled(){
-        return this.isTrimDisabled;
-    }
-    public void setIsTrimDisabled(Boolean isTrimDisabled){
-        this.isTrimDisabled = isTrimDisabled;
-    }
+	// creditUserName:
+	public String getCreditUserName(){
+		return this.creditUserName;
+	}
+	public void setCreditUserName(String creditUserName){
+		this.creditUserName = creditUserName;
+	}
 
-    // streams:
-    public List<StreamContainer> getStreams(){
-        return this.streams;
-    }
-    public void setStreams(List<StreamContainer> streams){
-        this.streams = streams;
-    }
+	public void creditUserName(String multirequestToken){
+		setToken("creditUserName", multirequestToken);
+	}
+
+	// creditUrl:
+	public String getCreditUrl(){
+		return this.creditUrl;
+	}
+	public void setCreditUrl(String creditUrl){
+		this.creditUrl = creditUrl;
+	}
+
+	public void creditUrl(String multirequestToken){
+		setToken("creditUrl", multirequestToken);
+	}
+
+	// mediaDate:
+	public Integer getMediaDate(){
+		return this.mediaDate;
+	}
+	public void setMediaDate(Integer mediaDate){
+		this.mediaDate = mediaDate;
+	}
+
+	public void mediaDate(String multirequestToken){
+		setToken("mediaDate", multirequestToken);
+	}
+
+	// dataUrl:
+	public String getDataUrl(){
+		return this.dataUrl;
+	}
+	public void setDataUrl(String dataUrl){
+		this.dataUrl = dataUrl;
+	}
+
+	public void dataUrl(String multirequestToken){
+		setToken("dataUrl", multirequestToken);
+	}
+
+	// flavorParamsIds:
+	public String getFlavorParamsIds(){
+		return this.flavorParamsIds;
+	}
+	public void setFlavorParamsIds(String flavorParamsIds){
+		this.flavorParamsIds = flavorParamsIds;
+	}
+
+	public void flavorParamsIds(String multirequestToken){
+		setToken("flavorParamsIds", multirequestToken);
+	}
+
+	// isTrimDisabled:
+	public Boolean getIsTrimDisabled(){
+		return this.isTrimDisabled;
+	}
+	public void setIsTrimDisabled(Boolean isTrimDisabled){
+		this.isTrimDisabled = isTrimDisabled;
+	}
+
+	public void isTrimDisabled(String multirequestToken){
+		setToken("isTrimDisabled", multirequestToken);
+	}
+
+	// streams:
+	public List<StreamContainer> getStreams(){
+		return this.streams;
+	}
+	public void setStreams(List<StreamContainer> streams){
+		this.streams = streams;
+	}
 
 
-    public MediaEntry() {
-       super();
-    }
+	public MediaEntry() {
+		super();
+	}
 
-    public MediaEntry(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MediaEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        mediaType = MediaType.get(GsonParser.parseInt(jsonObject.get("mediaType")));
-        conversionQuality = GsonParser.parseString(jsonObject.get("conversionQuality"));
-        sourceType = SourceType.get(GsonParser.parseString(jsonObject.get("sourceType")));
-        searchProviderType = SearchProviderType.get(GsonParser.parseInt(jsonObject.get("searchProviderType")));
-        searchProviderId = GsonParser.parseString(jsonObject.get("searchProviderId"));
-        creditUserName = GsonParser.parseString(jsonObject.get("creditUserName"));
-        creditUrl = GsonParser.parseString(jsonObject.get("creditUrl"));
-        mediaDate = GsonParser.parseInt(jsonObject.get("mediaDate"));
-        dataUrl = GsonParser.parseString(jsonObject.get("dataUrl"));
-        flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
-        isTrimDisabled = GsonParser.parseBoolean(jsonObject.get("isTrimDisabled"));
-        streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), StreamContainer.class);
+		// set members values:
+		mediaType = MediaType.get(GsonParser.parseInt(jsonObject.get("mediaType")));
+		conversionQuality = GsonParser.parseString(jsonObject.get("conversionQuality"));
+		sourceType = SourceType.get(GsonParser.parseString(jsonObject.get("sourceType")));
+		searchProviderType = SearchProviderType.get(GsonParser.parseInt(jsonObject.get("searchProviderType")));
+		searchProviderId = GsonParser.parseString(jsonObject.get("searchProviderId"));
+		creditUserName = GsonParser.parseString(jsonObject.get("creditUserName"));
+		creditUrl = GsonParser.parseString(jsonObject.get("creditUrl"));
+		mediaDate = GsonParser.parseInt(jsonObject.get("mediaDate"));
+		dataUrl = GsonParser.parseString(jsonObject.get("dataUrl"));
+		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		isTrimDisabled = GsonParser.parseBoolean(jsonObject.get("isTrimDisabled"));
+		streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), StreamContainer.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMediaEntry");
-        kparams.add("mediaType", this.mediaType);
-        kparams.add("conversionQuality", this.conversionQuality);
-        kparams.add("sourceType", this.sourceType);
-        kparams.add("searchProviderType", this.searchProviderType);
-        kparams.add("searchProviderId", this.searchProviderId);
-        kparams.add("creditUserName", this.creditUserName);
-        kparams.add("creditUrl", this.creditUrl);
-        kparams.add("streams", this.streams);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMediaEntry");
+		kparams.add("mediaType", this.mediaType);
+		kparams.add("conversionQuality", this.conversionQuality);
+		kparams.add("sourceType", this.sourceType);
+		kparams.add("searchProviderType", this.searchProviderType);
+		kparams.add("searchProviderId", this.searchProviderId);
+		kparams.add("creditUserName", this.creditUserName);
+		kparams.add("creditUrl", this.creditUrl);
+		kparams.add("streams", this.streams);
+		return kparams;
+	}
 
 }
 

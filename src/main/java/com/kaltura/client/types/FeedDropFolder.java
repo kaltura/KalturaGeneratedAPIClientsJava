@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.FeedItemInfo;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +41,60 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FeedDropFolder.Tokenizer.class)
 public class FeedDropFolder extends DropFolder {
+	
+	public interface Tokenizer extends DropFolder.Tokenizer {
+		String itemHandlingLimit();
+		FeedItemInfo.Tokenizer feedItemInfo();
+	}
 
-    private Integer itemHandlingLimit;
-    private FeedItemInfo feedItemInfo;
+	private Integer itemHandlingLimit;
+	private FeedItemInfo feedItemInfo;
 
-    // itemHandlingLimit:
-    public Integer getItemHandlingLimit(){
-        return this.itemHandlingLimit;
-    }
-    public void setItemHandlingLimit(Integer itemHandlingLimit){
-        this.itemHandlingLimit = itemHandlingLimit;
-    }
+	// itemHandlingLimit:
+	public Integer getItemHandlingLimit(){
+		return this.itemHandlingLimit;
+	}
+	public void setItemHandlingLimit(Integer itemHandlingLimit){
+		this.itemHandlingLimit = itemHandlingLimit;
+	}
 
-    // feedItemInfo:
-    public FeedItemInfo getFeedItemInfo(){
-        return this.feedItemInfo;
-    }
-    public void setFeedItemInfo(FeedItemInfo feedItemInfo){
-        this.feedItemInfo = feedItemInfo;
-    }
+	public void itemHandlingLimit(String multirequestToken){
+		setToken("itemHandlingLimit", multirequestToken);
+	}
+
+	// feedItemInfo:
+	public FeedItemInfo getFeedItemInfo(){
+		return this.feedItemInfo;
+	}
+	public void setFeedItemInfo(FeedItemInfo feedItemInfo){
+		this.feedItemInfo = feedItemInfo;
+	}
 
 
-    public FeedDropFolder() {
-       super();
-    }
+	public FeedDropFolder() {
+		super();
+	}
 
-    public FeedDropFolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FeedDropFolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        itemHandlingLimit = GsonParser.parseInt(jsonObject.get("itemHandlingLimit"));
-        feedItemInfo = GsonParser.parseObject(jsonObject.getAsJsonObject("feedItemInfo"), FeedItemInfo.class);
+		// set members values:
+		itemHandlingLimit = GsonParser.parseInt(jsonObject.get("itemHandlingLimit"));
+		feedItemInfo = GsonParser.parseObject(jsonObject.getAsJsonObject("feedItemInfo"), FeedItemInfo.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFeedDropFolder");
-        kparams.add("itemHandlingLimit", this.itemHandlingLimit);
-        kparams.add("feedItemInfo", this.feedItemInfo);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFeedDropFolder");
+		kparams.add("itemHandlingLimit", this.itemHandlingLimit);
+		kparams.add("feedItemInfo", this.feedItemInfo);
+		return kparams;
+	}
 
 }
 

@@ -30,7 +30,8 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -41,51 +42,61 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventNotificationDispatchJobData.Tokenizer.class)
 public class EventNotificationDispatchJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String templateId();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> contentParameters();
+	}
 
-    private Integer templateId;
+	private Integer templateId;
 	/**  Define the content dynamic parameters  */
-    private List<KeyValue> contentParameters;
+	private List<KeyValue> contentParameters;
 
-    // templateId:
-    public Integer getTemplateId(){
-        return this.templateId;
-    }
-    public void setTemplateId(Integer templateId){
-        this.templateId = templateId;
-    }
+	// templateId:
+	public Integer getTemplateId(){
+		return this.templateId;
+	}
+	public void setTemplateId(Integer templateId){
+		this.templateId = templateId;
+	}
 
-    // contentParameters:
-    public List<KeyValue> getContentParameters(){
-        return this.contentParameters;
-    }
-    public void setContentParameters(List<KeyValue> contentParameters){
-        this.contentParameters = contentParameters;
-    }
+	public void templateId(String multirequestToken){
+		setToken("templateId", multirequestToken);
+	}
+
+	// contentParameters:
+	public List<KeyValue> getContentParameters(){
+		return this.contentParameters;
+	}
+	public void setContentParameters(List<KeyValue> contentParameters){
+		this.contentParameters = contentParameters;
+	}
 
 
-    public EventNotificationDispatchJobData() {
-       super();
-    }
+	public EventNotificationDispatchJobData() {
+		super();
+	}
 
-    public EventNotificationDispatchJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventNotificationDispatchJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        templateId = GsonParser.parseInt(jsonObject.get("templateId"));
-        contentParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("contentParameters"), KeyValue.class);
+		// set members values:
+		templateId = GsonParser.parseInt(jsonObject.get("templateId"));
+		contentParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("contentParameters"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventNotificationDispatchJobData");
-        kparams.add("templateId", this.templateId);
-        kparams.add("contentParameters", this.contentParameters);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventNotificationDispatchJobData");
+		kparams.add("templateId", this.templateId);
+		kparams.add("contentParameters", this.contentParameters);
+		return kparams;
+	}
 
 }
 

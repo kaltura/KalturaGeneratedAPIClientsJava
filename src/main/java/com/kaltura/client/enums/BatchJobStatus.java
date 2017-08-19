@@ -34,48 +34,48 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobStatus implements EnumAsInt {
-    PENDING(0),
-    QUEUED(1),
-    PROCESSING(2),
-    PROCESSED(3),
-    MOVEFILE(4),
-    FINISHED(5),
-    FAILED(6),
-    ABORTED(7),
-    ALMOST_DONE(8),
-    RETRY(9),
-    FATAL(10),
-    DONT_PROCESS(11),
-    FINISHED_PARTIALLY(12);
+	PENDING(0),
+	QUEUED(1),
+	PROCESSING(2),
+	PROCESSED(3),
+	MOVEFILE(4),
+	FINISHED(5),
+	FAILED(6),
+	ABORTED(7),
+	ALMOST_DONE(8),
+	RETRY(9),
+	FATAL(10),
+	DONT_PROCESS(11),
+	FINISHED_PARTIALLY(12);
 
-    private int value;
+	private int value;
 
-    BatchJobStatus(int value) {
-        this.value = value;
-    }
+	BatchJobStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static BatchJobStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BatchJobStatus defined values and compare the inner value with the given one:
-        for(BatchJobStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BatchJobStatus.values().length > 0 ? BatchJobStatus.values()[0]: null;
+	public static BatchJobStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BatchJobStatus defined values and compare the inner value with the given one:
+		for(BatchJobStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BatchJobStatus.values().length > 0 ? BatchJobStatus.values()[0]: null;
    }
 }

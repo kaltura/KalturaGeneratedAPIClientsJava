@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ScheduleEventType implements EnumAsInt {
-    RECORD(1),
-    LIVE_STREAM(2);
+	RECORD(1),
+	LIVE_STREAM(2);
 
-    private int value;
+	private int value;
 
-    ScheduleEventType(int value) {
-        this.value = value;
-    }
+	ScheduleEventType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static ScheduleEventType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over ScheduleEventType defined values and compare the inner value with the given one:
-        for(ScheduleEventType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return ScheduleEventType.values().length > 0 ? ScheduleEventType.values()[0]: null;
+	public static ScheduleEventType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ScheduleEventType defined values and compare the inner value with the given one:
+		for(ScheduleEventType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ScheduleEventType.values().length > 0 ? ScheduleEventType.values()[0]: null;
    }
 }

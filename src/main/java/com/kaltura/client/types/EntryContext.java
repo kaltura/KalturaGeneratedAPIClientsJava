@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,52 +40,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EntryContext.Tokenizer.class)
 public class EntryContext extends Context {
+	
+	public interface Tokenizer extends Context.Tokenizer {
+		String entryId();
+		String followEntryRedirect();
+	}
 
 	/**  The entry ID in the context of which the playlist should be built  */
-    private String entryId;
+	private String entryId;
 	/**  Is this a redirected entry followup?  */
-    private Boolean followEntryRedirect;
+	private Boolean followEntryRedirect;
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // followEntryRedirect:
-    public Boolean getFollowEntryRedirect(){
-        return this.followEntryRedirect;
-    }
-    public void setFollowEntryRedirect(Boolean followEntryRedirect){
-        this.followEntryRedirect = followEntryRedirect;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
+
+	// followEntryRedirect:
+	public Boolean getFollowEntryRedirect(){
+		return this.followEntryRedirect;
+	}
+	public void setFollowEntryRedirect(Boolean followEntryRedirect){
+		this.followEntryRedirect = followEntryRedirect;
+	}
+
+	public void followEntryRedirect(String multirequestToken){
+		setToken("followEntryRedirect", multirequestToken);
+	}
 
 
-    public EntryContext() {
-       super();
-    }
+	public EntryContext() {
+		super();
+	}
 
-    public EntryContext(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EntryContext(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        followEntryRedirect = GsonParser.parseBoolean(jsonObject.get("followEntryRedirect"));
+		// set members values:
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		followEntryRedirect = GsonParser.parseBoolean(jsonObject.get("followEntryRedirect"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEntryContext");
-        kparams.add("entryId", this.entryId);
-        kparams.add("followEntryRedirect", this.followEntryRedirect);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEntryContext");
+		kparams.add("entryId", this.entryId);
+		kparams.add("followEntryRedirect", this.followEntryRedirect);
+		return kparams;
+	}
 
 }
 

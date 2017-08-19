@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ScheduleEventRecurrenceType;
 import com.kaltura.client.enums.ScheduleEventStatus;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,347 +42,496 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ScheduleEventBaseFilter.Tokenizer.class)
 public abstract class ScheduleEventBaseFilter extends RelatedFilter {
+	
+	public interface Tokenizer extends RelatedFilter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String idNotIn();
+		String parentIdEqual();
+		String parentIdIn();
+		String parentIdNotIn();
+		String statusEqual();
+		String statusIn();
+		String startDateGreaterThanOrEqual();
+		String startDateLessThanOrEqual();
+		String endDateGreaterThanOrEqual();
+		String endDateLessThanOrEqual();
+		String referenceIdEqual();
+		String referenceIdIn();
+		String ownerIdEqual();
+		String ownerIdIn();
+		String priorityEqual();
+		String priorityIn();
+		String priorityGreaterThanOrEqual();
+		String priorityLessThanOrEqual();
+		String recurrenceTypeEqual();
+		String recurrenceTypeIn();
+		String tagsLike();
+		String tagsMultiLikeOr();
+		String tagsMultiLikeAnd();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private String idNotIn;
-    private Integer parentIdEqual;
-    private String parentIdIn;
-    private String parentIdNotIn;
-    private ScheduleEventStatus statusEqual;
-    private String statusIn;
-    private Integer startDateGreaterThanOrEqual;
-    private Integer startDateLessThanOrEqual;
-    private Integer endDateGreaterThanOrEqual;
-    private Integer endDateLessThanOrEqual;
-    private String referenceIdEqual;
-    private String referenceIdIn;
-    private String ownerIdEqual;
-    private String ownerIdIn;
-    private Integer priorityEqual;
-    private String priorityIn;
-    private Integer priorityGreaterThanOrEqual;
-    private Integer priorityLessThanOrEqual;
-    private ScheduleEventRecurrenceType recurrenceTypeEqual;
-    private String recurrenceTypeIn;
-    private String tagsLike;
-    private String tagsMultiLikeOr;
-    private String tagsMultiLikeAnd;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
+	private Integer idEqual;
+	private String idIn;
+	private String idNotIn;
+	private Integer parentIdEqual;
+	private String parentIdIn;
+	private String parentIdNotIn;
+	private ScheduleEventStatus statusEqual;
+	private String statusIn;
+	private Integer startDateGreaterThanOrEqual;
+	private Integer startDateLessThanOrEqual;
+	private Integer endDateGreaterThanOrEqual;
+	private Integer endDateLessThanOrEqual;
+	private String referenceIdEqual;
+	private String referenceIdIn;
+	private String ownerIdEqual;
+	private String ownerIdIn;
+	private Integer priorityEqual;
+	private String priorityIn;
+	private Integer priorityGreaterThanOrEqual;
+	private Integer priorityLessThanOrEqual;
+	private ScheduleEventRecurrenceType recurrenceTypeEqual;
+	private String recurrenceTypeIn;
+	private String tagsLike;
+	private String tagsMultiLikeOr;
+	private String tagsMultiLikeAnd;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // idNotIn:
-    public String getIdNotIn(){
-        return this.idNotIn;
-    }
-    public void setIdNotIn(String idNotIn){
-        this.idNotIn = idNotIn;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // parentIdEqual:
-    public Integer getParentIdEqual(){
-        return this.parentIdEqual;
-    }
-    public void setParentIdEqual(Integer parentIdEqual){
-        this.parentIdEqual = parentIdEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // parentIdIn:
-    public String getParentIdIn(){
-        return this.parentIdIn;
-    }
-    public void setParentIdIn(String parentIdIn){
-        this.parentIdIn = parentIdIn;
-    }
+	// idNotIn:
+	public String getIdNotIn(){
+		return this.idNotIn;
+	}
+	public void setIdNotIn(String idNotIn){
+		this.idNotIn = idNotIn;
+	}
 
-    // parentIdNotIn:
-    public String getParentIdNotIn(){
-        return this.parentIdNotIn;
-    }
-    public void setParentIdNotIn(String parentIdNotIn){
-        this.parentIdNotIn = parentIdNotIn;
-    }
+	public void idNotIn(String multirequestToken){
+		setToken("idNotIn", multirequestToken);
+	}
 
-    // statusEqual:
-    public ScheduleEventStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(ScheduleEventStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	// parentIdEqual:
+	public Integer getParentIdEqual(){
+		return this.parentIdEqual;
+	}
+	public void setParentIdEqual(Integer parentIdEqual){
+		this.parentIdEqual = parentIdEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void parentIdEqual(String multirequestToken){
+		setToken("parentIdEqual", multirequestToken);
+	}
 
-    // startDateGreaterThanOrEqual:
-    public Integer getStartDateGreaterThanOrEqual(){
-        return this.startDateGreaterThanOrEqual;
-    }
-    public void setStartDateGreaterThanOrEqual(Integer startDateGreaterThanOrEqual){
-        this.startDateGreaterThanOrEqual = startDateGreaterThanOrEqual;
-    }
+	// parentIdIn:
+	public String getParentIdIn(){
+		return this.parentIdIn;
+	}
+	public void setParentIdIn(String parentIdIn){
+		this.parentIdIn = parentIdIn;
+	}
 
-    // startDateLessThanOrEqual:
-    public Integer getStartDateLessThanOrEqual(){
-        return this.startDateLessThanOrEqual;
-    }
-    public void setStartDateLessThanOrEqual(Integer startDateLessThanOrEqual){
-        this.startDateLessThanOrEqual = startDateLessThanOrEqual;
-    }
+	public void parentIdIn(String multirequestToken){
+		setToken("parentIdIn", multirequestToken);
+	}
 
-    // endDateGreaterThanOrEqual:
-    public Integer getEndDateGreaterThanOrEqual(){
-        return this.endDateGreaterThanOrEqual;
-    }
-    public void setEndDateGreaterThanOrEqual(Integer endDateGreaterThanOrEqual){
-        this.endDateGreaterThanOrEqual = endDateGreaterThanOrEqual;
-    }
+	// parentIdNotIn:
+	public String getParentIdNotIn(){
+		return this.parentIdNotIn;
+	}
+	public void setParentIdNotIn(String parentIdNotIn){
+		this.parentIdNotIn = parentIdNotIn;
+	}
 
-    // endDateLessThanOrEqual:
-    public Integer getEndDateLessThanOrEqual(){
-        return this.endDateLessThanOrEqual;
-    }
-    public void setEndDateLessThanOrEqual(Integer endDateLessThanOrEqual){
-        this.endDateLessThanOrEqual = endDateLessThanOrEqual;
-    }
+	public void parentIdNotIn(String multirequestToken){
+		setToken("parentIdNotIn", multirequestToken);
+	}
 
-    // referenceIdEqual:
-    public String getReferenceIdEqual(){
-        return this.referenceIdEqual;
-    }
-    public void setReferenceIdEqual(String referenceIdEqual){
-        this.referenceIdEqual = referenceIdEqual;
-    }
+	// statusEqual:
+	public ScheduleEventStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(ScheduleEventStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
 
-    // referenceIdIn:
-    public String getReferenceIdIn(){
-        return this.referenceIdIn;
-    }
-    public void setReferenceIdIn(String referenceIdIn){
-        this.referenceIdIn = referenceIdIn;
-    }
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
 
-    // ownerIdEqual:
-    public String getOwnerIdEqual(){
-        return this.ownerIdEqual;
-    }
-    public void setOwnerIdEqual(String ownerIdEqual){
-        this.ownerIdEqual = ownerIdEqual;
-    }
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
 
-    // ownerIdIn:
-    public String getOwnerIdIn(){
-        return this.ownerIdIn;
-    }
-    public void setOwnerIdIn(String ownerIdIn){
-        this.ownerIdIn = ownerIdIn;
-    }
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
 
-    // priorityEqual:
-    public Integer getPriorityEqual(){
-        return this.priorityEqual;
-    }
-    public void setPriorityEqual(Integer priorityEqual){
-        this.priorityEqual = priorityEqual;
-    }
+	// startDateGreaterThanOrEqual:
+	public Integer getStartDateGreaterThanOrEqual(){
+		return this.startDateGreaterThanOrEqual;
+	}
+	public void setStartDateGreaterThanOrEqual(Integer startDateGreaterThanOrEqual){
+		this.startDateGreaterThanOrEqual = startDateGreaterThanOrEqual;
+	}
 
-    // priorityIn:
-    public String getPriorityIn(){
-        return this.priorityIn;
-    }
-    public void setPriorityIn(String priorityIn){
-        this.priorityIn = priorityIn;
-    }
+	public void startDateGreaterThanOrEqual(String multirequestToken){
+		setToken("startDateGreaterThanOrEqual", multirequestToken);
+	}
 
-    // priorityGreaterThanOrEqual:
-    public Integer getPriorityGreaterThanOrEqual(){
-        return this.priorityGreaterThanOrEqual;
-    }
-    public void setPriorityGreaterThanOrEqual(Integer priorityGreaterThanOrEqual){
-        this.priorityGreaterThanOrEqual = priorityGreaterThanOrEqual;
-    }
+	// startDateLessThanOrEqual:
+	public Integer getStartDateLessThanOrEqual(){
+		return this.startDateLessThanOrEqual;
+	}
+	public void setStartDateLessThanOrEqual(Integer startDateLessThanOrEqual){
+		this.startDateLessThanOrEqual = startDateLessThanOrEqual;
+	}
 
-    // priorityLessThanOrEqual:
-    public Integer getPriorityLessThanOrEqual(){
-        return this.priorityLessThanOrEqual;
-    }
-    public void setPriorityLessThanOrEqual(Integer priorityLessThanOrEqual){
-        this.priorityLessThanOrEqual = priorityLessThanOrEqual;
-    }
+	public void startDateLessThanOrEqual(String multirequestToken){
+		setToken("startDateLessThanOrEqual", multirequestToken);
+	}
 
-    // recurrenceTypeEqual:
-    public ScheduleEventRecurrenceType getRecurrenceTypeEqual(){
-        return this.recurrenceTypeEqual;
-    }
-    public void setRecurrenceTypeEqual(ScheduleEventRecurrenceType recurrenceTypeEqual){
-        this.recurrenceTypeEqual = recurrenceTypeEqual;
-    }
+	// endDateGreaterThanOrEqual:
+	public Integer getEndDateGreaterThanOrEqual(){
+		return this.endDateGreaterThanOrEqual;
+	}
+	public void setEndDateGreaterThanOrEqual(Integer endDateGreaterThanOrEqual){
+		this.endDateGreaterThanOrEqual = endDateGreaterThanOrEqual;
+	}
 
-    // recurrenceTypeIn:
-    public String getRecurrenceTypeIn(){
-        return this.recurrenceTypeIn;
-    }
-    public void setRecurrenceTypeIn(String recurrenceTypeIn){
-        this.recurrenceTypeIn = recurrenceTypeIn;
-    }
+	public void endDateGreaterThanOrEqual(String multirequestToken){
+		setToken("endDateGreaterThanOrEqual", multirequestToken);
+	}
 
-    // tagsLike:
-    public String getTagsLike(){
-        return this.tagsLike;
-    }
-    public void setTagsLike(String tagsLike){
-        this.tagsLike = tagsLike;
-    }
+	// endDateLessThanOrEqual:
+	public Integer getEndDateLessThanOrEqual(){
+		return this.endDateLessThanOrEqual;
+	}
+	public void setEndDateLessThanOrEqual(Integer endDateLessThanOrEqual){
+		this.endDateLessThanOrEqual = endDateLessThanOrEqual;
+	}
 
-    // tagsMultiLikeOr:
-    public String getTagsMultiLikeOr(){
-        return this.tagsMultiLikeOr;
-    }
-    public void setTagsMultiLikeOr(String tagsMultiLikeOr){
-        this.tagsMultiLikeOr = tagsMultiLikeOr;
-    }
+	public void endDateLessThanOrEqual(String multirequestToken){
+		setToken("endDateLessThanOrEqual", multirequestToken);
+	}
 
-    // tagsMultiLikeAnd:
-    public String getTagsMultiLikeAnd(){
-        return this.tagsMultiLikeAnd;
-    }
-    public void setTagsMultiLikeAnd(String tagsMultiLikeAnd){
-        this.tagsMultiLikeAnd = tagsMultiLikeAnd;
-    }
+	// referenceIdEqual:
+	public String getReferenceIdEqual(){
+		return this.referenceIdEqual;
+	}
+	public void setReferenceIdEqual(String referenceIdEqual){
+		this.referenceIdEqual = referenceIdEqual;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void referenceIdEqual(String multirequestToken){
+		setToken("referenceIdEqual", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// referenceIdIn:
+	public String getReferenceIdIn(){
+		return this.referenceIdIn;
+	}
+	public void setReferenceIdIn(String referenceIdIn){
+		this.referenceIdIn = referenceIdIn;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void referenceIdIn(String multirequestToken){
+		setToken("referenceIdIn", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// ownerIdEqual:
+	public String getOwnerIdEqual(){
+		return this.ownerIdEqual;
+	}
+	public void setOwnerIdEqual(String ownerIdEqual){
+		this.ownerIdEqual = ownerIdEqual;
+	}
+
+	public void ownerIdEqual(String multirequestToken){
+		setToken("ownerIdEqual", multirequestToken);
+	}
+
+	// ownerIdIn:
+	public String getOwnerIdIn(){
+		return this.ownerIdIn;
+	}
+	public void setOwnerIdIn(String ownerIdIn){
+		this.ownerIdIn = ownerIdIn;
+	}
+
+	public void ownerIdIn(String multirequestToken){
+		setToken("ownerIdIn", multirequestToken);
+	}
+
+	// priorityEqual:
+	public Integer getPriorityEqual(){
+		return this.priorityEqual;
+	}
+	public void setPriorityEqual(Integer priorityEqual){
+		this.priorityEqual = priorityEqual;
+	}
+
+	public void priorityEqual(String multirequestToken){
+		setToken("priorityEqual", multirequestToken);
+	}
+
+	// priorityIn:
+	public String getPriorityIn(){
+		return this.priorityIn;
+	}
+	public void setPriorityIn(String priorityIn){
+		this.priorityIn = priorityIn;
+	}
+
+	public void priorityIn(String multirequestToken){
+		setToken("priorityIn", multirequestToken);
+	}
+
+	// priorityGreaterThanOrEqual:
+	public Integer getPriorityGreaterThanOrEqual(){
+		return this.priorityGreaterThanOrEqual;
+	}
+	public void setPriorityGreaterThanOrEqual(Integer priorityGreaterThanOrEqual){
+		this.priorityGreaterThanOrEqual = priorityGreaterThanOrEqual;
+	}
+
+	public void priorityGreaterThanOrEqual(String multirequestToken){
+		setToken("priorityGreaterThanOrEqual", multirequestToken);
+	}
+
+	// priorityLessThanOrEqual:
+	public Integer getPriorityLessThanOrEqual(){
+		return this.priorityLessThanOrEqual;
+	}
+	public void setPriorityLessThanOrEqual(Integer priorityLessThanOrEqual){
+		this.priorityLessThanOrEqual = priorityLessThanOrEqual;
+	}
+
+	public void priorityLessThanOrEqual(String multirequestToken){
+		setToken("priorityLessThanOrEqual", multirequestToken);
+	}
+
+	// recurrenceTypeEqual:
+	public ScheduleEventRecurrenceType getRecurrenceTypeEqual(){
+		return this.recurrenceTypeEqual;
+	}
+	public void setRecurrenceTypeEqual(ScheduleEventRecurrenceType recurrenceTypeEqual){
+		this.recurrenceTypeEqual = recurrenceTypeEqual;
+	}
+
+	public void recurrenceTypeEqual(String multirequestToken){
+		setToken("recurrenceTypeEqual", multirequestToken);
+	}
+
+	// recurrenceTypeIn:
+	public String getRecurrenceTypeIn(){
+		return this.recurrenceTypeIn;
+	}
+	public void setRecurrenceTypeIn(String recurrenceTypeIn){
+		this.recurrenceTypeIn = recurrenceTypeIn;
+	}
+
+	public void recurrenceTypeIn(String multirequestToken){
+		setToken("recurrenceTypeIn", multirequestToken);
+	}
+
+	// tagsLike:
+	public String getTagsLike(){
+		return this.tagsLike;
+	}
+	public void setTagsLike(String tagsLike){
+		this.tagsLike = tagsLike;
+	}
+
+	public void tagsLike(String multirequestToken){
+		setToken("tagsLike", multirequestToken);
+	}
+
+	// tagsMultiLikeOr:
+	public String getTagsMultiLikeOr(){
+		return this.tagsMultiLikeOr;
+	}
+	public void setTagsMultiLikeOr(String tagsMultiLikeOr){
+		this.tagsMultiLikeOr = tagsMultiLikeOr;
+	}
+
+	public void tagsMultiLikeOr(String multirequestToken){
+		setToken("tagsMultiLikeOr", multirequestToken);
+	}
+
+	// tagsMultiLikeAnd:
+	public String getTagsMultiLikeAnd(){
+		return this.tagsMultiLikeAnd;
+	}
+	public void setTagsMultiLikeAnd(String tagsMultiLikeAnd){
+		this.tagsMultiLikeAnd = tagsMultiLikeAnd;
+	}
+
+	public void tagsMultiLikeAnd(String multirequestToken){
+		setToken("tagsMultiLikeAnd", multirequestToken);
+	}
+
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
+
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
+
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
+
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
+
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
+
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
 
-    public ScheduleEventBaseFilter() {
-       super();
-    }
+	public ScheduleEventBaseFilter() {
+		super();
+	}
 
-    public ScheduleEventBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ScheduleEventBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
-        parentIdEqual = GsonParser.parseInt(jsonObject.get("parentIdEqual"));
-        parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
-        parentIdNotIn = GsonParser.parseString(jsonObject.get("parentIdNotIn"));
-        statusEqual = ScheduleEventStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        startDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateGreaterThanOrEqual"));
-        startDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateLessThanOrEqual"));
-        endDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateGreaterThanOrEqual"));
-        endDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateLessThanOrEqual"));
-        referenceIdEqual = GsonParser.parseString(jsonObject.get("referenceIdEqual"));
-        referenceIdIn = GsonParser.parseString(jsonObject.get("referenceIdIn"));
-        ownerIdEqual = GsonParser.parseString(jsonObject.get("ownerIdEqual"));
-        ownerIdIn = GsonParser.parseString(jsonObject.get("ownerIdIn"));
-        priorityEqual = GsonParser.parseInt(jsonObject.get("priorityEqual"));
-        priorityIn = GsonParser.parseString(jsonObject.get("priorityIn"));
-        priorityGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("priorityGreaterThanOrEqual"));
-        priorityLessThanOrEqual = GsonParser.parseInt(jsonObject.get("priorityLessThanOrEqual"));
-        recurrenceTypeEqual = ScheduleEventRecurrenceType.get(GsonParser.parseInt(jsonObject.get("recurrenceTypeEqual")));
-        recurrenceTypeIn = GsonParser.parseString(jsonObject.get("recurrenceTypeIn"));
-        tagsLike = GsonParser.parseString(jsonObject.get("tagsLike"));
-        tagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsMultiLikeOr"));
-        tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
+		parentIdEqual = GsonParser.parseInt(jsonObject.get("parentIdEqual"));
+		parentIdIn = GsonParser.parseString(jsonObject.get("parentIdIn"));
+		parentIdNotIn = GsonParser.parseString(jsonObject.get("parentIdNotIn"));
+		statusEqual = ScheduleEventStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		startDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateGreaterThanOrEqual"));
+		startDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateLessThanOrEqual"));
+		endDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateGreaterThanOrEqual"));
+		endDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateLessThanOrEqual"));
+		referenceIdEqual = GsonParser.parseString(jsonObject.get("referenceIdEqual"));
+		referenceIdIn = GsonParser.parseString(jsonObject.get("referenceIdIn"));
+		ownerIdEqual = GsonParser.parseString(jsonObject.get("ownerIdEqual"));
+		ownerIdIn = GsonParser.parseString(jsonObject.get("ownerIdIn"));
+		priorityEqual = GsonParser.parseInt(jsonObject.get("priorityEqual"));
+		priorityIn = GsonParser.parseString(jsonObject.get("priorityIn"));
+		priorityGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("priorityGreaterThanOrEqual"));
+		priorityLessThanOrEqual = GsonParser.parseInt(jsonObject.get("priorityLessThanOrEqual"));
+		recurrenceTypeEqual = ScheduleEventRecurrenceType.get(GsonParser.parseInt(jsonObject.get("recurrenceTypeEqual")));
+		recurrenceTypeIn = GsonParser.parseString(jsonObject.get("recurrenceTypeIn"));
+		tagsLike = GsonParser.parseString(jsonObject.get("tagsLike"));
+		tagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsMultiLikeOr"));
+		tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaScheduleEventBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("idNotIn", this.idNotIn);
-        kparams.add("parentIdEqual", this.parentIdEqual);
-        kparams.add("parentIdIn", this.parentIdIn);
-        kparams.add("parentIdNotIn", this.parentIdNotIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("startDateGreaterThanOrEqual", this.startDateGreaterThanOrEqual);
-        kparams.add("startDateLessThanOrEqual", this.startDateLessThanOrEqual);
-        kparams.add("endDateGreaterThanOrEqual", this.endDateGreaterThanOrEqual);
-        kparams.add("endDateLessThanOrEqual", this.endDateLessThanOrEqual);
-        kparams.add("referenceIdEqual", this.referenceIdEqual);
-        kparams.add("referenceIdIn", this.referenceIdIn);
-        kparams.add("ownerIdEqual", this.ownerIdEqual);
-        kparams.add("ownerIdIn", this.ownerIdIn);
-        kparams.add("priorityEqual", this.priorityEqual);
-        kparams.add("priorityIn", this.priorityIn);
-        kparams.add("priorityGreaterThanOrEqual", this.priorityGreaterThanOrEqual);
-        kparams.add("priorityLessThanOrEqual", this.priorityLessThanOrEqual);
-        kparams.add("recurrenceTypeEqual", this.recurrenceTypeEqual);
-        kparams.add("recurrenceTypeIn", this.recurrenceTypeIn);
-        kparams.add("tagsLike", this.tagsLike);
-        kparams.add("tagsMultiLikeOr", this.tagsMultiLikeOr);
-        kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaScheduleEventBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("idNotIn", this.idNotIn);
+		kparams.add("parentIdEqual", this.parentIdEqual);
+		kparams.add("parentIdIn", this.parentIdIn);
+		kparams.add("parentIdNotIn", this.parentIdNotIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("startDateGreaterThanOrEqual", this.startDateGreaterThanOrEqual);
+		kparams.add("startDateLessThanOrEqual", this.startDateLessThanOrEqual);
+		kparams.add("endDateGreaterThanOrEqual", this.endDateGreaterThanOrEqual);
+		kparams.add("endDateLessThanOrEqual", this.endDateLessThanOrEqual);
+		kparams.add("referenceIdEqual", this.referenceIdEqual);
+		kparams.add("referenceIdIn", this.referenceIdIn);
+		kparams.add("ownerIdEqual", this.ownerIdEqual);
+		kparams.add("ownerIdIn", this.ownerIdIn);
+		kparams.add("priorityEqual", this.priorityEqual);
+		kparams.add("priorityIn", this.priorityIn);
+		kparams.add("priorityGreaterThanOrEqual", this.priorityGreaterThanOrEqual);
+		kparams.add("priorityLessThanOrEqual", this.priorityLessThanOrEqual);
+		kparams.add("recurrenceTypeEqual", this.recurrenceTypeEqual);
+		kparams.add("recurrenceTypeIn", this.recurrenceTypeIn);
+		kparams.add("tagsLike", this.tagsLike);
+		kparams.add("tagsMultiLikeOr", this.tagsMultiLikeOr);
+		kparams.add("tagsMultiLikeAnd", this.tagsMultiLikeAnd);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		return kparams;
+	}
 
 }
 

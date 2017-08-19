@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.ServerNode;
 import com.kaltura.client.types.ServerNodeFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -45,82 +43,146 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Server Node service  */
 public class ServerNodeService {
+	
+	public static class AddServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, AddServerNodeBuilder> {
+		
+		public AddServerNodeBuilder(ServerNode serverNode) {
+			super(ServerNode.class, "servernode", "add");
+			params.add("serverNode", serverNode);
+		}
+	}
 
 	/**  Adds a server node to the Kaltura DB.  */
-    public static RequestBuilder<ServerNode> add(ServerNode serverNode)  {
-        Params kparams = new Params();
-        kparams.add("serverNode", serverNode);
-
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "add", kparams);
-    }
+    public static AddServerNodeBuilder add(ServerNode serverNode)  {
+		return new AddServerNodeBuilder(serverNode);
+	}
+	
+	public static class DeleteServerNodeBuilder extends NullRequestBuilder {
+		
+		public DeleteServerNodeBuilder(String serverNodeId) {
+			super("servernode", "delete");
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
 
 	/**  delete server node by id  */
-    public static RequestBuilder<Void> delete(String serverNodeId)  {
-        Params kparams = new Params();
-        kparams.add("serverNodeId", serverNodeId);
-
-        return new NullRequestBuilder("servernode", "delete", kparams);
-    }
+    public static DeleteServerNodeBuilder delete(String serverNodeId)  {
+		return new DeleteServerNodeBuilder(serverNodeId);
+	}
+	
+	public static class DisableServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, DisableServerNodeBuilder> {
+		
+		public DisableServerNodeBuilder(String serverNodeId) {
+			super(ServerNode.class, "servernode", "disable");
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
 
 	/**  Disable server node by id  */
-    public static RequestBuilder<ServerNode> disable(String serverNodeId)  {
-        Params kparams = new Params();
-        kparams.add("serverNodeId", serverNodeId);
-
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "disable", kparams);
-    }
+    public static DisableServerNodeBuilder disable(String serverNodeId)  {
+		return new DisableServerNodeBuilder(serverNodeId);
+	}
+	
+	public static class EnableServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, EnableServerNodeBuilder> {
+		
+		public EnableServerNodeBuilder(String serverNodeId) {
+			super(ServerNode.class, "servernode", "enable");
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
 
 	/**  Enable server node by id  */
-    public static RequestBuilder<ServerNode> enable(String serverNodeId)  {
-        Params kparams = new Params();
-        kparams.add("serverNodeId", serverNodeId);
-
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "enable", kparams);
-    }
+    public static EnableServerNodeBuilder enable(String serverNodeId)  {
+		return new EnableServerNodeBuilder(serverNodeId);
+	}
+	
+	public static class GetServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, GetServerNodeBuilder> {
+		
+		public GetServerNodeBuilder(int serverNodeId) {
+			super(ServerNode.class, "servernode", "get");
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
 
 	/**  Get server node by id  */
-    public static RequestBuilder<ServerNode> get(int serverNodeId)  {
-        Params kparams = new Params();
-        kparams.add("serverNodeId", serverNodeId);
+    public static GetServerNodeBuilder get(int serverNodeId)  {
+		return new GetServerNodeBuilder(serverNodeId);
+	}
+	
+	public static class ListServerNodeBuilder extends ListResponseRequestBuilder<ServerNode, ServerNode.Tokenizer, ListServerNodeBuilder> {
+		
+		public ListServerNodeBuilder(ServerNodeFilter filter, FilterPager pager) {
+			super(ServerNode.class, "servernode", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "get", kparams);
-    }
+	public static ListServerNodeBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<ServerNode>> list()  {
-        return list(null);
-    }
+	public static ListServerNodeBuilder list(ServerNodeFilter filter)  {
+		return list(filter, null);
+	}
 
-    public static RequestBuilder<ListResponse<ServerNode>> list(ServerNodeFilter filter)  {
-        return list(filter, null);
-    }
+    public static ListServerNodeBuilder list(ServerNodeFilter filter, FilterPager pager)  {
+		return new ListServerNodeBuilder(filter, pager);
+	}
+	
+	public static class ReportStatusServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, ReportStatusServerNodeBuilder> {
+		
+		public ReportStatusServerNodeBuilder(String hostName, ServerNode serverNode) {
+			super(ServerNode.class, "servernode", "reportStatus");
+			params.add("hostName", hostName);
+			params.add("serverNode", serverNode);
+		}
+		
+		public void hostName(String multirequestToken) {
+			params.add("hostName", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<ListResponse<ServerNode>> list(ServerNodeFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<ServerNode>(ServerNode.class, "servernode", "list", kparams);
-    }
-
-    public static RequestBuilder<ServerNode> reportStatus(String hostName)  {
-        return reportStatus(hostName, null);
-    }
+	public static ReportStatusServerNodeBuilder reportStatus(String hostName)  {
+		return reportStatus(hostName, null);
+	}
 
 	/**  Update server node status  */
-    public static RequestBuilder<ServerNode> reportStatus(String hostName, ServerNode serverNode)  {
-        Params kparams = new Params();
-        kparams.add("hostName", hostName);
-        kparams.add("serverNode", serverNode);
-
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "reportStatus", kparams);
-    }
+    public static ReportStatusServerNodeBuilder reportStatus(String hostName, ServerNode serverNode)  {
+		return new ReportStatusServerNodeBuilder(hostName, serverNode);
+	}
+	
+	public static class UpdateServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, UpdateServerNodeBuilder> {
+		
+		public UpdateServerNodeBuilder(int serverNodeId, ServerNode serverNode) {
+			super(ServerNode.class, "servernode", "update");
+			params.add("serverNodeId", serverNodeId);
+			params.add("serverNode", serverNode);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
 
 	/**  Update server node by id  */
-    public static RequestBuilder<ServerNode> update(int serverNodeId, ServerNode serverNode)  {
-        Params kparams = new Params();
-        kparams.add("serverNodeId", serverNodeId);
-        kparams.add("serverNode", serverNode);
-
-        return new RequestBuilder<ServerNode>(ServerNode.class, "servernode", "update", kparams);
-    }
+    public static UpdateServerNodeBuilder update(int serverNodeId, ServerNode serverNode)  {
+		return new UpdateServerNodeBuilder(serverNodeId, serverNode);
+	}
 }

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +40,64 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IndexAdvancedFilter.Tokenizer.class)
 public class IndexAdvancedFilter extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String indexIdGreaterThan();
+		String depthGreaterThanEqual();
+	}
 
-    private Integer indexIdGreaterThan;
-    private Integer depthGreaterThanEqual;
+	private Integer indexIdGreaterThan;
+	private Integer depthGreaterThanEqual;
 
-    // indexIdGreaterThan:
-    public Integer getIndexIdGreaterThan(){
-        return this.indexIdGreaterThan;
-    }
-    public void setIndexIdGreaterThan(Integer indexIdGreaterThan){
-        this.indexIdGreaterThan = indexIdGreaterThan;
-    }
+	// indexIdGreaterThan:
+	public Integer getIndexIdGreaterThan(){
+		return this.indexIdGreaterThan;
+	}
+	public void setIndexIdGreaterThan(Integer indexIdGreaterThan){
+		this.indexIdGreaterThan = indexIdGreaterThan;
+	}
 
-    // depthGreaterThanEqual:
-    public Integer getDepthGreaterThanEqual(){
-        return this.depthGreaterThanEqual;
-    }
-    public void setDepthGreaterThanEqual(Integer depthGreaterThanEqual){
-        this.depthGreaterThanEqual = depthGreaterThanEqual;
-    }
+	public void indexIdGreaterThan(String multirequestToken){
+		setToken("indexIdGreaterThan", multirequestToken);
+	}
+
+	// depthGreaterThanEqual:
+	public Integer getDepthGreaterThanEqual(){
+		return this.depthGreaterThanEqual;
+	}
+	public void setDepthGreaterThanEqual(Integer depthGreaterThanEqual){
+		this.depthGreaterThanEqual = depthGreaterThanEqual;
+	}
+
+	public void depthGreaterThanEqual(String multirequestToken){
+		setToken("depthGreaterThanEqual", multirequestToken);
+	}
 
 
-    public IndexAdvancedFilter() {
-       super();
-    }
+	public IndexAdvancedFilter() {
+		super();
+	}
 
-    public IndexAdvancedFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public IndexAdvancedFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        indexIdGreaterThan = GsonParser.parseInt(jsonObject.get("indexIdGreaterThan"));
-        depthGreaterThanEqual = GsonParser.parseInt(jsonObject.get("depthGreaterThanEqual"));
+		// set members values:
+		indexIdGreaterThan = GsonParser.parseInt(jsonObject.get("indexIdGreaterThan"));
+		depthGreaterThanEqual = GsonParser.parseInt(jsonObject.get("depthGreaterThanEqual"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaIndexAdvancedFilter");
-        kparams.add("indexIdGreaterThan", this.indexIdGreaterThan);
-        kparams.add("depthGreaterThanEqual", this.depthGreaterThanEqual);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIndexAdvancedFilter");
+		kparams.add("indexIdGreaterThan", this.indexIdGreaterThan);
+		kparams.add("depthGreaterThanEqual", this.depthGreaterThanEqual);
+		return kparams;
+	}
 
 }
 

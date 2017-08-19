@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataProfileCreateMode implements EnumAsInt {
-    API(1),
-    KMC(2),
-    APP(3);
+	API(1),
+	KMC(2),
+	APP(3);
 
-    private int value;
+	private int value;
 
-    MetadataProfileCreateMode(int value) {
-        this.value = value;
-    }
+	MetadataProfileCreateMode(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static MetadataProfileCreateMode get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MetadataProfileCreateMode defined values and compare the inner value with the given one:
-        for(MetadataProfileCreateMode item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MetadataProfileCreateMode.values().length > 0 ? MetadataProfileCreateMode.values()[0]: null;
+	public static MetadataProfileCreateMode get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MetadataProfileCreateMode defined values and compare the inner value with the given one:
+		for(MetadataProfileCreateMode item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MetadataProfileCreateMode.values().length > 0 ? MetadataProfileCreateMode.values()[0]: null;
    }
 }

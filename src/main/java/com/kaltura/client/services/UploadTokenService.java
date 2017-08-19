@@ -29,9 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.UploadToken;
 import com.kaltura.client.types.UploadTokenFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -49,112 +47,169 @@ import java.io.InputStream;
  */
 
 public class UploadTokenService {
+	
+	public static class AddUploadTokenBuilder extends RequestBuilder<UploadToken, UploadToken.Tokenizer, AddUploadTokenBuilder> {
+		
+		public AddUploadTokenBuilder(UploadToken uploadToken) {
+			super(UploadToken.class, "uploadtoken", "add");
+			params.add("uploadToken", uploadToken);
+		}
+	}
 
-    public static RequestBuilder<UploadToken> add()  {
-        return add(null);
-    }
+	public static AddUploadTokenBuilder add()  {
+		return add(null);
+	}
 
 	/**  Adds new upload token to upload a file  */
-    public static RequestBuilder<UploadToken> add(UploadToken uploadToken)  {
-        Params kparams = new Params();
-        kparams.add("uploadToken", uploadToken);
-
-        return new RequestBuilder<UploadToken>(UploadToken.class, "uploadtoken", "add", kparams);
-    }
+    public static AddUploadTokenBuilder add(UploadToken uploadToken)  {
+		return new AddUploadTokenBuilder(uploadToken);
+	}
+	
+	public static class DeleteUploadTokenBuilder extends NullRequestBuilder {
+		
+		public DeleteUploadTokenBuilder(String uploadTokenId) {
+			super("uploadtoken", "delete");
+			params.add("uploadTokenId", uploadTokenId);
+		}
+		
+		public void uploadTokenId(String multirequestToken) {
+			params.add("uploadTokenId", multirequestToken);
+		}
+	}
 
 	/**  Deletes the upload token by upload token id  */
-    public static RequestBuilder<Void> delete(String uploadTokenId)  {
-        Params kparams = new Params();
-        kparams.add("uploadTokenId", uploadTokenId);
-
-        return new NullRequestBuilder("uploadtoken", "delete", kparams);
-    }
+    public static DeleteUploadTokenBuilder delete(String uploadTokenId)  {
+		return new DeleteUploadTokenBuilder(uploadTokenId);
+	}
+	
+	public static class GetUploadTokenBuilder extends RequestBuilder<UploadToken, UploadToken.Tokenizer, GetUploadTokenBuilder> {
+		
+		public GetUploadTokenBuilder(String uploadTokenId) {
+			super(UploadToken.class, "uploadtoken", "get");
+			params.add("uploadTokenId", uploadTokenId);
+		}
+		
+		public void uploadTokenId(String multirequestToken) {
+			params.add("uploadTokenId", multirequestToken);
+		}
+	}
 
 	/**  Get upload token by id  */
-    public static RequestBuilder<UploadToken> get(String uploadTokenId)  {
-        Params kparams = new Params();
-        kparams.add("uploadTokenId", uploadTokenId);
+    public static GetUploadTokenBuilder get(String uploadTokenId)  {
+		return new GetUploadTokenBuilder(uploadTokenId);
+	}
+	
+	public static class ListUploadTokenBuilder extends ListResponseRequestBuilder<UploadToken, UploadToken.Tokenizer, ListUploadTokenBuilder> {
+		
+		public ListUploadTokenBuilder(UploadTokenFilter filter, FilterPager pager) {
+			super(UploadToken.class, "uploadtoken", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<UploadToken>(UploadToken.class, "uploadtoken", "get", kparams);
-    }
+	public static ListUploadTokenBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<UploadToken>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<UploadToken>> list(UploadTokenFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListUploadTokenBuilder list(UploadTokenFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List upload token by filter with pager support.    When using a user session the
 	  service will be restricted to users objects only.  */
-    public static RequestBuilder<ListResponse<UploadToken>> list(UploadTokenFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
+    public static ListUploadTokenBuilder list(UploadTokenFilter filter, FilterPager pager)  {
+		return new ListUploadTokenBuilder(filter, pager);
+	}
+	
+	public static class UploadUploadTokenBuilder extends RequestBuilder<UploadToken, UploadToken.Tokenizer, UploadUploadTokenBuilder> {
+		
+		public UploadUploadTokenBuilder(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk, double resumeAt) {
+			super(UploadToken.class, "uploadtoken", "upload");
+			params.add("uploadTokenId", uploadTokenId);
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("resume", resume);
+			params.add("finalChunk", finalChunk);
+			params.add("resumeAt", resumeAt);
+		}
+		
+		public void uploadTokenId(String multirequestToken) {
+			params.add("uploadTokenId", multirequestToken);
+		}
+		
+		public void resume(String multirequestToken) {
+			params.add("resume", multirequestToken);
+		}
+		
+		public void finalChunk(String multirequestToken) {
+			params.add("finalChunk", multirequestToken);
+		}
+		
+		public void resumeAt(String multirequestToken) {
+			params.add("resumeAt", multirequestToken);
+		}
+	}
 
-        return new ListResponseRequestBuilder<UploadToken>(UploadToken.class, "uploadtoken", "list", kparams);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileHolder fileData)  {
+		return upload(uploadTokenId, fileData, false);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileHolder fileData)  {
-        return upload(uploadTokenId, fileData, false);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, File fileData)  {
+		return upload(uploadTokenId, new FileHolder(fileData), false);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, File fileData)  {
-        return upload(uploadTokenId, new FileHolder(fileData), false);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), false);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), false);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), false);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), false);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileHolder fileData, boolean resume)  {
+		return upload(uploadTokenId, fileData, resume, true);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileHolder fileData, boolean resume)  {
-        return upload(uploadTokenId, fileData, resume, true);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, File fileData, boolean resume)  {
+		return upload(uploadTokenId, new FileHolder(fileData), resume, true);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, File fileData, boolean resume)  {
-        return upload(uploadTokenId, new FileHolder(fileData), resume, true);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, true);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, true);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, true);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, true);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk)  {
+		return upload(uploadTokenId, fileData, resume, finalChunk, -1);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk)  {
-        return upload(uploadTokenId, fileData, resume, finalChunk, -1);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, File fileData, boolean resume, boolean finalChunk)  {
+		return upload(uploadTokenId, new FileHolder(fileData), resume, finalChunk, -1);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, File fileData, boolean resume, boolean finalChunk)  {
-        return upload(uploadTokenId, new FileHolder(fileData), resume, finalChunk, -1);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume, boolean finalChunk)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, finalChunk, -1);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume, boolean finalChunk)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, finalChunk, -1);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume, boolean finalChunk)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, finalChunk, -1);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume, boolean finalChunk)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, finalChunk, -1);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, File fileData, boolean resume, boolean finalChunk, double resumeAt)  {
+		return upload(uploadTokenId, new FileHolder(fileData), resume, finalChunk, resumeAt);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, File fileData, boolean resume, boolean finalChunk, double resumeAt)  {
-        return upload(uploadTokenId, new FileHolder(fileData), resume, finalChunk, resumeAt);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume, boolean finalChunk, double resumeAt)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, finalChunk, resumeAt);
+	}
 
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, boolean resume, boolean finalChunk, double resumeAt)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), resume, finalChunk, resumeAt);
-    }
-
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume, boolean finalChunk, double resumeAt)  {
-        return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, finalChunk, resumeAt);
-    }
+	public static UploadUploadTokenBuilder upload(String uploadTokenId, FileInputStream fileData, String fileDataMimeType, String fileDataName, boolean resume, boolean finalChunk, double resumeAt)  {
+		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, finalChunk, resumeAt);
+	}
 
 	/**  Upload a file using the upload token id, returns an error on failure (an
 	  exception will be thrown when using one of the Kaltura clients)   Chunks can be
@@ -168,15 +223,7 @@ public class UploadTokenService {
 	  UPLOAD_TOKEN_CANNOT_MATCH_EXPECTED_SIZE exception   has been returned
 	  (indicating not all of the chunks were appended yet) the final request can be
 	  retried.  */
-    public static RequestBuilder<UploadToken> upload(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk, double resumeAt)  {
-        Params kparams = new Params();
-        kparams.add("uploadTokenId", uploadTokenId);
-        Files kfiles = new Files();
-        kfiles.add("fileData", fileData);
-        kparams.add("resume", resume);
-        kparams.add("finalChunk", finalChunk);
-        kparams.add("resumeAt", resumeAt);
-
-        return new RequestBuilder<UploadToken>(UploadToken.class, "uploadtoken", "upload", kparams, kfiles);
-    }
+    public static UploadUploadTokenBuilder upload(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk, double resumeAt)  {
+		return new UploadUploadTokenBuilder(uploadTokenId, fileData, resume, finalChunk, resumeAt);
+	}
 }

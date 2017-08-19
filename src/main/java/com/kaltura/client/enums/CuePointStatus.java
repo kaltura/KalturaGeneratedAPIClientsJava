@@ -34,39 +34,39 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum CuePointStatus implements EnumAsInt {
-    READY(1),
-    DELETED(2),
-    HANDLED(3),
-    PENDING(4);
+	READY(1),
+	DELETED(2),
+	HANDLED(3),
+	PENDING(4);
 
-    private int value;
+	private int value;
 
-    CuePointStatus(int value) {
-        this.value = value;
-    }
+	CuePointStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static CuePointStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over CuePointStatus defined values and compare the inner value with the given one:
-        for(CuePointStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return CuePointStatus.values().length > 0 ? CuePointStatus.values()[0]: null;
+	public static CuePointStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over CuePointStatus defined values and compare the inner value with the given one:
+		for(CuePointStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return CuePointStatus.values().length > 0 ? CuePointStatus.values()[0]: null;
    }
 }

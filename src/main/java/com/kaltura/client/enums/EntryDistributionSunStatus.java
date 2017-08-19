@@ -34,38 +34,38 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDistributionSunStatus implements EnumAsInt {
-    BEFORE_SUNRISE(1),
-    AFTER_SUNRISE(2),
-    AFTER_SUNSET(3);
+	BEFORE_SUNRISE(1),
+	AFTER_SUNRISE(2),
+	AFTER_SUNSET(3);
 
-    private int value;
+	private int value;
 
-    EntryDistributionSunStatus(int value) {
-        this.value = value;
-    }
+	EntryDistributionSunStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static EntryDistributionSunStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over EntryDistributionSunStatus defined values and compare the inner value with the given one:
-        for(EntryDistributionSunStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return EntryDistributionSunStatus.values().length > 0 ? EntryDistributionSunStatus.values()[0]: null;
+	public static EntryDistributionSunStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EntryDistributionSunStatus defined values and compare the inner value with the given one:
+		for(EntryDistributionSunStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EntryDistributionSunStatus.values().length > 0 ? EntryDistributionSunStatus.values()[0]: null;
    }
 }

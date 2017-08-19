@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DispatchEventNotificationObjectTask.Tokenizer.class)
 public class DispatchEventNotificationObjectTask extends ObjectTask {
+	
+	public interface Tokenizer extends ObjectTask.Tokenizer {
+		String eventNotificationTemplateId();
+	}
 
 	/**  The event notification template id to dispatch  */
-    private Integer eventNotificationTemplateId;
+	private Integer eventNotificationTemplateId;
 
-    // eventNotificationTemplateId:
-    public Integer getEventNotificationTemplateId(){
-        return this.eventNotificationTemplateId;
-    }
-    public void setEventNotificationTemplateId(Integer eventNotificationTemplateId){
-        this.eventNotificationTemplateId = eventNotificationTemplateId;
-    }
+	// eventNotificationTemplateId:
+	public Integer getEventNotificationTemplateId(){
+		return this.eventNotificationTemplateId;
+	}
+	public void setEventNotificationTemplateId(Integer eventNotificationTemplateId){
+		this.eventNotificationTemplateId = eventNotificationTemplateId;
+	}
+
+	public void eventNotificationTemplateId(String multirequestToken){
+		setToken("eventNotificationTemplateId", multirequestToken);
+	}
 
 
-    public DispatchEventNotificationObjectTask() {
-       super();
-    }
+	public DispatchEventNotificationObjectTask() {
+		super();
+	}
 
-    public DispatchEventNotificationObjectTask(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DispatchEventNotificationObjectTask(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        eventNotificationTemplateId = GsonParser.parseInt(jsonObject.get("eventNotificationTemplateId"));
+		// set members values:
+		eventNotificationTemplateId = GsonParser.parseInt(jsonObject.get("eventNotificationTemplateId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDispatchEventNotificationObjectTask");
-        kparams.add("eventNotificationTemplateId", this.eventNotificationTemplateId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDispatchEventNotificationObjectTask");
+		kparams.add("eventNotificationTemplateId", this.eventNotificationTemplateId);
+		return kparams;
+	}
 
 }
 

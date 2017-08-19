@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.FlavorParamsOutput;
 import com.kaltura.client.types.FlavorParamsOutputFilter;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,29 +42,43 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Flavor Params Output service  */
 public class FlavorParamsOutputService {
+	
+	public static class GetFlavorParamsOutputBuilder extends RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.Tokenizer, GetFlavorParamsOutputBuilder> {
+		
+		public GetFlavorParamsOutputBuilder(int id) {
+			super(FlavorParamsOutput.class, "flavorparamsoutput", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Get flavor params output object by ID  */
-    public static RequestBuilder<FlavorParamsOutput> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetFlavorParamsOutputBuilder get(int id)  {
+		return new GetFlavorParamsOutputBuilder(id);
+	}
+	
+	public static class ListFlavorParamsOutputBuilder extends ListResponseRequestBuilder<FlavorParamsOutput, FlavorParamsOutput.Tokenizer, ListFlavorParamsOutputBuilder> {
+		
+		public ListFlavorParamsOutputBuilder(FlavorParamsOutputFilter filter, FilterPager pager) {
+			super(FlavorParamsOutput.class, "flavorparamsoutput", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<FlavorParamsOutput>(FlavorParamsOutput.class, "flavorparamsoutput", "get", kparams);
-    }
+	public static ListFlavorParamsOutputBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<FlavorParamsOutput>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<FlavorParamsOutput>> list(FlavorParamsOutputFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListFlavorParamsOutputBuilder list(FlavorParamsOutputFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List flavor params output objects by filter and pager  */
-    public static RequestBuilder<ListResponse<FlavorParamsOutput>> list(FlavorParamsOutputFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<FlavorParamsOutput>(FlavorParamsOutput.class, "flavorparamsoutput", "list", kparams);
-    }
+    public static ListFlavorParamsOutputBuilder list(FlavorParamsOutputFilter filter, FilterPager pager)  {
+		return new ListFlavorParamsOutputBuilder(filter, pager);
+	}
 }

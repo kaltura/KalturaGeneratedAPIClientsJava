@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,72 +40,96 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UserEntryFilter.Tokenizer.class)
 public class UserEntryFilter extends UserEntryBaseFilter {
+	
+	public interface Tokenizer extends UserEntryBaseFilter.Tokenizer {
+		String userIdEqualCurrent();
+		String isAnonymous();
+		String privacyContextEqual();
+		String privacyContextIn();
+	}
 
-    private Boolean userIdEqualCurrent;
-    private Boolean isAnonymous;
-    private String privacyContextEqual;
-    private String privacyContextIn;
+	private Boolean userIdEqualCurrent;
+	private Boolean isAnonymous;
+	private String privacyContextEqual;
+	private String privacyContextIn;
 
-    // userIdEqualCurrent:
-    public Boolean getUserIdEqualCurrent(){
-        return this.userIdEqualCurrent;
-    }
-    public void setUserIdEqualCurrent(Boolean userIdEqualCurrent){
-        this.userIdEqualCurrent = userIdEqualCurrent;
-    }
+	// userIdEqualCurrent:
+	public Boolean getUserIdEqualCurrent(){
+		return this.userIdEqualCurrent;
+	}
+	public void setUserIdEqualCurrent(Boolean userIdEqualCurrent){
+		this.userIdEqualCurrent = userIdEqualCurrent;
+	}
 
-    // isAnonymous:
-    public Boolean getIsAnonymous(){
-        return this.isAnonymous;
-    }
-    public void setIsAnonymous(Boolean isAnonymous){
-        this.isAnonymous = isAnonymous;
-    }
+	public void userIdEqualCurrent(String multirequestToken){
+		setToken("userIdEqualCurrent", multirequestToken);
+	}
 
-    // privacyContextEqual:
-    public String getPrivacyContextEqual(){
-        return this.privacyContextEqual;
-    }
-    public void setPrivacyContextEqual(String privacyContextEqual){
-        this.privacyContextEqual = privacyContextEqual;
-    }
+	// isAnonymous:
+	public Boolean getIsAnonymous(){
+		return this.isAnonymous;
+	}
+	public void setIsAnonymous(Boolean isAnonymous){
+		this.isAnonymous = isAnonymous;
+	}
 
-    // privacyContextIn:
-    public String getPrivacyContextIn(){
-        return this.privacyContextIn;
-    }
-    public void setPrivacyContextIn(String privacyContextIn){
-        this.privacyContextIn = privacyContextIn;
-    }
+	public void isAnonymous(String multirequestToken){
+		setToken("isAnonymous", multirequestToken);
+	}
+
+	// privacyContextEqual:
+	public String getPrivacyContextEqual(){
+		return this.privacyContextEqual;
+	}
+	public void setPrivacyContextEqual(String privacyContextEqual){
+		this.privacyContextEqual = privacyContextEqual;
+	}
+
+	public void privacyContextEqual(String multirequestToken){
+		setToken("privacyContextEqual", multirequestToken);
+	}
+
+	// privacyContextIn:
+	public String getPrivacyContextIn(){
+		return this.privacyContextIn;
+	}
+	public void setPrivacyContextIn(String privacyContextIn){
+		this.privacyContextIn = privacyContextIn;
+	}
+
+	public void privacyContextIn(String multirequestToken){
+		setToken("privacyContextIn", multirequestToken);
+	}
 
 
-    public UserEntryFilter() {
-       super();
-    }
+	public UserEntryFilter() {
+		super();
+	}
 
-    public UserEntryFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UserEntryFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userIdEqualCurrent = GsonParser.parseBoolean(jsonObject.get("userIdEqualCurrent"));
-        isAnonymous = GsonParser.parseBoolean(jsonObject.get("isAnonymous"));
-        privacyContextEqual = GsonParser.parseString(jsonObject.get("privacyContextEqual"));
-        privacyContextIn = GsonParser.parseString(jsonObject.get("privacyContextIn"));
+		// set members values:
+		userIdEqualCurrent = GsonParser.parseBoolean(jsonObject.get("userIdEqualCurrent"));
+		isAnonymous = GsonParser.parseBoolean(jsonObject.get("isAnonymous"));
+		privacyContextEqual = GsonParser.parseString(jsonObject.get("privacyContextEqual"));
+		privacyContextIn = GsonParser.parseString(jsonObject.get("privacyContextIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUserEntryFilter");
-        kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
-        kparams.add("isAnonymous", this.isAnonymous);
-        kparams.add("privacyContextEqual", this.privacyContextEqual);
-        kparams.add("privacyContextIn", this.privacyContextIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUserEntryFilter");
+		kparams.add("userIdEqualCurrent", this.userIdEqualCurrent);
+		kparams.add("isAnonymous", this.isAnonymous);
+		kparams.add("privacyContextEqual", this.privacyContextEqual);
+		kparams.add("privacyContextIn", this.privacyContextIn);
+		return kparams;
+	}
 
 }
 

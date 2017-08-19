@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,72 +41,96 @@ import com.kaltura.client.utils.GsonParser;
 
 /**  A representation of an RTMP live stream configuration  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(LiveStreamPushPublishRTMPConfiguration.Tokenizer.class)
 public class LiveStreamPushPublishRTMPConfiguration extends LiveStreamPushPublishConfiguration {
+	
+	public interface Tokenizer extends LiveStreamPushPublishConfiguration.Tokenizer {
+		String userId();
+		String password();
+		String streamName();
+		String applicationName();
+	}
 
-    private String userId;
-    private String password;
-    private String streamName;
-    private String applicationName;
+	private String userId;
+	private String password;
+	private String streamName;
+	private String applicationName;
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
 
-    // streamName:
-    public String getStreamName(){
-        return this.streamName;
-    }
-    public void setStreamName(String streamName){
-        this.streamName = streamName;
-    }
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
 
-    // applicationName:
-    public String getApplicationName(){
-        return this.applicationName;
-    }
-    public void setApplicationName(String applicationName){
-        this.applicationName = applicationName;
-    }
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// streamName:
+	public String getStreamName(){
+		return this.streamName;
+	}
+	public void setStreamName(String streamName){
+		this.streamName = streamName;
+	}
+
+	public void streamName(String multirequestToken){
+		setToken("streamName", multirequestToken);
+	}
+
+	// applicationName:
+	public String getApplicationName(){
+		return this.applicationName;
+	}
+	public void setApplicationName(String applicationName){
+		this.applicationName = applicationName;
+	}
+
+	public void applicationName(String multirequestToken){
+		setToken("applicationName", multirequestToken);
+	}
 
 
-    public LiveStreamPushPublishRTMPConfiguration() {
-       super();
-    }
+	public LiveStreamPushPublishRTMPConfiguration() {
+		super();
+	}
 
-    public LiveStreamPushPublishRTMPConfiguration(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public LiveStreamPushPublishRTMPConfiguration(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        streamName = GsonParser.parseString(jsonObject.get("streamName"));
-        applicationName = GsonParser.parseString(jsonObject.get("applicationName"));
+		// set members values:
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		streamName = GsonParser.parseString(jsonObject.get("streamName"));
+		applicationName = GsonParser.parseString(jsonObject.get("applicationName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaLiveStreamPushPublishRTMPConfiguration");
-        kparams.add("userId", this.userId);
-        kparams.add("password", this.password);
-        kparams.add("streamName", this.streamName);
-        kparams.add("applicationName", this.applicationName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaLiveStreamPushPublishRTMPConfiguration");
+		kparams.add("userId", this.userId);
+		kparams.add("password", this.password);
+		kparams.add("streamName", this.streamName);
+		kparams.add("applicationName", this.applicationName);
+		return kparams;
+	}
 
 }
 

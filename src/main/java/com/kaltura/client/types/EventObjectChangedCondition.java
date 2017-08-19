@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,40 +40,49 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EventObjectChangedCondition.Tokenizer.class)
 public class EventObjectChangedCondition extends Condition {
+	
+	public interface Tokenizer extends Condition.Tokenizer {
+		String modifiedColumns();
+	}
 
 	/**  Comma seperated column names to be tested  */
-    private String modifiedColumns;
+	private String modifiedColumns;
 
-    // modifiedColumns:
-    public String getModifiedColumns(){
-        return this.modifiedColumns;
-    }
-    public void setModifiedColumns(String modifiedColumns){
-        this.modifiedColumns = modifiedColumns;
-    }
+	// modifiedColumns:
+	public String getModifiedColumns(){
+		return this.modifiedColumns;
+	}
+	public void setModifiedColumns(String modifiedColumns){
+		this.modifiedColumns = modifiedColumns;
+	}
+
+	public void modifiedColumns(String multirequestToken){
+		setToken("modifiedColumns", multirequestToken);
+	}
 
 
-    public EventObjectChangedCondition() {
-       super();
-    }
+	public EventObjectChangedCondition() {
+		super();
+	}
 
-    public EventObjectChangedCondition(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public EventObjectChangedCondition(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        modifiedColumns = GsonParser.parseString(jsonObject.get("modifiedColumns"));
+		// set members values:
+		modifiedColumns = GsonParser.parseString(jsonObject.get("modifiedColumns"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaEventObjectChangedCondition");
-        kparams.add("modifiedColumns", this.modifiedColumns);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEventObjectChangedCondition");
+		kparams.add("modifiedColumns", this.modifiedColumns);
+		return kparams;
+	}
 
 }
 

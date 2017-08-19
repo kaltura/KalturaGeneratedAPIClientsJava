@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,94 +40,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AkamaiProvisionJobData.Tokenizer.class)
 public class AkamaiProvisionJobData extends ProvisionJobData {
+	
+	public interface Tokenizer extends ProvisionJobData.Tokenizer {
+		String wsdlUsername();
+		String wsdlPassword();
+		String cpcode();
+		String emailId();
+		String primaryContact();
+		String secondaryContact();
+	}
 
-    private String wsdlUsername;
-    private String wsdlPassword;
-    private String cpcode;
-    private String emailId;
-    private String primaryContact;
-    private String secondaryContact;
+	private String wsdlUsername;
+	private String wsdlPassword;
+	private String cpcode;
+	private String emailId;
+	private String primaryContact;
+	private String secondaryContact;
 
-    // wsdlUsername:
-    public String getWsdlUsername(){
-        return this.wsdlUsername;
-    }
-    public void setWsdlUsername(String wsdlUsername){
-        this.wsdlUsername = wsdlUsername;
-    }
+	// wsdlUsername:
+	public String getWsdlUsername(){
+		return this.wsdlUsername;
+	}
+	public void setWsdlUsername(String wsdlUsername){
+		this.wsdlUsername = wsdlUsername;
+	}
 
-    // wsdlPassword:
-    public String getWsdlPassword(){
-        return this.wsdlPassword;
-    }
-    public void setWsdlPassword(String wsdlPassword){
-        this.wsdlPassword = wsdlPassword;
-    }
+	public void wsdlUsername(String multirequestToken){
+		setToken("wsdlUsername", multirequestToken);
+	}
 
-    // cpcode:
-    public String getCpcode(){
-        return this.cpcode;
-    }
-    public void setCpcode(String cpcode){
-        this.cpcode = cpcode;
-    }
+	// wsdlPassword:
+	public String getWsdlPassword(){
+		return this.wsdlPassword;
+	}
+	public void setWsdlPassword(String wsdlPassword){
+		this.wsdlPassword = wsdlPassword;
+	}
 
-    // emailId:
-    public String getEmailId(){
-        return this.emailId;
-    }
-    public void setEmailId(String emailId){
-        this.emailId = emailId;
-    }
+	public void wsdlPassword(String multirequestToken){
+		setToken("wsdlPassword", multirequestToken);
+	}
 
-    // primaryContact:
-    public String getPrimaryContact(){
-        return this.primaryContact;
-    }
-    public void setPrimaryContact(String primaryContact){
-        this.primaryContact = primaryContact;
-    }
+	// cpcode:
+	public String getCpcode(){
+		return this.cpcode;
+	}
+	public void setCpcode(String cpcode){
+		this.cpcode = cpcode;
+	}
 
-    // secondaryContact:
-    public String getSecondaryContact(){
-        return this.secondaryContact;
-    }
-    public void setSecondaryContact(String secondaryContact){
-        this.secondaryContact = secondaryContact;
-    }
+	public void cpcode(String multirequestToken){
+		setToken("cpcode", multirequestToken);
+	}
+
+	// emailId:
+	public String getEmailId(){
+		return this.emailId;
+	}
+	public void setEmailId(String emailId){
+		this.emailId = emailId;
+	}
+
+	public void emailId(String multirequestToken){
+		setToken("emailId", multirequestToken);
+	}
+
+	// primaryContact:
+	public String getPrimaryContact(){
+		return this.primaryContact;
+	}
+	public void setPrimaryContact(String primaryContact){
+		this.primaryContact = primaryContact;
+	}
+
+	public void primaryContact(String multirequestToken){
+		setToken("primaryContact", multirequestToken);
+	}
+
+	// secondaryContact:
+	public String getSecondaryContact(){
+		return this.secondaryContact;
+	}
+	public void setSecondaryContact(String secondaryContact){
+		this.secondaryContact = secondaryContact;
+	}
+
+	public void secondaryContact(String multirequestToken){
+		setToken("secondaryContact", multirequestToken);
+	}
 
 
-    public AkamaiProvisionJobData() {
-       super();
-    }
+	public AkamaiProvisionJobData() {
+		super();
+	}
 
-    public AkamaiProvisionJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AkamaiProvisionJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        wsdlUsername = GsonParser.parseString(jsonObject.get("wsdlUsername"));
-        wsdlPassword = GsonParser.parseString(jsonObject.get("wsdlPassword"));
-        cpcode = GsonParser.parseString(jsonObject.get("cpcode"));
-        emailId = GsonParser.parseString(jsonObject.get("emailId"));
-        primaryContact = GsonParser.parseString(jsonObject.get("primaryContact"));
-        secondaryContact = GsonParser.parseString(jsonObject.get("secondaryContact"));
+		// set members values:
+		wsdlUsername = GsonParser.parseString(jsonObject.get("wsdlUsername"));
+		wsdlPassword = GsonParser.parseString(jsonObject.get("wsdlPassword"));
+		cpcode = GsonParser.parseString(jsonObject.get("cpcode"));
+		emailId = GsonParser.parseString(jsonObject.get("emailId"));
+		primaryContact = GsonParser.parseString(jsonObject.get("primaryContact"));
+		secondaryContact = GsonParser.parseString(jsonObject.get("secondaryContact"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAkamaiProvisionJobData");
-        kparams.add("wsdlUsername", this.wsdlUsername);
-        kparams.add("wsdlPassword", this.wsdlPassword);
-        kparams.add("cpcode", this.cpcode);
-        kparams.add("emailId", this.emailId);
-        kparams.add("primaryContact", this.primaryContact);
-        kparams.add("secondaryContact", this.secondaryContact);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAkamaiProvisionJobData");
+		kparams.add("wsdlUsername", this.wsdlUsername);
+		kparams.add("wsdlPassword", this.wsdlPassword);
+		kparams.add("cpcode", this.cpcode);
+		kparams.add("emailId", this.emailId);
+		kparams.add("primaryContact", this.primaryContact);
+		kparams.add("secondaryContact", this.secondaryContact);
+		return kparams;
+	}
 
 }
 

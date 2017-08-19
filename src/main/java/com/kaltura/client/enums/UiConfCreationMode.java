@@ -34,37 +34,37 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UiConfCreationMode implements EnumAsInt {
-    WIZARD(2),
-    ADVANCED(3);
+	WIZARD(2),
+	ADVANCED(3);
 
-    private int value;
+	private int value;
 
-    UiConfCreationMode(int value) {
-        this.value = value;
-    }
+	UiConfCreationMode(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static UiConfCreationMode get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UiConfCreationMode defined values and compare the inner value with the given one:
-        for(UiConfCreationMode item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UiConfCreationMode.values().length > 0 ? UiConfCreationMode.values()[0]: null;
+	public static UiConfCreationMode get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UiConfCreationMode defined values and compare the inner value with the given one:
+		for(UiConfCreationMode item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UiConfCreationMode.values().length > 0 ? UiConfCreationMode.values()[0]: null;
    }
 }

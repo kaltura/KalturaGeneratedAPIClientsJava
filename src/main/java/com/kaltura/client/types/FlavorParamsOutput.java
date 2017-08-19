@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -39,94 +40,128 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorParamsOutput.Tokenizer.class)
 public class FlavorParamsOutput extends FlavorParams {
+	
+	public interface Tokenizer extends FlavorParams.Tokenizer {
+		String flavorParamsId();
+		String commandLinesStr();
+		String flavorParamsVersion();
+		String flavorAssetId();
+		String flavorAssetVersion();
+		String readyBehavior();
+	}
 
-    private Integer flavorParamsId;
-    private String commandLinesStr;
-    private String flavorParamsVersion;
-    private String flavorAssetId;
-    private String flavorAssetVersion;
-    private Integer readyBehavior;
+	private Integer flavorParamsId;
+	private String commandLinesStr;
+	private String flavorParamsVersion;
+	private String flavorAssetId;
+	private String flavorAssetVersion;
+	private Integer readyBehavior;
 
-    // flavorParamsId:
-    public Integer getFlavorParamsId(){
-        return this.flavorParamsId;
-    }
-    public void setFlavorParamsId(Integer flavorParamsId){
-        this.flavorParamsId = flavorParamsId;
-    }
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
 
-    // commandLinesStr:
-    public String getCommandLinesStr(){
-        return this.commandLinesStr;
-    }
-    public void setCommandLinesStr(String commandLinesStr){
-        this.commandLinesStr = commandLinesStr;
-    }
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
 
-    // flavorParamsVersion:
-    public String getFlavorParamsVersion(){
-        return this.flavorParamsVersion;
-    }
-    public void setFlavorParamsVersion(String flavorParamsVersion){
-        this.flavorParamsVersion = flavorParamsVersion;
-    }
+	// commandLinesStr:
+	public String getCommandLinesStr(){
+		return this.commandLinesStr;
+	}
+	public void setCommandLinesStr(String commandLinesStr){
+		this.commandLinesStr = commandLinesStr;
+	}
 
-    // flavorAssetId:
-    public String getFlavorAssetId(){
-        return this.flavorAssetId;
-    }
-    public void setFlavorAssetId(String flavorAssetId){
-        this.flavorAssetId = flavorAssetId;
-    }
+	public void commandLinesStr(String multirequestToken){
+		setToken("commandLinesStr", multirequestToken);
+	}
 
-    // flavorAssetVersion:
-    public String getFlavorAssetVersion(){
-        return this.flavorAssetVersion;
-    }
-    public void setFlavorAssetVersion(String flavorAssetVersion){
-        this.flavorAssetVersion = flavorAssetVersion;
-    }
+	// flavorParamsVersion:
+	public String getFlavorParamsVersion(){
+		return this.flavorParamsVersion;
+	}
+	public void setFlavorParamsVersion(String flavorParamsVersion){
+		this.flavorParamsVersion = flavorParamsVersion;
+	}
 
-    // readyBehavior:
-    public Integer getReadyBehavior(){
-        return this.readyBehavior;
-    }
-    public void setReadyBehavior(Integer readyBehavior){
-        this.readyBehavior = readyBehavior;
-    }
+	public void flavorParamsVersion(String multirequestToken){
+		setToken("flavorParamsVersion", multirequestToken);
+	}
+
+	// flavorAssetId:
+	public String getFlavorAssetId(){
+		return this.flavorAssetId;
+	}
+	public void setFlavorAssetId(String flavorAssetId){
+		this.flavorAssetId = flavorAssetId;
+	}
+
+	public void flavorAssetId(String multirequestToken){
+		setToken("flavorAssetId", multirequestToken);
+	}
+
+	// flavorAssetVersion:
+	public String getFlavorAssetVersion(){
+		return this.flavorAssetVersion;
+	}
+	public void setFlavorAssetVersion(String flavorAssetVersion){
+		this.flavorAssetVersion = flavorAssetVersion;
+	}
+
+	public void flavorAssetVersion(String multirequestToken){
+		setToken("flavorAssetVersion", multirequestToken);
+	}
+
+	// readyBehavior:
+	public Integer getReadyBehavior(){
+		return this.readyBehavior;
+	}
+	public void setReadyBehavior(Integer readyBehavior){
+		this.readyBehavior = readyBehavior;
+	}
+
+	public void readyBehavior(String multirequestToken){
+		setToken("readyBehavior", multirequestToken);
+	}
 
 
-    public FlavorParamsOutput() {
-       super();
-    }
+	public FlavorParamsOutput() {
+		super();
+	}
 
-    public FlavorParamsOutput(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorParamsOutput(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
-        commandLinesStr = GsonParser.parseString(jsonObject.get("commandLinesStr"));
-        flavorParamsVersion = GsonParser.parseString(jsonObject.get("flavorParamsVersion"));
-        flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
-        flavorAssetVersion = GsonParser.parseString(jsonObject.get("flavorAssetVersion"));
-        readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
+		// set members values:
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		commandLinesStr = GsonParser.parseString(jsonObject.get("commandLinesStr"));
+		flavorParamsVersion = GsonParser.parseString(jsonObject.get("flavorParamsVersion"));
+		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		flavorAssetVersion = GsonParser.parseString(jsonObject.get("flavorAssetVersion"));
+		readyBehavior = GsonParser.parseInt(jsonObject.get("readyBehavior"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorParamsOutput");
-        kparams.add("flavorParamsId", this.flavorParamsId);
-        kparams.add("commandLinesStr", this.commandLinesStr);
-        kparams.add("flavorParamsVersion", this.flavorParamsVersion);
-        kparams.add("flavorAssetId", this.flavorAssetId);
-        kparams.add("flavorAssetVersion", this.flavorAssetVersion);
-        kparams.add("readyBehavior", this.readyBehavior);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorParamsOutput");
+		kparams.add("flavorParamsId", this.flavorParamsId);
+		kparams.add("commandLinesStr", this.commandLinesStr);
+		kparams.add("flavorParamsVersion", this.flavorParamsVersion);
+		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("flavorAssetVersion", this.flavorAssetVersion);
+		kparams.add("readyBehavior", this.readyBehavior);
+		return kparams;
+	}
 
 }
 

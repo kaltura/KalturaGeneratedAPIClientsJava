@@ -37,12 +37,11 @@ import com.kaltura.client.types.BaseResponseProfile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-public class RequestBuilderData {
+public abstract class RequestBuilderData {
 	
-	protected Params params;
+	protected Params params = new Params();
 	
-	protected RequestBuilderData(Params params) {
-		this.params = params;
+	protected RequestBuilderData() {
 	}
 	
 	/**

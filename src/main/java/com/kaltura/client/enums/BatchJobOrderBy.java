@@ -34,53 +34,53 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ESTIMATED_EFFORT_ASC("+estimatedEffort"),
-    EXECUTION_ATTEMPTS_ASC("+executionAttempts"),
-    FINISH_TIME_ASC("+finishTime"),
-    LOCK_VERSION_ASC("+lockVersion"),
-    PRIORITY_ASC("+priority"),
-    QUEUE_TIME_ASC("+queueTime"),
-    STATUS_ASC("+status"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    ESTIMATED_EFFORT_DESC("-estimatedEffort"),
-    EXECUTION_ATTEMPTS_DESC("-executionAttempts"),
-    FINISH_TIME_DESC("-finishTime"),
-    LOCK_VERSION_DESC("-lockVersion"),
-    PRIORITY_DESC("-priority"),
-    QUEUE_TIME_DESC("-queueTime"),
-    STATUS_DESC("-status"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	ESTIMATED_EFFORT_ASC("+estimatedEffort"),
+	EXECUTION_ATTEMPTS_ASC("+executionAttempts"),
+	FINISH_TIME_ASC("+finishTime"),
+	LOCK_VERSION_ASC("+lockVersion"),
+	PRIORITY_ASC("+priority"),
+	QUEUE_TIME_ASC("+queueTime"),
+	STATUS_ASC("+status"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	ESTIMATED_EFFORT_DESC("-estimatedEffort"),
+	EXECUTION_ATTEMPTS_DESC("-executionAttempts"),
+	FINISH_TIME_DESC("-finishTime"),
+	LOCK_VERSION_DESC("-lockVersion"),
+	PRIORITY_DESC("-priority"),
+	QUEUE_TIME_DESC("-queueTime"),
+	STATUS_DESC("-status"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    BatchJobOrderBy(String value) {
-        this.value = value;
-    }
+	BatchJobOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static BatchJobOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BatchJobOrderBy defined values and compare the inner value with the given one:
-        for(BatchJobOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BatchJobOrderBy.values().length > 0 ? BatchJobOrderBy.values()[0]: null;
+	public static BatchJobOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BatchJobOrderBy defined values and compare the inner value with the given one:
+		for(BatchJobOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BatchJobOrderBy.values().length > 0 ? BatchJobOrderBy.values()[0]: null;
    }
 }

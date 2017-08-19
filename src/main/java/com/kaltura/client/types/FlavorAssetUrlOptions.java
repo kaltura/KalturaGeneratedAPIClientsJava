@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,51 +41,65 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FlavorAssetUrlOptions.Tokenizer.class)
 public class FlavorAssetUrlOptions extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String fileName();
+		String referrer();
+	}
 
 	/**  The name of the downloaded file  */
-    private String fileName;
-    private String referrer;
+	private String fileName;
+	private String referrer;
 
-    // fileName:
-    public String getFileName(){
-        return this.fileName;
-    }
-    public void setFileName(String fileName){
-        this.fileName = fileName;
-    }
+	// fileName:
+	public String getFileName(){
+		return this.fileName;
+	}
+	public void setFileName(String fileName){
+		this.fileName = fileName;
+	}
 
-    // referrer:
-    public String getReferrer(){
-        return this.referrer;
-    }
-    public void setReferrer(String referrer){
-        this.referrer = referrer;
-    }
+	public void fileName(String multirequestToken){
+		setToken("fileName", multirequestToken);
+	}
+
+	// referrer:
+	public String getReferrer(){
+		return this.referrer;
+	}
+	public void setReferrer(String referrer){
+		this.referrer = referrer;
+	}
+
+	public void referrer(String multirequestToken){
+		setToken("referrer", multirequestToken);
+	}
 
 
-    public FlavorAssetUrlOptions() {
-       super();
-    }
+	public FlavorAssetUrlOptions() {
+		super();
+	}
 
-    public FlavorAssetUrlOptions(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FlavorAssetUrlOptions(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        fileName = GsonParser.parseString(jsonObject.get("fileName"));
-        referrer = GsonParser.parseString(jsonObject.get("referrer"));
+		// set members values:
+		fileName = GsonParser.parseString(jsonObject.get("fileName"));
+		referrer = GsonParser.parseString(jsonObject.get("referrer"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFlavorAssetUrlOptions");
-        kparams.add("fileName", this.fileName);
-        kparams.add("referrer", this.referrer);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFlavorAssetUrlOptions");
+		kparams.add("fileName", this.fileName);
+		kparams.add("referrer", this.referrer);
+		return kparams;
+	}
 
 }
 

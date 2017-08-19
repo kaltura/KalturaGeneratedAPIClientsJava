@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +41,66 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlRecognizer.Tokenizer.class)
 public class UrlRecognizer extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String hosts();
+		String uriPrefix();
+	}
 
 	/**  The hosts that are recognized  */
-    private String hosts;
+	private String hosts;
 	/**  The URI prefix we use for security  */
-    private String uriPrefix;
+	private String uriPrefix;
 
-    // hosts:
-    public String getHosts(){
-        return this.hosts;
-    }
-    public void setHosts(String hosts){
-        this.hosts = hosts;
-    }
+	// hosts:
+	public String getHosts(){
+		return this.hosts;
+	}
+	public void setHosts(String hosts){
+		this.hosts = hosts;
+	}
 
-    // uriPrefix:
-    public String getUriPrefix(){
-        return this.uriPrefix;
-    }
-    public void setUriPrefix(String uriPrefix){
-        this.uriPrefix = uriPrefix;
-    }
+	public void hosts(String multirequestToken){
+		setToken("hosts", multirequestToken);
+	}
+
+	// uriPrefix:
+	public String getUriPrefix(){
+		return this.uriPrefix;
+	}
+	public void setUriPrefix(String uriPrefix){
+		this.uriPrefix = uriPrefix;
+	}
+
+	public void uriPrefix(String multirequestToken){
+		setToken("uriPrefix", multirequestToken);
+	}
 
 
-    public UrlRecognizer() {
-       super();
-    }
+	public UrlRecognizer() {
+		super();
+	}
 
-    public UrlRecognizer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlRecognizer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        hosts = GsonParser.parseString(jsonObject.get("hosts"));
-        uriPrefix = GsonParser.parseString(jsonObject.get("uriPrefix"));
+		// set members values:
+		hosts = GsonParser.parseString(jsonObject.get("hosts"));
+		uriPrefix = GsonParser.parseString(jsonObject.get("uriPrefix"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlRecognizer");
-        kparams.add("hosts", this.hosts);
-        kparams.add("uriPrefix", this.uriPrefix);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlRecognizer");
+		kparams.add("hosts", this.hosts);
+		kparams.add("uriPrefix", this.uriPrefix);
+		return kparams;
+	}
 
 }
 

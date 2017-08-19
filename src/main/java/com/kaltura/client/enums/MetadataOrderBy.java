@@ -34,43 +34,43 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    METADATA_PROFILE_VERSION_ASC("+metadataProfileVersion"),
-    UPDATED_AT_ASC("+updatedAt"),
-    VERSION_ASC("+version"),
-    CREATED_AT_DESC("-createdAt"),
-    METADATA_PROFILE_VERSION_DESC("-metadataProfileVersion"),
-    UPDATED_AT_DESC("-updatedAt"),
-    VERSION_DESC("-version");
+	CREATED_AT_ASC("+createdAt"),
+	METADATA_PROFILE_VERSION_ASC("+metadataProfileVersion"),
+	UPDATED_AT_ASC("+updatedAt"),
+	VERSION_ASC("+version"),
+	CREATED_AT_DESC("-createdAt"),
+	METADATA_PROFILE_VERSION_DESC("-metadataProfileVersion"),
+	UPDATED_AT_DESC("-updatedAt"),
+	VERSION_DESC("-version");
 
-    private String value;
+	private String value;
 
-    MetadataOrderBy(String value) {
-        this.value = value;
-    }
+	MetadataOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static MetadataOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over MetadataOrderBy defined values and compare the inner value with the given one:
-        for(MetadataOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return MetadataOrderBy.values().length > 0 ? MetadataOrderBy.values()[0]: null;
+	public static MetadataOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over MetadataOrderBy defined values and compare the inner value with the given one:
+		for(MetadataOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return MetadataOrderBy.values().length > 0 ? MetadataOrderBy.values()[0]: null;
    }
 }

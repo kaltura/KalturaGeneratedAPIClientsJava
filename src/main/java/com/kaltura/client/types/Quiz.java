@@ -31,7 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
-import java.util.ArrayList;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -42,116 +43,156 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Quiz.Tokenizer.class)
 public class Quiz extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String version();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> uiAttributes();
+		String showResultOnAnswer();
+		String showCorrectKeyOnAnswer();
+		String allowAnswerUpdate();
+		String showCorrectAfterSubmission();
+		String allowDownload();
+		String showGradeAfterSubmission();
+	}
 
-    private Integer version;
+	private Integer version;
 	/**  Array of key value ui related objects  */
-    private List<KeyValue> uiAttributes;
-    private Boolean showResultOnAnswer;
-    private Boolean showCorrectKeyOnAnswer;
-    private Boolean allowAnswerUpdate;
-    private Boolean showCorrectAfterSubmission;
-    private Boolean allowDownload;
-    private Boolean showGradeAfterSubmission;
+	private List<KeyValue> uiAttributes;
+	private Boolean showResultOnAnswer;
+	private Boolean showCorrectKeyOnAnswer;
+	private Boolean allowAnswerUpdate;
+	private Boolean showCorrectAfterSubmission;
+	private Boolean allowDownload;
+	private Boolean showGradeAfterSubmission;
 
-    // version:
-    public Integer getVersion(){
-        return this.version;
-    }
-    public void setVersion(Integer version){
-        this.version = version;
-    }
+	// version:
+	public Integer getVersion(){
+		return this.version;
+	}
+	public void setVersion(Integer version){
+		this.version = version;
+	}
 
-    // uiAttributes:
-    public List<KeyValue> getUiAttributes(){
-        return this.uiAttributes;
-    }
-    public void setUiAttributes(List<KeyValue> uiAttributes){
-        this.uiAttributes = uiAttributes;
-    }
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
-    // showResultOnAnswer:
-    public Boolean getShowResultOnAnswer(){
-        return this.showResultOnAnswer;
-    }
-    public void setShowResultOnAnswer(Boolean showResultOnAnswer){
-        this.showResultOnAnswer = showResultOnAnswer;
-    }
+	// uiAttributes:
+	public List<KeyValue> getUiAttributes(){
+		return this.uiAttributes;
+	}
+	public void setUiAttributes(List<KeyValue> uiAttributes){
+		this.uiAttributes = uiAttributes;
+	}
 
-    // showCorrectKeyOnAnswer:
-    public Boolean getShowCorrectKeyOnAnswer(){
-        return this.showCorrectKeyOnAnswer;
-    }
-    public void setShowCorrectKeyOnAnswer(Boolean showCorrectKeyOnAnswer){
-        this.showCorrectKeyOnAnswer = showCorrectKeyOnAnswer;
-    }
+	// showResultOnAnswer:
+	public Boolean getShowResultOnAnswer(){
+		return this.showResultOnAnswer;
+	}
+	public void setShowResultOnAnswer(Boolean showResultOnAnswer){
+		this.showResultOnAnswer = showResultOnAnswer;
+	}
 
-    // allowAnswerUpdate:
-    public Boolean getAllowAnswerUpdate(){
-        return this.allowAnswerUpdate;
-    }
-    public void setAllowAnswerUpdate(Boolean allowAnswerUpdate){
-        this.allowAnswerUpdate = allowAnswerUpdate;
-    }
+	public void showResultOnAnswer(String multirequestToken){
+		setToken("showResultOnAnswer", multirequestToken);
+	}
 
-    // showCorrectAfterSubmission:
-    public Boolean getShowCorrectAfterSubmission(){
-        return this.showCorrectAfterSubmission;
-    }
-    public void setShowCorrectAfterSubmission(Boolean showCorrectAfterSubmission){
-        this.showCorrectAfterSubmission = showCorrectAfterSubmission;
-    }
+	// showCorrectKeyOnAnswer:
+	public Boolean getShowCorrectKeyOnAnswer(){
+		return this.showCorrectKeyOnAnswer;
+	}
+	public void setShowCorrectKeyOnAnswer(Boolean showCorrectKeyOnAnswer){
+		this.showCorrectKeyOnAnswer = showCorrectKeyOnAnswer;
+	}
 
-    // allowDownload:
-    public Boolean getAllowDownload(){
-        return this.allowDownload;
-    }
-    public void setAllowDownload(Boolean allowDownload){
-        this.allowDownload = allowDownload;
-    }
+	public void showCorrectKeyOnAnswer(String multirequestToken){
+		setToken("showCorrectKeyOnAnswer", multirequestToken);
+	}
 
-    // showGradeAfterSubmission:
-    public Boolean getShowGradeAfterSubmission(){
-        return this.showGradeAfterSubmission;
-    }
-    public void setShowGradeAfterSubmission(Boolean showGradeAfterSubmission){
-        this.showGradeAfterSubmission = showGradeAfterSubmission;
-    }
+	// allowAnswerUpdate:
+	public Boolean getAllowAnswerUpdate(){
+		return this.allowAnswerUpdate;
+	}
+	public void setAllowAnswerUpdate(Boolean allowAnswerUpdate){
+		this.allowAnswerUpdate = allowAnswerUpdate;
+	}
+
+	public void allowAnswerUpdate(String multirequestToken){
+		setToken("allowAnswerUpdate", multirequestToken);
+	}
+
+	// showCorrectAfterSubmission:
+	public Boolean getShowCorrectAfterSubmission(){
+		return this.showCorrectAfterSubmission;
+	}
+	public void setShowCorrectAfterSubmission(Boolean showCorrectAfterSubmission){
+		this.showCorrectAfterSubmission = showCorrectAfterSubmission;
+	}
+
+	public void showCorrectAfterSubmission(String multirequestToken){
+		setToken("showCorrectAfterSubmission", multirequestToken);
+	}
+
+	// allowDownload:
+	public Boolean getAllowDownload(){
+		return this.allowDownload;
+	}
+	public void setAllowDownload(Boolean allowDownload){
+		this.allowDownload = allowDownload;
+	}
+
+	public void allowDownload(String multirequestToken){
+		setToken("allowDownload", multirequestToken);
+	}
+
+	// showGradeAfterSubmission:
+	public Boolean getShowGradeAfterSubmission(){
+		return this.showGradeAfterSubmission;
+	}
+	public void setShowGradeAfterSubmission(Boolean showGradeAfterSubmission){
+		this.showGradeAfterSubmission = showGradeAfterSubmission;
+	}
+
+	public void showGradeAfterSubmission(String multirequestToken){
+		setToken("showGradeAfterSubmission", multirequestToken);
+	}
 
 
-    public Quiz() {
-       super();
-    }
+	public Quiz() {
+		super();
+	}
 
-    public Quiz(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public Quiz(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        version = GsonParser.parseInt(jsonObject.get("version"));
-        uiAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("uiAttributes"), KeyValue.class);
-        showResultOnAnswer = GsonParser.parseBoolean(jsonObject.get("showResultOnAnswer"));
-        showCorrectKeyOnAnswer = GsonParser.parseBoolean(jsonObject.get("showCorrectKeyOnAnswer"));
-        allowAnswerUpdate = GsonParser.parseBoolean(jsonObject.get("allowAnswerUpdate"));
-        showCorrectAfterSubmission = GsonParser.parseBoolean(jsonObject.get("showCorrectAfterSubmission"));
-        allowDownload = GsonParser.parseBoolean(jsonObject.get("allowDownload"));
-        showGradeAfterSubmission = GsonParser.parseBoolean(jsonObject.get("showGradeAfterSubmission"));
+		// set members values:
+		version = GsonParser.parseInt(jsonObject.get("version"));
+		uiAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("uiAttributes"), KeyValue.class);
+		showResultOnAnswer = GsonParser.parseBoolean(jsonObject.get("showResultOnAnswer"));
+		showCorrectKeyOnAnswer = GsonParser.parseBoolean(jsonObject.get("showCorrectKeyOnAnswer"));
+		allowAnswerUpdate = GsonParser.parseBoolean(jsonObject.get("allowAnswerUpdate"));
+		showCorrectAfterSubmission = GsonParser.parseBoolean(jsonObject.get("showCorrectAfterSubmission"));
+		allowDownload = GsonParser.parseBoolean(jsonObject.get("allowDownload"));
+		showGradeAfterSubmission = GsonParser.parseBoolean(jsonObject.get("showGradeAfterSubmission"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuiz");
-        kparams.add("uiAttributes", this.uiAttributes);
-        kparams.add("showResultOnAnswer", this.showResultOnAnswer);
-        kparams.add("showCorrectKeyOnAnswer", this.showCorrectKeyOnAnswer);
-        kparams.add("allowAnswerUpdate", this.allowAnswerUpdate);
-        kparams.add("showCorrectAfterSubmission", this.showCorrectAfterSubmission);
-        kparams.add("allowDownload", this.allowDownload);
-        kparams.add("showGradeAfterSubmission", this.showGradeAfterSubmission);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuiz");
+		kparams.add("uiAttributes", this.uiAttributes);
+		kparams.add("showResultOnAnswer", this.showResultOnAnswer);
+		kparams.add("showCorrectKeyOnAnswer", this.showCorrectKeyOnAnswer);
+		kparams.add("allowAnswerUpdate", this.allowAnswerUpdate);
+		kparams.add("showCorrectAfterSubmission", this.showCorrectAfterSubmission);
+		kparams.add("allowDownload", this.allowDownload);
+		kparams.add("showGradeAfterSubmission", this.showGradeAfterSubmission);
+		return kparams;
+	}
 
 }
 

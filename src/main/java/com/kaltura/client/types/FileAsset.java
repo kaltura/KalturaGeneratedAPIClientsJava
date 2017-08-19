@@ -33,6 +33,7 @@ import com.kaltura.client.enums.FileAssetObjectType;
 import com.kaltura.client.enums.FileAssetStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,143 +43,202 @@ import com.kaltura.client.utils.GsonParser;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FileAsset.Tokenizer.class)
 public class FileAsset extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String fileAssetObjectType();
+		String objectId();
+		String name();
+		String systemName();
+		String fileExt();
+		String version();
+		String createdAt();
+		String updatedAt();
+		String status();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private FileAssetObjectType fileAssetObjectType;
-    private String objectId;
-    private String name;
-    private String systemName;
-    private String fileExt;
-    private Integer version;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private FileAssetStatus status;
+	private Integer id;
+	private Integer partnerId;
+	private FileAssetObjectType fileAssetObjectType;
+	private String objectId;
+	private String name;
+	private String systemName;
+	private String fileExt;
+	private Integer version;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private FileAssetStatus status;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // fileAssetObjectType:
-    public FileAssetObjectType getFileAssetObjectType(){
-        return this.fileAssetObjectType;
-    }
-    public void setFileAssetObjectType(FileAssetObjectType fileAssetObjectType){
-        this.fileAssetObjectType = fileAssetObjectType;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// fileAssetObjectType:
+	public FileAssetObjectType getFileAssetObjectType(){
+		return this.fileAssetObjectType;
+	}
+	public void setFileAssetObjectType(FileAssetObjectType fileAssetObjectType){
+		this.fileAssetObjectType = fileAssetObjectType;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void fileAssetObjectType(String multirequestToken){
+		setToken("fileAssetObjectType", multirequestToken);
+	}
 
-    // fileExt:
-    public String getFileExt(){
-        return this.fileExt;
-    }
-    public void setFileExt(String fileExt){
-        this.fileExt = fileExt;
-    }
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
 
-    // version:
-    public Integer getVersion(){
-        return this.version;
-    }
-    public void setVersion(Integer version){
-        this.version = version;
-    }
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // status:
-    public FileAssetStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(FileAssetStatus status){
-        this.status = status;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
+
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
+
+	// fileExt:
+	public String getFileExt(){
+		return this.fileExt;
+	}
+	public void setFileExt(String fileExt){
+		this.fileExt = fileExt;
+	}
+
+	public void fileExt(String multirequestToken){
+		setToken("fileExt", multirequestToken);
+	}
+
+	// version:
+	public Integer getVersion(){
+		return this.version;
+	}
+	public void setVersion(Integer version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// status:
+	public FileAssetStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(FileAssetStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
 
-    public FileAsset() {
-       super();
-    }
+	public FileAsset() {
+		super();
+	}
 
-    public FileAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FileAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        fileAssetObjectType = FileAssetObjectType.get(GsonParser.parseString(jsonObject.get("fileAssetObjectType")));
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
-        version = GsonParser.parseInt(jsonObject.get("version"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        status = FileAssetStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		fileAssetObjectType = FileAssetObjectType.get(GsonParser.parseString(jsonObject.get("fileAssetObjectType")));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
+		version = GsonParser.parseInt(jsonObject.get("version"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		status = FileAssetStatus.get(GsonParser.parseString(jsonObject.get("status")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFileAsset");
-        kparams.add("fileAssetObjectType", this.fileAssetObjectType);
-        kparams.add("objectId", this.objectId);
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("fileExt", this.fileExt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFileAsset");
+		kparams.add("fileAssetObjectType", this.fileAssetObjectType);
+		kparams.add("objectId", this.objectId);
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("fileExt", this.fileExt);
+		return kparams;
+	}
 
 }
 
