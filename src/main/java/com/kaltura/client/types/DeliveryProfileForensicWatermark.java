@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,78 +42,98 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileForensicWatermark.Tokenizer.class)
 public class DeliveryProfileForensicWatermark extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> internalUrl();
+		String encryptionKey();
+		String encryptionIv();
+		String encryptionRegex();
+	}
 
 	/**  The URL used to pull manifest from the server, keyed by dc id, asterisk means
 	  all dcs  */
-    private List<KeyValue> internalUrl;
+	private List<KeyValue> internalUrl;
 	/**  The key used to encrypt the URI (256 bits)  */
-    private String encryptionKey;
+	private String encryptionKey;
 	/**  The iv used to encrypt the URI (128 bits)  */
-    private String encryptionIv;
+	private String encryptionIv;
 	/**  The regex used to match the encrypted part of the URI (according to the
 	  'encrypt' named group)  */
-    private String encryptionRegex;
+	private String encryptionRegex;
 
-    // internalUrl:
-    public List<KeyValue> getInternalUrl(){
-        return this.internalUrl;
-    }
-    public void setInternalUrl(List<KeyValue> internalUrl){
-        this.internalUrl = internalUrl;
-    }
+	// internalUrl:
+	public List<KeyValue> getInternalUrl(){
+		return this.internalUrl;
+	}
+	public void setInternalUrl(List<KeyValue> internalUrl){
+		this.internalUrl = internalUrl;
+	}
 
-    // encryptionKey:
-    public String getEncryptionKey(){
-        return this.encryptionKey;
-    }
-    public void setEncryptionKey(String encryptionKey){
-        this.encryptionKey = encryptionKey;
-    }
+	// encryptionKey:
+	public String getEncryptionKey(){
+		return this.encryptionKey;
+	}
+	public void setEncryptionKey(String encryptionKey){
+		this.encryptionKey = encryptionKey;
+	}
 
-    // encryptionIv:
-    public String getEncryptionIv(){
-        return this.encryptionIv;
-    }
-    public void setEncryptionIv(String encryptionIv){
-        this.encryptionIv = encryptionIv;
-    }
+	public void encryptionKey(String multirequestToken){
+		setToken("encryptionKey", multirequestToken);
+	}
 
-    // encryptionRegex:
-    public String getEncryptionRegex(){
-        return this.encryptionRegex;
-    }
-    public void setEncryptionRegex(String encryptionRegex){
-        this.encryptionRegex = encryptionRegex;
-    }
+	// encryptionIv:
+	public String getEncryptionIv(){
+		return this.encryptionIv;
+	}
+	public void setEncryptionIv(String encryptionIv){
+		this.encryptionIv = encryptionIv;
+	}
+
+	public void encryptionIv(String multirequestToken){
+		setToken("encryptionIv", multirequestToken);
+	}
+
+	// encryptionRegex:
+	public String getEncryptionRegex(){
+		return this.encryptionRegex;
+	}
+	public void setEncryptionRegex(String encryptionRegex){
+		this.encryptionRegex = encryptionRegex;
+	}
+
+	public void encryptionRegex(String multirequestToken){
+		setToken("encryptionRegex", multirequestToken);
+	}
 
 
-    public DeliveryProfileForensicWatermark() {
-       super();
-    }
+	public DeliveryProfileForensicWatermark() {
+		super();
+	}
 
-    public DeliveryProfileForensicWatermark(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DeliveryProfileForensicWatermark(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        internalUrl = GsonParser.parseArray(jsonObject.getAsJsonArray("internalUrl"), KeyValue.class);
-        encryptionKey = GsonParser.parseString(jsonObject.get("encryptionKey"));
-        encryptionIv = GsonParser.parseString(jsonObject.get("encryptionIv"));
-        encryptionRegex = GsonParser.parseString(jsonObject.get("encryptionRegex"));
+		// set members values:
+		internalUrl = GsonParser.parseArray(jsonObject.getAsJsonArray("internalUrl"), KeyValue.class);
+		encryptionKey = GsonParser.parseString(jsonObject.get("encryptionKey"));
+		encryptionIv = GsonParser.parseString(jsonObject.get("encryptionIv"));
+		encryptionRegex = GsonParser.parseString(jsonObject.get("encryptionRegex"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDeliveryProfileForensicWatermark");
-        kparams.add("internalUrl", this.internalUrl);
-        kparams.add("encryptionKey", this.encryptionKey);
-        kparams.add("encryptionIv", this.encryptionIv);
-        kparams.add("encryptionRegex", this.encryptionRegex);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileForensicWatermark");
+		kparams.add("internalUrl", this.internalUrl);
+		kparams.add("encryptionKey", this.encryptionKey);
+		kparams.add("encryptionIv", this.encryptionIv);
+		kparams.add("encryptionRegex", this.encryptionRegex);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,88 +40,117 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DexterIntegrationJobProviderData.Tokenizer.class)
 public class DexterIntegrationJobProviderData extends IntegrationJobProviderData {
+	
+	public interface Tokenizer extends IntegrationJobProviderData.Tokenizer {
+		String metadataProfileId();
+		String transcriptAssetId();
+		String entryId();
+		String voicebaseApiKey();
+		String voicebaseApiPassword();
+	}
 
 	/**  ID of the metadata profile for the extracted term metadata  */
-    private Integer metadataProfileId;
+	private Integer metadataProfileId;
 	/**  ID of the transcript asset  */
-    private String transcriptAssetId;
+	private String transcriptAssetId;
 	/**  ID of the entry  */
-    private String entryId;
+	private String entryId;
 	/**  Voicebase API key to fetch transcript tokens  */
-    private String voicebaseApiKey;
+	private String voicebaseApiKey;
 	/**  Voicebase API password to fetch transcript tokens  */
-    private String voicebaseApiPassword;
+	private String voicebaseApiPassword;
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
 
-    // transcriptAssetId:
-    public String getTranscriptAssetId(){
-        return this.transcriptAssetId;
-    }
-    public void setTranscriptAssetId(String transcriptAssetId){
-        this.transcriptAssetId = transcriptAssetId;
-    }
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// transcriptAssetId:
+	public String getTranscriptAssetId(){
+		return this.transcriptAssetId;
+	}
+	public void setTranscriptAssetId(String transcriptAssetId){
+		this.transcriptAssetId = transcriptAssetId;
+	}
 
-    // voicebaseApiKey:
-    public String getVoicebaseApiKey(){
-        return this.voicebaseApiKey;
-    }
-    public void setVoicebaseApiKey(String voicebaseApiKey){
-        this.voicebaseApiKey = voicebaseApiKey;
-    }
+	public void transcriptAssetId(String multirequestToken){
+		setToken("transcriptAssetId", multirequestToken);
+	}
 
-    // voicebaseApiPassword:
-    public String getVoicebaseApiPassword(){
-        return this.voicebaseApiPassword;
-    }
-    public void setVoicebaseApiPassword(String voicebaseApiPassword){
-        this.voicebaseApiPassword = voicebaseApiPassword;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
+
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
+
+	// voicebaseApiKey:
+	public String getVoicebaseApiKey(){
+		return this.voicebaseApiKey;
+	}
+	public void setVoicebaseApiKey(String voicebaseApiKey){
+		this.voicebaseApiKey = voicebaseApiKey;
+	}
+
+	public void voicebaseApiKey(String multirequestToken){
+		setToken("voicebaseApiKey", multirequestToken);
+	}
+
+	// voicebaseApiPassword:
+	public String getVoicebaseApiPassword(){
+		return this.voicebaseApiPassword;
+	}
+	public void setVoicebaseApiPassword(String voicebaseApiPassword){
+		this.voicebaseApiPassword = voicebaseApiPassword;
+	}
+
+	public void voicebaseApiPassword(String multirequestToken){
+		setToken("voicebaseApiPassword", multirequestToken);
+	}
 
 
-    public DexterIntegrationJobProviderData() {
-       super();
-    }
+	public DexterIntegrationJobProviderData() {
+		super();
+	}
 
-    public DexterIntegrationJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DexterIntegrationJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-        transcriptAssetId = GsonParser.parseString(jsonObject.get("transcriptAssetId"));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        voicebaseApiKey = GsonParser.parseString(jsonObject.get("voicebaseApiKey"));
-        voicebaseApiPassword = GsonParser.parseString(jsonObject.get("voicebaseApiPassword"));
+		// set members values:
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		transcriptAssetId = GsonParser.parseString(jsonObject.get("transcriptAssetId"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		voicebaseApiKey = GsonParser.parseString(jsonObject.get("voicebaseApiKey"));
+		voicebaseApiPassword = GsonParser.parseString(jsonObject.get("voicebaseApiPassword"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDexterIntegrationJobProviderData");
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        kparams.add("transcriptAssetId", this.transcriptAssetId);
-        kparams.add("entryId", this.entryId);
-        kparams.add("voicebaseApiKey", this.voicebaseApiKey);
-        kparams.add("voicebaseApiPassword", this.voicebaseApiPassword);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDexterIntegrationJobProviderData");
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("transcriptAssetId", this.transcriptAssetId);
+		kparams.add("entryId", this.entryId);
+		kparams.add("voicebaseApiKey", this.voicebaseApiKey);
+		kparams.add("voicebaseApiPassword", this.voicebaseApiPassword);
+		return kparams;
+	}
 
 }
 

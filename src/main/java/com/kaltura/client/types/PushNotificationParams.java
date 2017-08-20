@@ -27,12 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -43,40 +44,45 @@ import com.google.gson.JsonObject;
 
 /**  Object which contains contextual entry-related data.  */
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PushNotificationParams.Tokenizer.class)
 public class PushNotificationParams extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		RequestBuilder.ListTokenizer<PushEventNotificationParameter.Tokenizer> userParams();
+	}
 
 	/**  User params  */
-    private List<PushEventNotificationParameter> userParams;
+	private List<PushEventNotificationParameter> userParams;
 
-    // userParams:
-    public List<PushEventNotificationParameter> getUserParams(){
-        return this.userParams;
-    }
-    public void setUserParams(List<PushEventNotificationParameter> userParams){
-        this.userParams = userParams;
-    }
+	// userParams:
+	public List<PushEventNotificationParameter> getUserParams(){
+		return this.userParams;
+	}
+	public void setUserParams(List<PushEventNotificationParameter> userParams){
+		this.userParams = userParams;
+	}
 
 
-    public PushNotificationParams() {
-       super();
-    }
+	public PushNotificationParams() {
+		super();
+	}
 
-    public PushNotificationParams(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PushNotificationParams(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        userParams = GsonParser.parseArray(jsonObject.getAsJsonArray("userParams"), PushEventNotificationParameter.class);
+		// set members values:
+		userParams = GsonParser.parseArray(jsonObject.getAsJsonArray("userParams"), PushEventNotificationParameter.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPushNotificationParams");
-        kparams.add("userParams", this.userParams);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPushNotificationParams");
+		kparams.add("userParams", this.userParams);
+		return kparams;
+	}
 
 }
 

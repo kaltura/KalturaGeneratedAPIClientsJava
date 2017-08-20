@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.AuditTrailFileSyncType;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.AuditTrailFileSyncType;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,83 +41,112 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrailFileSyncCreateInfo.Tokenizer.class)
 public class AuditTrailFileSyncCreateInfo extends AuditTrailInfo {
+	
+	public interface Tokenizer extends AuditTrailInfo.Tokenizer {
+		String version();
+		String objectSubType();
+		String dc();
+		String original();
+		String fileType();
+	}
 
-    private String version;
-    private Integer objectSubType;
-    private Integer dc;
-    private Boolean original;
-    private AuditTrailFileSyncType fileType;
+	private String version;
+	private Integer objectSubType;
+	private Integer dc;
+	private Boolean original;
+	private AuditTrailFileSyncType fileType;
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
 
-    // objectSubType:
-    public Integer getObjectSubType(){
-        return this.objectSubType;
-    }
-    public void setObjectSubType(Integer objectSubType){
-        this.objectSubType = objectSubType;
-    }
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
 
-    // dc:
-    public Integer getDc(){
-        return this.dc;
-    }
-    public void setDc(Integer dc){
-        this.dc = dc;
-    }
+	// objectSubType:
+	public Integer getObjectSubType(){
+		return this.objectSubType;
+	}
+	public void setObjectSubType(Integer objectSubType){
+		this.objectSubType = objectSubType;
+	}
 
-    // original:
-    public Boolean getOriginal(){
-        return this.original;
-    }
-    public void setOriginal(Boolean original){
-        this.original = original;
-    }
+	public void objectSubType(String multirequestToken){
+		setToken("objectSubType", multirequestToken);
+	}
 
-    // fileType:
-    public AuditTrailFileSyncType getFileType(){
-        return this.fileType;
-    }
-    public void setFileType(AuditTrailFileSyncType fileType){
-        this.fileType = fileType;
-    }
+	// dc:
+	public Integer getDc(){
+		return this.dc;
+	}
+	public void setDc(Integer dc){
+		this.dc = dc;
+	}
+
+	public void dc(String multirequestToken){
+		setToken("dc", multirequestToken);
+	}
+
+	// original:
+	public Boolean getOriginal(){
+		return this.original;
+	}
+	public void setOriginal(Boolean original){
+		this.original = original;
+	}
+
+	public void original(String multirequestToken){
+		setToken("original", multirequestToken);
+	}
+
+	// fileType:
+	public AuditTrailFileSyncType getFileType(){
+		return this.fileType;
+	}
+	public void setFileType(AuditTrailFileSyncType fileType){
+		this.fileType = fileType;
+	}
+
+	public void fileType(String multirequestToken){
+		setToken("fileType", multirequestToken);
+	}
 
 
-    public AuditTrailFileSyncCreateInfo() {
-       super();
-    }
+	public AuditTrailFileSyncCreateInfo() {
+		super();
+	}
 
-    public AuditTrailFileSyncCreateInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrailFileSyncCreateInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        version = GsonParser.parseString(jsonObject.get("version"));
-        objectSubType = GsonParser.parseInt(jsonObject.get("objectSubType"));
-        dc = GsonParser.parseInt(jsonObject.get("dc"));
-        original = GsonParser.parseBoolean(jsonObject.get("original"));
-        fileType = AuditTrailFileSyncType.get(GsonParser.parseInt(jsonObject.get("fileType")));
+		// set members values:
+		version = GsonParser.parseString(jsonObject.get("version"));
+		objectSubType = GsonParser.parseInt(jsonObject.get("objectSubType"));
+		dc = GsonParser.parseInt(jsonObject.get("dc"));
+		original = GsonParser.parseBoolean(jsonObject.get("original"));
+		fileType = AuditTrailFileSyncType.get(GsonParser.parseInt(jsonObject.get("fileType")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrailFileSyncCreateInfo");
-        kparams.add("version", this.version);
-        kparams.add("objectSubType", this.objectSubType);
-        kparams.add("dc", this.dc);
-        kparams.add("original", this.original);
-        kparams.add("fileType", this.fileType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrailFileSyncCreateInfo");
+		kparams.add("version", this.version);
+		kparams.add("objectSubType", this.objectSubType);
+		kparams.add("dc", this.dc);
+		kparams.add("original", this.original);
+		kparams.add("fileType", this.fileType);
+		return kparams;
+	}
 
 }
 

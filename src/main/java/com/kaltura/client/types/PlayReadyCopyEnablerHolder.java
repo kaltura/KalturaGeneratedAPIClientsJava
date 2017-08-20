@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.PlayReadyCopyEnablerType;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.PlayReadyCopyEnablerType;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,40 +42,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyCopyEnablerHolder.Tokenizer.class)
 public class PlayReadyCopyEnablerHolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+	}
 
 	/**  The type of the copy enabler  */
-    private PlayReadyCopyEnablerType type;
+	private PlayReadyCopyEnablerType type;
 
-    // type:
-    public PlayReadyCopyEnablerType getType(){
-        return this.type;
-    }
-    public void setType(PlayReadyCopyEnablerType type){
-        this.type = type;
-    }
+	// type:
+	public PlayReadyCopyEnablerType getType(){
+		return this.type;
+	}
+	public void setType(PlayReadyCopyEnablerType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public PlayReadyCopyEnablerHolder() {
-       super();
-    }
+	public PlayReadyCopyEnablerHolder() {
+		super();
+	}
 
-    public PlayReadyCopyEnablerHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyCopyEnablerHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = PlayReadyCopyEnablerType.get(GsonParser.parseString(jsonObject.get("type")));
+		// set members values:
+		type = PlayReadyCopyEnablerType.get(GsonParser.parseString(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyCopyEnablerHolder");
-        kparams.add("type", this.type);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyCopyEnablerHolder");
+		kparams.add("type", this.type);
+		return kparams;
+	}
 
 }
 

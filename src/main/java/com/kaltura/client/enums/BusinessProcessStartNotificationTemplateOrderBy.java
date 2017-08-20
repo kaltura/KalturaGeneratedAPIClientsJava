@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,41 +34,41 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BusinessProcessStartNotificationTemplateOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    ID_ASC("+id"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    ID_DESC("-id"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    BusinessProcessStartNotificationTemplateOrderBy(String value) {
-        this.value = value;
-    }
+	BusinessProcessStartNotificationTemplateOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static BusinessProcessStartNotificationTemplateOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over BusinessProcessStartNotificationTemplateOrderBy defined values and compare the inner value with the given one:
-        for(BusinessProcessStartNotificationTemplateOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return BusinessProcessStartNotificationTemplateOrderBy.values().length > 0 ? BusinessProcessStartNotificationTemplateOrderBy.values()[0]: null;
+	public static BusinessProcessStartNotificationTemplateOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over BusinessProcessStartNotificationTemplateOrderBy defined values and compare the inner value with the given one:
+		for(BusinessProcessStartNotificationTemplateOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return BusinessProcessStartNotificationTemplateOrderBy.values().length > 0 ? BusinessProcessStartNotificationTemplateOrderBy.values()[0]: null;
    }
 }

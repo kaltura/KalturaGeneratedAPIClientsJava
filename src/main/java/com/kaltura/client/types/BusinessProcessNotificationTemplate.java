@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +40,83 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessNotificationTemplate.Tokenizer.class)
 public abstract class BusinessProcessNotificationTemplate extends EventNotificationTemplate {
+	
+	public interface Tokenizer extends EventNotificationTemplate.Tokenizer {
+		String serverId();
+		String processId();
+		String mainObjectCode();
+	}
 
 	/**  Define the integrated BPM server id  */
-    private Integer serverId;
+	private Integer serverId;
 	/**  Define the integrated BPM process id  */
-    private String processId;
+	private String processId;
 	/**  Code to load the main triggering object  */
-    private String mainObjectCode;
+	private String mainObjectCode;
 
-    // serverId:
-    public Integer getServerId(){
-        return this.serverId;
-    }
-    public void setServerId(Integer serverId){
-        this.serverId = serverId;
-    }
+	// serverId:
+	public Integer getServerId(){
+		return this.serverId;
+	}
+	public void setServerId(Integer serverId){
+		this.serverId = serverId;
+	}
 
-    // processId:
-    public String getProcessId(){
-        return this.processId;
-    }
-    public void setProcessId(String processId){
-        this.processId = processId;
-    }
+	public void serverId(String multirequestToken){
+		setToken("serverId", multirequestToken);
+	}
 
-    // mainObjectCode:
-    public String getMainObjectCode(){
-        return this.mainObjectCode;
-    }
-    public void setMainObjectCode(String mainObjectCode){
-        this.mainObjectCode = mainObjectCode;
-    }
+	// processId:
+	public String getProcessId(){
+		return this.processId;
+	}
+	public void setProcessId(String processId){
+		this.processId = processId;
+	}
+
+	public void processId(String multirequestToken){
+		setToken("processId", multirequestToken);
+	}
+
+	// mainObjectCode:
+	public String getMainObjectCode(){
+		return this.mainObjectCode;
+	}
+	public void setMainObjectCode(String mainObjectCode){
+		this.mainObjectCode = mainObjectCode;
+	}
+
+	public void mainObjectCode(String multirequestToken){
+		setToken("mainObjectCode", multirequestToken);
+	}
 
 
-    public BusinessProcessNotificationTemplate() {
-       super();
-    }
+	public BusinessProcessNotificationTemplate() {
+		super();
+	}
 
-    public BusinessProcessNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        serverId = GsonParser.parseInt(jsonObject.get("serverId"));
-        processId = GsonParser.parseString(jsonObject.get("processId"));
-        mainObjectCode = GsonParser.parseString(jsonObject.get("mainObjectCode"));
+		// set members values:
+		serverId = GsonParser.parseInt(jsonObject.get("serverId"));
+		processId = GsonParser.parseString(jsonObject.get("processId"));
+		mainObjectCode = GsonParser.parseString(jsonObject.get("mainObjectCode"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessNotificationTemplate");
-        kparams.add("serverId", this.serverId);
-        kparams.add("processId", this.processId);
-        kparams.add("mainObjectCode", this.mainObjectCode);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessNotificationTemplate");
+		kparams.add("serverId", this.serverId);
+		kparams.add("processId", this.processId);
+		kparams.add("mainObjectCode", this.mainObjectCode);
+		return kparams;
+	}
 
 }
 

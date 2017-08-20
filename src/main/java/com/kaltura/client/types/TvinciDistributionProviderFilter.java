@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TvinciDistributionProviderFilter.Tokenizer.class)
 public class TvinciDistributionProviderFilter extends TvinciDistributionProviderBaseFilter {
+	
+	public interface Tokenizer extends TvinciDistributionProviderBaseFilter.Tokenizer {
+	}
 
 
 
-    public TvinciDistributionProviderFilter() {
-       super();
-    }
+	public TvinciDistributionProviderFilter() {
+		super();
+	}
 
-    public TvinciDistributionProviderFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public TvinciDistributionProviderFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTvinciDistributionProviderFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTvinciDistributionProviderFilter");
+		return kparams;
+	}
 
 }
 

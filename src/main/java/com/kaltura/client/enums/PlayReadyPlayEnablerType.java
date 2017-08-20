@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,42 +34,42 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlayReadyPlayEnablerType implements EnumAsString {
-    HELIX("002F9772-38A0-43E5-9F79-0F6361DCC62A"),
-    HDCP_WIVU("1B4542E3-B5CF-4C99-B3BA-829AF46C92F8"),
-    AIRPLAY("5ABF0F0D-DC29-4B82-9982-FD8E57525BFC"),
-    UNKNOWN("786627D8-C2A6-44BE-8F88-08AE255B01A"),
-    HDCP_MIRACAST("A340C256-0941-4D4C-AD1D-0B6735C0CB24"),
-    UNKNOWN_520("B621D91F-EDCC-4035-8D4B-DC71760D43E9"),
-    DTCP("D685030B-0F4F-43A6-BBAD-356F1EA0049A");
+	HELIX("002F9772-38A0-43E5-9F79-0F6361DCC62A"),
+	HDCP_WIVU("1B4542E3-B5CF-4C99-B3BA-829AF46C92F8"),
+	AIRPLAY("5ABF0F0D-DC29-4B82-9982-FD8E57525BFC"),
+	UNKNOWN("786627D8-C2A6-44BE-8F88-08AE255B01A"),
+	HDCP_MIRACAST("A340C256-0941-4D4C-AD1D-0B6735C0CB24"),
+	UNKNOWN_520("B621D91F-EDCC-4035-8D4B-DC71760D43E9"),
+	DTCP("D685030B-0F4F-43A6-BBAD-356F1EA0049A");
 
-    private String value;
+	private String value;
 
-    PlayReadyPlayEnablerType(String value) {
-        this.value = value;
-    }
+	PlayReadyPlayEnablerType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static PlayReadyPlayEnablerType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlayReadyPlayEnablerType defined values and compare the inner value with the given one:
-        for(PlayReadyPlayEnablerType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlayReadyPlayEnablerType.values().length > 0 ? PlayReadyPlayEnablerType.values()[0]: null;
+	public static PlayReadyPlayEnablerType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlayReadyPlayEnablerType defined values and compare the inner value with the given one:
+		for(PlayReadyPlayEnablerType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlayReadyPlayEnablerType.values().length > 0 ? PlayReadyPlayEnablerType.values()[0]: null;
    }
 }

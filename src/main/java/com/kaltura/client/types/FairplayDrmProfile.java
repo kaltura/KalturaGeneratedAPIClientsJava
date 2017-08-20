@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FairplayDrmProfile.Tokenizer.class)
 public class FairplayDrmProfile extends DrmProfile {
+	
+	public interface Tokenizer extends DrmProfile.Tokenizer {
+		String publicCertificate();
+	}
 
-    private String publicCertificate;
+	private String publicCertificate;
 
-    // publicCertificate:
-    public String getPublicCertificate(){
-        return this.publicCertificate;
-    }
-    public void setPublicCertificate(String publicCertificate){
-        this.publicCertificate = publicCertificate;
-    }
+	// publicCertificate:
+	public String getPublicCertificate(){
+		return this.publicCertificate;
+	}
+	public void setPublicCertificate(String publicCertificate){
+		this.publicCertificate = publicCertificate;
+	}
+
+	public void publicCertificate(String multirequestToken){
+		setToken("publicCertificate", multirequestToken);
+	}
 
 
-    public FairplayDrmProfile() {
-       super();
-    }
+	public FairplayDrmProfile() {
+		super();
+	}
 
-    public FairplayDrmProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FairplayDrmProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        publicCertificate = GsonParser.parseString(jsonObject.get("publicCertificate"));
+		// set members values:
+		publicCertificate = GsonParser.parseString(jsonObject.get("publicCertificate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFairplayDrmProfile");
-        kparams.add("publicCertificate", this.publicCertificate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFairplayDrmProfile");
+		kparams.add("publicCertificate", this.publicCertificate);
+		return kparams;
+	}
 
 }
 

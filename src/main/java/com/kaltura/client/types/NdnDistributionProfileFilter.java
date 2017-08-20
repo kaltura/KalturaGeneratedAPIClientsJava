@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(NdnDistributionProfileFilter.Tokenizer.class)
 public class NdnDistributionProfileFilter extends NdnDistributionProfileBaseFilter {
+	
+	public interface Tokenizer extends NdnDistributionProfileBaseFilter.Tokenizer {
+	}
 
 
 
-    public NdnDistributionProfileFilter() {
-       super();
-    }
+	public NdnDistributionProfileFilter() {
+		super();
+	}
 
-    public NdnDistributionProfileFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public NdnDistributionProfileFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaNdnDistributionProfileFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaNdnDistributionProfileFilter");
+		return kparams;
+	}
 
 }
 

@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.YahooDistributionProcessFeedActionStatus;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.YahooDistributionProcessFeedActionStatus;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,105 +41,144 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YahooDistributionProfile.Tokenizer.class)
 public class YahooDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String ftpPath();
+		String ftpUsername();
+		String ftpPassword();
+		String ftpHost();
+		String contactTelephone();
+		String contactEmail();
+		String processFeed();
+	}
 
-    private String ftpPath;
-    private String ftpUsername;
-    private String ftpPassword;
-    private String ftpHost;
-    private String contactTelephone;
-    private String contactEmail;
-    private YahooDistributionProcessFeedActionStatus processFeed;
+	private String ftpPath;
+	private String ftpUsername;
+	private String ftpPassword;
+	private String ftpHost;
+	private String contactTelephone;
+	private String contactEmail;
+	private YahooDistributionProcessFeedActionStatus processFeed;
 
-    // ftpPath:
-    public String getFtpPath(){
-        return this.ftpPath;
-    }
-    public void setFtpPath(String ftpPath){
-        this.ftpPath = ftpPath;
-    }
+	// ftpPath:
+	public String getFtpPath(){
+		return this.ftpPath;
+	}
+	public void setFtpPath(String ftpPath){
+		this.ftpPath = ftpPath;
+	}
 
-    // ftpUsername:
-    public String getFtpUsername(){
-        return this.ftpUsername;
-    }
-    public void setFtpUsername(String ftpUsername){
-        this.ftpUsername = ftpUsername;
-    }
+	public void ftpPath(String multirequestToken){
+		setToken("ftpPath", multirequestToken);
+	}
 
-    // ftpPassword:
-    public String getFtpPassword(){
-        return this.ftpPassword;
-    }
-    public void setFtpPassword(String ftpPassword){
-        this.ftpPassword = ftpPassword;
-    }
+	// ftpUsername:
+	public String getFtpUsername(){
+		return this.ftpUsername;
+	}
+	public void setFtpUsername(String ftpUsername){
+		this.ftpUsername = ftpUsername;
+	}
 
-    // ftpHost:
-    public String getFtpHost(){
-        return this.ftpHost;
-    }
-    public void setFtpHost(String ftpHost){
-        this.ftpHost = ftpHost;
-    }
+	public void ftpUsername(String multirequestToken){
+		setToken("ftpUsername", multirequestToken);
+	}
 
-    // contactTelephone:
-    public String getContactTelephone(){
-        return this.contactTelephone;
-    }
-    public void setContactTelephone(String contactTelephone){
-        this.contactTelephone = contactTelephone;
-    }
+	// ftpPassword:
+	public String getFtpPassword(){
+		return this.ftpPassword;
+	}
+	public void setFtpPassword(String ftpPassword){
+		this.ftpPassword = ftpPassword;
+	}
 
-    // contactEmail:
-    public String getContactEmail(){
-        return this.contactEmail;
-    }
-    public void setContactEmail(String contactEmail){
-        this.contactEmail = contactEmail;
-    }
+	public void ftpPassword(String multirequestToken){
+		setToken("ftpPassword", multirequestToken);
+	}
 
-    // processFeed:
-    public YahooDistributionProcessFeedActionStatus getProcessFeed(){
-        return this.processFeed;
-    }
-    public void setProcessFeed(YahooDistributionProcessFeedActionStatus processFeed){
-        this.processFeed = processFeed;
-    }
+	// ftpHost:
+	public String getFtpHost(){
+		return this.ftpHost;
+	}
+	public void setFtpHost(String ftpHost){
+		this.ftpHost = ftpHost;
+	}
+
+	public void ftpHost(String multirequestToken){
+		setToken("ftpHost", multirequestToken);
+	}
+
+	// contactTelephone:
+	public String getContactTelephone(){
+		return this.contactTelephone;
+	}
+	public void setContactTelephone(String contactTelephone){
+		this.contactTelephone = contactTelephone;
+	}
+
+	public void contactTelephone(String multirequestToken){
+		setToken("contactTelephone", multirequestToken);
+	}
+
+	// contactEmail:
+	public String getContactEmail(){
+		return this.contactEmail;
+	}
+	public void setContactEmail(String contactEmail){
+		this.contactEmail = contactEmail;
+	}
+
+	public void contactEmail(String multirequestToken){
+		setToken("contactEmail", multirequestToken);
+	}
+
+	// processFeed:
+	public YahooDistributionProcessFeedActionStatus getProcessFeed(){
+		return this.processFeed;
+	}
+	public void setProcessFeed(YahooDistributionProcessFeedActionStatus processFeed){
+		this.processFeed = processFeed;
+	}
+
+	public void processFeed(String multirequestToken){
+		setToken("processFeed", multirequestToken);
+	}
 
 
-    public YahooDistributionProfile() {
-       super();
-    }
+	public YahooDistributionProfile() {
+		super();
+	}
 
-    public YahooDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YahooDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
-        ftpUsername = GsonParser.parseString(jsonObject.get("ftpUsername"));
-        ftpPassword = GsonParser.parseString(jsonObject.get("ftpPassword"));
-        ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
-        contactTelephone = GsonParser.parseString(jsonObject.get("contactTelephone"));
-        contactEmail = GsonParser.parseString(jsonObject.get("contactEmail"));
-        processFeed = YahooDistributionProcessFeedActionStatus.get(GsonParser.parseInt(jsonObject.get("processFeed")));
+		// set members values:
+		ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
+		ftpUsername = GsonParser.parseString(jsonObject.get("ftpUsername"));
+		ftpPassword = GsonParser.parseString(jsonObject.get("ftpPassword"));
+		ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
+		contactTelephone = GsonParser.parseString(jsonObject.get("contactTelephone"));
+		contactEmail = GsonParser.parseString(jsonObject.get("contactEmail"));
+		processFeed = YahooDistributionProcessFeedActionStatus.get(GsonParser.parseInt(jsonObject.get("processFeed")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYahooDistributionProfile");
-        kparams.add("ftpPath", this.ftpPath);
-        kparams.add("ftpUsername", this.ftpUsername);
-        kparams.add("ftpPassword", this.ftpPassword);
-        kparams.add("ftpHost", this.ftpHost);
-        kparams.add("contactTelephone", this.contactTelephone);
-        kparams.add("contactEmail", this.contactEmail);
-        kparams.add("processFeed", this.processFeed);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYahooDistributionProfile");
+		kparams.add("ftpPath", this.ftpPath);
+		kparams.add("ftpUsername", this.ftpUsername);
+		kparams.add("ftpPassword", this.ftpPassword);
+		kparams.add("ftpHost", this.ftpHost);
+		kparams.add("contactTelephone", this.contactTelephone);
+		kparams.add("contactEmail", this.contactEmail);
+		kparams.add("processFeed", this.processFeed);
+		return kparams;
+	}
 
 }
 

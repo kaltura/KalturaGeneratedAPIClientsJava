@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,37 +34,37 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlayReadyMinimumLicenseSecurityLevel implements EnumAsInt {
-    NON_COMMERCIAL_QUALITY(150),
-    COMMERCIAL_QUALITY(2000);
+	NON_COMMERCIAL_QUALITY(150),
+	COMMERCIAL_QUALITY(2000);
 
-    private int value;
+	private int value;
 
-    PlayReadyMinimumLicenseSecurityLevel(int value) {
-        this.value = value;
-    }
+	PlayReadyMinimumLicenseSecurityLevel(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PlayReadyMinimumLicenseSecurityLevel get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlayReadyMinimumLicenseSecurityLevel defined values and compare the inner value with the given one:
-        for(PlayReadyMinimumLicenseSecurityLevel item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlayReadyMinimumLicenseSecurityLevel.values().length > 0 ? PlayReadyMinimumLicenseSecurityLevel.values()[0]: null;
+	public static PlayReadyMinimumLicenseSecurityLevel get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlayReadyMinimumLicenseSecurityLevel defined values and compare the inner value with the given one:
+		for(PlayReadyMinimumLicenseSecurityLevel item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlayReadyMinimumLicenseSecurityLevel.values().length > 0 ? PlayReadyMinimumLicenseSecurityLevel.values()[0]: null;
    }
 }

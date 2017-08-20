@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +40,66 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessSignalNotificationTemplate.Tokenizer.class)
 public class BusinessProcessSignalNotificationTemplate extends BusinessProcessNotificationTemplate {
+	
+	public interface Tokenizer extends BusinessProcessNotificationTemplate.Tokenizer {
+		String message();
+		String eventId();
+	}
 
 	/**  Define the message to be sent  */
-    private String message;
+	private String message;
 	/**  Define the event that waiting to the signal  */
-    private String eventId;
+	private String eventId;
 
-    // message:
-    public String getMessage(){
-        return this.message;
-    }
-    public void setMessage(String message){
-        this.message = message;
-    }
+	// message:
+	public String getMessage(){
+		return this.message;
+	}
+	public void setMessage(String message){
+		this.message = message;
+	}
 
-    // eventId:
-    public String getEventId(){
-        return this.eventId;
-    }
-    public void setEventId(String eventId){
-        this.eventId = eventId;
-    }
+	public void message(String multirequestToken){
+		setToken("message", multirequestToken);
+	}
+
+	// eventId:
+	public String getEventId(){
+		return this.eventId;
+	}
+	public void setEventId(String eventId){
+		this.eventId = eventId;
+	}
+
+	public void eventId(String multirequestToken){
+		setToken("eventId", multirequestToken);
+	}
 
 
-    public BusinessProcessSignalNotificationTemplate() {
-       super();
-    }
+	public BusinessProcessSignalNotificationTemplate() {
+		super();
+	}
 
-    public BusinessProcessSignalNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessSignalNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        message = GsonParser.parseString(jsonObject.get("message"));
-        eventId = GsonParser.parseString(jsonObject.get("eventId"));
+		// set members values:
+		message = GsonParser.parseString(jsonObject.get("message"));
+		eventId = GsonParser.parseString(jsonObject.get("eventId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessSignalNotificationTemplate");
-        kparams.add("message", this.message);
-        kparams.add("eventId", this.eventId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessSignalNotificationTemplate");
+		kparams.add("message", this.message);
+		kparams.add("eventId", this.eventId);
+		return kparams;
+	}
 
 }
 

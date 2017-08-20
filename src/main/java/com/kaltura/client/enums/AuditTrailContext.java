@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,39 +34,39 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AuditTrailContext implements EnumAsInt {
-    CLIENT(-1),
-    SCRIPT(0),
-    PS2(1),
-    API_V3(2);
+	CLIENT(-1),
+	SCRIPT(0),
+	PS2(1),
+	API_V3(2);
 
-    private int value;
+	private int value;
 
-    AuditTrailContext(int value) {
-        this.value = value;
-    }
+	AuditTrailContext(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AuditTrailContext get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AuditTrailContext defined values and compare the inner value with the given one:
-        for(AuditTrailContext item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AuditTrailContext.values().length > 0 ? AuditTrailContext.values()[0]: null;
+	public static AuditTrailContext get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AuditTrailContext defined values and compare the inner value with the given one:
+		for(AuditTrailContext item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AuditTrailContext.values().length > 0 ? AuditTrailContext.values()[0]: null;
    }
 }

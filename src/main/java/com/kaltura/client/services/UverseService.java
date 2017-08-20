@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
@@ -40,12 +38,25 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Uverse Service  */
 public class UverseService {
+	
+	public static class GetFeedUverseBuilder extends ServeRequestBuilder {
+		
+		public GetFeedUverseBuilder(int distributionProfileId, String hash) {
+			super("uversedistribution_uverse", "getFeed");
+			params.add("distributionProfileId", distributionProfileId);
+			params.add("hash", hash);
+		}
+		
+		public void distributionProfileId(String multirequestToken) {
+			params.add("distributionProfileId", multirequestToken);
+		}
+		
+		public void hash(String multirequestToken) {
+			params.add("hash", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> getFeed(int distributionProfileId, String hash)  {
-        Params kparams = new Params();
-        kparams.add("distributionProfileId", distributionProfileId);
-        kparams.add("hash", hash);
-
-        return new ServeRequestBuilder("uversedistribution_uverse", "getFeed", kparams);
-    }
+    public static GetFeedUverseBuilder getFeed(int distributionProfileId, String hash)  {
+		return new GetFeedUverseBuilder(distributionProfileId, hash);
+	}
 }

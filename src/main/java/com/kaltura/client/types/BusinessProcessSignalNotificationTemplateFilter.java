@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessSignalNotificationTemplateFilter.Tokenizer.class)
 public class BusinessProcessSignalNotificationTemplateFilter extends BusinessProcessSignalNotificationTemplateBaseFilter {
+	
+	public interface Tokenizer extends BusinessProcessSignalNotificationTemplateBaseFilter.Tokenizer {
+	}
 
 
 
-    public BusinessProcessSignalNotificationTemplateFilter() {
-       super();
-    }
+	public BusinessProcessSignalNotificationTemplateFilter() {
+		super();
+	}
 
-    public BusinessProcessSignalNotificationTemplateFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public BusinessProcessSignalNotificationTemplateFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessSignalNotificationTemplateFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessSignalNotificationTemplateFilter");
+		return kparams;
+	}
 
 }
 

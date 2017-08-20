@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.types.UiConf;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -42,22 +40,44 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Kaltura Sharepoint Extension Service  */
 public class SharepointExtensionService {
+	
+	public static class IsVersionSupportedSharepointExtensionBuilder extends RequestBuilder<Boolean, String, IsVersionSupportedSharepointExtensionBuilder> {
+		
+		public IsVersionSupportedSharepointExtensionBuilder(int serverMajor, int serverMinor, int serverBuild) {
+			super(Boolean.class, "kalturasharepointextension_sharepointextension", "isVersionSupported");
+			params.add("serverMajor", serverMajor);
+			params.add("serverMinor", serverMinor);
+			params.add("serverBuild", serverBuild);
+		}
+		
+		public void serverMajor(String multirequestToken) {
+			params.add("serverMajor", multirequestToken);
+		}
+		
+		public void serverMinor(String multirequestToken) {
+			params.add("serverMinor", multirequestToken);
+		}
+		
+		public void serverBuild(String multirequestToken) {
+			params.add("serverBuild", multirequestToken);
+		}
+	}
 
 	/**  Is this Kaltura-Sharepoint-Server-Plugin supports minimum version of
 	  $major.$minor.$build (which is required by the extension)  */
-    public static RequestBuilder<Boolean> isVersionSupported(int serverMajor, int serverMinor, int serverBuild)  {
-        Params kparams = new Params();
-        kparams.add("serverMajor", serverMajor);
-        kparams.add("serverMinor", serverMinor);
-        kparams.add("serverBuild", serverBuild);
-
-        return new RequestBuilder<Boolean>(Boolean.class, "kalturasharepointextension_sharepointextension", "isVersionSupported", kparams);
-    }
+    public static IsVersionSupportedSharepointExtensionBuilder isVersionSupported(int serverMajor, int serverMinor, int serverBuild)  {
+		return new IsVersionSupportedSharepointExtensionBuilder(serverMajor, serverMinor, serverBuild);
+	}
+	
+	public static class ListUiconfsSharepointExtensionBuilder extends ListResponseRequestBuilder<UiConf, UiConf.Tokenizer, ListUiconfsSharepointExtensionBuilder> {
+		
+		public ListUiconfsSharepointExtensionBuilder() {
+			super(UiConf.class, "kalturasharepointextension_sharepointextension", "listUiconfs");
+		}
+	}
 
 	/**  list uiconfs for sharepoint extension  */
-    public static RequestBuilder<ListResponse<UiConf>> listUiconfs()  {
-        Params kparams = new Params();
-
-        return new ListResponseRequestBuilder<UiConf>(UiConf.class, "kalturasharepointextension_sharepointextension", "listUiconfs", kparams);
-    }
+    public static ListUiconfsSharepointExtensionBuilder listUiconfs()  {
+		return new ListUiconfsSharepointExtensionBuilder();
+	}
 }

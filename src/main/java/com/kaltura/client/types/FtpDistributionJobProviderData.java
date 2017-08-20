@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,39 +42,44 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FtpDistributionJobProviderData.Tokenizer.class)
 public class FtpDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		RequestBuilder.ListTokenizer<FtpDistributionFile.Tokenizer> filesForDistribution();
+	}
 
-    private List<FtpDistributionFile> filesForDistribution;
+	private List<FtpDistributionFile> filesForDistribution;
 
-    // filesForDistribution:
-    public List<FtpDistributionFile> getFilesForDistribution(){
-        return this.filesForDistribution;
-    }
-    public void setFilesForDistribution(List<FtpDistributionFile> filesForDistribution){
-        this.filesForDistribution = filesForDistribution;
-    }
+	// filesForDistribution:
+	public List<FtpDistributionFile> getFilesForDistribution(){
+		return this.filesForDistribution;
+	}
+	public void setFilesForDistribution(List<FtpDistributionFile> filesForDistribution){
+		this.filesForDistribution = filesForDistribution;
+	}
 
 
-    public FtpDistributionJobProviderData() {
-       super();
-    }
+	public FtpDistributionJobProviderData() {
+		super();
+	}
 
-    public FtpDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FtpDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filesForDistribution = GsonParser.parseArray(jsonObject.getAsJsonArray("filesForDistribution"), FtpDistributionFile.class);
+		// set members values:
+		filesForDistribution = GsonParser.parseArray(jsonObject.getAsJsonArray("filesForDistribution"), FtpDistributionFile.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFtpDistributionJobProviderData");
-        kparams.add("filesForDistribution", this.filesForDistribution);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFtpDistributionJobProviderData");
+		kparams.add("filesForDistribution", this.filesForDistribution);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +40,83 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WidevineFlavorAsset.Tokenizer.class)
 public class WidevineFlavorAsset extends FlavorAsset {
+	
+	public interface Tokenizer extends FlavorAsset.Tokenizer {
+		String widevineDistributionStartDate();
+		String widevineDistributionEndDate();
+		String widevineAssetId();
+	}
 
 	/**  License distribution window start date  */
-    private Integer widevineDistributionStartDate;
+	private Integer widevineDistributionStartDate;
 	/**  License distribution window end date  */
-    private Integer widevineDistributionEndDate;
+	private Integer widevineDistributionEndDate;
 	/**  Widevine unique asset id  */
-    private Integer widevineAssetId;
+	private Integer widevineAssetId;
 
-    // widevineDistributionStartDate:
-    public Integer getWidevineDistributionStartDate(){
-        return this.widevineDistributionStartDate;
-    }
-    public void setWidevineDistributionStartDate(Integer widevineDistributionStartDate){
-        this.widevineDistributionStartDate = widevineDistributionStartDate;
-    }
+	// widevineDistributionStartDate:
+	public Integer getWidevineDistributionStartDate(){
+		return this.widevineDistributionStartDate;
+	}
+	public void setWidevineDistributionStartDate(Integer widevineDistributionStartDate){
+		this.widevineDistributionStartDate = widevineDistributionStartDate;
+	}
 
-    // widevineDistributionEndDate:
-    public Integer getWidevineDistributionEndDate(){
-        return this.widevineDistributionEndDate;
-    }
-    public void setWidevineDistributionEndDate(Integer widevineDistributionEndDate){
-        this.widevineDistributionEndDate = widevineDistributionEndDate;
-    }
+	public void widevineDistributionStartDate(String multirequestToken){
+		setToken("widevineDistributionStartDate", multirequestToken);
+	}
 
-    // widevineAssetId:
-    public Integer getWidevineAssetId(){
-        return this.widevineAssetId;
-    }
-    public void setWidevineAssetId(Integer widevineAssetId){
-        this.widevineAssetId = widevineAssetId;
-    }
+	// widevineDistributionEndDate:
+	public Integer getWidevineDistributionEndDate(){
+		return this.widevineDistributionEndDate;
+	}
+	public void setWidevineDistributionEndDate(Integer widevineDistributionEndDate){
+		this.widevineDistributionEndDate = widevineDistributionEndDate;
+	}
+
+	public void widevineDistributionEndDate(String multirequestToken){
+		setToken("widevineDistributionEndDate", multirequestToken);
+	}
+
+	// widevineAssetId:
+	public Integer getWidevineAssetId(){
+		return this.widevineAssetId;
+	}
+	public void setWidevineAssetId(Integer widevineAssetId){
+		this.widevineAssetId = widevineAssetId;
+	}
+
+	public void widevineAssetId(String multirequestToken){
+		setToken("widevineAssetId", multirequestToken);
+	}
 
 
-    public WidevineFlavorAsset() {
-       super();
-    }
+	public WidevineFlavorAsset() {
+		super();
+	}
 
-    public WidevineFlavorAsset(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WidevineFlavorAsset(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        widevineDistributionStartDate = GsonParser.parseInt(jsonObject.get("widevineDistributionStartDate"));
-        widevineDistributionEndDate = GsonParser.parseInt(jsonObject.get("widevineDistributionEndDate"));
-        widevineAssetId = GsonParser.parseInt(jsonObject.get("widevineAssetId"));
+		// set members values:
+		widevineDistributionStartDate = GsonParser.parseInt(jsonObject.get("widevineDistributionStartDate"));
+		widevineDistributionEndDate = GsonParser.parseInt(jsonObject.get("widevineDistributionEndDate"));
+		widevineAssetId = GsonParser.parseInt(jsonObject.get("widevineAssetId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWidevineFlavorAsset");
-        kparams.add("widevineDistributionStartDate", this.widevineDistributionStartDate);
-        kparams.add("widevineDistributionEndDate", this.widevineDistributionEndDate);
-        kparams.add("widevineAssetId", this.widevineAssetId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWidevineFlavorAsset");
+		kparams.add("widevineDistributionStartDate", this.widevineDistributionStartDate);
+		kparams.add("widevineDistributionEndDate", this.widevineDistributionEndDate);
+		kparams.add("widevineAssetId", this.widevineAssetId);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +40,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessStartNotificationTemplate.Tokenizer.class)
 public class BusinessProcessStartNotificationTemplate extends BusinessProcessNotificationTemplate {
+	
+	public interface Tokenizer extends BusinessProcessNotificationTemplate.Tokenizer {
+		String abortOnDeletion();
+	}
 
 	/**  Abort the process automatically if the triggering object deleted  */
-    private Boolean abortOnDeletion;
+	private Boolean abortOnDeletion;
 
-    // abortOnDeletion:
-    public Boolean getAbortOnDeletion(){
-        return this.abortOnDeletion;
-    }
-    public void setAbortOnDeletion(Boolean abortOnDeletion){
-        this.abortOnDeletion = abortOnDeletion;
-    }
+	// abortOnDeletion:
+	public Boolean getAbortOnDeletion(){
+		return this.abortOnDeletion;
+	}
+	public void setAbortOnDeletion(Boolean abortOnDeletion){
+		this.abortOnDeletion = abortOnDeletion;
+	}
+
+	public void abortOnDeletion(String multirequestToken){
+		setToken("abortOnDeletion", multirequestToken);
+	}
 
 
-    public BusinessProcessStartNotificationTemplate() {
-       super();
-    }
+	public BusinessProcessStartNotificationTemplate() {
+		super();
+	}
 
-    public BusinessProcessStartNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessStartNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        abortOnDeletion = GsonParser.parseBoolean(jsonObject.get("abortOnDeletion"));
+		// set members values:
+		abortOnDeletion = GsonParser.parseBoolean(jsonObject.get("abortOnDeletion"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessStartNotificationTemplate");
-        kparams.add("abortOnDeletion", this.abortOnDeletion);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessStartNotificationTemplate");
+		kparams.add("abortOnDeletion", this.abortOnDeletion);
+		return kparams;
+	}
 
 }
 

@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.AssetType;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.AssetType;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,72 +42,96 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttUverseDistributionFile.Tokenizer.class)
 public class AttUverseDistributionFile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String remoteFilename();
+		String localFilePath();
+		String assetType();
+		String assetId();
+	}
 
-    private String remoteFilename;
-    private String localFilePath;
-    private AssetType assetType;
-    private String assetId;
+	private String remoteFilename;
+	private String localFilePath;
+	private AssetType assetType;
+	private String assetId;
 
-    // remoteFilename:
-    public String getRemoteFilename(){
-        return this.remoteFilename;
-    }
-    public void setRemoteFilename(String remoteFilename){
-        this.remoteFilename = remoteFilename;
-    }
+	// remoteFilename:
+	public String getRemoteFilename(){
+		return this.remoteFilename;
+	}
+	public void setRemoteFilename(String remoteFilename){
+		this.remoteFilename = remoteFilename;
+	}
 
-    // localFilePath:
-    public String getLocalFilePath(){
-        return this.localFilePath;
-    }
-    public void setLocalFilePath(String localFilePath){
-        this.localFilePath = localFilePath;
-    }
+	public void remoteFilename(String multirequestToken){
+		setToken("remoteFilename", multirequestToken);
+	}
 
-    // assetType:
-    public AssetType getAssetType(){
-        return this.assetType;
-    }
-    public void setAssetType(AssetType assetType){
-        this.assetType = assetType;
-    }
+	// localFilePath:
+	public String getLocalFilePath(){
+		return this.localFilePath;
+	}
+	public void setLocalFilePath(String localFilePath){
+		this.localFilePath = localFilePath;
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	public void localFilePath(String multirequestToken){
+		setToken("localFilePath", multirequestToken);
+	}
+
+	// assetType:
+	public AssetType getAssetType(){
+		return this.assetType;
+	}
+	public void setAssetType(AssetType assetType){
+		this.assetType = assetType;
+	}
+
+	public void assetType(String multirequestToken){
+		setToken("assetType", multirequestToken);
+	}
+
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
 
-    public AttUverseDistributionFile() {
-       super();
-    }
+	public AttUverseDistributionFile() {
+		super();
+	}
 
-    public AttUverseDistributionFile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttUverseDistributionFile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        remoteFilename = GsonParser.parseString(jsonObject.get("remoteFilename"));
-        localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
-        assetType = AssetType.get(GsonParser.parseString(jsonObject.get("assetType")));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		// set members values:
+		remoteFilename = GsonParser.parseString(jsonObject.get("remoteFilename"));
+		localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
+		assetType = AssetType.get(GsonParser.parseString(jsonObject.get("assetType")));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttUverseDistributionFile");
-        kparams.add("remoteFilename", this.remoteFilename);
-        kparams.add("localFilePath", this.localFilePath);
-        kparams.add("assetType", this.assetType);
-        kparams.add("assetId", this.assetId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttUverseDistributionFile");
+		kparams.add("remoteFilename", this.remoteFilename);
+		kparams.add("localFilePath", this.localFilePath);
+		kparams.add("assetType", this.assetType);
+		kparams.add("assetId", this.assetId);
+		return kparams;
+	}
 
 }
 

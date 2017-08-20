@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,41 +40,50 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FairplayEntryContextPluginData.Tokenizer.class)
 public class FairplayEntryContextPluginData extends PluginData {
+	
+	public interface Tokenizer extends PluginData.Tokenizer {
+		String publicCertificate();
+	}
 
 	/**  For fairplay (and maybe in the future other drm providers) we need to return a
 	  public certificate to encrypt   the request from the player to the server.  */
-    private String publicCertificate;
+	private String publicCertificate;
 
-    // publicCertificate:
-    public String getPublicCertificate(){
-        return this.publicCertificate;
-    }
-    public void setPublicCertificate(String publicCertificate){
-        this.publicCertificate = publicCertificate;
-    }
+	// publicCertificate:
+	public String getPublicCertificate(){
+		return this.publicCertificate;
+	}
+	public void setPublicCertificate(String publicCertificate){
+		this.publicCertificate = publicCertificate;
+	}
+
+	public void publicCertificate(String multirequestToken){
+		setToken("publicCertificate", multirequestToken);
+	}
 
 
-    public FairplayEntryContextPluginData() {
-       super();
-    }
+	public FairplayEntryContextPluginData() {
+		super();
+	}
 
-    public FairplayEntryContextPluginData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FairplayEntryContextPluginData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        publicCertificate = GsonParser.parseString(jsonObject.get("publicCertificate"));
+		// set members values:
+		publicCertificate = GsonParser.parseString(jsonObject.get("publicCertificate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFairplayEntryContextPluginData");
-        kparams.add("publicCertificate", this.publicCertificate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFairplayEntryContextPluginData");
+		kparams.add("publicCertificate", this.publicCertificate);
+		return kparams;
+	}
 
 }
 

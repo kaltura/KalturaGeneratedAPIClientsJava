@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,90 +40,119 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UnicornDistributionJobProviderData.Tokenizer.class)
 public class UnicornDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String catalogGuid();
+		String title();
+		String mediaChanged();
+		String flavorAssetVersion();
+		String notificationBaseUrl();
+	}
 
 	/**  The Catalog GUID the video is in or will be ingested into.  */
-    private String catalogGuid;
+	private String catalogGuid;
 	/**  The Title assigned to the video. The Foreign Key will be used if no title is
 	  provided.  */
-    private String title;
+	private String title;
 	/**  Indicates that the media content changed and therefore the job should wait for
 	  HTTP callback notification to be closed.  */
-    private Boolean mediaChanged;
+	private Boolean mediaChanged;
 	/**  Flavor asset version.  */
-    private String flavorAssetVersion;
+	private String flavorAssetVersion;
 	/**  The schema and host name to the Kaltura server, e.g. http://www.kaltura.com  */
-    private String notificationBaseUrl;
+	private String notificationBaseUrl;
 
-    // catalogGuid:
-    public String getCatalogGuid(){
-        return this.catalogGuid;
-    }
-    public void setCatalogGuid(String catalogGuid){
-        this.catalogGuid = catalogGuid;
-    }
+	// catalogGuid:
+	public String getCatalogGuid(){
+		return this.catalogGuid;
+	}
+	public void setCatalogGuid(String catalogGuid){
+		this.catalogGuid = catalogGuid;
+	}
 
-    // title:
-    public String getTitle(){
-        return this.title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+	public void catalogGuid(String multirequestToken){
+		setToken("catalogGuid", multirequestToken);
+	}
 
-    // mediaChanged:
-    public Boolean getMediaChanged(){
-        return this.mediaChanged;
-    }
-    public void setMediaChanged(Boolean mediaChanged){
-        this.mediaChanged = mediaChanged;
-    }
+	// title:
+	public String getTitle(){
+		return this.title;
+	}
+	public void setTitle(String title){
+		this.title = title;
+	}
 
-    // flavorAssetVersion:
-    public String getFlavorAssetVersion(){
-        return this.flavorAssetVersion;
-    }
-    public void setFlavorAssetVersion(String flavorAssetVersion){
-        this.flavorAssetVersion = flavorAssetVersion;
-    }
+	public void title(String multirequestToken){
+		setToken("title", multirequestToken);
+	}
 
-    // notificationBaseUrl:
-    public String getNotificationBaseUrl(){
-        return this.notificationBaseUrl;
-    }
-    public void setNotificationBaseUrl(String notificationBaseUrl){
-        this.notificationBaseUrl = notificationBaseUrl;
-    }
+	// mediaChanged:
+	public Boolean getMediaChanged(){
+		return this.mediaChanged;
+	}
+	public void setMediaChanged(Boolean mediaChanged){
+		this.mediaChanged = mediaChanged;
+	}
+
+	public void mediaChanged(String multirequestToken){
+		setToken("mediaChanged", multirequestToken);
+	}
+
+	// flavorAssetVersion:
+	public String getFlavorAssetVersion(){
+		return this.flavorAssetVersion;
+	}
+	public void setFlavorAssetVersion(String flavorAssetVersion){
+		this.flavorAssetVersion = flavorAssetVersion;
+	}
+
+	public void flavorAssetVersion(String multirequestToken){
+		setToken("flavorAssetVersion", multirequestToken);
+	}
+
+	// notificationBaseUrl:
+	public String getNotificationBaseUrl(){
+		return this.notificationBaseUrl;
+	}
+	public void setNotificationBaseUrl(String notificationBaseUrl){
+		this.notificationBaseUrl = notificationBaseUrl;
+	}
+
+	public void notificationBaseUrl(String multirequestToken){
+		setToken("notificationBaseUrl", multirequestToken);
+	}
 
 
-    public UnicornDistributionJobProviderData() {
-       super();
-    }
+	public UnicornDistributionJobProviderData() {
+		super();
+	}
 
-    public UnicornDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UnicornDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        catalogGuid = GsonParser.parseString(jsonObject.get("catalogGuid"));
-        title = GsonParser.parseString(jsonObject.get("title"));
-        mediaChanged = GsonParser.parseBoolean(jsonObject.get("mediaChanged"));
-        flavorAssetVersion = GsonParser.parseString(jsonObject.get("flavorAssetVersion"));
-        notificationBaseUrl = GsonParser.parseString(jsonObject.get("notificationBaseUrl"));
+		// set members values:
+		catalogGuid = GsonParser.parseString(jsonObject.get("catalogGuid"));
+		title = GsonParser.parseString(jsonObject.get("title"));
+		mediaChanged = GsonParser.parseBoolean(jsonObject.get("mediaChanged"));
+		flavorAssetVersion = GsonParser.parseString(jsonObject.get("flavorAssetVersion"));
+		notificationBaseUrl = GsonParser.parseString(jsonObject.get("notificationBaseUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUnicornDistributionJobProviderData");
-        kparams.add("catalogGuid", this.catalogGuid);
-        kparams.add("title", this.title);
-        kparams.add("mediaChanged", this.mediaChanged);
-        kparams.add("flavorAssetVersion", this.flavorAssetVersion);
-        kparams.add("notificationBaseUrl", this.notificationBaseUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUnicornDistributionJobProviderData");
+		kparams.add("catalogGuid", this.catalogGuid);
+		kparams.add("title", this.title);
+		kparams.add("mediaChanged", this.mediaChanged);
+		kparams.add("flavorAssetVersion", this.flavorAssetVersion);
+		kparams.add("notificationBaseUrl", this.notificationBaseUrl);
+		return kparams;
+	}
 
 }
 

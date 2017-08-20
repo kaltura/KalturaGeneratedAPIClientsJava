@@ -27,12 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.ResponseType;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.ResponseType;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -42,88 +43,109 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PushNotificationTemplate.Tokenizer.class)
 public class PushNotificationTemplate extends EventNotificationTemplate {
+	
+	public interface Tokenizer extends EventNotificationTemplate.Tokenizer {
+		RequestBuilder.ListTokenizer<PushEventNotificationParameter.Tokenizer> queueNameParameters();
+		RequestBuilder.ListTokenizer<PushEventNotificationParameter.Tokenizer> queueKeyParameters();
+		String apiObjectType();
+		String objectFormat();
+		String responseProfileId();
+	}
 
 	/**  Define the content dynamic parameters  */
-    private List<PushEventNotificationParameter> queueNameParameters;
+	private List<PushEventNotificationParameter> queueNameParameters;
 	/**  Define the content dynamic parameters  */
-    private List<PushEventNotificationParameter> queueKeyParameters;
+	private List<PushEventNotificationParameter> queueKeyParameters;
 	/**  Kaltura API object type  */
-    private String apiObjectType;
+	private String apiObjectType;
 	/**  Kaltura Object format  */
-    private ResponseType objectFormat;
+	private ResponseType objectFormat;
 	/**  Kaltura response-profile id  */
-    private Integer responseProfileId;
+	private Integer responseProfileId;
 
-    // queueNameParameters:
-    public List<PushEventNotificationParameter> getQueueNameParameters(){
-        return this.queueNameParameters;
-    }
-    public void setQueueNameParameters(List<PushEventNotificationParameter> queueNameParameters){
-        this.queueNameParameters = queueNameParameters;
-    }
+	// queueNameParameters:
+	public List<PushEventNotificationParameter> getQueueNameParameters(){
+		return this.queueNameParameters;
+	}
+	public void setQueueNameParameters(List<PushEventNotificationParameter> queueNameParameters){
+		this.queueNameParameters = queueNameParameters;
+	}
 
-    // queueKeyParameters:
-    public List<PushEventNotificationParameter> getQueueKeyParameters(){
-        return this.queueKeyParameters;
-    }
-    public void setQueueKeyParameters(List<PushEventNotificationParameter> queueKeyParameters){
-        this.queueKeyParameters = queueKeyParameters;
-    }
+	// queueKeyParameters:
+	public List<PushEventNotificationParameter> getQueueKeyParameters(){
+		return this.queueKeyParameters;
+	}
+	public void setQueueKeyParameters(List<PushEventNotificationParameter> queueKeyParameters){
+		this.queueKeyParameters = queueKeyParameters;
+	}
 
-    // apiObjectType:
-    public String getApiObjectType(){
-        return this.apiObjectType;
-    }
-    public void setApiObjectType(String apiObjectType){
-        this.apiObjectType = apiObjectType;
-    }
+	// apiObjectType:
+	public String getApiObjectType(){
+		return this.apiObjectType;
+	}
+	public void setApiObjectType(String apiObjectType){
+		this.apiObjectType = apiObjectType;
+	}
 
-    // objectFormat:
-    public ResponseType getObjectFormat(){
-        return this.objectFormat;
-    }
-    public void setObjectFormat(ResponseType objectFormat){
-        this.objectFormat = objectFormat;
-    }
+	public void apiObjectType(String multirequestToken){
+		setToken("apiObjectType", multirequestToken);
+	}
 
-    // responseProfileId:
-    public Integer getResponseProfileId(){
-        return this.responseProfileId;
-    }
-    public void setResponseProfileId(Integer responseProfileId){
-        this.responseProfileId = responseProfileId;
-    }
+	// objectFormat:
+	public ResponseType getObjectFormat(){
+		return this.objectFormat;
+	}
+	public void setObjectFormat(ResponseType objectFormat){
+		this.objectFormat = objectFormat;
+	}
+
+	public void objectFormat(String multirequestToken){
+		setToken("objectFormat", multirequestToken);
+	}
+
+	// responseProfileId:
+	public Integer getResponseProfileId(){
+		return this.responseProfileId;
+	}
+	public void setResponseProfileId(Integer responseProfileId){
+		this.responseProfileId = responseProfileId;
+	}
+
+	public void responseProfileId(String multirequestToken){
+		setToken("responseProfileId", multirequestToken);
+	}
 
 
-    public PushNotificationTemplate() {
-       super();
-    }
+	public PushNotificationTemplate() {
+		super();
+	}
 
-    public PushNotificationTemplate(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PushNotificationTemplate(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        queueNameParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("queueNameParameters"), PushEventNotificationParameter.class);
-        queueKeyParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("queueKeyParameters"), PushEventNotificationParameter.class);
-        apiObjectType = GsonParser.parseString(jsonObject.get("apiObjectType"));
-        objectFormat = ResponseType.get(GsonParser.parseInt(jsonObject.get("objectFormat")));
-        responseProfileId = GsonParser.parseInt(jsonObject.get("responseProfileId"));
+		// set members values:
+		queueNameParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("queueNameParameters"), PushEventNotificationParameter.class);
+		queueKeyParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("queueKeyParameters"), PushEventNotificationParameter.class);
+		apiObjectType = GsonParser.parseString(jsonObject.get("apiObjectType"));
+		objectFormat = ResponseType.get(GsonParser.parseInt(jsonObject.get("objectFormat")));
+		responseProfileId = GsonParser.parseInt(jsonObject.get("responseProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPushNotificationTemplate");
-        kparams.add("queueNameParameters", this.queueNameParameters);
-        kparams.add("queueKeyParameters", this.queueKeyParameters);
-        kparams.add("apiObjectType", this.apiObjectType);
-        kparams.add("objectFormat", this.objectFormat);
-        kparams.add("responseProfileId", this.responseProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPushNotificationTemplate");
+		kparams.add("queueNameParameters", this.queueNameParameters);
+		kparams.add("queueKeyParameters", this.queueKeyParameters);
+		kparams.add("apiObjectType", this.apiObjectType);
+		kparams.add("objectFormat", this.objectFormat);
+		kparams.add("responseProfileId", this.responseProfileId);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,193 +40,272 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MsnDistributionProfile.Tokenizer.class)
 public class MsnDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String username();
+		String password();
+		String domain();
+		String csId();
+		String source();
+		String sourceFriendlyName();
+		String pageGroup();
+		String sourceFlavorParamsId();
+		String wmvFlavorParamsId();
+		String flvFlavorParamsId();
+		String slFlavorParamsId();
+		String slHdFlavorParamsId();
+		String msnvideoCat();
+		String msnvideoTop();
+		String msnvideoTopCat();
+	}
 
-    private String username;
-    private String password;
-    private String domain;
-    private String csId;
-    private String source;
-    private String sourceFriendlyName;
-    private String pageGroup;
-    private Integer sourceFlavorParamsId;
-    private Integer wmvFlavorParamsId;
-    private Integer flvFlavorParamsId;
-    private Integer slFlavorParamsId;
-    private Integer slHdFlavorParamsId;
-    private String msnvideoCat;
-    private String msnvideoTop;
-    private String msnvideoTopCat;
+	private String username;
+	private String password;
+	private String domain;
+	private String csId;
+	private String source;
+	private String sourceFriendlyName;
+	private String pageGroup;
+	private Integer sourceFlavorParamsId;
+	private Integer wmvFlavorParamsId;
+	private Integer flvFlavorParamsId;
+	private Integer slFlavorParamsId;
+	private Integer slHdFlavorParamsId;
+	private String msnvideoCat;
+	private String msnvideoTop;
+	private String msnvideoTopCat;
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
 
-    // domain:
-    public String getDomain(){
-        return this.domain;
-    }
-    public void setDomain(String domain){
-        this.domain = domain;
-    }
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
 
-    // csId:
-    public String getCsId(){
-        return this.csId;
-    }
-    public void setCsId(String csId){
-        this.csId = csId;
-    }
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
 
-    // source:
-    public String getSource(){
-        return this.source;
-    }
-    public void setSource(String source){
-        this.source = source;
-    }
+	// domain:
+	public String getDomain(){
+		return this.domain;
+	}
+	public void setDomain(String domain){
+		this.domain = domain;
+	}
 
-    // sourceFriendlyName:
-    public String getSourceFriendlyName(){
-        return this.sourceFriendlyName;
-    }
-    public void setSourceFriendlyName(String sourceFriendlyName){
-        this.sourceFriendlyName = sourceFriendlyName;
-    }
+	public void domain(String multirequestToken){
+		setToken("domain", multirequestToken);
+	}
 
-    // pageGroup:
-    public String getPageGroup(){
-        return this.pageGroup;
-    }
-    public void setPageGroup(String pageGroup){
-        this.pageGroup = pageGroup;
-    }
+	// csId:
+	public String getCsId(){
+		return this.csId;
+	}
+	public void setCsId(String csId){
+		this.csId = csId;
+	}
 
-    // sourceFlavorParamsId:
-    public Integer getSourceFlavorParamsId(){
-        return this.sourceFlavorParamsId;
-    }
-    public void setSourceFlavorParamsId(Integer sourceFlavorParamsId){
-        this.sourceFlavorParamsId = sourceFlavorParamsId;
-    }
+	public void csId(String multirequestToken){
+		setToken("csId", multirequestToken);
+	}
 
-    // wmvFlavorParamsId:
-    public Integer getWmvFlavorParamsId(){
-        return this.wmvFlavorParamsId;
-    }
-    public void setWmvFlavorParamsId(Integer wmvFlavorParamsId){
-        this.wmvFlavorParamsId = wmvFlavorParamsId;
-    }
+	// source:
+	public String getSource(){
+		return this.source;
+	}
+	public void setSource(String source){
+		this.source = source;
+	}
 
-    // flvFlavorParamsId:
-    public Integer getFlvFlavorParamsId(){
-        return this.flvFlavorParamsId;
-    }
-    public void setFlvFlavorParamsId(Integer flvFlavorParamsId){
-        this.flvFlavorParamsId = flvFlavorParamsId;
-    }
+	public void source(String multirequestToken){
+		setToken("source", multirequestToken);
+	}
 
-    // slFlavorParamsId:
-    public Integer getSlFlavorParamsId(){
-        return this.slFlavorParamsId;
-    }
-    public void setSlFlavorParamsId(Integer slFlavorParamsId){
-        this.slFlavorParamsId = slFlavorParamsId;
-    }
+	// sourceFriendlyName:
+	public String getSourceFriendlyName(){
+		return this.sourceFriendlyName;
+	}
+	public void setSourceFriendlyName(String sourceFriendlyName){
+		this.sourceFriendlyName = sourceFriendlyName;
+	}
 
-    // slHdFlavorParamsId:
-    public Integer getSlHdFlavorParamsId(){
-        return this.slHdFlavorParamsId;
-    }
-    public void setSlHdFlavorParamsId(Integer slHdFlavorParamsId){
-        this.slHdFlavorParamsId = slHdFlavorParamsId;
-    }
+	public void sourceFriendlyName(String multirequestToken){
+		setToken("sourceFriendlyName", multirequestToken);
+	}
 
-    // msnvideoCat:
-    public String getMsnvideoCat(){
-        return this.msnvideoCat;
-    }
-    public void setMsnvideoCat(String msnvideoCat){
-        this.msnvideoCat = msnvideoCat;
-    }
+	// pageGroup:
+	public String getPageGroup(){
+		return this.pageGroup;
+	}
+	public void setPageGroup(String pageGroup){
+		this.pageGroup = pageGroup;
+	}
 
-    // msnvideoTop:
-    public String getMsnvideoTop(){
-        return this.msnvideoTop;
-    }
-    public void setMsnvideoTop(String msnvideoTop){
-        this.msnvideoTop = msnvideoTop;
-    }
+	public void pageGroup(String multirequestToken){
+		setToken("pageGroup", multirequestToken);
+	}
 
-    // msnvideoTopCat:
-    public String getMsnvideoTopCat(){
-        return this.msnvideoTopCat;
-    }
-    public void setMsnvideoTopCat(String msnvideoTopCat){
-        this.msnvideoTopCat = msnvideoTopCat;
-    }
+	// sourceFlavorParamsId:
+	public Integer getSourceFlavorParamsId(){
+		return this.sourceFlavorParamsId;
+	}
+	public void setSourceFlavorParamsId(Integer sourceFlavorParamsId){
+		this.sourceFlavorParamsId = sourceFlavorParamsId;
+	}
+
+	public void sourceFlavorParamsId(String multirequestToken){
+		setToken("sourceFlavorParamsId", multirequestToken);
+	}
+
+	// wmvFlavorParamsId:
+	public Integer getWmvFlavorParamsId(){
+		return this.wmvFlavorParamsId;
+	}
+	public void setWmvFlavorParamsId(Integer wmvFlavorParamsId){
+		this.wmvFlavorParamsId = wmvFlavorParamsId;
+	}
+
+	public void wmvFlavorParamsId(String multirequestToken){
+		setToken("wmvFlavorParamsId", multirequestToken);
+	}
+
+	// flvFlavorParamsId:
+	public Integer getFlvFlavorParamsId(){
+		return this.flvFlavorParamsId;
+	}
+	public void setFlvFlavorParamsId(Integer flvFlavorParamsId){
+		this.flvFlavorParamsId = flvFlavorParamsId;
+	}
+
+	public void flvFlavorParamsId(String multirequestToken){
+		setToken("flvFlavorParamsId", multirequestToken);
+	}
+
+	// slFlavorParamsId:
+	public Integer getSlFlavorParamsId(){
+		return this.slFlavorParamsId;
+	}
+	public void setSlFlavorParamsId(Integer slFlavorParamsId){
+		this.slFlavorParamsId = slFlavorParamsId;
+	}
+
+	public void slFlavorParamsId(String multirequestToken){
+		setToken("slFlavorParamsId", multirequestToken);
+	}
+
+	// slHdFlavorParamsId:
+	public Integer getSlHdFlavorParamsId(){
+		return this.slHdFlavorParamsId;
+	}
+	public void setSlHdFlavorParamsId(Integer slHdFlavorParamsId){
+		this.slHdFlavorParamsId = slHdFlavorParamsId;
+	}
+
+	public void slHdFlavorParamsId(String multirequestToken){
+		setToken("slHdFlavorParamsId", multirequestToken);
+	}
+
+	// msnvideoCat:
+	public String getMsnvideoCat(){
+		return this.msnvideoCat;
+	}
+	public void setMsnvideoCat(String msnvideoCat){
+		this.msnvideoCat = msnvideoCat;
+	}
+
+	public void msnvideoCat(String multirequestToken){
+		setToken("msnvideoCat", multirequestToken);
+	}
+
+	// msnvideoTop:
+	public String getMsnvideoTop(){
+		return this.msnvideoTop;
+	}
+	public void setMsnvideoTop(String msnvideoTop){
+		this.msnvideoTop = msnvideoTop;
+	}
+
+	public void msnvideoTop(String multirequestToken){
+		setToken("msnvideoTop", multirequestToken);
+	}
+
+	// msnvideoTopCat:
+	public String getMsnvideoTopCat(){
+		return this.msnvideoTopCat;
+	}
+	public void setMsnvideoTopCat(String msnvideoTopCat){
+		this.msnvideoTopCat = msnvideoTopCat;
+	}
+
+	public void msnvideoTopCat(String multirequestToken){
+		setToken("msnvideoTopCat", multirequestToken);
+	}
 
 
-    public MsnDistributionProfile() {
-       super();
-    }
+	public MsnDistributionProfile() {
+		super();
+	}
 
-    public MsnDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MsnDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        domain = GsonParser.parseString(jsonObject.get("domain"));
-        csId = GsonParser.parseString(jsonObject.get("csId"));
-        source = GsonParser.parseString(jsonObject.get("source"));
-        sourceFriendlyName = GsonParser.parseString(jsonObject.get("sourceFriendlyName"));
-        pageGroup = GsonParser.parseString(jsonObject.get("pageGroup"));
-        sourceFlavorParamsId = GsonParser.parseInt(jsonObject.get("sourceFlavorParamsId"));
-        wmvFlavorParamsId = GsonParser.parseInt(jsonObject.get("wmvFlavorParamsId"));
-        flvFlavorParamsId = GsonParser.parseInt(jsonObject.get("flvFlavorParamsId"));
-        slFlavorParamsId = GsonParser.parseInt(jsonObject.get("slFlavorParamsId"));
-        slHdFlavorParamsId = GsonParser.parseInt(jsonObject.get("slHdFlavorParamsId"));
-        msnvideoCat = GsonParser.parseString(jsonObject.get("msnvideoCat"));
-        msnvideoTop = GsonParser.parseString(jsonObject.get("msnvideoTop"));
-        msnvideoTopCat = GsonParser.parseString(jsonObject.get("msnvideoTopCat"));
+		// set members values:
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		domain = GsonParser.parseString(jsonObject.get("domain"));
+		csId = GsonParser.parseString(jsonObject.get("csId"));
+		source = GsonParser.parseString(jsonObject.get("source"));
+		sourceFriendlyName = GsonParser.parseString(jsonObject.get("sourceFriendlyName"));
+		pageGroup = GsonParser.parseString(jsonObject.get("pageGroup"));
+		sourceFlavorParamsId = GsonParser.parseInt(jsonObject.get("sourceFlavorParamsId"));
+		wmvFlavorParamsId = GsonParser.parseInt(jsonObject.get("wmvFlavorParamsId"));
+		flvFlavorParamsId = GsonParser.parseInt(jsonObject.get("flvFlavorParamsId"));
+		slFlavorParamsId = GsonParser.parseInt(jsonObject.get("slFlavorParamsId"));
+		slHdFlavorParamsId = GsonParser.parseInt(jsonObject.get("slHdFlavorParamsId"));
+		msnvideoCat = GsonParser.parseString(jsonObject.get("msnvideoCat"));
+		msnvideoTop = GsonParser.parseString(jsonObject.get("msnvideoTop"));
+		msnvideoTopCat = GsonParser.parseString(jsonObject.get("msnvideoTopCat"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMsnDistributionProfile");
-        kparams.add("username", this.username);
-        kparams.add("password", this.password);
-        kparams.add("domain", this.domain);
-        kparams.add("csId", this.csId);
-        kparams.add("source", this.source);
-        kparams.add("sourceFriendlyName", this.sourceFriendlyName);
-        kparams.add("pageGroup", this.pageGroup);
-        kparams.add("sourceFlavorParamsId", this.sourceFlavorParamsId);
-        kparams.add("wmvFlavorParamsId", this.wmvFlavorParamsId);
-        kparams.add("flvFlavorParamsId", this.flvFlavorParamsId);
-        kparams.add("slFlavorParamsId", this.slFlavorParamsId);
-        kparams.add("slHdFlavorParamsId", this.slHdFlavorParamsId);
-        kparams.add("msnvideoCat", this.msnvideoCat);
-        kparams.add("msnvideoTop", this.msnvideoTop);
-        kparams.add("msnvideoTopCat", this.msnvideoTopCat);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMsnDistributionProfile");
+		kparams.add("username", this.username);
+		kparams.add("password", this.password);
+		kparams.add("domain", this.domain);
+		kparams.add("csId", this.csId);
+		kparams.add("source", this.source);
+		kparams.add("sourceFriendlyName", this.sourceFriendlyName);
+		kparams.add("pageGroup", this.pageGroup);
+		kparams.add("sourceFlavorParamsId", this.sourceFlavorParamsId);
+		kparams.add("wmvFlavorParamsId", this.wmvFlavorParamsId);
+		kparams.add("flvFlavorParamsId", this.flvFlavorParamsId);
+		kparams.add("slFlavorParamsId", this.slFlavorParamsId);
+		kparams.add("slHdFlavorParamsId", this.slHdFlavorParamsId);
+		kparams.add("msnvideoCat", this.msnvideoCat);
+		kparams.add("msnvideoTop", this.msnvideoTop);
+		kparams.add("msnvideoTopCat", this.msnvideoTopCat);
+		return kparams;
+	}
 
 }
 

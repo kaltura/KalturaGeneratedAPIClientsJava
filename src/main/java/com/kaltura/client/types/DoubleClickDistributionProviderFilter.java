@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DoubleClickDistributionProviderFilter.Tokenizer.class)
 public class DoubleClickDistributionProviderFilter extends DoubleClickDistributionProviderBaseFilter {
+	
+	public interface Tokenizer extends DoubleClickDistributionProviderBaseFilter.Tokenizer {
+	}
 
 
 
-    public DoubleClickDistributionProviderFilter() {
-       super();
-    }
+	public DoubleClickDistributionProviderFilter() {
+		super();
+	}
 
-    public DoubleClickDistributionProviderFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public DoubleClickDistributionProviderFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDoubleClickDistributionProviderFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDoubleClickDistributionProviderFilter");
+		return kparams;
+	}
 
 }
 

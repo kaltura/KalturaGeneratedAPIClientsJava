@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyProfile.Tokenizer.class)
 public class PlayReadyProfile extends DrmProfile {
+	
+	public interface Tokenizer extends DrmProfile.Tokenizer {
+		String keySeed();
+	}
 
-    private String keySeed;
+	private String keySeed;
 
-    // keySeed:
-    public String getKeySeed(){
-        return this.keySeed;
-    }
-    public void setKeySeed(String keySeed){
-        this.keySeed = keySeed;
-    }
+	// keySeed:
+	public String getKeySeed(){
+		return this.keySeed;
+	}
+	public void setKeySeed(String keySeed){
+		this.keySeed = keySeed;
+	}
+
+	public void keySeed(String multirequestToken){
+		setToken("keySeed", multirequestToken);
+	}
 
 
-    public PlayReadyProfile() {
-       super();
-    }
+	public PlayReadyProfile() {
+		super();
+	}
 
-    public PlayReadyProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keySeed = GsonParser.parseString(jsonObject.get("keySeed"));
+		// set members values:
+		keySeed = GsonParser.parseString(jsonObject.get("keySeed"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyProfile");
-        kparams.add("keySeed", this.keySeed);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyProfile");
+		kparams.add("keySeed", this.keySeed);
+		return kparams;
+	}
 
 }
 

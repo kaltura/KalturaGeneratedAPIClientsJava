@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,44 +34,44 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AuditTrailAction implements EnumAsString {
-    CHANGED("CHANGED"),
-    CONTENT_VIEWED("CONTENT_VIEWED"),
-    COPIED("COPIED"),
-    CREATED("CREATED"),
-    DELETED("DELETED"),
-    FILE_SYNC_CREATED("FILE_SYNC_CREATED"),
-    RELATION_ADDED("RELATION_ADDED"),
-    RELATION_REMOVED("RELATION_REMOVED"),
-    VIEWED("VIEWED");
+	CHANGED("CHANGED"),
+	CONTENT_VIEWED("CONTENT_VIEWED"),
+	COPIED("COPIED"),
+	CREATED("CREATED"),
+	DELETED("DELETED"),
+	FILE_SYNC_CREATED("FILE_SYNC_CREATED"),
+	RELATION_ADDED("RELATION_ADDED"),
+	RELATION_REMOVED("RELATION_REMOVED"),
+	VIEWED("VIEWED");
 
-    private String value;
+	private String value;
 
-    AuditTrailAction(String value) {
-        this.value = value;
-    }
+	AuditTrailAction(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static AuditTrailAction get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AuditTrailAction defined values and compare the inner value with the given one:
-        for(AuditTrailAction item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AuditTrailAction.values().length > 0 ? AuditTrailAction.values()[0]: null;
+	public static AuditTrailAction get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AuditTrailAction defined values and compare the inner value with the given one:
+		for(AuditTrailAction item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AuditTrailAction.values().length > 0 ? AuditTrailAction.values()[0]: null;
    }
 }

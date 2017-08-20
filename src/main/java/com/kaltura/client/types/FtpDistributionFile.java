@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,94 +41,128 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FtpDistributionFile.Tokenizer.class)
 public class FtpDistributionFile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String assetId();
+		String filename();
+		String contents();
+		String localFilePath();
+		String version();
+		String hash();
+	}
 
-    private String assetId;
-    private String filename;
-    private String contents;
-    private String localFilePath;
-    private String version;
-    private String hash;
+	private String assetId;
+	private String filename;
+	private String contents;
+	private String localFilePath;
+	private String version;
+	private String hash;
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
 
-    // filename:
-    public String getFilename(){
-        return this.filename;
-    }
-    public void setFilename(String filename){
-        this.filename = filename;
-    }
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
 
-    // contents:
-    public String getContents(){
-        return this.contents;
-    }
-    public void setContents(String contents){
-        this.contents = contents;
-    }
+	// filename:
+	public String getFilename(){
+		return this.filename;
+	}
+	public void setFilename(String filename){
+		this.filename = filename;
+	}
 
-    // localFilePath:
-    public String getLocalFilePath(){
-        return this.localFilePath;
-    }
-    public void setLocalFilePath(String localFilePath){
-        this.localFilePath = localFilePath;
-    }
+	public void filename(String multirequestToken){
+		setToken("filename", multirequestToken);
+	}
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	// contents:
+	public String getContents(){
+		return this.contents;
+	}
+	public void setContents(String contents){
+		this.contents = contents;
+	}
 
-    // hash:
-    public String getHash(){
-        return this.hash;
-    }
-    public void setHash(String hash){
-        this.hash = hash;
-    }
+	public void contents(String multirequestToken){
+		setToken("contents", multirequestToken);
+	}
+
+	// localFilePath:
+	public String getLocalFilePath(){
+		return this.localFilePath;
+	}
+	public void setLocalFilePath(String localFilePath){
+		this.localFilePath = localFilePath;
+	}
+
+	public void localFilePath(String multirequestToken){
+		setToken("localFilePath", multirequestToken);
+	}
+
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
+
+	// hash:
+	public String getHash(){
+		return this.hash;
+	}
+	public void setHash(String hash){
+		this.hash = hash;
+	}
+
+	public void hash(String multirequestToken){
+		setToken("hash", multirequestToken);
+	}
 
 
-    public FtpDistributionFile() {
-       super();
-    }
+	public FtpDistributionFile() {
+		super();
+	}
 
-    public FtpDistributionFile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FtpDistributionFile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        filename = GsonParser.parseString(jsonObject.get("filename"));
-        contents = GsonParser.parseString(jsonObject.get("contents"));
-        localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
-        version = GsonParser.parseString(jsonObject.get("version"));
-        hash = GsonParser.parseString(jsonObject.get("hash"));
+		// set members values:
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		filename = GsonParser.parseString(jsonObject.get("filename"));
+		contents = GsonParser.parseString(jsonObject.get("contents"));
+		localFilePath = GsonParser.parseString(jsonObject.get("localFilePath"));
+		version = GsonParser.parseString(jsonObject.get("version"));
+		hash = GsonParser.parseString(jsonObject.get("hash"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFtpDistributionFile");
-        kparams.add("assetId", this.assetId);
-        kparams.add("filename", this.filename);
-        kparams.add("contents", this.contents);
-        kparams.add("localFilePath", this.localFilePath);
-        kparams.add("version", this.version);
-        kparams.add("hash", this.hash);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFtpDistributionFile");
+		kparams.add("assetId", this.assetId);
+		kparams.add("filename", this.filename);
+		kparams.add("contents", this.contents);
+		kparams.add("localFilePath", this.localFilePath);
+		kparams.add("version", this.version);
+		kparams.add("hash", this.hash);
+		return kparams;
+	}
 
 }
 

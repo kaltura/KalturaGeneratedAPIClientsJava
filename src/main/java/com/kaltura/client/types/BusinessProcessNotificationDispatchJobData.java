@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.BusinessProcessServer;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.BusinessProcessServer;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,50 +41,60 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessNotificationDispatchJobData.Tokenizer.class)
 public class BusinessProcessNotificationDispatchJobData extends EventNotificationDispatchJobData {
+	
+	public interface Tokenizer extends EventNotificationDispatchJobData.Tokenizer {
+		BusinessProcessServer.Tokenizer server();
+		String caseId();
+	}
 
-    private BusinessProcessServer server;
-    private String caseId;
+	private BusinessProcessServer server;
+	private String caseId;
 
-    // server:
-    public BusinessProcessServer getServer(){
-        return this.server;
-    }
-    public void setServer(BusinessProcessServer server){
-        this.server = server;
-    }
+	// server:
+	public BusinessProcessServer getServer(){
+		return this.server;
+	}
+	public void setServer(BusinessProcessServer server){
+		this.server = server;
+	}
 
-    // caseId:
-    public String getCaseId(){
-        return this.caseId;
-    }
-    public void setCaseId(String caseId){
-        this.caseId = caseId;
-    }
+	// caseId:
+	public String getCaseId(){
+		return this.caseId;
+	}
+	public void setCaseId(String caseId){
+		this.caseId = caseId;
+	}
+
+	public void caseId(String multirequestToken){
+		setToken("caseId", multirequestToken);
+	}
 
 
-    public BusinessProcessNotificationDispatchJobData() {
-       super();
-    }
+	public BusinessProcessNotificationDispatchJobData() {
+		super();
+	}
 
-    public BusinessProcessNotificationDispatchJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessNotificationDispatchJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        server = GsonParser.parseObject(jsonObject.getAsJsonObject("server"), BusinessProcessServer.class);
-        caseId = GsonParser.parseString(jsonObject.get("caseId"));
+		// set members values:
+		server = GsonParser.parseObject(jsonObject.getAsJsonObject("server"), BusinessProcessServer.class);
+		caseId = GsonParser.parseString(jsonObject.get("caseId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessNotificationDispatchJobData");
-        kparams.add("server", this.server);
-        kparams.add("caseId", this.caseId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessNotificationDispatchJobData");
+		kparams.add("server", this.server);
+		kparams.add("caseId", this.caseId);
+		return kparams;
+	}
 
 }
 

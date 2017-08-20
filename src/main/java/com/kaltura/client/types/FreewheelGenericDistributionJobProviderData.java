@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,63 +42,74 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FreewheelGenericDistributionJobProviderData.Tokenizer.class)
 public class FreewheelGenericDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> videoAssetFilePaths();
+		String thumbAssetFilePath();
+		RequestBuilder.ListTokenizer<CuePoint.Tokenizer> cuePoints();
+	}
 
 	/**  Demonstrate passing array of paths to the job  */
-    private List<StringHolder> videoAssetFilePaths;
+	private List<StringHolder> videoAssetFilePaths;
 	/**  Demonstrate passing single path to the job  */
-    private String thumbAssetFilePath;
-    private List<CuePoint> cuePoints;
+	private String thumbAssetFilePath;
+	private List<CuePoint> cuePoints;
 
-    // videoAssetFilePaths:
-    public List<StringHolder> getVideoAssetFilePaths(){
-        return this.videoAssetFilePaths;
-    }
-    public void setVideoAssetFilePaths(List<StringHolder> videoAssetFilePaths){
-        this.videoAssetFilePaths = videoAssetFilePaths;
-    }
+	// videoAssetFilePaths:
+	public List<StringHolder> getVideoAssetFilePaths(){
+		return this.videoAssetFilePaths;
+	}
+	public void setVideoAssetFilePaths(List<StringHolder> videoAssetFilePaths){
+		this.videoAssetFilePaths = videoAssetFilePaths;
+	}
 
-    // thumbAssetFilePath:
-    public String getThumbAssetFilePath(){
-        return this.thumbAssetFilePath;
-    }
-    public void setThumbAssetFilePath(String thumbAssetFilePath){
-        this.thumbAssetFilePath = thumbAssetFilePath;
-    }
+	// thumbAssetFilePath:
+	public String getThumbAssetFilePath(){
+		return this.thumbAssetFilePath;
+	}
+	public void setThumbAssetFilePath(String thumbAssetFilePath){
+		this.thumbAssetFilePath = thumbAssetFilePath;
+	}
 
-    // cuePoints:
-    public List<CuePoint> getCuePoints(){
-        return this.cuePoints;
-    }
-    public void setCuePoints(List<CuePoint> cuePoints){
-        this.cuePoints = cuePoints;
-    }
+	public void thumbAssetFilePath(String multirequestToken){
+		setToken("thumbAssetFilePath", multirequestToken);
+	}
+
+	// cuePoints:
+	public List<CuePoint> getCuePoints(){
+		return this.cuePoints;
+	}
+	public void setCuePoints(List<CuePoint> cuePoints){
+		this.cuePoints = cuePoints;
+	}
 
 
-    public FreewheelGenericDistributionJobProviderData() {
-       super();
-    }
+	public FreewheelGenericDistributionJobProviderData() {
+		super();
+	}
 
-    public FreewheelGenericDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FreewheelGenericDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        videoAssetFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoAssetFilePaths"), StringHolder.class);
-        thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
-        cuePoints = GsonParser.parseArray(jsonObject.getAsJsonArray("cuePoints"), CuePoint.class);
+		// set members values:
+		videoAssetFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoAssetFilePaths"), StringHolder.class);
+		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		cuePoints = GsonParser.parseArray(jsonObject.getAsJsonArray("cuePoints"), CuePoint.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFreewheelGenericDistributionJobProviderData");
-        kparams.add("videoAssetFilePaths", this.videoAssetFilePaths);
-        kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-        kparams.add("cuePoints", this.cuePoints);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFreewheelGenericDistributionJobProviderData");
+		kparams.add("videoAssetFilePaths", this.videoAssetFilePaths);
+		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		kparams.add("cuePoints", this.cuePoints);
+		return kparams;
+	}
 
 }
 

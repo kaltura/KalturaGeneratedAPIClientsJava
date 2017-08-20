@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,38 +34,38 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlayReadyAnalogVideoOPL implements EnumAsInt {
-    MIN_100(100),
-    MIN_150(150),
-    MIN_200(200);
+	MIN_100(100),
+	MIN_150(150),
+	MIN_200(200);
 
-    private int value;
+	private int value;
 
-    PlayReadyAnalogVideoOPL(int value) {
-        this.value = value;
-    }
+	PlayReadyAnalogVideoOPL(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PlayReadyAnalogVideoOPL get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlayReadyAnalogVideoOPL defined values and compare the inner value with the given one:
-        for(PlayReadyAnalogVideoOPL item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlayReadyAnalogVideoOPL.values().length > 0 ? PlayReadyAnalogVideoOPL.values()[0]: null;
+	public static PlayReadyAnalogVideoOPL get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlayReadyAnalogVideoOPL defined values and compare the inner value with the given one:
+		for(PlayReadyAnalogVideoOPL item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlayReadyAnalogVideoOPL.values().length > 0 ? PlayReadyAnalogVideoOPL.values()[0]: null;
    }
 }

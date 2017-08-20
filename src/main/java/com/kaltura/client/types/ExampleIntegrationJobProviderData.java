@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +40,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ExampleIntegrationJobProviderData.Tokenizer.class)
 public class ExampleIntegrationJobProviderData extends IntegrationJobProviderData {
+	
+	public interface Tokenizer extends IntegrationJobProviderData.Tokenizer {
+		String exampleUrl();
+	}
 
 	/**  Just an example  */
-    private String exampleUrl;
+	private String exampleUrl;
 
-    // exampleUrl:
-    public String getExampleUrl(){
-        return this.exampleUrl;
-    }
-    public void setExampleUrl(String exampleUrl){
-        this.exampleUrl = exampleUrl;
-    }
+	// exampleUrl:
+	public String getExampleUrl(){
+		return this.exampleUrl;
+	}
+	public void setExampleUrl(String exampleUrl){
+		this.exampleUrl = exampleUrl;
+	}
+
+	public void exampleUrl(String multirequestToken){
+		setToken("exampleUrl", multirequestToken);
+	}
 
 
-    public ExampleIntegrationJobProviderData() {
-       super();
-    }
+	public ExampleIntegrationJobProviderData() {
+		super();
+	}
 
-    public ExampleIntegrationJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ExampleIntegrationJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        exampleUrl = GsonParser.parseString(jsonObject.get("exampleUrl"));
+		// set members values:
+		exampleUrl = GsonParser.parseString(jsonObject.get("exampleUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaExampleIntegrationJobProviderData");
-        kparams.add("exampleUrl", this.exampleUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaExampleIntegrationJobProviderData");
+		kparams.add("exampleUrl", this.exampleUrl);
+		return kparams;
+	}
 
 }
 

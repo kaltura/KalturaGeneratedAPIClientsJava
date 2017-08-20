@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.PlayReadyPlayEnablerType;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.PlayReadyPlayEnablerType;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,40 +42,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyPlayEnablerHolder.Tokenizer.class)
 public class PlayReadyPlayEnablerHolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+	}
 
 	/**  The type of the play enabler  */
-    private PlayReadyPlayEnablerType type;
+	private PlayReadyPlayEnablerType type;
 
-    // type:
-    public PlayReadyPlayEnablerType getType(){
-        return this.type;
-    }
-    public void setType(PlayReadyPlayEnablerType type){
-        this.type = type;
-    }
+	// type:
+	public PlayReadyPlayEnablerType getType(){
+		return this.type;
+	}
+	public void setType(PlayReadyPlayEnablerType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public PlayReadyPlayEnablerHolder() {
-       super();
-    }
+	public PlayReadyPlayEnablerHolder() {
+		super();
+	}
 
-    public PlayReadyPlayEnablerHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyPlayEnablerHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = PlayReadyPlayEnablerType.get(GsonParser.parseString(jsonObject.get("type")));
+		// set members values:
+		type = PlayReadyPlayEnablerType.get(GsonParser.parseString(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyPlayEnablerHolder");
-        kparams.add("type", this.type);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyPlayEnablerHolder");
+		kparams.add("type", this.type);
+		return kparams;
+	}
 
 }
 

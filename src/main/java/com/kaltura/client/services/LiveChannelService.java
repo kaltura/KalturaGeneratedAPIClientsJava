@@ -103,32 +103,6 @@ public class LiveChannelService {
 		return new AppendRecordingLiveChannelBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 	}
 	
-	public static class CreateRecordedEntryLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, CreateRecordedEntryLiveChannelBuilder> {
-		
-		public CreateRecordedEntryLiveChannelBuilder(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus) {
-			super(LiveEntry.class, "livechannel", "createRecordedEntry");
-			params.add("entryId", entryId);
-			params.add("mediaServerIndex", mediaServerIndex);
-			params.add("liveEntryStatus", liveEntryStatus);
-		}
-		
-		public void entryId(String multirequestToken) {
-			params.add("entryId", multirequestToken);
-		}
-		
-		public void mediaServerIndex(String multirequestToken) {
-			params.add("mediaServerIndex", multirequestToken);
-		}
-		
-		public void liveEntryStatus(String multirequestToken) {
-			params.add("liveEntryStatus", multirequestToken);
-		}
-	}
-
-    public static CreateRecordedEntryLiveChannelBuilder createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
-		return new CreateRecordedEntryLiveChannelBuilder(entryId, mediaServerIndex, liveEntryStatus);
-	}
-	
 	public static class DeleteLiveChannelBuilder extends NullRequestBuilder {
 		
 		public DeleteLiveChannelBuilder(String id) {
@@ -204,14 +178,13 @@ public class LiveChannelService {
 	
 	public static class RegisterMediaServerLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, RegisterMediaServerLiveChannelBuilder> {
 		
-		public RegisterMediaServerLiveChannelBuilder(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry) {
+		public RegisterMediaServerLiveChannelBuilder(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus) {
 			super(LiveEntry.class, "livechannel", "registerMediaServer");
 			params.add("entryId", entryId);
 			params.add("hostname", hostname);
 			params.add("mediaServerIndex", mediaServerIndex);
 			params.add("applicationName", applicationName);
 			params.add("liveEntryStatus", liveEntryStatus);
-			params.add("shouldCreateRecordedEntry", shouldCreateRecordedEntry);
 		}
 		
 		public void entryId(String multirequestToken) {
@@ -233,10 +206,6 @@ public class LiveChannelService {
 		public void liveEntryStatus(String multirequestToken) {
 			params.add("liveEntryStatus", multirequestToken);
 		}
-		
-		public void shouldCreateRecordedEntry(String multirequestToken) {
-			params.add("shouldCreateRecordedEntry", multirequestToken);
-		}
 	}
 
 	public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
@@ -247,13 +216,9 @@ public class LiveChannelService {
 		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, EntryServerNodeStatus.get(1));
 	}
 
-	public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus)  {
-		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
-	}
-
 	/**  Register media server to live entry  */
-    public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
-		return new RegisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
+    public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus)  {
+		return new RegisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus);
 	}
 	
 	public static class SetRecordedContentLiveChannelBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, SetRecordedContentLiveChannelBuilder> {

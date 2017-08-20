@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttUverseDistributionProviderBaseFilter.Tokenizer.class)
 public abstract class AttUverseDistributionProviderBaseFilter extends DistributionProviderFilter {
+	
+	public interface Tokenizer extends DistributionProviderFilter.Tokenizer {
+	}
 
 
 
-    public AttUverseDistributionProviderBaseFilter() {
-       super();
-    }
+	public AttUverseDistributionProviderBaseFilter() {
+		super();
+	}
 
-    public AttUverseDistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public AttUverseDistributionProviderBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttUverseDistributionProviderBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttUverseDistributionProviderBaseFilter");
+		return kparams;
+	}
 
 }
 

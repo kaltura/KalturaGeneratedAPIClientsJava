@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,52 +40,66 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WidevineFlavorParamsOutput.Tokenizer.class)
 public class WidevineFlavorParamsOutput extends FlavorParamsOutput {
+	
+	public interface Tokenizer extends FlavorParamsOutput.Tokenizer {
+		String widevineDistributionStartDate();
+		String widevineDistributionEndDate();
+	}
 
 	/**  License distribution window start date  */
-    private Integer widevineDistributionStartDate;
+	private Integer widevineDistributionStartDate;
 	/**  License distribution window end date  */
-    private Integer widevineDistributionEndDate;
+	private Integer widevineDistributionEndDate;
 
-    // widevineDistributionStartDate:
-    public Integer getWidevineDistributionStartDate(){
-        return this.widevineDistributionStartDate;
-    }
-    public void setWidevineDistributionStartDate(Integer widevineDistributionStartDate){
-        this.widevineDistributionStartDate = widevineDistributionStartDate;
-    }
+	// widevineDistributionStartDate:
+	public Integer getWidevineDistributionStartDate(){
+		return this.widevineDistributionStartDate;
+	}
+	public void setWidevineDistributionStartDate(Integer widevineDistributionStartDate){
+		this.widevineDistributionStartDate = widevineDistributionStartDate;
+	}
 
-    // widevineDistributionEndDate:
-    public Integer getWidevineDistributionEndDate(){
-        return this.widevineDistributionEndDate;
-    }
-    public void setWidevineDistributionEndDate(Integer widevineDistributionEndDate){
-        this.widevineDistributionEndDate = widevineDistributionEndDate;
-    }
+	public void widevineDistributionStartDate(String multirequestToken){
+		setToken("widevineDistributionStartDate", multirequestToken);
+	}
+
+	// widevineDistributionEndDate:
+	public Integer getWidevineDistributionEndDate(){
+		return this.widevineDistributionEndDate;
+	}
+	public void setWidevineDistributionEndDate(Integer widevineDistributionEndDate){
+		this.widevineDistributionEndDate = widevineDistributionEndDate;
+	}
+
+	public void widevineDistributionEndDate(String multirequestToken){
+		setToken("widevineDistributionEndDate", multirequestToken);
+	}
 
 
-    public WidevineFlavorParamsOutput() {
-       super();
-    }
+	public WidevineFlavorParamsOutput() {
+		super();
+	}
 
-    public WidevineFlavorParamsOutput(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WidevineFlavorParamsOutput(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        widevineDistributionStartDate = GsonParser.parseInt(jsonObject.get("widevineDistributionStartDate"));
-        widevineDistributionEndDate = GsonParser.parseInt(jsonObject.get("widevineDistributionEndDate"));
+		// set members values:
+		widevineDistributionStartDate = GsonParser.parseInt(jsonObject.get("widevineDistributionStartDate"));
+		widevineDistributionEndDate = GsonParser.parseInt(jsonObject.get("widevineDistributionEndDate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWidevineFlavorParamsOutput");
-        kparams.add("widevineDistributionStartDate", this.widevineDistributionStartDate);
-        kparams.add("widevineDistributionEndDate", this.widevineDistributionEndDate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWidevineFlavorParamsOutput");
+		kparams.add("widevineDistributionStartDate", this.widevineDistributionStartDate);
+		kparams.add("widevineDistributionEndDate", this.widevineDistributionEndDate);
+		return kparams;
+	}
 
 }
 

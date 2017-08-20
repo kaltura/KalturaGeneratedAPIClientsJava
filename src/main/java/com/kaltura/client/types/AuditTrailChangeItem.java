@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,61 +41,80 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrailChangeItem.Tokenizer.class)
 public class AuditTrailChangeItem extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String descriptor();
+		String oldValue();
+		String newValue();
+	}
 
-    private String descriptor;
-    private String oldValue;
-    private String newValue;
+	private String descriptor;
+	private String oldValue;
+	private String newValue;
 
-    // descriptor:
-    public String getDescriptor(){
-        return this.descriptor;
-    }
-    public void setDescriptor(String descriptor){
-        this.descriptor = descriptor;
-    }
+	// descriptor:
+	public String getDescriptor(){
+		return this.descriptor;
+	}
+	public void setDescriptor(String descriptor){
+		this.descriptor = descriptor;
+	}
 
-    // oldValue:
-    public String getOldValue(){
-        return this.oldValue;
-    }
-    public void setOldValue(String oldValue){
-        this.oldValue = oldValue;
-    }
+	public void descriptor(String multirequestToken){
+		setToken("descriptor", multirequestToken);
+	}
 
-    // newValue:
-    public String getNewValue(){
-        return this.newValue;
-    }
-    public void setNewValue(String newValue){
-        this.newValue = newValue;
-    }
+	// oldValue:
+	public String getOldValue(){
+		return this.oldValue;
+	}
+	public void setOldValue(String oldValue){
+		this.oldValue = oldValue;
+	}
+
+	public void oldValue(String multirequestToken){
+		setToken("oldValue", multirequestToken);
+	}
+
+	// newValue:
+	public String getNewValue(){
+		return this.newValue;
+	}
+	public void setNewValue(String newValue){
+		this.newValue = newValue;
+	}
+
+	public void newValue(String multirequestToken){
+		setToken("newValue", multirequestToken);
+	}
 
 
-    public AuditTrailChangeItem() {
-       super();
-    }
+	public AuditTrailChangeItem() {
+		super();
+	}
 
-    public AuditTrailChangeItem(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrailChangeItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        descriptor = GsonParser.parseString(jsonObject.get("descriptor"));
-        oldValue = GsonParser.parseString(jsonObject.get("oldValue"));
-        newValue = GsonParser.parseString(jsonObject.get("newValue"));
+		// set members values:
+		descriptor = GsonParser.parseString(jsonObject.get("descriptor"));
+		oldValue = GsonParser.parseString(jsonObject.get("oldValue"));
+		newValue = GsonParser.parseString(jsonObject.get("newValue"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrailChangeItem");
-        kparams.add("descriptor", this.descriptor);
-        kparams.add("oldValue", this.oldValue);
-        kparams.add("newValue", this.newValue);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrailChangeItem");
+		kparams.add("descriptor", this.descriptor);
+		kparams.add("oldValue", this.oldValue);
+		kparams.add("newValue", this.newValue);
+		return kparams;
+	}
 
 }
 

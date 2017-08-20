@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,40 +34,40 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlayReadyDigitalAudioOPL implements EnumAsInt {
-    MIN_100(100),
-    MIN_150(150),
-    MIN_200(200),
-    MIN_250(250),
-    MIN_300(300);
+	MIN_100(100),
+	MIN_150(150),
+	MIN_200(200),
+	MIN_250(250),
+	MIN_300(300);
 
-    private int value;
+	private int value;
 
-    PlayReadyDigitalAudioOPL(int value) {
-        this.value = value;
-    }
+	PlayReadyDigitalAudioOPL(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PlayReadyDigitalAudioOPL get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlayReadyDigitalAudioOPL defined values and compare the inner value with the given one:
-        for(PlayReadyDigitalAudioOPL item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlayReadyDigitalAudioOPL.values().length > 0 ? PlayReadyDigitalAudioOPL.values()[0]: null;
+	public static PlayReadyDigitalAudioOPL get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlayReadyDigitalAudioOPL defined values and compare the inner value with the given one:
+		for(PlayReadyDigitalAudioOPL item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlayReadyDigitalAudioOPL.values().length > 0 ? PlayReadyDigitalAudioOPL.values()[0]: null;
    }
 }

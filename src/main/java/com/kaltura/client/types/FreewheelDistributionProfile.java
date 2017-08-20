@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,94 +40,128 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FreewheelDistributionProfile.Tokenizer.class)
 public class FreewheelDistributionProfile extends DistributionProfile {
+	
+	public interface Tokenizer extends DistributionProfile.Tokenizer {
+		String apikey();
+		String email();
+		String sftpPass();
+		String sftpLogin();
+		String accountId();
+		String metadataProfileId();
+	}
 
-    private String apikey;
-    private String email;
-    private String sftpPass;
-    private String sftpLogin;
-    private String accountId;
-    private Integer metadataProfileId;
+	private String apikey;
+	private String email;
+	private String sftpPass;
+	private String sftpLogin;
+	private String accountId;
+	private Integer metadataProfileId;
 
-    // apikey:
-    public String getApikey(){
-        return this.apikey;
-    }
-    public void setApikey(String apikey){
-        this.apikey = apikey;
-    }
+	// apikey:
+	public String getApikey(){
+		return this.apikey;
+	}
+	public void setApikey(String apikey){
+		this.apikey = apikey;
+	}
 
-    // email:
-    public String getEmail(){
-        return this.email;
-    }
-    public void setEmail(String email){
-        this.email = email;
-    }
+	public void apikey(String multirequestToken){
+		setToken("apikey", multirequestToken);
+	}
 
-    // sftpPass:
-    public String getSftpPass(){
-        return this.sftpPass;
-    }
-    public void setSftpPass(String sftpPass){
-        this.sftpPass = sftpPass;
-    }
+	// email:
+	public String getEmail(){
+		return this.email;
+	}
+	public void setEmail(String email){
+		this.email = email;
+	}
 
-    // sftpLogin:
-    public String getSftpLogin(){
-        return this.sftpLogin;
-    }
-    public void setSftpLogin(String sftpLogin){
-        this.sftpLogin = sftpLogin;
-    }
+	public void email(String multirequestToken){
+		setToken("email", multirequestToken);
+	}
 
-    // accountId:
-    public String getAccountId(){
-        return this.accountId;
-    }
-    public void setAccountId(String accountId){
-        this.accountId = accountId;
-    }
+	// sftpPass:
+	public String getSftpPass(){
+		return this.sftpPass;
+	}
+	public void setSftpPass(String sftpPass){
+		this.sftpPass = sftpPass;
+	}
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	public void sftpPass(String multirequestToken){
+		setToken("sftpPass", multirequestToken);
+	}
+
+	// sftpLogin:
+	public String getSftpLogin(){
+		return this.sftpLogin;
+	}
+	public void setSftpLogin(String sftpLogin){
+		this.sftpLogin = sftpLogin;
+	}
+
+	public void sftpLogin(String multirequestToken){
+		setToken("sftpLogin", multirequestToken);
+	}
+
+	// accountId:
+	public String getAccountId(){
+		return this.accountId;
+	}
+	public void setAccountId(String accountId){
+		this.accountId = accountId;
+	}
+
+	public void accountId(String multirequestToken){
+		setToken("accountId", multirequestToken);
+	}
+
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
 
 
-    public FreewheelDistributionProfile() {
-       super();
-    }
+	public FreewheelDistributionProfile() {
+		super();
+	}
 
-    public FreewheelDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FreewheelDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        apikey = GsonParser.parseString(jsonObject.get("apikey"));
-        email = GsonParser.parseString(jsonObject.get("email"));
-        sftpPass = GsonParser.parseString(jsonObject.get("sftpPass"));
-        sftpLogin = GsonParser.parseString(jsonObject.get("sftpLogin"));
-        accountId = GsonParser.parseString(jsonObject.get("accountId"));
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		// set members values:
+		apikey = GsonParser.parseString(jsonObject.get("apikey"));
+		email = GsonParser.parseString(jsonObject.get("email"));
+		sftpPass = GsonParser.parseString(jsonObject.get("sftpPass"));
+		sftpLogin = GsonParser.parseString(jsonObject.get("sftpLogin"));
+		accountId = GsonParser.parseString(jsonObject.get("accountId"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFreewheelDistributionProfile");
-        kparams.add("apikey", this.apikey);
-        kparams.add("email", this.email);
-        kparams.add("sftpPass", this.sftpPass);
-        kparams.add("sftpLogin", this.sftpLogin);
-        kparams.add("accountId", this.accountId);
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFreewheelDistributionProfile");
+		kparams.add("apikey", this.apikey);
+		kparams.add("email", this.email);
+		kparams.add("sftpPass", this.sftpPass);
+		kparams.add("sftpLogin", this.sftpLogin);
+		kparams.add("accountId", this.accountId);
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		return kparams;
+	}
 
 }
 

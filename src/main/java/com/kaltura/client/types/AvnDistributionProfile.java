@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,49 +40,63 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AvnDistributionProfile.Tokenizer.class)
 public class AvnDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String feedUrl();
+		String feedTitle();
+	}
 
-    private String feedUrl;
-    private String feedTitle;
+	private String feedUrl;
+	private String feedTitle;
 
-    // feedUrl:
-    public String getFeedUrl(){
-        return this.feedUrl;
-    }
-    public void setFeedUrl(String feedUrl){
-        this.feedUrl = feedUrl;
-    }
+	// feedUrl:
+	public String getFeedUrl(){
+		return this.feedUrl;
+	}
+	public void setFeedUrl(String feedUrl){
+		this.feedUrl = feedUrl;
+	}
 
-    // feedTitle:
-    public String getFeedTitle(){
-        return this.feedTitle;
-    }
-    public void setFeedTitle(String feedTitle){
-        this.feedTitle = feedTitle;
-    }
+	public void feedUrl(String multirequestToken){
+		setToken("feedUrl", multirequestToken);
+	}
+
+	// feedTitle:
+	public String getFeedTitle(){
+		return this.feedTitle;
+	}
+	public void setFeedTitle(String feedTitle){
+		this.feedTitle = feedTitle;
+	}
+
+	public void feedTitle(String multirequestToken){
+		setToken("feedTitle", multirequestToken);
+	}
 
 
-    public AvnDistributionProfile() {
-       super();
-    }
+	public AvnDistributionProfile() {
+		super();
+	}
 
-    public AvnDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AvnDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
-        feedTitle = GsonParser.parseString(jsonObject.get("feedTitle"));
+		// set members values:
+		feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
+		feedTitle = GsonParser.parseString(jsonObject.get("feedTitle"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAvnDistributionProfile");
-        kparams.add("feedTitle", this.feedTitle);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAvnDistributionProfile");
+		kparams.add("feedTitle", this.feedTitle);
+		return kparams;
+	}
 
 }
 

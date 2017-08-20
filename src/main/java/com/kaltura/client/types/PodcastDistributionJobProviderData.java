@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +40,80 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PodcastDistributionJobProviderData.Tokenizer.class)
 public class PodcastDistributionJobProviderData extends DistributionJobProviderData {
+	
+	public interface Tokenizer extends DistributionJobProviderData.Tokenizer {
+		String xml();
+		String metadataProfileId();
+		String distributionProfileId();
+	}
 
-    private String xml;
-    private Integer metadataProfileId;
-    private Integer distributionProfileId;
+	private String xml;
+	private Integer metadataProfileId;
+	private Integer distributionProfileId;
 
-    // xml:
-    public String getXml(){
-        return this.xml;
-    }
-    public void setXml(String xml){
-        this.xml = xml;
-    }
+	// xml:
+	public String getXml(){
+		return this.xml;
+	}
+	public void setXml(String xml){
+		this.xml = xml;
+	}
 
-    // metadataProfileId:
-    public Integer getMetadataProfileId(){
-        return this.metadataProfileId;
-    }
-    public void setMetadataProfileId(Integer metadataProfileId){
-        this.metadataProfileId = metadataProfileId;
-    }
+	public void xml(String multirequestToken){
+		setToken("xml", multirequestToken);
+	}
 
-    // distributionProfileId:
-    public Integer getDistributionProfileId(){
-        return this.distributionProfileId;
-    }
-    public void setDistributionProfileId(Integer distributionProfileId){
-        this.distributionProfileId = distributionProfileId;
-    }
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
+
+	// distributionProfileId:
+	public Integer getDistributionProfileId(){
+		return this.distributionProfileId;
+	}
+	public void setDistributionProfileId(Integer distributionProfileId){
+		this.distributionProfileId = distributionProfileId;
+	}
+
+	public void distributionProfileId(String multirequestToken){
+		setToken("distributionProfileId", multirequestToken);
+	}
 
 
-    public PodcastDistributionJobProviderData() {
-       super();
-    }
+	public PodcastDistributionJobProviderData() {
+		super();
+	}
 
-    public PodcastDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PodcastDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xml = GsonParser.parseString(jsonObject.get("xml"));
-        metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-        distributionProfileId = GsonParser.parseInt(jsonObject.get("distributionProfileId"));
+		// set members values:
+		xml = GsonParser.parseString(jsonObject.get("xml"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		distributionProfileId = GsonParser.parseInt(jsonObject.get("distributionProfileId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPodcastDistributionJobProviderData");
-        kparams.add("xml", this.xml);
-        kparams.add("metadataProfileId", this.metadataProfileId);
-        kparams.add("distributionProfileId", this.distributionProfileId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPodcastDistributionJobProviderData");
+		kparams.add("xml", this.xml);
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("distributionProfileId", this.distributionProfileId);
+		return kparams;
+	}
 
 }
 

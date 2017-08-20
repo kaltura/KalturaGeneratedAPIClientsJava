@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,38 +34,38 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DailymotionDistributionCaptionFormat implements EnumAsInt {
-    SRT(1),
-    STL(2),
-    TT(3);
+	SRT(1),
+	STL(2),
+	TT(3);
 
-    private int value;
+	private int value;
 
-    DailymotionDistributionCaptionFormat(int value) {
-        this.value = value;
-    }
+	DailymotionDistributionCaptionFormat(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DailymotionDistributionCaptionFormat get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DailymotionDistributionCaptionFormat defined values and compare the inner value with the given one:
-        for(DailymotionDistributionCaptionFormat item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DailymotionDistributionCaptionFormat.values().length > 0 ? DailymotionDistributionCaptionFormat.values()[0]: null;
+	public static DailymotionDistributionCaptionFormat get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DailymotionDistributionCaptionFormat defined values and compare the inner value with the given one:
+		for(DailymotionDistributionCaptionFormat item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DailymotionDistributionCaptionFormat.values().length > 0 ? DailymotionDistributionCaptionFormat.values()[0]: null;
    }
 }

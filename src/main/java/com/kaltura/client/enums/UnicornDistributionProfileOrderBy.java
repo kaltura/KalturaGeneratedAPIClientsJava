@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,39 +34,39 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UnicornDistributionProfileOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    UnicornDistributionProfileOrderBy(String value) {
-        this.value = value;
-    }
+	UnicornDistributionProfileOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static UnicornDistributionProfileOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over UnicornDistributionProfileOrderBy defined values and compare the inner value with the given one:
-        for(UnicornDistributionProfileOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return UnicornDistributionProfileOrderBy.values().length > 0 ? UnicornDistributionProfileOrderBy.values()[0]: null;
+	public static UnicornDistributionProfileOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over UnicornDistributionProfileOrderBy defined values and compare the inner value with the given one:
+		for(UnicornDistributionProfileOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return UnicornDistributionProfileOrderBy.values().length > 0 ? UnicornDistributionProfileOrderBy.values()[0]: null;
    }
 }

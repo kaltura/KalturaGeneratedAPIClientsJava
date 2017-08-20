@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,83 +42,104 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(HuluDistributionJobProviderData.Tokenizer.class)
 public class HuluDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String videoAssetFilePath();
+		String thumbAssetFilePath();
+		RequestBuilder.ListTokenizer<CuePoint.Tokenizer> cuePoints();
+		String fileBaseName();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> captionLocalPaths();
+	}
 
-    private String videoAssetFilePath;
-    private String thumbAssetFilePath;
-    private List<CuePoint> cuePoints;
-    private String fileBaseName;
-    private List<StringHolder> captionLocalPaths;
+	private String videoAssetFilePath;
+	private String thumbAssetFilePath;
+	private List<CuePoint> cuePoints;
+	private String fileBaseName;
+	private List<StringHolder> captionLocalPaths;
 
-    // videoAssetFilePath:
-    public String getVideoAssetFilePath(){
-        return this.videoAssetFilePath;
-    }
-    public void setVideoAssetFilePath(String videoAssetFilePath){
-        this.videoAssetFilePath = videoAssetFilePath;
-    }
+	// videoAssetFilePath:
+	public String getVideoAssetFilePath(){
+		return this.videoAssetFilePath;
+	}
+	public void setVideoAssetFilePath(String videoAssetFilePath){
+		this.videoAssetFilePath = videoAssetFilePath;
+	}
 
-    // thumbAssetFilePath:
-    public String getThumbAssetFilePath(){
-        return this.thumbAssetFilePath;
-    }
-    public void setThumbAssetFilePath(String thumbAssetFilePath){
-        this.thumbAssetFilePath = thumbAssetFilePath;
-    }
+	public void videoAssetFilePath(String multirequestToken){
+		setToken("videoAssetFilePath", multirequestToken);
+	}
 
-    // cuePoints:
-    public List<CuePoint> getCuePoints(){
-        return this.cuePoints;
-    }
-    public void setCuePoints(List<CuePoint> cuePoints){
-        this.cuePoints = cuePoints;
-    }
+	// thumbAssetFilePath:
+	public String getThumbAssetFilePath(){
+		return this.thumbAssetFilePath;
+	}
+	public void setThumbAssetFilePath(String thumbAssetFilePath){
+		this.thumbAssetFilePath = thumbAssetFilePath;
+	}
 
-    // fileBaseName:
-    public String getFileBaseName(){
-        return this.fileBaseName;
-    }
-    public void setFileBaseName(String fileBaseName){
-        this.fileBaseName = fileBaseName;
-    }
+	public void thumbAssetFilePath(String multirequestToken){
+		setToken("thumbAssetFilePath", multirequestToken);
+	}
 
-    // captionLocalPaths:
-    public List<StringHolder> getCaptionLocalPaths(){
-        return this.captionLocalPaths;
-    }
-    public void setCaptionLocalPaths(List<StringHolder> captionLocalPaths){
-        this.captionLocalPaths = captionLocalPaths;
-    }
+	// cuePoints:
+	public List<CuePoint> getCuePoints(){
+		return this.cuePoints;
+	}
+	public void setCuePoints(List<CuePoint> cuePoints){
+		this.cuePoints = cuePoints;
+	}
+
+	// fileBaseName:
+	public String getFileBaseName(){
+		return this.fileBaseName;
+	}
+	public void setFileBaseName(String fileBaseName){
+		this.fileBaseName = fileBaseName;
+	}
+
+	public void fileBaseName(String multirequestToken){
+		setToken("fileBaseName", multirequestToken);
+	}
+
+	// captionLocalPaths:
+	public List<StringHolder> getCaptionLocalPaths(){
+		return this.captionLocalPaths;
+	}
+	public void setCaptionLocalPaths(List<StringHolder> captionLocalPaths){
+		this.captionLocalPaths = captionLocalPaths;
+	}
 
 
-    public HuluDistributionJobProviderData() {
-       super();
-    }
+	public HuluDistributionJobProviderData() {
+		super();
+	}
 
-    public HuluDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public HuluDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
-        thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
-        cuePoints = GsonParser.parseArray(jsonObject.getAsJsonArray("cuePoints"), CuePoint.class);
-        fileBaseName = GsonParser.parseString(jsonObject.get("fileBaseName"));
-        captionLocalPaths = GsonParser.parseArray(jsonObject.getAsJsonArray("captionLocalPaths"), StringHolder.class);
+		// set members values:
+		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
+		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		cuePoints = GsonParser.parseArray(jsonObject.getAsJsonArray("cuePoints"), CuePoint.class);
+		fileBaseName = GsonParser.parseString(jsonObject.get("fileBaseName"));
+		captionLocalPaths = GsonParser.parseArray(jsonObject.getAsJsonArray("captionLocalPaths"), StringHolder.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaHuluDistributionJobProviderData");
-        kparams.add("videoAssetFilePath", this.videoAssetFilePath);
-        kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-        kparams.add("cuePoints", this.cuePoints);
-        kparams.add("fileBaseName", this.fileBaseName);
-        kparams.add("captionLocalPaths", this.captionLocalPaths);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaHuluDistributionJobProviderData");
+		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
+		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		kparams.add("cuePoints", this.cuePoints);
+		kparams.add("fileBaseName", this.fileBaseName);
+		kparams.add("captionLocalPaths", this.captionLocalPaths);
+		return kparams;
+	}
 
 }
 

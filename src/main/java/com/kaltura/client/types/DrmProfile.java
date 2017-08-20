@@ -27,13 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.DrmProviderType;
-import com.kaltura.client.enums.DrmProfileStatus;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.DrmProfileStatus;
+import com.kaltura.client.enums.DrmProviderType;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,146 +43,205 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmProfile.Tokenizer.class)
 public class DrmProfile extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String name();
+		String description();
+		String provider();
+		String status();
+		String licenseServerUrl();
+		String defaultPolicy();
+		String createdAt();
+		String updatedAt();
+		String signingKey();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private String name;
-    private String description;
-    private DrmProviderType provider;
-    private DrmProfileStatus status;
-    private String licenseServerUrl;
-    private String defaultPolicy;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private String signingKey;
+	private Integer id;
+	private Integer partnerId;
+	private String name;
+	private String description;
+	private DrmProviderType provider;
+	private DrmProfileStatus status;
+	private String licenseServerUrl;
+	private String defaultPolicy;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private String signingKey;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // provider:
-    public DrmProviderType getProvider(){
-        return this.provider;
-    }
-    public void setProvider(DrmProviderType provider){
-        this.provider = provider;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // status:
-    public DrmProfileStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(DrmProfileStatus status){
-        this.status = status;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // licenseServerUrl:
-    public String getLicenseServerUrl(){
-        return this.licenseServerUrl;
-    }
-    public void setLicenseServerUrl(String licenseServerUrl){
-        this.licenseServerUrl = licenseServerUrl;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // defaultPolicy:
-    public String getDefaultPolicy(){
-        return this.defaultPolicy;
-    }
-    public void setDefaultPolicy(String defaultPolicy){
-        this.defaultPolicy = defaultPolicy;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	// provider:
+	public DrmProviderType getProvider(){
+		return this.provider;
+	}
+	public void setProvider(DrmProviderType provider){
+		this.provider = provider;
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	public void provider(String multirequestToken){
+		setToken("provider", multirequestToken);
+	}
 
-    // signingKey:
-    public String getSigningKey(){
-        return this.signingKey;
-    }
-    public void setSigningKey(String signingKey){
-        this.signingKey = signingKey;
-    }
+	// status:
+	public DrmProfileStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(DrmProfileStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// licenseServerUrl:
+	public String getLicenseServerUrl(){
+		return this.licenseServerUrl;
+	}
+	public void setLicenseServerUrl(String licenseServerUrl){
+		this.licenseServerUrl = licenseServerUrl;
+	}
+
+	public void licenseServerUrl(String multirequestToken){
+		setToken("licenseServerUrl", multirequestToken);
+	}
+
+	// defaultPolicy:
+	public String getDefaultPolicy(){
+		return this.defaultPolicy;
+	}
+	public void setDefaultPolicy(String defaultPolicy){
+		this.defaultPolicy = defaultPolicy;
+	}
+
+	public void defaultPolicy(String multirequestToken){
+		setToken("defaultPolicy", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// signingKey:
+	public String getSigningKey(){
+		return this.signingKey;
+	}
+	public void setSigningKey(String signingKey){
+		this.signingKey = signingKey;
+	}
+
+	public void signingKey(String multirequestToken){
+		setToken("signingKey", multirequestToken);
+	}
 
 
-    public DrmProfile() {
-       super();
-    }
+	public DrmProfile() {
+		super();
+	}
 
-    public DrmProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        provider = DrmProviderType.get(GsonParser.parseString(jsonObject.get("provider")));
-        status = DrmProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        licenseServerUrl = GsonParser.parseString(jsonObject.get("licenseServerUrl"));
-        defaultPolicy = GsonParser.parseString(jsonObject.get("defaultPolicy"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        signingKey = GsonParser.parseString(jsonObject.get("signingKey"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		provider = DrmProviderType.get(GsonParser.parseString(jsonObject.get("provider")));
+		status = DrmProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		licenseServerUrl = GsonParser.parseString(jsonObject.get("licenseServerUrl"));
+		defaultPolicy = GsonParser.parseString(jsonObject.get("defaultPolicy"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		signingKey = GsonParser.parseString(jsonObject.get("signingKey"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmProfile");
-        kparams.add("partnerId", this.partnerId);
-        kparams.add("name", this.name);
-        kparams.add("description", this.description);
-        kparams.add("provider", this.provider);
-        kparams.add("status", this.status);
-        kparams.add("licenseServerUrl", this.licenseServerUrl);
-        kparams.add("defaultPolicy", this.defaultPolicy);
-        kparams.add("signingKey", this.signingKey);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmProfile");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("name", this.name);
+		kparams.add("description", this.description);
+		kparams.add("provider", this.provider);
+		kparams.add("status", this.status);
+		kparams.add("licenseServerUrl", this.licenseServerUrl);
+		kparams.add("defaultPolicy", this.defaultPolicy);
+		kparams.add("signingKey", this.signingKey);
+		return kparams;
+	}
 
 }
 

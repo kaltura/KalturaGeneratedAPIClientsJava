@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,60 +40,79 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UverseClickToOrderDistributionProfile.Tokenizer.class)
 public class UverseClickToOrderDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String feedUrl();
+		String backgroundImageWide();
+		String backgroundImageStandard();
+	}
 
-    private String feedUrl;
-    private String backgroundImageWide;
-    private String backgroundImageStandard;
+	private String feedUrl;
+	private String backgroundImageWide;
+	private String backgroundImageStandard;
 
-    // feedUrl:
-    public String getFeedUrl(){
-        return this.feedUrl;
-    }
-    public void setFeedUrl(String feedUrl){
-        this.feedUrl = feedUrl;
-    }
+	// feedUrl:
+	public String getFeedUrl(){
+		return this.feedUrl;
+	}
+	public void setFeedUrl(String feedUrl){
+		this.feedUrl = feedUrl;
+	}
 
-    // backgroundImageWide:
-    public String getBackgroundImageWide(){
-        return this.backgroundImageWide;
-    }
-    public void setBackgroundImageWide(String backgroundImageWide){
-        this.backgroundImageWide = backgroundImageWide;
-    }
+	public void feedUrl(String multirequestToken){
+		setToken("feedUrl", multirequestToken);
+	}
 
-    // backgroundImageStandard:
-    public String getBackgroundImageStandard(){
-        return this.backgroundImageStandard;
-    }
-    public void setBackgroundImageStandard(String backgroundImageStandard){
-        this.backgroundImageStandard = backgroundImageStandard;
-    }
+	// backgroundImageWide:
+	public String getBackgroundImageWide(){
+		return this.backgroundImageWide;
+	}
+	public void setBackgroundImageWide(String backgroundImageWide){
+		this.backgroundImageWide = backgroundImageWide;
+	}
+
+	public void backgroundImageWide(String multirequestToken){
+		setToken("backgroundImageWide", multirequestToken);
+	}
+
+	// backgroundImageStandard:
+	public String getBackgroundImageStandard(){
+		return this.backgroundImageStandard;
+	}
+	public void setBackgroundImageStandard(String backgroundImageStandard){
+		this.backgroundImageStandard = backgroundImageStandard;
+	}
+
+	public void backgroundImageStandard(String multirequestToken){
+		setToken("backgroundImageStandard", multirequestToken);
+	}
 
 
-    public UverseClickToOrderDistributionProfile() {
-       super();
-    }
+	public UverseClickToOrderDistributionProfile() {
+		super();
+	}
 
-    public UverseClickToOrderDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UverseClickToOrderDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
-        backgroundImageWide = GsonParser.parseString(jsonObject.get("backgroundImageWide"));
-        backgroundImageStandard = GsonParser.parseString(jsonObject.get("backgroundImageStandard"));
+		// set members values:
+		feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
+		backgroundImageWide = GsonParser.parseString(jsonObject.get("backgroundImageWide"));
+		backgroundImageStandard = GsonParser.parseString(jsonObject.get("backgroundImageStandard"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUverseClickToOrderDistributionProfile");
-        kparams.add("backgroundImageWide", this.backgroundImageWide);
-        kparams.add("backgroundImageStandard", this.backgroundImageStandard);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUverseClickToOrderDistributionProfile");
+		kparams.add("backgroundImageWide", this.backgroundImageWide);
+		kparams.add("backgroundImageStandard", this.backgroundImageStandard);
+		return kparams;
+	}
 
 }
 

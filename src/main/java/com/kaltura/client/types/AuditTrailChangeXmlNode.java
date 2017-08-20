@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.AuditTrailChangeXmlNodeType;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.AuditTrailChangeXmlNodeType;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,39 +41,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrailChangeXmlNode.Tokenizer.class)
 public class AuditTrailChangeXmlNode extends AuditTrailChangeItem {
+	
+	public interface Tokenizer extends AuditTrailChangeItem.Tokenizer {
+		String type();
+	}
 
-    private AuditTrailChangeXmlNodeType type;
+	private AuditTrailChangeXmlNodeType type;
 
-    // type:
-    public AuditTrailChangeXmlNodeType getType(){
-        return this.type;
-    }
-    public void setType(AuditTrailChangeXmlNodeType type){
-        this.type = type;
-    }
+	// type:
+	public AuditTrailChangeXmlNodeType getType(){
+		return this.type;
+	}
+	public void setType(AuditTrailChangeXmlNodeType type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public AuditTrailChangeXmlNode() {
-       super();
-    }
+	public AuditTrailChangeXmlNode() {
+		super();
+	}
 
-    public AuditTrailChangeXmlNode(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrailChangeXmlNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = AuditTrailChangeXmlNodeType.get(GsonParser.parseInt(jsonObject.get("type")));
+		// set members values:
+		type = AuditTrailChangeXmlNodeType.get(GsonParser.parseInt(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrailChangeXmlNode");
-        kparams.add("type", this.type);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrailChangeXmlNode");
+		kparams.add("type", this.type);
+		return kparams;
+	}
 
 }
 

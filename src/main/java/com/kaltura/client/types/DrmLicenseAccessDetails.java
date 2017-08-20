@@ -27,12 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import java.util.List;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -42,75 +43,95 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmLicenseAccessDetails.Tokenizer.class)
 public class DrmLicenseAccessDetails extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String policy();
+		String duration();
+		String absolute_duration();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> licenseParams();
+	}
 
 	/**  Drm policy name  */
-    private String policy;
+	private String policy;
 	/**  movie duration in seconds  */
-    private Integer duration;
+	private Integer duration;
 	/**  playback window in seconds  */
-    private Integer absolute_duration;
-    private List<KeyValue> licenseParams;
+	private Integer absolute_duration;
+	private List<KeyValue> licenseParams;
 
-    // policy:
-    public String getPolicy(){
-        return this.policy;
-    }
-    public void setPolicy(String policy){
-        this.policy = policy;
-    }
+	// policy:
+	public String getPolicy(){
+		return this.policy;
+	}
+	public void setPolicy(String policy){
+		this.policy = policy;
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	public void policy(String multirequestToken){
+		setToken("policy", multirequestToken);
+	}
 
-    // absolute_duration:
-    public Integer getAbsolute_duration(){
-        return this.absolute_duration;
-    }
-    public void setAbsolute_duration(Integer absolute_duration){
-        this.absolute_duration = absolute_duration;
-    }
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
 
-    // licenseParams:
-    public List<KeyValue> getLicenseParams(){
-        return this.licenseParams;
-    }
-    public void setLicenseParams(List<KeyValue> licenseParams){
-        this.licenseParams = licenseParams;
-    }
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+	// absolute_duration:
+	public Integer getAbsolute_duration(){
+		return this.absolute_duration;
+	}
+	public void setAbsolute_duration(Integer absolute_duration){
+		this.absolute_duration = absolute_duration;
+	}
+
+	public void absolute_duration(String multirequestToken){
+		setToken("absolute_duration", multirequestToken);
+	}
+
+	// licenseParams:
+	public List<KeyValue> getLicenseParams(){
+		return this.licenseParams;
+	}
+	public void setLicenseParams(List<KeyValue> licenseParams){
+		this.licenseParams = licenseParams;
+	}
 
 
-    public DrmLicenseAccessDetails() {
-       super();
-    }
+	public DrmLicenseAccessDetails() {
+		super();
+	}
 
-    public DrmLicenseAccessDetails(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmLicenseAccessDetails(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        policy = GsonParser.parseString(jsonObject.get("policy"));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
-        absolute_duration = GsonParser.parseInt(jsonObject.get("absolute_duration"));
-        licenseParams = GsonParser.parseArray(jsonObject.getAsJsonArray("licenseParams"), KeyValue.class);
+		// set members values:
+		policy = GsonParser.parseString(jsonObject.get("policy"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		absolute_duration = GsonParser.parseInt(jsonObject.get("absolute_duration"));
+		licenseParams = GsonParser.parseArray(jsonObject.getAsJsonArray("licenseParams"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmLicenseAccessDetails");
-        kparams.add("policy", this.policy);
-        kparams.add("duration", this.duration);
-        kparams.add("absolute_duration", this.absolute_duration);
-        kparams.add("licenseParams", this.licenseParams);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmLicenseAccessDetails");
+		kparams.add("policy", this.policy);
+		kparams.add("duration", this.duration);
+		kparams.add("absolute_duration", this.absolute_duration);
+		kparams.add("licenseParams", this.licenseParams);
+		return kparams;
+	}
 
 }
 

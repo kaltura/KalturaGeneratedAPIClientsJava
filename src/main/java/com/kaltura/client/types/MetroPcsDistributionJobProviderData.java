@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +40,64 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetroPcsDistributionJobProviderData.Tokenizer.class)
 public class MetroPcsDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String assetLocalPaths();
+		String thumbUrls();
+	}
 
-    private String assetLocalPaths;
-    private String thumbUrls;
+	private String assetLocalPaths;
+	private String thumbUrls;
 
-    // assetLocalPaths:
-    public String getAssetLocalPaths(){
-        return this.assetLocalPaths;
-    }
-    public void setAssetLocalPaths(String assetLocalPaths){
-        this.assetLocalPaths = assetLocalPaths;
-    }
+	// assetLocalPaths:
+	public String getAssetLocalPaths(){
+		return this.assetLocalPaths;
+	}
+	public void setAssetLocalPaths(String assetLocalPaths){
+		this.assetLocalPaths = assetLocalPaths;
+	}
 
-    // thumbUrls:
-    public String getThumbUrls(){
-        return this.thumbUrls;
-    }
-    public void setThumbUrls(String thumbUrls){
-        this.thumbUrls = thumbUrls;
-    }
+	public void assetLocalPaths(String multirequestToken){
+		setToken("assetLocalPaths", multirequestToken);
+	}
+
+	// thumbUrls:
+	public String getThumbUrls(){
+		return this.thumbUrls;
+	}
+	public void setThumbUrls(String thumbUrls){
+		this.thumbUrls = thumbUrls;
+	}
+
+	public void thumbUrls(String multirequestToken){
+		setToken("thumbUrls", multirequestToken);
+	}
 
 
-    public MetroPcsDistributionJobProviderData() {
-       super();
-    }
+	public MetroPcsDistributionJobProviderData() {
+		super();
+	}
 
-    public MetroPcsDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetroPcsDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        assetLocalPaths = GsonParser.parseString(jsonObject.get("assetLocalPaths"));
-        thumbUrls = GsonParser.parseString(jsonObject.get("thumbUrls"));
+		// set members values:
+		assetLocalPaths = GsonParser.parseString(jsonObject.get("assetLocalPaths"));
+		thumbUrls = GsonParser.parseString(jsonObject.get("thumbUrls"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetroPcsDistributionJobProviderData");
-        kparams.add("assetLocalPaths", this.assetLocalPaths);
-        kparams.add("thumbUrls", this.thumbUrls);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetroPcsDistributionJobProviderData");
+		kparams.add("assetLocalPaths", this.assetLocalPaths);
+		kparams.add("thumbUrls", this.thumbUrls);
+		return kparams;
+	}
 
 }
 

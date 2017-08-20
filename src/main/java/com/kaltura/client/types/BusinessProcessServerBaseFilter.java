@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.BusinessProcessServerStatus;
-import com.kaltura.client.enums.BusinessProcessProvider;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.BusinessProcessProvider;
+import com.kaltura.client.enums.BusinessProcessServerStatus;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,215 +42,304 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessServerBaseFilter.Tokenizer.class)
 public abstract class BusinessProcessServerBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String idNotIn();
+		String createdAtGreaterThanOrEqual();
+		String createdAtLessThanOrEqual();
+		String updatedAtGreaterThanOrEqual();
+		String updatedAtLessThanOrEqual();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String statusEqual();
+		String statusNotEqual();
+		String statusIn();
+		String statusNotIn();
+		String typeEqual();
+		String typeIn();
+		String dcEqual();
+		String dcEqOrNull();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private String idNotIn;
-    private Integer createdAtGreaterThanOrEqual;
-    private Integer createdAtLessThanOrEqual;
-    private Integer updatedAtGreaterThanOrEqual;
-    private Integer updatedAtLessThanOrEqual;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private BusinessProcessServerStatus statusEqual;
-    private BusinessProcessServerStatus statusNotEqual;
-    private String statusIn;
-    private String statusNotIn;
-    private BusinessProcessProvider typeEqual;
-    private String typeIn;
-    private Integer dcEqual;
-    private Integer dcEqOrNull;
+	private Integer idEqual;
+	private String idIn;
+	private String idNotIn;
+	private Integer createdAtGreaterThanOrEqual;
+	private Integer createdAtLessThanOrEqual;
+	private Integer updatedAtGreaterThanOrEqual;
+	private Integer updatedAtLessThanOrEqual;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private BusinessProcessServerStatus statusEqual;
+	private BusinessProcessServerStatus statusNotEqual;
+	private String statusIn;
+	private String statusNotIn;
+	private BusinessProcessProvider typeEqual;
+	private String typeIn;
+	private Integer dcEqual;
+	private Integer dcEqOrNull;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // idNotIn:
-    public String getIdNotIn(){
-        return this.idNotIn;
-    }
-    public void setIdNotIn(String idNotIn){
-        this.idNotIn = idNotIn;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // createdAtGreaterThanOrEqual:
-    public Integer getCreatedAtGreaterThanOrEqual(){
-        return this.createdAtGreaterThanOrEqual;
-    }
-    public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
-        this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // createdAtLessThanOrEqual:
-    public Integer getCreatedAtLessThanOrEqual(){
-        return this.createdAtLessThanOrEqual;
-    }
-    public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
-        this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
-    }
+	// idNotIn:
+	public String getIdNotIn(){
+		return this.idNotIn;
+	}
+	public void setIdNotIn(String idNotIn){
+		this.idNotIn = idNotIn;
+	}
 
-    // updatedAtGreaterThanOrEqual:
-    public Integer getUpdatedAtGreaterThanOrEqual(){
-        return this.updatedAtGreaterThanOrEqual;
-    }
-    public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
-        this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
-    }
+	public void idNotIn(String multirequestToken){
+		setToken("idNotIn", multirequestToken);
+	}
 
-    // updatedAtLessThanOrEqual:
-    public Integer getUpdatedAtLessThanOrEqual(){
-        return this.updatedAtLessThanOrEqual;
-    }
-    public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
-        this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
-    }
+	// createdAtGreaterThanOrEqual:
+	public Integer getCreatedAtGreaterThanOrEqual(){
+		return this.createdAtGreaterThanOrEqual;
+	}
+	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	public void createdAtGreaterThanOrEqual(String multirequestToken){
+		setToken("createdAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	// createdAtLessThanOrEqual:
+	public Integer getCreatedAtLessThanOrEqual(){
+		return this.createdAtLessThanOrEqual;
+	}
+	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
+	}
 
-    // statusEqual:
-    public BusinessProcessServerStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(BusinessProcessServerStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void createdAtLessThanOrEqual(String multirequestToken){
+		setToken("createdAtLessThanOrEqual", multirequestToken);
+	}
 
-    // statusNotEqual:
-    public BusinessProcessServerStatus getStatusNotEqual(){
-        return this.statusNotEqual;
-    }
-    public void setStatusNotEqual(BusinessProcessServerStatus statusNotEqual){
-        this.statusNotEqual = statusNotEqual;
-    }
+	// updatedAtGreaterThanOrEqual:
+	public Integer getUpdatedAtGreaterThanOrEqual(){
+		return this.updatedAtGreaterThanOrEqual;
+	}
+	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	public void updatedAtGreaterThanOrEqual(String multirequestToken){
+		setToken("updatedAtGreaterThanOrEqual", multirequestToken);
+	}
 
-    // statusNotIn:
-    public String getStatusNotIn(){
-        return this.statusNotIn;
-    }
-    public void setStatusNotIn(String statusNotIn){
-        this.statusNotIn = statusNotIn;
-    }
+	// updatedAtLessThanOrEqual:
+	public Integer getUpdatedAtLessThanOrEqual(){
+		return this.updatedAtLessThanOrEqual;
+	}
+	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
+	}
 
-    // typeEqual:
-    public BusinessProcessProvider getTypeEqual(){
-        return this.typeEqual;
-    }
-    public void setTypeEqual(BusinessProcessProvider typeEqual){
-        this.typeEqual = typeEqual;
-    }
+	public void updatedAtLessThanOrEqual(String multirequestToken){
+		setToken("updatedAtLessThanOrEqual", multirequestToken);
+	}
 
-    // typeIn:
-    public String getTypeIn(){
-        return this.typeIn;
-    }
-    public void setTypeIn(String typeIn){
-        this.typeIn = typeIn;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // dcEqual:
-    public Integer getDcEqual(){
-        return this.dcEqual;
-    }
-    public void setDcEqual(Integer dcEqual){
-        this.dcEqual = dcEqual;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
 
-    // dcEqOrNull:
-    public Integer getDcEqOrNull(){
-        return this.dcEqOrNull;
-    }
-    public void setDcEqOrNull(Integer dcEqOrNull){
-        this.dcEqOrNull = dcEqOrNull;
-    }
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
+
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public BusinessProcessServerStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(BusinessProcessServerStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusNotEqual:
+	public BusinessProcessServerStatus getStatusNotEqual(){
+		return this.statusNotEqual;
+	}
+	public void setStatusNotEqual(BusinessProcessServerStatus statusNotEqual){
+		this.statusNotEqual = statusNotEqual;
+	}
+
+	public void statusNotEqual(String multirequestToken){
+		setToken("statusNotEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
+
+	// statusNotIn:
+	public String getStatusNotIn(){
+		return this.statusNotIn;
+	}
+	public void setStatusNotIn(String statusNotIn){
+		this.statusNotIn = statusNotIn;
+	}
+
+	public void statusNotIn(String multirequestToken){
+		setToken("statusNotIn", multirequestToken);
+	}
+
+	// typeEqual:
+	public BusinessProcessProvider getTypeEqual(){
+		return this.typeEqual;
+	}
+	public void setTypeEqual(BusinessProcessProvider typeEqual){
+		this.typeEqual = typeEqual;
+	}
+
+	public void typeEqual(String multirequestToken){
+		setToken("typeEqual", multirequestToken);
+	}
+
+	// typeIn:
+	public String getTypeIn(){
+		return this.typeIn;
+	}
+	public void setTypeIn(String typeIn){
+		this.typeIn = typeIn;
+	}
+
+	public void typeIn(String multirequestToken){
+		setToken("typeIn", multirequestToken);
+	}
+
+	// dcEqual:
+	public Integer getDcEqual(){
+		return this.dcEqual;
+	}
+	public void setDcEqual(Integer dcEqual){
+		this.dcEqual = dcEqual;
+	}
+
+	public void dcEqual(String multirequestToken){
+		setToken("dcEqual", multirequestToken);
+	}
+
+	// dcEqOrNull:
+	public Integer getDcEqOrNull(){
+		return this.dcEqOrNull;
+	}
+	public void setDcEqOrNull(Integer dcEqOrNull){
+		this.dcEqOrNull = dcEqOrNull;
+	}
+
+	public void dcEqOrNull(String multirequestToken){
+		setToken("dcEqOrNull", multirequestToken);
+	}
 
 
-    public BusinessProcessServerBaseFilter() {
-       super();
-    }
+	public BusinessProcessServerBaseFilter() {
+		super();
+	}
 
-    public BusinessProcessServerBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessServerBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
-        createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-        createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-        updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-        updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        statusEqual = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("statusEqual")));
-        statusNotEqual = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("statusNotEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
-        statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
-        typeEqual = BusinessProcessProvider.get(GsonParser.parseString(jsonObject.get("typeEqual")));
-        typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
-        dcEqual = GsonParser.parseInt(jsonObject.get("dcEqual"));
-        dcEqOrNull = GsonParser.parseInt(jsonObject.get("dcEqOrNull"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
+		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		statusEqual = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("statusEqual")));
+		statusNotEqual = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("statusNotEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		statusNotIn = GsonParser.parseString(jsonObject.get("statusNotIn"));
+		typeEqual = BusinessProcessProvider.get(GsonParser.parseString(jsonObject.get("typeEqual")));
+		typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
+		dcEqual = GsonParser.parseInt(jsonObject.get("dcEqual"));
+		dcEqOrNull = GsonParser.parseInt(jsonObject.get("dcEqOrNull"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessServerBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("idNotIn", this.idNotIn);
-        kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
-        kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
-        kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
-        kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusNotEqual", this.statusNotEqual);
-        kparams.add("statusIn", this.statusIn);
-        kparams.add("statusNotIn", this.statusNotIn);
-        kparams.add("typeEqual", this.typeEqual);
-        kparams.add("typeIn", this.typeIn);
-        kparams.add("dcEqual", this.dcEqual);
-        kparams.add("dcEqOrNull", this.dcEqOrNull);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessServerBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("idNotIn", this.idNotIn);
+		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
+		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
+		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
+		kparams.add("updatedAtLessThanOrEqual", this.updatedAtLessThanOrEqual);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusNotEqual", this.statusNotEqual);
+		kparams.add("statusIn", this.statusIn);
+		kparams.add("statusNotIn", this.statusNotIn);
+		kparams.add("typeEqual", this.typeEqual);
+		kparams.add("typeIn", this.typeIn);
+		kparams.add("dcEqual", this.dcEqual);
+		kparams.add("dcEqOrNull", this.dcEqOrNull);
+		return kparams;
+	}
 
 }
 

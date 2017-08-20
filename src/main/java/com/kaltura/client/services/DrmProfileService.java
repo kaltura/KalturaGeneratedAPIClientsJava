@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.DrmProviderType;
 import com.kaltura.client.types.DrmProfile;
 import com.kaltura.client.types.DrmProfileFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,63 +42,109 @@ import com.kaltura.client.utils.request.RequestBuilder;
  */
 
 public class DrmProfileService {
+	
+	public static class AddDrmProfileBuilder extends RequestBuilder<DrmProfile, DrmProfile.Tokenizer, AddDrmProfileBuilder> {
+		
+		public AddDrmProfileBuilder(DrmProfile drmProfile) {
+			super(DrmProfile.class, "drm_drmprofile", "add");
+			params.add("drmProfile", drmProfile);
+		}
+	}
 
 	/**  Allows you to add a new DrmProfile object  */
-    public static RequestBuilder<DrmProfile> add(DrmProfile drmProfile)  {
-        Params kparams = new Params();
-        kparams.add("drmProfile", drmProfile);
-
-        return new RequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "add", kparams);
-    }
+    public static AddDrmProfileBuilder add(DrmProfile drmProfile)  {
+		return new AddDrmProfileBuilder(drmProfile);
+	}
+	
+	public static class DeleteDrmProfileBuilder extends RequestBuilder<DrmProfile, DrmProfile.Tokenizer, DeleteDrmProfileBuilder> {
+		
+		public DeleteDrmProfileBuilder(int drmProfileId) {
+			super(DrmProfile.class, "drm_drmprofile", "delete");
+			params.add("drmProfileId", drmProfileId);
+		}
+		
+		public void drmProfileId(String multirequestToken) {
+			params.add("drmProfileId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaDrmProfile object as deleted  */
-    public static RequestBuilder<DrmProfile> delete(int drmProfileId)  {
-        Params kparams = new Params();
-        kparams.add("drmProfileId", drmProfileId);
-
-        return new RequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "delete", kparams);
-    }
+    public static DeleteDrmProfileBuilder delete(int drmProfileId)  {
+		return new DeleteDrmProfileBuilder(drmProfileId);
+	}
+	
+	public static class GetDrmProfileBuilder extends RequestBuilder<DrmProfile, DrmProfile.Tokenizer, GetDrmProfileBuilder> {
+		
+		public GetDrmProfileBuilder(int drmProfileId) {
+			super(DrmProfile.class, "drm_drmprofile", "get");
+			params.add("drmProfileId", drmProfileId);
+		}
+		
+		public void drmProfileId(String multirequestToken) {
+			params.add("drmProfileId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaDrmProfile object by ID  */
-    public static RequestBuilder<DrmProfile> get(int drmProfileId)  {
-        Params kparams = new Params();
-        kparams.add("drmProfileId", drmProfileId);
-
-        return new RequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "get", kparams);
-    }
+    public static GetDrmProfileBuilder get(int drmProfileId)  {
+		return new GetDrmProfileBuilder(drmProfileId);
+	}
+	
+	public static class GetByProviderDrmProfileBuilder extends RequestBuilder<DrmProfile, DrmProfile.Tokenizer, GetByProviderDrmProfileBuilder> {
+		
+		public GetByProviderDrmProfileBuilder(DrmProviderType provider) {
+			super(DrmProfile.class, "drm_drmprofile", "getByProvider");
+			params.add("provider", provider);
+		}
+		
+		public void provider(String multirequestToken) {
+			params.add("provider", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaDrmProfile object by provider, if no specific profile defined
 	  return default profile  */
-    public static RequestBuilder<DrmProfile> getByProvider(DrmProviderType provider)  {
-        Params kparams = new Params();
-        kparams.add("provider", provider);
+    public static GetByProviderDrmProfileBuilder getByProvider(DrmProviderType provider)  {
+		return new GetByProviderDrmProfileBuilder(provider);
+	}
+	
+	public static class ListDrmProfileBuilder extends ListResponseRequestBuilder<DrmProfile, DrmProfile.Tokenizer, ListDrmProfileBuilder> {
+		
+		public ListDrmProfileBuilder(DrmProfileFilter filter, FilterPager pager) {
+			super(DrmProfile.class, "drm_drmprofile", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "getByProvider", kparams);
-    }
+	public static ListDrmProfileBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DrmProfile>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DrmProfile>> list(DrmProfileFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDrmProfileBuilder list(DrmProfileFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaDrmProfile objects  */
-    public static RequestBuilder<ListResponse<DrmProfile>> list(DrmProfileFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "list", kparams);
-    }
+    public static ListDrmProfileBuilder list(DrmProfileFilter filter, FilterPager pager)  {
+		return new ListDrmProfileBuilder(filter, pager);
+	}
+	
+	public static class UpdateDrmProfileBuilder extends RequestBuilder<DrmProfile, DrmProfile.Tokenizer, UpdateDrmProfileBuilder> {
+		
+		public UpdateDrmProfileBuilder(int drmProfileId, DrmProfile drmProfile) {
+			super(DrmProfile.class, "drm_drmprofile", "update");
+			params.add("drmProfileId", drmProfileId);
+			params.add("drmProfile", drmProfile);
+		}
+		
+		public void drmProfileId(String multirequestToken) {
+			params.add("drmProfileId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaDrmProfile object  */
-    public static RequestBuilder<DrmProfile> update(int drmProfileId, DrmProfile drmProfile)  {
-        Params kparams = new Params();
-        kparams.add("drmProfileId", drmProfileId);
-        kparams.add("drmProfile", drmProfile);
-
-        return new RequestBuilder<DrmProfile>(DrmProfile.class, "drm_drmprofile", "update", kparams);
-    }
+    public static UpdateDrmProfileBuilder update(int drmProfileId, DrmProfile drmProfile)  {
+		return new UpdateDrmProfileBuilder(drmProfileId, drmProfile);
+	}
 }

@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.WidevineRepositorySyncMode;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.WidevineRepositorySyncMode;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,72 +41,96 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WidevineRepositorySyncJobData.Tokenizer.class)
 public class WidevineRepositorySyncJobData extends JobData {
+	
+	public interface Tokenizer extends JobData.Tokenizer {
+		String syncMode();
+		String wvAssetIds();
+		String modifiedAttributes();
+		String monitorSyncCompletion();
+	}
 
-    private WidevineRepositorySyncMode syncMode;
-    private String wvAssetIds;
-    private String modifiedAttributes;
-    private Integer monitorSyncCompletion;
+	private WidevineRepositorySyncMode syncMode;
+	private String wvAssetIds;
+	private String modifiedAttributes;
+	private Integer monitorSyncCompletion;
 
-    // syncMode:
-    public WidevineRepositorySyncMode getSyncMode(){
-        return this.syncMode;
-    }
-    public void setSyncMode(WidevineRepositorySyncMode syncMode){
-        this.syncMode = syncMode;
-    }
+	// syncMode:
+	public WidevineRepositorySyncMode getSyncMode(){
+		return this.syncMode;
+	}
+	public void setSyncMode(WidevineRepositorySyncMode syncMode){
+		this.syncMode = syncMode;
+	}
 
-    // wvAssetIds:
-    public String getWvAssetIds(){
-        return this.wvAssetIds;
-    }
-    public void setWvAssetIds(String wvAssetIds){
-        this.wvAssetIds = wvAssetIds;
-    }
+	public void syncMode(String multirequestToken){
+		setToken("syncMode", multirequestToken);
+	}
 
-    // modifiedAttributes:
-    public String getModifiedAttributes(){
-        return this.modifiedAttributes;
-    }
-    public void setModifiedAttributes(String modifiedAttributes){
-        this.modifiedAttributes = modifiedAttributes;
-    }
+	// wvAssetIds:
+	public String getWvAssetIds(){
+		return this.wvAssetIds;
+	}
+	public void setWvAssetIds(String wvAssetIds){
+		this.wvAssetIds = wvAssetIds;
+	}
 
-    // monitorSyncCompletion:
-    public Integer getMonitorSyncCompletion(){
-        return this.monitorSyncCompletion;
-    }
-    public void setMonitorSyncCompletion(Integer monitorSyncCompletion){
-        this.monitorSyncCompletion = monitorSyncCompletion;
-    }
+	public void wvAssetIds(String multirequestToken){
+		setToken("wvAssetIds", multirequestToken);
+	}
+
+	// modifiedAttributes:
+	public String getModifiedAttributes(){
+		return this.modifiedAttributes;
+	}
+	public void setModifiedAttributes(String modifiedAttributes){
+		this.modifiedAttributes = modifiedAttributes;
+	}
+
+	public void modifiedAttributes(String multirequestToken){
+		setToken("modifiedAttributes", multirequestToken);
+	}
+
+	// monitorSyncCompletion:
+	public Integer getMonitorSyncCompletion(){
+		return this.monitorSyncCompletion;
+	}
+	public void setMonitorSyncCompletion(Integer monitorSyncCompletion){
+		this.monitorSyncCompletion = monitorSyncCompletion;
+	}
+
+	public void monitorSyncCompletion(String multirequestToken){
+		setToken("monitorSyncCompletion", multirequestToken);
+	}
 
 
-    public WidevineRepositorySyncJobData() {
-       super();
-    }
+	public WidevineRepositorySyncJobData() {
+		super();
+	}
 
-    public WidevineRepositorySyncJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WidevineRepositorySyncJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        syncMode = WidevineRepositorySyncMode.get(GsonParser.parseInt(jsonObject.get("syncMode")));
-        wvAssetIds = GsonParser.parseString(jsonObject.get("wvAssetIds"));
-        modifiedAttributes = GsonParser.parseString(jsonObject.get("modifiedAttributes"));
-        monitorSyncCompletion = GsonParser.parseInt(jsonObject.get("monitorSyncCompletion"));
+		// set members values:
+		syncMode = WidevineRepositorySyncMode.get(GsonParser.parseInt(jsonObject.get("syncMode")));
+		wvAssetIds = GsonParser.parseString(jsonObject.get("wvAssetIds"));
+		modifiedAttributes = GsonParser.parseString(jsonObject.get("modifiedAttributes"));
+		monitorSyncCompletion = GsonParser.parseInt(jsonObject.get("monitorSyncCompletion"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWidevineRepositorySyncJobData");
-        kparams.add("syncMode", this.syncMode);
-        kparams.add("wvAssetIds", this.wvAssetIds);
-        kparams.add("modifiedAttributes", this.modifiedAttributes);
-        kparams.add("monitorSyncCompletion", this.monitorSyncCompletion);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWidevineRepositorySyncJobData");
+		kparams.add("syncMode", this.syncMode);
+		kparams.add("wvAssetIds", this.wvAssetIds);
+		kparams.add("modifiedAttributes", this.modifiedAttributes);
+		kparams.add("monitorSyncCompletion", this.monitorSyncCompletion);
+		return kparams;
+	}
 
 }
 

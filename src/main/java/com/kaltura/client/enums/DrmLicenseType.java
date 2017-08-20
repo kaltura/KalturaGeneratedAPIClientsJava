@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,37 +34,37 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmLicenseType implements EnumAsString {
-    NON_PERSISTENT("playReady.NON_PERSISTENT"),
-    PERSISTENT("playReady.PERSISTENT");
+	NON_PERSISTENT("playReady.NON_PERSISTENT"),
+	PERSISTENT("playReady.PERSISTENT");
 
-    private String value;
+	private String value;
 
-    DrmLicenseType(String value) {
-        this.value = value;
-    }
+	DrmLicenseType(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DrmLicenseType get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DrmLicenseType defined values and compare the inner value with the given one:
-        for(DrmLicenseType item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DrmLicenseType.values().length > 0 ? DrmLicenseType.values()[0]: null;
+	public static DrmLicenseType get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DrmLicenseType defined values and compare the inner value with the given one:
+		for(DrmLicenseType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DrmLicenseType.values().length > 0 ? DrmLicenseType.values()[0]: null;
    }
 }

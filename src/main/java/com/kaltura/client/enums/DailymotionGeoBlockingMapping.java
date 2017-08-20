@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,38 +34,38 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DailymotionGeoBlockingMapping implements EnumAsInt {
-    DISABLED(0),
-    ACCESS_CONTROL(1),
-    METADATA(2);
+	DISABLED(0),
+	ACCESS_CONTROL(1),
+	METADATA(2);
 
-    private int value;
+	private int value;
 
-    DailymotionGeoBlockingMapping(int value) {
-        this.value = value;
-    }
+	DailymotionGeoBlockingMapping(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static DailymotionGeoBlockingMapping get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DailymotionGeoBlockingMapping defined values and compare the inner value with the given one:
-        for(DailymotionGeoBlockingMapping item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DailymotionGeoBlockingMapping.values().length > 0 ? DailymotionGeoBlockingMapping.values()[0]: null;
+	public static DailymotionGeoBlockingMapping get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DailymotionGeoBlockingMapping defined values and compare the inner value with the given one:
+		for(DailymotionGeoBlockingMapping item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DailymotionGeoBlockingMapping.values().length > 0 ? DailymotionGeoBlockingMapping.values()[0]: null;
    }
 }

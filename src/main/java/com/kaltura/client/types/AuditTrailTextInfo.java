@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrailTextInfo.Tokenizer.class)
 public class AuditTrailTextInfo extends AuditTrailInfo {
+	
+	public interface Tokenizer extends AuditTrailInfo.Tokenizer {
+		String info();
+	}
 
-    private String info;
+	private String info;
 
-    // info:
-    public String getInfo(){
-        return this.info;
-    }
-    public void setInfo(String info){
-        this.info = info;
-    }
+	// info:
+	public String getInfo(){
+		return this.info;
+	}
+	public void setInfo(String info){
+		this.info = info;
+	}
+
+	public void info(String multirequestToken){
+		setToken("info", multirequestToken);
+	}
 
 
-    public AuditTrailTextInfo() {
-       super();
-    }
+	public AuditTrailTextInfo() {
+		super();
+	}
 
-    public AuditTrailTextInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrailTextInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        info = GsonParser.parseString(jsonObject.get("info"));
+		// set members values:
+		info = GsonParser.parseString(jsonObject.get("info"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrailTextInfo");
-        kparams.add("info", this.info);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrailTextInfo");
+		kparams.add("info", this.info);
+		return kparams;
+	}
 
 }
 

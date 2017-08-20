@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.DrmLicenseAccessDetails;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -40,14 +39,31 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Retrieve information and invoke actions on Flavor Asset  */
 public class DrmLicenseAccessService {
+	
+	public static class GetAccessDrmLicenseAccessBuilder extends RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.Tokenizer, GetAccessDrmLicenseAccessBuilder> {
+		
+		public GetAccessDrmLicenseAccessBuilder(String entryId, String flavorIds, String referrer) {
+			super(DrmLicenseAccessDetails.class, "drm_drmlicenseaccess", "getAccess");
+			params.add("entryId", entryId);
+			params.add("flavorIds", flavorIds);
+			params.add("referrer", referrer);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void flavorIds(String multirequestToken) {
+			params.add("flavorIds", multirequestToken);
+		}
+		
+		public void referrer(String multirequestToken) {
+			params.add("referrer", multirequestToken);
+		}
+	}
 
 	/**  getAccessAction      input: flavor ids, drmProvider      Get Access Action  */
-    public static RequestBuilder<DrmLicenseAccessDetails> getAccess(String entryId, String flavorIds, String referrer)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("flavorIds", flavorIds);
-        kparams.add("referrer", referrer);
-
-        return new RequestBuilder<DrmLicenseAccessDetails>(DrmLicenseAccessDetails.class, "drm_drmlicenseaccess", "getAccess", kparams);
-    }
+    public static GetAccessDrmLicenseAccessBuilder getAccess(String entryId, String flavorIds, String referrer)  {
+		return new GetAccessDrmLicenseAccessBuilder(entryId, flavorIds, referrer);
+	}
 }

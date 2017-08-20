@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,37 +34,37 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum YouTubeDistributionFeedSpecVersion implements EnumAsString {
-    VERSION_1("1"),
-    VERSION_2("2");
+	VERSION_1("1"),
+	VERSION_2("2");
 
-    private String value;
+	private String value;
 
-    YouTubeDistributionFeedSpecVersion(String value) {
-        this.value = value;
-    }
+	YouTubeDistributionFeedSpecVersion(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static YouTubeDistributionFeedSpecVersion get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over YouTubeDistributionFeedSpecVersion defined values and compare the inner value with the given one:
-        for(YouTubeDistributionFeedSpecVersion item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return YouTubeDistributionFeedSpecVersion.values().length > 0 ? YouTubeDistributionFeedSpecVersion.values()[0]: null;
+	public static YouTubeDistributionFeedSpecVersion get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over YouTubeDistributionFeedSpecVersion defined values and compare the inner value with the given one:
+		for(YouTubeDistributionFeedSpecVersion item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return YouTubeDistributionFeedSpecVersion.values().length > 0 ? YouTubeDistributionFeedSpecVersion.values()[0]: null;
    }
 }

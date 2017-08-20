@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,75 +42,95 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttUverseDistributionJobProviderData.Tokenizer.class)
 public class AttUverseDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		RequestBuilder.ListTokenizer<AttUverseDistributionFile.Tokenizer> filesForDistribution();
+		String remoteAssetFileUrls();
+		String remoteThumbnailFileUrls();
+		String remoteCaptionFileUrls();
+	}
 
-    private List<AttUverseDistributionFile> filesForDistribution;
+	private List<AttUverseDistributionFile> filesForDistribution;
 	/**  The remote URL of the video asset that was distributed  */
-    private String remoteAssetFileUrls;
+	private String remoteAssetFileUrls;
 	/**  The remote URL of the thumbnail asset that was distributed  */
-    private String remoteThumbnailFileUrls;
+	private String remoteThumbnailFileUrls;
 	/**  The remote URL of the caption asset that was distributed  */
-    private String remoteCaptionFileUrls;
+	private String remoteCaptionFileUrls;
 
-    // filesForDistribution:
-    public List<AttUverseDistributionFile> getFilesForDistribution(){
-        return this.filesForDistribution;
-    }
-    public void setFilesForDistribution(List<AttUverseDistributionFile> filesForDistribution){
-        this.filesForDistribution = filesForDistribution;
-    }
+	// filesForDistribution:
+	public List<AttUverseDistributionFile> getFilesForDistribution(){
+		return this.filesForDistribution;
+	}
+	public void setFilesForDistribution(List<AttUverseDistributionFile> filesForDistribution){
+		this.filesForDistribution = filesForDistribution;
+	}
 
-    // remoteAssetFileUrls:
-    public String getRemoteAssetFileUrls(){
-        return this.remoteAssetFileUrls;
-    }
-    public void setRemoteAssetFileUrls(String remoteAssetFileUrls){
-        this.remoteAssetFileUrls = remoteAssetFileUrls;
-    }
+	// remoteAssetFileUrls:
+	public String getRemoteAssetFileUrls(){
+		return this.remoteAssetFileUrls;
+	}
+	public void setRemoteAssetFileUrls(String remoteAssetFileUrls){
+		this.remoteAssetFileUrls = remoteAssetFileUrls;
+	}
 
-    // remoteThumbnailFileUrls:
-    public String getRemoteThumbnailFileUrls(){
-        return this.remoteThumbnailFileUrls;
-    }
-    public void setRemoteThumbnailFileUrls(String remoteThumbnailFileUrls){
-        this.remoteThumbnailFileUrls = remoteThumbnailFileUrls;
-    }
+	public void remoteAssetFileUrls(String multirequestToken){
+		setToken("remoteAssetFileUrls", multirequestToken);
+	}
 
-    // remoteCaptionFileUrls:
-    public String getRemoteCaptionFileUrls(){
-        return this.remoteCaptionFileUrls;
-    }
-    public void setRemoteCaptionFileUrls(String remoteCaptionFileUrls){
-        this.remoteCaptionFileUrls = remoteCaptionFileUrls;
-    }
+	// remoteThumbnailFileUrls:
+	public String getRemoteThumbnailFileUrls(){
+		return this.remoteThumbnailFileUrls;
+	}
+	public void setRemoteThumbnailFileUrls(String remoteThumbnailFileUrls){
+		this.remoteThumbnailFileUrls = remoteThumbnailFileUrls;
+	}
+
+	public void remoteThumbnailFileUrls(String multirequestToken){
+		setToken("remoteThumbnailFileUrls", multirequestToken);
+	}
+
+	// remoteCaptionFileUrls:
+	public String getRemoteCaptionFileUrls(){
+		return this.remoteCaptionFileUrls;
+	}
+	public void setRemoteCaptionFileUrls(String remoteCaptionFileUrls){
+		this.remoteCaptionFileUrls = remoteCaptionFileUrls;
+	}
+
+	public void remoteCaptionFileUrls(String multirequestToken){
+		setToken("remoteCaptionFileUrls", multirequestToken);
+	}
 
 
-    public AttUverseDistributionJobProviderData() {
-       super();
-    }
+	public AttUverseDistributionJobProviderData() {
+		super();
+	}
 
-    public AttUverseDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttUverseDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        filesForDistribution = GsonParser.parseArray(jsonObject.getAsJsonArray("filesForDistribution"), AttUverseDistributionFile.class);
-        remoteAssetFileUrls = GsonParser.parseString(jsonObject.get("remoteAssetFileUrls"));
-        remoteThumbnailFileUrls = GsonParser.parseString(jsonObject.get("remoteThumbnailFileUrls"));
-        remoteCaptionFileUrls = GsonParser.parseString(jsonObject.get("remoteCaptionFileUrls"));
+		// set members values:
+		filesForDistribution = GsonParser.parseArray(jsonObject.getAsJsonArray("filesForDistribution"), AttUverseDistributionFile.class);
+		remoteAssetFileUrls = GsonParser.parseString(jsonObject.get("remoteAssetFileUrls"));
+		remoteThumbnailFileUrls = GsonParser.parseString(jsonObject.get("remoteThumbnailFileUrls"));
+		remoteCaptionFileUrls = GsonParser.parseString(jsonObject.get("remoteCaptionFileUrls"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttUverseDistributionJobProviderData");
-        kparams.add("filesForDistribution", this.filesForDistribution);
-        kparams.add("remoteAssetFileUrls", this.remoteAssetFileUrls);
-        kparams.add("remoteThumbnailFileUrls", this.remoteThumbnailFileUrls);
-        kparams.add("remoteCaptionFileUrls", this.remoteCaptionFileUrls);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttUverseDistributionJobProviderData");
+		kparams.add("filesForDistribution", this.filesForDistribution);
+		kparams.add("remoteAssetFileUrls", this.remoteAssetFileUrls);
+		kparams.add("remoteThumbnailFileUrls", this.remoteThumbnailFileUrls);
+		kparams.add("remoteCaptionFileUrls", this.remoteCaptionFileUrls);
+		return kparams;
+	}
 
 }
 

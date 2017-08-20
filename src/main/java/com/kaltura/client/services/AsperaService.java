@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -39,11 +38,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Aspera service  */
 public class AsperaService {
+	
+	public static class GetFaspUrlAsperaBuilder extends RequestBuilder<String, String, GetFaspUrlAsperaBuilder> {
+		
+		public GetFaspUrlAsperaBuilder(String flavorAssetId) {
+			super(String.class, "aspera_aspera", "getFaspUrl");
+			params.add("flavorAssetId", flavorAssetId);
+		}
+		
+		public void flavorAssetId(String multirequestToken) {
+			params.add("flavorAssetId", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> getFaspUrl(String flavorAssetId)  {
-        Params kparams = new Params();
-        kparams.add("flavorAssetId", flavorAssetId);
-
-        return new RequestBuilder<String>(String.class, "aspera_aspera", "getFaspUrl", kparams);
-    }
+    public static GetFaspUrlAsperaBuilder getFaspUrl(String flavorAssetId)  {
+		return new GetFaspUrlAsperaBuilder(flavorAssetId);
+	}
 }

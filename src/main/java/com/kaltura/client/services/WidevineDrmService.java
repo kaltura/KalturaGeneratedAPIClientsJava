@@ -27,7 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -39,17 +38,30 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  WidevineDrmService serves as a license proxy to a Widevine license server  */
 public class WidevineDrmService {
+	
+	public static class GetLicenseWidevineDrmBuilder extends RequestBuilder<String, String, GetLicenseWidevineDrmBuilder> {
+		
+		public GetLicenseWidevineDrmBuilder(String flavorAssetId, String referrer) {
+			super(String.class, "widevine_widevinedrm", "getLicense");
+			params.add("flavorAssetId", flavorAssetId);
+			params.add("referrer", referrer);
+		}
+		
+		public void flavorAssetId(String multirequestToken) {
+			params.add("flavorAssetId", multirequestToken);
+		}
+		
+		public void referrer(String multirequestToken) {
+			params.add("referrer", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> getLicense(String flavorAssetId)  {
-        return getLicense(flavorAssetId, null);
-    }
+	public static GetLicenseWidevineDrmBuilder getLicense(String flavorAssetId)  {
+		return getLicense(flavorAssetId, null);
+	}
 
 	/**  Get license for encrypted content playback  */
-    public static RequestBuilder<String> getLicense(String flavorAssetId, String referrer)  {
-        Params kparams = new Params();
-        kparams.add("flavorAssetId", flavorAssetId);
-        kparams.add("referrer", referrer);
-
-        return new RequestBuilder<String>(String.class, "widevine_widevinedrm", "getLicense", kparams);
-    }
+    public static GetLicenseWidevineDrmBuilder getLicense(String flavorAssetId, String referrer)  {
+		return new GetLicenseWidevineDrmBuilder(flavorAssetId, referrer);
+	}
 }

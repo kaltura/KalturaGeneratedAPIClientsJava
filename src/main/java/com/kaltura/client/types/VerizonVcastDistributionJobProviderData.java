@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VerizonVcastDistributionJobProviderData.Tokenizer.class)
 public class VerizonVcastDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String xml();
+	}
 
-    private String xml;
+	private String xml;
 
-    // xml:
-    public String getXml(){
-        return this.xml;
-    }
-    public void setXml(String xml){
-        this.xml = xml;
-    }
+	// xml:
+	public String getXml(){
+		return this.xml;
+	}
+	public void setXml(String xml){
+		this.xml = xml;
+	}
+
+	public void xml(String multirequestToken){
+		setToken("xml", multirequestToken);
+	}
 
 
-    public VerizonVcastDistributionJobProviderData() {
-       super();
-    }
+	public VerizonVcastDistributionJobProviderData() {
+		super();
+	}
 
-    public VerizonVcastDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public VerizonVcastDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xml = GsonParser.parseString(jsonObject.get("xml"));
+		// set members values:
+		xml = GsonParser.parseString(jsonObject.get("xml"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaVerizonVcastDistributionJobProviderData");
-        kparams.add("xml", this.xml);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVerizonVcastDistributionJobProviderData");
+		kparams.add("xml", this.xml);
+		return kparams;
+	}
 
 }
 

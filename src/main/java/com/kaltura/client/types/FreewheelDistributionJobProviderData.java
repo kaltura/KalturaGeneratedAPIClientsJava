@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,52 +42,62 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FreewheelDistributionJobProviderData.Tokenizer.class)
 public class FreewheelDistributionJobProviderData extends DistributionJobProviderData {
+	
+	public interface Tokenizer extends DistributionJobProviderData.Tokenizer {
+		RequestBuilder.ListTokenizer<FreewheelDistributionAssetPath.Tokenizer> videoAssetFilePaths();
+		String thumbAssetFilePath();
+	}
 
 	/**  Demonstrate passing array of paths to the job  */
-    private List<FreewheelDistributionAssetPath> videoAssetFilePaths;
+	private List<FreewheelDistributionAssetPath> videoAssetFilePaths;
 	/**  Demonstrate passing single path to the job  */
-    private String thumbAssetFilePath;
+	private String thumbAssetFilePath;
 
-    // videoAssetFilePaths:
-    public List<FreewheelDistributionAssetPath> getVideoAssetFilePaths(){
-        return this.videoAssetFilePaths;
-    }
-    public void setVideoAssetFilePaths(List<FreewheelDistributionAssetPath> videoAssetFilePaths){
-        this.videoAssetFilePaths = videoAssetFilePaths;
-    }
+	// videoAssetFilePaths:
+	public List<FreewheelDistributionAssetPath> getVideoAssetFilePaths(){
+		return this.videoAssetFilePaths;
+	}
+	public void setVideoAssetFilePaths(List<FreewheelDistributionAssetPath> videoAssetFilePaths){
+		this.videoAssetFilePaths = videoAssetFilePaths;
+	}
 
-    // thumbAssetFilePath:
-    public String getThumbAssetFilePath(){
-        return this.thumbAssetFilePath;
-    }
-    public void setThumbAssetFilePath(String thumbAssetFilePath){
-        this.thumbAssetFilePath = thumbAssetFilePath;
-    }
+	// thumbAssetFilePath:
+	public String getThumbAssetFilePath(){
+		return this.thumbAssetFilePath;
+	}
+	public void setThumbAssetFilePath(String thumbAssetFilePath){
+		this.thumbAssetFilePath = thumbAssetFilePath;
+	}
+
+	public void thumbAssetFilePath(String multirequestToken){
+		setToken("thumbAssetFilePath", multirequestToken);
+	}
 
 
-    public FreewheelDistributionJobProviderData() {
-       super();
-    }
+	public FreewheelDistributionJobProviderData() {
+		super();
+	}
 
-    public FreewheelDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FreewheelDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        videoAssetFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoAssetFilePaths"), FreewheelDistributionAssetPath.class);
-        thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		// set members values:
+		videoAssetFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoAssetFilePaths"), FreewheelDistributionAssetPath.class);
+		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFreewheelDistributionJobProviderData");
-        kparams.add("videoAssetFilePaths", this.videoAssetFilePaths);
-        kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFreewheelDistributionJobProviderData");
+		kparams.add("videoAssetFilePaths", this.videoAssetFilePaths);
+		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		return kparams;
+	}
 
 }
 

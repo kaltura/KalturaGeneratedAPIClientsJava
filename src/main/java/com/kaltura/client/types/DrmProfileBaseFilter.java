@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.DrmProviderType;
-import com.kaltura.client.enums.DrmProfileStatus;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.DrmProfileStatus;
+import com.kaltura.client.enums.DrmProviderType;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,127 +42,176 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmProfileBaseFilter.Tokenizer.class)
 public abstract class DrmProfileBaseFilter extends Filter {
+	
+	public interface Tokenizer extends Filter.Tokenizer {
+		String idEqual();
+		String idIn();
+		String partnerIdEqual();
+		String partnerIdIn();
+		String nameLike();
+		String providerEqual();
+		String providerIn();
+		String statusEqual();
+		String statusIn();
+	}
 
-    private Integer idEqual;
-    private String idIn;
-    private Integer partnerIdEqual;
-    private String partnerIdIn;
-    private String nameLike;
-    private DrmProviderType providerEqual;
-    private String providerIn;
-    private DrmProfileStatus statusEqual;
-    private String statusIn;
+	private Integer idEqual;
+	private String idIn;
+	private Integer partnerIdEqual;
+	private String partnerIdIn;
+	private String nameLike;
+	private DrmProviderType providerEqual;
+	private String providerIn;
+	private DrmProfileStatus statusEqual;
+	private String statusIn;
 
-    // idEqual:
-    public Integer getIdEqual(){
-        return this.idEqual;
-    }
-    public void setIdEqual(Integer idEqual){
-        this.idEqual = idEqual;
-    }
+	// idEqual:
+	public Integer getIdEqual(){
+		return this.idEqual;
+	}
+	public void setIdEqual(Integer idEqual){
+		this.idEqual = idEqual;
+	}
 
-    // idIn:
-    public String getIdIn(){
-        return this.idIn;
-    }
-    public void setIdIn(String idIn){
-        this.idIn = idIn;
-    }
+	public void idEqual(String multirequestToken){
+		setToken("idEqual", multirequestToken);
+	}
 
-    // partnerIdEqual:
-    public Integer getPartnerIdEqual(){
-        return this.partnerIdEqual;
-    }
-    public void setPartnerIdEqual(Integer partnerIdEqual){
-        this.partnerIdEqual = partnerIdEqual;
-    }
+	// idIn:
+	public String getIdIn(){
+		return this.idIn;
+	}
+	public void setIdIn(String idIn){
+		this.idIn = idIn;
+	}
 
-    // partnerIdIn:
-    public String getPartnerIdIn(){
-        return this.partnerIdIn;
-    }
-    public void setPartnerIdIn(String partnerIdIn){
-        this.partnerIdIn = partnerIdIn;
-    }
+	public void idIn(String multirequestToken){
+		setToken("idIn", multirequestToken);
+	}
 
-    // nameLike:
-    public String getNameLike(){
-        return this.nameLike;
-    }
-    public void setNameLike(String nameLike){
-        this.nameLike = nameLike;
-    }
+	// partnerIdEqual:
+	public Integer getPartnerIdEqual(){
+		return this.partnerIdEqual;
+	}
+	public void setPartnerIdEqual(Integer partnerIdEqual){
+		this.partnerIdEqual = partnerIdEqual;
+	}
 
-    // providerEqual:
-    public DrmProviderType getProviderEqual(){
-        return this.providerEqual;
-    }
-    public void setProviderEqual(DrmProviderType providerEqual){
-        this.providerEqual = providerEqual;
-    }
+	public void partnerIdEqual(String multirequestToken){
+		setToken("partnerIdEqual", multirequestToken);
+	}
 
-    // providerIn:
-    public String getProviderIn(){
-        return this.providerIn;
-    }
-    public void setProviderIn(String providerIn){
-        this.providerIn = providerIn;
-    }
+	// partnerIdIn:
+	public String getPartnerIdIn(){
+		return this.partnerIdIn;
+	}
+	public void setPartnerIdIn(String partnerIdIn){
+		this.partnerIdIn = partnerIdIn;
+	}
 
-    // statusEqual:
-    public DrmProfileStatus getStatusEqual(){
-        return this.statusEqual;
-    }
-    public void setStatusEqual(DrmProfileStatus statusEqual){
-        this.statusEqual = statusEqual;
-    }
+	public void partnerIdIn(String multirequestToken){
+		setToken("partnerIdIn", multirequestToken);
+	}
 
-    // statusIn:
-    public String getStatusIn(){
-        return this.statusIn;
-    }
-    public void setStatusIn(String statusIn){
-        this.statusIn = statusIn;
-    }
+	// nameLike:
+	public String getNameLike(){
+		return this.nameLike;
+	}
+	public void setNameLike(String nameLike){
+		this.nameLike = nameLike;
+	}
+
+	public void nameLike(String multirequestToken){
+		setToken("nameLike", multirequestToken);
+	}
+
+	// providerEqual:
+	public DrmProviderType getProviderEqual(){
+		return this.providerEqual;
+	}
+	public void setProviderEqual(DrmProviderType providerEqual){
+		this.providerEqual = providerEqual;
+	}
+
+	public void providerEqual(String multirequestToken){
+		setToken("providerEqual", multirequestToken);
+	}
+
+	// providerIn:
+	public String getProviderIn(){
+		return this.providerIn;
+	}
+	public void setProviderIn(String providerIn){
+		this.providerIn = providerIn;
+	}
+
+	public void providerIn(String multirequestToken){
+		setToken("providerIn", multirequestToken);
+	}
+
+	// statusEqual:
+	public DrmProfileStatus getStatusEqual(){
+		return this.statusEqual;
+	}
+	public void setStatusEqual(DrmProfileStatus statusEqual){
+		this.statusEqual = statusEqual;
+	}
+
+	public void statusEqual(String multirequestToken){
+		setToken("statusEqual", multirequestToken);
+	}
+
+	// statusIn:
+	public String getStatusIn(){
+		return this.statusIn;
+	}
+	public void setStatusIn(String statusIn){
+		this.statusIn = statusIn;
+	}
+
+	public void statusIn(String multirequestToken){
+		setToken("statusIn", multirequestToken);
+	}
 
 
-    public DrmProfileBaseFilter() {
-       super();
-    }
+	public DrmProfileBaseFilter() {
+		super();
+	}
 
-    public DrmProfileBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmProfileBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
-        idIn = GsonParser.parseString(jsonObject.get("idIn"));
-        partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
-        partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
-        nameLike = GsonParser.parseString(jsonObject.get("nameLike"));
-        providerEqual = DrmProviderType.get(GsonParser.parseString(jsonObject.get("providerEqual")));
-        providerIn = GsonParser.parseString(jsonObject.get("providerIn"));
-        statusEqual = DrmProfileStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
-        statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
+		// set members values:
+		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
+		nameLike = GsonParser.parseString(jsonObject.get("nameLike"));
+		providerEqual = DrmProviderType.get(GsonParser.parseString(jsonObject.get("providerEqual")));
+		providerIn = GsonParser.parseString(jsonObject.get("providerIn"));
+		statusEqual = DrmProfileStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
+		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmProfileBaseFilter");
-        kparams.add("idEqual", this.idEqual);
-        kparams.add("idIn", this.idIn);
-        kparams.add("partnerIdEqual", this.partnerIdEqual);
-        kparams.add("partnerIdIn", this.partnerIdIn);
-        kparams.add("nameLike", this.nameLike);
-        kparams.add("providerEqual", this.providerEqual);
-        kparams.add("providerIn", this.providerIn);
-        kparams.add("statusEqual", this.statusEqual);
-        kparams.add("statusIn", this.statusIn);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmProfileBaseFilter");
+		kparams.add("idEqual", this.idEqual);
+		kparams.add("idIn", this.idIn);
+		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("partnerIdIn", this.partnerIdIn);
+		kparams.add("nameLike", this.nameLike);
+		kparams.add("providerEqual", this.providerEqual);
+		kparams.add("providerIn", this.providerIn);
+		kparams.add("statusEqual", this.statusEqual);
+		kparams.add("statusIn", this.statusIn);
+		return kparams;
+	}
 
 }
 

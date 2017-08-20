@@ -27,9 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.utils.request.NullRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,11 +38,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Unicorn Service  */
 public class UnicornService {
+	
+	public static class NotifyUnicornBuilder extends NullRequestBuilder {
+		
+		public NotifyUnicornBuilder(int id) {
+			super("unicorndistribution_unicorn", "notify");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<Void> notify(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
-
-        return new NullRequestBuilder("unicorndistribution_unicorn", "notify", kparams);
-    }
+    public static NotifyUnicornBuilder notify_(int id)  {
+		return new NotifyUnicornBuilder(id);
+	}
 }

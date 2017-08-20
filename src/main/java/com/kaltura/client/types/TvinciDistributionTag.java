@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,94 +41,128 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TvinciDistributionTag.Tokenizer.class)
 public class TvinciDistributionTag extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String tagname();
+		String extension();
+		String protocol();
+		String format();
+		String filename();
+		String ppvmodule();
+	}
 
-    private String tagname;
-    private String extension;
-    private String protocol;
-    private String format;
-    private String filename;
-    private String ppvmodule;
+	private String tagname;
+	private String extension;
+	private String protocol;
+	private String format;
+	private String filename;
+	private String ppvmodule;
 
-    // tagname:
-    public String getTagname(){
-        return this.tagname;
-    }
-    public void setTagname(String tagname){
-        this.tagname = tagname;
-    }
+	// tagname:
+	public String getTagname(){
+		return this.tagname;
+	}
+	public void setTagname(String tagname){
+		this.tagname = tagname;
+	}
 
-    // extension:
-    public String getExtension(){
-        return this.extension;
-    }
-    public void setExtension(String extension){
-        this.extension = extension;
-    }
+	public void tagname(String multirequestToken){
+		setToken("tagname", multirequestToken);
+	}
 
-    // protocol:
-    public String getProtocol(){
-        return this.protocol;
-    }
-    public void setProtocol(String protocol){
-        this.protocol = protocol;
-    }
+	// extension:
+	public String getExtension(){
+		return this.extension;
+	}
+	public void setExtension(String extension){
+		this.extension = extension;
+	}
 
-    // format:
-    public String getFormat(){
-        return this.format;
-    }
-    public void setFormat(String format){
-        this.format = format;
-    }
+	public void extension(String multirequestToken){
+		setToken("extension", multirequestToken);
+	}
 
-    // filename:
-    public String getFilename(){
-        return this.filename;
-    }
-    public void setFilename(String filename){
-        this.filename = filename;
-    }
+	// protocol:
+	public String getProtocol(){
+		return this.protocol;
+	}
+	public void setProtocol(String protocol){
+		this.protocol = protocol;
+	}
 
-    // ppvmodule:
-    public String getPpvmodule(){
-        return this.ppvmodule;
-    }
-    public void setPpvmodule(String ppvmodule){
-        this.ppvmodule = ppvmodule;
-    }
+	public void protocol(String multirequestToken){
+		setToken("protocol", multirequestToken);
+	}
+
+	// format:
+	public String getFormat(){
+		return this.format;
+	}
+	public void setFormat(String format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
+
+	// filename:
+	public String getFilename(){
+		return this.filename;
+	}
+	public void setFilename(String filename){
+		this.filename = filename;
+	}
+
+	public void filename(String multirequestToken){
+		setToken("filename", multirequestToken);
+	}
+
+	// ppvmodule:
+	public String getPpvmodule(){
+		return this.ppvmodule;
+	}
+	public void setPpvmodule(String ppvmodule){
+		this.ppvmodule = ppvmodule;
+	}
+
+	public void ppvmodule(String multirequestToken){
+		setToken("ppvmodule", multirequestToken);
+	}
 
 
-    public TvinciDistributionTag() {
-       super();
-    }
+	public TvinciDistributionTag() {
+		super();
+	}
 
-    public TvinciDistributionTag(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TvinciDistributionTag(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        tagname = GsonParser.parseString(jsonObject.get("tagname"));
-        extension = GsonParser.parseString(jsonObject.get("extension"));
-        protocol = GsonParser.parseString(jsonObject.get("protocol"));
-        format = GsonParser.parseString(jsonObject.get("format"));
-        filename = GsonParser.parseString(jsonObject.get("filename"));
-        ppvmodule = GsonParser.parseString(jsonObject.get("ppvmodule"));
+		// set members values:
+		tagname = GsonParser.parseString(jsonObject.get("tagname"));
+		extension = GsonParser.parseString(jsonObject.get("extension"));
+		protocol = GsonParser.parseString(jsonObject.get("protocol"));
+		format = GsonParser.parseString(jsonObject.get("format"));
+		filename = GsonParser.parseString(jsonObject.get("filename"));
+		ppvmodule = GsonParser.parseString(jsonObject.get("ppvmodule"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTvinciDistributionTag");
-        kparams.add("tagname", this.tagname);
-        kparams.add("extension", this.extension);
-        kparams.add("protocol", this.protocol);
-        kparams.add("format", this.format);
-        kparams.add("filename", this.filename);
-        kparams.add("ppvmodule", this.ppvmodule);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTvinciDistributionTag");
+		kparams.add("tagname", this.tagname);
+		kparams.add("extension", this.extension);
+		kparams.add("protocol", this.protocol);
+		kparams.add("format", this.format);
+		kparams.add("filename", this.filename);
+		kparams.add("ppvmodule", this.ppvmodule);
+		return kparams;
+	}
 
 }
 

@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.ActivitiBusinessProcessServerProtocol;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.ActivitiBusinessProcessServerProtocol;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,83 +41,112 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ActivitiBusinessProcessServer.Tokenizer.class)
 public class ActivitiBusinessProcessServer extends BusinessProcessServer {
+	
+	public interface Tokenizer extends BusinessProcessServer.Tokenizer {
+		String host();
+		String port();
+		String protocol();
+		String username();
+		String password();
+	}
 
-    private String host;
-    private Integer port;
-    private ActivitiBusinessProcessServerProtocol protocol;
-    private String username;
-    private String password;
+	private String host;
+	private Integer port;
+	private ActivitiBusinessProcessServerProtocol protocol;
+	private String username;
+	private String password;
 
-    // host:
-    public String getHost(){
-        return this.host;
-    }
-    public void setHost(String host){
-        this.host = host;
-    }
+	// host:
+	public String getHost(){
+		return this.host;
+	}
+	public void setHost(String host){
+		this.host = host;
+	}
 
-    // port:
-    public Integer getPort(){
-        return this.port;
-    }
-    public void setPort(Integer port){
-        this.port = port;
-    }
+	public void host(String multirequestToken){
+		setToken("host", multirequestToken);
+	}
 
-    // protocol:
-    public ActivitiBusinessProcessServerProtocol getProtocol(){
-        return this.protocol;
-    }
-    public void setProtocol(ActivitiBusinessProcessServerProtocol protocol){
-        this.protocol = protocol;
-    }
+	// port:
+	public Integer getPort(){
+		return this.port;
+	}
+	public void setPort(Integer port){
+		this.port = port;
+	}
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	public void port(String multirequestToken){
+		setToken("port", multirequestToken);
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	// protocol:
+	public ActivitiBusinessProcessServerProtocol getProtocol(){
+		return this.protocol;
+	}
+	public void setProtocol(ActivitiBusinessProcessServerProtocol protocol){
+		this.protocol = protocol;
+	}
+
+	public void protocol(String multirequestToken){
+		setToken("protocol", multirequestToken);
+	}
+
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
+
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
+
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
 
 
-    public ActivitiBusinessProcessServer() {
-       super();
-    }
+	public ActivitiBusinessProcessServer() {
+		super();
+	}
 
-    public ActivitiBusinessProcessServer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ActivitiBusinessProcessServer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        host = GsonParser.parseString(jsonObject.get("host"));
-        port = GsonParser.parseInt(jsonObject.get("port"));
-        protocol = ActivitiBusinessProcessServerProtocol.get(GsonParser.parseString(jsonObject.get("protocol")));
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
+		// set members values:
+		host = GsonParser.parseString(jsonObject.get("host"));
+		port = GsonParser.parseInt(jsonObject.get("port"));
+		protocol = ActivitiBusinessProcessServerProtocol.get(GsonParser.parseString(jsonObject.get("protocol")));
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaActivitiBusinessProcessServer");
-        kparams.add("host", this.host);
-        kparams.add("port", this.port);
-        kparams.add("protocol", this.protocol);
-        kparams.add("username", this.username);
-        kparams.add("password", this.password);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaActivitiBusinessProcessServer");
+		kparams.add("host", this.host);
+		kparams.add("port", this.port);
+		kparams.add("protocol", this.protocol);
+		kparams.add("username", this.username);
+		kparams.add("password", this.password);
+		return kparams;
+	}
 
 }
 

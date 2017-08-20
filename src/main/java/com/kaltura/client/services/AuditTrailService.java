@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.AuditTrail;
 import com.kaltura.client.types.AuditTrailFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -44,38 +42,57 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 /**  Audit Trail service  */
 public class AuditTrailService {
+	
+	public static class AddAuditTrailBuilder extends RequestBuilder<AuditTrail, AuditTrail.Tokenizer, AddAuditTrailBuilder> {
+		
+		public AddAuditTrailBuilder(AuditTrail auditTrail) {
+			super(AuditTrail.class, "audit_audittrail", "add");
+			params.add("auditTrail", auditTrail);
+		}
+	}
 
 	/**  Allows you to add an audit trail object and audit trail content associated with
 	  Kaltura object  */
-    public static RequestBuilder<AuditTrail> add(AuditTrail auditTrail)  {
-        Params kparams = new Params();
-        kparams.add("auditTrail", auditTrail);
-
-        return new RequestBuilder<AuditTrail>(AuditTrail.class, "audit_audittrail", "add", kparams);
-    }
+    public static AddAuditTrailBuilder add(AuditTrail auditTrail)  {
+		return new AddAuditTrailBuilder(auditTrail);
+	}
+	
+	public static class GetAuditTrailBuilder extends RequestBuilder<AuditTrail, AuditTrail.Tokenizer, GetAuditTrailBuilder> {
+		
+		public GetAuditTrailBuilder(int id) {
+			super(AuditTrail.class, "audit_audittrail", "get");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
 
 	/**  Retrieve an audit trail object by id  */
-    public static RequestBuilder<AuditTrail> get(int id)  {
-        Params kparams = new Params();
-        kparams.add("id", id);
+    public static GetAuditTrailBuilder get(int id)  {
+		return new GetAuditTrailBuilder(id);
+	}
+	
+	public static class ListAuditTrailBuilder extends ListResponseRequestBuilder<AuditTrail, AuditTrail.Tokenizer, ListAuditTrailBuilder> {
+		
+		public ListAuditTrailBuilder(AuditTrailFilter filter, FilterPager pager) {
+			super(AuditTrail.class, "audit_audittrail", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<AuditTrail>(AuditTrail.class, "audit_audittrail", "get", kparams);
-    }
+	public static ListAuditTrailBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<AuditTrail>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<AuditTrail>> list(AuditTrailFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListAuditTrailBuilder list(AuditTrailFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List audit trail objects by filter and pager  */
-    public static RequestBuilder<ListResponse<AuditTrail>> list(AuditTrailFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<AuditTrail>(AuditTrail.class, "audit_audittrail", "list", kparams);
-    }
+    public static ListAuditTrailBuilder list(AuditTrailFilter filter, FilterPager pager)  {
+		return new ListAuditTrailBuilder(filter, pager);
+	}
 }

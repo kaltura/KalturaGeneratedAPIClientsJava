@@ -27,13 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.enums.DailymotionDistributionCaptionAction;
 import com.kaltura.client.enums.DailymotionDistributionCaptionFormat;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,105 +43,144 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DailymotionDistributionCaptionInfo.Tokenizer.class)
 public class DailymotionDistributionCaptionInfo extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String language();
+		String filePath();
+		String remoteId();
+		String action();
+		String version();
+		String assetId();
+		String format();
+	}
 
-    private String language;
-    private String filePath;
-    private String remoteId;
-    private DailymotionDistributionCaptionAction action;
-    private String version;
-    private String assetId;
-    private DailymotionDistributionCaptionFormat format;
+	private String language;
+	private String filePath;
+	private String remoteId;
+	private DailymotionDistributionCaptionAction action;
+	private String version;
+	private String assetId;
+	private DailymotionDistributionCaptionFormat format;
 
-    // language:
-    public String getLanguage(){
-        return this.language;
-    }
-    public void setLanguage(String language){
-        this.language = language;
-    }
+	// language:
+	public String getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(String language){
+		this.language = language;
+	}
 
-    // filePath:
-    public String getFilePath(){
-        return this.filePath;
-    }
-    public void setFilePath(String filePath){
-        this.filePath = filePath;
-    }
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
 
-    // remoteId:
-    public String getRemoteId(){
-        return this.remoteId;
-    }
-    public void setRemoteId(String remoteId){
-        this.remoteId = remoteId;
-    }
+	// filePath:
+	public String getFilePath(){
+		return this.filePath;
+	}
+	public void setFilePath(String filePath){
+		this.filePath = filePath;
+	}
 
-    // action:
-    public DailymotionDistributionCaptionAction getAction(){
-        return this.action;
-    }
-    public void setAction(DailymotionDistributionCaptionAction action){
-        this.action = action;
-    }
+	public void filePath(String multirequestToken){
+		setToken("filePath", multirequestToken);
+	}
 
-    // version:
-    public String getVersion(){
-        return this.version;
-    }
-    public void setVersion(String version){
-        this.version = version;
-    }
+	// remoteId:
+	public String getRemoteId(){
+		return this.remoteId;
+	}
+	public void setRemoteId(String remoteId){
+		this.remoteId = remoteId;
+	}
 
-    // assetId:
-    public String getAssetId(){
-        return this.assetId;
-    }
-    public void setAssetId(String assetId){
-        this.assetId = assetId;
-    }
+	public void remoteId(String multirequestToken){
+		setToken("remoteId", multirequestToken);
+	}
 
-    // format:
-    public DailymotionDistributionCaptionFormat getFormat(){
-        return this.format;
-    }
-    public void setFormat(DailymotionDistributionCaptionFormat format){
-        this.format = format;
-    }
+	// action:
+	public DailymotionDistributionCaptionAction getAction(){
+		return this.action;
+	}
+	public void setAction(DailymotionDistributionCaptionAction action){
+		this.action = action;
+	}
+
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
+
+	// version:
+	public String getVersion(){
+		return this.version;
+	}
+	public void setVersion(String version){
+		this.version = version;
+	}
+
+	public void version(String multirequestToken){
+		setToken("version", multirequestToken);
+	}
+
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
+
+	// format:
+	public DailymotionDistributionCaptionFormat getFormat(){
+		return this.format;
+	}
+	public void setFormat(DailymotionDistributionCaptionFormat format){
+		this.format = format;
+	}
+
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
+	}
 
 
-    public DailymotionDistributionCaptionInfo() {
-       super();
-    }
+	public DailymotionDistributionCaptionInfo() {
+		super();
+	}
 
-    public DailymotionDistributionCaptionInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DailymotionDistributionCaptionInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        language = GsonParser.parseString(jsonObject.get("language"));
-        filePath = GsonParser.parseString(jsonObject.get("filePath"));
-        remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
-        action = DailymotionDistributionCaptionAction.get(GsonParser.parseInt(jsonObject.get("action")));
-        version = GsonParser.parseString(jsonObject.get("version"));
-        assetId = GsonParser.parseString(jsonObject.get("assetId"));
-        format = DailymotionDistributionCaptionFormat.get(GsonParser.parseInt(jsonObject.get("format")));
+		// set members values:
+		language = GsonParser.parseString(jsonObject.get("language"));
+		filePath = GsonParser.parseString(jsonObject.get("filePath"));
+		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
+		action = DailymotionDistributionCaptionAction.get(GsonParser.parseInt(jsonObject.get("action")));
+		version = GsonParser.parseString(jsonObject.get("version"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		format = DailymotionDistributionCaptionFormat.get(GsonParser.parseInt(jsonObject.get("format")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDailymotionDistributionCaptionInfo");
-        kparams.add("language", this.language);
-        kparams.add("filePath", this.filePath);
-        kparams.add("remoteId", this.remoteId);
-        kparams.add("action", this.action);
-        kparams.add("version", this.version);
-        kparams.add("assetId", this.assetId);
-        kparams.add("format", this.format);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDailymotionDistributionCaptionInfo");
+		kparams.add("language", this.language);
+		kparams.add("filePath", this.filePath);
+		kparams.add("remoteId", this.remoteId);
+		kparams.add("action", this.action);
+		kparams.add("version", this.version);
+		kparams.add("assetId", this.assetId);
+		kparams.add("format", this.format);
+		return kparams;
+	}
 
 }
 

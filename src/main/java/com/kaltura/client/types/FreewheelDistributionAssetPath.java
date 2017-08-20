@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(FreewheelDistributionAssetPath.Tokenizer.class)
 public class FreewheelDistributionAssetPath extends DistributionJobProviderData {
+	
+	public interface Tokenizer extends DistributionJobProviderData.Tokenizer {
+		String path();
+	}
 
-    private String path;
+	private String path;
 
-    // path:
-    public String getPath(){
-        return this.path;
-    }
-    public void setPath(String path){
-        this.path = path;
-    }
+	// path:
+	public String getPath(){
+		return this.path;
+	}
+	public void setPath(String path){
+		this.path = path;
+	}
+
+	public void path(String multirequestToken){
+		setToken("path", multirequestToken);
+	}
 
 
-    public FreewheelDistributionAssetPath() {
-       super();
-    }
+	public FreewheelDistributionAssetPath() {
+		super();
+	}
 
-    public FreewheelDistributionAssetPath(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public FreewheelDistributionAssetPath(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        path = GsonParser.parseString(jsonObject.get("path"));
+		// set members values:
+		path = GsonParser.parseString(jsonObject.get("path"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaFreewheelDistributionAssetPath");
-        kparams.add("path", this.path);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaFreewheelDistributionAssetPath");
+		kparams.add("path", this.path);
+		return kparams;
+	}
 
 }
 

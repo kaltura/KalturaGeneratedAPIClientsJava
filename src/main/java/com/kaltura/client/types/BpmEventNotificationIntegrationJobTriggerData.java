@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,63 +40,82 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BpmEventNotificationIntegrationJobTriggerData.Tokenizer.class)
 public class BpmEventNotificationIntegrationJobTriggerData extends IntegrationJobTriggerData {
+	
+	public interface Tokenizer extends IntegrationJobTriggerData.Tokenizer {
+		String templateId();
+		String businessProcessId();
+		String caseId();
+	}
 
 	/**  KalturaBusinessProcessNotificationTemplate id  */
-    private Integer templateId;
-    private String businessProcessId;
+	private Integer templateId;
+	private String businessProcessId;
 	/**  Execution unique id  */
-    private String caseId;
+	private String caseId;
 
-    // templateId:
-    public Integer getTemplateId(){
-        return this.templateId;
-    }
-    public void setTemplateId(Integer templateId){
-        this.templateId = templateId;
-    }
+	// templateId:
+	public Integer getTemplateId(){
+		return this.templateId;
+	}
+	public void setTemplateId(Integer templateId){
+		this.templateId = templateId;
+	}
 
-    // businessProcessId:
-    public String getBusinessProcessId(){
-        return this.businessProcessId;
-    }
-    public void setBusinessProcessId(String businessProcessId){
-        this.businessProcessId = businessProcessId;
-    }
+	public void templateId(String multirequestToken){
+		setToken("templateId", multirequestToken);
+	}
 
-    // caseId:
-    public String getCaseId(){
-        return this.caseId;
-    }
-    public void setCaseId(String caseId){
-        this.caseId = caseId;
-    }
+	// businessProcessId:
+	public String getBusinessProcessId(){
+		return this.businessProcessId;
+	}
+	public void setBusinessProcessId(String businessProcessId){
+		this.businessProcessId = businessProcessId;
+	}
+
+	public void businessProcessId(String multirequestToken){
+		setToken("businessProcessId", multirequestToken);
+	}
+
+	// caseId:
+	public String getCaseId(){
+		return this.caseId;
+	}
+	public void setCaseId(String caseId){
+		this.caseId = caseId;
+	}
+
+	public void caseId(String multirequestToken){
+		setToken("caseId", multirequestToken);
+	}
 
 
-    public BpmEventNotificationIntegrationJobTriggerData() {
-       super();
-    }
+	public BpmEventNotificationIntegrationJobTriggerData() {
+		super();
+	}
 
-    public BpmEventNotificationIntegrationJobTriggerData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BpmEventNotificationIntegrationJobTriggerData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        templateId = GsonParser.parseInt(jsonObject.get("templateId"));
-        businessProcessId = GsonParser.parseString(jsonObject.get("businessProcessId"));
-        caseId = GsonParser.parseString(jsonObject.get("caseId"));
+		// set members values:
+		templateId = GsonParser.parseInt(jsonObject.get("templateId"));
+		businessProcessId = GsonParser.parseString(jsonObject.get("businessProcessId"));
+		caseId = GsonParser.parseString(jsonObject.get("caseId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBpmEventNotificationIntegrationJobTriggerData");
-        kparams.add("templateId", this.templateId);
-        kparams.add("businessProcessId", this.businessProcessId);
-        kparams.add("caseId", this.caseId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBpmEventNotificationIntegrationJobTriggerData");
+		kparams.add("templateId", this.templateId);
+		kparams.add("businessProcessId", this.businessProcessId);
+		kparams.add("caseId", this.caseId);
+		return kparams;
+	}
 
 }
 

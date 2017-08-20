@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WebexDropFolderFileBaseFilter.Tokenizer.class)
 public abstract class WebexDropFolderFileBaseFilter extends DropFolderFileFilter {
+	
+	public interface Tokenizer extends DropFolderFileFilter.Tokenizer {
+	}
 
 
 
-    public WebexDropFolderFileBaseFilter() {
-       super();
-    }
+	public WebexDropFolderFileBaseFilter() {
+		super();
+	}
 
-    public WebexDropFolderFileBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public WebexDropFolderFileBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWebexDropFolderFileBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWebexDropFolderFileBaseFilter");
+		return kparams;
+	}
 
 }
 

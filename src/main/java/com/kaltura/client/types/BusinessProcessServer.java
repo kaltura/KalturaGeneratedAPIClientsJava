@@ -27,13 +27,13 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.BusinessProcessServerStatus;
-import com.kaltura.client.enums.BusinessProcessProvider;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.BusinessProcessProvider;
+import com.kaltura.client.enums.BusinessProcessServerStatus;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -43,137 +43,191 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessServer.Tokenizer.class)
 public abstract class BusinessProcessServer extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
+		String name();
+		String systemName();
+		String description();
+		String status();
+		String type();
+		String dc();
+	}
 
 	/**  Auto generated identifier  */
-    private Integer id;
+	private Integer id;
 	/**  Server creation date as Unix timestamp (In seconds)  */
-    private Integer createdAt;
+	private Integer createdAt;
 	/**  Server update date as Unix timestamp (In seconds)  */
-    private Integer updatedAt;
-    private Integer partnerId;
-    private String name;
-    private String systemName;
-    private String description;
-    private BusinessProcessServerStatus status;
+	private Integer updatedAt;
+	private Integer partnerId;
+	private String name;
+	private String systemName;
+	private String description;
+	private BusinessProcessServerStatus status;
 	/**  The type of the server, this is auto filled by the derived server object  */
-    private BusinessProcessProvider type;
+	private BusinessProcessProvider type;
 	/**  The dc of the server  */
-    private Integer dc;
+	private Integer dc;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // status:
-    public BusinessProcessServerStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(BusinessProcessServerStatus status){
-        this.status = status;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // type:
-    public BusinessProcessProvider getType(){
-        return this.type;
-    }
-    public void setType(BusinessProcessProvider type){
-        this.type = type;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // dc:
-    public Integer getDc(){
-        return this.dc;
-    }
-    public void setDc(Integer dc){
-        this.dc = dc;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
+
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
+
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// status:
+	public BusinessProcessServerStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(BusinessProcessServerStatus status){
+		this.status = status;
+	}
+
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// type:
+	public BusinessProcessProvider getType(){
+		return this.type;
+	}
+	public void setType(BusinessProcessProvider type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
+
+	// dc:
+	public Integer getDc(){
+		return this.dc;
+	}
+	public void setDc(Integer dc){
+		this.dc = dc;
+	}
+
+	public void dc(String multirequestToken){
+		setToken("dc", multirequestToken);
+	}
 
 
-    public BusinessProcessServer() {
-       super();
-    }
+	public BusinessProcessServer() {
+		super();
+	}
 
-    public BusinessProcessServer(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessServer(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        status = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("status")));
-        type = BusinessProcessProvider.get(GsonParser.parseString(jsonObject.get("type")));
-        dc = GsonParser.parseInt(jsonObject.get("dc"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		status = BusinessProcessServerStatus.get(GsonParser.parseString(jsonObject.get("status")));
+		type = BusinessProcessProvider.get(GsonParser.parseString(jsonObject.get("type")));
+		dc = GsonParser.parseInt(jsonObject.get("dc"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessServer");
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("dc", this.dc);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessServer");
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("dc", this.dc);
+		return kparams;
+	}
 
 }
 

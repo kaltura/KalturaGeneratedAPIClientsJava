@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,61 +42,72 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(QuickPlayDistributionJobProviderData.Tokenizer.class)
 public class QuickPlayDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String xml();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> videoFilePaths();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> thumbnailFilePaths();
+	}
 
-    private String xml;
-    private List<StringHolder> videoFilePaths;
-    private List<StringHolder> thumbnailFilePaths;
+	private String xml;
+	private List<StringHolder> videoFilePaths;
+	private List<StringHolder> thumbnailFilePaths;
 
-    // xml:
-    public String getXml(){
-        return this.xml;
-    }
-    public void setXml(String xml){
-        this.xml = xml;
-    }
+	// xml:
+	public String getXml(){
+		return this.xml;
+	}
+	public void setXml(String xml){
+		this.xml = xml;
+	}
 
-    // videoFilePaths:
-    public List<StringHolder> getVideoFilePaths(){
-        return this.videoFilePaths;
-    }
-    public void setVideoFilePaths(List<StringHolder> videoFilePaths){
-        this.videoFilePaths = videoFilePaths;
-    }
+	public void xml(String multirequestToken){
+		setToken("xml", multirequestToken);
+	}
 
-    // thumbnailFilePaths:
-    public List<StringHolder> getThumbnailFilePaths(){
-        return this.thumbnailFilePaths;
-    }
-    public void setThumbnailFilePaths(List<StringHolder> thumbnailFilePaths){
-        this.thumbnailFilePaths = thumbnailFilePaths;
-    }
+	// videoFilePaths:
+	public List<StringHolder> getVideoFilePaths(){
+		return this.videoFilePaths;
+	}
+	public void setVideoFilePaths(List<StringHolder> videoFilePaths){
+		this.videoFilePaths = videoFilePaths;
+	}
+
+	// thumbnailFilePaths:
+	public List<StringHolder> getThumbnailFilePaths(){
+		return this.thumbnailFilePaths;
+	}
+	public void setThumbnailFilePaths(List<StringHolder> thumbnailFilePaths){
+		this.thumbnailFilePaths = thumbnailFilePaths;
+	}
 
 
-    public QuickPlayDistributionJobProviderData() {
-       super();
-    }
+	public QuickPlayDistributionJobProviderData() {
+		super();
+	}
 
-    public QuickPlayDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public QuickPlayDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        xml = GsonParser.parseString(jsonObject.get("xml"));
-        videoFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoFilePaths"), StringHolder.class);
-        thumbnailFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("thumbnailFilePaths"), StringHolder.class);
+		// set members values:
+		xml = GsonParser.parseString(jsonObject.get("xml"));
+		videoFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("videoFilePaths"), StringHolder.class);
+		thumbnailFilePaths = GsonParser.parseArray(jsonObject.getAsJsonArray("thumbnailFilePaths"), StringHolder.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaQuickPlayDistributionJobProviderData");
-        kparams.add("xml", this.xml);
-        kparams.add("videoFilePaths", this.videoFilePaths);
-        kparams.add("thumbnailFilePaths", this.thumbnailFilePaths);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaQuickPlayDistributionJobProviderData");
+		kparams.add("xml", this.xml);
+		kparams.add("videoFilePaths", this.videoFilePaths);
+		kparams.add("thumbnailFilePaths", this.thumbnailFilePaths);
+		return kparams;
+	}
 
 }
 

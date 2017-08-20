@@ -27,17 +27,18 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.DrmProviderType;
-import com.kaltura.client.enums.DrmPolicyStatus;
+import com.kaltura.client.enums.DrmLicenseExpirationPolicy;
 import com.kaltura.client.enums.DrmLicenseScenario;
 import com.kaltura.client.enums.DrmLicenseType;
-import com.kaltura.client.enums.DrmLicenseExpirationPolicy;
+import com.kaltura.client.enums.DrmPolicyStatus;
+import com.kaltura.client.enums.DrmProviderType;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -47,180 +48,250 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DrmPolicy.Tokenizer.class)
 public class DrmPolicy extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String name();
+		String systemName();
+		String description();
+		String provider();
+		String status();
+		String scenario();
+		String licenseType();
+		String licenseExpirationPolicy();
+		String duration();
+		String createdAt();
+		String updatedAt();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> licenseParams();
+	}
 
-    private Integer id;
-    private Integer partnerId;
-    private String name;
-    private String systemName;
-    private String description;
-    private DrmProviderType provider;
-    private DrmPolicyStatus status;
-    private DrmLicenseScenario scenario;
-    private DrmLicenseType licenseType;
-    private DrmLicenseExpirationPolicy licenseExpirationPolicy;
+	private Integer id;
+	private Integer partnerId;
+	private String name;
+	private String systemName;
+	private String description;
+	private DrmProviderType provider;
+	private DrmPolicyStatus status;
+	private DrmLicenseScenario scenario;
+	private DrmLicenseType licenseType;
+	private DrmLicenseExpirationPolicy licenseExpirationPolicy;
 	/**  Duration in days the license is effective  */
-    private Integer duration;
-    private Integer createdAt;
-    private Integer updatedAt;
-    private List<KeyValue> licenseParams;
+	private Integer duration;
+	private Integer createdAt;
+	private Integer updatedAt;
+	private List<KeyValue> licenseParams;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // name:
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // systemName:
-    public String getSystemName(){
-        return this.systemName;
-    }
-    public void setSystemName(String systemName){
-        this.systemName = systemName;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// name:
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
 
-    // provider:
-    public DrmProviderType getProvider(){
-        return this.provider;
-    }
-    public void setProvider(DrmProviderType provider){
-        this.provider = provider;
-    }
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
 
-    // status:
-    public DrmPolicyStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(DrmPolicyStatus status){
-        this.status = status;
-    }
+	// systemName:
+	public String getSystemName(){
+		return this.systemName;
+	}
+	public void setSystemName(String systemName){
+		this.systemName = systemName;
+	}
 
-    // scenario:
-    public DrmLicenseScenario getScenario(){
-        return this.scenario;
-    }
-    public void setScenario(DrmLicenseScenario scenario){
-        this.scenario = scenario;
-    }
+	public void systemName(String multirequestToken){
+		setToken("systemName", multirequestToken);
+	}
 
-    // licenseType:
-    public DrmLicenseType getLicenseType(){
-        return this.licenseType;
-    }
-    public void setLicenseType(DrmLicenseType licenseType){
-        this.licenseType = licenseType;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // licenseExpirationPolicy:
-    public DrmLicenseExpirationPolicy getLicenseExpirationPolicy(){
-        return this.licenseExpirationPolicy;
-    }
-    public void setLicenseExpirationPolicy(DrmLicenseExpirationPolicy licenseExpirationPolicy){
-        this.licenseExpirationPolicy = licenseExpirationPolicy;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
 
-    // duration:
-    public Integer getDuration(){
-        return this.duration;
-    }
-    public void setDuration(Integer duration){
-        this.duration = duration;
-    }
+	// provider:
+	public DrmProviderType getProvider(){
+		return this.provider;
+	}
+	public void setProvider(DrmProviderType provider){
+		this.provider = provider;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void provider(String multirequestToken){
+		setToken("provider", multirequestToken);
+	}
 
-    // updatedAt:
-    public Integer getUpdatedAt(){
-        return this.updatedAt;
-    }
-    public void setUpdatedAt(Integer updatedAt){
-        this.updatedAt = updatedAt;
-    }
+	// status:
+	public DrmPolicyStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(DrmPolicyStatus status){
+		this.status = status;
+	}
 
-    // licenseParams:
-    public List<KeyValue> getLicenseParams(){
-        return this.licenseParams;
-    }
-    public void setLicenseParams(List<KeyValue> licenseParams){
-        this.licenseParams = licenseParams;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
+
+	// scenario:
+	public DrmLicenseScenario getScenario(){
+		return this.scenario;
+	}
+	public void setScenario(DrmLicenseScenario scenario){
+		this.scenario = scenario;
+	}
+
+	public void scenario(String multirequestToken){
+		setToken("scenario", multirequestToken);
+	}
+
+	// licenseType:
+	public DrmLicenseType getLicenseType(){
+		return this.licenseType;
+	}
+	public void setLicenseType(DrmLicenseType licenseType){
+		this.licenseType = licenseType;
+	}
+
+	public void licenseType(String multirequestToken){
+		setToken("licenseType", multirequestToken);
+	}
+
+	// licenseExpirationPolicy:
+	public DrmLicenseExpirationPolicy getLicenseExpirationPolicy(){
+		return this.licenseExpirationPolicy;
+	}
+	public void setLicenseExpirationPolicy(DrmLicenseExpirationPolicy licenseExpirationPolicy){
+		this.licenseExpirationPolicy = licenseExpirationPolicy;
+	}
+
+	public void licenseExpirationPolicy(String multirequestToken){
+		setToken("licenseExpirationPolicy", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
+
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
+	public void setUpdatedAt(Integer updatedAt){
+		this.updatedAt = updatedAt;
+	}
+
+	public void updatedAt(String multirequestToken){
+		setToken("updatedAt", multirequestToken);
+	}
+
+	// licenseParams:
+	public List<KeyValue> getLicenseParams(){
+		return this.licenseParams;
+	}
+	public void setLicenseParams(List<KeyValue> licenseParams){
+		this.licenseParams = licenseParams;
+	}
 
 
-    public DrmPolicy() {
-       super();
-    }
+	public DrmPolicy() {
+		super();
+	}
 
-    public DrmPolicy(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DrmPolicy(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        name = GsonParser.parseString(jsonObject.get("name"));
-        systemName = GsonParser.parseString(jsonObject.get("systemName"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        provider = DrmProviderType.get(GsonParser.parseString(jsonObject.get("provider")));
-        status = DrmPolicyStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        scenario = DrmLicenseScenario.get(GsonParser.parseString(jsonObject.get("scenario")));
-        licenseType = DrmLicenseType.get(GsonParser.parseString(jsonObject.get("licenseType")));
-        licenseExpirationPolicy = DrmLicenseExpirationPolicy.get(GsonParser.parseInt(jsonObject.get("licenseExpirationPolicy")));
-        duration = GsonParser.parseInt(jsonObject.get("duration"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-        licenseParams = GsonParser.parseArray(jsonObject.getAsJsonArray("licenseParams"), KeyValue.class);
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		name = GsonParser.parseString(jsonObject.get("name"));
+		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		provider = DrmProviderType.get(GsonParser.parseString(jsonObject.get("provider")));
+		status = DrmPolicyStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		scenario = DrmLicenseScenario.get(GsonParser.parseString(jsonObject.get("scenario")));
+		licenseType = DrmLicenseType.get(GsonParser.parseString(jsonObject.get("licenseType")));
+		licenseExpirationPolicy = DrmLicenseExpirationPolicy.get(GsonParser.parseInt(jsonObject.get("licenseExpirationPolicy")));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		licenseParams = GsonParser.parseArray(jsonObject.getAsJsonArray("licenseParams"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDrmPolicy");
-        kparams.add("partnerId", this.partnerId);
-        kparams.add("name", this.name);
-        kparams.add("systemName", this.systemName);
-        kparams.add("description", this.description);
-        kparams.add("provider", this.provider);
-        kparams.add("status", this.status);
-        kparams.add("scenario", this.scenario);
-        kparams.add("licenseType", this.licenseType);
-        kparams.add("licenseExpirationPolicy", this.licenseExpirationPolicy);
-        kparams.add("duration", this.duration);
-        kparams.add("licenseParams", this.licenseParams);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDrmPolicy");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("name", this.name);
+		kparams.add("systemName", this.systemName);
+		kparams.add("description", this.description);
+		kparams.add("provider", this.provider);
+		kparams.add("status", this.status);
+		kparams.add("scenario", this.scenario);
+		kparams.add("licenseType", this.licenseType);
+		kparams.add("licenseExpirationPolicy", this.licenseExpirationPolicy);
+		kparams.add("duration", this.duration);
+		kparams.add("licenseParams", this.licenseParams);
+		return kparams;
+	}
 
 }
 

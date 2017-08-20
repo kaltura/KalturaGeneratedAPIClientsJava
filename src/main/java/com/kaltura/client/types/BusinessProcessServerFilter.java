@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +40,64 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BusinessProcessServerFilter.Tokenizer.class)
 public class BusinessProcessServerFilter extends BusinessProcessServerBaseFilter {
+	
+	public interface Tokenizer extends BusinessProcessServerBaseFilter.Tokenizer {
+		String currentDcOrExternal();
+		String currentDc();
+	}
 
-    private Boolean currentDcOrExternal;
-    private Boolean currentDc;
+	private Boolean currentDcOrExternal;
+	private Boolean currentDc;
 
-    // currentDcOrExternal:
-    public Boolean getCurrentDcOrExternal(){
-        return this.currentDcOrExternal;
-    }
-    public void setCurrentDcOrExternal(Boolean currentDcOrExternal){
-        this.currentDcOrExternal = currentDcOrExternal;
-    }
+	// currentDcOrExternal:
+	public Boolean getCurrentDcOrExternal(){
+		return this.currentDcOrExternal;
+	}
+	public void setCurrentDcOrExternal(Boolean currentDcOrExternal){
+		this.currentDcOrExternal = currentDcOrExternal;
+	}
 
-    // currentDc:
-    public Boolean getCurrentDc(){
-        return this.currentDc;
-    }
-    public void setCurrentDc(Boolean currentDc){
-        this.currentDc = currentDc;
-    }
+	public void currentDcOrExternal(String multirequestToken){
+		setToken("currentDcOrExternal", multirequestToken);
+	}
+
+	// currentDc:
+	public Boolean getCurrentDc(){
+		return this.currentDc;
+	}
+	public void setCurrentDc(Boolean currentDc){
+		this.currentDc = currentDc;
+	}
+
+	public void currentDc(String multirequestToken){
+		setToken("currentDc", multirequestToken);
+	}
 
 
-    public BusinessProcessServerFilter() {
-       super();
-    }
+	public BusinessProcessServerFilter() {
+		super();
+	}
 
-    public BusinessProcessServerFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public BusinessProcessServerFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        currentDcOrExternal = GsonParser.parseBoolean(jsonObject.get("currentDcOrExternal"));
-        currentDc = GsonParser.parseBoolean(jsonObject.get("currentDc"));
+		// set members values:
+		currentDcOrExternal = GsonParser.parseBoolean(jsonObject.get("currentDcOrExternal"));
+		currentDc = GsonParser.parseBoolean(jsonObject.get("currentDc"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaBusinessProcessServerFilter");
-        kparams.add("currentDcOrExternal", this.currentDcOrExternal);
-        kparams.add("currentDc", this.currentDc);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBusinessProcessServerFilter");
+		kparams.add("currentDcOrExternal", this.currentDcOrExternal);
+		kparams.add("currentDc", this.currentDc);
+		return kparams;
+	}
 
 }
 

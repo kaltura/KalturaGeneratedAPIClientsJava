@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,38 +34,38 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AuditTrailFileSyncType implements EnumAsInt {
-    FILE(1),
-    LINK(2),
-    URL(3);
+	FILE(1),
+	LINK(2),
+	URL(3);
 
-    private int value;
+	private int value;
 
-    AuditTrailFileSyncType(int value) {
-        this.value = value;
-    }
+	AuditTrailFileSyncType(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AuditTrailFileSyncType get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AuditTrailFileSyncType defined values and compare the inner value with the given one:
-        for(AuditTrailFileSyncType item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AuditTrailFileSyncType.values().length > 0 ? AuditTrailFileSyncType.values()[0]: null;
+	public static AuditTrailFileSyncType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AuditTrailFileSyncType defined values and compare the inner value with the given one:
+		for(AuditTrailFileSyncType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AuditTrailFileSyncType.values().length > 0 ? AuditTrailFileSyncType.values()[0]: null;
    }
 }

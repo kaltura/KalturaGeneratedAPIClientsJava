@@ -27,13 +27,14 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.enums.PlayReadyLicenseRemovalPolicy;
 import com.kaltura.client.enums.PlayReadyMinimumLicenseSecurityLevel;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -43,83 +44,108 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyPolicy.Tokenizer.class)
 public class PlayReadyPolicy extends DrmPolicy {
+	
+	public interface Tokenizer extends DrmPolicy.Tokenizer {
+		String gracePeriod();
+		String licenseRemovalPolicy();
+		String licenseRemovalDuration();
+		String minSecurityLevel();
+		RequestBuilder.ListTokenizer<PlayReadyRight.Tokenizer> rights();
+	}
 
-    private Integer gracePeriod;
-    private PlayReadyLicenseRemovalPolicy licenseRemovalPolicy;
-    private Integer licenseRemovalDuration;
-    private PlayReadyMinimumLicenseSecurityLevel minSecurityLevel;
-    private List<PlayReadyRight> rights;
+	private Integer gracePeriod;
+	private PlayReadyLicenseRemovalPolicy licenseRemovalPolicy;
+	private Integer licenseRemovalDuration;
+	private PlayReadyMinimumLicenseSecurityLevel minSecurityLevel;
+	private List<PlayReadyRight> rights;
 
-    // gracePeriod:
-    public Integer getGracePeriod(){
-        return this.gracePeriod;
-    }
-    public void setGracePeriod(Integer gracePeriod){
-        this.gracePeriod = gracePeriod;
-    }
+	// gracePeriod:
+	public Integer getGracePeriod(){
+		return this.gracePeriod;
+	}
+	public void setGracePeriod(Integer gracePeriod){
+		this.gracePeriod = gracePeriod;
+	}
 
-    // licenseRemovalPolicy:
-    public PlayReadyLicenseRemovalPolicy getLicenseRemovalPolicy(){
-        return this.licenseRemovalPolicy;
-    }
-    public void setLicenseRemovalPolicy(PlayReadyLicenseRemovalPolicy licenseRemovalPolicy){
-        this.licenseRemovalPolicy = licenseRemovalPolicy;
-    }
+	public void gracePeriod(String multirequestToken){
+		setToken("gracePeriod", multirequestToken);
+	}
 
-    // licenseRemovalDuration:
-    public Integer getLicenseRemovalDuration(){
-        return this.licenseRemovalDuration;
-    }
-    public void setLicenseRemovalDuration(Integer licenseRemovalDuration){
-        this.licenseRemovalDuration = licenseRemovalDuration;
-    }
+	// licenseRemovalPolicy:
+	public PlayReadyLicenseRemovalPolicy getLicenseRemovalPolicy(){
+		return this.licenseRemovalPolicy;
+	}
+	public void setLicenseRemovalPolicy(PlayReadyLicenseRemovalPolicy licenseRemovalPolicy){
+		this.licenseRemovalPolicy = licenseRemovalPolicy;
+	}
 
-    // minSecurityLevel:
-    public PlayReadyMinimumLicenseSecurityLevel getMinSecurityLevel(){
-        return this.minSecurityLevel;
-    }
-    public void setMinSecurityLevel(PlayReadyMinimumLicenseSecurityLevel minSecurityLevel){
-        this.minSecurityLevel = minSecurityLevel;
-    }
+	public void licenseRemovalPolicy(String multirequestToken){
+		setToken("licenseRemovalPolicy", multirequestToken);
+	}
 
-    // rights:
-    public List<PlayReadyRight> getRights(){
-        return this.rights;
-    }
-    public void setRights(List<PlayReadyRight> rights){
-        this.rights = rights;
-    }
+	// licenseRemovalDuration:
+	public Integer getLicenseRemovalDuration(){
+		return this.licenseRemovalDuration;
+	}
+	public void setLicenseRemovalDuration(Integer licenseRemovalDuration){
+		this.licenseRemovalDuration = licenseRemovalDuration;
+	}
+
+	public void licenseRemovalDuration(String multirequestToken){
+		setToken("licenseRemovalDuration", multirequestToken);
+	}
+
+	// minSecurityLevel:
+	public PlayReadyMinimumLicenseSecurityLevel getMinSecurityLevel(){
+		return this.minSecurityLevel;
+	}
+	public void setMinSecurityLevel(PlayReadyMinimumLicenseSecurityLevel minSecurityLevel){
+		this.minSecurityLevel = minSecurityLevel;
+	}
+
+	public void minSecurityLevel(String multirequestToken){
+		setToken("minSecurityLevel", multirequestToken);
+	}
+
+	// rights:
+	public List<PlayReadyRight> getRights(){
+		return this.rights;
+	}
+	public void setRights(List<PlayReadyRight> rights){
+		this.rights = rights;
+	}
 
 
-    public PlayReadyPolicy() {
-       super();
-    }
+	public PlayReadyPolicy() {
+		super();
+	}
 
-    public PlayReadyPolicy(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyPolicy(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        gracePeriod = GsonParser.parseInt(jsonObject.get("gracePeriod"));
-        licenseRemovalPolicy = PlayReadyLicenseRemovalPolicy.get(GsonParser.parseInt(jsonObject.get("licenseRemovalPolicy")));
-        licenseRemovalDuration = GsonParser.parseInt(jsonObject.get("licenseRemovalDuration"));
-        minSecurityLevel = PlayReadyMinimumLicenseSecurityLevel.get(GsonParser.parseInt(jsonObject.get("minSecurityLevel")));
-        rights = GsonParser.parseArray(jsonObject.getAsJsonArray("rights"), PlayReadyRight.class);
+		// set members values:
+		gracePeriod = GsonParser.parseInt(jsonObject.get("gracePeriod"));
+		licenseRemovalPolicy = PlayReadyLicenseRemovalPolicy.get(GsonParser.parseInt(jsonObject.get("licenseRemovalPolicy")));
+		licenseRemovalDuration = GsonParser.parseInt(jsonObject.get("licenseRemovalDuration"));
+		minSecurityLevel = PlayReadyMinimumLicenseSecurityLevel.get(GsonParser.parseInt(jsonObject.get("minSecurityLevel")));
+		rights = GsonParser.parseArray(jsonObject.getAsJsonArray("rights"), PlayReadyRight.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyPolicy");
-        kparams.add("gracePeriod", this.gracePeriod);
-        kparams.add("licenseRemovalPolicy", this.licenseRemovalPolicy);
-        kparams.add("licenseRemovalDuration", this.licenseRemovalDuration);
-        kparams.add("minSecurityLevel", this.minSecurityLevel);
-        kparams.add("rights", this.rights);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyPolicy");
+		kparams.add("gracePeriod", this.gracePeriod);
+		kparams.add("licenseRemovalPolicy", this.licenseRemovalPolicy);
+		kparams.add("licenseRemovalDuration", this.licenseRemovalDuration);
+		kparams.add("minSecurityLevel", this.minSecurityLevel);
+		kparams.add("rights", this.rights);
+		return kparams;
+	}
 
 }
 

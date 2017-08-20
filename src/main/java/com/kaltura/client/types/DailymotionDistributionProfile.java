@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.enums.DailymotionGeoBlockingMapping;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.DailymotionGeoBlockingMapping;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,61 +41,80 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DailymotionDistributionProfile.Tokenizer.class)
 public class DailymotionDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String user();
+		String password();
+		String geoBlockingMapping();
+	}
 
-    private String user;
-    private String password;
-    private DailymotionGeoBlockingMapping geoBlockingMapping;
+	private String user;
+	private String password;
+	private DailymotionGeoBlockingMapping geoBlockingMapping;
 
-    // user:
-    public String getUser(){
-        return this.user;
-    }
-    public void setUser(String user){
-        this.user = user;
-    }
+	// user:
+	public String getUser(){
+		return this.user;
+	}
+	public void setUser(String user){
+		this.user = user;
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	public void user(String multirequestToken){
+		setToken("user", multirequestToken);
+	}
 
-    // geoBlockingMapping:
-    public DailymotionGeoBlockingMapping getGeoBlockingMapping(){
-        return this.geoBlockingMapping;
-    }
-    public void setGeoBlockingMapping(DailymotionGeoBlockingMapping geoBlockingMapping){
-        this.geoBlockingMapping = geoBlockingMapping;
-    }
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// geoBlockingMapping:
+	public DailymotionGeoBlockingMapping getGeoBlockingMapping(){
+		return this.geoBlockingMapping;
+	}
+	public void setGeoBlockingMapping(DailymotionGeoBlockingMapping geoBlockingMapping){
+		this.geoBlockingMapping = geoBlockingMapping;
+	}
+
+	public void geoBlockingMapping(String multirequestToken){
+		setToken("geoBlockingMapping", multirequestToken);
+	}
 
 
-    public DailymotionDistributionProfile() {
-       super();
-    }
+	public DailymotionDistributionProfile() {
+		super();
+	}
 
-    public DailymotionDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public DailymotionDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        user = GsonParser.parseString(jsonObject.get("user"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        geoBlockingMapping = DailymotionGeoBlockingMapping.get(GsonParser.parseInt(jsonObject.get("geoBlockingMapping")));
+		// set members values:
+		user = GsonParser.parseString(jsonObject.get("user"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		geoBlockingMapping = DailymotionGeoBlockingMapping.get(GsonParser.parseInt(jsonObject.get("geoBlockingMapping")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaDailymotionDistributionProfile");
-        kparams.add("user", this.user);
-        kparams.add("password", this.password);
-        kparams.add("geoBlockingMapping", this.geoBlockingMapping);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDailymotionDistributionProfile");
+		kparams.add("user", this.user);
+		kparams.add("password", this.password);
+		kparams.add("geoBlockingMapping", this.geoBlockingMapping);
+		return kparams;
+	}
 
 }
 

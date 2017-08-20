@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,50 +40,64 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WebexDropFolderContentProcessorJobData.Tokenizer.class)
 public class WebexDropFolderContentProcessorJobData extends DropFolderContentProcessorJobData {
+	
+	public interface Tokenizer extends DropFolderContentProcessorJobData.Tokenizer {
+		String description();
+		String webexHostId();
+	}
 
-    private String description;
-    private String webexHostId;
+	private String description;
+	private String webexHostId;
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
 
-    // webexHostId:
-    public String getWebexHostId(){
-        return this.webexHostId;
-    }
-    public void setWebexHostId(String webexHostId){
-        this.webexHostId = webexHostId;
-    }
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// webexHostId:
+	public String getWebexHostId(){
+		return this.webexHostId;
+	}
+	public void setWebexHostId(String webexHostId){
+		this.webexHostId = webexHostId;
+	}
+
+	public void webexHostId(String multirequestToken){
+		setToken("webexHostId", multirequestToken);
+	}
 
 
-    public WebexDropFolderContentProcessorJobData() {
-       super();
-    }
+	public WebexDropFolderContentProcessorJobData() {
+		super();
+	}
 
-    public WebexDropFolderContentProcessorJobData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WebexDropFolderContentProcessorJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        description = GsonParser.parseString(jsonObject.get("description"));
-        webexHostId = GsonParser.parseString(jsonObject.get("webexHostId"));
+		// set members values:
+		description = GsonParser.parseString(jsonObject.get("description"));
+		webexHostId = GsonParser.parseString(jsonObject.get("webexHostId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWebexDropFolderContentProcessorJobData");
-        kparams.add("description", this.description);
-        kparams.add("webexHostId", this.webexHostId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWebexDropFolderContentProcessorJobData");
+		kparams.add("description", this.description);
+		kparams.add("webexHostId", this.webexHostId);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,61 +40,80 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YahooDistributionJobProviderData.Tokenizer.class)
 public class YahooDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String smallThumbPath();
+		String largeThumbPath();
+		String videoAssetFilePath();
+	}
 
-    private String smallThumbPath;
-    private String largeThumbPath;
-    private String videoAssetFilePath;
+	private String smallThumbPath;
+	private String largeThumbPath;
+	private String videoAssetFilePath;
 
-    // smallThumbPath:
-    public String getSmallThumbPath(){
-        return this.smallThumbPath;
-    }
-    public void setSmallThumbPath(String smallThumbPath){
-        this.smallThumbPath = smallThumbPath;
-    }
+	// smallThumbPath:
+	public String getSmallThumbPath(){
+		return this.smallThumbPath;
+	}
+	public void setSmallThumbPath(String smallThumbPath){
+		this.smallThumbPath = smallThumbPath;
+	}
 
-    // largeThumbPath:
-    public String getLargeThumbPath(){
-        return this.largeThumbPath;
-    }
-    public void setLargeThumbPath(String largeThumbPath){
-        this.largeThumbPath = largeThumbPath;
-    }
+	public void smallThumbPath(String multirequestToken){
+		setToken("smallThumbPath", multirequestToken);
+	}
 
-    // videoAssetFilePath:
-    public String getVideoAssetFilePath(){
-        return this.videoAssetFilePath;
-    }
-    public void setVideoAssetFilePath(String videoAssetFilePath){
-        this.videoAssetFilePath = videoAssetFilePath;
-    }
+	// largeThumbPath:
+	public String getLargeThumbPath(){
+		return this.largeThumbPath;
+	}
+	public void setLargeThumbPath(String largeThumbPath){
+		this.largeThumbPath = largeThumbPath;
+	}
+
+	public void largeThumbPath(String multirequestToken){
+		setToken("largeThumbPath", multirequestToken);
+	}
+
+	// videoAssetFilePath:
+	public String getVideoAssetFilePath(){
+		return this.videoAssetFilePath;
+	}
+	public void setVideoAssetFilePath(String videoAssetFilePath){
+		this.videoAssetFilePath = videoAssetFilePath;
+	}
+
+	public void videoAssetFilePath(String multirequestToken){
+		setToken("videoAssetFilePath", multirequestToken);
+	}
 
 
-    public YahooDistributionJobProviderData() {
-       super();
-    }
+	public YahooDistributionJobProviderData() {
+		super();
+	}
 
-    public YahooDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YahooDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        smallThumbPath = GsonParser.parseString(jsonObject.get("smallThumbPath"));
-        largeThumbPath = GsonParser.parseString(jsonObject.get("largeThumbPath"));
-        videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
+		// set members values:
+		smallThumbPath = GsonParser.parseString(jsonObject.get("smallThumbPath"));
+		largeThumbPath = GsonParser.parseString(jsonObject.get("largeThumbPath"));
+		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYahooDistributionJobProviderData");
-        kparams.add("smallThumbPath", this.smallThumbPath);
-        kparams.add("largeThumbPath", this.largeThumbPath);
-        kparams.add("videoAssetFilePath", this.videoAssetFilePath);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYahooDistributionJobProviderData");
+		kparams.add("smallThumbPath", this.smallThumbPath);
+		kparams.add("largeThumbPath", this.largeThumbPath);
+		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
+		return kparams;
+	}
 
 }
 

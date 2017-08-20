@@ -27,14 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.enums.EventNotificationEventObjectType;
 import com.kaltura.client.types.BusinessProcessCase;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.ServeRequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -45,33 +42,80 @@ import java.util.List;
 
 /**  Business-process case service lets you get information about processes  */
 public class BusinessProcessCaseService {
+	
+	public static class AbortBusinessProcessCaseBuilder extends NullRequestBuilder {
+		
+		public AbortBusinessProcessCaseBuilder(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId) {
+			super("businessprocessnotification_businessprocesscase", "abort");
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			params.add("businessProcessStartNotificationTemplateId", businessProcessStartNotificationTemplateId);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+		
+		public void businessProcessStartNotificationTemplateId(String multirequestToken) {
+			params.add("businessProcessStartNotificationTemplateId", multirequestToken);
+		}
+	}
 
 	/**  Abort business-process case  */
-    public static RequestBuilder<Void> abort(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
-        Params kparams = new Params();
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("businessProcessStartNotificationTemplateId", businessProcessStartNotificationTemplateId);
-
-        return new NullRequestBuilder("businessprocessnotification_businessprocesscase", "abort", kparams);
-    }
+    public static AbortBusinessProcessCaseBuilder abort(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
+		return new AbortBusinessProcessCaseBuilder(objectType, objectId, businessProcessStartNotificationTemplateId);
+	}
+	
+	public static class ListBusinessProcessCaseBuilder extends ArrayRequestBuilder<BusinessProcessCase, BusinessProcessCase.Tokenizer, ListBusinessProcessCaseBuilder> {
+		
+		public ListBusinessProcessCaseBuilder(EventNotificationEventObjectType objectType, String objectId) {
+			super(BusinessProcessCase.class, "businessprocessnotification_businessprocesscase", "list");
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+	}
 
 	/**  list business-process cases  */
-    public static RequestBuilder<List<BusinessProcessCase>> list(EventNotificationEventObjectType objectType, String objectId)  {
-        Params kparams = new Params();
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-
-        return new ArrayRequestBuilder<BusinessProcessCase>(BusinessProcessCase.class, "businessprocessnotification_businessprocesscase", "list", kparams);
-    }
+    public static ListBusinessProcessCaseBuilder list(EventNotificationEventObjectType objectType, String objectId)  {
+		return new ListBusinessProcessCaseBuilder(objectType, objectId);
+	}
+	
+	public static class ServeDiagramBusinessProcessCaseBuilder extends ServeRequestBuilder {
+		
+		public ServeDiagramBusinessProcessCaseBuilder(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId) {
+			super("businessprocessnotification_businessprocesscase", "serveDiagram");
+			params.add("objectType", objectType);
+			params.add("objectId", objectId);
+			params.add("businessProcessStartNotificationTemplateId", businessProcessStartNotificationTemplateId);
+		}
+		
+		public void objectType(String multirequestToken) {
+			params.add("objectType", multirequestToken);
+		}
+		
+		public void objectId(String multirequestToken) {
+			params.add("objectId", multirequestToken);
+		}
+		
+		public void businessProcessStartNotificationTemplateId(String multirequestToken) {
+			params.add("businessProcessStartNotificationTemplateId", multirequestToken);
+		}
+	}
 
 	/**  Server business-process case diagram  */
-    public static RequestBuilder<String> serveDiagram(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
-        Params kparams = new Params();
-        kparams.add("objectType", objectType);
-        kparams.add("objectId", objectId);
-        kparams.add("businessProcessStartNotificationTemplateId", businessProcessStartNotificationTemplateId);
-
-        return new ServeRequestBuilder("businessprocessnotification_businessprocesscase", "serveDiagram", kparams);
-    }
+    public static ServeDiagramBusinessProcessCaseBuilder serveDiagram(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
+		return new ServeDiagramBusinessProcessCaseBuilder(objectType, objectId, businessProcessStartNotificationTemplateId);
+	}
 }

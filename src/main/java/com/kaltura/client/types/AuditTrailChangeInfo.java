@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,39 +42,44 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrailChangeInfo.Tokenizer.class)
 public class AuditTrailChangeInfo extends AuditTrailInfo {
+	
+	public interface Tokenizer extends AuditTrailInfo.Tokenizer {
+		RequestBuilder.ListTokenizer<AuditTrailChangeItem.Tokenizer> changedItems();
+	}
 
-    private List<AuditTrailChangeItem> changedItems;
+	private List<AuditTrailChangeItem> changedItems;
 
-    // changedItems:
-    public List<AuditTrailChangeItem> getChangedItems(){
-        return this.changedItems;
-    }
-    public void setChangedItems(List<AuditTrailChangeItem> changedItems){
-        this.changedItems = changedItems;
-    }
+	// changedItems:
+	public List<AuditTrailChangeItem> getChangedItems(){
+		return this.changedItems;
+	}
+	public void setChangedItems(List<AuditTrailChangeItem> changedItems){
+		this.changedItems = changedItems;
+	}
 
 
-    public AuditTrailChangeInfo() {
-       super();
-    }
+	public AuditTrailChangeInfo() {
+		super();
+	}
 
-    public AuditTrailChangeInfo(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrailChangeInfo(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        changedItems = GsonParser.parseArray(jsonObject.getAsJsonArray("changedItems"), AuditTrailChangeItem.class);
+		// set members values:
+		changedItems = GsonParser.parseArray(jsonObject.getAsJsonArray("changedItems"), AuditTrailChangeItem.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrailChangeInfo");
-        kparams.add("changedItems", this.changedItems);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrailChangeInfo");
+		kparams.add("changedItems", this.changedItems);
+		return kparams;
+	}
 
 }
 

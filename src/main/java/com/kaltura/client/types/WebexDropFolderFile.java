@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,83 +40,112 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WebexDropFolderFile.Tokenizer.class)
 public class WebexDropFolderFile extends DropFolderFile {
+	
+	public interface Tokenizer extends DropFolderFile.Tokenizer {
+		String recordingId();
+		String webexHostId();
+		String description();
+		String confId();
+		String contentUrl();
+	}
 
-    private Integer recordingId;
-    private String webexHostId;
-    private String description;
-    private String confId;
-    private String contentUrl;
+	private Integer recordingId;
+	private String webexHostId;
+	private String description;
+	private String confId;
+	private String contentUrl;
 
-    // recordingId:
-    public Integer getRecordingId(){
-        return this.recordingId;
-    }
-    public void setRecordingId(Integer recordingId){
-        this.recordingId = recordingId;
-    }
+	// recordingId:
+	public Integer getRecordingId(){
+		return this.recordingId;
+	}
+	public void setRecordingId(Integer recordingId){
+		this.recordingId = recordingId;
+	}
 
-    // webexHostId:
-    public String getWebexHostId(){
-        return this.webexHostId;
-    }
-    public void setWebexHostId(String webexHostId){
-        this.webexHostId = webexHostId;
-    }
+	public void recordingId(String multirequestToken){
+		setToken("recordingId", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// webexHostId:
+	public String getWebexHostId(){
+		return this.webexHostId;
+	}
+	public void setWebexHostId(String webexHostId){
+		this.webexHostId = webexHostId;
+	}
 
-    // confId:
-    public String getConfId(){
-        return this.confId;
-    }
-    public void setConfId(String confId){
-        this.confId = confId;
-    }
+	public void webexHostId(String multirequestToken){
+		setToken("webexHostId", multirequestToken);
+	}
 
-    // contentUrl:
-    public String getContentUrl(){
-        return this.contentUrl;
-    }
-    public void setContentUrl(String contentUrl){
-        this.contentUrl = contentUrl;
-    }
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// confId:
+	public String getConfId(){
+		return this.confId;
+	}
+	public void setConfId(String confId){
+		this.confId = confId;
+	}
+
+	public void confId(String multirequestToken){
+		setToken("confId", multirequestToken);
+	}
+
+	// contentUrl:
+	public String getContentUrl(){
+		return this.contentUrl;
+	}
+	public void setContentUrl(String contentUrl){
+		this.contentUrl = contentUrl;
+	}
+
+	public void contentUrl(String multirequestToken){
+		setToken("contentUrl", multirequestToken);
+	}
 
 
-    public WebexDropFolderFile() {
-       super();
-    }
+	public WebexDropFolderFile() {
+		super();
+	}
 
-    public WebexDropFolderFile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WebexDropFolderFile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        recordingId = GsonParser.parseInt(jsonObject.get("recordingId"));
-        webexHostId = GsonParser.parseString(jsonObject.get("webexHostId"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        confId = GsonParser.parseString(jsonObject.get("confId"));
-        contentUrl = GsonParser.parseString(jsonObject.get("contentUrl"));
+		// set members values:
+		recordingId = GsonParser.parseInt(jsonObject.get("recordingId"));
+		webexHostId = GsonParser.parseString(jsonObject.get("webexHostId"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		confId = GsonParser.parseString(jsonObject.get("confId"));
+		contentUrl = GsonParser.parseString(jsonObject.get("contentUrl"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWebexDropFolderFile");
-        kparams.add("recordingId", this.recordingId);
-        kparams.add("webexHostId", this.webexHostId);
-        kparams.add("description", this.description);
-        kparams.add("confId", this.confId);
-        kparams.add("contentUrl", this.contentUrl);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWebexDropFolderFile");
+		kparams.add("recordingId", this.recordingId);
+		kparams.add("webexHostId", this.webexHostId);
+		kparams.add("description", this.description);
+		kparams.add("confId", this.confId);
+		kparams.add("contentUrl", this.contentUrl);
+		return kparams;
+	}
 
 }
 

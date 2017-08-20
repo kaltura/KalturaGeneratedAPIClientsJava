@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,94 +40,128 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(WidevineProfile.Tokenizer.class)
 public class WidevineProfile extends DrmProfile {
+	
+	public interface Tokenizer extends DrmProfile.Tokenizer {
+		String key();
+		String iv();
+		String owner();
+		String portal();
+		String maxGop();
+		String regServerHost();
+	}
 
-    private String key;
-    private String iv;
-    private String owner;
-    private String portal;
-    private Integer maxGop;
-    private String regServerHost;
+	private String key;
+	private String iv;
+	private String owner;
+	private String portal;
+	private Integer maxGop;
+	private String regServerHost;
 
-    // key:
-    public String getKey(){
-        return this.key;
-    }
-    public void setKey(String key){
-        this.key = key;
-    }
+	// key:
+	public String getKey(){
+		return this.key;
+	}
+	public void setKey(String key){
+		this.key = key;
+	}
 
-    // iv:
-    public String getIv(){
-        return this.iv;
-    }
-    public void setIv(String iv){
-        this.iv = iv;
-    }
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
 
-    // owner:
-    public String getOwner(){
-        return this.owner;
-    }
-    public void setOwner(String owner){
-        this.owner = owner;
-    }
+	// iv:
+	public String getIv(){
+		return this.iv;
+	}
+	public void setIv(String iv){
+		this.iv = iv;
+	}
 
-    // portal:
-    public String getPortal(){
-        return this.portal;
-    }
-    public void setPortal(String portal){
-        this.portal = portal;
-    }
+	public void iv(String multirequestToken){
+		setToken("iv", multirequestToken);
+	}
 
-    // maxGop:
-    public Integer getMaxGop(){
-        return this.maxGop;
-    }
-    public void setMaxGop(Integer maxGop){
-        this.maxGop = maxGop;
-    }
+	// owner:
+	public String getOwner(){
+		return this.owner;
+	}
+	public void setOwner(String owner){
+		this.owner = owner;
+	}
 
-    // regServerHost:
-    public String getRegServerHost(){
-        return this.regServerHost;
-    }
-    public void setRegServerHost(String regServerHost){
-        this.regServerHost = regServerHost;
-    }
+	public void owner(String multirequestToken){
+		setToken("owner", multirequestToken);
+	}
+
+	// portal:
+	public String getPortal(){
+		return this.portal;
+	}
+	public void setPortal(String portal){
+		this.portal = portal;
+	}
+
+	public void portal(String multirequestToken){
+		setToken("portal", multirequestToken);
+	}
+
+	// maxGop:
+	public Integer getMaxGop(){
+		return this.maxGop;
+	}
+	public void setMaxGop(Integer maxGop){
+		this.maxGop = maxGop;
+	}
+
+	public void maxGop(String multirequestToken){
+		setToken("maxGop", multirequestToken);
+	}
+
+	// regServerHost:
+	public String getRegServerHost(){
+		return this.regServerHost;
+	}
+	public void setRegServerHost(String regServerHost){
+		this.regServerHost = regServerHost;
+	}
+
+	public void regServerHost(String multirequestToken){
+		setToken("regServerHost", multirequestToken);
+	}
 
 
-    public WidevineProfile() {
-       super();
-    }
+	public WidevineProfile() {
+		super();
+	}
 
-    public WidevineProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public WidevineProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        key = GsonParser.parseString(jsonObject.get("key"));
-        iv = GsonParser.parseString(jsonObject.get("iv"));
-        owner = GsonParser.parseString(jsonObject.get("owner"));
-        portal = GsonParser.parseString(jsonObject.get("portal"));
-        maxGop = GsonParser.parseInt(jsonObject.get("maxGop"));
-        regServerHost = GsonParser.parseString(jsonObject.get("regServerHost"));
+		// set members values:
+		key = GsonParser.parseString(jsonObject.get("key"));
+		iv = GsonParser.parseString(jsonObject.get("iv"));
+		owner = GsonParser.parseString(jsonObject.get("owner"));
+		portal = GsonParser.parseString(jsonObject.get("portal"));
+		maxGop = GsonParser.parseInt(jsonObject.get("maxGop"));
+		regServerHost = GsonParser.parseString(jsonObject.get("regServerHost"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaWidevineProfile");
-        kparams.add("key", this.key);
-        kparams.add("iv", this.iv);
-        kparams.add("owner", this.owner);
-        kparams.add("portal", this.portal);
-        kparams.add("maxGop", this.maxGop);
-        kparams.add("regServerHost", this.regServerHost);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaWidevineProfile");
+		kparams.add("key", this.key);
+		kparams.add("iv", this.iv);
+		kparams.add("owner", this.owner);
+		kparams.add("portal", this.portal);
+		kparams.add("maxGop", this.maxGop);
+		kparams.add("regServerHost", this.regServerHost);
+		return kparams;
+	}
 
 }
 

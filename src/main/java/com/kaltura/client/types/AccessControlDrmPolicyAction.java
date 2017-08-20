@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +40,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AccessControlDrmPolicyAction.Tokenizer.class)
 public class AccessControlDrmPolicyAction extends RuleAction {
+	
+	public interface Tokenizer extends RuleAction.Tokenizer {
+		String policyId();
+	}
 
 	/**  Drm policy id  */
-    private Integer policyId;
+	private Integer policyId;
 
-    // policyId:
-    public Integer getPolicyId(){
-        return this.policyId;
-    }
-    public void setPolicyId(Integer policyId){
-        this.policyId = policyId;
-    }
+	// policyId:
+	public Integer getPolicyId(){
+		return this.policyId;
+	}
+	public void setPolicyId(Integer policyId){
+		this.policyId = policyId;
+	}
+
+	public void policyId(String multirequestToken){
+		setToken("policyId", multirequestToken);
+	}
 
 
-    public AccessControlDrmPolicyAction() {
-       super();
-    }
+	public AccessControlDrmPolicyAction() {
+		super();
+	}
 
-    public AccessControlDrmPolicyAction(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AccessControlDrmPolicyAction(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        policyId = GsonParser.parseInt(jsonObject.get("policyId"));
+		// set members values:
+		policyId = GsonParser.parseInt(jsonObject.get("policyId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAccessControlDrmPolicyAction");
-        kparams.add("policyId", this.policyId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAccessControlDrmPolicyAction");
+		kparams.add("policyId", this.policyId);
+		return kparams;
+	}
 
 }
 

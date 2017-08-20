@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,39 +40,48 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ForensicWatermarkAdvancedFilter.Tokenizer.class)
 public class ForensicWatermarkAdvancedFilter extends SearchItem {
+	
+	public interface Tokenizer extends SearchItem.Tokenizer {
+		String watermarkId();
+	}
 
-    private Integer watermarkId;
+	private Integer watermarkId;
 
-    // watermarkId:
-    public Integer getWatermarkId(){
-        return this.watermarkId;
-    }
-    public void setWatermarkId(Integer watermarkId){
-        this.watermarkId = watermarkId;
-    }
+	// watermarkId:
+	public Integer getWatermarkId(){
+		return this.watermarkId;
+	}
+	public void setWatermarkId(Integer watermarkId){
+		this.watermarkId = watermarkId;
+	}
+
+	public void watermarkId(String multirequestToken){
+		setToken("watermarkId", multirequestToken);
+	}
 
 
-    public ForensicWatermarkAdvancedFilter() {
-       super();
-    }
+	public ForensicWatermarkAdvancedFilter() {
+		super();
+	}
 
-    public ForensicWatermarkAdvancedFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public ForensicWatermarkAdvancedFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        watermarkId = GsonParser.parseInt(jsonObject.get("watermarkId"));
+		// set members values:
+		watermarkId = GsonParser.parseInt(jsonObject.get("watermarkId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaForensicWatermarkAdvancedFilter");
-        kparams.add("watermarkId", this.watermarkId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaForensicWatermarkAdvancedFilter");
+		kparams.add("watermarkId", this.watermarkId);
+		return kparams;
+	}
 
 }
 

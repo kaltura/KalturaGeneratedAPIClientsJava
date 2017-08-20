@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,40 +40,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UrlTokenizerUplynk.Tokenizer.class)
 public class UrlTokenizerUplynk extends UrlTokenizer {
+	
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String accountId();
+	}
 
 	/**  accountId  */
-    private String accountId;
+	private String accountId;
 
-    // accountId:
-    public String getAccountId(){
-        return this.accountId;
-    }
-    public void setAccountId(String accountId){
-        this.accountId = accountId;
-    }
+	// accountId:
+	public String getAccountId(){
+		return this.accountId;
+	}
+	public void setAccountId(String accountId){
+		this.accountId = accountId;
+	}
+
+	public void accountId(String multirequestToken){
+		setToken("accountId", multirequestToken);
+	}
 
 
-    public UrlTokenizerUplynk() {
-       super();
-    }
+	public UrlTokenizerUplynk() {
+		super();
+	}
 
-    public UrlTokenizerUplynk(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UrlTokenizerUplynk(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        accountId = GsonParser.parseString(jsonObject.get("accountId"));
+		// set members values:
+		accountId = GsonParser.parseString(jsonObject.get("accountId"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUrlTokenizerUplynk");
-        kparams.add("accountId", this.accountId);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUrlTokenizerUplynk");
+		kparams.add("accountId", this.accountId);
+		return kparams;
+	}
 
 }
 

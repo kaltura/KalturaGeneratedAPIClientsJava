@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.request.RequestBuilder;
 import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
@@ -40,12 +38,25 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**  Synacor HBO Service  */
 public class SynacorHboService {
+	
+	public static class GetFeedSynacorHboBuilder extends ServeRequestBuilder {
+		
+		public GetFeedSynacorHboBuilder(int distributionProfileId, String hash) {
+			super("synacorhbodistribution_synacorhbo", "getFeed");
+			params.add("distributionProfileId", distributionProfileId);
+			params.add("hash", hash);
+		}
+		
+		public void distributionProfileId(String multirequestToken) {
+			params.add("distributionProfileId", multirequestToken);
+		}
+		
+		public void hash(String multirequestToken) {
+			params.add("hash", multirequestToken);
+		}
+	}
 
-    public static RequestBuilder<String> getFeed(int distributionProfileId, String hash)  {
-        Params kparams = new Params();
-        kparams.add("distributionProfileId", distributionProfileId);
-        kparams.add("hash", hash);
-
-        return new ServeRequestBuilder("synacorhbodistribution_synacorhbo", "getFeed", kparams);
-    }
+    public static GetFeedSynacorHboBuilder getFeed(int distributionProfileId, String hash)  {
+		return new GetFeedSynacorHboBuilder(distributionProfileId, hash);
+	}
 }

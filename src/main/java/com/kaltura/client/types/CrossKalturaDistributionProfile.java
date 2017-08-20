@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,226 +42,288 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(CrossKalturaDistributionProfile.Tokenizer.class)
 public class CrossKalturaDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String targetServiceUrl();
+		String targetAccountId();
+		String targetLoginId();
+		String targetLoginPassword();
+		String metadataXslt();
+		RequestBuilder.ListTokenizer<StringValue.Tokenizer> metadataXpathsTriggerUpdate();
+		String distributeCaptions();
+		String distributeCuePoints();
+		String distributeRemoteFlavorAssetContent();
+		String distributeRemoteThumbAssetContent();
+		String distributeRemoteCaptionAssetContent();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapAccessControlProfileIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapConversionProfileIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapMetadataProfileIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapStorageProfileIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapFlavorParamsIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapThumbParamsIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapCaptionParamsIds();
+	}
 
-    private String targetServiceUrl;
-    private Integer targetAccountId;
-    private String targetLoginId;
-    private String targetLoginPassword;
-    private String metadataXslt;
-    private List<StringValue> metadataXpathsTriggerUpdate;
-    private Boolean distributeCaptions;
-    private Boolean distributeCuePoints;
-    private Boolean distributeRemoteFlavorAssetContent;
-    private Boolean distributeRemoteThumbAssetContent;
-    private Boolean distributeRemoteCaptionAssetContent;
-    private List<KeyValue> mapAccessControlProfileIds;
-    private List<KeyValue> mapConversionProfileIds;
-    private List<KeyValue> mapMetadataProfileIds;
-    private List<KeyValue> mapStorageProfileIds;
-    private List<KeyValue> mapFlavorParamsIds;
-    private List<KeyValue> mapThumbParamsIds;
-    private List<KeyValue> mapCaptionParamsIds;
+	private String targetServiceUrl;
+	private Integer targetAccountId;
+	private String targetLoginId;
+	private String targetLoginPassword;
+	private String metadataXslt;
+	private List<StringValue> metadataXpathsTriggerUpdate;
+	private Boolean distributeCaptions;
+	private Boolean distributeCuePoints;
+	private Boolean distributeRemoteFlavorAssetContent;
+	private Boolean distributeRemoteThumbAssetContent;
+	private Boolean distributeRemoteCaptionAssetContent;
+	private List<KeyValue> mapAccessControlProfileIds;
+	private List<KeyValue> mapConversionProfileIds;
+	private List<KeyValue> mapMetadataProfileIds;
+	private List<KeyValue> mapStorageProfileIds;
+	private List<KeyValue> mapFlavorParamsIds;
+	private List<KeyValue> mapThumbParamsIds;
+	private List<KeyValue> mapCaptionParamsIds;
 
-    // targetServiceUrl:
-    public String getTargetServiceUrl(){
-        return this.targetServiceUrl;
-    }
-    public void setTargetServiceUrl(String targetServiceUrl){
-        this.targetServiceUrl = targetServiceUrl;
-    }
+	// targetServiceUrl:
+	public String getTargetServiceUrl(){
+		return this.targetServiceUrl;
+	}
+	public void setTargetServiceUrl(String targetServiceUrl){
+		this.targetServiceUrl = targetServiceUrl;
+	}
 
-    // targetAccountId:
-    public Integer getTargetAccountId(){
-        return this.targetAccountId;
-    }
-    public void setTargetAccountId(Integer targetAccountId){
-        this.targetAccountId = targetAccountId;
-    }
+	public void targetServiceUrl(String multirequestToken){
+		setToken("targetServiceUrl", multirequestToken);
+	}
 
-    // targetLoginId:
-    public String getTargetLoginId(){
-        return this.targetLoginId;
-    }
-    public void setTargetLoginId(String targetLoginId){
-        this.targetLoginId = targetLoginId;
-    }
+	// targetAccountId:
+	public Integer getTargetAccountId(){
+		return this.targetAccountId;
+	}
+	public void setTargetAccountId(Integer targetAccountId){
+		this.targetAccountId = targetAccountId;
+	}
 
-    // targetLoginPassword:
-    public String getTargetLoginPassword(){
-        return this.targetLoginPassword;
-    }
-    public void setTargetLoginPassword(String targetLoginPassword){
-        this.targetLoginPassword = targetLoginPassword;
-    }
+	public void targetAccountId(String multirequestToken){
+		setToken("targetAccountId", multirequestToken);
+	}
 
-    // metadataXslt:
-    public String getMetadataXslt(){
-        return this.metadataXslt;
-    }
-    public void setMetadataXslt(String metadataXslt){
-        this.metadataXslt = metadataXslt;
-    }
+	// targetLoginId:
+	public String getTargetLoginId(){
+		return this.targetLoginId;
+	}
+	public void setTargetLoginId(String targetLoginId){
+		this.targetLoginId = targetLoginId;
+	}
 
-    // metadataXpathsTriggerUpdate:
-    public List<StringValue> getMetadataXpathsTriggerUpdate(){
-        return this.metadataXpathsTriggerUpdate;
-    }
-    public void setMetadataXpathsTriggerUpdate(List<StringValue> metadataXpathsTriggerUpdate){
-        this.metadataXpathsTriggerUpdate = metadataXpathsTriggerUpdate;
-    }
+	public void targetLoginId(String multirequestToken){
+		setToken("targetLoginId", multirequestToken);
+	}
 
-    // distributeCaptions:
-    public Boolean getDistributeCaptions(){
-        return this.distributeCaptions;
-    }
-    public void setDistributeCaptions(Boolean distributeCaptions){
-        this.distributeCaptions = distributeCaptions;
-    }
+	// targetLoginPassword:
+	public String getTargetLoginPassword(){
+		return this.targetLoginPassword;
+	}
+	public void setTargetLoginPassword(String targetLoginPassword){
+		this.targetLoginPassword = targetLoginPassword;
+	}
 
-    // distributeCuePoints:
-    public Boolean getDistributeCuePoints(){
-        return this.distributeCuePoints;
-    }
-    public void setDistributeCuePoints(Boolean distributeCuePoints){
-        this.distributeCuePoints = distributeCuePoints;
-    }
+	public void targetLoginPassword(String multirequestToken){
+		setToken("targetLoginPassword", multirequestToken);
+	}
 
-    // distributeRemoteFlavorAssetContent:
-    public Boolean getDistributeRemoteFlavorAssetContent(){
-        return this.distributeRemoteFlavorAssetContent;
-    }
-    public void setDistributeRemoteFlavorAssetContent(Boolean distributeRemoteFlavorAssetContent){
-        this.distributeRemoteFlavorAssetContent = distributeRemoteFlavorAssetContent;
-    }
+	// metadataXslt:
+	public String getMetadataXslt(){
+		return this.metadataXslt;
+	}
+	public void setMetadataXslt(String metadataXslt){
+		this.metadataXslt = metadataXslt;
+	}
 
-    // distributeRemoteThumbAssetContent:
-    public Boolean getDistributeRemoteThumbAssetContent(){
-        return this.distributeRemoteThumbAssetContent;
-    }
-    public void setDistributeRemoteThumbAssetContent(Boolean distributeRemoteThumbAssetContent){
-        this.distributeRemoteThumbAssetContent = distributeRemoteThumbAssetContent;
-    }
+	public void metadataXslt(String multirequestToken){
+		setToken("metadataXslt", multirequestToken);
+	}
 
-    // distributeRemoteCaptionAssetContent:
-    public Boolean getDistributeRemoteCaptionAssetContent(){
-        return this.distributeRemoteCaptionAssetContent;
-    }
-    public void setDistributeRemoteCaptionAssetContent(Boolean distributeRemoteCaptionAssetContent){
-        this.distributeRemoteCaptionAssetContent = distributeRemoteCaptionAssetContent;
-    }
+	// metadataXpathsTriggerUpdate:
+	public List<StringValue> getMetadataXpathsTriggerUpdate(){
+		return this.metadataXpathsTriggerUpdate;
+	}
+	public void setMetadataXpathsTriggerUpdate(List<StringValue> metadataXpathsTriggerUpdate){
+		this.metadataXpathsTriggerUpdate = metadataXpathsTriggerUpdate;
+	}
 
-    // mapAccessControlProfileIds:
-    public List<KeyValue> getMapAccessControlProfileIds(){
-        return this.mapAccessControlProfileIds;
-    }
-    public void setMapAccessControlProfileIds(List<KeyValue> mapAccessControlProfileIds){
-        this.mapAccessControlProfileIds = mapAccessControlProfileIds;
-    }
+	// distributeCaptions:
+	public Boolean getDistributeCaptions(){
+		return this.distributeCaptions;
+	}
+	public void setDistributeCaptions(Boolean distributeCaptions){
+		this.distributeCaptions = distributeCaptions;
+	}
 
-    // mapConversionProfileIds:
-    public List<KeyValue> getMapConversionProfileIds(){
-        return this.mapConversionProfileIds;
-    }
-    public void setMapConversionProfileIds(List<KeyValue> mapConversionProfileIds){
-        this.mapConversionProfileIds = mapConversionProfileIds;
-    }
+	public void distributeCaptions(String multirequestToken){
+		setToken("distributeCaptions", multirequestToken);
+	}
 
-    // mapMetadataProfileIds:
-    public List<KeyValue> getMapMetadataProfileIds(){
-        return this.mapMetadataProfileIds;
-    }
-    public void setMapMetadataProfileIds(List<KeyValue> mapMetadataProfileIds){
-        this.mapMetadataProfileIds = mapMetadataProfileIds;
-    }
+	// distributeCuePoints:
+	public Boolean getDistributeCuePoints(){
+		return this.distributeCuePoints;
+	}
+	public void setDistributeCuePoints(Boolean distributeCuePoints){
+		this.distributeCuePoints = distributeCuePoints;
+	}
 
-    // mapStorageProfileIds:
-    public List<KeyValue> getMapStorageProfileIds(){
-        return this.mapStorageProfileIds;
-    }
-    public void setMapStorageProfileIds(List<KeyValue> mapStorageProfileIds){
-        this.mapStorageProfileIds = mapStorageProfileIds;
-    }
+	public void distributeCuePoints(String multirequestToken){
+		setToken("distributeCuePoints", multirequestToken);
+	}
 
-    // mapFlavorParamsIds:
-    public List<KeyValue> getMapFlavorParamsIds(){
-        return this.mapFlavorParamsIds;
-    }
-    public void setMapFlavorParamsIds(List<KeyValue> mapFlavorParamsIds){
-        this.mapFlavorParamsIds = mapFlavorParamsIds;
-    }
+	// distributeRemoteFlavorAssetContent:
+	public Boolean getDistributeRemoteFlavorAssetContent(){
+		return this.distributeRemoteFlavorAssetContent;
+	}
+	public void setDistributeRemoteFlavorAssetContent(Boolean distributeRemoteFlavorAssetContent){
+		this.distributeRemoteFlavorAssetContent = distributeRemoteFlavorAssetContent;
+	}
 
-    // mapThumbParamsIds:
-    public List<KeyValue> getMapThumbParamsIds(){
-        return this.mapThumbParamsIds;
-    }
-    public void setMapThumbParamsIds(List<KeyValue> mapThumbParamsIds){
-        this.mapThumbParamsIds = mapThumbParamsIds;
-    }
+	public void distributeRemoteFlavorAssetContent(String multirequestToken){
+		setToken("distributeRemoteFlavorAssetContent", multirequestToken);
+	}
 
-    // mapCaptionParamsIds:
-    public List<KeyValue> getMapCaptionParamsIds(){
-        return this.mapCaptionParamsIds;
-    }
-    public void setMapCaptionParamsIds(List<KeyValue> mapCaptionParamsIds){
-        this.mapCaptionParamsIds = mapCaptionParamsIds;
-    }
+	// distributeRemoteThumbAssetContent:
+	public Boolean getDistributeRemoteThumbAssetContent(){
+		return this.distributeRemoteThumbAssetContent;
+	}
+	public void setDistributeRemoteThumbAssetContent(Boolean distributeRemoteThumbAssetContent){
+		this.distributeRemoteThumbAssetContent = distributeRemoteThumbAssetContent;
+	}
+
+	public void distributeRemoteThumbAssetContent(String multirequestToken){
+		setToken("distributeRemoteThumbAssetContent", multirequestToken);
+	}
+
+	// distributeRemoteCaptionAssetContent:
+	public Boolean getDistributeRemoteCaptionAssetContent(){
+		return this.distributeRemoteCaptionAssetContent;
+	}
+	public void setDistributeRemoteCaptionAssetContent(Boolean distributeRemoteCaptionAssetContent){
+		this.distributeRemoteCaptionAssetContent = distributeRemoteCaptionAssetContent;
+	}
+
+	public void distributeRemoteCaptionAssetContent(String multirequestToken){
+		setToken("distributeRemoteCaptionAssetContent", multirequestToken);
+	}
+
+	// mapAccessControlProfileIds:
+	public List<KeyValue> getMapAccessControlProfileIds(){
+		return this.mapAccessControlProfileIds;
+	}
+	public void setMapAccessControlProfileIds(List<KeyValue> mapAccessControlProfileIds){
+		this.mapAccessControlProfileIds = mapAccessControlProfileIds;
+	}
+
+	// mapConversionProfileIds:
+	public List<KeyValue> getMapConversionProfileIds(){
+		return this.mapConversionProfileIds;
+	}
+	public void setMapConversionProfileIds(List<KeyValue> mapConversionProfileIds){
+		this.mapConversionProfileIds = mapConversionProfileIds;
+	}
+
+	// mapMetadataProfileIds:
+	public List<KeyValue> getMapMetadataProfileIds(){
+		return this.mapMetadataProfileIds;
+	}
+	public void setMapMetadataProfileIds(List<KeyValue> mapMetadataProfileIds){
+		this.mapMetadataProfileIds = mapMetadataProfileIds;
+	}
+
+	// mapStorageProfileIds:
+	public List<KeyValue> getMapStorageProfileIds(){
+		return this.mapStorageProfileIds;
+	}
+	public void setMapStorageProfileIds(List<KeyValue> mapStorageProfileIds){
+		this.mapStorageProfileIds = mapStorageProfileIds;
+	}
+
+	// mapFlavorParamsIds:
+	public List<KeyValue> getMapFlavorParamsIds(){
+		return this.mapFlavorParamsIds;
+	}
+	public void setMapFlavorParamsIds(List<KeyValue> mapFlavorParamsIds){
+		this.mapFlavorParamsIds = mapFlavorParamsIds;
+	}
+
+	// mapThumbParamsIds:
+	public List<KeyValue> getMapThumbParamsIds(){
+		return this.mapThumbParamsIds;
+	}
+	public void setMapThumbParamsIds(List<KeyValue> mapThumbParamsIds){
+		this.mapThumbParamsIds = mapThumbParamsIds;
+	}
+
+	// mapCaptionParamsIds:
+	public List<KeyValue> getMapCaptionParamsIds(){
+		return this.mapCaptionParamsIds;
+	}
+	public void setMapCaptionParamsIds(List<KeyValue> mapCaptionParamsIds){
+		this.mapCaptionParamsIds = mapCaptionParamsIds;
+	}
 
 
-    public CrossKalturaDistributionProfile() {
-       super();
-    }
+	public CrossKalturaDistributionProfile() {
+		super();
+	}
 
-    public CrossKalturaDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public CrossKalturaDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        targetServiceUrl = GsonParser.parseString(jsonObject.get("targetServiceUrl"));
-        targetAccountId = GsonParser.parseInt(jsonObject.get("targetAccountId"));
-        targetLoginId = GsonParser.parseString(jsonObject.get("targetLoginId"));
-        targetLoginPassword = GsonParser.parseString(jsonObject.get("targetLoginPassword"));
-        metadataXslt = GsonParser.parseString(jsonObject.get("metadataXslt"));
-        metadataXpathsTriggerUpdate = GsonParser.parseArray(jsonObject.getAsJsonArray("metadataXpathsTriggerUpdate"), StringValue.class);
-        distributeCaptions = GsonParser.parseBoolean(jsonObject.get("distributeCaptions"));
-        distributeCuePoints = GsonParser.parseBoolean(jsonObject.get("distributeCuePoints"));
-        distributeRemoteFlavorAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteFlavorAssetContent"));
-        distributeRemoteThumbAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteThumbAssetContent"));
-        distributeRemoteCaptionAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteCaptionAssetContent"));
-        mapAccessControlProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapAccessControlProfileIds"), KeyValue.class);
-        mapConversionProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapConversionProfileIds"), KeyValue.class);
-        mapMetadataProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapMetadataProfileIds"), KeyValue.class);
-        mapStorageProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapStorageProfileIds"), KeyValue.class);
-        mapFlavorParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapFlavorParamsIds"), KeyValue.class);
-        mapThumbParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapThumbParamsIds"), KeyValue.class);
-        mapCaptionParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapCaptionParamsIds"), KeyValue.class);
+		// set members values:
+		targetServiceUrl = GsonParser.parseString(jsonObject.get("targetServiceUrl"));
+		targetAccountId = GsonParser.parseInt(jsonObject.get("targetAccountId"));
+		targetLoginId = GsonParser.parseString(jsonObject.get("targetLoginId"));
+		targetLoginPassword = GsonParser.parseString(jsonObject.get("targetLoginPassword"));
+		metadataXslt = GsonParser.parseString(jsonObject.get("metadataXslt"));
+		metadataXpathsTriggerUpdate = GsonParser.parseArray(jsonObject.getAsJsonArray("metadataXpathsTriggerUpdate"), StringValue.class);
+		distributeCaptions = GsonParser.parseBoolean(jsonObject.get("distributeCaptions"));
+		distributeCuePoints = GsonParser.parseBoolean(jsonObject.get("distributeCuePoints"));
+		distributeRemoteFlavorAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteFlavorAssetContent"));
+		distributeRemoteThumbAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteThumbAssetContent"));
+		distributeRemoteCaptionAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteCaptionAssetContent"));
+		mapAccessControlProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapAccessControlProfileIds"), KeyValue.class);
+		mapConversionProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapConversionProfileIds"), KeyValue.class);
+		mapMetadataProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapMetadataProfileIds"), KeyValue.class);
+		mapStorageProfileIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapStorageProfileIds"), KeyValue.class);
+		mapFlavorParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapFlavorParamsIds"), KeyValue.class);
+		mapThumbParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapThumbParamsIds"), KeyValue.class);
+		mapCaptionParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapCaptionParamsIds"), KeyValue.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaCrossKalturaDistributionProfile");
-        kparams.add("targetServiceUrl", this.targetServiceUrl);
-        kparams.add("targetAccountId", this.targetAccountId);
-        kparams.add("targetLoginId", this.targetLoginId);
-        kparams.add("targetLoginPassword", this.targetLoginPassword);
-        kparams.add("metadataXslt", this.metadataXslt);
-        kparams.add("metadataXpathsTriggerUpdate", this.metadataXpathsTriggerUpdate);
-        kparams.add("distributeCaptions", this.distributeCaptions);
-        kparams.add("distributeCuePoints", this.distributeCuePoints);
-        kparams.add("distributeRemoteFlavorAssetContent", this.distributeRemoteFlavorAssetContent);
-        kparams.add("distributeRemoteThumbAssetContent", this.distributeRemoteThumbAssetContent);
-        kparams.add("distributeRemoteCaptionAssetContent", this.distributeRemoteCaptionAssetContent);
-        kparams.add("mapAccessControlProfileIds", this.mapAccessControlProfileIds);
-        kparams.add("mapConversionProfileIds", this.mapConversionProfileIds);
-        kparams.add("mapMetadataProfileIds", this.mapMetadataProfileIds);
-        kparams.add("mapStorageProfileIds", this.mapStorageProfileIds);
-        kparams.add("mapFlavorParamsIds", this.mapFlavorParamsIds);
-        kparams.add("mapThumbParamsIds", this.mapThumbParamsIds);
-        kparams.add("mapCaptionParamsIds", this.mapCaptionParamsIds);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaCrossKalturaDistributionProfile");
+		kparams.add("targetServiceUrl", this.targetServiceUrl);
+		kparams.add("targetAccountId", this.targetAccountId);
+		kparams.add("targetLoginId", this.targetLoginId);
+		kparams.add("targetLoginPassword", this.targetLoginPassword);
+		kparams.add("metadataXslt", this.metadataXslt);
+		kparams.add("metadataXpathsTriggerUpdate", this.metadataXpathsTriggerUpdate);
+		kparams.add("distributeCaptions", this.distributeCaptions);
+		kparams.add("distributeCuePoints", this.distributeCuePoints);
+		kparams.add("distributeRemoteFlavorAssetContent", this.distributeRemoteFlavorAssetContent);
+		kparams.add("distributeRemoteThumbAssetContent", this.distributeRemoteThumbAssetContent);
+		kparams.add("distributeRemoteCaptionAssetContent", this.distributeRemoteCaptionAssetContent);
+		kparams.add("mapAccessControlProfileIds", this.mapAccessControlProfileIds);
+		kparams.add("mapConversionProfileIds", this.mapConversionProfileIds);
+		kparams.add("mapMetadataProfileIds", this.mapMetadataProfileIds);
+		kparams.add("mapStorageProfileIds", this.mapStorageProfileIds);
+		kparams.add("mapFlavorParamsIds", this.mapFlavorParamsIds);
+		kparams.add("mapThumbParamsIds", this.mapThumbParamsIds);
+		kparams.add("mapCaptionParamsIds", this.mapCaptionParamsIds);
+		return kparams;
+	}
 
 }
 

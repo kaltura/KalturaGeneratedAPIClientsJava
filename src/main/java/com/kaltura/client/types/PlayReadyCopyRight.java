@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,50 +42,60 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyCopyRight.Tokenizer.class)
 public class PlayReadyCopyRight extends PlayReadyRight {
+	
+	public interface Tokenizer extends PlayReadyRight.Tokenizer {
+		String copyCount();
+		RequestBuilder.ListTokenizer<PlayReadyCopyEnablerHolder.Tokenizer> copyEnablers();
+	}
 
-    private Integer copyCount;
-    private List<PlayReadyCopyEnablerHolder> copyEnablers;
+	private Integer copyCount;
+	private List<PlayReadyCopyEnablerHolder> copyEnablers;
 
-    // copyCount:
-    public Integer getCopyCount(){
-        return this.copyCount;
-    }
-    public void setCopyCount(Integer copyCount){
-        this.copyCount = copyCount;
-    }
+	// copyCount:
+	public Integer getCopyCount(){
+		return this.copyCount;
+	}
+	public void setCopyCount(Integer copyCount){
+		this.copyCount = copyCount;
+	}
 
-    // copyEnablers:
-    public List<PlayReadyCopyEnablerHolder> getCopyEnablers(){
-        return this.copyEnablers;
-    }
-    public void setCopyEnablers(List<PlayReadyCopyEnablerHolder> copyEnablers){
-        this.copyEnablers = copyEnablers;
-    }
+	public void copyCount(String multirequestToken){
+		setToken("copyCount", multirequestToken);
+	}
+
+	// copyEnablers:
+	public List<PlayReadyCopyEnablerHolder> getCopyEnablers(){
+		return this.copyEnablers;
+	}
+	public void setCopyEnablers(List<PlayReadyCopyEnablerHolder> copyEnablers){
+		this.copyEnablers = copyEnablers;
+	}
 
 
-    public PlayReadyCopyRight() {
-       super();
-    }
+	public PlayReadyCopyRight() {
+		super();
+	}
 
-    public PlayReadyCopyRight(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyCopyRight(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        copyCount = GsonParser.parseInt(jsonObject.get("copyCount"));
-        copyEnablers = GsonParser.parseArray(jsonObject.getAsJsonArray("copyEnablers"), PlayReadyCopyEnablerHolder.class);
+		// set members values:
+		copyCount = GsonParser.parseInt(jsonObject.get("copyCount"));
+		copyEnablers = GsonParser.parseArray(jsonObject.getAsJsonArray("copyEnablers"), PlayReadyCopyEnablerHolder.class);
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyCopyRight");
-        kparams.add("copyCount", this.copyCount);
-        kparams.add("copyEnablers", this.copyEnablers);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyCopyRight");
+		kparams.add("copyCount", this.copyCount);
+		kparams.add("copyEnablers", this.copyEnablers);
+		return kparams;
+	}
 
 }
 

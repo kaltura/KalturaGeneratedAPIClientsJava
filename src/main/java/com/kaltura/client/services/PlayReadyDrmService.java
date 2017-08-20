@@ -27,12 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.PlayReadyContentKey;
 import com.kaltura.client.types.PlayReadyLicenseDetails;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -42,52 +40,104 @@ import java.util.List;
  */
 
 public class PlayReadyDrmService {
+	
+	public static class GenerateKeyPlayReadyDrmBuilder extends RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.Tokenizer, GenerateKeyPlayReadyDrmBuilder> {
+		
+		public GenerateKeyPlayReadyDrmBuilder() {
+			super(PlayReadyContentKey.class, "playready_playreadydrm", "generateKey");
+		}
+	}
 
 	/**  Generate key id and content key for PlayReady encryption  */
-    public static RequestBuilder<PlayReadyContentKey> generateKey()  {
-        Params kparams = new Params();
-
-        return new RequestBuilder<PlayReadyContentKey>(PlayReadyContentKey.class, "playready_playreadydrm", "generateKey", kparams);
-    }
+    public static GenerateKeyPlayReadyDrmBuilder generateKey()  {
+		return new GenerateKeyPlayReadyDrmBuilder();
+	}
+	
+	public static class GetContentKeysPlayReadyDrmBuilder extends ArrayRequestBuilder<PlayReadyContentKey, PlayReadyContentKey.Tokenizer, GetContentKeysPlayReadyDrmBuilder> {
+		
+		public GetContentKeysPlayReadyDrmBuilder(String keyIds) {
+			super(PlayReadyContentKey.class, "playready_playreadydrm", "getContentKeys");
+			params.add("keyIds", keyIds);
+		}
+		
+		public void keyIds(String multirequestToken) {
+			params.add("keyIds", multirequestToken);
+		}
+	}
 
 	/**  Get content keys for input key ids  */
-    public static RequestBuilder<List<PlayReadyContentKey>> getContentKeys(String keyIds)  {
-        Params kparams = new Params();
-        kparams.add("keyIds", keyIds);
+    public static GetContentKeysPlayReadyDrmBuilder getContentKeys(String keyIds)  {
+		return new GetContentKeysPlayReadyDrmBuilder(keyIds);
+	}
+	
+	public static class GetEntryContentKeyPlayReadyDrmBuilder extends RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.Tokenizer, GetEntryContentKeyPlayReadyDrmBuilder> {
+		
+		public GetEntryContentKeyPlayReadyDrmBuilder(String entryId, boolean createIfMissing) {
+			super(PlayReadyContentKey.class, "playready_playreadydrm", "getEntryContentKey");
+			params.add("entryId", entryId);
+			params.add("createIfMissing", createIfMissing);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void createIfMissing(String multirequestToken) {
+			params.add("createIfMissing", multirequestToken);
+		}
+	}
 
-        return new ArrayRequestBuilder<PlayReadyContentKey>(PlayReadyContentKey.class, "playready_playreadydrm", "getContentKeys", kparams);
-    }
-
-    public static RequestBuilder<PlayReadyContentKey> getEntryContentKey(String entryId)  {
-        return getEntryContentKey(entryId, false);
-    }
+	public static GetEntryContentKeyPlayReadyDrmBuilder getEntryContentKey(String entryId)  {
+		return getEntryContentKey(entryId, false);
+	}
 
 	/**  Get content key and key id for the given entry  */
-    public static RequestBuilder<PlayReadyContentKey> getEntryContentKey(String entryId, boolean createIfMissing)  {
-        Params kparams = new Params();
-        kparams.add("entryId", entryId);
-        kparams.add("createIfMissing", createIfMissing);
+    public static GetEntryContentKeyPlayReadyDrmBuilder getEntryContentKey(String entryId, boolean createIfMissing)  {
+		return new GetEntryContentKeyPlayReadyDrmBuilder(entryId, createIfMissing);
+	}
+	
+	public static class GetLicenseDetailsPlayReadyDrmBuilder extends RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.Tokenizer, GetLicenseDetailsPlayReadyDrmBuilder> {
+		
+		public GetLicenseDetailsPlayReadyDrmBuilder(String keyId, String deviceId, int deviceType, String entryId, String referrer) {
+			super(PlayReadyLicenseDetails.class, "playready_playreadydrm", "getLicenseDetails");
+			params.add("keyId", keyId);
+			params.add("deviceId", deviceId);
+			params.add("deviceType", deviceType);
+			params.add("entryId", entryId);
+			params.add("referrer", referrer);
+		}
+		
+		public void keyId(String multirequestToken) {
+			params.add("keyId", multirequestToken);
+		}
+		
+		public void deviceId(String multirequestToken) {
+			params.add("deviceId", multirequestToken);
+		}
+		
+		public void deviceType(String multirequestToken) {
+			params.add("deviceType", multirequestToken);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void referrer(String multirequestToken) {
+			params.add("referrer", multirequestToken);
+		}
+	}
 
-        return new RequestBuilder<PlayReadyContentKey>(PlayReadyContentKey.class, "playready_playreadydrm", "getEntryContentKey", kparams);
-    }
+	public static GetLicenseDetailsPlayReadyDrmBuilder getLicenseDetails(String keyId, String deviceId, int deviceType)  {
+		return getLicenseDetails(keyId, deviceId, deviceType, null);
+	}
 
-    public static RequestBuilder<PlayReadyLicenseDetails> getLicenseDetails(String keyId, String deviceId, int deviceType)  {
-        return getLicenseDetails(keyId, deviceId, deviceType, null);
-    }
-
-    public static RequestBuilder<PlayReadyLicenseDetails> getLicenseDetails(String keyId, String deviceId, int deviceType, String entryId)  {
-        return getLicenseDetails(keyId, deviceId, deviceType, entryId, null);
-    }
+	public static GetLicenseDetailsPlayReadyDrmBuilder getLicenseDetails(String keyId, String deviceId, int deviceType, String entryId)  {
+		return getLicenseDetails(keyId, deviceId, deviceType, entryId, null);
+	}
 
 	/**  Get Play Ready policy and dates for license creation  */
-    public static RequestBuilder<PlayReadyLicenseDetails> getLicenseDetails(String keyId, String deviceId, int deviceType, String entryId, String referrer)  {
-        Params kparams = new Params();
-        kparams.add("keyId", keyId);
-        kparams.add("deviceId", deviceId);
-        kparams.add("deviceType", deviceType);
-        kparams.add("entryId", entryId);
-        kparams.add("referrer", referrer);
-
-        return new RequestBuilder<PlayReadyLicenseDetails>(PlayReadyLicenseDetails.class, "playready_playreadydrm", "getLicenseDetails", kparams);
-    }
+    public static GetLicenseDetailsPlayReadyDrmBuilder getLicenseDetails(String keyId, String deviceId, int deviceType, String entryId, String referrer)  {
+		return new GetLicenseDetailsPlayReadyDrmBuilder(keyId, deviceId, deviceType, entryId, referrer);
+	}
 }

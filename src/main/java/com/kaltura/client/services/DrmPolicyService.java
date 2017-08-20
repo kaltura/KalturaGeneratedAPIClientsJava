@@ -27,11 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
-import com.kaltura.client.Params;
 import com.kaltura.client.types.DrmPolicy;
 import com.kaltura.client.types.DrmPolicyFilter;
 import com.kaltura.client.types.FilterPager;
-import com.kaltura.client.types.ListResponse;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -43,54 +41,91 @@ import com.kaltura.client.utils.request.RequestBuilder;
  */
 
 public class DrmPolicyService {
+	
+	public static class AddDrmPolicyBuilder extends RequestBuilder<DrmPolicy, DrmPolicy.Tokenizer, AddDrmPolicyBuilder> {
+		
+		public AddDrmPolicyBuilder(DrmPolicy drmPolicy) {
+			super(DrmPolicy.class, "drm_drmpolicy", "add");
+			params.add("drmPolicy", drmPolicy);
+		}
+	}
 
 	/**  Allows you to add a new DrmPolicy object  */
-    public static RequestBuilder<DrmPolicy> add(DrmPolicy drmPolicy)  {
-        Params kparams = new Params();
-        kparams.add("drmPolicy", drmPolicy);
-
-        return new RequestBuilder<DrmPolicy>(DrmPolicy.class, "drm_drmpolicy", "add", kparams);
-    }
+    public static AddDrmPolicyBuilder add(DrmPolicy drmPolicy)  {
+		return new AddDrmPolicyBuilder(drmPolicy);
+	}
+	
+	public static class DeleteDrmPolicyBuilder extends RequestBuilder<DrmPolicy, DrmPolicy.Tokenizer, DeleteDrmPolicyBuilder> {
+		
+		public DeleteDrmPolicyBuilder(int drmPolicyId) {
+			super(DrmPolicy.class, "drm_drmpolicy", "delete");
+			params.add("drmPolicyId", drmPolicyId);
+		}
+		
+		public void drmPolicyId(String multirequestToken) {
+			params.add("drmPolicyId", multirequestToken);
+		}
+	}
 
 	/**  Mark the KalturaDrmPolicy object as deleted  */
-    public static RequestBuilder<DrmPolicy> delete(int drmPolicyId)  {
-        Params kparams = new Params();
-        kparams.add("drmPolicyId", drmPolicyId);
-
-        return new RequestBuilder<DrmPolicy>(DrmPolicy.class, "drm_drmpolicy", "delete", kparams);
-    }
+    public static DeleteDrmPolicyBuilder delete(int drmPolicyId)  {
+		return new DeleteDrmPolicyBuilder(drmPolicyId);
+	}
+	
+	public static class GetDrmPolicyBuilder extends RequestBuilder<DrmPolicy, DrmPolicy.Tokenizer, GetDrmPolicyBuilder> {
+		
+		public GetDrmPolicyBuilder(int drmPolicyId) {
+			super(DrmPolicy.class, "drm_drmpolicy", "get");
+			params.add("drmPolicyId", drmPolicyId);
+		}
+		
+		public void drmPolicyId(String multirequestToken) {
+			params.add("drmPolicyId", multirequestToken);
+		}
+	}
 
 	/**  Retrieve a KalturaDrmPolicy object by ID  */
-    public static RequestBuilder<DrmPolicy> get(int drmPolicyId)  {
-        Params kparams = new Params();
-        kparams.add("drmPolicyId", drmPolicyId);
+    public static GetDrmPolicyBuilder get(int drmPolicyId)  {
+		return new GetDrmPolicyBuilder(drmPolicyId);
+	}
+	
+	public static class ListDrmPolicyBuilder extends ListResponseRequestBuilder<DrmPolicy, DrmPolicy.Tokenizer, ListDrmPolicyBuilder> {
+		
+		public ListDrmPolicyBuilder(DrmPolicyFilter filter, FilterPager pager) {
+			super(DrmPolicy.class, "drm_drmpolicy", "list");
+			params.add("filter", filter);
+			params.add("pager", pager);
+		}
+	}
 
-        return new RequestBuilder<DrmPolicy>(DrmPolicy.class, "drm_drmpolicy", "get", kparams);
-    }
+	public static ListDrmPolicyBuilder list()  {
+		return list(null);
+	}
 
-    public static RequestBuilder<ListResponse<DrmPolicy>> list()  {
-        return list(null);
-    }
-
-    public static RequestBuilder<ListResponse<DrmPolicy>> list(DrmPolicyFilter filter)  {
-        return list(filter, null);
-    }
+	public static ListDrmPolicyBuilder list(DrmPolicyFilter filter)  {
+		return list(filter, null);
+	}
 
 	/**  List KalturaDrmPolicy objects  */
-    public static RequestBuilder<ListResponse<DrmPolicy>> list(DrmPolicyFilter filter, FilterPager pager)  {
-        Params kparams = new Params();
-        kparams.add("filter", filter);
-        kparams.add("pager", pager);
-
-        return new ListResponseRequestBuilder<DrmPolicy>(DrmPolicy.class, "drm_drmpolicy", "list", kparams);
-    }
+    public static ListDrmPolicyBuilder list(DrmPolicyFilter filter, FilterPager pager)  {
+		return new ListDrmPolicyBuilder(filter, pager);
+	}
+	
+	public static class UpdateDrmPolicyBuilder extends RequestBuilder<DrmPolicy, DrmPolicy.Tokenizer, UpdateDrmPolicyBuilder> {
+		
+		public UpdateDrmPolicyBuilder(int drmPolicyId, DrmPolicy drmPolicy) {
+			super(DrmPolicy.class, "drm_drmpolicy", "update");
+			params.add("drmPolicyId", drmPolicyId);
+			params.add("drmPolicy", drmPolicy);
+		}
+		
+		public void drmPolicyId(String multirequestToken) {
+			params.add("drmPolicyId", multirequestToken);
+		}
+	}
 
 	/**  Update an existing KalturaDrmPolicy object  */
-    public static RequestBuilder<DrmPolicy> update(int drmPolicyId, DrmPolicy drmPolicy)  {
-        Params kparams = new Params();
-        kparams.add("drmPolicyId", drmPolicyId);
-        kparams.add("drmPolicy", drmPolicy);
-
-        return new RequestBuilder<DrmPolicy>(DrmPolicy.class, "drm_drmpolicy", "update", kparams);
-    }
+    public static UpdateDrmPolicyBuilder update(int drmPolicyId, DrmPolicy drmPolicy)  {
+		return new UpdateDrmPolicyBuilder(drmPolicyId, drmPolicy);
+	}
 }

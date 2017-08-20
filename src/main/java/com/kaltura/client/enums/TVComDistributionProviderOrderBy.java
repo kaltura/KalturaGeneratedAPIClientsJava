@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,24 +34,24 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum TVComDistributionProviderOrderBy implements EnumAsString {
-    /** Place holder for future values */;
+	/** Place holder for future values */;
 
-    private String value;
+	private String value;
 
-    TVComDistributionProviderOrderBy(String value) {
-        this.value = value;
-    }
+	TVComDistributionProviderOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static TVComDistributionProviderOrderBy get(String value) {
-    	return null;
-    }
+	public static TVComDistributionProviderOrderBy get(String value) {
+		return null;
+	}
 }

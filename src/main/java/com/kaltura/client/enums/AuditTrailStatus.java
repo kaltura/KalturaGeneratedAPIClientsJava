@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,38 +34,38 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AuditTrailStatus implements EnumAsInt {
-    PENDING(1),
-    READY(2),
-    FAILED(3);
+	PENDING(1),
+	READY(2),
+	FAILED(3);
 
-    private int value;
+	private int value;
 
-    AuditTrailStatus(int value) {
-        this.value = value;
-    }
+	AuditTrailStatus(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static AuditTrailStatus get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over AuditTrailStatus defined values and compare the inner value with the given one:
-        for(AuditTrailStatus item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return AuditTrailStatus.values().length > 0 ? AuditTrailStatus.values()[0]: null;
+	public static AuditTrailStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over AuditTrailStatus defined values and compare the inner value with the given one:
+		for(AuditTrailStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return AuditTrailStatus.values().length > 0 ? AuditTrailStatus.values()[0]: null;
    }
 }

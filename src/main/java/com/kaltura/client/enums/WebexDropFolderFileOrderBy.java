@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,51 +34,51 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum WebexDropFolderFileOrderBy implements EnumAsString {
-    CREATED_AT_ASC("+createdAt"),
-    FILE_NAME_ASC("+fileName"),
-    FILE_SIZE_ASC("+fileSize"),
-    FILE_SIZE_LAST_SET_AT_ASC("+fileSizeLastSetAt"),
-    ID_ASC("+id"),
-    PARSED_FLAVOR_ASC("+parsedFlavor"),
-    PARSED_SLUG_ASC("+parsedSlug"),
-    UPDATED_AT_ASC("+updatedAt"),
-    CREATED_AT_DESC("-createdAt"),
-    FILE_NAME_DESC("-fileName"),
-    FILE_SIZE_DESC("-fileSize"),
-    FILE_SIZE_LAST_SET_AT_DESC("-fileSizeLastSetAt"),
-    ID_DESC("-id"),
-    PARSED_FLAVOR_DESC("-parsedFlavor"),
-    PARSED_SLUG_DESC("-parsedSlug"),
-    UPDATED_AT_DESC("-updatedAt");
+	CREATED_AT_ASC("+createdAt"),
+	FILE_NAME_ASC("+fileName"),
+	FILE_SIZE_ASC("+fileSize"),
+	FILE_SIZE_LAST_SET_AT_ASC("+fileSizeLastSetAt"),
+	ID_ASC("+id"),
+	PARSED_FLAVOR_ASC("+parsedFlavor"),
+	PARSED_SLUG_ASC("+parsedSlug"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	FILE_NAME_DESC("-fileName"),
+	FILE_SIZE_DESC("-fileSize"),
+	FILE_SIZE_LAST_SET_AT_DESC("-fileSizeLastSetAt"),
+	ID_DESC("-id"),
+	PARSED_FLAVOR_DESC("-parsedFlavor"),
+	PARSED_SLUG_DESC("-parsedSlug"),
+	UPDATED_AT_DESC("-updatedAt");
 
-    private String value;
+	private String value;
 
-    WebexDropFolderFileOrderBy(String value) {
-        this.value = value;
-    }
+	WebexDropFolderFileOrderBy(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static WebexDropFolderFileOrderBy get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over WebexDropFolderFileOrderBy defined values and compare the inner value with the given one:
-        for(WebexDropFolderFileOrderBy item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return WebexDropFolderFileOrderBy.values().length > 0 ? WebexDropFolderFileOrderBy.values()[0]: null;
+	public static WebexDropFolderFileOrderBy get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over WebexDropFolderFileOrderBy defined values and compare the inner value with the given one:
+		for(WebexDropFolderFileOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return WebexDropFolderFileOrderBy.values().length > 0 ? WebexDropFolderFileOrderBy.values()[0]: null;
    }
 }

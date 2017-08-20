@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,52 +41,66 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyContentKey.Tokenizer.class)
 public class PlayReadyContentKey extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String keyId();
+		String contentKey();
+	}
 
 	/**  Guid - key id of the specific content  */
-    private String keyId;
+	private String keyId;
 	/**  License content key 64 bit encoded  */
-    private String contentKey;
+	private String contentKey;
 
-    // keyId:
-    public String getKeyId(){
-        return this.keyId;
-    }
-    public void setKeyId(String keyId){
-        this.keyId = keyId;
-    }
+	// keyId:
+	public String getKeyId(){
+		return this.keyId;
+	}
+	public void setKeyId(String keyId){
+		this.keyId = keyId;
+	}
 
-    // contentKey:
-    public String getContentKey(){
-        return this.contentKey;
-    }
-    public void setContentKey(String contentKey){
-        this.contentKey = contentKey;
-    }
+	public void keyId(String multirequestToken){
+		setToken("keyId", multirequestToken);
+	}
+
+	// contentKey:
+	public String getContentKey(){
+		return this.contentKey;
+	}
+	public void setContentKey(String contentKey){
+		this.contentKey = contentKey;
+	}
+
+	public void contentKey(String multirequestToken){
+		setToken("contentKey", multirequestToken);
+	}
 
 
-    public PlayReadyContentKey() {
-       super();
-    }
+	public PlayReadyContentKey() {
+		super();
+	}
 
-    public PlayReadyContentKey(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyContentKey(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        keyId = GsonParser.parseString(jsonObject.get("keyId"));
-        contentKey = GsonParser.parseString(jsonObject.get("contentKey"));
+		// set members values:
+		keyId = GsonParser.parseString(jsonObject.get("keyId"));
+		contentKey = GsonParser.parseString(jsonObject.get("contentKey"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyContentKey");
-        kparams.add("keyId", this.keyId);
-        kparams.add("contentKey", this.contentKey);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyContentKey");
+		kparams.add("keyId", this.keyId);
+		kparams.add("contentKey", this.contentKey);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,126 +40,175 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AttUverseDistributionProfile.Tokenizer.class)
 public class AttUverseDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String feedUrl();
+		String ftpHost();
+		String ftpUsername();
+		String ftpPassword();
+		String ftpPath();
+		String channelTitle();
+		String flavorAssetFilenameXslt();
+		String thumbnailAssetFilenameXslt();
+		String assetFilenameXslt();
+	}
 
-    private String feedUrl;
-    private String ftpHost;
-    private String ftpUsername;
-    private String ftpPassword;
-    private String ftpPath;
-    private String channelTitle;
-    private String flavorAssetFilenameXslt;
-    private String thumbnailAssetFilenameXslt;
-    private String assetFilenameXslt;
+	private String feedUrl;
+	private String ftpHost;
+	private String ftpUsername;
+	private String ftpPassword;
+	private String ftpPath;
+	private String channelTitle;
+	private String flavorAssetFilenameXslt;
+	private String thumbnailAssetFilenameXslt;
+	private String assetFilenameXslt;
 
-    // feedUrl:
-    public String getFeedUrl(){
-        return this.feedUrl;
-    }
-    public void setFeedUrl(String feedUrl){
-        this.feedUrl = feedUrl;
-    }
+	// feedUrl:
+	public String getFeedUrl(){
+		return this.feedUrl;
+	}
+	public void setFeedUrl(String feedUrl){
+		this.feedUrl = feedUrl;
+	}
 
-    // ftpHost:
-    public String getFtpHost(){
-        return this.ftpHost;
-    }
-    public void setFtpHost(String ftpHost){
-        this.ftpHost = ftpHost;
-    }
+	public void feedUrl(String multirequestToken){
+		setToken("feedUrl", multirequestToken);
+	}
 
-    // ftpUsername:
-    public String getFtpUsername(){
-        return this.ftpUsername;
-    }
-    public void setFtpUsername(String ftpUsername){
-        this.ftpUsername = ftpUsername;
-    }
+	// ftpHost:
+	public String getFtpHost(){
+		return this.ftpHost;
+	}
+	public void setFtpHost(String ftpHost){
+		this.ftpHost = ftpHost;
+	}
 
-    // ftpPassword:
-    public String getFtpPassword(){
-        return this.ftpPassword;
-    }
-    public void setFtpPassword(String ftpPassword){
-        this.ftpPassword = ftpPassword;
-    }
+	public void ftpHost(String multirequestToken){
+		setToken("ftpHost", multirequestToken);
+	}
 
-    // ftpPath:
-    public String getFtpPath(){
-        return this.ftpPath;
-    }
-    public void setFtpPath(String ftpPath){
-        this.ftpPath = ftpPath;
-    }
+	// ftpUsername:
+	public String getFtpUsername(){
+		return this.ftpUsername;
+	}
+	public void setFtpUsername(String ftpUsername){
+		this.ftpUsername = ftpUsername;
+	}
 
-    // channelTitle:
-    public String getChannelTitle(){
-        return this.channelTitle;
-    }
-    public void setChannelTitle(String channelTitle){
-        this.channelTitle = channelTitle;
-    }
+	public void ftpUsername(String multirequestToken){
+		setToken("ftpUsername", multirequestToken);
+	}
 
-    // flavorAssetFilenameXslt:
-    public String getFlavorAssetFilenameXslt(){
-        return this.flavorAssetFilenameXslt;
-    }
-    public void setFlavorAssetFilenameXslt(String flavorAssetFilenameXslt){
-        this.flavorAssetFilenameXslt = flavorAssetFilenameXslt;
-    }
+	// ftpPassword:
+	public String getFtpPassword(){
+		return this.ftpPassword;
+	}
+	public void setFtpPassword(String ftpPassword){
+		this.ftpPassword = ftpPassword;
+	}
 
-    // thumbnailAssetFilenameXslt:
-    public String getThumbnailAssetFilenameXslt(){
-        return this.thumbnailAssetFilenameXslt;
-    }
-    public void setThumbnailAssetFilenameXslt(String thumbnailAssetFilenameXslt){
-        this.thumbnailAssetFilenameXslt = thumbnailAssetFilenameXslt;
-    }
+	public void ftpPassword(String multirequestToken){
+		setToken("ftpPassword", multirequestToken);
+	}
 
-    // assetFilenameXslt:
-    public String getAssetFilenameXslt(){
-        return this.assetFilenameXslt;
-    }
-    public void setAssetFilenameXslt(String assetFilenameXslt){
-        this.assetFilenameXslt = assetFilenameXslt;
-    }
+	// ftpPath:
+	public String getFtpPath(){
+		return this.ftpPath;
+	}
+	public void setFtpPath(String ftpPath){
+		this.ftpPath = ftpPath;
+	}
+
+	public void ftpPath(String multirequestToken){
+		setToken("ftpPath", multirequestToken);
+	}
+
+	// channelTitle:
+	public String getChannelTitle(){
+		return this.channelTitle;
+	}
+	public void setChannelTitle(String channelTitle){
+		this.channelTitle = channelTitle;
+	}
+
+	public void channelTitle(String multirequestToken){
+		setToken("channelTitle", multirequestToken);
+	}
+
+	// flavorAssetFilenameXslt:
+	public String getFlavorAssetFilenameXslt(){
+		return this.flavorAssetFilenameXslt;
+	}
+	public void setFlavorAssetFilenameXslt(String flavorAssetFilenameXslt){
+		this.flavorAssetFilenameXslt = flavorAssetFilenameXslt;
+	}
+
+	public void flavorAssetFilenameXslt(String multirequestToken){
+		setToken("flavorAssetFilenameXslt", multirequestToken);
+	}
+
+	// thumbnailAssetFilenameXslt:
+	public String getThumbnailAssetFilenameXslt(){
+		return this.thumbnailAssetFilenameXslt;
+	}
+	public void setThumbnailAssetFilenameXslt(String thumbnailAssetFilenameXslt){
+		this.thumbnailAssetFilenameXslt = thumbnailAssetFilenameXslt;
+	}
+
+	public void thumbnailAssetFilenameXslt(String multirequestToken){
+		setToken("thumbnailAssetFilenameXslt", multirequestToken);
+	}
+
+	// assetFilenameXslt:
+	public String getAssetFilenameXslt(){
+		return this.assetFilenameXslt;
+	}
+	public void setAssetFilenameXslt(String assetFilenameXslt){
+		this.assetFilenameXslt = assetFilenameXslt;
+	}
+
+	public void assetFilenameXslt(String multirequestToken){
+		setToken("assetFilenameXslt", multirequestToken);
+	}
 
 
-    public AttUverseDistributionProfile() {
-       super();
-    }
+	public AttUverseDistributionProfile() {
+		super();
+	}
 
-    public AttUverseDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AttUverseDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
-        ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
-        ftpUsername = GsonParser.parseString(jsonObject.get("ftpUsername"));
-        ftpPassword = GsonParser.parseString(jsonObject.get("ftpPassword"));
-        ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
-        channelTitle = GsonParser.parseString(jsonObject.get("channelTitle"));
-        flavorAssetFilenameXslt = GsonParser.parseString(jsonObject.get("flavorAssetFilenameXslt"));
-        thumbnailAssetFilenameXslt = GsonParser.parseString(jsonObject.get("thumbnailAssetFilenameXslt"));
-        assetFilenameXslt = GsonParser.parseString(jsonObject.get("assetFilenameXslt"));
+		// set members values:
+		feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
+		ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
+		ftpUsername = GsonParser.parseString(jsonObject.get("ftpUsername"));
+		ftpPassword = GsonParser.parseString(jsonObject.get("ftpPassword"));
+		ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
+		channelTitle = GsonParser.parseString(jsonObject.get("channelTitle"));
+		flavorAssetFilenameXslt = GsonParser.parseString(jsonObject.get("flavorAssetFilenameXslt"));
+		thumbnailAssetFilenameXslt = GsonParser.parseString(jsonObject.get("thumbnailAssetFilenameXslt"));
+		assetFilenameXslt = GsonParser.parseString(jsonObject.get("assetFilenameXslt"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAttUverseDistributionProfile");
-        kparams.add("ftpHost", this.ftpHost);
-        kparams.add("ftpUsername", this.ftpUsername);
-        kparams.add("ftpPassword", this.ftpPassword);
-        kparams.add("ftpPath", this.ftpPath);
-        kparams.add("channelTitle", this.channelTitle);
-        kparams.add("flavorAssetFilenameXslt", this.flavorAssetFilenameXslt);
-        kparams.add("thumbnailAssetFilenameXslt", this.thumbnailAssetFilenameXslt);
-        kparams.add("assetFilenameXslt", this.assetFilenameXslt);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAttUverseDistributionProfile");
+		kparams.add("ftpHost", this.ftpHost);
+		kparams.add("ftpUsername", this.ftpUsername);
+		kparams.add("ftpPassword", this.ftpPassword);
+		kparams.add("ftpPath", this.ftpPath);
+		kparams.add("channelTitle", this.channelTitle);
+		kparams.add("flavorAssetFilenameXslt", this.flavorAssetFilenameXslt);
+		kparams.add("thumbnailAssetFilenameXslt", this.thumbnailAssetFilenameXslt);
+		kparams.add("assetFilenameXslt", this.assetFilenameXslt);
+		return kparams;
+	}
 
 }
 

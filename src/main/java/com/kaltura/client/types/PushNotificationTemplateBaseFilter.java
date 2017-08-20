@@ -27,10 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,23 +39,27 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PushNotificationTemplateBaseFilter.Tokenizer.class)
 public abstract class PushNotificationTemplateBaseFilter extends EventNotificationTemplateFilter {
+	
+	public interface Tokenizer extends EventNotificationTemplateFilter.Tokenizer {
+	}
 
 
 
-    public PushNotificationTemplateBaseFilter() {
-       super();
-    }
+	public PushNotificationTemplateBaseFilter() {
+		super();
+	}
 
-    public PushNotificationTemplateBaseFilter(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
-    }
+	public PushNotificationTemplateBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPushNotificationTemplateBaseFilter");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPushNotificationTemplateBaseFilter");
+		return kparams;
+	}
 
 }
 

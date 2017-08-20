@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.enums.PlayReadyDigitalAudioOPId;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.PlayReadyDigitalAudioOPId;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,40 +42,49 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyDigitalAudioOPIdHolder.Tokenizer.class)
 public class PlayReadyDigitalAudioOPIdHolder extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String type();
+	}
 
 	/**  The type of the play enabler  */
-    private PlayReadyDigitalAudioOPId type;
+	private PlayReadyDigitalAudioOPId type;
 
-    // type:
-    public PlayReadyDigitalAudioOPId getType(){
-        return this.type;
-    }
-    public void setType(PlayReadyDigitalAudioOPId type){
-        this.type = type;
-    }
+	// type:
+	public PlayReadyDigitalAudioOPId getType(){
+		return this.type;
+	}
+	public void setType(PlayReadyDigitalAudioOPId type){
+		this.type = type;
+	}
+
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
+	}
 
 
-    public PlayReadyDigitalAudioOPIdHolder() {
-       super();
-    }
+	public PlayReadyDigitalAudioOPIdHolder() {
+		super();
+	}
 
-    public PlayReadyDigitalAudioOPIdHolder(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyDigitalAudioOPIdHolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        type = PlayReadyDigitalAudioOPId.get(GsonParser.parseString(jsonObject.get("type")));
+		// set members values:
+		type = PlayReadyDigitalAudioOPId.get(GsonParser.parseString(jsonObject.get("type")));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyDigitalAudioOPIdHolder");
-        kparams.add("type", this.type);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyDigitalAudioOPIdHolder");
+		kparams.add("type", this.type);
+		return kparams;
+	}
 
 }
 

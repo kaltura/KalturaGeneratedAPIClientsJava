@@ -27,12 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.PlayReadyPolicy;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -42,76 +42,96 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PlayReadyLicenseDetails.Tokenizer.class)
 public class PlayReadyLicenseDetails extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		PlayReadyPolicy.Tokenizer policy();
+		String beginDate();
+		String expirationDate();
+		String removalDate();
+	}
 
 	/**  PlayReady policy object  */
-    private PlayReadyPolicy policy;
+	private PlayReadyPolicy policy;
 	/**  License begin date  */
-    private Integer beginDate;
+	private Integer beginDate;
 	/**  License expiration date  */
-    private Integer expirationDate;
+	private Integer expirationDate;
 	/**  License removal date  */
-    private Integer removalDate;
+	private Integer removalDate;
 
-    // policy:
-    public PlayReadyPolicy getPolicy(){
-        return this.policy;
-    }
-    public void setPolicy(PlayReadyPolicy policy){
-        this.policy = policy;
-    }
+	// policy:
+	public PlayReadyPolicy getPolicy(){
+		return this.policy;
+	}
+	public void setPolicy(PlayReadyPolicy policy){
+		this.policy = policy;
+	}
 
-    // beginDate:
-    public Integer getBeginDate(){
-        return this.beginDate;
-    }
-    public void setBeginDate(Integer beginDate){
-        this.beginDate = beginDate;
-    }
+	// beginDate:
+	public Integer getBeginDate(){
+		return this.beginDate;
+	}
+	public void setBeginDate(Integer beginDate){
+		this.beginDate = beginDate;
+	}
 
-    // expirationDate:
-    public Integer getExpirationDate(){
-        return this.expirationDate;
-    }
-    public void setExpirationDate(Integer expirationDate){
-        this.expirationDate = expirationDate;
-    }
+	public void beginDate(String multirequestToken){
+		setToken("beginDate", multirequestToken);
+	}
 
-    // removalDate:
-    public Integer getRemovalDate(){
-        return this.removalDate;
-    }
-    public void setRemovalDate(Integer removalDate){
-        this.removalDate = removalDate;
-    }
+	// expirationDate:
+	public Integer getExpirationDate(){
+		return this.expirationDate;
+	}
+	public void setExpirationDate(Integer expirationDate){
+		this.expirationDate = expirationDate;
+	}
+
+	public void expirationDate(String multirequestToken){
+		setToken("expirationDate", multirequestToken);
+	}
+
+	// removalDate:
+	public Integer getRemovalDate(){
+		return this.removalDate;
+	}
+	public void setRemovalDate(Integer removalDate){
+		this.removalDate = removalDate;
+	}
+
+	public void removalDate(String multirequestToken){
+		setToken("removalDate", multirequestToken);
+	}
 
 
-    public PlayReadyLicenseDetails() {
-       super();
-    }
+	public PlayReadyLicenseDetails() {
+		super();
+	}
 
-    public PlayReadyLicenseDetails(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PlayReadyLicenseDetails(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        policy = GsonParser.parseObject(jsonObject.getAsJsonObject("policy"), PlayReadyPolicy.class);
-        beginDate = GsonParser.parseInt(jsonObject.get("beginDate"));
-        expirationDate = GsonParser.parseInt(jsonObject.get("expirationDate"));
-        removalDate = GsonParser.parseInt(jsonObject.get("removalDate"));
+		// set members values:
+		policy = GsonParser.parseObject(jsonObject.getAsJsonObject("policy"), PlayReadyPolicy.class);
+		beginDate = GsonParser.parseInt(jsonObject.get("beginDate"));
+		expirationDate = GsonParser.parseInt(jsonObject.get("expirationDate"));
+		removalDate = GsonParser.parseInt(jsonObject.get("removalDate"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPlayReadyLicenseDetails");
-        kparams.add("policy", this.policy);
-        kparams.add("beginDate", this.beginDate);
-        kparams.add("expirationDate", this.expirationDate);
-        kparams.add("removalDate", this.removalDate);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPlayReadyLicenseDetails");
+		kparams.add("policy", this.policy);
+		kparams.add("beginDate", this.beginDate);
+		kparams.add("expirationDate", this.expirationDate);
+		kparams.add("removalDate", this.removalDate);
+		return kparams;
+	}
 
 }
 

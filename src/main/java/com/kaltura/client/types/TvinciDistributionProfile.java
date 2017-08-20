@@ -27,11 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
-import com.google.gson.JsonObject;
-
 
 /**
  * This class was generated using exec.php
@@ -41,84 +42,109 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TvinciDistributionProfile.Tokenizer.class)
 public class TvinciDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String ingestUrl();
+		String username();
+		String password();
+		RequestBuilder.ListTokenizer<TvinciDistributionTag.Tokenizer> tags();
+		String xsltFile();
+	}
 
-    private String ingestUrl;
-    private String username;
-    private String password;
+	private String ingestUrl;
+	private String username;
+	private String password;
 	/**  Tags array for Tvinci distribution  */
-    private List<TvinciDistributionTag> tags;
-    private String xsltFile;
+	private List<TvinciDistributionTag> tags;
+	private String xsltFile;
 
-    // ingestUrl:
-    public String getIngestUrl(){
-        return this.ingestUrl;
-    }
-    public void setIngestUrl(String ingestUrl){
-        this.ingestUrl = ingestUrl;
-    }
+	// ingestUrl:
+	public String getIngestUrl(){
+		return this.ingestUrl;
+	}
+	public void setIngestUrl(String ingestUrl){
+		this.ingestUrl = ingestUrl;
+	}
 
-    // username:
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String username){
-        this.username = username;
-    }
+	public void ingestUrl(String multirequestToken){
+		setToken("ingestUrl", multirequestToken);
+	}
 
-    // password:
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
+	// username:
+	public String getUsername(){
+		return this.username;
+	}
+	public void setUsername(String username){
+		this.username = username;
+	}
 
-    // tags:
-    public List<TvinciDistributionTag> getTags(){
-        return this.tags;
-    }
-    public void setTags(List<TvinciDistributionTag> tags){
-        this.tags = tags;
-    }
+	public void username(String multirequestToken){
+		setToken("username", multirequestToken);
+	}
 
-    // xsltFile:
-    public String getXsltFile(){
-        return this.xsltFile;
-    }
-    public void setXsltFile(String xsltFile){
-        this.xsltFile = xsltFile;
-    }
+	// password:
+	public String getPassword(){
+		return this.password;
+	}
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void password(String multirequestToken){
+		setToken("password", multirequestToken);
+	}
+
+	// tags:
+	public List<TvinciDistributionTag> getTags(){
+		return this.tags;
+	}
+	public void setTags(List<TvinciDistributionTag> tags){
+		this.tags = tags;
+	}
+
+	// xsltFile:
+	public String getXsltFile(){
+		return this.xsltFile;
+	}
+	public void setXsltFile(String xsltFile){
+		this.xsltFile = xsltFile;
+	}
+
+	public void xsltFile(String multirequestToken){
+		setToken("xsltFile", multirequestToken);
+	}
 
 
-    public TvinciDistributionProfile() {
-       super();
-    }
+	public TvinciDistributionProfile() {
+		super();
+	}
 
-    public TvinciDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public TvinciDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ingestUrl = GsonParser.parseString(jsonObject.get("ingestUrl"));
-        username = GsonParser.parseString(jsonObject.get("username"));
-        password = GsonParser.parseString(jsonObject.get("password"));
-        tags = GsonParser.parseArray(jsonObject.getAsJsonArray("tags"), TvinciDistributionTag.class);
-        xsltFile = GsonParser.parseString(jsonObject.get("xsltFile"));
+		// set members values:
+		ingestUrl = GsonParser.parseString(jsonObject.get("ingestUrl"));
+		username = GsonParser.parseString(jsonObject.get("username"));
+		password = GsonParser.parseString(jsonObject.get("password"));
+		tags = GsonParser.parseArray(jsonObject.getAsJsonArray("tags"), TvinciDistributionTag.class);
+		xsltFile = GsonParser.parseString(jsonObject.get("xsltFile"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaTvinciDistributionProfile");
-        kparams.add("ingestUrl", this.ingestUrl);
-        kparams.add("username", this.username);
-        kparams.add("password", this.password);
-        kparams.add("tags", this.tags);
-        kparams.add("xsltFile", this.xsltFile);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTvinciDistributionProfile");
+		kparams.add("ingestUrl", this.ingestUrl);
+		kparams.add("username", this.username);
+		kparams.add("password", this.password);
+		kparams.add("tags", this.tags);
+		kparams.add("xsltFile", this.xsltFile);
+		return kparams;
+	}
 
 }
 

@@ -27,16 +27,16 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.types.AuditTrailInfo;
-import com.kaltura.client.enums.AuditTrailStatus;
-import com.kaltura.client.enums.AuditTrailObjectType;
 import com.kaltura.client.enums.AuditTrailAction;
 import com.kaltura.client.enums.AuditTrailContext;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.enums.AuditTrailObjectType;
+import com.kaltura.client.enums.AuditTrailStatus;
+import com.kaltura.client.types.AuditTrailInfo;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -46,280 +46,400 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(AuditTrail.Tokenizer.class)
 public class AuditTrail extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String parsedAt();
+		String status();
+		String auditObjectType();
+		String objectId();
+		String relatedObjectId();
+		String relatedObjectType();
+		String entryId();
+		String masterPartnerId();
+		String partnerId();
+		String requestId();
+		String userId();
+		String action();
+		AuditTrailInfo.Tokenizer data();
+		String ks();
+		String context();
+		String entryPoint();
+		String serverName();
+		String ipAddress();
+		String userAgent();
+		String clientTag();
+		String description();
+		String errorDescription();
+	}
 
-    private Integer id;
-    private Integer createdAt;
+	private Integer id;
+	private Integer createdAt;
 	/**  Indicates when the data was parsed  */
-    private Integer parsedAt;
-    private AuditTrailStatus status;
-    private AuditTrailObjectType auditObjectType;
-    private String objectId;
-    private String relatedObjectId;
-    private AuditTrailObjectType relatedObjectType;
-    private String entryId;
-    private Integer masterPartnerId;
-    private Integer partnerId;
-    private String requestId;
-    private String userId;
-    private AuditTrailAction action;
-    private AuditTrailInfo data;
-    private String ks;
-    private AuditTrailContext context;
+	private Integer parsedAt;
+	private AuditTrailStatus status;
+	private AuditTrailObjectType auditObjectType;
+	private String objectId;
+	private String relatedObjectId;
+	private AuditTrailObjectType relatedObjectType;
+	private String entryId;
+	private Integer masterPartnerId;
+	private Integer partnerId;
+	private String requestId;
+	private String userId;
+	private AuditTrailAction action;
+	private AuditTrailInfo data;
+	private String ks;
+	private AuditTrailContext context;
 	/**  The API service and action that called and caused this audit  */
-    private String entryPoint;
-    private String serverName;
-    private String ipAddress;
-    private String userAgent;
-    private String clientTag;
-    private String description;
-    private String errorDescription;
+	private String entryPoint;
+	private String serverName;
+	private String ipAddress;
+	private String userAgent;
+	private String clientTag;
+	private String description;
+	private String errorDescription;
 
-    // id:
-    public Integer getId(){
-        return this.id;
-    }
-    public void setId(Integer id){
-        this.id = id;
-    }
+	// id:
+	public Integer getId(){
+		return this.id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 
-    // createdAt:
-    public Integer getCreatedAt(){
-        return this.createdAt;
-    }
-    public void setCreatedAt(Integer createdAt){
-        this.createdAt = createdAt;
-    }
+	public void id(String multirequestToken){
+		setToken("id", multirequestToken);
+	}
 
-    // parsedAt:
-    public Integer getParsedAt(){
-        return this.parsedAt;
-    }
-    public void setParsedAt(Integer parsedAt){
-        this.parsedAt = parsedAt;
-    }
+	// createdAt:
+	public Integer getCreatedAt(){
+		return this.createdAt;
+	}
+	public void setCreatedAt(Integer createdAt){
+		this.createdAt = createdAt;
+	}
 
-    // status:
-    public AuditTrailStatus getStatus(){
-        return this.status;
-    }
-    public void setStatus(AuditTrailStatus status){
-        this.status = status;
-    }
+	public void createdAt(String multirequestToken){
+		setToken("createdAt", multirequestToken);
+	}
 
-    // auditObjectType:
-    public AuditTrailObjectType getAuditObjectType(){
-        return this.auditObjectType;
-    }
-    public void setAuditObjectType(AuditTrailObjectType auditObjectType){
-        this.auditObjectType = auditObjectType;
-    }
+	// parsedAt:
+	public Integer getParsedAt(){
+		return this.parsedAt;
+	}
+	public void setParsedAt(Integer parsedAt){
+		this.parsedAt = parsedAt;
+	}
 
-    // objectId:
-    public String getObjectId(){
-        return this.objectId;
-    }
-    public void setObjectId(String objectId){
-        this.objectId = objectId;
-    }
+	public void parsedAt(String multirequestToken){
+		setToken("parsedAt", multirequestToken);
+	}
 
-    // relatedObjectId:
-    public String getRelatedObjectId(){
-        return this.relatedObjectId;
-    }
-    public void setRelatedObjectId(String relatedObjectId){
-        this.relatedObjectId = relatedObjectId;
-    }
+	// status:
+	public AuditTrailStatus getStatus(){
+		return this.status;
+	}
+	public void setStatus(AuditTrailStatus status){
+		this.status = status;
+	}
 
-    // relatedObjectType:
-    public AuditTrailObjectType getRelatedObjectType(){
-        return this.relatedObjectType;
-    }
-    public void setRelatedObjectType(AuditTrailObjectType relatedObjectType){
-        this.relatedObjectType = relatedObjectType;
-    }
+	public void status(String multirequestToken){
+		setToken("status", multirequestToken);
+	}
 
-    // entryId:
-    public String getEntryId(){
-        return this.entryId;
-    }
-    public void setEntryId(String entryId){
-        this.entryId = entryId;
-    }
+	// auditObjectType:
+	public AuditTrailObjectType getAuditObjectType(){
+		return this.auditObjectType;
+	}
+	public void setAuditObjectType(AuditTrailObjectType auditObjectType){
+		this.auditObjectType = auditObjectType;
+	}
 
-    // masterPartnerId:
-    public Integer getMasterPartnerId(){
-        return this.masterPartnerId;
-    }
-    public void setMasterPartnerId(Integer masterPartnerId){
-        this.masterPartnerId = masterPartnerId;
-    }
+	public void auditObjectType(String multirequestToken){
+		setToken("auditObjectType", multirequestToken);
+	}
 
-    // partnerId:
-    public Integer getPartnerId(){
-        return this.partnerId;
-    }
-    public void setPartnerId(Integer partnerId){
-        this.partnerId = partnerId;
-    }
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
 
-    // requestId:
-    public String getRequestId(){
-        return this.requestId;
-    }
-    public void setRequestId(String requestId){
-        this.requestId = requestId;
-    }
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
 
-    // userId:
-    public String getUserId(){
-        return this.userId;
-    }
-    public void setUserId(String userId){
-        this.userId = userId;
-    }
+	// relatedObjectId:
+	public String getRelatedObjectId(){
+		return this.relatedObjectId;
+	}
+	public void setRelatedObjectId(String relatedObjectId){
+		this.relatedObjectId = relatedObjectId;
+	}
 
-    // action:
-    public AuditTrailAction getAction(){
-        return this.action;
-    }
-    public void setAction(AuditTrailAction action){
-        this.action = action;
-    }
+	public void relatedObjectId(String multirequestToken){
+		setToken("relatedObjectId", multirequestToken);
+	}
 
-    // data:
-    public AuditTrailInfo getData(){
-        return this.data;
-    }
-    public void setData(AuditTrailInfo data){
-        this.data = data;
-    }
+	// relatedObjectType:
+	public AuditTrailObjectType getRelatedObjectType(){
+		return this.relatedObjectType;
+	}
+	public void setRelatedObjectType(AuditTrailObjectType relatedObjectType){
+		this.relatedObjectType = relatedObjectType;
+	}
 
-    // ks:
-    public String getKs(){
-        return this.ks;
-    }
-    public void setKs(String ks){
-        this.ks = ks;
-    }
+	public void relatedObjectType(String multirequestToken){
+		setToken("relatedObjectType", multirequestToken);
+	}
 
-    // context:
-    public AuditTrailContext getContext(){
-        return this.context;
-    }
-    public void setContext(AuditTrailContext context){
-        this.context = context;
-    }
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	public void setEntryId(String entryId){
+		this.entryId = entryId;
+	}
 
-    // entryPoint:
-    public String getEntryPoint(){
-        return this.entryPoint;
-    }
-    public void setEntryPoint(String entryPoint){
-        this.entryPoint = entryPoint;
-    }
+	public void entryId(String multirequestToken){
+		setToken("entryId", multirequestToken);
+	}
 
-    // serverName:
-    public String getServerName(){
-        return this.serverName;
-    }
-    public void setServerName(String serverName){
-        this.serverName = serverName;
-    }
+	// masterPartnerId:
+	public Integer getMasterPartnerId(){
+		return this.masterPartnerId;
+	}
+	public void setMasterPartnerId(Integer masterPartnerId){
+		this.masterPartnerId = masterPartnerId;
+	}
 
-    // ipAddress:
-    public String getIpAddress(){
-        return this.ipAddress;
-    }
-    public void setIpAddress(String ipAddress){
-        this.ipAddress = ipAddress;
-    }
+	public void masterPartnerId(String multirequestToken){
+		setToken("masterPartnerId", multirequestToken);
+	}
 
-    // userAgent:
-    public String getUserAgent(){
-        return this.userAgent;
-    }
-    public void setUserAgent(String userAgent){
-        this.userAgent = userAgent;
-    }
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
 
-    // clientTag:
-    public String getClientTag(){
-        return this.clientTag;
-    }
-    public void setClientTag(String clientTag){
-        this.clientTag = clientTag;
-    }
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-    // description:
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description = description;
-    }
+	// requestId:
+	public String getRequestId(){
+		return this.requestId;
+	}
+	public void setRequestId(String requestId){
+		this.requestId = requestId;
+	}
 
-    // errorDescription:
-    public String getErrorDescription(){
-        return this.errorDescription;
-    }
-    public void setErrorDescription(String errorDescription){
-        this.errorDescription = errorDescription;
-    }
+	public void requestId(String multirequestToken){
+		setToken("requestId", multirequestToken);
+	}
+
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
+	}
+
+	// action:
+	public AuditTrailAction getAction(){
+		return this.action;
+	}
+	public void setAction(AuditTrailAction action){
+		this.action = action;
+	}
+
+	public void action(String multirequestToken){
+		setToken("action", multirequestToken);
+	}
+
+	// data:
+	public AuditTrailInfo getData(){
+		return this.data;
+	}
+	public void setData(AuditTrailInfo data){
+		this.data = data;
+	}
+
+	// ks:
+	public String getKs(){
+		return this.ks;
+	}
+	public void setKs(String ks){
+		this.ks = ks;
+	}
+
+	public void ks(String multirequestToken){
+		setToken("ks", multirequestToken);
+	}
+
+	// context:
+	public AuditTrailContext getContext(){
+		return this.context;
+	}
+	public void setContext(AuditTrailContext context){
+		this.context = context;
+	}
+
+	public void context(String multirequestToken){
+		setToken("context", multirequestToken);
+	}
+
+	// entryPoint:
+	public String getEntryPoint(){
+		return this.entryPoint;
+	}
+	public void setEntryPoint(String entryPoint){
+		this.entryPoint = entryPoint;
+	}
+
+	public void entryPoint(String multirequestToken){
+		setToken("entryPoint", multirequestToken);
+	}
+
+	// serverName:
+	public String getServerName(){
+		return this.serverName;
+	}
+	public void setServerName(String serverName){
+		this.serverName = serverName;
+	}
+
+	public void serverName(String multirequestToken){
+		setToken("serverName", multirequestToken);
+	}
+
+	// ipAddress:
+	public String getIpAddress(){
+		return this.ipAddress;
+	}
+	public void setIpAddress(String ipAddress){
+		this.ipAddress = ipAddress;
+	}
+
+	public void ipAddress(String multirequestToken){
+		setToken("ipAddress", multirequestToken);
+	}
+
+	// userAgent:
+	public String getUserAgent(){
+		return this.userAgent;
+	}
+	public void setUserAgent(String userAgent){
+		this.userAgent = userAgent;
+	}
+
+	public void userAgent(String multirequestToken){
+		setToken("userAgent", multirequestToken);
+	}
+
+	// clientTag:
+	public String getClientTag(){
+		return this.clientTag;
+	}
+	public void setClientTag(String clientTag){
+		this.clientTag = clientTag;
+	}
+
+	public void clientTag(String multirequestToken){
+		setToken("clientTag", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
+	}
+
+	// errorDescription:
+	public String getErrorDescription(){
+		return this.errorDescription;
+	}
+	public void setErrorDescription(String errorDescription){
+		this.errorDescription = errorDescription;
+	}
+
+	public void errorDescription(String multirequestToken){
+		setToken("errorDescription", multirequestToken);
+	}
 
 
-    public AuditTrail() {
-       super();
-    }
+	public AuditTrail() {
+		super();
+	}
 
-    public AuditTrail(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public AuditTrail(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        id = GsonParser.parseInt(jsonObject.get("id"));
-        createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-        parsedAt = GsonParser.parseInt(jsonObject.get("parsedAt"));
-        status = AuditTrailStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-        auditObjectType = AuditTrailObjectType.get(GsonParser.parseString(jsonObject.get("auditObjectType")));
-        objectId = GsonParser.parseString(jsonObject.get("objectId"));
-        relatedObjectId = GsonParser.parseString(jsonObject.get("relatedObjectId"));
-        relatedObjectType = AuditTrailObjectType.get(GsonParser.parseString(jsonObject.get("relatedObjectType")));
-        entryId = GsonParser.parseString(jsonObject.get("entryId"));
-        masterPartnerId = GsonParser.parseInt(jsonObject.get("masterPartnerId"));
-        partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-        requestId = GsonParser.parseString(jsonObject.get("requestId"));
-        userId = GsonParser.parseString(jsonObject.get("userId"));
-        action = AuditTrailAction.get(GsonParser.parseString(jsonObject.get("action")));
-        data = GsonParser.parseObject(jsonObject.getAsJsonObject("data"), AuditTrailInfo.class);
-        ks = GsonParser.parseString(jsonObject.get("ks"));
-        context = AuditTrailContext.get(GsonParser.parseInt(jsonObject.get("context")));
-        entryPoint = GsonParser.parseString(jsonObject.get("entryPoint"));
-        serverName = GsonParser.parseString(jsonObject.get("serverName"));
-        ipAddress = GsonParser.parseString(jsonObject.get("ipAddress"));
-        userAgent = GsonParser.parseString(jsonObject.get("userAgent"));
-        clientTag = GsonParser.parseString(jsonObject.get("clientTag"));
-        description = GsonParser.parseString(jsonObject.get("description"));
-        errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
+		// set members values:
+		id = GsonParser.parseInt(jsonObject.get("id"));
+		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		parsedAt = GsonParser.parseInt(jsonObject.get("parsedAt"));
+		status = AuditTrailStatus.get(GsonParser.parseInt(jsonObject.get("status")));
+		auditObjectType = AuditTrailObjectType.get(GsonParser.parseString(jsonObject.get("auditObjectType")));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		relatedObjectId = GsonParser.parseString(jsonObject.get("relatedObjectId"));
+		relatedObjectType = AuditTrailObjectType.get(GsonParser.parseString(jsonObject.get("relatedObjectType")));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		masterPartnerId = GsonParser.parseInt(jsonObject.get("masterPartnerId"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		requestId = GsonParser.parseString(jsonObject.get("requestId"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
+		action = AuditTrailAction.get(GsonParser.parseString(jsonObject.get("action")));
+		data = GsonParser.parseObject(jsonObject.getAsJsonObject("data"), AuditTrailInfo.class);
+		ks = GsonParser.parseString(jsonObject.get("ks"));
+		context = AuditTrailContext.get(GsonParser.parseInt(jsonObject.get("context")));
+		entryPoint = GsonParser.parseString(jsonObject.get("entryPoint"));
+		serverName = GsonParser.parseString(jsonObject.get("serverName"));
+		ipAddress = GsonParser.parseString(jsonObject.get("ipAddress"));
+		userAgent = GsonParser.parseString(jsonObject.get("userAgent"));
+		clientTag = GsonParser.parseString(jsonObject.get("clientTag"));
+		description = GsonParser.parseString(jsonObject.get("description"));
+		errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaAuditTrail");
-        kparams.add("auditObjectType", this.auditObjectType);
-        kparams.add("objectId", this.objectId);
-        kparams.add("relatedObjectId", this.relatedObjectId);
-        kparams.add("relatedObjectType", this.relatedObjectType);
-        kparams.add("entryId", this.entryId);
-        kparams.add("userId", this.userId);
-        kparams.add("action", this.action);
-        kparams.add("data", this.data);
-        kparams.add("clientTag", this.clientTag);
-        kparams.add("description", this.description);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaAuditTrail");
+		kparams.add("auditObjectType", this.auditObjectType);
+		kparams.add("objectId", this.objectId);
+		kparams.add("relatedObjectId", this.relatedObjectId);
+		kparams.add("relatedObjectType", this.relatedObjectType);
+		kparams.add("entryId", this.entryId);
+		kparams.add("userId", this.userId);
+		kparams.add("action", this.action);
+		kparams.add("data", this.data);
+		kparams.add("clientTag", this.clientTag);
+		kparams.add("description", this.description);
+		return kparams;
+	}
 
 }
 

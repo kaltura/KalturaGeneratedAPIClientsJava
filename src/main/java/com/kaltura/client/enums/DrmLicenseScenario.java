@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,39 +34,39 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmLicenseScenario implements EnumAsString {
-    PROTECTION("playReady.PROTECTION"),
-    PURCHASE("playReady.PURCHASE"),
-    RENTAL("playReady.RENTAL"),
-    SUBSCRIPTION("playReady.SUBSCRIPTION");
+	PROTECTION("playReady.PROTECTION"),
+	PURCHASE("playReady.PURCHASE"),
+	RENTAL("playReady.RENTAL"),
+	SUBSCRIPTION("playReady.SUBSCRIPTION");
 
-    private String value;
+	private String value;
 
-    DrmLicenseScenario(String value) {
-        this.value = value;
-    }
+	DrmLicenseScenario(String value) {
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return this.value;
-    }
+	@Override
+	public String getValue() {
+		return this.value;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public static DrmLicenseScenario get(String value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over DrmLicenseScenario defined values and compare the inner value with the given one:
-        for(DrmLicenseScenario item: values()) {
-            if(item.getValue().equals(value)) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return DrmLicenseScenario.values().length > 0 ? DrmLicenseScenario.values()[0]: null;
+	public static DrmLicenseScenario get(String value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DrmLicenseScenario defined values and compare the inner value with the given one:
+		for(DrmLicenseScenario item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DrmLicenseScenario.values().length > 0 ? DrmLicenseScenario.values()[0]: null;
    }
 }

@@ -27,8 +27,6 @@
 // ===================================================================================================
 package com.kaltura.client.enums;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
@@ -36,39 +34,39 @@ import com.google.gson.annotations.SerializedName;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum PlayReadyUncompressedDigitalVideoOPL implements EnumAsInt {
-    MIN_100(100),
-    MIN_250(250),
-    MIN_270(270),
-    MIN_300(300);
+	MIN_100(100),
+	MIN_250(250),
+	MIN_270(270),
+	MIN_300(300);
 
-    private int value;
+	private int value;
 
-    PlayReadyUncompressedDigitalVideoOPL(int value) {
-        this.value = value;
-    }
+	PlayReadyUncompressedDigitalVideoOPL(int value) {
+		this.value = value;
+	}
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }
+	@Override
+	public int getValue() {
+		return this.value;
+	}
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+	public void setValue(int value) {
+		this.value = value;
+	}
 
-    public static PlayReadyUncompressedDigitalVideoOPL get(Integer value) {
-        if(value == null)
-        {
-        	return null;
-        }
-        
-        // goes over PlayReadyUncompressedDigitalVideoOPL defined values and compare the inner value with the given one:
-        for(PlayReadyUncompressedDigitalVideoOPL item: values()) {
-            if(item.getValue() == value) {
-                return item;
-            }
-        }
-        // in case the requested value was not found in the enum values, we return the first item as default.
-        return PlayReadyUncompressedDigitalVideoOPL.values().length > 0 ? PlayReadyUncompressedDigitalVideoOPL.values()[0]: null;
+	public static PlayReadyUncompressedDigitalVideoOPL get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over PlayReadyUncompressedDigitalVideoOPL defined values and compare the inner value with the given one:
+		for(PlayReadyUncompressedDigitalVideoOPL item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return PlayReadyUncompressedDigitalVideoOPL.values().length > 0 ? PlayReadyUncompressedDigitalVideoOPL.values()[0]: null;
    }
 }

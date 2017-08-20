@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,64 +40,83 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(UverseDistributionJobProviderData.Tokenizer.class)
 public class UverseDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String localAssetFilePath();
+		String remoteAssetUrl();
+		String remoteAssetFileName();
+	}
 
 	/**  The local file path of the video asset that needs to be distributed  */
-    private String localAssetFilePath;
+	private String localAssetFilePath;
 	/**  The remote URL of the video asset that was distributed  */
-    private String remoteAssetUrl;
+	private String remoteAssetUrl;
 	/**  The file name of the remote video asset that was distributed  */
-    private String remoteAssetFileName;
+	private String remoteAssetFileName;
 
-    // localAssetFilePath:
-    public String getLocalAssetFilePath(){
-        return this.localAssetFilePath;
-    }
-    public void setLocalAssetFilePath(String localAssetFilePath){
-        this.localAssetFilePath = localAssetFilePath;
-    }
+	// localAssetFilePath:
+	public String getLocalAssetFilePath(){
+		return this.localAssetFilePath;
+	}
+	public void setLocalAssetFilePath(String localAssetFilePath){
+		this.localAssetFilePath = localAssetFilePath;
+	}
 
-    // remoteAssetUrl:
-    public String getRemoteAssetUrl(){
-        return this.remoteAssetUrl;
-    }
-    public void setRemoteAssetUrl(String remoteAssetUrl){
-        this.remoteAssetUrl = remoteAssetUrl;
-    }
+	public void localAssetFilePath(String multirequestToken){
+		setToken("localAssetFilePath", multirequestToken);
+	}
 
-    // remoteAssetFileName:
-    public String getRemoteAssetFileName(){
-        return this.remoteAssetFileName;
-    }
-    public void setRemoteAssetFileName(String remoteAssetFileName){
-        this.remoteAssetFileName = remoteAssetFileName;
-    }
+	// remoteAssetUrl:
+	public String getRemoteAssetUrl(){
+		return this.remoteAssetUrl;
+	}
+	public void setRemoteAssetUrl(String remoteAssetUrl){
+		this.remoteAssetUrl = remoteAssetUrl;
+	}
+
+	public void remoteAssetUrl(String multirequestToken){
+		setToken("remoteAssetUrl", multirequestToken);
+	}
+
+	// remoteAssetFileName:
+	public String getRemoteAssetFileName(){
+		return this.remoteAssetFileName;
+	}
+	public void setRemoteAssetFileName(String remoteAssetFileName){
+		this.remoteAssetFileName = remoteAssetFileName;
+	}
+
+	public void remoteAssetFileName(String multirequestToken){
+		setToken("remoteAssetFileName", multirequestToken);
+	}
 
 
-    public UverseDistributionJobProviderData() {
-       super();
-    }
+	public UverseDistributionJobProviderData() {
+		super();
+	}
 
-    public UverseDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public UverseDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        localAssetFilePath = GsonParser.parseString(jsonObject.get("localAssetFilePath"));
-        remoteAssetUrl = GsonParser.parseString(jsonObject.get("remoteAssetUrl"));
-        remoteAssetFileName = GsonParser.parseString(jsonObject.get("remoteAssetFileName"));
+		// set members values:
+		localAssetFilePath = GsonParser.parseString(jsonObject.get("localAssetFilePath"));
+		remoteAssetUrl = GsonParser.parseString(jsonObject.get("remoteAssetUrl"));
+		remoteAssetFileName = GsonParser.parseString(jsonObject.get("remoteAssetFileName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaUverseDistributionJobProviderData");
-        kparams.add("localAssetFilePath", this.localAssetFilePath);
-        kparams.add("remoteAssetUrl", this.remoteAssetUrl);
-        kparams.add("remoteAssetFileName", this.remoteAssetFileName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaUverseDistributionJobProviderData");
+		kparams.add("localAssetFilePath", this.localAssetFilePath);
+		kparams.add("remoteAssetUrl", this.remoteAssetUrl);
+		kparams.add("remoteAssetFileName", this.remoteAssetFileName);
+		return kparams;
+	}
 
 }
 

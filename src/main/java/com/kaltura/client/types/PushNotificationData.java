@@ -27,11 +27,11 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.types.ObjectBase;
 import com.google.gson.JsonObject;
-
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -41,58 +41,77 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(PushNotificationData.Tokenizer.class)
 public class PushNotificationData extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String queueName();
+		String queueKey();
+		String url();
+	}
 
-    private String queueName;
-    private String queueKey;
-    private String url;
+	private String queueName;
+	private String queueKey;
+	private String url;
 
-    // queueName:
-    public String getQueueName(){
-        return this.queueName;
-    }
-    public void setQueueName(String queueName){
-        this.queueName = queueName;
-    }
+	// queueName:
+	public String getQueueName(){
+		return this.queueName;
+	}
+	public void setQueueName(String queueName){
+		this.queueName = queueName;
+	}
 
-    // queueKey:
-    public String getQueueKey(){
-        return this.queueKey;
-    }
-    public void setQueueKey(String queueKey){
-        this.queueKey = queueKey;
-    }
+	public void queueName(String multirequestToken){
+		setToken("queueName", multirequestToken);
+	}
 
-    // url:
-    public String getUrl(){
-        return this.url;
-    }
-    public void setUrl(String url){
-        this.url = url;
-    }
+	// queueKey:
+	public String getQueueKey(){
+		return this.queueKey;
+	}
+	public void setQueueKey(String queueKey){
+		this.queueKey = queueKey;
+	}
+
+	public void queueKey(String multirequestToken){
+		setToken("queueKey", multirequestToken);
+	}
+
+	// url:
+	public String getUrl(){
+		return this.url;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
+
+	public void url(String multirequestToken){
+		setToken("url", multirequestToken);
+	}
 
 
-    public PushNotificationData() {
-       super();
-    }
+	public PushNotificationData() {
+		super();
+	}
 
-    public PushNotificationData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public PushNotificationData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        queueName = GsonParser.parseString(jsonObject.get("queueName"));
-        queueKey = GsonParser.parseString(jsonObject.get("queueKey"));
-        url = GsonParser.parseString(jsonObject.get("url"));
+		// set members values:
+		queueName = GsonParser.parseString(jsonObject.get("queueName"));
+		queueKey = GsonParser.parseString(jsonObject.get("queueKey"));
+		url = GsonParser.parseString(jsonObject.get("url"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaPushNotificationData");
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPushNotificationData");
+		return kparams;
+	}
 
 }
 

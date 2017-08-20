@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,138 +40,192 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MetroPcsDistributionProfile.Tokenizer.class)
 public class MetroPcsDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String ftpHost();
+		String ftpLogin();
+		String ftpPass();
+		String ftpPath();
+		String providerName();
+		String providerId();
+		String copyright();
+		String entitlements();
+		String rating();
+		String itemType();
+	}
 
-    private String ftpHost;
-    private String ftpLogin;
-    private String ftpPass;
-    private String ftpPath;
-    private String providerName;
-    private String providerId;
-    private String copyright;
-    private String entitlements;
-    private String rating;
-    private String itemType;
+	private String ftpHost;
+	private String ftpLogin;
+	private String ftpPass;
+	private String ftpPath;
+	private String providerName;
+	private String providerId;
+	private String copyright;
+	private String entitlements;
+	private String rating;
+	private String itemType;
 
-    // ftpHost:
-    public String getFtpHost(){
-        return this.ftpHost;
-    }
-    public void setFtpHost(String ftpHost){
-        this.ftpHost = ftpHost;
-    }
+	// ftpHost:
+	public String getFtpHost(){
+		return this.ftpHost;
+	}
+	public void setFtpHost(String ftpHost){
+		this.ftpHost = ftpHost;
+	}
 
-    // ftpLogin:
-    public String getFtpLogin(){
-        return this.ftpLogin;
-    }
-    public void setFtpLogin(String ftpLogin){
-        this.ftpLogin = ftpLogin;
-    }
+	public void ftpHost(String multirequestToken){
+		setToken("ftpHost", multirequestToken);
+	}
 
-    // ftpPass:
-    public String getFtpPass(){
-        return this.ftpPass;
-    }
-    public void setFtpPass(String ftpPass){
-        this.ftpPass = ftpPass;
-    }
+	// ftpLogin:
+	public String getFtpLogin(){
+		return this.ftpLogin;
+	}
+	public void setFtpLogin(String ftpLogin){
+		this.ftpLogin = ftpLogin;
+	}
 
-    // ftpPath:
-    public String getFtpPath(){
-        return this.ftpPath;
-    }
-    public void setFtpPath(String ftpPath){
-        this.ftpPath = ftpPath;
-    }
+	public void ftpLogin(String multirequestToken){
+		setToken("ftpLogin", multirequestToken);
+	}
 
-    // providerName:
-    public String getProviderName(){
-        return this.providerName;
-    }
-    public void setProviderName(String providerName){
-        this.providerName = providerName;
-    }
+	// ftpPass:
+	public String getFtpPass(){
+		return this.ftpPass;
+	}
+	public void setFtpPass(String ftpPass){
+		this.ftpPass = ftpPass;
+	}
 
-    // providerId:
-    public String getProviderId(){
-        return this.providerId;
-    }
-    public void setProviderId(String providerId){
-        this.providerId = providerId;
-    }
+	public void ftpPass(String multirequestToken){
+		setToken("ftpPass", multirequestToken);
+	}
 
-    // copyright:
-    public String getCopyright(){
-        return this.copyright;
-    }
-    public void setCopyright(String copyright){
-        this.copyright = copyright;
-    }
+	// ftpPath:
+	public String getFtpPath(){
+		return this.ftpPath;
+	}
+	public void setFtpPath(String ftpPath){
+		this.ftpPath = ftpPath;
+	}
 
-    // entitlements:
-    public String getEntitlements(){
-        return this.entitlements;
-    }
-    public void setEntitlements(String entitlements){
-        this.entitlements = entitlements;
-    }
+	public void ftpPath(String multirequestToken){
+		setToken("ftpPath", multirequestToken);
+	}
 
-    // rating:
-    public String getRating(){
-        return this.rating;
-    }
-    public void setRating(String rating){
-        this.rating = rating;
-    }
+	// providerName:
+	public String getProviderName(){
+		return this.providerName;
+	}
+	public void setProviderName(String providerName){
+		this.providerName = providerName;
+	}
 
-    // itemType:
-    public String getItemType(){
-        return this.itemType;
-    }
-    public void setItemType(String itemType){
-        this.itemType = itemType;
-    }
+	public void providerName(String multirequestToken){
+		setToken("providerName", multirequestToken);
+	}
+
+	// providerId:
+	public String getProviderId(){
+		return this.providerId;
+	}
+	public void setProviderId(String providerId){
+		this.providerId = providerId;
+	}
+
+	public void providerId(String multirequestToken){
+		setToken("providerId", multirequestToken);
+	}
+
+	// copyright:
+	public String getCopyright(){
+		return this.copyright;
+	}
+	public void setCopyright(String copyright){
+		this.copyright = copyright;
+	}
+
+	public void copyright(String multirequestToken){
+		setToken("copyright", multirequestToken);
+	}
+
+	// entitlements:
+	public String getEntitlements(){
+		return this.entitlements;
+	}
+	public void setEntitlements(String entitlements){
+		this.entitlements = entitlements;
+	}
+
+	public void entitlements(String multirequestToken){
+		setToken("entitlements", multirequestToken);
+	}
+
+	// rating:
+	public String getRating(){
+		return this.rating;
+	}
+	public void setRating(String rating){
+		this.rating = rating;
+	}
+
+	public void rating(String multirequestToken){
+		setToken("rating", multirequestToken);
+	}
+
+	// itemType:
+	public String getItemType(){
+		return this.itemType;
+	}
+	public void setItemType(String itemType){
+		this.itemType = itemType;
+	}
+
+	public void itemType(String multirequestToken){
+		setToken("itemType", multirequestToken);
+	}
 
 
-    public MetroPcsDistributionProfile() {
-       super();
-    }
+	public MetroPcsDistributionProfile() {
+		super();
+	}
 
-    public MetroPcsDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public MetroPcsDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
-        ftpLogin = GsonParser.parseString(jsonObject.get("ftpLogin"));
-        ftpPass = GsonParser.parseString(jsonObject.get("ftpPass"));
-        ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
-        providerName = GsonParser.parseString(jsonObject.get("providerName"));
-        providerId = GsonParser.parseString(jsonObject.get("providerId"));
-        copyright = GsonParser.parseString(jsonObject.get("copyright"));
-        entitlements = GsonParser.parseString(jsonObject.get("entitlements"));
-        rating = GsonParser.parseString(jsonObject.get("rating"));
-        itemType = GsonParser.parseString(jsonObject.get("itemType"));
+		// set members values:
+		ftpHost = GsonParser.parseString(jsonObject.get("ftpHost"));
+		ftpLogin = GsonParser.parseString(jsonObject.get("ftpLogin"));
+		ftpPass = GsonParser.parseString(jsonObject.get("ftpPass"));
+		ftpPath = GsonParser.parseString(jsonObject.get("ftpPath"));
+		providerName = GsonParser.parseString(jsonObject.get("providerName"));
+		providerId = GsonParser.parseString(jsonObject.get("providerId"));
+		copyright = GsonParser.parseString(jsonObject.get("copyright"));
+		entitlements = GsonParser.parseString(jsonObject.get("entitlements"));
+		rating = GsonParser.parseString(jsonObject.get("rating"));
+		itemType = GsonParser.parseString(jsonObject.get("itemType"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaMetroPcsDistributionProfile");
-        kparams.add("ftpHost", this.ftpHost);
-        kparams.add("ftpLogin", this.ftpLogin);
-        kparams.add("ftpPass", this.ftpPass);
-        kparams.add("ftpPath", this.ftpPath);
-        kparams.add("providerName", this.providerName);
-        kparams.add("providerId", this.providerId);
-        kparams.add("copyright", this.copyright);
-        kparams.add("entitlements", this.entitlements);
-        kparams.add("rating", this.rating);
-        kparams.add("itemType", this.itemType);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMetroPcsDistributionProfile");
+		kparams.add("ftpHost", this.ftpHost);
+		kparams.add("ftpLogin", this.ftpLogin);
+		kparams.add("ftpPass", this.ftpPass);
+		kparams.add("ftpPath", this.ftpPath);
+		kparams.add("providerName", this.providerName);
+		kparams.add("providerId", this.providerId);
+		kparams.add("copyright", this.copyright);
+		kparams.add("entitlements", this.entitlements);
+		kparams.add("rating", this.rating);
+		kparams.add("itemType", this.itemType);
+		return kparams;
+	}
 
 }
 

@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,82 +40,111 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SynacorHboDistributionProfile.Tokenizer.class)
 public class SynacorHboDistributionProfile extends ConfigurableDistributionProfile {
+	
+	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
+		String feedUrl();
+		String feedTitle();
+		String feedSubtitle();
+		String feedLink();
+		String feedAuthorName();
+	}
 
-    private String feedUrl;
-    private String feedTitle;
-    private String feedSubtitle;
-    private String feedLink;
-    private String feedAuthorName;
+	private String feedUrl;
+	private String feedTitle;
+	private String feedSubtitle;
+	private String feedLink;
+	private String feedAuthorName;
 
-    // feedUrl:
-    public String getFeedUrl(){
-        return this.feedUrl;
-    }
-    public void setFeedUrl(String feedUrl){
-        this.feedUrl = feedUrl;
-    }
+	// feedUrl:
+	public String getFeedUrl(){
+		return this.feedUrl;
+	}
+	public void setFeedUrl(String feedUrl){
+		this.feedUrl = feedUrl;
+	}
 
-    // feedTitle:
-    public String getFeedTitle(){
-        return this.feedTitle;
-    }
-    public void setFeedTitle(String feedTitle){
-        this.feedTitle = feedTitle;
-    }
+	public void feedUrl(String multirequestToken){
+		setToken("feedUrl", multirequestToken);
+	}
 
-    // feedSubtitle:
-    public String getFeedSubtitle(){
-        return this.feedSubtitle;
-    }
-    public void setFeedSubtitle(String feedSubtitle){
-        this.feedSubtitle = feedSubtitle;
-    }
+	// feedTitle:
+	public String getFeedTitle(){
+		return this.feedTitle;
+	}
+	public void setFeedTitle(String feedTitle){
+		this.feedTitle = feedTitle;
+	}
 
-    // feedLink:
-    public String getFeedLink(){
-        return this.feedLink;
-    }
-    public void setFeedLink(String feedLink){
-        this.feedLink = feedLink;
-    }
+	public void feedTitle(String multirequestToken){
+		setToken("feedTitle", multirequestToken);
+	}
 
-    // feedAuthorName:
-    public String getFeedAuthorName(){
-        return this.feedAuthorName;
-    }
-    public void setFeedAuthorName(String feedAuthorName){
-        this.feedAuthorName = feedAuthorName;
-    }
+	// feedSubtitle:
+	public String getFeedSubtitle(){
+		return this.feedSubtitle;
+	}
+	public void setFeedSubtitle(String feedSubtitle){
+		this.feedSubtitle = feedSubtitle;
+	}
+
+	public void feedSubtitle(String multirequestToken){
+		setToken("feedSubtitle", multirequestToken);
+	}
+
+	// feedLink:
+	public String getFeedLink(){
+		return this.feedLink;
+	}
+	public void setFeedLink(String feedLink){
+		this.feedLink = feedLink;
+	}
+
+	public void feedLink(String multirequestToken){
+		setToken("feedLink", multirequestToken);
+	}
+
+	// feedAuthorName:
+	public String getFeedAuthorName(){
+		return this.feedAuthorName;
+	}
+	public void setFeedAuthorName(String feedAuthorName){
+		this.feedAuthorName = feedAuthorName;
+	}
+
+	public void feedAuthorName(String multirequestToken){
+		setToken("feedAuthorName", multirequestToken);
+	}
 
 
-    public SynacorHboDistributionProfile() {
-       super();
-    }
+	public SynacorHboDistributionProfile() {
+		super();
+	}
 
-    public SynacorHboDistributionProfile(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public SynacorHboDistributionProfile(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
-        feedTitle = GsonParser.parseString(jsonObject.get("feedTitle"));
-        feedSubtitle = GsonParser.parseString(jsonObject.get("feedSubtitle"));
-        feedLink = GsonParser.parseString(jsonObject.get("feedLink"));
-        feedAuthorName = GsonParser.parseString(jsonObject.get("feedAuthorName"));
+		// set members values:
+		feedUrl = GsonParser.parseString(jsonObject.get("feedUrl"));
+		feedTitle = GsonParser.parseString(jsonObject.get("feedTitle"));
+		feedSubtitle = GsonParser.parseString(jsonObject.get("feedSubtitle"));
+		feedLink = GsonParser.parseString(jsonObject.get("feedLink"));
+		feedAuthorName = GsonParser.parseString(jsonObject.get("feedAuthorName"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaSynacorHboDistributionProfile");
-        kparams.add("feedTitle", this.feedTitle);
-        kparams.add("feedSubtitle", this.feedSubtitle);
-        kparams.add("feedLink", this.feedLink);
-        kparams.add("feedAuthorName", this.feedAuthorName);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSynacorHboDistributionProfile");
+		kparams.add("feedTitle", this.feedTitle);
+		kparams.add("feedSubtitle", this.feedSubtitle);
+		kparams.add("feedLink", this.feedLink);
+		kparams.add("feedAuthorName", this.feedAuthorName);
+		return kparams;
+	}
 
 }
 

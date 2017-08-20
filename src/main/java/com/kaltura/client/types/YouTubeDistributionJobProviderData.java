@@ -27,10 +27,10 @@
 // ===================================================================================================
 package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
-import com.google.gson.JsonObject;
-
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -40,171 +40,240 @@ import com.google.gson.JsonObject;
  */
 
 @SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(YouTubeDistributionJobProviderData.Tokenizer.class)
 public class YouTubeDistributionJobProviderData extends ConfigurableDistributionJobProviderData {
+	
+	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
+		String videoAssetFilePath();
+		String thumbAssetFilePath();
+		String captionAssetIds();
+		String sftpDirectory();
+		String sftpMetadataFilename();
+		String currentPlaylists();
+		String newPlaylists();
+		String submitXml();
+		String updateXml();
+		String deleteXml();
+		String googleClientId();
+		String googleClientSecret();
+		String googleTokenData();
+	}
 
-    private String videoAssetFilePath;
-    private String thumbAssetFilePath;
-    private String captionAssetIds;
-    private String sftpDirectory;
-    private String sftpMetadataFilename;
-    private String currentPlaylists;
-    private String newPlaylists;
-    private String submitXml;
-    private String updateXml;
-    private String deleteXml;
-    private String googleClientId;
-    private String googleClientSecret;
-    private String googleTokenData;
+	private String videoAssetFilePath;
+	private String thumbAssetFilePath;
+	private String captionAssetIds;
+	private String sftpDirectory;
+	private String sftpMetadataFilename;
+	private String currentPlaylists;
+	private String newPlaylists;
+	private String submitXml;
+	private String updateXml;
+	private String deleteXml;
+	private String googleClientId;
+	private String googleClientSecret;
+	private String googleTokenData;
 
-    // videoAssetFilePath:
-    public String getVideoAssetFilePath(){
-        return this.videoAssetFilePath;
-    }
-    public void setVideoAssetFilePath(String videoAssetFilePath){
-        this.videoAssetFilePath = videoAssetFilePath;
-    }
+	// videoAssetFilePath:
+	public String getVideoAssetFilePath(){
+		return this.videoAssetFilePath;
+	}
+	public void setVideoAssetFilePath(String videoAssetFilePath){
+		this.videoAssetFilePath = videoAssetFilePath;
+	}
 
-    // thumbAssetFilePath:
-    public String getThumbAssetFilePath(){
-        return this.thumbAssetFilePath;
-    }
-    public void setThumbAssetFilePath(String thumbAssetFilePath){
-        this.thumbAssetFilePath = thumbAssetFilePath;
-    }
+	public void videoAssetFilePath(String multirequestToken){
+		setToken("videoAssetFilePath", multirequestToken);
+	}
 
-    // captionAssetIds:
-    public String getCaptionAssetIds(){
-        return this.captionAssetIds;
-    }
-    public void setCaptionAssetIds(String captionAssetIds){
-        this.captionAssetIds = captionAssetIds;
-    }
+	// thumbAssetFilePath:
+	public String getThumbAssetFilePath(){
+		return this.thumbAssetFilePath;
+	}
+	public void setThumbAssetFilePath(String thumbAssetFilePath){
+		this.thumbAssetFilePath = thumbAssetFilePath;
+	}
 
-    // sftpDirectory:
-    public String getSftpDirectory(){
-        return this.sftpDirectory;
-    }
-    public void setSftpDirectory(String sftpDirectory){
-        this.sftpDirectory = sftpDirectory;
-    }
+	public void thumbAssetFilePath(String multirequestToken){
+		setToken("thumbAssetFilePath", multirequestToken);
+	}
 
-    // sftpMetadataFilename:
-    public String getSftpMetadataFilename(){
-        return this.sftpMetadataFilename;
-    }
-    public void setSftpMetadataFilename(String sftpMetadataFilename){
-        this.sftpMetadataFilename = sftpMetadataFilename;
-    }
+	// captionAssetIds:
+	public String getCaptionAssetIds(){
+		return this.captionAssetIds;
+	}
+	public void setCaptionAssetIds(String captionAssetIds){
+		this.captionAssetIds = captionAssetIds;
+	}
 
-    // currentPlaylists:
-    public String getCurrentPlaylists(){
-        return this.currentPlaylists;
-    }
-    public void setCurrentPlaylists(String currentPlaylists){
-        this.currentPlaylists = currentPlaylists;
-    }
+	public void captionAssetIds(String multirequestToken){
+		setToken("captionAssetIds", multirequestToken);
+	}
 
-    // newPlaylists:
-    public String getNewPlaylists(){
-        return this.newPlaylists;
-    }
-    public void setNewPlaylists(String newPlaylists){
-        this.newPlaylists = newPlaylists;
-    }
+	// sftpDirectory:
+	public String getSftpDirectory(){
+		return this.sftpDirectory;
+	}
+	public void setSftpDirectory(String sftpDirectory){
+		this.sftpDirectory = sftpDirectory;
+	}
 
-    // submitXml:
-    public String getSubmitXml(){
-        return this.submitXml;
-    }
-    public void setSubmitXml(String submitXml){
-        this.submitXml = submitXml;
-    }
+	public void sftpDirectory(String multirequestToken){
+		setToken("sftpDirectory", multirequestToken);
+	}
 
-    // updateXml:
-    public String getUpdateXml(){
-        return this.updateXml;
-    }
-    public void setUpdateXml(String updateXml){
-        this.updateXml = updateXml;
-    }
+	// sftpMetadataFilename:
+	public String getSftpMetadataFilename(){
+		return this.sftpMetadataFilename;
+	}
+	public void setSftpMetadataFilename(String sftpMetadataFilename){
+		this.sftpMetadataFilename = sftpMetadataFilename;
+	}
 
-    // deleteXml:
-    public String getDeleteXml(){
-        return this.deleteXml;
-    }
-    public void setDeleteXml(String deleteXml){
-        this.deleteXml = deleteXml;
-    }
+	public void sftpMetadataFilename(String multirequestToken){
+		setToken("sftpMetadataFilename", multirequestToken);
+	}
 
-    // googleClientId:
-    public String getGoogleClientId(){
-        return this.googleClientId;
-    }
-    public void setGoogleClientId(String googleClientId){
-        this.googleClientId = googleClientId;
-    }
+	// currentPlaylists:
+	public String getCurrentPlaylists(){
+		return this.currentPlaylists;
+	}
+	public void setCurrentPlaylists(String currentPlaylists){
+		this.currentPlaylists = currentPlaylists;
+	}
 
-    // googleClientSecret:
-    public String getGoogleClientSecret(){
-        return this.googleClientSecret;
-    }
-    public void setGoogleClientSecret(String googleClientSecret){
-        this.googleClientSecret = googleClientSecret;
-    }
+	public void currentPlaylists(String multirequestToken){
+		setToken("currentPlaylists", multirequestToken);
+	}
 
-    // googleTokenData:
-    public String getGoogleTokenData(){
-        return this.googleTokenData;
-    }
-    public void setGoogleTokenData(String googleTokenData){
-        this.googleTokenData = googleTokenData;
-    }
+	// newPlaylists:
+	public String getNewPlaylists(){
+		return this.newPlaylists;
+	}
+	public void setNewPlaylists(String newPlaylists){
+		this.newPlaylists = newPlaylists;
+	}
+
+	public void newPlaylists(String multirequestToken){
+		setToken("newPlaylists", multirequestToken);
+	}
+
+	// submitXml:
+	public String getSubmitXml(){
+		return this.submitXml;
+	}
+	public void setSubmitXml(String submitXml){
+		this.submitXml = submitXml;
+	}
+
+	public void submitXml(String multirequestToken){
+		setToken("submitXml", multirequestToken);
+	}
+
+	// updateXml:
+	public String getUpdateXml(){
+		return this.updateXml;
+	}
+	public void setUpdateXml(String updateXml){
+		this.updateXml = updateXml;
+	}
+
+	public void updateXml(String multirequestToken){
+		setToken("updateXml", multirequestToken);
+	}
+
+	// deleteXml:
+	public String getDeleteXml(){
+		return this.deleteXml;
+	}
+	public void setDeleteXml(String deleteXml){
+		this.deleteXml = deleteXml;
+	}
+
+	public void deleteXml(String multirequestToken){
+		setToken("deleteXml", multirequestToken);
+	}
+
+	// googleClientId:
+	public String getGoogleClientId(){
+		return this.googleClientId;
+	}
+	public void setGoogleClientId(String googleClientId){
+		this.googleClientId = googleClientId;
+	}
+
+	public void googleClientId(String multirequestToken){
+		setToken("googleClientId", multirequestToken);
+	}
+
+	// googleClientSecret:
+	public String getGoogleClientSecret(){
+		return this.googleClientSecret;
+	}
+	public void setGoogleClientSecret(String googleClientSecret){
+		this.googleClientSecret = googleClientSecret;
+	}
+
+	public void googleClientSecret(String multirequestToken){
+		setToken("googleClientSecret", multirequestToken);
+	}
+
+	// googleTokenData:
+	public String getGoogleTokenData(){
+		return this.googleTokenData;
+	}
+	public void setGoogleTokenData(String googleTokenData){
+		this.googleTokenData = googleTokenData;
+	}
+
+	public void googleTokenData(String multirequestToken){
+		setToken("googleTokenData", multirequestToken);
+	}
 
 
-    public YouTubeDistributionJobProviderData() {
-       super();
-    }
+	public YouTubeDistributionJobProviderData() {
+		super();
+	}
 
-    public YouTubeDistributionJobProviderData(JsonObject jsonObject) throws APIException {
-        super(jsonObject);
+	public YouTubeDistributionJobProviderData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 
-        if(jsonObject == null) return;
+		if(jsonObject == null) return;
 
-        // set members values:
-        videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
-        thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
-        captionAssetIds = GsonParser.parseString(jsonObject.get("captionAssetIds"));
-        sftpDirectory = GsonParser.parseString(jsonObject.get("sftpDirectory"));
-        sftpMetadataFilename = GsonParser.parseString(jsonObject.get("sftpMetadataFilename"));
-        currentPlaylists = GsonParser.parseString(jsonObject.get("currentPlaylists"));
-        newPlaylists = GsonParser.parseString(jsonObject.get("newPlaylists"));
-        submitXml = GsonParser.parseString(jsonObject.get("submitXml"));
-        updateXml = GsonParser.parseString(jsonObject.get("updateXml"));
-        deleteXml = GsonParser.parseString(jsonObject.get("deleteXml"));
-        googleClientId = GsonParser.parseString(jsonObject.get("googleClientId"));
-        googleClientSecret = GsonParser.parseString(jsonObject.get("googleClientSecret"));
-        googleTokenData = GsonParser.parseString(jsonObject.get("googleTokenData"));
+		// set members values:
+		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
+		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		captionAssetIds = GsonParser.parseString(jsonObject.get("captionAssetIds"));
+		sftpDirectory = GsonParser.parseString(jsonObject.get("sftpDirectory"));
+		sftpMetadataFilename = GsonParser.parseString(jsonObject.get("sftpMetadataFilename"));
+		currentPlaylists = GsonParser.parseString(jsonObject.get("currentPlaylists"));
+		newPlaylists = GsonParser.parseString(jsonObject.get("newPlaylists"));
+		submitXml = GsonParser.parseString(jsonObject.get("submitXml"));
+		updateXml = GsonParser.parseString(jsonObject.get("updateXml"));
+		deleteXml = GsonParser.parseString(jsonObject.get("deleteXml"));
+		googleClientId = GsonParser.parseString(jsonObject.get("googleClientId"));
+		googleClientSecret = GsonParser.parseString(jsonObject.get("googleClientSecret"));
+		googleTokenData = GsonParser.parseString(jsonObject.get("googleTokenData"));
 
-    }
+	}
 
-    public Params toParams() {
-        Params kparams = super.toParams();
-        kparams.add("objectType", "KalturaYouTubeDistributionJobProviderData");
-        kparams.add("videoAssetFilePath", this.videoAssetFilePath);
-        kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-        kparams.add("captionAssetIds", this.captionAssetIds);
-        kparams.add("sftpDirectory", this.sftpDirectory);
-        kparams.add("sftpMetadataFilename", this.sftpMetadataFilename);
-        kparams.add("currentPlaylists", this.currentPlaylists);
-        kparams.add("newPlaylists", this.newPlaylists);
-        kparams.add("submitXml", this.submitXml);
-        kparams.add("updateXml", this.updateXml);
-        kparams.add("deleteXml", this.deleteXml);
-        kparams.add("googleClientId", this.googleClientId);
-        kparams.add("googleClientSecret", this.googleClientSecret);
-        kparams.add("googleTokenData", this.googleTokenData);
-        return kparams;
-    }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaYouTubeDistributionJobProviderData");
+		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
+		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		kparams.add("captionAssetIds", this.captionAssetIds);
+		kparams.add("sftpDirectory", this.sftpDirectory);
+		kparams.add("sftpMetadataFilename", this.sftpMetadataFilename);
+		kparams.add("currentPlaylists", this.currentPlaylists);
+		kparams.add("newPlaylists", this.newPlaylists);
+		kparams.add("submitXml", this.submitXml);
+		kparams.add("updateXml", this.updateXml);
+		kparams.add("deleteXml", this.deleteXml);
+		kparams.add("googleClientId", this.googleClientId);
+		kparams.add("googleClientSecret", this.googleClientSecret);
+		kparams.add("googleTokenData", this.googleTokenData);
+		return kparams;
+	}
 
 }
 
