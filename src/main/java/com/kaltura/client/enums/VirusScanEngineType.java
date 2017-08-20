@@ -34,10 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VirusScanEngineType implements EnumAsString {
-	CLAMAV_SCAN_ENGINE("clamAVScanEngine.ClamAV"),
-	SYMANTEC_SCAN_DIRECT_ENGINE("symantecScanEngine.SymantecScanDirectEngine"),
-	SYMANTEC_SCAN_ENGINE("symantecScanEngine.SymantecScanEngine"),
-	SYMANTEC_SCAN_JAVA_ENGINE("symantecScanEngine.SymantecScanJavaEngine");
+	CLAMAV_SCAN_ENGINE("clamAVScanEngine.ClamAV");
 
 	private String value;
 

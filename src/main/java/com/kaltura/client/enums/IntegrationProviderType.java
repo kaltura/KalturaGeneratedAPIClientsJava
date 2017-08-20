@@ -35,8 +35,6 @@ package com.kaltura.client.enums;
  */
 public enum IntegrationProviderType implements EnumAsString {
 	CIELO24("cielo24.Cielo24"),
-	DEXTER("dexterIntegration.Dexter"),
-	EXAMPLE("exampleIntegration.Example"),
 	VOICEBASE("voicebase.Voicebase");
 
 	private String value;

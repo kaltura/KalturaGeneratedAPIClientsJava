@@ -110,6 +110,10 @@ public class UserEntryService {
 		}
 	}
 
+	public static ListUserEntryBuilder list()  {
+		return list(null);
+	}
+
 	public static ListUserEntryBuilder list(UserEntryFilter filter)  {
 		return list(filter, null);
 	}

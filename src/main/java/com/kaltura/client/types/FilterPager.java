@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -44,42 +42,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
   service list actions.  */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(FilterPager.Tokenizer.class)
-public class FilterPager extends ObjectBase {
+public class FilterPager extends Pager {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String pageSize();
-		String pageIndex();
+	public interface Tokenizer extends Pager.Tokenizer {
 	}
 
-	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
-	private Integer pageSize;
-	/**  The page number for which {pageSize} of objects should be retrieved (Default is
-	  1).  */
-	private Integer pageIndex;
-
-	// pageSize:
-	public Integer getPageSize(){
-		return this.pageSize;
-	}
-	public void setPageSize(Integer pageSize){
-		this.pageSize = pageSize;
-	}
-
-	public void pageSize(String multirequestToken){
-		setToken("pageSize", multirequestToken);
-	}
-
-	// pageIndex:
-	public Integer getPageIndex(){
-		return this.pageIndex;
-	}
-	public void setPageIndex(Integer pageIndex){
-		this.pageIndex = pageIndex;
-	}
-
-	public void pageIndex(String multirequestToken){
-		setToken("pageIndex", multirequestToken);
-	}
 
 
 	public FilterPager() {
@@ -88,20 +55,11 @@ public class FilterPager extends ObjectBase {
 
 	public FilterPager(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		pageSize = GsonParser.parseInt(jsonObject.get("pageSize"));
-		pageIndex = GsonParser.parseInt(jsonObject.get("pageIndex"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaFilterPager");
-		kparams.add("pageSize", this.pageSize);
-		kparams.add("pageIndex", this.pageIndex);
 		return kparams;
 	}
 

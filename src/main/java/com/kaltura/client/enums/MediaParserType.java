@@ -35,7 +35,6 @@ package com.kaltura.client.enums;
  */
 public enum MediaParserType implements EnumAsString {
 	MEDIAINFO("0"),
-	REMOTE_MEDIAINFO("remoteMediaInfo.RemoteMediaInfo"),
 	FFMPEG("1");
 
 	private String value;

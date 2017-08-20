@@ -36,11 +36,7 @@ package com.kaltura.client.enums;
 public enum DeliveryProfileType implements EnumAsString {
 	EDGE_CAST_HTTP("edgeCast.EDGE_CAST_HTTP"),
 	EDGE_CAST_RTMP("edgeCast.EDGE_CAST_RTMP"),
-	FORENSIC_WATERMARK_APPLE_HTTP("forensicWatermark.FORENSIC_WATERMARK_APPLE_HTTP"),
-	FORENSIC_WATERMARK_DASH("forensicWatermark.FORENSIC_WATERMARK_DASH"),
 	KONTIKI_HTTP("kontiki.KONTIKI_HTTP"),
-	UPLYNK_HTTP("uplynk.UPLYNK_HTTP"),
-	UPLYNK_RTMP("uplynk.UPLYNK_RTMP"),
 	VELOCIX_HDS("velocix.VELOCIX_HDS"),
 	VELOCIX_HLS("velocix.VELOCIX_HLS"),
 	APPLE_HTTP("1"),

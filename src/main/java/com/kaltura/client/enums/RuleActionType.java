@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum RuleActionType implements EnumAsString {
-	DRM_POLICY("drm.DRM_POLICY"),
 	BLOCK("1"),
 	PREVIEW("2"),
 	LIMIT_FLAVORS("3"),

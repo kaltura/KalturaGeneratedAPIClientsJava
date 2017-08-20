@@ -34,12 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationTemplateType implements EnumAsString {
-	BPM_ABORT("businessProcessNotification.BusinessProcessAbort"),
-	BPM_SIGNAL("businessProcessNotification.BusinessProcessSignal"),
-	BPM_START("businessProcessNotification.BusinessProcessStart"),
 	EMAIL("emailNotification.Email"),
-	HTTP("httpNotification.Http"),
-	PUSH("pushNotification.Push");
+	HTTP("httpNotification.Http");
 
 	private String value;
 
