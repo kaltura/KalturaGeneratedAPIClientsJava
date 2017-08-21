@@ -28,13 +28,16 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmSchemeName implements EnumAsString {
-	/** Place holder for future values */;
+	PLAYREADY_CENC("drm.PLAYREADY_CENC"),
+	WIDEVINE_CENC("drm.WIDEVINE_CENC"),
+	PLAYREADY("playReady.PLAYREADY"),
+	WIDEVINE("widevine.WIDEVINE");
 
 	private String value;
 
@@ -52,6 +55,18 @@ public enum DrmSchemeName implements EnumAsString {
 	}
 
 	public static DrmSchemeName get(String value) {
-		return null;
-	}
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over DrmSchemeName defined values and compare the inner value with the given one:
+		for(DrmSchemeName item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return DrmSchemeName.values().length > 0 ? DrmSchemeName.values()[0]: null;
+   }
 }

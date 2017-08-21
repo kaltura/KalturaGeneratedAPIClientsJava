@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,6 +42,7 @@ public enum AssetType implements EnumAsString {
 	SWF("document.SWF"),
 	TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
 	TRANSCRIPT("transcript.Transcript"),
+	WIDEVINE_FLAVOR("widevine.WidevineFlavor"),
 	FLAVOR("1"),
 	THUMBNAIL("2"),
 	LIVE("3");

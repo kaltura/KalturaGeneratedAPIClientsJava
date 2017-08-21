@@ -28,13 +28,12 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmProviderType implements EnumAsString {
-	FAIRPLAY("fairplay.FAIRPLAY"),
 	PLAY_READY("playReady.PLAY_READY"),
 	WIDEVINE("widevine.WIDEVINE"),
 	CENC("1");

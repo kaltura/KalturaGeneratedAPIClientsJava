@@ -35,7 +35,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.Map;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
