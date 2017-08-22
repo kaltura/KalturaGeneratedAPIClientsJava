@@ -29,10 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -42,55 +41,62 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(LiveEntryServerNode.Tokenizer.class)
-public class LiveEntryServerNode extends EntryServerNode {
+@MultiRequestBuilder.Tokenizer(LiveEntryServerNodeRecordingInfo.Tokenizer.class)
+public class LiveEntryServerNodeRecordingInfo extends ObjectBase {
 	
-	public interface Tokenizer extends EntryServerNode.Tokenizer {
-		RequestBuilder.ListTokenizer<LiveStreamParams.Tokenizer> streams();
-		RequestBuilder.ListTokenizer<LiveEntryServerNodeRecordingInfo.Tokenizer> recordingInfo();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String recordedEntryId();
+		String duration();
 	}
 
-	/**  parameters of the stream we got  */
-	private List<LiveStreamParams> streams;
-	private List<LiveEntryServerNodeRecordingInfo> recordingInfo;
+	private String recordedEntryId;
+	private Integer duration;
 
-	// streams:
-	public List<LiveStreamParams> getStreams(){
-		return this.streams;
+	// recordedEntryId:
+	public String getRecordedEntryId(){
+		return this.recordedEntryId;
 	}
-	public void setStreams(List<LiveStreamParams> streams){
-		this.streams = streams;
-	}
-
-	// recordingInfo:
-	public List<LiveEntryServerNodeRecordingInfo> getRecordingInfo(){
-		return this.recordingInfo;
-	}
-	public void setRecordingInfo(List<LiveEntryServerNodeRecordingInfo> recordingInfo){
-		this.recordingInfo = recordingInfo;
+	public void setRecordedEntryId(String recordedEntryId){
+		this.recordedEntryId = recordedEntryId;
 	}
 
+	public void recordedEntryId(String multirequestToken){
+		setToken("recordedEntryId", multirequestToken);
+	}
 
-	public LiveEntryServerNode() {
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
+	}
+
+
+	public LiveEntryServerNodeRecordingInfo() {
 		super();
 	}
 
-	public LiveEntryServerNode(JsonObject jsonObject) throws APIException {
+	public LiveEntryServerNodeRecordingInfo(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), LiveStreamParams.class);
-		recordingInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("recordingInfo"), LiveEntryServerNodeRecordingInfo.class);
+		recordedEntryId = GsonParser.parseString(jsonObject.get("recordedEntryId"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaLiveEntryServerNode");
-		kparams.add("streams", this.streams);
-		kparams.add("recordingInfo", this.recordingInfo);
+		kparams.add("objectType", "KalturaLiveEntryServerNodeRecordingInfo");
+		kparams.add("recordedEntryId", this.recordedEntryId);
+		kparams.add("duration", this.duration);
 		return kparams;
 	}
 

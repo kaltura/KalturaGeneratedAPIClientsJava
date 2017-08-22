@@ -52,7 +52,6 @@ public enum BatchJobType implements EnumAsString {
 	INDEX_TAGS("tagSearch.IndexTagsByPrivacyContext"),
 	TAG_RESOLVE("tagSearch.TagResolve"),
 	VIRUS_SCAN("virusScan.VirusScan"),
-	WIDEVINE_REPOSITORY_SYNC("widevine.WidevineRepositorySync"),
 	IMPORT("1"),
 	DELETE("2"),
 	FLATTEN("3"),
