@@ -75,20 +75,15 @@ public class DropFolderService {
 	
 	public static class FreeExclusiveDropFolderDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, FreeExclusiveDropFolderDropFolderBuilder> {
 		
-		public FreeExclusiveDropFolderDropFolderBuilder(int dropFolderId, int status, String errorCode, String errorDescription) {
+		public FreeExclusiveDropFolderDropFolderBuilder(int dropFolderId, String errorCode, String errorDescription) {
 			super(DropFolder.class, "dropfolder_dropfolder", "freeExclusiveDropFolder");
 			params.add("dropFolderId", dropFolderId);
-			params.add("status", status);
 			params.add("errorCode", errorCode);
 			params.add("errorDescription", errorDescription);
 		}
 		
 		public void dropFolderId(String multirequestToken) {
 			params.add("dropFolderId", multirequestToken);
-		}
-		
-		public void status(String multirequestToken) {
-			params.add("status", multirequestToken);
 		}
 		
 		public void errorCode(String multirequestToken) {
@@ -100,17 +95,17 @@ public class DropFolderService {
 		}
 	}
 
-	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status)  {
-		return freeExclusiveDropFolder(dropFolderId, status, null);
+	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId)  {
+		return freeExclusiveDropFolder(dropFolderId, null);
 	}
 
-	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode)  {
-		return freeExclusiveDropFolder(dropFolderId, status, errorCode, null);
+	public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, String errorCode)  {
+		return freeExclusiveDropFolder(dropFolderId, errorCode, null);
 	}
 
 	/**  freeExclusive KalturaDropFolder object  */
-    public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, int status, String errorCode, String errorDescription)  {
-		return new FreeExclusiveDropFolderDropFolderBuilder(dropFolderId, status, errorCode, errorDescription);
+    public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, String errorCode, String errorDescription)  {
+		return new FreeExclusiveDropFolderDropFolderBuilder(dropFolderId, errorCode, errorDescription);
 	}
 	
 	public static class GetDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, GetDropFolderBuilder> {
