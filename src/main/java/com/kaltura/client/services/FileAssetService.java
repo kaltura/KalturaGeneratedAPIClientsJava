@@ -61,7 +61,7 @@ public class FileAssetService {
 	
 	public static class DeleteFileAssetBuilder extends NullRequestBuilder {
 		
-		public DeleteFileAssetBuilder(int id) {
+		public DeleteFileAssetBuilder(long id) {
 			super("fileasset", "delete");
 			params.add("id", id);
 		}
@@ -72,13 +72,13 @@ public class FileAssetService {
 	}
 
 	/**  Delete file asset by id  */
-    public static DeleteFileAssetBuilder delete(int id)  {
+    public static DeleteFileAssetBuilder delete(long id)  {
 		return new DeleteFileAssetBuilder(id);
 	}
 	
 	public static class GetFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, GetFileAssetBuilder> {
 		
-		public GetFileAssetBuilder(int id) {
+		public GetFileAssetBuilder(long id) {
 			super(FileAsset.class, "fileasset", "get");
 			params.add("id", id);
 		}
@@ -89,7 +89,7 @@ public class FileAssetService {
 	}
 
 	/**  Get file asset by id  */
-    public static GetFileAssetBuilder get(int id)  {
+    public static GetFileAssetBuilder get(long id)  {
 		return new GetFileAssetBuilder(id);
 	}
 	
@@ -113,7 +113,7 @@ public class FileAssetService {
 	
 	public static class ServeFileAssetBuilder extends ServeRequestBuilder {
 		
-		public ServeFileAssetBuilder(int id) {
+		public ServeFileAssetBuilder(long id) {
 			super("fileasset", "serve");
 			params.add("id", id);
 		}
@@ -124,13 +124,13 @@ public class FileAssetService {
 	}
 
 	/**  Serve file asset by id  */
-    public static ServeFileAssetBuilder serve(int id)  {
+    public static ServeFileAssetBuilder serve(long id)  {
 		return new ServeFileAssetBuilder(id);
 	}
 	
 	public static class SetContentFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, SetContentFileAssetBuilder> {
 		
-		public SetContentFileAssetBuilder(String id, ContentResource contentResource) {
+		public SetContentFileAssetBuilder(long id, ContentResource contentResource) {
 			super(FileAsset.class, "fileasset", "setContent");
 			params.add("id", id);
 			params.add("contentResource", contentResource);
@@ -142,13 +142,13 @@ public class FileAssetService {
 	}
 
 	/**  Set content of file asset  */
-    public static SetContentFileAssetBuilder setContent(String id, ContentResource contentResource)  {
+    public static SetContentFileAssetBuilder setContent(long id, ContentResource contentResource)  {
 		return new SetContentFileAssetBuilder(id, contentResource);
 	}
 	
 	public static class UpdateFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, UpdateFileAssetBuilder> {
 		
-		public UpdateFileAssetBuilder(int id, FileAsset fileAsset) {
+		public UpdateFileAssetBuilder(long id, FileAsset fileAsset) {
 			super(FileAsset.class, "fileasset", "update");
 			params.add("id", id);
 			params.add("fileAsset", fileAsset);
@@ -160,7 +160,7 @@ public class FileAssetService {
 	}
 
 	/**  Update file asset by id  */
-    public static UpdateFileAssetBuilder update(int id, FileAsset fileAsset)  {
+    public static UpdateFileAssetBuilder update(long id, FileAsset fileAsset)  {
 		return new UpdateFileAssetBuilder(id, fileAsset);
 	}
 }

@@ -60,7 +60,7 @@ public class FileAsset extends ObjectBase {
 		String status();
 	}
 
-	private Integer id;
+	private Long id;
 	private Integer partnerId;
 	private FileAssetObjectType fileAssetObjectType;
 	private String objectId;
@@ -73,10 +73,10 @@ public class FileAsset extends ObjectBase {
 	private FileAssetStatus status;
 
 	// id:
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id = id;
 	}
 
@@ -215,7 +215,7 @@ public class FileAsset extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseInt(jsonObject.get("id"));
+		id = GsonParser.parseLong(jsonObject.get("id"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		fileAssetObjectType = FileAssetObjectType.get(GsonParser.parseString(jsonObject.get("fileAssetObjectType")));
 		objectId = GsonParser.parseString(jsonObject.get("objectId"));

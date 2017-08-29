@@ -59,7 +59,7 @@ public class LiveChannelSegmentService {
 	
 	public static class DeleteLiveChannelSegmentBuilder extends NullRequestBuilder {
 		
-		public DeleteLiveChannelSegmentBuilder(int id) {
+		public DeleteLiveChannelSegmentBuilder(long id) {
 			super("livechannelsegment", "delete");
 			params.add("id", id);
 		}
@@ -70,13 +70,13 @@ public class LiveChannelSegmentService {
 	}
 
 	/**  Delete live channel segment by id  */
-    public static DeleteLiveChannelSegmentBuilder delete(int id)  {
+    public static DeleteLiveChannelSegmentBuilder delete(long id)  {
 		return new DeleteLiveChannelSegmentBuilder(id);
 	}
 	
 	public static class GetLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, GetLiveChannelSegmentBuilder> {
 		
-		public GetLiveChannelSegmentBuilder(int id) {
+		public GetLiveChannelSegmentBuilder(long id) {
 			super(LiveChannelSegment.class, "livechannelsegment", "get");
 			params.add("id", id);
 		}
@@ -87,7 +87,7 @@ public class LiveChannelSegmentService {
 	}
 
 	/**  Get live channel segment by id  */
-    public static GetLiveChannelSegmentBuilder get(int id)  {
+    public static GetLiveChannelSegmentBuilder get(long id)  {
 		return new GetLiveChannelSegmentBuilder(id);
 	}
 	
@@ -115,7 +115,7 @@ public class LiveChannelSegmentService {
 	
 	public static class UpdateLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, UpdateLiveChannelSegmentBuilder> {
 		
-		public UpdateLiveChannelSegmentBuilder(int id, LiveChannelSegment liveChannelSegment) {
+		public UpdateLiveChannelSegmentBuilder(long id, LiveChannelSegment liveChannelSegment) {
 			super(LiveChannelSegment.class, "livechannelsegment", "update");
 			params.add("id", id);
 			params.add("liveChannelSegment", liveChannelSegment);
@@ -127,7 +127,7 @@ public class LiveChannelSegmentService {
 	}
 
 	/**  Update live channel segment by id  */
-    public static UpdateLiveChannelSegmentBuilder update(int id, LiveChannelSegment liveChannelSegment)  {
+    public static UpdateLiveChannelSegmentBuilder update(long id, LiveChannelSegment liveChannelSegment)  {
 		return new UpdateLiveChannelSegmentBuilder(id, liveChannelSegment);
 	}
 }

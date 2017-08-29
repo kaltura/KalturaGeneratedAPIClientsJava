@@ -55,7 +55,7 @@ public class ResponseProfile extends DetachedResponseProfile {
 	}
 
 	/**  Auto generated numeric identifier  */
-	private Integer id;
+	private Long id;
 	/**  Unique system name  */
 	private String systemName;
 	private Integer partnerId;
@@ -67,10 +67,10 @@ public class ResponseProfile extends DetachedResponseProfile {
 	private Integer version;
 
 	// id:
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id = id;
 	}
 
@@ -161,7 +161,7 @@ public class ResponseProfile extends DetachedResponseProfile {
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseInt(jsonObject.get("id"));
+		id = GsonParser.parseLong(jsonObject.get("id"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));

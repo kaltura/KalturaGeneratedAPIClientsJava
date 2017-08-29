@@ -66,7 +66,7 @@ public class LiveChannelSegment extends ObjectBase {
 	}
 
 	/**  Unique identifier  */
-	private String id;
+	private Long id;
 	private Integer partnerId;
 	/**  Segment creation date as Unix timestamp (In seconds)  */
 	private Integer createdAt;
@@ -89,17 +89,17 @@ public class LiveChannelSegment extends ObjectBase {
 	/**  Segment start time trigger type  */
 	private LiveChannelSegmentTriggerType triggerType;
 	/**  Live channel segment that the trigger relates to  */
-	private String triggerSegmentId;
+	private Long triggerSegmentId;
 	/**  Segment play start time, in mili-seconds, according to trigger type  */
 	private Double startTime;
 	/**  Segment play duration time, in mili-seconds  */
 	private Double duration;
 
 	// id:
-	public String getId(){
+	public Long getId(){
 		return this.id;
 	}
-	public void setId(String id){
+	public void setId(Long id){
 		this.id = id;
 	}
 
@@ -240,10 +240,10 @@ public class LiveChannelSegment extends ObjectBase {
 	}
 
 	// triggerSegmentId:
-	public String getTriggerSegmentId(){
+	public Long getTriggerSegmentId(){
 		return this.triggerSegmentId;
 	}
-	public void setTriggerSegmentId(String triggerSegmentId){
+	public void setTriggerSegmentId(Long triggerSegmentId){
 		this.triggerSegmentId = triggerSegmentId;
 	}
 
@@ -286,7 +286,7 @@ public class LiveChannelSegment extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseString(jsonObject.get("id"));
+		id = GsonParser.parseLong(jsonObject.get("id"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
@@ -298,7 +298,7 @@ public class LiveChannelSegment extends ObjectBase {
 		channelId = GsonParser.parseString(jsonObject.get("channelId"));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 		triggerType = LiveChannelSegmentTriggerType.get(GsonParser.parseString(jsonObject.get("triggerType")));
-		triggerSegmentId = GsonParser.parseString(jsonObject.get("triggerSegmentId"));
+		triggerSegmentId = GsonParser.parseLong(jsonObject.get("triggerSegmentId"));
 		startTime = GsonParser.parseDouble(jsonObject.get("startTime"));
 		duration = GsonParser.parseDouble(jsonObject.get("duration"));
 

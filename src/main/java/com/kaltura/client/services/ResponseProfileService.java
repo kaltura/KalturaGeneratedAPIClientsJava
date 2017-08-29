@@ -62,7 +62,7 @@ public class ResponseProfileService {
 	
 	public static class CloneResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, CloneResponseProfileBuilder> {
 		
-		public CloneResponseProfileBuilder(int id, ResponseProfile profile) {
+		public CloneResponseProfileBuilder(long id, ResponseProfile profile) {
 			super(ResponseProfile.class, "responseprofile", "clone");
 			params.add("id", id);
 			params.add("profile", profile);
@@ -74,13 +74,13 @@ public class ResponseProfileService {
 	}
 
 	/**  Clone an existing response profile  */
-    public static CloneResponseProfileBuilder clone(int id, ResponseProfile profile)  {
+    public static CloneResponseProfileBuilder clone(long id, ResponseProfile profile)  {
 		return new CloneResponseProfileBuilder(id, profile);
 	}
 	
 	public static class DeleteResponseProfileBuilder extends NullRequestBuilder {
 		
-		public DeleteResponseProfileBuilder(int id) {
+		public DeleteResponseProfileBuilder(long id) {
 			super("responseprofile", "delete");
 			params.add("id", id);
 		}
@@ -91,13 +91,13 @@ public class ResponseProfileService {
 	}
 
 	/**  Delete response profile by id  */
-    public static DeleteResponseProfileBuilder delete(int id)  {
+    public static DeleteResponseProfileBuilder delete(long id)  {
 		return new DeleteResponseProfileBuilder(id);
 	}
 	
 	public static class GetResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, GetResponseProfileBuilder> {
 		
-		public GetResponseProfileBuilder(int id) {
+		public GetResponseProfileBuilder(long id) {
 			super(ResponseProfile.class, "responseprofile", "get");
 			params.add("id", id);
 		}
@@ -108,7 +108,7 @@ public class ResponseProfileService {
 	}
 
 	/**  Get response profile by id  */
-    public static GetResponseProfileBuilder get(int id)  {
+    public static GetResponseProfileBuilder get(long id)  {
 		return new GetResponseProfileBuilder(id);
 	}
 	
@@ -149,7 +149,7 @@ public class ResponseProfileService {
 	
 	public static class UpdateResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, UpdateResponseProfileBuilder> {
 		
-		public UpdateResponseProfileBuilder(int id, ResponseProfile updateResponseProfile) {
+		public UpdateResponseProfileBuilder(long id, ResponseProfile updateResponseProfile) {
 			super(ResponseProfile.class, "responseprofile", "update");
 			params.add("id", id);
 			params.add("updateResponseProfile", updateResponseProfile);
@@ -161,13 +161,13 @@ public class ResponseProfileService {
 	}
 
 	/**  Update response profile by id  */
-    public static UpdateResponseProfileBuilder update(int id, ResponseProfile updateResponseProfile)  {
+    public static UpdateResponseProfileBuilder update(long id, ResponseProfile updateResponseProfile)  {
 		return new UpdateResponseProfileBuilder(id, updateResponseProfile);
 	}
 	
 	public static class UpdateStatusResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, UpdateStatusResponseProfileBuilder> {
 		
-		public UpdateStatusResponseProfileBuilder(int id, ResponseProfileStatus status) {
+		public UpdateStatusResponseProfileBuilder(long id, ResponseProfileStatus status) {
 			super(ResponseProfile.class, "responseprofile", "updateStatus");
 			params.add("id", id);
 			params.add("status", status);
@@ -183,7 +183,7 @@ public class ResponseProfileService {
 	}
 
 	/**  Update response profile status by id  */
-    public static UpdateStatusResponseProfileBuilder updateStatus(int id, ResponseProfileStatus status)  {
+    public static UpdateStatusResponseProfileBuilder updateStatus(long id, ResponseProfileStatus status)  {
 		return new UpdateStatusResponseProfileBuilder(id, status);
 	}
 }
