@@ -33,6 +33,7 @@ import com.kaltura.client.enums.ConversionProfileStatus;
 import com.kaltura.client.enums.ConversionProfileType;
 import com.kaltura.client.enums.MediaParserType;
 import com.kaltura.client.types.CropDimensions;
+import com.kaltura.client.types.EntryReplacementOptions;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -73,6 +74,7 @@ public class ConversionProfile extends ObjectBase {
 		String conditionalProfiles();
 		String detectGOP();
 		String mediaInfoXslTransformation();
+		EntryReplacementOptions.Tokenizer defaultReplacementOptions();
 	}
 
 	/**  The id of the Conversion Profile  */
@@ -122,6 +124,8 @@ public class ConversionProfile extends ObjectBase {
 	private Integer detectGOP;
 	/**  XSL to transform ingestion Media Info XML  */
 	private String mediaInfoXslTransformation;
+	/**  Default replacement options to be applied to entries  */
+	private EntryReplacementOptions defaultReplacementOptions;
 
 	// id:
 	public Integer getId(){
@@ -407,6 +411,14 @@ public class ConversionProfile extends ObjectBase {
 		setToken("mediaInfoXslTransformation", multirequestToken);
 	}
 
+	// defaultReplacementOptions:
+	public EntryReplacementOptions getDefaultReplacementOptions(){
+		return this.defaultReplacementOptions;
+	}
+	public void setDefaultReplacementOptions(EntryReplacementOptions defaultReplacementOptions){
+		this.defaultReplacementOptions = defaultReplacementOptions;
+	}
+
 
 	public ConversionProfile() {
 		super();
@@ -442,6 +454,7 @@ public class ConversionProfile extends ObjectBase {
 		conditionalProfiles = GsonParser.parseString(jsonObject.get("conditionalProfiles"));
 		detectGOP = GsonParser.parseInt(jsonObject.get("detectGOP"));
 		mediaInfoXslTransformation = GsonParser.parseString(jsonObject.get("mediaInfoXslTransformation"));
+		defaultReplacementOptions = GsonParser.parseObject(jsonObject.getAsJsonObject("defaultReplacementOptions"), EntryReplacementOptions.class);
 
 	}
 
@@ -468,6 +481,7 @@ public class ConversionProfile extends ObjectBase {
 		kparams.add("conditionalProfiles", this.conditionalProfiles);
 		kparams.add("detectGOP", this.detectGOP);
 		kparams.add("mediaInfoXslTransformation", this.mediaInfoXslTransformation);
+		kparams.add("defaultReplacementOptions", this.defaultReplacementOptions);
 		return kparams;
 	}
 
