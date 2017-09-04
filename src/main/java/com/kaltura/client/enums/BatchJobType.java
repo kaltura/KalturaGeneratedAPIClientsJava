@@ -89,7 +89,8 @@ public enum BatchJobType implements EnumAsString {
 	SYNC_CATEGORY_PRIVACY_CONTEXT("39"),
 	LIVE_REPORT_EXPORT("40"),
 	RECALCULATE_CACHE("41"),
-	LIVE_TO_VOD("42");
+	LIVE_TO_VOD("42"),
+	COPY_CAPTIONS("43");
 
 	private String value;
 

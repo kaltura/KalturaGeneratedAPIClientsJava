@@ -40,64 +40,63 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ResponseProfileHolder.Tokenizer.class)
-public class ResponseProfileHolder extends BaseResponseProfile {
+@MultiRequestBuilder.Tokenizer(ClearBeaconsJobData.Tokenizer.class)
+public class ClearBeaconsJobData extends JobData {
 	
-	public interface Tokenizer extends BaseResponseProfile.Tokenizer {
-		String id();
-		String systemName();
+	public interface Tokenizer extends JobData.Tokenizer {
+		String objectId();
+		String relatedObjectType();
 	}
 
-	/**  Auto generated numeric identifier  */
-	private Long id;
-	/**  Unique system name  */
-	private String systemName;
+	/**  Beacon object Id to clear info for  */
+	private String objectId;
+	/**  Beacon object Type to clear info for  */
+	private Integer relatedObjectType;
 
-	// id:
-	public Long getId(){
-		return this.id;
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
 	}
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
 	}
 
-	// systemName:
-	public String getSystemName(){
-		return this.systemName;
-	}
-	public void setSystemName(String systemName){
-		this.systemName = systemName;
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
 	}
 
-	public void systemName(String multirequestToken){
-		setToken("systemName", multirequestToken);
+	// relatedObjectType:
+	public Integer getRelatedObjectType(){
+		return this.relatedObjectType;
+	}
+	public void setRelatedObjectType(Integer relatedObjectType){
+		this.relatedObjectType = relatedObjectType;
+	}
+
+	public void relatedObjectType(String multirequestToken){
+		setToken("relatedObjectType", multirequestToken);
 	}
 
 
-	public ResponseProfileHolder() {
+	public ClearBeaconsJobData() {
 		super();
 	}
 
-	public ResponseProfileHolder(JsonObject jsonObject) throws APIException {
+	public ClearBeaconsJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseLong(jsonObject.get("id"));
-		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
+		relatedObjectType = GsonParser.parseInt(jsonObject.get("relatedObjectType"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaResponseProfileHolder");
-		kparams.add("id", this.id);
-		kparams.add("systemName", this.systemName);
+		kparams.add("objectType", "KalturaClearBeaconsJobData");
+		kparams.add("relatedObjectType", this.relatedObjectType);
 		return kparams;
 	}
 

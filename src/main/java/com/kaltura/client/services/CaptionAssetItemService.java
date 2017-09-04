@@ -44,6 +44,33 @@ import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 /**  Search caption asset items  */
 public class CaptionAssetItemService {
 	
+	public static class ListCaptionAssetItemBuilder extends ListResponseRequestBuilder<CaptionAssetItem, CaptionAssetItem.Tokenizer, ListCaptionAssetItemBuilder> {
+		
+		public ListCaptionAssetItemBuilder(String captionAssetId, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager) {
+			super(CaptionAssetItem.class, "captionsearch_captionassetitem", "list");
+			params.add("captionAssetId", captionAssetId);
+			params.add("captionAssetItemFilter", captionAssetItemFilter);
+			params.add("captionAssetItemPager", captionAssetItemPager);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
+
+	public static ListCaptionAssetItemBuilder list(String captionAssetId)  {
+		return list(captionAssetId, null);
+	}
+
+	public static ListCaptionAssetItemBuilder list(String captionAssetId, CaptionAssetItemFilter captionAssetItemFilter)  {
+		return list(captionAssetId, captionAssetItemFilter, null);
+	}
+
+	/**  List caption asset items by filter and pager  */
+    public static ListCaptionAssetItemBuilder list(String captionAssetId, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
+		return new ListCaptionAssetItemBuilder(captionAssetId, captionAssetItemFilter, captionAssetItemPager);
+	}
+	
 	public static class SearchCaptionAssetItemBuilder extends ListResponseRequestBuilder<CaptionAssetItem, CaptionAssetItem.Tokenizer, SearchCaptionAssetItemBuilder> {
 		
 		public SearchCaptionAssetItemBuilder(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager) {
