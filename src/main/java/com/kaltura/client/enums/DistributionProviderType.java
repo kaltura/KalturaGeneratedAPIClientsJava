@@ -34,8 +34,24 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType implements EnumAsString {
+	AVN("avnDistribution.AVN"),
+	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
+	CROSS_KALTURA("crossKalturaDistribution.CROSS_KALTURA"),
+	DAILYMOTION("dailymotionDistribution.DAILYMOTION"),
+	DOUBLECLICK("doubleClickDistribution.DOUBLECLICK"),
 	FACEBOOK("facebookDistribution.FACEBOOK"),
+	FREEWHEEL("freewheelDistribution.FREEWHEEL"),
+	FREEWHEEL_GENERIC("freewheelGenericDistribution.FREEWHEEL_GENERIC"),
+	FTP("ftpDistribution.FTP"),
+	FTP_SCHEDULED("ftpDistribution.FTP_SCHEDULED"),
+	HULU("huluDistribution.HULU"),
 	IDETIC("ideticDistribution.IDETIC"),
+	METRO_PCS("metroPcsDistribution.METRO_PCS"),
+	MSN("msnDistribution.MSN"),
+	QUICKPLAY("quickPlayDistribution.QUICKPLAY"),
+	UNICORN("unicornDistribution.UNICORN"),
+	YAHOO("yahooDistribution.YAHOO"),
+	YOUTUBE("youTubeDistribution.YOUTUBE"),
 	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
 	GENERIC("1"),
 	SYNDICATION("2");

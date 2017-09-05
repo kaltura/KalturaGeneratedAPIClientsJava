@@ -28,11 +28,14 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.enums.EventNotificationTemplateStatus;
+import com.kaltura.client.enums.PushNotificationCommandType;
 import com.kaltura.client.types.EventNotificationScope;
 import com.kaltura.client.types.EventNotificationTemplate;
 import com.kaltura.client.types.EventNotificationTemplateFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.PartnerFilter;
+import com.kaltura.client.types.PushNotificationData;
+import com.kaltura.client.types.PushNotificationParams;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -204,6 +207,48 @@ public class EventNotificationTemplateService {
 	/**  Action lists the template partner event notification templates.  */
     public static ListTemplatesEventNotificationTemplateBuilder listTemplates(EventNotificationTemplateFilter filter, FilterPager pager)  {
 		return new ListTemplatesEventNotificationTemplateBuilder(filter, pager);
+	}
+	
+	public static class RegisterEventNotificationTemplateBuilder extends RequestBuilder<PushNotificationData, PushNotificationData.Tokenizer, RegisterEventNotificationTemplateBuilder> {
+		
+		public RegisterEventNotificationTemplateBuilder(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams) {
+			super(PushNotificationData.class, "eventnotification_eventnotificationtemplate", "register");
+			params.add("notificationTemplateSystemName", notificationTemplateSystemName);
+			params.add("pushNotificationParams", pushNotificationParams);
+		}
+		
+		public void notificationTemplateSystemName(String multirequestToken) {
+			params.add("notificationTemplateSystemName", multirequestToken);
+		}
+	}
+
+	/**  Register to a queue from which event messages will be provided according to
+	  given template. Queue will be created if not already exists  */
+    public static RegisterEventNotificationTemplateBuilder register(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams)  {
+		return new RegisterEventNotificationTemplateBuilder(notificationTemplateSystemName, pushNotificationParams);
+	}
+	
+	public static class SendCommandEventNotificationTemplateBuilder extends NullRequestBuilder {
+		
+		public SendCommandEventNotificationTemplateBuilder(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command) {
+			super("eventnotification_eventnotificationtemplate", "sendCommand");
+			params.add("notificationTemplateSystemName", notificationTemplateSystemName);
+			params.add("pushNotificationParams", pushNotificationParams);
+			params.add("command", command);
+		}
+		
+		public void notificationTemplateSystemName(String multirequestToken) {
+			params.add("notificationTemplateSystemName", multirequestToken);
+		}
+		
+		public void command(String multirequestToken) {
+			params.add("command", multirequestToken);
+		}
+	}
+
+	/**  Clear queue messages  */
+    public static SendCommandEventNotificationTemplateBuilder sendCommand(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command)  {
+		return new SendCommandEventNotificationTemplateBuilder(notificationTemplateSystemName, pushNotificationParams, command);
 	}
 	
 	public static class UpdateEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, UpdateEventNotificationTemplateBuilder> {

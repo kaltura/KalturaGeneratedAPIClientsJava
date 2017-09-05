@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType implements EnumAsString {
-	CONVERT("0"),
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
 	PARSE_CAPTION_ASSET("captionSearch.parseCaptionAsset"),
 	DISTRIBUTION_DELETE("contentDistribution.DistributionDelete"),
@@ -44,6 +43,7 @@ public enum BatchJobType implements EnumAsString {
 	DISTRIBUTION_SUBMIT("contentDistribution.DistributionSubmit"),
 	DISTRIBUTION_SYNC("contentDistribution.DistributionSync"),
 	DISTRIBUTION_UPDATE("contentDistribution.DistributionUpdate"),
+	CONVERT("0"),
 	DROP_FOLDER_CONTENT_PROCESSOR("dropFolder.DropFolderContentProcessor"),
 	DROP_FOLDER_WATCHER("dropFolder.DropFolderWatcher"),
 	EVENT_NOTIFICATION_HANDLER("eventNotification.EventNotificationHandler"),
@@ -52,6 +52,7 @@ public enum BatchJobType implements EnumAsString {
 	INDEX_TAGS("tagSearch.IndexTagsByPrivacyContext"),
 	TAG_RESOLVE("tagSearch.TagResolve"),
 	VIRUS_SCAN("virusScan.VirusScan"),
+	WIDEVINE_REPOSITORY_SYNC("widevine.WidevineRepositorySync"),
 	IMPORT("1"),
 	DELETE("2"),
 	FLATTEN("3"),

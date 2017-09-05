@@ -33,7 +33,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -52,6 +52,7 @@ public class WebexDropFolder extends DropFolder {
 		String webexHostIdMetadataFieldName();
 		String deleteFromRecycleBin();
 		String webexServiceType();
+		String deleteFromTimestamp();
 	}
 
 	private String webexUserId;
@@ -62,6 +63,7 @@ public class WebexDropFolder extends DropFolder {
 	private String webexHostIdMetadataFieldName;
 	private Boolean deleteFromRecycleBin;
 	private String webexServiceType;
+	private Integer deleteFromTimestamp;
 
 	// webexUserId:
 	public String getWebexUserId(){
@@ -159,6 +161,18 @@ public class WebexDropFolder extends DropFolder {
 		setToken("webexServiceType", multirequestToken);
 	}
 
+	// deleteFromTimestamp:
+	public Integer getDeleteFromTimestamp(){
+		return this.deleteFromTimestamp;
+	}
+	public void setDeleteFromTimestamp(Integer deleteFromTimestamp){
+		this.deleteFromTimestamp = deleteFromTimestamp;
+	}
+
+	public void deleteFromTimestamp(String multirequestToken){
+		setToken("deleteFromTimestamp", multirequestToken);
+	}
+
 
 	public WebexDropFolder() {
 		super();
@@ -178,6 +192,7 @@ public class WebexDropFolder extends DropFolder {
 		webexHostIdMetadataFieldName = GsonParser.parseString(jsonObject.get("webexHostIdMetadataFieldName"));
 		deleteFromRecycleBin = GsonParser.parseBoolean(jsonObject.get("deleteFromRecycleBin"));
 		webexServiceType = GsonParser.parseString(jsonObject.get("webexServiceType"));
+		deleteFromTimestamp = GsonParser.parseInt(jsonObject.get("deleteFromTimestamp"));
 
 	}
 
@@ -192,6 +207,7 @@ public class WebexDropFolder extends DropFolder {
 		kparams.add("webexHostIdMetadataFieldName", this.webexHostIdMetadataFieldName);
 		kparams.add("deleteFromRecycleBin", this.deleteFromRecycleBin);
 		kparams.add("webexServiceType", this.webexServiceType);
+		kparams.add("deleteFromTimestamp", this.deleteFromTimestamp);
 		return kparams;
 	}
 
