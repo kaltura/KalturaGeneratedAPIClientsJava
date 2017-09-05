@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EntryServerNodeRecordingStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -47,10 +48,12 @@ public class LiveEntryServerNodeRecordingInfo extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String recordedEntryId();
 		String duration();
+		String recordingStatus();
 	}
 
 	private String recordedEntryId;
 	private Integer duration;
+	private EntryServerNodeRecordingStatus recordingStatus;
 
 	// recordedEntryId:
 	public String getRecordedEntryId(){
@@ -76,6 +79,18 @@ public class LiveEntryServerNodeRecordingInfo extends ObjectBase {
 		setToken("duration", multirequestToken);
 	}
 
+	// recordingStatus:
+	public EntryServerNodeRecordingStatus getRecordingStatus(){
+		return this.recordingStatus;
+	}
+	public void setRecordingStatus(EntryServerNodeRecordingStatus recordingStatus){
+		this.recordingStatus = recordingStatus;
+	}
+
+	public void recordingStatus(String multirequestToken){
+		setToken("recordingStatus", multirequestToken);
+	}
+
 
 	public LiveEntryServerNodeRecordingInfo() {
 		super();
@@ -89,6 +104,7 @@ public class LiveEntryServerNodeRecordingInfo extends ObjectBase {
 		// set members values:
 		recordedEntryId = GsonParser.parseString(jsonObject.get("recordedEntryId"));
 		duration = GsonParser.parseInt(jsonObject.get("duration"));
+		recordingStatus = EntryServerNodeRecordingStatus.get(GsonParser.parseInt(jsonObject.get("recordingStatus")));
 
 	}
 
@@ -97,6 +113,7 @@ public class LiveEntryServerNodeRecordingInfo extends ObjectBase {
 		kparams.add("objectType", "KalturaLiveEntryServerNodeRecordingInfo");
 		kparams.add("recordedEntryId", this.recordedEntryId);
 		kparams.add("duration", this.duration);
+		kparams.add("recordingStatus", this.recordingStatus);
 		return kparams;
 	}
 
