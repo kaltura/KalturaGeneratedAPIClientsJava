@@ -73,6 +73,7 @@ public enum DeliveryProfileType implements EnumAsString {
 	VOD_PACKAGER_HDS("63"),
 	VOD_PACKAGER_MSS("67"),
 	VOD_PACKAGER_DASH("68"),
+	VOD_PACKAGER_HLS_MANIFEST("69"),
 	LIVE_HLS("1001"),
 	LIVE_HDS("1002"),
 	LIVE_DASH("1003"),
