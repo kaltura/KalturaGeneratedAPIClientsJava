@@ -171,14 +171,19 @@ public class BaseEntryService {
 	
 	public static class CloneBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, CloneBaseEntryBuilder> {
 		
-		public CloneBaseEntryBuilder(String entryId, List<BaseEntryCloneOptionItem> cloneOptions) {
+		public CloneBaseEntryBuilder(String entryId, List<BaseEntryCloneOptionItem> cloneOptions, boolean setSourceAsRootEntryId) {
 			super(BaseEntry.class, "baseentry", "clone");
 			params.add("entryId", entryId);
 			params.add("cloneOptions", cloneOptions);
+			params.add("setSourceAsRootEntryId", setSourceAsRootEntryId);
 		}
 		
 		public void entryId(String multirequestToken) {
 			params.add("entryId", multirequestToken);
+		}
+		
+		public void setSourceAsRootEntryId(String multirequestToken) {
+			params.add("setSourceAsRootEntryId", multirequestToken);
 		}
 	}
 
@@ -186,9 +191,13 @@ public class BaseEntryService {
 		return clone(entryId, null);
 	}
 
+	public static CloneBaseEntryBuilder clone(String entryId, List<BaseEntryCloneOptionItem> cloneOptions)  {
+		return clone(entryId, cloneOptions, false);
+	}
+
 	/**  Clone an entry with optional attributes to apply to the clone  */
-    public static CloneBaseEntryBuilder clone(String entryId, List<BaseEntryCloneOptionItem> cloneOptions)  {
-		return new CloneBaseEntryBuilder(entryId, cloneOptions);
+    public static CloneBaseEntryBuilder clone(String entryId, List<BaseEntryCloneOptionItem> cloneOptions, boolean setSourceAsRootEntryId)  {
+		return new CloneBaseEntryBuilder(entryId, cloneOptions, setSourceAsRootEntryId);
 	}
 	
 	public static class CountBaseEntryBuilder extends RequestBuilder<Integer, String, CountBaseEntryBuilder> {
