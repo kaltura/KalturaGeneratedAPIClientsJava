@@ -32,7 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.Map;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -46,23 +46,23 @@ import java.util.Map;
 public class QuestionCuePoint extends CuePoint {
 	
 	public interface Tokenizer extends CuePoint.Tokenizer {
-		RequestBuilder.MapTokenizer<OptionalAnswer.Tokenizer> optionalAnswers();
+		RequestBuilder.ListTokenizer<OptionalAnswer.Tokenizer> optionalAnswers();
 		String hint();
 		String question();
 		String explanation();
 	}
 
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
-	private Map<String, OptionalAnswer> optionalAnswers;
+	private List<OptionalAnswer> optionalAnswers;
 	private String hint;
 	private String question;
 	private String explanation;
 
 	// optionalAnswers:
-	public Map<String, OptionalAnswer> getOptionalAnswers(){
+	public List<OptionalAnswer> getOptionalAnswers(){
 		return this.optionalAnswers;
 	}
-	public void setOptionalAnswers(Map<String, OptionalAnswer> optionalAnswers){
+	public void setOptionalAnswers(List<OptionalAnswer> optionalAnswers){
 		this.optionalAnswers = optionalAnswers;
 	}
 
@@ -113,7 +113,7 @@ public class QuestionCuePoint extends CuePoint {
 		if(jsonObject == null) return;
 
 		// set members values:
-		optionalAnswers = GsonParser.parseMap(jsonObject.getAsJsonObject("optionalAnswers"), OptionalAnswer.class);
+		optionalAnswers = GsonParser.parseArray(jsonObject.getAsJsonArray("optionalAnswers"), OptionalAnswer.class);
 		hint = GsonParser.parseString(jsonObject.get("hint"));
 		question = GsonParser.parseString(jsonObject.get("question"));
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));

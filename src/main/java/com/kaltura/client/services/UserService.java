@@ -33,6 +33,7 @@ import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.SessionResponse;
 import com.kaltura.client.types.User;
 import com.kaltura.client.types.UserFilter;
 import com.kaltura.client.types.UserLoginDataFilter;
@@ -355,6 +356,24 @@ public class UserService {
 	  and a user password.  */
     public static LoginUserBuilder login(int partnerId, String userId, String password, int expiry, String privileges)  {
 		return new LoginUserBuilder(partnerId, userId, password, expiry, privileges);
+	}
+	
+	public static class LoginByKsUserBuilder extends RequestBuilder<SessionResponse, SessionResponse.Tokenizer, LoginByKsUserBuilder> {
+		
+		public LoginByKsUserBuilder(int requestedPartnerId) {
+			super(SessionResponse.class, "user", "loginByKs");
+			params.add("requestedPartnerId", requestedPartnerId);
+		}
+		
+		public void requestedPartnerId(String multirequestToken) {
+			params.add("requestedPartnerId", multirequestToken);
+		}
+	}
+
+	/**  Loges a user to the destination account as long the ks user id exists in the
+	  desc acount and the loginData id match for both accounts  */
+    public static LoginByKsUserBuilder loginByKs(int requestedPartnerId)  {
+		return new LoginByKsUserBuilder(requestedPartnerId);
 	}
 	
 	public static class LoginByLoginIdUserBuilder extends RequestBuilder<String, String, LoginByLoginIdUserBuilder> {
