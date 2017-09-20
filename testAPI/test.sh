@@ -22,6 +22,6 @@ if [ "$RUN_ENV" = 'development' ];then
 fi
 
 # compile
-mvn -Dmaven.test.skip=true package
+mvn clean
 # test
-mvn package
+mvn test
