@@ -94,6 +94,7 @@ public class BaseEntry extends ObjectBase {
 		RequestBuilder.ListTokenizer<OperationAttributes.Tokenizer> operationAttributes();
 		String entitledUsersEdit();
 		String entitledUsersPublish();
+		String entitledUsersView();
 		String capabilities();
 		String templateEntryId();
 		String displayInSearch();
@@ -183,13 +184,17 @@ public class BaseEntry extends ObjectBase {
 	/**  clipping, skipping and cropping attributes that used to create this entry  */
 	private List<OperationAttributes> operationAttributes;
 	/**  list of user ids that are entitled to edit the entry (no server enforcement) The
-	  difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only  */
+	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
+	  is applicative only  */
 	private String entitledUsersEdit;
 	/**  list of user ids that are entitled to publish the entry (no server enforcement)
-	  The difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only  */
+	  The difference between entitledUsersEdit, entitledUsersPublish and
+	  entitledUsersView is applicative only  */
 	private String entitledUsersPublish;
+	/**  list of user ids that are entitled to view the entry (no server enforcement) The
+	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
+	  is applicative only  */
+	private String entitledUsersView;
 	/**  Comma seperated string of the capabilities of the entry. Any capability needed
 	  can be added to this list.  */
 	private String capabilities;
@@ -686,6 +691,18 @@ public class BaseEntry extends ObjectBase {
 		setToken("entitledUsersPublish", multirequestToken);
 	}
 
+	// entitledUsersView:
+	public String getEntitledUsersView(){
+		return this.entitledUsersView;
+	}
+	public void setEntitledUsersView(String entitledUsersView){
+		this.entitledUsersView = entitledUsersView;
+	}
+
+	public void entitledUsersView(String multirequestToken){
+		setToken("entitledUsersView", multirequestToken);
+	}
+
 	// capabilities:
 	public String getCapabilities(){
 		return this.capabilities;
@@ -774,6 +791,7 @@ public class BaseEntry extends ObjectBase {
 		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), OperationAttributes.class);
 		entitledUsersEdit = GsonParser.parseString(jsonObject.get("entitledUsersEdit"));
 		entitledUsersPublish = GsonParser.parseString(jsonObject.get("entitledUsersPublish"));
+		entitledUsersView = GsonParser.parseString(jsonObject.get("entitledUsersView"));
 		capabilities = GsonParser.parseString(jsonObject.get("capabilities"));
 		templateEntryId = GsonParser.parseString(jsonObject.get("templateEntryId"));
 		displayInSearch = EntryDisplayInSearchType.get(GsonParser.parseInt(jsonObject.get("displayInSearch")));
@@ -806,6 +824,7 @@ public class BaseEntry extends ObjectBase {
 		kparams.add("operationAttributes", this.operationAttributes);
 		kparams.add("entitledUsersEdit", this.entitledUsersEdit);
 		kparams.add("entitledUsersPublish", this.entitledUsersPublish);
+		kparams.add("entitledUsersView", this.entitledUsersView);
 		kparams.add("templateEntryId", this.templateEntryId);
 		kparams.add("displayInSearch", this.displayInSearch);
 		return kparams;

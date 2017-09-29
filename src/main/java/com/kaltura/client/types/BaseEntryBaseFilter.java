@@ -120,6 +120,8 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		String entitledUsersEditMatchOr();
 		String entitledUsersPublishMatchAnd();
 		String entitledUsersPublishMatchOr();
+		String entitledUsersViewMatchAnd();
+		String entitledUsersViewMatchOr();
 		String tagsNameMultiLikeOr();
 		String tagsAdminTagsMultiLikeOr();
 		String tagsAdminTagsNameMultiLikeOr();
@@ -265,6 +267,8 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	private String entitledUsersEditMatchOr;
 	private String entitledUsersPublishMatchAnd;
 	private String entitledUsersPublishMatchOr;
+	private String entitledUsersViewMatchAnd;
+	private String entitledUsersViewMatchOr;
 	private String tagsNameMultiLikeOr;
 	private String tagsAdminTagsMultiLikeOr;
 	private String tagsAdminTagsNameMultiLikeOr;
@@ -1136,6 +1140,30 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		setToken("entitledUsersPublishMatchOr", multirequestToken);
 	}
 
+	// entitledUsersViewMatchAnd:
+	public String getEntitledUsersViewMatchAnd(){
+		return this.entitledUsersViewMatchAnd;
+	}
+	public void setEntitledUsersViewMatchAnd(String entitledUsersViewMatchAnd){
+		this.entitledUsersViewMatchAnd = entitledUsersViewMatchAnd;
+	}
+
+	public void entitledUsersViewMatchAnd(String multirequestToken){
+		setToken("entitledUsersViewMatchAnd", multirequestToken);
+	}
+
+	// entitledUsersViewMatchOr:
+	public String getEntitledUsersViewMatchOr(){
+		return this.entitledUsersViewMatchOr;
+	}
+	public void setEntitledUsersViewMatchOr(String entitledUsersViewMatchOr){
+		this.entitledUsersViewMatchOr = entitledUsersViewMatchOr;
+	}
+
+	public void entitledUsersViewMatchOr(String multirequestToken){
+		setToken("entitledUsersViewMatchOr", multirequestToken);
+	}
+
 	// tagsNameMultiLikeOr:
 	public String getTagsNameMultiLikeOr(){
 		return this.tagsNameMultiLikeOr;
@@ -1291,6 +1319,8 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		entitledUsersEditMatchOr = GsonParser.parseString(jsonObject.get("entitledUsersEditMatchOr"));
 		entitledUsersPublishMatchAnd = GsonParser.parseString(jsonObject.get("entitledUsersPublishMatchAnd"));
 		entitledUsersPublishMatchOr = GsonParser.parseString(jsonObject.get("entitledUsersPublishMatchOr"));
+		entitledUsersViewMatchAnd = GsonParser.parseString(jsonObject.get("entitledUsersViewMatchAnd"));
+		entitledUsersViewMatchOr = GsonParser.parseString(jsonObject.get("entitledUsersViewMatchOr"));
 		tagsNameMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsNameMultiLikeOr"));
 		tagsAdminTagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsAdminTagsMultiLikeOr"));
 		tagsAdminTagsNameMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsAdminTagsNameMultiLikeOr"));
@@ -1375,6 +1405,8 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		kparams.add("entitledUsersEditMatchOr", this.entitledUsersEditMatchOr);
 		kparams.add("entitledUsersPublishMatchAnd", this.entitledUsersPublishMatchAnd);
 		kparams.add("entitledUsersPublishMatchOr", this.entitledUsersPublishMatchOr);
+		kparams.add("entitledUsersViewMatchAnd", this.entitledUsersViewMatchAnd);
+		kparams.add("entitledUsersViewMatchOr", this.entitledUsersViewMatchOr);
 		kparams.add("tagsNameMultiLikeOr", this.tagsNameMultiLikeOr);
 		kparams.add("tagsAdminTagsMultiLikeOr", this.tagsAdminTagsMultiLikeOr);
 		kparams.add("tagsAdminTagsNameMultiLikeOr", this.tagsAdminTagsNameMultiLikeOr);

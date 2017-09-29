@@ -55,6 +55,7 @@ public class UploadToken extends ObjectBase {
 		String uploadedFileSize();
 		String createdAt();
 		String updatedAt();
+		String uploadUrl();
 	}
 
 	/**  Upload token unique ID  */
@@ -78,6 +79,9 @@ public class UploadToken extends ObjectBase {
 	private Integer createdAt;
 	/**  Last update date as Unix timestamp (In seconds)  */
 	private Integer updatedAt;
+	/**  Upload url - to explicitly determine to which domain to adress the
+	  uploadToken-&gt;upload call  */
+	private String uploadUrl;
 
 	// id:
 	public String getId(){
@@ -187,6 +191,18 @@ public class UploadToken extends ObjectBase {
 		setToken("updatedAt", multirequestToken);
 	}
 
+	// uploadUrl:
+	public String getUploadUrl(){
+		return this.uploadUrl;
+	}
+	public void setUploadUrl(String uploadUrl){
+		this.uploadUrl = uploadUrl;
+	}
+
+	public void uploadUrl(String multirequestToken){
+		setToken("uploadUrl", multirequestToken);
+	}
+
 
 	public UploadToken() {
 		super();
@@ -207,6 +223,7 @@ public class UploadToken extends ObjectBase {
 		uploadedFileSize = GsonParser.parseDouble(jsonObject.get("uploadedFileSize"));
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		uploadUrl = GsonParser.parseString(jsonObject.get("uploadUrl"));
 
 	}
 
