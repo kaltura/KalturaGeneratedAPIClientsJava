@@ -45,6 +45,7 @@ import com.kaltura.client.types.SearchResult;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -524,6 +525,23 @@ public class MediaService {
 	/**  Get MRSS by entry id      XML will return as an escaped string  */
     public static GetMrssMediaBuilder getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray, String features)  {
 		return new GetMrssMediaBuilder(entryId, extendingItemsArray, features);
+	}
+	
+	public static class GetVolumeMapMediaBuilder extends ServeRequestBuilder {
+		
+		public GetVolumeMapMediaBuilder(String entryId) {
+			super("media", "getVolumeMap");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**  Get volume map by entry id  */
+    public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
+		return new GetVolumeMapMediaBuilder(entryId);
 	}
 	
 	public static class ListMediaBuilder extends ListResponseRequestBuilder<MediaEntry, MediaEntry.Tokenizer, ListMediaBuilder> {
