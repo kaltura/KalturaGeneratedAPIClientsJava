@@ -529,19 +529,28 @@ public class MediaService {
 	
 	public static class GetVolumeMapMediaBuilder extends ServeRequestBuilder {
 		
-		public GetVolumeMapMediaBuilder(String entryId) {
+		public GetVolumeMapMediaBuilder(String entryId, String flavorId) {
 			super("media", "getVolumeMap");
 			params.add("entryId", entryId);
+			params.add("flavorId", flavorId);
 		}
 		
 		public void entryId(String multirequestToken) {
 			params.add("entryId", multirequestToken);
 		}
+		
+		public void flavorId(String multirequestToken) {
+			params.add("flavorId", multirequestToken);
+		}
+	}
+
+	public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
+		return getVolumeMap(entryId, null);
 	}
 
 	/**  Get volume map by entry id  */
-    public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
-		return new GetVolumeMapMediaBuilder(entryId);
+    public static GetVolumeMapMediaBuilder getVolumeMap(String entryId, String flavorId)  {
+		return new GetVolumeMapMediaBuilder(entryId, flavorId);
 	}
 	
 	public static class ListMediaBuilder extends ListResponseRequestBuilder<MediaEntry, MediaEntry.Tokenizer, ListMediaBuilder> {
