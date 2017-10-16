@@ -43,7 +43,8 @@ public enum BaseEntryCloneOptions implements EnumAsString {
 	CHILD_ENTRIES("3"),
 	ACCESS_CONTROL("4"),
 	METADATA("5"),
-	FLAVORS("6");
+	FLAVORS("6"),
+	CAPTIONS("7");
 
 	private String value;
 
