@@ -38,6 +38,7 @@ import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -287,6 +288,23 @@ public class FlavorAssetService {
 	/**  Get download URL for the asset  */
     public static GetUrlFlavorAssetBuilder getUrl(String id, int storageId, boolean forceProxy, FlavorAssetUrlOptions options)  {
 		return new GetUrlFlavorAssetBuilder(id, storageId, forceProxy, options);
+	}
+	
+	public static class GetVolumeMapFlavorAssetBuilder extends ServeRequestBuilder {
+		
+		public GetVolumeMapFlavorAssetBuilder(String flavorId) {
+			super("flavorasset", "getVolumeMap");
+			params.add("flavorId", flavorId);
+		}
+		
+		public void flavorId(String multirequestToken) {
+			params.add("flavorId", multirequestToken);
+		}
+	}
+
+	/**  Get volume map by entry id  */
+    public static GetVolumeMapFlavorAssetBuilder getVolumeMap(String flavorId)  {
+		return new GetVolumeMapFlavorAssetBuilder(flavorId);
 	}
 	
 	public static class GetWebPlayableByEntryIdFlavorAssetBuilder extends ArrayRequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, GetWebPlayableByEntryIdFlavorAssetBuilder> {

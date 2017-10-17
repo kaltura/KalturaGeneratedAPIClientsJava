@@ -46,12 +46,14 @@ public class ESearchMetadataItemData extends ESearchItemData {
 	public interface Tokenizer extends ESearchItemData.Tokenizer {
 		String xpath();
 		String metadataProfileId();
+		String metadataFieldId();
 		String valueText();
 		String valueInt();
 	}
 
 	private String xpath;
 	private Integer metadataProfileId;
+	private Integer metadataFieldId;
 	private String valueText;
 	private Integer valueInt;
 
@@ -77,6 +79,18 @@ public class ESearchMetadataItemData extends ESearchItemData {
 
 	public void metadataProfileId(String multirequestToken){
 		setToken("metadataProfileId", multirequestToken);
+	}
+
+	// metadataFieldId:
+	public Integer getMetadataFieldId(){
+		return this.metadataFieldId;
+	}
+	public void setMetadataFieldId(Integer metadataFieldId){
+		this.metadataFieldId = metadataFieldId;
+	}
+
+	public void metadataFieldId(String multirequestToken){
+		setToken("metadataFieldId", multirequestToken);
 	}
 
 	// valueText:
@@ -116,6 +130,7 @@ public class ESearchMetadataItemData extends ESearchItemData {
 		// set members values:
 		xpath = GsonParser.parseString(jsonObject.get("xpath"));
 		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		metadataFieldId = GsonParser.parseInt(jsonObject.get("metadataFieldId"));
 		valueText = GsonParser.parseString(jsonObject.get("valueText"));
 		valueInt = GsonParser.parseInt(jsonObject.get("valueInt"));
 
@@ -126,6 +141,7 @@ public class ESearchMetadataItemData extends ESearchItemData {
 		kparams.add("objectType", "KalturaESearchMetadataItemData");
 		kparams.add("xpath", this.xpath);
 		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("metadataFieldId", this.metadataFieldId);
 		kparams.add("valueText", this.valueText);
 		kparams.add("valueInt", this.valueInt);
 		return kparams;

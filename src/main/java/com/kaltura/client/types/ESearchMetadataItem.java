@@ -46,10 +46,12 @@ public class ESearchMetadataItem extends ESearchItem {
 	public interface Tokenizer extends ESearchItem.Tokenizer {
 		String xpath();
 		String metadataProfileId();
+		String metadataFieldId();
 	}
 
 	private String xpath;
 	private Integer metadataProfileId;
+	private Integer metadataFieldId;
 
 	// xpath:
 	public String getXpath(){
@@ -75,6 +77,18 @@ public class ESearchMetadataItem extends ESearchItem {
 		setToken("metadataProfileId", multirequestToken);
 	}
 
+	// metadataFieldId:
+	public Integer getMetadataFieldId(){
+		return this.metadataFieldId;
+	}
+	public void setMetadataFieldId(Integer metadataFieldId){
+		this.metadataFieldId = metadataFieldId;
+	}
+
+	public void metadataFieldId(String multirequestToken){
+		setToken("metadataFieldId", multirequestToken);
+	}
+
 
 	public ESearchMetadataItem() {
 		super();
@@ -88,6 +102,7 @@ public class ESearchMetadataItem extends ESearchItem {
 		// set members values:
 		xpath = GsonParser.parseString(jsonObject.get("xpath"));
 		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		metadataFieldId = GsonParser.parseInt(jsonObject.get("metadataFieldId"));
 
 	}
 
@@ -96,6 +111,7 @@ public class ESearchMetadataItem extends ESearchItem {
 		kparams.add("objectType", "KalturaESearchMetadataItem");
 		kparams.add("xpath", this.xpath);
 		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("metadataFieldId", this.metadataFieldId);
 		return kparams;
 	}
 
