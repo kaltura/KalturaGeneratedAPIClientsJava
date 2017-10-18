@@ -56,6 +56,7 @@ public class UploadToken extends ObjectBase {
 		String createdAt();
 		String updatedAt();
 		String uploadUrl();
+		String autoFinalize();
 	}
 
 	/**  Upload token unique ID  */
@@ -82,6 +83,9 @@ public class UploadToken extends ObjectBase {
 	/**  Upload url - to explicitly determine to which domain to adress the
 	  uploadToken-&gt;upload call  */
 	private String uploadUrl;
+	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
+	  the file size reproted when adding the upload token.  */
+	private Boolean autoFinalize;
 
 	// id:
 	public String getId(){
@@ -203,6 +207,18 @@ public class UploadToken extends ObjectBase {
 		setToken("uploadUrl", multirequestToken);
 	}
 
+	// autoFinalize:
+	public Boolean getAutoFinalize(){
+		return this.autoFinalize;
+	}
+	public void setAutoFinalize(Boolean autoFinalize){
+		this.autoFinalize = autoFinalize;
+	}
+
+	public void autoFinalize(String multirequestToken){
+		setToken("autoFinalize", multirequestToken);
+	}
+
 
 	public UploadToken() {
 		super();
@@ -224,6 +240,7 @@ public class UploadToken extends ObjectBase {
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 		uploadUrl = GsonParser.parseString(jsonObject.get("uploadUrl"));
+		autoFinalize = GsonParser.parseBoolean(jsonObject.get("autoFinalize"));
 
 	}
 
@@ -232,6 +249,7 @@ public class UploadToken extends ObjectBase {
 		kparams.add("objectType", "KalturaUploadToken");
 		kparams.add("fileName", this.fileName);
 		kparams.add("fileSize", this.fileSize);
+		kparams.add("autoFinalize", this.autoFinalize);
 		return kparams;
 	}
 
