@@ -254,6 +254,8 @@ public class LiveStreamService {
 		}
 	}
 
+	/**  Create recorded entry id if it doesn't exist and make sure it happens on the DC
+	  that the live entry was created on.  */
     public static CreateRecordedEntryLiveStreamBuilder createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
 		return new CreateRecordedEntryLiveStreamBuilder(entryId, mediaServerIndex, liveEntryStatus);
 	}
@@ -479,7 +481,7 @@ public class LiveStreamService {
 		return setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
 	}
 
-	/**  Sey recorded video to live entry  */
+	/**  Set recorded video to live entry  */
     public static SetRecordedContentLiveStreamBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId)  {
 		return new SetRecordedContentLiveStreamBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 	}
