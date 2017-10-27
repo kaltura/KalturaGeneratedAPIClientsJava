@@ -52,6 +52,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		String startTime();
 		String endTime();
 		String subType();
+		String question();
 		String answers();
 		String hint();
 		String explanation();
@@ -65,6 +66,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 	private String startTime;
 	private String endTime;
 	private String subType;
+	private String question;
 	private String answers;
 	private String hint;
 	private String explanation;
@@ -165,6 +167,18 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		setToken("subType", multirequestToken);
 	}
 
+	// question:
+	public String getQuestion(){
+		return this.question;
+	}
+	public void setQuestion(String question){
+		this.question = question;
+	}
+
+	public void question(String multirequestToken){
+		setToken("question", multirequestToken);
+	}
+
 	// answers:
 	public String getAnswers(){
 		return this.answers;
@@ -220,6 +234,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		startTime = GsonParser.parseString(jsonObject.get("startTime"));
 		endTime = GsonParser.parseString(jsonObject.get("endTime"));
 		subType = GsonParser.parseString(jsonObject.get("subType"));
+		question = GsonParser.parseString(jsonObject.get("question"));
 		answers = GsonParser.parseString(jsonObject.get("answers"));
 		hint = GsonParser.parseString(jsonObject.get("hint"));
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));
@@ -237,6 +252,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		kparams.add("startTime", this.startTime);
 		kparams.add("endTime", this.endTime);
 		kparams.add("subType", this.subType);
+		kparams.add("question", this.question);
 		kparams.add("answers", this.answers);
 		kparams.add("hint", this.hint);
 		kparams.add("explanation", this.explanation);
