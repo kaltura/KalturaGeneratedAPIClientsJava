@@ -28,7 +28,7 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.types.ESearchItem;
-import com.kaltura.client.types.ESearchParams;
+import com.kaltura.client.types.ESearchObject;
 import com.kaltura.client.types.ESearchResponse;
 import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.Pager;
@@ -58,52 +58,52 @@ public class ESearchService {
 	
 	public static class SearchCategoryESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchCategoryESearchBuilder> {
 		
-		public SearchCategoryESearchBuilder(ESearchParams searchParams, Pager pager) {
+		public SearchCategoryESearchBuilder(ESearchObject searchParams, Pager pager) {
 			super(ESearchResponse.class, "elasticsearch_esearch", "searchCategory");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}
 	}
 
-	public static SearchCategoryESearchBuilder searchCategory(ESearchParams searchParams)  {
+	public static SearchCategoryESearchBuilder searchCategory(ESearchObject searchParams)  {
 		return searchCategory(searchParams, null);
 	}
 
-    public static SearchCategoryESearchBuilder searchCategory(ESearchParams searchParams, Pager pager)  {
+    public static SearchCategoryESearchBuilder searchCategory(ESearchObject searchParams, Pager pager)  {
 		return new SearchCategoryESearchBuilder(searchParams, pager);
 	}
 	
 	public static class SearchEntryESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchEntryESearchBuilder> {
 		
-		public SearchEntryESearchBuilder(ESearchParams searchParams, Pager pager) {
+		public SearchEntryESearchBuilder(ESearchObject searchParams, Pager pager) {
 			super(ESearchResponse.class, "elasticsearch_esearch", "searchEntry");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}
 	}
 
-	public static SearchEntryESearchBuilder searchEntry(ESearchParams searchParams)  {
+	public static SearchEntryESearchBuilder searchEntry(ESearchObject searchParams)  {
 		return searchEntry(searchParams, null);
 	}
 
-    public static SearchEntryESearchBuilder searchEntry(ESearchParams searchParams, Pager pager)  {
+    public static SearchEntryESearchBuilder searchEntry(ESearchObject searchParams, Pager pager)  {
 		return new SearchEntryESearchBuilder(searchParams, pager);
 	}
 	
 	public static class SearchUserESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchUserESearchBuilder> {
 		
-		public SearchUserESearchBuilder(ESearchParams searchParams, Pager pager) {
+		public SearchUserESearchBuilder(ESearchObject searchParams, Pager pager) {
 			super(ESearchResponse.class, "elasticsearch_esearch", "searchUser");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}
 	}
 
-	public static SearchUserESearchBuilder searchUser(ESearchParams searchParams)  {
+	public static SearchUserESearchBuilder searchUser(ESearchObject searchParams)  {
 		return searchUser(searchParams, null);
 	}
 
-    public static SearchUserESearchBuilder searchUser(ESearchParams searchParams, Pager pager)  {
+    public static SearchUserESearchBuilder searchUser(ESearchObject searchParams, Pager pager)  {
 		return new SearchUserESearchBuilder(searchParams, pager);
 	}
 }

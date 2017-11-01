@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ESearchOperator;
 import com.kaltura.client.types.ESearchOrderBy;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -44,9 +43,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchParams.Tokenizer.class)
-public class ESearchParams extends ObjectBase {
+public class ESearchParams extends ESearchObject {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
+	public interface Tokenizer extends ESearchObject.Tokenizer {
 		ESearchOperator.Tokenizer searchOperator();
 		String objectStatuses();
 		ESearchOrderBy.Tokenizer orderBy();
