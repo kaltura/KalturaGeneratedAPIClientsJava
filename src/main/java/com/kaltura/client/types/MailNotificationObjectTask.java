@@ -48,6 +48,7 @@ public class MailNotificationObjectTask extends ObjectTask {
 		String sender();
 		String subject();
 		String message();
+		String footer();
 		String link();
 		String sendToUsers();
 	}
@@ -60,6 +61,8 @@ public class MailNotificationObjectTask extends ObjectTask {
 	private String subject;
 	/**  The message to send in the notification mail  */
 	private String message;
+	/**  The footer of the message to send in the notification mail  */
+	private String footer;
 	/**  The basic link for the KMC site  */
 	private String link;
 	/**  Send the mail to each user  */
@@ -113,6 +116,18 @@ public class MailNotificationObjectTask extends ObjectTask {
 		setToken("message", multirequestToken);
 	}
 
+	// footer:
+	public String getFooter(){
+		return this.footer;
+	}
+	public void setFooter(String footer){
+		this.footer = footer;
+	}
+
+	public void footer(String multirequestToken){
+		setToken("footer", multirequestToken);
+	}
+
 	// link:
 	public String getLink(){
 		return this.link;
@@ -152,6 +167,7 @@ public class MailNotificationObjectTask extends ObjectTask {
 		sender = GsonParser.parseString(jsonObject.get("sender"));
 		subject = GsonParser.parseString(jsonObject.get("subject"));
 		message = GsonParser.parseString(jsonObject.get("message"));
+		footer = GsonParser.parseString(jsonObject.get("footer"));
 		link = GsonParser.parseString(jsonObject.get("link"));
 		sendToUsers = GsonParser.parseBoolean(jsonObject.get("sendToUsers"));
 
@@ -164,6 +180,7 @@ public class MailNotificationObjectTask extends ObjectTask {
 		kparams.add("sender", this.sender);
 		kparams.add("subject", this.subject);
 		kparams.add("message", this.message);
+		kparams.add("footer", this.footer);
 		kparams.add("link", this.link);
 		kparams.add("sendToUsers", this.sendToUsers);
 		return kparams;

@@ -47,11 +47,13 @@ public class ParseMultiLanguageCaptionAssetJobData extends JobData {
 		String multiLanaguageCaptionAssetId();
 		String entryId();
 		String fileLocation();
+		String fileEncryptionKey();
 	}
 
 	private String multiLanaguageCaptionAssetId;
 	private String entryId;
 	private String fileLocation;
+	private String fileEncryptionKey;
 
 	// multiLanaguageCaptionAssetId:
 	public String getMultiLanaguageCaptionAssetId(){
@@ -89,6 +91,18 @@ public class ParseMultiLanguageCaptionAssetJobData extends JobData {
 		setToken("fileLocation", multirequestToken);
 	}
 
+	// fileEncryptionKey:
+	public String getFileEncryptionKey(){
+		return this.fileEncryptionKey;
+	}
+	public void setFileEncryptionKey(String fileEncryptionKey){
+		this.fileEncryptionKey = fileEncryptionKey;
+	}
+
+	public void fileEncryptionKey(String multirequestToken){
+		setToken("fileEncryptionKey", multirequestToken);
+	}
+
 
 	public ParseMultiLanguageCaptionAssetJobData() {
 		super();
@@ -103,6 +117,7 @@ public class ParseMultiLanguageCaptionAssetJobData extends JobData {
 		multiLanaguageCaptionAssetId = GsonParser.parseString(jsonObject.get("multiLanaguageCaptionAssetId"));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 		fileLocation = GsonParser.parseString(jsonObject.get("fileLocation"));
+		fileEncryptionKey = GsonParser.parseString(jsonObject.get("fileEncryptionKey"));
 
 	}
 
@@ -112,6 +127,7 @@ public class ParseMultiLanguageCaptionAssetJobData extends JobData {
 		kparams.add("multiLanaguageCaptionAssetId", this.multiLanaguageCaptionAssetId);
 		kparams.add("entryId", this.entryId);
 		kparams.add("fileLocation", this.fileLocation);
+		kparams.add("fileEncryptionKey", this.fileEncryptionKey);
 		return kparams;
 	}
 

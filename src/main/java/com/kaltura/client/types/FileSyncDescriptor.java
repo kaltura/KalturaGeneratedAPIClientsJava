@@ -46,11 +46,13 @@ public class FileSyncDescriptor extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String fileSyncLocalPath();
+		String fileEncryptionKey();
 		String fileSyncRemoteUrl();
 		String fileSyncObjectSubType();
 	}
 
 	private String fileSyncLocalPath;
+	private String fileEncryptionKey;
 	/**  The translated path as used by the scheduler  */
 	private String fileSyncRemoteUrl;
 	private Integer fileSyncObjectSubType;
@@ -65,6 +67,18 @@ public class FileSyncDescriptor extends ObjectBase {
 
 	public void fileSyncLocalPath(String multirequestToken){
 		setToken("fileSyncLocalPath", multirequestToken);
+	}
+
+	// fileEncryptionKey:
+	public String getFileEncryptionKey(){
+		return this.fileEncryptionKey;
+	}
+	public void setFileEncryptionKey(String fileEncryptionKey){
+		this.fileEncryptionKey = fileEncryptionKey;
+	}
+
+	public void fileEncryptionKey(String multirequestToken){
+		setToken("fileEncryptionKey", multirequestToken);
 	}
 
 	// fileSyncRemoteUrl:
@@ -103,6 +117,7 @@ public class FileSyncDescriptor extends ObjectBase {
 
 		// set members values:
 		fileSyncLocalPath = GsonParser.parseString(jsonObject.get("fileSyncLocalPath"));
+		fileEncryptionKey = GsonParser.parseString(jsonObject.get("fileEncryptionKey"));
 		fileSyncRemoteUrl = GsonParser.parseString(jsonObject.get("fileSyncRemoteUrl"));
 		fileSyncObjectSubType = GsonParser.parseInt(jsonObject.get("fileSyncObjectSubType"));
 
@@ -112,6 +127,7 @@ public class FileSyncDescriptor extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaFileSyncDescriptor");
 		kparams.add("fileSyncLocalPath", this.fileSyncLocalPath);
+		kparams.add("fileEncryptionKey", this.fileEncryptionKey);
 		kparams.add("fileSyncRemoteUrl", this.fileSyncRemoteUrl);
 		kparams.add("fileSyncObjectSubType", this.fileSyncObjectSubType);
 		return kparams;

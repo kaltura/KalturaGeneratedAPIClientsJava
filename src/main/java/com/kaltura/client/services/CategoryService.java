@@ -215,10 +215,10 @@ public class CategoryService {
 		return new ListCategoryBuilder(filter, pager);
 	}
 	
-	public static class MoveCategoryBuilder extends ListResponseRequestBuilder<Category, Category.Tokenizer, MoveCategoryBuilder> {
+	public static class MoveCategoryBuilder extends RequestBuilder<Boolean, String, MoveCategoryBuilder> {
 		
 		public MoveCategoryBuilder(String categoryIds, int targetCategoryParentId) {
-			super(Category.class, "category", "move");
+			super(Boolean.class, "category", "move");
 			params.add("categoryIds", categoryIds);
 			params.add("targetCategoryParentId", targetCategoryParentId);
 		}

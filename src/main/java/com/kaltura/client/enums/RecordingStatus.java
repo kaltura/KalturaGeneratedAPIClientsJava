@@ -25,12 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using generate.php
@@ -38,50 +33,40 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum RecordingStatus implements EnumAsInt {
+	STOPPED(0),
+	PAUSED(1),
+	ACTIVE(2),
+	DISABLED(3);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchQuery.Tokenizer.class)
-public class ESearchQuery extends ESearchObject {
-	
-	public interface Tokenizer extends ESearchObject.Tokenizer {
-		String eSearchQuery();
+	private int value;
+
+	RecordingStatus(int value) {
+		this.value = value;
 	}
 
-	private String eSearchQuery;
-
-	// eSearchQuery:
-	public String getESearchQuery(){
-		return this.eSearchQuery;
-	}
-	public void setESearchQuery(String eSearchQuery){
-		this.eSearchQuery = eSearchQuery;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-	public void eSearchQuery(String multirequestToken){
-		setToken("eSearchQuery", multirequestToken);
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-
-	public ESearchQuery() {
-		super();
-	}
-
-	public ESearchQuery(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		eSearchQuery = GsonParser.parseString(jsonObject.get("eSearchQuery"));
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchQuery");
-		kparams.add("eSearchQuery", this.eSearchQuery);
-		return kparams;
-	}
-
+	public static RecordingStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over RecordingStatus defined values and compare the inner value with the given one:
+		for(RecordingStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return RecordingStatus.values().length > 0 ? RecordingStatus.values()[0]: null;
+   }
 }
-

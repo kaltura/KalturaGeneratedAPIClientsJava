@@ -33,6 +33,8 @@ import com.kaltura.client.enums.DVRStatus;
 import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.enums.LivePublishStatus;
 import com.kaltura.client.enums.RecordStatus;
+import com.kaltura.client.enums.RecordingStatus;
+import com.kaltura.client.enums.ViewMode;
 import com.kaltura.client.types.LiveEntryRecordingOptions;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -66,6 +68,9 @@ public abstract class LiveEntry extends MediaEntry {
 		LiveEntryRecordingOptions.Tokenizer recordingOptions();
 		String liveStatus();
 		String segmentDuration();
+		String explicitLive();
+		String viewMode();
+		String recordingStatus();
 	}
 
 	/**  The message to be presented when the stream is offline  */
@@ -99,6 +104,9 @@ public abstract class LiveEntry extends MediaEntry {
 	private EntryServerNodeStatus liveStatus;
 	/**  The chunk duration value in milliseconds  */
 	private Integer segmentDuration;
+	private Boolean explicitLive;
+	private ViewMode viewMode;
+	private RecordingStatus recordingStatus;
 
 	// offlineMessage:
 	public String getOfflineMessage(){
@@ -268,6 +276,42 @@ public abstract class LiveEntry extends MediaEntry {
 		setToken("segmentDuration", multirequestToken);
 	}
 
+	// explicitLive:
+	public Boolean getExplicitLive(){
+		return this.explicitLive;
+	}
+	public void setExplicitLive(Boolean explicitLive){
+		this.explicitLive = explicitLive;
+	}
+
+	public void explicitLive(String multirequestToken){
+		setToken("explicitLive", multirequestToken);
+	}
+
+	// viewMode:
+	public ViewMode getViewMode(){
+		return this.viewMode;
+	}
+	public void setViewMode(ViewMode viewMode){
+		this.viewMode = viewMode;
+	}
+
+	public void viewMode(String multirequestToken){
+		setToken("viewMode", multirequestToken);
+	}
+
+	// recordingStatus:
+	public RecordingStatus getRecordingStatus(){
+		return this.recordingStatus;
+	}
+	public void setRecordingStatus(RecordingStatus recordingStatus){
+		this.recordingStatus = recordingStatus;
+	}
+
+	public void recordingStatus(String multirequestToken){
+		setToken("recordingStatus", multirequestToken);
+	}
+
 
 	public LiveEntry() {
 		super();
@@ -294,6 +338,9 @@ public abstract class LiveEntry extends MediaEntry {
 		recordingOptions = GsonParser.parseObject(jsonObject.getAsJsonObject("recordingOptions"), LiveEntryRecordingOptions.class);
 		liveStatus = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("liveStatus")));
 		segmentDuration = GsonParser.parseInt(jsonObject.get("segmentDuration"));
+		explicitLive = GsonParser.parseBoolean(jsonObject.get("explicitLive"));
+		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
+		recordingStatus = RecordingStatus.get(GsonParser.parseInt(jsonObject.get("recordingStatus")));
 
 	}
 
@@ -312,6 +359,9 @@ public abstract class LiveEntry extends MediaEntry {
 		kparams.add("currentBroadcastStartTime", this.currentBroadcastStartTime);
 		kparams.add("recordingOptions", this.recordingOptions);
 		kparams.add("segmentDuration", this.segmentDuration);
+		kparams.add("explicitLive", this.explicitLive);
+		kparams.add("viewMode", this.viewMode);
+		kparams.add("recordingStatus", this.recordingStatus);
 		return kparams;
 	}
 
