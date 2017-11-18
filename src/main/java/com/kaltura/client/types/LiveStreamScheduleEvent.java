@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -43,8 +44,23 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 	
 	public interface Tokenizer extends EntryScheduleEvent.Tokenizer {
+		String projectedAudience();
 	}
 
+	/**  Defines the expected audience.  */
+	private Integer projectedAudience;
+
+	// projectedAudience:
+	public Integer getProjectedAudience(){
+		return this.projectedAudience;
+	}
+	public void setProjectedAudience(Integer projectedAudience){
+		this.projectedAudience = projectedAudience;
+	}
+
+	public void projectedAudience(String multirequestToken){
+		setToken("projectedAudience", multirequestToken);
+	}
 
 
 	public LiveStreamScheduleEvent() {
@@ -53,11 +69,18 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 
 	public LiveStreamScheduleEvent(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		projectedAudience = GsonParser.parseInt(jsonObject.get("projectedAudience"));
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLiveStreamScheduleEvent");
+		kparams.add("projectedAudience", this.projectedAudience);
 		return kparams;
 	}
 

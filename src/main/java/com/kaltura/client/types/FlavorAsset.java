@@ -58,6 +58,7 @@ public class FlavorAsset extends Asset {
 		String status();
 		String language();
 		String label();
+		String isDefault();
 	}
 
 	/**  The Flavor Params used to create this Flavor Asset  */
@@ -84,6 +85,9 @@ public class FlavorAsset extends Asset {
 	private Language language;
 	/**  The label of the flavor asset  */
 	private String label;
+	/**  Is default flavor asset of the entry (This field will be taken into account
+	  selectign which audio flavor will be selected as default)  */
+	private Boolean isDefault;
 
 	// flavorParamsId:
 	public Integer getFlavorParamsId(){
@@ -229,6 +233,18 @@ public class FlavorAsset extends Asset {
 		setToken("label", multirequestToken);
 	}
 
+	// isDefault:
+	public Boolean getIsDefault(){
+		return this.isDefault;
+	}
+	public void setIsDefault(Boolean isDefault){
+		this.isDefault = isDefault;
+	}
+
+	public void isDefault(String multirequestToken){
+		setToken("isDefault", multirequestToken);
+	}
+
 
 	public FlavorAsset() {
 		super();
@@ -252,6 +268,7 @@ public class FlavorAsset extends Asset {
 		status = FlavorAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
 		label = GsonParser.parseString(jsonObject.get("label"));
+		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
 
 	}
 
@@ -261,6 +278,7 @@ public class FlavorAsset extends Asset {
 		kparams.add("flavorParamsId", this.flavorParamsId);
 		kparams.add("language", this.language);
 		kparams.add("label", this.label);
+		kparams.add("isDefault", this.isDefault);
 		return kparams;
 	}
 

@@ -652,7 +652,9 @@ public class User extends ObjectBase {
 		kparams.add("lastName", this.lastName);
 		kparams.add("isAdmin", this.isAdmin);
 		kparams.add("language", this.language);
+		kparams.add("loginEnabled", this.loginEnabled);
 		kparams.add("roleIds", this.roleIds);
+		kparams.add("isAccountOwner", this.isAccountOwner);
 		kparams.add("allowedPartnerIds", this.allowedPartnerIds);
 		kparams.add("allowedPartnerPackages", this.allowedPartnerPackages);
 		return kparams;
