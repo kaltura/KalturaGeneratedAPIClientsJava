@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.VirusFoundAction;
 import com.kaltura.client.enums.VirusScanJobResult;
+import com.kaltura.client.types.FileContainer;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -46,27 +47,23 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class VirusScanJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
-		String srcFilePath();
+		FileContainer.Tokenizer fileContainer();
 		String flavorAssetId();
 		String scanResult();
 		String virusFoundAction();
 	}
 
-	private String srcFilePath;
+	private FileContainer fileContainer;
 	private String flavorAssetId;
 	private VirusScanJobResult scanResult;
 	private VirusFoundAction virusFoundAction;
 
-	// srcFilePath:
-	public String getSrcFilePath(){
-		return this.srcFilePath;
+	// fileContainer:
+	public FileContainer getFileContainer(){
+		return this.fileContainer;
 	}
-	public void setSrcFilePath(String srcFilePath){
-		this.srcFilePath = srcFilePath;
-	}
-
-	public void srcFilePath(String multirequestToken){
-		setToken("srcFilePath", multirequestToken);
+	public void setFileContainer(FileContainer fileContainer){
+		this.fileContainer = fileContainer;
 	}
 
 	// flavorAssetId:
@@ -116,7 +113,7 @@ public class VirusScanJobData extends JobData {
 		if(jsonObject == null) return;
 
 		// set members values:
-		srcFilePath = GsonParser.parseString(jsonObject.get("srcFilePath"));
+		fileContainer = GsonParser.parseObject(jsonObject.getAsJsonObject("fileContainer"), FileContainer.class);
 		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
 		scanResult = VirusScanJobResult.get(GsonParser.parseInt(jsonObject.get("scanResult")));
 		virusFoundAction = VirusFoundAction.get(GsonParser.parseInt(jsonObject.get("virusFoundAction")));
@@ -126,7 +123,7 @@ public class VirusScanJobData extends JobData {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVirusScanJobData");
-		kparams.add("srcFilePath", this.srcFilePath);
+		kparams.add("fileContainer", this.fileContainer);
 		kparams.add("flavorAssetId", this.flavorAssetId);
 		kparams.add("scanResult", this.scanResult);
 		kparams.add("virusFoundAction", this.virusFoundAction);

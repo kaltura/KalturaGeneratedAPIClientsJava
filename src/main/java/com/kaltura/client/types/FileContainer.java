@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.YouTubeApiDistributionCaptionAction;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -42,52 +41,18 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(YouTubeApiCaptionDistributionInfo.Tokenizer.class)
-public class YouTubeApiCaptionDistributionInfo extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(FileContainer.Tokenizer.class)
+public class FileContainer extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String language();
-		String label();
 		String filePath();
 		String encryptionKey();
-		String remoteId();
-		String action();
-		String version();
-		String assetId();
+		String fileSize();
 	}
 
-	private String language;
-	private String label;
 	private String filePath;
 	private String encryptionKey;
-	private String remoteId;
-	private YouTubeApiDistributionCaptionAction action;
-	private String version;
-	private String assetId;
-
-	// language:
-	public String getLanguage(){
-		return this.language;
-	}
-	public void setLanguage(String language){
-		this.language = language;
-	}
-
-	public void language(String multirequestToken){
-		setToken("language", multirequestToken);
-	}
-
-	// label:
-	public String getLabel(){
-		return this.label;
-	}
-	public void setLabel(String label){
-		this.label = label;
-	}
-
-	public void label(String multirequestToken){
-		setToken("label", multirequestToken);
-	}
+	private Integer fileSize;
 
 	// filePath:
 	public String getFilePath(){
@@ -113,87 +78,41 @@ public class YouTubeApiCaptionDistributionInfo extends ObjectBase {
 		setToken("encryptionKey", multirequestToken);
 	}
 
-	// remoteId:
-	public String getRemoteId(){
-		return this.remoteId;
+	// fileSize:
+	public Integer getFileSize(){
+		return this.fileSize;
 	}
-	public void setRemoteId(String remoteId){
-		this.remoteId = remoteId;
-	}
-
-	public void remoteId(String multirequestToken){
-		setToken("remoteId", multirequestToken);
+	public void setFileSize(Integer fileSize){
+		this.fileSize = fileSize;
 	}
 
-	// action:
-	public YouTubeApiDistributionCaptionAction getAction(){
-		return this.action;
-	}
-	public void setAction(YouTubeApiDistributionCaptionAction action){
-		this.action = action;
-	}
-
-	public void action(String multirequestToken){
-		setToken("action", multirequestToken);
-	}
-
-	// version:
-	public String getVersion(){
-		return this.version;
-	}
-	public void setVersion(String version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
-	// assetId:
-	public String getAssetId(){
-		return this.assetId;
-	}
-	public void setAssetId(String assetId){
-		this.assetId = assetId;
-	}
-
-	public void assetId(String multirequestToken){
-		setToken("assetId", multirequestToken);
+	public void fileSize(String multirequestToken){
+		setToken("fileSize", multirequestToken);
 	}
 
 
-	public YouTubeApiCaptionDistributionInfo() {
+	public FileContainer() {
 		super();
 	}
 
-	public YouTubeApiCaptionDistributionInfo(JsonObject jsonObject) throws APIException {
+	public FileContainer(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		language = GsonParser.parseString(jsonObject.get("language"));
-		label = GsonParser.parseString(jsonObject.get("label"));
 		filePath = GsonParser.parseString(jsonObject.get("filePath"));
 		encryptionKey = GsonParser.parseString(jsonObject.get("encryptionKey"));
-		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
-		action = YouTubeApiDistributionCaptionAction.get(GsonParser.parseInt(jsonObject.get("action")));
-		version = GsonParser.parseString(jsonObject.get("version"));
-		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaYouTubeApiCaptionDistributionInfo");
-		kparams.add("language", this.language);
-		kparams.add("label", this.label);
+		kparams.add("objectType", "KalturaFileContainer");
 		kparams.add("filePath", this.filePath);
 		kparams.add("encryptionKey", this.encryptionKey);
-		kparams.add("remoteId", this.remoteId);
-		kparams.add("action", this.action);
-		kparams.add("version", this.version);
-		kparams.add("assetId", this.assetId);
+		kparams.add("fileSize", this.fileSize);
 		return kparams;
 	}
 
