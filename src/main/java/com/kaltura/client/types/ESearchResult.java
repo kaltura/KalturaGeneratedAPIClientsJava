@@ -48,10 +48,12 @@ public abstract class ESearchResult extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		ObjectBase.Tokenizer object();
+		String highlight();
 		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
 	}
 
 	private ObjectBase object;
+	private String highlight;
 	private List<ESearchItemDataResult> itemsData;
 
 	// object:
@@ -60,6 +62,18 @@ public abstract class ESearchResult extends ObjectBase {
 	}
 	public void setObject(ObjectBase object){
 		this.object = object;
+	}
+
+	// highlight:
+	public String getHighlight(){
+		return this.highlight;
+	}
+	public void setHighlight(String highlight){
+		this.highlight = highlight;
+	}
+
+	public void highlight(String multirequestToken){
+		setToken("highlight", multirequestToken);
 	}
 
 	// itemsData:
@@ -82,6 +96,7 @@ public abstract class ESearchResult extends ObjectBase {
 
 		// set members values:
 		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), ObjectBase.class);
+		highlight = GsonParser.parseString(jsonObject.get("highlight"));
 		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
 
 	}
@@ -90,6 +105,7 @@ public abstract class ESearchResult extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchResult");
 		kparams.add("object", this.object);
+		kparams.add("highlight", this.highlight);
 		kparams.add("itemsData", this.itemsData);
 		return kparams;
 	}

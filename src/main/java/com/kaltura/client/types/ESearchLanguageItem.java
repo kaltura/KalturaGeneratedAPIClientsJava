@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.ESearchLanguage;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -41,46 +42,46 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchItemData.Tokenizer.class)
-public abstract class ESearchItemData extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(ESearchLanguageItem.Tokenizer.class)
+public class ESearchLanguageItem extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String highlight();
+		String eSerachLanguage();
 	}
 
-	private String highlight;
+	private ESearchLanguage eSerachLanguage;
 
-	// highlight:
-	public String getHighlight(){
-		return this.highlight;
+	// eSerachLanguage:
+	public ESearchLanguage getESerachLanguage(){
+		return this.eSerachLanguage;
 	}
-	public void setHighlight(String highlight){
-		this.highlight = highlight;
-	}
-
-	public void highlight(String multirequestToken){
-		setToken("highlight", multirequestToken);
+	public void setESerachLanguage(ESearchLanguage eSerachLanguage){
+		this.eSerachLanguage = eSerachLanguage;
 	}
 
+	public void eSerachLanguage(String multirequestToken){
+		setToken("eSerachLanguage", multirequestToken);
+	}
 
-	public ESearchItemData() {
+
+	public ESearchLanguageItem() {
 		super();
 	}
 
-	public ESearchItemData(JsonObject jsonObject) throws APIException {
+	public ESearchLanguageItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseString(jsonObject.get("highlight"));
+		eSerachLanguage = ESearchLanguage.get(GsonParser.parseString(jsonObject.get("eSerachLanguage")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchItemData");
-		kparams.add("highlight", this.highlight);
+		kparams.add("objectType", "KalturaESearchLanguageItem");
+		kparams.add("eSerachLanguage", this.eSerachLanguage);
 		return kparams;
 	}
 

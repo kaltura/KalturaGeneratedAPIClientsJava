@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ESearchOperator;
 import com.kaltura.client.types.ESearchOrderBy;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -43,17 +44,21 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchParams.Tokenizer.class)
-public class ESearchParams extends ESearchObject {
+public class ESearchParams extends ObjectBase {
 	
-	public interface Tokenizer extends ESearchObject.Tokenizer {
+	public interface Tokenizer extends ObjectBase.Tokenizer {
 		ESearchOperator.Tokenizer searchOperator();
 		String objectStatuses();
+		String objectId();
 		ESearchOrderBy.Tokenizer orderBy();
+		String useHighlight();
 	}
 
 	private ESearchOperator searchOperator;
 	private String objectStatuses;
+	private String objectId;
 	private ESearchOrderBy orderBy;
+	private Boolean useHighlight;
 
 	// searchOperator:
 	public ESearchOperator getSearchOperator(){
@@ -75,12 +80,36 @@ public class ESearchParams extends ESearchObject {
 		setToken("objectStatuses", multirequestToken);
 	}
 
+	// objectId:
+	public String getObjectId(){
+		return this.objectId;
+	}
+	public void setObjectId(String objectId){
+		this.objectId = objectId;
+	}
+
+	public void objectId(String multirequestToken){
+		setToken("objectId", multirequestToken);
+	}
+
 	// orderBy:
 	public ESearchOrderBy getOrderBy(){
 		return this.orderBy;
 	}
 	public void setOrderBy(ESearchOrderBy orderBy){
 		this.orderBy = orderBy;
+	}
+
+	// useHighlight:
+	public Boolean getUseHighlight(){
+		return this.useHighlight;
+	}
+	public void setUseHighlight(Boolean useHighlight){
+		this.useHighlight = useHighlight;
+	}
+
+	public void useHighlight(String multirequestToken){
+		setToken("useHighlight", multirequestToken);
 	}
 
 
@@ -96,7 +125,9 @@ public class ESearchParams extends ESearchObject {
 		// set members values:
 		searchOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("searchOperator"), ESearchOperator.class);
 		objectStatuses = GsonParser.parseString(jsonObject.get("objectStatuses"));
+		objectId = GsonParser.parseString(jsonObject.get("objectId"));
 		orderBy = GsonParser.parseObject(jsonObject.getAsJsonObject("orderBy"), ESearchOrderBy.class);
+		useHighlight = GsonParser.parseBoolean(jsonObject.get("useHighlight"));
 
 	}
 
@@ -105,7 +136,9 @@ public class ESearchParams extends ESearchObject {
 		kparams.add("objectType", "KalturaESearchParams");
 		kparams.add("searchOperator", this.searchOperator);
 		kparams.add("objectStatuses", this.objectStatuses);
+		kparams.add("objectId", this.objectId);
 		kparams.add("orderBy", this.orderBy);
+		kparams.add("useHighlight", this.useHighlight);
 		return kparams;
 	}
 

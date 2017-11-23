@@ -104,6 +104,7 @@ public class Partner extends ObjectBase {
 		String crmId();
 		String referenceId();
 		String timeAlignedRenditions();
+		RequestBuilder.ListTokenizer<ESearchLanguageItem.Tokenizer> eSearchLanguages();
 	}
 
 	private Integer id;
@@ -164,6 +165,7 @@ public class Partner extends ObjectBase {
 	private String crmId;
 	private String referenceId;
 	private Boolean timeAlignedRenditions;
+	private List<ESearchLanguageItem> eSearchLanguages;
 
 	// id:
 	public Integer getId(){
@@ -789,6 +791,14 @@ public class Partner extends ObjectBase {
 		setToken("timeAlignedRenditions", multirequestToken);
 	}
 
+	// eSearchLanguages:
+	public List<ESearchLanguageItem> getESearchLanguages(){
+		return this.eSearchLanguages;
+	}
+	public void setESearchLanguages(List<ESearchLanguageItem> eSearchLanguages){
+		this.eSearchLanguages = eSearchLanguages;
+	}
+
 
 	public Partner() {
 		super();
@@ -853,6 +863,7 @@ public class Partner extends ObjectBase {
 		crmId = GsonParser.parseString(jsonObject.get("crmId"));
 		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
 		timeAlignedRenditions = GsonParser.parseBoolean(jsonObject.get("timeAlignedRenditions"));
+		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
 
 	}
 
@@ -890,6 +901,7 @@ public class Partner extends ObjectBase {
 		kparams.add("additionalParams", this.additionalParams);
 		kparams.add("partnerParentId", this.partnerParentId);
 		kparams.add("referenceId", this.referenceId);
+		kparams.add("eSearchLanguages", this.eSearchLanguages);
 		return kparams;
 	}
 

@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchQuery.Tokenizer.class)
-public class ESearchQuery extends ESearchObject {
+public class ESearchQuery extends ESearchBaseItem {
 	
-	public interface Tokenizer extends ESearchObject.Tokenizer {
+	public interface Tokenizer extends ESearchBaseItem.Tokenizer {
 		String eSearchQuery();
 	}
 

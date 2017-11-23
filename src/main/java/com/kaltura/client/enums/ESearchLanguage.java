@@ -33,45 +33,44 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchEntryFieldName implements EnumAsString {
-	ENTRY_ID("_id"),
-	ENTRY_ACCESS_CONTROL_ID("access_control_id"),
-	ENTRY_ADMIN_TAGS("admin_tags"),
-	ENTRY_CATEGORIES("categories"),
-	ENTRY_CATEGORY_NAME("categories.name"),
-	ENTRY_CATEGORY_IDS("category_ids"),
-	ENTRY_CONVERSION_PROFILE_ID("conversion_profile_id"),
-	ENTRY_CREATED_AT("created_at"),
-	ENTRY_CREATOR_ID("creator_kuser_id"),
-	ENTRY_CREDIT("credit"),
-	ENTRY_DESCRIPTION("description"),
-	ENTRY_DISPLAY_IN_SEARCH("display_in_search"),
-	ENTRY_END_DATE("end_date"),
-	ENTRY_ENTITLED_USER_EDIT("entitled_kusers_edit"),
-	ENTRY_ENTITLED_USER_PUBLISH("entitled_kusers_publish"),
-	ENTRY_TYPE("entry_type"),
-	ENTRY_USER_ID("kuser_id"),
-	ENTRY_LENGTH_IN_MSECS("length_in_msecs"),
-	ENTRY_MEDIA_TYPE("media_type"),
-	ENTRY_MODERATION_STATUS("moderation_status"),
-	ENTRY_NAME("name"),
-	ENTRY_PARENT_ENTRY_ID("parent_id"),
-	ENTRY_PUSH_PUBLISH("push_publish"),
-	ENTRY_RECORDED_ENTRY_ID("recorded_entry_id"),
-	ENTRY_REDIRECT_ENTRY_ID("redirect_entry_id"),
-	ENTRY_REFERENCE_ID("reference_id"),
-	ENTRY_SITE_URL("site_url"),
-	ENTRY_SOURCE_TYPE("source_type"),
-	ENTRY_START_DATE("start_date"),
-	ENTRY_TAGS("tags"),
-	ENTRY_TEMPLATE_ENTRY_ID("template_entry_id"),
-	ENTRY_UPDATED_AT("updated_at"),
-	ENTRY_VIEWS("views"),
-	ENTRY_VOTES("votes");
+public enum ESearchLanguage implements EnumAsString {
+	ARABIC("Arabic"),
+	BASQUE("Basque"),
+	BRAZILIAN("Brazilian"),
+	BULGARIAN("Bulgarian"),
+	CATALAN("Catalan"),
+	CHINESE("Chinese"),
+	CZECH("Czech"),
+	DANISH("Danish"),
+	DUTCH("Dutch"),
+	ENGLISH("English"),
+	FINNISH("Finnish"),
+	FRENCH("French"),
+	GALICIAN("Galician"),
+	GERMAN("German"),
+	GREEK("Greek"),
+	HINDI("Hindi"),
+	HUNGRIAN("Hungarian"),
+	INDONESIAN("Indonesian"),
+	ITALIAN("Italian"),
+	JAPANESE("Japanese"),
+	KOREAN("Korean"),
+	LATVIAN("Latvian"),
+	LITHUANIAN("Lithuanian"),
+	NORWEGIAN("Norwegian"),
+	PERSIAN("Persian"),
+	PORTUGUESE("Prtuguese"),
+	ROMANIAN("Romanian"),
+	RUSSIAN("Russian"),
+	SORANI("Sorani"),
+	SPANISH("Spanish"),
+	SWEDISH("Swedish"),
+	THAI("Thai"),
+	TURKISH("Turkish");
 
 	private String value;
 
-	ESearchEntryFieldName(String value) {
+	ESearchLanguage(String value) {
 		this.value = value;
 	}
 
@@ -84,19 +83,19 @@ public enum ESearchEntryFieldName implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ESearchEntryFieldName get(String value) {
+	public static ESearchLanguage get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ESearchEntryFieldName defined values and compare the inner value with the given one:
-		for(ESearchEntryFieldName item: values()) {
+		// goes over ESearchLanguage defined values and compare the inner value with the given one:
+		for(ESearchLanguage item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchEntryFieldName.values().length > 0 ? ESearchEntryFieldName.values()[0]: null;
+		return ESearchLanguage.values().length > 0 ? ESearchLanguage.values()[0]: null;
    }
 }
