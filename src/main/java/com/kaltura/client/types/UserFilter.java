@@ -64,9 +64,13 @@ public class UserFilter extends UserBaseFilter {
 	private String roleIdsEqual;
 	private String roleIdsIn;
 	private String firstNameOrLastNameStartsWith;
-	/**  Permission names filter expression  */
+	/**
+	 * Permission names filter expression
+	 */
 	private String permissionNamesMultiLikeOr;
-	/**  Permission names filter expression  */
+	/**
+	 * Permission names filter expression
+	 */
 	private String permissionNamesMultiLikeAnd;
 
 	// idOrScreenNameStartsWith:

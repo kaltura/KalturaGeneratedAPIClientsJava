@@ -55,15 +55,25 @@ public class CategoryEntry extends ObjectBase {
 	}
 
 	private Integer categoryId;
-	/**  entry id  */
+	/**
+	 * entry id
+	 */
 	private String entryId;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  The full ids of the Category  */
+	/**
+	 * The full ids of the Category
+	 */
 	private String categoryFullIds;
-	/**  CategroyEntry status  */
+	/**
+	 * CategroyEntry status
+	 */
 	private CategoryEntryStatus status;
-	/**  CategroyEntry creator puser ID  */
+	/**
+	 * CategroyEntry creator puser ID
+	 */
 	private String creatorUserId;
 
 	// categoryId:

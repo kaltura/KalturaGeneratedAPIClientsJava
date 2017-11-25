@@ -50,11 +50,13 @@ public class DropFolderContentFileHandlerConfig extends DropFolderFileHandlerCon
 	}
 
 	private DropFolderContentFileHandlerMatchPolicy contentMatchPolicy;
-	/**  Regular expression that defines valid file names to be handled.   The following
+	/**
+	 * Regular expression that defines valid file names to be handled.   The following
 	  might be extracted from the file name and used if defined:   -
 	  (?P&lt;referenceId&gt;\w+) - will be used as the drop folder file's parsed slug.
 	    - (?P&lt;flavorName&gt;\w+)  - will be used as the drop folder file's parsed
-	  flavor.  */
+	  flavor.
+	 */
 	private String slugRegex;
 
 	// contentMatchPolicy:

@@ -43,7 +43,20 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage file assets  */
+/**
+ * Manage file assets
+ * 
+ * @param fileAsset 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param id 
+ * @param contentResource 
+ * @param id 
+ * @param fileAsset 
+ */
 public class FileAssetService {
 	
 	public static class AddFileAssetBuilder extends RequestBuilder<FileAsset, FileAsset.Tokenizer, AddFileAssetBuilder> {
@@ -54,7 +67,11 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Add new file asset  */
+	/**
+	 * Add new file asset
+	 * 
+	 * @param fileAsset 
+	 */
     public static AddFileAssetBuilder add(FileAsset fileAsset)  {
 		return new AddFileAssetBuilder(fileAsset);
 	}
@@ -71,7 +88,11 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Delete file asset by id  */
+	/**
+	 * Delete file asset by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteFileAssetBuilder delete(long id)  {
 		return new DeleteFileAssetBuilder(id);
 	}
@@ -88,7 +109,11 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Get file asset by id  */
+	/**
+	 * Get file asset by id
+	 * 
+	 * @param id 
+	 */
     public static GetFileAssetBuilder get(long id)  {
 		return new GetFileAssetBuilder(id);
 	}
@@ -106,7 +131,12 @@ public class FileAssetService {
 		return list(filter, null);
 	}
 
-	/**  List file assets by filter and pager  */
+	/**
+	 * List file assets by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListFileAssetBuilder list(FileAssetFilter filter, FilterPager pager)  {
 		return new ListFileAssetBuilder(filter, pager);
 	}
@@ -123,7 +153,11 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Serve file asset by id  */
+	/**
+	 * Serve file asset by id
+	 * 
+	 * @param id 
+	 */
     public static ServeFileAssetBuilder serve(long id)  {
 		return new ServeFileAssetBuilder(id);
 	}
@@ -141,7 +175,12 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Set content of file asset  */
+	/**
+	 * Set content of file asset
+	 * 
+	 * @param id 
+	 * @param contentResource 
+	 */
     public static SetContentFileAssetBuilder setContent(long id, ContentResource contentResource)  {
 		return new SetContentFileAssetBuilder(id, contentResource);
 	}
@@ -159,7 +198,12 @@ public class FileAssetService {
 		}
 	}
 
-	/**  Update file asset by id  */
+	/**
+	 * Update file asset by id
+	 * 
+	 * @param id 
+	 * @param fileAsset 
+	 */
     public static UpdateFileAssetBuilder update(long id, FileAsset fileAsset)  {
 		return new UpdateFileAssetBuilder(id, fileAsset);
 	}

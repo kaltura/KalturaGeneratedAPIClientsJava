@@ -57,21 +57,37 @@ public class SchedulerStatus extends ObjectBase {
 		String workerId();
 	}
 
-	/**  The id of the Category  */
+	/**
+	 * The id of the Category
+	 */
 	private Integer id;
-	/**  The configured id of the scheduler  */
+	/**
+	 * The configured id of the scheduler
+	 */
 	private Integer schedulerConfiguredId;
-	/**  The configured id of the job worker  */
+	/**
+	 * The configured id of the job worker
+	 */
 	private Integer workerConfiguredId;
-	/**  The type of the job worker.  */
+	/**
+	 * The type of the job worker.
+	 */
 	private BatchJobType workerType;
-	/**  The status type  */
+	/**
+	 * The status type
+	 */
 	private SchedulerStatusType type;
-	/**  The status value  */
+	/**
+	 * The status value
+	 */
 	private Integer value;
-	/**  The id of the scheduler  */
+	/**
+	 * The id of the scheduler
+	 */
 	private Integer schedulerId;
-	/**  The id of the worker  */
+	/**
+	 * The id of the worker
+	 */
 	private Integer workerId;
 
 	// id:

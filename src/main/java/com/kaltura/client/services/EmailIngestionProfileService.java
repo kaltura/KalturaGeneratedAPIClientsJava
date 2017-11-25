@@ -39,7 +39,21 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  EmailIngestionProfile service lets you manage email ingestion profile records  */
+/**
+ * EmailIngestionProfile service lets you manage email ingestion profile records
+ * 
+ * @param EmailIP Mandatory input parameter of type KalturaEmailIngestionProfile
+ * @param mediaEntry Media entry metadata
+ * @param uploadTokenId Upload token id
+ * @param emailProfId 
+ * @param fromAddress 
+ * @param emailMsgId 
+ * @param id 
+ * @param id 
+ * @param emailAddress 
+ * @param id 
+ * @param EmailIP 
+ */
 public class EmailIngestionProfileService {
 	
 	public static class AddEmailIngestionProfileBuilder extends RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.Tokenizer, AddEmailIngestionProfileBuilder> {
@@ -50,8 +64,12 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  EmailIngestionProfile Add action allows you to add a EmailIngestionProfile to
-	  Kaltura DB  */
+	/**
+	 * EmailIngestionProfile Add action allows you to add a EmailIngestionProfile to
+	  Kaltura DB
+	 * 
+	 * @param EmailIP Mandatory input parameter of type KalturaEmailIngestionProfile
+	 */
     public static AddEmailIngestionProfileBuilder add(EmailIngestionProfile EmailIP)  {
 		return new AddEmailIngestionProfileBuilder(EmailIP);
 	}
@@ -84,7 +102,15 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  add KalturaMediaEntry from email ingestion  */
+	/**
+	 * add KalturaMediaEntry from email ingestion
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param uploadTokenId Upload token id
+	 * @param emailProfId 
+	 * @param fromAddress 
+	 * @param emailMsgId 
+	 */
     public static AddMediaEntryEmailIngestionProfileBuilder addMediaEntry(MediaEntry mediaEntry, String uploadTokenId, int emailProfId, String fromAddress, String emailMsgId)  {
 		return new AddMediaEntryEmailIngestionProfileBuilder(mediaEntry, uploadTokenId, emailProfId, fromAddress, emailMsgId);
 	}
@@ -101,7 +127,11 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  Delete an existing EmailIngestionProfile  */
+	/**
+	 * Delete an existing EmailIngestionProfile
+	 * 
+	 * @param id 
+	 */
     public static DeleteEmailIngestionProfileBuilder delete(int id)  {
 		return new DeleteEmailIngestionProfileBuilder(id);
 	}
@@ -118,7 +148,11 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  Retrieve a EmailIngestionProfile by id  */
+	/**
+	 * Retrieve a EmailIngestionProfile by id
+	 * 
+	 * @param id 
+	 */
     public static GetEmailIngestionProfileBuilder get(int id)  {
 		return new GetEmailIngestionProfileBuilder(id);
 	}
@@ -135,7 +169,11 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  Retrieve a EmailIngestionProfile by email address  */
+	/**
+	 * Retrieve a EmailIngestionProfile by email address
+	 * 
+	 * @param emailAddress 
+	 */
     public static GetByEmailAddressEmailIngestionProfileBuilder getByEmailAddress(String emailAddress)  {
 		return new GetByEmailAddressEmailIngestionProfileBuilder(emailAddress);
 	}
@@ -153,7 +191,12 @@ public class EmailIngestionProfileService {
 		}
 	}
 
-	/**  Update an existing EmailIngestionProfile  */
+	/**
+	 * Update an existing EmailIngestionProfile
+	 * 
+	 * @param id 
+	 * @param EmailIP 
+	 */
     public static UpdateEmailIngestionProfileBuilder update(int id, EmailIngestionProfile EmailIP)  {
 		return new UpdateEmailIngestionProfileBuilder(id, EmailIP);
 	}

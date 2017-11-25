@@ -49,9 +49,13 @@ public class SiteRestriction extends BaseRestriction {
 		String siteList();
 	}
 
-	/**  The site restriction type (allow or deny)  */
+	/**
+	 * The site restriction type (allow or deny)
+	 */
 	private SiteRestrictionType siteRestrictionType;
-	/**  Comma separated list of sites (domains) to allow or deny  */
+	/**
+	 * Comma separated list of sites (domains) to allow or deny
+	 */
 	private String siteList;
 
 	// siteRestrictionType:

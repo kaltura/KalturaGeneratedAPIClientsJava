@@ -49,7 +49,9 @@ public class SourceFileSyncDescriptor extends FileSyncDescriptor {
 		String assetParamsId();
 	}
 
-	/**  The translated path as used by the scheduler  */
+	/**
+	 * The translated path as used by the scheduler
+	 */
 	private String actualFileSyncLocalPath;
 	private String assetId;
 	private Integer assetParamsId;

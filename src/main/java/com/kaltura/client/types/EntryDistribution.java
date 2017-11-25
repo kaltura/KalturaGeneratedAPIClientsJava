@@ -81,13 +81,21 @@ public class EntryDistribution extends ObjectBase {
 		String hasDeleteSentDataLog();
 	}
 
-	/**  Auto generated unique id  */
+	/**
+	 * Auto generated unique id
+	 */
 	private Integer id;
-	/**  Entry distribution creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry distribution creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Entry distribution last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry distribution last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Entry distribution submission date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry distribution submission date as Unix timestamp (In seconds)
+	 */
 	private Integer submittedAt;
 	private String entryId;
 	private Integer partnerId;
@@ -95,21 +103,37 @@ public class EntryDistribution extends ObjectBase {
 	private EntryDistributionStatus status;
 	private EntryDistributionSunStatus sunStatus;
 	private EntryDistributionFlag dirtyStatus;
-	/**  Comma separated thumbnail asset ids  */
+	/**
+	 * Comma separated thumbnail asset ids
+	 */
 	private String thumbAssetIds;
-	/**  Comma separated flavor asset ids  */
+	/**
+	 * Comma separated flavor asset ids
+	 */
 	private String flavorAssetIds;
-	/**  Comma separated asset ids  */
+	/**
+	 * Comma separated asset ids
+	 */
 	private String assetIds;
-	/**  Entry distribution publish time as Unix timestamp (In seconds)  */
+	/**
+	 * Entry distribution publish time as Unix timestamp (In seconds)
+	 */
 	private Integer sunrise;
-	/**  Entry distribution un-publish time as Unix timestamp (In seconds)  */
+	/**
+	 * Entry distribution un-publish time as Unix timestamp (In seconds)
+	 */
 	private Integer sunset;
-	/**  The id as returned from the distributed destination  */
+	/**
+	 * The id as returned from the distributed destination
+	 */
 	private String remoteId;
-	/**  The plays as retrieved from the remote destination reports  */
+	/**
+	 * The plays as retrieved from the remote destination reports
+	 */
 	private Integer plays;
-	/**  The views as retrieved from the remote destination reports  */
+	/**
+	 * The views as retrieved from the remote destination reports
+	 */
 	private Integer views;
 	private List<DistributionValidationError> validationErrors;
 	private BatchJobErrorTypes errorType;

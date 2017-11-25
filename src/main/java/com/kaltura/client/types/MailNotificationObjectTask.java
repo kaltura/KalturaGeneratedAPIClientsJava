@@ -53,19 +53,33 @@ public class MailNotificationObjectTask extends ObjectTask {
 		String sendToUsers();
 	}
 
-	/**  The mail to send the notification to  */
+	/**
+	 * The mail to send the notification to
+	 */
 	private String mailTo;
-	/**  The sender in the mail  */
+	/**
+	 * The sender in the mail
+	 */
 	private String sender;
-	/**  The subject of the entry  */
+	/**
+	 * The subject of the entry
+	 */
 	private String subject;
-	/**  The message to send in the notification mail  */
+	/**
+	 * The message to send in the notification mail
+	 */
 	private String message;
-	/**  The footer of the message to send in the notification mail  */
+	/**
+	 * The footer of the message to send in the notification mail
+	 */
 	private String footer;
-	/**  The basic link for the KMC site  */
+	/**
+	 * The basic link for the KMC site
+	 */
 	private String link;
-	/**  Send the mail to each user  */
+	/**
+	 * Send the mail to each user
+	 */
 	private Boolean sendToUsers;
 
 	// mailTo:

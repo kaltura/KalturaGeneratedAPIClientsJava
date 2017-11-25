@@ -49,7 +49,9 @@ public abstract class RuleAction extends ObjectBase {
 		String type();
 	}
 
-	/**  The type of the action  */
+	/**
+	 * The type of the action
+	 */
 	private RuleActionType type;
 
 	// type:

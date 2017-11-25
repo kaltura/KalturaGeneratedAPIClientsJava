@@ -74,15 +74,23 @@ public class Widget extends ObjectBase {
 	private Integer securityPolicy;
 	private Integer createdAt;
 	private Integer updatedAt;
-	/**  Can be used to store various partner related data as a string  */
+	/**
+	 * Can be used to store various partner related data as a string
+	 */
 	private String partnerData;
 	private String widgetHTML;
-	/**  Should enforce entitlement on feed entries  */
+	/**
+	 * Should enforce entitlement on feed entries
+	 */
 	private Boolean enforceEntitlement;
-	/**  Set privacy context for search entries that assiged to private and public
-	  categories within a category privacy context.  */
+	/**
+	 * Set privacy context for search entries that assiged to private and public
+	  categories within a category privacy context.
+	 */
 	private String privacyContext;
-	/**  Addes the HTML5 script line to the widget's embed code  */
+	/**
+	 * Addes the HTML5 script line to the widget's embed code
+	 */
 	private Boolean addEmbedHtml5Support;
 	private String roles;
 

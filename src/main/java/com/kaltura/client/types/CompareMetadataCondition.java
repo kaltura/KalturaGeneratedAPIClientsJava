@@ -49,14 +49,20 @@ public class CompareMetadataCondition extends CompareCondition {
 		String profileSystemName();
 	}
 
-	/**  May contain the full xpath to the field in three formats   1. Slashed xPath,
+	/**
+	 * May contain the full xpath to the field in three formats   1. Slashed xPath,
 	  e.g. /metadata/myElementName   2. Using local-name function, e.g.
 	  /[local-name()='metadata']/[local-name()='myElementName']   3. Using only the
-	  field name, e.g. myElementName, it will be searched as //myElementName  */
+	  field name, e.g. myElementName, it will be searched as //myElementName
+	 */
 	private String xPath;
-	/**  Metadata profile id  */
+	/**
+	 * Metadata profile id
+	 */
 	private Integer profileId;
-	/**  Metadata profile system name  */
+	/**
+	 * Metadata profile system name
+	 */
 	private String profileSystemName;
 
 	// xPath:

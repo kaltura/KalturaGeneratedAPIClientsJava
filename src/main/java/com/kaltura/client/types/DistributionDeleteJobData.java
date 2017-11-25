@@ -47,8 +47,10 @@ public class DistributionDeleteJobData extends DistributionJobData {
 		String keepDistributionItem();
 	}
 
-	/**  Flag signifying that the associated distribution item should not be moved to
-	  'removed' status  */
+	/**
+	 * Flag signifying that the associated distribution item should not be moved to
+	  'removed' status
+	 */
 	private Boolean keepDistributionItem;
 
 	// keepDistributionItem:

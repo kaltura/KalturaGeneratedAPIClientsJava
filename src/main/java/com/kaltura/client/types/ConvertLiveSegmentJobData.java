@@ -55,20 +55,34 @@ public class ConvertLiveSegmentJobData extends JobData {
 		String destDataFilePath();
 	}
 
-	/**  Live stream entry id  */
+	/**
+	 * Live stream entry id
+	 */
 	private String entryId;
 	private String assetId;
-	/**  Primary or secondary media server  */
+	/**
+	 * Primary or secondary media server
+	 */
 	private EntryServerNodeType mediaServerIndex;
-	/**  The index of the file within the entry  */
+	/**
+	 * The index of the file within the entry
+	 */
 	private Integer fileIndex;
-	/**  The recorded live media  */
+	/**
+	 * The recorded live media
+	 */
 	private String srcFilePath;
-	/**  The output file  */
+	/**
+	 * The output file
+	 */
 	private String destFilePath;
-	/**  Duration of the live entry including all recorded segments including the current  */
+	/**
+	 * Duration of the live entry including all recorded segments including the current
+	 */
 	private Double endTime;
-	/**  The data output file  */
+	/**
+	 * The data output file
+	 */
 	private String destDataFilePath;
 
 	// entryId:

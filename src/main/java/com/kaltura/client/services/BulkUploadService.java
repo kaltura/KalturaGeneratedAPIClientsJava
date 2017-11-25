@@ -46,8 +46,22 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Bulk upload service is used to upload &amp; manage bulk uploads using CSV files.
-   This service manages only entry bulk uploads.  */
+/**
+ * Bulk upload service is used to upload &amp; manage bulk uploads using CSV files.
+   This service manages only entry bulk uploads.
+ * 
+ * @param id job id
+ * @param conversionProfileId Convertion profile id to use for converting the current bulk (-1 to use
+ * partner's default)
+ * @param csvFileData bulk upload file
+ * @param bulkUploadType 
+ * @param uploadedBy 
+ * @param fileName Friendly name of the file, used to be recognized later in the logs.
+ * @param id 
+ * @param pager 
+ * @param id job id
+ * @param id job id
+ */
 public class BulkUploadService {
 	
 	public static class AbortBulkUploadBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AbortBulkUploadBuilder> {
@@ -62,7 +76,11 @@ public class BulkUploadService {
 		}
 	}
 
-	/**  Aborts the bulk upload and all its child jobs  */
+	/**
+	 * Aborts the bulk upload and all its child jobs
+	 * 
+	 * @param id job id
+	 */
     public static AbortBulkUploadBuilder abort(long id)  {
 		return new AbortBulkUploadBuilder(id);
 	}
@@ -156,9 +174,18 @@ public class BulkUploadService {
 		return add(conversionProfileId, new FileHolder(csvFileData, csvFileDataMimeType, csvFileDataName), bulkUploadType, uploadedBy, fileName);
 	}
 
-	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
+	/**
+	 * Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
-	  conversion profile was specified, partner's default will be used  */
+	  conversion profile was specified, partner's default will be used
+	 * 
+	 * @param conversionProfileId Convertion profile id to use for converting the current bulk (-1 to use
+	 * partner's default)
+	 * @param csvFileData bulk upload file
+	 * @param bulkUploadType 
+	 * @param uploadedBy 
+	 * @param fileName Friendly name of the file, used to be recognized later in the logs.
+	 */
     public static AddBulkUploadBuilder add(int conversionProfileId, FileHolder csvFileData, BulkUploadType bulkUploadType, String uploadedBy, String fileName)  {
 		return new AddBulkUploadBuilder(conversionProfileId, csvFileData, bulkUploadType, uploadedBy, fileName);
 	}
@@ -175,7 +202,11 @@ public class BulkUploadService {
 		}
 	}
 
-	/**  Get bulk upload batch job by id  */
+	/**
+	 * Get bulk upload batch job by id
+	 * 
+	 * @param id 
+	 */
     public static GetBulkUploadBuilder get(long id)  {
 		return new GetBulkUploadBuilder(id);
 	}
@@ -192,7 +223,11 @@ public class BulkUploadService {
 		return list(null);
 	}
 
-	/**  List bulk upload batch jobs  */
+	/**
+	 * List bulk upload batch jobs
+	 * 
+	 * @param pager 
+	 */
     public static ListBulkUploadBuilder list(FilterPager pager)  {
 		return new ListBulkUploadBuilder(pager);
 	}
@@ -209,7 +244,11 @@ public class BulkUploadService {
 		}
 	}
 
-	/**  serve action returan the original file.  */
+	/**
+	 * serve action returan the original file.
+	 * 
+	 * @param id job id
+	 */
     public static ServeBulkUploadBuilder serve(long id)  {
 		return new ServeBulkUploadBuilder(id);
 	}
@@ -226,7 +265,11 @@ public class BulkUploadService {
 		}
 	}
 
-	/**  serveLog action returan the original file.  */
+	/**
+	 * serveLog action returan the original file.
+	 * 
+	 * @param id job id
+	 */
     public static ServeLogBulkUploadBuilder serveLog(long id)  {
 		return new ServeLogBulkUploadBuilder(id);
 	}

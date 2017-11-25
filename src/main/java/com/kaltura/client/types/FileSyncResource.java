@@ -39,9 +39,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that is already ingested to Kaltura system as a different
+/**
+ * Used to ingest media that is already ingested to Kaltura system as a different
   file in the past, the new created flavor asset will be ready immediately using a
-  file sync of link type that will point to the existing file sync.  */
+  file sync of link type that will point to the existing file sync.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(FileSyncResource.Tokenizer.class)
 public class FileSyncResource extends ContentResource {
@@ -53,13 +55,21 @@ public class FileSyncResource extends ContentResource {
 		String version();
 	}
 
-	/**  The object type of the file sync object  */
+	/**
+	 * The object type of the file sync object
+	 */
 	private Integer fileSyncObjectType;
-	/**  The object sub-type of the file sync object  */
+	/**
+	 * The object sub-type of the file sync object
+	 */
 	private Integer objectSubType;
-	/**  The object id of the file sync object  */
+	/**
+	 * The object id of the file sync object
+	 */
 	private String objectId;
-	/**  The version of the file sync object  */
+	/**
+	 * The version of the file sync object
+	 */
 	private String version;
 
 	// fileSyncObjectType:

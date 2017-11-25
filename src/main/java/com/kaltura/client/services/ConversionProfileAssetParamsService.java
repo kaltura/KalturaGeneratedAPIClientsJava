@@ -40,7 +40,15 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage the connection between Conversion Profiles and Asset Params  */
+/**
+ * Manage the connection between Conversion Profiles and Asset Params
+ * 
+ * @param filter 
+ * @param pager 
+ * @param conversionProfileId 
+ * @param assetParamsId 
+ * @param conversionProfileAssetParams 
+ */
 public class ConversionProfileAssetParamsService {
 	
 	public static class ListConversionProfileAssetParamsBuilder extends ListResponseRequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.Tokenizer, ListConversionProfileAssetParamsBuilder> {
@@ -60,7 +68,12 @@ public class ConversionProfileAssetParamsService {
 		return list(filter, null);
 	}
 
-	/**  Lists asset parmas of conversion profile by ID  */
+	/**
+	 * Lists asset parmas of conversion profile by ID
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListConversionProfileAssetParamsBuilder list(ConversionProfileAssetParamsFilter filter, FilterPager pager)  {
 		return new ListConversionProfileAssetParamsBuilder(filter, pager);
 	}
@@ -83,7 +96,13 @@ public class ConversionProfileAssetParamsService {
 		}
 	}
 
-	/**  Update asset parmas of conversion profile by ID  */
+	/**
+	 * Update asset parmas of conversion profile by ID
+	 * 
+	 * @param conversionProfileId 
+	 * @param assetParamsId 
+	 * @param conversionProfileAssetParams 
+	 */
     public static UpdateConversionProfileAssetParamsBuilder update(int conversionProfileId, int assetParamsId, ConversionProfileAssetParams conversionProfileAssetParams)  {
 		return new UpdateConversionProfileAssetParamsBuilder(conversionProfileId, assetParamsId, conversionProfileAssetParams);
 	}

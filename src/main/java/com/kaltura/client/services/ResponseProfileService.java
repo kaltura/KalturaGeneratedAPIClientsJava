@@ -44,7 +44,22 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage response profiles  */
+/**
+ * Manage response profiles
+ * 
+ * @param addResponseProfile 
+ * @param id 
+ * @param profile 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param options 
+ * @param id 
+ * @param updateResponseProfile 
+ * @param id 
+ * @param status 
+ */
 public class ResponseProfileService {
 	
 	public static class AddResponseProfileBuilder extends RequestBuilder<ResponseProfile, ResponseProfile.Tokenizer, AddResponseProfileBuilder> {
@@ -55,7 +70,11 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Add new response profile  */
+	/**
+	 * Add new response profile
+	 * 
+	 * @param addResponseProfile 
+	 */
     public static AddResponseProfileBuilder add(ResponseProfile addResponseProfile)  {
 		return new AddResponseProfileBuilder(addResponseProfile);
 	}
@@ -73,7 +92,12 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Clone an existing response profile  */
+	/**
+	 * Clone an existing response profile
+	 * 
+	 * @param id 
+	 * @param profile 
+	 */
     public static CloneResponseProfileBuilder clone(long id, ResponseProfile profile)  {
 		return new CloneResponseProfileBuilder(id, profile);
 	}
@@ -90,7 +114,11 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Delete response profile by id  */
+	/**
+	 * Delete response profile by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteResponseProfileBuilder delete(long id)  {
 		return new DeleteResponseProfileBuilder(id);
 	}
@@ -107,7 +135,11 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Get response profile by id  */
+	/**
+	 * Get response profile by id
+	 * 
+	 * @param id 
+	 */
     public static GetResponseProfileBuilder get(long id)  {
 		return new GetResponseProfileBuilder(id);
 	}
@@ -129,7 +161,12 @@ public class ResponseProfileService {
 		return list(filter, null);
 	}
 
-	/**  List response profiles by filter and pager  */
+	/**
+	 * List response profiles by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListResponseProfileBuilder list(ResponseProfileFilter filter, FilterPager pager)  {
 		return new ListResponseProfileBuilder(filter, pager);
 	}
@@ -142,7 +179,11 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Recalculate response profile cached objects  */
+	/**
+	 * Recalculate response profile cached objects
+	 * 
+	 * @param options 
+	 */
     public static RecalculateResponseProfileBuilder recalculate(ResponseProfileCacheRecalculateOptions options)  {
 		return new RecalculateResponseProfileBuilder(options);
 	}
@@ -160,7 +201,12 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Update response profile by id  */
+	/**
+	 * Update response profile by id
+	 * 
+	 * @param id 
+	 * @param updateResponseProfile 
+	 */
     public static UpdateResponseProfileBuilder update(long id, ResponseProfile updateResponseProfile)  {
 		return new UpdateResponseProfileBuilder(id, updateResponseProfile);
 	}
@@ -182,7 +228,12 @@ public class ResponseProfileService {
 		}
 	}
 
-	/**  Update response profile status by id  */
+	/**
+	 * Update response profile status by id
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusResponseProfileBuilder updateStatus(long id, ResponseProfileStatus status)  {
 		return new UpdateStatusResponseProfileBuilder(id, status);
 	}

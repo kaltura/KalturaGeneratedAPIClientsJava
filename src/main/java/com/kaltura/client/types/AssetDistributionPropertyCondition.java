@@ -39,8 +39,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Defines the condition to match a property and value on core asset object (or one
-  if its inherited objects)  */
+/**
+ * Defines the condition to match a property and value on core asset object (or one
+  if its inherited objects)
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(AssetDistributionPropertyCondition.Tokenizer.class)
 public class AssetDistributionPropertyCondition extends AssetDistributionCondition {
@@ -50,11 +52,15 @@ public class AssetDistributionPropertyCondition extends AssetDistributionConditi
 		String propertyValue();
 	}
 
-	/**  The property name to look for, this will match to a getter on the asset object. 
+	/**
+	 * The property name to look for, this will match to a getter on the asset object. 
 	   Should be camelCase naming convention (defining "myPropertyName" will look for
-	  getMyPropertyName())  */
+	  getMyPropertyName())
+	 */
 	private String propertyName;
-	/**  The value to compare  */
+	/**
+	 * The value to compare
+	 */
 	private String propertyValue;
 
 	// propertyName:

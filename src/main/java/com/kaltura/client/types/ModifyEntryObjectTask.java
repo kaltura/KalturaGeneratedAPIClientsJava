@@ -55,19 +55,33 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		String inputEntitledUsersPublish();
 	}
 
-	/**  The input metadata profile id  */
+	/**
+	 * The input metadata profile id
+	 */
 	private Integer inputMetadataProfileId;
-	/**  array of {input metadata xpath location,entry field} objects  */
+	/**
+	 * array of {input metadata xpath location,entry field} objects
+	 */
 	private List<KeyValue> inputMetadata;
-	/**  The output metadata profile id  */
+	/**
+	 * The output metadata profile id
+	 */
 	private Integer outputMetadataProfileId;
-	/**  array of {output metadata xpath location,entry field} objects  */
+	/**
+	 * array of {output metadata xpath location,entry field} objects
+	 */
 	private List<KeyValue> outputMetadata;
-	/**  The input user id to set on the entry  */
+	/**
+	 * The input user id to set on the entry
+	 */
 	private String inputUserId;
-	/**  The input entitled users edit to set on the entry  */
+	/**
+	 * The input entitled users edit to set on the entry
+	 */
 	private String inputEntitledUsersEdit;
-	/**  The input entitled users publish to set on the entry  */
+	/**
+	 * The input entitled users publish to set on the entry
+	 */
 	private String inputEntitledUsersPublish;
 
 	// inputMetadataProfileId:

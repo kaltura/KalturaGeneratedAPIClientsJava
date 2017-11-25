@@ -60,7 +60,9 @@ public class CategoryFilter extends CategoryBaseFilter {
 	private String managerEqual;
 	private String memberEqual;
 	private String fullNameStartsWithIn;
-	/**  not includes the category itself (only sub categories)  */
+	/**
+	 * not includes the category itself (only sub categories)
+	 */
 	private String ancestorIdIn;
 	private String idOrInheritedParentIdIn;
 

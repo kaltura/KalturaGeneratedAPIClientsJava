@@ -51,13 +51,21 @@ public class GenericSyndicationFeed extends BaseSyndicationFeed {
 		String pageSize();
 	}
 
-	/**  feed description  */
+	/**
+	 * feed description
+	 */
 	private String feedDescription;
-	/**  feed landing page (i.e publisher website)  */
+	/**
+	 * feed landing page (i.e publisher website)
+	 */
 	private String feedLandingPage;
-	/**  entry filter  */
+	/**
+	 * entry filter
+	 */
 	private BaseEntryFilter entryFilter;
-	/**  page size  */
+	/**
+	 * page size
+	 */
 	private Integer pageSize;
 
 	// feedDescription:

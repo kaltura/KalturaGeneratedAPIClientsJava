@@ -41,7 +41,21 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Server Node service  */
+/**
+ * Server Node service
+ * 
+ * @param serverNode 
+ * @param serverNodeId 
+ * @param serverNodeId 
+ * @param serverNodeId 
+ * @param serverNodeId 
+ * @param filter 
+ * @param pager 
+ * @param hostName 
+ * @param serverNode 
+ * @param serverNodeId 
+ * @param serverNode Id
+ */
 public class ServerNodeService {
 	
 	public static class AddServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, AddServerNodeBuilder> {
@@ -52,7 +66,11 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  Adds a server node to the Kaltura DB.  */
+	/**
+	 * Adds a server node to the Kaltura DB.
+	 * 
+	 * @param serverNode 
+	 */
     public static AddServerNodeBuilder add(ServerNode serverNode)  {
 		return new AddServerNodeBuilder(serverNode);
 	}
@@ -69,7 +87,11 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  delete server node by id  */
+	/**
+	 * delete server node by id
+	 * 
+	 * @param serverNodeId 
+	 */
     public static DeleteServerNodeBuilder delete(String serverNodeId)  {
 		return new DeleteServerNodeBuilder(serverNodeId);
 	}
@@ -86,7 +108,11 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  Disable server node by id  */
+	/**
+	 * Disable server node by id
+	 * 
+	 * @param serverNodeId 
+	 */
     public static DisableServerNodeBuilder disable(String serverNodeId)  {
 		return new DisableServerNodeBuilder(serverNodeId);
 	}
@@ -103,7 +129,11 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  Enable server node by id  */
+	/**
+	 * Enable server node by id
+	 * 
+	 * @param serverNodeId 
+	 */
     public static EnableServerNodeBuilder enable(String serverNodeId)  {
 		return new EnableServerNodeBuilder(serverNodeId);
 	}
@@ -120,7 +150,11 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  Get server node by id  */
+	/**
+	 * Get server node by id
+	 * 
+	 * @param serverNodeId 
+	 */
     public static GetServerNodeBuilder get(int serverNodeId)  {
 		return new GetServerNodeBuilder(serverNodeId);
 	}
@@ -163,7 +197,12 @@ public class ServerNodeService {
 		return reportStatus(hostName, null);
 	}
 
-	/**  Update server node status  */
+	/**
+	 * Update server node status
+	 * 
+	 * @param hostName 
+	 * @param serverNode 
+	 */
     public static ReportStatusServerNodeBuilder reportStatus(String hostName, ServerNode serverNode)  {
 		return new ReportStatusServerNodeBuilder(hostName, serverNode);
 	}
@@ -181,7 +220,12 @@ public class ServerNodeService {
 		}
 	}
 
-	/**  Update server node by id  */
+	/**
+	 * Update server node by id
+	 * 
+	 * @param serverNodeId 
+	 * @param serverNode Id
+	 */
     public static UpdateServerNodeBuilder update(int serverNodeId, ServerNode serverNode)  {
 		return new UpdateServerNodeBuilder(serverNodeId, serverNode);
 	}

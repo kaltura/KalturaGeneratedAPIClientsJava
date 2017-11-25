@@ -53,26 +53,40 @@ public class CrossKalturaDistributionJobProviderData extends ConfigurableDistrib
 		String distributedTimedThumbAssets();
 	}
 
-	/**  Key-value array where the keys are IDs of distributed flavor assets in the
-	  source account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed flavor assets in the
+	  source account and the values are the matching IDs in the target account
+	 */
 	private String distributedFlavorAssets;
-	/**  Key-value array where the keys are IDs of distributed thumb assets in the source
-	  account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed thumb assets in the source
+	  account and the values are the matching IDs in the target account
+	 */
 	private String distributedThumbAssets;
-	/**  Key-value array where the keys are IDs of distributed metadata objects in the
-	  source account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed metadata objects in the
+	  source account and the values are the matching IDs in the target account
+	 */
 	private String distributedMetadata;
-	/**  Key-value array where the keys are IDs of distributed caption assets in the
-	  source account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed caption assets in the
+	  source account and the values are the matching IDs in the target account
+	 */
 	private String distributedCaptionAssets;
-	/**  Key-value array where the keys are IDs of distributed cue points in the source
-	  account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed cue points in the source
+	  account and the values are the matching IDs in the target account
+	 */
 	private String distributedCuePoints;
-	/**  Key-value array where the keys are IDs of distributed thumb cue points in the
-	  source account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed thumb cue points in the
+	  source account and the values are the matching IDs in the target account
+	 */
 	private String distributedThumbCuePoints;
-	/**  Key-value array where the keys are IDs of distributed timed thumb assets in the
-	  source account and the values are the matching IDs in the target account  */
+	/**
+	 * Key-value array where the keys are IDs of distributed timed thumb assets in the
+	  source account and the values are the matching IDs in the target account
+	 */
 	private String distributedTimedThumbAssets;
 
 	// distributedFlavorAssets:

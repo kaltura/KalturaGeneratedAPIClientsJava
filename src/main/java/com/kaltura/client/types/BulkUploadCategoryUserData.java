@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  This class represents object-specific data passed to the   bulk upload job.  */
+/**
+ * This class represents object-specific data passed to the   bulk upload job.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BulkUploadCategoryUserData.Tokenizer.class)
 public class BulkUploadCategoryUserData extends BulkUploadObjectData {

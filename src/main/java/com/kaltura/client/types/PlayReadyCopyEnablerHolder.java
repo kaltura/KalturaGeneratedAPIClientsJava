@@ -49,7 +49,9 @@ public class PlayReadyCopyEnablerHolder extends ObjectBase {
 		String type();
 	}
 
-	/**  The type of the copy enabler  */
+	/**
+	 * The type of the copy enabler
+	 */
 	private PlayReadyCopyEnablerType type;
 
 	// type:

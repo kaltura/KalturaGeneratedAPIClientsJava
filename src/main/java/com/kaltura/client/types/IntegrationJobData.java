@@ -57,10 +57,14 @@ public class IntegrationJobData extends JobData {
 
 	private String callbackNotificationUrl;
 	private IntegrationProviderType providerType;
-	/**  Additional data that relevant for the provider only  */
+	/**
+	 * Additional data that relevant for the provider only
+	 */
 	private IntegrationJobProviderData providerData;
 	private IntegrationTriggerType triggerType;
-	/**  Additional data that relevant for the trigger only  */
+	/**
+	 * Additional data that relevant for the trigger only
+	 */
 	private IntegrationJobTriggerData triggerData;
 
 	// callbackNotificationUrl:

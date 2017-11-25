@@ -49,9 +49,13 @@ public class UserAgentRestriction extends BaseRestriction {
 		String userAgentRegexList();
 	}
 
-	/**  User agent restriction type (Allow or deny)  */
+	/**
+	 * User agent restriction type (Allow or deny)
+	 */
 	private UserAgentRestrictionType userAgentRestrictionType;
-	/**  A comma seperated list of user agent regular expressions  */
+	/**
+	 * A comma seperated list of user agent regular expressions
+	 */
 	private String userAgentRegexList;
 
 	// userAgentRestrictionType:

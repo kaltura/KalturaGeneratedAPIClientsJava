@@ -54,9 +54,13 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 	private String freeText;
 	private Boolean isRoot;
 	private String categoriesFullNameIn;
-	/**  All entries within this categoy or in child categories  */
+	/**
+	 * All entries within this categoy or in child categories
+	 */
 	private String categoryAncestorIdIn;
-	/**  The id of the original entry  */
+	/**
+	 * The id of the original entry
+	 */
 	private String redirectFromEntryId;
 
 	// freeText:

@@ -36,7 +36,11 @@ import com.kaltura.client.utils.request.NullRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Unicorn Service  */
+/**
+ * Unicorn Service
+ * 
+ * @param id distribution job id
+ */
 public class UnicornService {
 	
 	public static class NotifyUnicornBuilder extends NullRequestBuilder {

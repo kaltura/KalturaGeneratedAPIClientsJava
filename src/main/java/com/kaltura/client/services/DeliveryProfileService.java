@@ -40,7 +40,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  delivery service is used to control delivery objects  */
+/**
+ * delivery service is used to control delivery objects
+ * 
+ * @param delivery 
+ * @param deliveryId 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param delivery 
+ */
 public class DeliveryProfileService {
 	
 	public static class AddDeliveryProfileBuilder extends RequestBuilder<DeliveryProfile, DeliveryProfile.Tokenizer, AddDeliveryProfileBuilder> {
@@ -51,7 +61,11 @@ public class DeliveryProfileService {
 		}
 	}
 
-	/**  Add new delivery.  */
+	/**
+	 * Add new delivery.
+	 * 
+	 * @param delivery 
+	 */
     public static AddDeliveryProfileBuilder add(DeliveryProfile delivery)  {
 		return new AddDeliveryProfileBuilder(delivery);
 	}
@@ -68,7 +82,11 @@ public class DeliveryProfileService {
 		}
 	}
 
-	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
+	/**
+	 * Add delivery based on existing delivery.  Must provide valid sourceDeliveryId
+	 * 
+	 * @param deliveryId 
+	 */
     public static CloneDeliveryProfileBuilder clone(int deliveryId)  {
 		return new CloneDeliveryProfileBuilder(deliveryId);
 	}
@@ -85,7 +103,11 @@ public class DeliveryProfileService {
 		}
 	}
 
-	/**  Get delivery by id  */
+	/**
+	 * Get delivery by id
+	 * 
+	 * @param id 
+	 */
     public static GetDeliveryProfileBuilder get(String id)  {
 		return new GetDeliveryProfileBuilder(id);
 	}
@@ -107,7 +129,12 @@ public class DeliveryProfileService {
 		return list(filter, null);
 	}
 
-	/**  Retrieve a list of available delivery depends on the filter given  */
+	/**
+	 * Retrieve a list of available delivery depends on the filter given
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDeliveryProfileBuilder list(DeliveryProfileFilter filter, FilterPager pager)  {
 		return new ListDeliveryProfileBuilder(filter, pager);
 	}
@@ -125,7 +152,12 @@ public class DeliveryProfileService {
 		}
 	}
 
-	/**  Update exisiting delivery  */
+	/**
+	 * Update exisiting delivery
+	 * 
+	 * @param id 
+	 * @param delivery 
+	 */
     public static UpdateDeliveryProfileBuilder update(String id, DeliveryProfile delivery)  {
 		return new UpdateDeliveryProfileBuilder(id, delivery);
 	}

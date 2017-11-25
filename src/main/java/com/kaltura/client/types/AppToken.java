@@ -63,28 +63,48 @@ public class AppToken extends ObjectBase {
 		String description();
 	}
 
-	/**  The id of the application token  */
+	/**
+	 * The id of the application token
+	 */
 	private String id;
-	/**  The application token  */
+	/**
+	 * The application token
+	 */
 	private String token;
 	private Integer partnerId;
-	/**  Creation time as Unix timestamp (In seconds)  */
+	/**
+	 * Creation time as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Update time as Unix timestamp (In seconds)  */
+	/**
+	 * Update time as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Application token status  */
+	/**
+	 * Application token status
+	 */
 	private AppTokenStatus status;
-	/**  Expiry time of current token (unix timestamp in seconds)  */
+	/**
+	 * Expiry time of current token (unix timestamp in seconds)
+	 */
 	private Integer expiry;
-	/**  Type of KS (Kaltura Session) that created using the current token  */
+	/**
+	 * Type of KS (Kaltura Session) that created using the current token
+	 */
 	private SessionType sessionType;
-	/**  User id of KS (Kaltura Session) that created using the current token  */
+	/**
+	 * User id of KS (Kaltura Session) that created using the current token
+	 */
 	private String sessionUserId;
-	/**  Expiry duration of KS (Kaltura Session) that created using the current token (in
-	  seconds)  */
+	/**
+	 * Expiry duration of KS (Kaltura Session) that created using the current token (in
+	  seconds)
+	 */
 	private Integer sessionDuration;
-	/**  Comma separated privileges to be applied on KS (Kaltura Session) that created
-	  using the current token  */
+	/**
+	 * Comma separated privileges to be applied on KS (Kaltura Session) that created
+	  using the current token
+	 */
 	private String sessionPrivileges;
 	private AppTokenHashType hashType;
 	private String description;

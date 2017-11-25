@@ -55,30 +55,48 @@ public class UnicornDistributionProfile extends ConfigurableDistributionProfile 
 		String storageProfileId();
 	}
 
-	/**  The email address associated with the Upload User, used to authorize the
-	  incoming request.  */
+	/**
+	 * The email address associated with the Upload User, used to authorize the
+	  incoming request.
+	 */
 	private String username;
-	/**  The password used in association with the email to determine if the Upload User
-	  is authorized the incoming request.  */
+	/**
+	 * The password used in association with the email to determine if the Upload User
+	  is authorized the incoming request.
+	 */
 	private String password;
-	/**  The name of the Domain that the Upload User should have access to, Used for
-	  authentication.  */
+	/**
+	 * The name of the Domain that the Upload User should have access to, Used for
+	  authentication.
+	 */
 	private String domainName;
-	/**  The Channel GUID assigned to this Publication Rule. Must be a valid Channel in
-	  the Domain that was used in authentication.  */
+	/**
+	 * The Channel GUID assigned to this Publication Rule. Must be a valid Channel in
+	  the Domain that was used in authentication.
+	 */
 	private String channelGuid;
-	/**  The API host URL that the Upload User should have access to, Used for HTTP
-	  content submission.  */
+	/**
+	 * The API host URL that the Upload User should have access to, Used for HTTP
+	  content submission.
+	 */
 	private String apiHostUrl;
-	/**  The GUID of the Customer Domain in the Unicorn system obtained by contacting
-	  your Unicorn representative.  */
+	/**
+	 * The GUID of the Customer Domain in the Unicorn system obtained by contacting
+	  your Unicorn representative.
+	 */
 	private String domainGuid;
-	/**  The GUID for the application in which to record metrics and enforce business
-	  rules obtained through your Unicorn representative.  */
+	/**
+	 * The GUID for the application in which to record metrics and enforce business
+	  rules obtained through your Unicorn representative.
+	 */
 	private String adFreeApplicationGuid;
-	/**  The flavor-params that will be used for the remote asset.  */
+	/**
+	 * The flavor-params that will be used for the remote asset.
+	 */
 	private Integer remoteAssetParamsId;
-	/**  The remote storage that should be used for the remote asset.  */
+	/**
+	 * The remote storage that should be used for the remote asset.
+	 */
 	private String storageProfileId;
 
 	// username:

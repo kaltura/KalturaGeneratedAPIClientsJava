@@ -48,9 +48,13 @@ public class EntryContext extends Context {
 		String followEntryRedirect();
 	}
 
-	/**  The entry ID in the context of which the playlist should be built  */
+	/**
+	 * The entry ID in the context of which the playlist should be built
+	 */
 	private String entryId;
-	/**  Is this a redirected entry followup?  */
+	/**
+	 * Is this a redirected entry followup?
+	 */
 	private Boolean followEntryRedirect;
 
 	// entryId:

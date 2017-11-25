@@ -49,11 +49,17 @@ public class SystemPartnerUsageFilter extends Filter {
 		String timezoneOffset();
 	}
 
-	/**  Date range from  */
+	/**
+	 * Date range from
+	 */
 	private Integer fromDate;
-	/**  Date range to  */
+	/**
+	 * Date range to
+	 */
 	private Integer toDate;
-	/**  Time zone offset  */
+	/**
+	 * Time zone offset
+	 */
 	private Integer timezoneOffset;
 
 	// fromDate:

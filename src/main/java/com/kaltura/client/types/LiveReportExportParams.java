@@ -53,9 +53,13 @@ public class LiveReportExportParams extends ObjectBase {
 
 	private String entryIds;
 	private String recpientEmail;
-	/**  Time zone offset in minutes (between client to UTC)  */
+	/**
+	 * Time zone offset in minutes (between client to UTC)
+	 */
 	private Integer timeZoneOffset;
-	/**  Optional argument that allows controlling the prefix of the exported csv url  */
+	/**
+	 * Optional argument that allows controlling the prefix of the exported csv url
+	 */
 	private String applicationUrlTemplate;
 
 	// entryIds:

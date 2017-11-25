@@ -58,7 +58,58 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base Entry Service  */
+/**
+ * Base Entry Service
+ * 
+ * @param entry 
+ * @param type 
+ * @param entryId 
+ * @param resource 
+ * @param entry 
+ * @param uploadTokenId 
+ * @param type 
+ * @param entryId 
+ * @param rank 
+ * @param entryId 
+ * @param entryId Id of entry to clone
+ * @param cloneOptions 
+ * @param filter Entry filter
+ * @param entryId Entry id to delete
+ * @param entryId 
+ * @param storageProfileId 
+ * @param moderationFlag 
+ * @param entryId Entry id
+ * @param version Desired version of the data
+ * @param entryIds Comma separated string of entry ids
+ * @param entryId 
+ * @param contextDataParams 
+ * @param entryId 
+ * @param contextDataParams 
+ * @param entryId 
+ * @param id 
+ * @param shouldUpdate 
+ * @param filter Entry filter
+ * @param pager Pager
+ * @param refId Entry Reference ID
+ * @param pager Pager
+ * @param entryId 
+ * @param pager 
+ * @param entryId 
+ * @param entryId Entry id to update
+ * @param baseEntry Base entry metadata to update
+ * @param entryId Entry id to update
+ * @param resource Resource to be used to replace entry content
+ * @param conversionProfileId The conversion profile id to be used on the entry
+ * @param advancedOptions Additional update content options
+ * @param entryId Media entry id
+ * @param sourceEntryId Media entry id
+ * @param timeOffset Time offset (in seconds)
+ * @param entryId Media entry id
+ * @param url file url
+ * @param entryId Media entry id
+ * @param fileData Jpeg file data
+ * @param fileData The file data
+ */
 public class BaseEntryService {
 	
 	public static class AddBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, AddBaseEntryBuilder> {
@@ -78,7 +129,12 @@ public class BaseEntryService {
 		return add(entry, null);
 	}
 
-	/**  Generic add entry, should be used when the uploaded entry type is not known.  */
+	/**
+	 * Generic add entry, should be used when the uploaded entry type is not known.
+	 * 
+	 * @param entry 
+	 * @param type 
+	 */
     public static AddBaseEntryBuilder add(BaseEntry entry, EntryType type)  {
 		return new AddBaseEntryBuilder(entry, type);
 	}
@@ -96,7 +152,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Attach content resource to entry in status NO_MEDIA  */
+	/**
+	 * Attach content resource to entry in status NO_MEDIA
+	 * 
+	 * @param entryId 
+	 * @param resource 
+	 */
     public static AddContentBaseEntryBuilder addContent(String entryId, Resource resource)  {
 		return new AddContentBaseEntryBuilder(entryId, resource);
 	}
@@ -123,8 +184,14 @@ public class BaseEntryService {
 		return addFromUploadedFile(entry, uploadTokenId, null);
 	}
 
-	/**  Generic add entry using an uploaded file, should be used when the uploaded entry
-	  type is not known.  */
+	/**
+	 * Generic add entry using an uploaded file, should be used when the uploaded entry
+	  type is not known.
+	 * 
+	 * @param entry 
+	 * @param uploadTokenId 
+	 * @param type 
+	 */
     public static AddFromUploadedFileBaseEntryBuilder addFromUploadedFile(BaseEntry entry, String uploadTokenId, EntryType type)  {
 		return new AddFromUploadedFileBaseEntryBuilder(entry, uploadTokenId, type);
 	}
@@ -146,7 +213,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
+	/**
+	 * Anonymously rank an entry, no validation is done on duplicate rankings.
+	 * 
+	 * @param entryId 
+	 * @param rank 
+	 */
     public static AnonymousRankBaseEntryBuilder anonymousRank(String entryId, int rank)  {
 		return new AnonymousRankBaseEntryBuilder(entryId, rank);
 	}
@@ -163,8 +235,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Approve the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry playable).  */
+	/**
+	 * Approve the entry and mark the pending flags (if any) as moderated (this will
+	  make the entry playable).
+	 * 
+	 * @param entryId 
+	 */
     public static ApproveBaseEntryBuilder approve(String entryId)  {
 		return new ApproveBaseEntryBuilder(entryId);
 	}
@@ -186,7 +262,12 @@ public class BaseEntryService {
 		return clone(entryId, null);
 	}
 
-	/**  Clone an entry with optional attributes to apply to the clone  */
+	/**
+	 * Clone an entry with optional attributes to apply to the clone
+	 * 
+	 * @param entryId Id of entry to clone
+	 * @param cloneOptions 
+	 */
     public static CloneBaseEntryBuilder clone(String entryId, List<BaseEntryCloneOptionItem> cloneOptions)  {
 		return new CloneBaseEntryBuilder(entryId, cloneOptions);
 	}
@@ -203,7 +284,11 @@ public class BaseEntryService {
 		return count(null);
 	}
 
-	/**  Count base entries by filter.  */
+	/**
+	 * Count base entries by filter.
+	 * 
+	 * @param filter Entry filter
+	 */
     public static CountBaseEntryBuilder count(BaseEntryFilter filter)  {
 		return new CountBaseEntryBuilder(filter);
 	}
@@ -220,7 +305,11 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Delete an entry.  */
+	/**
+	 * Delete an entry.
+	 * 
+	 * @param entryId Entry id to delete
+	 */
     public static DeleteBaseEntryBuilder delete(String entryId)  {
 		return new DeleteBaseEntryBuilder(entryId);
 	}
@@ -254,7 +343,11 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Flag inappropriate entry for moderation.  */
+	/**
+	 * Flag inappropriate entry for moderation.
+	 * 
+	 * @param moderationFlag 
+	 */
     public static FlagBaseEntryBuilder flag(ModerationFlag moderationFlag)  {
 		return new FlagBaseEntryBuilder(moderationFlag);
 	}
@@ -280,7 +373,12 @@ public class BaseEntryService {
 		return get(entryId, -1);
 	}
 
-	/**  Get base entry by ID.  */
+	/**
+	 * Get base entry by ID.
+	 * 
+	 * @param entryId Entry id
+	 * @param version Desired version of the data
+	 */
     public static GetBaseEntryBuilder get(String entryId, int version)  {
 		return new GetBaseEntryBuilder(entryId, version);
 	}
@@ -297,7 +395,11 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Get an array of KalturaBaseEntry objects by a comma-separated list of ids.  */
+	/**
+	 * Get an array of KalturaBaseEntry objects by a comma-separated list of ids.
+	 * 
+	 * @param entryIds Comma separated string of entry ids
+	 */
     public static GetByIdsBaseEntryBuilder getByIds(String entryIds)  {
 		return new GetByIdsBaseEntryBuilder(entryIds);
 	}
@@ -315,8 +417,13 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  This action delivers entry-related data, based on the user's context: access
-	  control, restriction, playback format and storage information.  */
+	/**
+	 * This action delivers entry-related data, based on the user's context: access
+	  control, restriction, playback format and storage information.
+	 * 
+	 * @param entryId 
+	 * @param contextDataParams 
+	 */
     public static GetContextDataBaseEntryBuilder getContextData(String entryId, EntryContextDataParams contextDataParams)  {
 		return new GetContextDataBaseEntryBuilder(entryId, contextDataParams);
 	}
@@ -334,7 +441,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  This action delivers all data relevant for player  */
+	/**
+	 * This action delivers all data relevant for player
+	 * 
+	 * @param entryId 
+	 * @param contextDataParams 
+	 */
     public static GetPlaybackContextBaseEntryBuilder getPlaybackContext(String entryId, PlaybackContextOptions contextDataParams)  {
 		return new GetPlaybackContextBaseEntryBuilder(entryId, contextDataParams);
 	}
@@ -351,7 +463,11 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Get remote storage existing paths for the asset.  */
+	/**
+	 * Get remote storage existing paths for the asset.
+	 * 
+	 * @param entryId 
+	 */
     public static GetRemotePathsBaseEntryBuilder getRemotePaths(String entryId)  {
 		return new GetRemotePathsBaseEntryBuilder(entryId);
 	}
@@ -377,7 +493,12 @@ public class BaseEntryService {
 		return index(id, true);
 	}
 
-	/**  Index an entry by id.  */
+	/**
+	 * Index an entry by id.
+	 * 
+	 * @param id 
+	 * @param shouldUpdate 
+	 */
     public static IndexBaseEntryBuilder index(String id, boolean shouldUpdate)  {
 		return new IndexBaseEntryBuilder(id, shouldUpdate);
 	}
@@ -399,7 +520,12 @@ public class BaseEntryService {
 		return list(filter, null);
 	}
 
-	/**  List base entries by filter with paging support.  */
+	/**
+	 * List base entries by filter with paging support.
+	 * 
+	 * @param filter Entry filter
+	 * @param pager Pager
+	 */
     public static ListBaseEntryBuilder list(BaseEntryFilter filter, FilterPager pager)  {
 		return new ListBaseEntryBuilder(filter, pager);
 	}
@@ -421,7 +547,12 @@ public class BaseEntryService {
 		return listByReferenceId(refId, null);
 	}
 
-	/**  List base entries by filter according to reference id  */
+	/**
+	 * List base entries by filter according to reference id
+	 * 
+	 * @param refId Entry Reference ID
+	 * @param pager Pager
+	 */
     public static ListByReferenceIdBaseEntryBuilder listByReferenceId(String refId, FilterPager pager)  {
 		return new ListByReferenceIdBaseEntryBuilder(refId, pager);
 	}
@@ -443,7 +574,12 @@ public class BaseEntryService {
 		return listFlags(entryId, null);
 	}
 
-	/**  List all pending flags for the entry.  */
+	/**
+	 * List all pending flags for the entry.
+	 * 
+	 * @param entryId 
+	 * @param pager 
+	 */
     public static ListFlagsBaseEntryBuilder listFlags(String entryId, FilterPager pager)  {
 		return new ListFlagsBaseEntryBuilder(entryId, pager);
 	}
@@ -460,8 +596,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Reject the entry and mark the pending flags (if any) as moderated (this will
-	  make the entry non-playable).  */
+	/**
+	 * Reject the entry and mark the pending flags (if any) as moderated (this will
+	  make the entry non-playable).
+	 * 
+	 * @param entryId 
+	 */
     public static RejectBaseEntryBuilder reject(String entryId)  {
 		return new RejectBaseEntryBuilder(entryId);
 	}
@@ -479,7 +619,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Update base entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update base entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Entry id to update
+	 * @param baseEntry Base entry metadata to update
+	 */
     public static UpdateBaseEntryBuilder update(String entryId, BaseEntry baseEntry)  {
 		return new UpdateBaseEntryBuilder(entryId, baseEntry);
 	}
@@ -511,7 +656,14 @@ public class BaseEntryService {
 		return updateContent(entryId, resource, conversionProfileId, null);
 	}
 
-	/**  Update the content resource associated with the entry.  */
+	/**
+	 * Update the content resource associated with the entry.
+	 * 
+	 * @param entryId Entry id to update
+	 * @param resource Resource to be used to replace entry content
+	 * @param conversionProfileId The conversion profile id to be used on the entry
+	 * @param advancedOptions Additional update content options
+	 */
     public static UpdateContentBaseEntryBuilder updateContent(String entryId, Resource resource, int conversionProfileId, EntryReplacementOptions advancedOptions)  {
 		return new UpdateContentBaseEntryBuilder(entryId, resource, conversionProfileId, advancedOptions);
 	}
@@ -538,8 +690,14 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Update entry thumbnail from a different entry by a specified time offset (in
-	  seconds).  */
+	/**
+	 * Update entry thumbnail from a different entry by a specified time offset (in
+	  seconds).
+	 * 
+	 * @param entryId Media entry id
+	 * @param sourceEntryId Media entry id
+	 * @param timeOffset Time offset (in seconds)
+	 */
     public static UpdateThumbnailFromSourceEntryBaseEntryBuilder updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset)  {
 		return new UpdateThumbnailFromSourceEntryBaseEntryBuilder(entryId, sourceEntryId, timeOffset);
 	}
@@ -561,7 +719,12 @@ public class BaseEntryService {
 		}
 	}
 
-	/**  Update entry thumbnail using url.  */
+	/**
+	 * Update entry thumbnail using url.
+	 * 
+	 * @param entryId Media entry id
+	 * @param url file url
+	 */
     public static UpdateThumbnailFromUrlBaseEntryBuilder updateThumbnailFromUrl(String entryId, String url)  {
 		return new UpdateThumbnailFromUrlBaseEntryBuilder(entryId, url);
 	}
@@ -592,7 +755,12 @@ public class BaseEntryService {
 		return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Update entry thumbnail using a raw jpeg file.  */
+	/**
+	 * Update entry thumbnail using a raw jpeg file.
+	 * 
+	 * @param entryId Media entry id
+	 * @param fileData Jpeg file data
+	 */
     public static UpdateThumbnailJpegBaseEntryBuilder updateThumbnailJpeg(String entryId, FileHolder fileData)  {
 		return new UpdateThumbnailJpegBaseEntryBuilder(entryId, fileData);
 	}
@@ -618,7 +786,11 @@ public class BaseEntryService {
 		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Upload a file to Kaltura, that can be used to create an entry.  */
+	/**
+	 * Upload a file to Kaltura, that can be used to create an entry.
+	 * 
+	 * @param fileData The file data
+	 */
     public static UploadBaseEntryBuilder upload(FileHolder fileData)  {
 		return new UploadBaseEntryBuilder(fileData);
 	}

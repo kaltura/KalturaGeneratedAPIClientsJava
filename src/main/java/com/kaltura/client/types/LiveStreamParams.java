@@ -55,21 +55,37 @@ public class LiveStreamParams extends ObjectBase {
 		String language();
 	}
 
-	/**  Bit rate of the stream. (i.e. 900)  */
+	/**
+	 * Bit rate of the stream. (i.e. 900)
+	 */
 	private Integer bitrate;
-	/**  flavor asset id  */
+	/**
+	 * flavor asset id
+	 */
 	private String flavorId;
-	/**  Stream's width  */
+	/**
+	 * Stream's width
+	 */
 	private Integer width;
-	/**  Stream's height  */
+	/**
+	 * Stream's height
+	 */
 	private Integer height;
-	/**  Live stream's codec  */
+	/**
+	 * Live stream's codec
+	 */
 	private String codec;
-	/**  Live stream's farme rate  */
+	/**
+	 * Live stream's farme rate
+	 */
 	private Integer frameRate;
-	/**  Live stream's key frame interval  */
+	/**
+	 * Live stream's key frame interval
+	 */
 	private Double keyFrameInterval;
-	/**  Live stream's language  */
+	/**
+	 * Live stream's language
+	 */
 	private String language;
 
 	// bitrate:

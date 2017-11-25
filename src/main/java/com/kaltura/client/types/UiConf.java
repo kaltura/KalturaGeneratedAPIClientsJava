@@ -74,7 +74,9 @@ public class UiConf extends ObjectBase {
 	}
 
 	private Integer id;
-	/**  Name of the uiConf, this is not a primary key  */
+	/**
+	 * Name of the uiConf, this is not a primary key
+	 */
 	private String name;
 	private String description;
 	private Integer partnerId;
@@ -92,13 +94,19 @@ public class UiConf extends ObjectBase {
 	private Boolean useCdn;
 	private String tags;
 	private String swfUrlVersion;
-	/**  Entry creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Entry creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry creation date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private UiConfCreationMode creationMode;
 	private String html5Url;
-	/**  UiConf version  */
+	/**
+	 * UiConf version
+	 */
 	private String version;
 	private String partnerTags;
 

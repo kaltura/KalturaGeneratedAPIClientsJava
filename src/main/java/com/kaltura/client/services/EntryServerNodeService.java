@@ -41,7 +41,16 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base class for entry server node  */
+/**
+ * Base class for entry server node
+ * 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param entryServerNode 
+ * @param id entry server node id
+ */
 public class EntryServerNodeService {
 	
 	public static class GetEntryServerNodeBuilder extends RequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, GetEntryServerNodeBuilder> {
@@ -110,7 +119,11 @@ public class EntryServerNodeService {
 		}
 	}
 
-	/**  Validates server node still registered on entry  */
+	/**
+	 * Validates server node still registered on entry
+	 * 
+	 * @param id entry server node id
+	 */
     public static ValidateRegisteredEntryServerNodeEntryServerNodeBuilder validateRegisteredEntryServerNode(int id)  {
 		return new ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(id);
 	}

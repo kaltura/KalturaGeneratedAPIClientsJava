@@ -49,9 +49,13 @@ public class ExternalMediaEntry extends MediaEntry {
 		String assetParamsIds();
 	}
 
-	/**  The source type of the external media  */
+	/**
+	 * The source type of the external media
+	 */
 	private ExternalMediaSourceType externalSourceType;
-	/**  Comma separated asset params ids that exists for this external media entry  */
+	/**
+	 * Comma separated asset params ids that exists for this external media entry
+	 */
 	private String assetParamsIds;
 
 	// externalSourceType:

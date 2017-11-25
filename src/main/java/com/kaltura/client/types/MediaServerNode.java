@@ -51,11 +51,17 @@ public abstract class MediaServerNode extends DeliveryServerNode {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mediaServerPlaybackDomainConfig();
 	}
 
-	/**  Media server application name  */
+	/**
+	 * Media server application name
+	 */
 	private String applicationName;
-	/**  Media server playback port configuration by protocol and format  */
+	/**
+	 * Media server playback port configuration by protocol and format
+	 */
 	private List<KeyValue> mediaServerPortConfig;
-	/**  Media server playback Domain configuration by protocol and format  */
+	/**
+	 * Media server playback Domain configuration by protocol and format
+	 */
 	private List<KeyValue> mediaServerPlaybackDomainConfig;
 
 	// applicationName:

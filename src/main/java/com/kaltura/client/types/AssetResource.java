@@ -39,10 +39,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that is already ingested to Kaltura system as a different
+/**
+ * Used to ingest media that is already ingested to Kaltura system as a different
   flavor asset in the past, the new created flavor asset will be ready immediately
   using a file sync of link type that will point to the existing file sync of the
-  existing flavor asset.  */
+  existing flavor asset.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(AssetResource.Tokenizer.class)
 public class AssetResource extends ContentResource {
@@ -51,7 +53,9 @@ public class AssetResource extends ContentResource {
 		String assetId();
 	}
 
-	/**  ID of the source asset  */
+	/**
+	 * ID of the source asset
+	 */
 	private String assetId;
 
 	// assetId:

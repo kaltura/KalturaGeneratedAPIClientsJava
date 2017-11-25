@@ -50,13 +50,21 @@ public class UrlRecognizerAkamaiG2O extends UrlRecognizer {
 		String salt();
 	}
 
-	/**  headerData  */
+	/**
+	 * headerData
+	 */
 	private String headerData;
-	/**  headerSign  */
+	/**
+	 * headerSign
+	 */
 	private String headerSign;
-	/**  timeout  */
+	/**
+	 * timeout
+	 */
 	private Integer timeout;
-	/**  salt  */
+	/**
+	 * salt
+	 */
 	private String salt;
 
 	// headerData:

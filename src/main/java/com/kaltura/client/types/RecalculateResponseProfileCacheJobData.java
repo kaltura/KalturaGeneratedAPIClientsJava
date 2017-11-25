@@ -56,11 +56,15 @@ public class RecalculateResponseProfileCacheJobData extends RecalculateCacheJobD
 		String endObjectKey();
 	}
 
-	/**  http / https  */
+	/**
+	 * http / https
+	 */
 	private String protocol;
 	private SessionType ksType;
 	private List<IntegerValue> userRoles;
-	/**  Class name  */
+	/**
+	 * Class name
+	 */
 	private String cachedObjectType;
 	private String objectId;
 	private String startObjectKey;

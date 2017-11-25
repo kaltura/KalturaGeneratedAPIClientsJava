@@ -49,9 +49,13 @@ public class KontikiStorageExportJobData extends StorageExportJobData {
 		String serviceToken();
 	}
 
-	/**  Holds the id of the exported asset  */
+	/**
+	 * Holds the id of the exported asset
+	 */
 	private String flavorAssetId;
-	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
+	/**
+	 * Unique Kontiki MOID for the content uploaded to Kontiki
+	 */
 	private String contentMoid;
 	private String serviceToken;
 

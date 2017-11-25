@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Object which contains contextual entry-related data.  */
+/**
+ * Object which contains contextual entry-related data.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(PlaybackContextOptions.Tokenizer.class)
 public class PlaybackContextOptions extends EntryContextDataParams {

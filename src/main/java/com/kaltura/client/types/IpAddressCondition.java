@@ -48,9 +48,13 @@ public class IpAddressCondition extends MatchCondition {
 		String httpHeader();
 	}
 
-	/**  allow internal ips  */
+	/**
+	 * allow internal ips
+	 */
 	private Boolean acceptInternalIps;
-	/**  http header name for extracting the ip  */
+	/**
+	 * http header name for extracting the ip
+	 */
 	private String httpHeader;
 
 	// acceptInternalIps:

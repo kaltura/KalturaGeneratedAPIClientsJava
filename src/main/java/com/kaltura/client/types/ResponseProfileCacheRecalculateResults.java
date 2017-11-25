@@ -49,9 +49,13 @@ public class ResponseProfileCacheRecalculateResults extends ObjectBase {
 		String recalculated();
 	}
 
-	/**  Last recalculated id  */
+	/**
+	 * Last recalculated id
+	 */
 	private String lastObjectKey;
-	/**  Number of recalculated keys  */
+	/**
+	 * Number of recalculated keys
+	 */
 	private Integer recalculated;
 
 	// lastObjectKey:

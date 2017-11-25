@@ -51,10 +51,14 @@ public class EventNotificationParameter extends ObjectBase {
 		StringValue.Tokenizer value();
 	}
 
-	/**  The key in the subject and body to be replaced with the dynamic value  */
+	/**
+	 * The key in the subject and body to be replaced with the dynamic value
+	 */
 	private String key;
 	private String description;
-	/**  The dynamic value to be placed in the final output  */
+	/**
+	 * The dynamic value to be placed in the final output
+	 */
 	private StringValue value;
 
 	// key:

@@ -52,7 +52,11 @@ public class UserEntryService {
 		}
 	}
 
-	/**  Adds a user_entry to the Kaltura DB.  */
+	/**
+	 * Adds a user_entry to the Kaltura DB.
+	 * 
+	 * @param userEntry 
+	 */
     public static AddUserEntryBuilder add(UserEntry userEntry)  {
 		return new AddUserEntryBuilder(userEntry);
 	}
@@ -134,8 +138,12 @@ public class UserEntryService {
 		}
 	}
 
-	/**  Submits the quiz so that it's status will be submitted and calculates the score
-	  for the quiz  */
+	/**
+	 * Submits the quiz so that it's status will be submitted and calculates the score
+	  for the quiz
+	 * 
+	 * @param id 
+	 */
     public static SubmitQuizUserEntryBuilder submitQuiz(int id)  {
 		return new SubmitQuizUserEntryBuilder(id);
 	}

@@ -44,7 +44,31 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on caption Asset  */
+/**
+ * Retrieve information and invoke actions on caption Asset
+ * 
+ * @param entryId 
+ * @param captionAsset 
+ * @param captionAssetId 
+ * @param captionAssetId 
+ * @param id 
+ * @param id 
+ * @param storageId 
+ * @param filter 
+ * @param pager 
+ * @param captionAssetId 
+ * @param entryId 
+ * @param captionParamId if not set, default caption will be used.
+ * @param captionAssetId 
+ * @param segmentDuration 
+ * @param segmentIndex 
+ * @param localTimestamp 
+ * @param captionAssetId 
+ * @param id 
+ * @param contentResource 
+ * @param id 
+ * @param captionAsset 
+ */
 public class CaptionAssetService {
 	
 	public static class AddCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, AddCaptionAssetBuilder> {
@@ -60,7 +84,12 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Add caption asset  */
+	/**
+	 * Add caption asset
+	 * 
+	 * @param entryId 
+	 * @param captionAsset 
+	 */
     public static AddCaptionAssetBuilder add(String entryId, CaptionAsset captionAsset)  {
 		return new AddCaptionAssetBuilder(entryId, captionAsset);
 	}
@@ -109,7 +138,11 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Get remote storage existing paths for the asset  */
+	/**
+	 * Get remote storage existing paths for the asset
+	 * 
+	 * @param id 
+	 */
     public static GetRemotePathsCaptionAssetBuilder getRemotePaths(String id)  {
 		return new GetRemotePathsCaptionAssetBuilder(id);
 	}
@@ -135,7 +168,12 @@ public class CaptionAssetService {
 		return getUrl(id, Integer.MIN_VALUE);
 	}
 
-	/**  Get download URL for the asset  */
+	/**
+	 * Get download URL for the asset
+	 * 
+	 * @param id 
+	 * @param storageId 
+	 */
     public static GetUrlCaptionAssetBuilder getUrl(String id, int storageId)  {
 		return new GetUrlCaptionAssetBuilder(id, storageId);
 	}
@@ -157,7 +195,12 @@ public class CaptionAssetService {
 		return list(filter, null);
 	}
 
-	/**  List caption Assets by filter and pager  */
+	/**
+	 * List caption Assets by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCaptionAssetBuilder list(AssetFilter filter, FilterPager pager)  {
 		return new ListCaptionAssetBuilder(filter, pager);
 	}
@@ -174,7 +217,11 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Serves caption by its id  */
+	/**
+	 * Serves caption by its id
+	 * 
+	 * @param captionAssetId 
+	 */
     public static ServeCaptionAssetBuilder serve(String captionAssetId)  {
 		return new ServeCaptionAssetBuilder(captionAssetId);
 	}
@@ -200,7 +247,12 @@ public class CaptionAssetService {
 		return serveByEntryId(entryId, Integer.MIN_VALUE);
 	}
 
-	/**  Serves caption by entry id and thumnail params id  */
+	/**
+	 * Serves caption by entry id and thumnail params id
+	 * 
+	 * @param entryId 
+	 * @param captionParamId if not set, default caption will be used.
+	 */
     public static ServeByEntryIdCaptionAssetBuilder serveByEntryId(String entryId, int captionParamId)  {
 		return new ServeByEntryIdCaptionAssetBuilder(entryId, captionParamId);
 	}
@@ -244,7 +296,14 @@ public class CaptionAssetService {
 		return serveWebVTT(captionAssetId, segmentDuration, segmentIndex, 10000);
 	}
 
-	/**  Serves caption by its id converting it to segmented WebVTT  */
+	/**
+	 * Serves caption by its id converting it to segmented WebVTT
+	 * 
+	 * @param captionAssetId 
+	 * @param segmentDuration 
+	 * @param segmentIndex 
+	 * @param localTimestamp 
+	 */
     public static ServeWebVTTCaptionAssetBuilder serveWebVTT(String captionAssetId, int segmentDuration, int segmentIndex, int localTimestamp)  {
 		return new ServeWebVTTCaptionAssetBuilder(captionAssetId, segmentDuration, segmentIndex, localTimestamp);
 	}
@@ -261,8 +320,12 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Markss the caption as default and removes that mark from all other caption
-	  assets of the entry.  */
+	/**
+	 * Markss the caption as default and removes that mark from all other caption
+	  assets of the entry.
+	 * 
+	 * @param captionAssetId 
+	 */
     public static SetAsDefaultCaptionAssetBuilder setAsDefault(String captionAssetId)  {
 		return new SetAsDefaultCaptionAssetBuilder(captionAssetId);
 	}
@@ -280,7 +343,12 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Update content of caption asset  */
+	/**
+	 * Update content of caption asset
+	 * 
+	 * @param id 
+	 * @param contentResource 
+	 */
     public static SetContentCaptionAssetBuilder setContent(String id, ContentResource contentResource)  {
 		return new SetContentCaptionAssetBuilder(id, contentResource);
 	}
@@ -298,7 +366,12 @@ public class CaptionAssetService {
 		}
 	}
 
-	/**  Update caption asset  */
+	/**
+	 * Update caption asset
+	 * 
+	 * @param id 
+	 * @param captionAsset 
+	 */
     public static UpdateCaptionAssetBuilder update(String id, CaptionAsset captionAsset)  {
 		return new UpdateCaptionAssetBuilder(id, captionAsset);
 	}

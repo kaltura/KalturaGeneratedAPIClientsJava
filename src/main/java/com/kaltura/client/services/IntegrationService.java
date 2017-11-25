@@ -39,7 +39,14 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Integration service lets you dispatch integration tasks  */
+/**
+ * Integration service lets you dispatch integration tasks
+ * 
+ * @param data 
+ * @param objectType 
+ * @param objectId 
+ * @param id integration job id
+ */
 public class IntegrationService {
 	
 	public static class DispatchIntegrationBuilder extends RequestBuilder<Integer, String, DispatchIntegrationBuilder> {
@@ -60,7 +67,13 @@ public class IntegrationService {
 		}
 	}
 
-	/**  Dispatch integration task  */
+	/**
+	 * Dispatch integration task
+	 * 
+	 * @param data 
+	 * @param objectType 
+	 * @param objectId 
+	 */
     public static DispatchIntegrationBuilder dispatch(IntegrationJobData data, BatchJobObjectType objectType, String objectId)  {
 		return new DispatchIntegrationBuilder(data, objectType, objectId);
 	}

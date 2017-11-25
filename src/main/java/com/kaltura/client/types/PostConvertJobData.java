@@ -54,17 +54,27 @@ public class PostConvertJobData extends ConvartableJobData {
 	}
 
 	private String flavorAssetId;
-	/**  Indicates if a thumbnail should be created  */
+	/**
+	 * Indicates if a thumbnail should be created
+	 */
 	private Boolean createThumb;
-	/**  The path of the created thumbnail  */
+	/**
+	 * The path of the created thumbnail
+	 */
 	private String thumbPath;
-	/**  The position of the thumbnail in the media file  */
+	/**
+	 * The position of the thumbnail in the media file
+	 */
 	private Integer thumbOffset;
-	/**  The height of the movie, will be used to comapare if this thumbnail is the best
-	  we can have  */
+	/**
+	 * The height of the movie, will be used to comapare if this thumbnail is the best
+	  we can have
+	 */
 	private Integer thumbHeight;
-	/**  The bit rate of the movie, will be used to comapare if this thumbnail is the
-	  best we can have  */
+	/**
+	 * The bit rate of the movie, will be used to comapare if this thumbnail is the
+	  best we can have
+	 */
 	private Integer thumbBitrate;
 	private String customData;
 

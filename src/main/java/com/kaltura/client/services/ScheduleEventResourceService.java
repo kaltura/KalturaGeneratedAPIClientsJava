@@ -41,9 +41,22 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  The ScheduleEventResource service enables you create and manage (update, delete,
+/**
+ * The ScheduleEventResource service enables you create and manage (update, delete,
   retrieve, etc.) the connections between recording events and the resources
-  required for these events (cameras, capture devices, etc.).  */
+  required for these events (cameras, capture devices, etc.).
+ * 
+ * @param scheduleEventResource 
+ * @param scheduleEventId 
+ * @param scheduleResourceId 
+ * @param scheduleEventId 
+ * @param scheduleResourceId 
+ * @param filter 
+ * @param pager 
+ * @param scheduleEventId 
+ * @param scheduleResourceId 
+ * @param scheduleEventResource 
+ */
 public class ScheduleEventResourceService {
 	
 	public static class AddScheduleEventResourceBuilder extends RequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, AddScheduleEventResourceBuilder> {
@@ -54,7 +67,11 @@ public class ScheduleEventResourceService {
 		}
 	}
 
-	/**  Allows you to add a new KalturaScheduleEventResource object  */
+	/**
+	 * Allows you to add a new KalturaScheduleEventResource object
+	 * 
+	 * @param scheduleEventResource 
+	 */
     public static AddScheduleEventResourceBuilder add(ScheduleEventResource scheduleEventResource)  {
 		return new AddScheduleEventResourceBuilder(scheduleEventResource);
 	}
@@ -76,7 +93,12 @@ public class ScheduleEventResourceService {
 		}
 	}
 
-	/**  Mark the KalturaScheduleEventResource object as deleted  */
+	/**
+	 * Mark the KalturaScheduleEventResource object as deleted
+	 * 
+	 * @param scheduleEventId 
+	 * @param scheduleResourceId 
+	 */
     public static DeleteScheduleEventResourceBuilder delete(int scheduleEventId, int scheduleResourceId)  {
 		return new DeleteScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId);
 	}
@@ -98,7 +120,12 @@ public class ScheduleEventResourceService {
 		}
 	}
 
-	/**  Retrieve a KalturaScheduleEventResource object by ID  */
+	/**
+	 * Retrieve a KalturaScheduleEventResource object by ID
+	 * 
+	 * @param scheduleEventId 
+	 * @param scheduleResourceId 
+	 */
     public static GetScheduleEventResourceBuilder get(int scheduleEventId, int scheduleResourceId)  {
 		return new GetScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId);
 	}
@@ -120,7 +147,12 @@ public class ScheduleEventResourceService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaScheduleEventResource objects  */
+	/**
+	 * List KalturaScheduleEventResource objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter, FilterPager pager)  {
 		return new ListScheduleEventResourceBuilder(filter, pager);
 	}
@@ -143,7 +175,13 @@ public class ScheduleEventResourceService {
 		}
 	}
 
-	/**  Update an existing KalturaScheduleEventResource object  */
+	/**
+	 * Update an existing KalturaScheduleEventResource object
+	 * 
+	 * @param scheduleEventId 
+	 * @param scheduleResourceId 
+	 * @param scheduleEventResource 
+	 */
     public static UpdateScheduleEventResourceBuilder update(int scheduleEventId, int scheduleResourceId, ScheduleEventResource scheduleEventResource)  {
 		return new UpdateScheduleEventResourceBuilder(scheduleEventId, scheduleResourceId, scheduleEventResource);
 	}

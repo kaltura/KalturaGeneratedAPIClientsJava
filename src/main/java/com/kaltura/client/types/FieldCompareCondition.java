@@ -48,7 +48,9 @@ public class FieldCompareCondition extends CompareCondition {
 		IntegerField.Tokenizer field();
 	}
 
-	/**  Field to evaluate  */
+	/**
+	 * Field to evaluate
+	 */
 	private IntegerField field;
 
 	// field:

@@ -68,13 +68,19 @@ public class GenericDistributionProviderAction extends ObjectBase {
 		String resultsTransformer();
 	}
 
-	/**  Auto generated  */
+	/**
+	 * Auto generated
+	 */
 	private Integer id;
-	/**  Generic distribution provider action creation date as Unix timestamp (In
-	  seconds)  */
+	/**
+	 * Generic distribution provider action creation date as Unix timestamp (In
+	  seconds)
+	 */
 	private Integer createdAt;
-	/**  Generic distribution provider action last update date as Unix timestamp (In
-	  seconds)  */
+	/**
+	 * Generic distribution provider action last update date as Unix timestamp (In
+	  seconds)
+	 */
 	private Integer updatedAt;
 	private Integer genericDistributionProviderId;
 	private DistributionAction action;

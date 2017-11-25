@@ -41,7 +41,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  JobData representing the static receipient array  */
+/**
+ * JobData representing the static receipient array
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationStaticRecipientJobData.Tokenizer.class)
 public class EmailNotificationStaticRecipientJobData extends EmailNotificationRecipientJobData {
@@ -50,7 +52,9 @@ public class EmailNotificationStaticRecipientJobData extends EmailNotificationRe
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> emailRecipients();
 	}
 
-	/**  Email to emails and names  */
+	/**
+	 * Email to emails and names
+	 */
 	private List<KeyValue> emailRecipients;
 
 	// emailRecipients:

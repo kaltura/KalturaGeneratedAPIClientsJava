@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A key value pair representation to return an array of key-value pairs
-  (associative array)  */
+/**
+ * A key value pair representation to return an array of key-value pairs
+  (associative array)
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(KeyValue.Tokenizer.class)
 public class KeyValue extends ObjectBase {

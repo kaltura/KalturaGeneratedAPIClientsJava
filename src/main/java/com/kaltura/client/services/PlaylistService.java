@@ -47,8 +47,39 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Playlist service lets you create,manage and play your playlists  Playlists could
-  be static (containing a fixed list of entries) or dynamic (baseed on a filter)  */
+/**
+ * Playlist service lets you create,manage and play your playlists  Playlists could
+  be static (containing a fixed list of entries) or dynamic (baseed on a filter)
+ * 
+ * @param playlist 
+ * @param updateStats indicates that the playlist statistics attributes should be updated
+ * synchronously now
+ * @param id Id of the playlist to clone
+ * @param newPlaylist Parameters defined here will override the ones in the cloned playlist
+ * @param id 
+ * @param id 
+ * @param detailed 
+ * @param playlistContext 
+ * @param filter 
+ * @param pager 
+ * @param playlistType 
+ * @param playlistContent 
+ * @param detailed 
+ * @param pager 
+ * @param filters 
+ * @param totalResults 
+ * @param detailed 
+ * @param pager 
+ * @param id 
+ * @param version Desired version of the data
+ * @param playlistType 
+ * @param playlistContent 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param playlist 
+ * @param updateStats 
+ */
 public class PlaylistService {
 	
 	public static class AddPlaylistBuilder extends RequestBuilder<Playlist, Playlist.Tokenizer, AddPlaylistBuilder> {
@@ -68,8 +99,14 @@ public class PlaylistService {
 		return add(playlist, false);
 	}
 
-	/**  Add new playlist   Note that all entries used in a playlist will become public
-	  and may appear in KalturaNetwork  */
+	/**
+	 * Add new playlist   Note that all entries used in a playlist will become public
+	  and may appear in KalturaNetwork
+	 * 
+	 * @param playlist 
+	 * @param updateStats indicates that the playlist statistics attributes should be updated
+	 * synchronously now
+	 */
     public static AddPlaylistBuilder add(Playlist playlist, boolean updateStats)  {
 		return new AddPlaylistBuilder(playlist, updateStats);
 	}
@@ -91,7 +128,12 @@ public class PlaylistService {
 		return clone(id, null);
 	}
 
-	/**  Clone an existing playlist  */
+	/**
+	 * Clone an existing playlist
+	 * 
+	 * @param id Id of the playlist to clone
+	 * @param newPlaylist Parameters defined here will override the ones in the cloned playlist
+	 */
     public static ClonePlaylistBuilder clone(String id, Playlist newPlaylist)  {
 		return new ClonePlaylistBuilder(id, newPlaylist);
 	}
@@ -108,7 +150,11 @@ public class PlaylistService {
 		}
 	}
 
-	/**  Delete existing playlist  */
+	/**
+	 * Delete existing playlist
+	 * 
+	 * @param id 
+	 */
     public static DeletePlaylistBuilder delete(String id)  {
 		return new DeletePlaylistBuilder(id);
 	}
@@ -149,7 +195,15 @@ public class PlaylistService {
 		return execute(id, detailed, playlistContext, filter, null);
 	}
 
-	/**  Retrieve playlist for playing purpose  */
+	/**
+	 * Retrieve playlist for playing purpose
+	 * 
+	 * @param id 
+	 * @param detailed 
+	 * @param playlistContext 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ExecutePlaylistBuilder execute(String id, String detailed, Context playlistContext, MediaEntryFilterForPlaylist filter, FilterPager pager)  {
 		return new ExecutePlaylistBuilder(id, detailed, playlistContext, filter, pager);
 	}
@@ -185,7 +239,14 @@ public class PlaylistService {
 		return executeFromContent(playlistType, playlistContent, detailed, null);
 	}
 
-	/**  Retrieve playlist for playing purpose, based on content  */
+	/**
+	 * Retrieve playlist for playing purpose, based on content
+	 * 
+	 * @param playlistType 
+	 * @param playlistContent 
+	 * @param detailed 
+	 * @param pager 
+	 */
     public static ExecuteFromContentPlaylistBuilder executeFromContent(PlaylistType playlistType, String playlistContent, String detailed, FilterPager pager)  {
 		return new ExecuteFromContentPlaylistBuilder(playlistType, playlistContent, detailed, pager);
 	}
@@ -217,7 +278,14 @@ public class PlaylistService {
 		return executeFromFilters(filters, totalResults, detailed, null);
 	}
 
-	/**  Revrieve playlist for playing purpose, based on media entry filters  */
+	/**
+	 * Revrieve playlist for playing purpose, based on media entry filters
+	 * 
+	 * @param filters 
+	 * @param totalResults 
+	 * @param detailed 
+	 * @param pager 
+	 */
     public static ExecuteFromFiltersPlaylistBuilder executeFromFilters(List<MediaEntryFilterForPlaylist> filters, int totalResults, String detailed, FilterPager pager)  {
 		return new ExecuteFromFiltersPlaylistBuilder(filters, totalResults, detailed, pager);
 	}
@@ -243,7 +311,12 @@ public class PlaylistService {
 		return get(id, -1);
 	}
 
-	/**  Retrieve a playlist  */
+	/**
+	 * Retrieve a playlist
+	 * 
+	 * @param id 
+	 * @param version Desired version of the data
+	 */
     public static GetPlaylistBuilder get(String id, int version)  {
 		return new GetPlaylistBuilder(id, version);
 	}
@@ -265,7 +338,12 @@ public class PlaylistService {
 		}
 	}
 
-	/**  Retrieve playlist statistics  */
+	/**
+	 * Retrieve playlist statistics
+	 * 
+	 * @param playlistType 
+	 * @param playlistContent 
+	 */
     public static GetStatsFromContentPlaylistBuilder getStatsFromContent(PlaylistType playlistType, String playlistContent)  {
 		return new GetStatsFromContentPlaylistBuilder(playlistType, playlistContent);
 	}
@@ -287,7 +365,12 @@ public class PlaylistService {
 		return list(filter, null);
 	}
 
-	/**  List available playlists  */
+	/**
+	 * List available playlists
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListPlaylistBuilder list(PlaylistFilter filter, FilterPager pager)  {
 		return new ListPlaylistBuilder(filter, pager);
 	}
@@ -314,8 +397,14 @@ public class PlaylistService {
 		return update(id, playlist, false);
 	}
 
-	/**  Update existing playlist   Note - you cannot change playlist type. updated
-	  playlist must be of the same type.  */
+	/**
+	 * Update existing playlist   Note - you cannot change playlist type. updated
+	  playlist must be of the same type.
+	 * 
+	 * @param id 
+	 * @param playlist 
+	 * @param updateStats 
+	 */
     public static UpdatePlaylistBuilder update(String id, Playlist playlist, boolean updateStats)  {
 		return new UpdatePlaylistBuilder(id, playlist, updateStats);
 	}

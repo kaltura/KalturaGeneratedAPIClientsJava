@@ -53,8 +53,10 @@ public abstract class ConfigurableDistributionProfile extends DistributionProfil
 
 	private List<DistributionFieldConfig> fieldConfigArray;
 	private List<ExtendingItemMrssParameter> itemXpathsToExtend;
-	/**  When checking custom XSLT conditions using the fieldConfigArray - address only
-	  categories associated with the entry via the categoryEntry object  */
+	/**
+	 * When checking custom XSLT conditions using the fieldConfigArray - address only
+	  categories associated with the entry via the categoryEntry object
+	 */
 	private Boolean useCategoryEntries;
 
 	// fieldConfigArray:

@@ -43,13 +43,13 @@ public class Client extends ClientBase {
 	public Client(ConnectionConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:17-11-24");
+		this.setClientTag("java:17-11-25");
 		this.setApiVersion("3.3.0");
 		this.clientConfiguration.put("format", 1); // JSON
 	}
 	
 	/**
-	 * @param clientTag
+	 * @param clientTag 
 	 */
 	public void setClientTag(String clientTag){
 		this.clientConfiguration.put("clientTag", clientTag);
@@ -67,7 +67,7 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * @param apiVersion
+	 * @param apiVersion 
 	 */
 	public void setApiVersion(String apiVersion){
 		this.clientConfiguration.put("apiVersion", apiVersion);
@@ -85,9 +85,7 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * Impersonated partner id
-	 * 
-	 * @param partnerId
+	 * @param partnerId Impersonated partner id
 	 */
 	public void setPartnerId(Integer partnerId){
 		this.requestConfiguration.put("partnerId", partnerId);
@@ -107,9 +105,7 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * Kaltura API session
-	 * 
-	 * @param ks
+	 * @param ks Kaltura API session
 	 */
 	public void setKs(String ks){
 		this.requestConfiguration.put("ks", ks);
@@ -129,9 +125,7 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * Kaltura API session
-	 * 
-	 * @param sessionId
+	 * @param sessionId Kaltura API session
 	 */
 	public void setSessionId(String sessionId){
 		this.requestConfiguration.put("ks", sessionId);
@@ -151,9 +145,7 @@ public class Client extends ClientBase {
 	}
 	
 	/**
-	 * Response profile - this attribute will be automatically unset after every API call.
-	 * 
-	 * @param responseProfile
+	 * @param responseProfile Response profile - this attribute will be automatically unset after every API call.
 	 */
 	public void setResponseProfile(BaseResponseProfile responseProfile){
 		this.requestConfiguration.put("responseProfile", responseProfile);

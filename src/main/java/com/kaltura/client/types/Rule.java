@@ -58,24 +58,42 @@ public class Rule extends ObjectBase {
 		String forceAdminValidation();
 	}
 
-	/**  Short Rule Description  */
+	/**
+	 * Short Rule Description
+	 */
 	private String description;
-	/**  Rule Custom Data to allow saving rule specific information  */
+	/**
+	 * Rule Custom Data to allow saving rule specific information
+	 */
 	private String ruleData;
-	/**  Message to be thrown to the player in case the rule is fulfilled  */
+	/**
+	 * Message to be thrown to the player in case the rule is fulfilled
+	 */
 	private String message;
-	/**  Code to be thrown to the player in case the rule is fulfilled  */
+	/**
+	 * Code to be thrown to the player in case the rule is fulfilled
+	 */
 	private String code;
-	/**  Actions to be performed by the player in case the rule is fulfilled  */
+	/**
+	 * Actions to be performed by the player in case the rule is fulfilled
+	 */
 	private List<RuleAction> actions;
-	/**  Conditions to validate the rule  */
+	/**
+	 * Conditions to validate the rule
+	 */
 	private List<Condition> conditions;
-	/**  Indicates what contexts should be tested by this rule  */
+	/**
+	 * Indicates what contexts should be tested by this rule
+	 */
 	private List<ContextTypeHolder> contexts;
-	/**  Indicates that this rule is enough and no need to continue checking the rest of
-	  the rules  */
+	/**
+	 * Indicates that this rule is enough and no need to continue checking the rest of
+	  the rules
+	 */
 	private Boolean stopProcessing;
-	/**  Indicates if we should force ks validation for admin ks users as well  */
+	/**
+	 * Indicates if we should force ks validation for admin ks users as well
+	 */
 	private Boolean forceAdminValidation;
 
 	// description:

@@ -49,7 +49,9 @@ public class FlavorAssetUrlOptions extends ObjectBase {
 		String referrer();
 	}
 
-	/**  The name of the downloaded file  */
+	/**
+	 * The name of the downloaded file
+	 */
 	private String fileName;
 	private String referrer;
 

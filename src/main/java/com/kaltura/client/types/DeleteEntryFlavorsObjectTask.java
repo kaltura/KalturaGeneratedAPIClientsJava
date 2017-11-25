@@ -49,9 +49,13 @@ public class DeleteEntryFlavorsObjectTask extends ObjectTask {
 		String flavorParamsIds();
 	}
 
-	/**  The logic to use to choose the flavors for deletion  */
+	/**
+	 * The logic to use to choose the flavors for deletion
+	 */
 	private DeleteFlavorsLogicType deleteType;
-	/**  Comma separated list of flavor param ids to delete or keep  */
+	/**
+	 * Comma separated list of flavor param ids to delete or keep
+	 */
 	private String flavorParamsIds;
 
 	// deleteType:

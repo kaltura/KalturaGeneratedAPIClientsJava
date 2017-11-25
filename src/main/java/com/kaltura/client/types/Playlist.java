@@ -57,21 +57,35 @@ public class Playlist extends BaseEntry {
 		String executeUrl();
 	}
 
-	/**  Content of the playlist -    XML if the playlistType is dynamic    text if the
-	  playlistType is static    url if the playlistType is mRss  */
+	/**
+	 * Content of the playlist -    XML if the playlistType is dynamic    text if the
+	  playlistType is static    url if the playlistType is mRss
+	 */
 	private String playlistContent;
 	private List<MediaEntryFilterForPlaylist> filters;
-	/**  Maximum count of results to be returned in playlist execution  */
+	/**
+	 * Maximum count of results to be returned in playlist execution
+	 */
 	private Integer totalResults;
-	/**  Type of playlist  */
+	/**
+	 * Type of playlist
+	 */
 	private PlaylistType playlistType;
-	/**  Number of plays  */
+	/**
+	 * Number of plays
+	 */
 	private Integer plays;
-	/**  Number of views  */
+	/**
+	 * Number of views
+	 */
 	private Integer views;
-	/**  The duration in seconds  */
+	/**
+	 * The duration in seconds
+	 */
 	private Integer duration;
-	/**  The url for this playlist  */
+	/**
+	 * The url for this playlist
+	 */
 	private String executeUrl;
 
 	// playlistContent:

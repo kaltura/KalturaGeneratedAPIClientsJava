@@ -48,9 +48,13 @@ public class EdgeServerNode extends DeliveryServerNode {
 		String config();
 	}
 
-	/**  Delivery server playback Domain  */
+	/**
+	 * Delivery server playback Domain
+	 */
 	private String playbackDomain;
-	/**  Overdie edge server default configuration - json format  */
+	/**
+	 * Overdie edge server default configuration - json format
+	 */
 	private String config;
 
 	// playbackDomain:

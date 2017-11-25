@@ -40,7 +40,14 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Audit Trail service  */
+/**
+ * Audit Trail service
+ * 
+ * @param auditTrail 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ */
 public class AuditTrailService {
 	
 	public static class AddAuditTrailBuilder extends RequestBuilder<AuditTrail, AuditTrail.Tokenizer, AddAuditTrailBuilder> {
@@ -51,8 +58,12 @@ public class AuditTrailService {
 		}
 	}
 
-	/**  Allows you to add an audit trail object and audit trail content associated with
-	  Kaltura object  */
+	/**
+	 * Allows you to add an audit trail object and audit trail content associated with
+	  Kaltura object
+	 * 
+	 * @param auditTrail 
+	 */
     public static AddAuditTrailBuilder add(AuditTrail auditTrail)  {
 		return new AddAuditTrailBuilder(auditTrail);
 	}
@@ -69,7 +80,11 @@ public class AuditTrailService {
 		}
 	}
 
-	/**  Retrieve an audit trail object by id  */
+	/**
+	 * Retrieve an audit trail object by id
+	 * 
+	 * @param id 
+	 */
     public static GetAuditTrailBuilder get(int id)  {
 		return new GetAuditTrailBuilder(id);
 	}
@@ -91,7 +106,12 @@ public class AuditTrailService {
 		return list(filter, null);
 	}
 
-	/**  List audit trail objects by filter and pager  */
+	/**
+	 * List audit trail objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAuditTrailBuilder list(AuditTrailFilter filter, FilterPager pager)  {
 		return new ListAuditTrailBuilder(filter, pager);
 	}

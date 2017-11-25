@@ -43,8 +43,21 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  UiConf service lets you create and manage your UIConfs for the various flash
-  components  This service is used by the KMC-ApplicationStudio  */
+/**
+ * UiConf service lets you create and manage your UIConfs for the various flash
+  components  This service is used by the KMC-ApplicationStudio
+ * 
+ * @param uiConf Mandatory input parameter of type KalturaUiConf
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param uiConf 
+ */
 public class UiConfService {
 	
 	public static class AddUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, AddUiConfBuilder> {
@@ -55,7 +68,11 @@ public class UiConfService {
 		}
 	}
 
-	/**  UIConf Add action allows you to add a UIConf to Kaltura DB  */
+	/**
+	 * UIConf Add action allows you to add a UIConf to Kaltura DB
+	 * 
+	 * @param uiConf Mandatory input parameter of type KalturaUiConf
+	 */
     public static AddUiConfBuilder add(UiConf uiConf)  {
 		return new AddUiConfBuilder(uiConf);
 	}
@@ -72,7 +89,11 @@ public class UiConfService {
 		}
 	}
 
-	/**  Clone an existing UIConf  */
+	/**
+	 * Clone an existing UIConf
+	 * 
+	 * @param id 
+	 */
     public static CloneUiConfBuilder clone(int id)  {
 		return new CloneUiConfBuilder(id);
 	}
@@ -89,7 +110,11 @@ public class UiConfService {
 		}
 	}
 
-	/**  Delete an existing UIConf  */
+	/**
+	 * Delete an existing UIConf
+	 * 
+	 * @param id 
+	 */
     public static DeleteUiConfBuilder delete(int id)  {
 		return new DeleteUiConfBuilder(id);
 	}
@@ -106,7 +131,11 @@ public class UiConfService {
 		}
 	}
 
-	/**  Retrieve a UIConf by id  */
+	/**
+	 * Retrieve a UIConf by id
+	 * 
+	 * @param id 
+	 */
     public static GetUiConfBuilder get(int id)  {
 		return new GetUiConfBuilder(id);
 	}
@@ -118,7 +147,9 @@ public class UiConfService {
 		}
 	}
 
-	/**  Retrieve a list of all available versions by object type  */
+	/**
+	 * Retrieve a list of all available versions by object type
+	 */
     public static GetAvailableTypesUiConfBuilder getAvailableTypes()  {
 		return new GetAvailableTypesUiConfBuilder();
 	}
@@ -140,7 +171,12 @@ public class UiConfService {
 		return list(filter, null);
 	}
 
-	/**  Retrieve a list of available UIConfs  */
+	/**
+	 * Retrieve a list of available UIConfs
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListUiConfBuilder list(UiConfFilter filter, FilterPager pager)  {
 		return new ListUiConfBuilder(filter, pager);
 	}
@@ -162,7 +198,12 @@ public class UiConfService {
 		return listTemplates(filter, null);
 	}
 
-	/**  retrieve a list of available template UIConfs  */
+	/**
+	 * retrieve a list of available template UIConfs
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListTemplatesUiConfBuilder listTemplates(UiConfFilter filter, FilterPager pager)  {
 		return new ListTemplatesUiConfBuilder(filter, pager);
 	}
@@ -180,7 +221,12 @@ public class UiConfService {
 		}
 	}
 
-	/**  Update an existing UIConf  */
+	/**
+	 * Update an existing UIConf
+	 * 
+	 * @param id 
+	 * @param uiConf 
+	 */
     public static UpdateUiConfBuilder update(int id, UiConf uiConf)  {
 		return new UpdateUiConfBuilder(id, uiConf);
 	}

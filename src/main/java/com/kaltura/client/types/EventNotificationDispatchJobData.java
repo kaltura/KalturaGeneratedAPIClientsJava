@@ -51,7 +51,9 @@ public class EventNotificationDispatchJobData extends JobData {
 	}
 
 	private Integer templateId;
-	/**  Define the content dynamic parameters  */
+	/**
+	 * Define the content dynamic parameters
+	 */
 	private List<KeyValue> contentParameters;
 
 	// templateId:

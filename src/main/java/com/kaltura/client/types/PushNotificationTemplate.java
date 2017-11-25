@@ -54,15 +54,25 @@ public class PushNotificationTemplate extends EventNotificationTemplate {
 		String responseProfileId();
 	}
 
-	/**  Define the content dynamic parameters  */
+	/**
+	 * Define the content dynamic parameters
+	 */
 	private List<PushEventNotificationParameter> queueNameParameters;
-	/**  Define the content dynamic parameters  */
+	/**
+	 * Define the content dynamic parameters
+	 */
 	private List<PushEventNotificationParameter> queueKeyParameters;
-	/**  Kaltura API object type  */
+	/**
+	 * Kaltura API object type
+	 */
 	private String apiObjectType;
-	/**  Kaltura Object format  */
+	/**
+	 * Kaltura Object format
+	 */
 	private ResponseType objectFormat;
-	/**  Kaltura response-profile id  */
+	/**
+	 * Kaltura response-profile id
+	 */
 	private Integer responseProfileId;
 
 	// queueNameParameters:

@@ -41,7 +41,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  DropFolderFile service lets you create and manage drop folder files  */
+/**
+ * DropFolderFile service lets you create and manage drop folder files
+ * 
+ * @param dropFolderFile 
+ * @param dropFolderFileId 
+ * @param dropFolderFileId 
+ * @param dropFolderFileId 
+ * @param filter 
+ * @param pager 
+ * @param dropFolderFileId 
+ * @param dropFolderFile Id
+ * @param dropFolderFileId 
+ * @param status 
+ */
 public class DropFolderFileService {
 	
 	public static class AddDropFolderFileBuilder extends RequestBuilder<DropFolderFile, DropFolderFile.Tokenizer, AddDropFolderFileBuilder> {
@@ -52,7 +65,11 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Allows you to add a new KalturaDropFolderFile object  */
+	/**
+	 * Allows you to add a new KalturaDropFolderFile object
+	 * 
+	 * @param dropFolderFile 
+	 */
     public static AddDropFolderFileBuilder add(DropFolderFile dropFolderFile)  {
 		return new AddDropFolderFileBuilder(dropFolderFile);
 	}
@@ -69,7 +86,11 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Mark the KalturaDropFolderFile object as deleted  */
+	/**
+	 * Mark the KalturaDropFolderFile object as deleted
+	 * 
+	 * @param dropFolderFileId 
+	 */
     public static DeleteDropFolderFileBuilder delete(int dropFolderFileId)  {
 		return new DeleteDropFolderFileBuilder(dropFolderFileId);
 	}
@@ -86,7 +107,11 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Retrieve a KalturaDropFolderFile object by ID  */
+	/**
+	 * Retrieve a KalturaDropFolderFile object by ID
+	 * 
+	 * @param dropFolderFileId 
+	 */
     public static GetDropFolderFileBuilder get(int dropFolderFileId)  {
 		return new GetDropFolderFileBuilder(dropFolderFileId);
 	}
@@ -103,8 +128,12 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Set the KalturaDropFolderFile status to ignore
-	  (KalturaDropFolderFileStatus::IGNORE)  */
+	/**
+	 * Set the KalturaDropFolderFile status to ignore
+	  (KalturaDropFolderFileStatus::IGNORE)
+	 * 
+	 * @param dropFolderFileId 
+	 */
     public static IgnoreDropFolderFileBuilder ignore(int dropFolderFileId)  {
 		return new IgnoreDropFolderFileBuilder(dropFolderFileId);
 	}
@@ -126,7 +155,12 @@ public class DropFolderFileService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaDropFolderFile objects  */
+	/**
+	 * List KalturaDropFolderFile objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDropFolderFileBuilder list(DropFolderFileFilter filter, FilterPager pager)  {
 		return new ListDropFolderFileBuilder(filter, pager);
 	}
@@ -144,7 +178,12 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Update an existing KalturaDropFolderFile object  */
+	/**
+	 * Update an existing KalturaDropFolderFile object
+	 * 
+	 * @param dropFolderFileId 
+	 * @param dropFolderFile Id
+	 */
     public static UpdateDropFolderFileBuilder update(int dropFolderFileId, DropFolderFile dropFolderFile)  {
 		return new UpdateDropFolderFileBuilder(dropFolderFileId, dropFolderFile);
 	}
@@ -166,7 +205,12 @@ public class DropFolderFileService {
 		}
 	}
 
-	/**  Update status of KalturaDropFolderFile  */
+	/**
+	 * Update status of KalturaDropFolderFile
+	 * 
+	 * @param dropFolderFileId 
+	 * @param status 
+	 */
     public static UpdateStatusDropFolderFileBuilder updateStatus(int dropFolderFileId, DropFolderFileStatus status)  {
 		return new UpdateStatusDropFolderFileBuilder(dropFolderFileId, status);
 	}

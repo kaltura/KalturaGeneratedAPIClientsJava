@@ -48,7 +48,9 @@ public class DeleteJobData extends JobData {
 		Filter.Tokenizer filter();
 	}
 
-	/**  The filter should return the list of objects that need to be deleted.  */
+	/**
+	 * The filter should return the list of objects that need to be deleted.
+	 */
 	private Filter filter;
 
 	// filter:

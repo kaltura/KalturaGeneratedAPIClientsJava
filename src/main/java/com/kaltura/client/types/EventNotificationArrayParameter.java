@@ -51,7 +51,9 @@ public class EventNotificationArrayParameter extends EventNotificationParameter 
 	}
 
 	private List<StringHolder> values;
-	/**  Used to restrict the values to close list  */
+	/**
+	 * Used to restrict the values to close list
+	 */
 	private List<StringValue> allowedValues;
 
 	// values:

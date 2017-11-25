@@ -42,7 +42,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Advanced configuration for entry replacement process  */
+/**
+ * Advanced configuration for entry replacement process
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EntryReplacementOptions.Tokenizer.class)
 public class EntryReplacementOptions extends ObjectBase {
@@ -52,9 +54,13 @@ public class EntryReplacementOptions extends ObjectBase {
 		RequestBuilder.ListTokenizer<PluginReplacementOptionsItem.Tokenizer> pluginOptionItems();
 	}
 
-	/**  If true manually created thumbnails will not be deleted on entry replacement  */
+	/**
+	 * If true manually created thumbnails will not be deleted on entry replacement
+	 */
 	private Integer keepManualThumbnails;
-	/**  Array of plugin replacement options  */
+	/**
+	 * Array of plugin replacement options
+	 */
 	private List<PluginReplacementOptionsItem> pluginOptionItems;
 
 	// keepManualThumbnails:

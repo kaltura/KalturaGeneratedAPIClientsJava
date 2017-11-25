@@ -52,13 +52,21 @@ public class TranscriptAsset extends AttachmentAsset {
 		String providerType();
 	}
 
-	/**  The accuracy of the transcript - values between 0 and 1  */
+	/**
+	 * The accuracy of the transcript - values between 0 and 1
+	 */
 	private Double accuracy;
-	/**  Was verified by human or machine  */
+	/**
+	 * Was verified by human or machine
+	 */
 	private Boolean humanVerified;
-	/**  The language of the transcript  */
+	/**
+	 * The language of the transcript
+	 */
 	private Language language;
-	/**  The provider of the transcript  */
+	/**
+	 * The provider of the transcript
+	 */
 	private TranscriptProviderType providerType;
 
 	// accuracy:

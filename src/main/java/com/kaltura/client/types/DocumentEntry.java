@@ -49,9 +49,13 @@ public class DocumentEntry extends BaseEntry {
 		String assetParamsIds();
 	}
 
-	/**  The type of the document  */
+	/**
+	 * The type of the document
+	 */
 	private DocumentType documentType;
-	/**  Comma separated asset params ids that exists for this media entry  */
+	/**
+	 * Comma separated asset params ids that exists for this media entry
+	 */
 	private String assetParamsIds;
 
 	// documentType:

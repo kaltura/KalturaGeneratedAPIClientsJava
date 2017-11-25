@@ -51,9 +51,55 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
+/**
+ * Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
   in the partner's system, and the [partnerId,Id] couple are unique key in
-  kaltura's DB  */
+  kaltura's DB
+ * 
+ * @param user The new user
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadUserData 
+ * @param filter 
+ * @param userId The user's unique identifier in the partner's system
+ * @param userId The user's unique identifier in the partner's system
+ * @param loginId The user's email address that identifies the user for login
+ * @param userId The user's unique identifier in the partner's system
+ * @param loginId The user's email address that identifies the user for login
+ * @param password The user's password
+ * @param userId The user's unique identifier in the partner's system
+ * @param loginId The user's email address that identifies the user for login
+ * @param id 
+ * @param shouldUpdate 
+ * @param filter A filter used to exclude specific types of users
+ * @param pager A limit for the number of records to display on a page
+ * @param partnerId The identifier of the partner account
+ * @param userId The user's unique identifier in the partner's system
+ * @param password The user's password
+ * @param expiry The requested time (in seconds) before the generated KS expires (By default, a
+ * KS expires after 24 hours).
+ * @param privileges Special privileges
+ * @param requestedPartnerId 
+ * @param loginId The user's email address that identifies the user for login
+ * @param password The user's password
+ * @param partnerId The identifier of the partner account
+ * @param expiry The requested time (in seconds) before the generated KS expires (By default, a
+ * KS expires after 24 hours).
+ * @param privileges Special privileges
+ * @param otp the user's one-time password
+ * @param userId The user's unique identifier in the partner's system
+ * @param email The user's email address (login email)
+ * @param hashKey The hash key used to identify the user (retrieved by email)
+ * @param newPassword The new password to set for the user
+ * @param userId The user's unique identifier in the partner's system
+ * @param user Id The user's unique identifier in the partner's system
+ * @param oldLoginId The user's current email address that identified the user for login
+ * @param password The user's current email address that identified the user for login
+ * @param newLoginId Optional, The user's email address that will identify the user for login
+ * @param newPassword Optional, The user's new password
+ * @param newFirstName Optional, The user's new first name
+ * @param newLastName Optional, The user's new last name
+ */
 public class UserService {
 	
 	public static class AddUserBuilder extends RequestBuilder<User, User.Tokenizer, AddUserBuilder> {
@@ -64,8 +110,12 @@ public class UserService {
 		}
 	}
 
-	/**  Adds a new user to an existing account in the Kaltura database.   Input param
-	  $id is the unique identifier in the partner's system.  */
+	/**
+	 * Adds a new user to an existing account in the Kaltura database.   Input param
+	  $id is the unique identifier in the partner's system.
+	 * 
+	 * @param user The new user
+	 */
     public static AddUserBuilder add(User user)  {
 		return new AddUserBuilder(user);
 	}
@@ -137,7 +187,11 @@ public class UserService {
 		}
 	}
 
-	/**  Action which checks whther user login  */
+	/**
+	 * Action which checks whther user login
+	 * 
+	 * @param filter 
+	 */
     public static CheckLoginDataExistsUserBuilder checkLoginDataExists(UserLoginDataFilter filter)  {
 		return new CheckLoginDataExistsUserBuilder(filter);
 	}
@@ -154,7 +208,11 @@ public class UserService {
 		}
 	}
 
-	/**  Deletes a user from a partner account.  */
+	/**
+	 * Deletes a user from a partner account.
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 */
     public static DeleteUserBuilder delete(String userId)  {
 		return new DeleteUserBuilder(userId);
 	}
@@ -184,9 +242,14 @@ public class UserService {
 		return disableLogin(userId, null);
 	}
 
-	/**  Disables a user's ability to log into a partner account using an email address
+	/**
+	 * Disables a user's ability to log into a partner account using an email address
 	  and a password.   You may use either a userId or a loginId parameter for this
-	  action.  */
+	  action.
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 * @param loginId The user's email address that identifies the user for login
+	 */
     public static DisableLoginUserBuilder disableLogin(String userId, String loginId)  {
 		return new DisableLoginUserBuilder(userId, loginId);
 	}
@@ -217,8 +280,14 @@ public class UserService {
 		return enableLogin(userId, loginId, null);
 	}
 
-	/**  Enables a user to log into a partner account using an email address and a
-	  password  */
+	/**
+	 * Enables a user to log into a partner account using an email address and a
+	  password
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 * @param loginId The user's email address that identifies the user for login
+	 * @param password The user's password
+	 */
     public static EnableLoginUserBuilder enableLogin(String userId, String loginId, String password)  {
 		return new EnableLoginUserBuilder(userId, loginId, password);
 	}
@@ -239,7 +308,11 @@ public class UserService {
 		return get(null);
 	}
 
-	/**  Retrieves a user object for a specified user ID.  */
+	/**
+	 * Retrieves a user object for a specified user ID.
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 */
     public static GetUserBuilder get(String userId)  {
 		return new GetUserBuilder(userId);
 	}
@@ -256,8 +329,12 @@ public class UserService {
 		}
 	}
 
-	/**  Retrieves a user object for a user's login ID and partner ID.   A login ID is
-	  the email address used by a user to log into the system.  */
+	/**
+	 * Retrieves a user object for a user's login ID and partner ID.   A login ID is
+	  the email address used by a user to log into the system.
+	 * 
+	 * @param loginId The user's email address that identifies the user for login
+	 */
     public static GetByLoginIdUserBuilder getByLoginId(String loginId)  {
 		return new GetByLoginIdUserBuilder(loginId);
 	}
@@ -283,7 +360,12 @@ public class UserService {
 		return index(id, true);
 	}
 
-	/**  Index an entry by id.  */
+	/**
+	 * Index an entry by id.
+	 * 
+	 * @param id 
+	 * @param shouldUpdate 
+	 */
     public static IndexUserBuilder index(String id, boolean shouldUpdate)  {
 		return new IndexUserBuilder(id, shouldUpdate);
 	}
@@ -305,9 +387,14 @@ public class UserService {
 		return list(filter, null);
 	}
 
-	/**  Lists user objects that are associated with an account.   Blocked users are
+	/**
+	 * Lists user objects that are associated with an account.   Blocked users are
 	  listed unless you use a filter to exclude them.   Deleted users are not listed
-	  unless you use a filter to include them.  */
+	  unless you use a filter to include them.
+	 * 
+	 * @param filter A filter used to exclude specific types of users
+	 * @param pager A limit for the number of records to display on a page
+	 */
     public static ListUserBuilder list(UserFilter filter, FilterPager pager)  {
 		return new ListUserBuilder(filter, pager);
 	}
@@ -352,8 +439,17 @@ public class UserService {
 		return login(partnerId, userId, password, expiry, "*");
 	}
 
-	/**  Logs a user into a partner account with a partner ID, a partner user ID (puser),
-	  and a user password.  */
+	/**
+	 * Logs a user into a partner account with a partner ID, a partner user ID (puser),
+	  and a user password.
+	 * 
+	 * @param partnerId The identifier of the partner account
+	 * @param userId The user's unique identifier in the partner's system
+	 * @param password The user's password
+	 * @param expiry The requested time (in seconds) before the generated KS expires (By default, a
+	 * KS expires after 24 hours).
+	 * @param privileges Special privileges
+	 */
     public static LoginUserBuilder login(int partnerId, String userId, String password, int expiry, String privileges)  {
 		return new LoginUserBuilder(partnerId, userId, password, expiry, privileges);
 	}
@@ -370,8 +466,12 @@ public class UserService {
 		}
 	}
 
-	/**  Loges a user to the destination account as long the ks user id exists in the
-	  desc acount and the loginData id match for both accounts  */
+	/**
+	 * Loges a user to the destination account as long the ks user id exists in the
+	  desc acount and the loginData id match for both accounts
+	 * 
+	 * @param requestedPartnerId 
+	 */
     public static LoginByKsUserBuilder loginByKs(int requestedPartnerId)  {
 		return new LoginByKsUserBuilder(requestedPartnerId);
 	}
@@ -429,7 +529,17 @@ public class UserService {
 		return loginByLoginId(loginId, password, partnerId, expiry, privileges, null);
 	}
 
-	/**  Logs a user into a partner account with a user login ID and a user password.  */
+	/**
+	 * Logs a user into a partner account with a user login ID and a user password.
+	 * 
+	 * @param loginId The user's email address that identifies the user for login
+	 * @param password The user's password
+	 * @param partnerId The identifier of the partner account
+	 * @param expiry The requested time (in seconds) before the generated KS expires (By default, a
+	 * KS expires after 24 hours).
+	 * @param privileges Special privileges
+	 * @param otp the user's one-time password
+	 */
     public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp)  {
 		return new LoginByLoginIdUserBuilder(loginId, password, partnerId, expiry, privileges, otp);
 	}
@@ -446,7 +556,11 @@ public class UserService {
 		}
 	}
 
-	/**  Notifies that a user is banned from an account.  */
+	/**
+	 * Notifies that a user is banned from an account.
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 */
     public static NotifyBanUserBuilder notifyBan(String userId)  {
 		return new NotifyBanUserBuilder(userId);
 	}
@@ -463,7 +577,11 @@ public class UserService {
 		}
 	}
 
-	/**  Reset user's password and send the user an email to generate a new one.  */
+	/**
+	 * Reset user's password and send the user an email to generate a new one.
+	 * 
+	 * @param email The user's email address (login email)
+	 */
     public static ResetPasswordUserBuilder resetPassword(String email)  {
 		return new ResetPasswordUserBuilder(email);
 	}
@@ -485,7 +603,12 @@ public class UserService {
 		}
 	}
 
-	/**  Set initial users password  */
+	/**
+	 * Set initial users password
+	 * 
+	 * @param hashKey The hash key used to identify the user (retrieved by email)
+	 * @param newPassword The new password to set for the user
+	 */
     public static SetInitialPasswordUserBuilder setInitialPassword(String hashKey, String newPassword)  {
 		return new SetInitialPasswordUserBuilder(hashKey, newPassword);
 	}
@@ -503,8 +626,13 @@ public class UserService {
 		}
 	}
 
-	/**  Updates an existing user object.   You can also use this action to update the
-	  userId.  */
+	/**
+	 * Updates an existing user object.   You can also use this action to update the
+	  userId.
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 * @param user Id The user's unique identifier in the partner's system
+	 */
     public static UpdateUserBuilder update(String userId, User user)  {
 		return new UpdateUserBuilder(userId, user);
 	}
@@ -562,7 +690,16 @@ public class UserService {
 		return updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
 	}
 
-	/**  Updates a user's login data: email, password, name.  */
+	/**
+	 * Updates a user's login data: email, password, name.
+	 * 
+	 * @param oldLoginId The user's current email address that identified the user for login
+	 * @param password The user's current email address that identified the user for login
+	 * @param newLoginId Optional, The user's email address that will identify the user for login
+	 * @param newPassword Optional, The user's new password
+	 * @param newFirstName Optional, The user's new first name
+	 * @param newLastName Optional, The user's new last name
+	 */
     public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName)  {
 		return new UpdateLoginDataUserBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
 	}

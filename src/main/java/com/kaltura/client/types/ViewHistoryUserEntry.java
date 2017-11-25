@@ -49,9 +49,13 @@ public class ViewHistoryUserEntry extends UserEntry {
 		String lastUpdateTime();
 	}
 
-	/**  Playback context  */
+	/**
+	 * Playback context
+	 */
 	private String playbackContext;
-	/**  Last playback time reached by user  */
+	/**
+	 * Last playback time reached by user
+	 */
 	private Integer lastTimeReached;
 	private Integer lastUpdateTime;
 

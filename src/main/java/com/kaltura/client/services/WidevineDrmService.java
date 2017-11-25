@@ -36,7 +36,12 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  WidevineDrmService serves as a license proxy to a Widevine license server  */
+/**
+ * WidevineDrmService serves as a license proxy to a Widevine license server
+ * 
+ * @param flavorAssetId 
+ * @param referrer 64base encoded
+ */
 public class WidevineDrmService {
 	
 	public static class GetLicenseWidevineDrmBuilder extends RequestBuilder<String, String, GetLicenseWidevineDrmBuilder> {
@@ -60,7 +65,12 @@ public class WidevineDrmService {
 		return getLicense(flavorAssetId, null);
 	}
 
-	/**  Get license for encrypted content playback  */
+	/**
+	 * Get license for encrypted content playback
+	 * 
+	 * @param flavorAssetId 
+	 * @param referrer 64base encoded
+	 */
     public static GetLicenseWidevineDrmBuilder getLicense(String flavorAssetId, String referrer)  {
 		return new GetLicenseWidevineDrmBuilder(flavorAssetId, referrer);
 	}

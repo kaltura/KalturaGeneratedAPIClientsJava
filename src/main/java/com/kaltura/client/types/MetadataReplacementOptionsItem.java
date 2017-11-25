@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Advanced metadata configuration for entry replacement process  */
+/**
+ * Advanced metadata configuration for entry replacement process
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(MetadataReplacementOptionsItem.Tokenizer.class)
 public class MetadataReplacementOptionsItem extends PluginReplacementOptionsItem {
@@ -48,7 +50,9 @@ public class MetadataReplacementOptionsItem extends PluginReplacementOptionsItem
 		String shouldCopyMetadata();
 	}
 
-	/**  If true custom-metadata transferred to temp entry on entry replacement  */
+	/**
+	 * If true custom-metadata transferred to temp entry on entry replacement
+	 */
 	private Boolean shouldCopyMetadata;
 
 	// shouldCopyMetadata:

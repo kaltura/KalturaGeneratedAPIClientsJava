@@ -37,7 +37,11 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Stats Service  */
+/**
+ * Stats Service
+ * 
+ * @param event 
+ */
 public class LiveStatsService {
 	
 	public static class CollectLiveStatsBuilder extends RequestBuilder<Boolean, String, CollectLiveStatsBuilder> {
@@ -48,8 +52,12 @@ public class LiveStatsService {
 		}
 	}
 
-	/**  Will write to the event log a single line representing the event  
-	  KalturaStatsEvent $event  */
+	/**
+	 * Will write to the event log a single line representing the event  
+	  KalturaStatsEvent $event
+	 * 
+	 * @param event 
+	 */
     public static CollectLiveStatsBuilder collect(LiveStatsEvent event)  {
 		return new CollectLiveStatsBuilder(event);
 	}

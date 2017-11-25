@@ -102,15 +102,23 @@ public class User extends ObjectBase {
 	private String thumbnailUrl;
 	private String description;
 	private String tags;
-	/**  Admin tags can be updated only by using an admin session  */
+	/**
+	 * Admin tags can be updated only by using an admin session
+	 */
 	private String adminTags;
 	private Gender gender;
 	private UserStatus status;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Can be used to store various partner related data as a string  */
+	/**
+	 * Can be used to store various partner related data as a string
+	 */
 	private String partnerData;
 	private Integer indexedPartnerDataInt;
 	private String indexedPartnerDataString;

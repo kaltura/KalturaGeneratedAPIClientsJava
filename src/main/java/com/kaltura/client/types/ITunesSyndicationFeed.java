@@ -58,22 +58,36 @@ public class ITunesSyndicationFeed extends BaseSyndicationFeed {
 		String enforceOrder();
 	}
 
-	/**  feed description  */
+	/**
+	 * feed description
+	 */
 	private String feedDescription;
-	/**  feed language  */
+	/**
+	 * feed language
+	 */
 	private String language;
-	/**  feed landing page (i.e publisher website)  */
+	/**
+	 * feed landing page (i.e publisher website)
+	 */
 	private String feedLandingPage;
-	/**  author/publisher name  */
+	/**
+	 * author/publisher name
+	 */
 	private String ownerName;
-	/**  publisher email  */
+	/**
+	 * publisher email
+	 */
 	private String ownerEmail;
-	/**  podcast thumbnail  */
+	/**
+	 * podcast thumbnail
+	 */
 	private String feedImageUrl;
 	private ITunesSyndicationFeedCategories category;
 	private ITunesSyndicationFeedAdultValues adultContent;
 	private String feedAuthor;
-	/**  true in case you want to enfore the palylist order on the  */
+	/**
+	 * true in case you want to enfore the palylist order on the
+	 */
 	private Boolean enforceOrder;
 
 	// feedDescription:

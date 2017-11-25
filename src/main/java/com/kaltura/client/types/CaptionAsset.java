@@ -59,23 +59,41 @@ public class CaptionAsset extends Asset {
 		String accuracy();
 	}
 
-	/**  The Caption Params used to create this Caption Asset  */
+	/**
+	 * The Caption Params used to create this Caption Asset
+	 */
 	private Integer captionParamsId;
-	/**  The language of the caption asset content  */
+	/**
+	 * The language of the caption asset content
+	 */
 	private Language language;
-	/**  The language of the caption asset content  */
+	/**
+	 * The language of the caption asset content
+	 */
 	private LanguageCode languageCode;
-	/**  Is default caption asset of the entry  */
+	/**
+	 * Is default caption asset of the entry
+	 */
 	private Boolean isDefault;
-	/**  Friendly label  */
+	/**
+	 * Friendly label
+	 */
 	private String label;
-	/**  The caption format  */
+	/**
+	 * The caption format
+	 */
 	private CaptionType format;
-	/**  The status of the asset  */
+	/**
+	 * The status of the asset
+	 */
 	private CaptionAssetStatus status;
-	/**  The parent id of the asset  */
+	/**
+	 * The parent id of the asset
+	 */
 	private String parentId;
-	/**  The Accuracy of the caption content  */
+	/**
+	 * The Accuracy of the caption content
+	 */
 	private Integer accuracy;
 
 	// captionParamsId:

@@ -49,7 +49,9 @@ public class DeliveryProfileGenericRtmp extends DeliveryProfileRtmp {
 	}
 
 	private String pattern;
-	/**  rendererClass  */
+	/**
+	 * rendererClass
+	 */
 	private String rendererClass;
 
 	// pattern:

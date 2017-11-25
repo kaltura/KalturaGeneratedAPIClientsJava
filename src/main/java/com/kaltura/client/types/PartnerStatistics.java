@@ -53,18 +53,30 @@ public class PartnerStatistics extends ObjectBase {
 		String reachedLimitDate();
 	}
 
-	/**  Package total allowed bandwidth and storage  */
+	/**
+	 * Package total allowed bandwidth and storage
+	 */
 	private Integer packageBandwidthAndStorage;
-	/**  Partner total hosting in GB on the disk  */
+	/**
+	 * Partner total hosting in GB on the disk
+	 */
 	private Double hosting;
-	/**  Partner total bandwidth in GB  */
+	/**
+	 * Partner total bandwidth in GB
+	 */
 	private Double bandwidth;
-	/**  total usage in GB - including bandwidth and storage  */
+	/**
+	 * total usage in GB - including bandwidth and storage
+	 */
 	private Integer usage;
-	/**  Percent of usage out of partner's package. if usage is 5GB and package is 10GB,
-	  this value will be 50  */
+	/**
+	 * Percent of usage out of partner's package. if usage is 5GB and package is 10GB,
+	  this value will be 50
+	 */
 	private Double usagePercent;
-	/**  date when partner reached the limit of his package (timestamp)  */
+	/**
+	 * date when partner reached the limit of his package (timestamp)
+	 */
 	private Integer reachedLimitDate;
 
 	// packageBandwidthAndStorage:

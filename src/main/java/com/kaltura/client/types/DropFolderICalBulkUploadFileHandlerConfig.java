@@ -48,7 +48,9 @@ public class DropFolderICalBulkUploadFileHandlerConfig extends DropFolderFileHan
 		String eventsType();
 	}
 
-	/**  The type of the events that ill be created by this upload  */
+	/**
+	 * The type of the events that ill be created by this upload
+	 */
 	private ScheduleEventType eventsType;
 
 	// eventsType:

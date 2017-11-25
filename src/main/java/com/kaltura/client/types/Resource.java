@@ -39,8 +39,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest entry object, as single resource or list of resources accompanied
-  by asset params ids.  */
+/**
+ * Used to ingest entry object, as single resource or list of resources accompanied
+  by asset params ids.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(Resource.Tokenizer.class)
 public abstract class Resource extends ObjectBase {

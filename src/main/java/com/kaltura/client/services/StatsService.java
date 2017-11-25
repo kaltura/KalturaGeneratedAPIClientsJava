@@ -40,7 +40,16 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Stats Service  */
+/**
+ * Stats Service
+ * 
+ * @param event 
+ * @param kmcEvent 
+ * @param data 
+ * @param errorCode 
+ * @param errorMessage 
+ * @param kalturaCEError 
+ */
 public class StatsService {
 	
 	public static class CollectStatsBuilder extends RequestBuilder<Boolean, String, CollectStatsBuilder> {
@@ -51,7 +60,8 @@ public class StatsService {
 		}
 	}
 
-	/**  Will write to the event log a single line representing the event   client
+	/**
+	 * Will write to the event log a single line representing the event   client
 	  version - will help interprete the line structure. different client versions
 	  might have slightly different data/data formats in the line event_id - number is
 	  the row number in yuval's excel datetime - same format as MySql's datetime - can
@@ -59,7 +69,10 @@ public class StatsService {
 	  number or guid partner id entry id unique viewer widget id ui_conf id uid - the
 	  puser id as set by the ppartner current point - in milliseconds duration -
 	  milliseconds user ip process duration - in milliseconds control id seek new
-	  point referrer       KalturaStatsEvent $event  */
+	  point referrer       KalturaStatsEvent $event
+	 * 
+	 * @param event 
+	 */
     public static CollectStatsBuilder collect(StatsEvent event)  {
 		return new CollectStatsBuilder(event);
 	}
@@ -72,9 +85,13 @@ public class StatsService {
 		}
 	}
 
-	/**  Will collect the kmcEvent sent form the KMC client   // this will actually be an
+	/**
+	 * Will collect the kmcEvent sent form the KMC client   // this will actually be an
 	  empty function because all events will be sent using GET and will anyway be
-	  logged in the apache log  */
+	  logged in the apache log
+	 * 
+	 * @param kmcEvent 
+	 */
     public static KmcCollectStatsBuilder kmcCollect(StatsKmcEvent kmcEvent)  {
 		return new KmcCollectStatsBuilder(kmcEvent);
 	}
@@ -91,7 +108,11 @@ public class StatsService {
 		}
 	}
 
-	/**  Use this action to report device capabilities to the kaltura server.  */
+	/**
+	 * Use this action to report device capabilities to the kaltura server.
+	 * 
+	 * @param data 
+	 */
     public static ReportDeviceCapabilitiesStatsBuilder reportDeviceCapabilities(String data)  {
 		return new ReportDeviceCapabilitiesStatsBuilder(data);
 	}
@@ -113,7 +134,12 @@ public class StatsService {
 		}
 	}
 
-	/**  Use this action to report errors to the kaltura server.  */
+	/**
+	 * Use this action to report errors to the kaltura server.
+	 * 
+	 * @param errorCode 
+	 * @param errorMessage 
+	 */
     public static ReportErrorStatsBuilder reportError(String errorCode, String errorMessage)  {
 		return new ReportErrorStatsBuilder(errorCode, errorMessage);
 	}

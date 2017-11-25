@@ -39,9 +39,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that is available on remote server and accessible using the
+/**
+ * Used to ingest media that is available on remote server and accessible using the
   supplied URL, media file will be downloaded using import job in order to make
-  the asset ready.  */
+  the asset ready.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UrlResource.Tokenizer.class)
 public class UrlResource extends ContentResource {
@@ -51,9 +53,13 @@ public class UrlResource extends ContentResource {
 		String forceAsyncDownload();
 	}
 
-	/**  Remote URL, FTP, HTTP or HTTPS  */
+	/**
+	 * Remote URL, FTP, HTTP or HTTPS
+	 */
 	private String url;
-	/**  Force Import Job  */
+	/**
+	 * Force Import Job
+	 */
 	private Boolean forceAsyncDownload;
 
 	// url:

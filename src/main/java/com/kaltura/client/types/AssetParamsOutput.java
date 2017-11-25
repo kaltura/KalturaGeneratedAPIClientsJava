@@ -58,7 +58,9 @@ public class AssetParamsOutput extends AssetParams {
 	private String assetId;
 	private String assetVersion;
 	private Integer readyBehavior;
-	/**  The container format of the Flavor Params  */
+	/**
+	 * The container format of the Flavor Params
+	 */
 	private ContainerFormat format;
 
 	// assetParamsId:

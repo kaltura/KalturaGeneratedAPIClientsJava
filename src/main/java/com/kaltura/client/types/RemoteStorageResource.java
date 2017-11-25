@@ -39,9 +39,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that is available on remote server and accessible using the
+/**
+ * Used to ingest media that is available on remote server and accessible using the
   supplied URL, the media file won't be downloaded but a file sync object of URL
-  type will point to the media URL.  */
+  type will point to the media URL.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(RemoteStorageResource.Tokenizer.class)
 public class RemoteStorageResource extends UrlResource {
@@ -50,8 +52,10 @@ public class RemoteStorageResource extends UrlResource {
 		String storageProfileId();
 	}
 
-	/**  ID of storage profile to be associated with the created file sync, used for file
-	  serving URL composing.  */
+	/**
+	 * ID of storage profile to be associated with the created file sync, used for file
+	  serving URL composing.
+	 */
 	private Integer storageProfileId;
 
 	// storageProfileId:

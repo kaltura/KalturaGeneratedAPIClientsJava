@@ -41,7 +41,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Caption Params  */
+/**
+ * Add &amp; Manage Caption Params
+ * 
+ * @param captionParams 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param captionParams 
+ */
 public class CaptionParamsService {
 	
 	public static class AddCaptionParamsBuilder extends RequestBuilder<CaptionParams, CaptionParams.Tokenizer, AddCaptionParamsBuilder> {
@@ -52,7 +62,11 @@ public class CaptionParamsService {
 		}
 	}
 
-	/**  Add new Caption Params  */
+	/**
+	 * Add new Caption Params
+	 * 
+	 * @param captionParams 
+	 */
     public static AddCaptionParamsBuilder add(CaptionParams captionParams)  {
 		return new AddCaptionParamsBuilder(captionParams);
 	}
@@ -69,7 +83,11 @@ public class CaptionParamsService {
 		}
 	}
 
-	/**  Delete Caption Params by ID  */
+	/**
+	 * Delete Caption Params by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteCaptionParamsBuilder delete(int id)  {
 		return new DeleteCaptionParamsBuilder(id);
 	}
@@ -86,7 +104,11 @@ public class CaptionParamsService {
 		}
 	}
 
-	/**  Get Caption Params by ID  */
+	/**
+	 * Get Caption Params by ID
+	 * 
+	 * @param id 
+	 */
     public static GetCaptionParamsBuilder get(int id)  {
 		return new GetCaptionParamsBuilder(id);
 	}
@@ -108,8 +130,13 @@ public class CaptionParamsService {
 		return list(filter, null);
 	}
 
-	/**  List Caption Params by filter with paging support (By default - all system
-	  default params will be listed too)  */
+	/**
+	 * List Caption Params by filter with paging support (By default - all system
+	  default params will be listed too)
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCaptionParamsBuilder list(CaptionParamsFilter filter, FilterPager pager)  {
 		return new ListCaptionParamsBuilder(filter, pager);
 	}
@@ -127,7 +154,12 @@ public class CaptionParamsService {
 		}
 	}
 
-	/**  Update Caption Params by ID  */
+	/**
+	 * Update Caption Params by ID
+	 * 
+	 * @param id 
+	 * @param captionParams 
+	 */
     public static UpdateCaptionParamsBuilder update(int id, CaptionParams captionParams)  {
 		return new UpdateCaptionParamsBuilder(id, captionParams);
 	}

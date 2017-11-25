@@ -48,9 +48,13 @@ public class CopyPartnerJobData extends JobData {
 		String toPartnerId();
 	}
 
-	/**  Id of the partner to copy from  */
+	/**
+	 * Id of the partner to copy from
+	 */
 	private Integer fromPartnerId;
-	/**  Id of the partner to copy to  */
+	/**
+	 * Id of the partner to copy to
+	 */
 	private Integer toPartnerId;
 
 	// fromPartnerId:

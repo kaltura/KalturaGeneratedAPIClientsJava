@@ -49,9 +49,13 @@ public class UrlRecognizer extends ObjectBase {
 		String uriPrefix();
 	}
 
-	/**  The hosts that are recognized  */
+	/**
+	 * The hosts that are recognized
+	 */
 	private String hosts;
-	/**  The URI prefix we use for security  */
+	/**
+	 * The URI prefix we use for security
+	 */
 	private String uriPrefix;
 
 	// hosts:

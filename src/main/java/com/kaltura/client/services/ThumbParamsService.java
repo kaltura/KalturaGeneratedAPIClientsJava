@@ -42,7 +42,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Thumb Params  */
+/**
+ * Add &amp; Manage Thumb Params
+ * 
+ * @param thumbParams 
+ * @param id 
+ * @param id 
+ * @param conversionProfileId 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param thumbParams 
+ */
 public class ThumbParamsService {
 	
 	public static class AddThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, AddThumbParamsBuilder> {
@@ -53,7 +64,11 @@ public class ThumbParamsService {
 		}
 	}
 
-	/**  Add new Thumb Params  */
+	/**
+	 * Add new Thumb Params
+	 * 
+	 * @param thumbParams 
+	 */
     public static AddThumbParamsBuilder add(ThumbParams thumbParams)  {
 		return new AddThumbParamsBuilder(thumbParams);
 	}
@@ -70,7 +85,11 @@ public class ThumbParamsService {
 		}
 	}
 
-	/**  Delete Thumb Params by ID  */
+	/**
+	 * Delete Thumb Params by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteThumbParamsBuilder delete(int id)  {
 		return new DeleteThumbParamsBuilder(id);
 	}
@@ -87,7 +106,11 @@ public class ThumbParamsService {
 		}
 	}
 
-	/**  Get Thumb Params by ID  */
+	/**
+	 * Get Thumb Params by ID
+	 * 
+	 * @param id 
+	 */
     public static GetThumbParamsBuilder get(int id)  {
 		return new GetThumbParamsBuilder(id);
 	}
@@ -104,7 +127,11 @@ public class ThumbParamsService {
 		}
 	}
 
-	/**  Get Thumb Params by Conversion Profile ID  */
+	/**
+	 * Get Thumb Params by Conversion Profile ID
+	 * 
+	 * @param conversionProfileId 
+	 */
     public static GetByConversionProfileIdThumbParamsBuilder getByConversionProfileId(int conversionProfileId)  {
 		return new GetByConversionProfileIdThumbParamsBuilder(conversionProfileId);
 	}
@@ -126,8 +153,13 @@ public class ThumbParamsService {
 		return list(filter, null);
 	}
 
-	/**  List Thumb Params by filter with paging support (By default - all system default
-	  params will be listed too)  */
+	/**
+	 * List Thumb Params by filter with paging support (By default - all system default
+	  params will be listed too)
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListThumbParamsBuilder list(ThumbParamsFilter filter, FilterPager pager)  {
 		return new ListThumbParamsBuilder(filter, pager);
 	}
@@ -145,7 +177,12 @@ public class ThumbParamsService {
 		}
 	}
 
-	/**  Update Thumb Params by ID  */
+	/**
+	 * Update Thumb Params by ID
+	 * 
+	 * @param id 
+	 * @param thumbParams 
+	 */
     public static UpdateThumbParamsBuilder update(int id, ThumbParams thumbParams)  {
 		return new UpdateThumbParamsBuilder(id, thumbParams);
 	}

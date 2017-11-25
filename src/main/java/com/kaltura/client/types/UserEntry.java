@@ -59,7 +59,9 @@ public abstract class UserEntry extends ObjectBase {
 		String extendedStatus();
 	}
 
-	/**  unique auto-generated identifier  */
+	/**
+	 * unique auto-generated identifier
+	 */
 	private Integer id;
 	private String entryId;
 	private String userId;

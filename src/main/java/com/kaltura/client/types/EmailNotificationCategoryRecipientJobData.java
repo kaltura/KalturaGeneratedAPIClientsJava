@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Job Data representing the provider of recipients for a single categoryId  */
+/**
+ * Job Data representing the provider of recipients for a single categoryId
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationCategoryRecipientJobData.Tokenizer.class)
 public class EmailNotificationCategoryRecipientJobData extends EmailNotificationRecipientJobData {

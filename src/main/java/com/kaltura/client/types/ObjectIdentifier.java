@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Configuration for extended item in the Kaltura MRSS feeds  */
+/**
+ * Configuration for extended item in the Kaltura MRSS feeds
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ObjectIdentifier.Tokenizer.class)
 public abstract class ObjectIdentifier extends ObjectBase {
@@ -49,8 +51,10 @@ public abstract class ObjectIdentifier extends ObjectBase {
 		String extendedFeatures();
 	}
 
-	/**  Comma separated string of enum values denoting which features of the item need
-	  to be included in the MRSS  */
+	/**
+	 * Comma separated string of enum values denoting which features of the item need
+	  to be included in the MRSS
+	 */
 	private String extendedFeatures;
 
 	// extendedFeatures:

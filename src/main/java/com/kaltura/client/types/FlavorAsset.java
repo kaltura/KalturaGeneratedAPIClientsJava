@@ -61,32 +61,58 @@ public class FlavorAsset extends Asset {
 		String isDefault();
 	}
 
-	/**  The Flavor Params used to create this Flavor Asset  */
+	/**
+	 * The Flavor Params used to create this Flavor Asset
+	 */
 	private Integer flavorParamsId;
-	/**  The width of the Flavor Asset  */
+	/**
+	 * The width of the Flavor Asset
+	 */
 	private Integer width;
-	/**  The height of the Flavor Asset  */
+	/**
+	 * The height of the Flavor Asset
+	 */
 	private Integer height;
-	/**  The overall bitrate (in KBits) of the Flavor Asset  */
+	/**
+	 * The overall bitrate (in KBits) of the Flavor Asset
+	 */
 	private Integer bitrate;
-	/**  The frame rate (in FPS) of the Flavor Asset  */
+	/**
+	 * The frame rate (in FPS) of the Flavor Asset
+	 */
 	private Double frameRate;
-	/**  True if this Flavor Asset is the original source  */
+	/**
+	 * True if this Flavor Asset is the original source
+	 */
 	private Boolean isOriginal;
-	/**  True if this Flavor Asset is playable in KDP  */
+	/**
+	 * True if this Flavor Asset is playable in KDP
+	 */
 	private Boolean isWeb;
-	/**  The container format  */
+	/**
+	 * The container format
+	 */
 	private String containerFormat;
-	/**  The video codec  */
+	/**
+	 * The video codec
+	 */
 	private String videoCodecId;
-	/**  The status of the Flavor Asset  */
+	/**
+	 * The status of the Flavor Asset
+	 */
 	private FlavorAssetStatus status;
-	/**  The language of the flavor asset  */
+	/**
+	 * The language of the flavor asset
+	 */
 	private Language language;
-	/**  The label of the flavor asset  */
+	/**
+	 * The label of the flavor asset
+	 */
 	private String label;
-	/**  Is default flavor asset of the entry (This field will be taken into account
-	  selectign which audio flavor will be selected as default)  */
+	/**
+	 * Is default flavor asset of the entry (This field will be taken into account
+	  selectign which audio flavor will be selected as default)
+	 */
 	private Boolean isDefault;
 
 	// flavorParamsId:

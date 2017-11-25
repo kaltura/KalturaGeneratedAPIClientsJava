@@ -49,8 +49,10 @@ public class AssetPropertiesCompareCondition extends Condition {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> properties();
 	}
 
-	/**  Array of key/value objects that holds the property and the value to find and
-	  compare on an asset object  */
+	/**
+	 * Array of key/value objects that holds the property and the value to find and
+	  compare on an asset object
+	 */
 	private List<KeyValue> properties;
 
 	// properties:

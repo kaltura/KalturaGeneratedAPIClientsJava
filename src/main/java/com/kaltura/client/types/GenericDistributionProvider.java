@@ -61,11 +61,17 @@ public class GenericDistributionProvider extends DistributionProvider {
 		String mandatoryFields();
 	}
 
-	/**  Auto generated  */
+	/**
+	 * Auto generated
+	 */
 	private Integer id;
-	/**  Generic distribution provider creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Generic distribution provider creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Generic distribution provider last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Generic distribution provider last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private Integer partnerId;
 	private Boolean isDefault;

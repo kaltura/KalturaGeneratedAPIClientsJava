@@ -59,7 +59,9 @@ public class AdCuePoint extends CuePoint {
 	private AdType adType;
 	private String title;
 	private Integer endTime;
-	/**  Duration in milliseconds  */
+	/**
+	 * Duration in milliseconds
+	 */
 	private Integer duration;
 
 	// protocolType:

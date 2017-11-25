@@ -49,9 +49,13 @@ public class LimitFlavorsRestriction extends BaseRestriction {
 		String flavorParamsIds();
 	}
 
-	/**  Limit flavors restriction type (Allow or deny)  */
+	/**
+	 * Limit flavors restriction type (Allow or deny)
+	 */
 	private LimitFlavorsRestrictionType limitFlavorsRestrictionType;
-	/**  Comma separated list of flavor params ids to allow to deny  */
+	/**
+	 * Comma separated list of flavor params ids to allow to deny
+	 */
 	private String flavorParamsIds;
 
 	// limitFlavorsRestrictionType:

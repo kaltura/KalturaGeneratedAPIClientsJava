@@ -52,11 +52,17 @@ public class FlavorAssetWithParams extends ObjectBase {
 		String entryId();
 	}
 
-	/**  The Flavor Asset (Can be null when there are params without asset)  */
+	/**
+	 * The Flavor Asset (Can be null when there are params without asset)
+	 */
 	private FlavorAsset flavorAsset;
-	/**  The Flavor Params  */
+	/**
+	 * The Flavor Params
+	 */
 	private FlavorParams flavorParams;
-	/**  The entry id  */
+	/**
+	 * The entry id
+	 */
 	private String entryId;
 
 	// flavorAsset:

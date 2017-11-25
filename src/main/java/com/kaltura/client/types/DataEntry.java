@@ -48,10 +48,14 @@ public class DataEntry extends BaseEntry {
 		String retrieveDataContentByGet();
 	}
 
-	/**  The data of the entry  */
+	/**
+	 * The data of the entry
+	 */
 	private String dataContent;
-	/**  indicator whether to return the object for get action with the dataContent
-	  field.  */
+	/**
+	 * indicator whether to return the object for get action with the dataContent
+	  field.
+	 */
 	private Boolean retrieveDataContentByGet;
 
 	// dataContent:

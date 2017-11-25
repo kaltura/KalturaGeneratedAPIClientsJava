@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Concat operation attributes  */
+/**
+ * Concat operation attributes
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ConcatAttributes.Tokenizer.class)
 public class ConcatAttributes extends OperationAttributes {
@@ -49,7 +51,9 @@ public class ConcatAttributes extends OperationAttributes {
 		DataCenterContentResource.Tokenizer resource();
 	}
 
-	/**  The resource to be concatenated  */
+	/**
+	 * The resource to be concatenated
+	 */
 	private DataCenterContentResource resource;
 
 	// resource:

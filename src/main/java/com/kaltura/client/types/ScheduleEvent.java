@@ -76,11 +76,15 @@ public abstract class ScheduleEvent extends ObjectBase {
 		ScheduleEventRecurrence.Tokenizer recurrence();
 	}
 
-	/**  Auto-generated unique identifier  */
+	/**
+	 * Auto-generated unique identifier
+	 */
 	private Integer id;
 	private Integer partnerId;
 	private Integer parentId;
-	/**  Defines a short summary or subject for the event  */
+	/**
+	 * Defines a short summary or subject for the event
+	 */
 	private String summary;
 	private String description;
 	private ScheduleEventStatus status;
@@ -88,31 +92,51 @@ public abstract class ScheduleEvent extends ObjectBase {
 	private Integer endDate;
 	private String referenceId;
 	private ScheduleEventClassificationType classificationType;
-	/**  Specifies the global position for the activity  */
+	/**
+	 * Specifies the global position for the activity
+	 */
 	private Double geoLatitude;
-	/**  Specifies the global position for the activity  */
+	/**
+	 * Specifies the global position for the activity
+	 */
 	private Double geoLongitude;
-	/**  Defines the intended venue for the activity  */
+	/**
+	 * Defines the intended venue for the activity
+	 */
 	private String location;
 	private String organizer;
 	private String ownerId;
-	/**  The value for the priority field.  */
+	/**
+	 * The value for the priority field.
+	 */
 	private Integer priority;
-	/**  Defines the revision sequence number.  */
+	/**
+	 * Defines the revision sequence number.
+	 */
 	private Integer sequence;
 	private ScheduleEventRecurrenceType recurrenceType;
-	/**  Duration in seconds  */
+	/**
+	 * Duration in seconds
+	 */
 	private Integer duration;
-	/**  Used to represent contact information or alternately a reference to contact
-	  information.  */
+	/**
+	 * Used to represent contact information or alternately a reference to contact
+	  information.
+	 */
 	private String contact;
-	/**  Specifies non-processing information intended to provide a comment to the
-	  calendar user.  */
+	/**
+	 * Specifies non-processing information intended to provide a comment to the
+	  calendar user.
+	 */
 	private String comment;
 	private String tags;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update as Unix timestamp (In seconds)  */
+	/**
+	 * Last update as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private ScheduleEventRecurrence recurrence;
 

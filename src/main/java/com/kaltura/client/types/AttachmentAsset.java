@@ -52,13 +52,21 @@ public class AttachmentAsset extends Asset {
 		String status();
 	}
 
-	/**  The filename of the attachment asset content  */
+	/**
+	 * The filename of the attachment asset content
+	 */
 	private String filename;
-	/**  Attachment asset title  */
+	/**
+	 * Attachment asset title
+	 */
 	private String title;
-	/**  The attachment format  */
+	/**
+	 * The attachment format
+	 */
 	private AttachmentType format;
-	/**  The status of the asset  */
+	/**
+	 * The status of the asset
+	 */
 	private AttachmentAssetStatus status;
 
 	// filename:

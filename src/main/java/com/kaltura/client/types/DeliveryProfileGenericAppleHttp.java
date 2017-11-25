@@ -50,9 +50,13 @@ public class DeliveryProfileGenericAppleHttp extends DeliveryProfile {
 	}
 
 	private String pattern;
-	/**  rendererClass  */
+	/**
+	 * rendererClass
+	 */
 	private String rendererClass;
-	/**  Enable to make playManifest redirect to the domain of the delivery profile  */
+	/**
+	 * Enable to make playManifest redirect to the domain of the delivery profile
+	 */
 	private Boolean manifestRedirect;
 
 	// pattern:

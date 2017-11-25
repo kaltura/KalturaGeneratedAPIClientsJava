@@ -65,36 +65,64 @@ public class EmailNotificationTemplate extends EventNotificationTemplate {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> customHeaders();
 	}
 
-	/**  Define the email body format  */
+	/**
+	 * Define the email body format
+	 */
 	private EmailNotificationFormat format;
-	/**  Define the email subject  */
+	/**
+	 * Define the email subject
+	 */
 	private String subject;
-	/**  Define the email body content  */
+	/**
+	 * Define the email body content
+	 */
 	private String body;
-	/**  Define the email sender email  */
+	/**
+	 * Define the email sender email
+	 */
 	private String fromEmail;
-	/**  Define the email sender name  */
+	/**
+	 * Define the email sender name
+	 */
 	private String fromName;
-	/**  Email recipient emails and names  */
+	/**
+	 * Email recipient emails and names
+	 */
 	private EmailNotificationRecipientProvider to;
-	/**  Email recipient emails and names  */
+	/**
+	 * Email recipient emails and names
+	 */
 	private EmailNotificationRecipientProvider cc;
-	/**  Email recipient emails and names  */
+	/**
+	 * Email recipient emails and names
+	 */
 	private EmailNotificationRecipientProvider bcc;
-	/**  Default email addresses to whom the reply should be sent.  */
+	/**
+	 * Default email addresses to whom the reply should be sent.
+	 */
 	private EmailNotificationRecipientProvider replyTo;
-	/**  Define the email priority  */
+	/**
+	 * Define the email priority
+	 */
 	private EmailNotificationTemplatePriority priority;
-	/**  Email address that a reading confirmation will be sent  */
+	/**
+	 * Email address that a reading confirmation will be sent
+	 */
 	private String confirmReadingTo;
-	/**  Hostname to use in Message-Id and Received headers and as default HELLO string. 
+	/**
+	 * Hostname to use in Message-Id and Received headers and as default HELLO string. 
 	    If empty, the value returned by SERVER_NAME is used or
-	  'localhost.localdomain'.  */
+	  'localhost.localdomain'.
+	 */
 	private String hostname;
-	/**  Sets the message ID to be used in the Message-Id header.   If empty, a unique id
-	  will be generated.  */
+	/**
+	 * Sets the message ID to be used in the Message-Id header.   If empty, a unique id
+	  will be generated.
+	 */
 	private String messageID;
-	/**  Adds a e-mail custom header  */
+	/**
+	 * Adds a e-mail custom header
+	 */
 	private List<KeyValue> customHeaders;
 
 	// format:

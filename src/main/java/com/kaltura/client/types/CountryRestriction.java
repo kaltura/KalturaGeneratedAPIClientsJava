@@ -49,9 +49,13 @@ public class CountryRestriction extends BaseRestriction {
 		String countryList();
 	}
 
-	/**  Country restriction type (Allow or deny)  */
+	/**
+	 * Country restriction type (Allow or deny)
+	 */
 	private CountryRestrictionType countryRestrictionType;
-	/**  Comma separated list of country codes to allow to deny  */
+	/**
+	 * Comma separated list of country codes to allow to deny
+	 */
 	private String countryList;
 
 	// countryRestrictionType:

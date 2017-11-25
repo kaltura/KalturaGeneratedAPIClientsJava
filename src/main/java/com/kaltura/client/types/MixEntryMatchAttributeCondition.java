@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaMixEntry attributes. Use
-  KalturaMixEntryMatchAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaMixEntry attributes. Use
+  KalturaMixEntryMatchAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(MixEntryMatchAttributeCondition.Tokenizer.class)
 public class MixEntryMatchAttributeCondition extends SearchMatchAttributeCondition {

@@ -57,19 +57,33 @@ public class Annotation extends CuePoint {
 
 	private String parentId;
 	private String text;
-	/**  End time in milliseconds  */
+	/**
+	 * End time in milliseconds
+	 */
 	private Integer endTime;
-	/**  Duration in milliseconds  */
+	/**
+	 * Duration in milliseconds
+	 */
 	private Integer duration;
-	/**  Depth in the tree  */
+	/**
+	 * Depth in the tree
+	 */
 	private Integer depth;
-	/**  Number of all descendants  */
+	/**
+	 * Number of all descendants
+	 */
 	private Integer childrenCount;
-	/**  Number of children, first generation only.  */
+	/**
+	 * Number of children, first generation only.
+	 */
 	private Integer directChildrenCount;
-	/**  Is the annotation public.  */
+	/**
+	 * Is the annotation public.
+	 */
 	private Boolean isPublic;
-	/**  Should the cue point get indexed on the entry.  */
+	/**
+	 * Should the cue point get indexed on the entry.
+	 */
 	private Boolean searchableOnEntry;
 
 	// parentId:

@@ -42,7 +42,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates PHP statement, depends on the execution context  */
+/**
+ * Evaluates PHP statement, depends on the execution context
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(HttpNotificationObjectData.Tokenizer.class)
 public class HttpNotificationObjectData extends HttpNotificationData {
@@ -55,15 +57,25 @@ public class HttpNotificationObjectData extends HttpNotificationData {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> dataStringReplacements();
 	}
 
-	/**  Kaltura API object type  */
+	/**
+	 * Kaltura API object type
+	 */
 	private String apiObjectType;
-	/**  Data format  */
+	/**
+	 * Data format
+	 */
 	private ResponseType format;
-	/**  Ignore null attributes during serialization  */
+	/**
+	 * Ignore null attributes during serialization
+	 */
 	private Boolean ignoreNull;
-	/**  PHP code  */
+	/**
+	 * PHP code
+	 */
 	private String code;
-	/**  An array of pattern-replacement pairs used for data string regex replacements  */
+	/**
+	 * An array of pattern-replacement pairs used for data string regex replacements
+	 */
 	private List<KeyValue> dataStringReplacements;
 
 	// apiObjectType:

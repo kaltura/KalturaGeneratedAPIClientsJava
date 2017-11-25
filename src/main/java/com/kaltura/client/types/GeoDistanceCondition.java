@@ -48,7 +48,9 @@ public class GeoDistanceCondition extends MatchCondition {
 		String geoCoderType();
 	}
 
-	/**  The ip geo coder engine to be used  */
+	/**
+	 * The ip geo coder engine to be used
+	 */
 	private GeoCoderType geoCoderType;
 
 	// geoCoderType:

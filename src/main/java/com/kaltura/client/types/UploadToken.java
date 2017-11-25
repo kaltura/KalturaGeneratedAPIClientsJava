@@ -59,32 +59,54 @@ public class UploadToken extends ObjectBase {
 		String autoFinalize();
 	}
 
-	/**  Upload token unique ID  */
+	/**
+	 * Upload token unique ID
+	 */
 	private String id;
-	/**  Partner ID of the upload token  */
+	/**
+	 * Partner ID of the upload token
+	 */
 	private Integer partnerId;
-	/**  User id for the upload token  */
+	/**
+	 * User id for the upload token
+	 */
 	private String userId;
-	/**  Status of the upload token  */
+	/**
+	 * Status of the upload token
+	 */
 	private UploadTokenStatus status;
-	/**  Name of the file for the upload token, can be empty when the upload token is
-	  created and will be updated internally after the file is uploaded  */
+	/**
+	 * Name of the file for the upload token, can be empty when the upload token is
+	  created and will be updated internally after the file is uploaded
+	 */
 	private String fileName;
-	/**  File size in bytes, can be empty when the upload token is created and will be
-	  updated internally after the file is uploaded  */
+	/**
+	 * File size in bytes, can be empty when the upload token is created and will be
+	  updated internally after the file is uploaded
+	 */
 	private Double fileSize;
-	/**  Uploaded file size in bytes, can be used to identify how many bytes were
-	  uploaded before resuming  */
+	/**
+	 * Uploaded file size in bytes, can be used to identify how many bytes were
+	  uploaded before resuming
+	 */
 	private Double uploadedFileSize;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Upload url - to explicitly determine to which domain to adress the
-	  uploadToken-&gt;upload call  */
+	/**
+	 * Upload url - to explicitly determine to which domain to adress the
+	  uploadToken-&gt;upload call
+	 */
 	private String uploadUrl;
-	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
-	  the file size reproted when adding the upload token.  */
+	/**
+	 * autoFinalize - Should the upload be finalized once the file size on disk matches
+	  the file size reproted when adding the upload token.
+	 */
 	private Boolean autoFinalize;
 
 	// id:

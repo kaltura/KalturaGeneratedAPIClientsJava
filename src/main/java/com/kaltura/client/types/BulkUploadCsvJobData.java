@@ -42,7 +42,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for xml bulk upload  */
+/**
+ * Represents the Bulk upload job data for xml bulk upload
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BulkUploadCsvJobData.Tokenizer.class)
 public class BulkUploadCsvJobData extends BulkUploadJobData {
@@ -52,9 +54,13 @@ public class BulkUploadCsvJobData extends BulkUploadJobData {
 		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> columns();
 	}
 
-	/**  The version of the csv file  */
+	/**
+	 * The version of the csv file
+	 */
 	private BulkUploadCsvVersion csvVersion;
-	/**  Array containing CSV headers  */
+	/**
+	 * Array containing CSV headers
+	 */
 	private List<StringHolder> columns;
 
 	// csvVersion:

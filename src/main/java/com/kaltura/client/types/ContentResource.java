@@ -38,8 +38,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Is a unified way to add content to Kaltura whether it's an uploaded file, webcam
-  recording, imported URL or existing file sync.  */
+/**
+ * Is a unified way to add content to Kaltura whether it's an uploaded file, webcam
+  recording, imported URL or existing file sync.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ContentResource.Tokenizer.class)
 public abstract class ContentResource extends Resource {

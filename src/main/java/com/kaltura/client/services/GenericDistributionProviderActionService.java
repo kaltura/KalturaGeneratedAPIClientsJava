@@ -47,7 +47,36 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Generic Distribution Provider Actions service  */
+/**
+ * Generic Distribution Provider Actions service
+ * 
+ * @param genericDistributionProviderAction 
+ * @param id the id of the generic distribution provider action
+ * @param xslData XSL MRSS transformation data
+ * @param id the id of the generic distribution provider action
+ * @param xslFile XSL MRSS transformation file
+ * @param id the id of the generic distribution provider action
+ * @param xsdData XSD MRSS validatation data
+ * @param id the id of the generic distribution provider action
+ * @param xsdFile XSD MRSS validatation file
+ * @param id the id of the generic distribution provider action
+ * @param transformData transformation data xsl, xPath or regex
+ * @param id the id of the generic distribution provider action
+ * @param transformFile transformation file xsl, xPath or regex
+ * @param id 
+ * @param genericDistributionProviderId 
+ * @param actionType 
+ * @param id 
+ * @param genericDistributionProviderId 
+ * @param actionType 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param genericDistributionProviderAction 
+ * @param genericDistributionProviderId 
+ * @param actionType 
+ * @param genericDistributionProviderAction 
+ */
 public class GenericDistributionProviderActionService {
 	
 	public static class AddGenericDistributionProviderActionBuilder extends RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.Tokenizer, AddGenericDistributionProviderActionBuilder> {
@@ -58,7 +87,11 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Add new Generic Distribution Provider Action  */
+	/**
+	 * Add new Generic Distribution Provider Action
+	 * 
+	 * @param genericDistributionProviderAction 
+	 */
     public static AddGenericDistributionProviderActionBuilder add(GenericDistributionProviderAction genericDistributionProviderAction)  {
 		return new AddGenericDistributionProviderActionBuilder(genericDistributionProviderAction);
 	}
@@ -80,7 +113,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Add MRSS transform file to generic distribution provider action  */
+	/**
+	 * Add MRSS transform file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param xslData XSL MRSS transformation data
+	 */
     public static AddMrssTransformGenericDistributionProviderActionBuilder addMrssTransform(int id, String xslData)  {
 		return new AddMrssTransformGenericDistributionProviderActionBuilder(id, xslData);
 	}
@@ -111,7 +149,12 @@ public class GenericDistributionProviderActionService {
 		return addMrssTransformFromFile(id, new FileHolder(xslFile, xslFileMimeType, xslFileName));
 	}
 
-	/**  Add MRSS transform file to generic distribution provider action  */
+	/**
+	 * Add MRSS transform file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param xslFile XSL MRSS transformation file
+	 */
     public static AddMrssTransformFromFileGenericDistributionProviderActionBuilder addMrssTransformFromFile(int id, FileHolder xslFile)  {
 		return new AddMrssTransformFromFileGenericDistributionProviderActionBuilder(id, xslFile);
 	}
@@ -133,7 +176,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Add MRSS validate file to generic distribution provider action  */
+	/**
+	 * Add MRSS validate file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param xsdData XSD MRSS validatation data
+	 */
     public static AddMrssValidateGenericDistributionProviderActionBuilder addMrssValidate(int id, String xsdData)  {
 		return new AddMrssValidateGenericDistributionProviderActionBuilder(id, xsdData);
 	}
@@ -164,7 +212,12 @@ public class GenericDistributionProviderActionService {
 		return addMrssValidateFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName));
 	}
 
-	/**  Add MRSS validate file to generic distribution provider action  */
+	/**
+	 * Add MRSS validate file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param xsdFile XSD MRSS validatation file
+	 */
     public static AddMrssValidateFromFileGenericDistributionProviderActionBuilder addMrssValidateFromFile(int id, FileHolder xsdFile)  {
 		return new AddMrssValidateFromFileGenericDistributionProviderActionBuilder(id, xsdFile);
 	}
@@ -186,7 +239,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Add results transform file to generic distribution provider action  */
+	/**
+	 * Add results transform file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param transformData transformation data xsl, xPath or regex
+	 */
     public static AddResultsTransformGenericDistributionProviderActionBuilder addResultsTransform(int id, String transformData)  {
 		return new AddResultsTransformGenericDistributionProviderActionBuilder(id, transformData);
 	}
@@ -217,7 +275,12 @@ public class GenericDistributionProviderActionService {
 		return addResultsTransformFromFile(id, new FileHolder(transformFile, transformFileMimeType, transformFileName));
 	}
 
-	/**  Add MRSS transform file to generic distribution provider action  */
+	/**
+	 * Add MRSS transform file to generic distribution provider action
+	 * 
+	 * @param id the id of the generic distribution provider action
+	 * @param transformFile transformation file xsl, xPath or regex
+	 */
     public static AddResultsTransformFromFileGenericDistributionProviderActionBuilder addResultsTransformFromFile(int id, FileHolder transformFile)  {
 		return new AddResultsTransformFromFileGenericDistributionProviderActionBuilder(id, transformFile);
 	}
@@ -234,7 +297,11 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Delete Generic Distribution Provider Action by id  */
+	/**
+	 * Delete Generic Distribution Provider Action by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteGenericDistributionProviderActionBuilder delete(int id)  {
 		return new DeleteGenericDistributionProviderActionBuilder(id);
 	}
@@ -256,7 +323,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Delete Generic Distribution Provider Action by provider id  */
+	/**
+	 * Delete Generic Distribution Provider Action by provider id
+	 * 
+	 * @param genericDistributionProviderId 
+	 * @param actionType 
+	 */
     public static DeleteByProviderIdGenericDistributionProviderActionBuilder deleteByProviderId(int genericDistributionProviderId, DistributionAction actionType)  {
 		return new DeleteByProviderIdGenericDistributionProviderActionBuilder(genericDistributionProviderId, actionType);
 	}
@@ -273,7 +345,11 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Get Generic Distribution Provider Action by id  */
+	/**
+	 * Get Generic Distribution Provider Action by id
+	 * 
+	 * @param id 
+	 */
     public static GetGenericDistributionProviderActionBuilder get(int id)  {
 		return new GetGenericDistributionProviderActionBuilder(id);
 	}
@@ -295,7 +371,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Get Generic Distribution Provider Action by provider id  */
+	/**
+	 * Get Generic Distribution Provider Action by provider id
+	 * 
+	 * @param genericDistributionProviderId 
+	 * @param actionType 
+	 */
     public static GetByProviderIdGenericDistributionProviderActionBuilder getByProviderId(int genericDistributionProviderId, DistributionAction actionType)  {
 		return new GetByProviderIdGenericDistributionProviderActionBuilder(genericDistributionProviderId, actionType);
 	}
@@ -317,7 +398,12 @@ public class GenericDistributionProviderActionService {
 		return list(filter, null);
 	}
 
-	/**  List all distribution providers  */
+	/**
+	 * List all distribution providers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListGenericDistributionProviderActionBuilder list(GenericDistributionProviderActionFilter filter, FilterPager pager)  {
 		return new ListGenericDistributionProviderActionBuilder(filter, pager);
 	}
@@ -335,7 +421,12 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Update Generic Distribution Provider Action by id  */
+	/**
+	 * Update Generic Distribution Provider Action by id
+	 * 
+	 * @param id 
+	 * @param genericDistributionProviderAction 
+	 */
     public static UpdateGenericDistributionProviderActionBuilder update(int id, GenericDistributionProviderAction genericDistributionProviderAction)  {
 		return new UpdateGenericDistributionProviderActionBuilder(id, genericDistributionProviderAction);
 	}
@@ -358,7 +449,13 @@ public class GenericDistributionProviderActionService {
 		}
 	}
 
-	/**  Update Generic Distribution Provider Action by provider id  */
+	/**
+	 * Update Generic Distribution Provider Action by provider id
+	 * 
+	 * @param genericDistributionProviderId 
+	 * @param actionType 
+	 * @param genericDistributionProviderAction 
+	 */
     public static UpdateByProviderIdGenericDistributionProviderActionBuilder updateByProviderId(int genericDistributionProviderId, DistributionAction actionType, GenericDistributionProviderAction genericDistributionProviderAction)  {
 		return new UpdateByProviderIdGenericDistributionProviderActionBuilder(genericDistributionProviderId, actionType, genericDistributionProviderAction);
 	}

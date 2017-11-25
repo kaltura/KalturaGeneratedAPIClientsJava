@@ -60,25 +60,43 @@ public class Cielo24JobProviderData extends IntegrationJobProviderData {
 		String additionalParameters();
 	}
 
-	/**  Entry ID  */
+	/**
+	 * Entry ID
+	 */
 	private String entryId;
-	/**  Flavor ID  */
+	/**
+	 * Flavor ID
+	 */
 	private String flavorAssetId;
-	/**  Caption formats  */
+	/**
+	 * Caption formats
+	 */
 	private String captionAssetFormats;
 	private Cielo24Priority priority;
 	private Cielo24Fidelity fidelity;
-	/**  Api key for service provider  */
+	/**
+	 * Api key for service provider
+	 */
 	private String username;
-	/**  Api key for service provider  */
+	/**
+	 * Api key for service provider
+	 */
 	private String password;
-	/**  Base url for service provider  */
+	/**
+	 * Base url for service provider
+	 */
 	private String baseUrl;
-	/**  Transcript content language  */
+	/**
+	 * Transcript content language
+	 */
 	private Language spokenLanguage;
-	/**  should replace remote media content  */
+	/**
+	 * should replace remote media content
+	 */
 	private Boolean replaceMediaContent;
-	/**  additional parameters to send to Cielo24  */
+	/**
+	 * additional parameters to send to Cielo24
+	 */
 	private String additionalParameters;
 
 	// entryId:

@@ -105,21 +105,33 @@ public class StorageProfile extends ObjectBase {
 	private Integer maxConcurrentConnections;
 	private String pathManagerClass;
 	private List<KeyValue> pathManagerParams;
-	/**  No need to create enum for temp field  */
+	/**
+	 * No need to create enum for temp field
+	 */
 	private Integer trigger;
-	/**  Delivery Priority  */
+	/**
+	 * Delivery Priority
+	 */
 	private Integer deliveryPriority;
 	private StorageProfileDeliveryStatus deliveryStatus;
 	private StorageProfileReadyBehavior readyBehavior;
-	/**  Flag sugnifying that the storage exported content should be deleted when soure
-	  entry is deleted  */
+	/**
+	 * Flag sugnifying that the storage exported content should be deleted when soure
+	  entry is deleted
+	 */
 	private Integer allowAutoDelete;
-	/**  Indicates to the local file transfer manager to create a link to the file
-	  instead of copying it  */
+	/**
+	 * Indicates to the local file transfer manager to create a link to the file
+	  instead of copying it
+	 */
 	private Boolean createFileLink;
-	/**  Holds storage profile export rules  */
+	/**
+	 * Holds storage profile export rules
+	 */
 	private List<Rule> rules;
-	/**  Delivery profile ids  */
+	/**
+	 * Delivery profile ids
+	 */
 	private List<KeyValue> deliveryProfileIds;
 	private String privateKey;
 	private String publicKey;

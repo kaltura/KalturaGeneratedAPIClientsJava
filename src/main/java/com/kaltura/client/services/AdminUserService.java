@@ -38,7 +38,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage details for the administrative user  */
+/**
+ * Manage details for the administrative user
+ * 
+ * @param email 
+ * @param password 
+ * @param partnerId 
+ * @param email 
+ * @param hashKey 
+ * @param newPassword new password to set
+ * @param email 
+ * @param password 
+ * @param newEmail Optional, provide only when you want to update the email
+ * @param newPassword 
+ */
 public class AdminUserService {
 	
 	public static class LoginAdminUserBuilder extends RequestBuilder<String, String, LoginAdminUserBuilder> {
@@ -67,8 +80,14 @@ public class AdminUserService {
 		return login(email, password, Integer.MIN_VALUE);
 	}
 
-	/**  Get an admin session using admin email and password (Used for login to the KMC
-	  application)  */
+	/**
+	 * Get an admin session using admin email and password (Used for login to the KMC
+	  application)
+	 * 
+	 * @param email 
+	 * @param password 
+	 * @param partnerId 
+	 */
     public static LoginAdminUserBuilder login(String email, String password, int partnerId)  {
 		return new LoginAdminUserBuilder(email, password, partnerId);
 	}
@@ -85,7 +104,11 @@ public class AdminUserService {
 		}
 	}
 
-	/**  Reset admin user password and send it to the users email address  */
+	/**
+	 * Reset admin user password and send it to the users email address
+	 * 
+	 * @param email 
+	 */
     public static ResetPasswordAdminUserBuilder resetPassword(String email)  {
 		return new ResetPasswordAdminUserBuilder(email);
 	}
@@ -107,7 +130,12 @@ public class AdminUserService {
 		}
 	}
 
-	/**  Set initial users password  */
+	/**
+	 * Set initial users password
+	 * 
+	 * @param hashKey 
+	 * @param newPassword new password to set
+	 */
     public static SetInitialPasswordAdminUserBuilder setInitialPassword(String hashKey, String newPassword)  {
 		return new SetInitialPasswordAdminUserBuilder(hashKey, newPassword);
 	}
@@ -147,7 +175,14 @@ public class AdminUserService {
 		return updatePassword(email, password, newEmail, "");
 	}
 
-	/**  Update admin user password and email  */
+	/**
+	 * Update admin user password and email
+	 * 
+	 * @param email 
+	 * @param password 
+	 * @param newEmail Optional, provide only when you want to update the email
+	 * @param newPassword 
+	 */
     public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail, String newPassword)  {
 		return new UpdatePasswordAdminUserBuilder(email, password, newEmail, newPassword);
 	}

@@ -49,11 +49,17 @@ public class AccessControlModifyRequestHostRegexAction extends RuleAction {
 		String replacmenServerNodeId();
 	}
 
-	/**  Request host regex pattern  */
+	/**
+	 * Request host regex pattern
+	 */
 	private String pattern;
-	/**  Request host regex replacment  */
+	/**
+	 * Request host regex replacment
+	 */
 	private String replacement;
-	/**  serverNodeId to generate replacment host from  */
+	/**
+	 * serverNodeId to generate replacment host from
+	 */
 	private Integer replacmenServerNodeId;
 
 	// pattern:

@@ -36,7 +36,11 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Aspera service  */
+/**
+ * Aspera service
+ * 
+ * @param flavorAssetId 
+ */
 public class AsperaService {
 	
 	public static class GetFaspUrlAsperaBuilder extends RequestBuilder<String, String, GetFaspUrlAsperaBuilder> {

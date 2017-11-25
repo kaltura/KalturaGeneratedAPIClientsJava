@@ -51,9 +51,13 @@ public class ModifyCategoriesObjectTask extends ObjectTask {
 		RequestBuilder.ListTokenizer<IntegerValue.Tokenizer> categoryIds();
 	}
 
-	/**  Should the object task add or remove categories?  */
+	/**
+	 * Should the object task add or remove categories?
+	 */
 	private ScheduledTaskAddOrRemoveType addRemoveType;
-	/**  The list of category ids to add or remove  */
+	/**
+	 * The list of category ids to add or remove
+	 */
 	private List<IntegerValue> categoryIds;
 
 	// addRemoveType:

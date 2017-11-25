@@ -47,8 +47,10 @@ public class FairplayEntryContextPluginData extends PluginData {
 		String publicCertificate();
 	}
 
-	/**  For fairplay (and maybe in the future other drm providers) we need to return a
-	  public certificate to encrypt   the request from the player to the server.  */
+	/**
+	 * For fairplay (and maybe in the future other drm providers) we need to return a
+	  public certificate to encrypt   the request from the player to the server.
+	 */
 	private String publicCertificate;
 
 	// publicCertificate:

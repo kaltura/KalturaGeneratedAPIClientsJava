@@ -43,7 +43,23 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Data service lets you manage data content (textual content)  */
+/**
+ * Data service lets you manage data content (textual content)
+ * 
+ * @param dataEntry Data entry
+ * @param entryId 
+ * @param resource 
+ * @param entryId Data entry id to delete
+ * @param entryId Data entry id
+ * @param version Desired version of the data
+ * @param filter Document entry filter
+ * @param pager Pager
+ * @param entryId Data entry id
+ * @param version Desired version of the data
+ * @param forceProxy force to get the content without redirect
+ * @param entryId Data entry id to update
+ * @param documentEntry Data entry metadata to update
+ */
 public class DataService {
 	
 	public static class AddDataBuilder extends RequestBuilder<DataEntry, DataEntry.Tokenizer, AddDataBuilder> {
@@ -54,7 +70,11 @@ public class DataService {
 		}
 	}
 
-	/**  Adds a new data entry  */
+	/**
+	 * Adds a new data entry
+	 * 
+	 * @param dataEntry Data entry
+	 */
     public static AddDataBuilder add(DataEntry dataEntry)  {
 		return new AddDataBuilder(dataEntry);
 	}
@@ -72,7 +92,12 @@ public class DataService {
 		}
 	}
 
-	/**  Update the dataContent of data entry using a resource  */
+	/**
+	 * Update the dataContent of data entry using a resource
+	 * 
+	 * @param entryId 
+	 * @param resource 
+	 */
     public static AddContentDataBuilder addContent(String entryId, GenericDataCenterContentResource resource)  {
 		return new AddContentDataBuilder(entryId, resource);
 	}
@@ -89,7 +114,11 @@ public class DataService {
 		}
 	}
 
-	/**  Delete a data entry.  */
+	/**
+	 * Delete a data entry.
+	 * 
+	 * @param entryId Data entry id to delete
+	 */
     public static DeleteDataBuilder delete(String entryId)  {
 		return new DeleteDataBuilder(entryId);
 	}
@@ -115,7 +144,12 @@ public class DataService {
 		return get(entryId, -1);
 	}
 
-	/**  Get data entry by ID.  */
+	/**
+	 * Get data entry by ID.
+	 * 
+	 * @param entryId Data entry id
+	 * @param version Desired version of the data
+	 */
     public static GetDataBuilder get(String entryId, int version)  {
 		return new GetDataBuilder(entryId, version);
 	}
@@ -137,7 +171,12 @@ public class DataService {
 		return list(filter, null);
 	}
 
-	/**  List data entries by filter with paging support.  */
+	/**
+	 * List data entries by filter with paging support.
+	 * 
+	 * @param filter Document entry filter
+	 * @param pager Pager
+	 */
     public static ListDataBuilder list(DataEntryFilter filter, FilterPager pager)  {
 		return new ListDataBuilder(filter, pager);
 	}
@@ -172,7 +211,13 @@ public class DataService {
 		return serve(entryId, version, false);
 	}
 
-	/**  serve action returan the file from dataContent field.  */
+	/**
+	 * serve action returan the file from dataContent field.
+	 * 
+	 * @param entryId Data entry id
+	 * @param version Desired version of the data
+	 * @param forceProxy force to get the content without redirect
+	 */
     public static ServeDataBuilder serve(String entryId, int version, boolean forceProxy)  {
 		return new ServeDataBuilder(entryId, version, forceProxy);
 	}
@@ -190,7 +235,12 @@ public class DataService {
 		}
 	}
 
-	/**  Update data entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update data entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Data entry id to update
+	 * @param documentEntry Data entry metadata to update
+	 */
     public static UpdateDataBuilder update(String entryId, DataEntry documentEntry)  {
 		return new UpdateDataBuilder(entryId, documentEntry);
 	}

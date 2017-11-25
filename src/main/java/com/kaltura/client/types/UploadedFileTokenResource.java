@@ -39,8 +39,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that uploaded to the system and represented by token that
-  returned from upload.upload action or uploadToken.add action.  */
+/**
+ * Used to ingest media that uploaded to the system and represented by token that
+  returned from upload.upload action or uploadToken.add action.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UploadedFileTokenResource.Tokenizer.class)
 public class UploadedFileTokenResource extends GenericDataCenterContentResource {
@@ -49,7 +51,9 @@ public class UploadedFileTokenResource extends GenericDataCenterContentResource 
 		String token();
 	}
 
-	/**  Token that returned from upload.upload action or uploadToken.add action.  */
+	/**
+	 * Token that returned from upload.upload action or uploadToken.add action.
+	 */
 	private String token;
 
 	// token:

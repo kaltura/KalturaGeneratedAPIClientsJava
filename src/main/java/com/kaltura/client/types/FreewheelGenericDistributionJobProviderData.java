@@ -51,9 +51,13 @@ public class FreewheelGenericDistributionJobProviderData extends ConfigurableDis
 		RequestBuilder.ListTokenizer<CuePoint.Tokenizer> cuePoints();
 	}
 
-	/**  Demonstrate passing array of paths to the job  */
+	/**
+	 * Demonstrate passing array of paths to the job
+	 */
 	private List<StringHolder> videoAssetFilePaths;
-	/**  Demonstrate passing single path to the job  */
+	/**
+	 * Demonstrate passing single path to the job
+	 */
 	private String thumbAssetFilePath;
 	private List<CuePoint> cuePoints;
 

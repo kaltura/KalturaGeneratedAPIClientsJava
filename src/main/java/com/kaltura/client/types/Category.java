@@ -90,78 +90,142 @@ public class Category extends ObjectBase {
 		String aggregationCategories();
 	}
 
-	/**  The id of the Category  */
+	/**
+	 * The id of the Category
+	 */
 	private Integer id;
 	private Integer parentId;
 	private Integer depth;
 	private Integer partnerId;
-	/**  The name of the Category.    The following characters are not allowed: '&lt;',
-	  '&gt;', ','  */
+	/**
+	 * The name of the Category.    The following characters are not allowed: '&lt;',
+	  '&gt;', ','
+	 */
 	private String name;
-	/**  The full name of the Category  */
+	/**
+	 * The full name of the Category
+	 */
 	private String fullName;
-	/**  The full ids of the Category  */
+	/**
+	 * The full ids of the Category
+	 */
 	private String fullIds;
-	/**  Number of entries in this Category (including child categories)  */
+	/**
+	 * Number of entries in this Category (including child categories)
+	 */
 	private Integer entriesCount;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Update date as Unix timestamp (In seconds)  */
+	/**
+	 * Update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Category description  */
+	/**
+	 * Category description
+	 */
 	private String description;
-	/**  Category tags  */
+	/**
+	 * Category tags
+	 */
 	private String tags;
-	/**  If category will be returned for list action.  */
+	/**
+	 * If category will be returned for list action.
+	 */
 	private AppearInListType appearInList;
-	/**  defines the privacy of the entries that assigned to this category  */
+	/**
+	 * defines the privacy of the entries that assigned to this category
+	 */
 	private PrivacyType privacy;
-	/**  If Category members are inherited from parent category or set manualy.  */
+	/**
+	 * If Category members are inherited from parent category or set manualy.
+	 */
 	private InheritanceType inheritanceType;
-	/**  Who can ask to join this category  */
+	/**
+	 * Who can ask to join this category
+	 */
 	private UserJoinPolicyType userJoinPolicy;
-	/**  Default permissionLevel for new users  */
+	/**
+	 * Default permissionLevel for new users
+	 */
 	private CategoryUserPermissionLevel defaultPermissionLevel;
-	/**  Category Owner (User id)  */
+	/**
+	 * Category Owner (User id)
+	 */
 	private String owner;
-	/**  Number of entries that belong to this category directly  */
+	/**
+	 * Number of entries that belong to this category directly
+	 */
 	private Integer directEntriesCount;
-	/**  Category external id, controlled and managed by the partner.  */
+	/**
+	 * Category external id, controlled and managed by the partner.
+	 */
 	private String referenceId;
-	/**  who can assign entries to this category  */
+	/**
+	 * who can assign entries to this category
+	 */
 	private ContributionPolicyType contributionPolicy;
-	/**  Number of active members for this category  */
+	/**
+	 * Number of active members for this category
+	 */
 	private Integer membersCount;
-	/**  Number of pending members for this category  */
+	/**
+	 * Number of pending members for this category
+	 */
 	private Integer pendingMembersCount;
-	/**  Set privacy context for search entries that assiged to private and public
+	/**
+	 * Set privacy context for search entries that assiged to private and public
 	  categories. the entries will be private if the search context is set with those
-	  categories.  */
+	  categories.
+	 */
 	private String privacyContext;
-	/**  comma separated parents that defines a privacyContext for search  */
+	/**
+	 * comma separated parents that defines a privacyContext for search
+	 */
 	private String privacyContexts;
-	/**  Status  */
+	/**
+	 * Status
+	 */
 	private CategoryStatus status;
-	/**  The category id that this category inherit its members and members permission
-	  (for contribution and join)  */
+	/**
+	 * The category id that this category inherit its members and members permission
+	  (for contribution and join)
+	 */
 	private Integer inheritedParentId;
-	/**  Can be used to store various partner related data as a numeric value  */
+	/**
+	 * Can be used to store various partner related data as a numeric value
+	 */
 	private Integer partnerSortValue;
-	/**  Can be used to store various partner related data as a string  */
+	/**
+	 * Can be used to store various partner related data as a string
+	 */
 	private String partnerData;
-	/**  Enable client side applications to define how to sort the category child
-	  categories  */
+	/**
+	 * Enable client side applications to define how to sort the category child
+	  categories
+	 */
 	private CategoryOrderBy defaultOrderBy;
-	/**  Number of direct children categories  */
+	/**
+	 * Number of direct children categories
+	 */
 	private Integer directSubCategoriesCount;
-	/**  Moderation to add entries to this category by users that are not of permission
-	  level Manager or Moderator.  */
+	/**
+	 * Moderation to add entries to this category by users that are not of permission
+	  level Manager or Moderator.
+	 */
 	private Boolean moderation;
-	/**  Nunber of pending moderation entries  */
+	/**
+	 * Nunber of pending moderation entries
+	 */
 	private Integer pendingEntriesCount;
-	/**  Flag indicating that the category is an aggregation category  */
+	/**
+	 * Flag indicating that the category is an aggregation category
+	 */
 	private Boolean isAggregationCategory;
-	/**  List of aggregation channels the category belongs to  */
+	/**
+	 * List of aggregation channels the category belongs to
+	 */
 	private String aggregationCategories;
 
 	// id:

@@ -59,25 +59,45 @@ public class Scheduler extends ObjectBase {
 		String lastStatusStr();
 	}
 
-	/**  The id of the Scheduler  */
+	/**
+	 * The id of the Scheduler
+	 */
 	private Integer id;
-	/**  The id as configured in the batch config  */
+	/**
+	 * The id as configured in the batch config
+	 */
 	private Integer configuredId;
-	/**  The scheduler name  */
+	/**
+	 * The scheduler name
+	 */
 	private String name;
-	/**  The host name  */
+	/**
+	 * The host name
+	 */
 	private String host;
-	/**  Array of the last statuses  */
+	/**
+	 * Array of the last statuses
+	 */
 	private List<SchedulerStatus> statuses;
-	/**  Array of the last configs  */
+	/**
+	 * Array of the last configs
+	 */
 	private List<SchedulerConfig> configs;
-	/**  Array of the workers  */
+	/**
+	 * Array of the workers
+	 */
 	private List<SchedulerWorker> workers;
-	/**  creation time  */
+	/**
+	 * creation time
+	 */
 	private Integer createdAt;
-	/**  last status time  */
+	/**
+	 * last status time
+	 */
 	private Integer lastStatus;
-	/**  last status formated  */
+	/**
+	 * last status formated
+	 */
 	private String lastStatusStr;
 
 	// id:

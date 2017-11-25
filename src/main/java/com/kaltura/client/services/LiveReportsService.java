@@ -101,7 +101,11 @@ public class LiveReportsService {
 		}
 	}
 
-	/**  Will serve a requested report  */
+	/**
+	 * Will serve a requested report
+	 * 
+	 * @param id - the requested id
+	 */
     public static ServeReportLiveReportsBuilder serveReport(String id)  {
 		return new ServeReportLiveReportsBuilder(id);
 	}

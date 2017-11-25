@@ -62,20 +62,34 @@ public class ConversionProfileAssetParams extends ObjectBase {
 		String tags();
 	}
 
-	/**  The id of the conversion profile  */
+	/**
+	 * The id of the conversion profile
+	 */
 	private Integer conversionProfileId;
-	/**  The id of the asset params  */
+	/**
+	 * The id of the asset params
+	 */
 	private Integer assetParamsId;
-	/**  The ingestion origin of the asset params  */
+	/**
+	 * The ingestion origin of the asset params
+	 */
 	private FlavorReadyBehaviorType readyBehavior;
-	/**  The ingestion origin of the asset params  */
+	/**
+	 * The ingestion origin of the asset params
+	 */
 	private AssetParamsOrigin origin;
-	/**  Asset params system name  */
+	/**
+	 * Asset params system name
+	 */
 	private String systemName;
-	/**  Starts conversion even if the decision layer reduced the configuration to comply
-	  with the source  */
+	/**
+	 * Starts conversion even if the decision layer reduced the configuration to comply
+	  with the source
+	 */
 	private Boolean forceNoneComplied;
-	/**  Specifies how to treat the flavor after conversion is finished  */
+	/**
+	 * Specifies how to treat the flavor after conversion is finished
+	 */
 	private AssetParamsDeletePolicy deletePolicy;
 	private Boolean isEncrypted;
 	private Double contentAwareness;

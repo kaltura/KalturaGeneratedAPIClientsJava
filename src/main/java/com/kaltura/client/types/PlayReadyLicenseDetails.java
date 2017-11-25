@@ -52,13 +52,21 @@ public class PlayReadyLicenseDetails extends ObjectBase {
 		String removalDate();
 	}
 
-	/**  PlayReady policy object  */
+	/**
+	 * PlayReady policy object
+	 */
 	private PlayReadyPolicy policy;
-	/**  License begin date  */
+	/**
+	 * License begin date
+	 */
 	private Integer beginDate;
-	/**  License expiration date  */
+	/**
+	 * License expiration date
+	 */
 	private Integer expirationDate;
-	/**  License removal date  */
+	/**
+	 * License removal date
+	 */
 	private Integer removalDate;
 
 	// policy:

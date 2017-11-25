@@ -42,7 +42,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Storage Profiles service  */
+/**
+ * Storage Profiles service
+ * 
+ * @param storageProfile 
+ * @param storageProfileId 
+ * @param filter 
+ * @param pager 
+ * @param storageProfileId 
+ * @param storageProfile Id
+ * @param storageId 
+ * @param status 
+ */
 public class StorageProfileService {
 	
 	public static class AddStorageProfileBuilder extends RequestBuilder<StorageProfile, StorageProfile.Tokenizer, AddStorageProfileBuilder> {
@@ -53,7 +64,11 @@ public class StorageProfileService {
 		}
 	}
 
-	/**  Adds a storage profile to the Kaltura DB.  */
+	/**
+	 * Adds a storage profile to the Kaltura DB.
+	 * 
+	 * @param storageProfile 
+	 */
     public static AddStorageProfileBuilder add(StorageProfile storageProfile)  {
 		return new AddStorageProfileBuilder(storageProfile);
 	}
@@ -70,7 +85,11 @@ public class StorageProfileService {
 		}
 	}
 
-	/**  Get storage profile by id  */
+	/**
+	 * Get storage profile by id
+	 * 
+	 * @param storageProfileId 
+	 */
     public static GetStorageProfileBuilder get(int storageProfileId)  {
 		return new GetStorageProfileBuilder(storageProfileId);
 	}
@@ -109,7 +128,12 @@ public class StorageProfileService {
 		}
 	}
 
-	/**  Update storage profile by id  */
+	/**
+	 * Update storage profile by id
+	 * 
+	 * @param storageProfileId 
+	 * @param storageProfile Id
+	 */
     public static UpdateStorageProfileBuilder update(int storageProfileId, StorageProfile storageProfile)  {
 		return new UpdateStorageProfileBuilder(storageProfileId, storageProfile);
 	}

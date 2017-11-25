@@ -53,11 +53,17 @@ public class DrmLicenseAccessDetails extends ObjectBase {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> licenseParams();
 	}
 
-	/**  Drm policy name  */
+	/**
+	 * Drm policy name
+	 */
 	private String policy;
-	/**  movie duration in seconds  */
+	/**
+	 * movie duration in seconds
+	 */
 	private Integer duration;
-	/**  playback window in seconds  */
+	/**
+	 * playback window in seconds
+	 */
 	private Integer absolute_duration;
 	private List<KeyValue> licenseParams;
 

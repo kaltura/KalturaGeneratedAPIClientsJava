@@ -74,7 +74,9 @@ public abstract class CuePoint extends ObjectBase {
 	private Integer updatedAt;
 	private Integer triggeredAt;
 	private String tags;
-	/**  Start time in milliseconds  */
+	/**
+	 * Start time in milliseconds
+	 */
 	private Integer startTime;
 	private String userId;
 	private String partnerData;

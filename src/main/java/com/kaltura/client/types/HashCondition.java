@@ -48,9 +48,13 @@ public class HashCondition extends Condition {
 		String hashSecret();
 	}
 
-	/**  hash name  */
+	/**
+	 * hash name
+	 */
 	private String hashName;
-	/**  hash secret  */
+	/**
+	 * hash secret
+	 */
 	private String hashSecret;
 
 	// hashName:

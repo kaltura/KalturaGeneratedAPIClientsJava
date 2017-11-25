@@ -49,13 +49,19 @@ public class SyncCategoryPrivacyContextJobData extends JobData {
 		String lastUpdatedCategoryCreatedAt();
 	}
 
-	/**  category id  */
+	/**
+	 * category id
+	 */
 	private Integer categoryId;
-	/**  Saves the last category entry creation date that was updated      In case of
-	  crash the batch will restart from that point  */
+	/**
+	 * Saves the last category entry creation date that was updated      In case of
+	  crash the batch will restart from that point
+	 */
 	private Integer lastUpdatedCategoryEntryCreatedAt;
-	/**  Saves the last sub category creation date that was updated      In case of crash
-	  the batch will restart from that point  */
+	/**
+	 * Saves the last sub category creation date that was updated      In case of crash
+	  the batch will restart from that point
+	 */
 	private Integer lastUpdatedCategoryCreatedAt;
 
 	// categoryId:

@@ -61,30 +61,52 @@ public class EmailNotificationDispatchJobData extends EventNotificationDispatchJ
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> customHeaders();
 	}
 
-	/**  Define the email sender email  */
+	/**
+	 * Define the email sender email
+	 */
 	private String fromEmail;
-	/**  Define the email sender name  */
+	/**
+	 * Define the email sender name
+	 */
 	private String fromName;
-	/**  Email recipient emails and names, key is mail address and value is the name  */
+	/**
+	 * Email recipient emails and names, key is mail address and value is the name
+	 */
 	private EmailNotificationRecipientJobData to;
-	/**  Email cc emails and names, key is mail address and value is the name  */
+	/**
+	 * Email cc emails and names, key is mail address and value is the name
+	 */
 	private EmailNotificationRecipientJobData cc;
-	/**  Email bcc emails and names, key is mail address and value is the name  */
+	/**
+	 * Email bcc emails and names, key is mail address and value is the name
+	 */
 	private EmailNotificationRecipientJobData bcc;
-	/**  Email addresses that a replies should be sent to, key is mail address and value
-	  is the name  */
+	/**
+	 * Email addresses that a replies should be sent to, key is mail address and value
+	  is the name
+	 */
 	private EmailNotificationRecipientJobData replyTo;
-	/**  Define the email priority  */
+	/**
+	 * Define the email priority
+	 */
 	private EmailNotificationTemplatePriority priority;
-	/**  Email address that a reading confirmation will be sent to  */
+	/**
+	 * Email address that a reading confirmation will be sent to
+	 */
 	private String confirmReadingTo;
-	/**  Hostname to use in Message-Id and Received headers and as default HELO string.  
-	   If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.  */
+	/**
+	 * Hostname to use in Message-Id and Received headers and as default HELO string.  
+	   If empty, the value returned by SERVER_NAME is used or 'localhost.localdomain'.
+	 */
 	private String hostname;
-	/**  Sets the message ID to be used in the Message-Id header.   If empty, a unique id
-	  will be generated.  */
+	/**
+	 * Sets the message ID to be used in the Message-Id header.   If empty, a unique id
+	  will be generated.
+	 */
 	private String messageID;
-	/**  Adds a e-mail custom header  */
+	/**
+	 * Adds a e-mail custom header
+	 */
 	private List<KeyValue> customHeaders;
 
 	// fromEmail:

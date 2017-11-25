@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates PHP statement, depends on the execution context  */
+/**
+ * Evaluates PHP statement, depends on the execution context
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EvalStringField.Tokenizer.class)
 public class EvalStringField extends StringField {
@@ -48,7 +50,9 @@ public class EvalStringField extends StringField {
 		String code();
 	}
 
-	/**  PHP code  */
+	/**
+	 * PHP code
+	 */
 	private String code;
 
 	// code:

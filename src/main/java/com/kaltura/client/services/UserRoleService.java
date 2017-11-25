@@ -40,7 +40,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  UserRole service lets you create and manage user roles  */
+/**
+ * UserRole service lets you create and manage user roles
+ * 
+ * @param userRole A new role
+ * @param userRoleId The user role's unique identifier
+ * @param userRoleId The user role's unique identifier
+ * @param userRoleId The user role's unique identifier
+ * @param filter A filter used to exclude specific types of user roles
+ * @param pager A limit for the number of records to display on a page
+ * @param userRoleId The user role's unique identifier
+ * @param userRole Id The user role's unique identifier
+ */
 public class UserRoleService {
 	
 	public static class AddUserRoleBuilder extends RequestBuilder<UserRole, UserRole.Tokenizer, AddUserRoleBuilder> {
@@ -51,7 +62,11 @@ public class UserRoleService {
 		}
 	}
 
-	/**  Adds a new user role object to the account.  */
+	/**
+	 * Adds a new user role object to the account.
+	 * 
+	 * @param userRole A new role
+	 */
     public static AddUserRoleBuilder add(UserRole userRole)  {
 		return new AddUserRoleBuilder(userRole);
 	}
@@ -68,7 +83,11 @@ public class UserRoleService {
 		}
 	}
 
-	/**  Creates a new user role object that is a duplicate of an existing role.  */
+	/**
+	 * Creates a new user role object that is a duplicate of an existing role.
+	 * 
+	 * @param userRoleId The user role's unique identifier
+	 */
     public static CloneUserRoleBuilder clone(int userRoleId)  {
 		return new CloneUserRoleBuilder(userRoleId);
 	}
@@ -85,7 +104,11 @@ public class UserRoleService {
 		}
 	}
 
-	/**  Deletes an existing user role object.  */
+	/**
+	 * Deletes an existing user role object.
+	 * 
+	 * @param userRoleId The user role's unique identifier
+	 */
     public static DeleteUserRoleBuilder delete(int userRoleId)  {
 		return new DeleteUserRoleBuilder(userRoleId);
 	}
@@ -102,7 +125,11 @@ public class UserRoleService {
 		}
 	}
 
-	/**  Retrieves a user role object using its ID.  */
+	/**
+	 * Retrieves a user role object using its ID.
+	 * 
+	 * @param userRoleId The user role's unique identifier
+	 */
     public static GetUserRoleBuilder get(int userRoleId)  {
 		return new GetUserRoleBuilder(userRoleId);
 	}
@@ -124,9 +151,14 @@ public class UserRoleService {
 		return list(filter, null);
 	}
 
-	/**  Lists user role objects that are associated with an account.   Blocked user
+	/**
+	 * Lists user role objects that are associated with an account.   Blocked user
 	  roles are listed unless you use a filter to exclude them.   Deleted user roles
-	  are not listed unless you use a filter to include them.  */
+	  are not listed unless you use a filter to include them.
+	 * 
+	 * @param filter A filter used to exclude specific types of user roles
+	 * @param pager A limit for the number of records to display on a page
+	 */
     public static ListUserRoleBuilder list(UserRoleFilter filter, FilterPager pager)  {
 		return new ListUserRoleBuilder(filter, pager);
 	}
@@ -144,7 +176,12 @@ public class UserRoleService {
 		}
 	}
 
-	/**  Updates an existing user role object.  */
+	/**
+	 * Updates an existing user role object.
+	 * 
+	 * @param userRoleId The user role's unique identifier
+	 * @param userRole Id The user role's unique identifier
+	 */
     public static UpdateUserRoleBuilder update(int userRoleId, UserRole userRole)  {
 		return new UpdateUserRoleBuilder(userRoleId, userRole);
 	}

@@ -55,21 +55,37 @@ public class PlayableEntry extends BaseEntry {
 		String durationType();
 	}
 
-	/**  Number of plays  */
+	/**
+	 * Number of plays
+	 */
 	private Integer plays;
-	/**  Number of views  */
+	/**
+	 * Number of views
+	 */
 	private Integer views;
-	/**  The last time the entry was played  */
+	/**
+	 * The last time the entry was played
+	 */
 	private Integer lastPlayedAt;
-	/**  The width in pixels  */
+	/**
+	 * The width in pixels
+	 */
 	private Integer width;
-	/**  The height in pixels  */
+	/**
+	 * The height in pixels
+	 */
 	private Integer height;
-	/**  The duration in seconds  */
+	/**
+	 * The duration in seconds
+	 */
 	private Integer duration;
-	/**  The duration in miliseconds  */
+	/**
+	 * The duration in miliseconds
+	 */
 	private Integer msDuration;
-	/**  The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins)  */
+	/**
+	 * The duration type (short for 0-4 mins, medium for 4-20 mins, long for 20+ mins)
+	 */
 	private DurationType durationType;
 
 	// plays:

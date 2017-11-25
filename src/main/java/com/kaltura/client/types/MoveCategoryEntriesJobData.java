@@ -53,22 +53,36 @@ public class MoveCategoryEntriesJobData extends JobData {
 		String destCategoryFullIds();
 	}
 
-	/**  Source category id  */
+	/**
+	 * Source category id
+	 */
 	private Integer srcCategoryId;
-	/**  Destination category id  */
+	/**
+	 * Destination category id
+	 */
 	private Integer destCategoryId;
-	/**  Saves the last category id that its entries moved completely      In case of
-	  crash the batch will restart from that point  */
+	/**
+	 * Saves the last category id that its entries moved completely      In case of
+	  crash the batch will restart from that point
+	 */
 	private Integer lastMovedCategoryId;
-	/**  Saves the last page index of the child categories filter pager      In case of
-	  crash the batch will restart from that point  */
+	/**
+	 * Saves the last page index of the child categories filter pager      In case of
+	  crash the batch will restart from that point
+	 */
 	private Integer lastMovedCategoryPageIndex;
-	/**  Saves the last page index of the category entries filter pager      In case of
-	  crash the batch will restart from that point  */
+	/**
+	 * Saves the last page index of the category entries filter pager      In case of
+	  crash the batch will restart from that point
+	 */
 	private Integer lastMovedCategoryEntryPageIndex;
-	/**  All entries from all child categories will be moved as well  */
+	/**
+	 * All entries from all child categories will be moved as well
+	 */
 	private Boolean moveFromChildren;
-	/**  Destination categories fallback ids  */
+	/**
+	 * Destination categories fallback ids
+	 */
 	private String destCategoryFullIds;
 
 	// srcCategoryId:

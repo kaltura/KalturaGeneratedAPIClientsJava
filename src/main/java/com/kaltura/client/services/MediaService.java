@@ -58,8 +58,76 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Media service lets you upload and manage media files (images / videos &amp;
-  audio)  */
+/**
+ * Media service lets you upload and manage media files (images / videos &amp;
+  audio)
+ * 
+ * @param entry 
+ * @param entryId 
+ * @param resource 
+ * @param mediaEntry Media entry metadata
+ * @param url An HTTP or FTP URL
+ * @param bulkUploadId The id of the bulk upload job
+ * @param sourceEntryId Media entry id to copy from
+ * @param mediaEntry Media entry metadata
+ * @param sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not
+ * specified
+ * @param sourceFlavorAssetId Flavor asset id to be used as the new entry source
+ * @param mediaEntry Media entry metadata
+ * @param mediaEntry Media entry metadata
+ * @param webcamTokenId Token id for the recored webcam file
+ * @param mediaEntry Media entry metadata
+ * @param searchResult Result object from search service
+ * @param mediaEntry Media entry metadata
+ * @param uploadTokenId Upload token id
+ * @param mediaEntry Media entry metadata
+ * @param url An HTTP or FTP URL
+ * @param entryId 
+ * @param rank 
+ * @param entryId 
+ * @param entryId Media entry id to replace
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadEntryData 
+ * @param entryId Media entry id to cancel
+ * @param entryId Media entry id
+ * @param conversionProfileId 
+ * @param dynamicConversionAttributes 
+ * @param filter Media entry filter
+ * @param entryId Media entry id to delete
+ * @param moderationFlag 
+ * @param entryId Media entry id
+ * @param version Desired version of the data
+ * @param entryId Entry id
+ * @param extendingItemsArray 
+ * @param features 
+ * @param entryId Entry id
+ * @param filter Media entry filter
+ * @param pager Pager
+ * @param entryId 
+ * @param pager 
+ * @param entryId 
+ * @param entryId Media entry id
+ * @param fileFormat Format to convert
+ * @param entryId Media entry id to update
+ * @param mediaEntry Media entry metadata to update
+ * @param entryId Media entry id to update
+ * @param resource Resource to be used to replace entry media content
+ * @param conversionProfileId The conversion profile id to be used on the entry
+ * @param advancedOptions Additional update content options
+ * @param entryId Media entry id
+ * @param timeOffset Time offset (in seconds)
+ * @param flavorParamsId The flavor params id to be used
+ * @param entryId Media entry id
+ * @param sourceEntryId Media entry id
+ * @param timeOffset Time offset (in seconds)
+ * @param flavorParamsId The flavor params id to be used
+ * @param entryId Media entry id
+ * @param url file url
+ * @param entryId Media entry id
+ * @param fileData Jpeg file data
+ * @param fileData The file data
+ */
 public class MediaService {
 	
 	public static class AddMediaBuilder extends RequestBuilder<MediaEntry, MediaEntry.Tokenizer, AddMediaBuilder> {
@@ -70,7 +138,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Add entry  */
+	/**
+	 * Add entry
+	 * 
+	 * @param entry 
+	 */
     public static AddMediaBuilder add(MediaEntry entry)  {
 		return new AddMediaBuilder(entry);
 	}
@@ -92,9 +164,14 @@ public class MediaService {
 		return addContent(entryId, null);
 	}
 
-	/**  Add content to media entry which is not yet associated with content (therefore
+	/**
+	 * Add content to media entry which is not yet associated with content (therefore
 	  is in status NO_CONTENT).      If the requirement is to replace the entry's
-	  associated content, use action updateContent.  */
+	  associated content, use action updateContent.
+	 * 
+	 * @param entryId 
+	 * @param resource 
+	 */
     public static AddContentMediaBuilder addContent(String entryId, Resource resource)  {
 		return new AddContentMediaBuilder(entryId, resource);
 	}
@@ -117,9 +194,15 @@ public class MediaService {
 		}
 	}
 
-	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
+	/**
+	 * Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
 	  for import and then for conversion.   This action should be exposed only to the
-	  batches  */
+	  batches
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param url An HTTP or FTP URL
+	 * @param bulkUploadId The id of the bulk upload job
+	 */
     public static AddFromBulkMediaBuilder addFromBulk(MediaEntry mediaEntry, String url, int bulkUploadId)  {
 		return new AddFromBulkMediaBuilder(mediaEntry, url, bulkUploadId);
 	}
@@ -150,7 +233,14 @@ public class MediaService {
 		return addFromEntry(sourceEntryId, mediaEntry, Integer.MIN_VALUE);
 	}
 
-	/**  Copy entry into new entry  */
+	/**
+	 * Copy entry into new entry
+	 * 
+	 * @param sourceEntryId Media entry id to copy from
+	 * @param mediaEntry Media entry metadata
+	 * @param sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not
+	 * specified
+	 */
     public static AddFromEntryMediaBuilder addFromEntry(String sourceEntryId, MediaEntry mediaEntry, int sourceFlavorParamsId)  {
 		return new AddFromEntryMediaBuilder(sourceEntryId, mediaEntry, sourceFlavorParamsId);
 	}
@@ -172,7 +262,12 @@ public class MediaService {
 		return addFromFlavorAsset(sourceFlavorAssetId, null);
 	}
 
-	/**  Copy flavor asset into new entry  */
+	/**
+	 * Copy flavor asset into new entry
+	 * 
+	 * @param sourceFlavorAssetId Flavor asset id to be used as the new entry source
+	 * @param mediaEntry Media entry metadata
+	 */
     public static AddFromFlavorAssetMediaBuilder addFromFlavorAsset(String sourceFlavorAssetId, MediaEntry mediaEntry)  {
 		return new AddFromFlavorAssetMediaBuilder(sourceFlavorAssetId, mediaEntry);
 	}
@@ -190,7 +285,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Add new entry after the file was recored on the server and the token id exists  */
+	/**
+	 * Add new entry after the file was recored on the server and the token id exists
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param webcamTokenId Token id for the recored webcam file
+	 */
     public static AddFromRecordedWebcamMediaBuilder addFromRecordedWebcam(MediaEntry mediaEntry, String webcamTokenId)  {
 		return new AddFromRecordedWebcamMediaBuilder(mediaEntry, webcamTokenId);
 	}
@@ -212,8 +312,13 @@ public class MediaService {
 		return addFromSearchResult(mediaEntry, null);
 	}
 
-	/**  Adds new media entry by importing the media file from a search provider.   This
-	  action should be used with the search service result.  */
+	/**
+	 * Adds new media entry by importing the media file from a search provider.   This
+	  action should be used with the search service result.
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param searchResult Result object from search service
+	 */
     public static AddFromSearchResultMediaBuilder addFromSearchResult(MediaEntry mediaEntry, SearchResult searchResult)  {
 		return new AddFromSearchResultMediaBuilder(mediaEntry, searchResult);
 	}
@@ -231,8 +336,13 @@ public class MediaService {
 		}
 	}
 
-	/**  Add new entry after the specific media file was uploaded and the upload token id
-	  exists  */
+	/**
+	 * Add new entry after the specific media file was uploaded and the upload token id
+	  exists
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param uploadTokenId Upload token id
+	 */
     public static AddFromUploadedFileMediaBuilder addFromUploadedFile(MediaEntry mediaEntry, String uploadTokenId)  {
 		return new AddFromUploadedFileMediaBuilder(mediaEntry, uploadTokenId);
 	}
@@ -250,8 +360,13 @@ public class MediaService {
 		}
 	}
 
-	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
-	  for import and then for conversion.  */
+	/**
+	 * Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
+	  for import and then for conversion.
+	 * 
+	 * @param mediaEntry Media entry metadata
+	 * @param url An HTTP or FTP URL
+	 */
     public static AddFromUrlMediaBuilder addFromUrl(MediaEntry mediaEntry, String url)  {
 		return new AddFromUrlMediaBuilder(mediaEntry, url);
 	}
@@ -273,7 +388,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
+	/**
+	 * Anonymously rank a media entry, no validation is done on duplicate rankings
+	 * 
+	 * @param entryId 
+	 * @param rank 
+	 */
     public static AnonymousRankMediaBuilder anonymousRank(String entryId, int rank)  {
 		return new AnonymousRankMediaBuilder(entryId, rank);
 	}
@@ -290,8 +410,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Approve the media entry and mark the pending flags (if any) as moderated (this
-	  will make the entry playable)  */
+	/**
+	 * Approve the media entry and mark the pending flags (if any) as moderated (this
+	  will make the entry playable)
+	 * 
+	 * @param entryId 
+	 */
     public static ApproveMediaBuilder approve(String entryId)  {
 		return new ApproveMediaBuilder(entryId);
 	}
@@ -308,7 +432,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Approves media replacement  */
+	/**
+	 * Approves media replacement
+	 * 
+	 * @param entryId Media entry id to replace
+	 */
     public static ApproveReplaceMediaBuilder approveReplace(String entryId)  {
 		return new ApproveReplaceMediaBuilder(entryId);
 	}
@@ -368,9 +496,15 @@ public class MediaService {
 		return bulkUploadAdd(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadEntryData);
 	}
 
-	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
+	/**
+	 * Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
-	  conversion profile was specified, partner's default will be used  */
+	  conversion profile was specified, partner's default will be used
+	 * 
+	 * @param fileData 
+	 * @param bulkUploadData 
+	 * @param bulkUploadEntryData 
+	 */
     public static BulkUploadAddMediaBuilder bulkUploadAdd(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadEntryData bulkUploadEntryData)  {
 		return new BulkUploadAddMediaBuilder(fileData, bulkUploadData, bulkUploadEntryData);
 	}
@@ -387,7 +521,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Cancels media replacement  */
+	/**
+	 * Cancels media replacement
+	 * 
+	 * @param entryId Media entry id to cancel
+	 */
     public static CancelReplaceMediaBuilder cancelReplace(String entryId)  {
 		return new CancelReplaceMediaBuilder(entryId);
 	}
@@ -418,7 +556,13 @@ public class MediaService {
 		return convert(entryId, conversionProfileId, null);
 	}
 
-	/**  Convert entry  */
+	/**
+	 * Convert entry
+	 * 
+	 * @param entryId Media entry id
+	 * @param conversionProfileId 
+	 * @param dynamicConversionAttributes 
+	 */
     public static ConvertMediaBuilder convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
 		return new ConvertMediaBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
 	}
@@ -435,7 +579,11 @@ public class MediaService {
 		return count(null);
 	}
 
-	/**  Count media entries by filter.  */
+	/**
+	 * Count media entries by filter.
+	 * 
+	 * @param filter Media entry filter
+	 */
     public static CountMediaBuilder count(MediaEntryFilter filter)  {
 		return new CountMediaBuilder(filter);
 	}
@@ -452,7 +600,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Delete a media entry.  */
+	/**
+	 * Delete a media entry.
+	 * 
+	 * @param entryId Media entry id to delete
+	 */
     public static DeleteMediaBuilder delete(String entryId)  {
 		return new DeleteMediaBuilder(entryId);
 	}
@@ -465,7 +617,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Flag inappropriate media entry for moderation  */
+	/**
+	 * Flag inappropriate media entry for moderation
+	 * 
+	 * @param moderationFlag 
+	 */
     public static FlagMediaBuilder flag(ModerationFlag moderationFlag)  {
 		return new FlagMediaBuilder(moderationFlag);
 	}
@@ -491,7 +647,12 @@ public class MediaService {
 		return get(entryId, -1);
 	}
 
-	/**  Get media entry by ID.  */
+	/**
+	 * Get media entry by ID.
+	 * 
+	 * @param entryId Media entry id
+	 * @param version Desired version of the data
+	 */
     public static GetMediaBuilder get(String entryId, int version)  {
 		return new GetMediaBuilder(entryId, version);
 	}
@@ -522,7 +683,13 @@ public class MediaService {
 		return getMrss(entryId, extendingItemsArray, null);
 	}
 
-	/**  Get MRSS by entry id      XML will return as an escaped string  */
+	/**
+	 * Get MRSS by entry id      XML will return as an escaped string
+	 * 
+	 * @param entryId Entry id
+	 * @param extendingItemsArray 
+	 * @param features 
+	 */
     public static GetMrssMediaBuilder getMrss(String entryId, List<ExtendingItemMrssParameter> extendingItemsArray, String features)  {
 		return new GetMrssMediaBuilder(entryId, extendingItemsArray, features);
 	}
@@ -539,7 +706,11 @@ public class MediaService {
 		}
 	}
 
-	/**  Get volume map by entry id  */
+	/**
+	 * Get volume map by entry id
+	 * 
+	 * @param entryId Entry id
+	 */
     public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
 		return new GetVolumeMapMediaBuilder(entryId);
 	}
@@ -561,7 +732,12 @@ public class MediaService {
 		return list(filter, null);
 	}
 
-	/**  List media entries by filter with paging support.  */
+	/**
+	 * List media entries by filter with paging support.
+	 * 
+	 * @param filter Media entry filter
+	 * @param pager Pager
+	 */
     public static ListMediaBuilder list(MediaEntryFilter filter, FilterPager pager)  {
 		return new ListMediaBuilder(filter, pager);
 	}
@@ -583,7 +759,12 @@ public class MediaService {
 		return listFlags(entryId, null);
 	}
 
-	/**  List all pending flags for the media entry  */
+	/**
+	 * List all pending flags for the media entry
+	 * 
+	 * @param entryId 
+	 * @param pager 
+	 */
     public static ListFlagsMediaBuilder listFlags(String entryId, FilterPager pager)  {
 		return new ListFlagsMediaBuilder(entryId, pager);
 	}
@@ -600,8 +781,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
-	  will make the entry non playable)  */
+	/**
+	 * Reject the media entry and mark the pending flags (if any) as moderated (this
+	  will make the entry non playable)
+	 * 
+	 * @param entryId 
+	 */
     public static RejectMediaBuilder reject(String entryId)  {
 		return new RejectMediaBuilder(entryId);
 	}
@@ -623,8 +808,13 @@ public class MediaService {
 		}
 	}
 
-	/**  Request a new conversion job, this can be used to convert the media entry to a
-	  different format  */
+	/**
+	 * Request a new conversion job, this can be used to convert the media entry to a
+	  different format
+	 * 
+	 * @param entryId Media entry id
+	 * @param fileFormat Format to convert
+	 */
     public static RequestConversionMediaBuilder requestConversion(String entryId, String fileFormat)  {
 		return new RequestConversionMediaBuilder(entryId, fileFormat);
 	}
@@ -642,7 +832,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Update media entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update media entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Media entry id to update
+	 * @param mediaEntry Media entry metadata to update
+	 */
     public static UpdateMediaBuilder update(String entryId, MediaEntry mediaEntry)  {
 		return new UpdateMediaBuilder(entryId, mediaEntry);
 	}
@@ -674,7 +869,14 @@ public class MediaService {
 		return updateContent(entryId, resource, conversionProfileId, null);
 	}
 
-	/**  Replace content associated with the media entry.  */
+	/**
+	 * Replace content associated with the media entry.
+	 * 
+	 * @param entryId Media entry id to update
+	 * @param resource Resource to be used to replace entry media content
+	 * @param conversionProfileId The conversion profile id to be used on the entry
+	 * @param advancedOptions Additional update content options
+	 */
     public static UpdateContentMediaBuilder updateContent(String entryId, Resource resource, int conversionProfileId, EntryReplacementOptions advancedOptions)  {
 		return new UpdateContentMediaBuilder(entryId, resource, conversionProfileId, advancedOptions);
 	}
@@ -705,8 +907,14 @@ public class MediaService {
 		return updateThumbnail(entryId, timeOffset, Integer.MIN_VALUE);
 	}
 
-	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
-	  params id not specified, source flavor will be used by default  */
+	/**
+	 * Update media entry thumbnail by a specified time offset (In seconds)   If flavor
+	  params id not specified, source flavor will be used by default
+	 * 
+	 * @param entryId Media entry id
+	 * @param timeOffset Time offset (in seconds)
+	 * @param flavorParamsId The flavor params id to be used
+	 */
     public static UpdateThumbnailMediaBuilder updateThumbnail(String entryId, int timeOffset, int flavorParamsId)  {
 		return new UpdateThumbnailMediaBuilder(entryId, timeOffset, flavorParamsId);
 	}
@@ -742,9 +950,16 @@ public class MediaService {
 		return updateThumbnailFromSourceEntry(entryId, sourceEntryId, timeOffset, Integer.MIN_VALUE);
 	}
 
-	/**  Update media entry thumbnail from a different entry by a specified time offset
+	/**
+	 * Update media entry thumbnail from a different entry by a specified time offset
 	  (In seconds)   If flavor params id not specified, source flavor will be used by
-	  default  */
+	  default
+	 * 
+	 * @param entryId Media entry id
+	 * @param sourceEntryId Media entry id
+	 * @param timeOffset Time offset (in seconds)
+	 * @param flavorParamsId The flavor params id to be used
+	 */
     public static UpdateThumbnailFromSourceEntryMediaBuilder updateThumbnailFromSourceEntry(String entryId, String sourceEntryId, int timeOffset, int flavorParamsId)  {
 		return new UpdateThumbnailFromSourceEntryMediaBuilder(entryId, sourceEntryId, timeOffset, flavorParamsId);
 	}
@@ -766,7 +981,12 @@ public class MediaService {
 		}
 	}
 
-	/**  Update entry thumbnail using url  */
+	/**
+	 * Update entry thumbnail using url
+	 * 
+	 * @param entryId Media entry id
+	 * @param url file url
+	 */
     public static UpdateThumbnailFromUrlMediaBuilder updateThumbnailFromUrl(String entryId, String url)  {
 		return new UpdateThumbnailFromUrlMediaBuilder(entryId, url);
 	}
@@ -797,7 +1017,12 @@ public class MediaService {
 		return updateThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Update media entry thumbnail using a raw jpeg file  */
+	/**
+	 * Update media entry thumbnail using a raw jpeg file
+	 * 
+	 * @param entryId Media entry id
+	 * @param fileData Jpeg file data
+	 */
     public static UpdateThumbnailJpegMediaBuilder updateThumbnailJpeg(String entryId, FileHolder fileData)  {
 		return new UpdateThumbnailJpegMediaBuilder(entryId, fileData);
 	}
@@ -823,8 +1048,12 @@ public class MediaService {
 		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Upload a media file to Kaltura, then the file can be used to create a media
-	  entry.  */
+	/**
+	 * Upload a media file to Kaltura, then the file can be used to create a media
+	  entry.
+	 * 
+	 * @param fileData The file data
+	 */
     public static UploadMediaBuilder upload(FileHolder fileData)  {
 		return new UploadMediaBuilder(fileData);
 	}

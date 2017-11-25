@@ -51,13 +51,21 @@ public class ReportInputBaseFilter extends ObjectBase {
 		String toDay();
 	}
 
-	/**  Start date as Unix timestamp (In seconds)  */
+	/**
+	 * Start date as Unix timestamp (In seconds)
+	 */
 	private Integer fromDate;
-	/**  End date as Unix timestamp (In seconds)  */
+	/**
+	 * End date as Unix timestamp (In seconds)
+	 */
 	private Integer toDate;
-	/**  Start day as string (YYYYMMDD)  */
+	/**
+	 * Start day as string (YYYYMMDD)
+	 */
 	private String fromDay;
-	/**  End date as string (YYYYMMDD)  */
+	/**
+	 * End date as string (YYYYMMDD)
+	 */
 	private String toDay;
 
 	// fromDate:

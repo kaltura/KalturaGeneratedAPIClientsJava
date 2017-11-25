@@ -48,9 +48,13 @@ public class WidevineFlavorParamsOutput extends FlavorParamsOutput {
 		String widevineDistributionEndDate();
 	}
 
-	/**  License distribution window start date  */
+	/**
+	 * License distribution window start date
+	 */
 	private Integer widevineDistributionStartDate;
-	/**  License distribution window end date  */
+	/**
+	 * License distribution window end date
+	 */
 	private Integer widevineDistributionEndDate;
 
 	// widevineDistributionStartDate:

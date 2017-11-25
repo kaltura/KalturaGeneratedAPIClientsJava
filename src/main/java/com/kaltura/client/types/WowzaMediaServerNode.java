@@ -52,17 +52,29 @@ public class WowzaMediaServerNode extends MediaServerNode {
 		String liveServiceInternalDomain();
 	}
 
-	/**  Wowza Media server app prefix  */
+	/**
+	 * Wowza Media server app prefix
+	 */
 	private String appPrefix;
-	/**  Wowza Media server transcoder configuration overide  */
+	/**
+	 * Wowza Media server transcoder configuration overide
+	 */
 	private String transcoder;
-	/**  Wowza Media server GPU index id  */
+	/**
+	 * Wowza Media server GPU index id
+	 */
 	private Integer GPUID;
-	/**  Live service port  */
+	/**
+	 * Live service port
+	 */
 	private Integer liveServicePort;
-	/**  Live service protocol  */
+	/**
+	 * Live service protocol
+	 */
 	private String liveServiceProtocol;
-	/**  Wowza media server live service internal domain  */
+	/**
+	 * Wowza media server live service internal domain
+	 */
 	private String liveServiceInternalDomain;
 
 	// appPrefix:

@@ -45,50 +45,42 @@ public abstract class RequestBuilderData {
 	}
 	
 	/**
-	 * @param clientTag
+	 * @param clientTag 
 	 */
 	public void setClientTag(String clientTag){
 		params.add("clientTag", clientTag);
 	}
 	
 	/**
-	 * @param apiVersion
+	 * @param apiVersion 
 	 */
 	public void setApiVersion(String apiVersion){
 		params.add("apiVersion", apiVersion);
 	}
 	
 	/**
-	 * Impersonated partner id
-	 * 
-	 * @param partnerId
+	 * @param partnerId Impersonated partner id
 	 */
 	public void setPartnerId(Integer partnerId){
 		params.add("partnerId", partnerId);
 	}
 	
 	/**
-	 * Kaltura API session
-	 * 
-	 * @param ks
+	 * @param ks Kaltura API session
 	 */
 	public void setKs(String ks){
 		params.add("ks", ks);
 	}
 	
 	/**
-	 * Kaltura API session
-	 * 
-	 * @param sessionId
+	 * @param sessionId Kaltura API session
 	 */
 	public void setSessionId(String sessionId){
 		params.add("ks", sessionId);
 	}
 	
 	/**
-	 * Response profile - this attribute will be automatically unset after every API call.
-	 * 
-	 * @param responseProfile
+	 * @param responseProfile Response profile - this attribute will be automatically unset after every API call.
 	 */
 	public void setResponseProfile(BaseResponseProfile responseProfile){
 		params.add("responseProfile", responseProfile);

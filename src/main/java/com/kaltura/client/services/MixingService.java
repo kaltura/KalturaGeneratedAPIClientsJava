@@ -44,10 +44,30 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A Mix is an XML unique format invented by Kaltura, it allows the user to create
+/**
+ * A Mix is an XML unique format invented by Kaltura, it allows the user to create
   a mix of videos and images, in and out points, transitions, text overlays,
   soundtrack, effects and much more...  Mixing service lets you create a new mix,
-  manage its metadata and make basic manipulations.  */
+  manage its metadata and make basic manipulations.
+ * 
+ * @param mixEntry Mix entry metadata
+ * @param entryId 
+ * @param rank 
+ * @param mixEntryId Mix entry to append to its timeline
+ * @param mediaEntryId Media entry to append to the timeline
+ * @param entryId Mix entry id to clone
+ * @param filter Media entry filter
+ * @param entryId Mix entry id to delete
+ * @param entryId Mix entry id
+ * @param version Desired version of the data
+ * @param mediaEntryId 
+ * @param mixId 
+ * @param version Desired version to get the data from
+ * @param filter Mix entry filter
+ * @param pager Pager
+ * @param entryId Mix entry id to update
+ * @param mixEntry Mix entry metadata to update
+ */
 public class MixingService {
 	
 	public static class AddMixingBuilder extends RequestBuilder<MixEntry, MixEntry.Tokenizer, AddMixingBuilder> {
@@ -58,8 +78,12 @@ public class MixingService {
 		}
 	}
 
-	/**  Adds a new mix.   If the dataContent is null, a default timeline will be
-	  created.  */
+	/**
+	 * Adds a new mix.   If the dataContent is null, a default timeline will be
+	  created.
+	 * 
+	 * @param mixEntry Mix entry metadata
+	 */
     public static AddMixingBuilder add(MixEntry mixEntry)  {
 		return new AddMixingBuilder(mixEntry);
 	}
@@ -81,7 +105,12 @@ public class MixingService {
 		}
 	}
 
-	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
+	/**
+	 * Anonymously rank a mix entry, no validation is done on duplicate rankings
+	 * 
+	 * @param entryId 
+	 * @param rank 
+	 */
     public static AnonymousRankMixingBuilder anonymousRank(String entryId, int rank)  {
 		return new AnonymousRankMixingBuilder(entryId, rank);
 	}
@@ -103,8 +132,13 @@ public class MixingService {
 		}
 	}
 
-	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
-	  timeline as a new version.  */
+	/**
+	 * Appends a media entry to a the end of the mix timeline, this will save the mix
+	  timeline as a new version.
+	 * 
+	 * @param mixEntryId Mix entry to append to its timeline
+	 * @param mediaEntryId Media entry to append to the timeline
+	 */
     public static AppendMediaEntryMixingBuilder appendMediaEntry(String mixEntryId, String mediaEntryId)  {
 		return new AppendMediaEntryMixingBuilder(mixEntryId, mediaEntryId);
 	}
@@ -121,7 +155,11 @@ public class MixingService {
 		}
 	}
 
-	/**  Clones an existing mix.  */
+	/**
+	 * Clones an existing mix.
+	 * 
+	 * @param entryId Mix entry id to clone
+	 */
     public static CloneMixingBuilder clone(String entryId)  {
 		return new CloneMixingBuilder(entryId);
 	}
@@ -138,7 +176,11 @@ public class MixingService {
 		return count(null);
 	}
 
-	/**  Count mix entries by filter.  */
+	/**
+	 * Count mix entries by filter.
+	 * 
+	 * @param filter Media entry filter
+	 */
     public static CountMixingBuilder count(MediaEntryFilter filter)  {
 		return new CountMixingBuilder(filter);
 	}
@@ -155,7 +197,11 @@ public class MixingService {
 		}
 	}
 
-	/**  Delete a mix entry.  */
+	/**
+	 * Delete a mix entry.
+	 * 
+	 * @param entryId Mix entry id to delete
+	 */
     public static DeleteMixingBuilder delete(String entryId)  {
 		return new DeleteMixingBuilder(entryId);
 	}
@@ -181,7 +227,12 @@ public class MixingService {
 		return get(entryId, -1);
 	}
 
-	/**  Get mix entry by id.  */
+	/**
+	 * Get mix entry by id.
+	 * 
+	 * @param entryId Mix entry id
+	 * @param version Desired version of the data
+	 */
     public static GetMixingBuilder get(String entryId, int version)  {
 		return new GetMixingBuilder(entryId, version);
 	}
@@ -198,7 +249,11 @@ public class MixingService {
 		}
 	}
 
-	/**  Get the mixes in which the media entry is included  */
+	/**
+	 * Get the mixes in which the media entry is included
+	 * 
+	 * @param mediaEntryId 
+	 */
     public static GetMixesByMediaIdMixingBuilder getMixesByMediaId(String mediaEntryId)  {
 		return new GetMixesByMediaIdMixingBuilder(mediaEntryId);
 	}
@@ -224,7 +279,12 @@ public class MixingService {
 		return getReadyMediaEntries(mixId, -1);
 	}
 
-	/**  Get all ready media entries that exist in the given mix id  */
+	/**
+	 * Get all ready media entries that exist in the given mix id
+	 * 
+	 * @param mixId 
+	 * @param version Desired version to get the data from
+	 */
     public static GetReadyMediaEntriesMixingBuilder getReadyMediaEntries(String mixId, int version)  {
 		return new GetReadyMediaEntriesMixingBuilder(mixId, version);
 	}
@@ -246,8 +306,13 @@ public class MixingService {
 		return list(filter, null);
 	}
 
-	/**  List entries by filter with paging support.   Return parameter is an array of
-	  mix entries.  */
+	/**
+	 * List entries by filter with paging support.   Return parameter is an array of
+	  mix entries.
+	 * 
+	 * @param filter Mix entry filter
+	 * @param pager Pager
+	 */
     public static ListMixingBuilder list(MixEntryFilter filter, FilterPager pager)  {
 		return new ListMixingBuilder(filter, pager);
 	}
@@ -265,7 +330,12 @@ public class MixingService {
 		}
 	}
 
-	/**  Update mix entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update mix entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Mix entry id to update
+	 * @param mixEntry Mix entry metadata to update
+	 */
     public static UpdateMixingBuilder update(String entryId, MixEntry mixEntry)  {
 		return new UpdateMixingBuilder(entryId, mixEntry);
 	}

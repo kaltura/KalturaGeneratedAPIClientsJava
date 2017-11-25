@@ -40,7 +40,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  PermissionItem service lets you create and manage permission items  */
+/**
+ * PermissionItem service lets you create and manage permission items
+ * 
+ * @param permissionItem The new permission item
+ * @param permissionItemId The permission item's unique identifier
+ * @param permissionItemId The permission item's unique identifier
+ * @param filter A filter used to exclude specific types of permission items
+ * @param pager A limit for the number of records to display on a page
+ * @param permissionItemId The permission item's unique identifier
+ * @param permissionItem Id The permission item's unique identifier
+ */
 public class PermissionItemService {
 	
 	public static class AddPermissionItemBuilder extends RequestBuilder<PermissionItem, PermissionItem.Tokenizer, AddPermissionItemBuilder> {
@@ -51,8 +61,12 @@ public class PermissionItemService {
 		}
 	}
 
-	/**  Adds a new permission item object to the account.   This action is available
-	  only to Kaltura system administrators.  */
+	/**
+	 * Adds a new permission item object to the account.   This action is available
+	  only to Kaltura system administrators.
+	 * 
+	 * @param permissionItem The new permission item
+	 */
     public static AddPermissionItemBuilder add(PermissionItem permissionItem)  {
 		return new AddPermissionItemBuilder(permissionItem);
 	}
@@ -69,8 +83,12 @@ public class PermissionItemService {
 		}
 	}
 
-	/**  Deletes an existing permission item object.   This action is available only to
-	  Kaltura system administrators.  */
+	/**
+	 * Deletes an existing permission item object.   This action is available only to
+	  Kaltura system administrators.
+	 * 
+	 * @param permissionItemId The permission item's unique identifier
+	 */
     public static DeletePermissionItemBuilder delete(int permissionItemId)  {
 		return new DeletePermissionItemBuilder(permissionItemId);
 	}
@@ -87,7 +105,11 @@ public class PermissionItemService {
 		}
 	}
 
-	/**  Retrieves a permission item object using its ID.  */
+	/**
+	 * Retrieves a permission item object using its ID.
+	 * 
+	 * @param permissionItemId The permission item's unique identifier
+	 */
     public static GetPermissionItemBuilder get(int permissionItemId)  {
 		return new GetPermissionItemBuilder(permissionItemId);
 	}
@@ -109,7 +131,12 @@ public class PermissionItemService {
 		return list(filter, null);
 	}
 
-	/**  Lists permission item objects that are associated with an account.  */
+	/**
+	 * Lists permission item objects that are associated with an account.
+	 * 
+	 * @param filter A filter used to exclude specific types of permission items
+	 * @param pager A limit for the number of records to display on a page
+	 */
     public static ListPermissionItemBuilder list(PermissionItemFilter filter, FilterPager pager)  {
 		return new ListPermissionItemBuilder(filter, pager);
 	}
@@ -127,8 +154,13 @@ public class PermissionItemService {
 		}
 	}
 
-	/**  Updates an existing permission item object.   This action is available only to
-	  Kaltura system administrators.  */
+	/**
+	 * Updates an existing permission item object.   This action is available only to
+	  Kaltura system administrators.
+	 * 
+	 * @param permissionItemId The permission item's unique identifier
+	 * @param permissionItem Id The permission item's unique identifier
+	 */
     public static UpdatePermissionItemBuilder update(int permissionItemId, PermissionItem permissionItem)  {
 		return new UpdatePermissionItemBuilder(permissionItemId, permissionItem);
 	}

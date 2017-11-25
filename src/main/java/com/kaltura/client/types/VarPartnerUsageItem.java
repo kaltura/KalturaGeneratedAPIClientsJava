@@ -70,53 +70,97 @@ public class VarPartnerUsageItem extends ObjectBase {
 		String dateId();
 	}
 
-	/**  Partner ID  */
+	/**
+	 * Partner ID
+	 */
 	private Integer partnerId;
-	/**  Partner name  */
+	/**
+	 * Partner name
+	 */
 	private String partnerName;
-	/**  Partner status  */
+	/**
+	 * Partner status
+	 */
 	private PartnerStatus partnerStatus;
-	/**  Partner package  */
+	/**
+	 * Partner package
+	 */
 	private Integer partnerPackage;
-	/**  Partner creation date (Unix timestamp)  */
+	/**
+	 * Partner creation date (Unix timestamp)
+	 */
 	private Integer partnerCreatedAt;
-	/**  Number of player loads in the specific date range  */
+	/**
+	 * Number of player loads in the specific date range
+	 */
 	private Integer views;
-	/**  Number of plays in the specific date range  */
+	/**
+	 * Number of plays in the specific date range
+	 */
 	private Integer plays;
-	/**  Number of new entries created during specific date range  */
+	/**
+	 * Number of new entries created during specific date range
+	 */
 	private Integer entriesCount;
-	/**  Total number of entries  */
+	/**
+	 * Total number of entries
+	 */
 	private Integer totalEntriesCount;
-	/**  Number of new video entries created during specific date range  */
+	/**
+	 * Number of new video entries created during specific date range
+	 */
 	private Integer videoEntriesCount;
-	/**  Number of new image entries created during specific date range  */
+	/**
+	 * Number of new image entries created during specific date range
+	 */
 	private Integer imageEntriesCount;
-	/**  Number of new audio entries created during specific date range  */
+	/**
+	 * Number of new audio entries created during specific date range
+	 */
 	private Integer audioEntriesCount;
-	/**  Number of new mix entries created during specific date range  */
+	/**
+	 * Number of new mix entries created during specific date range
+	 */
 	private Integer mixEntriesCount;
-	/**  The total bandwidth usage during the given date range (in MB)  */
+	/**
+	 * The total bandwidth usage during the given date range (in MB)
+	 */
 	private Double bandwidth;
-	/**  The total storage consumption (in MB)  */
+	/**
+	 * The total storage consumption (in MB)
+	 */
 	private Double totalStorage;
-	/**  The added storage consumption (new uploads) during the given date range (in MB)  */
+	/**
+	 * The added storage consumption (new uploads) during the given date range (in MB)
+	 */
 	private Double storage;
-	/**  The deleted storage consumption (new uploads) during the given date range (in
-	  MB)  */
+	/**
+	 * The deleted storage consumption (new uploads) during the given date range (in
+	  MB)
+	 */
 	private Double deletedStorage;
-	/**  The peak amount of storage consumption during the given date range for the
-	  specific publisher  */
+	/**
+	 * The peak amount of storage consumption during the given date range for the
+	  specific publisher
+	 */
 	private Double peakStorage;
-	/**  The average amount of storage consumption during the given date range for the
-	  specific publisher  */
+	/**
+	 * The average amount of storage consumption during the given date range for the
+	  specific publisher
+	 */
 	private Double avgStorage;
-	/**  The combined amount of bandwidth and storage consumed during the given date
-	  range for the specific publisher  */
+	/**
+	 * The combined amount of bandwidth and storage consumed during the given date
+	  range for the specific publisher
+	 */
 	private Double combinedStorageBandwidth;
-	/**  Amount of transcoding usage in MB  */
+	/**
+	 * Amount of transcoding usage in MB
+	 */
 	private Double transcodingUsage;
-	/**  TGhe date at which the report was taken - Unix Timestamp  */
+	/**
+	 * TGhe date at which the report was taken - Unix Timestamp
+	 */
 	private String dateId;
 
 	// partnerId:

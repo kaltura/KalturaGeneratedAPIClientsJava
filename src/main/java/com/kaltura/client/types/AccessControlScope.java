@@ -56,20 +56,34 @@ public class AccessControlScope extends ObjectBase {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> hashes();
 	}
 
-	/**  URL to be used to test domain conditions.  */
+	/**
+	 * URL to be used to test domain conditions.
+	 */
 	private String referrer;
-	/**  IP to be used to test geographic location conditions.  */
+	/**
+	 * IP to be used to test geographic location conditions.
+	 */
 	private String ip;
-	/**  Kaltura session to be used to test session and user conditions.  */
+	/**
+	 * Kaltura session to be used to test session and user conditions.
+	 */
 	private String ks;
-	/**  Browser or client application to be used to test agent conditions.  */
+	/**
+	 * Browser or client application to be used to test agent conditions.
+	 */
 	private String userAgent;
-	/**  Unix timestamp (In seconds) to be used to test entry scheduling, keep null to
-	  use now.  */
+	/**
+	 * Unix timestamp (In seconds) to be used to test entry scheduling, keep null to
+	  use now.
+	 */
 	private Integer time;
-	/**  Indicates what contexts should be tested. No contexts means any context.  */
+	/**
+	 * Indicates what contexts should be tested. No contexts means any context.
+	 */
 	private List<AccessControlContextTypeHolder> contexts;
-	/**  Array of hashes to pass to the access control profile scope  */
+	/**
+	 * Array of hashes to pass to the access control profile scope
+	 */
 	private List<KeyValue> hashes;
 
 	// referrer:

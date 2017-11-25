@@ -64,32 +64,54 @@ public class LiveStreamEntry extends LiveEntry {
 		String primaryServerNodeId();
 	}
 
-	/**  The stream id as provided by the provider  */
+	/**
+	 * The stream id as provided by the provider
+	 */
 	private String streamRemoteId;
-	/**  The backup stream id as provided by the provider  */
+	/**
+	 * The backup stream id as provided by the provider
+	 */
 	private String streamRemoteBackupId;
-	/**  Array of supported bitrates  */
+	/**
+	 * Array of supported bitrates
+	 */
 	private List<LiveStreamBitrate> bitrates;
 	private String primaryBroadcastingUrl;
 	private String secondaryBroadcastingUrl;
 	private String primaryRtspBroadcastingUrl;
 	private String secondaryRtspBroadcastingUrl;
 	private String streamName;
-	/**  The stream url  */
+	/**
+	 * The stream url
+	 */
 	private String streamUrl;
-	/**  HLS URL - URL for live stream playback on mobile device  */
+	/**
+	 * HLS URL - URL for live stream playback on mobile device
+	 */
 	private String hlsStreamUrl;
-	/**  URL Manager to handle the live stream URL (for instance, add token)  */
+	/**
+	 * URL Manager to handle the live stream URL (for instance, add token)
+	 */
 	private String urlManager;
-	/**  The broadcast primary ip  */
+	/**
+	 * The broadcast primary ip
+	 */
 	private String encodingIP1;
-	/**  The broadcast secondary ip  */
+	/**
+	 * The broadcast secondary ip
+	 */
 	private String encodingIP2;
-	/**  The broadcast password  */
+	/**
+	 * The broadcast password
+	 */
 	private String streamPassword;
-	/**  The broadcast username  */
+	/**
+	 * The broadcast username
+	 */
 	private String streamUsername;
-	/**  The Streams primary server node id  */
+	/**
+	 * The Streams primary server node id
+	 */
 	private Integer primaryServerNodeId;
 
 	// streamRemoteId:

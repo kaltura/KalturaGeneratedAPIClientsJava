@@ -54,17 +54,29 @@ public class ConcatJobData extends JobData {
 		String concatenatedDuration();
 	}
 
-	/**  Source files to be concatenated  */
+	/**
+	 * Source files to be concatenated
+	 */
 	private List<StringHolder> srcFiles;
-	/**  Output file  */
+	/**
+	 * Output file
+	 */
 	private String destFilePath;
-	/**  Flavor asset to be ingested with the output  */
+	/**
+	 * Flavor asset to be ingested with the output
+	 */
 	private String flavorAssetId;
-	/**  Clipping offset in seconds  */
+	/**
+	 * Clipping offset in seconds
+	 */
 	private Double offset;
-	/**  Clipping duration in seconds  */
+	/**
+	 * Clipping duration in seconds
+	 */
 	private Double duration;
-	/**  duration of the concated video  */
+	/**
+	 * duration of the concated video
+	 */
 	private Double concatenatedDuration;
 
 	// srcFiles:

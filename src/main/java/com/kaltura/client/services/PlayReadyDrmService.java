@@ -48,7 +48,9 @@ public class PlayReadyDrmService {
 		}
 	}
 
-	/**  Generate key id and content key for PlayReady encryption  */
+	/**
+	 * Generate key id and content key for PlayReady encryption
+	 */
     public static GenerateKeyPlayReadyDrmBuilder generateKey()  {
 		return new GenerateKeyPlayReadyDrmBuilder();
 	}
@@ -65,7 +67,11 @@ public class PlayReadyDrmService {
 		}
 	}
 
-	/**  Get content keys for input key ids  */
+	/**
+	 * Get content keys for input key ids
+	 * 
+	 * @param keyIds - comma separated key id's
+	 */
     public static GetContentKeysPlayReadyDrmBuilder getContentKeys(String keyIds)  {
 		return new GetContentKeysPlayReadyDrmBuilder(keyIds);
 	}
@@ -91,7 +97,12 @@ public class PlayReadyDrmService {
 		return getEntryContentKey(entryId, false);
 	}
 
-	/**  Get content key and key id for the given entry  */
+	/**
+	 * Get content key and key id for the given entry
+	 * 
+	 * @param entryId 
+	 * @param createIfMissing 
+	 */
     public static GetEntryContentKeyPlayReadyDrmBuilder getEntryContentKey(String entryId, boolean createIfMissing)  {
 		return new GetEntryContentKeyPlayReadyDrmBuilder(entryId, createIfMissing);
 	}
@@ -136,7 +147,15 @@ public class PlayReadyDrmService {
 		return getLicenseDetails(keyId, deviceId, deviceType, entryId, null);
 	}
 
-	/**  Get Play Ready policy and dates for license creation  */
+	/**
+	 * Get Play Ready policy and dates for license creation
+	 * 
+	 * @param keyId 
+	 * @param deviceId 
+	 * @param deviceType 
+	 * @param entryId 
+	 * @param referrer 64base encoded
+	 */
     public static GetLicenseDetailsPlayReadyDrmBuilder getLicenseDetails(String keyId, String deviceId, int deviceType, String entryId, String referrer)  {
 		return new GetLicenseDetailsPlayReadyDrmBuilder(keyId, deviceId, deviceType, entryId, referrer);
 	}

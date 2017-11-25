@@ -50,11 +50,17 @@ public class Like extends ObjectBase {
 		String createdAt();
 	}
 
-	/**  The id of the entry that the like belongs to  */
+	/**
+	 * The id of the entry that the like belongs to
+	 */
 	private String entryId;
-	/**  The id of user that the like belongs to  */
+	/**
+	 * The id of user that the like belongs to
+	 */
 	private String userId;
-	/**  The date of the like's creation  */
+	/**
+	 * The date of the like's creation
+	 */
 	private Integer createdAt;
 
 	// entryId:

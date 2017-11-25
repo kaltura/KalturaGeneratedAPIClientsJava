@@ -113,7 +113,9 @@ public class Partner extends ObjectBase {
 	private String notificationUrl;
 	private Integer appearInSearch;
 	private Integer createdAt;
-	/**  deprecated - lastName and firstName replaces this field  */
+	/**
+	 * deprecated - lastName and firstName replaces this field
+	 */
 	private String adminName;
 	private String adminEmail;
 	private String description;
@@ -139,13 +141,21 @@ public class Partner extends ObjectBase {
 	private Integer allowMultiNotification;
 	private Integer adminLoginUsersQuota;
 	private String adminUserId;
-	/**  firstName and lastName replace the old (deprecated) adminName  */
+	/**
+	 * firstName and lastName replace the old (deprecated) adminName
+	 */
 	private String firstName;
-	/**  lastName and firstName replace the old (deprecated) adminName  */
+	/**
+	 * lastName and firstName replace the old (deprecated) adminName
+	 */
 	private String lastName;
-	/**  country code (2char) - this field is optional  */
+	/**
+	 * country code (2char) - this field is optional
+	 */
 	private String country;
-	/**  state code (2char) - this field is optional  */
+	/**
+	 * state code (2char) - this field is optional
+	 */
 	private String state;
 	private List<KeyValue> additionalParams;
 	private Integer publishersQuota;

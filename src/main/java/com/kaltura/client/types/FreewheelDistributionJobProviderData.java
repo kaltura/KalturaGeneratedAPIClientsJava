@@ -50,9 +50,13 @@ public class FreewheelDistributionJobProviderData extends DistributionJobProvide
 		String thumbAssetFilePath();
 	}
 
-	/**  Demonstrate passing array of paths to the job  */
+	/**
+	 * Demonstrate passing array of paths to the job
+	 */
 	private List<FreewheelDistributionAssetPath> videoAssetFilePaths;
-	/**  Demonstrate passing single path to the job  */
+	/**
+	 * Demonstrate passing single path to the job
+	 */
 	private String thumbAssetFilePath;
 
 	// videoAssetFilePaths:

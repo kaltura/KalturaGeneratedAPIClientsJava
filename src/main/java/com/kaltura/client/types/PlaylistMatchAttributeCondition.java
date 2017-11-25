@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaPlaylist attributes. Use
-  KalturaPlaylistMatchAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaPlaylist attributes. Use
+  KalturaPlaylistMatchAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(PlaylistMatchAttributeCondition.Tokenizer.class)
 public class PlaylistMatchAttributeCondition extends SearchMatchAttributeCondition {

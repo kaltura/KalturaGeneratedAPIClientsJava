@@ -73,40 +73,68 @@ public class DeliveryProfile extends ObjectBase {
 		AssetFilter.Tokenizer supplementaryAssetsFilter();
 	}
 
-	/**  The id of the Delivery  */
+	/**
+	 * The id of the Delivery
+	 */
 	private Integer id;
 	private Integer partnerId;
-	/**  The name of the Delivery  */
+	/**
+	 * The name of the Delivery
+	 */
 	private String name;
-	/**  Delivery type  */
+	/**
+	 * Delivery type
+	 */
 	private DeliveryProfileType type;
-	/**  System name of the delivery  */
+	/**
+	 * System name of the delivery
+	 */
 	private String systemName;
-	/**  The description of the Delivery  */
+	/**
+	 * The description of the Delivery
+	 */
 	private String description;
-	/**  Creation time as Unix timestamp (In seconds)  */
+	/**
+	 * Creation time as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Update time as Unix timestamp (In seconds)  */
+	/**
+	 * Update time as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private PlaybackProtocol streamerType;
 	private String url;
-	/**  the host part of the url  */
+	/**
+	 * the host part of the url
+	 */
 	private String hostName;
 	private DeliveryStatus status;
 	private UrlRecognizer recognizer;
 	private UrlTokenizer tokenizer;
-	/**  True if this is the systemwide default for the protocol  */
+	/**
+	 * True if this is the systemwide default for the protocol
+	 */
 	private Boolean isDefault;
-	/**  the object from which this object was cloned (or 0)  */
+	/**
+	 * the object from which this object was cloned (or 0)
+	 */
 	private Integer parentId;
-	/**  Comma separated list of supported media protocols. f.i. rtmpe  */
+	/**
+	 * Comma separated list of supported media protocols. f.i. rtmpe
+	 */
 	private String mediaProtocols;
-	/**  priority used for ordering similar delivery profiles  */
+	/**
+	 * priority used for ordering similar delivery profiles
+	 */
 	private Integer priority;
-	/**  Extra query string parameters that should be added to the url  */
+	/**
+	 * Extra query string parameters that should be added to the url
+	 */
 	private String extraParams;
-	/**  A filter that can be used to include additional assets in the URL (e.g.
-	  captions)  */
+	/**
+	 * A filter that can be used to include additional assets in the URL (e.g.
+	  captions)
+	 */
 	private AssetFilter supplementaryAssetsFilter;
 
 	// id:

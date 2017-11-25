@@ -51,13 +51,21 @@ public class ThumbAsset extends Asset {
 		String status();
 	}
 
-	/**  The Flavor Params used to create this Flavor Asset  */
+	/**
+	 * The Flavor Params used to create this Flavor Asset
+	 */
 	private Integer thumbParamsId;
-	/**  The width of the Flavor Asset  */
+	/**
+	 * The width of the Flavor Asset
+	 */
 	private Integer width;
-	/**  The height of the Flavor Asset  */
+	/**
+	 * The height of the Flavor Asset
+	 */
 	private Integer height;
-	/**  The status of the asset  */
+	/**
+	 * The status of the asset
+	 */
 	private ThumbAssetStatus status;
 
 	// thumbParamsId:

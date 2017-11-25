@@ -47,8 +47,24 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  The ScheduleEvent service enables you to create and manage (update, delete,
-  retrieve, etc.) scheduled recording events.  */
+/**
+ * The ScheduleEvent service enables you to create and manage (update, delete,
+  retrieve, etc.) scheduled recording events.
+ * 
+ * @param scheduleEvent 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param scheduleEventId 
+ * @param scheduleEventId 
+ * @param scheduleEventId 
+ * @param resourceIds comma separated
+ * @param scheduleEvent 
+ * @param scheduleEventIdToIgnore 
+ * @param filter 
+ * @param pager 
+ * @param scheduleEventId 
+ * @param scheduleEvent Id
+ */
 public class ScheduleEventService {
 	
 	public static class AddScheduleEventBuilder extends RequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, AddScheduleEventBuilder> {
@@ -59,7 +75,11 @@ public class ScheduleEventService {
 		}
 	}
 
-	/**  Allows you to add a new KalturaScheduleEvent object  */
+	/**
+	 * Allows you to add a new KalturaScheduleEvent object
+	 * 
+	 * @param scheduleEvent 
+	 */
     public static AddScheduleEventBuilder add(ScheduleEvent scheduleEvent)  {
 		return new AddScheduleEventBuilder(scheduleEvent);
 	}
@@ -102,7 +122,12 @@ public class ScheduleEventService {
 		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData);
 	}
 
-	/**  Add new bulk upload batch job  */
+	/**
+	 * Add new bulk upload batch job
+	 * 
+	 * @param fileData 
+	 * @param bulkUploadData 
+	 */
     public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileHolder fileData, BulkUploadICalJobData bulkUploadData)  {
 		return new AddFromBulkUploadScheduleEventBuilder(fileData, bulkUploadData);
 	}
@@ -119,7 +144,11 @@ public class ScheduleEventService {
 		}
 	}
 
-	/**  Mark the KalturaScheduleEvent object as cancelled  */
+	/**
+	 * Mark the KalturaScheduleEvent object as cancelled
+	 * 
+	 * @param scheduleEventId 
+	 */
     public static CancelScheduleEventBuilder cancel(int scheduleEventId)  {
 		return new CancelScheduleEventBuilder(scheduleEventId);
 	}
@@ -136,7 +165,11 @@ public class ScheduleEventService {
 		}
 	}
 
-	/**  Mark the KalturaScheduleEvent object as deleted  */
+	/**
+	 * Mark the KalturaScheduleEvent object as deleted
+	 * 
+	 * @param scheduleEventId 
+	 */
     public static DeleteScheduleEventBuilder delete(int scheduleEventId)  {
 		return new DeleteScheduleEventBuilder(scheduleEventId);
 	}
@@ -153,7 +186,11 @@ public class ScheduleEventService {
 		}
 	}
 
-	/**  Retrieve a KalturaScheduleEvent object by ID  */
+	/**
+	 * Retrieve a KalturaScheduleEvent object by ID
+	 * 
+	 * @param scheduleEventId 
+	 */
     public static GetScheduleEventBuilder get(int scheduleEventId)  {
 		return new GetScheduleEventBuilder(scheduleEventId);
 	}
@@ -180,7 +217,13 @@ public class ScheduleEventService {
 		return getConflicts(resourceIds, scheduleEvent, null);
 	}
 
-	/**  List conflicting events for resourcesIds by event's dates  */
+	/**
+	 * List conflicting events for resourcesIds by event's dates
+	 * 
+	 * @param resourceIds comma separated
+	 * @param scheduleEvent 
+	 * @param scheduleEventIdToIgnore 
+	 */
     public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore)  {
 		return new GetConflictsScheduleEventBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore);
 	}
@@ -202,7 +245,12 @@ public class ScheduleEventService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaScheduleEvent objects  */
+	/**
+	 * List KalturaScheduleEvent objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListScheduleEventBuilder list(ScheduleEventFilter filter, FilterPager pager)  {
 		return new ListScheduleEventBuilder(filter, pager);
 	}
@@ -220,7 +268,12 @@ public class ScheduleEventService {
 		}
 	}
 
-	/**  Update an existing KalturaScheduleEvent object  */
+	/**
+	 * Update an existing KalturaScheduleEvent object
+	 * 
+	 * @param scheduleEventId 
+	 * @param scheduleEvent Id
+	 */
     public static UpdateScheduleEventBuilder update(int scheduleEventId, ScheduleEvent scheduleEvent)  {
 		return new UpdateScheduleEventBuilder(scheduleEventId, scheduleEvent);
 	}

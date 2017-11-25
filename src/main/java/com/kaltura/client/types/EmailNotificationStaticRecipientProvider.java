@@ -41,7 +41,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  API class for recipient provider containing a static list of email recipients.  */
+/**
+ * API class for recipient provider containing a static list of email recipients.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationStaticRecipientProvider.Tokenizer.class)
 public class EmailNotificationStaticRecipientProvider extends EmailNotificationRecipientProvider {
@@ -50,7 +52,9 @@ public class EmailNotificationStaticRecipientProvider extends EmailNotificationR
 		RequestBuilder.ListTokenizer<EmailNotificationRecipient.Tokenizer> emailRecipients();
 	}
 
-	/**  Email to emails and names  */
+	/**
+	 * Email to emails and names
+	 */
 	private List<EmailNotificationRecipient> emailRecipients;
 
 	// emailRecipients:

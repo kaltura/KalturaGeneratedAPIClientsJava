@@ -49,7 +49,32 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage CategoryUser - membership of a user in a category  */
+/**
+ * Add &amp; Manage CategoryUser - membership of a user in a category
+ * 
+ * @param categoryId 
+ * @param userId 
+ * @param categoryUser 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadCategoryUserData 
+ * @param categoryId 
+ * @param categoryId 
+ * @param userId 
+ * @param categoryId 
+ * @param userId 
+ * @param categoryId 
+ * @param userId 
+ * @param userId 
+ * @param categoryId 
+ * @param shouldUpdate 
+ * @param filter 
+ * @param pager 
+ * @param categoryId 
+ * @param userId 
+ * @param categoryUser 
+ * @param override - to override manual changes
+ */
 public class CategoryUserService {
 	
 	public static class ActivateCategoryUserBuilder extends RequestBuilder<CategoryUser, CategoryUser.Tokenizer, ActivateCategoryUserBuilder> {
@@ -69,7 +94,12 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  activate CategoryUser  */
+	/**
+	 * activate CategoryUser
+	 * 
+	 * @param categoryId 
+	 * @param userId 
+	 */
     public static ActivateCategoryUserBuilder activate(int categoryId, String userId)  {
 		return new ActivateCategoryUserBuilder(categoryId, userId);
 	}
@@ -82,7 +112,11 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  Add new CategoryUser  */
+	/**
+	 * Add new CategoryUser
+	 * 
+	 * @param categoryUser 
+	 */
     public static AddCategoryUserBuilder add(CategoryUser categoryUser)  {
 		return new AddCategoryUserBuilder(categoryUser);
 	}
@@ -158,7 +192,11 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  Copy all memeber from parent category  */
+	/**
+	 * Copy all memeber from parent category
+	 * 
+	 * @param categoryId 
+	 */
     public static CopyFromCategoryCategoryUserBuilder copyFromCategory(int categoryId)  {
 		return new CopyFromCategoryCategoryUserBuilder(categoryId);
 	}
@@ -180,7 +218,12 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  reject CategoryUser  */
+	/**
+	 * reject CategoryUser
+	 * 
+	 * @param categoryId 
+	 * @param userId 
+	 */
     public static DeactivateCategoryUserBuilder deactivate(int categoryId, String userId)  {
 		return new DeactivateCategoryUserBuilder(categoryId, userId);
 	}
@@ -202,7 +245,12 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  Delete a CategoryUser  */
+	/**
+	 * Delete a CategoryUser
+	 * 
+	 * @param categoryId 
+	 * @param userId 
+	 */
     public static DeleteCategoryUserBuilder delete(int categoryId, String userId)  {
 		return new DeleteCategoryUserBuilder(categoryId, userId);
 	}
@@ -224,7 +272,12 @@ public class CategoryUserService {
 		}
 	}
 
-	/**  Get CategoryUser by id  */
+	/**
+	 * Get CategoryUser by id
+	 * 
+	 * @param categoryId 
+	 * @param userId 
+	 */
     public static GetCategoryUserBuilder get(int categoryId, String userId)  {
 		return new GetCategoryUserBuilder(categoryId, userId);
 	}
@@ -255,7 +308,13 @@ public class CategoryUserService {
 		return index(userId, categoryId, true);
 	}
 
-	/**  Index CategoryUser by userid and category id  */
+	/**
+	 * Index CategoryUser by userid and category id
+	 * 
+	 * @param userId 
+	 * @param categoryId 
+	 * @param shouldUpdate 
+	 */
     public static IndexCategoryUserBuilder index(String userId, int categoryId, boolean shouldUpdate)  {
 		return new IndexCategoryUserBuilder(userId, categoryId, shouldUpdate);
 	}
@@ -277,7 +336,12 @@ public class CategoryUserService {
 		return list(filter, null);
 	}
 
-	/**  List all categories  */
+	/**
+	 * List all categories
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCategoryUserBuilder list(CategoryUserFilter filter, FilterPager pager)  {
 		return new ListCategoryUserBuilder(filter, pager);
 	}
@@ -309,7 +373,14 @@ public class CategoryUserService {
 		return update(categoryId, userId, categoryUser, false);
 	}
 
-	/**  Update CategoryUser by id  */
+	/**
+	 * Update CategoryUser by id
+	 * 
+	 * @param categoryId 
+	 * @param userId 
+	 * @param categoryUser 
+	 * @param override - to override manual changes
+	 */
     public static UpdateCategoryUserBuilder update(int categoryId, String userId, CategoryUser categoryUser, boolean override)  {
 		return new UpdateCategoryUserBuilder(categoryId, userId, categoryUser, override);
 	}

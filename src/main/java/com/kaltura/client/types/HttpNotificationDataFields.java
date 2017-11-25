@@ -38,8 +38,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  If this class used as the template data, the fields will be taken from the
-  content parameters  */
+/**
+ * If this class used as the template data, the fields will be taken from the
+  content parameters
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(HttpNotificationDataFields.Tokenizer.class)
 public class HttpNotificationDataFields extends HttpNotificationData {

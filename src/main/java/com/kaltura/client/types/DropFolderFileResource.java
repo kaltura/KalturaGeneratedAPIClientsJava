@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that dropped through drop folder  */
+/**
+ * Used to ingest media that dropped through drop folder
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(DropFolderFileResource.Tokenizer.class)
 public class DropFolderFileResource extends GenericDataCenterContentResource {
@@ -48,7 +50,9 @@ public class DropFolderFileResource extends GenericDataCenterContentResource {
 		String dropFolderFileId();
 	}
 
-	/**  Id of the drop folder file object  */
+	/**
+	 * Id of the drop folder file object
+	 */
 	private Integer dropFolderFileId;
 
 	// dropFolderFileId:

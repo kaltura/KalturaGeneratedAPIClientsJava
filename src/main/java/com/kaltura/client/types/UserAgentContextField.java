@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the current request user agent context  */
+/**
+ * Represents the current request user agent context
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UserAgentContextField.Tokenizer.class)
 public class UserAgentContextField extends StringField {

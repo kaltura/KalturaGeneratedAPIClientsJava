@@ -48,7 +48,35 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Metadata Profile service  */
+/**
+ * Metadata Profile service
+ * 
+ * @param metadataProfile 
+ * @param xsdData XSD metadata definition
+ * @param viewsData UI views definition
+ * @param metadataProfile 
+ * @param xsdFile XSD metadata definition
+ * @param viewsFile UI views definition
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param metadataProfileId 
+ * @param id 
+ * @param toVersion 
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param metadataProfile 
+ * @param xsdData XSD metadata definition
+ * @param viewsData UI views definition
+ * @param id 
+ * @param xsdFile XSD metadata definition
+ * @param id 
+ * @param xsltFile XSLT file, will be executed on every metadata add/update
+ * @param id 
+ * @param viewsFile UI views file
+ */
 public class MetadataProfileService {
 	
 	public static class AddMetadataProfileBuilder extends RequestBuilder<MetadataProfile, MetadataProfile.Tokenizer, AddMetadataProfileBuilder> {
@@ -73,8 +101,14 @@ public class MetadataProfileService {
 		return add(metadataProfile, xsdData, null);
 	}
 
-	/**  Allows you to add a metadata profile object and metadata profile content
-	  associated with Kaltura object type  */
+	/**
+	 * Allows you to add a metadata profile object and metadata profile content
+	  associated with Kaltura object type
+	 * 
+	 * @param metadataProfile 
+	 * @param xsdData XSD metadata definition
+	 * @param viewsData UI views definition
+	 */
     public static AddMetadataProfileBuilder add(MetadataProfile metadataProfile, String xsdData, String viewsData)  {
 		return new AddMetadataProfileBuilder(metadataProfile, xsdData, viewsData);
 	}
@@ -118,8 +152,14 @@ public class MetadataProfileService {
 		return addFromFile(metadataProfile, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName), new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
 	}
 
-	/**  Allows you to add a metadata profile object and metadata profile file associated
-	  with Kaltura object type  */
+	/**
+	 * Allows you to add a metadata profile object and metadata profile file associated
+	  with Kaltura object type
+	 * 
+	 * @param metadataProfile 
+	 * @param xsdFile XSD metadata definition
+	 * @param viewsFile UI views definition
+	 */
     public static AddFromFileMetadataProfileBuilder addFromFile(MetadataProfile metadataProfile, FileHolder xsdFile, FileHolder viewsFile)  {
 		return new AddFromFileMetadataProfileBuilder(metadataProfile, xsdFile, viewsFile);
 	}
@@ -136,7 +176,11 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  Delete an existing metadata profile  */
+	/**
+	 * Delete an existing metadata profile
+	 * 
+	 * @param id 
+	 */
     public static DeleteMetadataProfileBuilder delete(int id)  {
 		return new DeleteMetadataProfileBuilder(id);
 	}
@@ -153,7 +197,11 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  Retrieve a metadata profile object by id  */
+	/**
+	 * Retrieve a metadata profile object by id
+	 * 
+	 * @param id 
+	 */
     public static GetMetadataProfileBuilder get(int id)  {
 		return new GetMetadataProfileBuilder(id);
 	}
@@ -175,7 +223,12 @@ public class MetadataProfileService {
 		return list(filter, null);
 	}
 
-	/**  List metadata profile objects by filter and pager  */
+	/**
+	 * List metadata profile objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListMetadataProfileBuilder list(MetadataProfileFilter filter, FilterPager pager)  {
 		return new ListMetadataProfileBuilder(filter, pager);
 	}
@@ -192,7 +245,11 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  List metadata profile fields by metadata profile id  */
+	/**
+	 * List metadata profile fields by metadata profile id
+	 * 
+	 * @param metadataProfileId 
+	 */
     public static ListFieldsMetadataProfileBuilder listFields(int metadataProfileId)  {
 		return new ListFieldsMetadataProfileBuilder(metadataProfileId);
 	}
@@ -214,7 +271,12 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  Update an existing metadata object definition file  */
+	/**
+	 * Update an existing metadata object definition file
+	 * 
+	 * @param id 
+	 * @param toVersion 
+	 */
     public static RevertMetadataProfileBuilder revert(int id, int toVersion)  {
 		return new RevertMetadataProfileBuilder(id, toVersion);
 	}
@@ -231,7 +293,11 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  Serves metadata profile XSD file  */
+	/**
+	 * Serves metadata profile XSD file
+	 * 
+	 * @param id 
+	 */
     public static ServeMetadataProfileBuilder serve(int id)  {
 		return new ServeMetadataProfileBuilder(id);
 	}
@@ -248,7 +314,11 @@ public class MetadataProfileService {
 		}
 	}
 
-	/**  Serves metadata profile view file  */
+	/**
+	 * Serves metadata profile view file
+	 * 
+	 * @param id 
+	 */
     public static ServeViewMetadataProfileBuilder serveView(int id)  {
 		return new ServeViewMetadataProfileBuilder(id);
 	}
@@ -284,7 +354,14 @@ public class MetadataProfileService {
 		return update(id, metadataProfile, xsdData, null);
 	}
 
-	/**  Update an existing metadata object  */
+	/**
+	 * Update an existing metadata object
+	 * 
+	 * @param id 
+	 * @param metadataProfile 
+	 * @param xsdData XSD metadata definition
+	 * @param viewsData UI views definition
+	 */
     public static UpdateMetadataProfileBuilder update(int id, MetadataProfile metadataProfile, String xsdData, String viewsData)  {
 		return new UpdateMetadataProfileBuilder(id, metadataProfile, xsdData, viewsData);
 	}
@@ -315,7 +392,12 @@ public class MetadataProfileService {
 		return updateDefinitionFromFile(id, new FileHolder(xsdFile, xsdFileMimeType, xsdFileName));
 	}
 
-	/**  Update an existing metadata object definition file  */
+	/**
+	 * Update an existing metadata object definition file
+	 * 
+	 * @param id 
+	 * @param xsdFile XSD metadata definition
+	 */
     public static UpdateDefinitionFromFileMetadataProfileBuilder updateDefinitionFromFile(int id, FileHolder xsdFile)  {
 		return new UpdateDefinitionFromFileMetadataProfileBuilder(id, xsdFile);
 	}
@@ -346,7 +428,12 @@ public class MetadataProfileService {
 		return updateTransformationFromFile(id, new FileHolder(xsltFile, xsltFileMimeType, xsltFileName));
 	}
 
-	/**  Update an existing metadata object xslt file  */
+	/**
+	 * Update an existing metadata object xslt file
+	 * 
+	 * @param id 
+	 * @param xsltFile XSLT file, will be executed on every metadata add/update
+	 */
     public static UpdateTransformationFromFileMetadataProfileBuilder updateTransformationFromFile(int id, FileHolder xsltFile)  {
 		return new UpdateTransformationFromFileMetadataProfileBuilder(id, xsltFile);
 	}
@@ -377,7 +464,12 @@ public class MetadataProfileService {
 		return updateViewsFromFile(id, new FileHolder(viewsFile, viewsFileMimeType, viewsFileName));
 	}
 
-	/**  Update an existing metadata object views file  */
+	/**
+	 * Update an existing metadata object views file
+	 * 
+	 * @param id 
+	 * @param viewsFile UI views file
+	 */
     public static UpdateViewsFromFileMetadataProfileBuilder updateViewsFromFile(int id, FileHolder viewsFile)  {
 		return new UpdateViewsFromFileMetadataProfileBuilder(id, viewsFile);
 	}

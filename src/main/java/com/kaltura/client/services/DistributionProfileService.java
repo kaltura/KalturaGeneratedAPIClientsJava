@@ -43,7 +43,21 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Distribution Profile service  */
+/**
+ * Distribution Profile service
+ * 
+ * @param distributionProfile 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param distributionProfile 
+ * @param id 
+ * @param status 
+ */
 public class DistributionProfileService {
 	
 	public static class AddDistributionProfileBuilder extends RequestBuilder<DistributionProfile, DistributionProfile.Tokenizer, AddDistributionProfileBuilder> {
@@ -54,7 +68,11 @@ public class DistributionProfileService {
 		}
 	}
 
-	/**  Add new Distribution Profile  */
+	/**
+	 * Add new Distribution Profile
+	 * 
+	 * @param distributionProfile 
+	 */
     public static AddDistributionProfileBuilder add(DistributionProfile distributionProfile)  {
 		return new AddDistributionProfileBuilder(distributionProfile);
 	}
@@ -71,7 +89,11 @@ public class DistributionProfileService {
 		}
 	}
 
-	/**  Delete Distribution Profile by id  */
+	/**
+	 * Delete Distribution Profile by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteDistributionProfileBuilder delete(int id)  {
 		return new DeleteDistributionProfileBuilder(id);
 	}
@@ -88,7 +110,11 @@ public class DistributionProfileService {
 		}
 	}
 
-	/**  Get Distribution Profile by id  */
+	/**
+	 * Get Distribution Profile by id
+	 * 
+	 * @param id 
+	 */
     public static GetDistributionProfileBuilder get(int id)  {
 		return new GetDistributionProfileBuilder(id);
 	}
@@ -110,7 +136,12 @@ public class DistributionProfileService {
 		return list(filter, null);
 	}
 
-	/**  List all distribution providers  */
+	/**
+	 * List all distribution providers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDistributionProfileBuilder list(DistributionProfileFilter filter, FilterPager pager)  {
 		return new ListDistributionProfileBuilder(filter, pager);
 	}
@@ -149,7 +180,12 @@ public class DistributionProfileService {
 		}
 	}
 
-	/**  Update Distribution Profile by id  */
+	/**
+	 * Update Distribution Profile by id
+	 * 
+	 * @param id 
+	 * @param distributionProfile 
+	 */
     public static UpdateDistributionProfileBuilder update(int id, DistributionProfile distributionProfile)  {
 		return new UpdateDistributionProfileBuilder(id, distributionProfile);
 	}
@@ -171,7 +207,12 @@ public class DistributionProfileService {
 		}
 	}
 
-	/**  Update Distribution Profile status by id  */
+	/**
+	 * Update Distribution Profile status by id
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusDistributionProfileBuilder updateStatus(int id, DistributionProfileStatus status)  {
 		return new UpdateStatusDistributionProfileBuilder(id, status);
 	}

@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the current request country context as calculated based on the IP
-  address  */
+/**
+ * Represents the current request country context as calculated based on the IP
+  address
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(CoordinatesContextField.Tokenizer.class)
 public class CoordinatesContextField extends StringField {
@@ -50,7 +52,9 @@ public class CoordinatesContextField extends StringField {
 		String geoCoderType();
 	}
 
-	/**  The ip geo coder engine to be used  */
+	/**
+	 * The ip geo coder engine to be used
+	 */
 	private GeoCoderType geoCoderType;
 
 	// geoCoderType:

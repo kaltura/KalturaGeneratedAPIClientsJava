@@ -49,7 +49,25 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Categories  */
+/**
+ * Add &amp; Manage Categories
+ * 
+ * @param category 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadCategoryData 
+ * @param id 
+ * @param moveEntriesToParentCategory 
+ * @param id 
+ * @param id 
+ * @param shouldUpdate 
+ * @param filter 
+ * @param pager 
+ * @param categoryIds 
+ * @param targetCategoryParentId 
+ * @param id 
+ * @param category 
+ */
 public class CategoryService {
 	
 	public static class AddCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, AddCategoryBuilder> {
@@ -60,7 +78,11 @@ public class CategoryService {
 		}
 	}
 
-	/**  Add new Category  */
+	/**
+	 * Add new Category
+	 * 
+	 * @param category 
+	 */
     public static AddCategoryBuilder add(Category category)  {
 		return new AddCategoryBuilder(category);
 	}
@@ -145,7 +167,12 @@ public class CategoryService {
 		return delete(id, true);
 	}
 
-	/**  Delete a Category  */
+	/**
+	 * Delete a Category
+	 * 
+	 * @param id 
+	 * @param moveEntriesToParentCategory 
+	 */
     public static DeleteCategoryBuilder delete(int id, Boolean moveEntriesToParentCategory)  {
 		return new DeleteCategoryBuilder(id, moveEntriesToParentCategory);
 	}
@@ -162,7 +189,11 @@ public class CategoryService {
 		}
 	}
 
-	/**  Get Category by id  */
+	/**
+	 * Get Category by id
+	 * 
+	 * @param id 
+	 */
     public static GetCategoryBuilder get(int id)  {
 		return new GetCategoryBuilder(id);
 	}
@@ -188,7 +219,12 @@ public class CategoryService {
 		return index(id, true);
 	}
 
-	/**  Index Category by id  */
+	/**
+	 * Index Category by id
+	 * 
+	 * @param id 
+	 * @param shouldUpdate 
+	 */
     public static IndexCategoryBuilder index(int id, boolean shouldUpdate)  {
 		return new IndexCategoryBuilder(id, shouldUpdate);
 	}
@@ -210,7 +246,12 @@ public class CategoryService {
 		return list(filter, null);
 	}
 
-	/**  List all categories  */
+	/**
+	 * List all categories
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCategoryBuilder list(CategoryFilter filter, FilterPager pager)  {
 		return new ListCategoryBuilder(filter, pager);
 	}
@@ -232,8 +273,13 @@ public class CategoryService {
 		}
 	}
 
-	/**  Move categories that belong to the same parent category to a target categroy -
-	  enabled only for ks with disable entitlement  */
+	/**
+	 * Move categories that belong to the same parent category to a target categroy -
+	  enabled only for ks with disable entitlement
+	 * 
+	 * @param categoryIds 
+	 * @param targetCategoryParentId 
+	 */
     public static MoveCategoryBuilder move(String categoryIds, int targetCategoryParentId)  {
 		return new MoveCategoryBuilder(categoryIds, targetCategoryParentId);
 	}
@@ -245,7 +291,9 @@ public class CategoryService {
 		}
 	}
 
-	/**  Unlock categories  */
+	/**
+	 * Unlock categories
+	 */
     public static UnlockCategoriesCategoryBuilder unlockCategories()  {
 		return new UnlockCategoriesCategoryBuilder();
 	}
@@ -263,7 +311,12 @@ public class CategoryService {
 		}
 	}
 
-	/**  Update Category  */
+	/**
+	 * Update Category
+	 * 
+	 * @param id 
+	 * @param category 
+	 */
     public static UpdateCategoryBuilder update(int id, Category category)  {
 		return new UpdateCategoryBuilder(id, category);
 	}

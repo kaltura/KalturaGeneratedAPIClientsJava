@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest string content.  */
+/**
+ * Used to ingest string content.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(StringResource.Tokenizer.class)
 public class StringResource extends ContentResource {
@@ -48,7 +50,9 @@ public class StringResource extends ContentResource {
 		String content();
 	}
 
-	/**  Textual content  */
+	/**
+	 * Textual content
+	 */
 	private String content;
 
 	// content:

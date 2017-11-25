@@ -58,23 +58,39 @@ public class AccessControl extends ObjectBase {
 		String containsUnsuportedRestrictions();
 	}
 
-	/**  The id of the Access Control Profile  */
+	/**
+	 * The id of the Access Control Profile
+	 */
 	private Integer id;
 	private Integer partnerId;
-	/**  The name of the Access Control Profile  */
+	/**
+	 * The name of the Access Control Profile
+	 */
 	private String name;
-	/**  System name of the Access Control Profile  */
+	/**
+	 * System name of the Access Control Profile
+	 */
 	private String systemName;
-	/**  The description of the Access Control Profile  */
+	/**
+	 * The description of the Access Control Profile
+	 */
 	private String description;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  True if this Conversion Profile is the default  */
+	/**
+	 * True if this Conversion Profile is the default
+	 */
 	private Boolean isDefault;
-	/**  Array of Access Control Restrictions  */
+	/**
+	 * Array of Access Control Restrictions
+	 */
 	private List<BaseRestriction> restrictions;
-	/**  Indicates that the access control profile is new and should be handled using
-	  KalturaAccessControlProfile object and accessControlProfile service  */
+	/**
+	 * Indicates that the access control profile is new and should be handled using
+	  KalturaAccessControlProfile object and accessControlProfile service
+	 */
 	private Boolean containsUnsuportedRestrictions;
 
 	// id:

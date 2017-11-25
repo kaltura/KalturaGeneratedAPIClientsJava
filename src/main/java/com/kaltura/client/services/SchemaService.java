@@ -37,8 +37,12 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Expose the schema definitions for syndication MRSS, bulk upload XML and other
-  schema types.  */
+/**
+ * Expose the schema definitions for syndication MRSS, bulk upload XML and other
+  schema types.
+ * 
+ * @param type 
+ */
 public class SchemaService {
 	
 	public static class ServeSchemaBuilder extends ServeRequestBuilder {
@@ -53,7 +57,11 @@ public class SchemaService {
 		}
 	}
 
-	/**  Serves the requested XSD according to the type and name.  */
+	/**
+	 * Serves the requested XSD according to the type and name.
+	 * 
+	 * @param type 
+	 */
     public static ServeSchemaBuilder serve(SchemaType type)  {
 		return new ServeSchemaBuilder(type);
 	}

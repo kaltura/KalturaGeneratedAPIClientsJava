@@ -50,11 +50,17 @@ public class SearchAuthData extends ObjectBase {
 		String message();
 	}
 
-	/**  The authentication data that further should be used for search  */
+	/**
+	 * The authentication data that further should be used for search
+	 */
 	private String authData;
-	/**  Login URL when user need to sign-in and authorize the search  */
+	/**
+	 * Login URL when user need to sign-in and authorize the search
+	 */
 	private String loginUrl;
-	/**  Information when there was an error  */
+	/**
+	 * Information when there was an error
+	 */
 	private String message;
 
 	// authData:

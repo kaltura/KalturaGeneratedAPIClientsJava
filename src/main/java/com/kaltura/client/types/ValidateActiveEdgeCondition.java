@@ -47,7 +47,9 @@ public class ValidateActiveEdgeCondition extends Condition {
 		String edgeServerIds();
 	}
 
-	/**  Comma separated list of edge servers to validate are active  */
+	/**
+	 * Comma separated list of edge servers to validate are active
+	 */
 	private String edgeServerIds;
 
 	// edgeServerIds:

@@ -47,8 +47,33 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Event notification template service lets you create and manage event
-  notification templates  */
+/**
+ * Event notification template service lets you create and manage event
+  notification templates
+ * 
+ * @param eventNotificationTemplate 
+ * @param id source template to clone
+ * @param eventNotificationTemplate overwrite configuration object
+ * @param id 
+ * @param id 
+ * @param scope 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param notificationTemplateSystemName Existing push notification template system name
+ * @param pushNotificationParams 
+ * @param notificationTemplateSystemName Existing push notification template system name
+ * @param pushNotificationParams 
+ * @param command Command to be sent to push server
+ * @param id 
+ * @param eventNotificationTemplate 
+ * @param id 
+ * @param status 
+ */
 public class EventNotificationTemplateService {
 	
 	public static class AddEventNotificationTemplateBuilder extends RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.Tokenizer, AddEventNotificationTemplateBuilder> {
@@ -59,10 +84,14 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  This action allows for the creation of new backend event types in the system.
+	/**
+	 * This action allows for the creation of new backend event types in the system.
 	  This action requires access to the Kaltura server Admin Console. If you're
 	  looking to register to existing event types, please use the clone action
-	  instead.  */
+	  instead.
+	 * 
+	 * @param eventNotificationTemplate 
+	 */
     public static AddEventNotificationTemplateBuilder add(EventNotificationTemplate eventNotificationTemplate)  {
 		return new AddEventNotificationTemplateBuilder(eventNotificationTemplate);
 	}
@@ -84,10 +113,15 @@ public class EventNotificationTemplateService {
 		return clone(id, null);
 	}
 
-	/**  This action allows registering to various backend event. Use this action to
+	/**
+	 * This action allows registering to various backend event. Use this action to
 	  create notifications that will react to events such as new video was uploaded or
 	  metadata field was updated. To see the list of available event types, call the
-	  listTemplates action.  */
+	  listTemplates action.
+	 * 
+	 * @param id source template to clone
+	 * @param eventNotificationTemplate overwrite configuration object
+	 */
     public static CloneEventNotificationTemplateBuilder clone(int id, EventNotificationTemplate eventNotificationTemplate)  {
 		return new CloneEventNotificationTemplateBuilder(id, eventNotificationTemplate);
 	}
@@ -104,7 +138,11 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Delete an event notification template object  */
+	/**
+	 * Delete an event notification template object
+	 * 
+	 * @param id 
+	 */
     public static DeleteEventNotificationTemplateBuilder delete(int id)  {
 		return new DeleteEventNotificationTemplateBuilder(id);
 	}
@@ -122,7 +160,12 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Dispatch event notification object by id  */
+	/**
+	 * Dispatch event notification object by id
+	 * 
+	 * @param id 
+	 * @param scope 
+	 */
     public static DispatchEventNotificationTemplateBuilder dispatch(int id, EventNotificationScope scope)  {
 		return new DispatchEventNotificationTemplateBuilder(id, scope);
 	}
@@ -139,7 +182,11 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Retrieve an event notification template object by id  */
+	/**
+	 * Retrieve an event notification template object by id
+	 * 
+	 * @param id 
+	 */
     public static GetEventNotificationTemplateBuilder get(int id)  {
 		return new GetEventNotificationTemplateBuilder(id);
 	}
@@ -161,7 +208,12 @@ public class EventNotificationTemplateService {
 		return list(filter, null);
 	}
 
-	/**  list event notification template objects  */
+	/**
+	 * list event notification template objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListEventNotificationTemplateBuilder list(EventNotificationTemplateFilter filter, FilterPager pager)  {
 		return new ListEventNotificationTemplateBuilder(filter, pager);
 	}
@@ -204,7 +256,12 @@ public class EventNotificationTemplateService {
 		return listTemplates(filter, null);
 	}
 
-	/**  Action lists the template partner event notification templates.  */
+	/**
+	 * Action lists the template partner event notification templates.
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListTemplatesEventNotificationTemplateBuilder listTemplates(EventNotificationTemplateFilter filter, FilterPager pager)  {
 		return new ListTemplatesEventNotificationTemplateBuilder(filter, pager);
 	}
@@ -222,8 +279,13 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Register to a queue from which event messages will be provided according to
-	  given template. Queue will be created if not already exists  */
+	/**
+	 * Register to a queue from which event messages will be provided according to
+	  given template. Queue will be created if not already exists
+	 * 
+	 * @param notificationTemplateSystemName Existing push notification template system name
+	 * @param pushNotificationParams 
+	 */
     public static RegisterEventNotificationTemplateBuilder register(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams)  {
 		return new RegisterEventNotificationTemplateBuilder(notificationTemplateSystemName, pushNotificationParams);
 	}
@@ -246,7 +308,13 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Clear queue messages  */
+	/**
+	 * Clear queue messages
+	 * 
+	 * @param notificationTemplateSystemName Existing push notification template system name
+	 * @param pushNotificationParams 
+	 * @param command Command to be sent to push server
+	 */
     public static SendCommandEventNotificationTemplateBuilder sendCommand(String notificationTemplateSystemName, PushNotificationParams pushNotificationParams, PushNotificationCommandType command)  {
 		return new SendCommandEventNotificationTemplateBuilder(notificationTemplateSystemName, pushNotificationParams, command);
 	}
@@ -264,7 +332,12 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Update an existing event notification template object  */
+	/**
+	 * Update an existing event notification template object
+	 * 
+	 * @param id 
+	 * @param eventNotificationTemplate 
+	 */
     public static UpdateEventNotificationTemplateBuilder update(int id, EventNotificationTemplate eventNotificationTemplate)  {
 		return new UpdateEventNotificationTemplateBuilder(id, eventNotificationTemplate);
 	}
@@ -286,7 +359,12 @@ public class EventNotificationTemplateService {
 		}
 	}
 
-	/**  Update event notification template status by id  */
+	/**
+	 * Update event notification template status by id
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusEventNotificationTemplateBuilder updateStatus(int id, EventNotificationTemplateStatus status)  {
 		return new UpdateStatusEventNotificationTemplateBuilder(id, status);
 	}

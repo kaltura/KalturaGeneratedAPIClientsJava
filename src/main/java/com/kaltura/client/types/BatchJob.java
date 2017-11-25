@@ -111,17 +111,27 @@ public class BatchJob extends ObjectBase {
 	private String description;
 	private Integer priority;
 	private List<BatchHistoryData> history;
-	/**  The id of the bulk upload job that initiated this job  */
+	/**
+	 * The id of the bulk upload job that initiated this job
+	 */
 	private Integer bulkJobId;
 	private Integer batchVersion;
-	/**  When one job creates another - the parent should set this parentJobId to be its
-	  own id.  */
+	/**
+	 * When one job creates another - the parent should set this parentJobId to be its
+	  own id.
+	 */
 	private Integer parentJobId;
-	/**  The id of the root parent job  */
+	/**
+	 * The id of the root parent job
+	 */
 	private Integer rootJobId;
-	/**  The time that the job was pulled from the queue  */
+	/**
+	 * The time that the job was pulled from the queue
+	 */
 	private Integer queueTime;
-	/**  The time that the job was finished or closed as failed  */
+	/**
+	 * The time that the job was finished or closed as failed
+	 */
 	private Integer finishTime;
 	private BatchJobErrorTypes errType;
 	private Integer errNumber;

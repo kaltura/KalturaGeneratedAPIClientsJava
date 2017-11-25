@@ -52,11 +52,17 @@ public class ExtendingItemMrssParameter extends ObjectBase {
 		String extensionMode();
 	}
 
-	/**  XPath for the extending item  */
+	/**
+	 * XPath for the extending item
+	 */
 	private String xpath;
-	/**  Object identifier  */
+	/**
+	 * Object identifier
+	 */
 	private ObjectIdentifier identifier;
-	/**  Mode of extension - append to MRSS or replace the xpath content.  */
+	/**
+	 * Mode of extension - append to MRSS or replace the xpath content.
+	 */
 	private MrssExtensionMode extensionMode;
 
 	// xpath:

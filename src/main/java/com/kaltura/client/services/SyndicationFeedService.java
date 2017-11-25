@@ -42,7 +42,19 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Syndication Feeds  */
+/**
+ * Add &amp; Manage Syndication Feeds
+ * 
+ * @param syndicationFeed 
+ * @param id 
+ * @param id 
+ * @param feedId 
+ * @param filter 
+ * @param pager 
+ * @param feedId 
+ * @param id 
+ * @param syndicationFeed 
+ */
 public class SyndicationFeedService {
 	
 	public static class AddSyndicationFeedBuilder extends RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.Tokenizer, AddSyndicationFeedBuilder> {
@@ -53,7 +65,11 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  Add new Syndication Feed  */
+	/**
+	 * Add new Syndication Feed
+	 * 
+	 * @param syndicationFeed 
+	 */
     public static AddSyndicationFeedBuilder add(BaseSyndicationFeed syndicationFeed)  {
 		return new AddSyndicationFeedBuilder(syndicationFeed);
 	}
@@ -70,7 +86,11 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  Delete Syndication Feed by ID  */
+	/**
+	 * Delete Syndication Feed by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteSyndicationFeedBuilder delete(String id)  {
 		return new DeleteSyndicationFeedBuilder(id);
 	}
@@ -87,7 +107,11 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  Get Syndication Feed by ID  */
+	/**
+	 * Get Syndication Feed by ID
+	 * 
+	 * @param id 
+	 */
     public static GetSyndicationFeedBuilder get(String id)  {
 		return new GetSyndicationFeedBuilder(id);
 	}
@@ -104,7 +128,11 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  get entry count for a syndication feed  */
+	/**
+	 * get entry count for a syndication feed
+	 * 
+	 * @param feedId 
+	 */
     public static GetEntryCountSyndicationFeedBuilder getEntryCount(String feedId)  {
 		return new GetEntryCountSyndicationFeedBuilder(feedId);
 	}
@@ -126,7 +154,12 @@ public class SyndicationFeedService {
 		return list(filter, null);
 	}
 
-	/**  List Syndication Feeds by filter with paging support  */
+	/**
+	 * List Syndication Feeds by filter with paging support
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListSyndicationFeedBuilder list(BaseSyndicationFeedFilter filter, FilterPager pager)  {
 		return new ListSyndicationFeedBuilder(filter, pager);
 	}
@@ -143,8 +176,12 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  request conversion for all entries that doesnt have the required flavor param  
-	  returns a comma-separated ids of conversion jobs  */
+	/**
+	 * request conversion for all entries that doesnt have the required flavor param  
+	  returns a comma-separated ids of conversion jobs
+	 * 
+	 * @param feedId 
+	 */
     public static RequestConversionSyndicationFeedBuilder requestConversion(String feedId)  {
 		return new RequestConversionSyndicationFeedBuilder(feedId);
 	}
@@ -162,7 +199,12 @@ public class SyndicationFeedService {
 		}
 	}
 
-	/**  Update Syndication Feed by ID  */
+	/**
+	 * Update Syndication Feed by ID
+	 * 
+	 * @param id 
+	 * @param syndicationFeed 
+	 */
     public static UpdateSyndicationFeedBuilder update(String id, BaseSyndicationFeed syndicationFeed)  {
 		return new UpdateSyndicationFeedBuilder(id, syndicationFeed);
 	}

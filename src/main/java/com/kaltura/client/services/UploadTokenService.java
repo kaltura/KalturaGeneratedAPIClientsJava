@@ -60,7 +60,11 @@ public class UploadTokenService {
 		return add(null);
 	}
 
-	/**  Adds new upload token to upload a file  */
+	/**
+	 * Adds new upload token to upload a file
+	 * 
+	 * @param uploadToken 
+	 */
     public static AddUploadTokenBuilder add(UploadToken uploadToken)  {
 		return new AddUploadTokenBuilder(uploadToken);
 	}
@@ -77,7 +81,11 @@ public class UploadTokenService {
 		}
 	}
 
-	/**  Deletes the upload token by upload token id  */
+	/**
+	 * Deletes the upload token by upload token id
+	 * 
+	 * @param uploadTokenId 
+	 */
     public static DeleteUploadTokenBuilder delete(String uploadTokenId)  {
 		return new DeleteUploadTokenBuilder(uploadTokenId);
 	}
@@ -94,7 +102,11 @@ public class UploadTokenService {
 		}
 	}
 
-	/**  Get upload token by id  */
+	/**
+	 * Get upload token by id
+	 * 
+	 * @param uploadTokenId 
+	 */
     public static GetUploadTokenBuilder get(String uploadTokenId)  {
 		return new GetUploadTokenBuilder(uploadTokenId);
 	}
@@ -116,8 +128,13 @@ public class UploadTokenService {
 		return list(filter, null);
 	}
 
-	/**  List upload token by filter with pager support.    When using a user session the
-	  service will be restricted to users objects only.  */
+	/**
+	 * List upload token by filter with pager support.    When using a user session the
+	  service will be restricted to users objects only.
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListUploadTokenBuilder list(UploadTokenFilter filter, FilterPager pager)  {
 		return new ListUploadTokenBuilder(filter, pager);
 	}
@@ -211,7 +228,8 @@ public class UploadTokenService {
 		return upload(uploadTokenId, new FileHolder(fileData, fileDataMimeType, fileDataName), resume, finalChunk, resumeAt);
 	}
 
-	/**  Upload a file using the upload token id, returns an error on failure (an
+	/**
+	 * Upload a file using the upload token id, returns an error on failure (an
 	  exception will be thrown when using one of the Kaltura clients)   Chunks can be
 	  uploaded in parallel and they will be appended according to their resumeAt
 	  position.   A parallel upload session should have three stages:   1. A single
@@ -222,7 +240,14 @@ public class UploadTokenService {
 	  resume=true, finalChunk=true and the expected resumeAt position. In case an
 	  UPLOAD_TOKEN_CANNOT_MATCH_EXPECTED_SIZE exception   has been returned
 	  (indicating not all of the chunks were appended yet) the final request can be
-	  retried.  */
+	  retried.
+	 * 
+	 * @param uploadTokenId 
+	 * @param fileData 
+	 * @param resume 
+	 * @param finalChunk 
+	 * @param resumeAt 
+	 */
     public static UploadUploadTokenBuilder upload(String uploadTokenId, FileHolder fileData, boolean resume, boolean finalChunk, double resumeAt)  {
 		return new UploadUploadTokenBuilder(uploadTokenId, fileData, resume, finalChunk, resumeAt);
 	}

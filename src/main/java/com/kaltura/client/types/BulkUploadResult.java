@@ -68,11 +68,17 @@ public class BulkUploadResult extends ObjectBase {
 		String errorType();
 	}
 
-	/**  The id of the result  */
+	/**
+	 * The id of the result
+	 */
 	private Integer id;
-	/**  The id of the parent job  */
+	/**
+	 * The id of the parent job
+	 */
 	private Long bulkUploadJobId;
-	/**  The index of the line in the CSV  */
+	/**
+	 * The index of the line in the CSV
+	 */
 	private Integer lineIndex;
 	private Integer partnerId;
 	private BulkUploadResultStatus status;
@@ -80,7 +86,9 @@ public class BulkUploadResult extends ObjectBase {
 	private String objectId;
 	private Integer objectStatus;
 	private BulkUploadObjectType bulkUploadResultObjectType;
-	/**  The data as recieved in the csv  */
+	/**
+	 * The data as recieved in the csv
+	 */
 	private String rowData;
 	private String partnerData;
 	private String objectErrorDescription;

@@ -53,7 +53,9 @@ public class FileSyncDescriptor extends ObjectBase {
 
 	private String fileSyncLocalPath;
 	private String fileEncryptionKey;
-	/**  The translated path as used by the scheduler  */
+	/**
+	 * The translated path as used by the scheduler
+	 */
 	private String fileSyncRemoteUrl;
 	private Integer fileSyncObjectSubType;
 

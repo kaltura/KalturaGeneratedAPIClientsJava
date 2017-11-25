@@ -47,7 +47,9 @@ public class UserRoleCondition extends Condition {
 		String roleIds();
 	}
 
-	/**  Comma separated list of role ids  */
+	/**
+	 * Comma separated list of role ids
+	 */
 	private String roleIds;
 
 	// roleIds:

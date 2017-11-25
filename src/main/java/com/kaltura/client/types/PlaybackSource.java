@@ -56,16 +56,24 @@ public class PlaybackSource extends ObjectBase {
 	}
 
 	private String deliveryProfileId;
-	/**  source format according to delivery profile streamer type (applehttp, mpegdash
-	  etc.)  */
+	/**
+	 * source format according to delivery profile streamer type (applehttp, mpegdash
+	  etc.)
+	 */
 	private String format;
-	/**  comma separated string according to deliveryProfile media protocols
-	  ('http,https' etc.)  */
+	/**
+	 * comma separated string according to deliveryProfile media protocols
+	  ('http,https' etc.)
+	 */
 	private String protocols;
-	/**  comma separated string of flavor ids  */
+	/**
+	 * comma separated string of flavor ids
+	 */
 	private String flavorIds;
 	private String url;
-	/**  drm data object containing relevant license url ,scheme name and certificate  */
+	/**
+	 * drm data object containing relevant license url ,scheme name and certificate
+	 */
 	private List<DrmPlaybackPluginData> drm;
 
 	// deliveryProfileId:

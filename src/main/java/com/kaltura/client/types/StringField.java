@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return evaluated dynamic value  */
+/**
+ * A string representation to return evaluated dynamic value
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(StringField.Tokenizer.class)
 public abstract class StringField extends StringValue {

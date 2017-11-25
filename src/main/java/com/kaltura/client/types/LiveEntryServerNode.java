@@ -50,7 +50,9 @@ public class LiveEntryServerNode extends EntryServerNode {
 		RequestBuilder.ListTokenizer<LiveEntryServerNodeRecordingInfo.Tokenizer> recordingInfo();
 	}
 
-	/**  parameters of the stream we got  */
+	/**
+	 * parameters of the stream we got
+	 */
 	private List<LiveStreamParams> streams;
 	private List<LiveEntryServerNodeRecordingInfo> recordingInfo;
 

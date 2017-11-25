@@ -49,7 +49,9 @@ public class AuthenticatedCondition extends Condition {
 		RequestBuilder.ListTokenizer<StringValue.Tokenizer> privileges();
 	}
 
-	/**  The privelege needed to remove the restriction  */
+	/**
+	 * The privelege needed to remove the restriction
+	 */
 	private List<StringValue> privileges;
 
 	// privileges:

@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return an array of strings  */
+/**
+ * A string representation to return an array of strings
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(StringHolder.Tokenizer.class)
 public class StringHolder extends ObjectBase {

@@ -53,19 +53,33 @@ public class LiveToVodJobData extends JobData {
 		String lastSegmentDrift();
 	}
 
-	/**  $vod Entry Id  */
+	/**
+	 * $vod Entry Id
+	 */
 	private String vodEntryId;
-	/**  live Entry Id  */
+	/**
+	 * live Entry Id
+	 */
 	private String liveEntryId;
-	/**  total VOD Duration  */
+	/**
+	 * total VOD Duration
+	 */
 	private Double totalVodDuration;
-	/**  last Segment Duration  */
+	/**
+	 * last Segment Duration
+	 */
 	private Double lastSegmentDuration;
-	/**  amf Array File Path  */
+	/**
+	 * amf Array File Path
+	 */
 	private String amfArray;
-	/**  last live to vod sync time  */
+	/**
+	 * last live to vod sync time
+	 */
 	private Integer lastCuePointSyncTime;
-	/**  last segment drift  */
+	/**
+	 * last segment drift
+	 */
 	private Integer lastSegmentDrift;
 
 	// vodEntryId:

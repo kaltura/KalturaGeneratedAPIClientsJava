@@ -48,7 +48,9 @@ public class AccessControlLimitFlavorsAction extends RuleAction {
 		String isBlockedList();
 	}
 
-	/**  Comma separated list of flavor ids  */
+	/**
+	 * Comma separated list of flavor ids
+	 */
 	private String flavorParamsIds;
 	private Boolean isBlockedList;
 

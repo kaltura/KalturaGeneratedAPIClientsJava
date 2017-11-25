@@ -61,33 +61,61 @@ public class SchedulerConfig extends ObjectBase {
 		String value();
 	}
 
-	/**  The id of the Category  */
+	/**
+	 * The id of the Category
+	 */
 	private Integer id;
-	/**  Creator name  */
+	/**
+	 * Creator name
+	 */
 	private String createdBy;
-	/**  Updater name  */
+	/**
+	 * Updater name
+	 */
 	private String updatedBy;
-	/**  Id of the control panel command that created this config item  */
+	/**
+	 * Id of the control panel command that created this config item
+	 */
 	private String commandId;
-	/**  The status of the control panel command  */
+	/**
+	 * The status of the control panel command
+	 */
 	private String commandStatus;
-	/**  The id of the scheduler  */
+	/**
+	 * The id of the scheduler
+	 */
 	private Integer schedulerId;
-	/**  The configured id of the scheduler  */
+	/**
+	 * The configured id of the scheduler
+	 */
 	private Integer schedulerConfiguredId;
-	/**  The name of the scheduler  */
+	/**
+	 * The name of the scheduler
+	 */
 	private String schedulerName;
-	/**  The id of the job worker  */
+	/**
+	 * The id of the job worker
+	 */
 	private Integer workerId;
-	/**  The configured id of the job worker  */
+	/**
+	 * The configured id of the job worker
+	 */
 	private Integer workerConfiguredId;
-	/**  The name of the job worker  */
+	/**
+	 * The name of the job worker
+	 */
 	private String workerName;
-	/**  The name of the variable  */
+	/**
+	 * The name of the variable
+	 */
 	private String variable;
-	/**  The part of the variable  */
+	/**
+	 * The part of the variable
+	 */
 	private String variablePart;
-	/**  The value of the variable  */
+	/**
+	 * The value of the variable
+	 */
 	private String value;
 
 	// id:

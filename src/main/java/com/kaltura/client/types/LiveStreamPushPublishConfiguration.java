@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Basic push-publish configuration for Kaltura live stream entry  */
+/**
+ * Basic push-publish configuration for Kaltura live stream entry
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveStreamPushPublishConfiguration.Tokenizer.class)
 public class LiveStreamPushPublishConfiguration extends ObjectBase {

@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Client notification object to hold the notification url and the data when
-  sending client side notifications  */
+/**
+ * Client notification object to hold the notification url and the data when
+  sending client side notifications
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ClientNotification.Tokenizer.class)
 public class ClientNotification extends ObjectBase {
@@ -51,9 +53,13 @@ public class ClientNotification extends ObjectBase {
 		String data();
 	}
 
-	/**  The URL where the notification should be sent to  */
+	/**
+	 * The URL where the notification should be sent to
+	 */
 	private String url;
-	/**  The serialized notification data to send  */
+	/**
+	 * The serialized notification data to send
+	 */
 	private String data;
 
 	// url:

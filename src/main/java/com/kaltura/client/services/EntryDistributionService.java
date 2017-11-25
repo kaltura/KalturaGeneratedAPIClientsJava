@@ -43,7 +43,28 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Entry Distribution service  */
+/**
+ * Entry Distribution service
+ * 
+ * @param entryDistribution 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param id 
+ * @param actionType 
+ * @param id 
+ * @param actionType 
+ * @param id 
+ * @param submitWhenReady 
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param entryDistribution 
+ * @param id 
+ */
 public class EntryDistributionService {
 	
 	public static class AddEntryDistributionBuilder extends RequestBuilder<EntryDistribution, EntryDistribution.Tokenizer, AddEntryDistributionBuilder> {
@@ -54,7 +75,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Add new Entry Distribution  */
+	/**
+	 * Add new Entry Distribution
+	 * 
+	 * @param entryDistribution 
+	 */
     public static AddEntryDistributionBuilder add(EntryDistribution entryDistribution)  {
 		return new AddEntryDistributionBuilder(entryDistribution);
 	}
@@ -71,7 +96,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Delete Entry Distribution by id  */
+	/**
+	 * Delete Entry Distribution by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteEntryDistributionBuilder delete(int id)  {
 		return new DeleteEntryDistributionBuilder(id);
 	}
@@ -88,7 +117,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Get Entry Distribution by id  */
+	/**
+	 * Get Entry Distribution by id
+	 * 
+	 * @param id 
+	 */
     public static GetEntryDistributionBuilder get(int id)  {
 		return new GetEntryDistributionBuilder(id);
 	}
@@ -110,7 +143,12 @@ public class EntryDistributionService {
 		return list(filter, null);
 	}
 
-	/**  List all distribution providers  */
+	/**
+	 * List all distribution providers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListEntryDistributionBuilder list(EntryDistributionFilter filter, FilterPager pager)  {
 		return new ListEntryDistributionBuilder(filter, pager);
 	}
@@ -127,7 +165,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Retries last submit action  */
+	/**
+	 * Retries last submit action
+	 * 
+	 * @param id 
+	 */
     public static RetrySubmitEntryDistributionBuilder retrySubmit(int id)  {
 		return new RetrySubmitEntryDistributionBuilder(id);
 	}
@@ -149,7 +191,12 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Serves entry distribution returned data  */
+	/**
+	 * Serves entry distribution returned data
+	 * 
+	 * @param id 
+	 * @param actionType 
+	 */
     public static ServeReturnedDataEntryDistributionBuilder serveReturnedData(int id, DistributionAction actionType)  {
 		return new ServeReturnedDataEntryDistributionBuilder(id, actionType);
 	}
@@ -171,7 +218,12 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Serves entry distribution sent data  */
+	/**
+	 * Serves entry distribution sent data
+	 * 
+	 * @param id 
+	 * @param actionType 
+	 */
     public static ServeSentDataEntryDistributionBuilder serveSentData(int id, DistributionAction actionType)  {
 		return new ServeSentDataEntryDistributionBuilder(id, actionType);
 	}
@@ -197,7 +249,12 @@ public class EntryDistributionService {
 		return submitAdd(id, false);
 	}
 
-	/**  Submits Entry Distribution to the remote destination  */
+	/**
+	 * Submits Entry Distribution to the remote destination
+	 * 
+	 * @param id 
+	 * @param submitWhenReady 
+	 */
     public static SubmitAddEntryDistributionBuilder submitAdd(int id, boolean submitWhenReady)  {
 		return new SubmitAddEntryDistributionBuilder(id, submitWhenReady);
 	}
@@ -214,7 +271,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Deletes Entry Distribution from the remote destination  */
+	/**
+	 * Deletes Entry Distribution from the remote destination
+	 * 
+	 * @param id 
+	 */
     public static SubmitDeleteEntryDistributionBuilder submitDelete(int id)  {
 		return new SubmitDeleteEntryDistributionBuilder(id);
 	}
@@ -231,7 +292,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Submits Entry Distribution report request  */
+	/**
+	 * Submits Entry Distribution report request
+	 * 
+	 * @param id 
+	 */
     public static SubmitFetchReportEntryDistributionBuilder submitFetchReport(int id)  {
 		return new SubmitFetchReportEntryDistributionBuilder(id);
 	}
@@ -248,7 +313,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Submits Entry Distribution changes to the remote destination  */
+	/**
+	 * Submits Entry Distribution changes to the remote destination
+	 * 
+	 * @param id 
+	 */
     public static SubmitUpdateEntryDistributionBuilder submitUpdate(int id)  {
 		return new SubmitUpdateEntryDistributionBuilder(id);
 	}
@@ -266,7 +335,12 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Update Entry Distribution by id  */
+	/**
+	 * Update Entry Distribution by id
+	 * 
+	 * @param id 
+	 * @param entryDistribution 
+	 */
     public static UpdateEntryDistributionBuilder update(int id, EntryDistribution entryDistribution)  {
 		return new UpdateEntryDistributionBuilder(id, entryDistribution);
 	}
@@ -283,7 +357,11 @@ public class EntryDistributionService {
 		}
 	}
 
-	/**  Validates Entry Distribution by id for submission  */
+	/**
+	 * Validates Entry Distribution by id for submission
+	 * 
+	 * @param id 
+	 */
     public static ValidateEntryDistributionBuilder validate(int id)  {
 		return new ValidateEntryDistributionBuilder(id);
 	}

@@ -56,23 +56,41 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 		String replaceMediaContent();
 	}
 
-	/**  Entry ID  */
+	/**
+	 * Entry ID
+	 */
 	private String entryId;
-	/**  Flavor ID  */
+	/**
+	 * Flavor ID
+	 */
 	private String flavorAssetId;
-	/**  input Transcript-asset ID  */
+	/**
+	 * input Transcript-asset ID
+	 */
 	private String transcriptId;
-	/**  Caption formats  */
+	/**
+	 * Caption formats
+	 */
 	private String captionAssetFormats;
-	/**  Api key for service provider  */
+	/**
+	 * Api key for service provider
+	 */
 	private String apiKey;
-	/**  Api key for service provider  */
+	/**
+	 * Api key for service provider
+	 */
 	private String apiPassword;
-	/**  Transcript content language  */
+	/**
+	 * Transcript content language
+	 */
 	private Language spokenLanguage;
-	/**  Transcript Content location  */
+	/**
+	 * Transcript Content location
+	 */
 	private String fileLocation;
-	/**  should replace remote media content  */
+	/**
+	 * should replace remote media content
+	 */
 	private Boolean replaceMediaContent;
 
 	// entryId:

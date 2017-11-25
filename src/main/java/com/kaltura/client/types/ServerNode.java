@@ -68,20 +68,32 @@ public abstract class ServerNode extends ObjectBase {
 	private Integer createdAt;
 	private Integer updatedAt;
 	private Integer heartbeatTime;
-	/**  serverNode name  */
+	/**
+	 * serverNode name
+	 */
 	private String name;
-	/**  serverNode uniqe system name  */
+	/**
+	 * serverNode uniqe system name
+	 */
 	private String systemName;
 	private String description;
-	/**  serverNode hostName  */
+	/**
+	 * serverNode hostName
+	 */
 	private String hostName;
 	private ServerNodeStatus status;
 	private ServerNodeType type;
-	/**  serverNode tags  */
+	/**
+	 * serverNode tags
+	 */
 	private String tags;
-	/**  DC where the serverNode is located  */
+	/**
+	 * DC where the serverNode is located
+	 */
 	private Integer dc;
-	/**  Id of the parent serverNode  */
+	/**
+	 * Id of the parent serverNode
+	 */
 	private String parentId;
 
 	// id:

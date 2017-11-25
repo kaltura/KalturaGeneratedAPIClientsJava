@@ -48,7 +48,9 @@ public class EntryIdentifier extends ObjectIdentifier {
 		String identifier();
 	}
 
-	/**  Identifier of the object  */
+	/**
+	 * Identifier of the object
+	 */
 	private EntryIdentifierField identifier;
 
 	// identifier:

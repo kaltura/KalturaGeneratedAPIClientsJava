@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  An int representation to return evaluated dynamic value  */
+/**
+ * An int representation to return evaluated dynamic value
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(IntegerField.Tokenizer.class)
 public abstract class IntegerField extends IntegerValue {

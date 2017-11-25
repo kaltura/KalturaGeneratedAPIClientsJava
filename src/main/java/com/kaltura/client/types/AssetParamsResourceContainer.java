@@ -49,9 +49,13 @@ public class AssetParamsResourceContainer extends Resource {
 		String assetParamsId();
 	}
 
-	/**  The content resource to associate with asset params  */
+	/**
+	 * The content resource to associate with asset params
+	 */
 	private ContentResource resource;
-	/**  The asset params to associate with the reaource  */
+	/**
+	 * The asset params to associate with the reaource
+	 */
 	private Integer assetParamsId;
 
 	// resource:

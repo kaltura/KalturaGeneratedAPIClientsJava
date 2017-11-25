@@ -53,16 +53,26 @@ public class CaptionParams extends AssetParams {
 		String sourceParamsId();
 	}
 
-	/**  The language of the caption content  */
+	/**
+	 * The language of the caption content
+	 */
 	private Language language;
-	/**  Is default caption asset of the entry  */
+	/**
+	 * Is default caption asset of the entry
+	 */
 	private Boolean isDefault;
-	/**  Friendly label  */
+	/**
+	 * Friendly label
+	 */
 	private String label;
-	/**  The caption format  */
+	/**
+	 * The caption format
+	 */
 	private CaptionType format;
-	/**  Id of the caption params or the flavor params to be used as source for the
-	  caption creation  */
+	/**
+	 * Id of the caption params or the flavor params to be used as source for the
+	  caption creation
+	 */
 	private Integer sourceParamsId;
 
 	// language:

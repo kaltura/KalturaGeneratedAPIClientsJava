@@ -41,8 +41,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Abstract class representing the final output recipients going into the batch
-  mechanism  */
+/**
+ * Abstract class representing the final output recipients going into the batch
+  mechanism
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationRecipientJobData.Tokenizer.class)
 public abstract class EmailNotificationRecipientJobData extends ObjectBase {
@@ -51,7 +53,9 @@ public abstract class EmailNotificationRecipientJobData extends ObjectBase {
 		String providerType();
 	}
 
-	/**  Provider type of the job data.  */
+	/**
+	 * Provider type of the job data.
+	 */
 	private EmailNotificationRecipientProviderType providerType;
 
 	// providerType:

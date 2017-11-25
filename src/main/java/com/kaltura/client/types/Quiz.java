@@ -58,7 +58,9 @@ public class Quiz extends ObjectBase {
 	}
 
 	private Integer version;
-	/**  Array of key value ui related objects  */
+	/**
+	 * Array of key value ui related objects
+	 */
 	private List<KeyValue> uiAttributes;
 	private Boolean showResultOnAnswer;
 	private Boolean showCorrectKeyOnAnswer;

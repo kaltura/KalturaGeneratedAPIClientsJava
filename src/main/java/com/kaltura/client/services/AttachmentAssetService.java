@@ -45,7 +45,25 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on attachment Asset  */
+/**
+ * Retrieve information and invoke actions on attachment Asset
+ * 
+ * @param entryId 
+ * @param attachmentAsset 
+ * @param attachmentAssetId 
+ * @param attachmentAssetId 
+ * @param id 
+ * @param id 
+ * @param storageId 
+ * @param filter 
+ * @param pager 
+ * @param attachmentAssetId 
+ * @param serveOptions 
+ * @param id 
+ * @param contentResource 
+ * @param id 
+ * @param attachmentAsset 
+ */
 public class AttachmentAssetService {
 	
 	public static class AddAttachmentAssetBuilder extends RequestBuilder<AttachmentAsset, AttachmentAsset.Tokenizer, AddAttachmentAssetBuilder> {
@@ -61,7 +79,12 @@ public class AttachmentAssetService {
 		}
 	}
 
-	/**  Add attachment asset  */
+	/**
+	 * Add attachment asset
+	 * 
+	 * @param entryId 
+	 * @param attachmentAsset 
+	 */
     public static AddAttachmentAssetBuilder add(String entryId, AttachmentAsset attachmentAsset)  {
 		return new AddAttachmentAssetBuilder(entryId, attachmentAsset);
 	}
@@ -110,7 +133,11 @@ public class AttachmentAssetService {
 		}
 	}
 
-	/**  Get remote storage existing paths for the asset  */
+	/**
+	 * Get remote storage existing paths for the asset
+	 * 
+	 * @param id 
+	 */
     public static GetRemotePathsAttachmentAssetBuilder getRemotePaths(String id)  {
 		return new GetRemotePathsAttachmentAssetBuilder(id);
 	}
@@ -136,7 +163,12 @@ public class AttachmentAssetService {
 		return getUrl(id, Integer.MIN_VALUE);
 	}
 
-	/**  Get download URL for the asset  */
+	/**
+	 * Get download URL for the asset
+	 * 
+	 * @param id 
+	 * @param storageId 
+	 */
     public static GetUrlAttachmentAssetBuilder getUrl(String id, int storageId)  {
 		return new GetUrlAttachmentAssetBuilder(id, storageId);
 	}
@@ -158,7 +190,12 @@ public class AttachmentAssetService {
 		return list(filter, null);
 	}
 
-	/**  List attachment Assets by filter and pager  */
+	/**
+	 * List attachment Assets by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAttachmentAssetBuilder list(AssetFilter filter, FilterPager pager)  {
 		return new ListAttachmentAssetBuilder(filter, pager);
 	}
@@ -180,7 +217,12 @@ public class AttachmentAssetService {
 		return serve(attachmentAssetId, null);
 	}
 
-	/**  Serves attachment by its id  */
+	/**
+	 * Serves attachment by its id
+	 * 
+	 * @param attachmentAssetId 
+	 * @param serveOptions 
+	 */
     public static ServeAttachmentAssetBuilder serve(String attachmentAssetId, AttachmentServeOptions serveOptions)  {
 		return new ServeAttachmentAssetBuilder(attachmentAssetId, serveOptions);
 	}
@@ -198,7 +240,12 @@ public class AttachmentAssetService {
 		}
 	}
 
-	/**  Update content of attachment asset  */
+	/**
+	 * Update content of attachment asset
+	 * 
+	 * @param id 
+	 * @param contentResource 
+	 */
     public static SetContentAttachmentAssetBuilder setContent(String id, ContentResource contentResource)  {
 		return new SetContentAttachmentAssetBuilder(id, contentResource);
 	}
@@ -216,7 +263,12 @@ public class AttachmentAssetService {
 		}
 	}
 
-	/**  Update attachment asset  */
+	/**
+	 * Update attachment asset
+	 * 
+	 * @param id 
+	 * @param attachmentAsset 
+	 */
     public static UpdateAttachmentAssetBuilder update(String id, AttachmentAsset attachmentAsset)  {
 		return new UpdateAttachmentAssetBuilder(id, attachmentAsset);
 	}

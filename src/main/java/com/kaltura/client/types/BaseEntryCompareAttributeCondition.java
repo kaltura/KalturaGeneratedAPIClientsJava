@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaBaseEntry attributes. Use
-  KalturaBaseEntryCompareAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaBaseEntry attributes. Use
+  KalturaBaseEntryCompareAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BaseEntryCompareAttributeCondition.Tokenizer.class)
 public class BaseEntryCompareAttributeCondition extends SearchComparableAttributeCondition {

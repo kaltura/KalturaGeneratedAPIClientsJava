@@ -40,7 +40,18 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Business-process case service lets you get information about processes  */
+/**
+ * Business-process case service lets you get information about processes
+ * 
+ * @param objectType 
+ * @param objectId 
+ * @param businessProcessStartNotificationTemplateId 
+ * @param objectType 
+ * @param objectId 
+ * @param objectType 
+ * @param objectId 
+ * @param businessProcessStartNotificationTemplateId 
+ */
 public class BusinessProcessCaseService {
 	
 	public static class AbortBusinessProcessCaseBuilder extends NullRequestBuilder {
@@ -65,7 +76,13 @@ public class BusinessProcessCaseService {
 		}
 	}
 
-	/**  Abort business-process case  */
+	/**
+	 * Abort business-process case
+	 * 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param businessProcessStartNotificationTemplateId 
+	 */
     public static AbortBusinessProcessCaseBuilder abort(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
 		return new AbortBusinessProcessCaseBuilder(objectType, objectId, businessProcessStartNotificationTemplateId);
 	}
@@ -87,7 +104,12 @@ public class BusinessProcessCaseService {
 		}
 	}
 
-	/**  list business-process cases  */
+	/**
+	 * list business-process cases
+	 * 
+	 * @param objectType 
+	 * @param objectId 
+	 */
     public static ListBusinessProcessCaseBuilder list(EventNotificationEventObjectType objectType, String objectId)  {
 		return new ListBusinessProcessCaseBuilder(objectType, objectId);
 	}
@@ -114,7 +136,13 @@ public class BusinessProcessCaseService {
 		}
 	}
 
-	/**  Server business-process case diagram  */
+	/**
+	 * Server business-process case diagram
+	 * 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param businessProcessStartNotificationTemplateId 
+	 */
     public static ServeDiagramBusinessProcessCaseBuilder serveDiagram(EventNotificationEventObjectType objectType, String objectId, int businessProcessStartNotificationTemplateId)  {
 		return new ServeDiagramBusinessProcessCaseBuilder(objectType, objectId, businessProcessStartNotificationTemplateId);
 	}

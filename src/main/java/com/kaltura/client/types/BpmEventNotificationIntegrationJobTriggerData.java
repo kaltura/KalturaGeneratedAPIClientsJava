@@ -49,10 +49,14 @@ public class BpmEventNotificationIntegrationJobTriggerData extends IntegrationJo
 		String caseId();
 	}
 
-	/**  KalturaBusinessProcessNotificationTemplate id  */
+	/**
+	 * KalturaBusinessProcessNotificationTemplate id
+	 */
 	private Integer templateId;
 	private String businessProcessId;
-	/**  Execution unique id  */
+	/**
+	 * Execution unique id
+	 */
 	private String caseId;
 
 	// templateId:

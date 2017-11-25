@@ -72,46 +72,84 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 		String signSecret();
 	}
 
-	/**  Remote server URL  */
+	/**
+	 * Remote server URL
+	 */
 	private String url;
-	/**  Request method.  */
+	/**
+	 * Request method.
+	 */
 	private HttpNotificationMethod method;
-	/**  Data to send.  */
+	/**
+	 * Data to send.
+	 */
 	private String data;
-	/**  The maximum number of seconds to allow cURL functions to execute.  */
+	/**
+	 * The maximum number of seconds to allow cURL functions to execute.
+	 */
 	private Integer timeout;
-	/**  The number of seconds to wait while trying to connect.   Must be larger than
-	  zero.  */
+	/**
+	 * The number of seconds to wait while trying to connect.   Must be larger than
+	  zero.
+	 */
 	private Integer connectTimeout;
-	/**  A username to use for the connection.  */
+	/**
+	 * A username to use for the connection.
+	 */
 	private String username;
-	/**  A password to use for the connection.  */
+	/**
+	 * A password to use for the connection.
+	 */
 	private String password;
-	/**  The HTTP authentication method to use.  */
+	/**
+	 * The HTTP authentication method to use.
+	 */
 	private HttpNotificationAuthenticationMethod authenticationMethod;
-	/**  The SSL version (2 or 3) to use.   By default PHP will try to determine this
-	  itself, although in some cases this must be set manually.  */
+	/**
+	 * The SSL version (2 or 3) to use.   By default PHP will try to determine this
+	  itself, although in some cases this must be set manually.
+	 */
 	private HttpNotificationSslVersion sslVersion;
-	/**  SSL certificate to verify the peer with.  */
+	/**
+	 * SSL certificate to verify the peer with.
+	 */
 	private String sslCertificate;
-	/**  The format of the certificate.  */
+	/**
+	 * The format of the certificate.
+	 */
 	private HttpNotificationCertificateType sslCertificateType;
-	/**  The password required to use the certificate.  */
+	/**
+	 * The password required to use the certificate.
+	 */
 	private String sslCertificatePassword;
-	/**  The identifier for the crypto engine of the private SSL key specified in ssl
-	  key.  */
+	/**
+	 * The identifier for the crypto engine of the private SSL key specified in ssl
+	  key.
+	 */
 	private String sslEngine;
-	/**  The identifier for the crypto engine used for asymmetric crypto operations.  */
+	/**
+	 * The identifier for the crypto engine used for asymmetric crypto operations.
+	 */
 	private String sslEngineDefault;
-	/**  The key type of the private SSL key specified in ssl key - PEM / DER / ENG.  */
+	/**
+	 * The key type of the private SSL key specified in ssl key - PEM / DER / ENG.
+	 */
 	private HttpNotificationSslKeyType sslKeyType;
-	/**  Private SSL key.  */
+	/**
+	 * Private SSL key.
+	 */
 	private String sslKey;
-	/**  The secret password needed to use the private SSL key specified in ssl key.  */
+	/**
+	 * The secret password needed to use the private SSL key specified in ssl key.
+	 */
 	private String sslKeyPassword;
-	/**  Adds a e-mail custom header  */
+	/**
+	 * Adds a e-mail custom header
+	 */
 	private List<KeyValue> customHeaders;
-	/**  The secret to sign the notification with  */
+	/**
+	 * The secret to sign the notification with
+	 */
 	private String signSecret;
 
 	// url:

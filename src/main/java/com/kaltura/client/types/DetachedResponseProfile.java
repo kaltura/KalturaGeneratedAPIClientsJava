@@ -58,10 +58,14 @@ public class DetachedResponseProfile extends BaseResponseProfile {
 		RequestBuilder.ListTokenizer<ResponseProfileMapping.Tokenizer> mappings();
 	}
 
-	/**  Friendly name  */
+	/**
+	 * Friendly name
+	 */
 	private String name;
 	private ResponseProfileType type;
-	/**  Comma separated fields list to be included or excluded  */
+	/**
+	 * Comma separated fields list to be included or excluded
+	 */
 	private String fields;
 	private RelatedFilter filter;
 	private FilterPager pager;

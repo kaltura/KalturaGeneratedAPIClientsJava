@@ -51,9 +51,13 @@ public class ContextDataResult extends ObjectBase {
 		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
 	}
 
-	/**  Array of messages as received from the rules that invalidated  */
+	/**
+	 * Array of messages as received from the rules that invalidated
+	 */
 	private List<StringHolder> messages;
-	/**  Array of actions as received from the rules that invalidated  */
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 */
 	private List<RuleAction> actions;
 
 	// messages:

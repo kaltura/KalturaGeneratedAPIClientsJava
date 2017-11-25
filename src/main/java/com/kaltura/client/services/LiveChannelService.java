@@ -45,7 +45,46 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Live Channel service lets you manage live channels  */
+/**
+ * Live Channel service lets you manage live channels
+ * 
+ * @param liveChannel Live channel metadata
+ * @param entryId Live entry id
+ * @param assetId Live asset id
+ * @param mediaServerIndex 
+ * @param resource 
+ * @param duration in seconds
+ * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
+ * stop event)
+ * @param entryId Live entry id
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+ * KalturaEntryServerNodeStatus::BROADCASTING
+ * @param id Live channel id to delete
+ * @param id Live channel id
+ * @param id ID of the live channel
+ * @param filter live channel filter
+ * @param pager Pager
+ * @param entryId Live entry id
+ * @param hostname Media server host name
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param applicationName the application to which entry is being broadcast
+ * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+ * KalturaEntryServerNodeStatus::BROADCASTING
+ * @param shouldCreateRecordedEntry 
+ * @param entryId Live entry id
+ * @param mediaServerIndex 
+ * @param resource 
+ * @param duration in seconds
+ * @param recordedEntryId Recorded entry Id
+ * @param flavorParamsId Recorded entry Id
+ * @param entryId Live entry id
+ * @param hostname Media server host name
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param id Live channel id to update
+ * @param liveChannel Live channel metadata to update
+ * @param entryId Live entry id
+ */
 public class LiveChannelService {
 	
 	public static class AddLiveChannelBuilder extends RequestBuilder<LiveChannel, LiveChannel.Tokenizer, AddLiveChannelBuilder> {
@@ -56,7 +95,11 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Adds new live channel.  */
+	/**
+	 * Adds new live channel.
+	 * 
+	 * @param liveChannel Live channel metadata
+	 */
     public static AddLiveChannelBuilder add(LiveChannel liveChannel)  {
 		return new AddLiveChannelBuilder(liveChannel);
 	}
@@ -98,7 +141,17 @@ public class LiveChannelService {
 		return appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
 	}
 
-	/**  Append recorded video to live entry  */
+	/**
+	 * Append recorded video to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param assetId Live asset id
+	 * @param mediaServerIndex 
+	 * @param resource 
+	 * @param duration in seconds
+	 * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
+	 * stop event)
+	 */
     public static AppendRecordingLiveChannelBuilder appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk)  {
 		return new AppendRecordingLiveChannelBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 	}
@@ -125,8 +178,15 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Create recorded entry id if it doesn't exist and make sure it happens on the DC
-	  that the live entry was created on.  */
+	/**
+	 * Create recorded entry id if it doesn't exist and make sure it happens on the DC
+	  that the live entry was created on.
+	 * 
+	 * @param entryId Live entry id
+	 * @param mediaServerIndex Media server index primary / secondary
+	 * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+	 * KalturaEntryServerNodeStatus::BROADCASTING
+	 */
     public static CreateRecordedEntryLiveChannelBuilder createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
 		return new CreateRecordedEntryLiveChannelBuilder(entryId, mediaServerIndex, liveEntryStatus);
 	}
@@ -143,7 +203,11 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Delete a live channel.  */
+	/**
+	 * Delete a live channel.
+	 * 
+	 * @param id Live channel id to delete
+	 */
     public static DeleteLiveChannelBuilder delete(String id)  {
 		return new DeleteLiveChannelBuilder(id);
 	}
@@ -160,7 +224,11 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Get live channel by ID.  */
+	/**
+	 * Get live channel by ID.
+	 * 
+	 * @param id Live channel id
+	 */
     public static GetLiveChannelBuilder get(String id)  {
 		return new GetLiveChannelBuilder(id);
 	}
@@ -177,7 +245,11 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Delivering the status of a live channel (on-air/offline)  */
+	/**
+	 * Delivering the status of a live channel (on-air/offline)
+	 * 
+	 * @param id ID of the live channel
+	 */
     public static IsLiveLiveChannelBuilder isLive(String id)  {
 		return new IsLiveLiveChannelBuilder(id);
 	}
@@ -199,7 +271,12 @@ public class LiveChannelService {
 		return list(filter, null);
 	}
 
-	/**  List live channels by filter with paging support.  */
+	/**
+	 * List live channels by filter with paging support.
+	 * 
+	 * @param filter live channel filter
+	 * @param pager Pager
+	 */
     public static ListLiveChannelBuilder list(LiveChannelFilter filter, FilterPager pager)  {
 		return new ListLiveChannelBuilder(filter, pager);
 	}
@@ -253,7 +330,17 @@ public class LiveChannelService {
 		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
 	}
 
-	/**  Register media server to live entry  */
+	/**
+	 * Register media server to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param hostname Media server host name
+	 * @param mediaServerIndex Media server index primary / secondary
+	 * @param applicationName the application to which entry is being broadcast
+	 * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+	 * KalturaEntryServerNodeStatus::BROADCASTING
+	 * @param shouldCreateRecordedEntry 
+	 */
     public static RegisterMediaServerLiveChannelBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
 		return new RegisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
 	}
@@ -299,7 +386,16 @@ public class LiveChannelService {
 		return setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
 	}
 
-	/**  Set recorded video to live entry  */
+	/**
+	 * Set recorded video to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param mediaServerIndex 
+	 * @param resource 
+	 * @param duration in seconds
+	 * @param recordedEntryId Recorded entry Id
+	 * @param flavorParamsId Recorded entry Id
+	 */
     public static SetRecordedContentLiveChannelBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId)  {
 		return new SetRecordedContentLiveChannelBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 	}
@@ -326,7 +422,13 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Unregister media server from live entry  */
+	/**
+	 * Unregister media server from live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param hostname Media server host name
+	 * @param mediaServerIndex Media server index primary / secondary
+	 */
     public static UnregisterMediaServerLiveChannelBuilder unregisterMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
 		return new UnregisterMediaServerLiveChannelBuilder(entryId, hostname, mediaServerIndex);
 	}
@@ -344,7 +446,12 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Update live channel. Only the properties that were set will be updated.  */
+	/**
+	 * Update live channel. Only the properties that were set will be updated.
+	 * 
+	 * @param id Live channel id to update
+	 * @param liveChannel Live channel metadata to update
+	 */
     public static UpdateLiveChannelBuilder update(String id, LiveChannel liveChannel)  {
 		return new UpdateLiveChannelBuilder(id, liveChannel);
 	}
@@ -361,7 +468,11 @@ public class LiveChannelService {
 		}
 	}
 
-	/**  Validates all registered media servers  */
+	/**
+	 * Validates all registered media servers
+	 * 
+	 * @param entryId Live entry id
+	 */
     public static ValidateRegisteredMediaServersLiveChannelBuilder validateRegisteredMediaServers(String entryId)  {
 		return new ValidateRegisteredMediaServersLiveChannelBuilder(entryId);
 	}

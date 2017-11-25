@@ -77,54 +77,98 @@ public class ConversionProfile extends ObjectBase {
 		EntryReplacementOptions.Tokenizer defaultReplacementOptions();
 	}
 
-	/**  The id of the Conversion Profile  */
+	/**
+	 * The id of the Conversion Profile
+	 */
 	private Integer id;
 	private Integer partnerId;
 	private ConversionProfileStatus status;
 	private ConversionProfileType type;
-	/**  The name of the Conversion Profile  */
+	/**
+	 * The name of the Conversion Profile
+	 */
 	private String name;
-	/**  System name of the Conversion Profile  */
+	/**
+	 * System name of the Conversion Profile
+	 */
 	private String systemName;
-	/**  Comma separated tags  */
+	/**
+	 * Comma separated tags
+	 */
 	private String tags;
-	/**  The description of the Conversion Profile  */
+	/**
+	 * The description of the Conversion Profile
+	 */
 	private String description;
-	/**  ID of the default entry to be used for template data  */
+	/**
+	 * ID of the default entry to be used for template data
+	 */
 	private String defaultEntryId;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  List of included flavor ids (comma separated)  */
+	/**
+	 * List of included flavor ids (comma separated)
+	 */
 	private String flavorParamsIds;
-	/**  Indicates that this conversion profile is system default  */
+	/**
+	 * Indicates that this conversion profile is system default
+	 */
 	private Boolean isDefault;
-	/**  Indicates that this conversion profile is partner default  */
+	/**
+	 * Indicates that this conversion profile is partner default
+	 */
 	private Boolean isPartnerDefault;
-	/**  Cropping dimensions  */
+	/**
+	 * Cropping dimensions
+	 */
 	private CropDimensions cropDimensions;
-	/**  Clipping start position (in miliseconds)  */
+	/**
+	 * Clipping start position (in miliseconds)
+	 */
 	private Integer clipStart;
-	/**  Clipping duration (in miliseconds)  */
+	/**
+	 * Clipping duration (in miliseconds)
+	 */
 	private Integer clipDuration;
-	/**  XSL to transform ingestion MRSS XML  */
+	/**
+	 * XSL to transform ingestion MRSS XML
+	 */
 	private String xslTransformation;
-	/**  ID of default storage profile to be used for linked net-storage file syncs  */
+	/**
+	 * ID of default storage profile to be used for linked net-storage file syncs
+	 */
 	private Integer storageProfileId;
-	/**  Media parser type to be used for extract media  */
+	/**
+	 * Media parser type to be used for extract media
+	 */
 	private MediaParserType mediaParserType;
-	/**  Should calculate file conversion complexity  */
+	/**
+	 * Should calculate file conversion complexity
+	 */
 	private Boolean calculateComplexity;
-	/**  Defines the tags that should be used to define 'collective'/group/multi-flavor
-	  processing,   like 'mbr' or 'ism'  */
+	/**
+	 * Defines the tags that should be used to define 'collective'/group/multi-flavor
+	  processing,   like 'mbr' or 'ism'
+	 */
 	private String collectionTags;
-	/**  JSON string with array of "condition,profile-id" pairs.  */
+	/**
+	 * JSON string with array of "condition,profile-id" pairs.
+	 */
 	private String conditionalProfiles;
-	/**  When set, the ExtractMedia job should detect the source file GOP using this
-	  value as the max calculated period  */
+	/**
+	 * When set, the ExtractMedia job should detect the source file GOP using this
+	  value as the max calculated period
+	 */
 	private Integer detectGOP;
-	/**  XSL to transform ingestion Media Info XML  */
+	/**
+	 * XSL to transform ingestion Media Info XML
+	 */
 	private String mediaInfoXslTransformation;
-	/**  Default replacement options to be applied to entries  */
+	/**
+	 * Default replacement options to be applied to entries
+	 */
 	private EntryReplacementOptions defaultReplacementOptions;
 
 	// id:

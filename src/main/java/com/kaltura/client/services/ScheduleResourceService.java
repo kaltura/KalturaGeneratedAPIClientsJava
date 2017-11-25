@@ -47,9 +47,21 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  The ScheduleResource service enables you to create and manage (update, delete,
+/**
+ * The ScheduleResource service enables you to create and manage (update, delete,
   retrieve, etc.) the resources required for scheduled events (cameras, capture
-  devices, etc.).  */
+  devices, etc.).
+ * 
+ * @param scheduleResource 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param scheduleResourceId 
+ * @param scheduleResourceId 
+ * @param filter 
+ * @param pager 
+ * @param scheduleResourceId 
+ * @param scheduleResource Id
+ */
 public class ScheduleResourceService {
 	
 	public static class AddScheduleResourceBuilder extends RequestBuilder<ScheduleResource, ScheduleResource.Tokenizer, AddScheduleResourceBuilder> {
@@ -60,7 +72,11 @@ public class ScheduleResourceService {
 		}
 	}
 
-	/**  Allows you to add a new KalturaScheduleResource object  */
+	/**
+	 * Allows you to add a new KalturaScheduleResource object
+	 * 
+	 * @param scheduleResource 
+	 */
     public static AddScheduleResourceBuilder add(ScheduleResource scheduleResource)  {
 		return new AddScheduleResourceBuilder(scheduleResource);
 	}
@@ -103,7 +119,12 @@ public class ScheduleResourceService {
 		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData);
 	}
 
-	/**  Add new bulk upload batch job  */
+	/**
+	 * Add new bulk upload batch job
+	 * 
+	 * @param fileData 
+	 * @param bulkUploadData 
+	 */
     public static AddFromBulkUploadScheduleResourceBuilder addFromBulkUpload(FileHolder fileData, BulkUploadCsvJobData bulkUploadData)  {
 		return new AddFromBulkUploadScheduleResourceBuilder(fileData, bulkUploadData);
 	}
@@ -120,7 +141,11 @@ public class ScheduleResourceService {
 		}
 	}
 
-	/**  Mark the KalturaScheduleResource object as deleted  */
+	/**
+	 * Mark the KalturaScheduleResource object as deleted
+	 * 
+	 * @param scheduleResourceId 
+	 */
     public static DeleteScheduleResourceBuilder delete(int scheduleResourceId)  {
 		return new DeleteScheduleResourceBuilder(scheduleResourceId);
 	}
@@ -137,7 +162,11 @@ public class ScheduleResourceService {
 		}
 	}
 
-	/**  Retrieve a KalturaScheduleResource object by ID  */
+	/**
+	 * Retrieve a KalturaScheduleResource object by ID
+	 * 
+	 * @param scheduleResourceId 
+	 */
     public static GetScheduleResourceBuilder get(int scheduleResourceId)  {
 		return new GetScheduleResourceBuilder(scheduleResourceId);
 	}
@@ -159,7 +188,12 @@ public class ScheduleResourceService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaScheduleResource objects  */
+	/**
+	 * List KalturaScheduleResource objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListScheduleResourceBuilder list(ScheduleResourceFilter filter, FilterPager pager)  {
 		return new ListScheduleResourceBuilder(filter, pager);
 	}
@@ -177,7 +211,12 @@ public class ScheduleResourceService {
 		}
 	}
 
-	/**  Update an existing KalturaScheduleResource object  */
+	/**
+	 * Update an existing KalturaScheduleResource object
+	 * 
+	 * @param scheduleResourceId 
+	 * @param scheduleResource Id
+	 */
     public static UpdateScheduleResourceBuilder update(int scheduleResourceId, ScheduleResource scheduleResource)  {
 		return new UpdateScheduleResourceBuilder(scheduleResourceId, scheduleResource);
 	}

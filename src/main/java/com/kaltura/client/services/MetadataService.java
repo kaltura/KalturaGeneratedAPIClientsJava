@@ -48,7 +48,44 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Metadata service  */
+/**
+ * Metadata service
+ * 
+ * @param metadataProfileId 
+ * @param objectType 
+ * @param objectId 
+ * @param xmlData XML metadata
+ * @param metadataProfileId 
+ * @param objectType 
+ * @param objectId 
+ * @param url XML metadata remote url
+ * @param metadataProfileId 
+ * @param objectType 
+ * @param objectId 
+ * @param xmlFile XML metadata
+ * @param metadataProfileId 
+ * @param objectType 
+ * @param objectId 
+ * @param url XML metadata remote url
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param shouldUpdate 
+ * @param id 
+ * @param version Enable update only if the metadata object version did not change by other
+ * process
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param id 
+ * @param xmlData XML metadata
+ * @param version Enable update only if the metadata object version did not change by other
+ * process
+ * @param id 
+ * @param xmlFile XML metadata
+ * @param id 
+ * @param xslFile 
+ */
 public class MetadataService {
 	
 	public static class AddMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, AddMetadataBuilder> {
@@ -78,8 +115,15 @@ public class MetadataService {
 		}
 	}
 
-	/**  Allows you to add a metadata object and metadata content associated with Kaltura
-	  object  */
+	/**
+	 * Allows you to add a metadata object and metadata content associated with Kaltura
+	  object
+	 * 
+	 * @param metadataProfileId 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param xmlData XML metadata
+	 */
     public static AddMetadataBuilder add(int metadataProfileId, MetadataObjectType objectType, String objectId, String xmlData)  {
 		return new AddMetadataBuilder(metadataProfileId, objectType, objectId, xmlData);
 	}
@@ -111,8 +155,15 @@ public class MetadataService {
 		}
 	}
 
-	/**  Allows you to add a metadata xml data from remote URL.   Enables different
-	  permissions than addFromUrl action.  */
+	/**
+	 * Allows you to add a metadata xml data from remote URL.   Enables different
+	  permissions than addFromUrl action.
+	 * 
+	 * @param metadataProfileId 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param url XML metadata remote url
+	 */
     public static AddFromBulkMetadataBuilder addFromBulk(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
 		return new AddFromBulkMetadataBuilder(metadataProfileId, objectType, objectId, url);
 	}
@@ -153,8 +204,15 @@ public class MetadataService {
 		return addFromFile(metadataProfileId, objectType, objectId, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
 	}
 
-	/**  Allows you to add a metadata object and metadata file associated with Kaltura
-	  object  */
+	/**
+	 * Allows you to add a metadata object and metadata file associated with Kaltura
+	  object
+	 * 
+	 * @param metadataProfileId 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param xmlFile XML metadata
+	 */
     public static AddFromFileMetadataBuilder addFromFile(int metadataProfileId, MetadataObjectType objectType, String objectId, FileHolder xmlFile)  {
 		return new AddFromFileMetadataBuilder(metadataProfileId, objectType, objectId, xmlFile);
 	}
@@ -186,7 +244,14 @@ public class MetadataService {
 		}
 	}
 
-	/**  Allows you to add a metadata xml data from remote URL  */
+	/**
+	 * Allows you to add a metadata xml data from remote URL
+	 * 
+	 * @param metadataProfileId 
+	 * @param objectType 
+	 * @param objectId 
+	 * @param url XML metadata remote url
+	 */
     public static AddFromUrlMetadataBuilder addFromUrl(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
 		return new AddFromUrlMetadataBuilder(metadataProfileId, objectType, objectId, url);
 	}
@@ -203,7 +268,11 @@ public class MetadataService {
 		}
 	}
 
-	/**  Delete an existing metadata  */
+	/**
+	 * Delete an existing metadata
+	 * 
+	 * @param id 
+	 */
     public static DeleteMetadataBuilder delete(int id)  {
 		return new DeleteMetadataBuilder(id);
 	}
@@ -220,7 +289,11 @@ public class MetadataService {
 		}
 	}
 
-	/**  Retrieve a metadata object by id  */
+	/**
+	 * Retrieve a metadata object by id
+	 * 
+	 * @param id 
+	 */
     public static GetMetadataBuilder get(int id)  {
 		return new GetMetadataBuilder(id);
 	}
@@ -242,7 +315,12 @@ public class MetadataService {
 		}
 	}
 
-	/**  Index metadata by id, will also index the related object  */
+	/**
+	 * Index metadata by id, will also index the related object
+	 * 
+	 * @param id 
+	 * @param shouldUpdate 
+	 */
     public static IndexMetadataBuilder index(String id, boolean shouldUpdate)  {
 		return new IndexMetadataBuilder(id, shouldUpdate);
 	}
@@ -268,7 +346,13 @@ public class MetadataService {
 		return invalidate(id, Integer.MIN_VALUE);
 	}
 
-	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
+	/**
+	 * Mark existing metadata as invalid   Used by batch metadata transform
+	 * 
+	 * @param id 
+	 * @param version Enable update only if the metadata object version did not change by other
+	 * process
+	 */
     public static InvalidateMetadataBuilder invalidate(int id, int version)  {
 		return new InvalidateMetadataBuilder(id, version);
 	}
@@ -290,7 +374,12 @@ public class MetadataService {
 		return list(filter, null);
 	}
 
-	/**  List metadata objects by filter and pager  */
+	/**
+	 * List metadata objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListMetadataBuilder list(MetadataFilter filter, FilterPager pager)  {
 		return new ListMetadataBuilder(filter, pager);
 	}
@@ -307,7 +396,11 @@ public class MetadataService {
 		}
 	}
 
-	/**  Serves metadata XML file  */
+	/**
+	 * Serves metadata XML file
+	 * 
+	 * @param id 
+	 */
     public static ServeMetadataBuilder serve(int id)  {
 		return new ServeMetadataBuilder(id);
 	}
@@ -342,7 +435,14 @@ public class MetadataService {
 		return update(id, xmlData, Integer.MIN_VALUE);
 	}
 
-	/**  Update an existing metadata object with new XML content  */
+	/**
+	 * Update an existing metadata object with new XML content
+	 * 
+	 * @param id 
+	 * @param xmlData XML metadata
+	 * @param version Enable update only if the metadata object version did not change by other
+	 * process
+	 */
     public static UpdateMetadataBuilder update(int id, String xmlData, int version)  {
 		return new UpdateMetadataBuilder(id, xmlData, version);
 	}
@@ -377,7 +477,12 @@ public class MetadataService {
 		return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
 	}
 
-	/**  Update an existing metadata object with new XML file  */
+	/**
+	 * Update an existing metadata object with new XML file
+	 * 
+	 * @param id 
+	 * @param xmlFile XML metadata
+	 */
     public static UpdateFromFileMetadataBuilder updateFromFile(int id, FileHolder xmlFile)  {
 		return new UpdateFromFileMetadataBuilder(id, xmlFile);
 	}
@@ -408,7 +513,12 @@ public class MetadataService {
 		return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName));
 	}
 
-	/**  Action transforms current metadata object XML using a provided XSL.  */
+	/**
+	 * Action transforms current metadata object XML using a provided XSL.
+	 * 
+	 * @param id 
+	 * @param xslFile 
+	 */
     public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, FileHolder xslFile)  {
 		return new UpdateFromXSLMetadataBuilder(id, xslFile);
 	}

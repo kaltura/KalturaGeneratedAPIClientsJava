@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  JobData representing the dynamic user receipient array  */
+/**
+ * JobData representing the dynamic user receipient array
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationUserRecipientJobData.Tokenizer.class)
 public class EmailNotificationUserRecipientJobData extends EmailNotificationRecipientJobData {

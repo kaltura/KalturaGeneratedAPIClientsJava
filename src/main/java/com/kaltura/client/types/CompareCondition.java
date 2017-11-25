@@ -50,9 +50,13 @@ public abstract class CompareCondition extends Condition {
 		String comparison();
 	}
 
-	/**  Value to evaluate against the field and operator  */
+	/**
+	 * Value to evaluate against the field and operator
+	 */
 	private IntegerValue value;
-	/**  Comparing operator  */
+	/**
+	 * Comparing operator
+	 */
 	private SearchConditionComparison comparison;
 
 	// value:

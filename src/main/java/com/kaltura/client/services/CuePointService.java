@@ -48,7 +48,25 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Cue Point service  */
+/**
+ * Cue Point service
+ * 
+ * @param cuePoint 
+ * @param fileData 
+ * @param id 
+ * @param entryId 
+ * @param filter 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param cuePoint 
+ * @param id 
+ * @param status 
+ */
 public class CuePointService {
 	
 	public static class AddCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, AddCuePointBuilder> {
@@ -59,7 +77,11 @@ public class CuePointService {
 		}
 	}
 
-	/**  Allows you to add an cue point object associated with an entry  */
+	/**
+	 * Allows you to add an cue point object associated with an entry
+	 * 
+	 * @param cuePoint 
+	 */
     public static AddCuePointBuilder add(CuePoint cuePoint)  {
 		return new AddCuePointBuilder(cuePoint);
 	}
@@ -85,8 +107,12 @@ public class CuePointService {
 		return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Allows you to add multiple cue points objects by uploading XML that contains
-	  multiple cue point definitions  */
+	/**
+	 * Allows you to add multiple cue points objects by uploading XML that contains
+	  multiple cue point definitions
+	 * 
+	 * @param fileData 
+	 */
     public static AddFromBulkCuePointBuilder addFromBulk(FileHolder fileData)  {
 		return new AddFromBulkCuePointBuilder(fileData);
 	}
@@ -108,7 +134,12 @@ public class CuePointService {
 		}
 	}
 
-	/**  Clone cuePoint with id to given entry  */
+	/**
+	 * Clone cuePoint with id to given entry
+	 * 
+	 * @param id 
+	 * @param entryId 
+	 */
     public static CloneCuePointBuilder clone(String id, String entryId)  {
 		return new CloneCuePointBuilder(id, entryId);
 	}
@@ -125,7 +156,11 @@ public class CuePointService {
 		return count(null);
 	}
 
-	/**  count cue point objects by filter  */
+	/**
+	 * count cue point objects by filter
+	 * 
+	 * @param filter 
+	 */
     public static CountCuePointBuilder count(CuePointFilter filter)  {
 		return new CountCuePointBuilder(filter);
 	}
@@ -142,7 +177,11 @@ public class CuePointService {
 		}
 	}
 
-	/**  delete cue point by id, and delete all children cue points  */
+	/**
+	 * delete cue point by id, and delete all children cue points
+	 * 
+	 * @param id 
+	 */
     public static DeleteCuePointBuilder delete(String id)  {
 		return new DeleteCuePointBuilder(id);
 	}
@@ -159,7 +198,11 @@ public class CuePointService {
 		}
 	}
 
-	/**  Retrieve an CuePoint object by id  */
+	/**
+	 * Retrieve an CuePoint object by id
+	 * 
+	 * @param id 
+	 */
     public static GetCuePointBuilder get(String id)  {
 		return new GetCuePointBuilder(id);
 	}
@@ -181,7 +224,12 @@ public class CuePointService {
 		return list(filter, null);
 	}
 
-	/**  List cue point objects by filter and pager  */
+	/**
+	 * List cue point objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCuePointBuilder list(CuePointFilter filter, FilterPager pager)  {
 		return new ListCuePointBuilder(filter, pager);
 	}
@@ -203,7 +251,12 @@ public class CuePointService {
 		return serveBulk(filter, null);
 	}
 
-	/**  Download multiple cue points objects as XML definitions  */
+	/**
+	 * Download multiple cue points objects as XML definitions
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ServeBulkCuePointBuilder serveBulk(CuePointFilter filter, FilterPager pager)  {
 		return new ServeBulkCuePointBuilder(filter, pager);
 	}
@@ -221,7 +274,12 @@ public class CuePointService {
 		}
 	}
 
-	/**  Update cue point by id  */
+	/**
+	 * Update cue point by id
+	 * 
+	 * @param id 
+	 * @param cuePoint 
+	 */
     public static UpdateCuePointBuilder update(String id, CuePoint cuePoint)  {
 		return new UpdateCuePointBuilder(id, cuePoint);
 	}
@@ -243,7 +301,12 @@ public class CuePointService {
 		}
 	}
 
-	/**  Update cuePoint status by id  */
+	/**
+	 * Update cuePoint status by id
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusCuePointBuilder updateStatus(String id, CuePointStatus status)  {
 		return new UpdateStatusCuePointBuilder(id, status);
 	}

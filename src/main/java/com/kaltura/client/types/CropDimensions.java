@@ -51,13 +51,21 @@ public class CropDimensions extends ObjectBase {
 		String height();
 	}
 
-	/**  Crop left point  */
+	/**
+	 * Crop left point
+	 */
 	private Integer left;
-	/**  Crop top point  */
+	/**
+	 * Crop top point
+	 */
 	private Integer top;
-	/**  Crop width  */
+	/**
+	 * Crop width
+	 */
 	private Integer width;
-	/**  Crop height  */
+	/**
+	 * Crop height
+	 */
 	private Integer height;
 
 	// left:

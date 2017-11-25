@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of an RTMP live stream configuration  */
+/**
+ * A representation of an RTMP live stream configuration
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveStreamPushPublishRTMPConfiguration.Tokenizer.class)
 public class LiveStreamPushPublishRTMPConfiguration extends LiveStreamPushPublishConfiguration {

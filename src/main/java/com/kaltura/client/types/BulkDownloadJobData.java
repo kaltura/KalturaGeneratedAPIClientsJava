@@ -49,11 +49,17 @@ public class BulkDownloadJobData extends JobData {
 		String puserId();
 	}
 
-	/**  Comma separated list of entry ids  */
+	/**
+	 * Comma separated list of entry ids
+	 */
 	private String entryIds;
-	/**  Flavor params id to use for conversion  */
+	/**
+	 * Flavor params id to use for conversion
+	 */
 	private Integer flavorParamsId;
-	/**  The id of the requesting user  */
+	/**
+	 * The id of the requesting user
+	 */
 	private String puserId;
 
 	// entryIds:

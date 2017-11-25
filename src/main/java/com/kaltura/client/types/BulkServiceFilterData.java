@@ -41,7 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk service input for filter bulk upload  */
+/**
+ * Represents the Bulk service input for filter bulk upload
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BulkServiceFilterData.Tokenizer.class)
 public class BulkServiceFilterData extends BulkServiceData {
@@ -51,9 +53,13 @@ public class BulkServiceFilterData extends BulkServiceData {
 		ObjectBase.Tokenizer templateObject();
 	}
 
-	/**  Filter for extracting the objects list to upload  */
+	/**
+	 * Filter for extracting the objects list to upload
+	 */
 	private Filter filter;
-	/**  Template object for new object creation  */
+	/**
+	 * Template object for new object creation
+	 */
 	private ObjectBase templateObject;
 
 	// filter:

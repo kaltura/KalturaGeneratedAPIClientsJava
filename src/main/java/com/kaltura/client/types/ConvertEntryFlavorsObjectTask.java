@@ -48,9 +48,13 @@ public class ConvertEntryFlavorsObjectTask extends ObjectTask {
 		String reconvert();
 	}
 
-	/**  Comma separated list of flavor param ids to convert  */
+	/**
+	 * Comma separated list of flavor param ids to convert
+	 */
 	private String flavorParamsIds;
-	/**  Should reconvert when flavor already exists?  */
+	/**
+	 * Should reconvert when flavor already exists?
+	 */
 	private Boolean reconvert;
 
 	// flavorParamsIds:

@@ -78,19 +78,33 @@ public class EventNotificationTemplate extends ObjectBase {
 	private EventNotificationTemplateStatus status;
 	private Integer createdAt;
 	private Integer updatedAt;
-	/**  Define that the template could be dispatched manually from the API  */
+	/**
+	 * Define that the template could be dispatched manually from the API
+	 */
 	private Boolean manualDispatchEnabled;
-	/**  Define that the template could be dispatched automatically by the system  */
+	/**
+	 * Define that the template could be dispatched automatically by the system
+	 */
 	private Boolean automaticDispatchEnabled;
-	/**  Define the event that should trigger this notification  */
+	/**
+	 * Define the event that should trigger this notification
+	 */
 	private EventNotificationEventType eventType;
-	/**  Define the object that raied the event that should trigger this notification  */
+	/**
+	 * Define the object that raied the event that should trigger this notification
+	 */
 	private EventNotificationEventObjectType eventObjectType;
-	/**  Define the conditions that cause this notification to be triggered  */
+	/**
+	 * Define the conditions that cause this notification to be triggered
+	 */
 	private List<Condition> eventConditions;
-	/**  Define the content dynamic parameters  */
+	/**
+	 * Define the content dynamic parameters
+	 */
 	private List<EventNotificationParameter> contentParameters;
-	/**  Define the content dynamic parameters  */
+	/**
+	 * Define the content dynamic parameters
+	 */
 	private List<EventNotificationParameter> userParameters;
 
 	// id:

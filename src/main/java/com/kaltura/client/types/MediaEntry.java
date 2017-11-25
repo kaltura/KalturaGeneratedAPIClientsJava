@@ -63,30 +63,54 @@ public class MediaEntry extends PlayableEntry {
 		RequestBuilder.ListTokenizer<StreamContainer.Tokenizer> streams();
 	}
 
-	/**  The media type of the entry  */
+	/**
+	 * The media type of the entry
+	 */
 	private MediaType mediaType;
-	/**  Override the default conversion quality  */
+	/**
+	 * Override the default conversion quality
+	 */
 	private String conversionQuality;
-	/**  The source type of the entry  */
+	/**
+	 * The source type of the entry
+	 */
 	private SourceType sourceType;
-	/**  The search provider type used to import this entry  */
+	/**
+	 * The search provider type used to import this entry
+	 */
 	private SearchProviderType searchProviderType;
-	/**  The ID of the media in the importing site  */
+	/**
+	 * The ID of the media in the importing site
+	 */
 	private String searchProviderId;
-	/**  The user name used for credits  */
+	/**
+	 * The user name used for credits
+	 */
 	private String creditUserName;
-	/**  The URL for credits  */
+	/**
+	 * The URL for credits
+	 */
 	private String creditUrl;
-	/**  The media date extracted from EXIF data (For images) as Unix timestamp (In
-	  seconds)  */
+	/**
+	 * The media date extracted from EXIF data (For images) as Unix timestamp (In
+	  seconds)
+	 */
 	private Integer mediaDate;
-	/**  The URL used for playback. This is not the download URL.  */
+	/**
+	 * The URL used for playback. This is not the download URL.
+	 */
 	private String dataUrl;
-	/**  Comma separated flavor params ids that exists for this media entry  */
+	/**
+	 * Comma separated flavor params ids that exists for this media entry
+	 */
 	private String flavorParamsIds;
-	/**  True if trim action is disabled for this entry  */
+	/**
+	 * True if trim action is disabled for this entry
+	 */
 	private Boolean isTrimDisabled;
-	/**  Array of streams that exists on the entry  */
+	/**
+	 * Array of streams that exists on the entry
+	 */
 	private List<StreamContainer> streams;
 
 	// mediaType:

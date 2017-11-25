@@ -53,21 +53,33 @@ public class PartnerUsage extends ObjectBase {
 		String usageGraph();
 	}
 
-	/**  Partner total hosting in GB on the disk  */
+	/**
+	 * Partner total hosting in GB on the disk
+	 */
 	private Double hostingGB;
-	/**  percent of usage out of partner's package. if usageGB is 5 and package is 10GB,
-	  this value will be 50  */
+	/**
+	 * percent of usage out of partner's package. if usageGB is 5 and package is 10GB,
+	  this value will be 50
+	 */
 	private Double Percent;
-	/**  package total BW - actually this is usage, which represents BW+storage  */
+	/**
+	 * package total BW - actually this is usage, which represents BW+storage
+	 */
 	private Integer packageBW;
-	/**  total usage in GB - including bandwidth and storage  */
+	/**
+	 * total usage in GB - including bandwidth and storage
+	 */
 	private Double usageGB;
-	/**  date when partner reached the limit of his package (timestamp)  */
+	/**
+	 * date when partner reached the limit of his package (timestamp)
+	 */
 	private Integer reachedLimitDate;
-	/**  a semi-colon separated list of comma-separated key-values to represent a usage
+	/**
+	 * a semi-colon separated list of comma-separated key-values to represent a usage
 	  graph.   keys could be 1-12 for a year view (1,1.2;2,1.1;3,0.9;...;12,1.4;)  
 	  keys could be 1-[28,29,30,31] depending on the requested month, for a daily view
-	  in a given month (1,0.4;2,0.2;...;31,0.1;)  */
+	  in a given month (1,0.4;2,0.2;...;31,0.1;)
+	 */
 	private String usageGraph;
 
 	// hostingGB:

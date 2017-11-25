@@ -47,9 +47,11 @@ public class DrmEntryContextPluginData extends PluginData {
 		String flavorData();
 	}
 
-	/**  For the uDRM we give the drm context data which is a json encoding of an array
+	/**
+	 * For the uDRM we give the drm context data which is a json encoding of an array
 	  containing the uDRM data      for each flavor that is required from this
-	  getContextData request.  */
+	  getContextData request.
+	 */
 	private String flavorData;
 
 	// flavorData:

@@ -50,11 +50,17 @@ public class ConversionAttribute extends ObjectBase {
 		String value();
 	}
 
-	/**  The id of the flavor params, set to null for source flavor  */
+	/**
+	 * The id of the flavor params, set to null for source flavor
+	 */
 	private Integer flavorParamsId;
-	/**  Attribute name  */
+	/**
+	 * Attribute name
+	 */
 	private String name;
-	/**  Attribute value  */
+	/**
+	 * Attribute value
+	 */
 	private String value;
 
 	// flavorParamsId:

@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A string representation to return an array of strings  */
+/**
+ * A string representation to return an array of strings
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(StringValue.Tokenizer.class)
 public class StringValue extends Value {

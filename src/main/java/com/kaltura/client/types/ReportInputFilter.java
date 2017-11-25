@@ -53,17 +53,29 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String interval();
 	}
 
-	/**  Search keywords to filter objects  */
+	/**
+	 * Search keywords to filter objects
+	 */
 	private String keywords;
-	/**  Search keywords in onjects tags  */
+	/**
+	 * Search keywords in onjects tags
+	 */
 	private Boolean searchInTags;
-	/**  Search keywords in onjects admin tags  */
+	/**
+	 * Search keywords in onjects admin tags
+	 */
 	private Boolean searchInAdminTags;
-	/**  Search onjects in specified categories  */
+	/**
+	 * Search onjects in specified categories
+	 */
 	private String categories;
-	/**  Time zone offset in minutes  */
+	/**
+	 * Time zone offset in minutes
+	 */
 	private Integer timeZoneOffset;
-	/**  Aggregated results according to interval  */
+	/**
+	 * Aggregated results according to interval
+	 */
 	private ReportInterval interval;
 
 	// keywords:

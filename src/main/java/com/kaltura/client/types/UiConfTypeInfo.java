@@ -43,7 +43,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Info about uiconf type  */
+/**
+ * Info about uiconf type
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UiConfTypeInfo.Tokenizer.class)
 public class UiConfTypeInfo extends ObjectBase {
@@ -55,13 +57,21 @@ public class UiConfTypeInfo extends ObjectBase {
 		String filename();
 	}
 
-	/**  UiConf Type  */
+	/**
+	 * UiConf Type
+	 */
 	private UiConfObjType type;
-	/**  Available versions  */
+	/**
+	 * Available versions
+	 */
 	private List<StringHolder> versions;
-	/**  The direcotry this type is saved at  */
+	/**
+	 * The direcotry this type is saved at
+	 */
 	private String directory;
-	/**  Filename for this UiConf type  */
+	/**
+	 * Filename for this UiConf type
+	 */
 	private String filename;
 
 	// type:

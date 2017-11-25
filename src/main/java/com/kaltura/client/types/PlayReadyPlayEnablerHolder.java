@@ -49,7 +49,9 @@ public class PlayReadyPlayEnablerHolder extends ObjectBase {
 		String type();
 	}
 
-	/**  The type of the play enabler  */
+	/**
+	 * The type of the play enabler
+	 */
 	private PlayReadyPlayEnablerType type;
 
 	// type:

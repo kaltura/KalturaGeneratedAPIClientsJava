@@ -49,7 +49,25 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Annotation service - Video Annotation  */
+/**
+ * Annotation service - Video Annotation
+ * 
+ * @param annotation 
+ * @param fileData 
+ * @param id 
+ * @param entryId 
+ * @param filter 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param annotation 
+ * @param id 
+ * @param status 
+ */
 public class AnnotationService {
 	
 	public static class AddAnnotationBuilder extends RequestBuilder<Annotation, Annotation.Tokenizer, AddAnnotationBuilder> {
@@ -60,7 +78,11 @@ public class AnnotationService {
 		}
 	}
 
-	/**  Allows you to add an annotation object associated with an entry  */
+	/**
+	 * Allows you to add an annotation object associated with an entry
+	 * 
+	 * @param annotation 
+	 */
     public static AddAnnotationBuilder add(CuePoint annotation)  {
 		return new AddAnnotationBuilder(annotation);
 	}
@@ -86,8 +108,12 @@ public class AnnotationService {
 		return addFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Allows you to add multiple cue points objects by uploading XML that contains
-	  multiple cue point definitions  */
+	/**
+	 * Allows you to add multiple cue points objects by uploading XML that contains
+	  multiple cue point definitions
+	 * 
+	 * @param fileData 
+	 */
     public static AddFromBulkAnnotationBuilder addFromBulk(FileHolder fileData)  {
 		return new AddFromBulkAnnotationBuilder(fileData);
 	}
@@ -109,7 +135,12 @@ public class AnnotationService {
 		}
 	}
 
-	/**  Clone cuePoint with id to given entry  */
+	/**
+	 * Clone cuePoint with id to given entry
+	 * 
+	 * @param id 
+	 * @param entryId 
+	 */
     public static CloneAnnotationBuilder clone(String id, String entryId)  {
 		return new CloneAnnotationBuilder(id, entryId);
 	}
@@ -126,7 +157,11 @@ public class AnnotationService {
 		return count(null);
 	}
 
-	/**  count cue point objects by filter  */
+	/**
+	 * count cue point objects by filter
+	 * 
+	 * @param filter 
+	 */
     public static CountAnnotationBuilder count(CuePointFilter filter)  {
 		return new CountAnnotationBuilder(filter);
 	}
@@ -143,7 +178,11 @@ public class AnnotationService {
 		}
 	}
 
-	/**  delete cue point by id, and delete all children cue points  */
+	/**
+	 * delete cue point by id, and delete all children cue points
+	 * 
+	 * @param id 
+	 */
     public static DeleteAnnotationBuilder delete(String id)  {
 		return new DeleteAnnotationBuilder(id);
 	}
@@ -160,7 +199,11 @@ public class AnnotationService {
 		}
 	}
 
-	/**  Retrieve an CuePoint object by id  */
+	/**
+	 * Retrieve an CuePoint object by id
+	 * 
+	 * @param id 
+	 */
     public static GetAnnotationBuilder get(String id)  {
 		return new GetAnnotationBuilder(id);
 	}
@@ -182,7 +225,12 @@ public class AnnotationService {
 		return list(filter, null);
 	}
 
-	/**  List annotation objects by filter and pager  */
+	/**
+	 * List annotation objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAnnotationBuilder list(CuePointFilter filter, FilterPager pager)  {
 		return new ListAnnotationBuilder(filter, pager);
 	}
@@ -204,7 +252,12 @@ public class AnnotationService {
 		return serveBulk(filter, null);
 	}
 
-	/**  Download multiple cue points objects as XML definitions  */
+	/**
+	 * Download multiple cue points objects as XML definitions
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ServeBulkAnnotationBuilder serveBulk(CuePointFilter filter, FilterPager pager)  {
 		return new ServeBulkAnnotationBuilder(filter, pager);
 	}
@@ -222,7 +275,12 @@ public class AnnotationService {
 		}
 	}
 
-	/**  Update annotation by id  */
+	/**
+	 * Update annotation by id
+	 * 
+	 * @param id 
+	 * @param annotation 
+	 */
     public static UpdateAnnotationBuilder update(String id, CuePoint annotation)  {
 		return new UpdateAnnotationBuilder(id, annotation);
 	}
@@ -244,7 +302,12 @@ public class AnnotationService {
 		}
 	}
 
-	/**  Update cuePoint status by id  */
+	/**
+	 * Update cuePoint status by id
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusAnnotationBuilder updateStatus(String id, CuePointStatus status)  {
 		return new UpdateStatusAnnotationBuilder(id, status);
 	}

@@ -49,9 +49,13 @@ public class ReportFilter extends ObjectBase {
 		String values();
 	}
 
-	/**  The dimension whose values should be filtered  */
+	/**
+	 * The dimension whose values should be filtered
+	 */
 	private String dimension;
-	/**  The (comma separated) values to include in the filter  */
+	/**
+	 * The (comma separated) values to include in the filter
+	 */
 	private String values;
 
 	// dimension:

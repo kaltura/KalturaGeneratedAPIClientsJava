@@ -48,7 +48,9 @@ public class KontikiStorageDeleteJobData extends StorageDeleteJobData {
 		String serviceToken();
 	}
 
-	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
+	/**
+	 * Unique Kontiki MOID for the content uploaded to Kontiki
+	 */
 	private String contentMoid;
 	private String serviceToken;
 

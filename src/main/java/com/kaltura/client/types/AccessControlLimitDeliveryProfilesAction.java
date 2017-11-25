@@ -48,7 +48,9 @@ public class AccessControlLimitDeliveryProfilesAction extends RuleAction {
 		String isBlockedList();
 	}
 
-	/**  Comma separated list of delivery profile ids  */
+	/**
+	 * Comma separated list of delivery profile ids
+	 */
 	private String deliveryProfileIds;
 	private Boolean isBlockedList;
 

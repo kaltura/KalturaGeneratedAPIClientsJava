@@ -36,8 +36,10 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  System service is used for internal system helpers &amp; to retrieve system
-  level information  */
+/**
+ * System service is used for internal system helpers &amp; to retrieve system
+  level information
+ */
 public class SystemService {
 	
 	public static class GetTimeSystemBuilder extends RequestBuilder<Integer, String, GetTimeSystemBuilder> {

@@ -58,26 +58,42 @@ public class DistributionFieldConfig extends ObjectBase {
 		String triggerDeleteOnError();
 	}
 
-	/**  A value taken from a connector field enum which associates the current
+	/**
+	 * A value taken from a connector field enum which associates the current
 	  configuration to that connector field      Field enum class should be returned
-	  by the provider's getFieldEnumClass function.  */
+	  by the provider's getFieldEnumClass function.
+	 */
 	private String fieldName;
-	/**  A string that will be shown to the user as the field name in error messages
-	  related to the current field  */
+	/**
+	 * A string that will be shown to the user as the field name in error messages
+	  related to the current field
+	 */
 	private String userFriendlyFieldName;
-	/**  An XSLT string that extracts the right value from the Kaltura entry MRSS XML.   
+	/**
+	 * An XSLT string that extracts the right value from the Kaltura entry MRSS XML.   
 	    The value of the current connector field will be the one that is returned from
-	  transforming the Kaltura entry MRSS XML using this XSLT string.  */
+	  transforming the Kaltura entry MRSS XML using this XSLT string.
+	 */
 	private String entryMrssXslt;
-	/**  Is the field required to have a value for submission ?  */
+	/**
+	 * Is the field required to have a value for submission ?
+	 */
 	private DistributionFieldRequiredStatus isRequired;
-	/**  Trigger distribution update when this field changes or not ?  */
+	/**
+	 * Trigger distribution update when this field changes or not ?
+	 */
 	private Boolean updateOnChange;
-	/**  Entry column or metadata xpath that should trigger an update  */
+	/**
+	 * Entry column or metadata xpath that should trigger an update
+	 */
 	private List<StringHolder> updateParams;
-	/**  Is this field config is the default for the distribution provider?  */
+	/**
+	 * Is this field config is the default for the distribution provider?
+	 */
 	private Boolean isDefault;
-	/**  Is an error on this field going to trigger deletion of distributed content?  */
+	/**
+	 * Is an error on this field going to trigger deletion of distributed content?
+	 */
 	private Boolean triggerDeleteOnError;
 
 	// fieldName:

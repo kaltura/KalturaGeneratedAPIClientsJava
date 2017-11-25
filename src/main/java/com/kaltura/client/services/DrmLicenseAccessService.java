@@ -37,7 +37,13 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on Flavor Asset  */
+/**
+ * Retrieve information and invoke actions on Flavor Asset
+ * 
+ * @param entryId 
+ * @param flavorIds 
+ * @param referrer 
+ */
 public class DrmLicenseAccessService {
 	
 	public static class GetAccessDrmLicenseAccessBuilder extends RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.Tokenizer, GetAccessDrmLicenseAccessBuilder> {
@@ -62,7 +68,13 @@ public class DrmLicenseAccessService {
 		}
 	}
 
-	/**  getAccessAction      input: flavor ids, drmProvider      Get Access Action  */
+	/**
+	 * getAccessAction      input: flavor ids, drmProvider      Get Access Action
+	 * 
+	 * @param entryId 
+	 * @param flavorIds 
+	 * @param referrer 
+	 */
     public static GetAccessDrmLicenseAccessBuilder getAccess(String entryId, String flavorIds, String referrer)  {
 		return new GetAccessDrmLicenseAccessBuilder(entryId, flavorIds, referrer);
 	}

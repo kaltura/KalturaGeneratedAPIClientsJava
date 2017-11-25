@@ -48,9 +48,13 @@ public class FeedDropFolderFile extends DropFolderFile {
 		String feedXmlPath();
 	}
 
-	/**  MD5 or Sha1 encrypted string  */
+	/**
+	 * MD5 or Sha1 encrypted string
+	 */
 	private String hash;
-	/**  Path of the original Feed content XML  */
+	/**
+	 * Path of the original Feed content XML
+	 */
 	private String feedXmlPath;
 
 	// hash:

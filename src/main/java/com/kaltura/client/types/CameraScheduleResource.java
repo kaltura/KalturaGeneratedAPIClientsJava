@@ -47,7 +47,9 @@ public class CameraScheduleResource extends ScheduleResource {
 		String streamUrl();
 	}
 
-	/**  URL of the stream  */
+	/**
+	 * URL of the stream
+	 */
 	private String streamUrl;
 
 	// streamUrl:

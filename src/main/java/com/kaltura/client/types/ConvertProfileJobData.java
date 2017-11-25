@@ -50,11 +50,15 @@ public class ConvertProfileJobData extends JobData {
 	}
 
 	private String inputFileSyncLocalPath;
-	/**  The height of last created thumbnail, will be used to comapare if this thumbnail
-	  is the best we can have  */
+	/**
+	 * The height of last created thumbnail, will be used to comapare if this thumbnail
+	  is the best we can have
+	 */
 	private Integer thumbHeight;
-	/**  The bit rate of last created thumbnail, will be used to comapare if this
-	  thumbnail is the best we can have  */
+	/**
+	 * The bit rate of last created thumbnail, will be used to comapare if this
+	  thumbnail is the best we can have
+	 */
 	private Integer thumbBitrate;
 
 	// inputFileSyncLocalPath:

@@ -49,7 +49,9 @@ public class DeliveryProfileCondition extends Condition {
 		RequestBuilder.ListTokenizer<IntegerValue.Tokenizer> deliveryProfileIds();
 	}
 
-	/**  The delivery ids that are accepted by this condition  */
+	/**
+	 * The delivery ids that are accepted by this condition
+	 */
 	private List<IntegerValue> deliveryProfileIds;
 
 	// deliveryProfileIds:

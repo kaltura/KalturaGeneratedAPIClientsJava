@@ -59,20 +59,30 @@ public abstract class BusinessProcessServer extends ObjectBase {
 		String dc();
 	}
 
-	/**  Auto generated identifier  */
+	/**
+	 * Auto generated identifier
+	 */
 	private Integer id;
-	/**  Server creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Server creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Server update date as Unix timestamp (In seconds)  */
+	/**
+	 * Server update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private Integer partnerId;
 	private String name;
 	private String systemName;
 	private String description;
 	private BusinessProcessServerStatus status;
-	/**  The type of the server, this is auto filled by the derived server object  */
+	/**
+	 * The type of the server, this is auto filled by the derived server object
+	 */
 	private BusinessProcessProvider type;
-	/**  The dc of the server  */
+	/**
+	 * The dc of the server
+	 */
 	private Integer dc;
 
 	// id:

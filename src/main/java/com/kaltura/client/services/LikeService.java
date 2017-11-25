@@ -40,7 +40,16 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Allows user to 'like' or 'unlike' and entry  */
+/**
+ * Allows user to 'like' or 'unlike' and entry
+ * 
+ * @param entryId 
+ * @param userId 
+ * @param entryId 
+ * @param filter 
+ * @param pager 
+ * @param entryId 
+ */
 public class LikeService {
 	
 	public static class CheckLikeExistsLikeBuilder extends RequestBuilder<Boolean, String, CheckLikeExistsLikeBuilder> {

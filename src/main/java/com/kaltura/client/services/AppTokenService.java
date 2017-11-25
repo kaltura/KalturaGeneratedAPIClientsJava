@@ -43,7 +43,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage application authentication tokens  */
+/**
+ * Manage application authentication tokens
+ * 
+ * @param appToken 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id application token id
+ * @param tokenHash hashed token, built of sha1 on current KS concatenated with the application
+ * token
+ * @param userId session user id, will be ignored if a different user id already defined on the
+ * application token
+ * @param type session type, will be ignored if a different session type already defined on the
+ * application token
+ * @param expiry session expiry (in seconds), could be overwritten by shorter expiry of the
+ * application token and the session-expiry that defined on the application token
+ * @param id 
+ * @param appToken 
+ */
 public class AppTokenService {
 	
 	public static class AddAppTokenBuilder extends RequestBuilder<AppToken, AppToken.Tokenizer, AddAppTokenBuilder> {
@@ -54,7 +73,11 @@ public class AppTokenService {
 		}
 	}
 
-	/**  Add new application authentication token  */
+	/**
+	 * Add new application authentication token
+	 * 
+	 * @param appToken 
+	 */
     public static AddAppTokenBuilder add(AppToken appToken)  {
 		return new AddAppTokenBuilder(appToken);
 	}
@@ -71,7 +94,11 @@ public class AppTokenService {
 		}
 	}
 
-	/**  Delete application authentication token by id  */
+	/**
+	 * Delete application authentication token by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteAppTokenBuilder delete(String id)  {
 		return new DeleteAppTokenBuilder(id);
 	}
@@ -88,7 +115,11 @@ public class AppTokenService {
 		}
 	}
 
-	/**  Get application authentication token by id  */
+	/**
+	 * Get application authentication token by id
+	 * 
+	 * @param id 
+	 */
     public static GetAppTokenBuilder get(String id)  {
 		return new GetAppTokenBuilder(id);
 	}
@@ -110,7 +141,12 @@ public class AppTokenService {
 		return list(filter, null);
 	}
 
-	/**  List application authentication tokens by filter and pager  */
+	/**
+	 * List application authentication tokens by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAppTokenBuilder list(AppTokenFilter filter, FilterPager pager)  {
 		return new ListAppTokenBuilder(filter, pager);
 	}
@@ -159,7 +195,19 @@ public class AppTokenService {
 		return startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
 	}
 
-	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
+	/**
+	 * Starts a new KS (kaltura Session) based on application authentication token id
+	 * 
+	 * @param id application token id
+	 * @param tokenHash hashed token, built of sha1 on current KS concatenated with the application
+	 * token
+	 * @param userId session user id, will be ignored if a different user id already defined on the
+	 * application token
+	 * @param type session type, will be ignored if a different session type already defined on the
+	 * application token
+	 * @param expiry session expiry (in seconds), could be overwritten by shorter expiry of the
+	 * application token and the session-expiry that defined on the application token
+	 */
     public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
 		return new StartSessionAppTokenBuilder(id, tokenHash, userId, type, expiry);
 	}
@@ -177,7 +225,12 @@ public class AppTokenService {
 		}
 	}
 
-	/**  Update application authentication token by id  */
+	/**
+	 * Update application authentication token by id
+	 * 
+	 * @param id 
+	 * @param appToken 
+	 */
     public static UpdateAppTokenBuilder update(String id, AppToken appToken)  {
 		return new UpdateAppTokenBuilder(id, appToken);
 	}

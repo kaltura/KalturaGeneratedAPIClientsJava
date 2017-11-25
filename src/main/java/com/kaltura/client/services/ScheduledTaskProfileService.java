@@ -42,7 +42,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Schedule task service lets you create and manage scheduled task profiles  */
+/**
+ * Schedule task service lets you create and manage scheduled task profiles
+ * 
+ * @param scheduledTaskProfile 
+ * @param id 
+ * @param id 
+ * @param requestId 
+ * @param filter 
+ * @param pager 
+ * @param scheduledTaskProfileId 
+ * @param maxResults 
+ * @param id 
+ * @param scheduledTaskProfile 
+ */
 public class ScheduledTaskProfileService {
 	
 	public static class AddScheduledTaskProfileBuilder extends RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, AddScheduledTaskProfileBuilder> {
@@ -53,7 +66,11 @@ public class ScheduledTaskProfileService {
 		}
 	}
 
-	/**  Add a new scheduled task profile  */
+	/**
+	 * Add a new scheduled task profile
+	 * 
+	 * @param scheduledTaskProfile 
+	 */
     public static AddScheduledTaskProfileBuilder add(ScheduledTaskProfile scheduledTaskProfile)  {
 		return new AddScheduledTaskProfileBuilder(scheduledTaskProfile);
 	}
@@ -70,7 +87,11 @@ public class ScheduledTaskProfileService {
 		}
 	}
 
-	/**  Delete a scheduled task profile  */
+	/**
+	 * Delete a scheduled task profile
+	 * 
+	 * @param id 
+	 */
     public static DeleteScheduledTaskProfileBuilder delete(int id)  {
 		return new DeleteScheduledTaskProfileBuilder(id);
 	}
@@ -87,7 +108,11 @@ public class ScheduledTaskProfileService {
 		}
 	}
 
-	/**  Retrieve a scheduled task profile by id  */
+	/**
+	 * Retrieve a scheduled task profile by id
+	 * 
+	 * @param id 
+	 */
     public static GetScheduledTaskProfileBuilder get(int id)  {
 		return new GetScheduledTaskProfileBuilder(id);
 	}
@@ -125,7 +150,12 @@ public class ScheduledTaskProfileService {
 		return list(filter, null);
 	}
 
-	/**  List scheduled task profiles  */
+	/**
+	 * List scheduled task profiles
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListScheduledTaskProfileBuilder list(ScheduledTaskProfileFilter filter, FilterPager pager)  {
 		return new ListScheduledTaskProfileBuilder(filter, pager);
 	}
@@ -168,7 +198,12 @@ public class ScheduledTaskProfileService {
 		}
 	}
 
-	/**  Update an existing scheduled task profile  */
+	/**
+	 * Update an existing scheduled task profile
+	 * 
+	 * @param id 
+	 * @param scheduledTaskProfile 
+	 */
     public static UpdateScheduledTaskProfileBuilder update(int id, ScheduledTaskProfile scheduledTaskProfile)  {
 		return new UpdateScheduledTaskProfileBuilder(id, scheduledTaskProfile);
 	}

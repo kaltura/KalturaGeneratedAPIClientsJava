@@ -47,7 +47,9 @@ public class TimedThumbAsset extends ThumbAsset {
 		String cuePointId();
 	}
 
-	/**  Associated thumb cue point ID  */
+	/**
+	 * Associated thumb cue point ID
+	 */
 	private String cuePointId;
 
 	// cuePointId:

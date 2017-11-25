@@ -57,7 +57,9 @@ public class CaptureThumbJobData extends JobData {
 	}
 
 	private FileContainer fileContainer;
-	/**  The translated path as used by the scheduler  */
+	/**
+	 * The translated path as used by the scheduler
+	 */
 	private String actualSrcFileSyncLocalPath;
 	private String srcFileSyncRemoteUrl;
 	private Integer thumbParamsOutputId;

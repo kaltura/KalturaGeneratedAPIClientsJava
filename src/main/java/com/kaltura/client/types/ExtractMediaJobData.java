@@ -54,7 +54,9 @@ public class ExtractMediaJobData extends ConvartableJobData {
 	private String flavorAssetId;
 	private Boolean calculateComplexity;
 	private Boolean extractId3Tags;
-	/**  The data output file  */
+	/**
+	 * The data output file
+	 */
 	private String destDataFilePath;
 	private Integer detectGOP;
 

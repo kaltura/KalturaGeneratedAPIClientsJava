@@ -49,7 +49,9 @@ public class ContextTypeHolder extends ObjectBase {
 		String type();
 	}
 
-	/**  The type of the condition context  */
+	/**
+	 * The type of the condition context
+	 */
 	private ContextType type;
 
 	// type:

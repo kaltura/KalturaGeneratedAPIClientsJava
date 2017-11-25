@@ -48,9 +48,13 @@ public class BusinessProcessSignalNotificationTemplate extends BusinessProcessNo
 		String eventId();
 	}
 
-	/**  Define the message to be sent  */
+	/**
+	 * Define the message to be sent
+	 */
 	private String message;
-	/**  Define the event that waiting to the signal  */
+	/**
+	 * Define the event that waiting to the signal
+	 */
 	private String eventId;
 
 	// message:

@@ -49,12 +49,18 @@ public class CategoryUserFilter extends CategoryUserBaseFilter {
 		String relatedGroupsByUserId();
 	}
 
-	/**  Return the list of categoryUser that are not inherited from parent category -
-	  only the direct categoryUsers.  */
+	/**
+	 * Return the list of categoryUser that are not inherited from parent category -
+	  only the direct categoryUsers.
+	 */
 	private Boolean categoryDirectMembers;
-	/**  Free text search on user id or screen name  */
+	/**
+	 * Free text search on user id or screen name
+	 */
 	private String freeText;
-	/**  Return a list of categoryUser that related to the userId in this field by groups  */
+	/**
+	 * Return a list of categoryUser that related to the userId in this field by groups
+	 */
 	private String relatedGroupsByUserId;
 
 	// categoryDirectMembers:

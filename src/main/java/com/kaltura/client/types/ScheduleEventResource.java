@@ -55,9 +55,13 @@ public class ScheduleEventResource extends ObjectBase {
 	private Integer eventId;
 	private Integer resourceId;
 	private Integer partnerId;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update as Unix timestamp (In seconds)  */
+	/**
+	 * Last update as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 
 	// eventId:

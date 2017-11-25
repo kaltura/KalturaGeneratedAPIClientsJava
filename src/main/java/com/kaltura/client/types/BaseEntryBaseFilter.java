@@ -130,115 +130,167 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		String tagsAdminTagsNameMultiLikeAnd();
 	}
 
-	/**  This filter should be in use for retrieving only a specific entry (identified by
-	  its entryId).  */
+	/**
+	 * This filter should be in use for retrieving only a specific entry (identified by
+	  its entryId).
+	 */
 	private String idEqual;
-	/**  This filter should be in use for retrieving few specific entries (string should
-	  include comma separated list of entryId strings).  */
+	/**
+	 * This filter should be in use for retrieving few specific entries (string should
+	  include comma separated list of entryId strings).
+	 */
 	private String idIn;
 	private String idNotIn;
-	/**  This filter should be in use for retrieving specific entries. It should include
+	/**
+	 * This filter should be in use for retrieving specific entries. It should include
 	  only one string to search for in entry names (no wildcards, spaces are treated
-	  as part of the string).  */
+	  as part of the string).
+	 */
 	private String nameLike;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry names, while applying an OR
 	  logic to retrieve entries that contain at least one input string (no wildcards,
-	  spaces are treated as part of the string).  */
+	  spaces are treated as part of the string).
+	 */
 	private String nameMultiLikeOr;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry names, while applying an
 	  AND logic to retrieve entries that contain all input strings (no wildcards,
-	  spaces are treated as part of the string).  */
+	  spaces are treated as part of the string).
+	 */
 	private String nameMultiLikeAnd;
-	/**  This filter should be in use for retrieving entries with a specific name.  */
+	/**
+	 * This filter should be in use for retrieving entries with a specific name.
+	 */
 	private String nameEqual;
-	/**  This filter should be in use for retrieving only entries which were uploaded
-	  by/assigned to users of a specific Kaltura Partner (identified by Partner ID).  */
+	/**
+	 * This filter should be in use for retrieving only entries which were uploaded
+	  by/assigned to users of a specific Kaltura Partner (identified by Partner ID).
+	 */
 	private Integer partnerIdEqual;
-	/**  This filter should be in use for retrieving only entries within Kaltura network
+	/**
+	 * This filter should be in use for retrieving only entries within Kaltura network
 	  which were uploaded by/assigned to users of few Kaltura Partners  (string should
-	  include comma separated list of PartnerIDs)  */
+	  include comma separated list of PartnerIDs)
+	 */
 	private String partnerIdIn;
-	/**  This filter parameter should be in use for retrieving only entries, uploaded
-	  by/assigned to a specific user (identified by user Id).  */
+	/**
+	 * This filter parameter should be in use for retrieving only entries, uploaded
+	  by/assigned to a specific user (identified by user Id).
+	 */
 	private String userIdEqual;
 	private String userIdIn;
 	private String userIdNotIn;
 	private String creatorIdEqual;
-	/**  This filter should be in use for retrieving specific entries. It should include
+	/**
+	 * This filter should be in use for retrieving specific entries. It should include
 	  only one string to search for in entry tags (no wildcards, spaces are treated as
-	  part of the string).  */
+	  part of the string).
+	 */
 	private String tagsLike;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry tags, while applying an OR
 	  logic to retrieve entries that contain at least one input string (no wildcards,
-	  spaces are treated as part of the string).  */
+	  spaces are treated as part of the string).
+	 */
 	private String tagsMultiLikeOr;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry tags, while applying an AND
 	  logic to retrieve entries that contain all input strings (no wildcards, spaces
-	  are treated as part of the string).  */
+	  are treated as part of the string).
+	 */
 	private String tagsMultiLikeAnd;
-	/**  This filter should be in use for retrieving specific entries. It should include
+	/**
+	 * This filter should be in use for retrieving specific entries. It should include
 	  only one string to search for in entry tags set by an ADMIN user (no wildcards,
-	  spaces are treated as part of the string).  */
+	  spaces are treated as part of the string).
+	 */
 	private String adminTagsLike;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry tags, set by an ADMIN user,
 	  while applying an OR logic to retrieve entries that contain at least one input
-	  string (no wildcards, spaces are treated as part of the string).  */
+	  string (no wildcards, spaces are treated as part of the string).
+	 */
 	private String adminTagsMultiLikeOr;
-	/**  This filter should be in use for retrieving specific entries. It could include
+	/**
+	 * This filter should be in use for retrieving specific entries. It could include
 	  few (comma separated) strings for searching in entry tags, set by an ADMIN user,
 	  while applying an AND logic to retrieve entries that contain all input strings
-	  (no wildcards, spaces are treated as part of the string).  */
+	  (no wildcards, spaces are treated as part of the string).
+	 */
 	private String adminTagsMultiLikeAnd;
 	private String categoriesMatchAnd;
-	/**  All entries within these categories or their child categories.  */
+	/**
+	 * All entries within these categories or their child categories.
+	 */
 	private String categoriesMatchOr;
 	private String categoriesNotContains;
 	private String categoriesIdsMatchAnd;
-	/**  All entries of the categories, excluding their child categories.   To include
-	  entries of the child categories, use categoryAncestorIdIn, or categoriesMatchOr.  */
+	/**
+	 * All entries of the categories, excluding their child categories.   To include
+	  entries of the child categories, use categoryAncestorIdIn, or categoriesMatchOr.
+	 */
 	private String categoriesIdsMatchOr;
 	private String categoriesIdsNotContains;
 	private Boolean categoriesIdsEmpty;
-	/**  This filter should be in use for retrieving only entries, at a specific {  */
+	/**
+	 * This filter should be in use for retrieving only entries, at a specific {
+	 */
 	private EntryStatus statusEqual;
-	/**  This filter should be in use for retrieving only entries, not at a specific {  */
+	/**
+	 * This filter should be in use for retrieving only entries, not at a specific {
+	 */
 	private EntryStatus statusNotEqual;
-	/**  This filter should be in use for retrieving only entries, at few specific {  */
+	/**
+	 * This filter should be in use for retrieving only entries, at few specific {
+	 */
 	private String statusIn;
-	/**  This filter should be in use for retrieving only entries, not at few specific {  */
+	/**
+	 * This filter should be in use for retrieving only entries, not at few specific {
+	 */
 	private String statusNotIn;
 	private EntryModerationStatus moderationStatusEqual;
 	private EntryModerationStatus moderationStatusNotEqual;
 	private String moderationStatusIn;
 	private String moderationStatusNotIn;
 	private EntryType typeEqual;
-	/**  This filter should be in use for retrieving entries of few {  */
+	/**
+	 * This filter should be in use for retrieving entries of few {
+	 */
 	private String typeIn;
-	/**  This filter parameter should be in use for retrieving only entries which were
+	/**
+	 * This filter parameter should be in use for retrieving only entries which were
 	  created at Kaltura system after a specific time/date (standard timestamp
-	  format).  */
+	  format).
+	 */
 	private Integer createdAtGreaterThanOrEqual;
-	/**  This filter parameter should be in use for retrieving only entries which were
+	/**
+	 * This filter parameter should be in use for retrieving only entries which were
 	  created at Kaltura system before a specific time/date (standard timestamp
-	  format).  */
+	  format).
+	 */
 	private Integer createdAtLessThanOrEqual;
 	private Integer updatedAtGreaterThanOrEqual;
 	private Integer updatedAtLessThanOrEqual;
 	private Integer totalRankLessThanOrEqual;
 	private Integer totalRankGreaterThanOrEqual;
 	private Integer groupIdEqual;
-	/**  This filter should be in use for retrieving specific entries while search match
+	/**
+	 * This filter should be in use for retrieving specific entries while search match
 	  the input string within all of the following metadata attributes: name,
-	  description, tags, adminTags.  */
+	  description, tags, adminTags.
+	 */
 	private String searchTextMatchAnd;
-	/**  This filter should be in use for retrieving specific entries while search match
+	/**
+	 * This filter should be in use for retrieving specific entries while search match
 	  the input string within at least one of the following metadata attributes: name,
-	  description, tags, adminTags.  */
+	  description, tags, adminTags.
+	 */
 	private String searchTextMatchOr;
 	private Integer accessControlIdEqual;
 	private String accessControlIdIn;

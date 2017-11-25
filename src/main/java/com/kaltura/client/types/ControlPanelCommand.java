@@ -67,39 +67,73 @@ public class ControlPanelCommand extends ObjectBase {
 		String errorDescription();
 	}
 
-	/**  The id of the Category  */
+	/**
+	 * The id of the Category
+	 */
 	private Integer id;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Creator name  */
+	/**
+	 * Creator name
+	 */
 	private String createdBy;
-	/**  Update date as Unix timestamp (In seconds)  */
+	/**
+	 * Update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Updater name  */
+	/**
+	 * Updater name
+	 */
 	private String updatedBy;
-	/**  Creator id  */
+	/**
+	 * Creator id
+	 */
 	private Integer createdById;
-	/**  The id of the scheduler that the command refers to  */
+	/**
+	 * The id of the scheduler that the command refers to
+	 */
 	private Integer schedulerId;
-	/**  The id of the scheduler worker that the command refers to  */
+	/**
+	 * The id of the scheduler worker that the command refers to
+	 */
 	private Integer workerId;
-	/**  The id of the scheduler worker as configured in the ini file  */
+	/**
+	 * The id of the scheduler worker as configured in the ini file
+	 */
 	private Integer workerConfiguredId;
-	/**  The name of the scheduler worker that the command refers to  */
+	/**
+	 * The name of the scheduler worker that the command refers to
+	 */
 	private Integer workerName;
-	/**  The index of the batch process that the command refers to  */
+	/**
+	 * The index of the batch process that the command refers to
+	 */
 	private Integer batchIndex;
-	/**  The command type - stop / start / config  */
+	/**
+	 * The command type - stop / start / config
+	 */
 	private ControlPanelCommandType type;
-	/**  The command target type - data center / scheduler / job / job type  */
+	/**
+	 * The command target type - data center / scheduler / job / job type
+	 */
 	private ControlPanelCommandTargetType targetType;
-	/**  The command status  */
+	/**
+	 * The command status
+	 */
 	private ControlPanelCommandStatus status;
-	/**  The reason for the command  */
+	/**
+	 * The reason for the command
+	 */
 	private String cause;
-	/**  Command description  */
+	/**
+	 * Command description
+	 */
 	private String description;
-	/**  Error description  */
+	/**
+	 * Error description
+	 */
 	private String errorDescription;
 
 	// id:

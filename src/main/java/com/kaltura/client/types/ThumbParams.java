@@ -76,18 +76,30 @@ public class ThumbParams extends AssetParams {
 	private Integer height;
 	private Double scaleWidth;
 	private Double scaleHeight;
-	/**  Hexadecimal value  */
+	/**
+	 * Hexadecimal value
+	 */
 	private String backgroundColor;
-	/**  Id of the flavor params or the thumbnail params to be used as source for the
-	  thumbnail creation  */
+	/**
+	 * Id of the flavor params or the thumbnail params to be used as source for the
+	  thumbnail creation
+	 */
 	private Integer sourceParamsId;
-	/**  The container format of the Flavor Params  */
+	/**
+	 * The container format of the Flavor Params
+	 */
 	private ContainerFormat format;
-	/**  The image density (dpi) for example: 72 or 96  */
+	/**
+	 * The image density (dpi) for example: 72 or 96
+	 */
 	private Integer density;
-	/**  Strip profiles and comments  */
+	/**
+	 * Strip profiles and comments
+	 */
 	private Boolean stripProfiles;
-	/**  Create thumbnail from the videoLengthpercentage second  */
+	/**
+	 * Create thumbnail from the videoLengthpercentage second
+	 */
 	private Integer videoOffsetInPercentage;
 
 	// cropType:

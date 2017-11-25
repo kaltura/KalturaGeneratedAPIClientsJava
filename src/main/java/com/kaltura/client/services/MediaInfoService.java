@@ -39,7 +39,12 @@ import com.kaltura.client.utils.request.ListResponseRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Media Info service  */
+/**
+ * Media Info service
+ * 
+ * @param filter 
+ * @param pager 
+ */
 public class MediaInfoService {
 	
 	public static class ListMediaInfoBuilder extends ListResponseRequestBuilder<MediaInfo, MediaInfo.Tokenizer, ListMediaInfoBuilder> {
@@ -59,7 +64,12 @@ public class MediaInfoService {
 		return list(filter, null);
 	}
 
-	/**  List media info objects by filter and pager  */
+	/**
+	 * List media info objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListMediaInfoBuilder list(MediaInfoFilter filter, FilterPager pager)  {
 		return new ListMediaInfoBuilder(filter, pager);
 	}

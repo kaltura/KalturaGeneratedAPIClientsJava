@@ -49,9 +49,13 @@ public class IpAddressRestriction extends BaseRestriction {
 		String ipAddressList();
 	}
 
-	/**  Ip address restriction type (Allow or deny)  */
+	/**
+	 * Ip address restriction type (Allow or deny)
+	 */
 	private IpAddressRestrictionType ipAddressRestrictionType;
-	/**  Comma separated list of ip address to allow to deny  */
+	/**
+	 * Comma separated list of ip address to allow to deny
+	 */
 	private String ipAddressList;
 
 	// ipAddressRestrictionType:

@@ -53,7 +53,68 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Live Stream service lets you manage live stream entries  */
+/**
+ * Live Stream service lets you manage live stream entries
+ * 
+ * @param liveStreamEntry Live stream entry metadata
+ * @param sourceType Live stream source type
+ * @param entryId 
+ * @param protocol 
+ * @param url 
+ * @param liveStreamConfiguration 
+ * @param entryId Live entry id
+ * @param assetId Live asset id
+ * @param mediaServerIndex 
+ * @param resource 
+ * @param duration in seconds
+ * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
+ * stop event)
+ * @param entryId Live stream entry id
+ * @param token Live stream broadcasting token
+ * @param hostname Media server host name
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param applicationName the application to which entry is being broadcast
+ * @param entryId Kaltura live-stream entry id
+ * @param interval Events interval in seconds
+ * @param duration Duration in seconds
+ * @param entryId Live entry id
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+ * KalturaEntryServerNodeStatus::BROADCASTING
+ * @param entryId Live stream entry id to delete
+ * @param entryId Live stream entry id
+ * @param version Desired version of the data
+ * @param id ID of the live stream
+ * @param protocol protocol of the stream to test.
+ * @param filter live stream entry filter
+ * @param pager Pager
+ * @param entryId Live stream entry id to regenerate secure token for
+ * @param entryId Live entry id
+ * @param hostname Media server host name
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param applicationName the application to which entry is being broadcast
+ * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+ * KalturaEntryServerNodeStatus::BROADCASTING
+ * @param shouldCreateRecordedEntry 
+ * @param entryId 
+ * @param protocol 
+ * @param entryId Live entry id
+ * @param mediaServerIndex 
+ * @param resource 
+ * @param duration in seconds
+ * @param recordedEntryId Recorded entry Id
+ * @param flavorParamsId Recorded entry Id
+ * @param entryId Live entry id
+ * @param hostname Media server host name
+ * @param mediaServerIndex Media server index primary / secondary
+ * @param entryId Live stream entry id to update
+ * @param liveStreamEntry Live stream entry metadata to update
+ * @param entryId live stream entry id
+ * @param url file url
+ * @param entryId live stream entry id
+ * @param fileData Jpeg file data
+ * @param entryId Live entry id
+ */
 public class LiveStreamService {
 	
 	public static class AddLiveStreamBuilder extends RequestBuilder<LiveStreamEntry, LiveStreamEntry.Tokenizer, AddLiveStreamBuilder> {
@@ -73,7 +134,12 @@ public class LiveStreamService {
 		return add(liveStreamEntry, null);
 	}
 
-	/**  Adds new live stream entry.   The entry will be queued for provision.  */
+	/**
+	 * Adds new live stream entry.   The entry will be queued for provision.
+	 * 
+	 * @param liveStreamEntry Live stream entry metadata
+	 * @param sourceType Live stream source type
+	 */
     public static AddLiveStreamBuilder add(LiveStreamEntry liveStreamEntry, SourceType sourceType)  {
 		return new AddLiveStreamBuilder(liveStreamEntry, sourceType);
 	}
@@ -109,7 +175,14 @@ public class LiveStreamService {
 		return addLiveStreamPushPublishConfiguration(entryId, protocol, url, null);
 	}
 
-	/**  Add new pushPublish configuration to entry  */
+	/**
+	 * Add new pushPublish configuration to entry
+	 * 
+	 * @param entryId 
+	 * @param protocol 
+	 * @param url 
+	 * @param liveStreamConfiguration 
+	 */
     public static AddLiveStreamPushPublishConfigurationLiveStreamBuilder addLiveStreamPushPublishConfiguration(String entryId, PlaybackProtocol protocol, String url, LiveStreamConfiguration liveStreamConfiguration)  {
 		return new AddLiveStreamPushPublishConfigurationLiveStreamBuilder(entryId, protocol, url, liveStreamConfiguration);
 	}
@@ -151,7 +224,17 @@ public class LiveStreamService {
 		return appendRecording(entryId, assetId, mediaServerIndex, resource, duration, false);
 	}
 
-	/**  Append recorded video to live entry  */
+	/**
+	 * Append recorded video to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param assetId Live asset id
+	 * @param mediaServerIndex 
+	 * @param resource 
+	 * @param duration in seconds
+	 * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
+	 * stop event)
+	 */
     public static AppendRecordingLiveStreamBuilder appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk)  {
 		return new AppendRecordingLiveStreamBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
 	}
@@ -200,7 +283,15 @@ public class LiveStreamService {
 		return authenticate(entryId, token, hostname, mediaServerIndex, null);
 	}
 
-	/**  Authenticate live-stream entry against stream token and partner limitations  */
+	/**
+	 * Authenticate live-stream entry against stream token and partner limitations
+	 * 
+	 * @param entryId Live stream entry id
+	 * @param token Live stream broadcasting token
+	 * @param hostname Media server host name
+	 * @param mediaServerIndex Media server index primary / secondary
+	 * @param applicationName the application to which entry is being broadcast
+	 */
     public static AuthenticateLiveStreamBuilder authenticate(String entryId, String token, String hostname, EntryServerNodeType mediaServerIndex, String applicationName)  {
 		return new AuthenticateLiveStreamBuilder(entryId, token, hostname, mediaServerIndex, applicationName);
 	}
@@ -227,7 +318,13 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Creates perioding metadata sync-point events on a live stream  */
+	/**
+	 * Creates perioding metadata sync-point events on a live stream
+	 * 
+	 * @param entryId Kaltura live-stream entry id
+	 * @param interval Events interval in seconds
+	 * @param duration Duration in seconds
+	 */
     public static CreatePeriodicSyncPointsLiveStreamBuilder createPeriodicSyncPoints(String entryId, int interval, int duration)  {
 		return new CreatePeriodicSyncPointsLiveStreamBuilder(entryId, interval, duration);
 	}
@@ -254,8 +351,15 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Create recorded entry id if it doesn't exist and make sure it happens on the DC
-	  that the live entry was created on.  */
+	/**
+	 * Create recorded entry id if it doesn't exist and make sure it happens on the DC
+	  that the live entry was created on.
+	 * 
+	 * @param entryId Live entry id
+	 * @param mediaServerIndex Media server index primary / secondary
+	 * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+	 * KalturaEntryServerNodeStatus::BROADCASTING
+	 */
     public static CreateRecordedEntryLiveStreamBuilder createRecordedEntry(String entryId, EntryServerNodeType mediaServerIndex, EntryServerNodeStatus liveEntryStatus)  {
 		return new CreateRecordedEntryLiveStreamBuilder(entryId, mediaServerIndex, liveEntryStatus);
 	}
@@ -272,7 +376,11 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Delete a live stream entry.  */
+	/**
+	 * Delete a live stream entry.
+	 * 
+	 * @param entryId Live stream entry id to delete
+	 */
     public static DeleteLiveStreamBuilder delete(String entryId)  {
 		return new DeleteLiveStreamBuilder(entryId);
 	}
@@ -298,7 +406,12 @@ public class LiveStreamService {
 		return get(entryId, -1);
 	}
 
-	/**  Get live stream entry by ID.  */
+	/**
+	 * Get live stream entry by ID.
+	 * 
+	 * @param entryId Live stream entry id
+	 * @param version Desired version of the data
+	 */
     public static GetLiveStreamBuilder get(String entryId, int version)  {
 		return new GetLiveStreamBuilder(entryId, version);
 	}
@@ -320,7 +433,12 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Delivering the status of a live stream (on-air/offline) if it is possible  */
+	/**
+	 * Delivering the status of a live stream (on-air/offline) if it is possible
+	 * 
+	 * @param id ID of the live stream
+	 * @param protocol protocol of the stream to test.
+	 */
     public static IsLiveLiveStreamBuilder isLive(String id, PlaybackProtocol protocol)  {
 		return new IsLiveLiveStreamBuilder(id, protocol);
 	}
@@ -342,7 +460,12 @@ public class LiveStreamService {
 		return list(filter, null);
 	}
 
-	/**  List live stream entries by filter with paging support.  */
+	/**
+	 * List live stream entries by filter with paging support.
+	 * 
+	 * @param filter live stream entry filter
+	 * @param pager Pager
+	 */
     public static ListLiveStreamBuilder list(LiveStreamEntryFilter filter, FilterPager pager)  {
 		return new ListLiveStreamBuilder(filter, pager);
 	}
@@ -359,7 +482,11 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Regenerate new secure token for liveStream  */
+	/**
+	 * Regenerate new secure token for liveStream
+	 * 
+	 * @param entryId Live stream entry id to regenerate secure token for
+	 */
     public static RegenerateStreamTokenLiveStreamBuilder regenerateStreamToken(String entryId)  {
 		return new RegenerateStreamTokenLiveStreamBuilder(entryId);
 	}
@@ -413,7 +540,17 @@ public class LiveStreamService {
 		return registerMediaServer(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, true);
 	}
 
-	/**  Register media server to live entry  */
+	/**
+	 * Register media server to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param hostname Media server host name
+	 * @param mediaServerIndex Media server index primary / secondary
+	 * @param applicationName the application to which entry is being broadcast
+	 * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
+	 * KalturaEntryServerNodeStatus::BROADCASTING
+	 * @param shouldCreateRecordedEntry 
+	 */
     public static RegisterMediaServerLiveStreamBuilder registerMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex, String applicationName, EntryServerNodeStatus liveEntryStatus, boolean shouldCreateRecordedEntry)  {
 		return new RegisterMediaServerLiveStreamBuilder(entryId, hostname, mediaServerIndex, applicationName, liveEntryStatus, shouldCreateRecordedEntry);
 	}
@@ -435,7 +572,12 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Remove push publish configuration from entry  */
+	/**
+	 * Remove push publish configuration from entry
+	 * 
+	 * @param entryId 
+	 * @param protocol 
+	 */
     public static RemoveLiveStreamPushPublishConfigurationLiveStreamBuilder removeLiveStreamPushPublishConfiguration(String entryId, PlaybackProtocol protocol)  {
 		return new RemoveLiveStreamPushPublishConfigurationLiveStreamBuilder(entryId, protocol);
 	}
@@ -481,7 +623,16 @@ public class LiveStreamService {
 		return setRecordedContent(entryId, mediaServerIndex, resource, duration, recordedEntryId, Integer.MIN_VALUE);
 	}
 
-	/**  Set recorded video to live entry  */
+	/**
+	 * Set recorded video to live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param mediaServerIndex 
+	 * @param resource 
+	 * @param duration in seconds
+	 * @param recordedEntryId Recorded entry Id
+	 * @param flavorParamsId Recorded entry Id
+	 */
     public static SetRecordedContentLiveStreamBuilder setRecordedContent(String entryId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, String recordedEntryId, int flavorParamsId)  {
 		return new SetRecordedContentLiveStreamBuilder(entryId, mediaServerIndex, resource, duration, recordedEntryId, flavorParamsId);
 	}
@@ -508,7 +659,13 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Unregister media server from live entry  */
+	/**
+	 * Unregister media server from live entry
+	 * 
+	 * @param entryId Live entry id
+	 * @param hostname Media server host name
+	 * @param mediaServerIndex Media server index primary / secondary
+	 */
     public static UnregisterMediaServerLiveStreamBuilder unregisterMediaServer(String entryId, String hostname, EntryServerNodeType mediaServerIndex)  {
 		return new UnregisterMediaServerLiveStreamBuilder(entryId, hostname, mediaServerIndex);
 	}
@@ -526,7 +683,12 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Update live stream entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update live stream entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Live stream entry id to update
+	 * @param liveStreamEntry Live stream entry metadata to update
+	 */
     public static UpdateLiveStreamBuilder update(String entryId, LiveStreamEntry liveStreamEntry)  {
 		return new UpdateLiveStreamBuilder(entryId, liveStreamEntry);
 	}
@@ -548,7 +710,12 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Update entry thumbnail using url  */
+	/**
+	 * Update entry thumbnail using url
+	 * 
+	 * @param entryId live stream entry id
+	 * @param url file url
+	 */
     public static UpdateOfflineThumbnailFromUrlLiveStreamBuilder updateOfflineThumbnailFromUrl(String entryId, String url)  {
 		return new UpdateOfflineThumbnailFromUrlLiveStreamBuilder(entryId, url);
 	}
@@ -579,7 +746,12 @@ public class LiveStreamService {
 		return updateOfflineThumbnailJpeg(entryId, new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Update live stream entry thumbnail using a raw jpeg file  */
+	/**
+	 * Update live stream entry thumbnail using a raw jpeg file
+	 * 
+	 * @param entryId live stream entry id
+	 * @param fileData Jpeg file data
+	 */
     public static UpdateOfflineThumbnailJpegLiveStreamBuilder updateOfflineThumbnailJpeg(String entryId, FileHolder fileData)  {
 		return new UpdateOfflineThumbnailJpegLiveStreamBuilder(entryId, fileData);
 	}
@@ -596,7 +768,11 @@ public class LiveStreamService {
 		}
 	}
 
-	/**  Validates all registered media servers  */
+	/**
+	 * Validates all registered media servers
+	 * 
+	 * @param entryId Live entry id
+	 */
     public static ValidateRegisteredMediaServersLiveStreamBuilder validateRegisteredMediaServers(String entryId)  {
 		return new ValidateRegisteredMediaServersLiveStreamBuilder(entryId);
 	}

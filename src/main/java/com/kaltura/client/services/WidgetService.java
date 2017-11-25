@@ -40,7 +40,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  widget service for full widget management  */
+/**
+ * widget service for full widget management
+ * 
+ * @param widget 
+ * @param widget 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param widget 
+ */
 public class WidgetService {
 	
 	public static class AddWidgetBuilder extends RequestBuilder<Widget, Widget.Tokenizer, AddWidgetBuilder> {
@@ -51,7 +61,11 @@ public class WidgetService {
 		}
 	}
 
-	/**  Add new widget, can be attached to entry or kshow   SourceWidget is ignored.  */
+	/**
+	 * Add new widget, can be attached to entry or kshow   SourceWidget is ignored.
+	 * 
+	 * @param widget 
+	 */
     public static AddWidgetBuilder add(Widget widget)  {
 		return new AddWidgetBuilder(widget);
 	}
@@ -64,7 +78,11 @@ public class WidgetService {
 		}
 	}
 
-	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
+	/**
+	 * Add widget based on existing widget.   Must provide valid sourceWidgetId
+	 * 
+	 * @param widget 
+	 */
     public static CloneWidgetBuilder clone(Widget widget)  {
 		return new CloneWidgetBuilder(widget);
 	}
@@ -81,7 +99,11 @@ public class WidgetService {
 		}
 	}
 
-	/**  Get widget by id  */
+	/**
+	 * Get widget by id
+	 * 
+	 * @param id 
+	 */
     public static GetWidgetBuilder get(String id)  {
 		return new GetWidgetBuilder(id);
 	}
@@ -103,7 +125,12 @@ public class WidgetService {
 		return list(filter, null);
 	}
 
-	/**  Retrieve a list of available widget depends on the filter given  */
+	/**
+	 * Retrieve a list of available widget depends on the filter given
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListWidgetBuilder list(WidgetFilter filter, FilterPager pager)  {
 		return new ListWidgetBuilder(filter, pager);
 	}
@@ -121,7 +148,12 @@ public class WidgetService {
 		}
 	}
 
-	/**  Update exisiting widget  */
+	/**
+	 * Update exisiting widget
+	 * 
+	 * @param id 
+	 * @param widget 
+	 */
     public static UpdateWidgetBuilder update(String id, Widget widget)  {
 		return new UpdateWidgetBuilder(id, widget);
 	}

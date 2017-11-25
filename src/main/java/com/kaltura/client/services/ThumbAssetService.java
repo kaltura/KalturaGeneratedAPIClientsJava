@@ -53,7 +53,45 @@ import java.io.InputStream;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on Thumb Asset  */
+/**
+ * Retrieve information and invoke actions on Thumb Asset
+ * 
+ * @param entryId 
+ * @param thumbAsset 
+ * @param entryId 
+ * @param fileData 
+ * @param entryId 
+ * @param url 
+ * @param thumbAssetId 
+ * @param assetId 
+ * @param storageProfileId 
+ * @param entryId 
+ * @param thumbParams 
+ * @param sourceAssetId id of the source asset (flavor or thumbnail) to be used as source for the
+ * thumbnail generation
+ * @param entryId 
+ * @param destThumbParamsId indicate the id of the ThumbParams to be generate this thumbnail by
+ * @param thumbAssetId 
+ * @param entryId 
+ * @param id 
+ * @param id 
+ * @param storageId 
+ * @param thumbParams 
+ * @param filter 
+ * @param pager 
+ * @param thumbAssetId 
+ * @param thumbAssetId 
+ * @param version 
+ * @param thumbParams 
+ * @param options 
+ * @param entryId 
+ * @param thumbParamId if not set, default thumbnail will be used.
+ * @param thumbAssetId 
+ * @param id 
+ * @param contentResource 
+ * @param id 
+ * @param thumbAsset 
+ */
 public class ThumbAssetService {
 	
 	public static class AddThumbAssetBuilder extends RequestBuilder<ThumbAsset, ThumbAsset.Tokenizer, AddThumbAssetBuilder> {
@@ -69,7 +107,12 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  Add thumbnail asset  */
+	/**
+	 * Add thumbnail asset
+	 * 
+	 * @param entryId 
+	 * @param thumbAsset 
+	 */
     public static AddThumbAssetBuilder add(String entryId, ThumbAsset thumbAsset)  {
 		return new AddThumbAssetBuilder(entryId, thumbAsset);
 	}
@@ -158,7 +201,12 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  manually export an asset  */
+	/**
+	 * manually export an asset
+	 * 
+	 * @param assetId 
+	 * @param storageProfileId 
+	 */
     public static ExportThumbAssetBuilder export(String assetId, int storageProfileId)  {
 		return new ExportThumbAssetBuilder(assetId, storageProfileId);
 	}
@@ -254,7 +302,11 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  Get remote storage existing paths for the asset  */
+	/**
+	 * Get remote storage existing paths for the asset
+	 * 
+	 * @param id 
+	 */
     public static GetRemotePathsThumbAssetBuilder getRemotePaths(String id)  {
 		return new GetRemotePathsThumbAssetBuilder(id);
 	}
@@ -285,7 +337,13 @@ public class ThumbAssetService {
 		return getUrl(id, storageId, null);
 	}
 
-	/**  Get download URL for the asset  */
+	/**
+	 * Get download URL for the asset
+	 * 
+	 * @param id 
+	 * @param storageId 
+	 * @param thumbParams 
+	 */
     public static GetUrlThumbAssetBuilder getUrl(String id, int storageId, ThumbParams thumbParams)  {
 		return new GetUrlThumbAssetBuilder(id, storageId, thumbParams);
 	}
@@ -307,7 +365,12 @@ public class ThumbAssetService {
 		return list(filter, null);
 	}
 
-	/**  List Thumbnail Assets by filter and pager  */
+	/**
+	 * List Thumbnail Assets by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListThumbAssetBuilder list(AssetFilter filter, FilterPager pager)  {
 		return new ListThumbAssetBuilder(filter, pager);
 	}
@@ -359,7 +422,14 @@ public class ThumbAssetService {
 		return serve(thumbAssetId, version, thumbParams, null);
 	}
 
-	/**  Serves thumbnail by its id  */
+	/**
+	 * Serves thumbnail by its id
+	 * 
+	 * @param thumbAssetId 
+	 * @param version 
+	 * @param thumbParams 
+	 * @param options 
+	 */
     public static ServeThumbAssetBuilder serve(String thumbAssetId, int version, ThumbParams thumbParams, ThumbnailServeOptions options)  {
 		return new ServeThumbAssetBuilder(thumbAssetId, version, thumbParams, options);
 	}
@@ -385,7 +455,12 @@ public class ThumbAssetService {
 		return serveByEntryId(entryId, Integer.MIN_VALUE);
 	}
 
-	/**  Serves thumbnail by entry id and thumnail params id  */
+	/**
+	 * Serves thumbnail by entry id and thumnail params id
+	 * 
+	 * @param entryId 
+	 * @param thumbParamId if not set, default thumbnail will be used.
+	 */
     public static ServeByEntryIdThumbAssetBuilder serveByEntryId(String entryId, int thumbParamId)  {
 		return new ServeByEntryIdThumbAssetBuilder(entryId, thumbParamId);
 	}
@@ -402,9 +477,13 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
+	/**
+	 * Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
 	  thumbnail assets of the entry.   Create a new file sync link on the entry
-	  thumbnail that points to the thumbnail asset file sync.  */
+	  thumbnail that points to the thumbnail asset file sync.
+	 * 
+	 * @param thumbAssetId 
+	 */
     public static SetAsDefaultThumbAssetBuilder setAsDefault(String thumbAssetId)  {
 		return new SetAsDefaultThumbAssetBuilder(thumbAssetId);
 	}
@@ -422,7 +501,12 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  Update content of thumbnail asset  */
+	/**
+	 * Update content of thumbnail asset
+	 * 
+	 * @param id 
+	 * @param contentResource 
+	 */
     public static SetContentThumbAssetBuilder setContent(String id, ContentResource contentResource)  {
 		return new SetContentThumbAssetBuilder(id, contentResource);
 	}
@@ -440,7 +524,12 @@ public class ThumbAssetService {
 		}
 	}
 
-	/**  Update thumbnail asset  */
+	/**
+	 * Update thumbnail asset
+	 * 
+	 * @param id 
+	 * @param thumbAsset 
+	 */
     public static UpdateThumbAssetBuilder update(String id, ThumbAsset thumbAsset)  {
 		return new UpdateThumbAssetBuilder(id, thumbAsset);
 	}

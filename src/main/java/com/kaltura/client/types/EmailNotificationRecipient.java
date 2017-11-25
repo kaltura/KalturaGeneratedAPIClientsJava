@@ -50,9 +50,13 @@ public class EmailNotificationRecipient extends ObjectBase {
 		StringValue.Tokenizer name();
 	}
 
-	/**  Recipient e-mail address  */
+	/**
+	 * Recipient e-mail address
+	 */
 	private StringValue email;
-	/**  Recipient name  */
+	/**
+	 * Recipient name
+	 */
 	private StringValue name;
 
 	// email:

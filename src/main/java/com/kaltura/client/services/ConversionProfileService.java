@@ -42,7 +42,19 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Conversion Profiles  */
+/**
+ * Add &amp; Manage Conversion Profiles
+ * 
+ * @param conversionProfile 
+ * @param id 
+ * @param id 
+ * @param type 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param id 
+ * @param conversionProfile 
+ */
 public class ConversionProfileService {
 	
 	public static class AddConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, AddConversionProfileBuilder> {
@@ -53,7 +65,11 @@ public class ConversionProfileService {
 		}
 	}
 
-	/**  Add new Conversion Profile  */
+	/**
+	 * Add new Conversion Profile
+	 * 
+	 * @param conversionProfile 
+	 */
     public static AddConversionProfileBuilder add(ConversionProfile conversionProfile)  {
 		return new AddConversionProfileBuilder(conversionProfile);
 	}
@@ -70,7 +86,11 @@ public class ConversionProfileService {
 		}
 	}
 
-	/**  Delete Conversion Profile by ID  */
+	/**
+	 * Delete Conversion Profile by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteConversionProfileBuilder delete(int id)  {
 		return new DeleteConversionProfileBuilder(id);
 	}
@@ -87,7 +107,11 @@ public class ConversionProfileService {
 		}
 	}
 
-	/**  Get Conversion Profile by ID  */
+	/**
+	 * Get Conversion Profile by ID
+	 * 
+	 * @param id 
+	 */
     public static GetConversionProfileBuilder get(int id)  {
 		return new GetConversionProfileBuilder(id);
 	}
@@ -108,7 +132,11 @@ public class ConversionProfileService {
 		return getDefault(null);
 	}
 
-	/**  Get the partner's default conversion profile  */
+	/**
+	 * Get the partner's default conversion profile
+	 * 
+	 * @param type 
+	 */
     public static GetDefaultConversionProfileBuilder getDefault(ConversionProfileType type)  {
 		return new GetDefaultConversionProfileBuilder(type);
 	}
@@ -130,7 +158,12 @@ public class ConversionProfileService {
 		return list(filter, null);
 	}
 
-	/**  List Conversion Profiles by filter with paging support  */
+	/**
+	 * List Conversion Profiles by filter with paging support
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListConversionProfileBuilder list(ConversionProfileFilter filter, FilterPager pager)  {
 		return new ListConversionProfileBuilder(filter, pager);
 	}
@@ -147,7 +180,11 @@ public class ConversionProfileService {
 		}
 	}
 
-	/**  Set Conversion Profile to be the partner default  */
+	/**
+	 * Set Conversion Profile to be the partner default
+	 * 
+	 * @param id 
+	 */
     public static SetAsDefaultConversionProfileBuilder setAsDefault(int id)  {
 		return new SetAsDefaultConversionProfileBuilder(id);
 	}
@@ -165,7 +202,12 @@ public class ConversionProfileService {
 		}
 	}
 
-	/**  Update Conversion Profile by ID  */
+	/**
+	 * Update Conversion Profile by ID
+	 * 
+	 * @param id 
+	 * @param conversionProfile 
+	 */
     public static UpdateConversionProfileBuilder update(int id, ConversionProfile conversionProfile)  {
 		return new UpdateConversionProfileBuilder(id, conversionProfile);
 	}

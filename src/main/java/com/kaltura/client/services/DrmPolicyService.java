@@ -50,7 +50,11 @@ public class DrmPolicyService {
 		}
 	}
 
-	/**  Allows you to add a new DrmPolicy object  */
+	/**
+	 * Allows you to add a new DrmPolicy object
+	 * 
+	 * @param drmPolicy 
+	 */
     public static AddDrmPolicyBuilder add(DrmPolicy drmPolicy)  {
 		return new AddDrmPolicyBuilder(drmPolicy);
 	}
@@ -67,7 +71,11 @@ public class DrmPolicyService {
 		}
 	}
 
-	/**  Mark the KalturaDrmPolicy object as deleted  */
+	/**
+	 * Mark the KalturaDrmPolicy object as deleted
+	 * 
+	 * @param drmPolicyId 
+	 */
     public static DeleteDrmPolicyBuilder delete(int drmPolicyId)  {
 		return new DeleteDrmPolicyBuilder(drmPolicyId);
 	}
@@ -84,7 +92,11 @@ public class DrmPolicyService {
 		}
 	}
 
-	/**  Retrieve a KalturaDrmPolicy object by ID  */
+	/**
+	 * Retrieve a KalturaDrmPolicy object by ID
+	 * 
+	 * @param drmPolicyId 
+	 */
     public static GetDrmPolicyBuilder get(int drmPolicyId)  {
 		return new GetDrmPolicyBuilder(drmPolicyId);
 	}
@@ -106,7 +118,12 @@ public class DrmPolicyService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaDrmPolicy objects  */
+	/**
+	 * List KalturaDrmPolicy objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDrmPolicyBuilder list(DrmPolicyFilter filter, FilterPager pager)  {
 		return new ListDrmPolicyBuilder(filter, pager);
 	}
@@ -124,7 +141,12 @@ public class DrmPolicyService {
 		}
 	}
 
-	/**  Update an existing KalturaDrmPolicy object  */
+	/**
+	 * Update an existing KalturaDrmPolicy object
+	 * 
+	 * @param drmPolicyId 
+	 * @param drmPolicy Id
+	 */
     public static UpdateDrmPolicyBuilder update(int drmPolicyId, DrmPolicy drmPolicy)  {
 		return new UpdateDrmPolicyBuilder(drmPolicyId, drmPolicy);
 	}

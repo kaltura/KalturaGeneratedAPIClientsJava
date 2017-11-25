@@ -53,7 +53,9 @@ public class CodeCuePoint extends CuePoint {
 	private String code;
 	private String description;
 	private Integer endTime;
-	/**  Duration in milliseconds  */
+	/**
+	 * Duration in milliseconds
+	 */
 	private Integer duration;
 
 	// code:

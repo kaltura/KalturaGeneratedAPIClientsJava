@@ -41,7 +41,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Generic Distribution Provider service  */
+/**
+ * Generic Distribution Provider service
+ * 
+ * @param genericDistributionProvider 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param genericDistributionProvider 
+ */
 public class GenericDistributionProviderService {
 	
 	public static class AddGenericDistributionProviderBuilder extends RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.Tokenizer, AddGenericDistributionProviderBuilder> {
@@ -52,7 +62,11 @@ public class GenericDistributionProviderService {
 		}
 	}
 
-	/**  Add new Generic Distribution Provider  */
+	/**
+	 * Add new Generic Distribution Provider
+	 * 
+	 * @param genericDistributionProvider 
+	 */
     public static AddGenericDistributionProviderBuilder add(GenericDistributionProvider genericDistributionProvider)  {
 		return new AddGenericDistributionProviderBuilder(genericDistributionProvider);
 	}
@@ -69,7 +83,11 @@ public class GenericDistributionProviderService {
 		}
 	}
 
-	/**  Delete Generic Distribution Provider by id  */
+	/**
+	 * Delete Generic Distribution Provider by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteGenericDistributionProviderBuilder delete(int id)  {
 		return new DeleteGenericDistributionProviderBuilder(id);
 	}
@@ -86,7 +104,11 @@ public class GenericDistributionProviderService {
 		}
 	}
 
-	/**  Get Generic Distribution Provider by id  */
+	/**
+	 * Get Generic Distribution Provider by id
+	 * 
+	 * @param id 
+	 */
     public static GetGenericDistributionProviderBuilder get(int id)  {
 		return new GetGenericDistributionProviderBuilder(id);
 	}
@@ -108,7 +130,12 @@ public class GenericDistributionProviderService {
 		return list(filter, null);
 	}
 
-	/**  List all distribution providers  */
+	/**
+	 * List all distribution providers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListGenericDistributionProviderBuilder list(GenericDistributionProviderFilter filter, FilterPager pager)  {
 		return new ListGenericDistributionProviderBuilder(filter, pager);
 	}
@@ -126,7 +153,12 @@ public class GenericDistributionProviderService {
 		}
 	}
 
-	/**  Update Generic Distribution Provider by id  */
+	/**
+	 * Update Generic Distribution Provider by id
+	 * 
+	 * @param id 
+	 * @param genericDistributionProvider 
+	 */
     public static UpdateGenericDistributionProviderBuilder update(int id, GenericDistributionProvider genericDistributionProvider)  {
 		return new UpdateGenericDistributionProviderBuilder(id, genericDistributionProvider);
 	}

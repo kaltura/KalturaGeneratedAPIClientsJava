@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  This class represents object-specific data passed to the   bulk upload job.  */
+/**
+ * This class represents object-specific data passed to the   bulk upload job.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BulkServiceData.Tokenizer.class)
 public abstract class BulkServiceData extends ObjectBase {

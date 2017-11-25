@@ -49,11 +49,17 @@ public class UrlTokenizerLevel3 extends UrlTokenizer {
 		String gen();
 	}
 
-	/**  paramName  */
+	/**
+	 * paramName
+	 */
 	private String paramName;
-	/**  expiryName  */
+	/**
+	 * expiryName
+	 */
 	private String expiryName;
-	/**  gen  */
+	/**
+	 * gen
+	 */
 	private String gen;
 
 	// paramName:

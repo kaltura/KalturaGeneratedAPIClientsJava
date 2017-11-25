@@ -47,7 +47,42 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Retrieve information and invoke actions on Flavor Asset  */
+/**
+ * Retrieve information and invoke actions on Flavor Asset
+ * 
+ * @param entryId 
+ * @param flavorAsset 
+ * @param entryId 
+ * @param flavorParamsId 
+ * @param priority 
+ * @param id 
+ * @param assetId 
+ * @param assetId 
+ * @param storageProfileId 
+ * @param id 
+ * @param entryId 
+ * @param id 
+ * @param useCdn 
+ * @param entryId 
+ * @param id 
+ * @param id 
+ * @param storageId 
+ * @param forceProxy 
+ * @param options 
+ * @param flavorId Flavor id
+ * @param entryId 
+ * @param filter 
+ * @param pager 
+ * @param id Flavor Asset ID
+ * @param assetId 
+ * @param ffprobeJson 
+ * @param duration 
+ * @param assetId 
+ * @param id 
+ * @param contentResource 
+ * @param id 
+ * @param flavorAsset 
+ */
 public class FlavorAssetService {
 	
 	public static class AddFlavorAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, AddFlavorAssetBuilder> {
@@ -63,7 +98,12 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Add flavor asset  */
+	/**
+	 * Add flavor asset
+	 * 
+	 * @param entryId 
+	 * @param flavorAsset 
+	 */
     public static AddFlavorAssetBuilder add(String entryId, FlavorAsset flavorAsset)  {
 		return new AddFlavorAssetBuilder(entryId, flavorAsset);
 	}
@@ -94,7 +134,13 @@ public class FlavorAssetService {
 		return convert(entryId, flavorParamsId, 0);
 	}
 
-	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
+	/**
+	 * Add and convert new Flavor Asset for Entry with specific Flavor Params
+	 * 
+	 * @param entryId 
+	 * @param flavorParamsId 
+	 * @param priority 
+	 */
     public static ConvertFlavorAssetBuilder convert(String entryId, int flavorParamsId, int priority)  {
 		return new ConvertFlavorAssetBuilder(entryId, flavorParamsId, priority);
 	}
@@ -111,7 +157,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Delete Flavor Asset by ID  */
+	/**
+	 * Delete Flavor Asset by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteFlavorAssetBuilder delete(String id)  {
 		return new DeleteFlavorAssetBuilder(id);
 	}
@@ -128,7 +178,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  delete all local file syncs for this asset  */
+	/**
+	 * delete all local file syncs for this asset
+	 * 
+	 * @param assetId 
+	 */
     public static DeleteLocalContentFlavorAssetBuilder deleteLocalContent(String assetId)  {
 		return new DeleteLocalContentFlavorAssetBuilder(assetId);
 	}
@@ -150,7 +204,12 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  manually export an asset  */
+	/**
+	 * manually export an asset
+	 * 
+	 * @param assetId 
+	 * @param storageProfileId 
+	 */
     public static ExportFlavorAssetBuilder export(String assetId, int storageProfileId)  {
 		return new ExportFlavorAssetBuilder(assetId, storageProfileId);
 	}
@@ -167,7 +226,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get Flavor Asset by ID  */
+	/**
+	 * Get Flavor Asset by ID
+	 * 
+	 * @param id 
+	 */
     public static GetFlavorAssetBuilder get(String id)  {
 		return new GetFlavorAssetBuilder(id);
 	}
@@ -184,7 +247,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get Flavor Assets for Entry  */
+	/**
+	 * Get Flavor Assets for Entry
+	 * 
+	 * @param entryId 
+	 */
     public static GetByEntryIdFlavorAssetBuilder getByEntryId(String entryId)  {
 		return new GetByEntryIdFlavorAssetBuilder(entryId);
 	}
@@ -210,7 +277,12 @@ public class FlavorAssetService {
 		return getDownloadUrl(id, false);
 	}
 
-	/**  Get download URL for the Flavor Asset  */
+	/**
+	 * Get download URL for the Flavor Asset
+	 * 
+	 * @param id 
+	 * @param useCdn 
+	 */
     public static GetDownloadUrlFlavorAssetBuilder getDownloadUrl(String id, boolean useCdn)  {
 		return new GetDownloadUrlFlavorAssetBuilder(id, useCdn);
 	}
@@ -227,8 +299,12 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get Flavor Asset with the relevant Flavor Params (Flavor Params can exist
-	  without Flavor Asset &amp; vice versa)  */
+	/**
+	 * Get Flavor Asset with the relevant Flavor Params (Flavor Params can exist
+	  without Flavor Asset &amp; vice versa)
+	 * 
+	 * @param entryId 
+	 */
     public static GetFlavorAssetsWithParamsFlavorAssetBuilder getFlavorAssetsWithParams(String entryId)  {
 		return new GetFlavorAssetsWithParamsFlavorAssetBuilder(entryId);
 	}
@@ -245,7 +321,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get remote storage existing paths for the asset  */
+	/**
+	 * Get remote storage existing paths for the asset
+	 * 
+	 * @param id 
+	 */
     public static GetRemotePathsFlavorAssetBuilder getRemotePaths(String id)  {
 		return new GetRemotePathsFlavorAssetBuilder(id);
 	}
@@ -285,7 +365,14 @@ public class FlavorAssetService {
 		return getUrl(id, storageId, forceProxy, null);
 	}
 
-	/**  Get download URL for the asset  */
+	/**
+	 * Get download URL for the asset
+	 * 
+	 * @param id 
+	 * @param storageId 
+	 * @param forceProxy 
+	 * @param options 
+	 */
     public static GetUrlFlavorAssetBuilder getUrl(String id, int storageId, boolean forceProxy, FlavorAssetUrlOptions options)  {
 		return new GetUrlFlavorAssetBuilder(id, storageId, forceProxy, options);
 	}
@@ -302,7 +389,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get volume map by entry id  */
+	/**
+	 * Get volume map by entry id
+	 * 
+	 * @param flavorId Flavor id
+	 */
     public static GetVolumeMapFlavorAssetBuilder getVolumeMap(String flavorId)  {
 		return new GetVolumeMapFlavorAssetBuilder(flavorId);
 	}
@@ -319,7 +410,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Get web playable Flavor Assets for Entry  */
+	/**
+	 * Get web playable Flavor Assets for Entry
+	 * 
+	 * @param entryId 
+	 */
     public static GetWebPlayableByEntryIdFlavorAssetBuilder getWebPlayableByEntryId(String entryId)  {
 		return new GetWebPlayableByEntryIdFlavorAssetBuilder(entryId);
 	}
@@ -341,7 +436,12 @@ public class FlavorAssetService {
 		return list(filter, null);
 	}
 
-	/**  List Flavor Assets by filter and pager  */
+	/**
+	 * List Flavor Assets by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListFlavorAssetBuilder list(AssetFilter filter, FilterPager pager)  {
 		return new ListFlavorAssetBuilder(filter, pager);
 	}
@@ -358,7 +458,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Reconvert Flavor Asset by ID  */
+	/**
+	 * Reconvert Flavor Asset by ID
+	 * 
+	 * @param id Flavor Asset ID
+	 */
     public static ReconvertFlavorAssetBuilder reconvert(String id)  {
 		return new ReconvertFlavorAssetBuilder(id);
 	}
@@ -393,7 +497,13 @@ public class FlavorAssetService {
 		return serveAdStitchCmd(assetId, ffprobeJson, null);
 	}
 
-	/**  serve cmd line to transcode the ad  */
+	/**
+	 * serve cmd line to transcode the ad
+	 * 
+	 * @param assetId 
+	 * @param ffprobeJson 
+	 * @param duration 
+	 */
     public static ServeAdStitchCmdFlavorAssetBuilder serveAdStitchCmd(String assetId, String ffprobeJson, String duration)  {
 		return new ServeAdStitchCmdFlavorAssetBuilder(assetId, ffprobeJson, duration);
 	}
@@ -410,7 +520,11 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Set a given flavor as the original flavor  */
+	/**
+	 * Set a given flavor as the original flavor
+	 * 
+	 * @param assetId 
+	 */
     public static SetAsSourceFlavorAssetBuilder setAsSource(String assetId)  {
 		return new SetAsSourceFlavorAssetBuilder(assetId);
 	}
@@ -428,7 +542,12 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Update content of flavor asset  */
+	/**
+	 * Update content of flavor asset
+	 * 
+	 * @param id 
+	 * @param contentResource 
+	 */
     public static SetContentFlavorAssetBuilder setContent(String id, ContentResource contentResource)  {
 		return new SetContentFlavorAssetBuilder(id, contentResource);
 	}
@@ -446,7 +565,12 @@ public class FlavorAssetService {
 		}
 	}
 
-	/**  Update flavor asset  */
+	/**
+	 * Update flavor asset
+	 * 
+	 * @param id 
+	 * @param flavorAsset 
+	 */
     public static UpdateFlavorAssetBuilder update(String id, FlavorAsset flavorAsset)  {
 		return new UpdateFlavorAssetBuilder(id, flavorAsset);
 	}

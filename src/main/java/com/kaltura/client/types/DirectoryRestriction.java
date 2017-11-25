@@ -48,7 +48,9 @@ public class DirectoryRestriction extends BaseRestriction {
 		String directoryRestrictionType();
 	}
 
-	/**  Kaltura directory restriction type  */
+	/**
+	 * Kaltura directory restriction type
+	 */
 	private DirectoryRestrictionType directoryRestrictionType;
 
 	// directoryRestrictionType:

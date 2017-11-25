@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  API class for recipient provider which constructs a dynamic list of recipients
-  according to a user filter  */
+/**
+ * API class for recipient provider which constructs a dynamic list of recipients
+  according to a user filter
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationUserRecipientProvider.Tokenizer.class)
 public class EmailNotificationUserRecipientProvider extends EmailNotificationRecipientProvider {

@@ -56,19 +56,33 @@ public class AnalyticsFilter extends ObjectBase {
 		String orderBy();
 	}
 
-	/**  Query start time (in local time) MM/dd/yyyy HH:mi  */
+	/**
+	 * Query start time (in local time) MM/dd/yyyy HH:mi
+	 */
 	private String from_time;
-	/**  Query end time (in local time) MM/dd/yyyy HH:mi  */
+	/**
+	 * Query end time (in local time) MM/dd/yyyy HH:mi
+	 */
 	private String to_time;
-	/**  Comma separated metrics list  */
+	/**
+	 * Comma separated metrics list
+	 */
 	private String metrics;
-	/**  Timezone offset from UTC (in minutes)  */
+	/**
+	 * Timezone offset from UTC (in minutes)
+	 */
 	private Double utcOffset;
-	/**  Comma separated dimensions list  */
+	/**
+	 * Comma separated dimensions list
+	 */
 	private String dimensions;
-	/**  Array of filters  */
+	/**
+	 * Array of filters
+	 */
 	private List<ReportFilter> filters;
-	/**  Query order by metric/dimension  */
+	/**
+	 * Query order by metric/dimension
+	 */
 	private String orderBy;
 
 	// from_time:

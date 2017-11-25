@@ -78,7 +78,9 @@ public class DrmPolicy extends ObjectBase {
 	private DrmLicenseScenario scenario;
 	private DrmLicenseType licenseType;
 	private DrmLicenseExpirationPolicy licenseExpirationPolicy;
-	/**  Duration in days the license is effective  */
+	/**
+	 * Duration in days the license is effective
+	 */
 	private Integer duration;
 	private Integer createdAt;
 	private Integer updatedAt;

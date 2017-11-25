@@ -83,60 +83,114 @@ public class MediaInfo extends ObjectBase {
 		String maxGOP();
 	}
 
-	/**  The id of the media info  */
+	/**
+	 * The id of the media info
+	 */
 	private Integer id;
-	/**  The id of the related flavor asset  */
+	/**
+	 * The id of the related flavor asset
+	 */
 	private String flavorAssetId;
-	/**  The file size  */
+	/**
+	 * The file size
+	 */
 	private Integer fileSize;
-	/**  The container format  */
+	/**
+	 * The container format
+	 */
 	private String containerFormat;
-	/**  The container id  */
+	/**
+	 * The container id
+	 */
 	private String containerId;
-	/**  The container profile  */
+	/**
+	 * The container profile
+	 */
 	private String containerProfile;
-	/**  The container duration  */
+	/**
+	 * The container duration
+	 */
 	private Integer containerDuration;
-	/**  The container bit rate  */
+	/**
+	 * The container bit rate
+	 */
 	private Integer containerBitRate;
-	/**  The video format  */
+	/**
+	 * The video format
+	 */
 	private String videoFormat;
-	/**  The video codec id  */
+	/**
+	 * The video codec id
+	 */
 	private String videoCodecId;
-	/**  The video duration  */
+	/**
+	 * The video duration
+	 */
 	private Integer videoDuration;
-	/**  The video bit rate  */
+	/**
+	 * The video bit rate
+	 */
 	private Integer videoBitRate;
-	/**  The video bit rate mode  */
+	/**
+	 * The video bit rate mode
+	 */
 	private BitRateMode videoBitRateMode;
-	/**  The video width  */
+	/**
+	 * The video width
+	 */
 	private Integer videoWidth;
-	/**  The video height  */
+	/**
+	 * The video height
+	 */
 	private Integer videoHeight;
-	/**  The video frame rate  */
+	/**
+	 * The video frame rate
+	 */
 	private Double videoFrameRate;
-	/**  The video display aspect ratio (dar)  */
+	/**
+	 * The video display aspect ratio (dar)
+	 */
 	private Double videoDar;
 	private Integer videoRotation;
-	/**  The audio format  */
+	/**
+	 * The audio format
+	 */
 	private String audioFormat;
-	/**  The audio codec id  */
+	/**
+	 * The audio codec id
+	 */
 	private String audioCodecId;
-	/**  The audio duration  */
+	/**
+	 * The audio duration
+	 */
 	private Integer audioDuration;
-	/**  The audio bit rate  */
+	/**
+	 * The audio bit rate
+	 */
 	private Integer audioBitRate;
-	/**  The audio bit rate mode  */
+	/**
+	 * The audio bit rate mode
+	 */
 	private BitRateMode audioBitRateMode;
-	/**  The number of audio channels  */
+	/**
+	 * The number of audio channels
+	 */
 	private Integer audioChannels;
-	/**  The audio sampling rate  */
+	/**
+	 * The audio sampling rate
+	 */
 	private Integer audioSamplingRate;
-	/**  The audio resolution  */
+	/**
+	 * The audio resolution
+	 */
 	private Integer audioResolution;
-	/**  The writing library  */
+	/**
+	 * The writing library
+	 */
 	private String writingLib;
-	/**  The data as returned by the mediainfo command line  */
+	/**
+	 * The data as returned by the mediainfo command line
+	 */
 	private String rawData;
 	private String multiStreamInfo;
 	private Integer scanType;

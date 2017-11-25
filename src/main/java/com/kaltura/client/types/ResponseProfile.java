@@ -54,14 +54,22 @@ public class ResponseProfile extends DetachedResponseProfile {
 		String version();
 	}
 
-	/**  Auto generated numeric identifier  */
+	/**
+	 * Auto generated numeric identifier
+	 */
 	private Long id;
-	/**  Unique system name  */
+	/**
+	 * Unique system name
+	 */
 	private String systemName;
 	private Integer partnerId;
-	/**  Creation time as Unix timestamp (In seconds)  */
+	/**
+	 * Creation time as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Update time as Unix timestamp (In seconds)  */
+	/**
+	 * Update time as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private ResponseProfileStatus status;
 	private Integer version;

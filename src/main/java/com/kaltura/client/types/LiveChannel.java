@@ -48,9 +48,13 @@ public class LiveChannel extends LiveEntry {
 		String repeat();
 	}
 
-	/**  Playlist id to be played  */
+	/**
+	 * Playlist id to be played
+	 */
 	private String playlistId;
-	/**  Indicates that the segments should be repeated for ever  */
+	/**
+	 * Indicates that the segments should be repeated for ever
+	 */
 	private Boolean repeat;
 
 	// playlistId:

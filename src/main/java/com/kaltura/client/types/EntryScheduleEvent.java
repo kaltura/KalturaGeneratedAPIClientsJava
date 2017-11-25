@@ -49,11 +49,17 @@ public abstract class EntryScheduleEvent extends ScheduleEvent {
 		String categoryIds();
 	}
 
-	/**  Entry to be used as template during content ingestion  */
+	/**
+	 * Entry to be used as template during content ingestion
+	 */
 	private String templateEntryId;
-	/**  Entries that associated with this event  */
+	/**
+	 * Entries that associated with this event
+	 */
 	private String entryIds;
-	/**  Categories that associated with this event  */
+	/**
+	 * Categories that associated with this event
+	 */
 	private String categoryIds;
 
 	// templateEntryId:

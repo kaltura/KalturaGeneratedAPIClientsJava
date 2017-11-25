@@ -41,7 +41,16 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Bulk upload service is used to upload &amp; manage bulk uploads  */
+/**
+ * Bulk upload service is used to upload &amp; manage bulk uploads
+ * 
+ * @param id job id
+ * @param id 
+ * @param bulkUploadFilter 
+ * @param pager 
+ * @param id job id
+ * @param id job id
+ */
 public class BulkService {
 	
 	public static class AbortBulkBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AbortBulkBuilder> {
@@ -56,7 +65,11 @@ public class BulkService {
 		}
 	}
 
-	/**  Aborts the bulk upload and all its child jobs  */
+	/**
+	 * Aborts the bulk upload and all its child jobs
+	 * 
+	 * @param id job id
+	 */
     public static AbortBulkBuilder abort(int id)  {
 		return new AbortBulkBuilder(id);
 	}
@@ -73,7 +86,11 @@ public class BulkService {
 		}
 	}
 
-	/**  Get bulk upload batch job by id  */
+	/**
+	 * Get bulk upload batch job by id
+	 * 
+	 * @param id 
+	 */
     public static GetBulkBuilder get(int id)  {
 		return new GetBulkBuilder(id);
 	}
@@ -95,7 +112,12 @@ public class BulkService {
 		return list(bulkUploadFilter, null);
 	}
 
-	/**  List bulk upload batch jobs  */
+	/**
+	 * List bulk upload batch jobs
+	 * 
+	 * @param bulkUploadFilter 
+	 * @param pager 
+	 */
     public static ListBulkBuilder list(BulkUploadFilter bulkUploadFilter, FilterPager pager)  {
 		return new ListBulkBuilder(bulkUploadFilter, pager);
 	}
@@ -112,7 +134,11 @@ public class BulkService {
 		}
 	}
 
-	/**  serve action returns the original file.  */
+	/**
+	 * serve action returns the original file.
+	 * 
+	 * @param id job id
+	 */
     public static ServeBulkBuilder serve(int id)  {
 		return new ServeBulkBuilder(id);
 	}
@@ -129,7 +155,11 @@ public class BulkService {
 		}
 	}
 
-	/**  serveLog action returns the log file for the bulk-upload job.  */
+	/**
+	 * serveLog action returns the log file for the bulk-upload job.
+	 * 
+	 * @param id job id
+	 */
     public static ServeLogBulkBuilder serveLog(int id)  {
 		return new ServeLogBulkBuilder(id);
 	}

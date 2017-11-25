@@ -66,17 +66,27 @@ public class DistributionJobData extends JobData {
 	private DistributionProfile distributionProfile;
 	private Integer entryDistributionId;
 	private EntryDistribution entryDistribution;
-	/**  Id of the media in the remote system  */
+	/**
+	 * Id of the media in the remote system
+	 */
 	private String remoteId;
 	private DistributionProviderType providerType;
-	/**  Additional data that relevant for the provider only  */
+	/**
+	 * Additional data that relevant for the provider only
+	 */
 	private DistributionJobProviderData providerData;
-	/**  The results as returned from the remote destination  */
+	/**
+	 * The results as returned from the remote destination
+	 */
 	private String results;
-	/**  The data as sent to the remote destination  */
+	/**
+	 * The data as sent to the remote destination
+	 */
 	private String sentData;
-	/**  Stores array of media files that submitted to the destination site   Could be
-	  used later for media update  */
+	/**
+	 * Stores array of media files that submitted to the destination site   Could be
+	  used later for media update
+	 */
 	private List<DistributionRemoteMediaFile> mediaFiles;
 
 	// distributionProfileId:

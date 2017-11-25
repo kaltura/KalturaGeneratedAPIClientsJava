@@ -39,7 +39,12 @@ import com.kaltura.client.utils.request.ListResponseRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Distribution Provider service  */
+/**
+ * Distribution Provider service
+ * 
+ * @param filter 
+ * @param pager 
+ */
 public class DistributionProviderService {
 	
 	public static class ListDistributionProviderBuilder extends ListResponseRequestBuilder<DistributionProvider, DistributionProvider.Tokenizer, ListDistributionProviderBuilder> {
@@ -59,7 +64,12 @@ public class DistributionProviderService {
 		return list(filter, null);
 	}
 
-	/**  List all distribution providers  */
+	/**
+	 * List all distribution providers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDistributionProviderBuilder list(DistributionProviderFilter filter, FilterPager pager)  {
 		return new ListDistributionProviderBuilder(filter, pager);
 	}

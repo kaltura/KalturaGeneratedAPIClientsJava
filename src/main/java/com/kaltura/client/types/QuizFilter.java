@@ -48,11 +48,15 @@ public class QuizFilter extends RelatedFilter {
 		String entryIdIn();
 	}
 
-	/**  This filter should be in use for retrieving only a specific quiz entry
-	  (identified by its entryId).  */
+	/**
+	 * This filter should be in use for retrieving only a specific quiz entry
+	  (identified by its entryId).
+	 */
 	private String entryIdEqual;
-	/**  This filter should be in use for retrieving few specific quiz entries (string
-	  should include comma separated list of entryId strings).  */
+	/**
+	 * This filter should be in use for retrieving few specific quiz entries (string
+	  should include comma separated list of entryId strings).
+	 */
 	private String entryIdIn;
 
 	// entryIdEqual:

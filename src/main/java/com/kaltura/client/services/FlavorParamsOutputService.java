@@ -40,7 +40,13 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Flavor Params Output service  */
+/**
+ * Flavor Params Output service
+ * 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ */
 public class FlavorParamsOutputService {
 	
 	public static class GetFlavorParamsOutputBuilder extends RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.Tokenizer, GetFlavorParamsOutputBuilder> {
@@ -55,7 +61,11 @@ public class FlavorParamsOutputService {
 		}
 	}
 
-	/**  Get flavor params output object by ID  */
+	/**
+	 * Get flavor params output object by ID
+	 * 
+	 * @param id 
+	 */
     public static GetFlavorParamsOutputBuilder get(int id)  {
 		return new GetFlavorParamsOutputBuilder(id);
 	}
@@ -77,7 +87,12 @@ public class FlavorParamsOutputService {
 		return list(filter, null);
 	}
 
-	/**  List flavor params output objects by filter and pager  */
+	/**
+	 * List flavor params output objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListFlavorParamsOutputBuilder list(FlavorParamsOutputFilter filter, FilterPager pager)  {
 		return new ListFlavorParamsOutputBuilder(filter, pager);
 	}

@@ -40,7 +40,31 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Session service  */
+/**
+ * Session service
+ * 
+ * @param session The KS to be parsed, keep it empty to use current session.
+ * @param secret - should be the secret (admin or user) of the original partnerId (not
+ * impersonatedPartnerId).
+ * @param impersonatedPartnerId 
+ * @param userId - impersonated userId
+ * @param type 
+ * @param partnerId 
+ * @param expiry KS expiry time in seconds
+ * @param privileges 
+ * @param session The old KS of the impersonated partner
+ * @param type Type of the new KS
+ * @param expiry Expiry time in seconds of the new KS
+ * @param privileges Privileges of the new KS
+ * @param secret Remember to provide the correct secret according to the sessionType you want
+ * @param userId 
+ * @param type Regular session or Admin session
+ * @param partnerId 
+ * @param expiry KS expiry time in seconds
+ * @param privileges 
+ * @param widgetId 
+ * @param expiry 
+ */
 public class SessionService {
 	
 	public static class EndSessionBuilder extends NullRequestBuilder {
@@ -50,7 +74,9 @@ public class SessionService {
 		}
 	}
 
-	/**  End a session with the Kaltura server, making the current KS invalid.  */
+	/**
+	 * End a session with the Kaltura server, making the current KS invalid.
+	 */
     public static EndSessionBuilder end()  {
 		return new EndSessionBuilder();
 	}
@@ -71,7 +97,11 @@ public class SessionService {
 		return get(null);
 	}
 
-	/**  Parse session key and return its info  */
+	/**
+	 * Parse session key and return its info
+	 * 
+	 * @param session The KS to be parsed, keep it empty to use current session.
+	 */
     public static GetSessionBuilder get(String session)  {
 		return new GetSessionBuilder(session);
 	}
@@ -138,8 +168,19 @@ public class SessionService {
 		return impersonate(secret, impersonatedPartnerId, userId, type, partnerId, expiry, null);
 	}
 
-	/**  Start an impersonated session with Kaltura's server.   The result KS is the
-	  session key that you should pass to all services that requires a ticket.  */
+	/**
+	 * Start an impersonated session with Kaltura's server.   The result KS is the
+	  session key that you should pass to all services that requires a ticket.
+	 * 
+	 * @param secret - should be the secret (admin or user) of the original partnerId (not
+	 * impersonatedPartnerId).
+	 * @param impersonatedPartnerId 
+	 * @param userId - impersonated userId
+	 * @param type 
+	 * @param partnerId 
+	 * @param expiry KS expiry time in seconds
+	 * @param privileges 
+	 */
     public static ImpersonateSessionBuilder impersonate(String secret, int impersonatedPartnerId, String userId, SessionType type, int partnerId, int expiry, String privileges)  {
 		return new ImpersonateSessionBuilder(secret, impersonatedPartnerId, userId, type, partnerId, expiry, privileges);
 	}
@@ -183,9 +224,16 @@ public class SessionService {
 		return impersonateByKs(session, type, expiry, null);
 	}
 
-	/**  Start an impersonated session with Kaltura's server.   The result KS info
+	/**
+	 * Start an impersonated session with Kaltura's server.   The result KS info
 	  contains the session key that you should pass to all services that requires a
-	  ticket.   Type, expiry and privileges won't be changed if they're not set  */
+	  ticket.   Type, expiry and privileges won't be changed if they're not set
+	 * 
+	 * @param session The old KS of the impersonated partner
+	 * @param type Type of the new KS
+	 * @param expiry Expiry time in seconds of the new KS
+	 * @param privileges Privileges of the new KS
+	 */
     public static ImpersonateByKsSessionBuilder impersonateByKs(String session, SessionType type, int expiry, String privileges)  {
 		return new ImpersonateByKsSessionBuilder(session, type, expiry, privileges);
 	}
@@ -247,8 +295,17 @@ public class SessionService {
 		return start(secret, userId, type, partnerId, expiry, null);
 	}
 
-	/**  Start a session with Kaltura's server.   The result KS is the session key that
-	  you should pass to all services that requires a ticket.  */
+	/**
+	 * Start a session with Kaltura's server.   The result KS is the session key that
+	  you should pass to all services that requires a ticket.
+	 * 
+	 * @param secret Remember to provide the correct secret according to the sessionType you want
+	 * @param userId 
+	 * @param type Regular session or Admin session
+	 * @param partnerId 
+	 * @param expiry KS expiry time in seconds
+	 * @param privileges 
+	 */
     public static StartSessionBuilder start(String secret, String userId, SessionType type, int partnerId, int expiry, String privileges)  {
 		return new StartSessionBuilder(secret, userId, type, partnerId, expiry, privileges);
 	}
@@ -274,7 +331,12 @@ public class SessionService {
 		return startWidgetSession(widgetId, 86400);
 	}
 
-	/**  Start a session for Kaltura's flash widgets  */
+	/**
+	 * Start a session for Kaltura's flash widgets
+	 * 
+	 * @param widgetId 
+	 * @param expiry 
+	 */
     public static StartWidgetSessionSessionBuilder startWidgetSession(String widgetId, int expiry)  {
 		return new StartWidgetSessionSessionBuilder(widgetId, expiry);
 	}

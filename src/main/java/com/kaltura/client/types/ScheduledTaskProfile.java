@@ -71,18 +71,26 @@ public class ScheduledTaskProfile extends ObjectBase {
 	private String systemName;
 	private String description;
 	private ScheduledTaskProfileStatus status;
-	/**  The type of engine to use to list objects using the given "objectFilter"  */
+	/**
+	 * The type of engine to use to list objects using the given "objectFilter"
+	 */
 	private ObjectFilterEngineType objectFilterEngineType;
-	/**  A filter object (inherits KalturaFilter) that is used to list objects for
-	  scheduled tasks  */
+	/**
+	 * A filter object (inherits KalturaFilter) that is used to list objects for
+	  scheduled tasks
+	 */
 	private Filter objectFilter;
-	/**  A list of tasks to execute on the founded objects  */
+	/**
+	 * A list of tasks to execute on the founded objects
+	 */
 	private List<ObjectTask> objectTasks;
 	private Integer createdAt;
 	private Integer updatedAt;
 	private Integer lastExecutionStartedAt;
-	/**  The maximum number of result count allowed to be processed by this profile per
-	  execution  */
+	/**
+	 * The maximum number of result count allowed to be processed by this profile per
+	  execution
+	 */
 	private Integer maxTotalCountAllowed;
 
 	// id:

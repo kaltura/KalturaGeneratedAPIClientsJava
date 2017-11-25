@@ -55,21 +55,37 @@ public class Report extends ObjectBase {
 		String updatedAt();
 	}
 
-	/**  Report id  */
+	/**
+	 * Report id
+	 */
 	private Integer id;
-	/**  Partner id associated with the report  */
+	/**
+	 * Partner id associated with the report
+	 */
 	private Integer partnerId;
-	/**  Report name  */
+	/**
+	 * Report name
+	 */
 	private String name;
-	/**  Used to identify system reports in a friendly way  */
+	/**
+	 * Used to identify system reports in a friendly way
+	 */
 	private String systemName;
-	/**  Report description  */
+	/**
+	 * Report description
+	 */
 	private String description;
-	/**  Report query  */
+	/**
+	 * Report query
+	 */
 	private String query;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 
 	// id:

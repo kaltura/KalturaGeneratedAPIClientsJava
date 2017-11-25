@@ -48,9 +48,13 @@ public class UrlTokenizerAkamaiRtsp extends UrlTokenizer {
 		String cpcode();
 	}
 
-	/**  host  */
+	/**
+	 * host
+	 */
 	private String host;
-	/**  Cp-Code  */
+	/**
+	 * Cp-Code
+	 */
 	private Integer cpcode;
 
 	// host:

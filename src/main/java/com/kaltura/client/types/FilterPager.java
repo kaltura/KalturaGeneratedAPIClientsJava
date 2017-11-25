@@ -38,8 +38,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  The KalturaFilterPager object enables paging management to be applied upon
-  service list actions.  */
+/**
+ * The KalturaFilterPager object enables paging management to be applied upon
+  service list actions.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(FilterPager.Tokenizer.class)
 public class FilterPager extends Pager {

@@ -41,9 +41,11 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media that is available on remote server and accessible using the
+/**
+ * Used to ingest media that is available on remote server and accessible using the
   supplied URL, the media file won't be downloaded but a file sync object of URL
-  type will point to the media URL.  */
+  type will point to the media URL.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(RemoteStorageResources.Tokenizer.class)
 public class RemoteStorageResources extends ContentResource {
@@ -52,7 +54,9 @@ public class RemoteStorageResources extends ContentResource {
 		RequestBuilder.ListTokenizer<RemoteStorageResource.Tokenizer> resources();
 	}
 
-	/**  Array of remote stoage resources  */
+	/**
+	 * Array of remote stoage resources
+	 */
 	private List<RemoteStorageResource> resources;
 
 	// resources:

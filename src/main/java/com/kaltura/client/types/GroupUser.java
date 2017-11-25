@@ -58,9 +58,13 @@ public class GroupUser extends ObjectBase {
 	private String groupId;
 	private GroupUserStatus status;
 	private Integer partnerId;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 
 	// userId:

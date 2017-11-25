@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Abstract class for asset distribution condition  */
+/**
+ * Abstract class for asset distribution condition
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(AssetDistributionCondition.Tokenizer.class)
 public abstract class AssetDistributionCondition extends ObjectBase {

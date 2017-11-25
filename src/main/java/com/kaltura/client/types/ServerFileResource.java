@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Used to ingest media file that is already accessible on the shared disc.  */
+/**
+ * Used to ingest media file that is already accessible on the shared disc.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ServerFileResource.Tokenizer.class)
 public class ServerFileResource extends GenericDataCenterContentResource {
@@ -49,9 +51,13 @@ public class ServerFileResource extends GenericDataCenterContentResource {
 		String keepOriginalFile();
 	}
 
-	/**  Full path to the local file  */
+	/**
+	 * Full path to the local file
+	 */
 	private String localFilePath;
-	/**  Should keep original file (false = mv, true = cp)  */
+	/**
+	 * Should keep original file (false = mv, true = cp)
+	 */
 	private Boolean keepOriginalFile;
 
 	// localFilePath:

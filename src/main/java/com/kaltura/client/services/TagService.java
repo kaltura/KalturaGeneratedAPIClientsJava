@@ -41,7 +41,15 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Search object tags  */
+/**
+ * Search object tags
+ * 
+ * @param categoryId 
+ * @param pcToDecrement 
+ * @param pcToIncrement 
+ * @param tagFilter 
+ * @param pager 
+ */
 public class TagService {
 	
 	public static class DeletePendingTagBuilder extends RequestBuilder<Integer, String, DeletePendingTagBuilder> {
@@ -51,8 +59,10 @@ public class TagService {
 		}
 	}
 
-	/**  Action goes over all tags with instanceCount==0 and checks whether they need to
-	  be removed from the DB. Returns number of removed tags.  */
+	/**
+	 * Action goes over all tags with instanceCount==0 and checks whether they need to
+	  be removed from the DB. Returns number of removed tags.
+	 */
     public static DeletePendingTagBuilder deletePending()  {
 		return new DeletePendingTagBuilder();
 	}

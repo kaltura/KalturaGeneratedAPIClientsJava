@@ -51,17 +51,27 @@ public class UnicornDistributionJobProviderData extends ConfigurableDistribution
 		String notificationBaseUrl();
 	}
 
-	/**  The Catalog GUID the video is in or will be ingested into.  */
+	/**
+	 * The Catalog GUID the video is in or will be ingested into.
+	 */
 	private String catalogGuid;
-	/**  The Title assigned to the video. The Foreign Key will be used if no title is
-	  provided.  */
+	/**
+	 * The Title assigned to the video. The Foreign Key will be used if no title is
+	  provided.
+	 */
 	private String title;
-	/**  Indicates that the media content changed and therefore the job should wait for
-	  HTTP callback notification to be closed.  */
+	/**
+	 * Indicates that the media content changed and therefore the job should wait for
+	  HTTP callback notification to be closed.
+	 */
 	private Boolean mediaChanged;
-	/**  Flavor asset version.  */
+	/**
+	 * Flavor asset version.
+	 */
 	private String flavorAssetVersion;
-	/**  The schema and host name to the Kaltura server, e.g. http://www.kaltura.com  */
+	/**
+	 * The schema and host name to the Kaltura server, e.g. http://www.kaltura.com
+	 */
 	private String notificationBaseUrl;
 
 	// catalogGuid:

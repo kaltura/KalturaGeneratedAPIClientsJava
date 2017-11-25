@@ -63,33 +63,57 @@ public class AssetParams extends ObjectBase {
 		String sourceAssetParamsIds();
 	}
 
-	/**  The id of the Flavor Params  */
+	/**
+	 * The id of the Flavor Params
+	 */
 	private Integer id;
 	private Integer partnerId;
-	/**  The name of the Flavor Params  */
+	/**
+	 * The name of the Flavor Params
+	 */
 	private String name;
-	/**  System name of the Flavor Params  */
+	/**
+	 * System name of the Flavor Params
+	 */
 	private String systemName;
-	/**  The description of the Flavor Params  */
+	/**
+	 * The description of the Flavor Params
+	 */
 	private String description;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  True if those Flavor Params are part of system defaults  */
+	/**
+	 * True if those Flavor Params are part of system defaults
+	 */
 	private Boolean isSystemDefault;
-	/**  The Flavor Params tags are used to identify the flavor for different usage (e.g.
-	  web, hd, mobile)  */
+	/**
+	 * The Flavor Params tags are used to identify the flavor for different usage (e.g.
+	  web, hd, mobile)
+	 */
 	private String tags;
-	/**  Array of partner permisison names that required for using this asset params  */
+	/**
+	 * Array of partner permisison names that required for using this asset params
+	 */
 	private List<StringHolder> requiredPermissions;
-	/**  Id of remote storage profile that used to get the source, zero indicates Kaltura
-	  data center  */
+	/**
+	 * Id of remote storage profile that used to get the source, zero indicates Kaltura
+	  data center
+	 */
 	private Integer sourceRemoteStorageProfileId;
-	/**  Comma seperated ids of remote storage profiles that the flavor distributed to,
-	  the distribution done by the conversion engine  */
+	/**
+	 * Comma seperated ids of remote storage profiles that the flavor distributed to,
+	  the distribution done by the conversion engine
+	 */
 	private Integer remoteStorageProfileIds;
-	/**  Media parser type to be used for post-conversion validation  */
+	/**
+	 * Media parser type to be used for post-conversion validation
+	 */
 	private MediaParserType mediaParserType;
-	/**  Comma seperated ids of source flavor params this flavor is created from  */
+	/**
+	 * Comma seperated ids of source flavor params this flavor is created from
+	 */
 	private String sourceAssetParamsIds;
 
 	// id:

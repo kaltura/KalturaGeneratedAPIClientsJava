@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaPlayableEntry attributes. Use
-  KalturaPlayableEntryMatchAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaPlayableEntry attributes. Use
+  KalturaPlayableEntryMatchAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(PlayableEntryMatchAttributeCondition.Tokenizer.class)
 public class PlayableEntryMatchAttributeCondition extends SearchMatchAttributeCondition {

@@ -64,33 +64,61 @@ public class SchedulerWorker extends ObjectBase {
 		String lastStatusStr();
 	}
 
-	/**  The id of the Worker  */
+	/**
+	 * The id of the Worker
+	 */
 	private Integer id;
-	/**  The id as configured in the batch config  */
+	/**
+	 * The id as configured in the batch config
+	 */
 	private Integer configuredId;
-	/**  The id of the Scheduler  */
+	/**
+	 * The id of the Scheduler
+	 */
 	private Integer schedulerId;
-	/**  The id of the scheduler as configured in the batch config  */
+	/**
+	 * The id of the scheduler as configured in the batch config
+	 */
 	private Integer schedulerConfiguredId;
-	/**  The worker type  */
+	/**
+	 * The worker type
+	 */
 	private BatchJobType type;
-	/**  The friendly name of the type  */
+	/**
+	 * The friendly name of the type
+	 */
 	private String typeName;
-	/**  The scheduler name  */
+	/**
+	 * The scheduler name
+	 */
 	private String name;
-	/**  Array of the last statuses  */
+	/**
+	 * Array of the last statuses
+	 */
 	private List<SchedulerStatus> statuses;
-	/**  Array of the last configs  */
+	/**
+	 * Array of the last configs
+	 */
 	private List<SchedulerConfig> configs;
-	/**  Array of jobs that locked to this worker  */
+	/**
+	 * Array of jobs that locked to this worker
+	 */
 	private List<BatchJob> lockedJobs;
-	/**  Avarage time between creation and queue time  */
+	/**
+	 * Avarage time between creation and queue time
+	 */
 	private Integer avgWait;
-	/**  Avarage time between queue time end finish time  */
+	/**
+	 * Avarage time between queue time end finish time
+	 */
 	private Integer avgWork;
-	/**  last status time  */
+	/**
+	 * last status time
+	 */
 	private Integer lastStatus;
-	/**  last status formated  */
+	/**
+	 * last status formated
+	 */
 	private String lastStatusStr;
 
 	// id:

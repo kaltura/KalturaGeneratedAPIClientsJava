@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Object which contains contextual entry-related data.  */
+/**
+ * Object which contains contextual entry-related data.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EntryContextDataParams.Tokenizer.class)
 public class EntryContextDataParams extends AccessControlScope {
@@ -51,13 +53,21 @@ public class EntryContextDataParams extends AccessControlScope {
 		String mediaProtocol();
 	}
 
-	/**  Id of the current flavor.  */
+	/**
+	 * Id of the current flavor.
+	 */
 	private String flavorAssetId;
-	/**  The tags of the flavors that should be used for playback.  */
+	/**
+	 * The tags of the flavors that should be used for playback.
+	 */
 	private String flavorTags;
-	/**  Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.  */
+	/**
+	 * Playback streamer type: RTMP, HTTP, appleHttps, rtsp, sl.
+	 */
 	private String streamerType;
-	/**  Protocol of the specific media object.  */
+	/**
+	 * Protocol of the specific media object.
+	 */
 	private String mediaProtocol;
 
 	// flavorAssetId:

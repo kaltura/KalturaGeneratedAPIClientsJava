@@ -50,12 +50,18 @@ public class SyndicationFeedEntryCount extends ObjectBase {
 		String requireTranscodingCount();
 	}
 
-	/**  the total count of entries that should appear in the feed without flavor
-	  filtering  */
+	/**
+	 * the total count of entries that should appear in the feed without flavor
+	  filtering
+	 */
 	private Integer totalEntryCount;
-	/**  count of entries that will appear in the feed (including all relevant filters)  */
+	/**
+	 * count of entries that will appear in the feed (including all relevant filters)
+	 */
 	private Integer actualEntryCount;
-	/**  count of entries that requires transcoding in order to be included in feed  */
+	/**
+	 * count of entries that requires transcoding in order to be included in feed
+	 */
 	private Integer requireTranscodingCount;
 
 	// totalEntryCount:

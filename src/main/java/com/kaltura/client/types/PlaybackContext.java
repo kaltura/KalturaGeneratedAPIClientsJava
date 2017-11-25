@@ -55,9 +55,13 @@ public class PlaybackContext extends ObjectBase {
 
 	private List<PlaybackSource> sources;
 	private List<FlavorAsset> flavorAssets;
-	/**  Array of actions as received from the rules that invalidated  */
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 */
 	private List<RuleAction> actions;
-	/**  Array of actions as received from the rules that invalidated  */
+	/**
+	 * Array of actions as received from the rules that invalidated
+	 */
 	private List<AccessControlMessage> messages;
 
 	// sources:

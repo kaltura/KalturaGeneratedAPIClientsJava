@@ -58,22 +58,38 @@ public class AccessControlProfile extends ObjectBase {
 		RequestBuilder.ListTokenizer<Rule.Tokenizer> rules();
 	}
 
-	/**  The id of the Access Control Profile  */
+	/**
+	 * The id of the Access Control Profile
+	 */
 	private Integer id;
 	private Integer partnerId;
-	/**  The name of the Access Control Profile  */
+	/**
+	 * The name of the Access Control Profile
+	 */
 	private String name;
-	/**  System name of the Access Control Profile  */
+	/**
+	 * System name of the Access Control Profile
+	 */
 	private String systemName;
-	/**  The description of the Access Control Profile  */
+	/**
+	 * The description of the Access Control Profile
+	 */
 	private String description;
-	/**  Creation time as Unix timestamp (In seconds)  */
+	/**
+	 * Creation time as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Update time as Unix timestamp (In seconds)  */
+	/**
+	 * Update time as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  True if this access control profile is the partner default  */
+	/**
+	 * True if this access control profile is the partner default
+	 */
 	private Boolean isDefault;
-	/**  Array of access control rules  */
+	/**
+	 * Array of access control rules
+	 */
 	private List<Rule> rules;
 
 	// id:

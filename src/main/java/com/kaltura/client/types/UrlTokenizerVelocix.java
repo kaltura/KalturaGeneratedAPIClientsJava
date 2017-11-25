@@ -49,11 +49,17 @@ public class UrlTokenizerVelocix extends UrlTokenizer {
 		String authPrefix();
 	}
 
-	/**  hdsPaths  */
+	/**
+	 * hdsPaths
+	 */
 	private String hdsPaths;
-	/**  tokenParamName  */
+	/**
+	 * tokenParamName
+	 */
 	private String paramName;
-	/**  secure URL prefix  */
+	/**
+	 * secure URL prefix
+	 */
 	private String authPrefix;
 
 	// hdsPaths:

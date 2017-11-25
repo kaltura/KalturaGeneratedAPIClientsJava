@@ -76,11 +76,17 @@ public abstract class DistributionProfile extends ObjectBase {
 		String recommendedDcForExecute();
 	}
 
-	/**  Auto generated unique id  */
+	/**
+	 * Auto generated unique id
+	 */
 	private Integer id;
-	/**  Profile creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Profile creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Profile last update date as Unix timestamp (In seconds)  */
+	/**
+	 * Profile last update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private Integer partnerId;
 	private DistributionProviderType providerType;
@@ -90,34 +96,60 @@ public abstract class DistributionProfile extends ObjectBase {
 	private DistributionProfileActionStatus updateEnabled;
 	private DistributionProfileActionStatus deleteEnabled;
 	private DistributionProfileActionStatus reportEnabled;
-	/**  Comma separated flavor params ids that should be auto converted  */
+	/**
+	 * Comma separated flavor params ids that should be auto converted
+	 */
 	private String autoCreateFlavors;
-	/**  Comma separated thumbnail params ids that should be auto generated  */
+	/**
+	 * Comma separated thumbnail params ids that should be auto generated
+	 */
 	private String autoCreateThumb;
-	/**  Comma separated flavor params ids that should be submitted if ready  */
+	/**
+	 * Comma separated flavor params ids that should be submitted if ready
+	 */
 	private String optionalFlavorParamsIds;
-	/**  Comma separated flavor params ids that required to be ready before submission  */
+	/**
+	 * Comma separated flavor params ids that required to be ready before submission
+	 */
 	private String requiredFlavorParamsIds;
-	/**  Thumbnail dimensions that should be submitted if ready  */
+	/**
+	 * Thumbnail dimensions that should be submitted if ready
+	 */
 	private List<DistributionThumbDimensions> optionalThumbDimensions;
-	/**  Thumbnail dimensions that required to be readt before submission  */
+	/**
+	 * Thumbnail dimensions that required to be readt before submission
+	 */
 	private List<DistributionThumbDimensions> requiredThumbDimensions;
-	/**  Asset Distribution Rules for assets that should be submitted if ready  */
+	/**
+	 * Asset Distribution Rules for assets that should be submitted if ready
+	 */
 	private List<AssetDistributionRule> optionalAssetDistributionRules;
-	/**  Assets Asset Distribution Rules for assets that are required to be ready before
-	  submission  */
+	/**
+	 * Assets Asset Distribution Rules for assets that are required to be ready before
+	  submission
+	 */
 	private List<AssetDistributionRule> requiredAssetDistributionRules;
-	/**  If entry distribution sunrise not specified that will be the default since entry
-	  creation time, in seconds  */
+	/**
+	 * If entry distribution sunrise not specified that will be the default since entry
+	  creation time, in seconds
+	 */
 	private Integer sunriseDefaultOffset;
-	/**  If entry distribution sunset not specified that will be the default since entry
-	  creation time, in seconds  */
+	/**
+	 * If entry distribution sunset not specified that will be the default since entry
+	  creation time, in seconds
+	 */
 	private Integer sunsetDefaultOffset;
-	/**  The best external storage to be used to download the asset files from  */
+	/**
+	 * The best external storage to be used to download the asset files from
+	 */
 	private Integer recommendedStorageProfileForDownload;
-	/**  The best Kaltura data center to be used to download the asset files to  */
+	/**
+	 * The best Kaltura data center to be used to download the asset files to
+	 */
 	private Integer recommendedDcForDownload;
-	/**  The best Kaltura data center to be used to execute the distribution job  */
+	/**
+	 * The best Kaltura data center to be used to execute the distribution job
+	 */
 	private Integer recommendedDcForExecute;
 
 	// id:

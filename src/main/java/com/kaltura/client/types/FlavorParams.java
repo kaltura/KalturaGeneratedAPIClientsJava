@@ -89,36 +89,62 @@ public class FlavorParams extends AssetParams {
 		String clipDuration();
 	}
 
-	/**  The video codec of the Flavor Params  */
+	/**
+	 * The video codec of the Flavor Params
+	 */
 	private VideoCodec videoCodec;
-	/**  The video bitrate (in KBits) of the Flavor Params  */
+	/**
+	 * The video bitrate (in KBits) of the Flavor Params
+	 */
 	private Integer videoBitrate;
-	/**  The audio codec of the Flavor Params  */
+	/**
+	 * The audio codec of the Flavor Params
+	 */
 	private AudioCodec audioCodec;
-	/**  The audio bitrate (in KBits) of the Flavor Params  */
+	/**
+	 * The audio bitrate (in KBits) of the Flavor Params
+	 */
 	private Integer audioBitrate;
-	/**  The number of audio channels for "downmixing"  */
+	/**
+	 * The number of audio channels for "downmixing"
+	 */
 	private Integer audioChannels;
-	/**  The audio sample rate of the Flavor Params  */
+	/**
+	 * The audio sample rate of the Flavor Params
+	 */
 	private Integer audioSampleRate;
-	/**  The desired width of the Flavor Params  */
+	/**
+	 * The desired width of the Flavor Params
+	 */
 	private Integer width;
-	/**  The desired height of the Flavor Params  */
+	/**
+	 * The desired height of the Flavor Params
+	 */
 	private Integer height;
-	/**  The frame rate of the Flavor Params  */
+	/**
+	 * The frame rate of the Flavor Params
+	 */
 	private Double frameRate;
-	/**  The gop size of the Flavor Params  */
+	/**
+	 * The gop size of the Flavor Params
+	 */
 	private Integer gopSize;
-	/**  The list of conversion engines (comma separated)  */
+	/**
+	 * The list of conversion engines (comma separated)
+	 */
 	private String conversionEngines;
-	/**  The list of conversion engines extra params (separated with "|")  */
+	/**
+	 * The list of conversion engines extra params (separated with "|")
+	 */
 	private String conversionEnginesExtraParams;
 	private Boolean twoPass;
 	private Integer deinterlice;
 	private Integer rotate;
 	private String operators;
 	private Integer engineVersion;
-	/**  The container format of the Flavor Params  */
+	/**
+	 * The container format of the Flavor Params
+	 */
 	private ContainerFormat format;
 	private Integer aspectRatioProcessingMode;
 	private Integer forceFrameToMultiplication16;

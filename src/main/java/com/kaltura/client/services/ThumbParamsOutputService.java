@@ -40,7 +40,13 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Thumbnail Params Output service  */
+/**
+ * Thumbnail Params Output service
+ * 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ */
 public class ThumbParamsOutputService {
 	
 	public static class GetThumbParamsOutputBuilder extends RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.Tokenizer, GetThumbParamsOutputBuilder> {
@@ -55,7 +61,11 @@ public class ThumbParamsOutputService {
 		}
 	}
 
-	/**  Get thumb params output object by ID  */
+	/**
+	 * Get thumb params output object by ID
+	 * 
+	 * @param id 
+	 */
     public static GetThumbParamsOutputBuilder get(int id)  {
 		return new GetThumbParamsOutputBuilder(id);
 	}
@@ -77,7 +87,12 @@ public class ThumbParamsOutputService {
 		return list(filter, null);
 	}
 
-	/**  List thumb params output objects by filter and pager  */
+	/**
+	 * List thumb params output objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListThumbParamsOutputBuilder list(ThumbParamsOutputFilter filter, FilterPager pager)  {
 		return new ListThumbParamsOutputBuilder(filter, pager);
 	}

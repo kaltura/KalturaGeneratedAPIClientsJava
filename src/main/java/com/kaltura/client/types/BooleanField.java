@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A boolean representation to return evaluated dynamic value  */
+/**
+ * A boolean representation to return evaluated dynamic value
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(BooleanField.Tokenizer.class)
 public abstract class BooleanField extends BooleanValue {

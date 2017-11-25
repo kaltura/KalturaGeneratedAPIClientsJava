@@ -40,7 +40,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Permission service lets you create and manage user permissions  */
+/**
+ * Permission service lets you create and manage user permissions
+ * 
+ * @param permission The new permission
+ * @param permissionName The name assigned to the permission
+ * @param permissionName The name assigned to the permission
+ * @param filter A filter used to exclude specific types of permissions
+ * @param pager A limit for the number of records to display on a page
+ * @param permissionName The name assigned to the permission
+ * @param permission Name The name assigned to the permission
+ */
 public class PermissionService {
 	
 	public static class AddPermissionBuilder extends RequestBuilder<Permission, Permission.Tokenizer, AddPermissionBuilder> {
@@ -51,7 +61,11 @@ public class PermissionService {
 		}
 	}
 
-	/**  Adds a new permission object to the account.  */
+	/**
+	 * Adds a new permission object to the account.
+	 * 
+	 * @param permission The new permission
+	 */
     public static AddPermissionBuilder add(Permission permission)  {
 		return new AddPermissionBuilder(permission);
 	}
@@ -68,7 +82,11 @@ public class PermissionService {
 		}
 	}
 
-	/**  Deletes an existing permission object.  */
+	/**
+	 * Deletes an existing permission object.
+	 * 
+	 * @param permissionName The name assigned to the permission
+	 */
     public static DeletePermissionBuilder delete(String permissionName)  {
 		return new DeletePermissionBuilder(permissionName);
 	}
@@ -85,7 +103,11 @@ public class PermissionService {
 		}
 	}
 
-	/**  Retrieves a permission object using its ID.  */
+	/**
+	 * Retrieves a permission object using its ID.
+	 * 
+	 * @param permissionName The name assigned to the permission
+	 */
     public static GetPermissionBuilder get(String permissionName)  {
 		return new GetPermissionBuilder(permissionName);
 	}
@@ -97,7 +119,9 @@ public class PermissionService {
 		}
 	}
 
-	/**  Retrieves a list of permissions that apply to the current KS.  */
+	/**
+	 * Retrieves a list of permissions that apply to the current KS.
+	 */
     public static GetCurrentPermissionsPermissionBuilder getCurrentPermissions()  {
 		return new GetCurrentPermissionsPermissionBuilder();
 	}
@@ -119,9 +143,14 @@ public class PermissionService {
 		return list(filter, null);
 	}
 
-	/**  Lists permission objects that are associated with an account.   Blocked
+	/**
+	 * Lists permission objects that are associated with an account.   Blocked
 	  permissions are listed unless you use a filter to exclude them.   Blocked
-	  permissions are listed unless you use a filter to exclude them.  */
+	  permissions are listed unless you use a filter to exclude them.
+	 * 
+	 * @param filter A filter used to exclude specific types of permissions
+	 * @param pager A limit for the number of records to display on a page
+	 */
     public static ListPermissionBuilder list(PermissionFilter filter, FilterPager pager)  {
 		return new ListPermissionBuilder(filter, pager);
 	}
@@ -139,7 +168,12 @@ public class PermissionService {
 		}
 	}
 
-	/**  Updates an existing permission object.  */
+	/**
+	 * Updates an existing permission object.
+	 * 
+	 * @param permissionName The name assigned to the permission
+	 * @param permission Name The name assigned to the permission
+	 */
     public static UpdatePermissionBuilder update(String permissionName, Permission permission)  {
 		return new UpdatePermissionBuilder(permissionName, permission);
 	}

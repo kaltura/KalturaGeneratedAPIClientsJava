@@ -51,10 +51,14 @@ public class AssetDistributionRule extends ObjectBase {
 		RequestBuilder.ListTokenizer<AssetDistributionCondition.Tokenizer> assetDistributionConditions();
 	}
 
-	/**  The validation error description that will be set on the "data" property on
-	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled  */
+	/**
+	 * The validation error description that will be set on the "data" property on
+	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled
+	 */
 	private String validationError;
-	/**  An array of asset distribution conditions  */
+	/**
+	 * An array of asset distribution conditions
+	 */
 	private List<AssetDistributionCondition> assetDistributionConditions;
 
 	// validationError:

@@ -50,11 +50,17 @@ public class ExecuteMetadataXsltObjectTask extends ObjectTask {
 		String xslt();
 	}
 
-	/**  Metadata profile id to lookup the metadata object  */
+	/**
+	 * Metadata profile id to lookup the metadata object
+	 */
 	private Integer metadataProfileId;
-	/**  Metadata object type to lookup the metadata object  */
+	/**
+	 * Metadata object type to lookup the metadata object
+	 */
 	private MetadataObjectType metadataObjectType;
-	/**  The XSLT to execute  */
+	/**
+	 * The XSLT to execute
+	 */
 	private String xslt;
 
 	// metadataProfileId:

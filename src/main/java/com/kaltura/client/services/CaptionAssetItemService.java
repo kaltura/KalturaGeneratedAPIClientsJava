@@ -41,7 +41,20 @@ import com.kaltura.client.utils.request.ListResponseRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Search caption asset items  */
+/**
+ * Search caption asset items
+ * 
+ * @param captionAssetId 
+ * @param captionAssetItemFilter 
+ * @param captionAssetItemPager 
+ * @param captionAssetId 
+ * @param entryFilter 
+ * @param captionAssetItemFilter 
+ * @param captionAssetItemPager 
+ * @param entryFilter 
+ * @param captionAssetItemFilter 
+ * @param captionAssetItemPager 
+ */
 public class CaptionAssetItemService {
 	
 	public static class ListCaptionAssetItemBuilder extends ListResponseRequestBuilder<CaptionAssetItem, CaptionAssetItem.Tokenizer, ListCaptionAssetItemBuilder> {
@@ -66,7 +79,13 @@ public class CaptionAssetItemService {
 		return list(captionAssetId, captionAssetItemFilter, null);
 	}
 
-	/**  List caption asset items by filter and pager  */
+	/**
+	 * List caption asset items by filter and pager
+	 * 
+	 * @param captionAssetId 
+	 * @param captionAssetItemFilter 
+	 * @param captionAssetItemPager 
+	 */
     public static ListCaptionAssetItemBuilder list(String captionAssetId, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
 		return new ListCaptionAssetItemBuilder(captionAssetId, captionAssetItemFilter, captionAssetItemPager);
 	}
@@ -93,7 +112,13 @@ public class CaptionAssetItemService {
 		return search(entryFilter, captionAssetItemFilter, null);
 	}
 
-	/**  Search caption asset items by filter, pager and free text  */
+	/**
+	 * Search caption asset items by filter, pager and free text
+	 * 
+	 * @param entryFilter 
+	 * @param captionAssetItemFilter 
+	 * @param captionAssetItemPager 
+	 */
     public static SearchCaptionAssetItemBuilder search(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
 		return new SearchCaptionAssetItemBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
 	}
@@ -120,7 +145,13 @@ public class CaptionAssetItemService {
 		return searchEntries(entryFilter, captionAssetItemFilter, null);
 	}
 
-	/**  Search caption asset items by filter, pager and free text  */
+	/**
+	 * Search caption asset items by filter, pager and free text
+	 * 
+	 * @param entryFilter 
+	 * @param captionAssetItemFilter 
+	 * @param captionAssetItemPager 
+	 */
     public static SearchEntriesCaptionAssetItemBuilder searchEntries(BaseEntryFilter entryFilter, CaptionAssetItemFilter captionAssetItemFilter, FilterPager captionAssetItemPager)  {
 		return new SearchEntriesCaptionAssetItemBuilder(entryFilter, captionAssetItemFilter, captionAssetItemPager);
 	}

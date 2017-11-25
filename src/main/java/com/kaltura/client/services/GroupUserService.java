@@ -41,7 +41,15 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage GroupUser  */
+/**
+ * Add &amp; Manage GroupUser
+ * 
+ * @param groupUser 
+ * @param userId 
+ * @param groupId 
+ * @param filter 
+ * @param pager 
+ */
 public class GroupUserService {
 	
 	public static class AddGroupUserBuilder extends RequestBuilder<GroupUser, GroupUser.Tokenizer, AddGroupUserBuilder> {
@@ -52,7 +60,11 @@ public class GroupUserService {
 		}
 	}
 
-	/**  Add new GroupUser  */
+	/**
+	 * Add new GroupUser
+	 * 
+	 * @param groupUser 
+	 */
     public static AddGroupUserBuilder add(GroupUser groupUser)  {
 		return new AddGroupUserBuilder(groupUser);
 	}
@@ -74,7 +86,12 @@ public class GroupUserService {
 		}
 	}
 
-	/**  delete by userId and groupId  */
+	/**
+	 * delete by userId and groupId
+	 * 
+	 * @param userId 
+	 * @param groupId 
+	 */
     public static DeleteGroupUserBuilder delete(String userId, String groupId)  {
 		return new DeleteGroupUserBuilder(userId, groupId);
 	}
@@ -96,7 +113,12 @@ public class GroupUserService {
 		return list(filter, null);
 	}
 
-	/**  List all GroupUsers  */
+	/**
+	 * List all GroupUsers
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListGroupUserBuilder list(GroupUserFilter filter, FilterPager pager)  {
 		return new ListGroupUserBuilder(filter, pager);
 	}

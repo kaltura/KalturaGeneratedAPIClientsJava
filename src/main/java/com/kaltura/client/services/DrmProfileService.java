@@ -51,7 +51,11 @@ public class DrmProfileService {
 		}
 	}
 
-	/**  Allows you to add a new DrmProfile object  */
+	/**
+	 * Allows you to add a new DrmProfile object
+	 * 
+	 * @param drmProfile 
+	 */
     public static AddDrmProfileBuilder add(DrmProfile drmProfile)  {
 		return new AddDrmProfileBuilder(drmProfile);
 	}
@@ -68,7 +72,11 @@ public class DrmProfileService {
 		}
 	}
 
-	/**  Mark the KalturaDrmProfile object as deleted  */
+	/**
+	 * Mark the KalturaDrmProfile object as deleted
+	 * 
+	 * @param drmProfileId 
+	 */
     public static DeleteDrmProfileBuilder delete(int drmProfileId)  {
 		return new DeleteDrmProfileBuilder(drmProfileId);
 	}
@@ -85,7 +93,11 @@ public class DrmProfileService {
 		}
 	}
 
-	/**  Retrieve a KalturaDrmProfile object by ID  */
+	/**
+	 * Retrieve a KalturaDrmProfile object by ID
+	 * 
+	 * @param drmProfileId 
+	 */
     public static GetDrmProfileBuilder get(int drmProfileId)  {
 		return new GetDrmProfileBuilder(drmProfileId);
 	}
@@ -102,8 +114,12 @@ public class DrmProfileService {
 		}
 	}
 
-	/**  Retrieve a KalturaDrmProfile object by provider, if no specific profile defined
-	  return default profile  */
+	/**
+	 * Retrieve a KalturaDrmProfile object by provider, if no specific profile defined
+	  return default profile
+	 * 
+	 * @param provider 
+	 */
     public static GetByProviderDrmProfileBuilder getByProvider(DrmProviderType provider)  {
 		return new GetByProviderDrmProfileBuilder(provider);
 	}
@@ -125,7 +141,12 @@ public class DrmProfileService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaDrmProfile objects  */
+	/**
+	 * List KalturaDrmProfile objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDrmProfileBuilder list(DrmProfileFilter filter, FilterPager pager)  {
 		return new ListDrmProfileBuilder(filter, pager);
 	}
@@ -143,7 +164,12 @@ public class DrmProfileService {
 		}
 	}
 
-	/**  Update an existing KalturaDrmProfile object  */
+	/**
+	 * Update an existing KalturaDrmProfile object
+	 * 
+	 * @param drmProfileId 
+	 * @param drmProfile Id
+	 */
     public static UpdateDrmProfileBuilder update(int drmProfileId, DrmProfile drmProfile)  {
 		return new UpdateDrmProfileBuilder(drmProfileId, drmProfile);
 	}

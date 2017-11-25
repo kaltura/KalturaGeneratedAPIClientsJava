@@ -42,8 +42,10 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A resource that perform operation (transcoding, clipping, cropping) before the
-  flavor is ready.  */
+/**
+ * A resource that perform operation (transcoding, clipping, cropping) before the
+  flavor is ready.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(OperationResource.Tokenizer.class)
 public class OperationResource extends ContentResource {
@@ -54,11 +56,15 @@ public class OperationResource extends ContentResource {
 		String assetParamsId();
 	}
 
-	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
+	/**
+	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 */
 	private ContentResource resource;
 	private List<OperationAttributes> operationAttributes;
-	/**  ID of alternative asset params to be used instead of the system default flavor
-	  params  */
+	/**
+	 * ID of alternative asset params to be used instead of the system default flavor
+	  params
+	 */
 	private Integer assetParamsId;
 
 	// resource:

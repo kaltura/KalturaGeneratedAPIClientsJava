@@ -62,7 +62,9 @@ public class ContentDistributionSearchItem extends SearchItem {
 	private EntryDistributionFlag entryDistributionFlag;
 	private EntryDistributionStatus entryDistributionStatus;
 	private Boolean hasEntryDistributionValidationErrors;
-	/**  Comma seperated validation error types  */
+	/**
+	 * Comma seperated validation error types
+	 */
 	private String entryDistributionValidationErrors;
 
 	// noDistributionProfiles:

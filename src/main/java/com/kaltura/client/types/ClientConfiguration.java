@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Define client optional configurations  /  */
+/**
+ * Define client optional configurations  /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ClientConfiguration.Tokenizer.class)
 public class ClientConfiguration extends ObjectBase {

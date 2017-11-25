@@ -48,7 +48,9 @@ public class FieldMatchCondition extends MatchCondition {
 		StringField.Tokenizer field();
 	}
 
-	/**  Field to evaluate  */
+	/**
+	 * Field to evaluate
+	 */
 	private StringField field;
 
 	// field:

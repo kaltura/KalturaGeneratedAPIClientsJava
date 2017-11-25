@@ -49,7 +49,9 @@ public class DeliveryProfileGenericHds extends DeliveryProfile {
 	}
 
 	private String pattern;
-	/**  rendererClass  */
+	/**
+	 * rendererClass
+	 */
 	private String rendererClass;
 
 	// pattern:

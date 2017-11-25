@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of an optional answer for question cue point  */
+/**
+ * A representation of an optional answer for question cue point
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(OptionalAnswer.Tokenizer.class)
 public class OptionalAnswer extends ObjectBase {

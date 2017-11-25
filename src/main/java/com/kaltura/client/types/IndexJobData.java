@@ -51,16 +51,24 @@ public class IndexJobData extends JobData {
 		String shouldUpdate();
 	}
 
-	/**  The filter should return the list of objects that need to be reindexed.  */
+	/**
+	 * The filter should return the list of objects that need to be reindexed.
+	 */
 	private Filter filter;
-	/**  Indicates the last id that reindexed, used when the batch crached, to re-run
-	  from the last crash point.  */
+	/**
+	 * Indicates the last id that reindexed, used when the batch crached, to re-run
+	  from the last crash point.
+	 */
 	private Integer lastIndexId;
-	/**  Indicates the last depth that reindexed, used when the batch crached, to re-run
-	  from the last crash point.  */
+	/**
+	 * Indicates the last depth that reindexed, used when the batch crached, to re-run
+	  from the last crash point.
+	 */
 	private Integer lastIndexDepth;
-	/**  Indicates that the object columns and attributes values should be recalculated
-	  before reindexed.  */
+	/**
+	 * Indicates that the object columns and attributes values should be recalculated
+	  before reindexed.
+	 */
 	private Boolean shouldUpdate;
 
 	// filter:

@@ -40,7 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A representation of a live stream recording entry configuration  */
+/**
+ * A representation of a live stream recording entry configuration
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveEntryRecordingOptions.Tokenizer.class)
 public class LiveEntryRecordingOptions extends ObjectBase {

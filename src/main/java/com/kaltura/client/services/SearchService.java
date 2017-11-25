@@ -43,8 +43,21 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Search service allows you to search for media in various media providers  This
-  service is being used mostly by the CW component  */
+/**
+ * Search service allows you to search for media in various media providers  This
+  service is being used mostly by the CW component
+ * 
+ * @param searchSource 
+ * @param userName 
+ * @param password 
+ * @param searchResult KalturaSearchResult object extends KalturaSearch and has all fields required for
+ * media:add
+ * @param search A KalturaSearch object contains the search keywords, media provider and media
+ * type
+ * @param pager 
+ * @param mediaType 
+ * @param url 
+ */
 public class SearchService {
 	
 	public static class ExternalLoginSearchBuilder extends RequestBuilder<SearchAuthData, SearchAuthData.Tokenizer, ExternalLoginSearchBuilder> {
@@ -81,9 +94,14 @@ public class SearchService {
 		}
 	}
 
-	/**  Retrieve extra information about media found in search action   Some providers
+	/**
+	 * Retrieve extra information about media found in search action   Some providers
 	  return only part of the fields needed to create entry from, use this action to
-	  get the rest of the fields.  */
+	  get the rest of the fields.
+	 * 
+	 * @param searchResult KalturaSearchResult object extends KalturaSearch and has all fields required for
+	 * media:add
+	 */
     public static GetMediaInfoSearchBuilder getMediaInfo(SearchResult searchResult)  {
 		return new GetMediaInfoSearchBuilder(searchResult);
 	}
@@ -101,7 +119,13 @@ public class SearchService {
 		return search(search, null);
 	}
 
-	/**  Search for media in one of the supported media providers  */
+	/**
+	 * Search for media in one of the supported media providers
+	 * 
+	 * @param search A KalturaSearch object contains the search keywords, media provider and media
+	 * type
+	 * @param pager 
+	 */
     public static SearchSearchBuilder search(Search search, FilterPager pager)  {
 		return new SearchSearchBuilder(search, pager);
 	}
@@ -123,9 +147,14 @@ public class SearchService {
 		}
 	}
 
-	/**  Search for media given a specific URL   Kaltura supports a searchURL action on
+	/**
+	 * Search for media given a specific URL   Kaltura supports a searchURL action on
 	  some of the media providers.   This action will return a KalturaSearchResult
-	  object based on a given URL (assuming the media provider is supported)  */
+	  object based on a given URL (assuming the media provider is supported)
+	 * 
+	 * @param mediaType 
+	 * @param url 
+	 */
     public static SearchUrlSearchBuilder searchUrl(MediaType mediaType, String url)  {
 		return new SearchUrlSearchBuilder(mediaType, url);
 	}

@@ -51,13 +51,21 @@ public class CopyCaptionsJobData extends JobData {
 		String fullCopy();
 	}
 
-	/**  source entry Id  */
+	/**
+	 * source entry Id
+	 */
 	private String sourceEntryId;
-	/**  entry Id  */
+	/**
+	 * entry Id
+	 */
 	private String entryId;
-	/**  clip offset  */
+	/**
+	 * clip offset
+	 */
 	private Integer offset;
-	/**  clip duration  */
+	/**
+	 * clip duration
+	 */
 	private Integer duration;
 	private Boolean fullCopy;
 

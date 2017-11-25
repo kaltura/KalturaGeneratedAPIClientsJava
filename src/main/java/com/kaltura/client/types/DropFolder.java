@@ -90,8 +90,10 @@ public class DropFolder extends ObjectBase {
 	private Integer conversionProfileId;
 	private Integer dc;
 	private String path;
-	/**  The ammount of time, in seconds, that should pass so that a file with no change
-	  in size we'll be treated as "finished uploading to folder"  */
+	/**
+	 * The ammount of time, in seconds, that should pass so that a file with no change
+	  in size we'll be treated as "finished uploading to folder"
+	 */
 	private Integer fileSizeCheckInterval;
 	private DropFolderFileDeletePolicy fileDeletePolicy;
 	private Integer autoFileDeleteDays;

@@ -41,7 +41,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage access control profiles  */
+/**
+ * Manage access control profiles
+ * 
+ * @param accessControlProfile 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param accessControlProfile 
+ */
 public class AccessControlProfileService {
 	
 	public static class AddAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, AddAccessControlProfileBuilder> {
@@ -52,7 +62,11 @@ public class AccessControlProfileService {
 		}
 	}
 
-	/**  Add new access control profile  */
+	/**
+	 * Add new access control profile
+	 * 
+	 * @param accessControlProfile 
+	 */
     public static AddAccessControlProfileBuilder add(AccessControlProfile accessControlProfile)  {
 		return new AddAccessControlProfileBuilder(accessControlProfile);
 	}
@@ -69,7 +83,11 @@ public class AccessControlProfileService {
 		}
 	}
 
-	/**  Delete access control profile by id  */
+	/**
+	 * Delete access control profile by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteAccessControlProfileBuilder delete(int id)  {
 		return new DeleteAccessControlProfileBuilder(id);
 	}
@@ -86,7 +104,11 @@ public class AccessControlProfileService {
 		}
 	}
 
-	/**  Get access control profile by id  */
+	/**
+	 * Get access control profile by id
+	 * 
+	 * @param id 
+	 */
     public static GetAccessControlProfileBuilder get(int id)  {
 		return new GetAccessControlProfileBuilder(id);
 	}
@@ -108,7 +130,12 @@ public class AccessControlProfileService {
 		return list(filter, null);
 	}
 
-	/**  List access control profiles by filter and pager  */
+	/**
+	 * List access control profiles by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAccessControlProfileBuilder list(AccessControlProfileFilter filter, FilterPager pager)  {
 		return new ListAccessControlProfileBuilder(filter, pager);
 	}
@@ -126,7 +153,12 @@ public class AccessControlProfileService {
 		}
 	}
 
-	/**  Update access control profile by id  */
+	/**
+	 * Update access control profile by id
+	 * 
+	 * @param id 
+	 * @param accessControlProfile 
+	 */
     public static UpdateAccessControlProfileBuilder update(int id, AccessControlProfile accessControlProfile)  {
 		return new UpdateAccessControlProfileBuilder(id, accessControlProfile);
 	}

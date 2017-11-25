@@ -75,26 +75,42 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	private String id;
 	private String feedUrl;
 	private Integer partnerId;
-	/**  link a playlist that will set what content the feed will include   if empty, all
-	  content will be included in feed  */
+	/**
+	 * link a playlist that will set what content the feed will include   if empty, all
+	  content will be included in feed
+	 */
 	private String playlistId;
-	/**  feed name  */
+	/**
+	 * feed name
+	 */
 	private String name;
-	/**  feed status  */
+	/**
+	 * feed status
+	 */
 	private SyndicationFeedStatus status;
-	/**  feed type  */
+	/**
+	 * feed type
+	 */
 	private SyndicationFeedType type;
-	/**  Base URL for each video, on the partners site   This is required by all
-	  syndication types.  */
+	/**
+	 * Base URL for each video, on the partners site   This is required by all
+	  syndication types.
+	 */
 	private String landingPage;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  allow_embed tells google OR yahoo weather to allow embedding the video on google
+	/**
+	 * allow_embed tells google OR yahoo weather to allow embedding the video on google
 	  OR yahoo video results   or just to provide a link to the landing page.   it is
 	  applied on the video-player_loc property in the XML (google)   and addes
-	  media-player tag (yahoo)  */
+	  media-player tag (yahoo)
+	 */
 	private Boolean allowEmbed;
-	/**  Select a uiconf ID as player skin to include in the kwidget url  */
+	/**
+	 * Select a uiconf ID as player skin to include in the kwidget url
+	 */
 	private Integer playerUiconfId;
 	private Integer flavorParamId;
 	private Boolean transcodeExistingContent;
@@ -102,15 +118,23 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	private String categories;
 	private Integer storageId;
 	private SyndicationFeedEntriesOrderBy entriesOrderBy;
-	/**  Should enforce entitlement on feed entries  */
+	/**
+	 * Should enforce entitlement on feed entries
+	 */
 	private Boolean enforceEntitlement;
-	/**  Set privacy context for search entries that assiged to private and public
-	  categories within a category privacy context.  */
+	/**
+	 * Set privacy context for search entries that assiged to private and public
+	  categories within a category privacy context.
+	 */
 	private String privacyContext;
-	/**  Update date as Unix timestamp (In seconds)  */
+	/**
+	 * Update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 	private Boolean useCategoryEntries;
-	/**  Feed content-type header value  */
+	/**
+	 * Feed content-type header value
+	 */
 	private String feedContentTypeHeader;
 
 	// id:

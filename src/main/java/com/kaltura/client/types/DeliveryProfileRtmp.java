@@ -48,9 +48,13 @@ public class DeliveryProfileRtmp extends DeliveryProfile {
 		String prefix();
 	}
 
-	/**  enforceRtmpe  */
+	/**
+	 * enforceRtmpe
+	 */
 	private Boolean enforceRtmpe;
-	/**  a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)  */
+	/**
+	 * a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)
+	 */
 	private String prefix;
 
 	// enforceRtmpe:

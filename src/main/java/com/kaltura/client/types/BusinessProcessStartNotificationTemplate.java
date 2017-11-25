@@ -47,7 +47,9 @@ public class BusinessProcessStartNotificationTemplate extends BusinessProcessNot
 		String abortOnDeletion();
 	}
 
-	/**  Abort the process automatically if the triggering object deleted  */
+	/**
+	 * Abort the process automatically if the triggering object deleted
+	 */
 	private Boolean abortOnDeletion;
 
 	// abortOnDeletion:

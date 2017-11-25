@@ -73,22 +73,36 @@ public class EntryContextDataResult extends ContextDataResult {
 	private Integer previewLength;
 	private Boolean isScheduledNow;
 	private Boolean isAdmin;
-	/**  http/rtmp/hdnetwork  */
+	/**
+	 * http/rtmp/hdnetwork
+	 */
 	private String streamerType;
-	/**  http/https, rtmp/rtmpe  */
+	/**
+	 * http/https, rtmp/rtmpe
+	 */
 	private String mediaProtocol;
 	private String storageProfilesXML;
-	/**  Array of messages as received from the access control rules that invalidated  */
+	/**
+	 * Array of messages as received from the access control rules that invalidated
+	 */
 	private List<StringHolder> accessControlMessages;
-	/**  Array of actions as received from the access control rules that invalidated  */
+	/**
+	 * Array of actions as received from the access control rules that invalidated
+	 */
 	private List<RuleAction> accessControlActions;
-	/**  Array of allowed flavor assets according to access control limitations and
-	  requested tags  */
+	/**
+	 * Array of allowed flavor assets according to access control limitations and
+	  requested tags
+	 */
 	private List<FlavorAsset> flavorAssets;
-	/**  The duration of the entry in milliseconds  */
+	/**
+	 * The duration of the entry in milliseconds
+	 */
 	private Integer msDuration;
-	/**  Array of allowed flavor assets according to access control limitations and
-	  requested tags  */
+	/**
+	 * Array of allowed flavor assets according to access control limitations and
+	  requested tags
+	 */
 	private Map<String, PluginData> pluginData;
 
 	// isSiteRestricted:

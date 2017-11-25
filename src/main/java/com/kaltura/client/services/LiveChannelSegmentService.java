@@ -41,7 +41,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage live channel segments  */
+/**
+ * Manage live channel segments
+ * 
+ * @param liveChannelSegment 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param liveChannelSegment 
+ */
 public class LiveChannelSegmentService {
 	
 	public static class AddLiveChannelSegmentBuilder extends RequestBuilder<LiveChannelSegment, LiveChannelSegment.Tokenizer, AddLiveChannelSegmentBuilder> {
@@ -52,7 +62,11 @@ public class LiveChannelSegmentService {
 		}
 	}
 
-	/**  Add new live channel segment  */
+	/**
+	 * Add new live channel segment
+	 * 
+	 * @param liveChannelSegment 
+	 */
     public static AddLiveChannelSegmentBuilder add(LiveChannelSegment liveChannelSegment)  {
 		return new AddLiveChannelSegmentBuilder(liveChannelSegment);
 	}
@@ -69,7 +83,11 @@ public class LiveChannelSegmentService {
 		}
 	}
 
-	/**  Delete live channel segment by id  */
+	/**
+	 * Delete live channel segment by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteLiveChannelSegmentBuilder delete(long id)  {
 		return new DeleteLiveChannelSegmentBuilder(id);
 	}
@@ -86,7 +104,11 @@ public class LiveChannelSegmentService {
 		}
 	}
 
-	/**  Get live channel segment by id  */
+	/**
+	 * Get live channel segment by id
+	 * 
+	 * @param id 
+	 */
     public static GetLiveChannelSegmentBuilder get(long id)  {
 		return new GetLiveChannelSegmentBuilder(id);
 	}
@@ -108,7 +130,12 @@ public class LiveChannelSegmentService {
 		return list(filter, null);
 	}
 
-	/**  List live channel segments by filter and pager  */
+	/**
+	 * List live channel segments by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListLiveChannelSegmentBuilder list(LiveChannelSegmentFilter filter, FilterPager pager)  {
 		return new ListLiveChannelSegmentBuilder(filter, pager);
 	}
@@ -126,7 +153,12 @@ public class LiveChannelSegmentService {
 		}
 	}
 
-	/**  Update live channel segment by id  */
+	/**
+	 * Update live channel segment by id
+	 * 
+	 * @param id 
+	 * @param liveChannelSegment 
+	 */
     public static UpdateLiveChannelSegmentBuilder update(long id, LiveChannelSegment liveChannelSegment)  {
 		return new UpdateLiveChannelSegmentBuilder(id, liveChannelSegment);
 	}

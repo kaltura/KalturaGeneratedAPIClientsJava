@@ -41,8 +41,19 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  External media service lets you upload and manage embed codes and external
-  playable content  */
+/**
+ * External media service lets you upload and manage embed codes and external
+  playable content
+ * 
+ * @param entry 
+ * @param filter External media entry filter
+ * @param id External media entry id to delete
+ * @param id External media entry id
+ * @param filter External media entry filter
+ * @param pager Pager
+ * @param id External media entry id to update
+ * @param entry External media entry object to update
+ */
 public class ExternalMediaService {
 	
 	public static class AddExternalMediaBuilder extends RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.Tokenizer, AddExternalMediaBuilder> {
@@ -53,7 +64,11 @@ public class ExternalMediaService {
 		}
 	}
 
-	/**  Add external media entry  */
+	/**
+	 * Add external media entry
+	 * 
+	 * @param entry 
+	 */
     public static AddExternalMediaBuilder add(ExternalMediaEntry entry)  {
 		return new AddExternalMediaBuilder(entry);
 	}
@@ -70,7 +85,11 @@ public class ExternalMediaService {
 		return count(null);
 	}
 
-	/**  Count media entries by filter.  */
+	/**
+	 * Count media entries by filter.
+	 * 
+	 * @param filter External media entry filter
+	 */
     public static CountExternalMediaBuilder count(ExternalMediaEntryFilter filter)  {
 		return new CountExternalMediaBuilder(filter);
 	}
@@ -87,7 +106,11 @@ public class ExternalMediaService {
 		}
 	}
 
-	/**  Delete a external media entry.  */
+	/**
+	 * Delete a external media entry.
+	 * 
+	 * @param id External media entry id to delete
+	 */
     public static DeleteExternalMediaBuilder delete(String id)  {
 		return new DeleteExternalMediaBuilder(id);
 	}
@@ -104,7 +127,11 @@ public class ExternalMediaService {
 		}
 	}
 
-	/**  Get external media entry by ID.  */
+	/**
+	 * Get external media entry by ID.
+	 * 
+	 * @param id External media entry id
+	 */
     public static GetExternalMediaBuilder get(String id)  {
 		return new GetExternalMediaBuilder(id);
 	}
@@ -126,7 +153,12 @@ public class ExternalMediaService {
 		return list(filter, null);
 	}
 
-	/**  List media entries by filter with paging support.  */
+	/**
+	 * List media entries by filter with paging support.
+	 * 
+	 * @param filter External media entry filter
+	 * @param pager Pager
+	 */
     public static ListExternalMediaBuilder list(ExternalMediaEntryFilter filter, FilterPager pager)  {
 		return new ListExternalMediaBuilder(filter, pager);
 	}
@@ -144,7 +176,12 @@ public class ExternalMediaService {
 		}
 	}
 
-	/**  Update external media entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update external media entry. Only the properties that were set will be updated.
+	 * 
+	 * @param id External media entry id to update
+	 * @param entry External media entry object to update
+	 */
     public static UpdateExternalMediaBuilder update(String id, ExternalMediaEntry entry)  {
 		return new UpdateExternalMediaBuilder(id, entry);
 	}

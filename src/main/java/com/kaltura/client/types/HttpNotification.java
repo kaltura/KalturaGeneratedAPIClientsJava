@@ -42,7 +42,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Wrapper for sent notifications  */
+/**
+ * Wrapper for sent notifications
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(HttpNotification.Tokenizer.class)
 public class HttpNotification extends ObjectBase {
@@ -57,19 +59,33 @@ public class HttpNotification extends ObjectBase {
 		String eventType();
 	}
 
-	/**  Object that triggered the notification  */
+	/**
+	 * Object that triggered the notification
+	 */
 	private ObjectBase object;
-	/**  Object type that triggered the notification  */
+	/**
+	 * Object type that triggered the notification
+	 */
 	private EventNotificationEventObjectType eventObjectType;
-	/**  ID of the batch job that execute the notification  */
+	/**
+	 * ID of the batch job that execute the notification
+	 */
 	private Long eventNotificationJobId;
-	/**  ID of the template that triggered the notification  */
+	/**
+	 * ID of the template that triggered the notification
+	 */
 	private Integer templateId;
-	/**  Name of the template that triggered the notification  */
+	/**
+	 * Name of the template that triggered the notification
+	 */
 	private String templateName;
-	/**  System name of the template that triggered the notification  */
+	/**
+	 * System name of the template that triggered the notification
+	 */
 	private String templateSystemName;
-	/**  Ecent type that triggered the notification  */
+	/**
+	 * Ecent type that triggered the notification
+	 */
 	private EventNotificationEventType eventType;
 
 	// object:

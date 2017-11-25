@@ -44,8 +44,29 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  partner service allows you to change/manage your partner personal details and
-  settings as well  */
+/**
+ * partner service allows you to change/manage your partner personal details and
+  settings as well
+ * 
+ * @param filter 
+ * @param id 
+ * @param partnerId 
+ * @param adminEmail 
+ * @param cmsPassword 
+ * @param year 
+ * @param month 
+ * @param resolution 
+ * @param filter 
+ * @param pager 
+ * @param partnerFilter 
+ * @param pager 
+ * @param partner 
+ * @param cmsPassword 
+ * @param templatePartnerId 
+ * @param silent 
+ * @param partner 
+ * @param allowEmpty 
+ */
 public class PartnerService {
 	
 	public static class CountPartnerBuilder extends RequestBuilder<Integer, String, CountPartnerBuilder> {
@@ -60,7 +81,11 @@ public class PartnerService {
 		return count(null);
 	}
 
-	/**  Count partner's existing sub-publishers (count includes the partner itself).  */
+	/**
+	 * Count partner's existing sub-publishers (count includes the partner itself).
+	 * 
+	 * @param filter 
+	 */
     public static CountPartnerBuilder count(PartnerFilter filter)  {
 		return new CountPartnerBuilder(filter);
 	}
@@ -81,7 +106,11 @@ public class PartnerService {
 		return get(Integer.MIN_VALUE);
 	}
 
-	/**  Retrieve partner object by Id  */
+	/**
+	 * Retrieve partner object by Id
+	 * 
+	 * @param id 
+	 */
     public static GetPartnerBuilder get(int id)  {
 		return new GetPartnerBuilder(id);
 	}
@@ -93,8 +122,10 @@ public class PartnerService {
 		}
 	}
 
-	/**  Retrieve all info attributed to the partner   This action expects no parameters.
-	  It returns information for the current KS partnerId.  */
+	/**
+	 * Retrieve all info attributed to the partner   This action expects no parameters.
+	  It returns information for the current KS partnerId.
+	 */
     public static GetInfoPartnerBuilder getInfo()  {
 		return new GetInfoPartnerBuilder();
 	}
@@ -121,7 +152,13 @@ public class PartnerService {
 		}
 	}
 
-	/**  Retrieve partner secret and admin secret  */
+	/**
+	 * Retrieve partner secret and admin secret
+	 * 
+	 * @param partnerId 
+	 * @param adminEmail 
+	 * @param cmsPassword 
+	 */
     public static GetSecretsPartnerBuilder getSecrets(int partnerId, String adminEmail, String cmsPassword)  {
 		return new GetSecretsPartnerBuilder(partnerId, adminEmail, cmsPassword);
 	}
@@ -133,8 +170,10 @@ public class PartnerService {
 		}
 	}
 
-	/**  Get usage statistics for a partner   Calculation is done according to partner's
-	  package  */
+	/**
+	 * Get usage statistics for a partner   Calculation is done according to partner's
+	  package
+	 */
     public static GetStatisticsPartnerBuilder getStatistics()  {
 		return new GetStatisticsPartnerBuilder();
 	}
@@ -173,9 +212,15 @@ public class PartnerService {
 		return getUsage(year, month, null);
 	}
 
-	/**  Get usage statistics for a partner   Calculation is done according to partner's
+	/**
+	 * Get usage statistics for a partner   Calculation is done according to partner's
 	  package   Additional data returned is a graph points of streaming usage in a
-	  timeframe   The resolution can be "days" or "months"  */
+	  timeframe   The resolution can be "days" or "months"
+	 * 
+	 * @param year 
+	 * @param month 
+	 * @param resolution 
+	 */
     public static GetUsagePartnerBuilder getUsage(int year, int month, ReportInterval resolution)  {
 		return new GetUsagePartnerBuilder(year, month, resolution);
 	}
@@ -197,10 +242,15 @@ public class PartnerService {
 		return list(filter, null);
 	}
 
-	/**  List partners by filter with paging support   Current implementation will only
+	/**
+	 * List partners by filter with paging support   Current implementation will only
 	  list the sub partners of the partner initiating the api call (using the current
 	  KS).   This action is only partially implemented to support listing sub partners
-	  of a VAR partner.  */
+	  of a VAR partner.
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListPartnerBuilder list(PartnerFilter filter, FilterPager pager)  {
 		return new ListPartnerBuilder(filter, pager);
 	}
@@ -212,7 +262,9 @@ public class PartnerService {
 		}
 	}
 
-	/**  List partner's current processes' statuses  */
+	/**
+	 * List partner's current processes' statuses
+	 */
     public static ListFeatureStatusPartnerBuilder listFeatureStatus()  {
 		return new ListFeatureStatusPartnerBuilder();
 	}
@@ -234,7 +286,12 @@ public class PartnerService {
 		return listPartnersForUser(partnerFilter, null);
 	}
 
-	/**  Retrieve a list of partner objects which the current user is allowed to access.  */
+	/**
+	 * Retrieve a list of partner objects which the current user is allowed to access.
+	 * 
+	 * @param partnerFilter 
+	 * @param pager 
+	 */
     public static ListPartnersForUserPartnerBuilder listPartnersForUser(PartnerFilter partnerFilter, FilterPager pager)  {
 		return new ListPartnersForUserPartnerBuilder(partnerFilter, pager);
 	}
@@ -274,7 +331,14 @@ public class PartnerService {
 		return register(partner, cmsPassword, templatePartnerId, false);
 	}
 
-	/**  Create a new Partner object  */
+	/**
+	 * Create a new Partner object
+	 * 
+	 * @param partner 
+	 * @param cmsPassword 
+	 * @param templatePartnerId 
+	 * @param silent 
+	 */
     public static RegisterPartnerBuilder register(Partner partner, String cmsPassword, int templatePartnerId, boolean silent)  {
 		return new RegisterPartnerBuilder(partner, cmsPassword, templatePartnerId, silent);
 	}
@@ -296,7 +360,12 @@ public class PartnerService {
 		return update(partner, false);
 	}
 
-	/**  Update details and settings of an existing partner  */
+	/**
+	 * Update details and settings of an existing partner
+	 * 
+	 * @param partner 
+	 * @param allowEmpty 
+	 */
     public static UpdatePartnerBuilder update(Partner partner, boolean allowEmpty)  {
 		return new UpdatePartnerBuilder(partner, allowEmpty);
 	}

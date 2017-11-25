@@ -42,7 +42,9 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Object which contains contextual entry-related data.  */
+/**
+ * Object which contains contextual entry-related data.
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(PushNotificationParams.Tokenizer.class)
 public class PushNotificationParams extends ObjectBase {
@@ -51,7 +53,9 @@ public class PushNotificationParams extends ObjectBase {
 		RequestBuilder.ListTokenizer<PushEventNotificationParameter.Tokenizer> userParams();
 	}
 
-	/**  User params  */
+	/**
+	 * User params
+	 */
 	private List<PushEventNotificationParameter> userParams;
 
 	// userParams:

@@ -41,7 +41,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Access Controls  */
+/**
+ * Add &amp; Manage Access Controls
+ * 
+ * @param accessControl 
+ * @param id 
+ * @param id 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param accessControl 
+ */
 public class AccessControlService {
 	
 	public static class AddAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, AddAccessControlBuilder> {
@@ -52,7 +62,11 @@ public class AccessControlService {
 		}
 	}
 
-	/**  Add new Access Control Profile  */
+	/**
+	 * Add new Access Control Profile
+	 * 
+	 * @param accessControl 
+	 */
     public static AddAccessControlBuilder add(AccessControl accessControl)  {
 		return new AddAccessControlBuilder(accessControl);
 	}
@@ -69,7 +83,11 @@ public class AccessControlService {
 		}
 	}
 
-	/**  Delete Access Control Profile by id  */
+	/**
+	 * Delete Access Control Profile by id
+	 * 
+	 * @param id 
+	 */
     public static DeleteAccessControlBuilder delete(int id)  {
 		return new DeleteAccessControlBuilder(id);
 	}
@@ -86,7 +104,11 @@ public class AccessControlService {
 		}
 	}
 
-	/**  Get Access Control Profile by id  */
+	/**
+	 * Get Access Control Profile by id
+	 * 
+	 * @param id 
+	 */
     public static GetAccessControlBuilder get(int id)  {
 		return new GetAccessControlBuilder(id);
 	}
@@ -108,7 +130,12 @@ public class AccessControlService {
 		return list(filter, null);
 	}
 
-	/**  List Access Control Profiles by filter and pager  */
+	/**
+	 * List Access Control Profiles by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListAccessControlBuilder list(AccessControlFilter filter, FilterPager pager)  {
 		return new ListAccessControlBuilder(filter, pager);
 	}
@@ -126,7 +153,12 @@ public class AccessControlService {
 		}
 	}
 
-	/**  Update Access Control Profile by id  */
+	/**
+	 * Update Access Control Profile by id
+	 * 
+	 * @param id 
+	 * @param accessControl 
+	 */
     public static UpdateAccessControlBuilder update(int id, AccessControl accessControl)  {
 		return new UpdateAccessControlBuilder(id, accessControl);
 	}

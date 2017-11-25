@@ -39,8 +39,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Abstract core class  which provides the recipients (to, CC, BCC) for an email
-  notification  */
+/**
+ * Abstract core class  which provides the recipients (to, CC, BCC) for an email
+  notification
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(EmailNotificationRecipientProvider.Tokenizer.class)
 public abstract class EmailNotificationRecipientProvider extends ObjectBase {

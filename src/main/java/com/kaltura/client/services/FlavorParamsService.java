@@ -42,7 +42,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage Flavor Params  */
+/**
+ * Add &amp; Manage Flavor Params
+ * 
+ * @param flavorParams 
+ * @param id 
+ * @param id 
+ * @param conversionProfileId 
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param flavorParams 
+ */
 public class FlavorParamsService {
 	
 	public static class AddFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, AddFlavorParamsBuilder> {
@@ -53,7 +64,11 @@ public class FlavorParamsService {
 		}
 	}
 
-	/**  Add new Flavor Params  */
+	/**
+	 * Add new Flavor Params
+	 * 
+	 * @param flavorParams 
+	 */
     public static AddFlavorParamsBuilder add(FlavorParams flavorParams)  {
 		return new AddFlavorParamsBuilder(flavorParams);
 	}
@@ -70,7 +85,11 @@ public class FlavorParamsService {
 		}
 	}
 
-	/**  Delete Flavor Params by ID  */
+	/**
+	 * Delete Flavor Params by ID
+	 * 
+	 * @param id 
+	 */
     public static DeleteFlavorParamsBuilder delete(int id)  {
 		return new DeleteFlavorParamsBuilder(id);
 	}
@@ -87,7 +106,11 @@ public class FlavorParamsService {
 		}
 	}
 
-	/**  Get Flavor Params by ID  */
+	/**
+	 * Get Flavor Params by ID
+	 * 
+	 * @param id 
+	 */
     public static GetFlavorParamsBuilder get(int id)  {
 		return new GetFlavorParamsBuilder(id);
 	}
@@ -104,7 +127,11 @@ public class FlavorParamsService {
 		}
 	}
 
-	/**  Get Flavor Params by Conversion Profile ID  */
+	/**
+	 * Get Flavor Params by Conversion Profile ID
+	 * 
+	 * @param conversionProfileId 
+	 */
     public static GetByConversionProfileIdFlavorParamsBuilder getByConversionProfileId(int conversionProfileId)  {
 		return new GetByConversionProfileIdFlavorParamsBuilder(conversionProfileId);
 	}
@@ -126,8 +153,13 @@ public class FlavorParamsService {
 		return list(filter, null);
 	}
 
-	/**  List Flavor Params by filter with paging support (By default - all system
-	  default params will be listed too)  */
+	/**
+	 * List Flavor Params by filter with paging support (By default - all system
+	  default params will be listed too)
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListFlavorParamsBuilder list(FlavorParamsFilter filter, FilterPager pager)  {
 		return new ListFlavorParamsBuilder(filter, pager);
 	}
@@ -145,7 +177,12 @@ public class FlavorParamsService {
 		}
 	}
 
-	/**  Update Flavor Params by ID  */
+	/**
+	 * Update Flavor Params by ID
+	 * 
+	 * @param id 
+	 * @param flavorParams 
+	 */
     public static UpdateFlavorParamsBuilder update(int id, FlavorParams flavorParams)  {
 		return new UpdateFlavorParamsBuilder(id, flavorParams);
 	}

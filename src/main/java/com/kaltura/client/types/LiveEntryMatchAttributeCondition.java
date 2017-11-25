@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaLiveEntry attributes. Use
-  KalturaLiveEntryMatchAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaLiveEntry attributes. Use
+  KalturaLiveEntryMatchAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveEntryMatchAttributeCondition.Tokenizer.class)
 public class LiveEntryMatchAttributeCondition extends SearchMatchAttributeCondition {

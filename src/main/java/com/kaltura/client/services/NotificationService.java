@@ -38,7 +38,12 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Notification Service  */
+/**
+ * Notification Service
+ * 
+ * @param entryId 
+ * @param type 
+ */
 public class NotificationService {
 	
 	public static class GetClientNotificationNotificationBuilder extends RequestBuilder<ClientNotification, ClientNotification.Tokenizer, GetClientNotificationNotificationBuilder> {
@@ -58,7 +63,12 @@ public class NotificationService {
 		}
 	}
 
-	/**  Return the notifications for a specific entry id and type  */
+	/**
+	 * Return the notifications for a specific entry id and type
+	 * 
+	 * @param entryId 
+	 * @param type 
+	 */
     public static GetClientNotificationNotificationBuilder getClientNotification(String entryId, NotificationType type)  {
 		return new GetClientNotificationNotificationBuilder(entryId, type);
 	}

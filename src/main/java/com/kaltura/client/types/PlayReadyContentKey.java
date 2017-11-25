@@ -49,9 +49,13 @@ public class PlayReadyContentKey extends ObjectBase {
 		String contentKey();
 	}
 
-	/**  Guid - key id of the specific content  */
+	/**
+	 * Guid - key id of the specific content
+	 */
 	private String keyId;
-	/**  License content key 64 bit encoded  */
+	/**
+	 * License content key 64 bit encoded
+	 */
 	private String contentKey;
 
 	// keyId:

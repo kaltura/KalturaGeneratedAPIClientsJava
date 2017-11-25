@@ -42,7 +42,21 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Allows user to handle quizzes  */
+/**
+ * Allows user to handle quizzes
+ * 
+ * @param entryId 
+ * @param quiz 
+ * @param entryId 
+ * @param entryId 
+ * @param quizOutputType 
+ * @param filter 
+ * @param pager 
+ * @param entryId 
+ * @param quizOutputType 
+ * @param entryId 
+ * @param quiz 
+ */
 public class QuizService {
 	
 	public static class AddQuizBuilder extends RequestBuilder<Quiz, Quiz.Tokenizer, AddQuizBuilder> {
@@ -58,7 +72,12 @@ public class QuizService {
 		}
 	}
 
-	/**  Allows to add a quiz to an entry  */
+	/**
+	 * Allows to add a quiz to an entry
+	 * 
+	 * @param entryId 
+	 * @param quiz 
+	 */
     public static AddQuizBuilder add(String entryId, Quiz quiz)  {
 		return new AddQuizBuilder(entryId, quiz);
 	}
@@ -75,7 +94,11 @@ public class QuizService {
 		}
 	}
 
-	/**  Allows to get a quiz  */
+	/**
+	 * Allows to get a quiz
+	 * 
+	 * @param entryId 
+	 */
     public static GetQuizBuilder get(String entryId)  {
 		return new GetQuizBuilder(entryId);
 	}
@@ -97,7 +120,12 @@ public class QuizService {
 		}
 	}
 
-	/**  sends a with an api request for pdf from quiz object  */
+	/**
+	 * sends a with an api request for pdf from quiz object
+	 * 
+	 * @param entryId 
+	 * @param quizOutputType 
+	 */
     public static GetUrlQuizBuilder getUrl(String entryId, QuizOutputType quizOutputType)  {
 		return new GetUrlQuizBuilder(entryId, quizOutputType);
 	}
@@ -119,7 +147,12 @@ public class QuizService {
 		return list(filter, null);
 	}
 
-	/**  List quiz objects by filter and pager  */
+	/**
+	 * List quiz objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListQuizBuilder list(QuizFilter filter, FilterPager pager)  {
 		return new ListQuizBuilder(filter, pager);
 	}
@@ -141,8 +174,13 @@ public class QuizService {
 		}
 	}
 
-	/**  creates a pdf from quiz object   The Output type defines the file format in
-	  which the quiz will be generated   Currently only PDF files are supported  */
+	/**
+	 * creates a pdf from quiz object   The Output type defines the file format in
+	  which the quiz will be generated   Currently only PDF files are supported
+	 * 
+	 * @param entryId 
+	 * @param quizOutputType 
+	 */
     public static ServeQuizBuilder serve(String entryId, QuizOutputType quizOutputType)  {
 		return new ServeQuizBuilder(entryId, quizOutputType);
 	}
@@ -160,7 +198,12 @@ public class QuizService {
 		}
 	}
 
-	/**  Allows to update a quiz  */
+	/**
+	 * Allows to update a quiz
+	 * 
+	 * @param entryId 
+	 * @param quiz 
+	 */
     public static UpdateQuizBuilder update(String entryId, Quiz quiz)  {
 		return new UpdateQuizBuilder(entryId, quiz);
 	}

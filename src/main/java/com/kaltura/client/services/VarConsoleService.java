@@ -42,7 +42,15 @@ import com.kaltura.client.utils.request.NullRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Utility service for the Multi-publishers console  */
+/**
+ * Utility service for the Multi-publishers console
+ * 
+ * @param partnerFilter 
+ * @param usageFilter 
+ * @param pager 
+ * @param id 
+ * @param status 
+ */
 public class VarConsoleService {
 	
 	public static class GetPartnerUsageVarConsoleBuilder extends ListResponseRequestBuilder<VarPartnerUsageItem, VarPartnerUsageItem.Tokenizer, GetPartnerUsageVarConsoleBuilder> {
@@ -67,7 +75,13 @@ public class VarConsoleService {
 		return getPartnerUsage(partnerFilter, usageFilter, null);
 	}
 
-	/**  Function which calulates partner usage of a group of a VAR's sub-publishers  */
+	/**
+	 * Function which calulates partner usage of a group of a VAR's sub-publishers
+	 * 
+	 * @param partnerFilter 
+	 * @param usageFilter 
+	 * @param pager 
+	 */
     public static GetPartnerUsageVarConsoleBuilder getPartnerUsage(PartnerFilter partnerFilter, ReportInputFilter usageFilter, FilterPager pager)  {
 		return new GetPartnerUsageVarConsoleBuilder(partnerFilter, usageFilter, pager);
 	}
@@ -89,7 +103,12 @@ public class VarConsoleService {
 		}
 	}
 
-	/**  Function to change a sub-publisher's status  */
+	/**
+	 * Function to change a sub-publisher's status
+	 * 
+	 * @param id 
+	 * @param status 
+	 */
     public static UpdateStatusVarConsoleBuilder updateStatus(int id, PartnerStatus status)  {
 		return new UpdateStatusVarConsoleBuilder(id, status);
 	}

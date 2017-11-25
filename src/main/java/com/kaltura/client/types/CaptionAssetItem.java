@@ -54,9 +54,13 @@ public class CaptionAssetItem extends ObjectBase {
 		String content();
 	}
 
-	/**  The Caption Asset object  */
+	/**
+	 * The Caption Asset object
+	 */
 	private CaptionAsset asset;
-	/**  The entry object  */
+	/**
+	 * The entry object
+	 */
 	private BaseEntry entry;
 	private Integer startTime;
 	private Integer endTime;

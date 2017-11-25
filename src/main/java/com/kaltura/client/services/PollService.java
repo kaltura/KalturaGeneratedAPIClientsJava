@@ -37,8 +37,20 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Poll service  The poll service works against the cache entirely no DB instance
-  should be used here  */
+/**
+ * Poll service  The poll service works against the cache entirely no DB instance
+  should be used here
+ * 
+ * @param pollType 
+ * @param pollId 
+ * @param userId 
+ * @param pollId 
+ * @param answerIds 
+ * @param pollId 
+ * @param pollId 
+ * @param userId 
+ * @param answerIds 
+ */
 public class PollService {
 	
 	public static class AddPollBuilder extends RequestBuilder<String, String, AddPollBuilder> {
@@ -57,7 +69,11 @@ public class PollService {
 		return add("SINGLE_ANONYMOUS");
 	}
 
-	/**  Add Action  */
+	/**
+	 * Add Action
+	 * 
+	 * @param pollType 
+	 */
     public static AddPollBuilder add(String pollType)  {
 		return new AddPollBuilder(pollType);
 	}
@@ -79,7 +95,12 @@ public class PollService {
 		}
 	}
 
-	/**  Vote Action  */
+	/**
+	 * Vote Action
+	 * 
+	 * @param pollId 
+	 * @param userId 
+	 */
     public static GetVotePollBuilder getVote(String pollId, String userId)  {
 		return new GetVotePollBuilder(pollId, userId);
 	}
@@ -101,7 +122,12 @@ public class PollService {
 		}
 	}
 
-	/**  Get Votes Action  */
+	/**
+	 * Get Votes Action
+	 * 
+	 * @param pollId 
+	 * @param answerIds 
+	 */
     public static GetVotesPollBuilder getVotes(String pollId, String answerIds)  {
 		return new GetVotesPollBuilder(pollId, answerIds);
 	}
@@ -118,7 +144,11 @@ public class PollService {
 		}
 	}
 
-	/**  Get resetVotes Action  */
+	/**
+	 * Get resetVotes Action
+	 * 
+	 * @param pollId 
+	 */
     public static ResetVotesPollBuilder resetVotes(String pollId)  {
 		return new ResetVotesPollBuilder(pollId);
 	}
@@ -145,7 +175,13 @@ public class PollService {
 		}
 	}
 
-	/**  Vote Action  */
+	/**
+	 * Vote Action
+	 * 
+	 * @param pollId 
+	 * @param userId 
+	 * @param answerIds 
+	 */
     public static VotePollBuilder vote(String pollId, String userId, String answerIds)  {
 		return new VotePollBuilder(pollId, userId, answerIds);
 	}

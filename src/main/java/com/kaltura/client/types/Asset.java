@@ -61,29 +61,49 @@ public class Asset extends ObjectBase {
 		String actualSourceAssetParamsIds();
 	}
 
-	/**  The ID of the Flavor Asset  */
+	/**
+	 * The ID of the Flavor Asset
+	 */
 	private String id;
-	/**  The entry ID of the Flavor Asset  */
+	/**
+	 * The entry ID of the Flavor Asset
+	 */
 	private String entryId;
 	private Integer partnerId;
-	/**  The version of the Flavor Asset  */
+	/**
+	 * The version of the Flavor Asset
+	 */
 	private Integer version;
-	/**  The size (in KBytes) of the Flavor Asset  */
+	/**
+	 * The size (in KBytes) of the Flavor Asset
+	 */
 	private Integer size;
-	/**  Tags used to identify the Flavor Asset in various scenarios  */
+	/**
+	 * Tags used to identify the Flavor Asset in various scenarios
+	 */
 	private String tags;
-	/**  The file extension  */
+	/**
+	 * The file extension
+	 */
 	private String fileExt;
 	private Integer createdAt;
 	private Integer updatedAt;
 	private Integer deletedAt;
-	/**  System description, error message, warnings and failure cause.  */
+	/**
+	 * System description, error message, warnings and failure cause.
+	 */
 	private String description;
-	/**  Partner private data  */
+	/**
+	 * Partner private data
+	 */
 	private String partnerData;
-	/**  Partner friendly description  */
+	/**
+	 * Partner friendly description
+	 */
 	private String partnerDescription;
-	/**  Comma separated list of source flavor params ids  */
+	/**
+	 * Comma separated list of source flavor params ids
+	 */
 	private String actualSourceAssetParamsIds;
 
 	// id:

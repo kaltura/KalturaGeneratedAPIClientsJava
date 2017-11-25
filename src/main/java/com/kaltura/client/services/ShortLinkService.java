@@ -41,7 +41,19 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Short link service  */
+/**
+ * Short link service
+ * 
+ * @param shortLink 
+ * @param id 
+ * @param id 
+ * @param id 
+ * @param proxy proxy the response instead of redirect
+ * @param filter 
+ * @param pager 
+ * @param id 
+ * @param shortLink 
+ */
 public class ShortLinkService {
 	
 	public static class AddShortLinkBuilder extends RequestBuilder<ShortLink, ShortLink.Tokenizer, AddShortLinkBuilder> {
@@ -52,7 +64,11 @@ public class ShortLinkService {
 		}
 	}
 
-	/**  Allows you to add a short link object  */
+	/**
+	 * Allows you to add a short link object
+	 * 
+	 * @param shortLink 
+	 */
     public static AddShortLinkBuilder add(ShortLink shortLink)  {
 		return new AddShortLinkBuilder(shortLink);
 	}
@@ -69,7 +85,11 @@ public class ShortLinkService {
 		}
 	}
 
-	/**  Mark the short link as deleted  */
+	/**
+	 * Mark the short link as deleted
+	 * 
+	 * @param id 
+	 */
     public static DeleteShortLinkBuilder delete(String id)  {
 		return new DeleteShortLinkBuilder(id);
 	}
@@ -86,7 +106,11 @@ public class ShortLinkService {
 		}
 	}
 
-	/**  Retrieve an short link object by id  */
+	/**
+	 * Retrieve an short link object by id
+	 * 
+	 * @param id 
+	 */
     public static GetShortLinkBuilder get(String id)  {
 		return new GetShortLinkBuilder(id);
 	}
@@ -112,7 +136,12 @@ public class ShortLinkService {
 		return goto_(id, false);
 	}
 
-	/**  Serves short link  */
+	/**
+	 * Serves short link
+	 * 
+	 * @param id 
+	 * @param proxy proxy the response instead of redirect
+	 */
     public static GotoShortLinkBuilder goto_(String id, boolean proxy)  {
 		return new GotoShortLinkBuilder(id, proxy);
 	}
@@ -134,7 +163,12 @@ public class ShortLinkService {
 		return list(filter, null);
 	}
 
-	/**  List short link objects by filter and pager  */
+	/**
+	 * List short link objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListShortLinkBuilder list(ShortLinkFilter filter, FilterPager pager)  {
 		return new ListShortLinkBuilder(filter, pager);
 	}
@@ -152,7 +186,12 @@ public class ShortLinkService {
 		}
 	}
 
-	/**  Update exisitng short link  */
+	/**
+	 * Update exisitng short link
+	 * 
+	 * @param id 
+	 * @param shortLink 
+	 */
     public static UpdateShortLinkBuilder update(String id, ShortLink shortLink)  {
 		return new UpdateShortLinkBuilder(id, shortLink);
 	}

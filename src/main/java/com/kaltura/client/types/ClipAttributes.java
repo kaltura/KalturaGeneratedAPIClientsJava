@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Clip operation attributes  */
+/**
+ * Clip operation attributes
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ClipAttributes.Tokenizer.class)
 public class ClipAttributes extends OperationAttributes {
@@ -49,9 +51,13 @@ public class ClipAttributes extends OperationAttributes {
 		String duration();
 	}
 
-	/**  Offset in milliseconds  */
+	/**
+	 * Offset in milliseconds
+	 */
 	private Integer offset;
-	/**  Duration in milliseconds  */
+	/**
+	 * Duration in milliseconds
+	 */
 	private Integer duration;
 
 	// offset:

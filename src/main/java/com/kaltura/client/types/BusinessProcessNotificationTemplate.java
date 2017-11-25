@@ -49,11 +49,17 @@ public abstract class BusinessProcessNotificationTemplate extends EventNotificat
 		String mainObjectCode();
 	}
 
-	/**  Define the integrated BPM server id  */
+	/**
+	 * Define the integrated BPM server id
+	 */
 	private Integer serverId;
-	/**  Define the integrated BPM process id  */
+	/**
+	 * Define the integrated BPM process id
+	 */
 	private String processId;
-	/**  Code to load the main triggering object  */
+	/**
+	 * Code to load the main triggering object
+	 */
 	private String mainObjectCode;
 
 	// serverId:

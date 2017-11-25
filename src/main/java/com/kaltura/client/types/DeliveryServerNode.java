@@ -49,7 +49,9 @@ public abstract class DeliveryServerNode extends ServerNode {
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> deliveryProfileIds();
 	}
 
-	/**  Delivery profile ids  */
+	/**
+	 * Delivery profile ids
+	 */
 	private List<KeyValue> deliveryProfileIds;
 
 	// deliveryProfileIds:

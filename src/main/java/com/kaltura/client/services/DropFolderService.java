@@ -40,7 +40,22 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  DropFolder service lets you create and manage drop folders  */
+/**
+ * DropFolder service lets you create and manage drop folders
+ * 
+ * @param dropFolder 
+ * @param dropFolderId 
+ * @param dropFolderId 
+ * @param errorCode 
+ * @param errorDescription 
+ * @param dropFolderId 
+ * @param tag 
+ * @param maxTime 
+ * @param filter 
+ * @param pager 
+ * @param dropFolderId 
+ * @param dropFolder Id
+ */
 public class DropFolderService {
 	
 	public static class AddDropFolderBuilder extends RequestBuilder<DropFolder, DropFolder.Tokenizer, AddDropFolderBuilder> {
@@ -51,7 +66,11 @@ public class DropFolderService {
 		}
 	}
 
-	/**  Allows you to add a new KalturaDropFolder object  */
+	/**
+	 * Allows you to add a new KalturaDropFolder object
+	 * 
+	 * @param dropFolder 
+	 */
     public static AddDropFolderBuilder add(DropFolder dropFolder)  {
 		return new AddDropFolderBuilder(dropFolder);
 	}
@@ -68,7 +87,11 @@ public class DropFolderService {
 		}
 	}
 
-	/**  Mark the KalturaDropFolder object as deleted  */
+	/**
+	 * Mark the KalturaDropFolder object as deleted
+	 * 
+	 * @param dropFolderId 
+	 */
     public static DeleteDropFolderBuilder delete(int dropFolderId)  {
 		return new DeleteDropFolderBuilder(dropFolderId);
 	}
@@ -103,7 +126,13 @@ public class DropFolderService {
 		return freeExclusiveDropFolder(dropFolderId, errorCode, null);
 	}
 
-	/**  freeExclusive KalturaDropFolder object  */
+	/**
+	 * freeExclusive KalturaDropFolder object
+	 * 
+	 * @param dropFolderId 
+	 * @param errorCode 
+	 * @param errorDescription 
+	 */
     public static FreeExclusiveDropFolderDropFolderBuilder freeExclusiveDropFolder(int dropFolderId, String errorCode, String errorDescription)  {
 		return new FreeExclusiveDropFolderDropFolderBuilder(dropFolderId, errorCode, errorDescription);
 	}
@@ -120,7 +149,11 @@ public class DropFolderService {
 		}
 	}
 
-	/**  Retrieve a KalturaDropFolder object by ID  */
+	/**
+	 * Retrieve a KalturaDropFolder object by ID
+	 * 
+	 * @param dropFolderId 
+	 */
     public static GetDropFolderBuilder get(int dropFolderId)  {
 		return new GetDropFolderBuilder(dropFolderId);
 	}
@@ -142,7 +175,12 @@ public class DropFolderService {
 		}
 	}
 
-	/**  getExclusive KalturaDropFolder object  */
+	/**
+	 * getExclusive KalturaDropFolder object
+	 * 
+	 * @param tag 
+	 * @param maxTime 
+	 */
     public static GetExclusiveDropFolderDropFolderBuilder getExclusiveDropFolder(String tag, int maxTime)  {
 		return new GetExclusiveDropFolderDropFolderBuilder(tag, maxTime);
 	}
@@ -164,7 +202,12 @@ public class DropFolderService {
 		return list(filter, null);
 	}
 
-	/**  List KalturaDropFolder objects  */
+	/**
+	 * List KalturaDropFolder objects
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListDropFolderBuilder list(DropFolderFilter filter, FilterPager pager)  {
 		return new ListDropFolderBuilder(filter, pager);
 	}
@@ -182,7 +225,12 @@ public class DropFolderService {
 		}
 	}
 
-	/**  Update an existing KalturaDropFolder object  */
+	/**
+	 * Update an existing KalturaDropFolder object
+	 * 
+	 * @param dropFolderId 
+	 * @param dropFolder Id
+	 */
     public static UpdateDropFolderBuilder update(int dropFolderId, DropFolder dropFolder)  {
 		return new UpdateDropFolderBuilder(dropFolderId, dropFolder);
 	}

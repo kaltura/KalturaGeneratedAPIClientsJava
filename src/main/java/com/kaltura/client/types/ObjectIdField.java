@@ -38,7 +38,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Evaluates object ID according to given context  */
+/**
+ * Evaluates object ID according to given context
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ObjectIdField.Tokenizer.class)
 public class ObjectIdField extends StringField {

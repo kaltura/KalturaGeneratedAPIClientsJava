@@ -72,7 +72,9 @@ public abstract class MetadataBaseFilter extends RelatedFilter {
 	private Integer metadataProfileVersionEqual;
 	private Integer metadataProfileVersionGreaterThanOrEqual;
 	private Integer metadataProfileVersionLessThanOrEqual;
-	/**  When null, default is KalturaMetadataObjectType::ENTRY  */
+	/**
+	 * When null, default is KalturaMetadataObjectType::ENTRY
+	 */
 	private MetadataObjectType metadataObjectTypeEqual;
 	private String objectIdEqual;
 	private String objectIdIn;

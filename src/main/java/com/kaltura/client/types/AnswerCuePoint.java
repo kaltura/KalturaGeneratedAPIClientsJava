@@ -58,7 +58,9 @@ public class AnswerCuePoint extends CuePoint {
 	private String quizUserEntryId;
 	private String answerKey;
 	private Boolean isCorrect;
-	/**  Array of string  */
+	/**
+	 * Array of string
+	 */
 	private List<StringHolder> correctAnswerKeys;
 	private String explanation;
 

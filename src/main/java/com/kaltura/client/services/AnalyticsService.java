@@ -39,7 +39,12 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  api for getting analytics data  */
+/**
+ * api for getting analytics data
+ * 
+ * @param filter the analytics query filter
+ * @param pager the analytics query result pager
+ */
 public class AnalyticsService {
 	
 	public static class QueryAnalyticsBuilder extends RequestBuilder<ReportResponse, ReportResponse.Tokenizer, QueryAnalyticsBuilder> {
@@ -55,8 +60,13 @@ public class AnalyticsService {
 		return query(filter, null);
 	}
 
-	/**  report query action allows to get a analytics data for specific query
-	  dimensions, metrics and filters.  */
+	/**
+	 * report query action allows to get a analytics data for specific query
+	  dimensions, metrics and filters.
+	 * 
+	 * @param filter the analytics query filter
+	 * @param pager the analytics query result pager
+	 */
     public static QueryAnalyticsBuilder query(AnalyticsFilter filter, FilterPager pager)  {
 		return new QueryAnalyticsBuilder(filter, pager);
 	}

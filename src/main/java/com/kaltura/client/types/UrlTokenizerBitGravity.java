@@ -47,7 +47,9 @@ public class UrlTokenizerBitGravity extends UrlTokenizer {
 		String hashPatternRegex();
 	}
 
-	/**  hashPatternRegex  */
+	/**
+	 * hashPatternRegex
+	 */
 	private String hashPatternRegex;
 
 	// hashPatternRegex:

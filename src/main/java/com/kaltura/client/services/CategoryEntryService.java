@@ -44,7 +44,26 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Add &amp; Manage CategoryEntry - assign entry to category  */
+/**
+ * Add &amp; Manage CategoryEntry - assign entry to category
+ * 
+ * @param entryId 
+ * @param categoryId 
+ * @param categoryEntry 
+ * @param bulkUploadData 
+ * @param bulkUploadCategoryEntryData 
+ * @param entryId 
+ * @param categoryId 
+ * @param entryId 
+ * @param categoryId 
+ * @param shouldUpdate 
+ * @param filter 
+ * @param pager 
+ * @param entryId 
+ * @param categoryId 
+ * @param entryId 
+ * @param categoryId 
+ */
 public class CategoryEntryService {
 	
 	public static class ActivateCategoryEntryBuilder extends NullRequestBuilder {
@@ -64,7 +83,12 @@ public class CategoryEntryService {
 		}
 	}
 
-	/**  activate CategoryEntry when it is pending moderation  */
+	/**
+	 * activate CategoryEntry when it is pending moderation
+	 * 
+	 * @param entryId 
+	 * @param categoryId 
+	 */
     public static ActivateCategoryEntryBuilder activate(String entryId, int categoryId)  {
 		return new ActivateCategoryEntryBuilder(entryId, categoryId);
 	}
@@ -77,7 +101,11 @@ public class CategoryEntryService {
 		}
 	}
 
-	/**  Add new CategoryEntry  */
+	/**
+	 * Add new CategoryEntry
+	 * 
+	 * @param categoryEntry 
+	 */
     public static AddCategoryEntryBuilder add(CategoryEntry categoryEntry)  {
 		return new AddCategoryEntryBuilder(categoryEntry);
 	}
@@ -116,7 +144,12 @@ public class CategoryEntryService {
 		}
 	}
 
-	/**  Delete CategoryEntry  */
+	/**
+	 * Delete CategoryEntry
+	 * 
+	 * @param entryId 
+	 * @param categoryId 
+	 */
     public static DeleteCategoryEntryBuilder delete(String entryId, int categoryId)  {
 		return new DeleteCategoryEntryBuilder(entryId, categoryId);
 	}
@@ -147,7 +180,13 @@ public class CategoryEntryService {
 		return index(entryId, categoryId, true);
 	}
 
-	/**  Index CategoryEntry by Id  */
+	/**
+	 * Index CategoryEntry by Id
+	 * 
+	 * @param entryId 
+	 * @param categoryId 
+	 * @param shouldUpdate 
+	 */
     public static IndexCategoryEntryBuilder index(String entryId, int categoryId, boolean shouldUpdate)  {
 		return new IndexCategoryEntryBuilder(entryId, categoryId, shouldUpdate);
 	}
@@ -169,7 +208,12 @@ public class CategoryEntryService {
 		return list(filter, null);
 	}
 
-	/**  List all categoryEntry  */
+	/**
+	 * List all categoryEntry
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListCategoryEntryBuilder list(CategoryEntryFilter filter, FilterPager pager)  {
 		return new ListCategoryEntryBuilder(filter, pager);
 	}
@@ -191,7 +235,12 @@ public class CategoryEntryService {
 		}
 	}
 
-	/**  activate CategoryEntry when it is pending moderation  */
+	/**
+	 * activate CategoryEntry when it is pending moderation
+	 * 
+	 * @param entryId 
+	 * @param categoryId 
+	 */
     public static RejectCategoryEntryBuilder reject(String entryId, int categoryId)  {
 		return new RejectCategoryEntryBuilder(entryId, categoryId);
 	}
@@ -213,7 +262,12 @@ public class CategoryEntryService {
 		}
 	}
 
-	/**  update privacy context from the category  */
+	/**
+	 * update privacy context from the category
+	 * 
+	 * @param entryId 
+	 * @param categoryId 
+	 */
     public static SyncPrivacyContextCategoryEntryBuilder syncPrivacyContext(String entryId, int categoryId)  {
 		return new SyncPrivacyContextCategoryEntryBuilder(entryId, categoryId);
 	}

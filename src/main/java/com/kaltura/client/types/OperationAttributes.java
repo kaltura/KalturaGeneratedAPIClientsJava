@@ -39,7 +39,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Base class to all operation attributes types  */
+/**
+ * Base class to all operation attributes types
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(OperationAttributes.Tokenizer.class)
 public abstract class OperationAttributes extends ObjectBase {

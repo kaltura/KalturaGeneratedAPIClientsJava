@@ -61,24 +61,42 @@ public class CategoryUser extends ObjectBase {
 	}
 
 	private Integer categoryId;
-	/**  User id  */
+	/**
+	 * User id
+	 */
 	private String userId;
-	/**  Partner id  */
+	/**
+	 * Partner id
+	 */
 	private Integer partnerId;
-	/**  Permission level  */
+	/**
+	 * Permission level
+	 */
 	private CategoryUserPermissionLevel permissionLevel;
-	/**  Status  */
+	/**
+	 * Status
+	 */
 	private CategoryUserStatus status;
-	/**  CategoryUser creation date as Unix timestamp (In seconds)  */
+	/**
+	 * CategoryUser creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  CategoryUser update date as Unix timestamp (In seconds)  */
+	/**
+	 * CategoryUser update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Update method can be either manual or automatic to distinguish between manual
-	  operations (for example in KMC) on automatic - using bulk upload  */
+	/**
+	 * Update method can be either manual or automatic to distinguish between manual
+	  operations (for example in KMC) on automatic - using bulk upload
+	 */
 	private UpdateMethodType updateMethod;
-	/**  The full ids of the Category  */
+	/**
+	 * The full ids of the Category
+	 */
 	private String categoryFullIds;
-	/**  Set of category-related permissions for the current category user.  */
+	/**
+	 * Set of category-related permissions for the current category user.
+	 */
 	private String permissionNames;
 
 	// categoryId:

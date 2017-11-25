@@ -65,34 +65,60 @@ public class LiveChannelSegment extends ObjectBase {
 		String duration();
 	}
 
-	/**  Unique identifier  */
+	/**
+	 * Unique identifier
+	 */
 	private Long id;
 	private Integer partnerId;
-	/**  Segment creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Segment creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Segment update date as Unix timestamp (In seconds)  */
+	/**
+	 * Segment update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  Segment name  */
+	/**
+	 * Segment name
+	 */
 	private String name;
-	/**  Segment description  */
+	/**
+	 * Segment description
+	 */
 	private String description;
-	/**  Segment tags  */
+	/**
+	 * Segment tags
+	 */
 	private String tags;
-	/**  Segment could be associated with the main stream, as additional stream or as
-	  overlay  */
+	/**
+	 * Segment could be associated with the main stream, as additional stream or as
+	  overlay
+	 */
 	private LiveChannelSegmentType type;
 	private LiveChannelSegmentStatus status;
-	/**  Live channel id  */
+	/**
+	 * Live channel id
+	 */
 	private String channelId;
-	/**  Entry id to be played  */
+	/**
+	 * Entry id to be played
+	 */
 	private String entryId;
-	/**  Segment start time trigger type  */
+	/**
+	 * Segment start time trigger type
+	 */
 	private LiveChannelSegmentTriggerType triggerType;
-	/**  Live channel segment that the trigger relates to  */
+	/**
+	 * Live channel segment that the trigger relates to
+	 */
 	private Long triggerSegmentId;
-	/**  Segment play start time, in mili-seconds, according to trigger type  */
+	/**
+	 * Segment play start time, in mili-seconds, according to trigger type
+	 */
 	private Double startTime;
-	/**  Segment play duration time, in mili-seconds  */
+	/**
+	 * Segment play duration time, in mili-seconds
+	 */
 	private Double duration;
 
 	// id:

@@ -50,7 +50,41 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Document service lets you upload and manage document files  */
+/**
+ * Document service lets you upload and manage document files
+ * 
+ * @param sourceEntryId Document entry id to copy from
+ * @param documentEntry Document entry metadata
+ * @param sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not
+ * specified
+ * @param sourceFlavorAssetId Flavor asset id to be used as the new entry source
+ * @param documentEntry Document entry metadata
+ * @param documentEntry Document entry metadata
+ * @param uploadTokenId Upload token id
+ * @param entryId document entry id to replace
+ * @param entryId Document entry id to cancel
+ * @param entryId Document entry id
+ * @param conversionProfileId 
+ * @param dynamicConversionAttributes 
+ * @param entryId 
+ * @param entryId Document entry id to delete
+ * @param entryId Document entry id
+ * @param version Desired version of the data
+ * @param filter Document entry filter
+ * @param pager Pager
+ * @param entryId Document entry id
+ * @param flavorAssetId Flavor asset id
+ * @param forceProxy force to get the content without redirect
+ * @param entryId Document entry id
+ * @param flavorParamsId Flavor params id
+ * @param forceProxy force to get the content without redirect
+ * @param entryId Document entry id to update
+ * @param documentEntry Document entry metadata to update
+ * @param entryId document entry id to update
+ * @param resource Resource to be used to replace entry doc content
+ * @param conversionProfileId The conversion profile id to be used on the entry
+ * @param fileData The file data
+ */
 public class DocumentsService {
 	
 	public static class AddFromEntryDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddFromEntryDocumentsBuilder> {
@@ -79,7 +113,14 @@ public class DocumentsService {
 		return addFromEntry(sourceEntryId, documentEntry, Integer.MIN_VALUE);
 	}
 
-	/**  Copy entry into new entry  */
+	/**
+	 * Copy entry into new entry
+	 * 
+	 * @param sourceEntryId Document entry id to copy from
+	 * @param documentEntry Document entry metadata
+	 * @param sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not
+	 * specified
+	 */
     public static AddFromEntryDocumentsBuilder addFromEntry(String sourceEntryId, DocumentEntry documentEntry, int sourceFlavorParamsId)  {
 		return new AddFromEntryDocumentsBuilder(sourceEntryId, documentEntry, sourceFlavorParamsId);
 	}
@@ -101,7 +142,12 @@ public class DocumentsService {
 		return addFromFlavorAsset(sourceFlavorAssetId, null);
 	}
 
-	/**  Copy flavor asset into new entry  */
+	/**
+	 * Copy flavor asset into new entry
+	 * 
+	 * @param sourceFlavorAssetId Flavor asset id to be used as the new entry source
+	 * @param documentEntry Document entry metadata
+	 */
     public static AddFromFlavorAssetDocumentsBuilder addFromFlavorAsset(String sourceFlavorAssetId, DocumentEntry documentEntry)  {
 		return new AddFromFlavorAssetDocumentsBuilder(sourceFlavorAssetId, documentEntry);
 	}
@@ -119,8 +165,13 @@ public class DocumentsService {
 		}
 	}
 
-	/**  Add new document entry after the specific document file was uploaded and the
-	  upload token id exists  */
+	/**
+	 * Add new document entry after the specific document file was uploaded and the
+	  upload token id exists
+	 * 
+	 * @param documentEntry Document entry metadata
+	 * @param uploadTokenId Upload token id
+	 */
     public static AddFromUploadedFileDocumentsBuilder addFromUploadedFile(DocumentEntry documentEntry, String uploadTokenId)  {
 		return new AddFromUploadedFileDocumentsBuilder(documentEntry, uploadTokenId);
 	}
@@ -137,7 +188,11 @@ public class DocumentsService {
 		}
 	}
 
-	/**  Approves document replacement  */
+	/**
+	 * Approves document replacement
+	 * 
+	 * @param entryId document entry id to replace
+	 */
     public static ApproveReplaceDocumentsBuilder approveReplace(String entryId)  {
 		return new ApproveReplaceDocumentsBuilder(entryId);
 	}
@@ -154,7 +209,11 @@ public class DocumentsService {
 		}
 	}
 
-	/**  Cancels document replacement  */
+	/**
+	 * Cancels document replacement
+	 * 
+	 * @param entryId Document entry id to cancel
+	 */
     public static CancelReplaceDocumentsBuilder cancelReplace(String entryId)  {
 		return new CancelReplaceDocumentsBuilder(entryId);
 	}
@@ -185,7 +244,13 @@ public class DocumentsService {
 		return convert(entryId, conversionProfileId, null);
 	}
 
-	/**  Convert entry  */
+	/**
+	 * Convert entry
+	 * 
+	 * @param entryId Document entry id
+	 * @param conversionProfileId 
+	 * @param dynamicConversionAttributes 
+	 */
     public static ConvertDocumentsBuilder convert(String entryId, int conversionProfileId, List<ConversionAttribute> dynamicConversionAttributes)  {
 		return new ConvertDocumentsBuilder(entryId, conversionProfileId, dynamicConversionAttributes);
 	}
@@ -202,8 +267,12 @@ public class DocumentsService {
 		}
 	}
 
-	/**  This will queue a batch job for converting the document file to swf   Returns
-	  the URL where the new swf will be available  */
+	/**
+	 * This will queue a batch job for converting the document file to swf   Returns
+	  the URL where the new swf will be available
+	 * 
+	 * @param entryId 
+	 */
     public static ConvertPptToSwfDocumentsBuilder convertPptToSwf(String entryId)  {
 		return new ConvertPptToSwfDocumentsBuilder(entryId);
 	}
@@ -220,7 +289,11 @@ public class DocumentsService {
 		}
 	}
 
-	/**  Delete a document entry.  */
+	/**
+	 * Delete a document entry.
+	 * 
+	 * @param entryId Document entry id to delete
+	 */
     public static DeleteDocumentsBuilder delete(String entryId)  {
 		return new DeleteDocumentsBuilder(entryId);
 	}
@@ -246,7 +319,12 @@ public class DocumentsService {
 		return get(entryId, -1);
 	}
 
-	/**  Get document entry by ID.  */
+	/**
+	 * Get document entry by ID.
+	 * 
+	 * @param entryId Document entry id
+	 * @param version Desired version of the data
+	 */
     public static GetDocumentsBuilder get(String entryId, int version)  {
 		return new GetDocumentsBuilder(entryId, version);
 	}
@@ -268,7 +346,12 @@ public class DocumentsService {
 		return list(filter, null);
 	}
 
-	/**  List document entries by filter with paging support.  */
+	/**
+	 * List document entries by filter with paging support.
+	 * 
+	 * @param filter Document entry filter
+	 * @param pager Pager
+	 */
     public static ListDocumentsBuilder list(DocumentEntryFilter filter, FilterPager pager)  {
 		return new ListDocumentsBuilder(filter, pager);
 	}
@@ -303,7 +386,13 @@ public class DocumentsService {
 		return serve(entryId, flavorAssetId, false);
 	}
 
-	/**  Serves the file content  */
+	/**
+	 * Serves the file content
+	 * 
+	 * @param entryId Document entry id
+	 * @param flavorAssetId Flavor asset id
+	 * @param forceProxy force to get the content without redirect
+	 */
     public static ServeDocumentsBuilder serve(String entryId, String flavorAssetId, boolean forceProxy)  {
 		return new ServeDocumentsBuilder(entryId, flavorAssetId, forceProxy);
 	}
@@ -338,7 +427,13 @@ public class DocumentsService {
 		return serveByFlavorParamsId(entryId, flavorParamsId, false);
 	}
 
-	/**  Serves the file content  */
+	/**
+	 * Serves the file content
+	 * 
+	 * @param entryId Document entry id
+	 * @param flavorParamsId Flavor params id
+	 * @param forceProxy force to get the content without redirect
+	 */
     public static ServeByFlavorParamsIdDocumentsBuilder serveByFlavorParamsId(String entryId, String flavorParamsId, boolean forceProxy)  {
 		return new ServeByFlavorParamsIdDocumentsBuilder(entryId, flavorParamsId, forceProxy);
 	}
@@ -356,7 +451,12 @@ public class DocumentsService {
 		}
 	}
 
-	/**  Update document entry. Only the properties that were set will be updated.  */
+	/**
+	 * Update document entry. Only the properties that were set will be updated.
+	 * 
+	 * @param entryId Document entry id to update
+	 * @param documentEntry Document entry metadata to update
+	 */
     public static UpdateDocumentsBuilder update(String entryId, DocumentEntry documentEntry)  {
 		return new UpdateDocumentsBuilder(entryId, documentEntry);
 	}
@@ -383,7 +483,13 @@ public class DocumentsService {
 		return updateContent(entryId, resource, Integer.MIN_VALUE);
 	}
 
-	/**  Replace content associated with the given document entry.  */
+	/**
+	 * Replace content associated with the given document entry.
+	 * 
+	 * @param entryId document entry id to update
+	 * @param resource Resource to be used to replace entry doc content
+	 * @param conversionProfileId The conversion profile id to be used on the entry
+	 */
     public static UpdateContentDocumentsBuilder updateContent(String entryId, Resource resource, int conversionProfileId)  {
 		return new UpdateContentDocumentsBuilder(entryId, resource, conversionProfileId);
 	}
@@ -409,8 +515,12 @@ public class DocumentsService {
 		return upload(new FileHolder(fileData, fileDataMimeType, fileDataName));
 	}
 
-	/**  Upload a document file to Kaltura, then the file can be used to create a
-	  document entry.  */
+	/**
+	 * Upload a document file to Kaltura, then the file can be used to create a
+	  document entry.
+	 * 
+	 * @param fileData The file data
+	 */
     public static UploadDocumentsBuilder upload(FileHolder fileData)  {
 		return new UploadDocumentsBuilder(fileData);
 	}

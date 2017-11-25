@@ -49,11 +49,17 @@ public class WidevineFlavorAsset extends FlavorAsset {
 		String widevineAssetId();
 	}
 
-	/**  License distribution window start date  */
+	/**
+	 * License distribution window start date
+	 */
 	private Integer widevineDistributionStartDate;
-	/**  License distribution window end date  */
+	/**
+	 * License distribution window end date
+	 */
 	private Integer widevineDistributionEndDate;
-	/**  Widevine unique asset id  */
+	/**
+	 * Widevine unique asset id
+	 */
 	private Integer widevineAssetId;
 
 	// widevineDistributionStartDate:

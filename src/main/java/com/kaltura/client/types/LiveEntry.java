@@ -73,36 +73,64 @@ public abstract class LiveEntry extends MediaEntry {
 		String recordingStatus();
 	}
 
-	/**  The message to be presented when the stream is offline  */
+	/**
+	 * The message to be presented when the stream is offline
+	 */
 	private String offlineMessage;
-	/**  Recording Status Enabled/Disabled  */
+	/**
+	 * Recording Status Enabled/Disabled
+	 */
 	private RecordStatus recordStatus;
-	/**  DVR Status Enabled/Disabled  */
+	/**
+	 * DVR Status Enabled/Disabled
+	 */
 	private DVRStatus dvrStatus;
-	/**  Window of time which the DVR allows for backwards scrubbing (in minutes)  */
+	/**
+	 * Window of time which the DVR allows for backwards scrubbing (in minutes)
+	 */
 	private Integer dvrWindow;
-	/**  Elapsed recording time (in msec) up to the point where the live stream was last
-	  stopped (unpublished).  */
+	/**
+	 * Elapsed recording time (in msec) up to the point where the live stream was last
+	  stopped (unpublished).
+	 */
 	private Integer lastElapsedRecordingTime;
-	/**  Array of key value protocol-&gt;live stream url objects  */
+	/**
+	 * Array of key value protocol-&gt;live stream url objects
+	 */
 	private List<LiveStreamConfiguration> liveStreamConfigurations;
-	/**  Recorded entry id  */
+	/**
+	 * Recorded entry id
+	 */
 	private String recordedEntryId;
-	/**  Flag denoting whether entry should be published by the media server  */
+	/**
+	 * Flag denoting whether entry should be published by the media server
+	 */
 	private LivePublishStatus pushPublishEnabled;
-	/**  Array of publish configurations  */
+	/**
+	 * Array of publish configurations
+	 */
 	private List<LiveStreamPushPublishConfiguration> publishConfigurations;
-	/**  The first time in which the entry was broadcast  */
+	/**
+	 * The first time in which the entry was broadcast
+	 */
 	private Integer firstBroadcast;
-	/**  The Last time in which the entry was broadcast  */
+	/**
+	 * The Last time in which the entry was broadcast
+	 */
 	private Integer lastBroadcast;
-	/**  The time (unix timestamp in milliseconds) in which the entry broadcast started
-	  or 0 when the entry is off the air  */
+	/**
+	 * The time (unix timestamp in milliseconds) in which the entry broadcast started
+	  or 0 when the entry is off the air
+	 */
 	private Double currentBroadcastStartTime;
 	private LiveEntryRecordingOptions recordingOptions;
-	/**  the status of the entry of type EntryServerNodeStatus  */
+	/**
+	 * the status of the entry of type EntryServerNodeStatus
+	 */
 	private EntryServerNodeStatus liveStatus;
-	/**  The chunk duration value in milliseconds  */
+	/**
+	 * The chunk duration value in milliseconds
+	 */
 	private Integer segmentDuration;
 	private Boolean explicitLive;
 	private ViewMode viewMode;

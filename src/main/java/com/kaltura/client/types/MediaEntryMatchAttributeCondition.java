@@ -40,8 +40,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Auto-generated class.  Used to search KalturaMediaEntry attributes. Use
-  KalturaMediaEntryMatchAttribute enum to provide attribute name. /  */
+/**
+ * Auto-generated class.  Used to search KalturaMediaEntry attributes. Use
+  KalturaMediaEntryMatchAttribute enum to provide attribute name. /
+ */
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(MediaEntryMatchAttributeCondition.Tokenizer.class)
 public class MediaEntryMatchAttributeCondition extends SearchMatchAttributeCondition {

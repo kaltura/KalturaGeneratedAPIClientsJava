@@ -50,12 +50,18 @@ public class MixEntry extends PlayableEntry {
 		String dataContent();
 	}
 
-	/**  Indicates whether the user has submited a real thumbnail to the mix (Not the one
-	  that was generated automaticaly)  */
+	/**
+	 * Indicates whether the user has submited a real thumbnail to the mix (Not the one
+	  that was generated automaticaly)
+	 */
 	private Boolean hasRealThumbnail;
-	/**  The editor type used to edit the metadata  */
+	/**
+	 * The editor type used to edit the metadata
+	 */
 	private EditorType editorType;
-	/**  The xml data of the mix  */
+	/**
+	 * The xml data of the mix
+	 */
 	private String dataContent;
 
 	// hasRealThumbnail:

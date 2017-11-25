@@ -100,107 +100,191 @@ public class BaseEntry extends ObjectBase {
 		String displayInSearch();
 	}
 
-	/**  Auto generated 10 characters alphanumeric string  */
+	/**
+	 * Auto generated 10 characters alphanumeric string
+	 */
 	private String id;
-	/**  Entry name (Min 1 chars)  */
+	/**
+	 * Entry name (Min 1 chars)
+	 */
 	private String name;
-	/**  Entry description  */
+	/**
+	 * Entry description
+	 */
 	private String description;
 	private Integer partnerId;
-	/**  The ID of the user who is the owner of this entry  */
+	/**
+	 * The ID of the user who is the owner of this entry
+	 */
 	private String userId;
-	/**  The ID of the user who created this entry  */
+	/**
+	 * The ID of the user who created this entry
+	 */
 	private String creatorId;
-	/**  Entry tags  */
+	/**
+	 * Entry tags
+	 */
 	private String tags;
-	/**  Entry admin tags can be updated only by administrators  */
+	/**
+	 * Entry admin tags can be updated only by administrators
+	 */
 	private String adminTags;
-	/**  Comma separated list of full names of categories to which this entry belongs.
+	/**
+	 * Comma separated list of full names of categories to which this entry belongs.
 	  Only categories that don't have entitlement (privacy context) are listed, to
-	  retrieve the full list of categories, use the categoryEntry.list action.  */
+	  retrieve the full list of categories, use the categoryEntry.list action.
+	 */
 	private String categories;
-	/**  Comma separated list of ids of categories to which this entry belongs. Only
+	/**
+	 * Comma separated list of ids of categories to which this entry belongs. Only
 	  categories that don't have entitlement (privacy context) are listed, to retrieve
-	  the full list of categories, use the categoryEntry.list action.  */
+	  the full list of categories, use the categoryEntry.list action.
+	 */
 	private String categoriesIds;
 	private EntryStatus status;
-	/**  Entry moderation status  */
+	/**
+	 * Entry moderation status
+	 */
 	private EntryModerationStatus moderationStatus;
-	/**  Number of moderation requests waiting for this entry  */
+	/**
+	 * Number of moderation requests waiting for this entry
+	 */
 	private Integer moderationCount;
-	/**  The type of the entry, this is auto filled by the derived entry object  */
+	/**
+	 * The type of the entry, this is auto filled by the derived entry object
+	 */
 	private EntryType type;
-	/**  Entry creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Entry update date as Unix timestamp (In seconds)  */
+	/**
+	 * Entry update date as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
-	/**  The calculated average rank. rank = totalRank / votes  */
+	/**
+	 * The calculated average rank. rank = totalRank / votes
+	 */
 	private Double rank;
-	/**  The sum of all rank values submitted to the baseEntry.anonymousRank action  */
+	/**
+	 * The sum of all rank values submitted to the baseEntry.anonymousRank action
+	 */
 	private Integer totalRank;
-	/**  A count of all requests made to the baseEntry.anonymousRank action  */
+	/**
+	 * A count of all requests made to the baseEntry.anonymousRank action
+	 */
 	private Integer votes;
 	private Integer groupId;
-	/**  Can be used to store various partner related data as a string  */
+	/**
+	 * Can be used to store various partner related data as a string
+	 */
 	private String partnerData;
-	/**  Download URL for the entry  */
+	/**
+	 * Download URL for the entry
+	 */
 	private String downloadUrl;
-	/**  Indexed search text for full text search  */
+	/**
+	 * Indexed search text for full text search
+	 */
 	private String searchText;
-	/**  License type used for this entry  */
+	/**
+	 * License type used for this entry
+	 */
 	private LicenseType licenseType;
-	/**  Version of the entry data  */
+	/**
+	 * Version of the entry data
+	 */
 	private Integer version;
-	/**  Thumbnail URL  */
+	/**
+	 * Thumbnail URL
+	 */
 	private String thumbnailUrl;
-	/**  The Access Control ID assigned to this entry (null when not set, send -1 to
-	  remove)  */
+	/**
+	 * The Access Control ID assigned to this entry (null when not set, send -1 to
+	  remove)
+	 */
 	private Integer accessControlId;
-	/**  Entry scheduling start date (null when not set, send -1 to remove)  */
+	/**
+	 * Entry scheduling start date (null when not set, send -1 to remove)
+	 */
 	private Integer startDate;
-	/**  Entry scheduling end date (null when not set, send -1 to remove)  */
+	/**
+	 * Entry scheduling end date (null when not set, send -1 to remove)
+	 */
 	private Integer endDate;
-	/**  Entry external reference id  */
+	/**
+	 * Entry external reference id
+	 */
 	private String referenceId;
-	/**  ID of temporary entry that will replace this entry when it's approved and ready
-	  for replacement  */
+	/**
+	 * ID of temporary entry that will replace this entry when it's approved and ready
+	  for replacement
+	 */
 	private String replacingEntryId;
-	/**  ID of the entry that will be replaced when the replacement approved and this
-	  entry is ready  */
+	/**
+	 * ID of the entry that will be replaced when the replacement approved and this
+	  entry is ready
+	 */
 	private String replacedEntryId;
-	/**  Status of the replacement readiness and approval  */
+	/**
+	 * Status of the replacement readiness and approval
+	 */
 	private EntryReplacementStatus replacementStatus;
-	/**  Can be used to store various partner related data as a numeric value  */
+	/**
+	 * Can be used to store various partner related data as a numeric value
+	 */
 	private Integer partnerSortValue;
-	/**  Override the default ingestion profile  */
+	/**
+	 * Override the default ingestion profile
+	 */
 	private Integer conversionProfileId;
-	/**  IF not empty, points to an entry ID the should replace this current entry's id.  */
+	/**
+	 * IF not empty, points to an entry ID the should replace this current entry's id.
+	 */
 	private String redirectEntryId;
-	/**  ID of source root entry, used for clipped, skipped and cropped entries that
-	  created from another entry  */
+	/**
+	 * ID of source root entry, used for clipped, skipped and cropped entries that
+	  created from another entry
+	 */
 	private String rootEntryId;
-	/**  ID of source root entry, used for defining entires association  */
+	/**
+	 * ID of source root entry, used for defining entires association
+	 */
 	private String parentEntryId;
-	/**  clipping, skipping and cropping attributes that used to create this entry  */
+	/**
+	 * clipping, skipping and cropping attributes that used to create this entry
+	 */
 	private List<OperationAttributes> operationAttributes;
-	/**  list of user ids that are entitled to edit the entry (no server enforcement) The
+	/**
+	 * list of user ids that are entitled to edit the entry (no server enforcement) The
 	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
-	  is applicative only  */
+	  is applicative only
+	 */
 	private String entitledUsersEdit;
-	/**  list of user ids that are entitled to publish the entry (no server enforcement)
+	/**
+	 * list of user ids that are entitled to publish the entry (no server enforcement)
 	  The difference between entitledUsersEdit, entitledUsersPublish and
-	  entitledUsersView is applicative only  */
+	  entitledUsersView is applicative only
+	 */
 	private String entitledUsersPublish;
-	/**  list of user ids that are entitled to view the entry (no server enforcement) The
+	/**
+	 * list of user ids that are entitled to view the entry (no server enforcement) The
 	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
-	  is applicative only  */
+	  is applicative only
+	 */
 	private String entitledUsersView;
-	/**  Comma seperated string of the capabilities of the entry. Any capability needed
-	  can be added to this list.  */
+	/**
+	 * Comma seperated string of the capabilities of the entry. Any capability needed
+	  can be added to this list.
+	 */
 	private String capabilities;
-	/**  Template entry id  */
+	/**
+	 * Template entry id
+	 */
 	private String templateEntryId;
-	/**  should we display this entry in search  */
+	/**
+	 * should we display this entry in search
+	 */
 	private EntryDisplayInSearchType displayInSearch;
 
 	// id:

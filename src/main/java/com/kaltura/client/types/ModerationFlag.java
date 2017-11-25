@@ -61,20 +61,34 @@ public class ModerationFlag extends ObjectBase {
 		String updatedAt();
 	}
 
-	/**  Moderation flag id  */
+	/**
+	 * Moderation flag id
+	 */
 	private Integer id;
 	private Integer partnerId;
-	/**  The user id that added the moderation flag  */
+	/**
+	 * The user id that added the moderation flag
+	 */
 	private String userId;
-	/**  The type of the moderation flag (entry or user)  */
+	/**
+	 * The type of the moderation flag (entry or user)
+	 */
 	private ModerationObjectType moderationObjectType;
-	/**  If moderation flag is set for entry, this is the flagged entry id  */
+	/**
+	 * If moderation flag is set for entry, this is the flagged entry id
+	 */
 	private String flaggedEntryId;
-	/**  If moderation flag is set for user, this is the flagged user id  */
+	/**
+	 * If moderation flag is set for user, this is the flagged user id
+	 */
 	private String flaggedUserId;
-	/**  The moderation flag status  */
+	/**
+	 * The moderation flag status
+	 */
 	private ModerationFlagStatus status;
-	/**  The comment that was added to the flag  */
+	/**
+	 * The comment that was added to the flag
+	 */
 	private String comments;
 	private ModerationFlagType flagType;
 	private Integer createdAt;

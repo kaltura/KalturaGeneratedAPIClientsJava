@@ -51,7 +51,9 @@ public class BaseEntryCloneOptionComponent extends BaseEntryCloneOptionItem {
 	}
 
 	private BaseEntryCloneOptions itemType;
-	/**  condition rule (include/exclude)  */
+	/**
+	 * condition rule (include/exclude)
+	 */
 	private CloneComponentSelectorType rule;
 
 	// itemType:

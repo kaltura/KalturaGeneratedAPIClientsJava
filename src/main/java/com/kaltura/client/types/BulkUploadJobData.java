@@ -64,31 +64,57 @@ public class BulkUploadJobData extends JobData {
 	}
 
 	private String userId;
-	/**  The screen name of the user  */
+	/**
+	 * The screen name of the user
+	 */
 	private String uploadedBy;
-	/**  Selected profile id for all bulk entries  */
+	/**
+	 * Selected profile id for all bulk entries
+	 */
 	private Integer conversionProfileId;
-	/**  Created by the API  */
+	/**
+	 * Created by the API
+	 */
 	private String resultsFileLocalPath;
-	/**  Created by the API  */
+	/**
+	 * Created by the API
+	 */
 	private String resultsFileUrl;
-	/**  Number of created entries  */
+	/**
+	 * Number of created entries
+	 */
 	private Integer numOfEntries;
-	/**  Number of created objects  */
+	/**
+	 * Number of created objects
+	 */
 	private Integer numOfObjects;
-	/**  The bulk upload file path  */
+	/**
+	 * The bulk upload file path
+	 */
 	private String filePath;
-	/**  Type of object for bulk upload  */
+	/**
+	 * Type of object for bulk upload
+	 */
 	private BulkUploadObjectType bulkUploadObjectType;
-	/**  Friendly name of the file, used to be recognized later in the logs.  */
+	/**
+	 * Friendly name of the file, used to be recognized later in the logs.
+	 */
 	private String fileName;
-	/**  Data pertaining to the objects being uploaded  */
+	/**
+	 * Data pertaining to the objects being uploaded
+	 */
 	private BulkUploadObjectData objectData;
-	/**  Type of bulk upload  */
+	/**
+	 * Type of bulk upload
+	 */
 	private BulkUploadType type;
-	/**  Recipients of the email for bulk upload success/failure  */
+	/**
+	 * Recipients of the email for bulk upload success/failure
+	 */
 	private String emailRecipients;
-	/**  Number of objects that finished on error status  */
+	/**
+	 * Number of objects that finished on error status
+	 */
 	private Integer numOfErrorObjects;
 
 	// userId:

@@ -40,7 +40,19 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Virus scan profile service  */
+/**
+ * Virus scan profile service
+ * 
+ * @param virusScanProfile 
+ * @param virusScanProfileId 
+ * @param virusScanProfileId 
+ * @param filter 
+ * @param pager 
+ * @param flavorAssetId 
+ * @param virusScanProfileId 
+ * @param virusScanProfileId 
+ * @param virusScanProfile Id
+ */
 public class VirusScanProfileService {
 	
 	public static class AddVirusScanProfileBuilder extends RequestBuilder<VirusScanProfile, VirusScanProfile.Tokenizer, AddVirusScanProfileBuilder> {
@@ -51,8 +63,12 @@ public class VirusScanProfileService {
 		}
 	}
 
-	/**  Allows you to add an virus scan profile object and virus scan profile content
-	  associated with Kaltura object  */
+	/**
+	 * Allows you to add an virus scan profile object and virus scan profile content
+	  associated with Kaltura object
+	 * 
+	 * @param virusScanProfile 
+	 */
     public static AddVirusScanProfileBuilder add(VirusScanProfile virusScanProfile)  {
 		return new AddVirusScanProfileBuilder(virusScanProfile);
 	}
@@ -69,7 +85,11 @@ public class VirusScanProfileService {
 		}
 	}
 
-	/**  Mark the virus scan profile as deleted  */
+	/**
+	 * Mark the virus scan profile as deleted
+	 * 
+	 * @param virusScanProfileId 
+	 */
     public static DeleteVirusScanProfileBuilder delete(int virusScanProfileId)  {
 		return new DeleteVirusScanProfileBuilder(virusScanProfileId);
 	}
@@ -86,7 +106,11 @@ public class VirusScanProfileService {
 		}
 	}
 
-	/**  Retrieve an virus scan profile object by id  */
+	/**
+	 * Retrieve an virus scan profile object by id
+	 * 
+	 * @param virusScanProfileId 
+	 */
     public static GetVirusScanProfileBuilder get(int virusScanProfileId)  {
 		return new GetVirusScanProfileBuilder(virusScanProfileId);
 	}
@@ -108,7 +132,12 @@ public class VirusScanProfileService {
 		return list(filter, null);
 	}
 
-	/**  List virus scan profile objects by filter and pager  */
+	/**
+	 * List virus scan profile objects by filter and pager
+	 * 
+	 * @param filter 
+	 * @param pager 
+	 */
     public static ListVirusScanProfileBuilder list(VirusScanProfileFilter filter, FilterPager pager)  {
 		return new ListVirusScanProfileBuilder(filter, pager);
 	}
@@ -134,7 +163,12 @@ public class VirusScanProfileService {
 		return scan(flavorAssetId, Integer.MIN_VALUE);
 	}
 
-	/**  Scan flavor asset according to virus scan profile  */
+	/**
+	 * Scan flavor asset according to virus scan profile
+	 * 
+	 * @param flavorAssetId 
+	 * @param virusScanProfileId 
+	 */
     public static ScanVirusScanProfileBuilder scan(String flavorAssetId, int virusScanProfileId)  {
 		return new ScanVirusScanProfileBuilder(flavorAssetId, virusScanProfileId);
 	}
@@ -152,8 +186,13 @@ public class VirusScanProfileService {
 		}
 	}
 
-	/**  Update exisitng virus scan profile, it is possible to update the virus scan
-	  profile id too  */
+	/**
+	 * Update exisitng virus scan profile, it is possible to update the virus scan
+	  profile id too
+	 * 
+	 * @param virusScanProfileId 
+	 * @param virusScanProfile Id
+	 */
     public static UpdateVirusScanProfileBuilder update(int virusScanProfileId, VirusScanProfile virusScanProfile)  {
 		return new UpdateVirusScanProfileBuilder(virusScanProfileId, virusScanProfile);
 	}

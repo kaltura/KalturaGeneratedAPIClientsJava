@@ -58,20 +58,30 @@ public abstract class ScheduleResource extends ObjectBase {
 		String updatedAt();
 	}
 
-	/**  Auto-generated unique identifier  */
+	/**
+	 * Auto-generated unique identifier
+	 */
 	private Integer id;
 	private Integer parentId;
 	private Integer partnerId;
-	/**  Defines a short name  */
+	/**
+	 * Defines a short name
+	 */
 	private String name;
-	/**  Defines a unique system-name  */
+	/**
+	 * Defines a unique system-name
+	 */
 	private String systemName;
 	private String description;
 	private ScheduleResourceStatus status;
 	private String tags;
-	/**  Creation date as Unix timestamp (In seconds)  */
+	/**
+	 * Creation date as Unix timestamp (In seconds)
+	 */
 	private Integer createdAt;
-	/**  Last update as Unix timestamp (In seconds)  */
+	/**
+	 * Last update as Unix timestamp (In seconds)
+	 */
 	private Integer updatedAt;
 
 	// id:
