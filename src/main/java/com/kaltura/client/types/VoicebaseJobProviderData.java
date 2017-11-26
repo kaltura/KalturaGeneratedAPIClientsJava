@@ -54,6 +54,7 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 		String spokenLanguage();
 		String fileLocation();
 		String replaceMediaContent();
+		String additionalParameters();
 	}
 
 	/**
@@ -92,6 +93,10 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 	 * should replace remote media content
 	 */
 	private Boolean replaceMediaContent;
+	/**
+	 * additional parameters to send to VoiceBase
+	 */
+	private String additionalParameters;
 
 	// entryId:
 	public String getEntryId(){
@@ -201,6 +206,18 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 		setToken("replaceMediaContent", multirequestToken);
 	}
 
+	// additionalParameters:
+	public String getAdditionalParameters(){
+		return this.additionalParameters;
+	}
+	public void setAdditionalParameters(String additionalParameters){
+		this.additionalParameters = additionalParameters;
+	}
+
+	public void additionalParameters(String multirequestToken){
+		setToken("additionalParameters", multirequestToken);
+	}
+
 
 	public VoicebaseJobProviderData() {
 		super();
@@ -221,6 +238,7 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 		spokenLanguage = Language.get(GsonParser.parseString(jsonObject.get("spokenLanguage")));
 		fileLocation = GsonParser.parseString(jsonObject.get("fileLocation"));
 		replaceMediaContent = GsonParser.parseBoolean(jsonObject.get("replaceMediaContent"));
+		additionalParameters = GsonParser.parseString(jsonObject.get("additionalParameters"));
 
 	}
 
