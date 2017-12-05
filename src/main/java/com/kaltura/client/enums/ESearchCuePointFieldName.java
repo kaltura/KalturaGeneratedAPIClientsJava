@@ -44,8 +44,7 @@ public enum ESearchCuePointFieldName implements EnumAsString {
 	CUE_POINT_START_TIME("cue_points.cue_point_start_time"),
 	CUE_POINT_SUB_TYPE("cue_points.cue_point_sub_type"),
 	CUE_POINT_TAGS("cue_points.cue_point_tags"),
-	CUE_POINT_TEXT("cue_points.cue_point_text"),
-	CUE_POINT_TYPE("cue_points.cue_point_type");
+	CUE_POINT_TEXT("cue_points.cue_point_text");
 
 	private String value;
 
