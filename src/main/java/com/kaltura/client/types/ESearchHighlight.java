@@ -43,42 +43,58 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchItemData.Tokenizer.class)
-public abstract class ESearchItemData extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(ESearchHighlight.Tokenizer.class)
+public class ESearchHighlight extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
+		String fieldName();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> hits();
 	}
 
-	private List<ESearchHighlight> highlight;
+	private String fieldName;
+	private List<StringHolder> hits;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// fieldName:
+	public String getFieldName(){
+		return this.fieldName;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
+	public void setFieldName(String fieldName){
+		this.fieldName = fieldName;
+	}
+
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
+
+	// hits:
+	public List<StringHolder> getHits(){
+		return this.hits;
+	}
+	public void setHits(List<StringHolder> hits){
+		this.hits = hits;
 	}
 
 
-	public ESearchItemData() {
+	public ESearchHighlight() {
 		super();
 	}
 
-	public ESearchItemData(JsonObject jsonObject) throws APIException {
+	public ESearchHighlight(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
+		fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
+		hits = GsonParser.parseArray(jsonObject.getAsJsonArray("hits"), StringHolder.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchItemData");
-		kparams.add("highlight", this.highlight);
+		kparams.add("objectType", "KalturaESearchHighlight");
+		kparams.add("fieldName", this.fieldName);
+		kparams.add("hits", this.hits);
 		return kparams;
 	}
 

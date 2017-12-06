@@ -48,12 +48,12 @@ public abstract class ESearchResult extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		ObjectBase.Tokenizer object();
-		String highlight();
+		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
 		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
 	}
 
 	private ObjectBase object;
-	private String highlight;
+	private List<ESearchHighlight> highlight;
 	private List<ESearchItemDataResult> itemsData;
 
 	// object:
@@ -65,15 +65,11 @@ public abstract class ESearchResult extends ObjectBase {
 	}
 
 	// highlight:
-	public String getHighlight(){
+	public List<ESearchHighlight> getHighlight(){
 		return this.highlight;
 	}
-	public void setHighlight(String highlight){
+	public void setHighlight(List<ESearchHighlight> highlight){
 		this.highlight = highlight;
-	}
-
-	public void highlight(String multirequestToken){
-		setToken("highlight", multirequestToken);
 	}
 
 	// itemsData:
@@ -96,7 +92,7 @@ public abstract class ESearchResult extends ObjectBase {
 
 		// set members values:
 		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), ObjectBase.class);
-		highlight = GsonParser.parseString(jsonObject.get("highlight"));
+		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
 		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
 
 	}
