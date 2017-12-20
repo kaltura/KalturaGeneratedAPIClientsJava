@@ -34,13 +34,13 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchEntryOrderByFieldName implements EnumAsString {
-	ENTRY_CREATED_AT("created_at"),
-	ENTRY_END_DATE("end_date"),
-	ENTRY_NAME("name.keyword"),
-	ENTRY_START_DATE("start_date"),
-	ENTRY_UPDATED_AT("updated_at"),
-	ENTRY_VIEWS("views"),
-	ENTRY_VOTES("votes");
+	CREATED_AT("created_at"),
+	END_DATE("end_date"),
+	NAME("name"),
+	START_DATE("start_date"),
+	UPDATED_AT("updated_at"),
+	VIEWS("views"),
+	VOTES("votes");
 
 	private String value;
 

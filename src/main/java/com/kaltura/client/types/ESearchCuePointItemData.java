@@ -56,6 +56,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		String answers();
 		String hint();
 		String explanation();
+		String assetId();
 	}
 
 	private String cuePointType;
@@ -70,6 +71,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 	private String answers;
 	private String hint;
 	private String explanation;
+	private String assetId;
 
 	// cuePointType:
 	public String getCuePointType(){
@@ -215,6 +217,18 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		setToken("explanation", multirequestToken);
 	}
 
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
+	}
+
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
+	}
+
 
 	public ESearchCuePointItemData() {
 		super();
@@ -238,6 +252,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		answers = GsonParser.parseString(jsonObject.get("answers"));
 		hint = GsonParser.parseString(jsonObject.get("hint"));
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
 
 	}
 
@@ -256,6 +271,7 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		kparams.add("answers", this.answers);
 		kparams.add("hint", this.hint);
 		kparams.add("explanation", this.explanation);
+		kparams.add("assetId", this.assetId);
 		return kparams;
 	}
 

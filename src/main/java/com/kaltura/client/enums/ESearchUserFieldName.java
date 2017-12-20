@@ -34,17 +34,17 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserFieldName implements EnumAsString {
-	USER_CREATED_AT("created_at"),
-	USER_EMAIL("email"),
-	USER_FIRST_NAME("first_name"),
-	USER_GROUP_IDS("group_ids"),
-	USER_TYPE("kuser_type"),
-	USER_LAST_NAME("last_name"),
-	USER_PERMISSION_NAMES("permission_names"),
-	USER_ROLE_IDS("role_ids"),
-	USER_SCREEN_NAME("screen_name"),
-	USER_TAGS("tags"),
-	USER_UPDATED_AT("updated_at");
+	CREATED_AT("created_at"),
+	EMAIL("email"),
+	FIRST_NAME("first_name"),
+	GROUP_IDS("group_ids"),
+	LAST_NAME("last_name"),
+	PERMISSION_NAMES("permission_names"),
+	ROLE_IDS("role_ids"),
+	SCREEN_NAME("screen_name"),
+	TAGS("tags"),
+	UPDATED_AT("updated_at"),
+	TYPE("user_type");
 
 	private String value;
 

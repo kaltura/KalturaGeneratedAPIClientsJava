@@ -34,8 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserOrderByFieldName implements EnumAsString {
-	USER_CREATED_AT("created_at"),
-	USER_UPDATED_AT("updated_at");
+	CREATED_AT("created_at"),
+	UPDATED_AT("updated_at");
 
 	private String value;
 

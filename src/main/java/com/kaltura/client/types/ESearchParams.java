@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ESearchOperator;
 import com.kaltura.client.types.ESearchOrderBy;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
@@ -44,29 +43,19 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchParams.Tokenizer.class)
-public class ESearchParams extends ObjectBase {
+public abstract class ESearchParams extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		ESearchOperator.Tokenizer searchOperator();
 		String objectStatuses();
 		String objectId();
 		ESearchOrderBy.Tokenizer orderBy();
 		String useHighlight();
 	}
 
-	private ESearchOperator searchOperator;
 	private String objectStatuses;
 	private String objectId;
 	private ESearchOrderBy orderBy;
 	private Boolean useHighlight;
-
-	// searchOperator:
-	public ESearchOperator getSearchOperator(){
-		return this.searchOperator;
-	}
-	public void setSearchOperator(ESearchOperator searchOperator){
-		this.searchOperator = searchOperator;
-	}
 
 	// objectStatuses:
 	public String getObjectStatuses(){
@@ -123,7 +112,6 @@ public class ESearchParams extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
-		searchOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("searchOperator"), ESearchOperator.class);
 		objectStatuses = GsonParser.parseString(jsonObject.get("objectStatuses"));
 		objectId = GsonParser.parseString(jsonObject.get("objectId"));
 		orderBy = GsonParser.parseObject(jsonObject.getAsJsonObject("orderBy"), ESearchOrderBy.class);
@@ -134,7 +122,6 @@ public class ESearchParams extends ObjectBase {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchParams");
-		kparams.add("searchOperator", this.searchOperator);
 		kparams.add("objectStatuses", this.objectStatuses);
 		kparams.add("objectId", this.objectId);
 		kparams.add("orderBy", this.orderBy);

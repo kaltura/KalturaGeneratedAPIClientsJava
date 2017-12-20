@@ -29,8 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CuePointType;
-import com.kaltura.client.enums.ESearchCuePointFieldName;
+import com.kaltura.client.types.ESearchCategoryOperator;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -42,62 +41,42 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchCuePointItem.Tokenizer.class)
-public class ESearchCuePointItem extends ESearchAbstractEntryItem {
+@MultiRequestBuilder.Tokenizer(ESearchCategoryParams.Tokenizer.class)
+public class ESearchCategoryParams extends ESearchParams {
 	
-	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
-		String fieldName();
-		String cuePointType();
+	public interface Tokenizer extends ESearchParams.Tokenizer {
+		ESearchCategoryOperator.Tokenizer searchOperator();
 	}
 
-	private ESearchCuePointFieldName fieldName;
-	private CuePointType cuePointType;
+	private ESearchCategoryOperator searchOperator;
 
-	// fieldName:
-	public ESearchCuePointFieldName getFieldName(){
-		return this.fieldName;
+	// searchOperator:
+	public ESearchCategoryOperator getSearchOperator(){
+		return this.searchOperator;
 	}
-	public void setFieldName(ESearchCuePointFieldName fieldName){
-		this.fieldName = fieldName;
-	}
-
-	public void fieldName(String multirequestToken){
-		setToken("fieldName", multirequestToken);
-	}
-
-	// cuePointType:
-	public CuePointType getCuePointType(){
-		return this.cuePointType;
-	}
-	public void setCuePointType(CuePointType cuePointType){
-		this.cuePointType = cuePointType;
-	}
-
-	public void cuePointType(String multirequestToken){
-		setToken("cuePointType", multirequestToken);
+	public void setSearchOperator(ESearchCategoryOperator searchOperator){
+		this.searchOperator = searchOperator;
 	}
 
 
-	public ESearchCuePointItem() {
+	public ESearchCategoryParams() {
 		super();
 	}
 
-	public ESearchCuePointItem(JsonObject jsonObject) throws APIException {
+	public ESearchCategoryParams(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		fieldName = ESearchCuePointFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
-		cuePointType = CuePointType.get(GsonParser.parseString(jsonObject.get("cuePointType")));
+		searchOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("searchOperator"), ESearchCategoryOperator.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchCuePointItem");
-		kparams.add("fieldName", this.fieldName);
-		kparams.add("cuePointType", this.cuePointType);
+		kparams.add("objectType", "KalturaESearchCategoryParams");
+		kparams.add("searchOperator", this.searchOperator);
 		return kparams;
 	}
 

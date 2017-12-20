@@ -42,9 +42,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchEntryItem.Tokenizer.class)
-public class ESearchEntryItem extends ESearchItem {
+public class ESearchEntryItem extends ESearchAbstractEntryItem {
 	
-	public interface Tokenizer extends ESearchItem.Tokenizer {
+	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
 		String fieldName();
 	}
 

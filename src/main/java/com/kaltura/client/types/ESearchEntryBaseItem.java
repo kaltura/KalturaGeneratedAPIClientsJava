@@ -29,9 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CuePointType;
-import com.kaltura.client.enums.ESearchCuePointFieldName;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -42,62 +39,25 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchCuePointItem.Tokenizer.class)
-public class ESearchCuePointItem extends ESearchAbstractEntryItem {
+@MultiRequestBuilder.Tokenizer(ESearchEntryBaseItem.Tokenizer.class)
+public abstract class ESearchEntryBaseItem extends ESearchBaseItem {
 	
-	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
-		String fieldName();
-		String cuePointType();
-	}
-
-	private ESearchCuePointFieldName fieldName;
-	private CuePointType cuePointType;
-
-	// fieldName:
-	public ESearchCuePointFieldName getFieldName(){
-		return this.fieldName;
-	}
-	public void setFieldName(ESearchCuePointFieldName fieldName){
-		this.fieldName = fieldName;
-	}
-
-	public void fieldName(String multirequestToken){
-		setToken("fieldName", multirequestToken);
-	}
-
-	// cuePointType:
-	public CuePointType getCuePointType(){
-		return this.cuePointType;
-	}
-	public void setCuePointType(CuePointType cuePointType){
-		this.cuePointType = cuePointType;
-	}
-
-	public void cuePointType(String multirequestToken){
-		setToken("cuePointType", multirequestToken);
+	public interface Tokenizer extends ESearchBaseItem.Tokenizer {
 	}
 
 
-	public ESearchCuePointItem() {
+
+	public ESearchEntryBaseItem() {
 		super();
 	}
 
-	public ESearchCuePointItem(JsonObject jsonObject) throws APIException {
+	public ESearchEntryBaseItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		fieldName = ESearchCuePointFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
-		cuePointType = CuePointType.get(GsonParser.parseString(jsonObject.get("cuePointType")));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchCuePointItem");
-		kparams.add("fieldName", this.fieldName);
-		kparams.add("cuePointType", this.cuePointType);
+		kparams.add("objectType", "KalturaESearchEntryBaseItem");
 		return kparams;
 	}
 

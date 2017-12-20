@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CuePointType;
-import com.kaltura.client.enums.ESearchCuePointFieldName;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -42,62 +40,62 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchCuePointItem.Tokenizer.class)
-public class ESearchCuePointItem extends ESearchAbstractEntryItem {
+@MultiRequestBuilder.Tokenizer(ESearchMetadataOrderByItem.Tokenizer.class)
+public class ESearchMetadataOrderByItem extends ESearchOrderByItem {
 	
-	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
-		String fieldName();
-		String cuePointType();
+	public interface Tokenizer extends ESearchOrderByItem.Tokenizer {
+		String xpath();
+		String metadataProfileId();
 	}
 
-	private ESearchCuePointFieldName fieldName;
-	private CuePointType cuePointType;
+	private String xpath;
+	private Integer metadataProfileId;
 
-	// fieldName:
-	public ESearchCuePointFieldName getFieldName(){
-		return this.fieldName;
+	// xpath:
+	public String getXpath(){
+		return this.xpath;
 	}
-	public void setFieldName(ESearchCuePointFieldName fieldName){
-		this.fieldName = fieldName;
-	}
-
-	public void fieldName(String multirequestToken){
-		setToken("fieldName", multirequestToken);
+	public void setXpath(String xpath){
+		this.xpath = xpath;
 	}
 
-	// cuePointType:
-	public CuePointType getCuePointType(){
-		return this.cuePointType;
-	}
-	public void setCuePointType(CuePointType cuePointType){
-		this.cuePointType = cuePointType;
+	public void xpath(String multirequestToken){
+		setToken("xpath", multirequestToken);
 	}
 
-	public void cuePointType(String multirequestToken){
-		setToken("cuePointType", multirequestToken);
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
 	}
 
 
-	public ESearchCuePointItem() {
+	public ESearchMetadataOrderByItem() {
 		super();
 	}
 
-	public ESearchCuePointItem(JsonObject jsonObject) throws APIException {
+	public ESearchMetadataOrderByItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		fieldName = ESearchCuePointFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
-		cuePointType = CuePointType.get(GsonParser.parseString(jsonObject.get("cuePointType")));
+		xpath = GsonParser.parseString(jsonObject.get("xpath"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchCuePointItem");
-		kparams.add("fieldName", this.fieldName);
-		kparams.add("cuePointType", this.cuePointType);
+		kparams.add("objectType", "KalturaESearchMetadataOrderByItem");
+		kparams.add("xpath", this.xpath);
+		kparams.add("metadataProfileId", this.metadataProfileId);
 		return kparams;
 	}
 

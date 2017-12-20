@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CuePointType;
-import com.kaltura.client.enums.ESearchCuePointFieldName;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -42,62 +40,46 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchCuePointItem.Tokenizer.class)
-public class ESearchCuePointItem extends ESearchAbstractEntryItem {
+@MultiRequestBuilder.Tokenizer(ESearchUserQuery.Tokenizer.class)
+public class ESearchUserQuery extends ESearchUserBaseItem {
 	
-	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
-		String fieldName();
-		String cuePointType();
+	public interface Tokenizer extends ESearchUserBaseItem.Tokenizer {
+		String eSearchQuery();
 	}
 
-	private ESearchCuePointFieldName fieldName;
-	private CuePointType cuePointType;
+	private String eSearchQuery;
 
-	// fieldName:
-	public ESearchCuePointFieldName getFieldName(){
-		return this.fieldName;
+	// eSearchQuery:
+	public String getESearchQuery(){
+		return this.eSearchQuery;
 	}
-	public void setFieldName(ESearchCuePointFieldName fieldName){
-		this.fieldName = fieldName;
-	}
-
-	public void fieldName(String multirequestToken){
-		setToken("fieldName", multirequestToken);
+	public void setESearchQuery(String eSearchQuery){
+		this.eSearchQuery = eSearchQuery;
 	}
 
-	// cuePointType:
-	public CuePointType getCuePointType(){
-		return this.cuePointType;
-	}
-	public void setCuePointType(CuePointType cuePointType){
-		this.cuePointType = cuePointType;
-	}
-
-	public void cuePointType(String multirequestToken){
-		setToken("cuePointType", multirequestToken);
+	public void eSearchQuery(String multirequestToken){
+		setToken("eSearchQuery", multirequestToken);
 	}
 
 
-	public ESearchCuePointItem() {
+	public ESearchUserQuery() {
 		super();
 	}
 
-	public ESearchCuePointItem(JsonObject jsonObject) throws APIException {
+	public ESearchUserQuery(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		fieldName = ESearchCuePointFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
-		cuePointType = CuePointType.get(GsonParser.parseString(jsonObject.get("cuePointType")));
+		eSearchQuery = GsonParser.parseString(jsonObject.get("eSearchQuery"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchCuePointItem");
-		kparams.add("fieldName", this.fieldName);
-		kparams.add("cuePointType", this.cuePointType);
+		kparams.add("objectType", "KalturaESearchUserQuery");
+		kparams.add("eSearchQuery", this.eSearchQuery);
 		return kparams;
 	}
 

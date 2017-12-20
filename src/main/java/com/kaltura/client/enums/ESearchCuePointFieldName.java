@@ -34,17 +34,17 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCuePointFieldName implements EnumAsString {
-	CUE_POINT_ANSWERS("cue_points.cue_point_answers"),
-	CUE_POINT_END_TIME("cue_points.cue_point_end_time"),
-	CUE_POINT_EXPLANATION("cue_points.cue_point_explanation"),
-	CUE_POINT_HINT("cue_points.cue_point_hint"),
-	CUE_POINT_ID("cue_points.cue_point_id"),
-	CUE_POINT_NAME("cue_points.cue_point_name"),
-	CUE_POINT_QUESTION("cue_points.cue_point_question"),
-	CUE_POINT_START_TIME("cue_points.cue_point_start_time"),
-	CUE_POINT_SUB_TYPE("cue_points.cue_point_sub_type"),
-	CUE_POINT_TAGS("cue_points.cue_point_tags"),
-	CUE_POINT_TEXT("cue_points.cue_point_text");
+	ANSWERS("answers"),
+	END_TIME("end_time"),
+	EXPLANATION("explanation"),
+	HINT("hint"),
+	ID("id"),
+	NAME("name"),
+	QUESTION("question"),
+	START_TIME("start_time"),
+	SUB_TYPE("sub_type"),
+	TAGS("tags"),
+	TEXT("text");
 
 	private String value;
 

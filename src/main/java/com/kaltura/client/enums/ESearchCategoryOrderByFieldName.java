@@ -34,8 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCategoryOrderByFieldName implements EnumAsString {
-	CATEGORY_CREATED_AT("created_at"),
-	CATEGORY_UPDATED_AT("updated_at");
+	CREATED_AT("created_at"),
+	UPDATED_AT("updated_at");
 
 	private String value;
 
