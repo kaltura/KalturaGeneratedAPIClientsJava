@@ -61,8 +61,6 @@ public class MediaEntry extends PlayableEntry {
 		String flavorParamsIds();
 		String isTrimDisabled();
 		RequestBuilder.ListTokenizer<StreamContainer.Tokenizer> streams();
-		String isSequenceEntry();
-		String sequenceEntryIds();
 	}
 
 	/**
@@ -114,14 +112,6 @@ public class MediaEntry extends PlayableEntry {
 	 * Array of streams that exists on the entry
 	 */
 	private List<StreamContainer> streams;
-	/**
-	 * True if the entry is a sequence entry
-	 */
-	private Boolean isSequenceEntry;
-	/**
-	 * The sequence entries of the entry
-	 */
-	private String sequenceEntryIds;
 
 	// mediaType:
 	public MediaType getMediaType(){
@@ -263,30 +253,6 @@ public class MediaEntry extends PlayableEntry {
 		this.streams = streams;
 	}
 
-	// isSequenceEntry:
-	public Boolean getIsSequenceEntry(){
-		return this.isSequenceEntry;
-	}
-	public void setIsSequenceEntry(Boolean isSequenceEntry){
-		this.isSequenceEntry = isSequenceEntry;
-	}
-
-	public void isSequenceEntry(String multirequestToken){
-		setToken("isSequenceEntry", multirequestToken);
-	}
-
-	// sequenceEntryIds:
-	public String getSequenceEntryIds(){
-		return this.sequenceEntryIds;
-	}
-	public void setSequenceEntryIds(String sequenceEntryIds){
-		this.sequenceEntryIds = sequenceEntryIds;
-	}
-
-	public void sequenceEntryIds(String multirequestToken){
-		setToken("sequenceEntryIds", multirequestToken);
-	}
-
 
 	public MediaEntry() {
 		super();
@@ -310,8 +276,6 @@ public class MediaEntry extends PlayableEntry {
 		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
 		isTrimDisabled = GsonParser.parseBoolean(jsonObject.get("isTrimDisabled"));
 		streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), StreamContainer.class);
-		isSequenceEntry = GsonParser.parseBoolean(jsonObject.get("isSequenceEntry"));
-		sequenceEntryIds = GsonParser.parseString(jsonObject.get("sequenceEntryIds"));
 
 	}
 
@@ -326,8 +290,6 @@ public class MediaEntry extends PlayableEntry {
 		kparams.add("creditUserName", this.creditUserName);
 		kparams.add("creditUrl", this.creditUrl);
 		kparams.add("streams", this.streams);
-		kparams.add("isSequenceEntry", this.isSequenceEntry);
-		kparams.add("sequenceEntryIds", this.sequenceEntryIds);
 		return kparams;
 	}
 
