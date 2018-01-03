@@ -26,90 +26,7 @@
 // @ignore
 // ===================================================================================================
 package com.kaltura.client;
-import com.kaltura.client.services.KalturaAccessControlProfileService;
-import com.kaltura.client.services.KalturaAccessControlService;
-import com.kaltura.client.services.KalturaAdminUserService;
-import com.kaltura.client.services.KalturaAnalyticsService;
-import com.kaltura.client.services.KalturaAppTokenService;
-import com.kaltura.client.services.KalturaBaseEntryService;
-import com.kaltura.client.services.KalturaBulkUploadService;
-import com.kaltura.client.services.KalturaCategoryEntryService;
-import com.kaltura.client.services.KalturaCategoryService;
-import com.kaltura.client.services.KalturaCategoryUserService;
-import com.kaltura.client.services.KalturaConversionProfileAssetParamsService;
-import com.kaltura.client.services.KalturaConversionProfileService;
-import com.kaltura.client.services.KalturaDataService;
-import com.kaltura.client.services.KalturaDeliveryProfileService;
-import com.kaltura.client.services.KalturaEmailIngestionProfileService;
-import com.kaltura.client.services.KalturaEntryServerNodeService;
-import com.kaltura.client.services.KalturaFileAssetService;
-import com.kaltura.client.services.KalturaFlavorAssetService;
-import com.kaltura.client.services.KalturaFlavorParamsOutputService;
-import com.kaltura.client.services.KalturaFlavorParamsService;
-import com.kaltura.client.services.KalturaGroupUserService;
-import com.kaltura.client.services.KalturaLiveChannelSegmentService;
-import com.kaltura.client.services.KalturaLiveChannelService;
-import com.kaltura.client.services.KalturaLiveReportsService;
-import com.kaltura.client.services.KalturaLiveStatsService;
-import com.kaltura.client.services.KalturaLiveStreamService;
-import com.kaltura.client.services.KalturaMediaInfoService;
-import com.kaltura.client.services.KalturaMediaService;
-import com.kaltura.client.services.KalturaMixingService;
-import com.kaltura.client.services.KalturaNotificationService;
-import com.kaltura.client.services.KalturaPartnerService;
-import com.kaltura.client.services.KalturaPermissionItemService;
-import com.kaltura.client.services.KalturaPermissionService;
-import com.kaltura.client.services.KalturaPlaylistService;
-import com.kaltura.client.services.KalturaReportService;
-import com.kaltura.client.services.KalturaResponseProfileService;
-import com.kaltura.client.services.KalturaSchemaService;
-import com.kaltura.client.services.KalturaSearchService;
-import com.kaltura.client.services.KalturaServerNodeService;
-import com.kaltura.client.services.KalturaSessionService;
-import com.kaltura.client.services.KalturaStatsService;
-import com.kaltura.client.services.KalturaStorageProfileService;
-import com.kaltura.client.services.KalturaSyndicationFeedService;
-import com.kaltura.client.services.KalturaSystemService;
-import com.kaltura.client.services.KalturaThumbAssetService;
-import com.kaltura.client.services.KalturaThumbParamsOutputService;
-import com.kaltura.client.services.KalturaThumbParamsService;
-import com.kaltura.client.services.KalturaUiConfService;
-import com.kaltura.client.services.KalturaUploadService;
-import com.kaltura.client.services.KalturaUploadTokenService;
-import com.kaltura.client.services.KalturaUserEntryService;
-import com.kaltura.client.services.KalturaUserRoleService;
-import com.kaltura.client.services.KalturaUserService;
-import com.kaltura.client.services.KalturaWidgetService;
-import com.kaltura.client.services.KalturaMetadataService;
-import com.kaltura.client.services.KalturaMetadataProfileService;
-import com.kaltura.client.services.KalturaDocumentsService;
-import com.kaltura.client.services.KalturaVirusScanProfileService;
-import com.kaltura.client.services.KalturaDistributionProfileService;
-import com.kaltura.client.services.KalturaEntryDistributionService;
-import com.kaltura.client.services.KalturaDistributionProviderService;
-import com.kaltura.client.services.KalturaGenericDistributionProviderService;
-import com.kaltura.client.services.KalturaGenericDistributionProviderActionService;
-import com.kaltura.client.services.KalturaCuePointService;
-import com.kaltura.client.services.KalturaAnnotationService;
-import com.kaltura.client.services.KalturaQuizService;
-import com.kaltura.client.services.KalturaShortLinkService;
-import com.kaltura.client.services.KalturaBulkService;
-import com.kaltura.client.services.KalturaDropFolderService;
-import com.kaltura.client.services.KalturaDropFolderFileService;
-import com.kaltura.client.services.KalturaCaptionAssetService;
-import com.kaltura.client.services.KalturaCaptionParamsService;
-import com.kaltura.client.services.KalturaCaptionAssetItemService;
-import com.kaltura.client.services.KalturaAttachmentAssetService;
-import com.kaltura.client.services.KalturaTagService;
-import com.kaltura.client.services.KalturaLikeService;
-import com.kaltura.client.services.KalturaVarConsoleService;
-import com.kaltura.client.services.KalturaEventNotificationTemplateService;
-import com.kaltura.client.services.KalturaExternalMediaService;
-import com.kaltura.client.services.KalturaScheduleEventService;
-import com.kaltura.client.services.KalturaScheduleResourceService;
-import com.kaltura.client.services.KalturaScheduleEventResourceService;
-import com.kaltura.client.services.KalturaScheduledTaskProfileService;
-import com.kaltura.client.services.KalturaIntegrationService;
+import com.kaltura.client.services.*;
 import com.kaltura.client.types.KalturaBaseResponseProfile;
 
 /**
@@ -335,6 +252,14 @@ public class KalturaClient extends KalturaClientBase {
 			this.liveStreamService = new KalturaLiveStreamService(this);
 	
 		return this.liveStreamService;
+	}
+
+	protected KalturaBeaconService beaconService;
+	public KalturaBeaconService getBeaconService() {
+		if(this.beaconService == null)
+			this.beaconService = new KalturaBeaconService(this);
+
+		return this.beaconService;
 	}
 	
 	protected KalturaMediaInfoService mediaInfoService;
