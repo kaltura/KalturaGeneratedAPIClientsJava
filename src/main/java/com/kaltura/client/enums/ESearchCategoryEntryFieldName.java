@@ -33,44 +33,16 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchEntryFieldName implements EnumAsString {
-	ACCESS_CONTROL_ID("access_control_id"),
-	ADMIN_TAGS("admin_tags"),
-	CONVERSION_PROFILE_ID("conversion_profile_id"),
-	CREATED_AT("created_at"),
-	CREATOR_ID("creator_kuser_id"),
-	CREDIT("credit"),
-	DESCRIPTION("description"),
-	END_DATE("end_date"),
-	ENTITLED_USER_EDIT("entitled_kusers_edit"),
-	ENTITLED_USER_PUBLISH("entitled_kusers_publish"),
-	ENTRY_TYPE("entry_type"),
-	EXTERNAL_SOURCE_TYPE("external_source_type"),
+public enum ESearchCategoryEntryFieldName implements EnumAsString {
+	ANCESTOR_ID("ancestor_id"),
+	ANCESTOR_NAME("ancestor_name"),
+	FULL_IDS("full_ids"),
 	ID("id"),
-	IS_LIVE("is_live"),
-	IS_QUIZ("is_quiz"),
-	USER_ID("kuser_id"),
-	LENGTH_IN_MSECS("length_in_msecs"),
-	MEDIA_TYPE("media_type"),
-	MODERATION_STATUS("moderation_status"),
-	NAME("name"),
-	PARENT_ENTRY_ID("parent_id"),
-	PUSH_PUBLISH("push_publish"),
-	RECORDED_ENTRY_ID("recorded_entry_id"),
-	REDIRECT_ENTRY_ID("redirect_entry_id"),
-	REFERENCE_ID("reference_id"),
-	SITE_URL("site_url"),
-	SOURCE_TYPE("source_type"),
-	START_DATE("start_date"),
-	TAGS("tags"),
-	TEMPLATE_ENTRY_ID("template_entry_id"),
-	UPDATED_AT("updated_at"),
-	VIEWS("views"),
-	VOTES("votes");
+	NAME("name");
 
 	private String value;
 
-	ESearchEntryFieldName(String value) {
+	ESearchCategoryEntryFieldName(String value) {
 		this.value = value;
 	}
 
@@ -83,19 +55,19 @@ public enum ESearchEntryFieldName implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ESearchEntryFieldName get(String value) {
+	public static ESearchCategoryEntryFieldName get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ESearchEntryFieldName defined values and compare the inner value with the given one:
-		for(ESearchEntryFieldName item: values()) {
+		// goes over ESearchCategoryEntryFieldName defined values and compare the inner value with the given one:
+		for(ESearchCategoryEntryFieldName item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchEntryFieldName.values().length > 0 ? ESearchEntryFieldName.values()[0]: null;
+		return ESearchCategoryEntryFieldName.values().length > 0 ? ESearchCategoryEntryFieldName.values()[0]: null;
    }
 }
