@@ -49,13 +49,11 @@ public abstract class ESearchParams extends ObjectBase {
 		String objectStatuses();
 		String objectId();
 		ESearchOrderBy.Tokenizer orderBy();
-		String useHighlight();
 	}
 
 	private String objectStatuses;
 	private String objectId;
 	private ESearchOrderBy orderBy;
-	private Boolean useHighlight;
 
 	// objectStatuses:
 	public String getObjectStatuses(){
@@ -89,18 +87,6 @@ public abstract class ESearchParams extends ObjectBase {
 		this.orderBy = orderBy;
 	}
 
-	// useHighlight:
-	public Boolean getUseHighlight(){
-		return this.useHighlight;
-	}
-	public void setUseHighlight(Boolean useHighlight){
-		this.useHighlight = useHighlight;
-	}
-
-	public void useHighlight(String multirequestToken){
-		setToken("useHighlight", multirequestToken);
-	}
-
 
 	public ESearchParams() {
 		super();
@@ -115,7 +101,6 @@ public abstract class ESearchParams extends ObjectBase {
 		objectStatuses = GsonParser.parseString(jsonObject.get("objectStatuses"));
 		objectId = GsonParser.parseString(jsonObject.get("objectId"));
 		orderBy = GsonParser.parseObject(jsonObject.getAsJsonObject("orderBy"), ESearchOrderBy.class);
-		useHighlight = GsonParser.parseBoolean(jsonObject.get("useHighlight"));
 
 	}
 
@@ -125,7 +110,6 @@ public abstract class ESearchParams extends ObjectBase {
 		kparams.add("objectStatuses", this.objectStatuses);
 		kparams.add("objectId", this.objectId);
 		kparams.add("orderBy", this.orderBy);
-		kparams.add("useHighlight", this.useHighlight);
 		return kparams;
 	}
 

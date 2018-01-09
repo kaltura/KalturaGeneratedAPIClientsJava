@@ -49,11 +49,13 @@ public abstract class ESearchAbstractEntryItem extends ESearchEntryBaseItem {
 		String searchTerm();
 		String itemType();
 		ESearchRange.Tokenizer range();
+		String addHighlight();
 	}
 
 	private String searchTerm;
 	private ESearchItemType itemType;
 	private ESearchRange range;
+	private Boolean addHighlight;
 
 	// searchTerm:
 	public String getSearchTerm(){
@@ -87,6 +89,18 @@ public abstract class ESearchAbstractEntryItem extends ESearchEntryBaseItem {
 		this.range = range;
 	}
 
+	// addHighlight:
+	public Boolean getAddHighlight(){
+		return this.addHighlight;
+	}
+	public void setAddHighlight(Boolean addHighlight){
+		this.addHighlight = addHighlight;
+	}
+
+	public void addHighlight(String multirequestToken){
+		setToken("addHighlight", multirequestToken);
+	}
+
 
 	public ESearchAbstractEntryItem() {
 		super();
@@ -101,6 +115,7 @@ public abstract class ESearchAbstractEntryItem extends ESearchEntryBaseItem {
 		searchTerm = GsonParser.parseString(jsonObject.get("searchTerm"));
 		itemType = ESearchItemType.get(GsonParser.parseInt(jsonObject.get("itemType")));
 		range = GsonParser.parseObject(jsonObject.getAsJsonObject("range"), ESearchRange.class);
+		addHighlight = GsonParser.parseBoolean(jsonObject.get("addHighlight"));
 
 	}
 
@@ -110,6 +125,7 @@ public abstract class ESearchAbstractEntryItem extends ESearchEntryBaseItem {
 		kparams.add("searchTerm", this.searchTerm);
 		kparams.add("itemType", this.itemType);
 		kparams.add("range", this.range);
+		kparams.add("addHighlight", this.addHighlight);
 		return kparams;
 	}
 
