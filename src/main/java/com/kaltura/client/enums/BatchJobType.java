@@ -37,7 +37,6 @@ public enum BatchJobType implements EnumAsString {
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
 	PARSE_CAPTION_ASSET("captionSearch.parseCaptionAsset"),
 	DISTRIBUTION_DELETE("contentDistribution.DistributionDelete"),
-	CONVERT("0"),
 	DISTRIBUTION_DISABLE("contentDistribution.DistributionDisable"),
 	DISTRIBUTION_ENABLE("contentDistribution.DistributionEnable"),
 	DISTRIBUTION_FETCH_REPORT("contentDistribution.DistributionFetchReport"),
@@ -45,6 +44,7 @@ public enum BatchJobType implements EnumAsString {
 	DISTRIBUTION_SYNC("contentDistribution.DistributionSync"),
 	DISTRIBUTION_UPDATE("contentDistribution.DistributionUpdate"),
 	DROP_FOLDER_CONTENT_PROCESSOR("dropFolder.DropFolderContentProcessor"),
+	CONVERT("0"),
 	DROP_FOLDER_WATCHER("dropFolder.DropFolderWatcher"),
 	EVENT_NOTIFICATION_HANDLER("eventNotification.EventNotificationHandler"),
 	INTEGRATION("integration.Integration"),
@@ -92,7 +92,8 @@ public enum BatchJobType implements EnumAsString {
 	RECALCULATE_CACHE("41"),
 	LIVE_TO_VOD("42"),
 	COPY_CAPTIONS("43"),
-	CHUNKED_ENCODE_JOB_SCHEDULER("44");
+	CHUNKED_ENCODE_JOB_SCHEDULER("44"),
+	SERVER_NODE_MONITOR("45");
 
 	private String value;
 

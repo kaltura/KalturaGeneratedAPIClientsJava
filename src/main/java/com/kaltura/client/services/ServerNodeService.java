@@ -51,6 +51,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param serverNodeId 
  * @param filter 
  * @param pager 
+ * @param serverNodeId 
  * @param hostName 
  * @param serverNode 
  * @param serverNodeId 
@@ -178,6 +179,27 @@ public class ServerNodeService {
 
     public static ListServerNodeBuilder list(ServerNodeFilter filter, FilterPager pager)  {
 		return new ListServerNodeBuilder(filter, pager);
+	}
+	
+	public static class MarkOfflineServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, MarkOfflineServerNodeBuilder> {
+		
+		public MarkOfflineServerNodeBuilder(String serverNodeId) {
+			super(ServerNode.class, "servernode", "markOffline");
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Mark server node offline
+	 * 
+	 * @param serverNodeId 
+	 */
+    public static MarkOfflineServerNodeBuilder markOffline(String serverNodeId)  {
+		return new MarkOfflineServerNodeBuilder(serverNodeId);
 	}
 	
 	public static class ReportStatusServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, ReportStatusServerNodeBuilder> {
