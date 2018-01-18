@@ -36,7 +36,9 @@ package com.kaltura.client.enums;
 public enum ESearchEntryOrderByFieldName implements EnumAsString {
 	CREATED_AT("created_at"),
 	END_DATE("end_date"),
+	LAST_PLAYED_AT("last_played_at"),
 	NAME("name"),
+	PLAYS("plays"),
 	START_DATE("start_date"),
 	UPDATED_AT("updated_at"),
 	VIEWS("views"),
