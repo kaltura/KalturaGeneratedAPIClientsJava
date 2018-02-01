@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchEntryMetadataItem.Tokenizer.class)
-public class ESearchEntryMetadataItem extends ESearchAbstractEntryItem {
+public class ESearchEntryMetadataItem extends ESearchEntryAbstractNestedItem {
 	
-	public interface Tokenizer extends ESearchAbstractEntryItem.Tokenizer {
+	public interface Tokenizer extends ESearchEntryAbstractNestedItem.Tokenizer {
 		String xpath();
 		String metadataProfileId();
 		String metadataFieldId();

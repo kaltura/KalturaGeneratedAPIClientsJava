@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,48 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchCuePointFieldName implements EnumAsString {
-	ANSWERS("answers"),
-	END_TIME("end_time"),
-	EXPLANATION("explanation"),
-	HINT("hint"),
-	ID("id"),
-	NAME("name"),
-	QUESTION("question"),
-	START_TIME("start_time"),
-	SUB_TYPE("sub_type"),
-	TAGS("tags"),
-	TEXT("text"),
-	TYPE("type");
 
-	private String value;
-
-	ESearchCuePointFieldName(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ESearchEntryNestedBaseItem.Tokenizer.class)
+public abstract class ESearchEntryNestedBaseItem extends ESearchEntryBaseNestedObject {
+	
+	public interface Tokenizer extends ESearchEntryBaseNestedObject.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public ESearchEntryNestedBaseItem() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public ESearchEntryNestedBaseItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static ESearchCuePointFieldName get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ESearchCuePointFieldName defined values and compare the inner value with the given one:
-		for(ESearchCuePointFieldName item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchCuePointFieldName.values().length > 0 ? ESearchCuePointFieldName.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaESearchEntryNestedBaseItem");
+		return kparams;
+	}
+
 }
+

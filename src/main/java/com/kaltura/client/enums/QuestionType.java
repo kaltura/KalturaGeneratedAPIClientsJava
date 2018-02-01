@@ -33,48 +33,43 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchCuePointFieldName implements EnumAsString {
-	ANSWERS("answers"),
-	END_TIME("end_time"),
-	EXPLANATION("explanation"),
-	HINT("hint"),
-	ID("id"),
-	NAME("name"),
-	QUESTION("question"),
-	START_TIME("start_time"),
-	SUB_TYPE("sub_type"),
-	TAGS("tags"),
-	TEXT("text"),
-	TYPE("type");
+public enum QuestionType implements EnumAsInt {
+	MULTIPLE_CHOICE_ANSWER(1),
+	TRUE_FALSE(2),
+	REFLECTION_POINT(3),
+	MULTIPLE_ANSWER_QUESTION(4),
+	FILL_IN_BLANK(5),
+	HOT_SPOT(6),
+	GO_TO(7);
 
-	private String value;
+	private int value;
 
-	ESearchCuePointFieldName(String value) {
+	QuestionType(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static ESearchCuePointFieldName get(String value) {
+	public static QuestionType get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ESearchCuePointFieldName defined values and compare the inner value with the given one:
-		for(ESearchCuePointFieldName item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over QuestionType defined values and compare the inner value with the given one:
+		for(QuestionType item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchCuePointFieldName.values().length > 0 ? ESearchCuePointFieldName.values()[0]: null;
+		return QuestionType.values().length > 0 ? QuestionType.values()[0]: null;
    }
 }

@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -48,12 +50,12 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		String id();
 		String name();
 		String text();
-		String tags();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> tags();
 		String startTime();
 		String endTime();
 		String subType();
 		String question();
-		String answers();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> answers();
 		String hint();
 		String explanation();
 		String assetId();
@@ -63,12 +65,12 @@ public class ESearchCuePointItemData extends ESearchItemData {
 	private String id;
 	private String name;
 	private String text;
-	private String tags;
+	private List<StringHolder> tags;
 	private String startTime;
 	private String endTime;
 	private String subType;
 	private String question;
-	private String answers;
+	private List<StringHolder> answers;
 	private String hint;
 	private String explanation;
 	private String assetId;
@@ -122,15 +124,11 @@ public class ESearchCuePointItemData extends ESearchItemData {
 	}
 
 	// tags:
-	public String getTags(){
+	public List<StringHolder> getTags(){
 		return this.tags;
 	}
-	public void setTags(String tags){
+	public void setTags(List<StringHolder> tags){
 		this.tags = tags;
-	}
-
-	public void tags(String multirequestToken){
-		setToken("tags", multirequestToken);
 	}
 
 	// startTime:
@@ -182,15 +180,11 @@ public class ESearchCuePointItemData extends ESearchItemData {
 	}
 
 	// answers:
-	public String getAnswers(){
+	public List<StringHolder> getAnswers(){
 		return this.answers;
 	}
-	public void setAnswers(String answers){
+	public void setAnswers(List<StringHolder> answers){
 		this.answers = answers;
-	}
-
-	public void answers(String multirequestToken){
-		setToken("answers", multirequestToken);
 	}
 
 	// hint:
@@ -244,12 +238,12 @@ public class ESearchCuePointItemData extends ESearchItemData {
 		id = GsonParser.parseString(jsonObject.get("id"));
 		name = GsonParser.parseString(jsonObject.get("name"));
 		text = GsonParser.parseString(jsonObject.get("text"));
-		tags = GsonParser.parseString(jsonObject.get("tags"));
+		tags = GsonParser.parseArray(jsonObject.getAsJsonArray("tags"), StringHolder.class);
 		startTime = GsonParser.parseString(jsonObject.get("startTime"));
 		endTime = GsonParser.parseString(jsonObject.get("endTime"));
 		subType = GsonParser.parseString(jsonObject.get("subType"));
 		question = GsonParser.parseString(jsonObject.get("question"));
-		answers = GsonParser.parseString(jsonObject.get("answers"));
+		answers = GsonParser.parseArray(jsonObject.getAsJsonArray("answers"), StringHolder.class);
 		hint = GsonParser.parseString(jsonObject.get("hint"));
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));
 		assetId = GsonParser.parseString(jsonObject.get("assetId"));

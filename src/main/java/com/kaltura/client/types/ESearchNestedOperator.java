@@ -29,9 +29,11 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.ESearchCuePointFieldName;
+import com.kaltura.client.enums.ESearchOperatorType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -41,46 +43,58 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchCuePointItem.Tokenizer.class)
-public class ESearchCuePointItem extends ESearchEntryAbstractNestedItem {
+@MultiRequestBuilder.Tokenizer(ESearchNestedOperator.Tokenizer.class)
+public class ESearchNestedOperator extends ESearchEntryNestedBaseItem {
 	
-	public interface Tokenizer extends ESearchEntryAbstractNestedItem.Tokenizer {
-		String fieldName();
+	public interface Tokenizer extends ESearchEntryNestedBaseItem.Tokenizer {
+		String operator();
+		RequestBuilder.ListTokenizer<ESearchEntryNestedBaseItem.Tokenizer> searchItems();
 	}
 
-	private ESearchCuePointFieldName fieldName;
+	private ESearchOperatorType operator;
+	private List<ESearchEntryNestedBaseItem> searchItems;
 
-	// fieldName:
-	public ESearchCuePointFieldName getFieldName(){
-		return this.fieldName;
+	// operator:
+	public ESearchOperatorType getOperator(){
+		return this.operator;
 	}
-	public void setFieldName(ESearchCuePointFieldName fieldName){
-		this.fieldName = fieldName;
-	}
-
-	public void fieldName(String multirequestToken){
-		setToken("fieldName", multirequestToken);
+	public void setOperator(ESearchOperatorType operator){
+		this.operator = operator;
 	}
 
+	public void operator(String multirequestToken){
+		setToken("operator", multirequestToken);
+	}
 
-	public ESearchCuePointItem() {
+	// searchItems:
+	public List<ESearchEntryNestedBaseItem> getSearchItems(){
+		return this.searchItems;
+	}
+	public void setSearchItems(List<ESearchEntryNestedBaseItem> searchItems){
+		this.searchItems = searchItems;
+	}
+
+
+	public ESearchNestedOperator() {
 		super();
 	}
 
-	public ESearchCuePointItem(JsonObject jsonObject) throws APIException {
+	public ESearchNestedOperator(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		fieldName = ESearchCuePointFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
+		operator = ESearchOperatorType.get(GsonParser.parseInt(jsonObject.get("operator")));
+		searchItems = GsonParser.parseArray(jsonObject.getAsJsonArray("searchItems"), ESearchEntryNestedBaseItem.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchCuePointItem");
-		kparams.add("fieldName", this.fieldName);
+		kparams.add("objectType", "KalturaESearchNestedOperator");
+		kparams.add("operator", this.operator);
+		kparams.add("searchItems", this.searchItems);
 		return kparams;
 	}
 
