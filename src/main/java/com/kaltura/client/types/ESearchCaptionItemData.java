@@ -49,6 +49,7 @@ public class ESearchCaptionItemData extends ESearchItemData {
 		String endsAt();
 		String language();
 		String captionAssetId();
+		String label();
 	}
 
 	private String line;
@@ -56,6 +57,7 @@ public class ESearchCaptionItemData extends ESearchItemData {
 	private Integer endsAt;
 	private String language;
 	private String captionAssetId;
+	private String label;
 
 	// line:
 	public String getLine(){
@@ -117,6 +119,18 @@ public class ESearchCaptionItemData extends ESearchItemData {
 		setToken("captionAssetId", multirequestToken);
 	}
 
+	// label:
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+
+	public void label(String multirequestToken){
+		setToken("label", multirequestToken);
+	}
+
 
 	public ESearchCaptionItemData() {
 		super();
@@ -133,6 +147,7 @@ public class ESearchCaptionItemData extends ESearchItemData {
 		endsAt = GsonParser.parseInt(jsonObject.get("endsAt"));
 		language = GsonParser.parseString(jsonObject.get("language"));
 		captionAssetId = GsonParser.parseString(jsonObject.get("captionAssetId"));
+		label = GsonParser.parseString(jsonObject.get("label"));
 
 	}
 
@@ -144,6 +159,7 @@ public class ESearchCaptionItemData extends ESearchItemData {
 		kparams.add("endsAt", this.endsAt);
 		kparams.add("language", this.language);
 		kparams.add("captionAssetId", this.captionAssetId);
+		kparams.add("label", this.label);
 		return kparams;
 	}
 

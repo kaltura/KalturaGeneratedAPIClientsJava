@@ -32,6 +32,7 @@ import com.kaltura.client.Files;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
+import com.kaltura.client.types.CsvAdditionalFieldInfo;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.SessionResponse;
 import com.kaltura.client.types.User;
@@ -43,6 +44,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -67,6 +69,9 @@ import java.io.InputStream;
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
  * @param password The user's password
+ * @param filter A filter used to exclude specific types of users
+ * @param metadataProfileId 
+ * @param additionalFields 
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
  * @param id 
@@ -89,6 +94,7 @@ import java.io.InputStream;
  * @param otp the user's one-time password
  * @param userId The user's unique identifier in the partner's system
  * @param email The user's email address (login email)
+ * @param id - the requested file id
  * @param hashKey The hash key used to identify the user (retrieved by email)
  * @param newPassword The new password to set for the user
  * @param userId The user's unique identifier in the partner's system
@@ -290,6 +296,40 @@ public class UserService {
 	 */
     public static EnableLoginUserBuilder enableLogin(String userId, String loginId, String password)  {
 		return new EnableLoginUserBuilder(userId, loginId, password);
+	}
+	
+	public static class ExportToCsvUserBuilder extends RequestBuilder<String, String, ExportToCsvUserBuilder> {
+		
+		public ExportToCsvUserBuilder(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields) {
+			super(String.class, "user", "exportToCsv");
+			params.add("filter", filter);
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("additionalFields", additionalFields);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+	}
+
+	public static ExportToCsvUserBuilder exportToCsv(UserFilter filter)  {
+		return exportToCsv(filter, Integer.MIN_VALUE);
+	}
+
+	public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId)  {
+		return exportToCsv(filter, metadataProfileId, null);
+	}
+
+	/**
+	 * add batch job that sends an email with a link to download an updated CSV that
+	  contains list of users
+	 * 
+	 * @param filter A filter used to exclude specific types of users
+	 * @param metadataProfileId 
+	 * @param additionalFields 
+	 */
+    public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
+		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields);
 	}
 	
 	public static class GetUserBuilder extends RequestBuilder<User, User.Tokenizer, GetUserBuilder> {
@@ -584,6 +624,27 @@ public class UserService {
 	 */
     public static ResetPasswordUserBuilder resetPassword(String email)  {
 		return new ResetPasswordUserBuilder(email);
+	}
+	
+	public static class ServeCsvUserBuilder extends RequestBuilder<String, String, ServeCsvUserBuilder> {
+		
+		public ServeCsvUserBuilder(String id) {
+			super(String.class, "user", "serveCsv");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
+
+	/**
+	 * Will serve a requested csv
+	 * 
+	 * @param id - the requested file id
+	 */
+    public static ServeCsvUserBuilder serveCsv(String id)  {
+		return new ServeCsvUserBuilder(id);
 	}
 	
 	public static class SetInitialPasswordUserBuilder extends NullRequestBuilder {

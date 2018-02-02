@@ -43,8 +43,8 @@ public enum BatchJobType implements EnumAsString {
 	DISTRIBUTION_SUBMIT("contentDistribution.DistributionSubmit"),
 	DISTRIBUTION_SYNC("contentDistribution.DistributionSync"),
 	DISTRIBUTION_UPDATE("contentDistribution.DistributionUpdate"),
-	DROP_FOLDER_CONTENT_PROCESSOR("dropFolder.DropFolderContentProcessor"),
 	CONVERT("0"),
+	DROP_FOLDER_CONTENT_PROCESSOR("dropFolder.DropFolderContentProcessor"),
 	DROP_FOLDER_WATCHER("dropFolder.DropFolderWatcher"),
 	EVENT_NOTIFICATION_HANDLER("eventNotification.EventNotificationHandler"),
 	INTEGRATION("integration.Integration"),
@@ -93,7 +93,8 @@ public enum BatchJobType implements EnumAsString {
 	LIVE_TO_VOD("42"),
 	COPY_CAPTIONS("43"),
 	CHUNKED_ENCODE_JOB_SCHEDULER("44"),
-	SERVER_NODE_MONITOR("45");
+	SERVER_NODE_MONITOR("45"),
+	USERS_CSV("46");
 
 	private String value;
 
