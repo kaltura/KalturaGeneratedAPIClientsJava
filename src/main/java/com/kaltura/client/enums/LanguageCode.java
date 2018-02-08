@@ -179,8 +179,6 @@ public enum LanguageCode implements EnumAsString {
 	YI("yi"),
 	YO("yo"),
 	ZH("zh"),
-	ZH_HANS("zh_s"),
-	ZH_HANT("zh_t"),
 	ZU("zu");
 
 	private String value;
