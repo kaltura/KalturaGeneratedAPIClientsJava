@@ -47,12 +47,12 @@ public class FacebookDistributionJobProviderData extends ConfigurableDistributio
 	
 	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
 		String videoAssetFilePath();
-		String thumbAssetFilePath();
+		String thumbAssetId();
 		RequestBuilder.ListTokenizer<FacebookCaptionDistributionInfo.Tokenizer> captionsInfo();
 	}
 
 	private String videoAssetFilePath;
-	private String thumbAssetFilePath;
+	private String thumbAssetId;
 	private List<FacebookCaptionDistributionInfo> captionsInfo;
 
 	// videoAssetFilePath:
@@ -67,16 +67,16 @@ public class FacebookDistributionJobProviderData extends ConfigurableDistributio
 		setToken("videoAssetFilePath", multirequestToken);
 	}
 
-	// thumbAssetFilePath:
-	public String getThumbAssetFilePath(){
-		return this.thumbAssetFilePath;
+	// thumbAssetId:
+	public String getThumbAssetId(){
+		return this.thumbAssetId;
 	}
-	public void setThumbAssetFilePath(String thumbAssetFilePath){
-		this.thumbAssetFilePath = thumbAssetFilePath;
+	public void setThumbAssetId(String thumbAssetId){
+		this.thumbAssetId = thumbAssetId;
 	}
 
-	public void thumbAssetFilePath(String multirequestToken){
-		setToken("thumbAssetFilePath", multirequestToken);
+	public void thumbAssetId(String multirequestToken){
+		setToken("thumbAssetId", multirequestToken);
 	}
 
 	// captionsInfo:
@@ -99,7 +99,7 @@ public class FacebookDistributionJobProviderData extends ConfigurableDistributio
 
 		// set members values:
 		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
-		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
+		thumbAssetId = GsonParser.parseString(jsonObject.get("thumbAssetId"));
 		captionsInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("captionsInfo"), FacebookCaptionDistributionInfo.class);
 
 	}
@@ -108,7 +108,7 @@ public class FacebookDistributionJobProviderData extends ConfigurableDistributio
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaFacebookDistributionJobProviderData");
 		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
-		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
+		kparams.add("thumbAssetId", this.thumbAssetId);
 		kparams.add("captionsInfo", this.captionsInfo);
 		return kparams;
 	}
