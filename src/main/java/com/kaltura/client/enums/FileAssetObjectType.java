@@ -34,7 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileAssetObjectType implements EnumAsString {
-	UI_CONF("2");
+	UI_CONF("2"),
+	ENTRY("3");
 
 	private String value;
 
