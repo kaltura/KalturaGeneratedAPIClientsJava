@@ -56,6 +56,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		String statusEqual();
 		String statusIn();
 		String serverTypeEqual();
+		String serverTypeIn();
 	}
 
 	private String entryIdEqual;
@@ -68,6 +69,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	private EntryServerNodeStatus statusEqual;
 	private String statusIn;
 	private EntryServerNodeType serverTypeEqual;
+	private String serverTypeIn;
 
 	// entryIdEqual:
 	public String getEntryIdEqual(){
@@ -189,6 +191,18 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		setToken("serverTypeEqual", multirequestToken);
 	}
 
+	// serverTypeIn:
+	public String getServerTypeIn(){
+		return this.serverTypeIn;
+	}
+	public void setServerTypeIn(String serverTypeIn){
+		this.serverTypeIn = serverTypeIn;
+	}
+
+	public void serverTypeIn(String multirequestToken){
+		setToken("serverTypeIn", multirequestToken);
+	}
+
 
 	public EntryServerNodeBaseFilter() {
 		super();
@@ -210,6 +224,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		statusEqual = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
 		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 		serverTypeEqual = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("serverTypeEqual")));
+		serverTypeIn = GsonParser.parseString(jsonObject.get("serverTypeIn"));
 
 	}
 
@@ -226,6 +241,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		kparams.add("statusEqual", this.statusEqual);
 		kparams.add("statusIn", this.statusIn);
 		kparams.add("serverTypeEqual", this.serverTypeEqual);
+		kparams.add("serverTypeIn", this.serverTypeIn);
 		return kparams;
 	}
 
