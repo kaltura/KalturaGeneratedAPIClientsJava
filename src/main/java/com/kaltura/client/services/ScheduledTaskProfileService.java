@@ -34,6 +34,7 @@ import com.kaltura.client.types.ScheduledTaskProfileFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -53,6 +54,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param pager 
  * @param scheduledTaskProfileId 
  * @param maxResults 
+ * @param requestId 
  * @param id 
  * @param scheduledTaskProfile 
  */
@@ -183,6 +185,27 @@ public class ScheduledTaskProfileService {
 
     public static RequestDryRunScheduledTaskProfileBuilder requestDryRun(int scheduledTaskProfileId, int maxResults)  {
 		return new RequestDryRunScheduledTaskProfileBuilder(scheduledTaskProfileId, maxResults);
+	}
+	
+	public static class ServeDryRunResultsScheduledTaskProfileBuilder extends ServeRequestBuilder {
+		
+		public ServeDryRunResultsScheduledTaskProfileBuilder(int requestId) {
+			super("scheduledtask_scheduledtaskprofile", "serveDryRunResults");
+			params.add("requestId", requestId);
+		}
+		
+		public void requestId(String multirequestToken) {
+			params.add("requestId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Serves dry run results by its request id
+	 * 
+	 * @param requestId 
+	 */
+    public static ServeDryRunResultsScheduledTaskProfileBuilder serveDryRunResults(int requestId)  {
+		return new ServeDryRunResultsScheduledTaskProfileBuilder(requestId);
 	}
 	
 	public static class UpdateScheduledTaskProfileBuilder extends RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.Tokenizer, UpdateScheduledTaskProfileBuilder> {
