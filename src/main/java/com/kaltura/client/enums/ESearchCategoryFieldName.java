@@ -44,6 +44,7 @@ public enum ESearchCategoryFieldName implements EnumAsString {
 	ENTRIES_COUNT("entries_count"),
 	FULL_IDS("full_ids"),
 	FULL_NAME("full_name"),
+	ID("id"),
 	INHERITANCE_TYPE("inheritance_type"),
 	INHERITED_PARENT_ID("inherited_parent_id"),
 	MEMBERS_COUNT("members_count"),

@@ -312,6 +312,10 @@ public class UserService {
 		}
 	}
 
+	public static ExportToCsvUserBuilder exportToCsv()  {
+		return exportToCsv(null);
+	}
+
 	public static ExportToCsvUserBuilder exportToCsv(UserFilter filter)  {
 		return exportToCsv(filter, Integer.MIN_VALUE);
 	}
