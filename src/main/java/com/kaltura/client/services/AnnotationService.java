@@ -66,6 +66,9 @@ import java.io.InputStream;
  * @param id 
  * @param annotation 
  * @param id 
+ * @param startTime 
+ * @param endTime 
+ * @param id 
  * @param status 
  */
 public class AnnotationService {
@@ -283,6 +286,36 @@ public class AnnotationService {
 	 */
     public static UpdateAnnotationBuilder update(String id, CuePoint annotation)  {
 		return new UpdateAnnotationBuilder(id, annotation);
+	}
+	
+	public static class UpdateCuePointsTimesAnnotationBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, UpdateCuePointsTimesAnnotationBuilder> {
+		
+		public UpdateCuePointsTimesAnnotationBuilder(String id, int startTime, int endTime) {
+			super(CuePoint.class, "annotation_annotation", "updateCuePointsTimes");
+			params.add("id", id);
+			params.add("startTime", startTime);
+			params.add("endTime", endTime);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void startTime(String multirequestToken) {
+			params.add("startTime", multirequestToken);
+		}
+		
+		public void endTime(String multirequestToken) {
+			params.add("endTime", multirequestToken);
+		}
+	}
+
+	public static UpdateCuePointsTimesAnnotationBuilder updateCuePointsTimes(String id, int startTime)  {
+		return updateCuePointsTimes(id, startTime, Integer.MIN_VALUE);
+	}
+
+    public static UpdateCuePointsTimesAnnotationBuilder updateCuePointsTimes(String id, int startTime, int endTime)  {
+		return new UpdateCuePointsTimesAnnotationBuilder(id, startTime, endTime);
 	}
 	
 	public static class UpdateStatusAnnotationBuilder extends NullRequestBuilder {

@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -40,90 +42,86 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 /**
- * Clip operation attributes
+ * Created by IntelliJ IDEA.  User: roie.beck  Date: 3/12/2018  Time: 11:20 AM  /
  */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ClipAttributes.Tokenizer.class)
-public class ClipAttributes extends OperationAttributes {
+@MultiRequestBuilder.Tokenizer(ClipConcatJobData.Tokenizer.class)
+public class ClipConcatJobData extends JobData {
 	
-	public interface Tokenizer extends OperationAttributes.Tokenizer {
-		String offset();
-		String duration();
-		String globalOffsetInDestination();
+	public interface Tokenizer extends JobData.Tokenizer {
+		String partnerId();
+		String priority();
+		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> operationAttributes();
 	}
 
 	/**
-	 * Offset in milliseconds
+	 * $partnerId
 	 */
-	private Integer offset;
+	private Integer partnerId;
 	/**
-	 * Duration in milliseconds
+	 * $priority
 	 */
-	private Integer duration;
+	private Integer priority;
 	/**
-	 * global Offset In Destination in milliseconds
+	 * clip operations
 	 */
-	private Integer globalOffsetInDestination;
+	private List<ObjectBase> operationAttributes;
 
-	// offset:
-	public Integer getOffset(){
-		return this.offset;
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
 	}
-	public void setOffset(Integer offset){
-		this.offset = offset;
-	}
-
-	public void offset(String multirequestToken){
-		setToken("offset", multirequestToken);
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
 	}
 
-	// duration:
-	public Integer getDuration(){
-		return this.duration;
-	}
-	public void setDuration(Integer duration){
-		this.duration = duration;
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
 	}
 
-	public void duration(String multirequestToken){
-		setToken("duration", multirequestToken);
+	// priority:
+	public Integer getPriority(){
+		return this.priority;
+	}
+	public void setPriority(Integer priority){
+		this.priority = priority;
 	}
 
-	// globalOffsetInDestination:
-	public Integer getGlobalOffsetInDestination(){
-		return this.globalOffsetInDestination;
-	}
-	public void setGlobalOffsetInDestination(Integer globalOffsetInDestination){
-		this.globalOffsetInDestination = globalOffsetInDestination;
+	public void priority(String multirequestToken){
+		setToken("priority", multirequestToken);
 	}
 
-	public void globalOffsetInDestination(String multirequestToken){
-		setToken("globalOffsetInDestination", multirequestToken);
+	// operationAttributes:
+	public List<ObjectBase> getOperationAttributes(){
+		return this.operationAttributes;
+	}
+	public void setOperationAttributes(List<ObjectBase> operationAttributes){
+		this.operationAttributes = operationAttributes;
 	}
 
 
-	public ClipAttributes() {
+	public ClipConcatJobData() {
 		super();
 	}
 
-	public ClipAttributes(JsonObject jsonObject) throws APIException {
+	public ClipConcatJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		offset = GsonParser.parseInt(jsonObject.get("offset"));
-		duration = GsonParser.parseInt(jsonObject.get("duration"));
-		globalOffsetInDestination = GsonParser.parseInt(jsonObject.get("globalOffsetInDestination"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		priority = GsonParser.parseInt(jsonObject.get("priority"));
+		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), ObjectBase.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaClipAttributes");
-		kparams.add("offset", this.offset);
-		kparams.add("duration", this.duration);
-		kparams.add("globalOffsetInDestination", this.globalOffsetInDestination);
+		kparams.add("objectType", "KalturaClipConcatJobData");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("priority", this.priority);
+		kparams.add("operationAttributes", this.operationAttributes);
 		return kparams;
 	}
 

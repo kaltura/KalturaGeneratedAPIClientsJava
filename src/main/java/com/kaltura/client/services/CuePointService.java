@@ -65,6 +65,9 @@ import java.io.InputStream;
  * @param id 
  * @param cuePoint 
  * @param id 
+ * @param startTime 
+ * @param endTime 
+ * @param id 
  * @param status 
  */
 public class CuePointService {
@@ -282,6 +285,36 @@ public class CuePointService {
 	 */
     public static UpdateCuePointBuilder update(String id, CuePoint cuePoint)  {
 		return new UpdateCuePointBuilder(id, cuePoint);
+	}
+	
+	public static class UpdateCuePointsTimesCuePointBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, UpdateCuePointsTimesCuePointBuilder> {
+		
+		public UpdateCuePointsTimesCuePointBuilder(String id, int startTime, int endTime) {
+			super(CuePoint.class, "cuepoint_cuepoint", "updateCuePointsTimes");
+			params.add("id", id);
+			params.add("startTime", startTime);
+			params.add("endTime", endTime);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void startTime(String multirequestToken) {
+			params.add("startTime", multirequestToken);
+		}
+		
+		public void endTime(String multirequestToken) {
+			params.add("endTime", multirequestToken);
+		}
+	}
+
+	public static UpdateCuePointsTimesCuePointBuilder updateCuePointsTimes(String id, int startTime)  {
+		return updateCuePointsTimes(id, startTime, Integer.MIN_VALUE);
+	}
+
+    public static UpdateCuePointsTimesCuePointBuilder updateCuePointsTimes(String id, int startTime, int endTime)  {
+		return new UpdateCuePointsTimesCuePointBuilder(id, startTime, endTime);
 	}
 	
 	public static class UpdateStatusCuePointBuilder extends NullRequestBuilder {
