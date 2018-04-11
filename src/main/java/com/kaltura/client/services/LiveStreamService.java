@@ -470,10 +470,10 @@ public class LiveStreamService {
 		return new ListLiveStreamBuilder(filter, pager);
 	}
 	
-	public static class RegenerateStreamTokenLiveStreamBuilder extends NullRequestBuilder {
+	public static class RegenerateStreamTokenLiveStreamBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, RegenerateStreamTokenLiveStreamBuilder> {
 		
 		public RegenerateStreamTokenLiveStreamBuilder(String entryId) {
-			super("livestream", "regenerateStreamToken");
+			super(LiveEntry.class, "livestream", "regenerateStreamToken");
 			params.add("entryId", entryId);
 		}
 		
