@@ -52,6 +52,7 @@ public class WebexDropFolder extends DropFolder {
 		String webexHostIdMetadataFieldName();
 		String deleteFromRecycleBin();
 		String webexServiceType();
+		String webexSiteName();
 		String deleteFromTimestamp();
 	}
 
@@ -63,6 +64,7 @@ public class WebexDropFolder extends DropFolder {
 	private String webexHostIdMetadataFieldName;
 	private Boolean deleteFromRecycleBin;
 	private String webexServiceType;
+	private String webexSiteName;
 	private Integer deleteFromTimestamp;
 
 	// webexUserId:
@@ -161,6 +163,18 @@ public class WebexDropFolder extends DropFolder {
 		setToken("webexServiceType", multirequestToken);
 	}
 
+	// webexSiteName:
+	public String getWebexSiteName(){
+		return this.webexSiteName;
+	}
+	public void setWebexSiteName(String webexSiteName){
+		this.webexSiteName = webexSiteName;
+	}
+
+	public void webexSiteName(String multirequestToken){
+		setToken("webexSiteName", multirequestToken);
+	}
+
 	// deleteFromTimestamp:
 	public Integer getDeleteFromTimestamp(){
 		return this.deleteFromTimestamp;
@@ -192,6 +206,7 @@ public class WebexDropFolder extends DropFolder {
 		webexHostIdMetadataFieldName = GsonParser.parseString(jsonObject.get("webexHostIdMetadataFieldName"));
 		deleteFromRecycleBin = GsonParser.parseBoolean(jsonObject.get("deleteFromRecycleBin"));
 		webexServiceType = GsonParser.parseString(jsonObject.get("webexServiceType"));
+		webexSiteName = GsonParser.parseString(jsonObject.get("webexSiteName"));
 		deleteFromTimestamp = GsonParser.parseInt(jsonObject.get("deleteFromTimestamp"));
 
 	}
@@ -207,6 +222,7 @@ public class WebexDropFolder extends DropFolder {
 		kparams.add("webexHostIdMetadataFieldName", this.webexHostIdMetadataFieldName);
 		kparams.add("deleteFromRecycleBin", this.deleteFromRecycleBin);
 		kparams.add("webexServiceType", this.webexServiceType);
+		kparams.add("webexSiteName", this.webexSiteName);
 		kparams.add("deleteFromTimestamp", this.deleteFromTimestamp);
 		return kparams;
 	}
