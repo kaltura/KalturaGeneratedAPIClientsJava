@@ -33,37 +33,12 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchCategoryFieldName implements EnumAsString {
-	CONTRIBUTION_POLICY("contribution_policy"),
-	CREATED_AT("created_at"),
-	DEPTH("depth"),
-	DESCRIPTION("description"),
-	DIRECT_ENTRIES_COUNT("direct_entries_count"),
-	DIRECT_SUB_CATEGORIES_COUNT("direct_sub_categories_count"),
-	DISPLAY_IN_SEARCH("display_in_search"),
-	ENTRIES_COUNT("entries_count"),
-	FULL_IDS("full_ids"),
-	FULL_NAME("full_name"),
-	ID("id"),
-	INHERITANCE_TYPE("inheritance_type"),
-	INHERITED_PARENT_ID("inherited_parent_id"),
-	MEMBERS_COUNT("members_count"),
-	MODERATION("moderation"),
-	NAME("name"),
-	PARENT_ID("parent_id"),
-	PENDING_ENTRIES_COUNT("pending_entries_count"),
-	PENDING_MEMBERS_COUNT("pending_members_count"),
-	PRIVACY("privacy"),
-	PRIVACY_CONTEXT("privacy_context"),
-	PRIVACY_CONTEXTS("privacy_contexts"),
-	REFERENCE_ID("reference_id"),
-	TAGS("tags"),
-	UPDATED_AT("updated_at"),
+public enum ESearchCategoryUserFieldName implements EnumAsString {
 	USER_ID("user_id");
 
 	private String value;
 
-	ESearchCategoryFieldName(String value) {
+	ESearchCategoryUserFieldName(String value) {
 		this.value = value;
 	}
 
@@ -76,19 +51,19 @@ public enum ESearchCategoryFieldName implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ESearchCategoryFieldName get(String value) {
+	public static ESearchCategoryUserFieldName get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ESearchCategoryFieldName defined values and compare the inner value with the given one:
-		for(ESearchCategoryFieldName item: values()) {
+		// goes over ESearchCategoryUserFieldName defined values and compare the inner value with the given one:
+		for(ESearchCategoryUserFieldName item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchCategoryFieldName.values().length > 0 ? ESearchCategoryFieldName.values()[0]: null;
+		return ESearchCategoryUserFieldName.values().length > 0 ? ESearchCategoryUserFieldName.values()[0]: null;
    }
 }
