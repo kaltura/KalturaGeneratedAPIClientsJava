@@ -29,10 +29,10 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EffectType;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -41,84 +41,69 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
+/**
+ * Effects attributes
+ */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ClipConcatJobData.Tokenizer.class)
-public class ClipConcatJobData extends JobData {
+@MultiRequestBuilder.Tokenizer(Effect.Tokenizer.class)
+public class Effect extends ObjectBase {
 	
-	public interface Tokenizer extends JobData.Tokenizer {
-		String partnerId();
-		String priority();
-		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> operationAttributes();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String effectType();
+		String value();
 	}
 
+	private EffectType effectType;
 	/**
-	 * $partnerId
+	 * value
 	 */
-	private Integer partnerId;
-	/**
-	 * $priority
-	 */
-	private Integer priority;
-	/**
-	 * clip operations
-	 */
-	private List<ObjectBase> operationAttributes;
+	private String value;
 
-	// partnerId:
-	public Integer getPartnerId(){
-		return this.partnerId;
+	// effectType:
+	public EffectType getEffectType(){
+		return this.effectType;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
+	public void setEffectType(EffectType effectType){
+		this.effectType = effectType;
 	}
 
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
+	public void effectType(String multirequestToken){
+		setToken("effectType", multirequestToken);
 	}
 
-	// priority:
-	public Integer getPriority(){
-		return this.priority;
+	// value:
+	public String getValue(){
+		return this.value;
 	}
-	public void setPriority(Integer priority){
-		this.priority = priority;
-	}
-
-	public void priority(String multirequestToken){
-		setToken("priority", multirequestToken);
+	public void setValue(String value){
+		this.value = value;
 	}
 
-	// operationAttributes:
-	public List<ObjectBase> getOperationAttributes(){
-		return this.operationAttributes;
-	}
-	public void setOperationAttributes(List<ObjectBase> operationAttributes){
-		this.operationAttributes = operationAttributes;
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
 	}
 
 
-	public ClipConcatJobData() {
+	public Effect() {
 		super();
 	}
 
-	public ClipConcatJobData(JsonObject jsonObject) throws APIException {
+	public Effect(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		priority = GsonParser.parseInt(jsonObject.get("priority"));
-		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), ObjectBase.class);
+		effectType = EffectType.get(GsonParser.parseInt(jsonObject.get("effectType")));
+		value = GsonParser.parseString(jsonObject.get("value"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaClipConcatJobData");
-		kparams.add("partnerId", this.partnerId);
-		kparams.add("priority", this.priority);
-		kparams.add("operationAttributes", this.operationAttributes);
+		kparams.add("objectType", "KalturaEffect");
+		kparams.add("effectType", this.effectType);
+		kparams.add("value", this.value);
 		return kparams;
 	}
 
