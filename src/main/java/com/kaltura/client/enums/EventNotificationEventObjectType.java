@@ -80,7 +80,8 @@ public enum EventNotificationEventObjectType implements EnumAsString {
 	WIDGET("36"),
 	CATEGORYENTRY("37"),
 	LIVE_STREAM("38"),
-	SERVER_NODE("39");
+	SERVER_NODE("39"),
+	ENTRY_SERVER_NODE("40");
 
 	private String value;
 

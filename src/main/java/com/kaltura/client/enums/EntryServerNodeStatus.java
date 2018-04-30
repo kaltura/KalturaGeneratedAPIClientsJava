@@ -34,11 +34,17 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryServerNodeStatus implements EnumAsInt {
+	ERROR(-1),
 	STOPPED(0),
 	PLAYABLE(1),
 	BROADCASTING(2),
 	AUTHENTICATED(3),
-	MARKED_FOR_DELETION(4);
+	MARKED_FOR_DELETION(4),
+	TASK_PENDING(5),
+	TASK_QUEUED(6),
+	TASK_PROCESSING(7),
+	TASK_UPLOADING(8),
+	TASK_FINISHED(9);
 
 	private int value;
 

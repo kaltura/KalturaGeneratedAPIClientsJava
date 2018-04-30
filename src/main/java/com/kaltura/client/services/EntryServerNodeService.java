@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.types.EntryServerNode;
 import com.kaltura.client.types.EntryServerNodeFilter;
 import com.kaltura.client.types.FilterPager;
@@ -49,6 +50,8 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param pager 
  * @param id 
  * @param entryServerNode 
+ * @param id 
+ * @param status 
  * @param id entry server node id
  */
 public class EntryServerNodeService {
@@ -105,6 +108,27 @@ public class EntryServerNodeService {
 
     public static UpdateEntryServerNodeBuilder update(int id, EntryServerNode entryServerNode)  {
 		return new UpdateEntryServerNodeBuilder(id, entryServerNode);
+	}
+	
+	public static class UpdateStatusEntryServerNodeBuilder extends RequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, UpdateStatusEntryServerNodeBuilder> {
+		
+		public UpdateStatusEntryServerNodeBuilder(String id, EntryServerNodeStatus status) {
+			super(EntryServerNode.class, "entryservernode", "updateStatus");
+			params.add("id", id);
+			params.add("status", status);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
+
+    public static UpdateStatusEntryServerNodeBuilder updateStatus(String id, EntryServerNodeStatus status)  {
+		return new UpdateStatusEntryServerNodeBuilder(id, status);
 	}
 	
 	public static class ValidateRegisteredEntryServerNodeEntryServerNodeBuilder extends NullRequestBuilder {
