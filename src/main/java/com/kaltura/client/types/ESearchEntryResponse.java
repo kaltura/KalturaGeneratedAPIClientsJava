@@ -25,10 +25,14 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.utils.request;
+package com.kaltura.client.types;
 
+import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.BaseResponseProfile;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -37,59 +41,44 @@ import com.kaltura.client.types.BaseResponseProfile;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-public abstract class RequestBuilderData<SelfType> {
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ESearchEntryResponse.Tokenizer.class)
+public class ESearchEntryResponse extends ESearchResponse {
 	
-	protected Params params = new Params();
-	
-	protected RequestBuilderData() {
+	public interface Tokenizer extends ESearchResponse.Tokenizer {
+		RequestBuilder.ListTokenizer<ESearchEntryResult.Tokenizer> objects();
 	}
-	
-	/**
-	 * @param clientTag 
-	 */
-	public SelfType setClientTag(String clientTag){
-		params.add("clientTag", clientTag);
-		return (SelfType) this;
+
+	private List<ESearchEntryResult> objects;
+
+	// objects:
+	public List<ESearchEntryResult> getObjects(){
+		return this.objects;
 	}
-	
-	/**
-	 * @param apiVersion 
-	 */
-	public SelfType setApiVersion(String apiVersion){
-		params.add("apiVersion", apiVersion);
-		return (SelfType) this;
+	public void setObjects(List<ESearchEntryResult> objects){
+		this.objects = objects;
 	}
-	
-	/**
-	 * @param partnerId Impersonated partner id
-	 */
-	public SelfType setPartnerId(Integer partnerId){
-		params.add("partnerId", partnerId);
-		return (SelfType) this;
+
+
+	public ESearchEntryResponse() {
+		super();
 	}
-	
-	/**
-	 * @param ks Kaltura API session
-	 */
-	public SelfType setKs(String ks){
-		params.add("ks", ks);
-		return (SelfType) this;
+
+	public ESearchEntryResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchEntryResult.class);
+
 	}
-	
-	/**
-	 * @param sessionId Kaltura API session
-	 */
-	public SelfType setSessionId(String sessionId){
-		params.add("ks", sessionId);
-		return (SelfType) this;
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaESearchEntryResponse");
+		return kparams;
 	}
-	
-	/**
-	 * @param responseProfile Response profile - this attribute will be automatically unset after every API call.
-	 */
-	public SelfType setResponseProfile(BaseResponseProfile responseProfile){
-		params.add("responseProfile", responseProfile);
-		return (SelfType) this;
-	}
-	
+
 }
+
