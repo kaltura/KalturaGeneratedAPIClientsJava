@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.GroupUser;
 import com.kaltura.client.types.GroupUserFilter;
@@ -49,6 +50,8 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param groupId 
  * @param filter 
  * @param pager 
+ * @param userId 
+ * @param groupIds 
  */
 public class GroupUserService {
 	
@@ -121,5 +124,32 @@ public class GroupUserService {
 	 */
     public static ListGroupUserBuilder list(GroupUserFilter filter, FilterPager pager)  {
 		return new ListGroupUserBuilder(filter, pager);
+	}
+	
+	public static class SyncGroupUserBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, SyncGroupUserBuilder> {
+		
+		public SyncGroupUserBuilder(String userId, String groupIds) {
+			super(BulkUpload.class, "groupuser", "sync");
+			params.add("userId", userId);
+			params.add("groupIds", groupIds);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void groupIds(String multirequestToken) {
+			params.add("groupIds", multirequestToken);
+		}
+	}
+
+	/**
+	 * sync by userId and groupIds
+	 * 
+	 * @param userId 
+	 * @param groupIds 
+	 */
+    public static SyncGroupUserBuilder sync(String userId, String groupIds)  {
+		return new SyncGroupUserBuilder(userId, groupIds);
 	}
 }
