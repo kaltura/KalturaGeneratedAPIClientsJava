@@ -54,7 +54,7 @@ import java.util.List;
  */
 
 /**
- * Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
+ * Manage partner users on Kaltura's side  The userId in kaltura is the unique ID
   in the partner's system, and the [partnerId,Id] couple are unique key in
   kaltura's DB
  * 
@@ -325,8 +325,8 @@ public class UserService {
 	}
 
 	/**
-	 * add batch job that sends an email with a link to download an updated CSV that
-	  contains list of users
+	 * Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of users
 	 * 
 	 * @param filter A filter used to exclude specific types of users
 	 * @param metadataProfileId 
@@ -511,8 +511,8 @@ public class UserService {
 	}
 
 	/**
-	 * Loges a user to the destination account as long the ks user id exists in the
-	  desc acount and the loginData id match for both accounts
+	 * Logs a user to the destination account provided the KS' user ID is associated
+	  with the destination account and the loginData ID matches
 	 * 
 	 * @param requestedPartnerId 
 	 */
@@ -643,7 +643,7 @@ public class UserService {
 	}
 
 	/**
-	 * Will serve a requested csv
+	 * Will serve a requested CSV
 	 * 
 	 * @param id - the requested file id
 	 */
@@ -669,7 +669,7 @@ public class UserService {
 	}
 
 	/**
-	 * Set initial users password
+	 * Set initial user password
 	 * 
 	 * @param hashKey The hash key used to identify the user (retrieved by email)
 	 * @param newPassword The new password to set for the user
