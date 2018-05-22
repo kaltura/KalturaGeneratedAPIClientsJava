@@ -52,6 +52,8 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param pager 
  * @param userId 
  * @param groupIds 
+ * @param removeFromExistingGroups 
+ * @param createNewGroups 
  */
 public class GroupUserService {
 	
@@ -128,10 +130,12 @@ public class GroupUserService {
 	
 	public static class SyncGroupUserBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, SyncGroupUserBuilder> {
 		
-		public SyncGroupUserBuilder(String userId, String groupIds) {
+		public SyncGroupUserBuilder(String userId, String groupIds, boolean removeFromExistingGroups, boolean createNewGroups) {
 			super(BulkUpload.class, "groupuser", "sync");
 			params.add("userId", userId);
 			params.add("groupIds", groupIds);
+			params.add("removeFromExistingGroups", removeFromExistingGroups);
+			params.add("createNewGroups", createNewGroups);
 		}
 		
 		public void userId(String multirequestToken) {
@@ -141,6 +145,22 @@ public class GroupUserService {
 		public void groupIds(String multirequestToken) {
 			params.add("groupIds", multirequestToken);
 		}
+		
+		public void removeFromExistingGroups(String multirequestToken) {
+			params.add("removeFromExistingGroups", multirequestToken);
+		}
+		
+		public void createNewGroups(String multirequestToken) {
+			params.add("createNewGroups", multirequestToken);
+		}
+	}
+
+	public static SyncGroupUserBuilder sync(String userId, String groupIds)  {
+		return sync(userId, groupIds, true);
+	}
+
+	public static SyncGroupUserBuilder sync(String userId, String groupIds, boolean removeFromExistingGroups)  {
+		return sync(userId, groupIds, removeFromExistingGroups, true);
 	}
 
 	/**
@@ -148,8 +168,10 @@ public class GroupUserService {
 	 * 
 	 * @param userId 
 	 * @param groupIds 
+	 * @param removeFromExistingGroups 
+	 * @param createNewGroups 
 	 */
-    public static SyncGroupUserBuilder sync(String userId, String groupIds)  {
-		return new SyncGroupUserBuilder(userId, groupIds);
+    public static SyncGroupUserBuilder sync(String userId, String groupIds, boolean removeFromExistingGroups, boolean createNewGroups)  {
+		return new SyncGroupUserBuilder(userId, groupIds, removeFromExistingGroups, createNewGroups);
 	}
 }
