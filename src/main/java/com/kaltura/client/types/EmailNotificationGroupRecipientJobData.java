@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,38 +38,53 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ObjectFilterEngineType implements EnumAsString {
-	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
 
-	private String value;
-
-	ObjectFilterEngineType(String value) {
-		this.value = value;
+/**
+ * JobData representing the dynamic user receipient array
+ */
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(EmailNotificationGroupRecipientJobData.Tokenizer.class)
+public class EmailNotificationGroupRecipientJobData extends EmailNotificationRecipientJobData {
+	
+	public interface Tokenizer extends EmailNotificationRecipientJobData.Tokenizer {
+		String groupId();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private String groupId;
+
+	// groupId:
+	public String getGroupId(){
+		return this.groupId;
+	}
+	public void setGroupId(String groupId){
+		this.groupId = groupId;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void groupId(String multirequestToken){
+		setToken("groupId", multirequestToken);
 	}
 
-	public static ObjectFilterEngineType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ObjectFilterEngineType defined values and compare the inner value with the given one:
-		for(ObjectFilterEngineType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ObjectFilterEngineType.values().length > 0 ? ObjectFilterEngineType.values()[0]: null;
-   }
+
+	public EmailNotificationGroupRecipientJobData() {
+		super();
+	}
+
+	public EmailNotificationGroupRecipientJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		groupId = GsonParser.parseString(jsonObject.get("groupId"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaEmailNotificationGroupRecipientJobData");
+		kparams.add("groupId", this.groupId);
+		return kparams;
+	}
+
 }
+

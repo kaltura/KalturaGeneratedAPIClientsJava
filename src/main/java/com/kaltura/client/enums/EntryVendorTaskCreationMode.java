@@ -33,38 +33,38 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ObjectFilterEngineType implements EnumAsString {
-	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
+public enum EntryVendorTaskCreationMode implements EnumAsInt {
+	MANUAL(1),
+	AUTOMATIC(2);
 
-	private String value;
+	private int value;
 
-	ObjectFilterEngineType(String value) {
+	EntryVendorTaskCreationMode(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static ObjectFilterEngineType get(String value) {
+	public static EntryVendorTaskCreationMode get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ObjectFilterEngineType defined values and compare the inner value with the given one:
-		for(ObjectFilterEngineType item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over EntryVendorTaskCreationMode defined values and compare the inner value with the given one:
+		for(EntryVendorTaskCreationMode item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ObjectFilterEngineType.values().length > 0 ? ObjectFilterEngineType.values()[0]: null;
+		return EntryVendorTaskCreationMode.values().length > 0 ? EntryVendorTaskCreationMode.values()[0]: null;
    }
 }

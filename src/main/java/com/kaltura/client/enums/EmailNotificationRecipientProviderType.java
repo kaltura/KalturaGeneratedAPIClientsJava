@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum EmailNotificationRecipientProviderType implements EnumAsString {
 	STATIC_LIST("1"),
 	CATEGORY("2"),
-	USER("3");
+	USER("3"),
+	GROUP("4");
 
 	private String value;
 

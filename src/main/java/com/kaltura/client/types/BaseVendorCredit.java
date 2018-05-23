@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,38 +38,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ObjectFilterEngineType implements EnumAsString {
-	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
 
-	private String value;
-
-	ObjectFilterEngineType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BaseVendorCredit.Tokenizer.class)
+public abstract class BaseVendorCredit extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public BaseVendorCredit() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public BaseVendorCredit(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static ObjectFilterEngineType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ObjectFilterEngineType defined values and compare the inner value with the given one:
-		for(ObjectFilterEngineType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ObjectFilterEngineType.values().length > 0 ? ObjectFilterEngineType.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBaseVendorCredit");
+		return kparams;
+	}
+
 }
+

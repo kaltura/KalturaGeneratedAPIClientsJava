@@ -33,38 +33,39 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ObjectFilterEngineType implements EnumAsString {
-	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
+public enum ReachProfileStatus implements EnumAsInt {
+	DISABLED(1),
+	ACTIVE(2),
+	DELETED(3);
 
-	private String value;
+	private int value;
 
-	ObjectFilterEngineType(String value) {
+	ReachProfileStatus(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static ObjectFilterEngineType get(String value) {
+	public static ReachProfileStatus get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ObjectFilterEngineType defined values and compare the inner value with the given one:
-		for(ObjectFilterEngineType item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over ReachProfileStatus defined values and compare the inner value with the given one:
+		for(ReachProfileStatus item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ObjectFilterEngineType.values().length > 0 ? ObjectFilterEngineType.values()[0]: null;
+		return ReachProfileStatus.values().length > 0 ? ReachProfileStatus.values()[0]: null;
    }
 }

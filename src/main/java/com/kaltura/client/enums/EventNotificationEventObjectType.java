@@ -81,7 +81,9 @@ public enum EventNotificationEventObjectType implements EnumAsString {
 	CATEGORYENTRY("37"),
 	LIVE_STREAM("38"),
 	SERVER_NODE("39"),
-	ENTRY_SERVER_NODE("40");
+	ENTRY_SERVER_NODE("40"),
+	REACH_PROFILE("41"),
+	ENTRY_VENDOR_TASK("42");
 
 	private String value;
 

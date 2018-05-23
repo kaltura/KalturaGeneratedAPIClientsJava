@@ -33,13 +33,30 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ObjectFilterEngineType implements EnumAsString {
-	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
+public enum CatalogItemLanguage implements EnumAsString {
+	AR("Arabic"),
+	YUE("Cantonese"),
+	ZH("Chinese"),
+	NL("Dutch"),
+	EN("English"),
+	EN_US("English (American)"),
+	EN_GB("English (British)"),
+	FR("French"),
+	DE("German"),
+	HE("Hebrew"),
+	HI("Hindi"),
+	IT("Italian"),
+	JA("Japanese"),
+	KO("Korean"),
+	CMN("Mandarin Chinese"),
+	PT("Portuguese"),
+	RU("Russian"),
+	ES("Spanish"),
+	TR("Turkish");
 
 	private String value;
 
-	ObjectFilterEngineType(String value) {
+	CatalogItemLanguage(String value) {
 		this.value = value;
 	}
 
@@ -52,19 +69,19 @@ public enum ObjectFilterEngineType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ObjectFilterEngineType get(String value) {
+	public static CatalogItemLanguage get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ObjectFilterEngineType defined values and compare the inner value with the given one:
-		for(ObjectFilterEngineType item: values()) {
+		// goes over CatalogItemLanguage defined values and compare the inner value with the given one:
+		for(CatalogItemLanguage item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ObjectFilterEngineType.values().length > 0 ? ObjectFilterEngineType.values()[0]: null;
+		return CatalogItemLanguage.values().length > 0 ? CatalogItemLanguage.values()[0]: null;
    }
 }
