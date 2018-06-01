@@ -334,7 +334,6 @@ public abstract class CuePoint extends ObjectBase {
 		kparams.add("forceStop", this.forceStop);
 		kparams.add("thumbOffset", this.thumbOffset);
 		kparams.add("systemName", this.systemName);
-		kparams.add("isMomentary", this.isMomentary);
 		return kparams;
 	}
 

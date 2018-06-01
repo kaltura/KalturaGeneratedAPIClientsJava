@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum YouTubeDistributionFeedSpecVersion implements EnumAsString {
 	VERSION_1("1"),
-	VERSION_2("2");
+	VERSION_2("2"),
+	VERSION_3("3");
 
 	private String value;
 
