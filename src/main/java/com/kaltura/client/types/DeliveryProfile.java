@@ -51,22 +51,15 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class DeliveryProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
 		String name();
 		String type();
 		String systemName();
 		String description();
-		String createdAt();
-		String updatedAt();
 		String streamerType();
 		String url();
-		String hostName();
 		String status();
 		UrlRecognizer.Tokenizer recognizer();
 		UrlTokenizer.Tokenizer tokenizer();
-		String isDefault();
-		String parentId();
 		String mediaProtocols();
 		String priority();
 		String extraParams();
@@ -141,26 +134,10 @@ public class DeliveryProfile extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -213,26 +190,10 @@ public class DeliveryProfile extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// streamerType:
 	public PlaybackProtocol getStreamerType(){
 		return this.streamerType;
@@ -261,14 +222,6 @@ public class DeliveryProfile extends ObjectBase {
 	public String getHostName(){
 		return this.hostName;
 	}
-	public void setHostName(String hostName){
-		this.hostName = hostName;
-	}
-
-	public void hostName(String multirequestToken){
-		setToken("hostName", multirequestToken);
-	}
-
 	// status:
 	public DeliveryStatus getStatus(){
 		return this.status;
@@ -301,26 +254,10 @@ public class DeliveryProfile extends ObjectBase {
 	public Boolean getIsDefault(){
 		return this.isDefault;
 	}
-	public void setIsDefault(Boolean isDefault){
-		this.isDefault = isDefault;
-	}
-
-	public void isDefault(String multirequestToken){
-		setToken("isDefault", multirequestToken);
-	}
-
 	// parentId:
 	public Integer getParentId(){
 		return this.parentId;
 	}
-	public void setParentId(Integer parentId){
-		this.parentId = parentId;
-	}
-
-	public void parentId(String multirequestToken){
-		setToken("parentId", multirequestToken);
-	}
-
 	// mediaProtocols:
 	public String getMediaProtocols(){
 		return this.mediaProtocols;

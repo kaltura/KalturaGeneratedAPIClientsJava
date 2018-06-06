@@ -50,30 +50,16 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class AuditTrail extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String createdAt();
-		String parsedAt();
-		String status();
 		String auditObjectType();
 		String objectId();
 		String relatedObjectId();
 		String relatedObjectType();
 		String entryId();
-		String masterPartnerId();
-		String partnerId();
-		String requestId();
 		String userId();
 		String action();
 		AuditTrailInfo.Tokenizer data();
-		String ks();
-		String context();
-		String entryPoint();
-		String serverName();
-		String ipAddress();
-		String userAgent();
 		String clientTag();
 		String description();
-		String errorDescription();
 	}
 
 	private Integer id;
@@ -111,50 +97,18 @@ public class AuditTrail extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// parsedAt:
 	public Integer getParsedAt(){
 		return this.parsedAt;
 	}
-	public void setParsedAt(Integer parsedAt){
-		this.parsedAt = parsedAt;
-	}
-
-	public void parsedAt(String multirequestToken){
-		setToken("parsedAt", multirequestToken);
-	}
-
 	// status:
 	public AuditTrailStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(AuditTrailStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// auditObjectType:
 	public AuditTrailObjectType getAuditObjectType(){
 		return this.auditObjectType;
@@ -219,38 +173,14 @@ public class AuditTrail extends ObjectBase {
 	public Integer getMasterPartnerId(){
 		return this.masterPartnerId;
 	}
-	public void setMasterPartnerId(Integer masterPartnerId){
-		this.masterPartnerId = masterPartnerId;
-	}
-
-	public void masterPartnerId(String multirequestToken){
-		setToken("masterPartnerId", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// requestId:
 	public String getRequestId(){
 		return this.requestId;
 	}
-	public void setRequestId(String requestId){
-		this.requestId = requestId;
-	}
-
-	public void requestId(String multirequestToken){
-		setToken("requestId", multirequestToken);
-	}
-
 	// userId:
 	public String getUserId(){
 		return this.userId;
@@ -287,74 +217,26 @@ public class AuditTrail extends ObjectBase {
 	public String getKs(){
 		return this.ks;
 	}
-	public void setKs(String ks){
-		this.ks = ks;
-	}
-
-	public void ks(String multirequestToken){
-		setToken("ks", multirequestToken);
-	}
-
 	// context:
 	public AuditTrailContext getContext(){
 		return this.context;
 	}
-	public void setContext(AuditTrailContext context){
-		this.context = context;
-	}
-
-	public void context(String multirequestToken){
-		setToken("context", multirequestToken);
-	}
-
 	// entryPoint:
 	public String getEntryPoint(){
 		return this.entryPoint;
 	}
-	public void setEntryPoint(String entryPoint){
-		this.entryPoint = entryPoint;
-	}
-
-	public void entryPoint(String multirequestToken){
-		setToken("entryPoint", multirequestToken);
-	}
-
 	// serverName:
 	public String getServerName(){
 		return this.serverName;
 	}
-	public void setServerName(String serverName){
-		this.serverName = serverName;
-	}
-
-	public void serverName(String multirequestToken){
-		setToken("serverName", multirequestToken);
-	}
-
 	// ipAddress:
 	public String getIpAddress(){
 		return this.ipAddress;
 	}
-	public void setIpAddress(String ipAddress){
-		this.ipAddress = ipAddress;
-	}
-
-	public void ipAddress(String multirequestToken){
-		setToken("ipAddress", multirequestToken);
-	}
-
 	// userAgent:
 	public String getUserAgent(){
 		return this.userAgent;
 	}
-	public void setUserAgent(String userAgent){
-		this.userAgent = userAgent;
-	}
-
-	public void userAgent(String multirequestToken){
-		setToken("userAgent", multirequestToken);
-	}
-
 	// clientTag:
 	public String getClientTag(){
 		return this.clientTag;
@@ -383,14 +265,6 @@ public class AuditTrail extends ObjectBase {
 	public String getErrorDescription(){
 		return this.errorDescription;
 	}
-	public void setErrorDescription(String errorDescription){
-		this.errorDescription = errorDescription;
-	}
-
-	public void errorDescription(String multirequestToken){
-		setToken("errorDescription", multirequestToken);
-	}
-
 
 	public AuditTrail() {
 		super();

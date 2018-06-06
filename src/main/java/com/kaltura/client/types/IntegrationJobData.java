@@ -48,7 +48,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class IntegrationJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
-		String callbackNotificationUrl();
 		String providerType();
 		IntegrationJobProviderData.Tokenizer providerData();
 		String triggerType();
@@ -71,14 +70,6 @@ public class IntegrationJobData extends JobData {
 	public String getCallbackNotificationUrl(){
 		return this.callbackNotificationUrl;
 	}
-	public void setCallbackNotificationUrl(String callbackNotificationUrl){
-		this.callbackNotificationUrl = callbackNotificationUrl;
-	}
-
-	public void callbackNotificationUrl(String multirequestToken){
-		setToken("callbackNotificationUrl", multirequestToken);
-	}
-
 	// providerType:
 	public IntegrationProviderType getProviderType(){
 		return this.providerType;

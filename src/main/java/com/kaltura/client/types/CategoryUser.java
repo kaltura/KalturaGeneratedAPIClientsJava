@@ -50,13 +50,8 @@ public class CategoryUser extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String categoryId();
 		String userId();
-		String partnerId();
 		String permissionLevel();
-		String status();
-		String createdAt();
-		String updatedAt();
 		String updateMethod();
-		String categoryFullIds();
 		String permissionNames();
 	}
 
@@ -127,14 +122,6 @@ public class CategoryUser extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// permissionLevel:
 	public CategoryUserPermissionLevel getPermissionLevel(){
 		return this.permissionLevel;
@@ -151,38 +138,14 @@ public class CategoryUser extends ObjectBase {
 	public CategoryUserStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(CategoryUserStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// updateMethod:
 	public UpdateMethodType getUpdateMethod(){
 		return this.updateMethod;
@@ -199,14 +162,6 @@ public class CategoryUser extends ObjectBase {
 	public String getCategoryFullIds(){
 		return this.categoryFullIds;
 	}
-	public void setCategoryFullIds(String categoryFullIds){
-		this.categoryFullIds = categoryFullIds;
-	}
-
-	public void categoryFullIds(String multirequestToken){
-		setToken("categoryFullIds", multirequestToken);
-	}
-
 	// permissionNames:
 	public String getPermissionNames(){
 		return this.permissionNames;

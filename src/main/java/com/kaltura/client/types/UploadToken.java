@@ -46,16 +46,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class UploadToken extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String userId();
-		String status();
 		String fileName();
 		String fileSize();
-		String uploadedFileSize();
-		String createdAt();
-		String updatedAt();
-		String uploadUrl();
 		String autoFinalize();
 	}
 
@@ -113,50 +105,18 @@ public class UploadToken extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// userId:
 	public String getUserId(){
 		return this.userId;
 	}
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public void userId(String multirequestToken){
-		setToken("userId", multirequestToken);
-	}
-
 	// status:
 	public UploadTokenStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(UploadTokenStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// fileName:
 	public String getFileName(){
 		return this.fileName;
@@ -185,50 +145,18 @@ public class UploadToken extends ObjectBase {
 	public Double getUploadedFileSize(){
 		return this.uploadedFileSize;
 	}
-	public void setUploadedFileSize(Double uploadedFileSize){
-		this.uploadedFileSize = uploadedFileSize;
-	}
-
-	public void uploadedFileSize(String multirequestToken){
-		setToken("uploadedFileSize", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// uploadUrl:
 	public String getUploadUrl(){
 		return this.uploadUrl;
 	}
-	public void setUploadUrl(String uploadUrl){
-		this.uploadUrl = uploadUrl;
-	}
-
-	public void uploadUrl(String multirequestToken){
-		setToken("uploadUrl", multirequestToken);
-	}
-
 	// autoFinalize:
 	public Boolean getAutoFinalize(){
 		return this.autoFinalize;

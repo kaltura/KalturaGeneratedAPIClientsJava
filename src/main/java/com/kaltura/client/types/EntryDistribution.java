@@ -51,34 +51,14 @@ import java.util.List;
 public class EntryDistribution extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String createdAt();
-		String updatedAt();
-		String submittedAt();
 		String entryId();
-		String partnerId();
 		String distributionProfileId();
-		String status();
-		String sunStatus();
-		String dirtyStatus();
 		String thumbAssetIds();
 		String flavorAssetIds();
 		String assetIds();
 		String sunrise();
 		String sunset();
-		String remoteId();
-		String plays();
-		String views();
 		RequestBuilder.ListTokenizer<DistributionValidationError.Tokenizer> validationErrors();
-		String errorType();
-		String errorNumber();
-		String errorDescription();
-		String hasSubmitResultsLog();
-		String hasSubmitSentDataLog();
-		String hasUpdateResultsLog();
-		String hasUpdateSentDataLog();
-		String hasDeleteResultsLog();
-		String hasDeleteSentDataLog();
 	}
 
 	/**
@@ -150,50 +130,18 @@ public class EntryDistribution extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// submittedAt:
 	public Integer getSubmittedAt(){
 		return this.submittedAt;
 	}
-	public void setSubmittedAt(Integer submittedAt){
-		this.submittedAt = submittedAt;
-	}
-
-	public void submittedAt(String multirequestToken){
-		setToken("submittedAt", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -210,14 +158,6 @@ public class EntryDistribution extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// distributionProfileId:
 	public Integer getDistributionProfileId(){
 		return this.distributionProfileId;
@@ -234,38 +174,14 @@ public class EntryDistribution extends ObjectBase {
 	public EntryDistributionStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(EntryDistributionStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// sunStatus:
 	public EntryDistributionSunStatus getSunStatus(){
 		return this.sunStatus;
 	}
-	public void setSunStatus(EntryDistributionSunStatus sunStatus){
-		this.sunStatus = sunStatus;
-	}
-
-	public void sunStatus(String multirequestToken){
-		setToken("sunStatus", multirequestToken);
-	}
-
 	// dirtyStatus:
 	public EntryDistributionFlag getDirtyStatus(){
 		return this.dirtyStatus;
 	}
-	public void setDirtyStatus(EntryDistributionFlag dirtyStatus){
-		this.dirtyStatus = dirtyStatus;
-	}
-
-	public void dirtyStatus(String multirequestToken){
-		setToken("dirtyStatus", multirequestToken);
-	}
-
 	// thumbAssetIds:
 	public String getThumbAssetIds(){
 		return this.thumbAssetIds;
@@ -330,38 +246,14 @@ public class EntryDistribution extends ObjectBase {
 	public String getRemoteId(){
 		return this.remoteId;
 	}
-	public void setRemoteId(String remoteId){
-		this.remoteId = remoteId;
-	}
-
-	public void remoteId(String multirequestToken){
-		setToken("remoteId", multirequestToken);
-	}
-
 	// plays:
 	public Integer getPlays(){
 		return this.plays;
 	}
-	public void setPlays(Integer plays){
-		this.plays = plays;
-	}
-
-	public void plays(String multirequestToken){
-		setToken("plays", multirequestToken);
-	}
-
 	// views:
 	public Integer getViews(){
 		return this.views;
 	}
-	public void setViews(Integer views){
-		this.views = views;
-	}
-
-	public void views(String multirequestToken){
-		setToken("views", multirequestToken);
-	}
-
 	// validationErrors:
 	public List<DistributionValidationError> getValidationErrors(){
 		return this.validationErrors;
@@ -374,110 +266,38 @@ public class EntryDistribution extends ObjectBase {
 	public BatchJobErrorTypes getErrorType(){
 		return this.errorType;
 	}
-	public void setErrorType(BatchJobErrorTypes errorType){
-		this.errorType = errorType;
-	}
-
-	public void errorType(String multirequestToken){
-		setToken("errorType", multirequestToken);
-	}
-
 	// errorNumber:
 	public Integer getErrorNumber(){
 		return this.errorNumber;
 	}
-	public void setErrorNumber(Integer errorNumber){
-		this.errorNumber = errorNumber;
-	}
-
-	public void errorNumber(String multirequestToken){
-		setToken("errorNumber", multirequestToken);
-	}
-
 	// errorDescription:
 	public String getErrorDescription(){
 		return this.errorDescription;
 	}
-	public void setErrorDescription(String errorDescription){
-		this.errorDescription = errorDescription;
-	}
-
-	public void errorDescription(String multirequestToken){
-		setToken("errorDescription", multirequestToken);
-	}
-
 	// hasSubmitResultsLog:
 	public Boolean getHasSubmitResultsLog(){
 		return this.hasSubmitResultsLog;
 	}
-	public void setHasSubmitResultsLog(Boolean hasSubmitResultsLog){
-		this.hasSubmitResultsLog = hasSubmitResultsLog;
-	}
-
-	public void hasSubmitResultsLog(String multirequestToken){
-		setToken("hasSubmitResultsLog", multirequestToken);
-	}
-
 	// hasSubmitSentDataLog:
 	public Boolean getHasSubmitSentDataLog(){
 		return this.hasSubmitSentDataLog;
 	}
-	public void setHasSubmitSentDataLog(Boolean hasSubmitSentDataLog){
-		this.hasSubmitSentDataLog = hasSubmitSentDataLog;
-	}
-
-	public void hasSubmitSentDataLog(String multirequestToken){
-		setToken("hasSubmitSentDataLog", multirequestToken);
-	}
-
 	// hasUpdateResultsLog:
 	public Boolean getHasUpdateResultsLog(){
 		return this.hasUpdateResultsLog;
 	}
-	public void setHasUpdateResultsLog(Boolean hasUpdateResultsLog){
-		this.hasUpdateResultsLog = hasUpdateResultsLog;
-	}
-
-	public void hasUpdateResultsLog(String multirequestToken){
-		setToken("hasUpdateResultsLog", multirequestToken);
-	}
-
 	// hasUpdateSentDataLog:
 	public Boolean getHasUpdateSentDataLog(){
 		return this.hasUpdateSentDataLog;
 	}
-	public void setHasUpdateSentDataLog(Boolean hasUpdateSentDataLog){
-		this.hasUpdateSentDataLog = hasUpdateSentDataLog;
-	}
-
-	public void hasUpdateSentDataLog(String multirequestToken){
-		setToken("hasUpdateSentDataLog", multirequestToken);
-	}
-
 	// hasDeleteResultsLog:
 	public Boolean getHasDeleteResultsLog(){
 		return this.hasDeleteResultsLog;
 	}
-	public void setHasDeleteResultsLog(Boolean hasDeleteResultsLog){
-		this.hasDeleteResultsLog = hasDeleteResultsLog;
-	}
-
-	public void hasDeleteResultsLog(String multirequestToken){
-		setToken("hasDeleteResultsLog", multirequestToken);
-	}
-
 	// hasDeleteSentDataLog:
 	public Boolean getHasDeleteSentDataLog(){
 		return this.hasDeleteSentDataLog;
 	}
-	public void setHasDeleteSentDataLog(Boolean hasDeleteSentDataLog){
-		this.hasDeleteSentDataLog = hasDeleteSentDataLog;
-	}
-
-	public void hasDeleteSentDataLog(String multirequestToken){
-		setToken("hasDeleteSentDataLog", multirequestToken);
-	}
-
 
 	public EntryDistribution() {
 		super();

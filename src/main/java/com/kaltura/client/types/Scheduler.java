@@ -32,7 +32,6 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -47,16 +46,9 @@ import java.util.List;
 public class Scheduler extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String configuredId();
 		String name();
 		String host();
-		RequestBuilder.ListTokenizer<SchedulerStatus.Tokenizer> statuses();
-		RequestBuilder.ListTokenizer<SchedulerConfig.Tokenizer> configs();
-		RequestBuilder.ListTokenizer<SchedulerWorker.Tokenizer> workers();
-		String createdAt();
-		String lastStatus();
-		String lastStatusStr();
 	}
 
 	/**
@@ -104,14 +96,6 @@ public class Scheduler extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// configuredId:
 	public Integer getConfiguredId(){
 		return this.configuredId;
@@ -152,62 +136,26 @@ public class Scheduler extends ObjectBase {
 	public List<SchedulerStatus> getStatuses(){
 		return this.statuses;
 	}
-	public void setStatuses(List<SchedulerStatus> statuses){
-		this.statuses = statuses;
-	}
-
 	// configs:
 	public List<SchedulerConfig> getConfigs(){
 		return this.configs;
 	}
-	public void setConfigs(List<SchedulerConfig> configs){
-		this.configs = configs;
-	}
-
 	// workers:
 	public List<SchedulerWorker> getWorkers(){
 		return this.workers;
 	}
-	public void setWorkers(List<SchedulerWorker> workers){
-		this.workers = workers;
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// lastStatus:
 	public Integer getLastStatus(){
 		return this.lastStatus;
 	}
-	public void setLastStatus(Integer lastStatus){
-		this.lastStatus = lastStatus;
-	}
-
-	public void lastStatus(String multirequestToken){
-		setToken("lastStatus", multirequestToken);
-	}
-
 	// lastStatusStr:
 	public String getLastStatusStr(){
 		return this.lastStatusStr;
 	}
-	public void setLastStatusStr(String lastStatusStr){
-		this.lastStatusStr = lastStatusStr;
-	}
-
-	public void lastStatusStr(String multirequestToken){
-		setToken("lastStatusStr", multirequestToken);
-	}
-
 
 	public Scheduler() {
 		super();

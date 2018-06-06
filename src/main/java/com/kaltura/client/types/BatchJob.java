@@ -51,17 +51,8 @@ import java.util.List;
 public class BatchJob extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String createdAt();
-		String updatedAt();
-		String deletedAt();
-		String lockExpiration();
-		String executionAttempts();
-		String lockVersion();
 		String entryId();
 		String entryName();
-		String jobType();
 		String jobSubType();
 		JobData.Tokenizer data();
 		String status();
@@ -150,98 +141,34 @@ public class BatchJob extends ObjectBase {
 	public Long getId(){
 		return this.id;
 	}
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// deletedAt:
 	public Integer getDeletedAt(){
 		return this.deletedAt;
 	}
-	public void setDeletedAt(Integer deletedAt){
-		this.deletedAt = deletedAt;
-	}
-
-	public void deletedAt(String multirequestToken){
-		setToken("deletedAt", multirequestToken);
-	}
-
 	// lockExpiration:
 	public Integer getLockExpiration(){
 		return this.lockExpiration;
 	}
-	public void setLockExpiration(Integer lockExpiration){
-		this.lockExpiration = lockExpiration;
-	}
-
-	public void lockExpiration(String multirequestToken){
-		setToken("lockExpiration", multirequestToken);
-	}
-
 	// executionAttempts:
 	public Integer getExecutionAttempts(){
 		return this.executionAttempts;
 	}
-	public void setExecutionAttempts(Integer executionAttempts){
-		this.executionAttempts = executionAttempts;
-	}
-
-	public void executionAttempts(String multirequestToken){
-		setToken("executionAttempts", multirequestToken);
-	}
-
 	// lockVersion:
 	public Integer getLockVersion(){
 		return this.lockVersion;
 	}
-	public void setLockVersion(Integer lockVersion){
-		this.lockVersion = lockVersion;
-	}
-
-	public void lockVersion(String multirequestToken){
-		setToken("lockVersion", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -270,14 +197,6 @@ public class BatchJob extends ObjectBase {
 	public BatchJobType getJobType(){
 		return this.jobType;
 	}
-	public void setJobType(BatchJobType jobType){
-		this.jobType = jobType;
-	}
-
-	public void jobType(String multirequestToken){
-		setToken("jobType", multirequestToken);
-	}
-
 	// jobSubType:
 	public Integer getJobSubType(){
 		return this.jobSubType;

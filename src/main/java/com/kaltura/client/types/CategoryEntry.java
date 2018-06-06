@@ -48,10 +48,6 @@ public class CategoryEntry extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String categoryId();
 		String entryId();
-		String createdAt();
-		String categoryFullIds();
-		String status();
-		String creatorUserId();
 	}
 
 	private Integer categoryId;
@@ -104,50 +100,18 @@ public class CategoryEntry extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// categoryFullIds:
 	public String getCategoryFullIds(){
 		return this.categoryFullIds;
 	}
-	public void setCategoryFullIds(String categoryFullIds){
-		this.categoryFullIds = categoryFullIds;
-	}
-
-	public void categoryFullIds(String multirequestToken){
-		setToken("categoryFullIds", multirequestToken);
-	}
-
 	// status:
 	public CategoryEntryStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(CategoryEntryStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// creatorUserId:
 	public String getCreatorUserId(){
 		return this.creatorUserId;
 	}
-	public void setCreatorUserId(String creatorUserId){
-		this.creatorUserId = creatorUserId;
-	}
-
-	public void creatorUserId(String multirequestToken){
-		setToken("creatorUserId", multirequestToken);
-	}
-
 
 	public CategoryEntry() {
 		super();

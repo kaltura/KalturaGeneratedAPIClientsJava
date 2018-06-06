@@ -45,17 +45,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Asset extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String entryId();
-		String partnerId();
-		String version();
-		String size();
 		String tags();
 		String fileExt();
-		String createdAt();
-		String updatedAt();
-		String deletedAt();
-		String description();
 		String partnerData();
 		String partnerDescription();
 		String actualSourceAssetParamsIds();
@@ -110,62 +101,22 @@ public class Asset extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
 	}
-	public void setEntryId(String entryId){
-		this.entryId = entryId;
-	}
-
-	public void entryId(String multirequestToken){
-		setToken("entryId", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// version:
 	public Integer getVersion(){
 		return this.version;
 	}
-	public void setVersion(Integer version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// size:
 	public Integer getSize(){
 		return this.size;
 	}
-	public void setSize(Integer size){
-		this.size = size;
-	}
-
-	public void size(String multirequestToken){
-		setToken("size", multirequestToken);
-	}
-
 	// tags:
 	public String getTags(){
 		return this.tags;
@@ -194,50 +145,18 @@ public class Asset extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// deletedAt:
 	public Integer getDeletedAt(){
 		return this.deletedAt;
 	}
-	public void setDeletedAt(Integer deletedAt){
-		this.deletedAt = deletedAt;
-	}
-
-	public void deletedAt(String multirequestToken){
-		setToken("deletedAt", multirequestToken);
-	}
-
 	// description:
 	public String getDescription(){
 		return this.description;
 	}
-	public void setDescription(String description){
-		this.description = description;
-	}
-
-	public void description(String multirequestToken){
-		setToken("description", multirequestToken);
-	}
-
 	// partnerData:
 	public String getPartnerData(){
 		return this.partnerData;

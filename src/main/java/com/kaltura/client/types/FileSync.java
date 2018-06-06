@@ -48,31 +48,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class FileSync extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String fileObjectType();
-		String objectId();
-		String version();
-		String objectSubType();
-		String dc();
-		String original();
-		String createdAt();
-		String updatedAt();
-		String readyAt();
-		String syncTime();
 		String status();
-		String fileType();
-		String linkedId();
-		String linkCount();
 		String fileRoot();
 		String filePath();
-		String fileSize();
-		String fileUrl();
-		String fileContent();
-		String fileDiscSize();
-		String isCurrentDc();
-		String isDir();
-		String originalId();
 	}
 
 	private Long id;
@@ -105,146 +83,50 @@ public class FileSync extends ObjectBase {
 	public Long getId(){
 		return this.id;
 	}
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// fileObjectType:
 	public FileSyncObjectType getFileObjectType(){
 		return this.fileObjectType;
 	}
-	public void setFileObjectType(FileSyncObjectType fileObjectType){
-		this.fileObjectType = fileObjectType;
-	}
-
-	public void fileObjectType(String multirequestToken){
-		setToken("fileObjectType", multirequestToken);
-	}
-
 	// objectId:
 	public String getObjectId(){
 		return this.objectId;
 	}
-	public void setObjectId(String objectId){
-		this.objectId = objectId;
-	}
-
-	public void objectId(String multirequestToken){
-		setToken("objectId", multirequestToken);
-	}
-
 	// version:
 	public String getVersion(){
 		return this.version;
 	}
-	public void setVersion(String version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// objectSubType:
 	public Integer getObjectSubType(){
 		return this.objectSubType;
 	}
-	public void setObjectSubType(Integer objectSubType){
-		this.objectSubType = objectSubType;
-	}
-
-	public void objectSubType(String multirequestToken){
-		setToken("objectSubType", multirequestToken);
-	}
-
 	// dc:
 	public String getDc(){
 		return this.dc;
 	}
-	public void setDc(String dc){
-		this.dc = dc;
-	}
-
-	public void dc(String multirequestToken){
-		setToken("dc", multirequestToken);
-	}
-
 	// original:
 	public Integer getOriginal(){
 		return this.original;
 	}
-	public void setOriginal(Integer original){
-		this.original = original;
-	}
-
-	public void original(String multirequestToken){
-		setToken("original", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// readyAt:
 	public Integer getReadyAt(){
 		return this.readyAt;
 	}
-	public void setReadyAt(Integer readyAt){
-		this.readyAt = readyAt;
-	}
-
-	public void readyAt(String multirequestToken){
-		setToken("readyAt", multirequestToken);
-	}
-
 	// syncTime:
 	public Integer getSyncTime(){
 		return this.syncTime;
 	}
-	public void setSyncTime(Integer syncTime){
-		this.syncTime = syncTime;
-	}
-
-	public void syncTime(String multirequestToken){
-		setToken("syncTime", multirequestToken);
-	}
-
 	// status:
 	public FileSyncStatus getStatus(){
 		return this.status;
@@ -261,38 +143,14 @@ public class FileSync extends ObjectBase {
 	public FileSyncType getFileType(){
 		return this.fileType;
 	}
-	public void setFileType(FileSyncType fileType){
-		this.fileType = fileType;
-	}
-
-	public void fileType(String multirequestToken){
-		setToken("fileType", multirequestToken);
-	}
-
 	// linkedId:
 	public Integer getLinkedId(){
 		return this.linkedId;
 	}
-	public void setLinkedId(Integer linkedId){
-		this.linkedId = linkedId;
-	}
-
-	public void linkedId(String multirequestToken){
-		setToken("linkedId", multirequestToken);
-	}
-
 	// linkCount:
 	public Integer getLinkCount(){
 		return this.linkCount;
 	}
-	public void setLinkCount(Integer linkCount){
-		this.linkCount = linkCount;
-	}
-
-	public void linkCount(String multirequestToken){
-		setToken("linkCount", multirequestToken);
-	}
-
 	// fileRoot:
 	public String getFileRoot(){
 		return this.fileRoot;
@@ -321,86 +179,30 @@ public class FileSync extends ObjectBase {
 	public Double getFileSize(){
 		return this.fileSize;
 	}
-	public void setFileSize(Double fileSize){
-		this.fileSize = fileSize;
-	}
-
-	public void fileSize(String multirequestToken){
-		setToken("fileSize", multirequestToken);
-	}
-
 	// fileUrl:
 	public String getFileUrl(){
 		return this.fileUrl;
 	}
-	public void setFileUrl(String fileUrl){
-		this.fileUrl = fileUrl;
-	}
-
-	public void fileUrl(String multirequestToken){
-		setToken("fileUrl", multirequestToken);
-	}
-
 	// fileContent:
 	public String getFileContent(){
 		return this.fileContent;
 	}
-	public void setFileContent(String fileContent){
-		this.fileContent = fileContent;
-	}
-
-	public void fileContent(String multirequestToken){
-		setToken("fileContent", multirequestToken);
-	}
-
 	// fileDiscSize:
 	public Double getFileDiscSize(){
 		return this.fileDiscSize;
 	}
-	public void setFileDiscSize(Double fileDiscSize){
-		this.fileDiscSize = fileDiscSize;
-	}
-
-	public void fileDiscSize(String multirequestToken){
-		setToken("fileDiscSize", multirequestToken);
-	}
-
 	// isCurrentDc:
 	public Boolean getIsCurrentDc(){
 		return this.isCurrentDc;
 	}
-	public void setIsCurrentDc(Boolean isCurrentDc){
-		this.isCurrentDc = isCurrentDc;
-	}
-
-	public void isCurrentDc(String multirequestToken){
-		setToken("isCurrentDc", multirequestToken);
-	}
-
 	// isDir:
 	public Boolean getIsDir(){
 		return this.isDir;
 	}
-	public void setIsDir(Boolean isDir){
-		this.isDir = isDir;
-	}
-
-	public void isDir(String multirequestToken){
-		setToken("isDir", multirequestToken);
-	}
-
 	// originalId:
 	public Integer getOriginalId(){
 		return this.originalId;
 	}
-	public void setOriginalId(Integer originalId){
-		this.originalId = originalId;
-	}
-
-	public void originalId(String multirequestToken){
-		setToken("originalId", multirequestToken);
-	}
-
 
 	public FileSync() {
 		super();

@@ -48,14 +48,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class UserEntry extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String entryId();
 		String userId();
-		String partnerId();
-		String status();
-		String createdAt();
-		String updatedAt();
-		String type();
 		String extendedStatus();
 	}
 
@@ -76,14 +70,6 @@ public abstract class UserEntry extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -112,62 +98,22 @@ public abstract class UserEntry extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// status:
 	public UserEntryStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(UserEntryStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// type:
 	public UserEntryType getType(){
 		return this.type;
 	}
-	public void setType(UserEntryType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// extendedStatus:
 	public UserEntryExtendedStatus getExtendedStatus(){
 		return this.extendedStatus;

@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -46,12 +45,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class SessionInfo extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String ks();
-		String sessionType();
-		String partnerId();
-		String userId();
-		String expiry();
-		String privileges();
 	}
 
 	private String ks;
@@ -65,74 +58,26 @@ public class SessionInfo extends ObjectBase {
 	public String getKs(){
 		return this.ks;
 	}
-	public void setKs(String ks){
-		this.ks = ks;
-	}
-
-	public void ks(String multirequestToken){
-		setToken("ks", multirequestToken);
-	}
-
 	// sessionType:
 	public SessionType getSessionType(){
 		return this.sessionType;
 	}
-	public void setSessionType(SessionType sessionType){
-		this.sessionType = sessionType;
-	}
-
-	public void sessionType(String multirequestToken){
-		setToken("sessionType", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// userId:
 	public String getUserId(){
 		return this.userId;
 	}
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public void userId(String multirequestToken){
-		setToken("userId", multirequestToken);
-	}
-
 	// expiry:
 	public Integer getExpiry(){
 		return this.expiry;
 	}
-	public void setExpiry(Integer expiry){
-		this.expiry = expiry;
-	}
-
-	public void expiry(String multirequestToken){
-		setToken("expiry", multirequestToken);
-	}
-
 	// privileges:
 	public String getPrivileges(){
 		return this.privileges;
 	}
-	public void setPrivileges(String privileges){
-		this.privileges = privileges;
-	}
-
-	public void privileges(String multirequestToken){
-		setToken("privileges", multirequestToken);
-	}
-
 
 	public SessionInfo() {
 		super();

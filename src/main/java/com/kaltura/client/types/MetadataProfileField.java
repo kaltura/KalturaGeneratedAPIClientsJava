@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,10 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class MetadataProfileField extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String xPath();
-		String key();
-		String label();
 	}
 
 	private Integer id;
@@ -60,50 +55,18 @@ public class MetadataProfileField extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// xPath:
 	public String getXPath(){
 		return this.xPath;
 	}
-	public void setXPath(String xPath){
-		this.xPath = xPath;
-	}
-
-	public void xPath(String multirequestToken){
-		setToken("xPath", multirequestToken);
-	}
-
 	// key:
 	public String getKey(){
 		return this.key;
 	}
-	public void setKey(String key){
-		this.key = key;
-	}
-
-	public void key(String multirequestToken){
-		setToken("key", multirequestToken);
-	}
-
 	// label:
 	public String getLabel(){
 		return this.label;
 	}
-	public void setLabel(String label){
-		this.label = label;
-	}
-
-	public void label(String multirequestToken){
-		setToken("label", multirequestToken);
-	}
-
 
 	public MetadataProfileField() {
 		super();

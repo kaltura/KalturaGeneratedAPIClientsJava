@@ -45,7 +45,6 @@ public class SyndicationDistributionProfile extends DistributionProfile {
 	
 	public interface Tokenizer extends DistributionProfile.Tokenizer {
 		String xsl();
-		String feedId();
 	}
 
 	private String xsl;
@@ -67,14 +66,6 @@ public class SyndicationDistributionProfile extends DistributionProfile {
 	public String getFeedId(){
 		return this.feedId;
 	}
-	public void setFeedId(String feedId){
-		this.feedId = feedId;
-	}
-
-	public void feedId(String multirequestToken){
-		setToken("feedId", multirequestToken);
-	}
-
 
 	public SyndicationDistributionProfile() {
 		super();

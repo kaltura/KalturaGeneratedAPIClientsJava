@@ -46,8 +46,6 @@ import java.util.List;
 public class LiveStreamEntry extends LiveEntry {
 	
 	public interface Tokenizer extends LiveEntry.Tokenizer {
-		String streamRemoteId();
-		String streamRemoteBackupId();
 		RequestBuilder.ListTokenizer<LiveStreamBitrate.Tokenizer> bitrates();
 		String primaryBroadcastingUrl();
 		String secondaryBroadcastingUrl();
@@ -60,8 +58,6 @@ public class LiveStreamEntry extends LiveEntry {
 		String encodingIP1();
 		String encodingIP2();
 		String streamPassword();
-		String streamUsername();
-		String primaryServerNodeId();
 	}
 
 	/**
@@ -118,26 +114,10 @@ public class LiveStreamEntry extends LiveEntry {
 	public String getStreamRemoteId(){
 		return this.streamRemoteId;
 	}
-	public void setStreamRemoteId(String streamRemoteId){
-		this.streamRemoteId = streamRemoteId;
-	}
-
-	public void streamRemoteId(String multirequestToken){
-		setToken("streamRemoteId", multirequestToken);
-	}
-
 	// streamRemoteBackupId:
 	public String getStreamRemoteBackupId(){
 		return this.streamRemoteBackupId;
 	}
-	public void setStreamRemoteBackupId(String streamRemoteBackupId){
-		this.streamRemoteBackupId = streamRemoteBackupId;
-	}
-
-	public void streamRemoteBackupId(String multirequestToken){
-		setToken("streamRemoteBackupId", multirequestToken);
-	}
-
 	// bitrates:
 	public List<LiveStreamBitrate> getBitrates(){
 		return this.bitrates;
@@ -282,26 +262,10 @@ public class LiveStreamEntry extends LiveEntry {
 	public String getStreamUsername(){
 		return this.streamUsername;
 	}
-	public void setStreamUsername(String streamUsername){
-		this.streamUsername = streamUsername;
-	}
-
-	public void streamUsername(String multirequestToken){
-		setToken("streamUsername", multirequestToken);
-	}
-
 	// primaryServerNodeId:
 	public Integer getPrimaryServerNodeId(){
 		return this.primaryServerNodeId;
 	}
-	public void setPrimaryServerNodeId(Integer primaryServerNodeId){
-		this.primaryServerNodeId = primaryServerNodeId;
-	}
-
-	public void primaryServerNodeId(String multirequestToken){
-		setToken("primaryServerNodeId", multirequestToken);
-	}
-
 
 	public LiveStreamEntry() {
 		super();

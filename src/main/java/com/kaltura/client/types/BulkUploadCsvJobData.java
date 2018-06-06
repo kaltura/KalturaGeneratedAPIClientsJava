@@ -50,7 +50,6 @@ import java.util.List;
 public class BulkUploadCsvJobData extends BulkUploadJobData {
 	
 	public interface Tokenizer extends BulkUploadJobData.Tokenizer {
-		String csvVersion();
 		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> columns();
 	}
 
@@ -67,14 +66,6 @@ public class BulkUploadCsvJobData extends BulkUploadJobData {
 	public BulkUploadCsvVersion getCsvVersion(){
 		return this.csvVersion;
 	}
-	public void setCsvVersion(BulkUploadCsvVersion csvVersion){
-		this.csvVersion = csvVersion;
-	}
-
-	public void csvVersion(String multirequestToken){
-		setToken("csvVersion", multirequestToken);
-	}
-
 	// columns:
 	public List<StringHolder> getColumns(){
 		return this.columns;

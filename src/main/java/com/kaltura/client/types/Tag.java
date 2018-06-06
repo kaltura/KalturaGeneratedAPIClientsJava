@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.TaggedObjectType;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -46,13 +45,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Tag extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String tag();
-		String taggedObjectType();
-		String partnerId();
-		String instanceCount();
-		String createdAt();
-		String updatedAt();
 	}
 
 	private Integer id;
@@ -67,86 +59,30 @@ public class Tag extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// tag:
 	public String getTag(){
 		return this.tag;
 	}
-	public void setTag(String tag){
-		this.tag = tag;
-	}
-
-	public void tag(String multirequestToken){
-		setToken("tag", multirequestToken);
-	}
-
 	// taggedObjectType:
 	public TaggedObjectType getTaggedObjectType(){
 		return this.taggedObjectType;
 	}
-	public void setTaggedObjectType(TaggedObjectType taggedObjectType){
-		this.taggedObjectType = taggedObjectType;
-	}
-
-	public void taggedObjectType(String multirequestToken){
-		setToken("taggedObjectType", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// instanceCount:
 	public Integer getInstanceCount(){
 		return this.instanceCount;
 	}
-	public void setInstanceCount(Integer instanceCount){
-		this.instanceCount = instanceCount;
-	}
-
-	public void instanceCount(String multirequestToken){
-		setToken("instanceCount", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 
 	public Tag() {
 		super();

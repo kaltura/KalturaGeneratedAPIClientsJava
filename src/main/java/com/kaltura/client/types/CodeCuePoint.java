@@ -47,7 +47,6 @@ public class CodeCuePoint extends CuePoint {
 		String code();
 		String description();
 		String endTime();
-		String duration();
 	}
 
 	private String code;
@@ -98,14 +97,6 @@ public class CodeCuePoint extends CuePoint {
 	public Integer getDuration(){
 		return this.duration;
 	}
-	public void setDuration(Integer duration){
-		this.duration = duration;
-	}
-
-	public void duration(String multirequestToken){
-		setToken("duration", multirequestToken);
-	}
-
 
 	public CodeCuePoint() {
 		super();

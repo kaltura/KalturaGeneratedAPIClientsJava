@@ -44,7 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class AvnDistributionProfile extends ConfigurableDistributionProfile {
 	
 	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
-		String feedUrl();
 		String feedTitle();
 	}
 
@@ -55,14 +54,6 @@ public class AvnDistributionProfile extends ConfigurableDistributionProfile {
 	public String getFeedUrl(){
 		return this.feedUrl;
 	}
-	public void setFeedUrl(String feedUrl){
-		this.feedUrl = feedUrl;
-	}
-
-	public void feedUrl(String multirequestToken){
-		setToken("feedUrl", multirequestToken);
-	}
-
 	// feedTitle:
 	public String getFeedTitle(){
 		return this.feedTitle;

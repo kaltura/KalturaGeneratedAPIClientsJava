@@ -46,7 +46,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class Condition extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String type();
 		String description();
 		String not();
 	}
@@ -62,14 +61,6 @@ public abstract class Condition extends ObjectBase {
 	public ConditionType getType(){
 		return this.type;
 	}
-	public void setType(ConditionType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// description:
 	public String getDescription(){
 		return this.description;

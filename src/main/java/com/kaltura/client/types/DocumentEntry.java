@@ -46,7 +46,6 @@ public class DocumentEntry extends BaseEntry {
 	
 	public interface Tokenizer extends BaseEntry.Tokenizer {
 		String documentType();
-		String assetParamsIds();
 	}
 
 	/**
@@ -74,14 +73,6 @@ public class DocumentEntry extends BaseEntry {
 	public String getAssetParamsIds(){
 		return this.assetParamsIds;
 	}
-	public void setAssetParamsIds(String assetParamsIds){
-		this.assetParamsIds = assetParamsIds;
-	}
-
-	public void assetParamsIds(String multirequestToken){
-		setToken("assetParamsIds", multirequestToken);
-	}
-
 
 	public DocumentEntry() {
 		super();

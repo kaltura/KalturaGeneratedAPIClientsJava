@@ -63,7 +63,6 @@ public class StatsEvent extends ObjectBase {
 		String userId();
 		String currentPoint();
 		String duration();
-		String userIp();
 		String processDuration();
 		String controlId();
 		String seek();
@@ -293,14 +292,6 @@ public class StatsEvent extends ObjectBase {
 	public String getUserIp(){
 		return this.userIp;
 	}
-	public void setUserIp(String userIp){
-		this.userIp = userIp;
-	}
-
-	public void userIp(String multirequestToken){
-		setToken("userIp", multirequestToken);
-	}
-
 	// processDuration:
 	public Integer getProcessDuration(){
 		return this.processDuration;

@@ -49,12 +49,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ScheduleEvent extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String parentId();
 		String summary();
 		String description();
-		String status();
 		String startDate();
 		String endDate();
 		String referenceId();
@@ -71,8 +67,6 @@ public abstract class ScheduleEvent extends ObjectBase {
 		String contact();
 		String comment();
 		String tags();
-		String createdAt();
-		String updatedAt();
 		ScheduleEventRecurrence.Tokenizer recurrence();
 	}
 
@@ -144,38 +138,14 @@ public abstract class ScheduleEvent extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// parentId:
 	public Integer getParentId(){
 		return this.parentId;
 	}
-	public void setParentId(Integer parentId){
-		this.parentId = parentId;
-	}
-
-	public void parentId(String multirequestToken){
-		setToken("parentId", multirequestToken);
-	}
-
 	// summary:
 	public String getSummary(){
 		return this.summary;
@@ -204,14 +174,6 @@ public abstract class ScheduleEvent extends ObjectBase {
 	public ScheduleEventStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(ScheduleEventStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// startDate:
 	public Integer getStartDate(){
 		return this.startDate;
@@ -408,26 +370,10 @@ public abstract class ScheduleEvent extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// recurrence:
 	public ScheduleEventRecurrence getRecurrence(){
 		return this.recurrence;

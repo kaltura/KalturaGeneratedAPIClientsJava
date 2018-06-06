@@ -32,7 +32,6 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.enums.EntryServerNodeType;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -47,14 +46,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class EntryServerNode extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String entryId();
-		String serverNodeId();
-		String partnerId();
-		String createdAt();
-		String updatedAt();
-		String status();
-		String serverType();
 	}
 
 	/**
@@ -73,98 +64,34 @@ public abstract class EntryServerNode extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
 	}
-	public void setEntryId(String entryId){
-		this.entryId = entryId;
-	}
-
-	public void entryId(String multirequestToken){
-		setToken("entryId", multirequestToken);
-	}
-
 	// serverNodeId:
 	public Integer getServerNodeId(){
 		return this.serverNodeId;
 	}
-	public void setServerNodeId(Integer serverNodeId){
-		this.serverNodeId = serverNodeId;
-	}
-
-	public void serverNodeId(String multirequestToken){
-		setToken("serverNodeId", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// status:
 	public EntryServerNodeStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(EntryServerNodeStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// serverType:
 	public EntryServerNodeType getServerType(){
 		return this.serverType;
 	}
-	public void setServerType(EntryServerNodeType serverType){
-		this.serverType = serverType;
-	}
-
-	public void serverType(String multirequestToken){
-		setToken("serverType", multirequestToken);
-	}
-
 
 	public EntryServerNode() {
 		super();

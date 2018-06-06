@@ -56,10 +56,6 @@ public class MediaEntry extends PlayableEntry {
 		String searchProviderId();
 		String creditUserName();
 		String creditUrl();
-		String mediaDate();
-		String dataUrl();
-		String flavorParamsIds();
-		String isTrimDisabled();
 		RequestBuilder.ListTokenizer<StreamContainer.Tokenizer> streams();
 	}
 
@@ -201,50 +197,18 @@ public class MediaEntry extends PlayableEntry {
 	public Integer getMediaDate(){
 		return this.mediaDate;
 	}
-	public void setMediaDate(Integer mediaDate){
-		this.mediaDate = mediaDate;
-	}
-
-	public void mediaDate(String multirequestToken){
-		setToken("mediaDate", multirequestToken);
-	}
-
 	// dataUrl:
 	public String getDataUrl(){
 		return this.dataUrl;
 	}
-	public void setDataUrl(String dataUrl){
-		this.dataUrl = dataUrl;
-	}
-
-	public void dataUrl(String multirequestToken){
-		setToken("dataUrl", multirequestToken);
-	}
-
 	// flavorParamsIds:
 	public String getFlavorParamsIds(){
 		return this.flavorParamsIds;
 	}
-	public void setFlavorParamsIds(String flavorParamsIds){
-		this.flavorParamsIds = flavorParamsIds;
-	}
-
-	public void flavorParamsIds(String multirequestToken){
-		setToken("flavorParamsIds", multirequestToken);
-	}
-
 	// isTrimDisabled:
 	public Boolean getIsTrimDisabled(){
 		return this.isTrimDisabled;
 	}
-	public void setIsTrimDisabled(Boolean isTrimDisabled){
-		this.isTrimDisabled = isTrimDisabled;
-	}
-
-	public void isTrimDisabled(String multirequestToken){
-		setToken("isTrimDisabled", multirequestToken);
-	}
-
 	// streams:
 	public List<StreamContainer> getStreams(){
 		return this.streams;

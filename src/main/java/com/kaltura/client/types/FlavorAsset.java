@@ -47,15 +47,6 @@ public class FlavorAsset extends Asset {
 	
 	public interface Tokenizer extends Asset.Tokenizer {
 		String flavorParamsId();
-		String width();
-		String height();
-		String bitrate();
-		String frameRate();
-		String isOriginal();
-		String isWeb();
-		String containerFormat();
-		String videoCodecId();
-		String status();
 		String language();
 		String label();
 		String isDefault();
@@ -131,110 +122,38 @@ public class FlavorAsset extends Asset {
 	public Integer getWidth(){
 		return this.width;
 	}
-	public void setWidth(Integer width){
-		this.width = width;
-	}
-
-	public void width(String multirequestToken){
-		setToken("width", multirequestToken);
-	}
-
 	// height:
 	public Integer getHeight(){
 		return this.height;
 	}
-	public void setHeight(Integer height){
-		this.height = height;
-	}
-
-	public void height(String multirequestToken){
-		setToken("height", multirequestToken);
-	}
-
 	// bitrate:
 	public Integer getBitrate(){
 		return this.bitrate;
 	}
-	public void setBitrate(Integer bitrate){
-		this.bitrate = bitrate;
-	}
-
-	public void bitrate(String multirequestToken){
-		setToken("bitrate", multirequestToken);
-	}
-
 	// frameRate:
 	public Double getFrameRate(){
 		return this.frameRate;
 	}
-	public void setFrameRate(Double frameRate){
-		this.frameRate = frameRate;
-	}
-
-	public void frameRate(String multirequestToken){
-		setToken("frameRate", multirequestToken);
-	}
-
 	// isOriginal:
 	public Boolean getIsOriginal(){
 		return this.isOriginal;
 	}
-	public void setIsOriginal(Boolean isOriginal){
-		this.isOriginal = isOriginal;
-	}
-
-	public void isOriginal(String multirequestToken){
-		setToken("isOriginal", multirequestToken);
-	}
-
 	// isWeb:
 	public Boolean getIsWeb(){
 		return this.isWeb;
 	}
-	public void setIsWeb(Boolean isWeb){
-		this.isWeb = isWeb;
-	}
-
-	public void isWeb(String multirequestToken){
-		setToken("isWeb", multirequestToken);
-	}
-
 	// containerFormat:
 	public String getContainerFormat(){
 		return this.containerFormat;
 	}
-	public void setContainerFormat(String containerFormat){
-		this.containerFormat = containerFormat;
-	}
-
-	public void containerFormat(String multirequestToken){
-		setToken("containerFormat", multirequestToken);
-	}
-
 	// videoCodecId:
 	public String getVideoCodecId(){
 		return this.videoCodecId;
 	}
-	public void setVideoCodecId(String videoCodecId){
-		this.videoCodecId = videoCodecId;
-	}
-
-	public void videoCodecId(String multirequestToken){
-		setToken("videoCodecId", multirequestToken);
-	}
-
 	// status:
 	public FlavorAssetStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(FlavorAssetStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// language:
 	public Language getLanguage(){
 		return this.language;

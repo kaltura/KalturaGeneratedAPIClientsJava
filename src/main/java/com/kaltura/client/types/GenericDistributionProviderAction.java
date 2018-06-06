@@ -49,12 +49,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class GenericDistributionProviderAction extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String createdAt();
-		String updatedAt();
 		String genericDistributionProviderId();
 		String action();
-		String status();
 		String resultsParser();
 		String protocol();
 		String serverAddress();
@@ -63,9 +59,6 @@ public class GenericDistributionProviderAction extends ObjectBase {
 		String remotePassword();
 		String editableFields();
 		String mandatoryFields();
-		String mrssTransformer();
-		String mrssValidator();
-		String resultsTransformer();
 	}
 
 	/**
@@ -101,38 +94,14 @@ public class GenericDistributionProviderAction extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// genericDistributionProviderId:
 	public Integer getGenericDistributionProviderId(){
 		return this.genericDistributionProviderId;
@@ -161,14 +130,6 @@ public class GenericDistributionProviderAction extends ObjectBase {
 	public GenericDistributionProviderStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(GenericDistributionProviderStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// resultsParser:
 	public GenericDistributionProviderParser getResultsParser(){
 		return this.resultsParser;
@@ -269,38 +230,14 @@ public class GenericDistributionProviderAction extends ObjectBase {
 	public String getMrssTransformer(){
 		return this.mrssTransformer;
 	}
-	public void setMrssTransformer(String mrssTransformer){
-		this.mrssTransformer = mrssTransformer;
-	}
-
-	public void mrssTransformer(String multirequestToken){
-		setToken("mrssTransformer", multirequestToken);
-	}
-
 	// mrssValidator:
 	public String getMrssValidator(){
 		return this.mrssValidator;
 	}
-	public void setMrssValidator(String mrssValidator){
-		this.mrssValidator = mrssValidator;
-	}
-
-	public void mrssValidator(String multirequestToken){
-		setToken("mrssValidator", multirequestToken);
-	}
-
 	// resultsTransformer:
 	public String getResultsTransformer(){
 		return this.resultsTransformer;
 	}
-	public void setResultsTransformer(String resultsTransformer){
-		this.resultsTransformer = resultsTransformer;
-	}
-
-	public void resultsTransformer(String multirequestToken){
-		setToken("resultsTransformer", multirequestToken);
-	}
-
 
 	public GenericDistributionProviderAction() {
 		super();

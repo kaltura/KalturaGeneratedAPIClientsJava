@@ -47,30 +47,16 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class EntryVendorTask extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String vendorPartnerId();
-		String createdAt();
-		String updatedAt();
-		String queueTime();
-		String finishTime();
 		String entryId();
 		String status();
 		String reachProfileId();
 		String catalogItemId();
-		String price();
-		String userId();
-		String moderatingUser();
 		String errDescription();
-		String accessKey();
-		String version();
 		String notes();
-		String dictionary();
 		String context();
 		String accuracy();
 		String outputObjectId();
 		String partnerData();
-		String creationMode();
 	}
 
 	private Long id;
@@ -148,86 +134,30 @@ public class EntryVendorTask extends ObjectBase {
 	public Long getId(){
 		return this.id;
 	}
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// vendorPartnerId:
 	public Integer getVendorPartnerId(){
 		return this.vendorPartnerId;
 	}
-	public void setVendorPartnerId(Integer vendorPartnerId){
-		this.vendorPartnerId = vendorPartnerId;
-	}
-
-	public void vendorPartnerId(String multirequestToken){
-		setToken("vendorPartnerId", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// queueTime:
 	public Integer getQueueTime(){
 		return this.queueTime;
 	}
-	public void setQueueTime(Integer queueTime){
-		this.queueTime = queueTime;
-	}
-
-	public void queueTime(String multirequestToken){
-		setToken("queueTime", multirequestToken);
-	}
-
 	// finishTime:
 	public Integer getFinishTime(){
 		return this.finishTime;
 	}
-	public void setFinishTime(Integer finishTime){
-		this.finishTime = finishTime;
-	}
-
-	public void finishTime(String multirequestToken){
-		setToken("finishTime", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -280,38 +210,14 @@ public class EntryVendorTask extends ObjectBase {
 	public Integer getPrice(){
 		return this.price;
 	}
-	public void setPrice(Integer price){
-		this.price = price;
-	}
-
-	public void price(String multirequestToken){
-		setToken("price", multirequestToken);
-	}
-
 	// userId:
 	public String getUserId(){
 		return this.userId;
 	}
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public void userId(String multirequestToken){
-		setToken("userId", multirequestToken);
-	}
-
 	// moderatingUser:
 	public String getModeratingUser(){
 		return this.moderatingUser;
 	}
-	public void setModeratingUser(String moderatingUser){
-		this.moderatingUser = moderatingUser;
-	}
-
-	public void moderatingUser(String multirequestToken){
-		setToken("moderatingUser", multirequestToken);
-	}
-
 	// errDescription:
 	public String getErrDescription(){
 		return this.errDescription;
@@ -328,26 +234,10 @@ public class EntryVendorTask extends ObjectBase {
 	public String getAccessKey(){
 		return this.accessKey;
 	}
-	public void setAccessKey(String accessKey){
-		this.accessKey = accessKey;
-	}
-
-	public void accessKey(String multirequestToken){
-		setToken("accessKey", multirequestToken);
-	}
-
 	// version:
 	public String getVersion(){
 		return this.version;
 	}
-	public void setVersion(String version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// notes:
 	public String getNotes(){
 		return this.notes;
@@ -364,14 +254,6 @@ public class EntryVendorTask extends ObjectBase {
 	public String getDictionary(){
 		return this.dictionary;
 	}
-	public void setDictionary(String dictionary){
-		this.dictionary = dictionary;
-	}
-
-	public void dictionary(String multirequestToken){
-		setToken("dictionary", multirequestToken);
-	}
-
 	// context:
 	public String getContext(){
 		return this.context;
@@ -424,14 +306,6 @@ public class EntryVendorTask extends ObjectBase {
 	public EntryVendorTaskCreationMode getCreationMode(){
 		return this.creationMode;
 	}
-	public void setCreationMode(EntryVendorTaskCreationMode creationMode){
-		this.creationMode = creationMode;
-	}
-
-	public void creationMode(String multirequestToken){
-		setToken("creationMode", multirequestToken);
-	}
-
 
 	public EntryVendorTask() {
 		super();

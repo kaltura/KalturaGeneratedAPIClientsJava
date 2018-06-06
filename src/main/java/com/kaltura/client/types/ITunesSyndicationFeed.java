@@ -52,7 +52,6 @@ public class ITunesSyndicationFeed extends BaseSyndicationFeed {
 		String ownerName();
 		String ownerEmail();
 		String feedImageUrl();
-		String category();
 		String adultContent();
 		String feedAuthor();
 		String enforceFeedAuthor();
@@ -168,14 +167,6 @@ public class ITunesSyndicationFeed extends BaseSyndicationFeed {
 	public ITunesSyndicationFeedCategories getCategory(){
 		return this.category;
 	}
-	public void setCategory(ITunesSyndicationFeedCategories category){
-		this.category = category;
-	}
-
-	public void category(String multirequestToken){
-		setToken("category", multirequestToken);
-	}
-
 	// adultContent:
 	public ITunesSyndicationFeedAdultValues getAdultContent(){
 		return this.adultContent;

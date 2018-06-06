@@ -51,12 +51,10 @@ import java.util.List;
 public class Partner extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String name();
 		String website();
 		String notificationUrl();
 		String appearInSearch();
-		String createdAt();
 		String adminName();
 		String adminEmail();
 		String description();
@@ -70,42 +68,20 @@ public class Partner extends ObjectBase {
 		String adultContent();
 		String defConversionProfileType();
 		String notify_();
-		String status();
 		String allowQuickEdit();
 		String mergeEntryLists();
 		String notificationsConfig();
 		String maxUploadSize();
 		String partnerPackage();
-		String secret();
-		String adminSecret();
-		String cmsPassword();
 		String allowMultiNotification();
-		String adminLoginUsersQuota();
 		String adminUserId();
 		String firstName();
 		String lastName();
 		String country();
 		String state();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> additionalParams();
-		String publishersQuota();
-		String partnerGroupType();
-		String defaultEntitlementEnforcement();
-		String defaultDeliveryType();
-		String defaultEmbedCodeType();
-		RequestBuilder.ListTokenizer<PlayerDeliveryType.Tokenizer> deliveryTypes();
-		RequestBuilder.ListTokenizer<PlayerEmbedCodeType.Tokenizer> embedCodeTypes();
-		String templatePartnerId();
-		String ignoreSeoLinks();
-		String host();
-		String cdnHost();
-		String isFirstLogin();
-		String logoutUrl();
 		String partnerParentId();
-		String crmId();
 		String referenceId();
-		String timeAlignedRenditions();
-		String ovpEnvironmentUrl();
-		String ottEnvironmentUrl();
 		RequestBuilder.ListTokenizer<ESearchLanguageItem.Tokenizer> eSearchLanguages();
 	}
 
@@ -185,14 +161,6 @@ public class Partner extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -245,14 +213,6 @@ public class Partner extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// adminName:
 	public String getAdminName(){
 		return this.adminName;
@@ -413,14 +373,6 @@ public class Partner extends ObjectBase {
 	public PartnerStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(PartnerStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// allowQuickEdit:
 	public Integer getAllowQuickEdit(){
 		return this.allowQuickEdit;
@@ -485,38 +437,14 @@ public class Partner extends ObjectBase {
 	public String getSecret(){
 		return this.secret;
 	}
-	public void setSecret(String secret){
-		this.secret = secret;
-	}
-
-	public void secret(String multirequestToken){
-		setToken("secret", multirequestToken);
-	}
-
 	// adminSecret:
 	public String getAdminSecret(){
 		return this.adminSecret;
 	}
-	public void setAdminSecret(String adminSecret){
-		this.adminSecret = adminSecret;
-	}
-
-	public void adminSecret(String multirequestToken){
-		setToken("adminSecret", multirequestToken);
-	}
-
 	// cmsPassword:
 	public String getCmsPassword(){
 		return this.cmsPassword;
 	}
-	public void setCmsPassword(String cmsPassword){
-		this.cmsPassword = cmsPassword;
-	}
-
-	public void cmsPassword(String multirequestToken){
-		setToken("cmsPassword", multirequestToken);
-	}
-
 	// allowMultiNotification:
 	public Integer getAllowMultiNotification(){
 		return this.allowMultiNotification;
@@ -533,14 +461,6 @@ public class Partner extends ObjectBase {
 	public Integer getAdminLoginUsersQuota(){
 		return this.adminLoginUsersQuota;
 	}
-	public void setAdminLoginUsersQuota(Integer adminLoginUsersQuota){
-		this.adminLoginUsersQuota = adminLoginUsersQuota;
-	}
-
-	public void adminLoginUsersQuota(String multirequestToken){
-		setToken("adminLoginUsersQuota", multirequestToken);
-	}
-
 	// adminUserId:
 	public String getAdminUserId(){
 		return this.adminUserId;
@@ -613,150 +533,54 @@ public class Partner extends ObjectBase {
 	public Integer getPublishersQuota(){
 		return this.publishersQuota;
 	}
-	public void setPublishersQuota(Integer publishersQuota){
-		this.publishersQuota = publishersQuota;
-	}
-
-	public void publishersQuota(String multirequestToken){
-		setToken("publishersQuota", multirequestToken);
-	}
-
 	// partnerGroupType:
 	public PartnerGroupType getPartnerGroupType(){
 		return this.partnerGroupType;
 	}
-	public void setPartnerGroupType(PartnerGroupType partnerGroupType){
-		this.partnerGroupType = partnerGroupType;
-	}
-
-	public void partnerGroupType(String multirequestToken){
-		setToken("partnerGroupType", multirequestToken);
-	}
-
 	// defaultEntitlementEnforcement:
 	public Boolean getDefaultEntitlementEnforcement(){
 		return this.defaultEntitlementEnforcement;
 	}
-	public void setDefaultEntitlementEnforcement(Boolean defaultEntitlementEnforcement){
-		this.defaultEntitlementEnforcement = defaultEntitlementEnforcement;
-	}
-
-	public void defaultEntitlementEnforcement(String multirequestToken){
-		setToken("defaultEntitlementEnforcement", multirequestToken);
-	}
-
 	// defaultDeliveryType:
 	public String getDefaultDeliveryType(){
 		return this.defaultDeliveryType;
 	}
-	public void setDefaultDeliveryType(String defaultDeliveryType){
-		this.defaultDeliveryType = defaultDeliveryType;
-	}
-
-	public void defaultDeliveryType(String multirequestToken){
-		setToken("defaultDeliveryType", multirequestToken);
-	}
-
 	// defaultEmbedCodeType:
 	public String getDefaultEmbedCodeType(){
 		return this.defaultEmbedCodeType;
 	}
-	public void setDefaultEmbedCodeType(String defaultEmbedCodeType){
-		this.defaultEmbedCodeType = defaultEmbedCodeType;
-	}
-
-	public void defaultEmbedCodeType(String multirequestToken){
-		setToken("defaultEmbedCodeType", multirequestToken);
-	}
-
 	// deliveryTypes:
 	public List<PlayerDeliveryType> getDeliveryTypes(){
 		return this.deliveryTypes;
 	}
-	public void setDeliveryTypes(List<PlayerDeliveryType> deliveryTypes){
-		this.deliveryTypes = deliveryTypes;
-	}
-
 	// embedCodeTypes:
 	public List<PlayerEmbedCodeType> getEmbedCodeTypes(){
 		return this.embedCodeTypes;
 	}
-	public void setEmbedCodeTypes(List<PlayerEmbedCodeType> embedCodeTypes){
-		this.embedCodeTypes = embedCodeTypes;
-	}
-
 	// templatePartnerId:
 	public Integer getTemplatePartnerId(){
 		return this.templatePartnerId;
 	}
-	public void setTemplatePartnerId(Integer templatePartnerId){
-		this.templatePartnerId = templatePartnerId;
-	}
-
-	public void templatePartnerId(String multirequestToken){
-		setToken("templatePartnerId", multirequestToken);
-	}
-
 	// ignoreSeoLinks:
 	public Boolean getIgnoreSeoLinks(){
 		return this.ignoreSeoLinks;
 	}
-	public void setIgnoreSeoLinks(Boolean ignoreSeoLinks){
-		this.ignoreSeoLinks = ignoreSeoLinks;
-	}
-
-	public void ignoreSeoLinks(String multirequestToken){
-		setToken("ignoreSeoLinks", multirequestToken);
-	}
-
 	// host:
 	public String getHost(){
 		return this.host;
 	}
-	public void setHost(String host){
-		this.host = host;
-	}
-
-	public void host(String multirequestToken){
-		setToken("host", multirequestToken);
-	}
-
 	// cdnHost:
 	public String getCdnHost(){
 		return this.cdnHost;
 	}
-	public void setCdnHost(String cdnHost){
-		this.cdnHost = cdnHost;
-	}
-
-	public void cdnHost(String multirequestToken){
-		setToken("cdnHost", multirequestToken);
-	}
-
 	// isFirstLogin:
 	public Boolean getIsFirstLogin(){
 		return this.isFirstLogin;
 	}
-	public void setIsFirstLogin(Boolean isFirstLogin){
-		this.isFirstLogin = isFirstLogin;
-	}
-
-	public void isFirstLogin(String multirequestToken){
-		setToken("isFirstLogin", multirequestToken);
-	}
-
 	// logoutUrl:
 	public String getLogoutUrl(){
 		return this.logoutUrl;
 	}
-	public void setLogoutUrl(String logoutUrl){
-		this.logoutUrl = logoutUrl;
-	}
-
-	public void logoutUrl(String multirequestToken){
-		setToken("logoutUrl", multirequestToken);
-	}
-
 	// partnerParentId:
 	public Integer getPartnerParentId(){
 		return this.partnerParentId;
@@ -773,14 +597,6 @@ public class Partner extends ObjectBase {
 	public String getCrmId(){
 		return this.crmId;
 	}
-	public void setCrmId(String crmId){
-		this.crmId = crmId;
-	}
-
-	public void crmId(String multirequestToken){
-		setToken("crmId", multirequestToken);
-	}
-
 	// referenceId:
 	public String getReferenceId(){
 		return this.referenceId;
@@ -797,38 +613,14 @@ public class Partner extends ObjectBase {
 	public Boolean getTimeAlignedRenditions(){
 		return this.timeAlignedRenditions;
 	}
-	public void setTimeAlignedRenditions(Boolean timeAlignedRenditions){
-		this.timeAlignedRenditions = timeAlignedRenditions;
-	}
-
-	public void timeAlignedRenditions(String multirequestToken){
-		setToken("timeAlignedRenditions", multirequestToken);
-	}
-
 	// ovpEnvironmentUrl:
 	public String getOvpEnvironmentUrl(){
 		return this.ovpEnvironmentUrl;
 	}
-	public void setOvpEnvironmentUrl(String ovpEnvironmentUrl){
-		this.ovpEnvironmentUrl = ovpEnvironmentUrl;
-	}
-
-	public void ovpEnvironmentUrl(String multirequestToken){
-		setToken("ovpEnvironmentUrl", multirequestToken);
-	}
-
 	// ottEnvironmentUrl:
 	public String getOttEnvironmentUrl(){
 		return this.ottEnvironmentUrl;
 	}
-	public void setOttEnvironmentUrl(String ottEnvironmentUrl){
-		this.ottEnvironmentUrl = ottEnvironmentUrl;
-	}
-
-	public void ottEnvironmentUrl(String multirequestToken){
-		setToken("ottEnvironmentUrl", multirequestToken);
-	}
-
 	// eSearchLanguages:
 	public List<ESearchLanguageItem> getESearchLanguages(){
 		return this.eSearchLanguages;

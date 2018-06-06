@@ -50,7 +50,6 @@ import java.util.List;
 public class BulkUploadResult extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String bulkUploadJobId();
 		String lineIndex();
 		String partnerId();
@@ -101,14 +100,6 @@ public class BulkUploadResult extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// bulkUploadJobId:
 	public Long getBulkUploadJobId(){
 		return this.bulkUploadJobId;

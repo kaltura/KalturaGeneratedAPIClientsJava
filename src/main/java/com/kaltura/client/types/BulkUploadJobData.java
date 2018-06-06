@@ -47,18 +47,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class BulkUploadJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
-		String userId();
-		String uploadedBy();
-		String conversionProfileId();
-		String resultsFileLocalPath();
-		String resultsFileUrl();
-		String numOfEntries();
-		String numOfObjects();
-		String filePath();
-		String bulkUploadObjectType();
 		String fileName();
-		BulkUploadObjectData.Tokenizer objectData();
-		String type();
 		String emailRecipients();
 		String numOfErrorObjects();
 	}
@@ -121,110 +110,38 @@ public class BulkUploadJobData extends JobData {
 	public String getUserId(){
 		return this.userId;
 	}
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public void userId(String multirequestToken){
-		setToken("userId", multirequestToken);
-	}
-
 	// uploadedBy:
 	public String getUploadedBy(){
 		return this.uploadedBy;
 	}
-	public void setUploadedBy(String uploadedBy){
-		this.uploadedBy = uploadedBy;
-	}
-
-	public void uploadedBy(String multirequestToken){
-		setToken("uploadedBy", multirequestToken);
-	}
-
 	// conversionProfileId:
 	public Integer getConversionProfileId(){
 		return this.conversionProfileId;
 	}
-	public void setConversionProfileId(Integer conversionProfileId){
-		this.conversionProfileId = conversionProfileId;
-	}
-
-	public void conversionProfileId(String multirequestToken){
-		setToken("conversionProfileId", multirequestToken);
-	}
-
 	// resultsFileLocalPath:
 	public String getResultsFileLocalPath(){
 		return this.resultsFileLocalPath;
 	}
-	public void setResultsFileLocalPath(String resultsFileLocalPath){
-		this.resultsFileLocalPath = resultsFileLocalPath;
-	}
-
-	public void resultsFileLocalPath(String multirequestToken){
-		setToken("resultsFileLocalPath", multirequestToken);
-	}
-
 	// resultsFileUrl:
 	public String getResultsFileUrl(){
 		return this.resultsFileUrl;
 	}
-	public void setResultsFileUrl(String resultsFileUrl){
-		this.resultsFileUrl = resultsFileUrl;
-	}
-
-	public void resultsFileUrl(String multirequestToken){
-		setToken("resultsFileUrl", multirequestToken);
-	}
-
 	// numOfEntries:
 	public Integer getNumOfEntries(){
 		return this.numOfEntries;
 	}
-	public void setNumOfEntries(Integer numOfEntries){
-		this.numOfEntries = numOfEntries;
-	}
-
-	public void numOfEntries(String multirequestToken){
-		setToken("numOfEntries", multirequestToken);
-	}
-
 	// numOfObjects:
 	public Integer getNumOfObjects(){
 		return this.numOfObjects;
 	}
-	public void setNumOfObjects(Integer numOfObjects){
-		this.numOfObjects = numOfObjects;
-	}
-
-	public void numOfObjects(String multirequestToken){
-		setToken("numOfObjects", multirequestToken);
-	}
-
 	// filePath:
 	public String getFilePath(){
 		return this.filePath;
 	}
-	public void setFilePath(String filePath){
-		this.filePath = filePath;
-	}
-
-	public void filePath(String multirequestToken){
-		setToken("filePath", multirequestToken);
-	}
-
 	// bulkUploadObjectType:
 	public BulkUploadObjectType getBulkUploadObjectType(){
 		return this.bulkUploadObjectType;
 	}
-	public void setBulkUploadObjectType(BulkUploadObjectType bulkUploadObjectType){
-		this.bulkUploadObjectType = bulkUploadObjectType;
-	}
-
-	public void bulkUploadObjectType(String multirequestToken){
-		setToken("bulkUploadObjectType", multirequestToken);
-	}
-
 	// fileName:
 	public String getFileName(){
 		return this.fileName;
@@ -241,22 +158,10 @@ public class BulkUploadJobData extends JobData {
 	public BulkUploadObjectData getObjectData(){
 		return this.objectData;
 	}
-	public void setObjectData(BulkUploadObjectData objectData){
-		this.objectData = objectData;
-	}
-
 	// type:
 	public BulkUploadType getType(){
 		return this.type;
 	}
-	public void setType(BulkUploadType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// emailRecipients:
 	public String getEmailRecipients(){
 		return this.emailRecipients;

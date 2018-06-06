@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -49,9 +48,6 @@ public class AnswerCuePoint extends CuePoint {
 		String parentId();
 		String quizUserEntryId();
 		String answerKey();
-		String isCorrect();
-		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> correctAnswerKeys();
-		String explanation();
 	}
 
 	private String parentId;
@@ -104,34 +100,14 @@ public class AnswerCuePoint extends CuePoint {
 	public Boolean getIsCorrect(){
 		return this.isCorrect;
 	}
-	public void setIsCorrect(Boolean isCorrect){
-		this.isCorrect = isCorrect;
-	}
-
-	public void isCorrect(String multirequestToken){
-		setToken("isCorrect", multirequestToken);
-	}
-
 	// correctAnswerKeys:
 	public List<StringHolder> getCorrectAnswerKeys(){
 		return this.correctAnswerKeys;
 	}
-	public void setCorrectAnswerKeys(List<StringHolder> correctAnswerKeys){
-		this.correctAnswerKeys = correctAnswerKeys;
-	}
-
 	// explanation:
 	public String getExplanation(){
 		return this.explanation;
 	}
-	public void setExplanation(String explanation){
-		this.explanation = explanation;
-	}
-
-	public void explanation(String multirequestToken){
-		setToken("explanation", multirequestToken);
-	}
-
 
 	public AnswerCuePoint() {
 		super();

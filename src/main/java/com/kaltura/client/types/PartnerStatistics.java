@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,12 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class PartnerStatistics extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String packageBandwidthAndStorage();
-		String hosting();
-		String bandwidth();
-		String usage();
-		String usagePercent();
-		String reachedLimitDate();
 	}
 
 	/**
@@ -83,74 +76,26 @@ public class PartnerStatistics extends ObjectBase {
 	public Integer getPackageBandwidthAndStorage(){
 		return this.packageBandwidthAndStorage;
 	}
-	public void setPackageBandwidthAndStorage(Integer packageBandwidthAndStorage){
-		this.packageBandwidthAndStorage = packageBandwidthAndStorage;
-	}
-
-	public void packageBandwidthAndStorage(String multirequestToken){
-		setToken("packageBandwidthAndStorage", multirequestToken);
-	}
-
 	// hosting:
 	public Double getHosting(){
 		return this.hosting;
 	}
-	public void setHosting(Double hosting){
-		this.hosting = hosting;
-	}
-
-	public void hosting(String multirequestToken){
-		setToken("hosting", multirequestToken);
-	}
-
 	// bandwidth:
 	public Double getBandwidth(){
 		return this.bandwidth;
 	}
-	public void setBandwidth(Double bandwidth){
-		this.bandwidth = bandwidth;
-	}
-
-	public void bandwidth(String multirequestToken){
-		setToken("bandwidth", multirequestToken);
-	}
-
 	// usage:
 	public Integer getUsage(){
 		return this.usage;
 	}
-	public void setUsage(Integer usage){
-		this.usage = usage;
-	}
-
-	public void usage(String multirequestToken){
-		setToken("usage", multirequestToken);
-	}
-
 	// usagePercent:
 	public Double getUsagePercent(){
 		return this.usagePercent;
 	}
-	public void setUsagePercent(Double usagePercent){
-		this.usagePercent = usagePercent;
-	}
-
-	public void usagePercent(String multirequestToken){
-		setToken("usagePercent", multirequestToken);
-	}
-
 	// reachedLimitDate:
 	public Integer getReachedLimitDate(){
 		return this.reachedLimitDate;
 	}
-	public void setReachedLimitDate(Integer reachedLimitDate){
-		this.reachedLimitDate = reachedLimitDate;
-	}
-
-	public void reachedLimitDate(String multirequestToken){
-		setToken("reachedLimitDate", multirequestToken);
-	}
-
 
 	public PartnerStatistics() {
 		super();

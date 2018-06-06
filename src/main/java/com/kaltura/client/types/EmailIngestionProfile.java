@@ -47,16 +47,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class EmailIngestionProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String name();
 		String description();
 		String emailAddress();
 		String mailboxId();
-		String partnerId();
 		String conversionProfile2Id();
 		String moderationStatus();
-		String status();
-		String createdAt();
 		String defaultCategory();
 		String defaultUserId();
 		String defaultTags();
@@ -86,14 +82,6 @@ public class EmailIngestionProfile extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -146,14 +134,6 @@ public class EmailIngestionProfile extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// conversionProfile2Id:
 	public Integer getConversionProfile2Id(){
 		return this.conversionProfile2Id;
@@ -182,26 +162,10 @@ public class EmailIngestionProfile extends ObjectBase {
 	public EmailIngestionProfileStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(EmailIngestionProfileStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// createdAt:
 	public String getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(String createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// defaultCategory:
 	public String getDefaultCategory(){
 		return this.defaultCategory;

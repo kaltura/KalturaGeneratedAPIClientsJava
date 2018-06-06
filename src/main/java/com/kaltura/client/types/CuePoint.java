@@ -47,23 +47,15 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class CuePoint extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String cuePointType();
-		String status();
 		String entryId();
-		String partnerId();
-		String createdAt();
-		String updatedAt();
 		String triggeredAt();
 		String tags();
 		String startTime();
-		String userId();
 		String partnerData();
 		String partnerSortValue();
 		String forceStop();
 		String thumbOffset();
 		String systemName();
-		String isMomentary();
 	}
 
 	private String id;
@@ -91,38 +83,14 @@ public abstract class CuePoint extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// cuePointType:
 	public CuePointType getCuePointType(){
 		return this.cuePointType;
 	}
-	public void setCuePointType(CuePointType cuePointType){
-		this.cuePointType = cuePointType;
-	}
-
-	public void cuePointType(String multirequestToken){
-		setToken("cuePointType", multirequestToken);
-	}
-
 	// status:
 	public CuePointStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(CuePointStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -139,38 +107,14 @@ public abstract class CuePoint extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// triggeredAt:
 	public Integer getTriggeredAt(){
 		return this.triggeredAt;
@@ -211,14 +155,6 @@ public abstract class CuePoint extends ObjectBase {
 	public String getUserId(){
 		return this.userId;
 	}
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public void userId(String multirequestToken){
-		setToken("userId", multirequestToken);
-	}
-
 	// partnerData:
 	public String getPartnerData(){
 		return this.partnerData;
@@ -283,14 +219,6 @@ public abstract class CuePoint extends ObjectBase {
 	public Boolean getIsMomentary(){
 		return this.isMomentary;
 	}
-	public void setIsMomentary(Boolean isMomentary){
-		this.isMomentary = isMomentary;
-	}
-
-	public void isMomentary(String multirequestToken){
-		setToken("isMomentary", multirequestToken);
-	}
-
 
 	public CuePoint() {
 		super();

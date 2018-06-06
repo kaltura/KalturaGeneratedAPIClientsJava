@@ -47,19 +47,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ServerNode extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
-		String createdAt();
-		String updatedAt();
-		String heartbeatTime();
 		String name();
 		String systemName();
 		String description();
 		String hostName();
-		String status();
-		String type();
 		String tags();
-		String dc();
 		String parentId();
 	}
 
@@ -100,62 +92,22 @@ public abstract class ServerNode extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// heartbeatTime:
 	public Integer getHeartbeatTime(){
 		return this.heartbeatTime;
 	}
-	public void setHeartbeatTime(Integer heartbeatTime){
-		this.heartbeatTime = heartbeatTime;
-	}
-
-	public void heartbeatTime(String multirequestToken){
-		setToken("heartbeatTime", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -208,26 +160,10 @@ public abstract class ServerNode extends ObjectBase {
 	public ServerNodeStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(ServerNodeStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// type:
 	public ServerNodeType getType(){
 		return this.type;
 	}
-	public void setType(ServerNodeType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// tags:
 	public String getTags(){
 		return this.tags;
@@ -244,14 +180,6 @@ public abstract class ServerNode extends ObjectBase {
 	public Integer getDc(){
 		return this.dc;
 	}
-	public void setDc(Integer dc){
-		this.dc = dc;
-	}
-
-	public void dc(String multirequestToken){
-		setToken("dc", multirequestToken);
-	}
-
 	// parentId:
 	public String getParentId(){
 		return this.parentId;

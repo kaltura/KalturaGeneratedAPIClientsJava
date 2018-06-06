@@ -48,19 +48,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class MetadataProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
 		String metadataObjectType();
-		String version();
 		String name();
 		String systemName();
 		String description();
-		String createdAt();
-		String updatedAt();
-		String status();
-		String xsd();
-		String views();
-		String xslt();
 		String createMode();
 		String disableReIndexing();
 	}
@@ -85,26 +76,10 @@ public class MetadataProfile extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// metadataObjectType:
 	public MetadataObjectType getMetadataObjectType(){
 		return this.metadataObjectType;
@@ -121,14 +96,6 @@ public class MetadataProfile extends ObjectBase {
 	public Integer getVersion(){
 		return this.version;
 	}
-	public void setVersion(Integer version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -169,74 +136,26 @@ public class MetadataProfile extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// status:
 	public MetadataProfileStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(MetadataProfileStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// xsd:
 	public String getXsd(){
 		return this.xsd;
 	}
-	public void setXsd(String xsd){
-		this.xsd = xsd;
-	}
-
-	public void xsd(String multirequestToken){
-		setToken("xsd", multirequestToken);
-	}
-
 	// views:
 	public String getViews(){
 		return this.views;
 	}
-	public void setViews(String views){
-		this.views = views;
-	}
-
-	public void views(String multirequestToken){
-		setToken("views", multirequestToken);
-	}
-
 	// xslt:
 	public String getXslt(){
 		return this.xslt;
 	}
-	public void setXslt(String xslt){
-		this.xslt = xslt;
-	}
-
-	public void xslt(String multirequestToken){
-		setToken("xslt", multirequestToken);
-	}
-
 	// createMode:
 	public MetadataProfileCreateMode getCreateMode(){
 		return this.createMode;

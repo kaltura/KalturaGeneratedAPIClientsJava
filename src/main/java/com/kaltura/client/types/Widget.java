@@ -46,18 +46,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Widget extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String sourceWidgetId();
-		String rootWidgetId();
-		String partnerId();
 		String entryId();
 		String uiConfId();
 		String securityType();
 		String securityPolicy();
-		String createdAt();
-		String updatedAt();
 		String partnerData();
-		String widgetHTML();
 		String enforceEntitlement();
 		String privacyContext();
 		String addEmbedHtml5Support();
@@ -98,14 +92,6 @@ public class Widget extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// sourceWidgetId:
 	public String getSourceWidgetId(){
 		return this.sourceWidgetId;
@@ -122,26 +108,10 @@ public class Widget extends ObjectBase {
 	public String getRootWidgetId(){
 		return this.rootWidgetId;
 	}
-	public void setRootWidgetId(String rootWidgetId){
-		this.rootWidgetId = rootWidgetId;
-	}
-
-	public void rootWidgetId(String multirequestToken){
-		setToken("rootWidgetId", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// entryId:
 	public String getEntryId(){
 		return this.entryId;
@@ -194,26 +164,10 @@ public class Widget extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// partnerData:
 	public String getPartnerData(){
 		return this.partnerData;
@@ -230,14 +184,6 @@ public class Widget extends ObjectBase {
 	public String getWidgetHTML(){
 		return this.widgetHTML;
 	}
-	public void setWidgetHTML(String widgetHTML){
-		this.widgetHTML = widgetHTML;
-	}
-
-	public void widgetHTML(String multirequestToken){
-		setToken("widgetHTML", multirequestToken);
-	}
-
 	// enforceEntitlement:
 	public Boolean getEnforceEntitlement(){
 		return this.enforceEntitlement;

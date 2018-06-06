@@ -46,16 +46,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ScheduleResource extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String parentId();
-		String partnerId();
 		String name();
 		String systemName();
 		String description();
-		String status();
 		String tags();
-		String createdAt();
-		String updatedAt();
 	}
 
 	/**
@@ -88,14 +83,6 @@ public abstract class ScheduleResource extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// parentId:
 	public Integer getParentId(){
 		return this.parentId;
@@ -112,14 +99,6 @@ public abstract class ScheduleResource extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -160,14 +139,6 @@ public abstract class ScheduleResource extends ObjectBase {
 	public ScheduleResourceStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(ScheduleResourceStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// tags:
 	public String getTags(){
 		return this.tags;
@@ -184,26 +155,10 @@ public abstract class ScheduleResource extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 
 	public ScheduleResource() {
 		super();

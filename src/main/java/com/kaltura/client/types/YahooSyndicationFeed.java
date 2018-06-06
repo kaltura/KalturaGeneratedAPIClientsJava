@@ -46,7 +46,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class YahooSyndicationFeed extends BaseSyndicationFeed {
 	
 	public interface Tokenizer extends BaseSyndicationFeed.Tokenizer {
-		String category();
 		String adultContent();
 		String feedDescription();
 		String feedLandingPage();
@@ -67,14 +66,6 @@ public class YahooSyndicationFeed extends BaseSyndicationFeed {
 	public YahooSyndicationFeedCategories getCategory(){
 		return this.category;
 	}
-	public void setCategory(YahooSyndicationFeedCategories category){
-		this.category = category;
-	}
-
-	public void category(String multirequestToken){
-		setToken("category", multirequestToken);
-	}
-
 	// adultContent:
 	public YahooSyndicationFeedAdultValues getAdultContent(){
 		return this.adultContent;

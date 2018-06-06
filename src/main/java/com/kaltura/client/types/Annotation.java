@@ -47,10 +47,6 @@ public class Annotation extends CuePoint {
 		String parentId();
 		String text();
 		String endTime();
-		String duration();
-		String depth();
-		String childrenCount();
-		String directChildrenCount();
 		String isPublic();
 		String searchableOnEntry();
 	}
@@ -126,50 +122,18 @@ public class Annotation extends CuePoint {
 	public Integer getDuration(){
 		return this.duration;
 	}
-	public void setDuration(Integer duration){
-		this.duration = duration;
-	}
-
-	public void duration(String multirequestToken){
-		setToken("duration", multirequestToken);
-	}
-
 	// depth:
 	public Integer getDepth(){
 		return this.depth;
 	}
-	public void setDepth(Integer depth){
-		this.depth = depth;
-	}
-
-	public void depth(String multirequestToken){
-		setToken("depth", multirequestToken);
-	}
-
 	// childrenCount:
 	public Integer getChildrenCount(){
 		return this.childrenCount;
 	}
-	public void setChildrenCount(Integer childrenCount){
-		this.childrenCount = childrenCount;
-	}
-
-	public void childrenCount(String multirequestToken){
-		setToken("childrenCount", multirequestToken);
-	}
-
 	// directChildrenCount:
 	public Integer getDirectChildrenCount(){
 		return this.directChildrenCount;
 	}
-	public void setDirectChildrenCount(Integer directChildrenCount){
-		this.directChildrenCount = directChildrenCount;
-	}
-
-	public void directChildrenCount(String multirequestToken){
-		setToken("directChildrenCount", multirequestToken);
-	}
-
 	// isPublic:
 	public Boolean getIsPublic(){
 		return this.isPublic;

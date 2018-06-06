@@ -53,49 +53,30 @@ import java.util.List;
 public class BaseEntry extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String name();
 		String description();
-		String partnerId();
 		String userId();
 		String creatorId();
 		String tags();
 		String adminTags();
 		String categories();
 		String categoriesIds();
-		String status();
-		String moderationStatus();
-		String moderationCount();
 		String type();
-		String createdAt();
-		String updatedAt();
-		String rank();
-		String totalRank();
-		String votes();
 		String groupId();
 		String partnerData();
-		String downloadUrl();
-		String searchText();
 		String licenseType();
-		String version();
-		String thumbnailUrl();
 		String accessControlId();
 		String startDate();
 		String endDate();
 		String referenceId();
-		String replacingEntryId();
-		String replacedEntryId();
-		String replacementStatus();
 		String partnerSortValue();
 		String conversionProfileId();
 		String redirectEntryId();
-		String rootEntryId();
 		String parentEntryId();
 		RequestBuilder.ListTokenizer<OperationAttributes.Tokenizer> operationAttributes();
 		String entitledUsersEdit();
 		String entitledUsersPublish();
 		String entitledUsersView();
-		String capabilities();
 		String templateEntryId();
 		String displayInSearch();
 	}
@@ -291,14 +272,6 @@ public class BaseEntry extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -327,14 +300,6 @@ public class BaseEntry extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// userId:
 	public String getUserId(){
 		return this.userId;
@@ -411,38 +376,14 @@ public class BaseEntry extends ObjectBase {
 	public EntryStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(EntryStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// moderationStatus:
 	public EntryModerationStatus getModerationStatus(){
 		return this.moderationStatus;
 	}
-	public void setModerationStatus(EntryModerationStatus moderationStatus){
-		this.moderationStatus = moderationStatus;
-	}
-
-	public void moderationStatus(String multirequestToken){
-		setToken("moderationStatus", multirequestToken);
-	}
-
 	// moderationCount:
 	public Integer getModerationCount(){
 		return this.moderationCount;
 	}
-	public void setModerationCount(Integer moderationCount){
-		this.moderationCount = moderationCount;
-	}
-
-	public void moderationCount(String multirequestToken){
-		setToken("moderationCount", multirequestToken);
-	}
-
 	// type:
 	public EntryType getType(){
 		return this.type;
@@ -459,62 +400,22 @@ public class BaseEntry extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// rank:
 	public Double getRank(){
 		return this.rank;
 	}
-	public void setRank(Double rank){
-		this.rank = rank;
-	}
-
-	public void rank(String multirequestToken){
-		setToken("rank", multirequestToken);
-	}
-
 	// totalRank:
 	public Integer getTotalRank(){
 		return this.totalRank;
 	}
-	public void setTotalRank(Integer totalRank){
-		this.totalRank = totalRank;
-	}
-
-	public void totalRank(String multirequestToken){
-		setToken("totalRank", multirequestToken);
-	}
-
 	// votes:
 	public Integer getVotes(){
 		return this.votes;
 	}
-	public void setVotes(Integer votes){
-		this.votes = votes;
-	}
-
-	public void votes(String multirequestToken){
-		setToken("votes", multirequestToken);
-	}
-
 	// groupId:
 	public Integer getGroupId(){
 		return this.groupId;
@@ -543,26 +444,10 @@ public class BaseEntry extends ObjectBase {
 	public String getDownloadUrl(){
 		return this.downloadUrl;
 	}
-	public void setDownloadUrl(String downloadUrl){
-		this.downloadUrl = downloadUrl;
-	}
-
-	public void downloadUrl(String multirequestToken){
-		setToken("downloadUrl", multirequestToken);
-	}
-
 	// searchText:
 	public String getSearchText(){
 		return this.searchText;
 	}
-	public void setSearchText(String searchText){
-		this.searchText = searchText;
-	}
-
-	public void searchText(String multirequestToken){
-		setToken("searchText", multirequestToken);
-	}
-
 	// licenseType:
 	public LicenseType getLicenseType(){
 		return this.licenseType;
@@ -579,26 +464,10 @@ public class BaseEntry extends ObjectBase {
 	public Integer getVersion(){
 		return this.version;
 	}
-	public void setVersion(Integer version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// thumbnailUrl:
 	public String getThumbnailUrl(){
 		return this.thumbnailUrl;
 	}
-	public void setThumbnailUrl(String thumbnailUrl){
-		this.thumbnailUrl = thumbnailUrl;
-	}
-
-	public void thumbnailUrl(String multirequestToken){
-		setToken("thumbnailUrl", multirequestToken);
-	}
-
 	// accessControlId:
 	public Integer getAccessControlId(){
 		return this.accessControlId;
@@ -651,38 +520,14 @@ public class BaseEntry extends ObjectBase {
 	public String getReplacingEntryId(){
 		return this.replacingEntryId;
 	}
-	public void setReplacingEntryId(String replacingEntryId){
-		this.replacingEntryId = replacingEntryId;
-	}
-
-	public void replacingEntryId(String multirequestToken){
-		setToken("replacingEntryId", multirequestToken);
-	}
-
 	// replacedEntryId:
 	public String getReplacedEntryId(){
 		return this.replacedEntryId;
 	}
-	public void setReplacedEntryId(String replacedEntryId){
-		this.replacedEntryId = replacedEntryId;
-	}
-
-	public void replacedEntryId(String multirequestToken){
-		setToken("replacedEntryId", multirequestToken);
-	}
-
 	// replacementStatus:
 	public EntryReplacementStatus getReplacementStatus(){
 		return this.replacementStatus;
 	}
-	public void setReplacementStatus(EntryReplacementStatus replacementStatus){
-		this.replacementStatus = replacementStatus;
-	}
-
-	public void replacementStatus(String multirequestToken){
-		setToken("replacementStatus", multirequestToken);
-	}
-
 	// partnerSortValue:
 	public Integer getPartnerSortValue(){
 		return this.partnerSortValue;
@@ -723,14 +568,6 @@ public class BaseEntry extends ObjectBase {
 	public String getRootEntryId(){
 		return this.rootEntryId;
 	}
-	public void setRootEntryId(String rootEntryId){
-		this.rootEntryId = rootEntryId;
-	}
-
-	public void rootEntryId(String multirequestToken){
-		setToken("rootEntryId", multirequestToken);
-	}
-
 	// parentEntryId:
 	public String getParentEntryId(){
 		return this.parentEntryId;
@@ -791,14 +628,6 @@ public class BaseEntry extends ObjectBase {
 	public String getCapabilities(){
 		return this.capabilities;
 	}
-	public void setCapabilities(String capabilities){
-		this.capabilities = capabilities;
-	}
-
-	public void capabilities(String multirequestToken){
-		setToken("capabilities", multirequestToken);
-	}
-
 	// templateEntryId:
 	public String getTemplateEntryId(){
 		return this.templateEntryId;

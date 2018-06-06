@@ -62,16 +62,12 @@ public abstract class LiveEntry extends MediaEntry {
 		String recordedEntryId();
 		String pushPublishEnabled();
 		RequestBuilder.ListTokenizer<LiveStreamPushPublishConfiguration.Tokenizer> publishConfigurations();
-		String firstBroadcast();
-		String lastBroadcast();
 		String currentBroadcastStartTime();
 		LiveEntryRecordingOptions.Tokenizer recordingOptions();
-		String liveStatus();
 		String segmentDuration();
 		String explicitLive();
 		String viewMode();
 		String recordingStatus();
-		String lastBroadcastEndTime();
 	}
 
 	/**
@@ -245,26 +241,10 @@ public abstract class LiveEntry extends MediaEntry {
 	public Integer getFirstBroadcast(){
 		return this.firstBroadcast;
 	}
-	public void setFirstBroadcast(Integer firstBroadcast){
-		this.firstBroadcast = firstBroadcast;
-	}
-
-	public void firstBroadcast(String multirequestToken){
-		setToken("firstBroadcast", multirequestToken);
-	}
-
 	// lastBroadcast:
 	public Integer getLastBroadcast(){
 		return this.lastBroadcast;
 	}
-	public void setLastBroadcast(Integer lastBroadcast){
-		this.lastBroadcast = lastBroadcast;
-	}
-
-	public void lastBroadcast(String multirequestToken){
-		setToken("lastBroadcast", multirequestToken);
-	}
-
 	// currentBroadcastStartTime:
 	public Double getCurrentBroadcastStartTime(){
 		return this.currentBroadcastStartTime;
@@ -289,14 +269,6 @@ public abstract class LiveEntry extends MediaEntry {
 	public EntryServerNodeStatus getLiveStatus(){
 		return this.liveStatus;
 	}
-	public void setLiveStatus(EntryServerNodeStatus liveStatus){
-		this.liveStatus = liveStatus;
-	}
-
-	public void liveStatus(String multirequestToken){
-		setToken("liveStatus", multirequestToken);
-	}
-
 	// segmentDuration:
 	public Integer getSegmentDuration(){
 		return this.segmentDuration;
@@ -349,14 +321,6 @@ public abstract class LiveEntry extends MediaEntry {
 	public Integer getLastBroadcastEndTime(){
 		return this.lastBroadcastEndTime;
 	}
-	public void setLastBroadcastEndTime(Integer lastBroadcastEndTime){
-		this.lastBroadcastEndTime = lastBroadcastEndTime;
-	}
-
-	public void lastBroadcastEndTime(String multirequestToken){
-		setToken("lastBroadcastEndTime", multirequestToken);
-	}
-
 
 	public LiveEntry() {
 		super();

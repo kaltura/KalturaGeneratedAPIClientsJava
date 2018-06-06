@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EmailNotificationRecipientProviderType;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -50,7 +49,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class EmailNotificationRecipientJobData extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String providerType();
 	}
 
 	/**
@@ -62,14 +60,6 @@ public abstract class EmailNotificationRecipientJobData extends ObjectBase {
 	public EmailNotificationRecipientProviderType getProviderType(){
 		return this.providerType;
 	}
-	public void setProviderType(EmailNotificationRecipientProviderType providerType){
-		this.providerType = providerType;
-	}
-
-	public void providerType(String multirequestToken){
-		setToken("providerType", multirequestToken);
-	}
-
 
 	public EmailNotificationRecipientJobData() {
 		super();

@@ -51,10 +51,6 @@ public class Playlist extends BaseEntry {
 		RequestBuilder.ListTokenizer<MediaEntryFilterForPlaylist.Tokenizer> filters();
 		String totalResults();
 		String playlistType();
-		String plays();
-		String views();
-		String duration();
-		String executeUrl();
 	}
 
 	/**
@@ -136,50 +132,18 @@ public class Playlist extends BaseEntry {
 	public Integer getPlays(){
 		return this.plays;
 	}
-	public void setPlays(Integer plays){
-		this.plays = plays;
-	}
-
-	public void plays(String multirequestToken){
-		setToken("plays", multirequestToken);
-	}
-
 	// views:
 	public Integer getViews(){
 		return this.views;
 	}
-	public void setViews(Integer views){
-		this.views = views;
-	}
-
-	public void views(String multirequestToken){
-		setToken("views", multirequestToken);
-	}
-
 	// duration:
 	public Integer getDuration(){
 		return this.duration;
 	}
-	public void setDuration(Integer duration){
-		this.duration = duration;
-	}
-
-	public void duration(String multirequestToken){
-		setToken("duration", multirequestToken);
-	}
-
 	// executeUrl:
 	public String getExecuteUrl(){
 		return this.executeUrl;
 	}
-	public void setExecuteUrl(String executeUrl){
-		this.executeUrl = executeUrl;
-	}
-
-	public void executeUrl(String multirequestToken){
-		setToken("executeUrl", multirequestToken);
-	}
-
 
 	public Playlist() {
 		super();

@@ -53,39 +53,22 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Category extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String parentId();
-		String depth();
-		String partnerId();
 		String name();
-		String fullName();
-		String fullIds();
-		String entriesCount();
-		String createdAt();
-		String updatedAt();
 		String description();
 		String tags();
 		String appearInList();
 		String privacy();
 		String inheritanceType();
-		String userJoinPolicy();
 		String defaultPermissionLevel();
 		String owner();
-		String directEntriesCount();
 		String referenceId();
 		String contributionPolicy();
-		String membersCount();
-		String pendingMembersCount();
 		String privacyContext();
-		String privacyContexts();
-		String status();
-		String inheritedParentId();
 		String partnerSortValue();
 		String partnerData();
 		String defaultOrderBy();
-		String directSubCategoriesCount();
 		String moderation();
-		String pendingEntriesCount();
 		String isAggregationCategory();
 		String aggregationCategories();
 	}
@@ -232,14 +215,6 @@ public class Category extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// parentId:
 	public Integer getParentId(){
 		return this.parentId;
@@ -256,26 +231,10 @@ public class Category extends ObjectBase {
 	public Integer getDepth(){
 		return this.depth;
 	}
-	public void setDepth(Integer depth){
-		this.depth = depth;
-	}
-
-	public void depth(String multirequestToken){
-		setToken("depth", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -292,62 +251,22 @@ public class Category extends ObjectBase {
 	public String getFullName(){
 		return this.fullName;
 	}
-	public void setFullName(String fullName){
-		this.fullName = fullName;
-	}
-
-	public void fullName(String multirequestToken){
-		setToken("fullName", multirequestToken);
-	}
-
 	// fullIds:
 	public String getFullIds(){
 		return this.fullIds;
 	}
-	public void setFullIds(String fullIds){
-		this.fullIds = fullIds;
-	}
-
-	public void fullIds(String multirequestToken){
-		setToken("fullIds", multirequestToken);
-	}
-
 	// entriesCount:
 	public Integer getEntriesCount(){
 		return this.entriesCount;
 	}
-	public void setEntriesCount(Integer entriesCount){
-		this.entriesCount = entriesCount;
-	}
-
-	public void entriesCount(String multirequestToken){
-		setToken("entriesCount", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// description:
 	public String getDescription(){
 		return this.description;
@@ -412,14 +331,6 @@ public class Category extends ObjectBase {
 	public UserJoinPolicyType getUserJoinPolicy(){
 		return this.userJoinPolicy;
 	}
-	public void setUserJoinPolicy(UserJoinPolicyType userJoinPolicy){
-		this.userJoinPolicy = userJoinPolicy;
-	}
-
-	public void userJoinPolicy(String multirequestToken){
-		setToken("userJoinPolicy", multirequestToken);
-	}
-
 	// defaultPermissionLevel:
 	public CategoryUserPermissionLevel getDefaultPermissionLevel(){
 		return this.defaultPermissionLevel;
@@ -448,14 +359,6 @@ public class Category extends ObjectBase {
 	public Integer getDirectEntriesCount(){
 		return this.directEntriesCount;
 	}
-	public void setDirectEntriesCount(Integer directEntriesCount){
-		this.directEntriesCount = directEntriesCount;
-	}
-
-	public void directEntriesCount(String multirequestToken){
-		setToken("directEntriesCount", multirequestToken);
-	}
-
 	// referenceId:
 	public String getReferenceId(){
 		return this.referenceId;
@@ -484,26 +387,10 @@ public class Category extends ObjectBase {
 	public Integer getMembersCount(){
 		return this.membersCount;
 	}
-	public void setMembersCount(Integer membersCount){
-		this.membersCount = membersCount;
-	}
-
-	public void membersCount(String multirequestToken){
-		setToken("membersCount", multirequestToken);
-	}
-
 	// pendingMembersCount:
 	public Integer getPendingMembersCount(){
 		return this.pendingMembersCount;
 	}
-	public void setPendingMembersCount(Integer pendingMembersCount){
-		this.pendingMembersCount = pendingMembersCount;
-	}
-
-	public void pendingMembersCount(String multirequestToken){
-		setToken("pendingMembersCount", multirequestToken);
-	}
-
 	// privacyContext:
 	public String getPrivacyContext(){
 		return this.privacyContext;
@@ -520,38 +407,14 @@ public class Category extends ObjectBase {
 	public String getPrivacyContexts(){
 		return this.privacyContexts;
 	}
-	public void setPrivacyContexts(String privacyContexts){
-		this.privacyContexts = privacyContexts;
-	}
-
-	public void privacyContexts(String multirequestToken){
-		setToken("privacyContexts", multirequestToken);
-	}
-
 	// status:
 	public CategoryStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(CategoryStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// inheritedParentId:
 	public Integer getInheritedParentId(){
 		return this.inheritedParentId;
 	}
-	public void setInheritedParentId(Integer inheritedParentId){
-		this.inheritedParentId = inheritedParentId;
-	}
-
-	public void inheritedParentId(String multirequestToken){
-		setToken("inheritedParentId", multirequestToken);
-	}
-
 	// partnerSortValue:
 	public Integer getPartnerSortValue(){
 		return this.partnerSortValue;
@@ -592,14 +455,6 @@ public class Category extends ObjectBase {
 	public Integer getDirectSubCategoriesCount(){
 		return this.directSubCategoriesCount;
 	}
-	public void setDirectSubCategoriesCount(Integer directSubCategoriesCount){
-		this.directSubCategoriesCount = directSubCategoriesCount;
-	}
-
-	public void directSubCategoriesCount(String multirequestToken){
-		setToken("directSubCategoriesCount", multirequestToken);
-	}
-
 	// moderation:
 	public Boolean getModeration(){
 		return this.moderation;
@@ -616,14 +471,6 @@ public class Category extends ObjectBase {
 	public Integer getPendingEntriesCount(){
 		return this.pendingEntriesCount;
 	}
-	public void setPendingEntriesCount(Integer pendingEntriesCount){
-		this.pendingEntriesCount = pendingEntriesCount;
-	}
-
-	public void pendingEntriesCount(String multirequestToken){
-		setToken("pendingEntriesCount", multirequestToken);
-	}
-
 	// isAggregationCategory:
 	public Boolean getIsAggregationCategory(){
 		return this.isAggregationCategory;

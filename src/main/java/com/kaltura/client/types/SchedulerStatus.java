@@ -47,14 +47,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class SchedulerStatus extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String schedulerConfiguredId();
 		String workerConfiguredId();
 		String workerType();
 		String type();
 		String value();
-		String schedulerId();
-		String workerId();
 	}
 
 	/**
@@ -94,14 +91,6 @@ public class SchedulerStatus extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// schedulerConfiguredId:
 	public Integer getSchedulerConfiguredId(){
 		return this.schedulerConfiguredId;
@@ -166,26 +155,10 @@ public class SchedulerStatus extends ObjectBase {
 	public Integer getSchedulerId(){
 		return this.schedulerId;
 	}
-	public void setSchedulerId(Integer schedulerId){
-		this.schedulerId = schedulerId;
-	}
-
-	public void schedulerId(String multirequestToken){
-		setToken("schedulerId", multirequestToken);
-	}
-
 	// workerId:
 	public Integer getWorkerId(){
 		return this.workerId;
 	}
-	public void setWorkerId(Integer workerId){
-		this.workerId = workerId;
-	}
-
-	public void workerId(String multirequestToken){
-		setToken("workerId", multirequestToken);
-	}
-
 
 	public SchedulerStatus() {
 		super();

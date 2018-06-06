@@ -48,7 +48,6 @@ import java.util.List;
 public class SchedulerWorker extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String configuredId();
 		String schedulerId();
 		String schedulerConfiguredId();
@@ -125,14 +124,6 @@ public class SchedulerWorker extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// configuredId:
 	public Integer getConfiguredId(){
 		return this.configuredId;

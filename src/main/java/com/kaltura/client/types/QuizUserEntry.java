@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -44,7 +43,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class QuizUserEntry extends UserEntry {
 	
 	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
 	}
 
 	private Double score;
@@ -53,14 +51,6 @@ public class QuizUserEntry extends UserEntry {
 	public Double getScore(){
 		return this.score;
 	}
-	public void setScore(Double score){
-		this.score = score;
-	}
-
-	public void score(String multirequestToken){
-		setToken("score", multirequestToken);
-	}
-
 
 	public QuizUserEntry() {
 		super();

@@ -48,14 +48,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class DropFolderFile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
 		String dropFolderId();
 		String fileName();
 		String fileSize();
-		String fileSizeLastSetAt();
-		String status();
-		String type();
 		String parsedSlug();
 		String parsedFlavor();
 		String parsedUserId();
@@ -65,13 +60,10 @@ public class DropFolderFile extends ObjectBase {
 		String errorCode();
 		String errorDescription();
 		String lastModificationTime();
-		String createdAt();
-		String updatedAt();
 		String uploadStartDetectedAt();
 		String uploadEndDetectedAt();
 		String importStartedAt();
 		String importEndedAt();
-		String batchJobId();
 	}
 
 	private Integer id;
@@ -103,26 +95,10 @@ public class DropFolderFile extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// dropFolderId:
 	public Integer getDropFolderId(){
 		return this.dropFolderId;
@@ -163,38 +139,14 @@ public class DropFolderFile extends ObjectBase {
 	public Integer getFileSizeLastSetAt(){
 		return this.fileSizeLastSetAt;
 	}
-	public void setFileSizeLastSetAt(Integer fileSizeLastSetAt){
-		this.fileSizeLastSetAt = fileSizeLastSetAt;
-	}
-
-	public void fileSizeLastSetAt(String multirequestToken){
-		setToken("fileSizeLastSetAt", multirequestToken);
-	}
-
 	// status:
 	public DropFolderFileStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(DropFolderFileStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// type:
 	public DropFolderType getType(){
 		return this.type;
 	}
-	public void setType(DropFolderType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// parsedSlug:
 	public String getParsedSlug(){
 		return this.parsedSlug;
@@ -307,26 +259,10 @@ public class DropFolderFile extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// uploadStartDetectedAt:
 	public Integer getUploadStartDetectedAt(){
 		return this.uploadStartDetectedAt;
@@ -379,14 +315,6 @@ public class DropFolderFile extends ObjectBase {
 	public Integer getBatchJobId(){
 		return this.batchJobId;
 	}
-	public void setBatchJobId(Integer batchJobId){
-		this.batchJobId = batchJobId;
-	}
-
-	public void batchJobId(String multirequestToken){
-		setToken("batchJobId", multirequestToken);
-	}
-
 
 	public DropFolderFile() {
 		super();

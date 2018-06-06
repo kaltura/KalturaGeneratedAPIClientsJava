@@ -48,15 +48,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class BaseSyndicationFeed extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String feedUrl();
-		String partnerId();
 		String playlistId();
 		String name();
-		String status();
 		String type();
 		String landingPage();
-		String createdAt();
 		String allowEmbed();
 		String playerUiconfId();
 		String flavorParamId();
@@ -67,7 +62,6 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 		String entriesOrderBy();
 		String enforceEntitlement();
 		String privacyContext();
-		String updatedAt();
 		String useCategoryEntries();
 		String feedContentTypeHeader();
 	}
@@ -141,38 +135,14 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	public String getId(){
 		return this.id;
 	}
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// feedUrl:
 	public String getFeedUrl(){
 		return this.feedUrl;
 	}
-	public void setFeedUrl(String feedUrl){
-		this.feedUrl = feedUrl;
-	}
-
-	public void feedUrl(String multirequestToken){
-		setToken("feedUrl", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// playlistId:
 	public String getPlaylistId(){
 		return this.playlistId;
@@ -201,14 +171,6 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	public SyndicationFeedStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(SyndicationFeedStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 	// type:
 	public SyndicationFeedType getType(){
 		return this.type;
@@ -237,14 +199,6 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// allowEmbed:
 	public Boolean getAllowEmbed(){
 		return this.allowEmbed;
@@ -369,14 +323,6 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// useCategoryEntries:
 	public Boolean getUseCategoryEntries(){
 		return this.useCategoryEntries;

@@ -45,14 +45,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class PlayableEntry extends BaseEntry {
 	
 	public interface Tokenizer extends BaseEntry.Tokenizer {
-		String plays();
-		String views();
-		String lastPlayedAt();
-		String width();
-		String height();
-		String duration();
 		String msDuration();
-		String durationType();
 	}
 
 	/**
@@ -92,74 +85,26 @@ public class PlayableEntry extends BaseEntry {
 	public Integer getPlays(){
 		return this.plays;
 	}
-	public void setPlays(Integer plays){
-		this.plays = plays;
-	}
-
-	public void plays(String multirequestToken){
-		setToken("plays", multirequestToken);
-	}
-
 	// views:
 	public Integer getViews(){
 		return this.views;
 	}
-	public void setViews(Integer views){
-		this.views = views;
-	}
-
-	public void views(String multirequestToken){
-		setToken("views", multirequestToken);
-	}
-
 	// lastPlayedAt:
 	public Integer getLastPlayedAt(){
 		return this.lastPlayedAt;
 	}
-	public void setLastPlayedAt(Integer lastPlayedAt){
-		this.lastPlayedAt = lastPlayedAt;
-	}
-
-	public void lastPlayedAt(String multirequestToken){
-		setToken("lastPlayedAt", multirequestToken);
-	}
-
 	// width:
 	public Integer getWidth(){
 		return this.width;
 	}
-	public void setWidth(Integer width){
-		this.width = width;
-	}
-
-	public void width(String multirequestToken){
-		setToken("width", multirequestToken);
-	}
-
 	// height:
 	public Integer getHeight(){
 		return this.height;
 	}
-	public void setHeight(Integer height){
-		this.height = height;
-	}
-
-	public void height(String multirequestToken){
-		setToken("height", multirequestToken);
-	}
-
 	// duration:
 	public Integer getDuration(){
 		return this.duration;
 	}
-	public void setDuration(Integer duration){
-		this.duration = duration;
-	}
-
-	public void duration(String multirequestToken){
-		setToken("duration", multirequestToken);
-	}
-
 	// msDuration:
 	public Integer getMsDuration(){
 		return this.msDuration;
@@ -176,14 +121,6 @@ public class PlayableEntry extends BaseEntry {
 	public DurationType getDurationType(){
 		return this.durationType;
 	}
-	public void setDurationType(DurationType durationType){
-		this.durationType = durationType;
-	}
-
-	public void durationType(String multirequestToken){
-		setToken("durationType", multirequestToken);
-	}
-
 
 	public PlayableEntry() {
 		super();

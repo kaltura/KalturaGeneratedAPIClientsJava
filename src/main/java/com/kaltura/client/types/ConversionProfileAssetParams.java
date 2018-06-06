@@ -48,8 +48,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ConversionProfileAssetParams extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String conversionProfileId();
-		String assetParamsId();
 		String readyBehavior();
 		String origin();
 		String systemName();
@@ -101,26 +99,10 @@ public class ConversionProfileAssetParams extends ObjectBase {
 	public Integer getConversionProfileId(){
 		return this.conversionProfileId;
 	}
-	public void setConversionProfileId(Integer conversionProfileId){
-		this.conversionProfileId = conversionProfileId;
-	}
-
-	public void conversionProfileId(String multirequestToken){
-		setToken("conversionProfileId", multirequestToken);
-	}
-
 	// assetParamsId:
 	public Integer getAssetParamsId(){
 		return this.assetParamsId;
 	}
-	public void setAssetParamsId(Integer assetParamsId){
-		this.assetParamsId = assetParamsId;
-	}
-
-	public void assetParamsId(String multirequestToken){
-		setToken("assetParamsId", multirequestToken);
-	}
-
 	// readyBehavior:
 	public FlavorReadyBehaviorType getReadyBehavior(){
 		return this.readyBehavior;

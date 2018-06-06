@@ -47,17 +47,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class FileAsset extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
 		String fileAssetObjectType();
 		String objectId();
 		String name();
 		String systemName();
 		String fileExt();
-		String version();
-		String createdAt();
-		String updatedAt();
-		String status();
 	}
 
 	private Long id;
@@ -76,26 +70,10 @@ public class FileAsset extends ObjectBase {
 	public Long getId(){
 		return this.id;
 	}
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// fileAssetObjectType:
 	public FileAssetObjectType getFileAssetObjectType(){
 		return this.fileAssetObjectType;
@@ -160,50 +138,18 @@ public class FileAsset extends ObjectBase {
 	public Integer getVersion(){
 		return this.version;
 	}
-	public void setVersion(Integer version){
-		this.version = version;
-	}
-
-	public void version(String multirequestToken){
-		setToken("version", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// status:
 	public FileAssetStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(FileAssetStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 
 	public FileAsset() {
 		super();

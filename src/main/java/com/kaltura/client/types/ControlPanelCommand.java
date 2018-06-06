@@ -48,10 +48,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ControlPanelCommand extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String createdAt();
 		String createdBy();
-		String updatedAt();
 		String updatedBy();
 		String createdById();
 		String schedulerId();
@@ -140,26 +137,10 @@ public class ControlPanelCommand extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// createdAt:
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// createdBy:
 	public String getCreatedBy(){
 		return this.createdBy;
@@ -176,14 +157,6 @@ public class ControlPanelCommand extends ObjectBase {
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// updatedBy:
 	public String getUpdatedBy(){
 		return this.updatedBy;

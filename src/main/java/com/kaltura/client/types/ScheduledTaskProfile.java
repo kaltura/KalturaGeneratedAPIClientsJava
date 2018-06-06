@@ -50,8 +50,6 @@ import java.util.List;
 public class ScheduledTaskProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
-		String partnerId();
 		String name();
 		String systemName();
 		String description();
@@ -59,8 +57,6 @@ public class ScheduledTaskProfile extends ObjectBase {
 		String objectFilterEngineType();
 		Filter.Tokenizer objectFilter();
 		RequestBuilder.ListTokenizer<ObjectTask.Tokenizer> objectTasks();
-		String createdAt();
-		String updatedAt();
 		String lastExecutionStartedAt();
 		String maxTotalCountAllowed();
 	}
@@ -97,26 +93,10 @@ public class ScheduledTaskProfile extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// partnerId:
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;
@@ -197,26 +177,10 @@ public class ScheduledTaskProfile extends ObjectBase {
 	public Integer getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public void createdAt(String multirequestToken){
-		setToken("createdAt", multirequestToken);
-	}
-
 	// updatedAt:
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
-		this.updatedAt = updatedAt;
-	}
-
-	public void updatedAt(String multirequestToken){
-		setToken("updatedAt", multirequestToken);
-	}
-
 	// lastExecutionStartedAt:
 	public Integer getLastExecutionStartedAt(){
 		return this.lastExecutionStartedAt;

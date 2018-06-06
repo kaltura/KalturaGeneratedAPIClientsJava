@@ -46,7 +46,6 @@ public class ExternalMediaEntry extends MediaEntry {
 	
 	public interface Tokenizer extends MediaEntry.Tokenizer {
 		String externalSourceType();
-		String assetParamsIds();
 	}
 
 	/**
@@ -74,14 +73,6 @@ public class ExternalMediaEntry extends MediaEntry {
 	public String getAssetParamsIds(){
 		return this.assetParamsIds;
 	}
-	public void setAssetParamsIds(String assetParamsIds){
-		this.assetParamsIds = assetParamsIds;
-	}
-
-	public void assetParamsIds(String multirequestToken){
-		setToken("assetParamsIds", multirequestToken);
-	}
-
 
 	public ExternalMediaEntry() {
 		super();

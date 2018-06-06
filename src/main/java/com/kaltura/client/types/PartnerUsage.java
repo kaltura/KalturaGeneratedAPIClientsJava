@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,12 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class PartnerUsage extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String hostingGB();
-		String Percent();
-		String packageBW();
-		String usageGB();
-		String reachedLimitDate();
-		String usageGraph();
 	}
 
 	/**
@@ -86,74 +79,26 @@ public class PartnerUsage extends ObjectBase {
 	public Double getHostingGB(){
 		return this.hostingGB;
 	}
-	public void setHostingGB(Double hostingGB){
-		this.hostingGB = hostingGB;
-	}
-
-	public void hostingGB(String multirequestToken){
-		setToken("hostingGB", multirequestToken);
-	}
-
 	// Percent:
 	public Double getPercent(){
 		return this.Percent;
 	}
-	public void setPercent(Double Percent){
-		this.Percent = Percent;
-	}
-
-	public void Percent(String multirequestToken){
-		setToken("Percent", multirequestToken);
-	}
-
 	// packageBW:
 	public Integer getPackageBW(){
 		return this.packageBW;
 	}
-	public void setPackageBW(Integer packageBW){
-		this.packageBW = packageBW;
-	}
-
-	public void packageBW(String multirequestToken){
-		setToken("packageBW", multirequestToken);
-	}
-
 	// usageGB:
 	public Double getUsageGB(){
 		return this.usageGB;
 	}
-	public void setUsageGB(Double usageGB){
-		this.usageGB = usageGB;
-	}
-
-	public void usageGB(String multirequestToken){
-		setToken("usageGB", multirequestToken);
-	}
-
 	// reachedLimitDate:
 	public Integer getReachedLimitDate(){
 		return this.reachedLimitDate;
 	}
-	public void setReachedLimitDate(Integer reachedLimitDate){
-		this.reachedLimitDate = reachedLimitDate;
-	}
-
-	public void reachedLimitDate(String multirequestToken){
-		setToken("reachedLimitDate", multirequestToken);
-	}
-
 	// usageGraph:
 	public String getUsageGraph(){
 		return this.usageGraph;
 	}
-	public void setUsageGraph(String usageGraph){
-		this.usageGraph = usageGraph;
-	}
-
-	public void usageGraph(String multirequestToken){
-		setToken("usageGraph", multirequestToken);
-	}
-
 
 	public PartnerUsage() {
 		super();

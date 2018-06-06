@@ -46,7 +46,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class MediaInfo extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String id();
 		String flavorAssetId();
 		String fileSize();
 		String containerFormat();
@@ -204,14 +203,6 @@ public class MediaInfo extends ObjectBase {
 	public Integer getId(){
 		return this.id;
 	}
-	public void setId(Integer id){
-		this.id = id;
-	}
-
-	public void id(String multirequestToken){
-		setToken("id", multirequestToken);
-	}
-
 	// flavorAssetId:
 	public String getFlavorAssetId(){
 		return this.flavorAssetId;

@@ -31,7 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.RuleActionType;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -46,7 +45,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class RuleAction extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String type();
 	}
 
 	/**
@@ -58,14 +56,6 @@ public abstract class RuleAction extends ObjectBase {
 	public RuleActionType getType(){
 		return this.type;
 	}
-	public void setType(RuleActionType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 
 	public RuleAction() {
 		super();

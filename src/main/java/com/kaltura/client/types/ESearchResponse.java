@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,7 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ESearchResponse extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String totalCount();
 	}
 
 	private Integer totalCount;
@@ -54,14 +52,6 @@ public abstract class ESearchResponse extends ObjectBase {
 	public Integer getTotalCount(){
 		return this.totalCount;
 	}
-	public void setTotalCount(Integer totalCount){
-		this.totalCount = totalCount;
-	}
-
-	public void totalCount(String multirequestToken){
-		setToken("totalCount", multirequestToken);
-	}
-
 
 	public ESearchResponse() {
 		super();

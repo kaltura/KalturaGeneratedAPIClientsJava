@@ -46,7 +46,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class DistributionProvider extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String type();
 		String name();
 		String scheduleUpdateEnabled();
 		String availabilityUpdateEnabled();
@@ -71,14 +70,6 @@ public abstract class DistributionProvider extends ObjectBase {
 	public DistributionProviderType getType(){
 		return this.type;
 	}
-	public void setType(DistributionProviderType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
-
 	// name:
 	public String getName(){
 		return this.name;

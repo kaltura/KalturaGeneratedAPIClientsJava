@@ -46,9 +46,6 @@ public class ThumbAsset extends Asset {
 	
 	public interface Tokenizer extends Asset.Tokenizer {
 		String thumbParamsId();
-		String width();
-		String height();
-		String status();
 	}
 
 	/**
@@ -84,38 +81,14 @@ public class ThumbAsset extends Asset {
 	public Integer getWidth(){
 		return this.width;
 	}
-	public void setWidth(Integer width){
-		this.width = width;
-	}
-
-	public void width(String multirequestToken){
-		setToken("width", multirequestToken);
-	}
-
 	// height:
 	public Integer getHeight(){
 		return this.height;
 	}
-	public void setHeight(Integer height){
-		this.height = height;
-	}
-
-	public void height(String multirequestToken){
-		setToken("height", multirequestToken);
-	}
-
 	// status:
 	public ThumbAssetStatus getStatus(){
 		return this.status;
 	}
-	public void setStatus(ThumbAssetStatus status){
-		this.status = status;
-	}
-
-	public void status(String multirequestToken){
-		setToken("status", multirequestToken);
-	}
-
 
 	public ThumbAsset() {
 		super();

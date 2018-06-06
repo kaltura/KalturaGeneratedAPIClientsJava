@@ -45,7 +45,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class MixEntry extends PlayableEntry {
 	
 	public interface Tokenizer extends PlayableEntry.Tokenizer {
-		String hasRealThumbnail();
 		String editorType();
 		String dataContent();
 	}
@@ -68,14 +67,6 @@ public class MixEntry extends PlayableEntry {
 	public Boolean getHasRealThumbnail(){
 		return this.hasRealThumbnail;
 	}
-	public void setHasRealThumbnail(Boolean hasRealThumbnail){
-		this.hasRealThumbnail = hasRealThumbnail;
-	}
-
-	public void hasRealThumbnail(String multirequestToken){
-		setToken("hasRealThumbnail", multirequestToken);
-	}
-
 	// editorType:
 	public EditorType getEditorType(){
 		return this.editorType;

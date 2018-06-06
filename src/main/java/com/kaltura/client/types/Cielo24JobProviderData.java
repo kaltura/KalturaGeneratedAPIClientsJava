@@ -52,9 +52,6 @@ public class Cielo24JobProviderData extends IntegrationJobProviderData {
 		String captionAssetFormats();
 		String priority();
 		String fidelity();
-		String username();
-		String password();
-		String baseUrl();
 		String spokenLanguage();
 		String replaceMediaContent();
 		String additionalParameters();
@@ -163,38 +160,14 @@ public class Cielo24JobProviderData extends IntegrationJobProviderData {
 	public String getUsername(){
 		return this.username;
 	}
-	public void setUsername(String username){
-		this.username = username;
-	}
-
-	public void username(String multirequestToken){
-		setToken("username", multirequestToken);
-	}
-
 	// password:
 	public String getPassword(){
 		return this.password;
 	}
-	public void setPassword(String password){
-		this.password = password;
-	}
-
-	public void password(String multirequestToken){
-		setToken("password", multirequestToken);
-	}
-
 	// baseUrl:
 	public String getBaseUrl(){
 		return this.baseUrl;
 	}
-	public void setBaseUrl(String baseUrl){
-		this.baseUrl = baseUrl;
-	}
-
-	public void baseUrl(String multirequestToken){
-		setToken("baseUrl", multirequestToken);
-	}
-
 	// spokenLanguage:
 	public Language getSpokenLanguage(){
 		return this.spokenLanguage;

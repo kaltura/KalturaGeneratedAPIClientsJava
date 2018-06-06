@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,9 +44,6 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class PushNotificationData extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String queueName();
-		String queueKey();
-		String url();
 	}
 
 	private String queueName;
@@ -58,38 +54,14 @@ public class PushNotificationData extends ObjectBase {
 	public String getQueueName(){
 		return this.queueName;
 	}
-	public void setQueueName(String queueName){
-		this.queueName = queueName;
-	}
-
-	public void queueName(String multirequestToken){
-		setToken("queueName", multirequestToken);
-	}
-
 	// queueKey:
 	public String getQueueKey(){
 		return this.queueKey;
 	}
-	public void setQueueKey(String queueKey){
-		this.queueKey = queueKey;
-	}
-
-	public void queueKey(String multirequestToken){
-		setToken("queueKey", multirequestToken);
-	}
-
 	// url:
 	public String getUrl(){
 		return this.url;
 	}
-	public void setUrl(String url){
-		this.url = url;
-	}
-
-	public void url(String multirequestToken){
-		setToken("url", multirequestToken);
-	}
-
 
 	public PushNotificationData() {
 		super();
