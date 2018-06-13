@@ -153,6 +153,7 @@ public class Partner extends ObjectBase {
 	private String crmId;
 	private String referenceId;
 	private Boolean timeAlignedRenditions;
+	private Integer publisherEnvironmentType;
 	private String ovpEnvironmentUrl;
 	private String ottEnvironmentUrl;
 	private List<ESearchLanguageItem> eSearchLanguages;
@@ -613,6 +614,10 @@ public class Partner extends ObjectBase {
 	public Boolean getTimeAlignedRenditions(){
 		return this.timeAlignedRenditions;
 	}
+	// publisherEnvironmentType:
+	public Integer getPublisherEnvironmentType(){
+		return this.publisherEnvironmentType;
+	}
 	// ovpEnvironmentUrl:
 	public String getOvpEnvironmentUrl(){
 		return this.ovpEnvironmentUrl;
@@ -693,6 +698,7 @@ public class Partner extends ObjectBase {
 		crmId = GsonParser.parseString(jsonObject.get("crmId"));
 		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
 		timeAlignedRenditions = GsonParser.parseBoolean(jsonObject.get("timeAlignedRenditions"));
+		publisherEnvironmentType = GsonParser.parseInt(jsonObject.get("publisherEnvironmentType"));
 		ovpEnvironmentUrl = GsonParser.parseString(jsonObject.get("ovpEnvironmentUrl"));
 		ottEnvironmentUrl = GsonParser.parseString(jsonObject.get("ottEnvironmentUrl"));
 		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
