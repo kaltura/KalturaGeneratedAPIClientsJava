@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,62 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(SystemPartnerFilter.Tokenizer.class)
+public class SystemPartnerFilter extends PartnerFilter {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends PartnerFilter.Tokenizer {
+		String partnerParentIdEqual();
+		String partnerParentIdIn();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	private Integer partnerParentIdEqual;
+	private String partnerParentIdIn;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// partnerParentIdEqual:
+	public Integer getPartnerParentIdEqual(){
+		return this.partnerParentIdEqual;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setPartnerParentIdEqual(Integer partnerParentIdEqual){
+		this.partnerParentIdEqual = partnerParentIdEqual;
 	}
 
+	public void partnerParentIdEqual(String multirequestToken){
+		setToken("partnerParentIdEqual", multirequestToken);
+	}
 
-	public ESearchResult() {
+	// partnerParentIdIn:
+	public String getPartnerParentIdIn(){
+		return this.partnerParentIdIn;
+	}
+	public void setPartnerParentIdIn(String partnerParentIdIn){
+		this.partnerParentIdIn = partnerParentIdIn;
+	}
+
+	public void partnerParentIdIn(String multirequestToken){
+		setToken("partnerParentIdIn", multirequestToken);
+	}
+
+
+	public SystemPartnerFilter() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public SystemPartnerFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		partnerParentIdEqual = GsonParser.parseInt(jsonObject.get("partnerParentIdEqual"));
+		partnerParentIdIn = GsonParser.parseString(jsonObject.get("partnerParentIdIn"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaSystemPartnerFilter");
+		kparams.add("partnerParentIdEqual", this.partnerParentIdEqual);
+		kparams.add("partnerParentIdIn", this.partnerParentIdIn);
 		return kparams;
 	}
 

@@ -29,6 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.Category;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -43,8 +45,18 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ESearchCategoryResult extends ESearchResult {
 	
 	public interface Tokenizer extends ESearchResult.Tokenizer {
+		Category.Tokenizer object();
 	}
 
+	private Category object;
+
+	// object:
+	public Category getObject(){
+		return this.object;
+	}
+	public void setObject(Category object){
+		this.object = object;
+	}
 
 
 	public ESearchCategoryResult() {
@@ -53,11 +65,18 @@ public class ESearchCategoryResult extends ESearchResult {
 
 	public ESearchCategoryResult(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), Category.class);
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchCategoryResult");
+		kparams.add("object", this.object);
 		return kparams;
 	}
 

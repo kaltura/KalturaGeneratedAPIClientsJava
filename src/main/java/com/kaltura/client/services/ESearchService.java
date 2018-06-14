@@ -28,9 +28,11 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.types.ESearchCategoryParams;
+import com.kaltura.client.types.ESearchCategoryResponse;
 import com.kaltura.client.types.ESearchEntryParams;
-import com.kaltura.client.types.ESearchResponse;
+import com.kaltura.client.types.ESearchEntryResponse;
 import com.kaltura.client.types.ESearchUserParams;
+import com.kaltura.client.types.ESearchUserResponse;
 import com.kaltura.client.types.Pager;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -43,10 +45,10 @@ import com.kaltura.client.utils.request.RequestBuilder;
 
 public class ESearchService {
 	
-	public static class SearchCategoryESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchCategoryESearchBuilder> {
+	public static class SearchCategoryESearchBuilder extends RequestBuilder<ESearchCategoryResponse, ESearchCategoryResponse.Tokenizer, SearchCategoryESearchBuilder> {
 		
 		public SearchCategoryESearchBuilder(ESearchCategoryParams searchParams, Pager pager) {
-			super(ESearchResponse.class, "elasticsearch_esearch", "searchCategory");
+			super(ESearchCategoryResponse.class, "elasticsearch_esearch", "searchCategory");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}
@@ -60,10 +62,10 @@ public class ESearchService {
 		return new SearchCategoryESearchBuilder(searchParams, pager);
 	}
 	
-	public static class SearchEntryESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchEntryESearchBuilder> {
+	public static class SearchEntryESearchBuilder extends RequestBuilder<ESearchEntryResponse, ESearchEntryResponse.Tokenizer, SearchEntryESearchBuilder> {
 		
 		public SearchEntryESearchBuilder(ESearchEntryParams searchParams, Pager pager) {
-			super(ESearchResponse.class, "elasticsearch_esearch", "searchEntry");
+			super(ESearchEntryResponse.class, "elasticsearch_esearch", "searchEntry");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}
@@ -77,10 +79,10 @@ public class ESearchService {
 		return new SearchEntryESearchBuilder(searchParams, pager);
 	}
 	
-	public static class SearchUserESearchBuilder extends RequestBuilder<ESearchResponse, ESearchResponse.Tokenizer, SearchUserESearchBuilder> {
+	public static class SearchUserESearchBuilder extends RequestBuilder<ESearchUserResponse, ESearchUserResponse.Tokenizer, SearchUserESearchBuilder> {
 		
 		public SearchUserESearchBuilder(ESearchUserParams searchParams, Pager pager) {
-			super(ESearchResponse.class, "elasticsearch_esearch", "searchUser");
+			super(ESearchUserResponse.class, "elasticsearch_esearch", "searchUser");
 			params.add("searchParams", searchParams);
 			params.add("pager", pager);
 		}

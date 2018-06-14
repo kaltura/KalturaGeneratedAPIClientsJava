@@ -29,11 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.types.ClipAttributes;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +41,74 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(ClippingTaskEntryServerNode.Tokenizer.class)
+public class ClippingTaskEntryServerNode extends TaskEntryServerNode {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends TaskEntryServerNode.Tokenizer {
+		ClipAttributes.Tokenizer clipAttributes();
+		String clippedEntryId();
+		String liveEntryId();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	private ClipAttributes clipAttributes;
+	private String clippedEntryId;
+	private String liveEntryId;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// clipAttributes:
+	public ClipAttributes getClipAttributes(){
+		return this.clipAttributes;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setClipAttributes(ClipAttributes clipAttributes){
+		this.clipAttributes = clipAttributes;
 	}
 
+	// clippedEntryId:
+	public String getClippedEntryId(){
+		return this.clippedEntryId;
+	}
+	public void setClippedEntryId(String clippedEntryId){
+		this.clippedEntryId = clippedEntryId;
+	}
 
-	public ESearchResult() {
+	public void clippedEntryId(String multirequestToken){
+		setToken("clippedEntryId", multirequestToken);
+	}
+
+	// liveEntryId:
+	public String getLiveEntryId(){
+		return this.liveEntryId;
+	}
+	public void setLiveEntryId(String liveEntryId){
+		this.liveEntryId = liveEntryId;
+	}
+
+	public void liveEntryId(String multirequestToken){
+		setToken("liveEntryId", multirequestToken);
+	}
+
+
+	public ClippingTaskEntryServerNode() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public ClippingTaskEntryServerNode(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		clipAttributes = GsonParser.parseObject(jsonObject.getAsJsonObject("clipAttributes"), ClipAttributes.class);
+		clippedEntryId = GsonParser.parseString(jsonObject.get("clippedEntryId"));
+		liveEntryId = GsonParser.parseString(jsonObject.get("liveEntryId"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaClippingTaskEntryServerNode");
+		kparams.add("clipAttributes", this.clipAttributes);
+		kparams.add("clippedEntryId", this.clippedEntryId);
+		kparams.add("liveEntryId", this.liveEntryId);
 		return kparams;
 	}
 

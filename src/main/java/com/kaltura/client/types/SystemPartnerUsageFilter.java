@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,87 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(SystemPartnerUsageFilter.Tokenizer.class)
+public class SystemPartnerUsageFilter extends Filter {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends Filter.Tokenizer {
+		String fromDate();
+		String toDate();
+		String timezoneOffset();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	/**
+	 * Date range from
+	 */
+	private Integer fromDate;
+	/**
+	 * Date range to
+	 */
+	private Integer toDate;
+	/**
+	 * Time zone offset
+	 */
+	private Integer timezoneOffset;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// fromDate:
+	public Integer getFromDate(){
+		return this.fromDate;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setFromDate(Integer fromDate){
+		this.fromDate = fromDate;
 	}
 
+	public void fromDate(String multirequestToken){
+		setToken("fromDate", multirequestToken);
+	}
 
-	public ESearchResult() {
+	// toDate:
+	public Integer getToDate(){
+		return this.toDate;
+	}
+	public void setToDate(Integer toDate){
+		this.toDate = toDate;
+	}
+
+	public void toDate(String multirequestToken){
+		setToken("toDate", multirequestToken);
+	}
+
+	// timezoneOffset:
+	public Integer getTimezoneOffset(){
+		return this.timezoneOffset;
+	}
+	public void setTimezoneOffset(Integer timezoneOffset){
+		this.timezoneOffset = timezoneOffset;
+	}
+
+	public void timezoneOffset(String multirequestToken){
+		setToken("timezoneOffset", multirequestToken);
+	}
+
+
+	public SystemPartnerUsageFilter() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public SystemPartnerUsageFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
+		toDate = GsonParser.parseInt(jsonObject.get("toDate"));
+		timezoneOffset = GsonParser.parseInt(jsonObject.get("timezoneOffset"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaSystemPartnerUsageFilter");
+		kparams.add("fromDate", this.fromDate);
+		kparams.add("toDate", this.toDate);
+		kparams.add("timezoneOffset", this.timezoneOffset);
 		return kparams;
 	}
 

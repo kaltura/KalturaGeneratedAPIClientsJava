@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,46 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(UiConfAdmin.Tokenizer.class)
+public class UiConfAdmin extends UiConf {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends UiConf.Tokenizer {
+		String isPublic();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	private Boolean isPublic;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// isPublic:
+	public Boolean getIsPublic(){
+		return this.isPublic;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
+	public void setIsPublic(Boolean isPublic){
+		this.isPublic = isPublic;
 	}
 
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void isPublic(String multirequestToken){
+		setToken("isPublic", multirequestToken);
 	}
 
 
-	public ESearchResult() {
+	public UiConfAdmin() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public UiConfAdmin(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaUiConfAdmin");
+		kparams.add("isPublic", this.isPublic);
 		return kparams;
 	}
 

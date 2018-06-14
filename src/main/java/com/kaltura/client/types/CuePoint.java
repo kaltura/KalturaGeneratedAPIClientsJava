@@ -63,6 +63,7 @@ public abstract class CuePoint extends ObjectBase {
 		String forceStop();
 		String thumbOffset();
 		String systemName();
+		String isMomentary();
 	}
 
 	private String id;
@@ -84,6 +85,7 @@ public abstract class CuePoint extends ObjectBase {
 	private Boolean forceStop;
 	private Integer thumbOffset;
 	private String systemName;
+	private Boolean isMomentary;
 
 	// id:
 	public String getId(){
@@ -221,6 +223,10 @@ public abstract class CuePoint extends ObjectBase {
 		setToken("systemName", multirequestToken);
 	}
 
+	// isMomentary:
+	public Boolean getIsMomentary(){
+		return this.isMomentary;
+	}
 
 	public CuePoint() {
 		super();
@@ -248,6 +254,7 @@ public abstract class CuePoint extends ObjectBase {
 		forceStop = GsonParser.parseBoolean(jsonObject.get("forceStop"));
 		thumbOffset = GsonParser.parseInt(jsonObject.get("thumbOffset"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
+		isMomentary = GsonParser.parseBoolean(jsonObject.get("isMomentary"));
 
 	}
 

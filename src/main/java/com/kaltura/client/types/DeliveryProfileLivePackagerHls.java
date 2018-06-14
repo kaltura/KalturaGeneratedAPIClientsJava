@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,62 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(DeliveryProfileLivePackagerHls.Tokenizer.class)
+public class DeliveryProfileLivePackagerHls extends DeliveryProfileLivePackager {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends DeliveryProfileLivePackager.Tokenizer {
+		String disableExtraAttributes();
+		String forceProxy();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	private Boolean disableExtraAttributes;
+	private Boolean forceProxy;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// disableExtraAttributes:
+	public Boolean getDisableExtraAttributes(){
+		return this.disableExtraAttributes;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setDisableExtraAttributes(Boolean disableExtraAttributes){
+		this.disableExtraAttributes = disableExtraAttributes;
 	}
 
+	public void disableExtraAttributes(String multirequestToken){
+		setToken("disableExtraAttributes", multirequestToken);
+	}
 
-	public ESearchResult() {
+	// forceProxy:
+	public Boolean getForceProxy(){
+		return this.forceProxy;
+	}
+	public void setForceProxy(Boolean forceProxy){
+		this.forceProxy = forceProxy;
+	}
+
+	public void forceProxy(String multirequestToken){
+		setToken("forceProxy", multirequestToken);
+	}
+
+
+	public DeliveryProfileLivePackagerHls() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public DeliveryProfileLivePackagerHls(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		disableExtraAttributes = GsonParser.parseBoolean(jsonObject.get("disableExtraAttributes"));
+		forceProxy = GsonParser.parseBoolean(jsonObject.get("forceProxy"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaDeliveryProfileLivePackagerHls");
+		kparams.add("disableExtraAttributes", this.disableExtraAttributes);
+		kparams.add("forceProxy", this.forceProxy);
 		return kparams;
 	}
 

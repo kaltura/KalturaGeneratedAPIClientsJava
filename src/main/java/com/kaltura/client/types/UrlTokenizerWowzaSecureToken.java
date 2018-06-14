@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,62 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(UrlTokenizerWowzaSecureToken.Tokenizer.class)
+public class UrlTokenizerWowzaSecureToken extends UrlTokenizer {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends UrlTokenizer.Tokenizer {
+		String paramPrefix();
+		String hashAlgorithm();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	private String paramPrefix;
+	private String hashAlgorithm;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// paramPrefix:
+	public String getParamPrefix(){
+		return this.paramPrefix;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setParamPrefix(String paramPrefix){
+		this.paramPrefix = paramPrefix;
 	}
 
+	public void paramPrefix(String multirequestToken){
+		setToken("paramPrefix", multirequestToken);
+	}
 
-	public ESearchResult() {
+	// hashAlgorithm:
+	public String getHashAlgorithm(){
+		return this.hashAlgorithm;
+	}
+	public void setHashAlgorithm(String hashAlgorithm){
+		this.hashAlgorithm = hashAlgorithm;
+	}
+
+	public void hashAlgorithm(String multirequestToken){
+		setToken("hashAlgorithm", multirequestToken);
+	}
+
+
+	public UrlTokenizerWowzaSecureToken() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public UrlTokenizerWowzaSecureToken(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		paramPrefix = GsonParser.parseString(jsonObject.get("paramPrefix"));
+		hashAlgorithm = GsonParser.parseString(jsonObject.get("hashAlgorithm"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaUrlTokenizerWowzaSecureToken");
+		kparams.add("paramPrefix", this.paramPrefix);
+		kparams.add("hashAlgorithm", this.hashAlgorithm);
 		return kparams;
 	}
 

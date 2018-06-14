@@ -29,10 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -41,47 +40,44 @@ import java.util.List;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**
- * Clip operation attributes
- */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ClipAttributes.Tokenizer.class)
-public class ClipAttributes extends OperationAttributes {
+@MultiRequestBuilder.Tokenizer(ClipDescription.Tokenizer.class)
+public class ClipDescription extends ObjectBase {
 	
-	public interface Tokenizer extends OperationAttributes.Tokenizer {
-		String offset();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String sourceEntryId();
+		String startTime();
 		String duration();
-		String globalOffsetInDestination();
-		RequestBuilder.ListTokenizer<Effect.Tokenizer> effectArray();
+		String offsetInDestination();
 	}
 
-	/**
-	 * Offset in milliseconds
-	 */
-	private Integer offset;
-	/**
-	 * Duration in milliseconds
-	 */
+	private String sourceEntryId;
+	private Integer startTime;
 	private Integer duration;
-	/**
-	 * global Offset In Destination in milliseconds
-	 */
-	private Integer globalOffsetInDestination;
-	/**
-	 * global Offset In Destination in milliseconds
-	 */
-	private List<Effect> effectArray;
+	private Integer offsetInDestination;
 
-	// offset:
-	public Integer getOffset(){
-		return this.offset;
+	// sourceEntryId:
+	public String getSourceEntryId(){
+		return this.sourceEntryId;
 	}
-	public void setOffset(Integer offset){
-		this.offset = offset;
+	public void setSourceEntryId(String sourceEntryId){
+		this.sourceEntryId = sourceEntryId;
 	}
 
-	public void offset(String multirequestToken){
-		setToken("offset", multirequestToken);
+	public void sourceEntryId(String multirequestToken){
+		setToken("sourceEntryId", multirequestToken);
+	}
+
+	// startTime:
+	public Integer getStartTime(){
+		return this.startTime;
+	}
+	public void setStartTime(Integer startTime){
+		this.startTime = startTime;
+	}
+
+	public void startTime(String multirequestToken){
+		setToken("startTime", multirequestToken);
 	}
 
 	// duration:
@@ -96,51 +92,43 @@ public class ClipAttributes extends OperationAttributes {
 		setToken("duration", multirequestToken);
 	}
 
-	// globalOffsetInDestination:
-	public Integer getGlobalOffsetInDestination(){
-		return this.globalOffsetInDestination;
+	// offsetInDestination:
+	public Integer getOffsetInDestination(){
+		return this.offsetInDestination;
 	}
-	public void setGlobalOffsetInDestination(Integer globalOffsetInDestination){
-		this.globalOffsetInDestination = globalOffsetInDestination;
-	}
-
-	public void globalOffsetInDestination(String multirequestToken){
-		setToken("globalOffsetInDestination", multirequestToken);
+	public void setOffsetInDestination(Integer offsetInDestination){
+		this.offsetInDestination = offsetInDestination;
 	}
 
-	// effectArray:
-	public List<Effect> getEffectArray(){
-		return this.effectArray;
-	}
-	public void setEffectArray(List<Effect> effectArray){
-		this.effectArray = effectArray;
+	public void offsetInDestination(String multirequestToken){
+		setToken("offsetInDestination", multirequestToken);
 	}
 
 
-	public ClipAttributes() {
+	public ClipDescription() {
 		super();
 	}
 
-	public ClipAttributes(JsonObject jsonObject) throws APIException {
+	public ClipDescription(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		offset = GsonParser.parseInt(jsonObject.get("offset"));
+		sourceEntryId = GsonParser.parseString(jsonObject.get("sourceEntryId"));
+		startTime = GsonParser.parseInt(jsonObject.get("startTime"));
 		duration = GsonParser.parseInt(jsonObject.get("duration"));
-		globalOffsetInDestination = GsonParser.parseInt(jsonObject.get("globalOffsetInDestination"));
-		effectArray = GsonParser.parseArray(jsonObject.getAsJsonArray("effectArray"), Effect.class);
+		offsetInDestination = GsonParser.parseInt(jsonObject.get("offsetInDestination"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaClipAttributes");
-		kparams.add("offset", this.offset);
+		kparams.add("objectType", "KalturaClipDescription");
+		kparams.add("sourceEntryId", this.sourceEntryId);
+		kparams.add("startTime", this.startTime);
 		kparams.add("duration", this.duration);
-		kparams.add("globalOffsetInDestination", this.globalOffsetInDestination);
-		kparams.add("effectArray", this.effectArray);
+		kparams.add("offsetInDestination", this.offsetInDestination);
 		return kparams;
 	}
 

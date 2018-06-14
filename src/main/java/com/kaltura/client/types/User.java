@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.Gender;
 import com.kaltura.client.enums.LanguageCode;
+import com.kaltura.client.enums.UserMode;
 import com.kaltura.client.enums.UserStatus;
 import com.kaltura.client.enums.UserType;
 import com.kaltura.client.types.ObjectBase;
@@ -86,6 +87,7 @@ public class User extends ObjectBase {
 		String isAccountOwner();
 		String allowedPartnerIds();
 		String allowedPartnerPackages();
+		String userMode();
 	}
 
 	private String id;
@@ -137,6 +139,7 @@ public class User extends ObjectBase {
 	private Boolean isAccountOwner;
 	private String allowedPartnerIds;
 	private String allowedPartnerPackages;
+	private UserMode userMode;
 
 	// id:
 	public String getId(){
@@ -518,6 +521,18 @@ public class User extends ObjectBase {
 		setToken("allowedPartnerPackages", multirequestToken);
 	}
 
+	// userMode:
+	public UserMode getUserMode(){
+		return this.userMode;
+	}
+	public void setUserMode(UserMode userMode){
+		this.userMode = userMode;
+	}
+
+	public void userMode(String multirequestToken){
+		setToken("userMode", multirequestToken);
+	}
+
 
 	public User() {
 		super();
@@ -566,6 +581,7 @@ public class User extends ObjectBase {
 		isAccountOwner = GsonParser.parseBoolean(jsonObject.get("isAccountOwner"));
 		allowedPartnerIds = GsonParser.parseString(jsonObject.get("allowedPartnerIds"));
 		allowedPartnerPackages = GsonParser.parseString(jsonObject.get("allowedPartnerPackages"));
+		userMode = UserMode.get(GsonParser.parseInt(jsonObject.get("userMode")));
 
 	}
 
@@ -601,6 +617,7 @@ public class User extends ObjectBase {
 		kparams.add("isAccountOwner", this.isAccountOwner);
 		kparams.add("allowedPartnerIds", this.allowedPartnerIds);
 		kparams.add("allowedPartnerPackages", this.allowedPartnerPackages);
+		kparams.add("userMode", this.userMode);
 		return kparams;
 	}
 

@@ -29,11 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,54 +40,49 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(DeliveryProfileLivePackager.Tokenizer.class)
+public class DeliveryProfileLivePackager extends DeliveryProfile {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String livePackagerSigningDomain();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	/**
+	 * Domain used to sign the live url
+	 */
+	private String livePackagerSigningDomain;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// livePackagerSigningDomain:
+	public String getLivePackagerSigningDomain(){
+		return this.livePackagerSigningDomain;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
+	public void setLivePackagerSigningDomain(String livePackagerSigningDomain){
+		this.livePackagerSigningDomain = livePackagerSigningDomain;
 	}
 
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void livePackagerSigningDomain(String multirequestToken){
+		setToken("livePackagerSigningDomain", multirequestToken);
 	}
 
 
-	public ESearchResult() {
+	public DeliveryProfileLivePackager() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public DeliveryProfileLivePackager(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		livePackagerSigningDomain = GsonParser.parseString(jsonObject.get("livePackagerSigningDomain"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaDeliveryProfileLivePackager");
+		kparams.add("livePackagerSigningDomain", this.livePackagerSigningDomain);
 		return kparams;
 	}
 

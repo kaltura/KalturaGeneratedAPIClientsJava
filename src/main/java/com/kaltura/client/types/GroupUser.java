@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.GroupUserCreationMode;
 import com.kaltura.client.enums.GroupUserStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
@@ -52,6 +53,7 @@ public class GroupUser extends ObjectBase {
 		String partnerId();
 		String createdAt();
 		String updatedAt();
+		String creationMode();
 	}
 
 	private String userId;
@@ -66,6 +68,7 @@ public class GroupUser extends ObjectBase {
 	 * Last update date as Unix timestamp (In seconds)
 	 */
 	private Integer updatedAt;
+	private GroupUserCreationMode creationMode;
 
 	// userId:
 	public String getUserId(){
@@ -107,6 +110,18 @@ public class GroupUser extends ObjectBase {
 	public Integer getUpdatedAt(){
 		return this.updatedAt;
 	}
+	// creationMode:
+	public GroupUserCreationMode getCreationMode(){
+		return this.creationMode;
+	}
+	public void setCreationMode(GroupUserCreationMode creationMode){
+		this.creationMode = creationMode;
+	}
+
+	public void creationMode(String multirequestToken){
+		setToken("creationMode", multirequestToken);
+	}
+
 
 	public GroupUser() {
 		super();
@@ -124,6 +139,7 @@ public class GroupUser extends ObjectBase {
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		creationMode = GroupUserCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
 
 	}
 
@@ -132,6 +148,7 @@ public class GroupUser extends ObjectBase {
 		kparams.add("objectType", "KalturaGroupUser");
 		kparams.add("userId", this.userId);
 		kparams.add("groupId", this.groupId);
+		kparams.add("creationMode", this.creationMode);
 		return kparams;
 	}
 

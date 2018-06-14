@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -43,54 +42,83 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchResult.Tokenizer.class)
-public abstract class ESearchResult extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(ClipConcatJobData.Tokenizer.class)
+public class ClipConcatJobData extends JobData {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
-		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
+	public interface Tokenizer extends JobData.Tokenizer {
+		String partnerId();
+		String priority();
+		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> operationAttributes();
 	}
 
-	private List<ESearchHighlight> highlight;
-	private List<ESearchItemDataResult> itemsData;
+	/**
+	 * $partnerId
+	 */
+	private Integer partnerId;
+	/**
+	 * $priority
+	 */
+	private Integer priority;
+	/**
+	 * clip operations
+	 */
+	private List<ObjectBase> operationAttributes;
 
-	// highlight:
-	public List<ESearchHighlight> getHighlight(){
-		return this.highlight;
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
 	}
-	public void setHighlight(List<ESearchHighlight> highlight){
-		this.highlight = highlight;
-	}
-
-	// itemsData:
-	public List<ESearchItemDataResult> getItemsData(){
-		return this.itemsData;
-	}
-	public void setItemsData(List<ESearchItemDataResult> itemsData){
-		this.itemsData = itemsData;
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
 	}
 
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
 
-	public ESearchResult() {
+	// priority:
+	public Integer getPriority(){
+		return this.priority;
+	}
+	public void setPriority(Integer priority){
+		this.priority = priority;
+	}
+
+	public void priority(String multirequestToken){
+		setToken("priority", multirequestToken);
+	}
+
+	// operationAttributes:
+	public List<ObjectBase> getOperationAttributes(){
+		return this.operationAttributes;
+	}
+	public void setOperationAttributes(List<ObjectBase> operationAttributes){
+		this.operationAttributes = operationAttributes;
+	}
+
+
+	public ClipConcatJobData() {
 		super();
 	}
 
-	public ESearchResult(JsonObject jsonObject) throws APIException {
+	public ClipConcatJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
-		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		priority = GsonParser.parseInt(jsonObject.get("priority"));
+		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), ObjectBase.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchResult");
-		kparams.add("highlight", this.highlight);
-		kparams.add("itemsData", this.itemsData);
+		kparams.add("objectType", "KalturaClipConcatJobData");
+		kparams.add("partnerId", this.partnerId);
+		kparams.add("priority", this.priority);
+		kparams.add("operationAttributes", this.operationAttributes);
 		return kparams;
 	}
 
