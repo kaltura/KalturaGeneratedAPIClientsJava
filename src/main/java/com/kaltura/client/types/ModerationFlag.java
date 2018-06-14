@@ -48,10 +48,17 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ModerationFlag extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String userId();
+		String moderationObjectType();
 		String flaggedEntryId();
 		String flaggedUserId();
+		String status();
 		String comments();
 		String flagType();
+		String createdAt();
+		String updatedAt();
 	}
 
 	/**

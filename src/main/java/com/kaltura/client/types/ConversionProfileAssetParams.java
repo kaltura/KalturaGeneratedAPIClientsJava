@@ -48,6 +48,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ConversionProfileAssetParams extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String conversionProfileId();
+		String assetParamsId();
 		String readyBehavior();
 		String origin();
 		String systemName();

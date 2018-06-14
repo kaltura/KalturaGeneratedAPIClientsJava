@@ -47,11 +47,15 @@ import java.util.List;
 public class AccessControl extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String name();
 		String systemName();
 		String description();
+		String createdAt();
 		String isDefault();
 		RequestBuilder.ListTokenizer<BaseRestriction.Tokenizer> restrictions();
+		String containsUnsuportedRestrictions();
 	}
 
 	/**

@@ -45,8 +45,17 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Asset extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String entryId();
+		String partnerId();
+		String version();
+		String size();
 		String tags();
 		String fileExt();
+		String createdAt();
+		String updatedAt();
+		String deletedAt();
+		String description();
 		String partnerData();
 		String partnerDescription();
 		String actualSourceAssetParamsIds();

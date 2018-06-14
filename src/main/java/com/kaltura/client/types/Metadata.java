@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.MetadataObjectType;
 import com.kaltura.client.enums.MetadataStatus;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -46,6 +47,17 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Metadata extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String metadataProfileId();
+		String metadataProfileVersion();
+		String metadataObjectType();
+		String objectId();
+		String version();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String xml();
 	}
 
 	private Integer id;

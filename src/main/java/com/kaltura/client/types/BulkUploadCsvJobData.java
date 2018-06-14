@@ -50,6 +50,7 @@ import java.util.List;
 public class BulkUploadCsvJobData extends BulkUploadJobData {
 	
 	public interface Tokenizer extends BulkUploadJobData.Tokenizer {
+		String csvVersion();
 		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> columns();
 	}
 

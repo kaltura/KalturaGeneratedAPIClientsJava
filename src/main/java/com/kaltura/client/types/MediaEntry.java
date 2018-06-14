@@ -56,6 +56,10 @@ public class MediaEntry extends PlayableEntry {
 		String searchProviderId();
 		String creditUserName();
 		String creditUrl();
+		String mediaDate();
+		String dataUrl();
+		String flavorParamsIds();
+		String isTrimDisabled();
 		RequestBuilder.ListTokenizer<StreamContainer.Tokenizer> streams();
 	}
 

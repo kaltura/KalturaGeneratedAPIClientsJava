@@ -47,7 +47,18 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class BulkUploadJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
+		String userId();
+		String uploadedBy();
+		String conversionProfileId();
+		String resultsFileLocalPath();
+		String resultsFileUrl();
+		String numOfEntries();
+		String numOfObjects();
+		String filePath();
+		String bulkUploadObjectType();
 		String fileName();
+		BulkUploadObjectData.Tokenizer objectData();
+		String type();
 		String emailRecipients();
 		String numOfErrorObjects();
 	}

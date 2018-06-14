@@ -48,6 +48,10 @@ public class CategoryEntry extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String categoryId();
 		String entryId();
+		String createdAt();
+		String categoryFullIds();
+		String status();
+		String creatorUserId();
 	}
 
 	private Integer categoryId;

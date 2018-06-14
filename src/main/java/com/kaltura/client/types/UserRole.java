@@ -46,12 +46,16 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class UserRole extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String name();
 		String systemName();
 		String description();
 		String status();
+		String partnerId();
 		String permissionNames();
 		String tags();
+		String createdAt();
+		String updatedAt();
 	}
 
 	private Integer id;

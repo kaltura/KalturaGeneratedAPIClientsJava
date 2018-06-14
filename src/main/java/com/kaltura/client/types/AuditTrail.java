@@ -50,16 +50,30 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class AuditTrail extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String parsedAt();
+		String status();
 		String auditObjectType();
 		String objectId();
 		String relatedObjectId();
 		String relatedObjectType();
 		String entryId();
+		String masterPartnerId();
+		String partnerId();
+		String requestId();
 		String userId();
 		String action();
 		AuditTrailInfo.Tokenizer data();
+		String ks();
+		String context();
+		String entryPoint();
+		String serverName();
+		String ipAddress();
+		String userAgent();
 		String clientTag();
 		String description();
+		String errorDescription();
 	}
 
 	private Integer id;

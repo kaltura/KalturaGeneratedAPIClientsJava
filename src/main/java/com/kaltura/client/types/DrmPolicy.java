@@ -52,6 +52,7 @@ import java.util.List;
 public class DrmPolicy extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String partnerId();
 		String name();
 		String systemName();
@@ -62,6 +63,8 @@ public class DrmPolicy extends ObjectBase {
 		String licenseType();
 		String licenseExpirationPolicy();
 		String duration();
+		String createdAt();
+		String updatedAt();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> licenseParams();
 	}
 

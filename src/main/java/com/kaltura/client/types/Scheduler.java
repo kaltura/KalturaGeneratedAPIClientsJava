@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -46,9 +47,16 @@ import java.util.List;
 public class Scheduler extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String configuredId();
 		String name();
 		String host();
+		RequestBuilder.ListTokenizer<SchedulerStatus.Tokenizer> statuses();
+		RequestBuilder.ListTokenizer<SchedulerConfig.Tokenizer> configs();
+		RequestBuilder.ListTokenizer<SchedulerWorker.Tokenizer> workers();
+		String createdAt();
+		String lastStatus();
+		String lastStatusStr();
 	}
 
 	/**

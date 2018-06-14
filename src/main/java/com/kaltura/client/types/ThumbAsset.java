@@ -46,6 +46,9 @@ public class ThumbAsset extends Asset {
 	
 	public interface Tokenizer extends Asset.Tokenizer {
 		String thumbParamsId();
+		String width();
+		String height();
+		String status();
 	}
 
 	/**

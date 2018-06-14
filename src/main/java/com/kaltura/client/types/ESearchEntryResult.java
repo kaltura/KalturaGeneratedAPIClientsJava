@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.BaseEntry;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,18 +43,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ESearchEntryResult extends ESearchResult {
 	
 	public interface Tokenizer extends ESearchResult.Tokenizer {
-		BaseEntry.Tokenizer object();
 	}
 
-	private BaseEntry object;
-
-	// object:
-	public BaseEntry getObject(){
-		return this.object;
-	}
-	public void setObject(BaseEntry object){
-		this.object = object;
-	}
 
 
 	public ESearchEntryResult() {
@@ -65,18 +53,11 @@ public class ESearchEntryResult extends ESearchResult {
 
 	public ESearchEntryResult(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), BaseEntry.class);
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchEntryResult");
-		kparams.add("object", this.object);
 		return kparams;
 	}
 

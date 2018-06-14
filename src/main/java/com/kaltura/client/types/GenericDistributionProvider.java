@@ -47,7 +47,12 @@ import java.util.List;
 public class GenericDistributionProvider extends DistributionProvider {
 	
 	public interface Tokenizer extends DistributionProvider.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
 		String isDefault();
+		String status();
 		String optionalFlavorParamsIds();
 		String requiredFlavorParamsIds();
 		RequestBuilder.ListTokenizer<DistributionThumbDimensions.Tokenizer> optionalThumbDimensions();

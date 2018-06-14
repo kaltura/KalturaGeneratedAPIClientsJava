@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -33,7 +33,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -49,11 +49,17 @@ public class UverseDistributionJobProviderData extends ConfigurableDistributionJ
 		String remoteAssetFileName();
 	}
 
-	/**  The local file path of the video asset that needs to be distributed  */
+	/**
+	 * The local file path of the video asset that needs to be distributed
+	 */
 	private String localAssetFilePath;
-	/**  The remote URL of the video asset that was distributed  */
+	/**
+	 * The remote URL of the video asset that was distributed
+	 */
 	private String remoteAssetUrl;
-	/**  The file name of the remote video asset that was distributed  */
+	/**
+	 * The file name of the remote video asset that was distributed
+	 */
 	private String remoteAssetFileName;
 
 	// localAssetFilePath:

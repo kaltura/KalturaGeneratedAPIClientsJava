@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -33,7 +33,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -51,15 +51,25 @@ public class DexterIntegrationJobProviderData extends IntegrationJobProviderData
 		String voicebaseApiPassword();
 	}
 
-	/**  ID of the metadata profile for the extracted term metadata  */
+	/**
+	 * ID of the metadata profile for the extracted term metadata
+	 */
 	private Integer metadataProfileId;
-	/**  ID of the transcript asset  */
+	/**
+	 * ID of the transcript asset
+	 */
 	private String transcriptAssetId;
-	/**  ID of the entry  */
+	/**
+	 * ID of the entry
+	 */
 	private String entryId;
-	/**  Voicebase API key to fetch transcript tokens  */
+	/**
+	 * Voicebase API key to fetch transcript tokens
+	 */
 	private String voicebaseApiKey;
-	/**  Voicebase API password to fetch transcript tokens  */
+	/**
+	 * Voicebase API password to fetch transcript tokens
+	 */
 	private String voicebaseApiPassword;
 
 	// metadataProfileId:

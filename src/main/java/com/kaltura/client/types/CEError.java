@@ -45,6 +45,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class CEError extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String partnerId();
 		String browser();
 		String serverIp();

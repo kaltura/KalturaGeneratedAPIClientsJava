@@ -46,8 +46,16 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class UploadToken extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String userId();
+		String status();
 		String fileName();
 		String fileSize();
+		String uploadedFileSize();
+		String createdAt();
+		String updatedAt();
+		String uploadUrl();
 		String autoFinalize();
 	}
 

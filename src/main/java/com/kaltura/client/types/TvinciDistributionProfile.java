@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -56,7 +56,9 @@ public class TvinciDistributionProfile extends ConfigurableDistributionProfile {
 	private String ingestUrl;
 	private String username;
 	private String password;
-	/**  Tags array for Tvinci distribution  */
+	/**
+	 * Tags array for Tvinci distribution
+	 */
 	private List<TvinciDistributionTag> tags;
 	private String xsltFile;
 

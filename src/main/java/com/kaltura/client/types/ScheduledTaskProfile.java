@@ -50,6 +50,8 @@ import java.util.List;
 public class ScheduledTaskProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String name();
 		String systemName();
 		String description();
@@ -57,6 +59,8 @@ public class ScheduledTaskProfile extends ObjectBase {
 		String objectFilterEngineType();
 		Filter.Tokenizer objectFilter();
 		RequestBuilder.ListTokenizer<ObjectTask.Tokenizer> objectTasks();
+		String createdAt();
+		String updatedAt();
 		String lastExecutionStartedAt();
 		String maxTotalCountAllowed();
 	}

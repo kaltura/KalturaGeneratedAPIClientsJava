@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -48,6 +49,9 @@ public class AnswerCuePoint extends CuePoint {
 		String parentId();
 		String quizUserEntryId();
 		String answerKey();
+		String isCorrect();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> correctAnswerKeys();
+		String explanation();
 	}
 
 	private String parentId;

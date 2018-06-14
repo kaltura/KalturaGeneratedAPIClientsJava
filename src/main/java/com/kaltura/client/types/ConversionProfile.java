@@ -51,6 +51,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ConversionProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String status();
 		String type();
 		String name();
@@ -58,8 +60,10 @@ public class ConversionProfile extends ObjectBase {
 		String tags();
 		String description();
 		String defaultEntryId();
+		String createdAt();
 		String flavorParamsIds();
 		String isDefault();
+		String isPartnerDefault();
 		CropDimensions.Tokenizer cropDimensions();
 		String clipStart();
 		String clipDuration();

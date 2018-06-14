@@ -49,8 +49,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class GenericDistributionProviderAction extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
 		String genericDistributionProviderId();
 		String action();
+		String status();
 		String resultsParser();
 		String protocol();
 		String serverAddress();
@@ -59,6 +63,9 @@ public class GenericDistributionProviderAction extends ObjectBase {
 		String remotePassword();
 		String editableFields();
 		String mandatoryFields();
+		String mrssTransformer();
+		String mrssValidator();
+		String resultsTransformer();
 	}
 
 	/**

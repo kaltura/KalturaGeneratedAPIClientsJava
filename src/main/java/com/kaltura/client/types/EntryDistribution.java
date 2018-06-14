@@ -51,14 +51,34 @@ import java.util.List;
 public class EntryDistribution extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String submittedAt();
 		String entryId();
+		String partnerId();
 		String distributionProfileId();
+		String status();
+		String sunStatus();
+		String dirtyStatus();
 		String thumbAssetIds();
 		String flavorAssetIds();
 		String assetIds();
 		String sunrise();
 		String sunset();
+		String remoteId();
+		String plays();
+		String views();
 		RequestBuilder.ListTokenizer<DistributionValidationError.Tokenizer> validationErrors();
+		String errorType();
+		String errorNumber();
+		String errorDescription();
+		String hasSubmitResultsLog();
+		String hasSubmitSentDataLog();
+		String hasUpdateResultsLog();
+		String hasUpdateSentDataLog();
+		String hasDeleteResultsLog();
+		String hasDeleteSentDataLog();
 	}
 
 	/**

@@ -53,22 +53,39 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Category extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String parentId();
+		String depth();
+		String partnerId();
 		String name();
+		String fullName();
+		String fullIds();
+		String entriesCount();
+		String createdAt();
+		String updatedAt();
 		String description();
 		String tags();
 		String appearInList();
 		String privacy();
 		String inheritanceType();
+		String userJoinPolicy();
 		String defaultPermissionLevel();
 		String owner();
+		String directEntriesCount();
 		String referenceId();
 		String contributionPolicy();
+		String membersCount();
+		String pendingMembersCount();
 		String privacyContext();
+		String privacyContexts();
+		String status();
+		String inheritedParentId();
 		String partnerSortValue();
 		String partnerData();
 		String defaultOrderBy();
+		String directSubCategoriesCount();
 		String moderation();
+		String pendingEntriesCount();
 		String isAggregationCategory();
 		String aggregationCategories();
 	}

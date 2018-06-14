@@ -31,8 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -46,20 +44,42 @@ import java.util.List;
 public class CopyCaptionsJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
+		String sourceEntryId();
 		String entryId();
-		RequestBuilder.ListTokenizer<ClipDescription.Tokenizer> clipsDescriptionArray();
+		String offset();
+		String duration();
 		String fullCopy();
 	}
 
+	/**
+	 * source entry Id
+	 */
+	private String sourceEntryId;
 	/**
 	 * entry Id
 	 */
 	private String entryId;
 	/**
-	 * an array of source start time and duration
+	 * clip offset
 	 */
-	private List<ClipDescription> clipsDescriptionArray;
+	private Integer offset;
+	/**
+	 * clip duration
+	 */
+	private Integer duration;
 	private Boolean fullCopy;
+
+	// sourceEntryId:
+	public String getSourceEntryId(){
+		return this.sourceEntryId;
+	}
+	public void setSourceEntryId(String sourceEntryId){
+		this.sourceEntryId = sourceEntryId;
+	}
+
+	public void sourceEntryId(String multirequestToken){
+		setToken("sourceEntryId", multirequestToken);
+	}
 
 	// entryId:
 	public String getEntryId(){
@@ -73,12 +93,28 @@ public class CopyCaptionsJobData extends JobData {
 		setToken("entryId", multirequestToken);
 	}
 
-	// clipsDescriptionArray:
-	public List<ClipDescription> getClipsDescriptionArray(){
-		return this.clipsDescriptionArray;
+	// offset:
+	public Integer getOffset(){
+		return this.offset;
 	}
-	public void setClipsDescriptionArray(List<ClipDescription> clipsDescriptionArray){
-		this.clipsDescriptionArray = clipsDescriptionArray;
+	public void setOffset(Integer offset){
+		this.offset = offset;
+	}
+
+	public void offset(String multirequestToken){
+		setToken("offset", multirequestToken);
+	}
+
+	// duration:
+	public Integer getDuration(){
+		return this.duration;
+	}
+	public void setDuration(Integer duration){
+		this.duration = duration;
+	}
+
+	public void duration(String multirequestToken){
+		setToken("duration", multirequestToken);
 	}
 
 	// fullCopy:
@@ -104,8 +140,10 @@ public class CopyCaptionsJobData extends JobData {
 		if(jsonObject == null) return;
 
 		// set members values:
+		sourceEntryId = GsonParser.parseString(jsonObject.get("sourceEntryId"));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
-		clipsDescriptionArray = GsonParser.parseArray(jsonObject.getAsJsonArray("clipsDescriptionArray"), ClipDescription.class);
+		offset = GsonParser.parseInt(jsonObject.get("offset"));
+		duration = GsonParser.parseInt(jsonObject.get("duration"));
 		fullCopy = GsonParser.parseBoolean(jsonObject.get("fullCopy"));
 
 	}
@@ -113,8 +151,10 @@ public class CopyCaptionsJobData extends JobData {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaCopyCaptionsJobData");
+		kparams.add("sourceEntryId", this.sourceEntryId);
 		kparams.add("entryId", this.entryId);
-		kparams.add("clipsDescriptionArray", this.clipsDescriptionArray);
+		kparams.add("offset", this.offset);
+		kparams.add("duration", this.duration);
 		kparams.add("fullCopy", this.fullCopy);
 		return kparams;
 	}

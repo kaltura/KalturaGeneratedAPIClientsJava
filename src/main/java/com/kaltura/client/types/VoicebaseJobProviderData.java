@@ -49,8 +49,12 @@ public class VoicebaseJobProviderData extends IntegrationJobProviderData {
 		String flavorAssetId();
 		String transcriptId();
 		String captionAssetFormats();
+		String apiKey();
+		String apiPassword();
 		String spokenLanguage();
+		String fileLocation();
 		String replaceMediaContent();
+		String additionalParameters();
 	}
 
 	/**

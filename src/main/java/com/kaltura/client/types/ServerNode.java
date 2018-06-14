@@ -47,11 +47,19 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ServerNode extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String heartbeatTime();
 		String name();
 		String systemName();
 		String description();
 		String hostName();
+		String status();
+		String type();
 		String tags();
+		String dc();
 		String parentId();
 	}
 

@@ -47,12 +47,22 @@ import java.util.List;
 public abstract class ESearchResult extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		ObjectBase.Tokenizer object();
 		RequestBuilder.ListTokenizer<ESearchHighlight.Tokenizer> highlight();
 		RequestBuilder.ListTokenizer<ESearchItemDataResult.Tokenizer> itemsData();
 	}
 
+	private ObjectBase object;
 	private List<ESearchHighlight> highlight;
 	private List<ESearchItemDataResult> itemsData;
+
+	// object:
+	public ObjectBase getObject(){
+		return this.object;
+	}
+	public void setObject(ObjectBase object){
+		this.object = object;
+	}
 
 	// highlight:
 	public List<ESearchHighlight> getHighlight(){
@@ -81,6 +91,7 @@ public abstract class ESearchResult extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
+		object = GsonParser.parseObject(jsonObject.getAsJsonObject("object"), ObjectBase.class);
 		highlight = GsonParser.parseArray(jsonObject.getAsJsonArray("highlight"), ESearchHighlight.class);
 		itemsData = GsonParser.parseArray(jsonObject.getAsJsonArray("itemsData"), ESearchItemDataResult.class);
 
@@ -89,6 +100,7 @@ public abstract class ESearchResult extends ObjectBase {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchResult");
+		kparams.add("object", this.object);
 		kparams.add("highlight", this.highlight);
 		kparams.add("itemsData", this.itemsData);
 		return kparams;

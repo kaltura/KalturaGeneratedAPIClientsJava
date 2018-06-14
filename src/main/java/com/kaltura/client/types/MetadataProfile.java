@@ -48,10 +48,19 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class MetadataProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String metadataObjectType();
+		String version();
 		String name();
 		String systemName();
 		String description();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String xsd();
+		String views();
+		String xslt();
 		String createMode();
 		String disableReIndexing();
 	}

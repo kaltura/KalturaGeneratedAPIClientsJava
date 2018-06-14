@@ -51,6 +51,10 @@ public class Playlist extends BaseEntry {
 		RequestBuilder.ListTokenizer<MediaEntryFilterForPlaylist.Tokenizer> filters();
 		String totalResults();
 		String playlistType();
+		String plays();
+		String views();
+		String duration();
+		String executeUrl();
 	}
 
 	/**

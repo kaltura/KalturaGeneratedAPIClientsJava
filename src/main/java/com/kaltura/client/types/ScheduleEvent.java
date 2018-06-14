@@ -49,8 +49,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ScheduleEvent extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String parentId();
 		String summary();
 		String description();
+		String status();
 		String startDate();
 		String endDate();
 		String referenceId();
@@ -67,6 +71,8 @@ public abstract class ScheduleEvent extends ObjectBase {
 		String contact();
 		String comment();
 		String tags();
+		String createdAt();
+		String updatedAt();
 		ScheduleEventRecurrence.Tokenizer recurrence();
 	}
 

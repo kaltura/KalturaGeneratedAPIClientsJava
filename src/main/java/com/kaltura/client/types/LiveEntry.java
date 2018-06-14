@@ -62,8 +62,11 @@ public abstract class LiveEntry extends MediaEntry {
 		String recordedEntryId();
 		String pushPublishEnabled();
 		RequestBuilder.ListTokenizer<LiveStreamPushPublishConfiguration.Tokenizer> publishConfigurations();
+		String firstBroadcast();
+		String lastBroadcast();
 		String currentBroadcastStartTime();
 		LiveEntryRecordingOptions.Tokenizer recordingOptions();
+		String liveStatus();
 		String segmentDuration();
 		String explicitLive();
 		String viewMode();
@@ -132,10 +135,6 @@ public abstract class LiveEntry extends MediaEntry {
 	private Boolean explicitLive;
 	private ViewMode viewMode;
 	private RecordingStatus recordingStatus;
-	/**
-	 * The time the last broadcast finished.
-	 */
-	private Integer lastBroadcastEndTime;
 
 	// offlineMessage:
 	public String getOfflineMessage(){
@@ -317,10 +316,6 @@ public abstract class LiveEntry extends MediaEntry {
 		setToken("recordingStatus", multirequestToken);
 	}
 
-	// lastBroadcastEndTime:
-	public Integer getLastBroadcastEndTime(){
-		return this.lastBroadcastEndTime;
-	}
 
 	public LiveEntry() {
 		super();
@@ -350,7 +345,6 @@ public abstract class LiveEntry extends MediaEntry {
 		explicitLive = GsonParser.parseBoolean(jsonObject.get("explicitLive"));
 		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
 		recordingStatus = RecordingStatus.get(GsonParser.parseInt(jsonObject.get("recordingStatus")));
-		lastBroadcastEndTime = GsonParser.parseInt(jsonObject.get("lastBroadcastEndTime"));
 
 	}
 

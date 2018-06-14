@@ -48,9 +48,31 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class FileSync extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String fileObjectType();
+		String objectId();
+		String version();
+		String objectSubType();
+		String dc();
+		String original();
+		String createdAt();
+		String updatedAt();
+		String readyAt();
+		String syncTime();
 		String status();
+		String fileType();
+		String linkedId();
+		String linkCount();
 		String fileRoot();
 		String filePath();
+		String fileSize();
+		String fileUrl();
+		String fileContent();
+		String fileDiscSize();
+		String isCurrentDc();
+		String isDir();
+		String originalId();
 	}
 
 	private Long id;

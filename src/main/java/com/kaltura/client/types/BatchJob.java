@@ -51,8 +51,17 @@ import java.util.List;
 public class BatchJob extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String deletedAt();
+		String lockExpiration();
+		String executionAttempts();
+		String lockVersion();
 		String entryId();
 		String entryName();
+		String jobType();
 		String jobSubType();
 		JobData.Tokenizer data();
 		String status();

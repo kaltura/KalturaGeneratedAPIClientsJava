@@ -46,6 +46,8 @@ import java.util.List;
 public class LiveStreamEntry extends LiveEntry {
 	
 	public interface Tokenizer extends LiveEntry.Tokenizer {
+		String streamRemoteId();
+		String streamRemoteBackupId();
 		RequestBuilder.ListTokenizer<LiveStreamBitrate.Tokenizer> bitrates();
 		String primaryBroadcastingUrl();
 		String secondaryBroadcastingUrl();
@@ -58,6 +60,8 @@ public class LiveStreamEntry extends LiveEntry {
 		String encodingIP1();
 		String encodingIP2();
 		String streamPassword();
+		String streamUsername();
+		String primaryServerNodeId();
 	}
 
 	/**

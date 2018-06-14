@@ -83,12 +83,6 @@ public class YouTubeDistributionProfile extends ConfigurableDistributionProfile 
 		String deleteReference();
 		String releaseClaims();
 		String apiAuthorizeUrl();
-		String privacyStatus();
-		String enableContentId();
-		String thirdPartyAds();
-		String productListingAds();
-		String domainWhitelist();
-		String notifySubscribers();
 	}
 
 	private YouTubeDistributionFeedSpecVersion feedSpecVersion;
@@ -129,12 +123,6 @@ public class YouTubeDistributionProfile extends ConfigurableDistributionProfile 
 	private Boolean deleteReference;
 	private Boolean releaseClaims;
 	private String apiAuthorizeUrl;
-	private String privacyStatus;
-	private String enableContentId;
-	private String thirdPartyAds;
-	private String productListingAds;
-	private String domainWhitelist;
-	private String notifySubscribers;
 
 	// feedSpecVersion:
 	public YouTubeDistributionFeedSpecVersion getFeedSpecVersion(){
@@ -592,78 +580,6 @@ public class YouTubeDistributionProfile extends ConfigurableDistributionProfile 
 		setToken("apiAuthorizeUrl", multirequestToken);
 	}
 
-	// privacyStatus:
-	public String getPrivacyStatus(){
-		return this.privacyStatus;
-	}
-	public void setPrivacyStatus(String privacyStatus){
-		this.privacyStatus = privacyStatus;
-	}
-
-	public void privacyStatus(String multirequestToken){
-		setToken("privacyStatus", multirequestToken);
-	}
-
-	// enableContentId:
-	public String getEnableContentId(){
-		return this.enableContentId;
-	}
-	public void setEnableContentId(String enableContentId){
-		this.enableContentId = enableContentId;
-	}
-
-	public void enableContentId(String multirequestToken){
-		setToken("enableContentId", multirequestToken);
-	}
-
-	// thirdPartyAds:
-	public String getThirdPartyAds(){
-		return this.thirdPartyAds;
-	}
-	public void setThirdPartyAds(String thirdPartyAds){
-		this.thirdPartyAds = thirdPartyAds;
-	}
-
-	public void thirdPartyAds(String multirequestToken){
-		setToken("thirdPartyAds", multirequestToken);
-	}
-
-	// productListingAds:
-	public String getProductListingAds(){
-		return this.productListingAds;
-	}
-	public void setProductListingAds(String productListingAds){
-		this.productListingAds = productListingAds;
-	}
-
-	public void productListingAds(String multirequestToken){
-		setToken("productListingAds", multirequestToken);
-	}
-
-	// domainWhitelist:
-	public String getDomainWhitelist(){
-		return this.domainWhitelist;
-	}
-	public void setDomainWhitelist(String domainWhitelist){
-		this.domainWhitelist = domainWhitelist;
-	}
-
-	public void domainWhitelist(String multirequestToken){
-		setToken("domainWhitelist", multirequestToken);
-	}
-
-	// notifySubscribers:
-	public String getNotifySubscribers(){
-		return this.notifySubscribers;
-	}
-	public void setNotifySubscribers(String notifySubscribers){
-		this.notifySubscribers = notifySubscribers;
-	}
-
-	public void notifySubscribers(String multirequestToken){
-		setToken("notifySubscribers", multirequestToken);
-	}
-
 
 	public YouTubeDistributionProfile() {
 		super();
@@ -713,12 +629,6 @@ public class YouTubeDistributionProfile extends ConfigurableDistributionProfile 
 		deleteReference = GsonParser.parseBoolean(jsonObject.get("deleteReference"));
 		releaseClaims = GsonParser.parseBoolean(jsonObject.get("releaseClaims"));
 		apiAuthorizeUrl = GsonParser.parseString(jsonObject.get("apiAuthorizeUrl"));
-		privacyStatus = GsonParser.parseString(jsonObject.get("privacyStatus"));
-		enableContentId = GsonParser.parseString(jsonObject.get("enableContentId"));
-		thirdPartyAds = GsonParser.parseString(jsonObject.get("thirdPartyAds"));
-		productListingAds = GsonParser.parseString(jsonObject.get("productListingAds"));
-		domainWhitelist = GsonParser.parseString(jsonObject.get("domainWhitelist"));
-		notifySubscribers = GsonParser.parseString(jsonObject.get("notifySubscribers"));
 
 	}
 
@@ -763,12 +673,6 @@ public class YouTubeDistributionProfile extends ConfigurableDistributionProfile 
 		kparams.add("deleteReference", this.deleteReference);
 		kparams.add("releaseClaims", this.releaseClaims);
 		kparams.add("apiAuthorizeUrl", this.apiAuthorizeUrl);
-		kparams.add("privacyStatus", this.privacyStatus);
-		kparams.add("enableContentId", this.enableContentId);
-		kparams.add("thirdPartyAds", this.thirdPartyAds);
-		kparams.add("productListingAds", this.productListingAds);
-		kparams.add("domainWhitelist", this.domainWhitelist);
-		kparams.add("notifySubscribers", this.notifySubscribers);
 		return kparams;
 	}
 

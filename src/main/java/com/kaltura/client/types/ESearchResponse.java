@@ -30,7 +30,10 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -41,16 +44,23 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchResponse.Tokenizer.class)
-public abstract class ESearchResponse extends ObjectBase {
+public class ESearchResponse extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String totalCount();
+		RequestBuilder.ListTokenizer<ESearchResult.Tokenizer> objects();
 	}
 
 	private Integer totalCount;
+	private List<ESearchResult> objects;
 
 	// totalCount:
 	public Integer getTotalCount(){
 		return this.totalCount;
+	}
+	// objects:
+	public List<ESearchResult> getObjects(){
+		return this.objects;
 	}
 
 	public ESearchResponse() {
@@ -64,6 +74,7 @@ public abstract class ESearchResponse extends ObjectBase {
 
 		// set members values:
 		totalCount = GsonParser.parseInt(jsonObject.get("totalCount"));
+		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchResult.class);
 
 	}
 

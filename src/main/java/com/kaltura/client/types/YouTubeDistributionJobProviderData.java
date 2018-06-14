@@ -46,7 +46,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 	public interface Tokenizer extends ConfigurableDistributionJobProviderData.Tokenizer {
 		String videoAssetFilePath();
 		String thumbAssetFilePath();
-		String thumbAssetId();
 		String captionAssetIds();
 		String sftpDirectory();
 		String sftpMetadataFilename();
@@ -58,15 +57,10 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		String googleClientId();
 		String googleClientSecret();
 		String googleTokenData();
-		String captionsCsvMap();
-		String submitCsvMap();
-		String updateCsvMap();
-		String deleteVideoIds();
 	}
 
 	private String videoAssetFilePath;
 	private String thumbAssetFilePath;
-	private String thumbAssetId;
 	private String captionAssetIds;
 	private String sftpDirectory;
 	private String sftpMetadataFilename;
@@ -78,10 +72,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 	private String googleClientId;
 	private String googleClientSecret;
 	private String googleTokenData;
-	private String captionsCsvMap;
-	private String submitCsvMap;
-	private String updateCsvMap;
-	private String deleteVideoIds;
 
 	// videoAssetFilePath:
 	public String getVideoAssetFilePath(){
@@ -105,18 +95,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 
 	public void thumbAssetFilePath(String multirequestToken){
 		setToken("thumbAssetFilePath", multirequestToken);
-	}
-
-	// thumbAssetId:
-	public String getThumbAssetId(){
-		return this.thumbAssetId;
-	}
-	public void setThumbAssetId(String thumbAssetId){
-		this.thumbAssetId = thumbAssetId;
-	}
-
-	public void thumbAssetId(String multirequestToken){
-		setToken("thumbAssetId", multirequestToken);
 	}
 
 	// captionAssetIds:
@@ -251,54 +229,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		setToken("googleTokenData", multirequestToken);
 	}
 
-	// captionsCsvMap:
-	public String getCaptionsCsvMap(){
-		return this.captionsCsvMap;
-	}
-	public void setCaptionsCsvMap(String captionsCsvMap){
-		this.captionsCsvMap = captionsCsvMap;
-	}
-
-	public void captionsCsvMap(String multirequestToken){
-		setToken("captionsCsvMap", multirequestToken);
-	}
-
-	// submitCsvMap:
-	public String getSubmitCsvMap(){
-		return this.submitCsvMap;
-	}
-	public void setSubmitCsvMap(String submitCsvMap){
-		this.submitCsvMap = submitCsvMap;
-	}
-
-	public void submitCsvMap(String multirequestToken){
-		setToken("submitCsvMap", multirequestToken);
-	}
-
-	// updateCsvMap:
-	public String getUpdateCsvMap(){
-		return this.updateCsvMap;
-	}
-	public void setUpdateCsvMap(String updateCsvMap){
-		this.updateCsvMap = updateCsvMap;
-	}
-
-	public void updateCsvMap(String multirequestToken){
-		setToken("updateCsvMap", multirequestToken);
-	}
-
-	// deleteVideoIds:
-	public String getDeleteVideoIds(){
-		return this.deleteVideoIds;
-	}
-	public void setDeleteVideoIds(String deleteVideoIds){
-		this.deleteVideoIds = deleteVideoIds;
-	}
-
-	public void deleteVideoIds(String multirequestToken){
-		setToken("deleteVideoIds", multirequestToken);
-	}
-
 
 	public YouTubeDistributionJobProviderData() {
 		super();
@@ -312,7 +242,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		// set members values:
 		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
 		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
-		thumbAssetId = GsonParser.parseString(jsonObject.get("thumbAssetId"));
 		captionAssetIds = GsonParser.parseString(jsonObject.get("captionAssetIds"));
 		sftpDirectory = GsonParser.parseString(jsonObject.get("sftpDirectory"));
 		sftpMetadataFilename = GsonParser.parseString(jsonObject.get("sftpMetadataFilename"));
@@ -324,10 +253,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		googleClientId = GsonParser.parseString(jsonObject.get("googleClientId"));
 		googleClientSecret = GsonParser.parseString(jsonObject.get("googleClientSecret"));
 		googleTokenData = GsonParser.parseString(jsonObject.get("googleTokenData"));
-		captionsCsvMap = GsonParser.parseString(jsonObject.get("captionsCsvMap"));
-		submitCsvMap = GsonParser.parseString(jsonObject.get("submitCsvMap"));
-		updateCsvMap = GsonParser.parseString(jsonObject.get("updateCsvMap"));
-		deleteVideoIds = GsonParser.parseString(jsonObject.get("deleteVideoIds"));
 
 	}
 
@@ -336,7 +261,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		kparams.add("objectType", "KalturaYouTubeDistributionJobProviderData");
 		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
 		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
-		kparams.add("thumbAssetId", this.thumbAssetId);
 		kparams.add("captionAssetIds", this.captionAssetIds);
 		kparams.add("sftpDirectory", this.sftpDirectory);
 		kparams.add("sftpMetadataFilename", this.sftpMetadataFilename);
@@ -348,10 +272,6 @@ public class YouTubeDistributionJobProviderData extends ConfigurableDistribution
 		kparams.add("googleClientId", this.googleClientId);
 		kparams.add("googleClientSecret", this.googleClientSecret);
 		kparams.add("googleTokenData", this.googleTokenData);
-		kparams.add("captionsCsvMap", this.captionsCsvMap);
-		kparams.add("submitCsvMap", this.submitCsvMap);
-		kparams.add("updateCsvMap", this.updateCsvMap);
-		kparams.add("deleteVideoIds", this.deleteVideoIds);
 		return kparams;
 	}
 

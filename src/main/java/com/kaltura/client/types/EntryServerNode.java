@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryServerNodeStatus;
 import com.kaltura.client.enums.EntryServerNodeType;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -46,6 +47,14 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class EntryServerNode extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String entryId();
+		String serverNodeId();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String serverType();
 	}
 
 	/**

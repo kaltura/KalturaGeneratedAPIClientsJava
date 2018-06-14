@@ -51,10 +51,15 @@ import java.util.List;
 public class EventNotificationTemplate extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String name();
 		String systemName();
 		String description();
 		String type();
+		String status();
+		String createdAt();
+		String updatedAt();
 		String manualDispatchEnabled();
 		String automaticDispatchEnabled();
 		String eventType();

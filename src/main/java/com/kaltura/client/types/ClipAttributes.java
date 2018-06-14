@@ -31,8 +31,6 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -51,8 +49,6 @@ public class ClipAttributes extends OperationAttributes {
 	public interface Tokenizer extends OperationAttributes.Tokenizer {
 		String offset();
 		String duration();
-		String globalOffsetInDestination();
-		RequestBuilder.ListTokenizer<Effect.Tokenizer> effectArray();
 	}
 
 	/**
@@ -63,14 +59,6 @@ public class ClipAttributes extends OperationAttributes {
 	 * Duration in milliseconds
 	 */
 	private Integer duration;
-	/**
-	 * global Offset In Destination in milliseconds
-	 */
-	private Integer globalOffsetInDestination;
-	/**
-	 * global Offset In Destination in milliseconds
-	 */
-	private List<Effect> effectArray;
 
 	// offset:
 	public Integer getOffset(){
@@ -96,26 +84,6 @@ public class ClipAttributes extends OperationAttributes {
 		setToken("duration", multirequestToken);
 	}
 
-	// globalOffsetInDestination:
-	public Integer getGlobalOffsetInDestination(){
-		return this.globalOffsetInDestination;
-	}
-	public void setGlobalOffsetInDestination(Integer globalOffsetInDestination){
-		this.globalOffsetInDestination = globalOffsetInDestination;
-	}
-
-	public void globalOffsetInDestination(String multirequestToken){
-		setToken("globalOffsetInDestination", multirequestToken);
-	}
-
-	// effectArray:
-	public List<Effect> getEffectArray(){
-		return this.effectArray;
-	}
-	public void setEffectArray(List<Effect> effectArray){
-		this.effectArray = effectArray;
-	}
-
 
 	public ClipAttributes() {
 		super();
@@ -129,8 +97,6 @@ public class ClipAttributes extends OperationAttributes {
 		// set members values:
 		offset = GsonParser.parseInt(jsonObject.get("offset"));
 		duration = GsonParser.parseInt(jsonObject.get("duration"));
-		globalOffsetInDestination = GsonParser.parseInt(jsonObject.get("globalOffsetInDestination"));
-		effectArray = GsonParser.parseArray(jsonObject.getAsJsonArray("effectArray"), Effect.class);
 
 	}
 
@@ -139,8 +105,6 @@ public class ClipAttributes extends OperationAttributes {
 		kparams.add("objectType", "KalturaClipAttributes");
 		kparams.add("offset", this.offset);
 		kparams.add("duration", this.duration);
-		kparams.add("globalOffsetInDestination", this.globalOffsetInDestination);
-		kparams.add("effectArray", this.effectArray);
 		return kparams;
 	}
 

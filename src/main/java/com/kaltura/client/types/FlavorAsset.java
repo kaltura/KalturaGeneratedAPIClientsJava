@@ -47,6 +47,15 @@ public class FlavorAsset extends Asset {
 	
 	public interface Tokenizer extends Asset.Tokenizer {
 		String flavorParamsId();
+		String width();
+		String height();
+		String bitrate();
+		String frameRate();
+		String isOriginal();
+		String isWeb();
+		String containerFormat();
+		String videoCodecId();
+		String status();
 		String language();
 		String label();
 		String isDefault();

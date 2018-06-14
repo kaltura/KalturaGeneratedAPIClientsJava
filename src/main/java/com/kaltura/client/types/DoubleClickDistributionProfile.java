@@ -47,6 +47,7 @@ public class DoubleClickDistributionProfile extends ConfigurableDistributionProf
 		String channelTitle();
 		String channelLink();
 		String channelDescription();
+		String feedUrl();
 		String cuePointsProvider();
 		String itemsPerPage();
 		String ignoreSchedulingInFeed();

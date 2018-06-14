@@ -50,8 +50,13 @@ public class CategoryUser extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String categoryId();
 		String userId();
+		String partnerId();
 		String permissionLevel();
+		String status();
+		String createdAt();
+		String updatedAt();
 		String updateMethod();
+		String categoryFullIds();
 		String permissionNames();
 	}
 

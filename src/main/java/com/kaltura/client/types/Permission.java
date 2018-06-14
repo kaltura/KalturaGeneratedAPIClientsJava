@@ -47,13 +47,18 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Permission extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String type();
 		String name();
 		String friendlyName();
 		String description();
 		String status();
+		String partnerId();
 		String dependsOnPermissionNames();
 		String tags();
 		String permissionItemsIds();
+		String createdAt();
+		String updatedAt();
 		String partnerGroup();
 	}
 

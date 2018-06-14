@@ -51,6 +51,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class DropFolder extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String partnerId();
 		String name();
 		String description();
@@ -69,6 +70,8 @@ public class DropFolder extends ObjectBase {
 		String errorCode();
 		String errorDescription();
 		String ignoreFileNamePatterns();
+		String createdAt();
+		String updatedAt();
 		String lastAccessedAt();
 		String incremental();
 		String lastFileTimestamp();

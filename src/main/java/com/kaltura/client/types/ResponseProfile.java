@@ -45,7 +45,13 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ResponseProfile extends DetachedResponseProfile {
 	
 	public interface Tokenizer extends DetachedResponseProfile.Tokenizer {
+		String id();
 		String systemName();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String status();
+		String version();
 	}
 
 	/**

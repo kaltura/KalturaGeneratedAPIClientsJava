@@ -48,6 +48,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class IntegrationJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
+		String callbackNotificationUrl();
 		String providerType();
 		IntegrationJobProviderData.Tokenizer providerData();
 		String triggerType();

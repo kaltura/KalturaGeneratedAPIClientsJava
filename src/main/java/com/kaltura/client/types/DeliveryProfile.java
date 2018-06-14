@@ -51,15 +51,22 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class DeliveryProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String partnerId();
 		String name();
 		String type();
 		String systemName();
 		String description();
+		String createdAt();
+		String updatedAt();
 		String streamerType();
 		String url();
+		String hostName();
 		String status();
 		UrlRecognizer.Tokenizer recognizer();
 		UrlTokenizer.Tokenizer tokenizer();
+		String isDefault();
+		String parentId();
 		String mediaProtocols();
 		String priority();
 		String extraParams();

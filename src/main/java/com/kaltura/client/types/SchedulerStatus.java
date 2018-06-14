@@ -47,11 +47,14 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class SchedulerStatus extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String schedulerConfiguredId();
 		String workerConfiguredId();
 		String workerType();
 		String type();
 		String value();
+		String schedulerId();
+		String workerId();
 	}
 
 	/**

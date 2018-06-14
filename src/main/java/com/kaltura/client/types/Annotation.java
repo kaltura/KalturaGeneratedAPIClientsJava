@@ -47,6 +47,10 @@ public class Annotation extends CuePoint {
 		String parentId();
 		String text();
 		String endTime();
+		String duration();
+		String depth();
+		String childrenCount();
+		String directChildrenCount();
 		String isPublic();
 		String searchableOnEntry();
 	}

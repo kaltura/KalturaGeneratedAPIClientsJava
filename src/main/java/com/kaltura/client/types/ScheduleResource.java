@@ -46,11 +46,16 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class ScheduleResource extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String parentId();
+		String partnerId();
 		String name();
 		String systemName();
 		String description();
+		String status();
 		String tags();
+		String createdAt();
+		String updatedAt();
 	}
 
 	/**

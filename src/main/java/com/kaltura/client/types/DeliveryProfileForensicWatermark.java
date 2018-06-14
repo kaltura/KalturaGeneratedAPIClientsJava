@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -52,15 +52,23 @@ public class DeliveryProfileForensicWatermark extends DeliveryProfile {
 		String encryptionRegex();
 	}
 
-	/**  The URL used to pull manifest from the server, keyed by dc id, asterisk means
-	  all dcs  */
+	/**
+	 * The URL used to pull manifest from the server, keyed by dc id, asterisk means
+	  all dcs
+	 */
 	private List<KeyValue> internalUrl;
-	/**  The key used to encrypt the URI (256 bits)  */
+	/**
+	 * The key used to encrypt the URI (256 bits)
+	 */
 	private String encryptionKey;
-	/**  The iv used to encrypt the URI (128 bits)  */
+	/**
+	 * The iv used to encrypt the URI (128 bits)
+	 */
 	private String encryptionIv;
-	/**  The regex used to match the encrypted part of the URI (according to the
-	  'encrypt' named group)  */
+	/**
+	 * The regex used to match the encrypted part of the URI (according to the
+	  'encrypt' named group)
+	 */
 	private String encryptionRegex;
 
 	// internalUrl:

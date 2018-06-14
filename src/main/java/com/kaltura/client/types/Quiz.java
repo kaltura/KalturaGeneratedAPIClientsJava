@@ -47,6 +47,7 @@ import java.util.List;
 public class Quiz extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String version();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> uiAttributes();
 		String showResultOnAnswer();
 		String showCorrectKeyOnAnswer();

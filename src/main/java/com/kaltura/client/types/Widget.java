@@ -46,12 +46,18 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class Widget extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String sourceWidgetId();
+		String rootWidgetId();
+		String partnerId();
 		String entryId();
 		String uiConfId();
 		String securityType();
 		String securityPolicy();
+		String createdAt();
+		String updatedAt();
 		String partnerData();
+		String widgetHTML();
 		String enforceEntitlement();
 		String privacyContext();
 		String addEmbedHtml5Support();

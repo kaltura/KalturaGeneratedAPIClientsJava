@@ -51,10 +51,12 @@ import java.util.List;
 public class Partner extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String name();
 		String website();
 		String notificationUrl();
 		String appearInSearch();
+		String createdAt();
 		String adminName();
 		String adminEmail();
 		String description();
@@ -68,21 +70,44 @@ public class Partner extends ObjectBase {
 		String adultContent();
 		String defConversionProfileType();
 		String notify_();
+		String status();
 		String allowQuickEdit();
 		String mergeEntryLists();
 		String notificationsConfig();
 		String maxUploadSize();
 		String partnerPackage();
+		String secret();
+		String adminSecret();
+		String cmsPassword();
 		String allowMultiNotification();
+		String adminLoginUsersQuota();
 		String adminUserId();
 		String firstName();
 		String lastName();
 		String country();
 		String state();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> additionalParams();
+		String publishersQuota();
+		String partnerGroupType();
+		String defaultEntitlementEnforcement();
+		String defaultDeliveryType();
+		String defaultEmbedCodeType();
+		RequestBuilder.ListTokenizer<PlayerDeliveryType.Tokenizer> deliveryTypes();
+		RequestBuilder.ListTokenizer<PlayerEmbedCodeType.Tokenizer> embedCodeTypes();
+		String templatePartnerId();
+		String ignoreSeoLinks();
+		String host();
+		String cdnHost();
+		String isFirstLogin();
+		String logoutUrl();
 		String partnerParentId();
+		String crmId();
 		String referenceId();
+		String timeAlignedRenditions();
 		RequestBuilder.ListTokenizer<ESearchLanguageItem.Tokenizer> eSearchLanguages();
+		String publisherEnvironmentType();
+		String ovpEnvironmentUrl();
+		String ottEnvironmentUrl();
 	}
 
 	private Integer id;
@@ -153,10 +178,10 @@ public class Partner extends ObjectBase {
 	private String crmId;
 	private String referenceId;
 	private Boolean timeAlignedRenditions;
+	private List<ESearchLanguageItem> eSearchLanguages;
 	private Integer publisherEnvironmentType;
 	private String ovpEnvironmentUrl;
 	private String ottEnvironmentUrl;
-	private List<ESearchLanguageItem> eSearchLanguages;
 
 	// id:
 	public Integer getId(){
@@ -614,6 +639,14 @@ public class Partner extends ObjectBase {
 	public Boolean getTimeAlignedRenditions(){
 		return this.timeAlignedRenditions;
 	}
+	// eSearchLanguages:
+	public List<ESearchLanguageItem> getESearchLanguages(){
+		return this.eSearchLanguages;
+	}
+	public void setESearchLanguages(List<ESearchLanguageItem> eSearchLanguages){
+		this.eSearchLanguages = eSearchLanguages;
+	}
+
 	// publisherEnvironmentType:
 	public Integer getPublisherEnvironmentType(){
 		return this.publisherEnvironmentType;
@@ -626,14 +659,6 @@ public class Partner extends ObjectBase {
 	public String getOttEnvironmentUrl(){
 		return this.ottEnvironmentUrl;
 	}
-	// eSearchLanguages:
-	public List<ESearchLanguageItem> getESearchLanguages(){
-		return this.eSearchLanguages;
-	}
-	public void setESearchLanguages(List<ESearchLanguageItem> eSearchLanguages){
-		this.eSearchLanguages = eSearchLanguages;
-	}
-
 
 	public Partner() {
 		super();
@@ -698,10 +723,10 @@ public class Partner extends ObjectBase {
 		crmId = GsonParser.parseString(jsonObject.get("crmId"));
 		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
 		timeAlignedRenditions = GsonParser.parseBoolean(jsonObject.get("timeAlignedRenditions"));
+		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
 		publisherEnvironmentType = GsonParser.parseInt(jsonObject.get("publisherEnvironmentType"));
 		ovpEnvironmentUrl = GsonParser.parseString(jsonObject.get("ovpEnvironmentUrl"));
 		ottEnvironmentUrl = GsonParser.parseString(jsonObject.get("ottEnvironmentUrl"));
-		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
 
 	}
 

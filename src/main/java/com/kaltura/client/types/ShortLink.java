@@ -46,7 +46,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ShortLink extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
 		String expiresAt();
+		String partnerId();
 		String userId();
 		String name();
 		String systemName();

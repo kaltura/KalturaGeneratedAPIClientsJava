@@ -47,9 +47,15 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class BusinessProcessServer extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
 		String name();
 		String systemName();
 		String description();
+		String status();
+		String type();
 		String dc();
 	}
 

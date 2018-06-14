@@ -30,7 +30,9 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 import java.util.List;
 
 /**
@@ -45,6 +47,8 @@ import java.util.List;
 public class SearchResultResponse extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		RequestBuilder.ListTokenizer<SearchResult.Tokenizer> objects();
+		String needMediaInfo();
 	}
 
 	private List<SearchResult> objects;

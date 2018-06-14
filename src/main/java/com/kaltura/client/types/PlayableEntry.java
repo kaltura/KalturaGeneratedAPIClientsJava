@@ -45,7 +45,14 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class PlayableEntry extends BaseEntry {
 	
 	public interface Tokenizer extends BaseEntry.Tokenizer {
+		String plays();
+		String views();
+		String lastPlayedAt();
+		String width();
+		String height();
+		String duration();
 		String msDuration();
+		String durationType();
 	}
 
 	/**

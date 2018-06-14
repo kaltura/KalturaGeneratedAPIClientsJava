@@ -48,6 +48,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class AppToken extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String token();
+		String partnerId();
+		String createdAt();
+		String updatedAt();
+		String status();
 		String expiry();
 		String sessionType();
 		String sessionUserId();

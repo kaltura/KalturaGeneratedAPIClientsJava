@@ -50,12 +50,13 @@ public class CaptionAsset extends Asset {
 	public interface Tokenizer extends Asset.Tokenizer {
 		String captionParamsId();
 		String language();
+		String languageCode();
 		String isDefault();
 		String label();
 		String format();
+		String status();
 		String parentId();
 		String accuracy();
-		String displayOnPlayer();
 	}
 
 	/**
@@ -94,10 +95,6 @@ public class CaptionAsset extends Asset {
 	 * The Accuracy of the caption content
 	 */
 	private Integer accuracy;
-	/**
-	 * The Accuracy of the caption content
-	 */
-	private Boolean displayOnPlayer;
 
 	// captionParamsId:
 	public Integer getCaptionParamsId(){
@@ -191,18 +188,6 @@ public class CaptionAsset extends Asset {
 		setToken("accuracy", multirequestToken);
 	}
 
-	// displayOnPlayer:
-	public Boolean getDisplayOnPlayer(){
-		return this.displayOnPlayer;
-	}
-	public void setDisplayOnPlayer(Boolean displayOnPlayer){
-		this.displayOnPlayer = displayOnPlayer;
-	}
-
-	public void displayOnPlayer(String multirequestToken){
-		setToken("displayOnPlayer", multirequestToken);
-	}
-
 
 	public CaptionAsset() {
 		super();
@@ -223,7 +208,6 @@ public class CaptionAsset extends Asset {
 		status = CaptionAssetStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		parentId = GsonParser.parseString(jsonObject.get("parentId"));
 		accuracy = GsonParser.parseInt(jsonObject.get("accuracy"));
-		displayOnPlayer = GsonParser.parseBoolean(jsonObject.get("displayOnPlayer"));
 
 	}
 
@@ -237,7 +221,6 @@ public class CaptionAsset extends Asset {
 		kparams.add("format", this.format);
 		kparams.add("parentId", this.parentId);
 		kparams.add("accuracy", this.accuracy);
-		kparams.add("displayOnPlayer", this.displayOnPlayer);
 		return kparams;
 	}
 

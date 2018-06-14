@@ -47,6 +47,7 @@ public class ComcastMrssDistributionProfile extends ConfigurableDistributionProf
 	
 	public interface Tokenizer extends ConfigurableDistributionProfile.Tokenizer {
 		String metadataProfileId();
+		String feedUrl();
 		String feedTitle();
 		String feedLink();
 		String feedDescription();

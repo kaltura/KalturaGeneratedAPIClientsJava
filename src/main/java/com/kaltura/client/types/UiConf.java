@@ -47,13 +47,17 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class UiConf extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String name();
 		String description();
+		String partnerId();
 		String objType();
+		String objTypeAsString();
 		String width();
 		String height();
 		String htmlParams();
 		String swfUrl();
+		String confFilePath();
 		String confFile();
 		String confFileFeatures();
 		String config();
@@ -61,8 +65,11 @@ public class UiConf extends ObjectBase {
 		String useCdn();
 		String tags();
 		String swfUrlVersion();
+		String createdAt();
+		String updatedAt();
 		String creationMode();
 		String html5Url();
+		String version();
 		String partnerTags();
 	}
 

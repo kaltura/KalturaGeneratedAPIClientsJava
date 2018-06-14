@@ -50,6 +50,10 @@ import java.util.List;
 public abstract class DistributionProfile extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String createdAt();
+		String updatedAt();
+		String partnerId();
 		String providerType();
 		String name();
 		String status();

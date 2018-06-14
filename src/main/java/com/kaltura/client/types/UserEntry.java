@@ -48,8 +48,14 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class UserEntry extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String entryId();
 		String userId();
+		String partnerId();
+		String status();
+		String createdAt();
+		String updatedAt();
+		String type();
 		String extendedStatus();
 	}
 

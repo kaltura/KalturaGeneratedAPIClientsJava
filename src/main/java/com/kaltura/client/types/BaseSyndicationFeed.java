@@ -48,10 +48,15 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public abstract class BaseSyndicationFeed extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
+		String feedUrl();
+		String partnerId();
 		String playlistId();
 		String name();
+		String status();
 		String type();
 		String landingPage();
+		String createdAt();
 		String allowEmbed();
 		String playerUiconfId();
 		String flavorParamId();
@@ -62,6 +67,7 @@ public abstract class BaseSyndicationFeed extends ObjectBase {
 		String entriesOrderBy();
 		String enforceEntitlement();
 		String privacyContext();
+		String updatedAt();
 		String useCategoryEntries();
 		String feedContentTypeHeader();
 	}

@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,6 +46,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class SessionInfo extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String ks();
+		String sessionType();
+		String partnerId();
+		String userId();
+		String expiry();
+		String privileges();
 	}
 
 	private String ks;

@@ -52,6 +52,9 @@ public class Cielo24JobProviderData extends IntegrationJobProviderData {
 		String captionAssetFormats();
 		String priority();
 		String fidelity();
+		String username();
+		String password();
+		String baseUrl();
 		String spokenLanguage();
 		String replaceMediaContent();
 		String additionalParameters();
