@@ -46,7 +46,9 @@ public enum BatchJobStatus implements EnumAsInt {
 	RETRY(9),
 	FATAL(10),
 	DONT_PROCESS(11),
-	FINISHED_PARTIALLY(12);
+	FINISHED_PARTIALLY(12),
+	SUSPEND(13),
+	SUSPEND_ALMOST_DONE(14);
 
 	private int value;
 
