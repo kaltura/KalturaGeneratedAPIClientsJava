@@ -57,7 +57,7 @@ public abstract class ResponseProfileBaseFilter extends Filter {
 		String statusIn();
 	}
 
-	private Integer idEqual;
+	private Long idEqual;
 	private String idIn;
 	private String systemNameEqual;
 	private String systemNameIn;
@@ -69,10 +69,10 @@ public abstract class ResponseProfileBaseFilter extends Filter {
 	private String statusIn;
 
 	// idEqual:
-	public Integer getIdEqual(){
+	public Long getIdEqual(){
 		return this.idEqual;
 	}
-	public void setIdEqual(Integer idEqual){
+	public void setIdEqual(Long idEqual){
 		this.idEqual = idEqual;
 	}
 
@@ -199,7 +199,7 @@ public abstract class ResponseProfileBaseFilter extends Filter {
 		if(jsonObject == null) return;
 
 		// set members values:
-		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idEqual = GsonParser.parseLong(jsonObject.get("idEqual"));
 		idIn = GsonParser.parseString(jsonObject.get("idIn"));
 		systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
 		systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));

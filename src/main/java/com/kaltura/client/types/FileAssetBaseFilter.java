@@ -60,7 +60,7 @@ public abstract class FileAssetBaseFilter extends RelatedFilter {
 		String statusIn();
 	}
 
-	private Integer idEqual;
+	private Long idEqual;
 	private String idIn;
 	private Integer partnerIdEqual;
 	private FileAssetObjectType fileAssetObjectTypeEqual;
@@ -74,10 +74,10 @@ public abstract class FileAssetBaseFilter extends RelatedFilter {
 	private String statusIn;
 
 	// idEqual:
-	public Integer getIdEqual(){
+	public Long getIdEqual(){
 		return this.idEqual;
 	}
-	public void setIdEqual(Integer idEqual){
+	public void setIdEqual(Long idEqual){
 		this.idEqual = idEqual;
 	}
 
@@ -228,7 +228,7 @@ public abstract class FileAssetBaseFilter extends RelatedFilter {
 		if(jsonObject == null) return;
 
 		// set members values:
-		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
+		idEqual = GsonParser.parseLong(jsonObject.get("idEqual"));
 		idIn = GsonParser.parseString(jsonObject.get("idIn"));
 		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
 		fileAssetObjectTypeEqual = FileAssetObjectType.get(GsonParser.parseString(jsonObject.get("fileAssetObjectTypeEqual")));

@@ -40,7 +40,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveEntryServerNodeBaseFilter.Tokenizer.class)
-public class LiveEntryServerNodeBaseFilter extends EntryServerNodeFilter {
+public abstract class LiveEntryServerNodeBaseFilter extends EntryServerNodeFilter {
 	
 	public interface Tokenizer extends EntryServerNodeFilter.Tokenizer {
 	}
