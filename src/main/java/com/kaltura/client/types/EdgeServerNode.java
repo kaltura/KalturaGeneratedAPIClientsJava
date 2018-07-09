@@ -45,17 +45,12 @@ public class EdgeServerNode extends DeliveryServerNode {
 	
 	public interface Tokenizer extends DeliveryServerNode.Tokenizer {
 		String playbackDomain();
-		String config();
 	}
 
 	/**
 	 * Delivery server playback Domain
 	 */
 	private String playbackDomain;
-	/**
-	 * Overdie edge server default configuration - json format
-	 */
-	private String config;
 
 	// playbackDomain:
 	public String getPlaybackDomain(){
@@ -67,18 +62,6 @@ public class EdgeServerNode extends DeliveryServerNode {
 
 	public void playbackDomain(String multirequestToken){
 		setToken("playbackDomain", multirequestToken);
-	}
-
-	// config:
-	public String getConfig(){
-		return this.config;
-	}
-	public void setConfig(String config){
-		this.config = config;
-	}
-
-	public void config(String multirequestToken){
-		setToken("config", multirequestToken);
 	}
 
 
@@ -93,7 +76,6 @@ public class EdgeServerNode extends DeliveryServerNode {
 
 		// set members values:
 		playbackDomain = GsonParser.parseString(jsonObject.get("playbackDomain"));
-		config = GsonParser.parseString(jsonObject.get("config"));
 
 	}
 
@@ -101,7 +83,6 @@ public class EdgeServerNode extends DeliveryServerNode {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaEdgeServerNode");
 		kparams.add("playbackDomain", this.playbackDomain);
-		kparams.add("config", this.config);
 		return kparams;
 	}
 
