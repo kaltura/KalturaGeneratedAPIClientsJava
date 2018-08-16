@@ -62,6 +62,7 @@ public enum ReportType implements EnumAsString {
 	TOP_PLAYBACK_CONTEXT("25"),
 	VPAAS_USAGE("26"),
 	ENTRY_USAGE("27"),
+	REACH_USAGE("28"),
 	PARTNER_USAGE("201");
 
 	private String value;
