@@ -60,6 +60,8 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * the application token
  * @param expiry session expiry (in seconds), could be overridden by shorter expiry of the
  * application token
+ * @param sessionPrivileges session privileges, will be ignored if a similar privilege is already defined on
+ * the application token or the privilege is server reserved
  * @param id 
  * @param appToken 
  */
@@ -153,13 +155,14 @@ public class AppTokenService {
 	
 	public static class StartSessionAppTokenBuilder extends RequestBuilder<SessionInfo, SessionInfo.Tokenizer, StartSessionAppTokenBuilder> {
 		
-		public StartSessionAppTokenBuilder(String id, String tokenHash, String userId, SessionType type, int expiry) {
+		public StartSessionAppTokenBuilder(String id, String tokenHash, String userId, SessionType type, int expiry, String sessionPrivileges) {
 			super(SessionInfo.class, "apptoken", "startSession");
 			params.add("id", id);
 			params.add("tokenHash", tokenHash);
 			params.add("userId", userId);
 			params.add("type", type);
 			params.add("expiry", expiry);
+			params.add("sessionPrivileges", sessionPrivileges);
 		}
 		
 		public void id(String multirequestToken) {
@@ -181,6 +184,10 @@ public class AppTokenService {
 		public void expiry(String multirequestToken) {
 			params.add("expiry", multirequestToken);
 		}
+		
+		public void sessionPrivileges(String multirequestToken) {
+			params.add("sessionPrivileges", multirequestToken);
+		}
 	}
 
 	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash)  {
@@ -193,6 +200,10 @@ public class AppTokenService {
 
 	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type)  {
 		return startSession(id, tokenHash, userId, type, Integer.MIN_VALUE);
+	}
+
+	public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
+		return startSession(id, tokenHash, userId, type, expiry, null);
 	}
 
 	/**
@@ -208,9 +219,11 @@ public class AppTokenService {
 	 * the application token
 	 * @param expiry session expiry (in seconds), could be overridden by shorter expiry of the
 	 * application token
+	 * @param sessionPrivileges session privileges, will be ignored if a similar privilege is already defined on
+	 * the application token or the privilege is server reserved
 	 */
-    public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type, int expiry)  {
-		return new StartSessionAppTokenBuilder(id, tokenHash, userId, type, expiry);
+    public static StartSessionAppTokenBuilder startSession(String id, String tokenHash, String userId, SessionType type, int expiry, String sessionPrivileges)  {
+		return new StartSessionAppTokenBuilder(id, tokenHash, userId, type, expiry, sessionPrivileges);
 	}
 	
 	public static class UpdateAppTokenBuilder extends RequestBuilder<AppToken, AppToken.Tokenizer, UpdateAppTokenBuilder> {
