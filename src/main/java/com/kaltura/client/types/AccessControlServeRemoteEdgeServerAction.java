@@ -45,12 +45,14 @@ public class AccessControlServeRemoteEdgeServerAction extends RuleAction {
 	
 	public interface Tokenizer extends RuleAction.Tokenizer {
 		String edgeServerIds();
+		String seamlessFallbackEnabled();
 	}
 
 	/**
 	 * Comma separated list of edge servers playBack should be done from
 	 */
 	private String edgeServerIds;
+	private Boolean seamlessFallbackEnabled;
 
 	// edgeServerIds:
 	public String getEdgeServerIds(){
@@ -62,6 +64,18 @@ public class AccessControlServeRemoteEdgeServerAction extends RuleAction {
 
 	public void edgeServerIds(String multirequestToken){
 		setToken("edgeServerIds", multirequestToken);
+	}
+
+	// seamlessFallbackEnabled:
+	public Boolean getSeamlessFallbackEnabled(){
+		return this.seamlessFallbackEnabled;
+	}
+	public void setSeamlessFallbackEnabled(Boolean seamlessFallbackEnabled){
+		this.seamlessFallbackEnabled = seamlessFallbackEnabled;
+	}
+
+	public void seamlessFallbackEnabled(String multirequestToken){
+		setToken("seamlessFallbackEnabled", multirequestToken);
 	}
 
 
@@ -76,6 +90,7 @@ public class AccessControlServeRemoteEdgeServerAction extends RuleAction {
 
 		// set members values:
 		edgeServerIds = GsonParser.parseString(jsonObject.get("edgeServerIds"));
+		seamlessFallbackEnabled = GsonParser.parseBoolean(jsonObject.get("seamlessFallbackEnabled"));
 
 	}
 
@@ -83,6 +98,7 @@ public class AccessControlServeRemoteEdgeServerAction extends RuleAction {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaAccessControlServeRemoteEdgeServerAction");
 		kparams.add("edgeServerIds", this.edgeServerIds);
+		kparams.add("seamlessFallbackEnabled", this.seamlessFallbackEnabled);
 		return kparams;
 	}
 

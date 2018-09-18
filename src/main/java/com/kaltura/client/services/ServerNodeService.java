@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.enums.ServerNodeStatus;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ServerNode;
 import com.kaltura.client.types.ServerNodeFilter;
@@ -49,11 +50,16 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param serverNodeId 
  * @param serverNodeId 
  * @param serverNodeId 
+ * @param hostName 
+ * @param protocol 
+ * @param deliveryFormat 
+ * @param deliveryType 
  * @param filter 
  * @param pager 
  * @param serverNodeId 
  * @param hostName 
  * @param serverNode 
+ * @param serverNodeStatus 
  * @param serverNodeId 
  * @param serverNode Id
  */
@@ -160,6 +166,57 @@ public class ServerNodeService {
 		return new GetServerNodeBuilder(serverNodeId);
 	}
 	
+	public static class GetFullPathServerNodeBuilder extends RequestBuilder<String, String, GetFullPathServerNodeBuilder> {
+		
+		public GetFullPathServerNodeBuilder(String hostName, String protocol, String deliveryFormat, String deliveryType) {
+			super(String.class, "servernode", "getFullPath");
+			params.add("hostName", hostName);
+			params.add("protocol", protocol);
+			params.add("deliveryFormat", deliveryFormat);
+			params.add("deliveryType", deliveryType);
+		}
+		
+		public void hostName(String multirequestToken) {
+			params.add("hostName", multirequestToken);
+		}
+		
+		public void protocol(String multirequestToken) {
+			params.add("protocol", multirequestToken);
+		}
+		
+		public void deliveryFormat(String multirequestToken) {
+			params.add("deliveryFormat", multirequestToken);
+		}
+		
+		public void deliveryType(String multirequestToken) {
+			params.add("deliveryType", multirequestToken);
+		}
+	}
+
+	public static GetFullPathServerNodeBuilder getFullPath(String hostName)  {
+		return getFullPath(hostName, "http");
+	}
+
+	public static GetFullPathServerNodeBuilder getFullPath(String hostName, String protocol)  {
+		return getFullPath(hostName, protocol, null);
+	}
+
+	public static GetFullPathServerNodeBuilder getFullPath(String hostName, String protocol, String deliveryFormat)  {
+		return getFullPath(hostName, protocol, deliveryFormat, null);
+	}
+
+	/**
+	 * Get the edge server node full path
+	 * 
+	 * @param hostName 
+	 * @param protocol 
+	 * @param deliveryFormat 
+	 * @param deliveryType 
+	 */
+    public static GetFullPathServerNodeBuilder getFullPath(String hostName, String protocol, String deliveryFormat, String deliveryType)  {
+		return new GetFullPathServerNodeBuilder(hostName, protocol, deliveryFormat, deliveryType);
+	}
+	
 	public static class ListServerNodeBuilder extends ListResponseRequestBuilder<ServerNode, ServerNode.Tokenizer, ListServerNodeBuilder> {
 		
 		public ListServerNodeBuilder(ServerNodeFilter filter, FilterPager pager) {
@@ -204,14 +261,19 @@ public class ServerNodeService {
 	
 	public static class ReportStatusServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, ReportStatusServerNodeBuilder> {
 		
-		public ReportStatusServerNodeBuilder(String hostName, ServerNode serverNode) {
+		public ReportStatusServerNodeBuilder(String hostName, ServerNode serverNode, ServerNodeStatus serverNodeStatus) {
 			super(ServerNode.class, "servernode", "reportStatus");
 			params.add("hostName", hostName);
 			params.add("serverNode", serverNode);
+			params.add("serverNodeStatus", serverNodeStatus);
 		}
 		
 		public void hostName(String multirequestToken) {
 			params.add("hostName", multirequestToken);
+		}
+		
+		public void serverNodeStatus(String multirequestToken) {
+			params.add("serverNodeStatus", multirequestToken);
 		}
 	}
 
@@ -219,14 +281,19 @@ public class ServerNodeService {
 		return reportStatus(hostName, null);
 	}
 
+	public static ReportStatusServerNodeBuilder reportStatus(String hostName, ServerNode serverNode)  {
+		return reportStatus(hostName, serverNode, ServerNodeStatus.get(1));
+	}
+
 	/**
 	 * Update server node status
 	 * 
 	 * @param hostName 
 	 * @param serverNode 
+	 * @param serverNodeStatus 
 	 */
-    public static ReportStatusServerNodeBuilder reportStatus(String hostName, ServerNode serverNode)  {
-		return new ReportStatusServerNodeBuilder(hostName, serverNode);
+    public static ReportStatusServerNodeBuilder reportStatus(String hostName, ServerNode serverNode, ServerNodeStatus serverNodeStatus)  {
+		return new ReportStatusServerNodeBuilder(hostName, serverNode, serverNodeStatus);
 	}
 	
 	public static class UpdateServerNodeBuilder extends RequestBuilder<ServerNode, ServerNode.Tokenizer, UpdateServerNodeBuilder> {
