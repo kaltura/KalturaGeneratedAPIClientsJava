@@ -38,7 +38,7 @@ public enum ServerNodeStatus implements EnumAsInt {
 	DISABLED(2),
 	DELETED(3),
 	NOT_REGISTERED(4),
-	NOT_HEALTHY(5);
+	NOT_OPERATIONAL(5);
 
 	private int value;
 
