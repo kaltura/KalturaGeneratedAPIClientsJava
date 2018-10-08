@@ -45,6 +45,7 @@ public class PostConvertJobData extends ConvartableJobData {
 	
 	public interface Tokenizer extends ConvartableJobData.Tokenizer {
 		String flavorAssetId();
+		String flavorAssetEncryptionKey();
 		String createThumb();
 		String thumbPath();
 		String thumbOffset();
@@ -54,6 +55,7 @@ public class PostConvertJobData extends ConvartableJobData {
 	}
 
 	private String flavorAssetId;
+	private String flavorAssetEncryptionKey;
 	/**
 	 * Indicates if a thumbnail should be created
 	 */
@@ -88,6 +90,18 @@ public class PostConvertJobData extends ConvartableJobData {
 
 	public void flavorAssetId(String multirequestToken){
 		setToken("flavorAssetId", multirequestToken);
+	}
+
+	// flavorAssetEncryptionKey:
+	public String getFlavorAssetEncryptionKey(){
+		return this.flavorAssetEncryptionKey;
+	}
+	public void setFlavorAssetEncryptionKey(String flavorAssetEncryptionKey){
+		this.flavorAssetEncryptionKey = flavorAssetEncryptionKey;
+	}
+
+	public void flavorAssetEncryptionKey(String multirequestToken){
+		setToken("flavorAssetEncryptionKey", multirequestToken);
 	}
 
 	// createThumb:
@@ -174,6 +188,7 @@ public class PostConvertJobData extends ConvartableJobData {
 
 		// set members values:
 		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
+		flavorAssetEncryptionKey = GsonParser.parseString(jsonObject.get("flavorAssetEncryptionKey"));
 		createThumb = GsonParser.parseBoolean(jsonObject.get("createThumb"));
 		thumbPath = GsonParser.parseString(jsonObject.get("thumbPath"));
 		thumbOffset = GsonParser.parseInt(jsonObject.get("thumbOffset"));
@@ -187,6 +202,7 @@ public class PostConvertJobData extends ConvartableJobData {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaPostConvertJobData");
 		kparams.add("flavorAssetId", this.flavorAssetId);
+		kparams.add("flavorAssetEncryptionKey", this.flavorAssetEncryptionKey);
 		kparams.add("createThumb", this.createThumb);
 		kparams.add("thumbPath", this.thumbPath);
 		kparams.add("thumbOffset", this.thumbOffset);

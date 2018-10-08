@@ -52,6 +52,7 @@ public class CaptureThumbJobData extends JobData {
 		String thumbParamsOutputId();
 		String thumbAssetId();
 		String srcAssetId();
+		String srcAssetEncryptionKey();
 		String srcAssetType();
 		String thumbPath();
 	}
@@ -65,6 +66,7 @@ public class CaptureThumbJobData extends JobData {
 	private Integer thumbParamsOutputId;
 	private String thumbAssetId;
 	private String srcAssetId;
+	private String srcAssetEncryptionKey;
 	private AssetType srcAssetType;
 	private String thumbPath;
 
@@ -136,6 +138,18 @@ public class CaptureThumbJobData extends JobData {
 		setToken("srcAssetId", multirequestToken);
 	}
 
+	// srcAssetEncryptionKey:
+	public String getSrcAssetEncryptionKey(){
+		return this.srcAssetEncryptionKey;
+	}
+	public void setSrcAssetEncryptionKey(String srcAssetEncryptionKey){
+		this.srcAssetEncryptionKey = srcAssetEncryptionKey;
+	}
+
+	public void srcAssetEncryptionKey(String multirequestToken){
+		setToken("srcAssetEncryptionKey", multirequestToken);
+	}
+
 	// srcAssetType:
 	public AssetType getSrcAssetType(){
 		return this.srcAssetType;
@@ -177,6 +191,7 @@ public class CaptureThumbJobData extends JobData {
 		thumbParamsOutputId = GsonParser.parseInt(jsonObject.get("thumbParamsOutputId"));
 		thumbAssetId = GsonParser.parseString(jsonObject.get("thumbAssetId"));
 		srcAssetId = GsonParser.parseString(jsonObject.get("srcAssetId"));
+		srcAssetEncryptionKey = GsonParser.parseString(jsonObject.get("srcAssetEncryptionKey"));
 		srcAssetType = AssetType.get(GsonParser.parseString(jsonObject.get("srcAssetType")));
 		thumbPath = GsonParser.parseString(jsonObject.get("thumbPath"));
 
@@ -191,6 +206,7 @@ public class CaptureThumbJobData extends JobData {
 		kparams.add("thumbParamsOutputId", this.thumbParamsOutputId);
 		kparams.add("thumbAssetId", this.thumbAssetId);
 		kparams.add("srcAssetId", this.srcAssetId);
+		kparams.add("srcAssetEncryptionKey", this.srcAssetEncryptionKey);
 		kparams.add("srcAssetType", this.srcAssetType);
 		kparams.add("thumbPath", this.thumbPath);
 		return kparams;
