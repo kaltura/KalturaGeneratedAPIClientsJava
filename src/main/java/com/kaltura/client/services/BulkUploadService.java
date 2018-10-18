@@ -245,7 +245,7 @@ public class BulkUploadService {
 	}
 
 	/**
-	 * serve action returan the original file.
+	 * serve action return the original file.
 	 * 
 	 * @param id job id
 	 */

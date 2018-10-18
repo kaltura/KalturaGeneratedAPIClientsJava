@@ -61,6 +61,7 @@ public class BulkUploadJobData extends JobData {
 		String type();
 		String emailRecipients();
 		String numOfErrorObjects();
+		String privileges();
 	}
 
 	private String userId;
@@ -116,6 +117,10 @@ public class BulkUploadJobData extends JobData {
 	 * Number of objects that finished on error status
 	 */
 	private Integer numOfErrorObjects;
+	/**
+	 * privileges for the job
+	 */
+	private String privileges;
 
 	// userId:
 	public String getUserId(){
@@ -197,6 +202,18 @@ public class BulkUploadJobData extends JobData {
 		setToken("numOfErrorObjects", multirequestToken);
 	}
 
+	// privileges:
+	public String getPrivileges(){
+		return this.privileges;
+	}
+	public void setPrivileges(String privileges){
+		this.privileges = privileges;
+	}
+
+	public void privileges(String multirequestToken){
+		setToken("privileges", multirequestToken);
+	}
+
 
 	public BulkUploadJobData() {
 		super();
@@ -222,6 +239,7 @@ public class BulkUploadJobData extends JobData {
 		type = BulkUploadType.get(GsonParser.parseString(jsonObject.get("type")));
 		emailRecipients = GsonParser.parseString(jsonObject.get("emailRecipients"));
 		numOfErrorObjects = GsonParser.parseInt(jsonObject.get("numOfErrorObjects"));
+		privileges = GsonParser.parseString(jsonObject.get("privileges"));
 
 	}
 
@@ -231,6 +249,7 @@ public class BulkUploadJobData extends JobData {
 		kparams.add("fileName", this.fileName);
 		kparams.add("emailRecipients", this.emailRecipients);
 		kparams.add("numOfErrorObjects", this.numOfErrorObjects);
+		kparams.add("privileges", this.privileges);
 		return kparams;
 	}
 
