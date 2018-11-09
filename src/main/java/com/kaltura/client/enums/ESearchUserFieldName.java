@@ -44,6 +44,7 @@ public enum ESearchUserFieldName implements EnumAsString {
 	SCREEN_NAME("screen_name"),
 	TAGS("tags"),
 	UPDATED_AT("updated_at"),
+	USER_ID("user_id"),
 	TYPE("user_type");
 
 	private String value;
