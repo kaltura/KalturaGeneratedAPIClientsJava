@@ -73,6 +73,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
 		String parentIdLike();
 		String parentIdMultiLikeOr();
 		String parentIdMultiLikeAnd();
+		String environmentEqual();
+		String environmentIn();
 	}
 
 	private Integer idEqual;
@@ -102,6 +104,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
 	private String parentIdLike;
 	private String parentIdMultiLikeOr;
 	private String parentIdMultiLikeAnd;
+	private String environmentEqual;
+	private String environmentIn;
 
 	// idEqual:
 	public Integer getIdEqual(){
@@ -427,6 +431,30 @@ public abstract class ServerNodeBaseFilter extends Filter {
 		setToken("parentIdMultiLikeAnd", multirequestToken);
 	}
 
+	// environmentEqual:
+	public String getEnvironmentEqual(){
+		return this.environmentEqual;
+	}
+	public void setEnvironmentEqual(String environmentEqual){
+		this.environmentEqual = environmentEqual;
+	}
+
+	public void environmentEqual(String multirequestToken){
+		setToken("environmentEqual", multirequestToken);
+	}
+
+	// environmentIn:
+	public String getEnvironmentIn(){
+		return this.environmentIn;
+	}
+	public void setEnvironmentIn(String environmentIn){
+		this.environmentIn = environmentIn;
+	}
+
+	public void environmentIn(String multirequestToken){
+		setToken("environmentIn", multirequestToken);
+	}
+
 
 	public ServerNodeBaseFilter() {
 		super();
@@ -465,6 +493,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
 		parentIdLike = GsonParser.parseString(jsonObject.get("parentIdLike"));
 		parentIdMultiLikeOr = GsonParser.parseString(jsonObject.get("parentIdMultiLikeOr"));
 		parentIdMultiLikeAnd = GsonParser.parseString(jsonObject.get("parentIdMultiLikeAnd"));
+		environmentEqual = GsonParser.parseString(jsonObject.get("environmentEqual"));
+		environmentIn = GsonParser.parseString(jsonObject.get("environmentIn"));
 
 	}
 
@@ -498,6 +528,8 @@ public abstract class ServerNodeBaseFilter extends Filter {
 		kparams.add("parentIdLike", this.parentIdLike);
 		kparams.add("parentIdMultiLikeOr", this.parentIdMultiLikeOr);
 		kparams.add("parentIdMultiLikeAnd", this.parentIdMultiLikeAnd);
+		kparams.add("environmentEqual", this.environmentEqual);
+		kparams.add("environmentIn", this.environmentIn);
 		return kparams;
 	}
 
