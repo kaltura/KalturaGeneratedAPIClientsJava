@@ -266,7 +266,7 @@ public class BulkUploadService {
 	}
 
 	/**
-	 * serveLog action returan the original file.
+	 * serveLog action return the original file.
 	 * 
 	 * @param id job id
 	 */

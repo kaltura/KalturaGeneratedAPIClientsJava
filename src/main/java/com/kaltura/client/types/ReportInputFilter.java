@@ -52,6 +52,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String customVar1In();
 		String customVar2In();
 		String customVar3In();
+		String devicesIn();
 		String timeZoneOffset();
 		String interval();
 	}
@@ -84,6 +85,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * Filter by customVar3
 	 */
 	private String customVar3In;
+	/**
+	 * Filter by device
+	 */
+	private String devicesIn;
 	/**
 	 * Time zone offset in minutes
 	 */
@@ -177,6 +182,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("customVar3In", multirequestToken);
 	}
 
+	// devicesIn:
+	public String getDevicesIn(){
+		return this.devicesIn;
+	}
+	public void setDevicesIn(String devicesIn){
+		this.devicesIn = devicesIn;
+	}
+
+	public void devicesIn(String multirequestToken){
+		setToken("devicesIn", multirequestToken);
+	}
+
 	// timeZoneOffset:
 	public Integer getTimeZoneOffset(){
 		return this.timeZoneOffset;
@@ -219,6 +236,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		customVar1In = GsonParser.parseString(jsonObject.get("customVar1In"));
 		customVar2In = GsonParser.parseString(jsonObject.get("customVar2In"));
 		customVar3In = GsonParser.parseString(jsonObject.get("customVar3In"));
+		devicesIn = GsonParser.parseString(jsonObject.get("devicesIn"));
 		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
 		interval = ReportInterval.get(GsonParser.parseString(jsonObject.get("interval")));
 
@@ -234,6 +252,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("customVar1In", this.customVar1In);
 		kparams.add("customVar2In", this.customVar2In);
 		kparams.add("customVar3In", this.customVar3In);
+		kparams.add("devicesIn", this.devicesIn);
 		kparams.add("timeZoneOffset", this.timeZoneOffset);
 		kparams.add("interval", this.interval);
 		return kparams;
