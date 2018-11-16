@@ -64,6 +64,7 @@ public enum ReportType implements EnumAsString {
 	ENTRY_USAGE("27"),
 	REACH_USAGE("28"),
 	TOP_CUSTOM_VAR1("29"),
+	CITIES("30"),
 	PARTNER_USAGE("201");
 
 	private String value;
