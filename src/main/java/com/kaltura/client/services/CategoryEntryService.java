@@ -27,15 +27,21 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.FileHolder;
+import com.kaltura.client.Files;
 import com.kaltura.client.types.BulkServiceData;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadCategoryEntryData;
+import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.CategoryEntry;
 import com.kaltura.client.types.CategoryEntryFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  * This class was generated using generate.php
@@ -63,6 +69,9 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param categoryId 
  * @param entryId 
  * @param categoryId 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadCategoryEntryData 
  */
 public class CategoryEntryService {
 	
@@ -270,5 +279,64 @@ public class CategoryEntryService {
 	 */
     public static SyncPrivacyContextCategoryEntryBuilder syncPrivacyContext(String entryId, int categoryId)  {
 		return new SyncPrivacyContextCategoryEntryBuilder(entryId, categoryId);
+	}
+	
+	public static class UpdateStatusfrombulkCategoryEntryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, UpdateStatusfrombulkCategoryEntryBuilder> {
+		
+		public UpdateStatusfrombulkCategoryEntryBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData) {
+			super(BulkUpload.class, "categoryentry", "updateStatusfrombulk");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadCategoryEntryData", bulkUploadCategoryEntryData);
+		}
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData)  {
+		return updateStatusfrombulk(fileData, null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData)  {
+		return updateStatusfrombulk(new FileHolder(fileData), null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return updateStatusfrombulk(fileData, bulkUploadData, null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData, BulkUploadJobData bulkUploadData)  {
+		return updateStatusfrombulk(new FileHolder(fileData), bulkUploadData, null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusfrombulk(new FileHolder(fileData), bulkUploadData, bulkUploadCategoryEntryData);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadCategoryEntryData);
+	}
+
+	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadCategoryEntryData);
+	}
+
+    public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return new UpdateStatusfrombulkCategoryEntryBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
 	}
 }
