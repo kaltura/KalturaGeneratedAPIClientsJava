@@ -66,7 +66,7 @@ public enum ReportType implements EnumAsString {
 	TOP_CUSTOM_VAR1("29"),
 	CITIES("30"),
 	OPERATING_SYSTEM_FAMILIES("32"),
-	BROWSERS_FAMIILES("33"),
+	BROWSERS_FAMILIES("33"),
 	PARTNER_USAGE("201");
 
 	private String value;
