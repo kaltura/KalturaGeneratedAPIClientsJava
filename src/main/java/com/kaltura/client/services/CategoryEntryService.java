@@ -281,10 +281,10 @@ public class CategoryEntryService {
 		return new SyncPrivacyContextCategoryEntryBuilder(entryId, categoryId);
 	}
 	
-	public static class UpdateStatusfrombulkCategoryEntryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, UpdateStatusfrombulkCategoryEntryBuilder> {
+	public static class UpdateStatusFromBulkCategoryEntryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, UpdateStatusFromBulkCategoryEntryBuilder> {
 		
-		public UpdateStatusfrombulkCategoryEntryBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData) {
-			super(BulkUpload.class, "categoryentry", "updateStatusfrombulk");
+		public UpdateStatusFromBulkCategoryEntryBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData) {
+			super(BulkUpload.class, "categoryentry", "updateStatusFromBulk");
 			files = new Files();
 			files.add("fileData", fileData);
 			params.add("bulkUploadData", bulkUploadData);
@@ -292,51 +292,51 @@ public class CategoryEntryService {
 		}
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData)  {
-		return updateStatusfrombulk(fileData, null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileHolder fileData)  {
+		return updateStatusFromBulk(fileData, null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData)  {
-		return updateStatusfrombulk(new FileHolder(fileData), null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(File fileData)  {
+		return updateStatusFromBulk(new FileHolder(fileData), null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
-		return updateStatusfrombulk(fileData, bulkUploadData, null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return updateStatusFromBulk(fileData, bulkUploadData, null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData, BulkUploadJobData bulkUploadData)  {
-		return updateStatusfrombulk(new FileHolder(fileData), bulkUploadData, null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(File fileData, BulkUploadJobData bulkUploadData)  {
+		return updateStatusFromBulk(new FileHolder(fileData), bulkUploadData, null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(File fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
-		return updateStatusfrombulk(new FileHolder(fileData), bulkUploadData, bulkUploadCategoryEntryData);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(File fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusFromBulk(new FileHolder(fileData), bulkUploadData, bulkUploadCategoryEntryData);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadCategoryEntryData);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadCategoryEntryData);
 	}
 
-	public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
-		return updateStatusfrombulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadCategoryEntryData);
+	public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return updateStatusFromBulk(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadCategoryEntryData);
 	}
 
-    public static UpdateStatusfrombulkCategoryEntryBuilder updateStatusfrombulk(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
-		return new UpdateStatusfrombulkCategoryEntryBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
+    public static UpdateStatusFromBulkCategoryEntryBuilder updateStatusFromBulk(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryEntryData bulkUploadCategoryEntryData)  {
+		return new UpdateStatusFromBulkCategoryEntryBuilder(fileData, bulkUploadData, bulkUploadCategoryEntryData);
 	}
 }
