@@ -7,7 +7,9 @@ language: java
 jdk:
     - openjdk7
     - oraclejdk8
-script: ./testAPI/test.sh
+script: 
+    - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@API_HOST@#$API_HOST#g" src/test/resources/test.template.properties > src/test/resources/test.properties
+    - ./testAPI/test.sh
 notifications:
   email:
     recipients:
