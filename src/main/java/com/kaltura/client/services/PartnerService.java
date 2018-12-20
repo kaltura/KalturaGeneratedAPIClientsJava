@@ -215,7 +215,7 @@ public class PartnerService {
 	/**
 	 * Get usage statistics for a partner   Calculation is done according to partner's
 	  package   Additional data returned is a graph points of streaming usage in a
-	  timeframe   The resolution can be "days" or "months"
+	  time frame   The resolution can be "days" or "months"
 	 * 
 	 * @param year 
 	 * @param month 
@@ -244,7 +244,7 @@ public class PartnerService {
 
 	/**
 	 * List partners by filter with paging support   Current implementation will only
-	  list the sub partners of the partner initiating the api call (using the current
+	  list the sub partners of the partner initiating the API call (using the current
 	  KS).   This action is only partially implemented to support listing sub partners
 	  of a VAR partner.
 	 * 

@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCaptionFieldName implements EnumAsString {
+	CAPTION_ASSET_ID("caption_asset_id"),
 	CONTENT("content"),
 	END_TIME("end_time"),
 	LABEL("label"),

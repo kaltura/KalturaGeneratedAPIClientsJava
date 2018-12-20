@@ -212,7 +212,7 @@ public class DataService {
 	}
 
 	/**
-	 * serve action returan the file from dataContent field.
+	 * return the file from dataContent field.
 	 * 
 	 * @param entryId Data entry id
 	 * @param version Desired version of the data

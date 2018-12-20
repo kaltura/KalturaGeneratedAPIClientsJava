@@ -51,7 +51,7 @@ import java.io.InputStream;
    This service manages only entry bulk uploads.
  * 
  * @param id job id
- * @param conversionProfileId Convertion profile id to use for converting the current bulk (-1 to use
+ * @param conversionProfileId Conversion profile id to use for converting the current bulk (-1 to use
  * partner's default)
  * @param csvFileData bulk upload file
  * @param bulkUploadType 
@@ -179,7 +179,7 @@ public class BulkUploadService {
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
 	  conversion profile was specified, partner's default will be used
 	 * 
-	 * @param conversionProfileId Convertion profile id to use for converting the current bulk (-1 to use
+	 * @param conversionProfileId Conversion profile id to use for converting the current bulk (-1 to use
 	 * partner's default)
 	 * @param csvFileData bulk upload file
 	 * @param bulkUploadType 

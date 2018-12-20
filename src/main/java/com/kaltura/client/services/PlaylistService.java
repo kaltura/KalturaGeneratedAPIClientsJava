@@ -49,7 +49,7 @@ import java.util.List;
 
 /**
  * Playlist service lets you create,manage and play your playlists  Playlists could
-  be static (containing a fixed list of entries) or dynamic (baseed on a filter)
+  be static (containing a fixed list of entries) or dynamic (based on a filter)
  * 
  * @param playlist 
  * @param updateStats indicates that the playlist statistics attributes should be updated
@@ -279,7 +279,7 @@ public class PlaylistService {
 	}
 
 	/**
-	 * Revrieve playlist for playing purpose, based on media entry filters
+	 * Retrieve playlist for playing purpose, based on media entry filters
 	 * 
 	 * @param filters 
 	 * @param totalResults 
@@ -398,7 +398,7 @@ public class PlaylistService {
 	}
 
 	/**
-	 * Update existing playlist   Note - you cannot change playlist type. updated
+	 * Update existing playlist   Note - you cannot change playlist type. Updated
 	  playlist must be of the same type.
 	 * 
 	 * @param id 

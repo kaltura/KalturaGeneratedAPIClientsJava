@@ -133,7 +133,7 @@ public class MixingService {
 	}
 
 	/**
-	 * Appends a media entry to a the end of the mix timeline, this will save the mix
+	 * Appends a media entry to the end of the mix timeline, this will save the mix
 	  timeline as a new version.
 	 * 
 	 * @param mixEntryId Mix entry to append to its timeline

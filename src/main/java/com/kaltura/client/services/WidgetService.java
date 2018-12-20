@@ -149,7 +149,7 @@ public class WidgetService {
 	}
 
 	/**
-	 * Update exisiting widget
+	 * Update existing widget
 	 * 
 	 * @param id 
 	 * @param widget 

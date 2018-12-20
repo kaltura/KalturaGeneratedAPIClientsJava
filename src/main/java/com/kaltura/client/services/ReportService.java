@@ -130,7 +130,7 @@ public class ReportService {
 	}
 
 	/**
-	 * report getBaseTotal action allows to get a the total base for storage reports
+	 * report getBaseTotal action allows to get the total base for storage reports
 	 * 
 	 * @param reportType 
 	 * @param reportInputFilter 
@@ -375,7 +375,7 @@ public class ReportService {
 	}
 
 	/**
-	 * will create a Csv file for the given report and return the URL to access it
+	 * will create a CSV file for the given report and return the URL to access it
 	 * 
 	 * @param reportTitle The title of the report to display at top of CSV
 	 * @param reportText The text of the filter of the report

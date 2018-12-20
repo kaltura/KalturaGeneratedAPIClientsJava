@@ -193,7 +193,7 @@ public class CategoryUserService {
 	}
 
 	/**
-	 * Copy all memeber from parent category
+	 * Copy all member from parent category
 	 * 
 	 * @param categoryId 
 	 */

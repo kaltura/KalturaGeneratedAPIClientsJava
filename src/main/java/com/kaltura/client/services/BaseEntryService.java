@@ -720,7 +720,7 @@ public class BaseEntryService {
 	}
 
 	/**
-	 * Update entry thumbnail using url.
+	 * Update entry thumbnail using URL.
 	 * 
 	 * @param entryId Media entry id
 	 * @param url file url

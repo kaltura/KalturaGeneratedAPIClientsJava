@@ -153,7 +153,7 @@ public class DeliveryProfileService {
 	}
 
 	/**
-	 * Update exisiting delivery
+	 * Update existing delivery profile
 	 * 
 	 * @param id 
 	 * @param delivery 

@@ -75,7 +75,7 @@ import java.util.List;
  * @param sourceFlavorAssetId Flavor asset id to be used as the new entry source
  * @param mediaEntry Media entry metadata
  * @param mediaEntry Media entry metadata
- * @param webcamTokenId Token id for the recored webcam file
+ * @param webcamTokenId Token id for the recorded webcam file
  * @param mediaEntry Media entry metadata
  * @param searchResult Result object from search service
  * @param mediaEntry Media entry metadata
@@ -286,10 +286,10 @@ public class MediaService {
 	}
 
 	/**
-	 * Add new entry after the file was recored on the server and the token id exists
+	 * Add new entry after the file was recorded on the server and the token id exists
 	 * 
 	 * @param mediaEntry Media entry metadata
-	 * @param webcamTokenId Token id for the recored webcam file
+	 * @param webcamTokenId Token id for the recorded webcam file
 	 */
     public static AddFromRecordedWebcamMediaBuilder addFromRecordedWebcam(MediaEntry mediaEntry, String webcamTokenId)  {
 		return new AddFromRecordedWebcamMediaBuilder(mediaEntry, webcamTokenId);
@@ -982,7 +982,7 @@ public class MediaService {
 	}
 
 	/**
-	 * Update entry thumbnail using url
+	 * Update entry thumbnail using URL
 	 * 
 	 * @param entryId Media entry id
 	 * @param url file url
