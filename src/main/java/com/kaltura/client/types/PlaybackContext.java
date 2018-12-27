@@ -48,12 +48,14 @@ public class PlaybackContext extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		RequestBuilder.ListTokenizer<PlaybackSource.Tokenizer> sources();
+		RequestBuilder.ListTokenizer<CaptionPlaybackPluginData.Tokenizer> playbackCaptions();
 		RequestBuilder.ListTokenizer<FlavorAsset.Tokenizer> flavorAssets();
 		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
 		RequestBuilder.ListTokenizer<AccessControlMessage.Tokenizer> messages();
 	}
 
 	private List<PlaybackSource> sources;
+	private List<CaptionPlaybackPluginData> playbackCaptions;
 	private List<FlavorAsset> flavorAssets;
 	/**
 	 * Array of actions as received from the rules that invalidated
@@ -70,6 +72,14 @@ public class PlaybackContext extends ObjectBase {
 	}
 	public void setSources(List<PlaybackSource> sources){
 		this.sources = sources;
+	}
+
+	// playbackCaptions:
+	public List<CaptionPlaybackPluginData> getPlaybackCaptions(){
+		return this.playbackCaptions;
+	}
+	public void setPlaybackCaptions(List<CaptionPlaybackPluginData> playbackCaptions){
+		this.playbackCaptions = playbackCaptions;
 	}
 
 	// flavorAssets:
@@ -108,6 +118,7 @@ public class PlaybackContext extends ObjectBase {
 
 		// set members values:
 		sources = GsonParser.parseArray(jsonObject.getAsJsonArray("sources"), PlaybackSource.class);
+		playbackCaptions = GsonParser.parseArray(jsonObject.getAsJsonArray("playbackCaptions"), CaptionPlaybackPluginData.class);
 		flavorAssets = GsonParser.parseArray(jsonObject.getAsJsonArray("flavorAssets"), FlavorAsset.class);
 		actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
 		messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), AccessControlMessage.class);
@@ -118,6 +129,7 @@ public class PlaybackContext extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaPlaybackContext");
 		kparams.add("sources", this.sources);
+		kparams.add("playbackCaptions", this.playbackCaptions);
 		kparams.add("flavorAssets", this.flavorAssets);
 		kparams.add("actions", this.actions);
 		kparams.add("messages", this.messages);
