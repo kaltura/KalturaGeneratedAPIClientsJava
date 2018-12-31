@@ -72,6 +72,7 @@ public enum ReportType implements EnumAsString {
 	MAP_OVERLAY_COUNTRY("36"),
 	MAP_OVERLAY_REGION("37"),
 	TOP_CONTENT_CREATOR("38"),
+	APP_DOMAIN_UNIQUE_ACTIVE_USERS("40"),
 	PARTNER_USAGE("201");
 
 	private String value;
