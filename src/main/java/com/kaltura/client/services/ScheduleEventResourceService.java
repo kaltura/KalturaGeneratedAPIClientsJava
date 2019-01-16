@@ -53,6 +53,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param scheduleResourceId 
  * @param filter 
  * @param pager 
+ * @param filterBlackoutConflicts 
  * @param scheduleEventId 
  * @param scheduleResourceId 
  * @param scheduleEventResource 
@@ -132,10 +133,15 @@ public class ScheduleEventResourceService {
 	
 	public static class ListScheduleEventResourceBuilder extends ListResponseRequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, ListScheduleEventResourceBuilder> {
 		
-		public ListScheduleEventResourceBuilder(ScheduleEventResourceFilter filter, FilterPager pager) {
+		public ListScheduleEventResourceBuilder(ScheduleEventResourceFilter filter, FilterPager pager, boolean filterBlackoutConflicts) {
 			super(ScheduleEventResource.class, "schedule_scheduleeventresource", "list");
 			params.add("filter", filter);
 			params.add("pager", pager);
+			params.add("filterBlackoutConflicts", filterBlackoutConflicts);
+		}
+		
+		public void filterBlackoutConflicts(String multirequestToken) {
+			params.add("filterBlackoutConflicts", multirequestToken);
 		}
 	}
 
@@ -147,14 +153,19 @@ public class ScheduleEventResourceService {
 		return list(filter, null);
 	}
 
+	public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter, FilterPager pager)  {
+		return list(filter, pager, true);
+	}
+
 	/**
 	 * List KalturaScheduleEventResource objects
 	 * 
 	 * @param filter 
 	 * @param pager 
+	 * @param filterBlackoutConflicts 
 	 */
-    public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter, FilterPager pager)  {
-		return new ListScheduleEventResourceBuilder(filter, pager);
+    public static ListScheduleEventResourceBuilder list(ScheduleEventResourceFilter filter, FilterPager pager, boolean filterBlackoutConflicts)  {
+		return new ListScheduleEventResourceBuilder(filter, pager, filterBlackoutConflicts);
 	}
 	
 	public static class UpdateScheduleEventResourceBuilder extends RequestBuilder<ScheduleEventResource, ScheduleEventResource.Tokenizer, UpdateScheduleEventResourceBuilder> {

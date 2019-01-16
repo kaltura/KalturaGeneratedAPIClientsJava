@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -47,6 +49,7 @@ public abstract class EntryScheduleEvent extends ScheduleEvent {
 		String templateEntryId();
 		String entryIds();
 		String categoryIds();
+		RequestBuilder.ListTokenizer<ScheduleEvent.Tokenizer> blackoutConflicts();
 	}
 
 	/**
@@ -61,6 +64,10 @@ public abstract class EntryScheduleEvent extends ScheduleEvent {
 	 * Categories that associated with this event
 	 */
 	private String categoryIds;
+	/**
+	 * Blackout schedule events the conflict with this event
+	 */
+	private List<ScheduleEvent> blackoutConflicts;
 
 	// templateEntryId:
 	public String getTemplateEntryId(){
@@ -98,6 +105,10 @@ public abstract class EntryScheduleEvent extends ScheduleEvent {
 		setToken("categoryIds", multirequestToken);
 	}
 
+	// blackoutConflicts:
+	public List<ScheduleEvent> getBlackoutConflicts(){
+		return this.blackoutConflicts;
+	}
 
 	public EntryScheduleEvent() {
 		super();
@@ -112,6 +123,7 @@ public abstract class EntryScheduleEvent extends ScheduleEvent {
 		templateEntryId = GsonParser.parseString(jsonObject.get("templateEntryId"));
 		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
 		categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
+		blackoutConflicts = GsonParser.parseArray(jsonObject.getAsJsonArray("blackoutConflicts"), ScheduleEvent.class);
 
 	}
 

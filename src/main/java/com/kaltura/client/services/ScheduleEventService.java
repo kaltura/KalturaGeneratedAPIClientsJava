@@ -29,6 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
+import com.kaltura.client.enums.ScheduleEventConflictType;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadICalJobData;
 import com.kaltura.client.types.FilterPager;
@@ -60,6 +61,7 @@ import java.io.InputStream;
  * @param resourceIds comma separated
  * @param scheduleEvent 
  * @param scheduleEventIdToIgnore 
+ * @param scheduleEventConflictType 
  * @param filter 
  * @param pager 
  * @param scheduleEventId 
@@ -197,11 +199,12 @@ public class ScheduleEventService {
 	
 	public static class GetConflictsScheduleEventBuilder extends ListResponseRequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, GetConflictsScheduleEventBuilder> {
 		
-		public GetConflictsScheduleEventBuilder(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore) {
+		public GetConflictsScheduleEventBuilder(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore, ScheduleEventConflictType scheduleEventConflictType) {
 			super(ScheduleEvent.class, "schedule_scheduleevent", "getConflicts");
 			params.add("resourceIds", resourceIds);
 			params.add("scheduleEvent", scheduleEvent);
 			params.add("scheduleEventIdToIgnore", scheduleEventIdToIgnore);
+			params.add("scheduleEventConflictType", scheduleEventConflictType);
 		}
 		
 		public void resourceIds(String multirequestToken) {
@@ -211,10 +214,18 @@ public class ScheduleEventService {
 		public void scheduleEventIdToIgnore(String multirequestToken) {
 			params.add("scheduleEventIdToIgnore", multirequestToken);
 		}
+		
+		public void scheduleEventConflictType(String multirequestToken) {
+			params.add("scheduleEventConflictType", multirequestToken);
+		}
 	}
 
 	public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent)  {
 		return getConflicts(resourceIds, scheduleEvent, null);
+	}
+
+	public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore)  {
+		return getConflicts(resourceIds, scheduleEvent, scheduleEventIdToIgnore, ScheduleEventConflictType.get(1));
 	}
 
 	/**
@@ -223,9 +234,10 @@ public class ScheduleEventService {
 	 * @param resourceIds comma separated
 	 * @param scheduleEvent 
 	 * @param scheduleEventIdToIgnore 
+	 * @param scheduleEventConflictType 
 	 */
-    public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore)  {
-		return new GetConflictsScheduleEventBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore);
+    public static GetConflictsScheduleEventBuilder getConflicts(String resourceIds, ScheduleEvent scheduleEvent, String scheduleEventIdToIgnore, ScheduleEventConflictType scheduleEventConflictType)  {
+		return new GetConflictsScheduleEventBuilder(resourceIds, scheduleEvent, scheduleEventIdToIgnore, scheduleEventConflictType);
 	}
 	
 	public static class ListScheduleEventBuilder extends ListResponseRequestBuilder<ScheduleEvent, ScheduleEvent.Tokenizer, ListScheduleEventBuilder> {

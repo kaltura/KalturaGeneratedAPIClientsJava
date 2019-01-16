@@ -33,14 +33,14 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ScheduleEventType implements EnumAsInt {
-	RECORD(1),
-	LIVE_STREAM(2),
-	BLACKOUT(3);
+public enum ScheduleEventConflictType implements EnumAsInt {
+	RESOURCE_CONFLICT(1),
+	BLACKOUT_CONFLICT(2),
+	BOTH(3);
 
 	private int value;
 
-	ScheduleEventType(int value) {
+	ScheduleEventConflictType(int value) {
 		this.value = value;
 	}
 
@@ -53,19 +53,19 @@ public enum ScheduleEventType implements EnumAsInt {
 		this.value = value;
 	}
 
-	public static ScheduleEventType get(Integer value) {
+	public static ScheduleEventConflictType get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ScheduleEventType defined values and compare the inner value with the given one:
-		for(ScheduleEventType item: values()) {
+		// goes over ScheduleEventConflictType defined values and compare the inner value with the given one:
+		for(ScheduleEventConflictType item: values()) {
 			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ScheduleEventType.values().length > 0 ? ScheduleEventType.values()[0]: null;
+		return ScheduleEventConflictType.values().length > 0 ? ScheduleEventConflictType.values()[0]: null;
    }
 }
