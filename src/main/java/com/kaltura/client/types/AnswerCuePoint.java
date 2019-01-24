@@ -49,6 +49,7 @@ public class AnswerCuePoint extends CuePoint {
 		String parentId();
 		String quizUserEntryId();
 		String answerKey();
+		String openAnswer();
 		String isCorrect();
 		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> correctAnswerKeys();
 		String explanation();
@@ -57,6 +58,7 @@ public class AnswerCuePoint extends CuePoint {
 	private String parentId;
 	private String quizUserEntryId;
 	private String answerKey;
+	private String openAnswer;
 	private Boolean isCorrect;
 	/**
 	 * Array of string
@@ -100,6 +102,18 @@ public class AnswerCuePoint extends CuePoint {
 		setToken("answerKey", multirequestToken);
 	}
 
+	// openAnswer:
+	public String getOpenAnswer(){
+		return this.openAnswer;
+	}
+	public void setOpenAnswer(String openAnswer){
+		this.openAnswer = openAnswer;
+	}
+
+	public void openAnswer(String multirequestToken){
+		setToken("openAnswer", multirequestToken);
+	}
+
 	// isCorrect:
 	public Boolean getIsCorrect(){
 		return this.isCorrect;
@@ -126,6 +140,7 @@ public class AnswerCuePoint extends CuePoint {
 		parentId = GsonParser.parseString(jsonObject.get("parentId"));
 		quizUserEntryId = GsonParser.parseString(jsonObject.get("quizUserEntryId"));
 		answerKey = GsonParser.parseString(jsonObject.get("answerKey"));
+		openAnswer = GsonParser.parseString(jsonObject.get("openAnswer"));
 		isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
 		correctAnswerKeys = GsonParser.parseArray(jsonObject.getAsJsonArray("correctAnswerKeys"), StringHolder.class);
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));
@@ -138,6 +153,7 @@ public class AnswerCuePoint extends CuePoint {
 		kparams.add("parentId", this.parentId);
 		kparams.add("quizUserEntryId", this.quizUserEntryId);
 		kparams.add("answerKey", this.answerKey);
+		kparams.add("openAnswer", this.openAnswer);
 		return kparams;
 	}
 

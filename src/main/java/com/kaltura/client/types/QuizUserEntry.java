@@ -45,14 +45,28 @@ public class QuizUserEntry extends UserEntry {
 	
 	public interface Tokenizer extends UserEntry.Tokenizer {
 		String score();
+		String feedback();
 	}
 
 	private Double score;
+	private String feedback;
 
 	// score:
 	public Double getScore(){
 		return this.score;
 	}
+	// feedback:
+	public String getFeedback(){
+		return this.feedback;
+	}
+	public void setFeedback(String feedback){
+		this.feedback = feedback;
+	}
+
+	public void feedback(String multirequestToken){
+		setToken("feedback", multirequestToken);
+	}
+
 
 	public QuizUserEntry() {
 		super();
@@ -65,12 +79,14 @@ public class QuizUserEntry extends UserEntry {
 
 		// set members values:
 		score = GsonParser.parseDouble(jsonObject.get("score"));
+		feedback = GsonParser.parseString(jsonObject.get("feedback"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaQuizUserEntry");
+		kparams.add("feedback", this.feedback);
 		return kparams;
 	}
 

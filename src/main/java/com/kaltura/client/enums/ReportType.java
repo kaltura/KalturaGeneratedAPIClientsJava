@@ -74,6 +74,7 @@ public enum ReportType implements EnumAsString {
 	TOP_CONTENT_CREATOR("38"),
 	TOP_CONTENT_CONTRIBUTORS("39"),
 	APP_DOMAIN_UNIQUE_ACTIVE_USERS("40"),
+	TOP_SOURCES("41"),
 	PARTNER_USAGE("201");
 
 	private String value;
