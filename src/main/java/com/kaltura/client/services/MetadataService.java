@@ -58,7 +58,7 @@ import java.io.InputStream;
  * @param metadataProfileId 
  * @param objectType 
  * @param objectId 
- * @param url XML metadata remote url
+ * @param url XML metadata remote URL
  * @param metadataProfileId 
  * @param objectType 
  * @param objectId 
@@ -66,7 +66,7 @@ import java.io.InputStream;
  * @param metadataProfileId 
  * @param objectType 
  * @param objectId 
- * @param url XML metadata remote url
+ * @param url XML metadata remote URL
  * @param id 
  * @param id 
  * @param id 
@@ -156,13 +156,13 @@ public class MetadataService {
 	}
 
 	/**
-	 * Allows you to add a metadata xml data from remote URL.   Enables different
+	 * Allows you to add a metadata XML data from remote URL.   Enables different
 	  permissions than addFromUrl action.
 	 * 
 	 * @param metadataProfileId 
 	 * @param objectType 
 	 * @param objectId 
-	 * @param url XML metadata remote url
+	 * @param url XML metadata remote URL
 	 */
     public static AddFromBulkMetadataBuilder addFromBulk(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
 		return new AddFromBulkMetadataBuilder(metadataProfileId, objectType, objectId, url);
@@ -245,12 +245,12 @@ public class MetadataService {
 	}
 
 	/**
-	 * Allows you to add a metadata xml data from remote URL
+	 * Allows you to add a metadata XML data from remote URL
 	 * 
 	 * @param metadataProfileId 
 	 * @param objectType 
 	 * @param objectId 
-	 * @param url XML metadata remote url
+	 * @param url XML metadata remote URL
 	 */
     public static AddFromUrlMetadataBuilder addFromUrl(int metadataProfileId, MetadataObjectType objectType, String objectId, String url)  {
 		return new AddFromUrlMetadataBuilder(metadataProfileId, objectType, objectId, url);

@@ -187,7 +187,7 @@ public class ShortLinkService {
 	}
 
 	/**
-	 * Update exisitng short link
+	 * Update existing short link
 	 * 
 	 * @param id 
 	 * @param shortLink 

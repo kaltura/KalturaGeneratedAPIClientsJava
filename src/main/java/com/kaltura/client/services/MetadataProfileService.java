@@ -429,7 +429,7 @@ public class MetadataProfileService {
 	}
 
 	/**
-	 * Update an existing metadata object xslt file
+	 * Update an existing metadata object XSLT file
 	 * 
 	 * @param id 
 	 * @param xsltFile XSLT file, will be executed on every metadata add/update

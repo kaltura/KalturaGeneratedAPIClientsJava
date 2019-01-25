@@ -53,6 +53,7 @@ public class AnswerCuePoint extends CuePoint {
 		String isCorrect();
 		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> correctAnswerKeys();
 		String explanation();
+		String feedback();
 	}
 
 	private String parentId;
@@ -65,6 +66,7 @@ public class AnswerCuePoint extends CuePoint {
 	 */
 	private List<StringHolder> correctAnswerKeys;
 	private String explanation;
+	private String feedback;
 
 	// parentId:
 	public String getParentId(){
@@ -126,6 +128,18 @@ public class AnswerCuePoint extends CuePoint {
 	public String getExplanation(){
 		return this.explanation;
 	}
+	// feedback:
+	public String getFeedback(){
+		return this.feedback;
+	}
+	public void setFeedback(String feedback){
+		this.feedback = feedback;
+	}
+
+	public void feedback(String multirequestToken){
+		setToken("feedback", multirequestToken);
+	}
+
 
 	public AnswerCuePoint() {
 		super();
@@ -144,6 +158,7 @@ public class AnswerCuePoint extends CuePoint {
 		isCorrect = GsonParser.parseBoolean(jsonObject.get("isCorrect"));
 		correctAnswerKeys = GsonParser.parseArray(jsonObject.getAsJsonArray("correctAnswerKeys"), StringHolder.class);
 		explanation = GsonParser.parseString(jsonObject.get("explanation"));
+		feedback = GsonParser.parseString(jsonObject.get("feedback"));
 
 	}
 
@@ -154,6 +169,7 @@ public class AnswerCuePoint extends CuePoint {
 		kparams.add("quizUserEntryId", this.quizUserEntryId);
 		kparams.add("answerKey", this.answerKey);
 		kparams.add("openAnswer", this.openAnswer);
+		kparams.add("feedback", this.feedback);
 		return kparams;
 	}
 

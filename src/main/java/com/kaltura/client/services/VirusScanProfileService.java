@@ -187,7 +187,7 @@ public class VirusScanProfileService {
 	}
 
 	/**
-	 * Update exisitng virus scan profile, it is possible to update the virus scan
+	 * Update existing virus scan profile, it is possible to update the virus scan
 	  profile id too
 	 * 
 	 * @param virusScanProfileId 

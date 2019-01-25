@@ -319,7 +319,7 @@ public class LiveStreamService {
 	}
 
 	/**
-	 * Creates perioding metadata sync-point events on a live stream
+	 * Creates periodic metadata sync-point events on a live stream
 	 * 
 	 * @param entryId Kaltura live-stream entry id
 	 * @param interval Events interval in seconds
