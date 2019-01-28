@@ -51,6 +51,7 @@ public class CaptionPlaybackPluginData extends ObjectBase {
 		String webVttUrl();
 		String url();
 		String isDefault();
+		String languageCode();
 	}
 
 	private String label;
@@ -59,6 +60,7 @@ public class CaptionPlaybackPluginData extends ObjectBase {
 	private String webVttUrl;
 	private String url;
 	private Boolean isDefault;
+	private String languageCode;
 
 	// label:
 	public String getLabel(){
@@ -132,6 +134,18 @@ public class CaptionPlaybackPluginData extends ObjectBase {
 		setToken("isDefault", multirequestToken);
 	}
 
+	// languageCode:
+	public String getLanguageCode(){
+		return this.languageCode;
+	}
+	public void setLanguageCode(String languageCode){
+		this.languageCode = languageCode;
+	}
+
+	public void languageCode(String multirequestToken){
+		setToken("languageCode", multirequestToken);
+	}
+
 
 	public CaptionPlaybackPluginData() {
 		super();
@@ -149,6 +163,7 @@ public class CaptionPlaybackPluginData extends ObjectBase {
 		webVttUrl = GsonParser.parseString(jsonObject.get("webVttUrl"));
 		url = GsonParser.parseString(jsonObject.get("url"));
 		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
+		languageCode = GsonParser.parseString(jsonObject.get("languageCode"));
 
 	}
 
@@ -161,6 +176,7 @@ public class CaptionPlaybackPluginData extends ObjectBase {
 		kparams.add("webVttUrl", this.webVttUrl);
 		kparams.add("url", this.url);
 		kparams.add("isDefault", this.isDefault);
+		kparams.add("languageCode", this.languageCode);
 		return kparams;
 	}
 
