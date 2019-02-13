@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.ReportInterval;
+import com.kaltura.client.types.ESearchEntryOperator;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -64,6 +65,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String mediaTypeIn();
 		String sourceTypeIn();
 		String ownerIdsIn();
+		ESearchEntryOperator.Tokenizer entryOperator();
 	}
 
 	/**
@@ -142,6 +144,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * Filter by entry owner
 	 */
 	private String ownerIdsIn;
+	private ESearchEntryOperator entryOperator;
 
 	// keywords:
 	public String getKeywords(){
@@ -371,6 +374,14 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("ownerIdsIn", multirequestToken);
 	}
 
+	// entryOperator:
+	public ESearchEntryOperator getEntryOperator(){
+		return this.entryOperator;
+	}
+	public void setEntryOperator(ESearchEntryOperator entryOperator){
+		this.entryOperator = entryOperator;
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -401,6 +412,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		mediaTypeIn = GsonParser.parseString(jsonObject.get("mediaTypeIn"));
 		sourceTypeIn = GsonParser.parseString(jsonObject.get("sourceTypeIn"));
 		ownerIdsIn = GsonParser.parseString(jsonObject.get("ownerIdsIn"));
+		entryOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("entryOperator"), ESearchEntryOperator.class);
 
 	}
 
@@ -426,6 +438,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("mediaTypeIn", this.mediaTypeIn);
 		kparams.add("sourceTypeIn", this.sourceTypeIn);
 		kparams.add("ownerIdsIn", this.ownerIdsIn);
+		kparams.add("entryOperator", this.entryOperator);
 		return kparams;
 	}
 
