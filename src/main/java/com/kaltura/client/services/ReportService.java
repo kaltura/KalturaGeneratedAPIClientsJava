@@ -34,6 +34,7 @@ import com.kaltura.client.types.ReportBaseTotal;
 import com.kaltura.client.types.ReportGraph;
 import com.kaltura.client.types.ReportInputFilter;
 import com.kaltura.client.types.ReportResponse;
+import com.kaltura.client.types.ReportResponseOptions;
 import com.kaltura.client.types.ReportTable;
 import com.kaltura.client.types.ReportTotal;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
@@ -56,6 +57,7 @@ import java.util.List;
  * @param reportType 
  * @param reportInputFilter 
  * @param objectIds - one ID or more (separated by ',') of specific objects to query
+ * @param responseOptions 
  * @param id 
  * @param params_ 
  * @param id 
@@ -64,14 +66,17 @@ import java.util.List;
  * @param reportInputFilter 
  * @param dimension 
  * @param objectIds - one ID or more (separated by ',') of specific objects to query
+ * @param responseOptions 
  * @param reportType 
  * @param reportInputFilter 
  * @param pager 
  * @param order 
  * @param objectIds - one ID or more (separated by ',') of specific objects to query
+ * @param responseOptions 
  * @param reportType 
  * @param reportInputFilter 
  * @param objectIds - one ID or more (separated by ',') of specific objects to query
+ * @param responseOptions 
  * @param reportTitle The title of the report to display at top of CSV
  * @param reportText The text of the filter of the report
  * @param headers The headers of the columns - a map between the enumerations on the server side
@@ -82,6 +87,7 @@ import java.util.List;
  * @param pager 
  * @param order 
  * @param objectIds - one ID or more (separated by ',') of specific objects to query
+ * @param responseOptions 
  * @param id - the requested id
  */
 public class ReportService {
@@ -109,11 +115,12 @@ public class ReportService {
 	
 	public static class GetBaseTotalReportBuilder extends ArrayRequestBuilder<ReportBaseTotal, ReportBaseTotal.Tokenizer, GetBaseTotalReportBuilder> {
 		
-		public GetBaseTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds) {
+		public GetBaseTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds, ReportResponseOptions responseOptions) {
 			super(ReportBaseTotal.class, "report", "getBaseTotal");
 			params.add("reportType", reportType);
 			params.add("reportInputFilter", reportInputFilter);
 			params.add("objectIds", objectIds);
+			params.add("responseOptions", responseOptions);
 		}
 		
 		public void reportType(String multirequestToken) {
@@ -129,15 +136,20 @@ public class ReportService {
 		return getBaseTotal(reportType, reportInputFilter, null);
 	}
 
+	public static GetBaseTotalReportBuilder getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
+		return getBaseTotal(reportType, reportInputFilter, objectIds, null);
+	}
+
 	/**
 	 * report getBaseTotal action allows to get the total base for storage reports
 	 * 
 	 * @param reportType 
 	 * @param reportInputFilter 
 	 * @param objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param responseOptions 
 	 */
-    public static GetBaseTotalReportBuilder getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
-		return new GetBaseTotalReportBuilder(reportType, reportInputFilter, objectIds);
+    public static GetBaseTotalReportBuilder getBaseTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds, ReportResponseOptions responseOptions)  {
+		return new GetBaseTotalReportBuilder(reportType, reportInputFilter, objectIds, responseOptions);
 	}
 	
 	public static class GetCsvReportBuilder extends ServeRequestBuilder {
@@ -195,12 +207,13 @@ public class ReportService {
 	
 	public static class GetGraphsReportBuilder extends ArrayRequestBuilder<ReportGraph, ReportGraph.Tokenizer, GetGraphsReportBuilder> {
 		
-		public GetGraphsReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds) {
+		public GetGraphsReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds, ReportResponseOptions responseOptions) {
 			super(ReportGraph.class, "report", "getGraphs");
 			params.add("reportType", reportType);
 			params.add("reportInputFilter", reportInputFilter);
 			params.add("dimension", dimension);
 			params.add("objectIds", objectIds);
+			params.add("responseOptions", responseOptions);
 		}
 		
 		public void reportType(String multirequestToken) {
@@ -224,6 +237,10 @@ public class ReportService {
 		return getGraphs(reportType, reportInputFilter, dimension, null);
 	}
 
+	public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds)  {
+		return getGraphs(reportType, reportInputFilter, dimension, objectIds, null);
+	}
+
 	/**
 	 * report getGraphs action allows to get a graph data for a specific report.
 	 * 
@@ -231,20 +248,22 @@ public class ReportService {
 	 * @param reportInputFilter 
 	 * @param dimension 
 	 * @param objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param responseOptions 
 	 */
-    public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds)  {
-		return new GetGraphsReportBuilder(reportType, reportInputFilter, dimension, objectIds);
+    public static GetGraphsReportBuilder getGraphs(ReportType reportType, ReportInputFilter reportInputFilter, String dimension, String objectIds, ReportResponseOptions responseOptions)  {
+		return new GetGraphsReportBuilder(reportType, reportInputFilter, dimension, objectIds, responseOptions);
 	}
 	
 	public static class GetTableReportBuilder extends RequestBuilder<ReportTable, ReportTable.Tokenizer, GetTableReportBuilder> {
 		
-		public GetTableReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds) {
+		public GetTableReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds, ReportResponseOptions responseOptions) {
 			super(ReportTable.class, "report", "getTable");
 			params.add("reportType", reportType);
 			params.add("reportInputFilter", reportInputFilter);
 			params.add("pager", pager);
 			params.add("order", order);
 			params.add("objectIds", objectIds);
+			params.add("responseOptions", responseOptions);
 		}
 		
 		public void reportType(String multirequestToken) {
@@ -268,6 +287,10 @@ public class ReportService {
 		return getTable(reportType, reportInputFilter, pager, order, null);
 	}
 
+	public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds)  {
+		return getTable(reportType, reportInputFilter, pager, order, objectIds, null);
+	}
+
 	/**
 	 * report getTable action allows to get a graph data for a specific report.
 	 * 
@@ -276,18 +299,20 @@ public class ReportService {
 	 * @param pager 
 	 * @param order 
 	 * @param objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param responseOptions 
 	 */
-    public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds)  {
-		return new GetTableReportBuilder(reportType, reportInputFilter, pager, order, objectIds);
+    public static GetTableReportBuilder getTable(ReportType reportType, ReportInputFilter reportInputFilter, FilterPager pager, String order, String objectIds, ReportResponseOptions responseOptions)  {
+		return new GetTableReportBuilder(reportType, reportInputFilter, pager, order, objectIds, responseOptions);
 	}
 	
 	public static class GetTotalReportBuilder extends RequestBuilder<ReportTotal, ReportTotal.Tokenizer, GetTotalReportBuilder> {
 		
-		public GetTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds) {
+		public GetTotalReportBuilder(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds, ReportResponseOptions responseOptions) {
 			super(ReportTotal.class, "report", "getTotal");
 			params.add("reportType", reportType);
 			params.add("reportInputFilter", reportInputFilter);
 			params.add("objectIds", objectIds);
+			params.add("responseOptions", responseOptions);
 		}
 		
 		public void reportType(String multirequestToken) {
@@ -303,20 +328,25 @@ public class ReportService {
 		return getTotal(reportType, reportInputFilter, null);
 	}
 
+	public static GetTotalReportBuilder getTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
+		return getTotal(reportType, reportInputFilter, objectIds, null);
+	}
+
 	/**
 	 * report getTotal action allows to get a graph data for a specific report.
 	 * 
 	 * @param reportType 
 	 * @param reportInputFilter 
 	 * @param objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param responseOptions 
 	 */
-    public static GetTotalReportBuilder getTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds)  {
-		return new GetTotalReportBuilder(reportType, reportInputFilter, objectIds);
+    public static GetTotalReportBuilder getTotal(ReportType reportType, ReportInputFilter reportInputFilter, String objectIds, ReportResponseOptions responseOptions)  {
+		return new GetTotalReportBuilder(reportType, reportInputFilter, objectIds, responseOptions);
 	}
 	
 	public static class GetUrlForReportAsCsvReportBuilder extends RequestBuilder<String, String, GetUrlForReportAsCsvReportBuilder> {
 		
-		public GetUrlForReportAsCsvReportBuilder(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds) {
+		public GetUrlForReportAsCsvReportBuilder(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds, ReportResponseOptions responseOptions) {
 			super(String.class, "report", "getUrlForReportAsCsv");
 			params.add("reportTitle", reportTitle);
 			params.add("reportText", reportText);
@@ -327,6 +357,7 @@ public class ReportService {
 			params.add("pager", pager);
 			params.add("order", order);
 			params.add("objectIds", objectIds);
+			params.add("responseOptions", responseOptions);
 		}
 		
 		public void reportTitle(String multirequestToken) {
@@ -374,6 +405,10 @@ public class ReportService {
 		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, null);
 	}
 
+	public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds)  {
+		return getUrlForReportAsCsv(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds, null);
+	}
+
 	/**
 	 * will create a CSV file for the given report and return the URL to access it
 	 * 
@@ -387,9 +422,10 @@ public class ReportService {
 	 * @param pager 
 	 * @param order 
 	 * @param objectIds - one ID or more (separated by ',') of specific objects to query
+	 * @param responseOptions 
 	 */
-    public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds)  {
-		return new GetUrlForReportAsCsvReportBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds);
+    public static GetUrlForReportAsCsvReportBuilder getUrlForReportAsCsv(String reportTitle, String reportText, String headers, ReportType reportType, ReportInputFilter reportInputFilter, String dimension, FilterPager pager, String order, String objectIds, ReportResponseOptions responseOptions)  {
+		return new GetUrlForReportAsCsvReportBuilder(reportTitle, reportText, headers, reportType, reportInputFilter, dimension, pager, order, objectIds, responseOptions);
 	}
 	
 	public static class ServeReportBuilder extends RequestBuilder<String, String, ServeReportBuilder> {
