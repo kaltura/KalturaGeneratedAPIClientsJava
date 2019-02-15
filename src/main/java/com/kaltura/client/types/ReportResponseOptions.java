@@ -46,9 +46,11 @@ public class ReportResponseOptions extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String delimiter();
+		String skipEmptyDates();
 	}
 
 	private String delimiter;
+	private Boolean skipEmptyDates;
 
 	// delimiter:
 	public String getDelimiter(){
@@ -60,6 +62,18 @@ public class ReportResponseOptions extends ObjectBase {
 
 	public void delimiter(String multirequestToken){
 		setToken("delimiter", multirequestToken);
+	}
+
+	// skipEmptyDates:
+	public Boolean getSkipEmptyDates(){
+		return this.skipEmptyDates;
+	}
+	public void setSkipEmptyDates(Boolean skipEmptyDates){
+		this.skipEmptyDates = skipEmptyDates;
+	}
+
+	public void skipEmptyDates(String multirequestToken){
+		setToken("skipEmptyDates", multirequestToken);
 	}
 
 
@@ -74,6 +88,7 @@ public class ReportResponseOptions extends ObjectBase {
 
 		// set members values:
 		delimiter = GsonParser.parseString(jsonObject.get("delimiter"));
+		skipEmptyDates = GsonParser.parseBoolean(jsonObject.get("skipEmptyDates"));
 
 	}
 
@@ -81,6 +96,7 @@ public class ReportResponseOptions extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaReportResponseOptions");
 		kparams.add("delimiter", this.delimiter);
+		kparams.add("skipEmptyDates", this.skipEmptyDates);
 		return kparams;
 	}
 
