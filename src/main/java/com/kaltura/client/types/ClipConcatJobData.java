@@ -48,7 +48,7 @@ public class ClipConcatJobData extends JobData {
 	public interface Tokenizer extends JobData.Tokenizer {
 		String partnerId();
 		String priority();
-		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> operationAttributes();
+		RequestBuilder.ListTokenizer<OperationAttributes.Tokenizer> operationAttributes();
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class ClipConcatJobData extends JobData {
 	/**
 	 * clip operations
 	 */
-	private List<ObjectBase> operationAttributes;
+	private List<OperationAttributes> operationAttributes;
 
 	// partnerId:
 	public Integer getPartnerId(){
@@ -89,10 +89,10 @@ public class ClipConcatJobData extends JobData {
 	}
 
 	// operationAttributes:
-	public List<ObjectBase> getOperationAttributes(){
+	public List<OperationAttributes> getOperationAttributes(){
 		return this.operationAttributes;
 	}
-	public void setOperationAttributes(List<ObjectBase> operationAttributes){
+	public void setOperationAttributes(List<OperationAttributes> operationAttributes){
 		this.operationAttributes = operationAttributes;
 	}
 
@@ -109,7 +109,7 @@ public class ClipConcatJobData extends JobData {
 		// set members values:
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		priority = GsonParser.parseInt(jsonObject.get("priority"));
-		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), ObjectBase.class);
+		operationAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("operationAttributes"), OperationAttributes.class);
 
 	}
 
