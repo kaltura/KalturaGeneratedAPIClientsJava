@@ -32,7 +32,6 @@ import com.kaltura.client.types.QuizUserEntry;
 import com.kaltura.client.types.UserEntry;
 import com.kaltura.client.types.UserEntryFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
-import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -148,10 +147,10 @@ public class UserEntryService {
 		return new SubmitQuizUserEntryBuilder(id);
 	}
 	
-	public static class UpdateUserEntryBuilder extends NullRequestBuilder {
+	public static class UpdateUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, UpdateUserEntryBuilder> {
 		
 		public UpdateUserEntryBuilder(int id, UserEntry userEntry) {
-			super("userentry", "update");
+			super(UserEntry.class, "userentry", "update");
 			params.add("id", id);
 			params.add("userEntry", userEntry);
 		}

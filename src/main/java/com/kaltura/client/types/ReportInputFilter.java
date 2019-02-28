@@ -68,6 +68,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		ESearchEntryOperator.Tokenizer entryOperator();
 		String entryCreatedAtGreaterThanOrEqual();
 		String entryCreatedAtLessThanOrEqual();
+		String entryIdIn();
 	}
 
 	/**
@@ -155,6 +156,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * Entry created at less than or equal as Unix timestamp
 	 */
 	private Integer entryCreatedAtLessThanOrEqual;
+	private String entryIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -416,6 +418,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("entryCreatedAtLessThanOrEqual", multirequestToken);
 	}
 
+	// entryIdIn:
+	public String getEntryIdIn(){
+		return this.entryIdIn;
+	}
+	public void setEntryIdIn(String entryIdIn){
+		this.entryIdIn = entryIdIn;
+	}
+
+	public void entryIdIn(String multirequestToken){
+		setToken("entryIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -449,6 +463,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		entryOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("entryOperator"), ESearchEntryOperator.class);
 		entryCreatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtGreaterThanOrEqual"));
 		entryCreatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtLessThanOrEqual"));
+		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 
 	}
 
@@ -477,6 +492,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("entryOperator", this.entryOperator);
 		kparams.add("entryCreatedAtGreaterThanOrEqual", this.entryCreatedAtGreaterThanOrEqual);
 		kparams.add("entryCreatedAtLessThanOrEqual", this.entryCreatedAtLessThanOrEqual);
+		kparams.add("entryIdIn", this.entryIdIn);
 		return kparams;
 	}
 
