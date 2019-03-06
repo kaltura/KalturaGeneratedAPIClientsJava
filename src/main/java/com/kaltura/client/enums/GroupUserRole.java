@@ -25,12 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using generate.php
@@ -38,64 +33,38 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum GroupUserRole implements EnumAsInt {
+	MEMBER(1),
+	MANAGER(2);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
-	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String feedback();
-		String version();
+	private int value;
+
+	GroupUserRole(int value) {
+		this.value = value;
 	}
 
-	private Double score;
-	private String feedback;
-	private Integer version;
-
-	// score:
-	public Double getScore(){
-		return this.score;
-	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
-	}
-
-	public QuizUserEntry() {
-		super();
-	}
-
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
-		return kparams;
-	}
-
+	public static GroupUserRole get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GroupUserRole defined values and compare the inner value with the given one:
+		for(GroupUserRole item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GroupUserRole.values().length > 0 ? GroupUserRole.values()[0]: null;
+   }
 }
-

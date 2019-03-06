@@ -54,6 +54,8 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param groupIds 
  * @param removeFromExistingGroups 
  * @param createNewGroups 
+ * @param groupUserId 
+ * @param groupUser Id
  */
 public class GroupUserService {
 	
@@ -173,5 +175,28 @@ public class GroupUserService {
 	 */
     public static SyncGroupUserBuilder sync(String userId, String groupIds, boolean removeFromExistingGroups, boolean createNewGroups)  {
 		return new SyncGroupUserBuilder(userId, groupIds, removeFromExistingGroups, createNewGroups);
+	}
+	
+	public static class UpdateGroupUserBuilder extends RequestBuilder<GroupUser, GroupUser.Tokenizer, UpdateGroupUserBuilder> {
+		
+		public UpdateGroupUserBuilder(String groupUserId, GroupUser groupUser) {
+			super(GroupUser.class, "groupuser", "update");
+			params.add("groupUserId", groupUserId);
+			params.add("groupUser", groupUser);
+		}
+		
+		public void groupUserId(String multirequestToken) {
+			params.add("groupUserId", multirequestToken);
+		}
+	}
+
+	/**
+	 * update GroupUser
+	 * 
+	 * @param groupUserId 
+	 * @param groupUser Id
+	 */
+    public static UpdateGroupUserBuilder update(String groupUserId, GroupUser groupUser)  {
+		return new UpdateGroupUserBuilder(groupUserId, groupUser);
 	}
 }

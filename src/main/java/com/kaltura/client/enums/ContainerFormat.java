@@ -37,6 +37,7 @@ public enum ContainerFormat implements EnumAsString {
 	_3GP("3gp"),
 	APPLEHTTP("applehttp"),
 	AVI("avi"),
+	BIF("bif"),
 	BMP("bmp"),
 	COPY("copy"),
 	FLV("flv"),

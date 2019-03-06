@@ -63,6 +63,7 @@ public class ThumbParams extends AssetParams {
 		String density();
 		String stripProfiles();
 		String videoOffsetInPercentage();
+		String interval();
 	}
 
 	private ThumbCropType cropType;
@@ -101,6 +102,10 @@ public class ThumbParams extends AssetParams {
 	 * Create thumbnail from the videoLengthpercentage second
 	 */
 	private Integer videoOffsetInPercentage;
+	/**
+	 * interval in seconds for creating thumbnail
+	 */
+	private Integer interval;
 
 	// cropType:
 	public ThumbCropType getCropType(){
@@ -306,6 +311,18 @@ public class ThumbParams extends AssetParams {
 		setToken("videoOffsetInPercentage", multirequestToken);
 	}
 
+	// interval:
+	public Integer getInterval(){
+		return this.interval;
+	}
+	public void setInterval(Integer interval){
+		this.interval = interval;
+	}
+
+	public void interval(String multirequestToken){
+		setToken("interval", multirequestToken);
+	}
+
 
 	public ThumbParams() {
 		super();
@@ -334,6 +351,7 @@ public class ThumbParams extends AssetParams {
 		density = GsonParser.parseInt(jsonObject.get("density"));
 		stripProfiles = GsonParser.parseBoolean(jsonObject.get("stripProfiles"));
 		videoOffsetInPercentage = GsonParser.parseInt(jsonObject.get("videoOffsetInPercentage"));
+		interval = GsonParser.parseInt(jsonObject.get("interval"));
 
 	}
 
@@ -357,6 +375,7 @@ public class ThumbParams extends AssetParams {
 		kparams.add("density", this.density);
 		kparams.add("stripProfiles", this.stripProfiles);
 		kparams.add("videoOffsetInPercentage", this.videoOffsetInPercentage);
+		kparams.add("interval", this.interval);
 		return kparams;
 	}
 

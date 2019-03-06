@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GroupUserCreationMode;
+import com.kaltura.client.enums.GroupUserRole;
 import com.kaltura.client.enums.GroupUserStatus;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
@@ -47,6 +48,7 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class GroupUser extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String id();
 		String userId();
 		String groupId();
 		String status();
@@ -54,8 +56,10 @@ public class GroupUser extends ObjectBase {
 		String createdAt();
 		String updatedAt();
 		String creationMode();
+		String userRole();
 	}
 
+	private String id;
 	private String userId;
 	private String groupId;
 	private GroupUserStatus status;
@@ -69,7 +73,12 @@ public class GroupUser extends ObjectBase {
 	 */
 	private Integer updatedAt;
 	private GroupUserCreationMode creationMode;
+	private GroupUserRole userRole;
 
+	// id:
+	public String getId(){
+		return this.id;
+	}
 	// userId:
 	public String getUserId(){
 		return this.userId;
@@ -122,6 +131,18 @@ public class GroupUser extends ObjectBase {
 		setToken("creationMode", multirequestToken);
 	}
 
+	// userRole:
+	public GroupUserRole getUserRole(){
+		return this.userRole;
+	}
+	public void setUserRole(GroupUserRole userRole){
+		this.userRole = userRole;
+	}
+
+	public void userRole(String multirequestToken){
+		setToken("userRole", multirequestToken);
+	}
+
 
 	public GroupUser() {
 		super();
@@ -133,6 +154,7 @@ public class GroupUser extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
+		id = GsonParser.parseString(jsonObject.get("id"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
 		groupId = GsonParser.parseString(jsonObject.get("groupId"));
 		status = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
@@ -140,6 +162,7 @@ public class GroupUser extends ObjectBase {
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 		creationMode = GroupUserCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
+		userRole = GroupUserRole.get(GsonParser.parseInt(jsonObject.get("userRole")));
 
 	}
 
@@ -149,6 +172,7 @@ public class GroupUser extends ObjectBase {
 		kparams.add("userId", this.userId);
 		kparams.add("groupId", this.groupId);
 		kparams.add("creationMode", this.creationMode);
+		kparams.add("userRole", this.userRole);
 		return kparams;
 	}
 
