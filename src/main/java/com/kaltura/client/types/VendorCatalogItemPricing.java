@@ -29,6 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.VendorCatalogItemPriceFunction;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -40,67 +42,62 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
+@MultiRequestBuilder.Tokenizer(VendorCatalogItemPricing.Tokenizer.class)
+public class VendorCatalogItemPricing extends ObjectBase {
 	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String calculatedScore();
-		String feedback();
-		String version();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String pricePerUnit();
+		String priceFunction();
 	}
 
-	private Double score;
-	private Double calculatedScore;
-	private String feedback;
-	private Integer version;
+	private Double pricePerUnit;
+	private VendorCatalogItemPriceFunction priceFunction;
 
-	// score:
-	public Double getScore(){
-		return this.score;
+	// pricePerUnit:
+	public Double getPricePerUnit(){
+		return this.pricePerUnit;
 	}
-	// calculatedScore:
-	public Double getCalculatedScore(){
-		return this.calculatedScore;
-	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	public void setPricePerUnit(Double pricePerUnit){
+		this.pricePerUnit = pricePerUnit;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void pricePerUnit(String multirequestToken){
+		setToken("pricePerUnit", multirequestToken);
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
+	// priceFunction:
+	public VendorCatalogItemPriceFunction getPriceFunction(){
+		return this.priceFunction;
+	}
+	public void setPriceFunction(VendorCatalogItemPriceFunction priceFunction){
+		this.priceFunction = priceFunction;
 	}
 
-	public QuizUserEntry() {
+	public void priceFunction(String multirequestToken){
+		setToken("priceFunction", multirequestToken);
+	}
+
+
+	public VendorCatalogItemPricing() {
 		super();
 	}
 
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+	public VendorCatalogItemPricing(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
+		pricePerUnit = GsonParser.parseDouble(jsonObject.get("pricePerUnit"));
+		priceFunction = VendorCatalogItemPriceFunction.get(GsonParser.parseString(jsonObject.get("priceFunction")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
+		kparams.add("objectType", "KalturaVendorCatalogItemPricing");
+		kparams.add("pricePerUnit", this.pricePerUnit);
+		kparams.add("priceFunction", this.priceFunction);
 		return kparams;
 	}
 

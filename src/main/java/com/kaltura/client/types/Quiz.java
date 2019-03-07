@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.ScoreType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -56,6 +57,7 @@ public class Quiz extends ObjectBase {
 		String allowDownload();
 		String showGradeAfterSubmission();
 		String maxRetakesAllowed();
+		String scoreType();
 	}
 
 	private Integer version;
@@ -70,6 +72,7 @@ public class Quiz extends ObjectBase {
 	private Boolean allowDownload;
 	private Boolean showGradeAfterSubmission;
 	private Integer maxRetakesAllowed;
+	private ScoreType scoreType;
 
 	// version:
 	public Integer getVersion(){
@@ -167,6 +170,18 @@ public class Quiz extends ObjectBase {
 		setToken("maxRetakesAllowed", multirequestToken);
 	}
 
+	// scoreType:
+	public ScoreType getScoreType(){
+		return this.scoreType;
+	}
+	public void setScoreType(ScoreType scoreType){
+		this.scoreType = scoreType;
+	}
+
+	public void scoreType(String multirequestToken){
+		setToken("scoreType", multirequestToken);
+	}
+
 
 	public Quiz() {
 		super();
@@ -187,6 +202,7 @@ public class Quiz extends ObjectBase {
 		allowDownload = GsonParser.parseBoolean(jsonObject.get("allowDownload"));
 		showGradeAfterSubmission = GsonParser.parseBoolean(jsonObject.get("showGradeAfterSubmission"));
 		maxRetakesAllowed = GsonParser.parseInt(jsonObject.get("maxRetakesAllowed"));
+		scoreType = ScoreType.get(GsonParser.parseInt(jsonObject.get("scoreType")));
 
 	}
 
@@ -201,6 +217,7 @@ public class Quiz extends ObjectBase {
 		kparams.add("allowDownload", this.allowDownload);
 		kparams.add("showGradeAfterSubmission", this.showGradeAfterSubmission);
 		kparams.add("maxRetakesAllowed", this.maxRetakesAllowed);
+		kparams.add("scoreType", this.scoreType);
 		return kparams;
 	}
 

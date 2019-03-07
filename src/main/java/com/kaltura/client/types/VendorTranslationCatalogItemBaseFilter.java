@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.CatalogItemLanguage;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -40,67 +41,62 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
+@MultiRequestBuilder.Tokenizer(VendorTranslationCatalogItemBaseFilter.Tokenizer.class)
+public abstract class VendorTranslationCatalogItemBaseFilter extends VendorCaptionsCatalogItemFilter {
 	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String calculatedScore();
-		String feedback();
-		String version();
+	public interface Tokenizer extends VendorCaptionsCatalogItemFilter.Tokenizer {
+		String targetLanguageEqual();
+		String targetLanguageIn();
 	}
 
-	private Double score;
-	private Double calculatedScore;
-	private String feedback;
-	private Integer version;
+	private CatalogItemLanguage targetLanguageEqual;
+	private String targetLanguageIn;
 
-	// score:
-	public Double getScore(){
-		return this.score;
+	// targetLanguageEqual:
+	public CatalogItemLanguage getTargetLanguageEqual(){
+		return this.targetLanguageEqual;
 	}
-	// calculatedScore:
-	public Double getCalculatedScore(){
-		return this.calculatedScore;
-	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	public void setTargetLanguageEqual(CatalogItemLanguage targetLanguageEqual){
+		this.targetLanguageEqual = targetLanguageEqual;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void targetLanguageEqual(String multirequestToken){
+		setToken("targetLanguageEqual", multirequestToken);
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
+	// targetLanguageIn:
+	public String getTargetLanguageIn(){
+		return this.targetLanguageIn;
+	}
+	public void setTargetLanguageIn(String targetLanguageIn){
+		this.targetLanguageIn = targetLanguageIn;
 	}
 
-	public QuizUserEntry() {
+	public void targetLanguageIn(String multirequestToken){
+		setToken("targetLanguageIn", multirequestToken);
+	}
+
+
+	public VendorTranslationCatalogItemBaseFilter() {
 		super();
 	}
 
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+	public VendorTranslationCatalogItemBaseFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
+		targetLanguageEqual = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("targetLanguageEqual")));
+		targetLanguageIn = GsonParser.parseString(jsonObject.get("targetLanguageIn"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
+		kparams.add("objectType", "KalturaVendorTranslationCatalogItemBaseFilter");
+		kparams.add("targetLanguageEqual", this.targetLanguageEqual);
+		kparams.add("targetLanguageIn", this.targetLanguageIn);
 		return kparams;
 	}
 

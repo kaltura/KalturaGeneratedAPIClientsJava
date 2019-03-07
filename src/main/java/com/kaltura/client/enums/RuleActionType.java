@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum RuleActionType implements EnumAsString {
 	DRM_POLICY("drm.DRM_POLICY"),
+	ADD_ENTRY_VENDOR_TASK("reach.ADD_ENTRY_VENDOR_TASK"),
 	BLOCK("1"),
 	PREVIEW("2"),
 	LIMIT_FLAVORS("3"),

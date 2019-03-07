@@ -40,67 +40,94 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
+@MultiRequestBuilder.Tokenizer(VendorCredit.Tokenizer.class)
+public class VendorCredit extends BaseVendorCredit {
 	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String calculatedScore();
-		String feedback();
-		String version();
+	public interface Tokenizer extends BaseVendorCredit.Tokenizer {
+		String credit();
+		String fromDate();
+		String overageCredit();
+		String addOn();
 	}
 
-	private Double score;
-	private Double calculatedScore;
-	private String feedback;
-	private Integer version;
+	private Integer credit;
+	private Integer fromDate;
+	private Integer overageCredit;
+	private Integer addOn;
 
-	// score:
-	public Double getScore(){
-		return this.score;
+	// credit:
+	public Integer getCredit(){
+		return this.credit;
 	}
-	// calculatedScore:
-	public Double getCalculatedScore(){
-		return this.calculatedScore;
-	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	public void setCredit(Integer credit){
+		this.credit = credit;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void credit(String multirequestToken){
+		setToken("credit", multirequestToken);
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
+	// fromDate:
+	public Integer getFromDate(){
+		return this.fromDate;
+	}
+	public void setFromDate(Integer fromDate){
+		this.fromDate = fromDate;
 	}
 
-	public QuizUserEntry() {
+	public void fromDate(String multirequestToken){
+		setToken("fromDate", multirequestToken);
+	}
+
+	// overageCredit:
+	public Integer getOverageCredit(){
+		return this.overageCredit;
+	}
+	public void setOverageCredit(Integer overageCredit){
+		this.overageCredit = overageCredit;
+	}
+
+	public void overageCredit(String multirequestToken){
+		setToken("overageCredit", multirequestToken);
+	}
+
+	// addOn:
+	public Integer getAddOn(){
+		return this.addOn;
+	}
+	public void setAddOn(Integer addOn){
+		this.addOn = addOn;
+	}
+
+	public void addOn(String multirequestToken){
+		setToken("addOn", multirequestToken);
+	}
+
+
+	public VendorCredit() {
 		super();
 	}
 
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+	public VendorCredit(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
+		credit = GsonParser.parseInt(jsonObject.get("credit"));
+		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
+		overageCredit = GsonParser.parseInt(jsonObject.get("overageCredit"));
+		addOn = GsonParser.parseInt(jsonObject.get("addOn"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
+		kparams.add("objectType", "KalturaVendorCredit");
+		kparams.add("credit", this.credit);
+		kparams.add("fromDate", this.fromDate);
+		kparams.add("overageCredit", this.overageCredit);
+		kparams.add("addOn", this.addOn);
 		return kparams;
 	}
 

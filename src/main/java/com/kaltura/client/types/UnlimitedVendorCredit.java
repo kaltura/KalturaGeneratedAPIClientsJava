@@ -40,67 +40,69 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
+@MultiRequestBuilder.Tokenizer(UnlimitedVendorCredit.Tokenizer.class)
+public class UnlimitedVendorCredit extends BaseVendorCredit {
 	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String calculatedScore();
-		String feedback();
-		String version();
+	public interface Tokenizer extends BaseVendorCredit.Tokenizer {
+		String credit();
+		String fromDate();
+		String toDate();
 	}
 
-	private Double score;
-	private Double calculatedScore;
-	private String feedback;
-	private Integer version;
+	private Integer credit;
+	private Integer fromDate;
+	private Integer toDate;
 
-	// score:
-	public Double getScore(){
-		return this.score;
+	// credit:
+	public Integer getCredit(){
+		return this.credit;
 	}
-	// calculatedScore:
-	public Double getCalculatedScore(){
-		return this.calculatedScore;
+	// fromDate:
+	public Integer getFromDate(){
+		return this.fromDate;
 	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	public void setFromDate(Integer fromDate){
+		this.fromDate = fromDate;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void fromDate(String multirequestToken){
+		setToken("fromDate", multirequestToken);
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
+	// toDate:
+	public Integer getToDate(){
+		return this.toDate;
+	}
+	public void setToDate(Integer toDate){
+		this.toDate = toDate;
 	}
 
-	public QuizUserEntry() {
+	public void toDate(String multirequestToken){
+		setToken("toDate", multirequestToken);
+	}
+
+
+	public UnlimitedVendorCredit() {
 		super();
 	}
 
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+	public UnlimitedVendorCredit(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
+		credit = GsonParser.parseInt(jsonObject.get("credit"));
+		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
+		toDate = GsonParser.parseInt(jsonObject.get("toDate"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
+		kparams.add("objectType", "KalturaUnlimitedVendorCredit");
+		kparams.add("fromDate", this.fromDate);
+		kparams.add("toDate", this.toDate);
 		return kparams;
 	}
 

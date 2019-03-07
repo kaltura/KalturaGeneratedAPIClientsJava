@@ -36,8 +36,10 @@ package com.kaltura.client.enums;
 public enum QuizUserEntryOrderBy implements EnumAsString {
 	CREATED_AT_ASC("+createdAt"),
 	UPDATED_AT_ASC("+updatedAt"),
+	VERSION_ASC("+version"),
 	CREATED_AT_DESC("-createdAt"),
-	UPDATED_AT_DESC("-updatedAt");
+	UPDATED_AT_DESC("-updatedAt"),
+	VERSION_DESC("-version");
 
 	private String value;
 

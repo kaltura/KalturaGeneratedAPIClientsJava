@@ -29,6 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.CatalogItemLanguage;
+import com.kaltura.client.enums.VendorCatalogItemOutputFormat;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -40,67 +42,62 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(QuizUserEntry.Tokenizer.class)
-public class QuizUserEntry extends UserEntry {
+@MultiRequestBuilder.Tokenizer(VendorAlignmentCatalogItem.Tokenizer.class)
+public class VendorAlignmentCatalogItem extends VendorCatalogItem {
 	
-	public interface Tokenizer extends UserEntry.Tokenizer {
-		String score();
-		String calculatedScore();
-		String feedback();
-		String version();
+	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
+		String sourceLanguage();
+		String outputFormat();
 	}
 
-	private Double score;
-	private Double calculatedScore;
-	private String feedback;
-	private Integer version;
+	private CatalogItemLanguage sourceLanguage;
+	private VendorCatalogItemOutputFormat outputFormat;
 
-	// score:
-	public Double getScore(){
-		return this.score;
+	// sourceLanguage:
+	public CatalogItemLanguage getSourceLanguage(){
+		return this.sourceLanguage;
 	}
-	// calculatedScore:
-	public Double getCalculatedScore(){
-		return this.calculatedScore;
-	}
-	// feedback:
-	public String getFeedback(){
-		return this.feedback;
-	}
-	public void setFeedback(String feedback){
-		this.feedback = feedback;
+	public void setSourceLanguage(CatalogItemLanguage sourceLanguage){
+		this.sourceLanguage = sourceLanguage;
 	}
 
-	public void feedback(String multirequestToken){
-		setToken("feedback", multirequestToken);
+	public void sourceLanguage(String multirequestToken){
+		setToken("sourceLanguage", multirequestToken);
 	}
 
-	// version:
-	public Integer getVersion(){
-		return this.version;
+	// outputFormat:
+	public VendorCatalogItemOutputFormat getOutputFormat(){
+		return this.outputFormat;
+	}
+	public void setOutputFormat(VendorCatalogItemOutputFormat outputFormat){
+		this.outputFormat = outputFormat;
 	}
 
-	public QuizUserEntry() {
+	public void outputFormat(String multirequestToken){
+		setToken("outputFormat", multirequestToken);
+	}
+
+
+	public VendorAlignmentCatalogItem() {
 		super();
 	}
 
-	public QuizUserEntry(JsonObject jsonObject) throws APIException {
+	public VendorAlignmentCatalogItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		score = GsonParser.parseDouble(jsonObject.get("score"));
-		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
-		feedback = GsonParser.parseString(jsonObject.get("feedback"));
-		version = GsonParser.parseInt(jsonObject.get("version"));
+		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
+		outputFormat = VendorCatalogItemOutputFormat.get(GsonParser.parseInt(jsonObject.get("outputFormat")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaQuizUserEntry");
-		kparams.add("feedback", this.feedback);
+		kparams.add("objectType", "KalturaVendorAlignmentCatalogItem");
+		kparams.add("sourceLanguage", this.sourceLanguage);
+		kparams.add("outputFormat", this.outputFormat);
 		return kparams;
 	}
 

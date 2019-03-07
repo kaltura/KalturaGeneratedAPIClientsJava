@@ -33,33 +33,17 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ConditionType implements EnumAsString {
-	EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
-	EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
-	METADATA_FIELD_CHANGED("metadata.FieldChanged"),
-	METADATA_FIELD_COMPARE("metadata.FieldCompare"),
-	METADATA_FIELD_MATCH("metadata.FieldMatch"),
-	EVENT_CATEGORY_ENTRY("reach.CategoryEntry"),
-	AUTHENTICATED("1"),
-	COUNTRY("2"),
-	IP_ADDRESS("3"),
-	SITE("4"),
-	USER_AGENT("5"),
-	FIELD_MATCH("6"),
-	FIELD_COMPARE("7"),
-	ASSET_PROPERTIES_COMPARE("8"),
-	USER_ROLE("9"),
-	GEO_DISTANCE("10"),
-	OR_OPERATOR("11"),
-	HASH("12"),
-	DELIVERY_PROFILE("13"),
-	ACTIVE_EDGE_VALIDATE("14"),
-	ANONYMOUS_IP("15"),
-	ASSET_TYPE("16");
+public enum VendorCaptionsCatalogItemOrderBy implements EnumAsString {
+	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
 
-	ConditionType(String value) {
+	VendorCaptionsCatalogItemOrderBy(String value) {
 		this.value = value;
 	}
 
@@ -72,19 +56,19 @@ public enum ConditionType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ConditionType get(String value) {
+	public static VendorCaptionsCatalogItemOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ConditionType defined values and compare the inner value with the given one:
-		for(ConditionType item: values()) {
+		// goes over VendorCaptionsCatalogItemOrderBy defined values and compare the inner value with the given one:
+		for(VendorCaptionsCatalogItemOrderBy item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ConditionType.values().length > 0 ? ConditionType.values()[0]: null;
+		return VendorCaptionsCatalogItemOrderBy.values().length > 0 ? VendorCaptionsCatalogItemOrderBy.values()[0]: null;
    }
 }

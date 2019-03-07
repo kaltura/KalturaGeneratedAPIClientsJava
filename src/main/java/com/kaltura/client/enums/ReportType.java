@@ -76,6 +76,7 @@ public enum ReportType implements EnumAsString {
 	APP_DOMAIN_UNIQUE_ACTIVE_USERS("40"),
 	TOP_SOURCES("41"),
 	VPAAS_USAGE_MULTI("42"),
+	CONTENT_REPORT_REASONS("44"),
 	PARTNER_USAGE("201");
 
 	private String value;
