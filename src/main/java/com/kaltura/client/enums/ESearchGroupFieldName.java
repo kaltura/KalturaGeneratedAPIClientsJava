@@ -33,57 +33,22 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ReportType implements EnumAsString {
-	QUIZ("quiz.QUIZ"),
-	QUIZ_AGGREGATE_BY_QUESTION("quiz.QUIZ_AGGREGATE_BY_QUESTION"),
-	QUIZ_USER_AGGREGATE_BY_QUESTION("quiz.QUIZ_USER_AGGREGATE_BY_QUESTION"),
-	QUIZ_USER_PERCENTAGE("quiz.QUIZ_USER_PERCENTAGE"),
-	TOP_CONTENT("1"),
-	CONTENT_DROPOFF("2"),
-	CONTENT_INTERACTIONS("3"),
-	MAP_OVERLAY("4"),
-	TOP_CONTRIBUTORS("5"),
-	TOP_SYNDICATION("6"),
-	CONTENT_CONTRIBUTIONS("7"),
-	USER_ENGAGEMENT("11"),
-	SPECIFIC_USER_ENGAGEMENT("12"),
-	USER_TOP_CONTENT("13"),
-	USER_CONTENT_DROPOFF("14"),
-	USER_CONTENT_INTERACTIONS("15"),
-	APPLICATIONS("16"),
-	USER_USAGE("17"),
-	SPECIFIC_USER_USAGE("18"),
-	VAR_USAGE("19"),
-	TOP_CREATORS("20"),
-	PLATFORMS("21"),
-	OPERATING_SYSTEM("22"),
-	BROWSERS("23"),
-	LIVE("24"),
-	TOP_PLAYBACK_CONTEXT("25"),
-	VPAAS_USAGE("26"),
-	ENTRY_USAGE("27"),
-	REACH_USAGE("28"),
-	TOP_CUSTOM_VAR1("29"),
-	MAP_OVERLAY_CITY("30"),
-	OPERATING_SYSTEM_FAMILIES("32"),
-	BROWSERS_FAMILIES("33"),
-	USER_ENGAGEMENT_TIMELINE("34"),
-	UNIQUE_USERS_PLAY("35"),
-	MAP_OVERLAY_COUNTRY("36"),
-	MAP_OVERLAY_REGION("37"),
-	TOP_CONTENT_CREATOR("38"),
-	TOP_CONTENT_CONTRIBUTORS("39"),
-	APP_DOMAIN_UNIQUE_ACTIVE_USERS("40"),
-	TOP_SOURCES("41"),
-	VPAAS_USAGE_MULTI("42"),
-	PERCENTILES("43"),
-	CONTENT_REPORT_REASONS("44"),
-	PLAYER_RELATED_INTERACTIONS("45"),
-	PARTNER_USAGE("201");
+public enum ESearchGroupFieldName implements EnumAsString {
+	CREATED_AT("created_at"),
+	EMAIL("email"),
+	FIRST_NAME("first_name"),
+	GROUP_IDS("group_ids"),
+	LAST_NAME("last_name"),
+	PERMISSION_NAMES("permission_names"),
+	ROLE_IDS("role_ids"),
+	SCREEN_NAME("screen_name"),
+	TAGS("tags"),
+	UPDATED_AT("updated_at"),
+	USER_ID("user_id");
 
 	private String value;
 
-	ReportType(String value) {
+	ESearchGroupFieldName(String value) {
 		this.value = value;
 	}
 
@@ -96,19 +61,19 @@ public enum ReportType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static ReportType get(String value) {
+	public static ESearchGroupFieldName get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over ReportType defined values and compare the inner value with the given one:
-		for(ReportType item: values()) {
+		// goes over ESearchGroupFieldName defined values and compare the inner value with the given one:
+		for(ESearchGroupFieldName item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ReportType.values().length > 0 ? ReportType.values()[0]: null;
+		return ESearchGroupFieldName.values().length > 0 ? ESearchGroupFieldName.values()[0]: null;
    }
 }

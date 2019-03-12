@@ -25,7 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.UserType;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +39,57 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchUserOrderByFieldName implements EnumAsString {
-	CREATED_AT("created_at"),
-	USER_ID("puser_id"),
-	SCREEN_NAME("screen_name"),
-	UPDATED_AT("updated_at");
 
-	private String value;
-
-	ESearchUserOrderByFieldName(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Group.Tokenizer.class)
+public class Group extends User {
+	
+	public interface Tokenizer extends User.Tokenizer {
+		String type();
+		String membersCount();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private UserType type;
+	private Integer membersCount;
+
+	// type:
+	public UserType getType(){
+		return this.type;
+	}
+	public void setType(UserType type){
+		this.type = type;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void type(String multirequestToken){
+		setToken("type", multirequestToken);
 	}
 
-	public static ESearchUserOrderByFieldName get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ESearchUserOrderByFieldName defined values and compare the inner value with the given one:
-		for(ESearchUserOrderByFieldName item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchUserOrderByFieldName.values().length > 0 ? ESearchUserOrderByFieldName.values()[0]: null;
-   }
+	// membersCount:
+	public Integer getMembersCount(){
+		return this.membersCount;
+	}
+
+	public Group() {
+		super();
+	}
+
+	public Group(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		type = UserType.get(GsonParser.parseInt(jsonObject.get("type")));
+		membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGroup");
+		kparams.add("type", this.type);
+		return kparams;
+	}
+
 }
+

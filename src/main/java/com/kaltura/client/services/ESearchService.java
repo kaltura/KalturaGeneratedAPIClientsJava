@@ -31,6 +31,8 @@ import com.kaltura.client.types.ESearchCategoryParams;
 import com.kaltura.client.types.ESearchCategoryResponse;
 import com.kaltura.client.types.ESearchEntryParams;
 import com.kaltura.client.types.ESearchEntryResponse;
+import com.kaltura.client.types.ESearchGroupParams;
+import com.kaltura.client.types.ESearchGroupResponse;
 import com.kaltura.client.types.ESearchUserParams;
 import com.kaltura.client.types.ESearchUserResponse;
 import com.kaltura.client.types.Pager;
@@ -77,6 +79,23 @@ public class ESearchService {
 
     public static SearchEntryESearchBuilder searchEntry(ESearchEntryParams searchParams, Pager pager)  {
 		return new SearchEntryESearchBuilder(searchParams, pager);
+	}
+	
+	public static class SearchGroupESearchBuilder extends RequestBuilder<ESearchGroupResponse, ESearchGroupResponse.Tokenizer, SearchGroupESearchBuilder> {
+		
+		public SearchGroupESearchBuilder(ESearchGroupParams searchParams, Pager pager) {
+			super(ESearchGroupResponse.class, "elasticsearch_esearch", "searchGroup");
+			params.add("searchParams", searchParams);
+			params.add("pager", pager);
+		}
+	}
+
+	public static SearchGroupESearchBuilder searchGroup(ESearchGroupParams searchParams)  {
+		return searchGroup(searchParams, null);
+	}
+
+    public static SearchGroupESearchBuilder searchGroup(ESearchGroupParams searchParams, Pager pager)  {
+		return new SearchGroupESearchBuilder(searchParams, pager);
 	}
 	
 	public static class SearchUserESearchBuilder extends RequestBuilder<ESearchUserResponse, ESearchUserResponse.Tokenizer, SearchUserESearchBuilder> {

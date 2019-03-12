@@ -25,7 +25,14 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +40,41 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchUserOrderByFieldName implements EnumAsString {
-	CREATED_AT("created_at"),
-	USER_ID("puser_id"),
-	SCREEN_NAME("screen_name"),
-	UPDATED_AT("updated_at");
 
-	private String value;
-
-	ESearchUserOrderByFieldName(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ESearchGroupResponse.Tokenizer.class)
+public class ESearchGroupResponse extends ESearchResponse {
+	
+	public interface Tokenizer extends ESearchResponse.Tokenizer {
+		RequestBuilder.ListTokenizer<ESearchGroupResult.Tokenizer> objects();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private List<ESearchGroupResult> objects;
+
+	// objects:
+	public List<ESearchGroupResult> getObjects(){
+		return this.objects;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public ESearchGroupResponse() {
+		super();
 	}
 
-	public static ESearchUserOrderByFieldName get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ESearchUserOrderByFieldName defined values and compare the inner value with the given one:
-		for(ESearchUserOrderByFieldName item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ESearchUserOrderByFieldName.values().length > 0 ? ESearchUserOrderByFieldName.values()[0]: null;
-   }
+	public ESearchGroupResponse(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchGroupResult.class);
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaESearchGroupResponse");
+		return kparams;
+	}
+
 }
+
