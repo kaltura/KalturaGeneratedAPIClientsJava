@@ -79,6 +79,7 @@ public enum ReportType implements EnumAsString {
 	PERCENTILES("43"),
 	CONTENT_REPORT_REASONS("44"),
 	PLAYER_RELATED_INTERACTIONS("45"),
+	PLAYBACK_RATE("46"),
 	PARTNER_USAGE("201");
 
 	private String value;

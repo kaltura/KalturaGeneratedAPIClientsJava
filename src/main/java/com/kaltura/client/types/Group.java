@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.UserType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -42,27 +41,13 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(Group.Tokenizer.class)
-public class Group extends User {
+public class Group extends BaseUser {
 	
-	public interface Tokenizer extends User.Tokenizer {
-		String type();
+	public interface Tokenizer extends BaseUser.Tokenizer {
 		String membersCount();
 	}
 
-	private UserType type;
 	private Integer membersCount;
-
-	// type:
-	public UserType getType(){
-		return this.type;
-	}
-	public void setType(UserType type){
-		this.type = type;
-	}
-
-	public void type(String multirequestToken){
-		setToken("type", multirequestToken);
-	}
 
 	// membersCount:
 	public Integer getMembersCount(){
@@ -79,7 +64,6 @@ public class Group extends User {
 		if(jsonObject == null) return;
 
 		// set members values:
-		type = UserType.get(GsonParser.parseInt(jsonObject.get("type")));
 		membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
 
 	}
@@ -87,7 +71,6 @@ public class Group extends User {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaGroup");
-		kparams.add("type", this.type);
 		return kparams;
 	}
 

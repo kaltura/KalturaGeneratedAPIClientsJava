@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum QuizUserEntryOrderBy implements EnumAsString {
-	CREATED_AT_ASC("+createdAt"),
-	UPDATED_AT_ASC("+updatedAt"),
-	CREATED_AT_DESC("-createdAt"),
-	UPDATED_AT_DESC("-updatedAt");
 
-	private String value;
-
-	QuizUserEntryOrderBy(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(GroupFilter.Tokenizer.class)
+public class GroupFilter extends UserFilter {
+	
+	public interface Tokenizer extends UserFilter.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public GroupFilter() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public GroupFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static QuizUserEntryOrderBy get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over QuizUserEntryOrderBy defined values and compare the inner value with the given one:
-		for(QuizUserEntryOrderBy item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return QuizUserEntryOrderBy.values().length > 0 ? QuizUserEntryOrderBy.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaGroupFilter");
+		return kparams;
+	}
+
 }
+
