@@ -29,11 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.ESearchOperatorType;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,58 +39,25 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchGroupOperator.Tokenizer.class)
-public class ESearchGroupOperator extends ESearchGroupBaseItem {
+@MultiRequestBuilder.Tokenizer(ESearchGroupBaseItem.Tokenizer.class)
+public abstract class ESearchGroupBaseItem extends ESearchBaseItem {
 	
-	public interface Tokenizer extends ESearchGroupBaseItem.Tokenizer {
-		String operator();
-		RequestBuilder.ListTokenizer<ESearchGroupBaseItem.Tokenizer> searchItems();
-	}
-
-	private ESearchOperatorType operator;
-	private List<ESearchGroupBaseItem> searchItems;
-
-	// operator:
-	public ESearchOperatorType getOperator(){
-		return this.operator;
-	}
-	public void setOperator(ESearchOperatorType operator){
-		this.operator = operator;
-	}
-
-	public void operator(String multirequestToken){
-		setToken("operator", multirequestToken);
-	}
-
-	// searchItems:
-	public List<ESearchGroupBaseItem> getSearchItems(){
-		return this.searchItems;
-	}
-	public void setSearchItems(List<ESearchGroupBaseItem> searchItems){
-		this.searchItems = searchItems;
+	public interface Tokenizer extends ESearchBaseItem.Tokenizer {
 	}
 
 
-	public ESearchGroupOperator() {
+
+	public ESearchGroupBaseItem() {
 		super();
 	}
 
-	public ESearchGroupOperator(JsonObject jsonObject) throws APIException {
+	public ESearchGroupBaseItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		operator = ESearchOperatorType.get(GsonParser.parseInt(jsonObject.get("operator")));
-		searchItems = GsonParser.parseArray(jsonObject.getAsJsonArray("searchItems"), ESearchGroupBaseItem.class);
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchGroupOperator");
-		kparams.add("operator", this.operator);
-		kparams.add("searchItems", this.searchItems);
+		kparams.add("objectType", "KalturaESearchGroupBaseItem");
 		return kparams;
 	}
 

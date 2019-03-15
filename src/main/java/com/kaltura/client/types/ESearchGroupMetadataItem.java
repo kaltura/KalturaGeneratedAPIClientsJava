@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -40,11 +41,53 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ESearchGroupMetadataItem.Tokenizer.class)
-public class ESearchGroupMetadataItem extends ESearchUserMetadataItem {
+public class ESearchGroupMetadataItem extends ESearchAbstractGroupItem {
 	
-	public interface Tokenizer extends ESearchUserMetadataItem.Tokenizer {
+	public interface Tokenizer extends ESearchAbstractGroupItem.Tokenizer {
+		String xpath();
+		String metadataProfileId();
+		String metadataFieldId();
 	}
 
+	private String xpath;
+	private Integer metadataProfileId;
+	private Integer metadataFieldId;
+
+	// xpath:
+	public String getXpath(){
+		return this.xpath;
+	}
+	public void setXpath(String xpath){
+		this.xpath = xpath;
+	}
+
+	public void xpath(String multirequestToken){
+		setToken("xpath", multirequestToken);
+	}
+
+	// metadataProfileId:
+	public Integer getMetadataProfileId(){
+		return this.metadataProfileId;
+	}
+	public void setMetadataProfileId(Integer metadataProfileId){
+		this.metadataProfileId = metadataProfileId;
+	}
+
+	public void metadataProfileId(String multirequestToken){
+		setToken("metadataProfileId", multirequestToken);
+	}
+
+	// metadataFieldId:
+	public Integer getMetadataFieldId(){
+		return this.metadataFieldId;
+	}
+	public void setMetadataFieldId(Integer metadataFieldId){
+		this.metadataFieldId = metadataFieldId;
+	}
+
+	public void metadataFieldId(String multirequestToken){
+		setToken("metadataFieldId", multirequestToken);
+	}
 
 
 	public ESearchGroupMetadataItem() {
@@ -53,11 +96,22 @@ public class ESearchGroupMetadataItem extends ESearchUserMetadataItem {
 
 	public ESearchGroupMetadataItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		xpath = GsonParser.parseString(jsonObject.get("xpath"));
+		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
+		metadataFieldId = GsonParser.parseInt(jsonObject.get("metadataFieldId"));
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchGroupMetadataItem");
+		kparams.add("xpath", this.xpath);
+		kparams.add("metadataProfileId", this.metadataProfileId);
+		kparams.add("metadataFieldId", this.metadataFieldId);
 		return kparams;
 	}
 
