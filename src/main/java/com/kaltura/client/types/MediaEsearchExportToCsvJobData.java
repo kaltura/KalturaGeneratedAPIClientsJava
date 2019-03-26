@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.EntryVendorTaskFilter;
+import com.kaltura.client.types.ESearchEntryParams;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,45 +41,45 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(EntryVendorTaskCsvJobData.Tokenizer.class)
-public class EntryVendorTaskCsvJobData extends ExportCsvJobData {
+@MultiRequestBuilder.Tokenizer(MediaEsearchExportToCsvJobData.Tokenizer.class)
+public class MediaEsearchExportToCsvJobData extends ExportCsvJobData {
 	
 	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
-		EntryVendorTaskFilter.Tokenizer filter();
+		ESearchEntryParams.Tokenizer searchParams();
 	}
 
 	/**
-	 * The filter should return the list of users that need to be specified in the csv.
+	 * Esearch parameters for the entry search
 	 */
-	private EntryVendorTaskFilter filter;
+	private ESearchEntryParams searchParams;
 
-	// filter:
-	public EntryVendorTaskFilter getFilter(){
-		return this.filter;
+	// searchParams:
+	public ESearchEntryParams getSearchParams(){
+		return this.searchParams;
 	}
-	public void setFilter(EntryVendorTaskFilter filter){
-		this.filter = filter;
+	public void setSearchParams(ESearchEntryParams searchParams){
+		this.searchParams = searchParams;
 	}
 
 
-	public EntryVendorTaskCsvJobData() {
+	public MediaEsearchExportToCsvJobData() {
 		super();
 	}
 
-	public EntryVendorTaskCsvJobData(JsonObject jsonObject) throws APIException {
+	public MediaEsearchExportToCsvJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), EntryVendorTaskFilter.class);
+		searchParams = GsonParser.parseObject(jsonObject.getAsJsonObject("searchParams"), ESearchEntryParams.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaEntryVendorTaskCsvJobData");
-		kparams.add("filter", this.filter);
+		kparams.add("objectType", "KalturaMediaEsearchExportToCsvJobData");
+		kparams.add("searchParams", this.searchParams);
 		return kparams;
 	}
 

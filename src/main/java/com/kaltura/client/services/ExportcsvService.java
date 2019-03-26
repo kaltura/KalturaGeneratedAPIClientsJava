@@ -25,13 +25,9 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
+package com.kaltura.client.services;
 
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.types.EntryVendorTaskFilter;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -40,48 +36,31 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(EntryVendorTaskCsvJobData.Tokenizer.class)
-public class EntryVendorTaskCsvJobData extends ExportCsvJobData {
+/**
+ * Export CSV service is used to manage CSV exports of objects
+ * 
+ * @param id - the requested file id
+ */
+public class ExportcsvService {
 	
-	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
-		EntryVendorTaskFilter.Tokenizer filter();
+	public static class ServeCsvExportcsvBuilder extends RequestBuilder<String, String, ServeCsvExportcsvBuilder> {
+		
+		public ServeCsvExportcsvBuilder(String id) {
+			super(String.class, "exportcsv", "serveCsv");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
 	}
 
 	/**
-	 * The filter should return the list of users that need to be specified in the csv.
+	 * Will serve a requested CSV
+	 * 
+	 * @param id - the requested file id
 	 */
-	private EntryVendorTaskFilter filter;
-
-	// filter:
-	public EntryVendorTaskFilter getFilter(){
-		return this.filter;
+    public static ServeCsvExportcsvBuilder serveCsv(String id)  {
+		return new ServeCsvExportcsvBuilder(id);
 	}
-	public void setFilter(EntryVendorTaskFilter filter){
-		this.filter = filter;
-	}
-
-
-	public EntryVendorTaskCsvJobData() {
-		super();
-	}
-
-	public EntryVendorTaskCsvJobData(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), EntryVendorTaskFilter.class);
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaEntryVendorTaskCsvJobData");
-		kparams.add("filter", this.filter);
-		return kparams;
-	}
-
 }
-

@@ -33,6 +33,7 @@ import com.kaltura.client.enums.ReachProfileContentDeletionPolicy;
 import com.kaltura.client.enums.ReachProfileStatus;
 import com.kaltura.client.enums.ReachProfileType;
 import com.kaltura.client.enums.VendorCatalogItemOutputFormat;
+import com.kaltura.client.enums.VendorTaskProcessingRegion;
 import com.kaltura.client.types.BaseVendorCredit;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
@@ -75,6 +76,7 @@ public class ReachProfile extends ObjectBase {
 		String usedCredit();
 		RequestBuilder.ListTokenizer<Dictionary.Tokenizer> dictionaries();
 		String flavorParamsIds();
+		String vendorTaskProcessingRegion();
 	}
 
 	private Integer id;
@@ -107,6 +109,10 @@ public class ReachProfile extends ObjectBase {
 	  asset when trying to download the asset
 	 */
 	private String flavorParamsIds;
+	/**
+	 * Indicates in which region the task processing should task place
+	 */
+	private VendorTaskProcessingRegion vendorTaskProcessingRegion;
 
 	// id:
 	public Integer getId(){
@@ -324,6 +330,18 @@ public class ReachProfile extends ObjectBase {
 		setToken("flavorParamsIds", multirequestToken);
 	}
 
+	// vendorTaskProcessingRegion:
+	public VendorTaskProcessingRegion getVendorTaskProcessingRegion(){
+		return this.vendorTaskProcessingRegion;
+	}
+	public void setVendorTaskProcessingRegion(VendorTaskProcessingRegion vendorTaskProcessingRegion){
+		this.vendorTaskProcessingRegion = vendorTaskProcessingRegion;
+	}
+
+	public void vendorTaskProcessingRegion(String multirequestToken){
+		setToken("vendorTaskProcessingRegion", multirequestToken);
+	}
+
 
 	public ReachProfile() {
 		super();
@@ -358,6 +376,7 @@ public class ReachProfile extends ObjectBase {
 		usedCredit = GsonParser.parseDouble(jsonObject.get("usedCredit"));
 		dictionaries = GsonParser.parseArray(jsonObject.getAsJsonArray("dictionaries"), Dictionary.class);
 		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
+		vendorTaskProcessingRegion = VendorTaskProcessingRegion.get(GsonParser.parseInt(jsonObject.get("vendorTaskProcessingRegion")));
 
 	}
 
@@ -381,6 +400,7 @@ public class ReachProfile extends ObjectBase {
 		kparams.add("credit", this.credit);
 		kparams.add("dictionaries", this.dictionaries);
 		kparams.add("flavorParamsIds", this.flavorParamsIds);
+		kparams.add("vendorTaskProcessingRegion", this.vendorTaskProcessingRegion);
 		return kparams;
 	}
 

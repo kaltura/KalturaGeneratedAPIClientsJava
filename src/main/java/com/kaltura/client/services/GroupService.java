@@ -59,6 +59,33 @@ public class GroupService {
 		return new AddGroupBuilder(group);
 	}
 	
+	public static class CloneGroupBuilder extends RequestBuilder<Group, Group.Tokenizer, CloneGroupBuilder> {
+		
+		public CloneGroupBuilder(String originalGroupId, String newGroupName) {
+			super(Group.class, "group_group", "clone");
+			params.add("originalGroupId", originalGroupId);
+			params.add("newGroupName", newGroupName);
+		}
+		
+		public void originalGroupId(String multirequestToken) {
+			params.add("originalGroupId", multirequestToken);
+		}
+		
+		public void newGroupName(String multirequestToken) {
+			params.add("newGroupName", multirequestToken);
+		}
+	}
+
+	/**
+	 * clone the group (groupId), and set group id with the neeGroupName.
+	 * 
+	 * @param originalGroupId The unique identifier in the partner's system
+	 * @param newGroupName The unique identifier in the partner's system
+	 */
+    public static CloneGroupBuilder clone(String originalGroupId, String newGroupName)  {
+		return new CloneGroupBuilder(originalGroupId, newGroupName);
+	}
+	
 	public static class DeleteGroupBuilder extends RequestBuilder<Group, Group.Tokenizer, DeleteGroupBuilder> {
 		
 		public DeleteGroupBuilder(String groupId) {

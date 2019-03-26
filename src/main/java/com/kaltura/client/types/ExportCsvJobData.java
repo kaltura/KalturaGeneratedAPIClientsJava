@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.EntryVendorTaskFilter;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,45 +40,87 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(EntryVendorTaskCsvJobData.Tokenizer.class)
-public class EntryVendorTaskCsvJobData extends ExportCsvJobData {
+@MultiRequestBuilder.Tokenizer(ExportCsvJobData.Tokenizer.class)
+public class ExportCsvJobData extends JobData {
 	
-	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
-		EntryVendorTaskFilter.Tokenizer filter();
+	public interface Tokenizer extends JobData.Tokenizer {
+		String userName();
+		String userMail();
+		String outputPath();
 	}
 
 	/**
-	 * The filter should return the list of users that need to be specified in the csv.
+	 * The users name
 	 */
-	private EntryVendorTaskFilter filter;
+	private String userName;
+	/**
+	 * The users email
+	 */
+	private String userMail;
+	/**
+	 * The file location
+	 */
+	private String outputPath;
 
-	// filter:
-	public EntryVendorTaskFilter getFilter(){
-		return this.filter;
+	// userName:
+	public String getUserName(){
+		return this.userName;
 	}
-	public void setFilter(EntryVendorTaskFilter filter){
-		this.filter = filter;
+	public void setUserName(String userName){
+		this.userName = userName;
+	}
+
+	public void userName(String multirequestToken){
+		setToken("userName", multirequestToken);
+	}
+
+	// userMail:
+	public String getUserMail(){
+		return this.userMail;
+	}
+	public void setUserMail(String userMail){
+		this.userMail = userMail;
+	}
+
+	public void userMail(String multirequestToken){
+		setToken("userMail", multirequestToken);
+	}
+
+	// outputPath:
+	public String getOutputPath(){
+		return this.outputPath;
+	}
+	public void setOutputPath(String outputPath){
+		this.outputPath = outputPath;
+	}
+
+	public void outputPath(String multirequestToken){
+		setToken("outputPath", multirequestToken);
 	}
 
 
-	public EntryVendorTaskCsvJobData() {
+	public ExportCsvJobData() {
 		super();
 	}
 
-	public EntryVendorTaskCsvJobData(JsonObject jsonObject) throws APIException {
+	public ExportCsvJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), EntryVendorTaskFilter.class);
+		userName = GsonParser.parseString(jsonObject.get("userName"));
+		userMail = GsonParser.parseString(jsonObject.get("userMail"));
+		outputPath = GsonParser.parseString(jsonObject.get("outputPath"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaEntryVendorTaskCsvJobData");
-		kparams.add("filter", this.filter);
+		kparams.add("objectType", "KalturaExportCsvJobData");
+		kparams.add("userName", this.userName);
+		kparams.add("userMail", this.userMail);
+		kparams.add("outputPath", this.outputPath);
 		return kparams;
 	}
 

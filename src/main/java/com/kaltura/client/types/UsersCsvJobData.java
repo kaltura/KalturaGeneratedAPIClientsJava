@@ -44,15 +44,12 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UsersCsvJobData.Tokenizer.class)
-public class UsersCsvJobData extends JobData {
+public class UsersCsvJobData extends ExportCsvJobData {
 	
-	public interface Tokenizer extends JobData.Tokenizer {
+	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
 		UserFilter.Tokenizer filter();
 		String metadataProfileId();
 		RequestBuilder.ListTokenizer<CsvAdditionalFieldInfo.Tokenizer> additionalFields();
-		String userName();
-		String userMail();
-		String outputPath();
 	}
 
 	/**
@@ -67,18 +64,6 @@ public class UsersCsvJobData extends JobData {
 	 * The xpath to look in the metadataProfileId  and the wanted csv field name
 	 */
 	private List<CsvAdditionalFieldInfo> additionalFields;
-	/**
-	 * The users name
-	 */
-	private String userName;
-	/**
-	 * The users email
-	 */
-	private String userMail;
-	/**
-	 * The file location
-	 */
-	private String outputPath;
 
 	// filter:
 	public UserFilter getFilter(){
@@ -108,42 +93,6 @@ public class UsersCsvJobData extends JobData {
 		this.additionalFields = additionalFields;
 	}
 
-	// userName:
-	public String getUserName(){
-		return this.userName;
-	}
-	public void setUserName(String userName){
-		this.userName = userName;
-	}
-
-	public void userName(String multirequestToken){
-		setToken("userName", multirequestToken);
-	}
-
-	// userMail:
-	public String getUserMail(){
-		return this.userMail;
-	}
-	public void setUserMail(String userMail){
-		this.userMail = userMail;
-	}
-
-	public void userMail(String multirequestToken){
-		setToken("userMail", multirequestToken);
-	}
-
-	// outputPath:
-	public String getOutputPath(){
-		return this.outputPath;
-	}
-	public void setOutputPath(String outputPath){
-		this.outputPath = outputPath;
-	}
-
-	public void outputPath(String multirequestToken){
-		setToken("outputPath", multirequestToken);
-	}
-
 
 	public UsersCsvJobData() {
 		super();
@@ -158,9 +107,6 @@ public class UsersCsvJobData extends JobData {
 		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
 		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 		additionalFields = GsonParser.parseArray(jsonObject.getAsJsonArray("additionalFields"), CsvAdditionalFieldInfo.class);
-		userName = GsonParser.parseString(jsonObject.get("userName"));
-		userMail = GsonParser.parseString(jsonObject.get("userMail"));
-		outputPath = GsonParser.parseString(jsonObject.get("outputPath"));
 
 	}
 
@@ -170,9 +116,6 @@ public class UsersCsvJobData extends JobData {
 		kparams.add("filter", this.filter);
 		kparams.add("metadataProfileId", this.metadataProfileId);
 		kparams.add("additionalFields", this.additionalFields);
-		kparams.add("userName", this.userName);
-		kparams.add("userMail", this.userMail);
-		kparams.add("outputPath", this.outputPath);
 		return kparams;
 	}
 

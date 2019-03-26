@@ -25,13 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.types.EntryVendorTaskFilter;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using generate.php
@@ -39,49 +33,38 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum VendorTaskProcessingRegion implements EnumAsInt {
+	US(1),
+	EU(2);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(EntryVendorTaskCsvJobData.Tokenizer.class)
-public class EntryVendorTaskCsvJobData extends ExportCsvJobData {
-	
-	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
-		EntryVendorTaskFilter.Tokenizer filter();
+	private int value;
+
+	VendorTaskProcessingRegion(int value) {
+		this.value = value;
 	}
 
-	/**
-	 * The filter should return the list of users that need to be specified in the csv.
-	 */
-	private EntryVendorTaskFilter filter;
-
-	// filter:
-	public EntryVendorTaskFilter getFilter(){
-		return this.filter;
-	}
-	public void setFilter(EntryVendorTaskFilter filter){
-		this.filter = filter;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-
-	public EntryVendorTaskCsvJobData() {
-		super();
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-	public EntryVendorTaskCsvJobData(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), EntryVendorTaskFilter.class);
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaEntryVendorTaskCsvJobData");
-		kparams.add("filter", this.filter);
-		return kparams;
-	}
-
+	public static VendorTaskProcessingRegion get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over VendorTaskProcessingRegion defined values and compare the inner value with the given one:
+		for(VendorTaskProcessingRegion item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return VendorTaskProcessingRegion.values().length > 0 ? VendorTaskProcessingRegion.values()[0]: null;
+   }
 }
-

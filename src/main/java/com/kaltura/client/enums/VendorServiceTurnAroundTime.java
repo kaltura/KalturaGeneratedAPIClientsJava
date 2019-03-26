@@ -44,6 +44,7 @@ public enum VendorServiceTurnAroundTime implements EnumAsInt {
 	TWELVE_HOURS(43200),
 	TWENTY_FOUR_HOURS(86400),
 	FORTY_EIGHT_HOURS(172800),
+	FOUR_DAYS(345600),
 	TEN_DAYS(864000);
 
 	private int value;

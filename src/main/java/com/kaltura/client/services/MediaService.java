@@ -39,6 +39,7 @@ import com.kaltura.client.types.ExtendingItemMrssParameter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.MediaEntry;
 import com.kaltura.client.types.MediaEntryFilter;
+import com.kaltura.client.types.MediaEsearchExportToCsvJobData;
 import com.kaltura.client.types.ModerationFlag;
 import com.kaltura.client.types.Resource;
 import com.kaltura.client.types.SearchResult;
@@ -95,6 +96,7 @@ import java.util.List;
  * @param dynamicConversionAttributes 
  * @param filter Media entry filter
  * @param entryId Media entry id to delete
+ * @param data job data indicating filter to pass to the job
  * @param moderationFlag 
  * @param entryId Media entry id
  * @param version Desired version of the data
@@ -607,6 +609,24 @@ public class MediaService {
 	 */
     public static DeleteMediaBuilder delete(String entryId)  {
 		return new DeleteMediaBuilder(entryId);
+	}
+	
+	public static class ExportToCsvMediaBuilder extends RequestBuilder<String, String, ExportToCsvMediaBuilder> {
+		
+		public ExportToCsvMediaBuilder(MediaEsearchExportToCsvJobData data) {
+			super(String.class, "media", "exportToCsv");
+			params.add("data", data);
+		}
+	}
+
+	/**
+	 * Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of entries
+	 * 
+	 * @param data job data indicating filter to pass to the job
+	 */
+    public static ExportToCsvMediaBuilder exportToCsv(MediaEsearchExportToCsvJobData data)  {
+		return new ExportToCsvMediaBuilder(data);
 	}
 	
 	public static class FlagMediaBuilder extends NullRequestBuilder {
