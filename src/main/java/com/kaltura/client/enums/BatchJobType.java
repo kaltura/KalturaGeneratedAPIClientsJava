@@ -37,10 +37,10 @@ public enum BatchJobType implements EnumAsString {
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
 	PARSE_CAPTION_ASSET("captionSearch.parseCaptionAsset"),
 	DISTRIBUTION_DELETE("contentDistribution.DistributionDelete"),
-	CONVERT("0"),
 	DISTRIBUTION_DISABLE("contentDistribution.DistributionDisable"),
 	DISTRIBUTION_ENABLE("contentDistribution.DistributionEnable"),
 	DISTRIBUTION_FETCH_REPORT("contentDistribution.DistributionFetchReport"),
+	CONVERT("0"),
 	DISTRIBUTION_SUBMIT("contentDistribution.DistributionSubmit"),
 	DISTRIBUTION_SYNC("contentDistribution.DistributionSync"),
 	DISTRIBUTION_UPDATE("contentDistribution.DistributionUpdate"),
@@ -99,7 +99,8 @@ public enum BatchJobType implements EnumAsString {
 	USERS_CSV("46"),
 	CLIP_CONCAT("47"),
 	COPY_CUE_POINTS("48"),
-	EXPORT_CSV("49");
+	EXPORT_CSV("49"),
+	REPORT_EXPORT("50");
 
 	private String value;
 

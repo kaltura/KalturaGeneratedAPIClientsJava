@@ -31,6 +31,8 @@ import com.kaltura.client.enums.ReportType;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.ReportBaseTotal;
+import com.kaltura.client.types.ReportExportParams;
+import com.kaltura.client.types.ReportExportResponse;
 import com.kaltura.client.types.ReportGraph;
 import com.kaltura.client.types.ReportInputFilter;
 import com.kaltura.client.types.ReportResponse;
@@ -53,6 +55,7 @@ import java.util.List;
  * api for getting reports data by the report type and some inputFilter
  * 
  * @param id 
+ * @param params_ 
  * @param params_ 
  * @param reportType 
  * @param reportInputFilter 
@@ -111,6 +114,18 @@ public class ReportService {
 
     public static ExecuteReportBuilder execute(int id, List<KeyValue> params)  {
 		return new ExecuteReportBuilder(id, params);
+	}
+	
+	public static class ExportToCsvReportBuilder extends RequestBuilder<ReportExportResponse, ReportExportResponse.Tokenizer, ExportToCsvReportBuilder> {
+		
+		public ExportToCsvReportBuilder(ReportExportParams params_) {
+			super(ReportExportResponse.class, "report", "exportToCsv");
+			params.add("params", params_);
+		}
+	}
+
+    public static ExportToCsvReportBuilder exportToCsv(ReportExportParams params)  {
+		return new ExportToCsvReportBuilder(params);
 	}
 	
 	public static class GetBaseTotalReportBuilder extends ArrayRequestBuilder<ReportBaseTotal, ReportBaseTotal.Tokenizer, GetBaseTotalReportBuilder> {
