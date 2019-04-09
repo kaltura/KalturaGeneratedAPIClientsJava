@@ -48,12 +48,14 @@ public class UserEntryFilter extends UserEntryBaseFilter {
 		String isAnonymous();
 		String privacyContextEqual();
 		String privacyContextIn();
+		String partnerId();
 	}
 
 	private Boolean userIdEqualCurrent;
 	private Boolean isAnonymous;
 	private String privacyContextEqual;
 	private String privacyContextIn;
+	private Integer partnerId;
 
 	// userIdEqualCurrent:
 	public Boolean getUserIdEqualCurrent(){
@@ -103,6 +105,18 @@ public class UserEntryFilter extends UserEntryBaseFilter {
 		setToken("privacyContextIn", multirequestToken);
 	}
 
+	// partnerId:
+	public Integer getPartnerId(){
+		return this.partnerId;
+	}
+	public void setPartnerId(Integer partnerId){
+		this.partnerId = partnerId;
+	}
+
+	public void partnerId(String multirequestToken){
+		setToken("partnerId", multirequestToken);
+	}
+
 
 	public UserEntryFilter() {
 		super();
@@ -118,6 +132,7 @@ public class UserEntryFilter extends UserEntryBaseFilter {
 		isAnonymous = GsonParser.parseBoolean(jsonObject.get("isAnonymous"));
 		privacyContextEqual = GsonParser.parseString(jsonObject.get("privacyContextEqual"));
 		privacyContextIn = GsonParser.parseString(jsonObject.get("privacyContextIn"));
+		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 
 	}
 
@@ -128,6 +143,7 @@ public class UserEntryFilter extends UserEntryBaseFilter {
 		kparams.add("isAnonymous", this.isAnonymous);
 		kparams.add("privacyContextEqual", this.privacyContextEqual);
 		kparams.add("privacyContextIn", this.privacyContextIn);
+		kparams.add("partnerId", this.partnerId);
 		return kparams;
 	}
 

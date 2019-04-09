@@ -56,6 +56,7 @@ import java.io.InputStream;
  * @param fileData 
  * @param id 
  * @param entryId 
+ * @param parentId 
  * @param filter 
  * @param id 
  * @param id 
@@ -121,12 +122,13 @@ public class AnnotationService {
 		return new AddFromBulkAnnotationBuilder(fileData);
 	}
 	
-	public static class CloneAnnotationBuilder extends RequestBuilder<CuePoint, CuePoint.Tokenizer, CloneAnnotationBuilder> {
+	public static class CloneAnnotationBuilder extends RequestBuilder<Annotation, Annotation.Tokenizer, CloneAnnotationBuilder> {
 		
-		public CloneAnnotationBuilder(String id, String entryId) {
-			super(CuePoint.class, "annotation_annotation", "clone");
+		public CloneAnnotationBuilder(String id, String entryId, String parentId) {
+			super(Annotation.class, "annotation_annotation", "clone");
 			params.add("id", id);
 			params.add("entryId", entryId);
+			params.add("parentId", parentId);
 		}
 		
 		public void id(String multirequestToken) {
@@ -136,6 +138,14 @@ public class AnnotationService {
 		public void entryId(String multirequestToken) {
 			params.add("entryId", multirequestToken);
 		}
+		
+		public void parentId(String multirequestToken) {
+			params.add("parentId", multirequestToken);
+		}
+	}
+
+	public static CloneAnnotationBuilder clone(String id, String entryId)  {
+		return clone(id, entryId, null);
 	}
 
 	/**
@@ -143,9 +153,10 @@ public class AnnotationService {
 	 * 
 	 * @param id 
 	 * @param entryId 
+	 * @param parentId 
 	 */
-    public static CloneAnnotationBuilder clone(String id, String entryId)  {
-		return new CloneAnnotationBuilder(id, entryId);
+    public static CloneAnnotationBuilder clone(String id, String entryId, String parentId)  {
+		return new CloneAnnotationBuilder(id, entryId, parentId);
 	}
 	
 	public static class CountAnnotationBuilder extends RequestBuilder<Integer, String, CountAnnotationBuilder> {

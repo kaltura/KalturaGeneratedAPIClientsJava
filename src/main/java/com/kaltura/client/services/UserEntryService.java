@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.QuizUserEntry;
 import com.kaltura.client.types.UserEntry;
@@ -60,10 +61,10 @@ public class UserEntryService {
 		return new AddUserEntryBuilder(userEntry);
 	}
 	
-	public static class BulkDeleteUserEntryBuilder extends RequestBuilder<Integer, String, BulkDeleteUserEntryBuilder> {
+	public static class BulkDeleteUserEntryBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, BulkDeleteUserEntryBuilder> {
 		
 		public BulkDeleteUserEntryBuilder(UserEntryFilter filter) {
-			super(Integer.class, "userentry", "bulkDelete");
+			super(BulkUpload.class, "userentry", "bulkDelete");
 			params.add("filter", filter);
 		}
 	}

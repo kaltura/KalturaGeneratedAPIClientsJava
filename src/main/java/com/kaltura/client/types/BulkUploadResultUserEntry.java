@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,45 +38,50 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadObjectType implements EnumAsString {
-	JOB("bulkUploadFilter.JOB"),
-	SCHEDULE_EVENT("scheduleBulkUpload.SCHEDULE_EVENT"),
-	SCHEDULE_RESOURCE("scheduleBulkUpload.SCHEDULE_RESOURCE"),
-	ENTRY("1"),
-	CATEGORY("2"),
-	USER("3"),
-	CATEGORY_USER("4"),
-	CATEGORY_ENTRY("5"),
-	USER_ENTRY("6");
 
-	private String value;
-
-	BulkUploadObjectType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadResultUserEntry.Tokenizer.class)
+public class BulkUploadResultUserEntry extends BulkUploadResult {
+	
+	public interface Tokenizer extends BulkUploadResult.Tokenizer {
+		String userEntryId();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private Integer userEntryId;
+
+	// userEntryId:
+	public Integer getUserEntryId(){
+		return this.userEntryId;
+	}
+	public void setUserEntryId(Integer userEntryId){
+		this.userEntryId = userEntryId;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void userEntryId(String multirequestToken){
+		setToken("userEntryId", multirequestToken);
 	}
 
-	public static BulkUploadObjectType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over BulkUploadObjectType defined values and compare the inner value with the given one:
-		for(BulkUploadObjectType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return BulkUploadObjectType.values().length > 0 ? BulkUploadObjectType.values()[0]: null;
-   }
+
+	public BulkUploadResultUserEntry() {
+		super();
+	}
+
+	public BulkUploadResultUserEntry(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		userEntryId = GsonParser.parseInt(jsonObject.get("userEntryId"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadResultUserEntry");
+		kparams.add("userEntryId", this.userEntryId);
+		return kparams;
+	}
+
 }
+

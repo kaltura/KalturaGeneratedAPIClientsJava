@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum VendorServiceFeature implements EnumAsInt {
 	CAPTIONS(1),
 	TRANSLATION(2),
-	ALIGNMENT(3);
+	ALIGNMENT(3),
+	AUDIO_DESCRIPTION(4);
 
 	private int value;
 

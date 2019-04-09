@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.enums.CatalogItemLanguage;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -40,49 +40,63 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**
- * Represents the Bulk service input for filter bulk upload
- */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(BulkServiceFilterData.Tokenizer.class)
-public class BulkServiceFilterData extends BulkServiceFilterDataBase {
+@MultiRequestBuilder.Tokenizer(VendorAudioDescriptionCatalogItem.Tokenizer.class)
+public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 	
-	public interface Tokenizer extends BulkServiceFilterDataBase.Tokenizer {
-		ObjectBase.Tokenizer templateObject();
+	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
+		String sourceLanguage();
+		String flavorParamsId();
 	}
 
-	/**
-	 * Template object for new object creation
-	 */
-	private ObjectBase templateObject;
+	private CatalogItemLanguage sourceLanguage;
+	private Integer flavorParamsId;
 
-	// templateObject:
-	public ObjectBase getTemplateObject(){
-		return this.templateObject;
+	// sourceLanguage:
+	public CatalogItemLanguage getSourceLanguage(){
+		return this.sourceLanguage;
 	}
-	public void setTemplateObject(ObjectBase templateObject){
-		this.templateObject = templateObject;
+	public void setSourceLanguage(CatalogItemLanguage sourceLanguage){
+		this.sourceLanguage = sourceLanguage;
 	}
 
+	public void sourceLanguage(String multirequestToken){
+		setToken("sourceLanguage", multirequestToken);
+	}
 
-	public BulkServiceFilterData() {
+	// flavorParamsId:
+	public Integer getFlavorParamsId(){
+		return this.flavorParamsId;
+	}
+	public void setFlavorParamsId(Integer flavorParamsId){
+		this.flavorParamsId = flavorParamsId;
+	}
+
+	public void flavorParamsId(String multirequestToken){
+		setToken("flavorParamsId", multirequestToken);
+	}
+
+
+	public VendorAudioDescriptionCatalogItem() {
 		super();
 	}
 
-	public BulkServiceFilterData(JsonObject jsonObject) throws APIException {
+	public VendorAudioDescriptionCatalogItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		templateObject = GsonParser.parseObject(jsonObject.getAsJsonObject("templateObject"), ObjectBase.class);
+		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
+		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaBulkServiceFilterData");
-		kparams.add("templateObject", this.templateObject);
+		kparams.add("objectType", "KalturaVendorAudioDescriptionCatalogItem");
+		kparams.add("sourceLanguage", this.sourceLanguage);
+		kparams.add("flavorParamsId", this.flavorParamsId);
 		return kparams;
 	}
 

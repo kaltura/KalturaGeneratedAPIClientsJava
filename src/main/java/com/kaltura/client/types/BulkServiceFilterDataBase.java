@@ -25,7 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.types.Filter;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,45 +39,52 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadObjectType implements EnumAsString {
-	JOB("bulkUploadFilter.JOB"),
-	SCHEDULE_EVENT("scheduleBulkUpload.SCHEDULE_EVENT"),
-	SCHEDULE_RESOURCE("scheduleBulkUpload.SCHEDULE_RESOURCE"),
-	ENTRY("1"),
-	CATEGORY("2"),
-	USER("3"),
-	CATEGORY_USER("4"),
-	CATEGORY_ENTRY("5"),
-	USER_ENTRY("6");
 
-	private String value;
-
-	BulkUploadObjectType(String value) {
-		this.value = value;
+/**
+ * Represents the Bulk service input for filter bulk upload
+ */
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkServiceFilterDataBase.Tokenizer.class)
+public class BulkServiceFilterDataBase extends BulkServiceData {
+	
+	public interface Tokenizer extends BulkServiceData.Tokenizer {
+		Filter.Tokenizer filter();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	/**
+	 * Filter for extracting the objects list to upload
+	 */
+	private Filter filter;
+
+	// filter:
+	public Filter getFilter(){
+		return this.filter;
+	}
+	public void setFilter(Filter filter){
+		this.filter = filter;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+
+	public BulkServiceFilterDataBase() {
+		super();
 	}
 
-	public static BulkUploadObjectType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over BulkUploadObjectType defined values and compare the inner value with the given one:
-		for(BulkUploadObjectType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return BulkUploadObjectType.values().length > 0 ? BulkUploadObjectType.values()[0]: null;
-   }
+	public BulkServiceFilterDataBase(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), Filter.class);
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkServiceFilterDataBase");
+		kparams.add("filter", this.filter);
+		return kparams;
+	}
+
 }
+
