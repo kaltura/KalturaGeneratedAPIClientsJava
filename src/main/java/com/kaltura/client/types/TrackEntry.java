@@ -63,6 +63,7 @@ public class TrackEntry extends ObjectBase {
 		String createdAt();
 		String updatedAt();
 		String userIp();
+		String sessionId();
 	}
 
 	private Integer id;
@@ -82,6 +83,7 @@ public class TrackEntry extends ObjectBase {
 	private Integer createdAt;
 	private Integer updatedAt;
 	private String userIp;
+	private Integer sessionId;
 
 	// id:
 	public Integer getId(){
@@ -287,6 +289,18 @@ public class TrackEntry extends ObjectBase {
 		setToken("userIp", multirequestToken);
 	}
 
+	// sessionId:
+	public Integer getSessionId(){
+		return this.sessionId;
+	}
+	public void setSessionId(Integer sessionId){
+		this.sessionId = sessionId;
+	}
+
+	public void sessionId(String multirequestToken){
+		setToken("sessionId", multirequestToken);
+	}
+
 
 	public TrackEntry() {
 		super();
@@ -315,6 +329,7 @@ public class TrackEntry extends ObjectBase {
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 		userIp = GsonParser.parseString(jsonObject.get("userIp"));
+		sessionId = GsonParser.parseInt(jsonObject.get("sessionId"));
 
 	}
 
@@ -338,6 +353,7 @@ public class TrackEntry extends ObjectBase {
 		kparams.add("createdAt", this.createdAt);
 		kparams.add("updatedAt", this.updatedAt);
 		kparams.add("userIp", this.userIp);
+		kparams.add("sessionId", this.sessionId);
 		return kparams;
 	}
 
