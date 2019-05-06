@@ -61,9 +61,10 @@ public class GroupService {
 	
 	public static class CloneGroupBuilder extends RequestBuilder<Group, Group.Tokenizer, CloneGroupBuilder> {
 		
-		public CloneGroupBuilder(String originalGroupId, String newGroupName) {
+		public CloneGroupBuilder(String originalGroupId, String newGroupId, String newGroupName) {
 			super(Group.class, "group_group", "clone");
 			params.add("originalGroupId", originalGroupId);
+			params.add("newGroupId", newGroupId);
 			params.add("newGroupName", newGroupName);
 		}
 		
@@ -71,19 +72,28 @@ public class GroupService {
 			params.add("originalGroupId", multirequestToken);
 		}
 		
+		public void newGroupId(String multirequestToken) {
+			params.add("newGroupId", multirequestToken);
+		}
+		
 		public void newGroupName(String multirequestToken) {
 			params.add("newGroupName", multirequestToken);
 		}
+	}
+
+	public static CloneGroupBuilder clone(String originalGroupId, String newGroupId)  {
+		return clone(originalGroupId, newGroupId, null);
 	}
 
 	/**
 	 * clone the group (groupId), and set group id with the neeGroupName.
 	 * 
 	 * @param originalGroupId The unique identifier in the partner's system
-	 * @param newGroupName The unique identifier in the partner's system
+	 * @param newGroupId The unique identifier in the partner's system
+	 * @param newGroupName The name of the new cloned group
 	 */
-    public static CloneGroupBuilder clone(String originalGroupId, String newGroupName)  {
-		return new CloneGroupBuilder(originalGroupId, newGroupName);
+    public static CloneGroupBuilder clone(String originalGroupId, String newGroupId, String newGroupName)  {
+		return new CloneGroupBuilder(originalGroupId, newGroupId, newGroupName);
 	}
 	
 	public static class DeleteGroupBuilder extends RequestBuilder<Group, Group.Tokenizer, DeleteGroupBuilder> {
