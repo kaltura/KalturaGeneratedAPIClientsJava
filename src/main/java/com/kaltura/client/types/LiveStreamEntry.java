@@ -62,6 +62,7 @@ public class LiveStreamEntry extends LiveEntry {
 		String streamPassword();
 		String streamUsername();
 		String primaryServerNodeId();
+		String sipToken();
 	}
 
 	/**
@@ -113,6 +114,7 @@ public class LiveStreamEntry extends LiveEntry {
 	 * The Streams primary server node id
 	 */
 	private Integer primaryServerNodeId;
+	private String sipToken;
 
 	// streamRemoteId:
 	public String getStreamRemoteId(){
@@ -270,6 +272,10 @@ public class LiveStreamEntry extends LiveEntry {
 	public Integer getPrimaryServerNodeId(){
 		return this.primaryServerNodeId;
 	}
+	// sipToken:
+	public String getSipToken(){
+		return this.sipToken;
+	}
 
 	public LiveStreamEntry() {
 		super();
@@ -297,6 +303,7 @@ public class LiveStreamEntry extends LiveEntry {
 		streamPassword = GsonParser.parseString(jsonObject.get("streamPassword"));
 		streamUsername = GsonParser.parseString(jsonObject.get("streamUsername"));
 		primaryServerNodeId = GsonParser.parseInt(jsonObject.get("primaryServerNodeId"));
+		sipToken = GsonParser.parseString(jsonObject.get("sipToken"));
 
 	}
 

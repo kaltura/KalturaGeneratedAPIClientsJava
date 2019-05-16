@@ -105,6 +105,7 @@ public enum LanguageCode implements EnumAsString {
 	KU("ku"),
 	KY("ky"),
 	LA("la"),
+	LB("lb"),
 	LI("li"),
 	LN("ln"),
 	LO("lo"),
