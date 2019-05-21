@@ -32,6 +32,7 @@ import com.kaltura.client.types.FeatureStatus;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.Partner;
 import com.kaltura.client.types.PartnerFilter;
+import com.kaltura.client.types.PartnerPublicInfo;
 import com.kaltura.client.types.PartnerStatistics;
 import com.kaltura.client.types.PartnerUsage;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -49,6 +50,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
   settings as well
  * 
  * @param filter 
+ * @param id 
  * @param id 
  * @param partnerId 
  * @param adminEmail 
@@ -128,6 +130,31 @@ public class PartnerService {
 	 */
     public static GetInfoPartnerBuilder getInfo()  {
 		return new GetInfoPartnerBuilder();
+	}
+	
+	public static class GetPublicInfoPartnerBuilder extends RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.Tokenizer, GetPublicInfoPartnerBuilder> {
+		
+		public GetPublicInfoPartnerBuilder(int id) {
+			super(PartnerPublicInfo.class, "partner", "getPublicInfo");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
+
+	public static GetPublicInfoPartnerBuilder getPublicInfo()  {
+		return getPublicInfo(Integer.MIN_VALUE);
+	}
+
+	/**
+	 * Returns partner public info by Id
+	 * 
+	 * @param id 
+	 */
+    public static GetPublicInfoPartnerBuilder getPublicInfo(int id)  {
+		return new GetPublicInfoPartnerBuilder(id);
 	}
 	
 	public static class GetSecretsPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetSecretsPartnerBuilder> {
