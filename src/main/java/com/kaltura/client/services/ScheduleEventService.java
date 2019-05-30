@@ -31,7 +31,7 @@ import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
 import com.kaltura.client.enums.ScheduleEventConflictType;
 import com.kaltura.client.types.BulkUpload;
-import com.kaltura.client.types.BulkUploadICalJobData;
+import com.kaltura.client.types.BulkUploadScheduleEventJobData;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ScheduleEvent;
 import com.kaltura.client.types.ScheduleEventFilter;
@@ -88,7 +88,7 @@ public class ScheduleEventService {
 	
 	public static class AddFromBulkUploadScheduleEventBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadScheduleEventBuilder> {
 		
-		public AddFromBulkUploadScheduleEventBuilder(FileHolder fileData, BulkUploadICalJobData bulkUploadData) {
+		public AddFromBulkUploadScheduleEventBuilder(FileHolder fileData, BulkUploadScheduleEventJobData bulkUploadData) {
 			super(BulkUpload.class, "schedule_scheduleevent", "addFromBulkUpload");
 			files = new Files();
 			files.add("fileData", fileData);
@@ -112,15 +112,15 @@ public class ScheduleEventService {
 		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
 	}
 
-	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(File fileData, BulkUploadICalJobData bulkUploadData)  {
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(File fileData, BulkUploadScheduleEventJobData bulkUploadData)  {
 		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData);
 	}
 
-	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadICalJobData bulkUploadData)  {
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadScheduleEventJobData bulkUploadData)  {
 		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData);
 	}
 
-	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadICalJobData bulkUploadData)  {
+	public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadScheduleEventJobData bulkUploadData)  {
 		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData);
 	}
 
@@ -130,7 +130,7 @@ public class ScheduleEventService {
 	 * @param fileData 
 	 * @param bulkUploadData 
 	 */
-    public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileHolder fileData, BulkUploadICalJobData bulkUploadData)  {
+    public static AddFromBulkUploadScheduleEventBuilder addFromBulkUpload(FileHolder fileData, BulkUploadScheduleEventJobData bulkUploadData)  {
 		return new AddFromBulkUploadScheduleEventBuilder(fileData, bulkUploadData);
 	}
 	

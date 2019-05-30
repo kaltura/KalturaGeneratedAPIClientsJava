@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,48 +37,32 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryStatus implements EnumAsString {
-	ERROR_IMPORTING("-2"),
-	ERROR_CONVERTING("-1"),
-	IMPORT("0"),
-	INFECTED("virusScan.Infected"),
-	SCAN_FAILURE("virusScan.ScanFailure"),
-	PRECONVERT("1"),
-	READY("2"),
-	DELETED("3"),
-	PENDING("4"),
-	MODERATE("5"),
-	BLOCKED("6"),
-	NO_CONTENT("7");
 
-	private String value;
-
-	EntryStatus(String value) {
-		this.value = value;
+/**
+ * Represents the abstract Bulk upload job data for general bulk upload
+ */
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BulkUploadScheduleEventJobData.Tokenizer.class)
+public abstract class BulkUploadScheduleEventJobData extends BulkUploadJobData {
+	
+	public interface Tokenizer extends BulkUploadJobData.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public BulkUploadScheduleEventJobData() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public BulkUploadScheduleEventJobData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static EntryStatus get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over EntryStatus defined values and compare the inner value with the given one:
-		for(EntryStatus item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return EntryStatus.values().length > 0 ? EntryStatus.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBulkUploadScheduleEventJobData");
+		return kparams;
+	}
+
 }
+

@@ -225,7 +225,7 @@ public enum Language implements EnumAsString {
 	HNI("Hani"),
 	HA("Hausa"),
 	HAW("Hawaiian"),
-	IW("Hebrew"),
+	HE("Hebrew"),
 	HEI("Heiltsuk"),
 	HID("Hidatsa"),
 	HIL("Hiligaynon"),

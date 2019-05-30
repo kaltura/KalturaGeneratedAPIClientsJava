@@ -34,13 +34,13 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType implements EnumAsString {
+	CONVERT("0"),
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
 	PARSE_CAPTION_ASSET("captionSearch.parseCaptionAsset"),
 	DISTRIBUTION_DELETE("contentDistribution.DistributionDelete"),
 	DISTRIBUTION_DISABLE("contentDistribution.DistributionDisable"),
 	DISTRIBUTION_ENABLE("contentDistribution.DistributionEnable"),
 	DISTRIBUTION_FETCH_REPORT("contentDistribution.DistributionFetchReport"),
-	CONVERT("0"),
 	DISTRIBUTION_SUBMIT("contentDistribution.DistributionSubmit"),
 	DISTRIBUTION_SYNC("contentDistribution.DistributionSync"),
 	DISTRIBUTION_UPDATE("contentDistribution.DistributionUpdate"),

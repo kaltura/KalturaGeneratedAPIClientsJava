@@ -29,9 +29,11 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.ScheduleEventType;
+import com.kaltura.client.enums.BulkUploadCsvVersion;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -41,52 +43,58 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 /**
- * Represents the Bulk upload job data for iCal bulk upload
+ * Represents the Bulk upload job data for CSV bulk upload
  */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(BulkUploadICalJobData.Tokenizer.class)
-public class BulkUploadICalJobData extends BulkUploadScheduleEventJobData {
+@MultiRequestBuilder.Tokenizer(BulkUploadScheduleEventCsvJobData.Tokenizer.class)
+public class BulkUploadScheduleEventCsvJobData extends BulkUploadScheduleEventJobData {
 	
 	public interface Tokenizer extends BulkUploadScheduleEventJobData.Tokenizer {
-		String eventsType();
+		String csvVersion();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> columns();
 	}
 
 	/**
-	 * The type of the events that ill be created by this upload
+	 * The version of the csv file
 	 */
-	private ScheduleEventType eventsType;
+	private BulkUploadCsvVersion csvVersion;
+	/**
+	 * Array containing CSV headers
+	 */
+	private List<StringHolder> columns;
 
-	// eventsType:
-	public ScheduleEventType getEventsType(){
-		return this.eventsType;
+	// csvVersion:
+	public BulkUploadCsvVersion getCsvVersion(){
+		return this.csvVersion;
 	}
-	public void setEventsType(ScheduleEventType eventsType){
-		this.eventsType = eventsType;
+	// columns:
+	public List<StringHolder> getColumns(){
+		return this.columns;
+	}
+	public void setColumns(List<StringHolder> columns){
+		this.columns = columns;
 	}
 
-	public void eventsType(String multirequestToken){
-		setToken("eventsType", multirequestToken);
-	}
 
-
-	public BulkUploadICalJobData() {
+	public BulkUploadScheduleEventCsvJobData() {
 		super();
 	}
 
-	public BulkUploadICalJobData(JsonObject jsonObject) throws APIException {
+	public BulkUploadScheduleEventCsvJobData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		eventsType = ScheduleEventType.get(GsonParser.parseInt(jsonObject.get("eventsType")));
+		csvVersion = BulkUploadCsvVersion.get(GsonParser.parseInt(jsonObject.get("csvVersion")));
+		columns = GsonParser.parseArray(jsonObject.getAsJsonArray("columns"), StringHolder.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaBulkUploadICalJobData");
-		kparams.add("eventsType", this.eventsType);
+		kparams.add("objectType", "KalturaBulkUploadScheduleEventCsvJobData");
+		kparams.add("columns", this.columns);
 		return kparams;
 	}
 
