@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.GroupProcessStatus;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -45,14 +46,28 @@ public class Group extends BaseUser {
 	
 	public interface Tokenizer extends BaseUser.Tokenizer {
 		String membersCount();
+		String processStatus();
 	}
 
 	private Integer membersCount;
+	private GroupProcessStatus processStatus;
 
 	// membersCount:
 	public Integer getMembersCount(){
 		return this.membersCount;
 	}
+	// processStatus:
+	public GroupProcessStatus getProcessStatus(){
+		return this.processStatus;
+	}
+	public void setProcessStatus(GroupProcessStatus processStatus){
+		this.processStatus = processStatus;
+	}
+
+	public void processStatus(String multirequestToken){
+		setToken("processStatus", multirequestToken);
+	}
+
 
 	public Group() {
 		super();
@@ -65,12 +80,14 @@ public class Group extends BaseUser {
 
 		// set members values:
 		membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
+		processStatus = GroupProcessStatus.get(GsonParser.parseInt(jsonObject.get("processStatus")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaGroup");
+		kparams.add("processStatus", this.processStatus);
 		return kparams;
 	}
 
