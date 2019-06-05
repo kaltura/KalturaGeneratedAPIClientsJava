@@ -72,6 +72,7 @@ import java.util.List;
  * @param filter A filter used to exclude specific types of users
  * @param metadataProfileId 
  * @param additionalFields 
+ * @param hashKey 
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
  * @param id 
@@ -334,6 +335,27 @@ public class UserService {
 	 */
     public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
 		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields);
+	}
+	
+	public static class GenerateQrCodeUserBuilder extends RequestBuilder<String, String, GenerateQrCodeUserBuilder> {
+		
+		public GenerateQrCodeUserBuilder(String hashKey) {
+			super(String.class, "user", "generateQrCode");
+			params.add("hashKey", hashKey);
+		}
+		
+		public void hashKey(String multirequestToken) {
+			params.add("hashKey", multirequestToken);
+		}
+	}
+
+	/**
+	 * get QR image content
+	 * 
+	 * @param hashKey 
+	 */
+    public static GenerateQrCodeUserBuilder generateQrCode(String hashKey)  {
+		return new GenerateQrCodeUserBuilder(hashKey);
 	}
 	
 	public static class GetUserBuilder extends RequestBuilder<User, User.Tokenizer, GetUserBuilder> {

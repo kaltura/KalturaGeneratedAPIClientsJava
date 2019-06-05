@@ -108,6 +108,7 @@ public class Partner extends ObjectBase {
 		String ovpEnvironmentUrl();
 		String ottEnvironmentUrl();
 		RequestBuilder.ListTokenizer<ESearchLanguageItem.Tokenizer> eSearchLanguages();
+		String authenticationType();
 	}
 
 	private Integer id;
@@ -182,6 +183,7 @@ public class Partner extends ObjectBase {
 	private String ovpEnvironmentUrl;
 	private String ottEnvironmentUrl;
 	private List<ESearchLanguageItem> eSearchLanguages;
+	private Boolean authenticationType;
 
 	// id:
 	public Integer getId(){
@@ -659,6 +661,10 @@ public class Partner extends ObjectBase {
 		this.eSearchLanguages = eSearchLanguages;
 	}
 
+	// authenticationType:
+	public Boolean getAuthenticationType(){
+		return this.authenticationType;
+	}
 
 	public Partner() {
 		super();
@@ -727,6 +733,7 @@ public class Partner extends ObjectBase {
 		ovpEnvironmentUrl = GsonParser.parseString(jsonObject.get("ovpEnvironmentUrl"));
 		ottEnvironmentUrl = GsonParser.parseString(jsonObject.get("ottEnvironmentUrl"));
 		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
+		authenticationType = GsonParser.parseBoolean(jsonObject.get("authenticationType"));
 
 	}
 
