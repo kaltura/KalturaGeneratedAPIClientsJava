@@ -47,6 +47,7 @@ public class CategoryEntryCondition extends Condition {
 	
 	public interface Tokenizer extends Condition.Tokenizer {
 		String categoryId();
+		String categoryIds();
 		String categoryUserPermission();
 		String comparison();
 	}
@@ -55,6 +56,10 @@ public class CategoryEntryCondition extends Condition {
 	 * Category id to check condition for
 	 */
 	private Integer categoryId;
+	/**
+	 * Category id's to check condition for
+	 */
+	private String categoryIds;
 	/**
 	 * Minimum category user level permission to validate
 	 */
@@ -74,6 +79,18 @@ public class CategoryEntryCondition extends Condition {
 
 	public void categoryId(String multirequestToken){
 		setToken("categoryId", multirequestToken);
+	}
+
+	// categoryIds:
+	public String getCategoryIds(){
+		return this.categoryIds;
+	}
+	public void setCategoryIds(String categoryIds){
+		this.categoryIds = categoryIds;
+	}
+
+	public void categoryIds(String multirequestToken){
+		setToken("categoryIds", multirequestToken);
 	}
 
 	// categoryUserPermission:
@@ -112,6 +129,7 @@ public class CategoryEntryCondition extends Condition {
 
 		// set members values:
 		categoryId = GsonParser.parseInt(jsonObject.get("categoryId"));
+		categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
 		categoryUserPermission = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("categoryUserPermission")));
 		comparison = SearchConditionComparison.get(GsonParser.parseString(jsonObject.get("comparison")));
 
@@ -121,6 +139,7 @@ public class CategoryEntryCondition extends Condition {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaCategoryEntryCondition");
 		kparams.add("categoryId", this.categoryId);
+		kparams.add("categoryIds", this.categoryIds);
 		kparams.add("categoryUserPermission", this.categoryUserPermission);
 		kparams.add("comparison", this.comparison);
 		return kparams;

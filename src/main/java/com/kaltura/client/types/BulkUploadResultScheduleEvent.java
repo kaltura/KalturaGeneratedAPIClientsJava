@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.ScheduleEventType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -66,7 +65,7 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 
 	private String referenceId;
 	private String templateEntryId;
-	private ScheduleEventType eventType;
+	private Integer eventType;
 	private String title;
 	private String description;
 	private String tags;
@@ -110,10 +109,10 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 	}
 
 	// eventType:
-	public ScheduleEventType getEventType(){
+	public Integer getEventType(){
 		return this.eventType;
 	}
-	public void setEventType(ScheduleEventType eventType){
+	public void setEventType(Integer eventType){
 		this.eventType = eventType;
 	}
 
@@ -302,7 +301,7 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 		// set members values:
 		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
 		templateEntryId = GsonParser.parseString(jsonObject.get("templateEntryId"));
-		eventType = ScheduleEventType.get(GsonParser.parseInt(jsonObject.get("eventType")));
+		eventType = GsonParser.parseInt(jsonObject.get("eventType"));
 		title = GsonParser.parseString(jsonObject.get("title"));
 		description = GsonParser.parseString(jsonObject.get("description"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
