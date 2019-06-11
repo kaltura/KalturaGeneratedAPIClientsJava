@@ -28,6 +28,7 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.types.AdminUser;
+import com.kaltura.client.types.Authentication;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -113,10 +114,10 @@ public class AdminUserService {
 		return new ResetPasswordAdminUserBuilder(email);
 	}
 	
-	public static class SetInitialPasswordAdminUserBuilder extends NullRequestBuilder {
+	public static class SetInitialPasswordAdminUserBuilder extends RequestBuilder<Authentication, Authentication.Tokenizer, SetInitialPasswordAdminUserBuilder> {
 		
 		public SetInitialPasswordAdminUserBuilder(String hashKey, String newPassword) {
-			super("adminuser", "setInitialPassword");
+			super(Authentication.class, "adminuser", "setInitialPassword");
 			params.add("hashKey", hashKey);
 			params.add("newPassword", newPassword);
 		}

@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.CommercialUseType;
+import com.kaltura.client.enums.PartnerAuthenticationType;
 import com.kaltura.client.enums.PartnerGroupType;
 import com.kaltura.client.enums.PartnerStatus;
 import com.kaltura.client.enums.PartnerType;
@@ -183,7 +184,7 @@ public class Partner extends ObjectBase {
 	private String ovpEnvironmentUrl;
 	private String ottEnvironmentUrl;
 	private List<ESearchLanguageItem> eSearchLanguages;
-	private Integer authenticationType;
+	private PartnerAuthenticationType authenticationType;
 
 	// id:
 	public Integer getId(){
@@ -662,7 +663,7 @@ public class Partner extends ObjectBase {
 	}
 
 	// authenticationType:
-	public Integer getAuthenticationType(){
+	public PartnerAuthenticationType getAuthenticationType(){
 		return this.authenticationType;
 	}
 
@@ -733,7 +734,7 @@ public class Partner extends ObjectBase {
 		ovpEnvironmentUrl = GsonParser.parseString(jsonObject.get("ovpEnvironmentUrl"));
 		ottEnvironmentUrl = GsonParser.parseString(jsonObject.get("ottEnvironmentUrl"));
 		eSearchLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("eSearchLanguages"), ESearchLanguageItem.class);
-		authenticationType = GsonParser.parseInt(jsonObject.get("authenticationType"));
+		authenticationType = PartnerAuthenticationType.get(GsonParser.parseInt(jsonObject.get("authenticationType")));
 
 	}
 

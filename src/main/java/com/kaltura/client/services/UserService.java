@@ -29,6 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
+import com.kaltura.client.types.Authentication;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
@@ -673,10 +674,10 @@ public class UserService {
 		return new ServeCsvUserBuilder(id);
 	}
 	
-	public static class SetInitialPasswordUserBuilder extends NullRequestBuilder {
+	public static class SetInitialPasswordUserBuilder extends RequestBuilder<Authentication, Authentication.Tokenizer, SetInitialPasswordUserBuilder> {
 		
 		public SetInitialPasswordUserBuilder(String hashKey, String newPassword) {
-			super("user", "setInitialPassword");
+			super(Authentication.class, "user", "setInitialPassword");
 			params.add("hashKey", hashKey);
 			params.add("newPassword", newPassword);
 		}
