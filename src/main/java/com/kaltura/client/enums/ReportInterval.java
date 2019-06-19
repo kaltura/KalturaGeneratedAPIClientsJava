@@ -35,7 +35,10 @@ package com.kaltura.client.enums;
  */
 public enum ReportInterval implements EnumAsString {
 	DAYS("days"),
-	MONTHS("months");
+	HOURS("hours"),
+	MINUTES("minutes"),
+	MONTHS("months"),
+	TEN_SECONDS("ten_seconds");
 
 	private String value;
 
