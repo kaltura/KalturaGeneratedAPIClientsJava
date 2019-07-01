@@ -57,6 +57,7 @@ public class UploadToken extends ObjectBase {
 		String updatedAt();
 		String uploadUrl();
 		String autoFinalize();
+		String minimumChunkSize();
 	}
 
 	/**
@@ -108,6 +109,10 @@ public class UploadToken extends ObjectBase {
 	  the file size reproted when adding the upload token.
 	 */
 	private Boolean autoFinalize;
+	/**
+	 * set the minimum size in bytes for each uploaded part of the file
+	 */
+	private Double minimumChunkSize;
 
 	// id:
 	public String getId(){
@@ -177,6 +182,18 @@ public class UploadToken extends ObjectBase {
 		setToken("autoFinalize", multirequestToken);
 	}
 
+	// minimumChunkSize:
+	public Double getMinimumChunkSize(){
+		return this.minimumChunkSize;
+	}
+	public void setMinimumChunkSize(Double minimumChunkSize){
+		this.minimumChunkSize = minimumChunkSize;
+	}
+
+	public void minimumChunkSize(String multirequestToken){
+		setToken("minimumChunkSize", multirequestToken);
+	}
+
 
 	public UploadToken() {
 		super();
@@ -199,6 +216,7 @@ public class UploadToken extends ObjectBase {
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 		uploadUrl = GsonParser.parseString(jsonObject.get("uploadUrl"));
 		autoFinalize = GsonParser.parseBoolean(jsonObject.get("autoFinalize"));
+		minimumChunkSize = GsonParser.parseDouble(jsonObject.get("minimumChunkSize"));
 
 	}
 
@@ -208,6 +226,7 @@ public class UploadToken extends ObjectBase {
 		kparams.add("fileName", this.fileName);
 		kparams.add("fileSize", this.fileSize);
 		kparams.add("autoFinalize", this.autoFinalize);
+		kparams.add("minimumChunkSize", this.minimumChunkSize);
 		return kparams;
 	}
 
