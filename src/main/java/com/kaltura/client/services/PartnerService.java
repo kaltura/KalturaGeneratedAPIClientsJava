@@ -55,6 +55,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param partnerId 
  * @param adminEmail 
  * @param cmsPassword 
+ * @param otp 
  * @param year 
  * @param month 
  * @param resolution 
@@ -159,11 +160,12 @@ public class PartnerService {
 	
 	public static class GetSecretsPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetSecretsPartnerBuilder> {
 		
-		public GetSecretsPartnerBuilder(int partnerId, String adminEmail, String cmsPassword) {
+		public GetSecretsPartnerBuilder(int partnerId, String adminEmail, String cmsPassword, String otp) {
 			super(Partner.class, "partner", "getSecrets");
 			params.add("partnerId", partnerId);
 			params.add("adminEmail", adminEmail);
 			params.add("cmsPassword", cmsPassword);
+			params.add("otp", otp);
 		}
 		
 		public void partnerId(String multirequestToken) {
@@ -177,6 +179,14 @@ public class PartnerService {
 		public void cmsPassword(String multirequestToken) {
 			params.add("cmsPassword", multirequestToken);
 		}
+		
+		public void otp(String multirequestToken) {
+			params.add("otp", multirequestToken);
+		}
+	}
+
+	public static GetSecretsPartnerBuilder getSecrets(int partnerId, String adminEmail, String cmsPassword)  {
+		return getSecrets(partnerId, adminEmail, cmsPassword, null);
 	}
 
 	/**
@@ -185,9 +195,10 @@ public class PartnerService {
 	 * @param partnerId 
 	 * @param adminEmail 
 	 * @param cmsPassword 
+	 * @param otp 
 	 */
-    public static GetSecretsPartnerBuilder getSecrets(int partnerId, String adminEmail, String cmsPassword)  {
-		return new GetSecretsPartnerBuilder(partnerId, adminEmail, cmsPassword);
+    public static GetSecretsPartnerBuilder getSecrets(int partnerId, String adminEmail, String cmsPassword, String otp)  {
+		return new GetSecretsPartnerBuilder(partnerId, adminEmail, cmsPassword, otp);
 	}
 	
 	public static class GetStatisticsPartnerBuilder extends RequestBuilder<PartnerStatistics, PartnerStatistics.Tokenizer, GetStatisticsPartnerBuilder> {
