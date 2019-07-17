@@ -5,8 +5,8 @@ before_install:
     - sudo apt-get install maven
 language: java
 jdk:
-    - openjdk7
-    - oraclejdk8
+    - openjdk10
+    - oraclejdk11
 script: 
     - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@SERVICE_URL@#https://www.kaltura.com#g" src/test/resources/test.template.properties > src/test/resources/test.properties
     - ./testAPI/test.sh
