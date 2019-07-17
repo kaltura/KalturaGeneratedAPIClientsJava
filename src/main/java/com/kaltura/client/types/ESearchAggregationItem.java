@@ -29,10 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -42,44 +41,46 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchEntryResponse.Tokenizer.class)
-public class ESearchEntryResponse extends ESearchResponse {
+@MultiRequestBuilder.Tokenizer(ESearchAggregationItem.Tokenizer.class)
+public abstract class ESearchAggregationItem extends ObjectBase {
 	
-	public interface Tokenizer extends ESearchResponse.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchEntryResult.Tokenizer> objects();
-		RequestBuilder.ListTokenizer<ESearchAggregationResponseItem.Tokenizer> aggregations();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String size();
 	}
 
-	private List<ESearchEntryResult> objects;
-	private List<ESearchAggregationResponseItem> aggregations;
+	private Integer size;
 
-	// objects:
-	public List<ESearchEntryResult> getObjects(){
-		return this.objects;
+	// size:
+	public Integer getSize(){
+		return this.size;
 	}
-	// aggregations:
-	public List<ESearchAggregationResponseItem> getAggregations(){
-		return this.aggregations;
+	public void setSize(Integer size){
+		this.size = size;
 	}
 
-	public ESearchEntryResponse() {
+	public void size(String multirequestToken){
+		setToken("size", multirequestToken);
+	}
+
+
+	public ESearchAggregationItem() {
 		super();
 	}
 
-	public ESearchEntryResponse(JsonObject jsonObject) throws APIException {
+	public ESearchAggregationItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchEntryResult.class);
-		aggregations = GsonParser.parseArray(jsonObject.getAsJsonArray("aggregations"), ESearchAggregationResponseItem.class);
+		size = GsonParser.parseInt(jsonObject.get("size"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchEntryResponse");
+		kparams.add("objectType", "KalturaESearchAggregationItem");
+		kparams.add("size", this.size);
 		return kparams;
 	}
 

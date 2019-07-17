@@ -29,10 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.ESearchCategoryAggregateByFieldName;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -42,44 +41,46 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchEntryResponse.Tokenizer.class)
-public class ESearchEntryResponse extends ESearchResponse {
+@MultiRequestBuilder.Tokenizer(ESearchCategoryAggregationItem.Tokenizer.class)
+public class ESearchCategoryAggregationItem extends ESearchAggregationItem {
 	
-	public interface Tokenizer extends ESearchResponse.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchEntryResult.Tokenizer> objects();
-		RequestBuilder.ListTokenizer<ESearchAggregationResponseItem.Tokenizer> aggregations();
+	public interface Tokenizer extends ESearchAggregationItem.Tokenizer {
+		String fieldName();
 	}
 
-	private List<ESearchEntryResult> objects;
-	private List<ESearchAggregationResponseItem> aggregations;
+	private ESearchCategoryAggregateByFieldName fieldName;
 
-	// objects:
-	public List<ESearchEntryResult> getObjects(){
-		return this.objects;
+	// fieldName:
+	public ESearchCategoryAggregateByFieldName getFieldName(){
+		return this.fieldName;
 	}
-	// aggregations:
-	public List<ESearchAggregationResponseItem> getAggregations(){
-		return this.aggregations;
+	public void setFieldName(ESearchCategoryAggregateByFieldName fieldName){
+		this.fieldName = fieldName;
 	}
 
-	public ESearchEntryResponse() {
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
+
+
+	public ESearchCategoryAggregationItem() {
 		super();
 	}
 
-	public ESearchEntryResponse(JsonObject jsonObject) throws APIException {
+	public ESearchCategoryAggregationItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchEntryResult.class);
-		aggregations = GsonParser.parseArray(jsonObject.getAsJsonArray("aggregations"), ESearchAggregationResponseItem.class);
+		fieldName = ESearchCategoryAggregateByFieldName.get(GsonParser.parseString(jsonObject.get("fieldName")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchEntryResponse");
+		kparams.add("objectType", "KalturaESearchCategoryAggregationItem");
+		kparams.add("fieldName", this.fieldName);
 		return kparams;
 	}
 

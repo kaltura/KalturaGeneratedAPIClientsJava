@@ -107,6 +107,7 @@ import java.util.List;
  * @param newPassword Optional, The user's new password
  * @param newFirstName Optional, The user's new first name
  * @param newLastName Optional, The user's new last name
+ * @param otp the user's one-time password
  */
 public class UserService {
 	
@@ -727,7 +728,7 @@ public class UserService {
 	
 	public static class UpdateLoginDataUserBuilder extends NullRequestBuilder {
 		
-		public UpdateLoginDataUserBuilder(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName) {
+		public UpdateLoginDataUserBuilder(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName, String otp) {
 			super("user", "updateLoginData");
 			params.add("oldLoginId", oldLoginId);
 			params.add("password", password);
@@ -735,6 +736,7 @@ public class UserService {
 			params.add("newPassword", newPassword);
 			params.add("newFirstName", newFirstName);
 			params.add("newLastName", newLastName);
+			params.add("otp", otp);
 		}
 		
 		public void oldLoginId(String multirequestToken) {
@@ -760,6 +762,10 @@ public class UserService {
 		public void newLastName(String multirequestToken) {
 			params.add("newLastName", multirequestToken);
 		}
+		
+		public void otp(String multirequestToken) {
+			params.add("otp", multirequestToken);
+		}
 	}
 
 	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password)  {
@@ -778,6 +784,10 @@ public class UserService {
 		return updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, null);
 	}
 
+	public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName)  {
+		return updateLoginData(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName, null);
+	}
+
 	/**
 	 * Updates a user's login data: email, password, name.
 	 * 
@@ -787,8 +797,9 @@ public class UserService {
 	 * @param newPassword Optional, The user's new password
 	 * @param newFirstName Optional, The user's new first name
 	 * @param newLastName Optional, The user's new last name
+	 * @param otp the user's one-time password
 	 */
-    public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName)  {
-		return new UpdateLoginDataUserBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName);
+    public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName, String otp)  {
+		return new UpdateLoginDataUserBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName, otp);
 	}
 }

@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ESearchAggregation;
 import com.kaltura.client.types.ESearchEntryOperator;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -46,9 +47,11 @@ public class ESearchEntryParams extends ESearchParams {
 	
 	public interface Tokenizer extends ESearchParams.Tokenizer {
 		ESearchEntryOperator.Tokenizer searchOperator();
+		ESearchAggregation.Tokenizer aggregations();
 	}
 
 	private ESearchEntryOperator searchOperator;
+	private ESearchAggregation aggregations;
 
 	// searchOperator:
 	public ESearchEntryOperator getSearchOperator(){
@@ -56,6 +59,14 @@ public class ESearchEntryParams extends ESearchParams {
 	}
 	public void setSearchOperator(ESearchEntryOperator searchOperator){
 		this.searchOperator = searchOperator;
+	}
+
+	// aggregations:
+	public ESearchAggregation getAggregations(){
+		return this.aggregations;
+	}
+	public void setAggregations(ESearchAggregation aggregations){
+		this.aggregations = aggregations;
 	}
 
 
@@ -70,6 +81,7 @@ public class ESearchEntryParams extends ESearchParams {
 
 		// set members values:
 		searchOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("searchOperator"), ESearchEntryOperator.class);
+		aggregations = GsonParser.parseObject(jsonObject.getAsJsonObject("aggregations"), ESearchAggregation.class);
 
 	}
 
@@ -77,6 +89,7 @@ public class ESearchEntryParams extends ESearchParams {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaESearchEntryParams");
 		kparams.add("searchOperator", this.searchOperator);
+		kparams.add("aggregations", this.aggregations);
 		return kparams;
 	}
 

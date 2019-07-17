@@ -33,16 +33,13 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum CaptionType implements EnumAsString {
-	SRT("1"),
-	DFXP("2"),
-	WEBVTT("3"),
-	CAP("4"),
-	SCC("5");
+public enum ESearchCuePointAggregateByFieldName implements EnumAsString {
+	TAGS("tags"),
+	TYPE("type");
 
 	private String value;
 
-	CaptionType(String value) {
+	ESearchCuePointAggregateByFieldName(String value) {
 		this.value = value;
 	}
 
@@ -55,19 +52,19 @@ public enum CaptionType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static CaptionType get(String value) {
+	public static ESearchCuePointAggregateByFieldName get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over CaptionType defined values and compare the inner value with the given one:
-		for(CaptionType item: values()) {
+		// goes over ESearchCuePointAggregateByFieldName defined values and compare the inner value with the given one:
+		for(ESearchCuePointAggregateByFieldName item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return CaptionType.values().length > 0 ? CaptionType.values()[0]: null;
+		return ESearchCuePointAggregateByFieldName.values().length > 0 ? ESearchCuePointAggregateByFieldName.values()[0]: null;
    }
 }

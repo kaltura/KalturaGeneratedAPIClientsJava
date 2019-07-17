@@ -52,6 +52,7 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param password 
  * @param newEmail Optional, provide only when you want to update the email
  * @param newPassword 
+ * @param otp the user's one-time password
  */
 public class AdminUserService {
 	
@@ -143,12 +144,13 @@ public class AdminUserService {
 	
 	public static class UpdatePasswordAdminUserBuilder extends RequestBuilder<AdminUser, AdminUser.Tokenizer, UpdatePasswordAdminUserBuilder> {
 		
-		public UpdatePasswordAdminUserBuilder(String email, String password, String newEmail, String newPassword) {
+		public UpdatePasswordAdminUserBuilder(String email, String password, String newEmail, String newPassword, String otp) {
 			super(AdminUser.class, "adminuser", "updatePassword");
 			params.add("email", email);
 			params.add("password", password);
 			params.add("newEmail", newEmail);
 			params.add("newPassword", newPassword);
+			params.add("otp", otp);
 		}
 		
 		public void email(String multirequestToken) {
@@ -166,6 +168,10 @@ public class AdminUserService {
 		public void newPassword(String multirequestToken) {
 			params.add("newPassword", multirequestToken);
 		}
+		
+		public void otp(String multirequestToken) {
+			params.add("otp", multirequestToken);
+		}
 	}
 
 	public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password)  {
@@ -176,6 +182,10 @@ public class AdminUserService {
 		return updatePassword(email, password, newEmail, "");
 	}
 
+	public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail, String newPassword)  {
+		return updatePassword(email, password, newEmail, newPassword, null);
+	}
+
 	/**
 	 * Update admin user password and email
 	 * 
@@ -183,8 +193,9 @@ public class AdminUserService {
 	 * @param password 
 	 * @param newEmail Optional, provide only when you want to update the email
 	 * @param newPassword 
+	 * @param otp the user's one-time password
 	 */
-    public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail, String newPassword)  {
-		return new UpdatePasswordAdminUserBuilder(email, password, newEmail, newPassword);
+    public static UpdatePasswordAdminUserBuilder updatePassword(String email, String password, String newEmail, String newPassword, String otp)  {
+		return new UpdatePasswordAdminUserBuilder(email, password, newEmail, newPassword, otp);
 	}
 }

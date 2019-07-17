@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.DistributeTrigger;
 import com.kaltura.client.enums.DistributionProfileActionStatus;
 import com.kaltura.client.enums.DistributionProfileStatus;
 import com.kaltura.client.enums.DistributionProviderType;
@@ -74,6 +75,7 @@ public abstract class DistributionProfile extends ObjectBase {
 		String recommendedStorageProfileForDownload();
 		String recommendedDcForDownload();
 		String recommendedDcForExecute();
+		String distributeTrigger();
 	}
 
 	/**
@@ -151,6 +153,10 @@ public abstract class DistributionProfile extends ObjectBase {
 	 * The best Kaltura data center to be used to execute the distribution job
 	 */
 	private Integer recommendedDcForExecute;
+	/**
+	 * The event that trigger the automatic distribute
+	 */
+	private DistributeTrigger distributeTrigger;
 
 	// id:
 	public Integer getId(){
@@ -392,6 +398,18 @@ public abstract class DistributionProfile extends ObjectBase {
 		setToken("recommendedDcForExecute", multirequestToken);
 	}
 
+	// distributeTrigger:
+	public DistributeTrigger getDistributeTrigger(){
+		return this.distributeTrigger;
+	}
+	public void setDistributeTrigger(DistributeTrigger distributeTrigger){
+		this.distributeTrigger = distributeTrigger;
+	}
+
+	public void distributeTrigger(String multirequestToken){
+		setToken("distributeTrigger", multirequestToken);
+	}
+
 
 	public DistributionProfile() {
 		super();
@@ -427,6 +445,7 @@ public abstract class DistributionProfile extends ObjectBase {
 		recommendedStorageProfileForDownload = GsonParser.parseInt(jsonObject.get("recommendedStorageProfileForDownload"));
 		recommendedDcForDownload = GsonParser.parseInt(jsonObject.get("recommendedDcForDownload"));
 		recommendedDcForExecute = GsonParser.parseInt(jsonObject.get("recommendedDcForExecute"));
+		distributeTrigger = DistributeTrigger.get(GsonParser.parseInt(jsonObject.get("distributeTrigger")));
 
 	}
 
@@ -453,6 +472,7 @@ public abstract class DistributionProfile extends ObjectBase {
 		kparams.add("recommendedStorageProfileForDownload", this.recommendedStorageProfileForDownload);
 		kparams.add("recommendedDcForDownload", this.recommendedDcForDownload);
 		kparams.add("recommendedDcForExecute", this.recommendedDcForExecute);
+		kparams.add("distributeTrigger", this.distributeTrigger);
 		return kparams;
 	}
 

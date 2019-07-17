@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -42,44 +43,74 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ESearchEntryResponse.Tokenizer.class)
-public class ESearchEntryResponse extends ESearchResponse {
+@MultiRequestBuilder.Tokenizer(ESearchAggregationResponseItem.Tokenizer.class)
+public class ESearchAggregationResponseItem extends ObjectBase {
 	
-	public interface Tokenizer extends ESearchResponse.Tokenizer {
-		RequestBuilder.ListTokenizer<ESearchEntryResult.Tokenizer> objects();
-		RequestBuilder.ListTokenizer<ESearchAggregationResponseItem.Tokenizer> aggregations();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String name();
+		String fieldName();
+		RequestBuilder.ListTokenizer<ESearchAggregationBucket.Tokenizer> buckets();
 	}
 
-	private List<ESearchEntryResult> objects;
-	private List<ESearchAggregationResponseItem> aggregations;
+	private String name;
+	private String fieldName;
+	private List<ESearchAggregationBucket> buckets;
 
-	// objects:
-	public List<ESearchEntryResult> getObjects(){
-		return this.objects;
+	// name:
+	public String getName(){
+		return this.name;
 	}
-	// aggregations:
-	public List<ESearchAggregationResponseItem> getAggregations(){
-		return this.aggregations;
+	public void setName(String name){
+		this.name = name;
 	}
 
-	public ESearchEntryResponse() {
+	public void name(String multirequestToken){
+		setToken("name", multirequestToken);
+	}
+
+	// fieldName:
+	public String getFieldName(){
+		return this.fieldName;
+	}
+	public void setFieldName(String fieldName){
+		this.fieldName = fieldName;
+	}
+
+	public void fieldName(String multirequestToken){
+		setToken("fieldName", multirequestToken);
+	}
+
+	// buckets:
+	public List<ESearchAggregationBucket> getBuckets(){
+		return this.buckets;
+	}
+	public void setBuckets(List<ESearchAggregationBucket> buckets){
+		this.buckets = buckets;
+	}
+
+
+	public ESearchAggregationResponseItem() {
 		super();
 	}
 
-	public ESearchEntryResponse(JsonObject jsonObject) throws APIException {
+	public ESearchAggregationResponseItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		objects = GsonParser.parseArray(jsonObject.getAsJsonArray("objects"), ESearchEntryResult.class);
-		aggregations = GsonParser.parseArray(jsonObject.getAsJsonArray("aggregations"), ESearchAggregationResponseItem.class);
+		name = GsonParser.parseString(jsonObject.get("name"));
+		fieldName = GsonParser.parseString(jsonObject.get("fieldName"));
+		buckets = GsonParser.parseArray(jsonObject.getAsJsonArray("buckets"), ESearchAggregationBucket.class);
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaESearchEntryResponse");
+		kparams.add("objectType", "KalturaESearchAggregationResponseItem");
+		kparams.add("name", this.name);
+		kparams.add("fieldName", this.fieldName);
+		kparams.add("buckets", this.buckets);
 		return kparams;
 	}
 

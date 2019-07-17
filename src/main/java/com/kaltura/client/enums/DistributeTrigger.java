@@ -33,41 +33,38 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum CaptionType implements EnumAsString {
-	SRT("1"),
-	DFXP("2"),
-	WEBVTT("3"),
-	CAP("4"),
-	SCC("5");
+public enum DistributeTrigger implements EnumAsInt {
+	ENTRY_READY(1),
+	MODERATION_APPROVED(2);
 
-	private String value;
+	private int value;
 
-	CaptionType(String value) {
+	DistributeTrigger(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static CaptionType get(String value) {
+	public static DistributeTrigger get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over CaptionType defined values and compare the inner value with the given one:
-		for(CaptionType item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over DistributeTrigger defined values and compare the inner value with the given one:
+		for(DistributeTrigger item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return CaptionType.values().length > 0 ? CaptionType.values()[0]: null;
+		return DistributeTrigger.values().length > 0 ? DistributeTrigger.values()[0]: null;
    }
 }
