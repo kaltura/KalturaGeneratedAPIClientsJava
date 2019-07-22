@@ -12,7 +12,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kaltura</groupId>
   <artifactId>kalturaApiClient</artifactId>
-  <version>15.3.0-SNAPSHOT</version>
+  <version>15.3.0</version>
 
   <!-- Project description -->
   <name>KalturaClient Java Library</name>
@@ -146,6 +146,17 @@
   </dependencies>
 
   <!-- Build, test, and package the class files, source files, and javadoc files. -->
+  <profiles>
+    <profile>
+    <id>java8-doclint-disabled</id>
+    <activation>
+      <jdk>[1.8,)</jdk>
+    </activation>
+    <properties>
+      <javadoc.opts>-Xdoclint:none</javadoc.opts>
+    </properties>
+</profile>
+</profiles>
   <build>
     <plugins>
 
@@ -210,6 +221,9 @@
             <goals>
               <goal>jar</goal>
             </goals>
+	    <configuration>
+                    <additionalparam>${javadoc.opts}</additionalparam>
+            </configuration>
           </execution>
         </executions>
       </plugin>
