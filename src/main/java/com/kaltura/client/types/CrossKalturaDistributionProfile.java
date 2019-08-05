@@ -53,6 +53,10 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		String metadataXslt();
 		RequestBuilder.ListTokenizer<StringValue.Tokenizer> metadataXpathsTriggerUpdate();
 		String distributeCaptions();
+		String designatedCategories();
+		String distributeCategories();
+		String collaboratorsCustomMetadataProfileId();
+		String collaboratorsFromCustomMetadataProfile();
 		String distributeCuePoints();
 		String distributeRemoteFlavorAssetContent();
 		String distributeRemoteThumbAssetContent();
@@ -64,6 +68,7 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapFlavorParamsIds();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapThumbParamsIds();
 		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapCaptionParamsIds();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mapAttachmentParamsIds();
 	}
 
 	private String targetServiceUrl;
@@ -73,6 +78,10 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 	private String metadataXslt;
 	private List<StringValue> metadataXpathsTriggerUpdate;
 	private Boolean distributeCaptions;
+	private String designatedCategories;
+	private Boolean distributeCategories;
+	private String collaboratorsCustomMetadataProfileId;
+	private Boolean collaboratorsFromCustomMetadataProfile;
 	private Boolean distributeCuePoints;
 	private Boolean distributeRemoteFlavorAssetContent;
 	private Boolean distributeRemoteThumbAssetContent;
@@ -84,6 +93,7 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 	private List<KeyValue> mapFlavorParamsIds;
 	private List<KeyValue> mapThumbParamsIds;
 	private List<KeyValue> mapCaptionParamsIds;
+	private List<KeyValue> mapAttachmentParamsIds;
 
 	// targetServiceUrl:
 	public String getTargetServiceUrl(){
@@ -163,6 +173,54 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 
 	public void distributeCaptions(String multirequestToken){
 		setToken("distributeCaptions", multirequestToken);
+	}
+
+	// designatedCategories:
+	public String getDesignatedCategories(){
+		return this.designatedCategories;
+	}
+	public void setDesignatedCategories(String designatedCategories){
+		this.designatedCategories = designatedCategories;
+	}
+
+	public void designatedCategories(String multirequestToken){
+		setToken("designatedCategories", multirequestToken);
+	}
+
+	// distributeCategories:
+	public Boolean getDistributeCategories(){
+		return this.distributeCategories;
+	}
+	public void setDistributeCategories(Boolean distributeCategories){
+		this.distributeCategories = distributeCategories;
+	}
+
+	public void distributeCategories(String multirequestToken){
+		setToken("distributeCategories", multirequestToken);
+	}
+
+	// collaboratorsCustomMetadataProfileId:
+	public String getCollaboratorsCustomMetadataProfileId(){
+		return this.collaboratorsCustomMetadataProfileId;
+	}
+	public void setCollaboratorsCustomMetadataProfileId(String collaboratorsCustomMetadataProfileId){
+		this.collaboratorsCustomMetadataProfileId = collaboratorsCustomMetadataProfileId;
+	}
+
+	public void collaboratorsCustomMetadataProfileId(String multirequestToken){
+		setToken("collaboratorsCustomMetadataProfileId", multirequestToken);
+	}
+
+	// collaboratorsFromCustomMetadataProfile:
+	public Boolean getCollaboratorsFromCustomMetadataProfile(){
+		return this.collaboratorsFromCustomMetadataProfile;
+	}
+	public void setCollaboratorsFromCustomMetadataProfile(Boolean collaboratorsFromCustomMetadataProfile){
+		this.collaboratorsFromCustomMetadataProfile = collaboratorsFromCustomMetadataProfile;
+	}
+
+	public void collaboratorsFromCustomMetadataProfile(String multirequestToken){
+		setToken("collaboratorsFromCustomMetadataProfile", multirequestToken);
 	}
 
 	// distributeCuePoints:
@@ -269,6 +327,14 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		this.mapCaptionParamsIds = mapCaptionParamsIds;
 	}
 
+	// mapAttachmentParamsIds:
+	public List<KeyValue> getMapAttachmentParamsIds(){
+		return this.mapAttachmentParamsIds;
+	}
+	public void setMapAttachmentParamsIds(List<KeyValue> mapAttachmentParamsIds){
+		this.mapAttachmentParamsIds = mapAttachmentParamsIds;
+	}
+
 
 	public CrossKalturaDistributionProfile() {
 		super();
@@ -287,6 +353,10 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		metadataXslt = GsonParser.parseString(jsonObject.get("metadataXslt"));
 		metadataXpathsTriggerUpdate = GsonParser.parseArray(jsonObject.getAsJsonArray("metadataXpathsTriggerUpdate"), StringValue.class);
 		distributeCaptions = GsonParser.parseBoolean(jsonObject.get("distributeCaptions"));
+		designatedCategories = GsonParser.parseString(jsonObject.get("designatedCategories"));
+		distributeCategories = GsonParser.parseBoolean(jsonObject.get("distributeCategories"));
+		collaboratorsCustomMetadataProfileId = GsonParser.parseString(jsonObject.get("collaboratorsCustomMetadataProfileId"));
+		collaboratorsFromCustomMetadataProfile = GsonParser.parseBoolean(jsonObject.get("collaboratorsFromCustomMetadataProfile"));
 		distributeCuePoints = GsonParser.parseBoolean(jsonObject.get("distributeCuePoints"));
 		distributeRemoteFlavorAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteFlavorAssetContent"));
 		distributeRemoteThumbAssetContent = GsonParser.parseBoolean(jsonObject.get("distributeRemoteThumbAssetContent"));
@@ -298,6 +368,7 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		mapFlavorParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapFlavorParamsIds"), KeyValue.class);
 		mapThumbParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapThumbParamsIds"), KeyValue.class);
 		mapCaptionParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapCaptionParamsIds"), KeyValue.class);
+		mapAttachmentParamsIds = GsonParser.parseArray(jsonObject.getAsJsonArray("mapAttachmentParamsIds"), KeyValue.class);
 
 	}
 
@@ -311,6 +382,10 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		kparams.add("metadataXslt", this.metadataXslt);
 		kparams.add("metadataXpathsTriggerUpdate", this.metadataXpathsTriggerUpdate);
 		kparams.add("distributeCaptions", this.distributeCaptions);
+		kparams.add("designatedCategories", this.designatedCategories);
+		kparams.add("distributeCategories", this.distributeCategories);
+		kparams.add("collaboratorsCustomMetadataProfileId", this.collaboratorsCustomMetadataProfileId);
+		kparams.add("collaboratorsFromCustomMetadataProfile", this.collaboratorsFromCustomMetadataProfile);
 		kparams.add("distributeCuePoints", this.distributeCuePoints);
 		kparams.add("distributeRemoteFlavorAssetContent", this.distributeRemoteFlavorAssetContent);
 		kparams.add("distributeRemoteThumbAssetContent", this.distributeRemoteThumbAssetContent);
@@ -322,6 +397,7 @@ public class CrossKalturaDistributionProfile extends ConfigurableDistributionPro
 		kparams.add("mapFlavorParamsIds", this.mapFlavorParamsIds);
 		kparams.add("mapThumbParamsIds", this.mapThumbParamsIds);
 		kparams.add("mapCaptionParamsIds", this.mapCaptionParamsIds);
+		kparams.add("mapAttachmentParamsIds", this.mapAttachmentParamsIds);
 		return kparams;
 	}
 
