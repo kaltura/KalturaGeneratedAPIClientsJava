@@ -47,10 +47,12 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
 		String sourceLanguage();
 		String flavorParamsId();
+		String clearAudioFlavorParamsId();
 	}
 
 	private CatalogItemLanguage sourceLanguage;
 	private Integer flavorParamsId;
+	private Integer clearAudioFlavorParamsId;
 
 	// sourceLanguage:
 	public CatalogItemLanguage getSourceLanguage(){
@@ -76,6 +78,18 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 		setToken("flavorParamsId", multirequestToken);
 	}
 
+	// clearAudioFlavorParamsId:
+	public Integer getClearAudioFlavorParamsId(){
+		return this.clearAudioFlavorParamsId;
+	}
+	public void setClearAudioFlavorParamsId(Integer clearAudioFlavorParamsId){
+		this.clearAudioFlavorParamsId = clearAudioFlavorParamsId;
+	}
+
+	public void clearAudioFlavorParamsId(String multirequestToken){
+		setToken("clearAudioFlavorParamsId", multirequestToken);
+	}
+
 
 	public VendorAudioDescriptionCatalogItem() {
 		super();
@@ -89,6 +103,7 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 		// set members values:
 		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
 		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
+		clearAudioFlavorParamsId = GsonParser.parseInt(jsonObject.get("clearAudioFlavorParamsId"));
 
 	}
 
@@ -97,6 +112,7 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 		kparams.add("objectType", "KalturaVendorAudioDescriptionCatalogItem");
 		kparams.add("sourceLanguage", this.sourceLanguage);
 		kparams.add("flavorParamsId", this.flavorParamsId);
+		kparams.add("clearAudioFlavorParamsId", this.clearAudioFlavorParamsId);
 		return kparams;
 	}
 
