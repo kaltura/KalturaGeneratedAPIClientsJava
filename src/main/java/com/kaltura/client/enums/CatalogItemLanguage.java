@@ -48,6 +48,7 @@ public enum CatalogItemLanguage implements EnumAsString {
 	EL("Greek"),
 	HE("Hebrew"),
 	HI("Hindi"),
+	HU("Hungarian"),
 	IS("Icelandic"),
 	IN("Indonesian"),
 	IT("Italian"),
