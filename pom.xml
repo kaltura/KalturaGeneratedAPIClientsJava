@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kaltura</groupId>
     <artifactId>kalturaApiClient</artifactId>
-    <version>15.6.4</version>
+    <version>15.6.5-SNAPSHOT</version>
 
     <packaging>jar</packaging>
     <properties>
@@ -76,7 +76,7 @@
         <connection>scm:git:git@github.com:kaltura/KalturaGeneratedAPIClientsJava.git</connection>
         <developerConnection>scm:git:git@github.com:kaltura/KalturaGeneratedAPIClientsJava.git</developerConnection>
         <url>scm:git:git@github.com:kaltura/KalturaGeneratedAPIClientsJava.git</url>
-      <tag>kalturaApiClient-15.6.4</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <!-- Libraries on which the KalturaClient depends -->
