@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryVendorTaskCreationMode;
 import com.kaltura.client.enums.EntryVendorTaskStatus;
+import com.kaltura.client.enums.VendorServiceFeature;
+import com.kaltura.client.enums.VendorServiceType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.VendorTaskData;
 import com.kaltura.client.utils.GsonParser;
@@ -73,6 +75,9 @@ public class EntryVendorTask extends ObjectBase {
 		String partnerData();
 		String creationMode();
 		VendorTaskData.Tokenizer taskJobData();
+		String expectedFinishTime();
+		String serviceType();
+		String serviceFeature();
 	}
 
 	private Long id;
@@ -146,6 +151,9 @@ public class EntryVendorTask extends ObjectBase {
 	 */
 	private EntryVendorTaskCreationMode creationMode;
 	private VendorTaskData taskJobData;
+	private Integer expectedFinishTime;
+	private VendorServiceType serviceType;
+	private VendorServiceFeature serviceFeature;
 
 	// id:
 	public Long getId(){
@@ -331,6 +339,18 @@ public class EntryVendorTask extends ObjectBase {
 		this.taskJobData = taskJobData;
 	}
 
+	// expectedFinishTime:
+	public Integer getExpectedFinishTime(){
+		return this.expectedFinishTime;
+	}
+	// serviceType:
+	public VendorServiceType getServiceType(){
+		return this.serviceType;
+	}
+	// serviceFeature:
+	public VendorServiceFeature getServiceFeature(){
+		return this.serviceFeature;
+	}
 
 	public EntryVendorTask() {
 		super();
@@ -367,6 +387,9 @@ public class EntryVendorTask extends ObjectBase {
 		partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
 		creationMode = EntryVendorTaskCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
 		taskJobData = GsonParser.parseObject(jsonObject.getAsJsonObject("taskJobData"), VendorTaskData.class);
+		expectedFinishTime = GsonParser.parseInt(jsonObject.get("expectedFinishTime"));
+		serviceType = VendorServiceType.get(GsonParser.parseInt(jsonObject.get("serviceType")));
+		serviceFeature = VendorServiceFeature.get(GsonParser.parseInt(jsonObject.get("serviceFeature")));
 
 	}
 
