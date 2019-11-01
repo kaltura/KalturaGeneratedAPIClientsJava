@@ -36,8 +36,10 @@ package com.kaltura.client.enums;
 public enum UserOrderBy implements EnumAsString {
 	CREATED_AT_ASC("+createdAt"),
 	ID_ASC("+id"),
+	UPDATED_AT_ASC("+updatedAt"),
 	CREATED_AT_DESC("-createdAt"),
-	ID_DESC("-id");
+	ID_DESC("-id"),
+	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
 

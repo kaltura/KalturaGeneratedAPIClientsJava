@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,42 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AdminUserOrderBy implements EnumAsString {
-	CREATED_AT_ASC("+createdAt"),
-	ID_ASC("+id"),
-	UPDATED_AT_ASC("+updatedAt"),
-	CREATED_AT_DESC("-createdAt"),
-	ID_DESC("-id"),
-	UPDATED_AT_DESC("-updatedAt");
 
-	private String value;
-
-	AdminUserOrderBy(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(BaseUserFilter.Tokenizer.class)
+public abstract class BaseUserFilter extends BaseUserBaseFilter {
+	
+	public interface Tokenizer extends BaseUserBaseFilter.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public BaseUserFilter() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public BaseUserFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static AdminUserOrderBy get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over AdminUserOrderBy defined values and compare the inner value with the given one:
-		for(AdminUserOrderBy item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return AdminUserOrderBy.values().length > 0 ? AdminUserOrderBy.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaBaseUserFilter");
+		return kparams;
+	}
+
 }
+

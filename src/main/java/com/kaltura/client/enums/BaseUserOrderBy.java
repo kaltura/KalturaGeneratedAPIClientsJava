@@ -33,7 +33,7 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AdminUserOrderBy implements EnumAsString {
+public enum BaseUserOrderBy implements EnumAsString {
 	CREATED_AT_ASC("+createdAt"),
 	ID_ASC("+id"),
 	UPDATED_AT_ASC("+updatedAt"),
@@ -43,7 +43,7 @@ public enum AdminUserOrderBy implements EnumAsString {
 
 	private String value;
 
-	AdminUserOrderBy(String value) {
+	BaseUserOrderBy(String value) {
 		this.value = value;
 	}
 
@@ -56,19 +56,19 @@ public enum AdminUserOrderBy implements EnumAsString {
 		this.value = value;
 	}
 
-	public static AdminUserOrderBy get(String value) {
+	public static BaseUserOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over AdminUserOrderBy defined values and compare the inner value with the given one:
-		for(AdminUserOrderBy item: values()) {
+		// goes over BaseUserOrderBy defined values and compare the inner value with the given one:
+		for(BaseUserOrderBy item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return AdminUserOrderBy.values().length > 0 ? AdminUserOrderBy.values()[0]: null;
+		return BaseUserOrderBy.values().length > 0 ? BaseUserOrderBy.values()[0]: null;
    }
 }
