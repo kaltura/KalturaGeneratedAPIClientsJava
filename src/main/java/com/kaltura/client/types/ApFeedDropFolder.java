@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,44 +38,50 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DropFolderType implements EnumAsString {
-	AP_FEED("ApFeedDropFolder.AP_FEED"),
-	FEED("FeedDropFolder.FEED"),
-	WEBEX("WebexDropFolder.WEBEX"),
-	LOCAL("1"),
-	FTP("2"),
-	SCP("3"),
-	SFTP("4"),
-	S3("6");
 
-	private String value;
-
-	DropFolderType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ApFeedDropFolder.Tokenizer.class)
+public class ApFeedDropFolder extends FeedDropFolder {
+	
+	public interface Tokenizer extends FeedDropFolder.Tokenizer {
+		String apApiKey();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private String apApiKey;
+
+	// apApiKey:
+	public String getApApiKey(){
+		return this.apApiKey;
+	}
+	public void setApApiKey(String apApiKey){
+		this.apApiKey = apApiKey;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void apApiKey(String multirequestToken){
+		setToken("apApiKey", multirequestToken);
 	}
 
-	public static DropFolderType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over DropFolderType defined values and compare the inner value with the given one:
-		for(DropFolderType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DropFolderType.values().length > 0 ? DropFolderType.values()[0]: null;
-   }
+
+	public ApFeedDropFolder() {
+		super();
+	}
+
+	public ApFeedDropFolder(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		apApiKey = GsonParser.parseString(jsonObject.get("apApiKey"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaApFeedDropFolder");
+		kparams.add("apApiKey", this.apApiKey);
+		return kparams;
+	}
+
 }
+
