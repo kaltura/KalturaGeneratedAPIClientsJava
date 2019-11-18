@@ -38,6 +38,7 @@ public enum ReportInterval implements EnumAsString {
 	HOURS("hours"),
 	MINUTES("minutes"),
 	MONTHS("months"),
+	TEN_MINUTES("ten_minutes"),
 	TEN_SECONDS("ten_seconds");
 
 	private String value;

@@ -69,6 +69,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String entryCreatedAtGreaterThanOrEqual();
 		String entryCreatedAtLessThanOrEqual();
 		String entryIdIn();
+		String playbackTypeIn();
+		String playbackContextIdsIn();
 	}
 
 	/**
@@ -157,6 +159,11 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 */
 	private Integer entryCreatedAtLessThanOrEqual;
 	private String entryIdIn;
+	private String playbackTypeIn;
+	/**
+	 * filter by playback context ids
+	 */
+	private String playbackContextIdsIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -430,6 +437,30 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("entryIdIn", multirequestToken);
 	}
 
+	// playbackTypeIn:
+	public String getPlaybackTypeIn(){
+		return this.playbackTypeIn;
+	}
+	public void setPlaybackTypeIn(String playbackTypeIn){
+		this.playbackTypeIn = playbackTypeIn;
+	}
+
+	public void playbackTypeIn(String multirequestToken){
+		setToken("playbackTypeIn", multirequestToken);
+	}
+
+	// playbackContextIdsIn:
+	public String getPlaybackContextIdsIn(){
+		return this.playbackContextIdsIn;
+	}
+	public void setPlaybackContextIdsIn(String playbackContextIdsIn){
+		this.playbackContextIdsIn = playbackContextIdsIn;
+	}
+
+	public void playbackContextIdsIn(String multirequestToken){
+		setToken("playbackContextIdsIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -464,6 +495,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		entryCreatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtGreaterThanOrEqual"));
 		entryCreatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtLessThanOrEqual"));
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
+		playbackTypeIn = GsonParser.parseString(jsonObject.get("playbackTypeIn"));
+		playbackContextIdsIn = GsonParser.parseString(jsonObject.get("playbackContextIdsIn"));
 
 	}
 
@@ -493,6 +526,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("entryCreatedAtGreaterThanOrEqual", this.entryCreatedAtGreaterThanOrEqual);
 		kparams.add("entryCreatedAtLessThanOrEqual", this.entryCreatedAtLessThanOrEqual);
 		kparams.add("entryIdIn", this.entryIdIn);
+		kparams.add("playbackTypeIn", this.playbackTypeIn);
+		kparams.add("playbackContextIdsIn", this.playbackContextIdsIn);
 		return kparams;
 	}
 
