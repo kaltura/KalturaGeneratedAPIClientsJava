@@ -42,6 +42,7 @@ public enum ESearchEntryOrderByFieldName implements EnumAsString {
 	PLAYS_LAST_1_DAY("plays_last_1_day"),
 	PLAYS_LAST_30_DAYS("plays_last_30_days"),
 	PLAYS_LAST_7_DAYS("plays_last_7_days"),
+	RANK("rank"),
 	START_DATE("start_date"),
 	UPDATED_AT("updated_at"),
 	VIEWS("views"),

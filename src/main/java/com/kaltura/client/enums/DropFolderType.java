@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType implements EnumAsString {
-	AP_FEED("ApFeedDropFolder.AP_FEED"),
 	FEED("FeedDropFolder.FEED"),
 	WEBEX("WebexDropFolder.WEBEX"),
 	LOCAL("1"),

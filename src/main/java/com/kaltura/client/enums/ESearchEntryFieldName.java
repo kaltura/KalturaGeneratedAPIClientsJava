@@ -61,6 +61,7 @@ public enum ESearchEntryFieldName implements EnumAsString {
 	PARTNER_SORT_VALUE("partner_sort_value"),
 	PLAYS("plays"),
 	PUSH_PUBLISH("push_publish"),
+	RANK("rank"),
 	RECORDED_ENTRY_ID("recorded_entry_id"),
 	REDIRECT_ENTRY_ID("redirect_entry_id"),
 	REFERENCE_ID("reference_id"),
