@@ -44,7 +44,8 @@ public enum MetadataObjectType implements EnumAsString {
 	CATEGORY("2"),
 	USER("3"),
 	PARTNER("4"),
-	DYNAMIC_OBJECT("5");
+	DYNAMIC_OBJECT("5"),
+	USER_ENTRY("6");
 
 	private String value;
 
