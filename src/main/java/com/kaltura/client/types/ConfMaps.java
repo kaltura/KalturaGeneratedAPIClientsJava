@@ -50,6 +50,7 @@ public class ConfMaps extends ObjectBase {
 		String name();
 		String content();
 		String rawData();
+		String userId();
 		String isEditable();
 		String createdAt();
 		String relatedHost();
@@ -68,6 +69,7 @@ public class ConfMaps extends ObjectBase {
 	 */
 	private String content;
 	private String rawData;
+	private String userId;
 	/**
 	 * IsEditable - true / false
 	 */
@@ -122,6 +124,18 @@ public class ConfMaps extends ObjectBase {
 
 	public void rawData(String multirequestToken){
 		setToken("rawData", multirequestToken);
+	}
+
+	// userId:
+	public String getUserId(){
+		return this.userId;
+	}
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void userId(String multirequestToken){
+		setToken("userId", multirequestToken);
 	}
 
 	// isEditable:
@@ -198,6 +212,7 @@ public class ConfMaps extends ObjectBase {
 		name = GsonParser.parseString(jsonObject.get("name"));
 		content = GsonParser.parseString(jsonObject.get("content"));
 		rawData = GsonParser.parseString(jsonObject.get("rawData"));
+		userId = GsonParser.parseString(jsonObject.get("userId"));
 		isEditable = GsonParser.parseBoolean(jsonObject.get("isEditable"));
 		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
 		relatedHost = GsonParser.parseString(jsonObject.get("relatedHost"));
@@ -214,6 +229,7 @@ public class ConfMaps extends ObjectBase {
 		kparams.add("name", this.name);
 		kparams.add("content", this.content);
 		kparams.add("rawData", this.rawData);
+		kparams.add("userId", this.userId);
 		kparams.add("relatedHost", this.relatedHost);
 		kparams.add("sourceLocation", this.sourceLocation);
 		kparams.add("remarks", this.remarks);

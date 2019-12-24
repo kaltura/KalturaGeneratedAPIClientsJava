@@ -71,6 +71,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String entryIdIn();
 		String playbackTypeIn();
 		String playbackContextIdsIn();
+		String rootEntryIdIn();
 	}
 
 	/**
@@ -164,6 +165,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by playback context ids
 	 */
 	private String playbackContextIdsIn;
+	/**
+	 * filter by root entry ids
+	 */
+	private String rootEntryIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -461,6 +466,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("playbackContextIdsIn", multirequestToken);
 	}
 
+	// rootEntryIdIn:
+	public String getRootEntryIdIn(){
+		return this.rootEntryIdIn;
+	}
+	public void setRootEntryIdIn(String rootEntryIdIn){
+		this.rootEntryIdIn = rootEntryIdIn;
+	}
+
+	public void rootEntryIdIn(String multirequestToken){
+		setToken("rootEntryIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -497,6 +514,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 		playbackTypeIn = GsonParser.parseString(jsonObject.get("playbackTypeIn"));
 		playbackContextIdsIn = GsonParser.parseString(jsonObject.get("playbackContextIdsIn"));
+		rootEntryIdIn = GsonParser.parseString(jsonObject.get("rootEntryIdIn"));
 
 	}
 
@@ -528,6 +546,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("entryIdIn", this.entryIdIn);
 		kparams.add("playbackTypeIn", this.playbackTypeIn);
 		kparams.add("playbackContextIdsIn", this.playbackContextIdsIn);
+		kparams.add("rootEntryIdIn", this.rootEntryIdIn);
 		return kparams;
 	}
 
