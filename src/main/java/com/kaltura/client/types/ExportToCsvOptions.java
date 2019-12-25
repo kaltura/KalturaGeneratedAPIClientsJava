@@ -29,11 +29,9 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ESearchEntryParams;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -43,60 +41,51 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(MediaEsearchExportToCsvJobData.Tokenizer.class)
-public class MediaEsearchExportToCsvJobData extends ExportCsvJobData {
+@MultiRequestBuilder.Tokenizer(ExportToCsvOptions.Tokenizer.class)
+public class ExportToCsvOptions extends ObjectBase {
 	
-	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
-		ESearchEntryParams.Tokenizer searchParams();
-		RequestBuilder.ListTokenizer<ExportToCsvOptions.Tokenizer> options();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String format();
 	}
 
 	/**
-	 * Esearch parameters for the entry search
+	 * The format of the outputted date string. There are also several predefined date
+	  constants that may be used instead, so for example DATE_RSS contains the format
+	  string 'D, d M Y H:i:s'.   https://www.php.net/manual/en/function.date.php
 	 */
-	private ESearchEntryParams searchParams;
-	/**
-	 * options
-	 */
-	private List<ExportToCsvOptions> options;
+	private String format;
 
-	// searchParams:
-	public ESearchEntryParams getSearchParams(){
-		return this.searchParams;
+	// format:
+	public String getFormat(){
+		return this.format;
 	}
-	public void setSearchParams(ESearchEntryParams searchParams){
-		this.searchParams = searchParams;
+	public void setFormat(String format){
+		this.format = format;
 	}
 
-	// options:
-	public List<ExportToCsvOptions> getOptions(){
-		return this.options;
-	}
-	public void setOptions(List<ExportToCsvOptions> options){
-		this.options = options;
+	public void format(String multirequestToken){
+		setToken("format", multirequestToken);
 	}
 
 
-	public MediaEsearchExportToCsvJobData() {
+	public ExportToCsvOptions() {
 		super();
 	}
 
-	public MediaEsearchExportToCsvJobData(JsonObject jsonObject) throws APIException {
+	public ExportToCsvOptions(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		searchParams = GsonParser.parseObject(jsonObject.getAsJsonObject("searchParams"), ESearchEntryParams.class);
-		options = GsonParser.parseArray(jsonObject.getAsJsonArray("options"), ExportToCsvOptions.class);
+		format = GsonParser.parseString(jsonObject.get("format"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaMediaEsearchExportToCsvJobData");
-		kparams.add("searchParams", this.searchParams);
-		kparams.add("options", this.options);
+		kparams.add("objectType", "KalturaExportToCsvOptions");
+		kparams.add("format", this.format);
 		return kparams;
 	}
 

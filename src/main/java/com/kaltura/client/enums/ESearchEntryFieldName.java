@@ -72,7 +72,8 @@ public enum ESearchEntryFieldName implements EnumAsString {
 	TAGS("tags"),
 	TEMPLATE_ENTRY_ID("template_entry_id"),
 	UPDATED_AT("updated_at"),
-	USER_NAMES("user_names");
+	USER_NAMES("user_names"),
+	VOTES("votes");
 
 	private String value;
 
