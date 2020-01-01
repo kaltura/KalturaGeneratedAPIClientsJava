@@ -42,6 +42,17 @@ import com.kaltura.client.utils.request.RequestBuilder;
  */
 public class SystemService {
 	
+	public static class GetHealthCheckSystemBuilder extends RequestBuilder<String, String, GetHealthCheckSystemBuilder> {
+		
+		public GetHealthCheckSystemBuilder() {
+			super(String.class, "system", "getHealthCheck");
+		}
+	}
+
+    public static GetHealthCheckSystemBuilder getHealthCheck()  {
+		return new GetHealthCheckSystemBuilder();
+	}
+	
 	public static class GetTimeSystemBuilder extends RequestBuilder<Integer, String, GetTimeSystemBuilder> {
 		
 		public GetTimeSystemBuilder() {
