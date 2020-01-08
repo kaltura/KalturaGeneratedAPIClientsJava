@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -69,6 +69,7 @@ import java.io.InputStream;
  * @param duration in seconds
  * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
  * stop event)
+ * @param liveEntryId 
  * @param entryId Live stream entry id
  * @param token Live stream broadcasting token
  * @param hostname Media server host name
@@ -237,6 +238,27 @@ public class LiveStreamService {
 	 */
     public static AppendRecordingLiveStreamBuilder appendRecording(String entryId, String assetId, EntryServerNodeType mediaServerIndex, DataCenterContentResource resource, double duration, boolean isLastChunk)  {
 		return new AppendRecordingLiveStreamBuilder(entryId, assetId, mediaServerIndex, resource, duration, isLastChunk);
+	}
+	
+	public static class ArchiveLiveStreamBuilder extends RequestBuilder<Boolean, String, ArchiveLiveStreamBuilder> {
+		
+		public ArchiveLiveStreamBuilder(String liveEntryId) {
+			super(Boolean.class, "livestream", "archive");
+			params.add("liveEntryId", liveEntryId);
+		}
+		
+		public void liveEntryId(String multirequestToken) {
+			params.add("liveEntryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Archive a live entry which was recorded
+	 * 
+	 * @param liveEntryId 
+	 */
+    public static ArchiveLiveStreamBuilder archive(String liveEntryId)  {
+		return new ArchiveLiveStreamBuilder(liveEntryId);
 	}
 	
 	public static class AuthenticateLiveStreamBuilder extends RequestBuilder<LiveStreamEntry, LiveStreamEntry.Tokenizer, AuthenticateLiveStreamBuilder> {
