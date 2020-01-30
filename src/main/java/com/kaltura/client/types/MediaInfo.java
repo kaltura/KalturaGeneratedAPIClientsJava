@@ -85,6 +85,7 @@ public class MediaInfo extends ObjectBase {
 		String colorTransfer();
 		String colorPrimaries();
 		String pixelFormat();
+		String colorSpace();
 		String chromaSubsampling();
 		String bitsDepth();
 	}
@@ -209,6 +210,7 @@ public class MediaInfo extends ObjectBase {
 	private String colorTransfer;
 	private String colorPrimaries;
 	private String pixelFormat;
+	private String colorSpace;
 	private String chromaSubsampling;
 	private Integer bitsDepth;
 
@@ -672,6 +674,18 @@ public class MediaInfo extends ObjectBase {
 		setToken("pixelFormat", multirequestToken);
 	}
 
+	// colorSpace:
+	public String getColorSpace(){
+		return this.colorSpace;
+	}
+	public void setColorSpace(String colorSpace){
+		this.colorSpace = colorSpace;
+	}
+
+	public void colorSpace(String multirequestToken){
+		setToken("colorSpace", multirequestToken);
+	}
+
 	// chromaSubsampling:
 	public String getChromaSubsampling(){
 		return this.chromaSubsampling;
@@ -746,6 +760,7 @@ public class MediaInfo extends ObjectBase {
 		colorTransfer = GsonParser.parseString(jsonObject.get("colorTransfer"));
 		colorPrimaries = GsonParser.parseString(jsonObject.get("colorPrimaries"));
 		pixelFormat = GsonParser.parseString(jsonObject.get("pixelFormat"));
+		colorSpace = GsonParser.parseString(jsonObject.get("colorSpace"));
 		chromaSubsampling = GsonParser.parseString(jsonObject.get("chromaSubsampling"));
 		bitsDepth = GsonParser.parseInt(jsonObject.get("bitsDepth"));
 
@@ -792,6 +807,7 @@ public class MediaInfo extends ObjectBase {
 		kparams.add("colorTransfer", this.colorTransfer);
 		kparams.add("colorPrimaries", this.colorPrimaries);
 		kparams.add("pixelFormat", this.pixelFormat);
+		kparams.add("colorSpace", this.colorSpace);
 		kparams.add("chromaSubsampling", this.chromaSubsampling);
 		kparams.add("bitsDepth", this.bitsDepth);
 		return kparams;

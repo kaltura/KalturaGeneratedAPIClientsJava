@@ -25,12 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using generate.php
@@ -38,57 +33,39 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum LiveStreamBroadcastStatus implements EnumAsInt {
+	OFFLINE(1),
+	PREVIEW(2),
+	LIVE(3);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(UnlimitedVendorCredit.Tokenizer.class)
-public class UnlimitedVendorCredit extends BaseVendorCredit {
-	
-	public interface Tokenizer extends BaseVendorCredit.Tokenizer {
-		String credit();
-		String fromDate();
+	private int value;
+
+	LiveStreamBroadcastStatus(int value) {
+		this.value = value;
 	}
 
-	private Integer credit;
-	private Integer fromDate;
-
-	// credit:
-	public Integer getCredit(){
-		return this.credit;
-	}
-	// fromDate:
-	public Integer getFromDate(){
-		return this.fromDate;
-	}
-	public void setFromDate(Integer fromDate){
-		this.fromDate = fromDate;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-	public void fromDate(String multirequestToken){
-		setToken("fromDate", multirequestToken);
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-
-	public UnlimitedVendorCredit() {
-		super();
-	}
-
-	public UnlimitedVendorCredit(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		credit = GsonParser.parseInt(jsonObject.get("credit"));
-		fromDate = GsonParser.parseInt(jsonObject.get("fromDate"));
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaUnlimitedVendorCredit");
-		kparams.add("fromDate", this.fromDate);
-		return kparams;
-	}
-
+	public static LiveStreamBroadcastStatus get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over LiveStreamBroadcastStatus defined values and compare the inner value with the given one:
+		for(LiveStreamBroadcastStatus item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return LiveStreamBroadcastStatus.values().length > 0 ? LiveStreamBroadcastStatus.values()[0]: null;
+   }
 }
-

@@ -59,7 +59,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String regionIn();
 		String citiesIn();
 		String operatingSystemFamilyIn();
+		String operatingSystemIn();
 		String browserFamilyIn();
+		String browserIn();
 		String timeZoneOffset();
 		String interval();
 		String mediaTypeIn();
@@ -72,6 +74,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String playbackTypeIn();
 		String playbackContextIdsIn();
 		String rootEntryIdIn();
+		String errorCodeIn();
+		String playerVersionIn();
+		String ispIn();
 	}
 
 	/**
@@ -127,9 +132,17 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 */
 	private String operatingSystemFamilyIn;
 	/**
+	 * Filter by operating system
+	 */
+	private String operatingSystemIn;
+	/**
 	 * Filter by browser family
 	 */
 	private String browserFamilyIn;
+	/**
+	 * Filter by browser
+	 */
+	private String browserIn;
 	/**
 	 * Time zone offset in minutes
 	 */
@@ -169,6 +182,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by root entry ids
 	 */
 	private String rootEntryIdIn;
+	/**
+	 * filter by error code
+	 */
+	private String errorCodeIn;
+	/**
+	 * filter by player version
+	 */
+	private String playerVersionIn;
+	/**
+	 * filter by isp
+	 */
+	private String ispIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -326,6 +351,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("operatingSystemFamilyIn", multirequestToken);
 	}
 
+	// operatingSystemIn:
+	public String getOperatingSystemIn(){
+		return this.operatingSystemIn;
+	}
+	public void setOperatingSystemIn(String operatingSystemIn){
+		this.operatingSystemIn = operatingSystemIn;
+	}
+
+	public void operatingSystemIn(String multirequestToken){
+		setToken("operatingSystemIn", multirequestToken);
+	}
+
 	// browserFamilyIn:
 	public String getBrowserFamilyIn(){
 		return this.browserFamilyIn;
@@ -336,6 +373,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 
 	public void browserFamilyIn(String multirequestToken){
 		setToken("browserFamilyIn", multirequestToken);
+	}
+
+	// browserIn:
+	public String getBrowserIn(){
+		return this.browserIn;
+	}
+	public void setBrowserIn(String browserIn){
+		this.browserIn = browserIn;
+	}
+
+	public void browserIn(String multirequestToken){
+		setToken("browserIn", multirequestToken);
 	}
 
 	// timeZoneOffset:
@@ -478,6 +527,42 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("rootEntryIdIn", multirequestToken);
 	}
 
+	// errorCodeIn:
+	public String getErrorCodeIn(){
+		return this.errorCodeIn;
+	}
+	public void setErrorCodeIn(String errorCodeIn){
+		this.errorCodeIn = errorCodeIn;
+	}
+
+	public void errorCodeIn(String multirequestToken){
+		setToken("errorCodeIn", multirequestToken);
+	}
+
+	// playerVersionIn:
+	public String getPlayerVersionIn(){
+		return this.playerVersionIn;
+	}
+	public void setPlayerVersionIn(String playerVersionIn){
+		this.playerVersionIn = playerVersionIn;
+	}
+
+	public void playerVersionIn(String multirequestToken){
+		setToken("playerVersionIn", multirequestToken);
+	}
+
+	// ispIn:
+	public String getIspIn(){
+		return this.ispIn;
+	}
+	public void setIspIn(String ispIn){
+		this.ispIn = ispIn;
+	}
+
+	public void ispIn(String multirequestToken){
+		setToken("ispIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -502,7 +587,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		regionIn = GsonParser.parseString(jsonObject.get("regionIn"));
 		citiesIn = GsonParser.parseString(jsonObject.get("citiesIn"));
 		operatingSystemFamilyIn = GsonParser.parseString(jsonObject.get("operatingSystemFamilyIn"));
+		operatingSystemIn = GsonParser.parseString(jsonObject.get("operatingSystemIn"));
 		browserFamilyIn = GsonParser.parseString(jsonObject.get("browserFamilyIn"));
+		browserIn = GsonParser.parseString(jsonObject.get("browserIn"));
 		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
 		interval = ReportInterval.get(GsonParser.parseString(jsonObject.get("interval")));
 		mediaTypeIn = GsonParser.parseString(jsonObject.get("mediaTypeIn"));
@@ -515,6 +602,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		playbackTypeIn = GsonParser.parseString(jsonObject.get("playbackTypeIn"));
 		playbackContextIdsIn = GsonParser.parseString(jsonObject.get("playbackContextIdsIn"));
 		rootEntryIdIn = GsonParser.parseString(jsonObject.get("rootEntryIdIn"));
+		errorCodeIn = GsonParser.parseString(jsonObject.get("errorCodeIn"));
+		playerVersionIn = GsonParser.parseString(jsonObject.get("playerVersionIn"));
+		ispIn = GsonParser.parseString(jsonObject.get("ispIn"));
 
 	}
 
@@ -534,7 +624,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("regionIn", this.regionIn);
 		kparams.add("citiesIn", this.citiesIn);
 		kparams.add("operatingSystemFamilyIn", this.operatingSystemFamilyIn);
+		kparams.add("operatingSystemIn", this.operatingSystemIn);
 		kparams.add("browserFamilyIn", this.browserFamilyIn);
+		kparams.add("browserIn", this.browserIn);
 		kparams.add("timeZoneOffset", this.timeZoneOffset);
 		kparams.add("interval", this.interval);
 		kparams.add("mediaTypeIn", this.mediaTypeIn);
@@ -547,6 +639,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("playbackTypeIn", this.playbackTypeIn);
 		kparams.add("playbackContextIdsIn", this.playbackContextIdsIn);
 		kparams.add("rootEntryIdIn", this.rootEntryIdIn);
+		kparams.add("errorCodeIn", this.errorCodeIn);
+		kparams.add("playerVersionIn", this.playerVersionIn);
+		kparams.add("ispIn", this.ispIn);
 		return kparams;
 	}
 

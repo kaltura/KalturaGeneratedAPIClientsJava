@@ -37,6 +37,7 @@ import com.kaltura.client.types.DataCenterContentResource;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.LiveEntry;
 import com.kaltura.client.types.LiveStreamConfiguration;
+import com.kaltura.client.types.LiveStreamDetails;
 import com.kaltura.client.types.LiveStreamEntry;
 import com.kaltura.client.types.LiveStreamEntryFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
@@ -85,6 +86,7 @@ import java.io.InputStream;
  * @param entryId Live stream entry id to delete
  * @param entryId Live stream entry id
  * @param version Desired version of the data
+ * @param id ID of the live stream entry
  * @param id ID of the live stream
  * @param protocol protocol of the stream to test.
  * @param filter live stream entry filter
@@ -436,6 +438,27 @@ public class LiveStreamService {
 	 */
     public static GetLiveStreamBuilder get(String entryId, int version)  {
 		return new GetLiveStreamBuilder(entryId, version);
+	}
+	
+	public static class GetDetailsLiveStreamBuilder extends RequestBuilder<LiveStreamDetails, LiveStreamDetails.Tokenizer, GetDetailsLiveStreamBuilder> {
+		
+		public GetDetailsLiveStreamBuilder(String id) {
+			super(LiveStreamDetails.class, "livestream", "getDetails");
+			params.add("id", id);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+	}
+
+	/**
+	 * Delivering the status of a live stream (on-air/offline) if it is possible
+	 * 
+	 * @param id ID of the live stream entry
+	 */
+    public static GetDetailsLiveStreamBuilder getDetails(String id)  {
+		return new GetDetailsLiveStreamBuilder(id);
 	}
 	
 	public static class IsLiveLiveStreamBuilder extends RequestBuilder<Boolean, String, IsLiveLiveStreamBuilder> {
