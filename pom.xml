@@ -144,7 +144,7 @@
   </dependencies>
 
   <!-- Build, test, and package the class files, source files, and javadoc files. -->
-  <profiles>
+  <!--profiles>
     <profile>
     <id>java8-doclint-disabled</id>
     <activation>
@@ -154,7 +154,7 @@
       <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 </profile>
-</profiles>
+</profiles-->
   <build>
     <plugins>
 
