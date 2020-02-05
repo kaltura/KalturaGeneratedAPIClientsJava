@@ -54,6 +54,7 @@ public class LiveEntryRecordingOptions extends ObjectBase {
 		String shouldMakeHidden();
 		String shouldAutoArchive();
 		String nonDeletedCuePointsTags();
+		String archiveVodSuffixTimezone();
 	}
 
 	private Boolean shouldCopyEntitlement;
@@ -62,6 +63,7 @@ public class LiveEntryRecordingOptions extends ObjectBase {
 	private Boolean shouldMakeHidden;
 	private Boolean shouldAutoArchive;
 	private String nonDeletedCuePointsTags;
+	private String archiveVodSuffixTimezone;
 
 	// shouldCopyEntitlement:
 	public Boolean getShouldCopyEntitlement(){
@@ -135,6 +137,18 @@ public class LiveEntryRecordingOptions extends ObjectBase {
 		setToken("nonDeletedCuePointsTags", multirequestToken);
 	}
 
+	// archiveVodSuffixTimezone:
+	public String getArchiveVodSuffixTimezone(){
+		return this.archiveVodSuffixTimezone;
+	}
+	public void setArchiveVodSuffixTimezone(String archiveVodSuffixTimezone){
+		this.archiveVodSuffixTimezone = archiveVodSuffixTimezone;
+	}
+
+	public void archiveVodSuffixTimezone(String multirequestToken){
+		setToken("archiveVodSuffixTimezone", multirequestToken);
+	}
+
 
 	public LiveEntryRecordingOptions() {
 		super();
@@ -152,6 +166,7 @@ public class LiveEntryRecordingOptions extends ObjectBase {
 		shouldMakeHidden = GsonParser.parseBoolean(jsonObject.get("shouldMakeHidden"));
 		shouldAutoArchive = GsonParser.parseBoolean(jsonObject.get("shouldAutoArchive"));
 		nonDeletedCuePointsTags = GsonParser.parseString(jsonObject.get("nonDeletedCuePointsTags"));
+		archiveVodSuffixTimezone = GsonParser.parseString(jsonObject.get("archiveVodSuffixTimezone"));
 
 	}
 
@@ -164,6 +179,7 @@ public class LiveEntryRecordingOptions extends ObjectBase {
 		kparams.add("shouldMakeHidden", this.shouldMakeHidden);
 		kparams.add("shouldAutoArchive", this.shouldAutoArchive);
 		kparams.add("nonDeletedCuePointsTags", this.nonDeletedCuePointsTags);
+		kparams.add("archiveVodSuffixTimezone", this.archiveVodSuffixTimezone);
 		return kparams;
 	}
 
