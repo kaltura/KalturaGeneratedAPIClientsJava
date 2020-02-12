@@ -45,9 +45,11 @@ public class LiveEntryArchiveJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
 		String liveEntryId();
+		String vodEntryId();
 	}
 
 	private String liveEntryId;
+	private String vodEntryId;
 
 	// liveEntryId:
 	public String getLiveEntryId(){
@@ -59,6 +61,18 @@ public class LiveEntryArchiveJobData extends JobData {
 
 	public void liveEntryId(String multirequestToken){
 		setToken("liveEntryId", multirequestToken);
+	}
+
+	// vodEntryId:
+	public String getVodEntryId(){
+		return this.vodEntryId;
+	}
+	public void setVodEntryId(String vodEntryId){
+		this.vodEntryId = vodEntryId;
+	}
+
+	public void vodEntryId(String multirequestToken){
+		setToken("vodEntryId", multirequestToken);
 	}
 
 
@@ -73,6 +87,7 @@ public class LiveEntryArchiveJobData extends JobData {
 
 		// set members values:
 		liveEntryId = GsonParser.parseString(jsonObject.get("liveEntryId"));
+		vodEntryId = GsonParser.parseString(jsonObject.get("vodEntryId"));
 
 	}
 
@@ -80,6 +95,7 @@ public class LiveEntryArchiveJobData extends JobData {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLiveEntryArchiveJobData");
 		kparams.add("liveEntryId", this.liveEntryId);
+		kparams.add("vodEntryId", this.vodEntryId);
 		return kparams;
 	}
 

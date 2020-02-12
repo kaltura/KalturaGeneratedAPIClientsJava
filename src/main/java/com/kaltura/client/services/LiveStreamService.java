@@ -71,6 +71,7 @@ import java.io.InputStream;
  * @param isLastChunk Is this the last recorded chunk in the current session (i.e. following a stream
  * stop event)
  * @param liveEntryId 
+ * @param vodEntryId 
  * @param entryId Live stream entry id
  * @param token Live stream broadcasting token
  * @param hostname Media server host name
@@ -244,13 +245,18 @@ public class LiveStreamService {
 	
 	public static class ArchiveLiveStreamBuilder extends RequestBuilder<Boolean, String, ArchiveLiveStreamBuilder> {
 		
-		public ArchiveLiveStreamBuilder(String liveEntryId) {
+		public ArchiveLiveStreamBuilder(String liveEntryId, String vodEntryId) {
 			super(Boolean.class, "livestream", "archive");
 			params.add("liveEntryId", liveEntryId);
+			params.add("vodEntryId", vodEntryId);
 		}
 		
 		public void liveEntryId(String multirequestToken) {
 			params.add("liveEntryId", multirequestToken);
+		}
+		
+		public void vodEntryId(String multirequestToken) {
+			params.add("vodEntryId", multirequestToken);
 		}
 	}
 
@@ -258,9 +264,10 @@ public class LiveStreamService {
 	 * Archive a live entry which was recorded
 	 * 
 	 * @param liveEntryId 
+	 * @param vodEntryId 
 	 */
-    public static ArchiveLiveStreamBuilder archive(String liveEntryId)  {
-		return new ArchiveLiveStreamBuilder(liveEntryId);
+    public static ArchiveLiveStreamBuilder archive(String liveEntryId, String vodEntryId)  {
+		return new ArchiveLiveStreamBuilder(liveEntryId, vodEntryId);
 	}
 	
 	public static class AuthenticateLiveStreamBuilder extends RequestBuilder<LiveStreamEntry, LiveStreamEntry.Tokenizer, AuthenticateLiveStreamBuilder> {
