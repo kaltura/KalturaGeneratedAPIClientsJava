@@ -50,6 +50,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		String entryIdIn();
 		String serverNodeIdEqual();
 		String serverNodeIdIn();
+		String serverNodeIdNotIn();
 		String createdAtLessThanOrEqual();
 		String createdAtGreaterThanOrEqual();
 		String updatedAtGreaterThanOrEqual();
@@ -65,6 +66,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	private String entryIdIn;
 	private Integer serverNodeIdEqual;
 	private String serverNodeIdIn;
+	private String serverNodeIdNotIn;
 	private Integer createdAtLessThanOrEqual;
 	private Integer createdAtGreaterThanOrEqual;
 	private Integer updatedAtGreaterThanOrEqual;
@@ -121,6 +123,18 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 
 	public void serverNodeIdIn(String multirequestToken){
 		setToken("serverNodeIdIn", multirequestToken);
+	}
+
+	// serverNodeIdNotIn:
+	public String getServerNodeIdNotIn(){
+		return this.serverNodeIdNotIn;
+	}
+	public void setServerNodeIdNotIn(String serverNodeIdNotIn){
+		this.serverNodeIdNotIn = serverNodeIdNotIn;
+	}
+
+	public void serverNodeIdNotIn(String multirequestToken){
+		setToken("serverNodeIdNotIn", multirequestToken);
 	}
 
 	// createdAtLessThanOrEqual:
@@ -246,6 +260,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 		serverNodeIdEqual = GsonParser.parseInt(jsonObject.get("serverNodeIdEqual"));
 		serverNodeIdIn = GsonParser.parseString(jsonObject.get("serverNodeIdIn"));
+		serverNodeIdNotIn = GsonParser.parseString(jsonObject.get("serverNodeIdNotIn"));
 		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
 		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
 		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
@@ -265,6 +280,7 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		kparams.add("entryIdIn", this.entryIdIn);
 		kparams.add("serverNodeIdEqual", this.serverNodeIdEqual);
 		kparams.add("serverNodeIdIn", this.serverNodeIdIn);
+		kparams.add("serverNodeIdNotIn", this.serverNodeIdNotIn);
 		kparams.add("createdAtLessThanOrEqual", this.createdAtLessThanOrEqual);
 		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
 		kparams.add("updatedAtGreaterThanOrEqual", this.updatedAtGreaterThanOrEqual);
