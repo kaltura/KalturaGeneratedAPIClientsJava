@@ -63,6 +63,7 @@ public abstract class PartnerBaseFilter extends Filter {
 		String partnerNameDescriptionWebsiteAdminNameAdminEmailLike();
 		String createdAtGreaterThanOrEqual();
 		String idGreaterThan();
+		String monitorUsageEqual();
 	}
 
 	private Integer idEqual;
@@ -82,6 +83,7 @@ public abstract class PartnerBaseFilter extends Filter {
 	private String partnerNameDescriptionWebsiteAdminNameAdminEmailLike;
 	private Integer createdAtGreaterThanOrEqual;
 	private Integer idGreaterThan;
+	private Integer monitorUsageEqual;
 
 	// idEqual:
 	public Integer getIdEqual(){
@@ -287,6 +289,18 @@ public abstract class PartnerBaseFilter extends Filter {
 		setToken("idGreaterThan", multirequestToken);
 	}
 
+	// monitorUsageEqual:
+	public Integer getMonitorUsageEqual(){
+		return this.monitorUsageEqual;
+	}
+	public void setMonitorUsageEqual(Integer monitorUsageEqual){
+		this.monitorUsageEqual = monitorUsageEqual;
+	}
+
+	public void monitorUsageEqual(String multirequestToken){
+		setToken("monitorUsageEqual", multirequestToken);
+	}
+
 
 	public PartnerBaseFilter() {
 		super();
@@ -315,6 +329,7 @@ public abstract class PartnerBaseFilter extends Filter {
 		partnerNameDescriptionWebsiteAdminNameAdminEmailLike = GsonParser.parseString(jsonObject.get("partnerNameDescriptionWebsiteAdminNameAdminEmailLike"));
 		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
 		idGreaterThan = GsonParser.parseInt(jsonObject.get("idGreaterThan"));
+		monitorUsageEqual = GsonParser.parseInt(jsonObject.get("monitorUsageEqual"));
 
 	}
 
@@ -338,6 +353,7 @@ public abstract class PartnerBaseFilter extends Filter {
 		kparams.add("partnerNameDescriptionWebsiteAdminNameAdminEmailLike", this.partnerNameDescriptionWebsiteAdminNameAdminEmailLike);
 		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
 		kparams.add("idGreaterThan", this.idGreaterThan);
+		kparams.add("monitorUsageEqual", this.monitorUsageEqual);
 		return kparams;
 	}
 
