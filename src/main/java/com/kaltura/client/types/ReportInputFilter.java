@@ -78,6 +78,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String playerVersionIn();
 		String ispIn();
 		String applicationVersionIn();
+		String nodeIdsIn();
 	}
 
 	/**
@@ -199,6 +200,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by application version
 	 */
 	private String applicationVersionIn;
+	/**
+	 * filter by node id
+	 */
+	private String nodeIdsIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -580,6 +585,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("applicationVersionIn", multirequestToken);
 	}
 
+	// nodeIdsIn:
+	public String getNodeIdsIn(){
+		return this.nodeIdsIn;
+	}
+	public void setNodeIdsIn(String nodeIdsIn){
+		this.nodeIdsIn = nodeIdsIn;
+	}
+
+	public void nodeIdsIn(String multirequestToken){
+		setToken("nodeIdsIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -623,6 +640,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		playerVersionIn = GsonParser.parseString(jsonObject.get("playerVersionIn"));
 		ispIn = GsonParser.parseString(jsonObject.get("ispIn"));
 		applicationVersionIn = GsonParser.parseString(jsonObject.get("applicationVersionIn"));
+		nodeIdsIn = GsonParser.parseString(jsonObject.get("nodeIdsIn"));
 
 	}
 
@@ -661,6 +679,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("playerVersionIn", this.playerVersionIn);
 		kparams.add("ispIn", this.ispIn);
 		kparams.add("applicationVersionIn", this.applicationVersionIn);
+		kparams.add("nodeIdsIn", this.nodeIdsIn);
 		return kparams;
 	}
 

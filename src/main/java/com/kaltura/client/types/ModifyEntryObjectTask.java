@@ -53,6 +53,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		String inputUserId();
 		String inputEntitledUsersEdit();
 		String inputEntitledUsersPublish();
+		String resetMediaRepurposingProcess();
 	}
 
 	/**
@@ -83,6 +84,10 @@ public class ModifyEntryObjectTask extends ObjectTask {
 	 * The input entitled users publish to set on the entry
 	 */
 	private String inputEntitledUsersPublish;
+	/**
+	 * Should clear the media repurposing data and therefore reset the process
+	 */
+	private Boolean resetMediaRepurposingProcess;
 
 	// inputMetadataProfileId:
 	public Integer getInputMetadataProfileId(){
@@ -160,6 +165,18 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		setToken("inputEntitledUsersPublish", multirequestToken);
 	}
 
+	// resetMediaRepurposingProcess:
+	public Boolean getResetMediaRepurposingProcess(){
+		return this.resetMediaRepurposingProcess;
+	}
+	public void setResetMediaRepurposingProcess(Boolean resetMediaRepurposingProcess){
+		this.resetMediaRepurposingProcess = resetMediaRepurposingProcess;
+	}
+
+	public void resetMediaRepurposingProcess(String multirequestToken){
+		setToken("resetMediaRepurposingProcess", multirequestToken);
+	}
+
 
 	public ModifyEntryObjectTask() {
 		super();
@@ -178,6 +195,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		inputUserId = GsonParser.parseString(jsonObject.get("inputUserId"));
 		inputEntitledUsersEdit = GsonParser.parseString(jsonObject.get("inputEntitledUsersEdit"));
 		inputEntitledUsersPublish = GsonParser.parseString(jsonObject.get("inputEntitledUsersPublish"));
+		resetMediaRepurposingProcess = GsonParser.parseBoolean(jsonObject.get("resetMediaRepurposingProcess"));
 
 	}
 
@@ -191,6 +209,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		kparams.add("inputUserId", this.inputUserId);
 		kparams.add("inputEntitledUsersEdit", this.inputEntitledUsersEdit);
 		kparams.add("inputEntitledUsersPublish", this.inputEntitledUsersPublish);
+		kparams.add("resetMediaRepurposingProcess", this.resetMediaRepurposingProcess);
 		return kparams;
 	}
 
