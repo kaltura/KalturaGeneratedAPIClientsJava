@@ -33,58 +33,39 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DistributionProviderType implements EnumAsString {
-	AVN("avnDistribution.AVN"),
-	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
-	CROSS_KALTURA("crossKalturaDistribution.CROSS_KALTURA"),
-	DAILYMOTION("dailymotionDistribution.DAILYMOTION"),
-	DOUBLECLICK("doubleClickDistribution.DOUBLECLICK"),
-	FACEBOOK("facebookDistribution.FACEBOOK"),
-	FREEWHEEL("freewheelDistribution.FREEWHEEL"),
-	FREEWHEEL_GENERIC("freewheelGenericDistribution.FREEWHEEL_GENERIC"),
-	FTP("ftpDistribution.FTP"),
-	FTP_SCHEDULED("ftpDistribution.FTP_SCHEDULED"),
-	HULU("huluDistribution.HULU"),
-	IDETIC("ideticDistribution.IDETIC"),
-	METRO_PCS("metroPcsDistribution.METRO_PCS"),
-	MSN("msnDistribution.MSN"),
-	PODCAST("podcastDistribution.PODCAST"),
-	QUICKPLAY("quickPlayDistribution.QUICKPLAY"),
-	UNICORN("unicornDistribution.UNICORN"),
-	YAHOO("yahooDistribution.YAHOO"),
-	YOUTUBE("youTubeDistribution.YOUTUBE"),
-	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
-	GENERIC("1"),
-	SYNDICATION("2");
+public enum ZoomUsersMatching implements EnumAsInt {
+	DO_NOT_MODIFY(0),
+	ADD_POSTFIX(1),
+	REMOVE_POSTFIX(2);
 
-	private String value;
+	private int value;
 
-	DistributionProviderType(String value) {
+	ZoomUsersMatching(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static DistributionProviderType get(String value) {
+	public static ZoomUsersMatching get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over DistributionProviderType defined values and compare the inner value with the given one:
-		for(DistributionProviderType item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over ZoomUsersMatching defined values and compare the inner value with the given one:
+		for(ZoomUsersMatching item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DistributionProviderType.values().length > 0 ? DistributionProviderType.values()[0]: null;
+		return ZoomUsersMatching.values().length > 0 ? ZoomUsersMatching.values()[0]: null;
    }
 }

@@ -25,7 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.enums.ConferenceRoomStatus;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +39,48 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UserEntryType implements EnumAsString {
-	QUIZ("quiz.QUIZ"),
-	REGISTRATION("registration.REGISTRATION"),
-	VIEW_HISTORY("viewHistory.VIEW_HISTORY"),
-	WATCH_LATER("watchLater.WATCH_LATER");
 
-	private String value;
-
-	UserEntryType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(ConferenceEntryServerNode.Tokenizer.class)
+public class ConferenceEntryServerNode extends EntryServerNode {
+	
+	public interface Tokenizer extends EntryServerNode.Tokenizer {
+		String confRoomStatus();
+		String registered();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private ConferenceRoomStatus confRoomStatus;
+	private Integer registered;
+
+	// confRoomStatus:
+	public ConferenceRoomStatus getConfRoomStatus(){
+		return this.confRoomStatus;
+	}
+	// registered:
+	public Integer getRegistered(){
+		return this.registered;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public ConferenceEntryServerNode() {
+		super();
 	}
 
-	public static UserEntryType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over UserEntryType defined values and compare the inner value with the given one:
-		for(UserEntryType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return UserEntryType.values().length > 0 ? UserEntryType.values()[0]: null;
-   }
+	public ConferenceEntryServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		confRoomStatus = ConferenceRoomStatus.get(GsonParser.parseInt(jsonObject.get("confRoomStatus")));
+		registered = GsonParser.parseInt(jsonObject.get("registered"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaConferenceEntryServerNode");
+		return kparams;
+	}
+
 }
+

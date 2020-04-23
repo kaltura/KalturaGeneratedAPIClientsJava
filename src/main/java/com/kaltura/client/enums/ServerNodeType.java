@@ -34,6 +34,9 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ServerNodeType implements EnumAsString {
+	CONFERENCE_SERVER("conference.CONFERENCE_SERVER"),
+	LIVE_CLUSTER_MEDIA_SERVER("liveCluster.LIVE_CLUSTER_MEDIA_SERVER"),
+	SIP_SERVER("sip.SIP_SERVER"),
 	WOWZA_MEDIA_SERVER("wowza.WOWZA_MEDIA_SERVER"),
 	EDGE("1");
 

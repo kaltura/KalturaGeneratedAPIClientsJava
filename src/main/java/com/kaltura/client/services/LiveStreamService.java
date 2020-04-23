@@ -40,6 +40,7 @@ import com.kaltura.client.types.LiveStreamConfiguration;
 import com.kaltura.client.types.LiveStreamDetails;
 import com.kaltura.client.types.LiveStreamEntry;
 import com.kaltura.client.types.LiveStreamEntryFilter;
+import com.kaltura.client.types.RoomDetails;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -63,6 +64,8 @@ import java.io.InputStream;
  * @param protocol 
  * @param url 
  * @param liveStreamConfiguration 
+ * @param entryId 
+ * @param env 
  * @param entryId Live entry id
  * @param assetId Live asset id
  * @param mediaServerIndex 
@@ -85,6 +88,8 @@ import java.io.InputStream;
  * @param liveEntryStatus the status KalturaEntryServerNodeStatus::PLAYABLE |
  * KalturaEntryServerNodeStatus::BROADCASTING
  * @param entryId Live stream entry id to delete
+ * @param entryId 
+ * @param serverNodeId 
  * @param entryId Live stream entry id
  * @param version Desired version of the data
  * @param id ID of the live stream entry
@@ -93,6 +98,7 @@ import java.io.InputStream;
  * @param filter live stream entry filter
  * @param pager Pager
  * @param entryId Live stream entry id to regenerate secure token for
+ * @param entryId 
  * @param entryId Live entry id
  * @param hostname Media server host name
  * @param mediaServerIndex Media server index primary / secondary
@@ -189,6 +195,37 @@ public class LiveStreamService {
 	 */
     public static AddLiveStreamPushPublishConfigurationLiveStreamBuilder addLiveStreamPushPublishConfiguration(String entryId, PlaybackProtocol protocol, String url, LiveStreamConfiguration liveStreamConfiguration)  {
 		return new AddLiveStreamPushPublishConfigurationLiveStreamBuilder(entryId, protocol, url, liveStreamConfiguration);
+	}
+	
+	public static class AllocateConferenceRoomLiveStreamBuilder extends RequestBuilder<RoomDetails, RoomDetails.Tokenizer, AllocateConferenceRoomLiveStreamBuilder> {
+		
+		public AllocateConferenceRoomLiveStreamBuilder(String entryId, String env) {
+			super(RoomDetails.class, "livestream", "allocateConferenceRoom");
+			params.add("entryId", entryId);
+			params.add("env", env);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void env(String multirequestToken) {
+			params.add("env", multirequestToken);
+		}
+	}
+
+	public static AllocateConferenceRoomLiveStreamBuilder allocateConferenceRoom(String entryId)  {
+		return allocateConferenceRoom(entryId, "");
+	}
+
+	/**
+	 * Allocates a conference room or returns ones that has already been allocated
+	 * 
+	 * @param entryId 
+	 * @param env 
+	 */
+    public static AllocateConferenceRoomLiveStreamBuilder allocateConferenceRoom(String entryId, String env)  {
+		return new AllocateConferenceRoomLiveStreamBuilder(entryId, env);
 	}
 	
 	public static class AppendRecordingLiveStreamBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, AppendRecordingLiveStreamBuilder> {
@@ -416,6 +453,37 @@ public class LiveStreamService {
 		return new DeleteLiveStreamBuilder(entryId);
 	}
 	
+	public static class FinishConfLiveStreamBuilder extends RequestBuilder<Boolean, String, FinishConfLiveStreamBuilder> {
+		
+		public FinishConfLiveStreamBuilder(String entryId, int serverNodeId) {
+			super(Boolean.class, "livestream", "finishConf");
+			params.add("entryId", entryId);
+			params.add("serverNodeId", serverNodeId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+		
+		public void serverNodeId(String multirequestToken) {
+			params.add("serverNodeId", multirequestToken);
+		}
+	}
+
+	public static FinishConfLiveStreamBuilder finishConf(String entryId)  {
+		return finishConf(entryId, Integer.MIN_VALUE);
+	}
+
+	/**
+	 * When the conf is finished this API should be called.
+	 * 
+	 * @param entryId 
+	 * @param serverNodeId 
+	 */
+    public static FinishConfLiveStreamBuilder finishConf(String entryId, int serverNodeId)  {
+		return new FinishConfLiveStreamBuilder(entryId, serverNodeId);
+	}
+	
 	public static class GetLiveStreamBuilder extends RequestBuilder<LiveStreamEntry, LiveStreamEntry.Tokenizer, GetLiveStreamBuilder> {
 		
 		public GetLiveStreamBuilder(String entryId, int version) {
@@ -541,6 +609,27 @@ public class LiveStreamService {
 	 */
     public static RegenerateStreamTokenLiveStreamBuilder regenerateStreamToken(String entryId)  {
 		return new RegenerateStreamTokenLiveStreamBuilder(entryId);
+	}
+	
+	public static class RegisterConfLiveStreamBuilder extends RequestBuilder<Boolean, String, RegisterConfLiveStreamBuilder> {
+		
+		public RegisterConfLiveStreamBuilder(String entryId) {
+			super(Boolean.class, "livestream", "registerConf");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Mark that the conference has actually started
+	 * 
+	 * @param entryId 
+	 */
+    public static RegisterConfLiveStreamBuilder registerConf(String entryId)  {
+		return new RegisterConfLiveStreamBuilder(entryId);
 	}
 	
 	public static class RegisterMediaServerLiveStreamBuilder extends RequestBuilder<LiveEntry, LiveEntry.Tokenizer, RegisterMediaServerLiveStreamBuilder> {

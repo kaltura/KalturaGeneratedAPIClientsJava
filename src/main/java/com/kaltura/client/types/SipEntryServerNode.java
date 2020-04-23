@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +38,55 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UserEntryType implements EnumAsString {
-	QUIZ("quiz.QUIZ"),
-	REGISTRATION("registration.REGISTRATION"),
-	VIEW_HISTORY("viewHistory.VIEW_HISTORY"),
-	WATCH_LATER("watchLater.WATCH_LATER");
 
-	private String value;
-
-	UserEntryType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SipEntryServerNode.Tokenizer.class)
+public class SipEntryServerNode extends EntryServerNode {
+	
+	public interface Tokenizer extends EntryServerNode.Tokenizer {
+		String sipRoomId();
+		String sipPrimaryAdpId();
+		String sipSecondaryAdpId();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private String sipRoomId;
+	private String sipPrimaryAdpId;
+	private String sipSecondaryAdpId;
+
+	// sipRoomId:
+	public String getSipRoomId(){
+		return this.sipRoomId;
+	}
+	// sipPrimaryAdpId:
+	public String getSipPrimaryAdpId(){
+		return this.sipPrimaryAdpId;
+	}
+	// sipSecondaryAdpId:
+	public String getSipSecondaryAdpId(){
+		return this.sipSecondaryAdpId;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public SipEntryServerNode() {
+		super();
 	}
 
-	public static UserEntryType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over UserEntryType defined values and compare the inner value with the given one:
-		for(UserEntryType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return UserEntryType.values().length > 0 ? UserEntryType.values()[0]: null;
-   }
+	public SipEntryServerNode(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		sipRoomId = GsonParser.parseString(jsonObject.get("sipRoomId"));
+		sipPrimaryAdpId = GsonParser.parseString(jsonObject.get("sipPrimaryAdpId"));
+		sipSecondaryAdpId = GsonParser.parseString(jsonObject.get("sipSecondaryAdpId"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSipEntryServerNode");
+		return kparams;
+	}
+
 }
+

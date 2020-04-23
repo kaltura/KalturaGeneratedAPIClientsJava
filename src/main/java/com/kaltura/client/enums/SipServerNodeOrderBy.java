@@ -33,33 +33,17 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DistributionProviderType implements EnumAsString {
-	AVN("avnDistribution.AVN"),
-	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
-	CROSS_KALTURA("crossKalturaDistribution.CROSS_KALTURA"),
-	DAILYMOTION("dailymotionDistribution.DAILYMOTION"),
-	DOUBLECLICK("doubleClickDistribution.DOUBLECLICK"),
-	FACEBOOK("facebookDistribution.FACEBOOK"),
-	FREEWHEEL("freewheelDistribution.FREEWHEEL"),
-	FREEWHEEL_GENERIC("freewheelGenericDistribution.FREEWHEEL_GENERIC"),
-	FTP("ftpDistribution.FTP"),
-	FTP_SCHEDULED("ftpDistribution.FTP_SCHEDULED"),
-	HULU("huluDistribution.HULU"),
-	IDETIC("ideticDistribution.IDETIC"),
-	METRO_PCS("metroPcsDistribution.METRO_PCS"),
-	MSN("msnDistribution.MSN"),
-	PODCAST("podcastDistribution.PODCAST"),
-	QUICKPLAY("quickPlayDistribution.QUICKPLAY"),
-	UNICORN("unicornDistribution.UNICORN"),
-	YAHOO("yahooDistribution.YAHOO"),
-	YOUTUBE("youTubeDistribution.YOUTUBE"),
-	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
-	GENERIC("1"),
-	SYNDICATION("2");
+public enum SipServerNodeOrderBy implements EnumAsString {
+	CREATED_AT_ASC("+createdAt"),
+	HEARTBEAT_TIME_ASC("+heartbeatTime"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	HEARTBEAT_TIME_DESC("-heartbeatTime"),
+	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
 
-	DistributionProviderType(String value) {
+	SipServerNodeOrderBy(String value) {
 		this.value = value;
 	}
 
@@ -72,19 +56,19 @@ public enum DistributionProviderType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static DistributionProviderType get(String value) {
+	public static SipServerNodeOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over DistributionProviderType defined values and compare the inner value with the given one:
-		for(DistributionProviderType item: values()) {
+		// goes over SipServerNodeOrderBy defined values and compare the inner value with the given one:
+		for(SipServerNodeOrderBy item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DistributionProviderType.values().length > 0 ? DistributionProviderType.values()[0]: null;
+		return SipServerNodeOrderBy.values().length > 0 ? SipServerNodeOrderBy.values()[0]: null;
    }
 }
