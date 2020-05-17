@@ -103,7 +103,8 @@ public enum BatchJobType implements EnumAsString {
 	EXPORT_CSV("49"),
 	REPORT_EXPORT("50"),
 	LIVE_ENTRY_ARCHIVE("51"),
-	STORAGE_UPDATE("52");
+	STORAGE_UPDATE("52"),
+	STORAGE_PERIODIC_EXPORT("53");
 
 	private String value;
 

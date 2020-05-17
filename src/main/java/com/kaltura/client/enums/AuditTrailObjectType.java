@@ -42,6 +42,7 @@ public enum AuditTrailObjectType implements EnumAsString {
 	METADATA_PROFILE("MetadataProfile"),
 	PARTNER("Partner"),
 	PERMISSION("Permission"),
+	REACH_PROFILE("ReachProfile"),
 	UPLOAD_TOKEN("UploadToken"),
 	USER_LOGIN_DATA("UserLoginData"),
 	USER_ROLE("UserRole"),

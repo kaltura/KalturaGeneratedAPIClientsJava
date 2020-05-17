@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,46 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadAction implements EnumAsString {
-	CANCEL("scheduleBulkUpload.CANCEL"),
-	ADD("1"),
-	UPDATE("2"),
-	DELETE("3"),
-	REPLACE("4"),
-	TRANSFORM_XSLT("5"),
-	ADD_OR_UPDATE("6"),
-	ACTIVATE("7"),
-	REJECT("8"),
-	UPDATE_STATUS("9");
 
-	private String value;
-
-	BulkUploadAction(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VolatileInteractivity.Tokenizer.class)
+public class VolatileInteractivity extends BaseInteractivity {
+	
+	public interface Tokenizer extends BaseInteractivity.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public VolatileInteractivity() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public VolatileInteractivity(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static BulkUploadAction get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over BulkUploadAction defined values and compare the inner value with the given one:
-		for(BulkUploadAction item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return BulkUploadAction.values().length > 0 ? BulkUploadAction.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVolatileInteractivity");
+		return kparams;
+	}
+
 }
+

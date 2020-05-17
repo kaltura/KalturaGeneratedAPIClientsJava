@@ -31,6 +31,7 @@ import com.kaltura.client.types.AssetFilter;
 import com.kaltura.client.types.CaptionAsset;
 import com.kaltura.client.types.ContentResource;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.FlavorAsset;
 import com.kaltura.client.types.RemotePath;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -50,6 +51,8 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * @param entryId 
  * @param captionAsset 
  * @param captionAssetId 
+ * @param assetId 
+ * @param storageProfileId 
  * @param captionAssetId 
  * @param id 
  * @param id 
@@ -108,6 +111,33 @@ public class CaptionAssetService {
 
     public static DeleteCaptionAssetBuilder delete(String captionAssetId)  {
 		return new DeleteCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class ExportCaptionAssetBuilder extends RequestBuilder<FlavorAsset, FlavorAsset.Tokenizer, ExportCaptionAssetBuilder> {
+		
+		public ExportCaptionAssetBuilder(String assetId, int storageProfileId) {
+			super(FlavorAsset.class, "caption_captionasset", "export");
+			params.add("assetId", assetId);
+			params.add("storageProfileId", storageProfileId);
+		}
+		
+		public void assetId(String multirequestToken) {
+			params.add("assetId", multirequestToken);
+		}
+		
+		public void storageProfileId(String multirequestToken) {
+			params.add("storageProfileId", multirequestToken);
+		}
+	}
+
+	/**
+	 * manually export an asset
+	 * 
+	 * @param assetId 
+	 * @param storageProfileId 
+	 */
+    public static ExportCaptionAssetBuilder export(String assetId, int storageProfileId)  {
+		return new ExportCaptionAssetBuilder(assetId, storageProfileId);
 	}
 	
 	public static class GetCaptionAssetBuilder extends RequestBuilder<CaptionAsset, CaptionAsset.Tokenizer, GetCaptionAssetBuilder> {

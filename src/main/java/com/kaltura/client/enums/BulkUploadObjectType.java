@@ -42,7 +42,8 @@ public enum BulkUploadObjectType implements EnumAsString {
 	USER("3"),
 	CATEGORY_USER("4"),
 	CATEGORY_ENTRY("5"),
-	USER_ENTRY("6");
+	USER_ENTRY("6"),
+	VENDOR_CATALOG_ITEM("7");
 
 	private String value;
 

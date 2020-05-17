@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.PlaylistType;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,62 +41,70 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(PlaylistFilter.Tokenizer.class)
-public class PlaylistFilter extends PlaylistBaseFilter {
+@MultiRequestBuilder.Tokenizer(BaseInteractivity.Tokenizer.class)
+public abstract class BaseInteractivity extends ObjectBase {
 	
-	public interface Tokenizer extends PlaylistBaseFilter.Tokenizer {
-		String playListTypeEqual();
-		String playListTypeIn();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String data();
+		String version();
+		String entryId();
+		String updatedAt();
 	}
 
-	private PlaylistType playListTypeEqual;
-	private String playListTypeIn;
+	private String data;
+	private Integer version;
+	private String entryId;
+	/**
+	 * Interactivity update date as Unix timestamp (In seconds)
+	 */
+	private Integer updatedAt;
 
-	// playListTypeEqual:
-	public PlaylistType getPlayListTypeEqual(){
-		return this.playListTypeEqual;
+	// data:
+	public String getData(){
+		return this.data;
 	}
-	public void setPlayListTypeEqual(PlaylistType playListTypeEqual){
-		this.playListTypeEqual = playListTypeEqual;
-	}
-
-	public void playListTypeEqual(String multirequestToken){
-		setToken("playListTypeEqual", multirequestToken);
-	}
-
-	// playListTypeIn:
-	public String getPlayListTypeIn(){
-		return this.playListTypeIn;
-	}
-	public void setPlayListTypeIn(String playListTypeIn){
-		this.playListTypeIn = playListTypeIn;
+	public void setData(String data){
+		this.data = data;
 	}
 
-	public void playListTypeIn(String multirequestToken){
-		setToken("playListTypeIn", multirequestToken);
+	public void data(String multirequestToken){
+		setToken("data", multirequestToken);
 	}
 
+	// version:
+	public Integer getVersion(){
+		return this.version;
+	}
+	// entryId:
+	public String getEntryId(){
+		return this.entryId;
+	}
+	// updatedAt:
+	public Integer getUpdatedAt(){
+		return this.updatedAt;
+	}
 
-	public PlaylistFilter() {
+	public BaseInteractivity() {
 		super();
 	}
 
-	public PlaylistFilter(JsonObject jsonObject) throws APIException {
+	public BaseInteractivity(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		playListTypeEqual = PlaylistType.get(GsonParser.parseInt(jsonObject.get("playListTypeEqual")));
-		playListTypeIn = GsonParser.parseString(jsonObject.get("playListTypeIn"));
+		data = GsonParser.parseString(jsonObject.get("data"));
+		version = GsonParser.parseInt(jsonObject.get("version"));
+		entryId = GsonParser.parseString(jsonObject.get("entryId"));
+		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaPlaylistFilter");
-		kparams.add("playListTypeEqual", this.playListTypeEqual);
-		kparams.add("playListTypeIn", this.playListTypeIn);
+		kparams.add("objectType", "KalturaBaseInteractivity");
+		kparams.add("data", this.data);
 		return kparams;
 	}
 

@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.EntryVendorTaskCreationMode;
 import com.kaltura.client.enums.EntryVendorTaskStatus;
 import com.kaltura.client.enums.VendorServiceFeature;
+import com.kaltura.client.enums.VendorServiceTurnAroundTime;
 import com.kaltura.client.enums.VendorServiceType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.VendorTaskData;
@@ -78,6 +79,7 @@ public class EntryVendorTask extends ObjectBase {
 		String expectedFinishTime();
 		String serviceType();
 		String serviceFeature();
+		String turnAroundTime();
 	}
 
 	private Long id;
@@ -154,6 +156,7 @@ public class EntryVendorTask extends ObjectBase {
 	private Integer expectedFinishTime;
 	private VendorServiceType serviceType;
 	private VendorServiceFeature serviceFeature;
+	private VendorServiceTurnAroundTime turnAroundTime;
 
 	// id:
 	public Long getId(){
@@ -351,6 +354,10 @@ public class EntryVendorTask extends ObjectBase {
 	public VendorServiceFeature getServiceFeature(){
 		return this.serviceFeature;
 	}
+	// turnAroundTime:
+	public VendorServiceTurnAroundTime getTurnAroundTime(){
+		return this.turnAroundTime;
+	}
 
 	public EntryVendorTask() {
 		super();
@@ -390,6 +397,7 @@ public class EntryVendorTask extends ObjectBase {
 		expectedFinishTime = GsonParser.parseInt(jsonObject.get("expectedFinishTime"));
 		serviceType = VendorServiceType.get(GsonParser.parseInt(jsonObject.get("serviceType")));
 		serviceFeature = VendorServiceFeature.get(GsonParser.parseInt(jsonObject.get("serviceFeature")));
+		turnAroundTime = VendorServiceTurnAroundTime.get(GsonParser.parseInt(jsonObject.get("turnAroundTime")));
 
 	}
 

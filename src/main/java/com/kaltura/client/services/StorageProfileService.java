@@ -51,6 +51,12 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param storageProfileId 
  * @param filter 
  * @param pager 
+ * @param filter 
+ * @param workerId The id of the file sync import worker
+ * @param storageProfileId The id of the storage profile
+ * @param maxCount The maximum number of file syncs that should be returned
+ * @param maxSize The maximum total size of file syncs that should be returned, this limit may be
+ * exceeded by one file sync
  * @param storageProfileId 
  * @param storageProfile Id
  * @param storageId 

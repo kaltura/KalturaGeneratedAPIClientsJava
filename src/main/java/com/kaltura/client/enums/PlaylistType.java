@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum PlaylistType implements EnumAsInt {
 	STATIC_LIST(3),
 	DYNAMIC(10),
-	EXTERNAL(101);
+	EXTERNAL(101),
+	PATH(102);
 
 	private int value;
 

@@ -27,13 +27,22 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.FileHolder;
+import com.kaltura.client.Files;
 import com.kaltura.client.enums.VendorCatalogItemStatus;
+import com.kaltura.client.types.BulkUpload;
+import com.kaltura.client.types.BulkUploadJobData;
+import com.kaltura.client.types.BulkUploadVendorCatalogItemData;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.VendorCatalogItem;
 import com.kaltura.client.types.VendorCatalogItemFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 /**
  * This class was generated using generate.php
@@ -46,10 +55,15 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * Vendor Catalog Item Service
  * 
  * @param vendorCatalogItem 
+ * @param fileData 
+ * @param bulkUploadData 
+ * @param bulkUploadVendorCatalogItemData 
  * @param id 
  * @param id 
+ * @param vendorPartnerId 
  * @param filter 
  * @param pager 
+ * @param vendorPartnerId 
  * @param id 
  * @param vendorCatalogItem 
  * @param id 
@@ -72,6 +86,65 @@ public class VendorCatalogItemService {
 	 */
     public static AddVendorCatalogItemBuilder add(VendorCatalogItem vendorCatalogItem)  {
 		return new AddVendorCatalogItemBuilder(vendorCatalogItem);
+	}
+	
+	public static class AddFromBulkUploadVendorCatalogItemBuilder extends RequestBuilder<BulkUpload, BulkUpload.Tokenizer, AddFromBulkUploadVendorCatalogItemBuilder> {
+		
+		public AddFromBulkUploadVendorCatalogItemBuilder(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadVendorCatalogItemData bulkUploadVendorCatalogItemData) {
+			super(BulkUpload.class, "reach_vendorcatalogitem", "addFromBulkUpload");
+			files = new Files();
+			files.add("fileData", fileData);
+			params.add("bulkUploadData", bulkUploadData);
+			params.add("bulkUploadVendorCatalogItemData", bulkUploadVendorCatalogItemData);
+		}
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileHolder fileData)  {
+		return addFromBulkUpload(fileData, null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(File fileData)  {
+		return addFromBulkUpload(new FileHolder(fileData), null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(fileData, bulkUploadData, null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, null);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(File fileData, BulkUploadJobData bulkUploadData, BulkUploadVendorCatalogItemData bulkUploadVendorCatalogItemData)  {
+		return addFromBulkUpload(new FileHolder(fileData), bulkUploadData, bulkUploadVendorCatalogItemData);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(InputStream fileData, String fileDataMimeType, String fileDataName, long fileDataSize, BulkUploadJobData bulkUploadData, BulkUploadVendorCatalogItemData bulkUploadVendorCatalogItemData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName, fileDataSize), bulkUploadData, bulkUploadVendorCatalogItemData);
+	}
+
+	public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileInputStream fileData, String fileDataMimeType, String fileDataName, BulkUploadJobData bulkUploadData, BulkUploadVendorCatalogItemData bulkUploadVendorCatalogItemData)  {
+		return addFromBulkUpload(new FileHolder(fileData, fileDataMimeType, fileDataName), bulkUploadData, bulkUploadVendorCatalogItemData);
+	}
+
+    public static AddFromBulkUploadVendorCatalogItemBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadVendorCatalogItemData bulkUploadVendorCatalogItemData)  {
+		return new AddFromBulkUploadVendorCatalogItemBuilder(fileData, bulkUploadData, bulkUploadVendorCatalogItemData);
 	}
 	
 	public static class DeleteVendorCatalogItemBuilder extends NullRequestBuilder {
@@ -116,6 +189,26 @@ public class VendorCatalogItemService {
 		return new GetVendorCatalogItemBuilder(id);
 	}
 	
+	public static class GetServeUrlVendorCatalogItemBuilder extends RequestBuilder<String, String, GetServeUrlVendorCatalogItemBuilder> {
+		
+		public GetServeUrlVendorCatalogItemBuilder(int vendorPartnerId) {
+			super(String.class, "reach_vendorcatalogitem", "getServeUrl");
+			params.add("vendorPartnerId", vendorPartnerId);
+		}
+		
+		public void vendorPartnerId(String multirequestToken) {
+			params.add("vendorPartnerId", multirequestToken);
+		}
+	}
+
+	public static GetServeUrlVendorCatalogItemBuilder getServeUrl()  {
+		return getServeUrl(Integer.MIN_VALUE);
+	}
+
+    public static GetServeUrlVendorCatalogItemBuilder getServeUrl(int vendorPartnerId)  {
+		return new GetServeUrlVendorCatalogItemBuilder(vendorPartnerId);
+	}
+	
 	public static class ListVendorCatalogItemBuilder extends ListResponseRequestBuilder<VendorCatalogItem, VendorCatalogItem.Tokenizer, ListVendorCatalogItemBuilder> {
 		
 		public ListVendorCatalogItemBuilder(VendorCatalogItemFilter filter, FilterPager pager) {
@@ -141,6 +234,26 @@ public class VendorCatalogItemService {
 	 */
     public static ListVendorCatalogItemBuilder list(VendorCatalogItemFilter filter, FilterPager pager)  {
 		return new ListVendorCatalogItemBuilder(filter, pager);
+	}
+	
+	public static class ServeVendorCatalogItemBuilder extends ServeRequestBuilder {
+		
+		public ServeVendorCatalogItemBuilder(int vendorPartnerId) {
+			super("reach_vendorcatalogitem", "serve");
+			params.add("vendorPartnerId", vendorPartnerId);
+		}
+		
+		public void vendorPartnerId(String multirequestToken) {
+			params.add("vendorPartnerId", multirequestToken);
+		}
+	}
+
+	public static ServeVendorCatalogItemBuilder serve()  {
+		return serve(Integer.MIN_VALUE);
+	}
+
+    public static ServeVendorCatalogItemBuilder serve(int vendorPartnerId)  {
+		return new ServeVendorCatalogItemBuilder(vendorPartnerId);
 	}
 	
 	public static class UpdateVendorCatalogItemBuilder extends RequestBuilder<VendorCatalogItem, VendorCatalogItem.Tokenizer, UpdateVendorCatalogItemBuilder> {
