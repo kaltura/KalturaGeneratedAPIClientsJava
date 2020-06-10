@@ -55,6 +55,7 @@ public class ConvertJobData extends ConvartableJobData {
 		String customData();
 		RequestBuilder.ListTokenizer<DestFileSyncDescriptor.Tokenizer> extraDestFileSyncs();
 		String engineMessage();
+		String userCpu();
 	}
 
 	private String destFileSyncLocalPath;
@@ -66,6 +67,7 @@ public class ConvertJobData extends ConvartableJobData {
 	private String customData;
 	private List<DestFileSyncDescriptor> extraDestFileSyncs;
 	private String engineMessage;
+	private Integer userCpu;
 
 	// destFileSyncLocalPath:
 	public String getDestFileSyncLocalPath(){
@@ -171,6 +173,18 @@ public class ConvertJobData extends ConvartableJobData {
 		setToken("engineMessage", multirequestToken);
 	}
 
+	// userCpu:
+	public Integer getUserCpu(){
+		return this.userCpu;
+	}
+	public void setUserCpu(Integer userCpu){
+		this.userCpu = userCpu;
+	}
+
+	public void userCpu(String multirequestToken){
+		setToken("userCpu", multirequestToken);
+	}
+
 
 	public ConvertJobData() {
 		super();
@@ -191,6 +205,7 @@ public class ConvertJobData extends ConvartableJobData {
 		customData = GsonParser.parseString(jsonObject.get("customData"));
 		extraDestFileSyncs = GsonParser.parseArray(jsonObject.getAsJsonArray("extraDestFileSyncs"), DestFileSyncDescriptor.class);
 		engineMessage = GsonParser.parseString(jsonObject.get("engineMessage"));
+		userCpu = GsonParser.parseInt(jsonObject.get("userCpu"));
 
 	}
 
@@ -206,6 +221,7 @@ public class ConvertJobData extends ConvartableJobData {
 		kparams.add("customData", this.customData);
 		kparams.add("extraDestFileSyncs", this.extraDestFileSyncs);
 		kparams.add("engineMessage", this.engineMessage);
+		kparams.add("userCpu", this.userCpu);
 		return kparams;
 	}
 

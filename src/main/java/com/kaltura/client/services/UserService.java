@@ -108,6 +108,7 @@ import java.util.List;
  * @param newFirstName Optional, The user's new first name
  * @param newLastName Optional, The user's new last name
  * @param otp the user's one-time password
+ * @param hashKey The hash key used to identify the user (retrieved by email)
  */
 public class UserService {
 	
@@ -801,5 +802,26 @@ public class UserService {
 	 */
     public static UpdateLoginDataUserBuilder updateLoginData(String oldLoginId, String password, String newLoginId, String newPassword, String newFirstName, String newLastName, String otp)  {
 		return new UpdateLoginDataUserBuilder(oldLoginId, password, newLoginId, newPassword, newFirstName, newLastName, otp);
+	}
+	
+	public static class ValidateHashKeyUserBuilder extends RequestBuilder<Authentication, Authentication.Tokenizer, ValidateHashKeyUserBuilder> {
+		
+		public ValidateHashKeyUserBuilder(String hashKey) {
+			super(Authentication.class, "user", "validateHashKey");
+			params.add("hashKey", hashKey);
+		}
+		
+		public void hashKey(String multirequestToken) {
+			params.add("hashKey", multirequestToken);
+		}
+	}
+
+	/**
+	 * Validate hash key
+	 * 
+	 * @param hashKey The hash key used to identify the user (retrieved by email)
+	 */
+    public static ValidateHashKeyUserBuilder validateHashKey(String hashKey)  {
+		return new ValidateHashKeyUserBuilder(hashKey);
 	}
 }

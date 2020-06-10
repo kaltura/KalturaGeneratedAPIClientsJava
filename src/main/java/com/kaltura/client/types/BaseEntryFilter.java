@@ -45,6 +45,7 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 	
 	public interface Tokenizer extends BaseEntryBaseFilter.Tokenizer {
 		String freeText();
+		String excludedFreeTextGroups();
 		String isRoot();
 		String categoriesFullNameIn();
 		String categoryAncestorIdIn();
@@ -52,6 +53,7 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 	}
 
 	private String freeText;
+	private String excludedFreeTextGroups;
 	private Boolean isRoot;
 	private String categoriesFullNameIn;
 	/**
@@ -73,6 +75,18 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 
 	public void freeText(String multirequestToken){
 		setToken("freeText", multirequestToken);
+	}
+
+	// excludedFreeTextGroups:
+	public String getExcludedFreeTextGroups(){
+		return this.excludedFreeTextGroups;
+	}
+	public void setExcludedFreeTextGroups(String excludedFreeTextGroups){
+		this.excludedFreeTextGroups = excludedFreeTextGroups;
+	}
+
+	public void excludedFreeTextGroups(String multirequestToken){
+		setToken("excludedFreeTextGroups", multirequestToken);
 	}
 
 	// isRoot:
@@ -135,6 +149,7 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 
 		// set members values:
 		freeText = GsonParser.parseString(jsonObject.get("freeText"));
+		excludedFreeTextGroups = GsonParser.parseString(jsonObject.get("excludedFreeTextGroups"));
 		isRoot = GsonParser.parseBoolean(jsonObject.get("isRoot"));
 		categoriesFullNameIn = GsonParser.parseString(jsonObject.get("categoriesFullNameIn"));
 		categoryAncestorIdIn = GsonParser.parseString(jsonObject.get("categoryAncestorIdIn"));
@@ -146,6 +161,7 @@ public class BaseEntryFilter extends BaseEntryBaseFilter {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaBaseEntryFilter");
 		kparams.add("freeText", this.freeText);
+		kparams.add("excludedFreeTextGroups", this.excludedFreeTextGroups);
 		kparams.add("isRoot", this.isRoot);
 		kparams.add("categoriesFullNameIn", this.categoriesFullNameIn);
 		kparams.add("categoryAncestorIdIn", this.categoryAncestorIdIn);

@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -40,70 +39,25 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(AlignmentVendorTaskData.Tokenizer.class)
-public class AlignmentVendorTaskData extends VendorTaskDataCaptionAsset {
+@MultiRequestBuilder.Tokenizer(TranslationVendorTaskData.Tokenizer.class)
+public class TranslationVendorTaskData extends VendorTaskDataCaptionAsset {
 	
 	public interface Tokenizer extends VendorTaskDataCaptionAsset.Tokenizer {
-		String textTranscriptAssetId();
-		String jsonTranscriptAssetId();
-	}
-
-	/**
-	 * The id of the text transcript object the vendor should use while runing the
-	  alignment task
-	 */
-	private String textTranscriptAssetId;
-	/**
-	 * Optional - The id of the json transcript object the vendor should update once
-	  alignment task processing is done
-	 */
-	private String jsonTranscriptAssetId;
-
-	// textTranscriptAssetId:
-	public String getTextTranscriptAssetId(){
-		return this.textTranscriptAssetId;
-	}
-	public void setTextTranscriptAssetId(String textTranscriptAssetId){
-		this.textTranscriptAssetId = textTranscriptAssetId;
-	}
-
-	public void textTranscriptAssetId(String multirequestToken){
-		setToken("textTranscriptAssetId", multirequestToken);
-	}
-
-	// jsonTranscriptAssetId:
-	public String getJsonTranscriptAssetId(){
-		return this.jsonTranscriptAssetId;
-	}
-	public void setJsonTranscriptAssetId(String jsonTranscriptAssetId){
-		this.jsonTranscriptAssetId = jsonTranscriptAssetId;
-	}
-
-	public void jsonTranscriptAssetId(String multirequestToken){
-		setToken("jsonTranscriptAssetId", multirequestToken);
 	}
 
 
-	public AlignmentVendorTaskData() {
+
+	public TranslationVendorTaskData() {
 		super();
 	}
 
-	public AlignmentVendorTaskData(JsonObject jsonObject) throws APIException {
+	public TranslationVendorTaskData(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		textTranscriptAssetId = GsonParser.parseString(jsonObject.get("textTranscriptAssetId"));
-		jsonTranscriptAssetId = GsonParser.parseString(jsonObject.get("jsonTranscriptAssetId"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaAlignmentVendorTaskData");
-		kparams.add("textTranscriptAssetId", this.textTranscriptAssetId);
-		kparams.add("jsonTranscriptAssetId", this.jsonTranscriptAssetId);
+		kparams.add("objectType", "KalturaTranslationVendorTaskData");
 		return kparams;
 	}
 

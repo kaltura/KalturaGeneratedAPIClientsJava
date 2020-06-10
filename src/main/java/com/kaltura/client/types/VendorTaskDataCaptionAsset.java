@@ -40,70 +40,49 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(AlignmentVendorTaskData.Tokenizer.class)
-public class AlignmentVendorTaskData extends VendorTaskDataCaptionAsset {
+@MultiRequestBuilder.Tokenizer(VendorTaskDataCaptionAsset.Tokenizer.class)
+public abstract class VendorTaskDataCaptionAsset extends VendorTaskData {
 	
-	public interface Tokenizer extends VendorTaskDataCaptionAsset.Tokenizer {
-		String textTranscriptAssetId();
-		String jsonTranscriptAssetId();
+	public interface Tokenizer extends VendorTaskData.Tokenizer {
+		String captionAssetId();
 	}
 
 	/**
-	 * The id of the text transcript object the vendor should use while runing the
-	  alignment task
+	 * Optional - The id of the caption asset object
 	 */
-	private String textTranscriptAssetId;
-	/**
-	 * Optional - The id of the json transcript object the vendor should update once
-	  alignment task processing is done
-	 */
-	private String jsonTranscriptAssetId;
+	private String captionAssetId;
 
-	// textTranscriptAssetId:
-	public String getTextTranscriptAssetId(){
-		return this.textTranscriptAssetId;
+	// captionAssetId:
+	public String getCaptionAssetId(){
+		return this.captionAssetId;
 	}
-	public void setTextTranscriptAssetId(String textTranscriptAssetId){
-		this.textTranscriptAssetId = textTranscriptAssetId;
+	public void setCaptionAssetId(String captionAssetId){
+		this.captionAssetId = captionAssetId;
 	}
 
-	public void textTranscriptAssetId(String multirequestToken){
-		setToken("textTranscriptAssetId", multirequestToken);
-	}
-
-	// jsonTranscriptAssetId:
-	public String getJsonTranscriptAssetId(){
-		return this.jsonTranscriptAssetId;
-	}
-	public void setJsonTranscriptAssetId(String jsonTranscriptAssetId){
-		this.jsonTranscriptAssetId = jsonTranscriptAssetId;
-	}
-
-	public void jsonTranscriptAssetId(String multirequestToken){
-		setToken("jsonTranscriptAssetId", multirequestToken);
+	public void captionAssetId(String multirequestToken){
+		setToken("captionAssetId", multirequestToken);
 	}
 
 
-	public AlignmentVendorTaskData() {
+	public VendorTaskDataCaptionAsset() {
 		super();
 	}
 
-	public AlignmentVendorTaskData(JsonObject jsonObject) throws APIException {
+	public VendorTaskDataCaptionAsset(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		textTranscriptAssetId = GsonParser.parseString(jsonObject.get("textTranscriptAssetId"));
-		jsonTranscriptAssetId = GsonParser.parseString(jsonObject.get("jsonTranscriptAssetId"));
+		captionAssetId = GsonParser.parseString(jsonObject.get("captionAssetId"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaAlignmentVendorTaskData");
-		kparams.add("textTranscriptAssetId", this.textTranscriptAssetId);
-		kparams.add("jsonTranscriptAssetId", this.jsonTranscriptAssetId);
+		kparams.add("objectType", "KalturaVendorTaskDataCaptionAsset");
+		kparams.add("captionAssetId", this.captionAssetId);
 		return kparams;
 	}
 
