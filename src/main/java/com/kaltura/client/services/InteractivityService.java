@@ -28,6 +28,7 @@
 package com.kaltura.client.services;
 
 import com.kaltura.client.types.Interactivity;
+import com.kaltura.client.types.InteractivityDataFilter;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -86,9 +87,10 @@ public class InteractivityService {
 	
 	public static class GetInteractivityBuilder extends RequestBuilder<Interactivity, Interactivity.Tokenizer, GetInteractivityBuilder> {
 		
-		public GetInteractivityBuilder(String entryId) {
+		public GetInteractivityBuilder(String entryId, InteractivityDataFilter dataFilter) {
 			super(Interactivity.class, "interactivity_interactivity", "get");
 			params.add("entryId", entryId);
+			params.add("dataFilter", dataFilter);
 		}
 		
 		public void entryId(String multirequestToken) {
@@ -96,13 +98,18 @@ public class InteractivityService {
 		}
 	}
 
+	public static GetInteractivityBuilder get(String entryId)  {
+		return get(entryId, null);
+	}
+
 	/**
 	 * Retrieve a interactivity object by entry id
 	 * 
 	 * @param entryId 
+	 * @param dataFilter 
 	 */
-    public static GetInteractivityBuilder get(String entryId)  {
-		return new GetInteractivityBuilder(entryId);
+    public static GetInteractivityBuilder get(String entryId, InteractivityDataFilter dataFilter)  {
+		return new GetInteractivityBuilder(entryId, dataFilter);
 	}
 	
 	public static class UpdateInteractivityBuilder extends RequestBuilder<Interactivity, Interactivity.Tokenizer, UpdateInteractivityBuilder> {
