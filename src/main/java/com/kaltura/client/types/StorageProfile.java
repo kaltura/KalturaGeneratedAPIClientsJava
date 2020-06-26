@@ -87,6 +87,7 @@ public class StorageProfile extends ObjectBase {
 		String exportPeriodically();
 		String excludedFlavorParamsIds();
 		String shouldExportCaptions();
+		String excludedEntryTypes();
 	}
 
 	private Integer id;
@@ -145,6 +146,7 @@ public class StorageProfile extends ObjectBase {
 	private Boolean exportPeriodically;
 	private String excludedFlavorParamsIds;
 	private Boolean shouldExportCaptions;
+	private String excludedEntryTypes;
 
 	// id:
 	public Integer getId(){
@@ -534,6 +536,18 @@ public class StorageProfile extends ObjectBase {
 		setToken("shouldExportCaptions", multirequestToken);
 	}
 
+	// excludedEntryTypes:
+	public String getExcludedEntryTypes(){
+		return this.excludedEntryTypes;
+	}
+	public void setExcludedEntryTypes(String excludedEntryTypes){
+		this.excludedEntryTypes = excludedEntryTypes;
+	}
+
+	public void excludedEntryTypes(String multirequestToken){
+		setToken("excludedEntryTypes", multirequestToken);
+	}
+
 
 	public StorageProfile() {
 		super();
@@ -581,6 +595,7 @@ public class StorageProfile extends ObjectBase {
 		exportPeriodically = GsonParser.parseBoolean(jsonObject.get("exportPeriodically"));
 		excludedFlavorParamsIds = GsonParser.parseString(jsonObject.get("excludedFlavorParamsIds"));
 		shouldExportCaptions = GsonParser.parseBoolean(jsonObject.get("shouldExportCaptions"));
+		excludedEntryTypes = GsonParser.parseString(jsonObject.get("excludedEntryTypes"));
 
 	}
 
@@ -619,6 +634,7 @@ public class StorageProfile extends ObjectBase {
 		kparams.add("exportPeriodically", this.exportPeriodically);
 		kparams.add("excludedFlavorParamsIds", this.excludedFlavorParamsIds);
 		kparams.add("shouldExportCaptions", this.shouldExportCaptions);
+		kparams.add("excludedEntryTypes", this.excludedEntryTypes);
 		return kparams;
 	}
 
