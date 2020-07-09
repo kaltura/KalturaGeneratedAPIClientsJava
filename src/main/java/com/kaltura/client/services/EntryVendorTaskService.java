@@ -32,6 +32,7 @@ import com.kaltura.client.types.EntryVendorTaskFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -52,10 +53,18 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param id 
  * @param filter 
  * @param pager 
+ * @param filterType 
+ * @param filterInput 
+ * @param status 
+ * @param dueDate 
  * @param filter 
  * @param pager 
  * @param id vendor task id to reject
  * @param rejectReason 
+ * @param vendorPartnerId 
+ * @param partnerId 
+ * @param status 
+ * @param dueDate 
  * @param id - the requested file id
  * @param id vendor task id to update
  * @param entryVendorTask evntry vendor task to update
@@ -221,6 +230,53 @@ public class EntryVendorTaskService {
 		return new GetJobsEntryVendorTaskBuilder(filter, pager);
 	}
 	
+	public static class GetServeUrlEntryVendorTaskBuilder extends RequestBuilder<String, String, GetServeUrlEntryVendorTaskBuilder> {
+		
+		public GetServeUrlEntryVendorTaskBuilder(String filterType, int filterInput, int status, String dueDate) {
+			super(String.class, "reach_entryvendortask", "getServeUrl");
+			params.add("filterType", filterType);
+			params.add("filterInput", filterInput);
+			params.add("status", status);
+			params.add("dueDate", dueDate);
+		}
+		
+		public void filterType(String multirequestToken) {
+			params.add("filterType", multirequestToken);
+		}
+		
+		public void filterInput(String multirequestToken) {
+			params.add("filterInput", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+		
+		public void dueDate(String multirequestToken) {
+			params.add("dueDate", multirequestToken);
+		}
+	}
+
+	public static GetServeUrlEntryVendorTaskBuilder getServeUrl()  {
+		return getServeUrl(null);
+	}
+
+	public static GetServeUrlEntryVendorTaskBuilder getServeUrl(String filterType)  {
+		return getServeUrl(filterType, Integer.MIN_VALUE);
+	}
+
+	public static GetServeUrlEntryVendorTaskBuilder getServeUrl(String filterType, int filterInput)  {
+		return getServeUrl(filterType, filterInput, Integer.MIN_VALUE);
+	}
+
+	public static GetServeUrlEntryVendorTaskBuilder getServeUrl(String filterType, int filterInput, int status)  {
+		return getServeUrl(filterType, filterInput, status, null);
+	}
+
+    public static GetServeUrlEntryVendorTaskBuilder getServeUrl(String filterType, int filterInput, int status, String dueDate)  {
+		return new GetServeUrlEntryVendorTaskBuilder(filterType, filterInput, status, dueDate);
+	}
+	
 	public static class ListEntryVendorTaskBuilder extends ListResponseRequestBuilder<EntryVendorTask, EntryVendorTask.Tokenizer, ListEntryVendorTaskBuilder> {
 		
 		public ListEntryVendorTaskBuilder(EntryVendorTaskFilter filter, FilterPager pager) {
@@ -277,6 +333,53 @@ public class EntryVendorTaskService {
 	 */
     public static RejectEntryVendorTaskBuilder reject(int id, String rejectReason)  {
 		return new RejectEntryVendorTaskBuilder(id, rejectReason);
+	}
+	
+	public static class ServeEntryVendorTaskBuilder extends ServeRequestBuilder {
+		
+		public ServeEntryVendorTaskBuilder(int vendorPartnerId, int partnerId, int status, String dueDate) {
+			super("reach_entryvendortask", "serve");
+			params.add("vendorPartnerId", vendorPartnerId);
+			params.add("partnerId", partnerId);
+			params.add("status", status);
+			params.add("dueDate", dueDate);
+		}
+		
+		public void vendorPartnerId(String multirequestToken) {
+			params.add("vendorPartnerId", multirequestToken);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+		
+		public void dueDate(String multirequestToken) {
+			params.add("dueDate", multirequestToken);
+		}
+	}
+
+	public static ServeEntryVendorTaskBuilder serve()  {
+		return serve(Integer.MIN_VALUE);
+	}
+
+	public static ServeEntryVendorTaskBuilder serve(int vendorPartnerId)  {
+		return serve(vendorPartnerId, Integer.MIN_VALUE);
+	}
+
+	public static ServeEntryVendorTaskBuilder serve(int vendorPartnerId, int partnerId)  {
+		return serve(vendorPartnerId, partnerId, Integer.MIN_VALUE);
+	}
+
+	public static ServeEntryVendorTaskBuilder serve(int vendorPartnerId, int partnerId, int status)  {
+		return serve(vendorPartnerId, partnerId, status, null);
+	}
+
+    public static ServeEntryVendorTaskBuilder serve(int vendorPartnerId, int partnerId, int status, String dueDate)  {
+		return new ServeEntryVendorTaskBuilder(vendorPartnerId, partnerId, status, dueDate);
 	}
 	
 	public static class ServeCsvEntryVendorTaskBuilder extends RequestBuilder<String, String, ServeCsvEntryVendorTaskBuilder> {
