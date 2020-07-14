@@ -29,6 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
+import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -42,10 +43,11 @@ public class PexipService {
 	
 	public static class GenerateSipUrlPexipBuilder extends RequestBuilder<String, String, GenerateSipUrlPexipBuilder> {
 		
-		public GenerateSipUrlPexipBuilder(String entryId, boolean regenerate) {
+		public GenerateSipUrlPexipBuilder(String entryId, boolean regenerate, int sourceType) {
 			super(String.class, "sip_pexip", "generateSipUrl");
 			params.add("entryId", entryId);
 			params.add("regenerate", regenerate);
+			params.add("sourceType", sourceType);
 		}
 		
 		public void entryId(String multirequestToken) {
@@ -55,20 +57,28 @@ public class PexipService {
 		public void regenerate(String multirequestToken) {
 			params.add("regenerate", multirequestToken);
 		}
+		
+		public void sourceType(String multirequestToken) {
+			params.add("sourceType", multirequestToken);
+		}
 	}
 
 	public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId)  {
 		return generateSipUrl(entryId, false);
 	}
 
-    public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate)  {
-		return new GenerateSipUrlPexipBuilder(entryId, regenerate);
+	public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate)  {
+		return generateSipUrl(entryId, regenerate, 1);
+	}
+
+    public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate, int sourceType)  {
+		return new GenerateSipUrlPexipBuilder(entryId, regenerate, sourceType);
 	}
 	
-	public static class HandleIncomingCallPexipBuilder extends RequestBuilder<Boolean, String, HandleIncomingCallPexipBuilder> {
+	public static class HandleIncomingCallPexipBuilder extends NullRequestBuilder {
 		
 		public HandleIncomingCallPexipBuilder() {
-			super(Boolean.class, "sip_pexip", "handleIncomingCall");
+			super("sip_pexip", "handleIncomingCall");
 		}
 	}
 

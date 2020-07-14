@@ -53,6 +53,7 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 	public interface Tokenizer extends EventNotificationDispatchJobData.Tokenizer {
 		String url();
 		String method();
+		String contentType();
 		String data();
 		String timeout();
 		String connectTimeout();
@@ -80,6 +81,10 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 	 * Request method.
 	 */
 	private HttpNotificationMethod method;
+	/**
+	 * The type of the data to send.
+	 */
+	private String contentType;
 	/**
 	 * Data to send.
 	 */
@@ -174,6 +179,18 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 
 	public void method(String multirequestToken){
 		setToken("method", multirequestToken);
+	}
+
+	// contentType:
+	public String getContentType(){
+		return this.contentType;
+	}
+	public void setContentType(String contentType){
+		this.contentType = contentType;
+	}
+
+	public void contentType(String multirequestToken){
+		setToken("contentType", multirequestToken);
 	}
 
 	// data:
@@ -389,6 +406,7 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 		// set members values:
 		url = GsonParser.parseString(jsonObject.get("url"));
 		method = HttpNotificationMethod.get(GsonParser.parseInt(jsonObject.get("method")));
+		contentType = GsonParser.parseString(jsonObject.get("contentType"));
 		data = GsonParser.parseString(jsonObject.get("data"));
 		timeout = GsonParser.parseInt(jsonObject.get("timeout"));
 		connectTimeout = GsonParser.parseInt(jsonObject.get("connectTimeout"));
@@ -414,6 +432,7 @@ public class HttpNotificationDispatchJobData extends EventNotificationDispatchJo
 		kparams.add("objectType", "KalturaHttpNotificationDispatchJobData");
 		kparams.add("url", this.url);
 		kparams.add("method", this.method);
+		kparams.add("contentType", this.contentType);
 		kparams.add("data", this.data);
 		kparams.add("timeout", this.timeout);
 		kparams.add("connectTimeout", this.connectTimeout);
