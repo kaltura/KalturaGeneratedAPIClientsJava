@@ -62,6 +62,7 @@ public class Widget extends ObjectBase {
 		String privacyContext();
 		String addEmbedHtml5Support();
 		String roles();
+		String privileges();
 	}
 
 	private String id;
@@ -93,6 +94,7 @@ public class Widget extends ObjectBase {
 	 */
 	private Boolean addEmbedHtml5Support;
 	private String roles;
+	private String privileges;
 
 	// id:
 	public String getId(){
@@ -238,6 +240,18 @@ public class Widget extends ObjectBase {
 		setToken("roles", multirequestToken);
 	}
 
+	// privileges:
+	public String getPrivileges(){
+		return this.privileges;
+	}
+	public void setPrivileges(String privileges){
+		this.privileges = privileges;
+	}
+
+	public void privileges(String multirequestToken){
+		setToken("privileges", multirequestToken);
+	}
+
 
 	public Widget() {
 		super();
@@ -265,6 +279,7 @@ public class Widget extends ObjectBase {
 		privacyContext = GsonParser.parseString(jsonObject.get("privacyContext"));
 		addEmbedHtml5Support = GsonParser.parseBoolean(jsonObject.get("addEmbedHtml5Support"));
 		roles = GsonParser.parseString(jsonObject.get("roles"));
+		privileges = GsonParser.parseString(jsonObject.get("privileges"));
 
 	}
 
@@ -281,6 +296,7 @@ public class Widget extends ObjectBase {
 		kparams.add("privacyContext", this.privacyContext);
 		kparams.add("addEmbedHtml5Support", this.addEmbedHtml5Support);
 		kparams.add("roles", this.roles);
+		kparams.add("privileges", this.privileges);
 		return kparams;
 	}
 
