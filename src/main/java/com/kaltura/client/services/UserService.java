@@ -29,6 +29,7 @@ package com.kaltura.client.services;
 
 import com.kaltura.client.FileHolder;
 import com.kaltura.client.Files;
+import com.kaltura.client.enums.ResetPassLinkType;
 import com.kaltura.client.types.Authentication;
 import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
@@ -96,6 +97,7 @@ import java.util.List;
  * @param otp the user's one-time password
  * @param userId The user's unique identifier in the partner's system
  * @param email The user's email address (login email)
+ * @param linkType kmc or kms
  * @param id - the requested file id
  * @param hashKey The hash key used to identify the user (retrieved by email)
  * @param newPassword The new password to set for the user
@@ -636,23 +638,33 @@ public class UserService {
 	
 	public static class ResetPasswordUserBuilder extends NullRequestBuilder {
 		
-		public ResetPasswordUserBuilder(String email) {
+		public ResetPasswordUserBuilder(String email, ResetPassLinkType linkType) {
 			super("user", "resetPassword");
 			params.add("email", email);
+			params.add("linkType", linkType);
 		}
 		
 		public void email(String multirequestToken) {
 			params.add("email", multirequestToken);
 		}
+		
+		public void linkType(String multirequestToken) {
+			params.add("linkType", multirequestToken);
+		}
+	}
+
+	public static ResetPasswordUserBuilder resetPassword(String email)  {
+		return resetPassword(email, null);
 	}
 
 	/**
 	 * Reset user's password and send the user an email to generate a new one.
 	 * 
 	 * @param email The user's email address (login email)
+	 * @param linkType kmc or kms
 	 */
-    public static ResetPasswordUserBuilder resetPassword(String email)  {
-		return new ResetPasswordUserBuilder(email);
+    public static ResetPasswordUserBuilder resetPassword(String email, ResetPassLinkType linkType)  {
+		return new ResetPasswordUserBuilder(email, linkType);
 	}
 	
 	public static class ServeCsvUserBuilder extends RequestBuilder<String, String, ServeCsvUserBuilder> {

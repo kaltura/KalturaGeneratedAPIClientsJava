@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.enums.SipSourceType;
 import com.kaltura.client.types.StringValue;
 import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -43,7 +44,7 @@ public class PexipService {
 	
 	public static class GenerateSipUrlPexipBuilder extends RequestBuilder<String, String, GenerateSipUrlPexipBuilder> {
 		
-		public GenerateSipUrlPexipBuilder(String entryId, boolean regenerate, int sourceType) {
+		public GenerateSipUrlPexipBuilder(String entryId, boolean regenerate, SipSourceType sourceType) {
 			super(String.class, "sip_pexip", "generateSipUrl");
 			params.add("entryId", entryId);
 			params.add("regenerate", regenerate);
@@ -68,10 +69,10 @@ public class PexipService {
 	}
 
 	public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate)  {
-		return generateSipUrl(entryId, regenerate, 1);
+		return generateSipUrl(entryId, regenerate, SipSourceType.get(1));
 	}
 
-    public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate, int sourceType)  {
+    public static GenerateSipUrlPexipBuilder generateSipUrl(String entryId, boolean regenerate, SipSourceType sourceType)  {
 		return new GenerateSipUrlPexipBuilder(entryId, regenerate, sourceType);
 	}
 	

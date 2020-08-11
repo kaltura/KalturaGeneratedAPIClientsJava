@@ -27,10 +27,12 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.enums.DropFolderStatus;
 import com.kaltura.client.types.DropFolder;
 import com.kaltura.client.types.DropFolderFilter;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
+import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
@@ -55,6 +57,10 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param pager 
  * @param dropFolderId 
  * @param dropFolder Id
+ * @param dropFolderId 
+ * @param dropFolder Id
+ * @param dropFolderId 
+ * @param status 
  */
 public class DropFolderService {
 	
@@ -233,5 +239,26 @@ public class DropFolderService {
 	 */
     public static UpdateDropFolderBuilder update(int dropFolderId, DropFolder dropFolder)  {
 		return new UpdateDropFolderBuilder(dropFolderId, dropFolder);
+	}
+	
+	public static class UpdateStatusDropFolderBuilder extends NullRequestBuilder {
+		
+		public UpdateStatusDropFolderBuilder(int dropFolderId, DropFolderStatus status) {
+			super("dropfolder_dropfolder", "updateStatus");
+			params.add("dropFolderId", dropFolderId);
+			params.add("status", status);
+		}
+		
+		public void dropFolderId(String multirequestToken) {
+			params.add("dropFolderId", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
+		}
+	}
+
+    public static UpdateStatusDropFolderBuilder updateStatus(int dropFolderId, DropFolderStatus status)  {
+		return new UpdateStatusDropFolderBuilder(dropFolderId, status);
 	}
 }

@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.SipSourceType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -65,6 +66,7 @@ public class LiveStreamEntry extends LiveEntry {
 		String streamUsername();
 		String primaryServerNodeId();
 		String sipToken();
+		String sipSourceType();
 	}
 
 	/**
@@ -119,6 +121,7 @@ public class LiveStreamEntry extends LiveEntry {
 	 */
 	private Integer primaryServerNodeId;
 	private String sipToken;
+	private SipSourceType sipSourceType;
 
 	// streamRemoteId:
 	public String getStreamRemoteId(){
@@ -304,6 +307,10 @@ public class LiveStreamEntry extends LiveEntry {
 	public String getSipToken(){
 		return this.sipToken;
 	}
+	// sipSourceType:
+	public SipSourceType getSipSourceType(){
+		return this.sipSourceType;
+	}
 
 	public LiveStreamEntry() {
 		super();
@@ -334,6 +341,7 @@ public class LiveStreamEntry extends LiveEntry {
 		streamUsername = GsonParser.parseString(jsonObject.get("streamUsername"));
 		primaryServerNodeId = GsonParser.parseInt(jsonObject.get("primaryServerNodeId"));
 		sipToken = GsonParser.parseString(jsonObject.get("sipToken"));
+		sipSourceType = SipSourceType.get(GsonParser.parseInt(jsonObject.get("sipSourceType")));
 
 	}
 
