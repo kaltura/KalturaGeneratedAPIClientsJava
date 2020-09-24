@@ -57,6 +57,8 @@ public class User extends BaseUser {
 		String firstName();
 		String lastName();
 		String loginEnabled();
+		String registrationInfo();
+		String attendanceInfo();
 	}
 
 	private UserType type;
@@ -70,6 +72,8 @@ public class User extends BaseUser {
 	private String firstName;
 	private String lastName;
 	private Boolean loginEnabled;
+	private String registrationInfo;
+	private String attendanceInfo;
 
 	// type:
 	public UserType getType(){
@@ -195,6 +199,30 @@ public class User extends BaseUser {
 		setToken("loginEnabled", multirequestToken);
 	}
 
+	// registrationInfo:
+	public String getRegistrationInfo(){
+		return this.registrationInfo;
+	}
+	public void setRegistrationInfo(String registrationInfo){
+		this.registrationInfo = registrationInfo;
+	}
+
+	public void registrationInfo(String multirequestToken){
+		setToken("registrationInfo", multirequestToken);
+	}
+
+	// attendanceInfo:
+	public String getAttendanceInfo(){
+		return this.attendanceInfo;
+	}
+	public void setAttendanceInfo(String attendanceInfo){
+		this.attendanceInfo = attendanceInfo;
+	}
+
+	public void attendanceInfo(String multirequestToken){
+		setToken("attendanceInfo", multirequestToken);
+	}
+
 
 	public User() {
 		super();
@@ -217,6 +245,8 @@ public class User extends BaseUser {
 		firstName = GsonParser.parseString(jsonObject.get("firstName"));
 		lastName = GsonParser.parseString(jsonObject.get("lastName"));
 		loginEnabled = GsonParser.parseBoolean(jsonObject.get("loginEnabled"));
+		registrationInfo = GsonParser.parseString(jsonObject.get("registrationInfo"));
+		attendanceInfo = GsonParser.parseString(jsonObject.get("attendanceInfo"));
 
 	}
 
@@ -233,6 +263,8 @@ public class User extends BaseUser {
 		kparams.add("firstName", this.firstName);
 		kparams.add("lastName", this.lastName);
 		kparams.add("loginEnabled", this.loginEnabled);
+		kparams.add("registrationInfo", this.registrationInfo);
+		kparams.add("attendanceInfo", this.attendanceInfo);
 		return kparams;
 	}
 
