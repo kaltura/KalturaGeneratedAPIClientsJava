@@ -75,6 +75,7 @@ public enum LanguageCode implements EnumAsString {
 	FJ("fj"),
 	FO("fo"),
 	FR("fr"),
+	FR_CA("fr_ca"),
 	FY("fy"),
 	GA("ga"),
 	GD("gd"),
@@ -197,6 +198,7 @@ public enum LanguageCode implements EnumAsString {
 	YI("yi"),
 	YO("yo"),
 	ZH("zh"),
+	ZH_TW("zh_tw"),
 	ZU("zu"),
 	ZXX("zxx");
 

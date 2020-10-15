@@ -553,6 +553,10 @@ public class LiveStreamService {
 		}
 	}
 
+	public static IsLiveLiveStreamBuilder isLive(String id)  {
+		return isLive(id, null);
+	}
+
 	/**
 	 * Delivering the status of a live stream (on-air/offline) if it is possible
 	 * 

@@ -98,6 +98,7 @@ public class Partner extends ObjectBase {
 		RequestBuilder.ListTokenizer<PlayerEmbedCodeType.Tokenizer> embedCodeTypes();
 		String templatePartnerId();
 		String ignoreSeoLinks();
+		String blockDirectLogin();
 		String host();
 		String cdnHost();
 		String isFirstLogin();
@@ -182,6 +183,7 @@ public class Partner extends ObjectBase {
 	private List<PlayerEmbedCodeType> embedCodeTypes;
 	private Integer templatePartnerId;
 	private Boolean ignoreSeoLinks;
+	private Boolean blockDirectLogin;
 	private String host;
 	private String cdnHost;
 	private Boolean isFirstLogin;
@@ -627,6 +629,10 @@ public class Partner extends ObjectBase {
 	public Boolean getIgnoreSeoLinks(){
 		return this.ignoreSeoLinks;
 	}
+	// blockDirectLogin:
+	public Boolean getBlockDirectLogin(){
+		return this.blockDirectLogin;
+	}
 	// host:
 	public String getHost(){
 		return this.host;
@@ -788,6 +794,7 @@ public class Partner extends ObjectBase {
 		embedCodeTypes = GsonParser.parseArray(jsonObject.getAsJsonArray("embedCodeTypes"), PlayerEmbedCodeType.class);
 		templatePartnerId = GsonParser.parseInt(jsonObject.get("templatePartnerId"));
 		ignoreSeoLinks = GsonParser.parseBoolean(jsonObject.get("ignoreSeoLinks"));
+		blockDirectLogin = GsonParser.parseBoolean(jsonObject.get("blockDirectLogin"));
 		host = GsonParser.parseString(jsonObject.get("host"));
 		cdnHost = GsonParser.parseString(jsonObject.get("cdnHost"));
 		isFirstLogin = GsonParser.parseBoolean(jsonObject.get("isFirstLogin"));

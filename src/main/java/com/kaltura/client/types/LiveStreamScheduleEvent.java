@@ -45,12 +45,22 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 	
 	public interface Tokenizer extends EntryScheduleEvent.Tokenizer {
 		String projectedAudience();
+		String sourceEntryId();
+		String preStartTime();
 	}
 
 	/**
 	 * Defines the expected audience.
 	 */
 	private Integer projectedAudience;
+	/**
+	 * The entry ID of the source entry (for simulive)
+	 */
+	private String sourceEntryId;
+	/**
+	 * The time relative time before the startTime considered as preStart time
+	 */
+	private Integer preStartTime;
 
 	// projectedAudience:
 	public Integer getProjectedAudience(){
@@ -62,6 +72,30 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 
 	public void projectedAudience(String multirequestToken){
 		setToken("projectedAudience", multirequestToken);
+	}
+
+	// sourceEntryId:
+	public String getSourceEntryId(){
+		return this.sourceEntryId;
+	}
+	public void setSourceEntryId(String sourceEntryId){
+		this.sourceEntryId = sourceEntryId;
+	}
+
+	public void sourceEntryId(String multirequestToken){
+		setToken("sourceEntryId", multirequestToken);
+	}
+
+	// preStartTime:
+	public Integer getPreStartTime(){
+		return this.preStartTime;
+	}
+	public void setPreStartTime(Integer preStartTime){
+		this.preStartTime = preStartTime;
+	}
+
+	public void preStartTime(String multirequestToken){
+		setToken("preStartTime", multirequestToken);
 	}
 
 
@@ -76,6 +110,8 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 
 		// set members values:
 		projectedAudience = GsonParser.parseInt(jsonObject.get("projectedAudience"));
+		sourceEntryId = GsonParser.parseString(jsonObject.get("sourceEntryId"));
+		preStartTime = GsonParser.parseInt(jsonObject.get("preStartTime"));
 
 	}
 
@@ -83,6 +119,8 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLiveStreamScheduleEvent");
 		kparams.add("projectedAudience", this.projectedAudience);
+		kparams.add("sourceEntryId", this.sourceEntryId);
+		kparams.add("preStartTime", this.preStartTime);
 		return kparams;
 	}
 

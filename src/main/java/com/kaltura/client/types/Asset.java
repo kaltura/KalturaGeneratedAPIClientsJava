@@ -59,6 +59,7 @@ public class Asset extends ObjectBase {
 		String partnerData();
 		String partnerDescription();
 		String actualSourceAssetParamsIds();
+		String sizeInBytes();
 	}
 
 	/**
@@ -105,6 +106,10 @@ public class Asset extends ObjectBase {
 	 * Comma separated list of source flavor params ids
 	 */
 	private String actualSourceAssetParamsIds;
+	/**
+	 * The size (in Bytes) of the asset
+	 */
+	private Integer sizeInBytes;
 
 	// id:
 	public String getId(){
@@ -202,6 +207,10 @@ public class Asset extends ObjectBase {
 		setToken("actualSourceAssetParamsIds", multirequestToken);
 	}
 
+	// sizeInBytes:
+	public Integer getSizeInBytes(){
+		return this.sizeInBytes;
+	}
 
 	public Asset() {
 		super();
@@ -227,6 +236,7 @@ public class Asset extends ObjectBase {
 		partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
 		partnerDescription = GsonParser.parseString(jsonObject.get("partnerDescription"));
 		actualSourceAssetParamsIds = GsonParser.parseString(jsonObject.get("actualSourceAssetParamsIds"));
+		sizeInBytes = GsonParser.parseInt(jsonObject.get("sizeInBytes"));
 
 	}
 

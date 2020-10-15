@@ -44,6 +44,7 @@ public enum CatalogItemLanguage implements EnumAsString {
 	EN_GB("English (British)"),
 	FI("Finnish"),
 	FR("French"),
+	FR_CA("French (Canada)"),
 	DE("German"),
 	EL("Greek"),
 	HE("Hebrew"),
@@ -51,9 +52,11 @@ public enum CatalogItemLanguage implements EnumAsString {
 	HU("Hungarian"),
 	IS("Icelandic"),
 	IN("Indonesian"),
+	GA("Irish"),
 	IT("Italian"),
 	JA("Japanese"),
 	KO("Korean"),
+	ML("Malayalam"),
 	CMN("Mandarin Chinese"),
 	NO("Norwegian"),
 	PL("Polish"),
@@ -62,8 +65,15 @@ public enum CatalogItemLanguage implements EnumAsString {
 	RU("Russian"),
 	ES("Spanish"),
 	SV("Swedish"),
+	ZH_TW("Taiwanese Mandarin"),
+	TA("Tamil"),
 	TH("Thai"),
-	TR("Turkish");
+	TR("Turkish"),
+	UK("Ukrainian"),
+	UR("Urdu"),
+	VI("Vietnamese"),
+	CY("Welsh"),
+	ZU("Zulu");
 
 	private String value;
 
