@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(DeliveryProfileAkamaiHttp.Tokenizer.class)
-public class DeliveryProfileAkamaiHttp extends DeliveryProfile {
+public class DeliveryProfileAkamaiHttp extends DeliveryProfileHttp {
 	
-	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+	public interface Tokenizer extends DeliveryProfileHttp.Tokenizer {
 		String useIntelliseek();
 	}
 

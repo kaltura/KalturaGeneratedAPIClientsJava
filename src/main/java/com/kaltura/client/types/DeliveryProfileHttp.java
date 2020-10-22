@@ -40,46 +40,46 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(DeliveryProfileGenericHttp.Tokenizer.class)
-public class DeliveryProfileGenericHttp extends DeliveryProfileHttp {
+@MultiRequestBuilder.Tokenizer(DeliveryProfileHttp.Tokenizer.class)
+public class DeliveryProfileHttp extends DeliveryProfile {
 	
-	public interface Tokenizer extends DeliveryProfileHttp.Tokenizer {
-		String pattern();
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String maxSize();
 	}
 
-	private String pattern;
+	private Integer maxSize;
 
-	// pattern:
-	public String getPattern(){
-		return this.pattern;
+	// maxSize:
+	public Integer getMaxSize(){
+		return this.maxSize;
 	}
-	public void setPattern(String pattern){
-		this.pattern = pattern;
-	}
-
-	public void pattern(String multirequestToken){
-		setToken("pattern", multirequestToken);
+	public void setMaxSize(Integer maxSize){
+		this.maxSize = maxSize;
 	}
 
+	public void maxSize(String multirequestToken){
+		setToken("maxSize", multirequestToken);
+	}
 
-	public DeliveryProfileGenericHttp() {
+
+	public DeliveryProfileHttp() {
 		super();
 	}
 
-	public DeliveryProfileGenericHttp(JsonObject jsonObject) throws APIException {
+	public DeliveryProfileHttp(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		maxSize = GsonParser.parseInt(jsonObject.get("maxSize"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaDeliveryProfileGenericHttp");
-		kparams.add("pattern", this.pattern);
+		kparams.add("objectType", "KalturaDeliveryProfileHttp");
+		kparams.add("maxSize", this.maxSize);
 		return kparams;
 	}
 

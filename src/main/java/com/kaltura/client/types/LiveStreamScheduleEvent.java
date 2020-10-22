@@ -47,6 +47,7 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		String projectedAudience();
 		String sourceEntryId();
 		String preStartTime();
+		String postEndTime();
 	}
 
 	/**
@@ -61,6 +62,10 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 	 * The time relative time before the startTime considered as preStart time
 	 */
 	private Integer preStartTime;
+	/**
+	 * The time relative time before the endTime considered as postEnd time
+	 */
+	private Integer postEndTime;
 
 	// projectedAudience:
 	public Integer getProjectedAudience(){
@@ -98,6 +103,18 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		setToken("preStartTime", multirequestToken);
 	}
 
+	// postEndTime:
+	public Integer getPostEndTime(){
+		return this.postEndTime;
+	}
+	public void setPostEndTime(Integer postEndTime){
+		this.postEndTime = postEndTime;
+	}
+
+	public void postEndTime(String multirequestToken){
+		setToken("postEndTime", multirequestToken);
+	}
+
 
 	public LiveStreamScheduleEvent() {
 		super();
@@ -112,6 +129,7 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		projectedAudience = GsonParser.parseInt(jsonObject.get("projectedAudience"));
 		sourceEntryId = GsonParser.parseString(jsonObject.get("sourceEntryId"));
 		preStartTime = GsonParser.parseInt(jsonObject.get("preStartTime"));
+		postEndTime = GsonParser.parseInt(jsonObject.get("postEndTime"));
 
 	}
 
@@ -121,6 +139,7 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		kparams.add("projectedAudience", this.projectedAudience);
 		kparams.add("sourceEntryId", this.sourceEntryId);
 		kparams.add("preStartTime", this.preStartTime);
+		kparams.add("postEndTime", this.postEndTime);
 		return kparams;
 	}
 

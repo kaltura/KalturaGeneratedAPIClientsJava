@@ -40,46 +40,46 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(DeliveryProfileGenericHttp.Tokenizer.class)
-public class DeliveryProfileGenericHttp extends DeliveryProfileHttp {
+@MultiRequestBuilder.Tokenizer(UrlRecognizerKaltura.Tokenizer.class)
+public class UrlRecognizerKaltura extends UrlRecognizer {
 	
-	public interface Tokenizer extends DeliveryProfileHttp.Tokenizer {
-		String pattern();
+	public interface Tokenizer extends UrlRecognizer.Tokenizer {
+		String key();
 	}
 
-	private String pattern;
+	private String key;
 
-	// pattern:
-	public String getPattern(){
-		return this.pattern;
+	// key:
+	public String getKey(){
+		return this.key;
 	}
-	public void setPattern(String pattern){
-		this.pattern = pattern;
-	}
-
-	public void pattern(String multirequestToken){
-		setToken("pattern", multirequestToken);
+	public void setKey(String key){
+		this.key = key;
 	}
 
+	public void key(String multirequestToken){
+		setToken("key", multirequestToken);
+	}
 
-	public DeliveryProfileGenericHttp() {
+
+	public UrlRecognizerKaltura() {
 		super();
 	}
 
-	public DeliveryProfileGenericHttp(JsonObject jsonObject) throws APIException {
+	public UrlRecognizerKaltura(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		pattern = GsonParser.parseString(jsonObject.get("pattern"));
+		key = GsonParser.parseString(jsonObject.get("key"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaDeliveryProfileGenericHttp");
-		kparams.add("pattern", this.pattern);
+		kparams.add("objectType", "KalturaUrlRecognizerKaltura");
+		kparams.add("key", this.key);
 		return kparams;
 	}
 

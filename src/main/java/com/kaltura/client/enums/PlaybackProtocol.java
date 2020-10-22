@@ -37,6 +37,7 @@ public enum PlaybackProtocol implements EnumAsString {
 	APPLE_HTTP("applehttp"),
 	APPLE_HTTP_TO_MC("applehttp_to_mc"),
 	AUTO("auto"),
+	DOWNLOAD("download"),
 	AKAMAI_HD("hdnetwork"),
 	AKAMAI_HDS("hdnetworkmanifest"),
 	HDS("hds"),
