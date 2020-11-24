@@ -61,6 +61,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		String serviceFeature();
 		String turnAroundTime();
 		VendorCatalogItemPricing.Tokenizer pricing();
+		String allowResubmission();
 	}
 
 	private Integer id;
@@ -74,6 +75,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 	private VendorServiceFeature serviceFeature;
 	private VendorServiceTurnAroundTime turnAroundTime;
 	private VendorCatalogItemPricing pricing;
+	private Boolean allowResubmission;
 
 	// id:
 	public Integer getId(){
@@ -163,6 +165,18 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		this.pricing = pricing;
 	}
 
+	// allowResubmission:
+	public Boolean getAllowResubmission(){
+		return this.allowResubmission;
+	}
+	public void setAllowResubmission(Boolean allowResubmission){
+		this.allowResubmission = allowResubmission;
+	}
+
+	public void allowResubmission(String multirequestToken){
+		setToken("allowResubmission", multirequestToken);
+	}
+
 
 	public VendorCatalogItem() {
 		super();
@@ -185,6 +199,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		serviceFeature = VendorServiceFeature.get(GsonParser.parseInt(jsonObject.get("serviceFeature")));
 		turnAroundTime = VendorServiceTurnAroundTime.get(GsonParser.parseInt(jsonObject.get("turnAroundTime")));
 		pricing = GsonParser.parseObject(jsonObject.getAsJsonObject("pricing"), VendorCatalogItemPricing.class);
+		allowResubmission = GsonParser.parseBoolean(jsonObject.get("allowResubmission"));
 
 	}
 
@@ -197,6 +212,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		kparams.add("serviceType", this.serviceType);
 		kparams.add("turnAroundTime", this.turnAroundTime);
 		kparams.add("pricing", this.pricing);
+		kparams.add("allowResubmission", this.allowResubmission);
 		return kparams;
 	}
 
