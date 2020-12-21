@@ -72,6 +72,27 @@ public class ZoomVendorService {
 		return new FetchRegistrationPageZoomVendorBuilder(tokensData, iv);
 	}
 	
+	public static class GetZoomVendorBuilder extends RequestBuilder<ZoomIntegrationSetting, ZoomIntegrationSetting.Tokenizer, GetZoomVendorBuilder> {
+		
+		public GetZoomVendorBuilder(int partnerId) {
+			super(ZoomIntegrationSetting.class, "vendor_zoomvendor", "get");
+			params.add("partnerId", partnerId);
+		}
+		
+		public void partnerId(String multirequestToken) {
+			params.add("partnerId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Retrieve zoom integration setting object by partner id
+	 * 
+	 * @param partnerId 
+	 */
+    public static GetZoomVendorBuilder get(int partnerId)  {
+		return new GetZoomVendorBuilder(partnerId);
+	}
+	
 	public static class OauthValidationZoomVendorBuilder extends RequestBuilder<String, String, OauthValidationZoomVendorBuilder> {
 		
 		public OauthValidationZoomVendorBuilder() {

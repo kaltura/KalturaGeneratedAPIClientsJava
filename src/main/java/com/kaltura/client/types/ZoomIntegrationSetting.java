@@ -52,11 +52,12 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		String accountId();
 		String enableRecordingUpload();
 		String createUserIfNotExist();
-		String handleParticipantMode();
+		String handleParticipantsMode();
 		String zoomUserMatchingMode();
 		String zoomUserPostfix();
 		String zoomWebinarCategory();
 		String enableWebinarUploads();
+		String conversionProfileId();
 	}
 
 	private String defaultUserId;
@@ -64,11 +65,12 @@ public class ZoomIntegrationSetting extends ObjectBase {
 	private String accountId;
 	private Boolean enableRecordingUpload;
 	private Boolean createUserIfNotExist;
-	private HandleParticipantsMode handleParticipantMode;
+	private HandleParticipantsMode handleParticipantsMode;
 	private ZoomUsersMatching zoomUserMatchingMode;
 	private String zoomUserPostfix;
 	private String zoomWebinarCategory;
 	private Boolean enableWebinarUploads;
+	private Integer conversionProfileId;
 
 	// defaultUserId:
 	public String getDefaultUserId(){
@@ -98,14 +100,6 @@ public class ZoomIntegrationSetting extends ObjectBase {
 	public String getAccountId(){
 		return this.accountId;
 	}
-	public void setAccountId(String accountId){
-		this.accountId = accountId;
-	}
-
-	public void accountId(String multirequestToken){
-		setToken("accountId", multirequestToken);
-	}
-
 	// enableRecordingUpload:
 	public Boolean getEnableRecordingUpload(){
 		return this.enableRecordingUpload;
@@ -130,16 +124,16 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		setToken("createUserIfNotExist", multirequestToken);
 	}
 
-	// handleParticipantMode:
-	public HandleParticipantsMode getHandleParticipantMode(){
-		return this.handleParticipantMode;
+	// handleParticipantsMode:
+	public HandleParticipantsMode getHandleParticipantsMode(){
+		return this.handleParticipantsMode;
 	}
-	public void setHandleParticipantMode(HandleParticipantsMode handleParticipantMode){
-		this.handleParticipantMode = handleParticipantMode;
+	public void setHandleParticipantsMode(HandleParticipantsMode handleParticipantsMode){
+		this.handleParticipantsMode = handleParticipantsMode;
 	}
 
-	public void handleParticipantMode(String multirequestToken){
-		setToken("handleParticipantMode", multirequestToken);
+	public void handleParticipantsMode(String multirequestToken){
+		setToken("handleParticipantsMode", multirequestToken);
 	}
 
 	// zoomUserMatchingMode:
@@ -190,6 +184,18 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		setToken("enableWebinarUploads", multirequestToken);
 	}
 
+	// conversionProfileId:
+	public Integer getConversionProfileId(){
+		return this.conversionProfileId;
+	}
+	public void setConversionProfileId(Integer conversionProfileId){
+		this.conversionProfileId = conversionProfileId;
+	}
+
+	public void conversionProfileId(String multirequestToken){
+		setToken("conversionProfileId", multirequestToken);
+	}
+
 
 	public ZoomIntegrationSetting() {
 		super();
@@ -206,11 +212,12 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		accountId = GsonParser.parseString(jsonObject.get("accountId"));
 		enableRecordingUpload = GsonParser.parseBoolean(jsonObject.get("enableRecordingUpload"));
 		createUserIfNotExist = GsonParser.parseBoolean(jsonObject.get("createUserIfNotExist"));
-		handleParticipantMode = HandleParticipantsMode.get(GsonParser.parseInt(jsonObject.get("handleParticipantMode")));
+		handleParticipantsMode = HandleParticipantsMode.get(GsonParser.parseInt(jsonObject.get("handleParticipantsMode")));
 		zoomUserMatchingMode = ZoomUsersMatching.get(GsonParser.parseInt(jsonObject.get("zoomUserMatchingMode")));
 		zoomUserPostfix = GsonParser.parseString(jsonObject.get("zoomUserPostfix"));
 		zoomWebinarCategory = GsonParser.parseString(jsonObject.get("zoomWebinarCategory"));
 		enableWebinarUploads = GsonParser.parseBoolean(jsonObject.get("enableWebinarUploads"));
+		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
 
 	}
 
@@ -219,14 +226,14 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		kparams.add("objectType", "KalturaZoomIntegrationSetting");
 		kparams.add("defaultUserId", this.defaultUserId);
 		kparams.add("zoomCategory", this.zoomCategory);
-		kparams.add("accountId", this.accountId);
 		kparams.add("enableRecordingUpload", this.enableRecordingUpload);
 		kparams.add("createUserIfNotExist", this.createUserIfNotExist);
-		kparams.add("handleParticipantMode", this.handleParticipantMode);
+		kparams.add("handleParticipantsMode", this.handleParticipantsMode);
 		kparams.add("zoomUserMatchingMode", this.zoomUserMatchingMode);
 		kparams.add("zoomUserPostfix", this.zoomUserPostfix);
 		kparams.add("zoomWebinarCategory", this.zoomWebinarCategory);
 		kparams.add("enableWebinarUploads", this.enableWebinarUploads);
+		kparams.add("conversionProfileId", this.conversionProfileId);
 		return kparams;
 	}
 
