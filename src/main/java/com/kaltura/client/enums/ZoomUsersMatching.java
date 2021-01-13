@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum ZoomUsersMatching implements EnumAsInt {
 	DO_NOT_MODIFY(0),
 	ADD_POSTFIX(1),
-	REMOVE_POSTFIX(2);
+	REMOVE_POSTFIX(2),
+	CMS_MATCHING(3);
 
 	private int value;
 

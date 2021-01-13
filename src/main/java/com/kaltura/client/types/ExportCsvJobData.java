@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -47,6 +47,7 @@ public class ExportCsvJobData extends JobData {
 		String userName();
 		String userMail();
 		String outputPath();
+		String sharedOutputPath();
 	}
 
 	/**
@@ -61,6 +62,7 @@ public class ExportCsvJobData extends JobData {
 	 * The file location
 	 */
 	private String outputPath;
+	private String sharedOutputPath;
 
 	// userName:
 	public String getUserName(){
@@ -98,6 +100,18 @@ public class ExportCsvJobData extends JobData {
 		setToken("outputPath", multirequestToken);
 	}
 
+	// sharedOutputPath:
+	public String getSharedOutputPath(){
+		return this.sharedOutputPath;
+	}
+	public void setSharedOutputPath(String sharedOutputPath){
+		this.sharedOutputPath = sharedOutputPath;
+	}
+
+	public void sharedOutputPath(String multirequestToken){
+		setToken("sharedOutputPath", multirequestToken);
+	}
+
 
 	public ExportCsvJobData() {
 		super();
@@ -112,6 +126,7 @@ public class ExportCsvJobData extends JobData {
 		userName = GsonParser.parseString(jsonObject.get("userName"));
 		userMail = GsonParser.parseString(jsonObject.get("userMail"));
 		outputPath = GsonParser.parseString(jsonObject.get("outputPath"));
+		sharedOutputPath = GsonParser.parseString(jsonObject.get("sharedOutputPath"));
 
 	}
 
@@ -121,6 +136,7 @@ public class ExportCsvJobData extends JobData {
 		kparams.add("userName", this.userName);
 		kparams.add("userMail", this.userMail);
 		kparams.add("outputPath", this.outputPath);
+		kparams.add("sharedOutputPath", this.sharedOutputPath);
 		return kparams;
 	}
 

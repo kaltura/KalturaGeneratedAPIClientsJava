@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -70,6 +70,8 @@ public class ReachProfile extends ObjectBase {
 		String enableAudioTags();
 		String enableProfanityRemoval();
 		String maxCharactersPerCaptionLine();
+		String labelAdditionForMachineServiceType();
+		String labelAdditionForHumanServiceType();
 		String contentDeletionPolicy();
 		RequestBuilder.ListTokenizer<Rule.Tokenizer> rules();
 		BaseVendorCredit.Tokenizer credit();
@@ -99,6 +101,8 @@ public class ReachProfile extends ObjectBase {
 	private Boolean enableAudioTags;
 	private Boolean enableProfanityRemoval;
 	private Integer maxCharactersPerCaptionLine;
+	private String labelAdditionForMachineServiceType;
+	private String labelAdditionForHumanServiceType;
 	private ReachProfileContentDeletionPolicy contentDeletionPolicy;
 	private List<Rule> rules;
 	private BaseVendorCredit credit;
@@ -278,6 +282,30 @@ public class ReachProfile extends ObjectBase {
 		setToken("maxCharactersPerCaptionLine", multirequestToken);
 	}
 
+	// labelAdditionForMachineServiceType:
+	public String getLabelAdditionForMachineServiceType(){
+		return this.labelAdditionForMachineServiceType;
+	}
+	public void setLabelAdditionForMachineServiceType(String labelAdditionForMachineServiceType){
+		this.labelAdditionForMachineServiceType = labelAdditionForMachineServiceType;
+	}
+
+	public void labelAdditionForMachineServiceType(String multirequestToken){
+		setToken("labelAdditionForMachineServiceType", multirequestToken);
+	}
+
+	// labelAdditionForHumanServiceType:
+	public String getLabelAdditionForHumanServiceType(){
+		return this.labelAdditionForHumanServiceType;
+	}
+	public void setLabelAdditionForHumanServiceType(String labelAdditionForHumanServiceType){
+		this.labelAdditionForHumanServiceType = labelAdditionForHumanServiceType;
+	}
+
+	public void labelAdditionForHumanServiceType(String multirequestToken){
+		setToken("labelAdditionForHumanServiceType", multirequestToken);
+	}
+
 	// contentDeletionPolicy:
 	public ReachProfileContentDeletionPolicy getContentDeletionPolicy(){
 		return this.contentDeletionPolicy;
@@ -370,6 +398,8 @@ public class ReachProfile extends ObjectBase {
 		enableAudioTags = GsonParser.parseBoolean(jsonObject.get("enableAudioTags"));
 		enableProfanityRemoval = GsonParser.parseBoolean(jsonObject.get("enableProfanityRemoval"));
 		maxCharactersPerCaptionLine = GsonParser.parseInt(jsonObject.get("maxCharactersPerCaptionLine"));
+		labelAdditionForMachineServiceType = GsonParser.parseString(jsonObject.get("labelAdditionForMachineServiceType"));
+		labelAdditionForHumanServiceType = GsonParser.parseString(jsonObject.get("labelAdditionForHumanServiceType"));
 		contentDeletionPolicy = ReachProfileContentDeletionPolicy.get(GsonParser.parseInt(jsonObject.get("contentDeletionPolicy")));
 		rules = GsonParser.parseArray(jsonObject.getAsJsonArray("rules"), Rule.class);
 		credit = GsonParser.parseObject(jsonObject.getAsJsonObject("credit"), BaseVendorCredit.class);
@@ -395,6 +425,8 @@ public class ReachProfile extends ObjectBase {
 		kparams.add("enableAudioTags", this.enableAudioTags);
 		kparams.add("enableProfanityRemoval", this.enableProfanityRemoval);
 		kparams.add("maxCharactersPerCaptionLine", this.maxCharactersPerCaptionLine);
+		kparams.add("labelAdditionForMachineServiceType", this.labelAdditionForMachineServiceType);
+		kparams.add("labelAdditionForHumanServiceType", this.labelAdditionForHumanServiceType);
 		kparams.add("contentDeletionPolicy", this.contentDeletionPolicy);
 		kparams.add("rules", this.rules);
 		kparams.add("credit", this.credit);
