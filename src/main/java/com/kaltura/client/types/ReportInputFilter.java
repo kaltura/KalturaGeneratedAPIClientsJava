@@ -82,6 +82,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String categoriesAncestorIdIn();
 		String hotspotIdIn();
 		String crmIdIn();
+		String playlistIdIn();
 	}
 
 	/**
@@ -219,6 +220,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by crm id
 	 */
 	private String crmIdIn;
+	/**
+	 * filter by playlist id
+	 */
+	private String playlistIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -648,6 +653,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("crmIdIn", multirequestToken);
 	}
 
+	// playlistIdIn:
+	public String getPlaylistIdIn(){
+		return this.playlistIdIn;
+	}
+	public void setPlaylistIdIn(String playlistIdIn){
+		this.playlistIdIn = playlistIdIn;
+	}
+
+	public void playlistIdIn(String multirequestToken){
+		setToken("playlistIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -695,6 +712,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		categoriesAncestorIdIn = GsonParser.parseString(jsonObject.get("categoriesAncestorIdIn"));
 		hotspotIdIn = GsonParser.parseString(jsonObject.get("hotspotIdIn"));
 		crmIdIn = GsonParser.parseString(jsonObject.get("crmIdIn"));
+		playlistIdIn = GsonParser.parseString(jsonObject.get("playlistIdIn"));
 
 	}
 
@@ -737,6 +755,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("categoriesAncestorIdIn", this.categoriesAncestorIdIn);
 		kparams.add("hotspotIdIn", this.hotspotIdIn);
 		kparams.add("crmIdIn", this.crmIdIn);
+		kparams.add("playlistIdIn", this.playlistIdIn);
 		return kparams;
 	}
 

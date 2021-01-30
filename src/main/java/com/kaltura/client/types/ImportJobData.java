@@ -48,12 +48,14 @@ public class ImportJobData extends JobData {
 		String destFileLocalPath();
 		String flavorAssetId();
 		String fileSize();
+		String destFileSharedPath();
 	}
 
 	private String srcFileUrl;
 	private String destFileLocalPath;
 	private String flavorAssetId;
 	private Integer fileSize;
+	private String destFileSharedPath;
 
 	// srcFileUrl:
 	public String getSrcFileUrl(){
@@ -103,6 +105,18 @@ public class ImportJobData extends JobData {
 		setToken("fileSize", multirequestToken);
 	}
 
+	// destFileSharedPath:
+	public String getDestFileSharedPath(){
+		return this.destFileSharedPath;
+	}
+	public void setDestFileSharedPath(String destFileSharedPath){
+		this.destFileSharedPath = destFileSharedPath;
+	}
+
+	public void destFileSharedPath(String multirequestToken){
+		setToken("destFileSharedPath", multirequestToken);
+	}
+
 
 	public ImportJobData() {
 		super();
@@ -118,6 +132,7 @@ public class ImportJobData extends JobData {
 		destFileLocalPath = GsonParser.parseString(jsonObject.get("destFileLocalPath"));
 		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
 		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
+		destFileSharedPath = GsonParser.parseString(jsonObject.get("destFileSharedPath"));
 
 	}
 
@@ -128,6 +143,7 @@ public class ImportJobData extends JobData {
 		kparams.add("destFileLocalPath", this.destFileLocalPath);
 		kparams.add("flavorAssetId", this.flavorAssetId);
 		kparams.add("fileSize", this.fileSize);
+		kparams.add("destFileSharedPath", this.destFileSharedPath);
 		return kparams;
 	}
 
