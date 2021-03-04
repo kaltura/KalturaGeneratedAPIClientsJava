@@ -157,6 +157,10 @@ public class GroupUserService {
 		}
 	}
 
+	public static SyncGroupUserBuilder sync(String userId)  {
+		return sync(userId, null);
+	}
+
 	public static SyncGroupUserBuilder sync(String userId, String groupIds)  {
 		return sync(userId, groupIds, true);
 	}

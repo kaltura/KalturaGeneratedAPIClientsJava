@@ -83,6 +83,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String hotspotIdIn();
 		String crmIdIn();
 		String playlistIdIn();
+		String domainIn();
+		String canonicalUrlIn();
 	}
 
 	/**
@@ -224,6 +226,14 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by playlist id
 	 */
 	private String playlistIdIn;
+	/**
+	 * filter by domain
+	 */
+	private String domainIn;
+	/**
+	 * filter by canonical url
+	 */
+	private String canonicalUrlIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -665,6 +675,30 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("playlistIdIn", multirequestToken);
 	}
 
+	// domainIn:
+	public String getDomainIn(){
+		return this.domainIn;
+	}
+	public void setDomainIn(String domainIn){
+		this.domainIn = domainIn;
+	}
+
+	public void domainIn(String multirequestToken){
+		setToken("domainIn", multirequestToken);
+	}
+
+	// canonicalUrlIn:
+	public String getCanonicalUrlIn(){
+		return this.canonicalUrlIn;
+	}
+	public void setCanonicalUrlIn(String canonicalUrlIn){
+		this.canonicalUrlIn = canonicalUrlIn;
+	}
+
+	public void canonicalUrlIn(String multirequestToken){
+		setToken("canonicalUrlIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -713,6 +747,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		hotspotIdIn = GsonParser.parseString(jsonObject.get("hotspotIdIn"));
 		crmIdIn = GsonParser.parseString(jsonObject.get("crmIdIn"));
 		playlistIdIn = GsonParser.parseString(jsonObject.get("playlistIdIn"));
+		domainIn = GsonParser.parseString(jsonObject.get("domainIn"));
+		canonicalUrlIn = GsonParser.parseString(jsonObject.get("canonicalUrlIn"));
 
 	}
 
@@ -756,6 +792,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("hotspotIdIn", this.hotspotIdIn);
 		kparams.add("crmIdIn", this.crmIdIn);
 		kparams.add("playlistIdIn", this.playlistIdIn);
+		kparams.add("domainIn", this.domainIn);
+		kparams.add("canonicalUrlIn", this.canonicalUrlIn);
 		return kparams;
 	}
 

@@ -59,6 +59,9 @@ public class User extends BaseUser {
 		String loginEnabled();
 		String registrationInfo();
 		String attendanceInfo();
+		String title();
+		String company();
+		String ksPrivileges();
 	}
 
 	private UserType type;
@@ -74,6 +77,9 @@ public class User extends BaseUser {
 	private Boolean loginEnabled;
 	private String registrationInfo;
 	private String attendanceInfo;
+	private String title;
+	private String company;
+	private String ksPrivileges;
 
 	// type:
 	public UserType getType(){
@@ -223,6 +229,42 @@ public class User extends BaseUser {
 		setToken("attendanceInfo", multirequestToken);
 	}
 
+	// title:
+	public String getTitle(){
+		return this.title;
+	}
+	public void setTitle(String title){
+		this.title = title;
+	}
+
+	public void title(String multirequestToken){
+		setToken("title", multirequestToken);
+	}
+
+	// company:
+	public String getCompany(){
+		return this.company;
+	}
+	public void setCompany(String company){
+		this.company = company;
+	}
+
+	public void company(String multirequestToken){
+		setToken("company", multirequestToken);
+	}
+
+	// ksPrivileges:
+	public String getKsPrivileges(){
+		return this.ksPrivileges;
+	}
+	public void setKsPrivileges(String ksPrivileges){
+		this.ksPrivileges = ksPrivileges;
+	}
+
+	public void ksPrivileges(String multirequestToken){
+		setToken("ksPrivileges", multirequestToken);
+	}
+
 
 	public User() {
 		super();
@@ -247,6 +289,9 @@ public class User extends BaseUser {
 		loginEnabled = GsonParser.parseBoolean(jsonObject.get("loginEnabled"));
 		registrationInfo = GsonParser.parseString(jsonObject.get("registrationInfo"));
 		attendanceInfo = GsonParser.parseString(jsonObject.get("attendanceInfo"));
+		title = GsonParser.parseString(jsonObject.get("title"));
+		company = GsonParser.parseString(jsonObject.get("company"));
+		ksPrivileges = GsonParser.parseString(jsonObject.get("ksPrivileges"));
 
 	}
 
@@ -265,6 +310,9 @@ public class User extends BaseUser {
 		kparams.add("loginEnabled", this.loginEnabled);
 		kparams.add("registrationInfo", this.registrationInfo);
 		kparams.add("attendanceInfo", this.attendanceInfo);
+		kparams.add("title", this.title);
+		kparams.add("company", this.company);
+		kparams.add("ksPrivileges", this.ksPrivileges);
 		return kparams;
 	}
 

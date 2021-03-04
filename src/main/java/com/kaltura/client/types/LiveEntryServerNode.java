@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.ViewMode;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -49,6 +50,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		RequestBuilder.ListTokenizer<LiveStreamParams.Tokenizer> streams();
 		RequestBuilder.ListTokenizer<LiveEntryServerNodeRecordingInfo.Tokenizer> recordingInfo();
 		String isPlayableUser();
+		String viewMode();
 	}
 
 	/**
@@ -57,6 +59,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 	private List<LiveStreamParams> streams;
 	private List<LiveEntryServerNodeRecordingInfo> recordingInfo;
 	private Boolean isPlayableUser;
+	private ViewMode viewMode;
 
 	// streams:
 	public List<LiveStreamParams> getStreams(){
@@ -86,6 +89,18 @@ public class LiveEntryServerNode extends EntryServerNode {
 		setToken("isPlayableUser", multirequestToken);
 	}
 
+	// viewMode:
+	public ViewMode getViewMode(){
+		return this.viewMode;
+	}
+	public void setViewMode(ViewMode viewMode){
+		this.viewMode = viewMode;
+	}
+
+	public void viewMode(String multirequestToken){
+		setToken("viewMode", multirequestToken);
+	}
+
 
 	public LiveEntryServerNode() {
 		super();
@@ -100,6 +115,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		streams = GsonParser.parseArray(jsonObject.getAsJsonArray("streams"), LiveStreamParams.class);
 		recordingInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("recordingInfo"), LiveEntryServerNodeRecordingInfo.class);
 		isPlayableUser = GsonParser.parseBoolean(jsonObject.get("isPlayableUser"));
+		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
 
 	}
 
@@ -109,6 +125,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		kparams.add("streams", this.streams);
 		kparams.add("recordingInfo", this.recordingInfo);
 		kparams.add("isPlayableUser", this.isPlayableUser);
+		kparams.add("viewMode", this.viewMode);
 		return kparams;
 	}
 
