@@ -50,6 +50,7 @@ public class UsersCsvJobData extends ExportCsvJobData {
 		UserFilter.Tokenizer filter();
 		String metadataProfileId();
 		RequestBuilder.ListTokenizer<CsvAdditionalFieldInfo.Tokenizer> additionalFields();
+		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mappedFields();
 	}
 
 	/**
@@ -64,6 +65,10 @@ public class UsersCsvJobData extends ExportCsvJobData {
 	 * The xpath to look in the metadataProfileId  and the wanted csv field name
 	 */
 	private List<CsvAdditionalFieldInfo> additionalFields;
+	/**
+	 * Array of header names and their mapped user fields
+	 */
+	private List<KeyValue> mappedFields;
 
 	// filter:
 	public UserFilter getFilter(){
@@ -93,6 +98,14 @@ public class UsersCsvJobData extends ExportCsvJobData {
 		this.additionalFields = additionalFields;
 	}
 
+	// mappedFields:
+	public List<KeyValue> getMappedFields(){
+		return this.mappedFields;
+	}
+	public void setMappedFields(List<KeyValue> mappedFields){
+		this.mappedFields = mappedFields;
+	}
+
 
 	public UsersCsvJobData() {
 		super();
@@ -107,6 +120,7 @@ public class UsersCsvJobData extends ExportCsvJobData {
 		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
 		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 		additionalFields = GsonParser.parseArray(jsonObject.getAsJsonArray("additionalFields"), CsvAdditionalFieldInfo.class);
+		mappedFields = GsonParser.parseArray(jsonObject.getAsJsonArray("mappedFields"), KeyValue.class);
 
 	}
 
@@ -116,6 +130,7 @@ public class UsersCsvJobData extends ExportCsvJobData {
 		kparams.add("filter", this.filter);
 		kparams.add("metadataProfileId", this.metadataProfileId);
 		kparams.add("additionalFields", this.additionalFields);
+		kparams.add("mappedFields", this.mappedFields);
 		return kparams;
 	}
 

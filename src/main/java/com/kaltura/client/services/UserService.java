@@ -36,6 +36,7 @@ import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
 import com.kaltura.client.types.CsvAdditionalFieldInfo;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.SessionResponse;
 import com.kaltura.client.types.User;
 import com.kaltura.client.types.UserFilter;
@@ -74,6 +75,7 @@ import java.util.List;
  * @param filter A filter used to exclude specific types of users
  * @param metadataProfileId 
  * @param additionalFields 
+ * @param mappedFields mapping between field
  * @param hashKey 
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
@@ -306,11 +308,12 @@ public class UserService {
 	
 	public static class ExportToCsvUserBuilder extends RequestBuilder<String, String, ExportToCsvUserBuilder> {
 		
-		public ExportToCsvUserBuilder(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields) {
+		public ExportToCsvUserBuilder(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields) {
 			super(String.class, "user", "exportToCsv");
 			params.add("filter", filter);
 			params.add("metadataProfileId", metadataProfileId);
 			params.add("additionalFields", additionalFields);
+			params.add("mappedFields", mappedFields);
 		}
 		
 		public void metadataProfileId(String multirequestToken) {
@@ -330,6 +333,10 @@ public class UserService {
 		return exportToCsv(filter, metadataProfileId, null);
 	}
 
+	public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, null);
+	}
+
 	/**
 	 * Creates a batch job that sends an email with a link to download a CSV containing
 	  a list of users
@@ -337,9 +344,10 @@ public class UserService {
 	 * @param filter A filter used to exclude specific types of users
 	 * @param metadataProfileId 
 	 * @param additionalFields 
+	 * @param mappedFields mapping between field
 	 */
-    public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
-		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields);
+    public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
+		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields, mappedFields);
 	}
 	
 	public static class GenerateQrCodeUserBuilder extends RequestBuilder<String, String, GenerateQrCodeUserBuilder> {

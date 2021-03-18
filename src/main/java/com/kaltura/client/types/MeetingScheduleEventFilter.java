@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,40 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ScheduleEventType implements EnumAsInt {
-	RECORD(1),
-	LIVE_STREAM(2),
-	BLACKOUT(3),
-	MEETING(4);
 
-	private int value;
-
-	ScheduleEventType(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(MeetingScheduleEventFilter.Tokenizer.class)
+public class MeetingScheduleEventFilter extends MeetingScheduleEventBaseFilter {
+	
+	public interface Tokenizer extends MeetingScheduleEventBaseFilter.Tokenizer {
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+
+
+	public MeetingScheduleEventFilter() {
+		super();
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public MeetingScheduleEventFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static ScheduleEventType get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over ScheduleEventType defined values and compare the inner value with the given one:
-		for(ScheduleEventType item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return ScheduleEventType.values().length > 0 ? ScheduleEventType.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaMeetingScheduleEventFilter");
+		return kparams;
+	}
+
 }
+
