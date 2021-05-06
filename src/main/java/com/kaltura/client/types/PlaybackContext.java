@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -30,7 +30,6 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.types.TypedArray;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -53,7 +52,7 @@ public class PlaybackContext extends ObjectBase {
 		RequestBuilder.ListTokenizer<FlavorAsset.Tokenizer> flavorAssets();
 		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
 		RequestBuilder.ListTokenizer<AccessControlMessage.Tokenizer> messages();
-		TypedArray.Tokenizer bumperData();
+		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> bumperData();
 	}
 
 	private List<PlaybackSource> sources;
@@ -67,7 +66,7 @@ public class PlaybackContext extends ObjectBase {
 	 * Array of actions as received from the rules that invalidated
 	 */
 	private List<AccessControlMessage> messages;
-	private TypedArray bumperData;
+	private List<ObjectBase> bumperData;
 
 	// sources:
 	public List<PlaybackSource> getSources(){
@@ -110,10 +109,10 @@ public class PlaybackContext extends ObjectBase {
 	}
 
 	// bumperData:
-	public TypedArray getBumperData(){
+	public List<ObjectBase> getBumperData(){
 		return this.bumperData;
 	}
-	public void setBumperData(TypedArray bumperData){
+	public void setBumperData(List<ObjectBase> bumperData){
 		this.bumperData = bumperData;
 	}
 
@@ -133,7 +132,7 @@ public class PlaybackContext extends ObjectBase {
 		flavorAssets = GsonParser.parseArray(jsonObject.getAsJsonArray("flavorAssets"), FlavorAsset.class);
 		actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
 		messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), AccessControlMessage.class);
-		bumperData = GsonParser.parseObject(jsonObject.getAsJsonObject("bumperData"), TypedArray.class);
+		bumperData = GsonParser.parseArray(jsonObject.getAsJsonArray("bumperData"), ObjectBase.class);
 
 	}
 

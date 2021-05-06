@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -58,6 +58,10 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		String zoomWebinarCategory();
 		String enableWebinarUploads();
 		String conversionProfileId();
+		String jwtToken();
+		String deletionPolicy();
+		String enableZoomTranscription();
+		String zoomAccountDescription();
 	}
 
 	private String defaultUserId;
@@ -71,6 +75,10 @@ public class ZoomIntegrationSetting extends ObjectBase {
 	private String zoomWebinarCategory;
 	private Boolean enableWebinarUploads;
 	private Integer conversionProfileId;
+	private String jwtToken;
+	private Boolean deletionPolicy;
+	private Boolean enableZoomTranscription;
+	private String zoomAccountDescription;
 
 	// defaultUserId:
 	public String getDefaultUserId(){
@@ -196,6 +204,54 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		setToken("conversionProfileId", multirequestToken);
 	}
 
+	// jwtToken:
+	public String getJwtToken(){
+		return this.jwtToken;
+	}
+	public void setJwtToken(String jwtToken){
+		this.jwtToken = jwtToken;
+	}
+
+	public void jwtToken(String multirequestToken){
+		setToken("jwtToken", multirequestToken);
+	}
+
+	// deletionPolicy:
+	public Boolean getDeletionPolicy(){
+		return this.deletionPolicy;
+	}
+	public void setDeletionPolicy(Boolean deletionPolicy){
+		this.deletionPolicy = deletionPolicy;
+	}
+
+	public void deletionPolicy(String multirequestToken){
+		setToken("deletionPolicy", multirequestToken);
+	}
+
+	// enableZoomTranscription:
+	public Boolean getEnableZoomTranscription(){
+		return this.enableZoomTranscription;
+	}
+	public void setEnableZoomTranscription(Boolean enableZoomTranscription){
+		this.enableZoomTranscription = enableZoomTranscription;
+	}
+
+	public void enableZoomTranscription(String multirequestToken){
+		setToken("enableZoomTranscription", multirequestToken);
+	}
+
+	// zoomAccountDescription:
+	public String getZoomAccountDescription(){
+		return this.zoomAccountDescription;
+	}
+	public void setZoomAccountDescription(String zoomAccountDescription){
+		this.zoomAccountDescription = zoomAccountDescription;
+	}
+
+	public void zoomAccountDescription(String multirequestToken){
+		setToken("zoomAccountDescription", multirequestToken);
+	}
+
 
 	public ZoomIntegrationSetting() {
 		super();
@@ -218,6 +274,10 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		zoomWebinarCategory = GsonParser.parseString(jsonObject.get("zoomWebinarCategory"));
 		enableWebinarUploads = GsonParser.parseBoolean(jsonObject.get("enableWebinarUploads"));
 		conversionProfileId = GsonParser.parseInt(jsonObject.get("conversionProfileId"));
+		jwtToken = GsonParser.parseString(jsonObject.get("jwtToken"));
+		deletionPolicy = GsonParser.parseBoolean(jsonObject.get("deletionPolicy"));
+		enableZoomTranscription = GsonParser.parseBoolean(jsonObject.get("enableZoomTranscription"));
+		zoomAccountDescription = GsonParser.parseString(jsonObject.get("zoomAccountDescription"));
 
 	}
 
@@ -234,6 +294,10 @@ public class ZoomIntegrationSetting extends ObjectBase {
 		kparams.add("zoomWebinarCategory", this.zoomWebinarCategory);
 		kparams.add("enableWebinarUploads", this.enableWebinarUploads);
 		kparams.add("conversionProfileId", this.conversionProfileId);
+		kparams.add("jwtToken", this.jwtToken);
+		kparams.add("deletionPolicy", this.deletionPolicy);
+		kparams.add("enableZoomTranscription", this.enableZoomTranscription);
+		kparams.add("zoomAccountDescription", this.zoomAccountDescription);
 		return kparams;
 	}
 

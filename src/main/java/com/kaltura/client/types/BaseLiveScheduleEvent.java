@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -41,46 +39,25 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(TypedArray.Tokenizer.class)
-public abstract class TypedArray extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(BaseLiveScheduleEvent.Tokenizer.class)
+public abstract class BaseLiveScheduleEvent extends EntryScheduleEvent {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String count();
-	}
-
-	private Integer count;
-
-	// count:
-	public Integer getCount(){
-		return this.count;
-	}
-	public void setCount(Integer count){
-		this.count = count;
-	}
-
-	public void count(String multirequestToken){
-		setToken("count", multirequestToken);
+	public interface Tokenizer extends EntryScheduleEvent.Tokenizer {
 	}
 
 
-	public TypedArray() {
+
+	public BaseLiveScheduleEvent() {
 		super();
 	}
 
-	public TypedArray(JsonObject jsonObject) throws APIException {
+	public BaseLiveScheduleEvent(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		count = GsonParser.parseInt(jsonObject.get("count"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaTypedArray");
-		kparams.add("count", this.count);
+		kparams.add("objectType", "KalturaBaseLiveScheduleEvent");
 		return kparams;
 	}
 

@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -41,23 +41,23 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(LiveStreamScheduleEvent.Tokenizer.class)
-public class LiveStreamScheduleEvent extends EntryScheduleEvent {
+public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 	
-	public interface Tokenizer extends EntryScheduleEvent.Tokenizer {
-		String projectedAudience();
+	public interface Tokenizer extends BaseLiveScheduleEvent.Tokenizer {
 		String sourceEntryId();
+		String projectedAudience();
 		String preStartTime();
 		String postEndTime();
 	}
 
 	/**
-	 * Defines the expected audience.
-	 */
-	private Integer projectedAudience;
-	/**
 	 * The entry ID of the source entry (for simulive)
 	 */
 	private String sourceEntryId;
+	/**
+	 * Defines the expected audience.
+	 */
+	private Integer projectedAudience;
 	/**
 	 * The time relative time before the startTime considered as preStart time
 	 */
@@ -66,18 +66,6 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 	 * The time relative time before the endTime considered as postEnd time
 	 */
 	private Integer postEndTime;
-
-	// projectedAudience:
-	public Integer getProjectedAudience(){
-		return this.projectedAudience;
-	}
-	public void setProjectedAudience(Integer projectedAudience){
-		this.projectedAudience = projectedAudience;
-	}
-
-	public void projectedAudience(String multirequestToken){
-		setToken("projectedAudience", multirequestToken);
-	}
 
 	// sourceEntryId:
 	public String getSourceEntryId(){
@@ -89,6 +77,18 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 
 	public void sourceEntryId(String multirequestToken){
 		setToken("sourceEntryId", multirequestToken);
+	}
+
+	// projectedAudience:
+	public Integer getProjectedAudience(){
+		return this.projectedAudience;
+	}
+	public void setProjectedAudience(Integer projectedAudience){
+		this.projectedAudience = projectedAudience;
+	}
+
+	public void projectedAudience(String multirequestToken){
+		setToken("projectedAudience", multirequestToken);
 	}
 
 	// preStartTime:
@@ -126,8 +126,8 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 		if(jsonObject == null) return;
 
 		// set members values:
-		projectedAudience = GsonParser.parseInt(jsonObject.get("projectedAudience"));
 		sourceEntryId = GsonParser.parseString(jsonObject.get("sourceEntryId"));
+		projectedAudience = GsonParser.parseInt(jsonObject.get("projectedAudience"));
 		preStartTime = GsonParser.parseInt(jsonObject.get("preStartTime"));
 		postEndTime = GsonParser.parseInt(jsonObject.get("postEndTime"));
 
@@ -136,8 +136,8 @@ public class LiveStreamScheduleEvent extends EntryScheduleEvent {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLiveStreamScheduleEvent");
-		kparams.add("projectedAudience", this.projectedAudience);
 		kparams.add("sourceEntryId", this.sourceEntryId);
+		kparams.add("projectedAudience", this.projectedAudience);
 		kparams.add("preStartTime", this.preStartTime);
 		kparams.add("postEndTime", this.postEndTime);
 		return kparams;

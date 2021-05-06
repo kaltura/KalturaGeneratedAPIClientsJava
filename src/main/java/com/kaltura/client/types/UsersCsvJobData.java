@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -32,8 +32,6 @@ import com.kaltura.client.Params;
 import com.kaltura.client.types.UserFilter;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -44,31 +42,16 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(UsersCsvJobData.Tokenizer.class)
-public class UsersCsvJobData extends ExportCsvJobData {
+public class UsersCsvJobData extends MappedObjectsCsvJobData {
 	
-	public interface Tokenizer extends ExportCsvJobData.Tokenizer {
+	public interface Tokenizer extends MappedObjectsCsvJobData.Tokenizer {
 		UserFilter.Tokenizer filter();
-		String metadataProfileId();
-		RequestBuilder.ListTokenizer<CsvAdditionalFieldInfo.Tokenizer> additionalFields();
-		RequestBuilder.ListTokenizer<KeyValue.Tokenizer> mappedFields();
 	}
 
 	/**
 	 * The filter should return the list of users that need to be specified in the csv.
 	 */
 	private UserFilter filter;
-	/**
-	 * The metadata profile we should look the xpath in
-	 */
-	private Integer metadataProfileId;
-	/**
-	 * The xpath to look in the metadataProfileId  and the wanted csv field name
-	 */
-	private List<CsvAdditionalFieldInfo> additionalFields;
-	/**
-	 * Array of header names and their mapped user fields
-	 */
-	private List<KeyValue> mappedFields;
 
 	// filter:
 	public UserFilter getFilter(){
@@ -76,34 +59,6 @@ public class UsersCsvJobData extends ExportCsvJobData {
 	}
 	public void setFilter(UserFilter filter){
 		this.filter = filter;
-	}
-
-	// metadataProfileId:
-	public Integer getMetadataProfileId(){
-		return this.metadataProfileId;
-	}
-	public void setMetadataProfileId(Integer metadataProfileId){
-		this.metadataProfileId = metadataProfileId;
-	}
-
-	public void metadataProfileId(String multirequestToken){
-		setToken("metadataProfileId", multirequestToken);
-	}
-
-	// additionalFields:
-	public List<CsvAdditionalFieldInfo> getAdditionalFields(){
-		return this.additionalFields;
-	}
-	public void setAdditionalFields(List<CsvAdditionalFieldInfo> additionalFields){
-		this.additionalFields = additionalFields;
-	}
-
-	// mappedFields:
-	public List<KeyValue> getMappedFields(){
-		return this.mappedFields;
-	}
-	public void setMappedFields(List<KeyValue> mappedFields){
-		this.mappedFields = mappedFields;
 	}
 
 
@@ -118,9 +73,6 @@ public class UsersCsvJobData extends ExportCsvJobData {
 
 		// set members values:
 		filter = GsonParser.parseObject(jsonObject.getAsJsonObject("filter"), UserFilter.class);
-		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
-		additionalFields = GsonParser.parseArray(jsonObject.getAsJsonArray("additionalFields"), CsvAdditionalFieldInfo.class);
-		mappedFields = GsonParser.parseArray(jsonObject.getAsJsonArray("mappedFields"), KeyValue.class);
 
 	}
 
@@ -128,9 +80,6 @@ public class UsersCsvJobData extends ExportCsvJobData {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaUsersCsvJobData");
 		kparams.add("filter", this.filter);
-		kparams.add("metadataProfileId", this.metadataProfileId);
-		kparams.add("additionalFields", this.additionalFields);
-		kparams.add("mappedFields", this.mappedFields);
 		return kparams;
 	}
 

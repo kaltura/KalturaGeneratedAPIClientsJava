@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -27,7 +27,9 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ZoomIntegrationSetting;
+import com.kaltura.client.types.ZoomIntegrationSettingResponse;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -93,6 +95,43 @@ public class ZoomVendorService {
 		return new GetZoomVendorBuilder(partnerId);
 	}
 	
+	public static class ListZoomVendorBuilder extends RequestBuilder<ZoomIntegrationSettingResponse, ZoomIntegrationSettingResponse.Tokenizer, ListZoomVendorBuilder> {
+		
+		public ListZoomVendorBuilder(FilterPager pager) {
+			super(ZoomIntegrationSettingResponse.class, "vendor_zoomvendor", "list");
+			params.add("pager", pager);
+		}
+	}
+
+	public static ListZoomVendorBuilder list()  {
+		return list(null);
+	}
+
+	/**
+	 * List KalturaZoomIntegrationSetting objects
+	 * 
+	 * @param pager Pager
+	 */
+    public static ListZoomVendorBuilder list(FilterPager pager)  {
+		return new ListZoomVendorBuilder(pager);
+	}
+	
+	public static class LocalRegistrationPageZoomVendorBuilder extends NullRequestBuilder {
+		
+		public LocalRegistrationPageZoomVendorBuilder(String jwt) {
+			super("vendor_zoomvendor", "localRegistrationPage");
+			params.add("jwt", jwt);
+		}
+		
+		public void jwt(String multirequestToken) {
+			params.add("jwt", multirequestToken);
+		}
+	}
+
+    public static LocalRegistrationPageZoomVendorBuilder localRegistrationPage(String jwt)  {
+		return new LocalRegistrationPageZoomVendorBuilder(jwt);
+	}
+	
 	public static class OauthValidationZoomVendorBuilder extends RequestBuilder<String, String, OauthValidationZoomVendorBuilder> {
 		
 		public OauthValidationZoomVendorBuilder() {
@@ -102,6 +141,22 @@ public class ZoomVendorService {
 
     public static OauthValidationZoomVendorBuilder oauthValidation()  {
 		return new OauthValidationZoomVendorBuilder();
+	}
+	
+	public static class PreOauthValidationZoomVendorBuilder extends NullRequestBuilder {
+		
+		public PreOauthValidationZoomVendorBuilder() {
+			super("vendor_zoomvendor", "preOauthValidation");
+		}
+	}
+
+	/**
+	 * load html page the that will ask the user for its KMC URL, derive the region of
+	  the user from it,   and redirect to the registration page in the correct region,
+	  while forwarding the necessary code for registration
+	 */
+    public static PreOauthValidationZoomVendorBuilder preOauthValidation()  {
+		return new PreOauthValidationZoomVendorBuilder();
 	}
 	
 	public static class RecordingCompleteZoomVendorBuilder extends NullRequestBuilder {

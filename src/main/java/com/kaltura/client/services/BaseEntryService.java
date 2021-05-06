@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -33,10 +33,12 @@ import com.kaltura.client.enums.EntryType;
 import com.kaltura.client.types.BaseEntry;
 import com.kaltura.client.types.BaseEntryCloneOptionItem;
 import com.kaltura.client.types.BaseEntryFilter;
+import com.kaltura.client.types.CsvAdditionalFieldInfo;
 import com.kaltura.client.types.EntryContextDataParams;
 import com.kaltura.client.types.EntryContextDataResult;
 import com.kaltura.client.types.EntryReplacementOptions;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.ModerationFlag;
 import com.kaltura.client.types.PlaybackContext;
 import com.kaltura.client.types.PlaybackContextOptions;
@@ -77,6 +79,10 @@ import java.util.List;
  * @param entryId Entry id to delete
  * @param entryId 
  * @param storageProfileId 
+ * @param filter A filter used to exclude specific entries
+ * @param metadataProfileId 
+ * @param additionalFields 
+ * @param mappedFields mapping between field headline and its mapped value
  * @param moderationFlag 
  * @param entryId Entry id
  * @param version Desired version of the data
@@ -333,6 +339,50 @@ public class BaseEntryService {
 
     public static ExportBaseEntryBuilder export(String entryId, int storageProfileId)  {
 		return new ExportBaseEntryBuilder(entryId, storageProfileId);
+	}
+	
+	public static class ExportToCsvBaseEntryBuilder extends RequestBuilder<String, String, ExportToCsvBaseEntryBuilder> {
+		
+		public ExportToCsvBaseEntryBuilder(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields) {
+			super(String.class, "baseentry", "exportToCsv");
+			params.add("filter", filter);
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("additionalFields", additionalFields);
+			params.add("mappedFields", mappedFields);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+	}
+
+	public static ExportToCsvBaseEntryBuilder exportToCsv()  {
+		return exportToCsv(null);
+	}
+
+	public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter)  {
+		return exportToCsv(filter, Integer.MIN_VALUE);
+	}
+
+	public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId)  {
+		return exportToCsv(filter, metadataProfileId, null);
+	}
+
+	public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, null);
+	}
+
+	/**
+	 * add batch job that sends an email with a link to download an updated CSV that
+	  contains list of entries
+	 * 
+	 * @param filter A filter used to exclude specific entries
+	 * @param metadataProfileId 
+	 * @param additionalFields 
+	 * @param mappedFields mapping between field headline and its mapped value
+	 */
+    public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
+		return new ExportToCsvBaseEntryBuilder(filter, metadataProfileId, additionalFields, mappedFields);
 	}
 	
 	public static class FlagBaseEntryBuilder extends NullRequestBuilder {
