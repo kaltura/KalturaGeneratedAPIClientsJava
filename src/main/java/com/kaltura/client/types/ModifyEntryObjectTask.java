@@ -53,6 +53,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		String inputUserId();
 		String inputEntitledUsersEdit();
 		String inputEntitledUsersPublish();
+		String inputEntitledUsersView();
 		String resetMediaRepurposingProcess();
 	}
 
@@ -84,6 +85,10 @@ public class ModifyEntryObjectTask extends ObjectTask {
 	 * The input entitled users publish to set on the entry
 	 */
 	private String inputEntitledUsersPublish;
+	/**
+	 * The input entitled users view to set on the entry
+	 */
+	private String inputEntitledUsersView;
 	/**
 	 * Should clear the media repurposing data and therefore reset the process
 	 */
@@ -165,6 +170,18 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		setToken("inputEntitledUsersPublish", multirequestToken);
 	}
 
+	// inputEntitledUsersView:
+	public String getInputEntitledUsersView(){
+		return this.inputEntitledUsersView;
+	}
+	public void setInputEntitledUsersView(String inputEntitledUsersView){
+		this.inputEntitledUsersView = inputEntitledUsersView;
+	}
+
+	public void inputEntitledUsersView(String multirequestToken){
+		setToken("inputEntitledUsersView", multirequestToken);
+	}
+
 	// resetMediaRepurposingProcess:
 	public Boolean getResetMediaRepurposingProcess(){
 		return this.resetMediaRepurposingProcess;
@@ -195,6 +212,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		inputUserId = GsonParser.parseString(jsonObject.get("inputUserId"));
 		inputEntitledUsersEdit = GsonParser.parseString(jsonObject.get("inputEntitledUsersEdit"));
 		inputEntitledUsersPublish = GsonParser.parseString(jsonObject.get("inputEntitledUsersPublish"));
+		inputEntitledUsersView = GsonParser.parseString(jsonObject.get("inputEntitledUsersView"));
 		resetMediaRepurposingProcess = GsonParser.parseBoolean(jsonObject.get("resetMediaRepurposingProcess"));
 
 	}
@@ -209,6 +227,7 @@ public class ModifyEntryObjectTask extends ObjectTask {
 		kparams.add("inputUserId", this.inputUserId);
 		kparams.add("inputEntitledUsersEdit", this.inputEntitledUsersEdit);
 		kparams.add("inputEntitledUsersPublish", this.inputEntitledUsersPublish);
+		kparams.add("inputEntitledUsersView", this.inputEntitledUsersView);
 		kparams.add("resetMediaRepurposingProcess", this.resetMediaRepurposingProcess);
 		return kparams;
 	}

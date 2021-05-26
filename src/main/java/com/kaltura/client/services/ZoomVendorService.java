@@ -132,21 +132,10 @@ public class ZoomVendorService {
 		return new LocalRegistrationPageZoomVendorBuilder(jwt);
 	}
 	
-	public static class OauthValidationZoomVendorBuilder extends RequestBuilder<String, String, OauthValidationZoomVendorBuilder> {
+	public static class OauthValidationZoomVendorBuilder extends NullRequestBuilder {
 		
 		public OauthValidationZoomVendorBuilder() {
-			super(String.class, "vendor_zoomvendor", "oauthValidation");
-		}
-	}
-
-    public static OauthValidationZoomVendorBuilder oauthValidation()  {
-		return new OauthValidationZoomVendorBuilder();
-	}
-	
-	public static class PreOauthValidationZoomVendorBuilder extends NullRequestBuilder {
-		
-		public PreOauthValidationZoomVendorBuilder() {
-			super("vendor_zoomvendor", "preOauthValidation");
+			super("vendor_zoomvendor", "oauthValidation");
 		}
 	}
 
@@ -155,6 +144,17 @@ public class ZoomVendorService {
 	  the user from it,   and redirect to the registration page in the correct region,
 	  while forwarding the necessary code for registration
 	 */
+    public static OauthValidationZoomVendorBuilder oauthValidation()  {
+		return new OauthValidationZoomVendorBuilder();
+	}
+	
+	public static class PreOauthValidationZoomVendorBuilder extends RequestBuilder<String, String, PreOauthValidationZoomVendorBuilder> {
+		
+		public PreOauthValidationZoomVendorBuilder() {
+			super(String.class, "vendor_zoomvendor", "preOauthValidation");
+		}
+	}
+
     public static PreOauthValidationZoomVendorBuilder preOauthValidation()  {
 		return new PreOauthValidationZoomVendorBuilder();
 	}
