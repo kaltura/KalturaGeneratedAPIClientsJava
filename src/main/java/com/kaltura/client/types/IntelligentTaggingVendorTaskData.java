@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,42 +38,53 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6);
 
-	private int value;
-
-	VendorServiceFeature(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(IntelligentTaggingVendorTaskData.Tokenizer.class)
+public class IntelligentTaggingVendorTaskData extends VendorTaskData {
+	
+	public interface Tokenizer extends VendorTaskData.Tokenizer {
+		String assetId();
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+	/**
+	 * Optional - The id of the caption asset object
+	 */
+	private String assetId;
+
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
 	}
 
-	public static VendorServiceFeature get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
-   }
+
+	public IntelligentTaggingVendorTaskData() {
+		super();
+	}
+
+	public IntelligentTaggingVendorTaskData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaIntelligentTaggingVendorTaskData");
+		kparams.add("assetId", this.assetId);
+		return kparams;
+	}
+
 }
+

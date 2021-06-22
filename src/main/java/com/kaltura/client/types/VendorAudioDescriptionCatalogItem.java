@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemLanguage;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -45,26 +44,12 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 	
 	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
-		String sourceLanguage();
 		String flavorParamsId();
 		String clearAudioFlavorParamsId();
 	}
 
-	private CatalogItemLanguage sourceLanguage;
 	private Integer flavorParamsId;
 	private Integer clearAudioFlavorParamsId;
-
-	// sourceLanguage:
-	public CatalogItemLanguage getSourceLanguage(){
-		return this.sourceLanguage;
-	}
-	public void setSourceLanguage(CatalogItemLanguage sourceLanguage){
-		this.sourceLanguage = sourceLanguage;
-	}
-
-	public void sourceLanguage(String multirequestToken){
-		setToken("sourceLanguage", multirequestToken);
-	}
 
 	// flavorParamsId:
 	public Integer getFlavorParamsId(){
@@ -101,7 +86,6 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 		if(jsonObject == null) return;
 
 		// set members values:
-		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
 		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
 		clearAudioFlavorParamsId = GsonParser.parseInt(jsonObject.get("clearAudioFlavorParamsId"));
 
@@ -110,7 +94,6 @@ public class VendorAudioDescriptionCatalogItem extends VendorCatalogItem {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorAudioDescriptionCatalogItem");
-		kparams.add("sourceLanguage", this.sourceLanguage);
 		kparams.add("flavorParamsId", this.flavorParamsId);
 		kparams.add("clearAudioFlavorParamsId", this.clearAudioFlavorParamsId);
 		return kparams;

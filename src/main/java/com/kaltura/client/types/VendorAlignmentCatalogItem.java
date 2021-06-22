@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemLanguage;
 import com.kaltura.client.enums.VendorCatalogItemOutputFormat;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -46,24 +45,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class VendorAlignmentCatalogItem extends VendorCatalogItem {
 	
 	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
-		String sourceLanguage();
 		String outputFormat();
 	}
 
-	private CatalogItemLanguage sourceLanguage;
 	private VendorCatalogItemOutputFormat outputFormat;
-
-	// sourceLanguage:
-	public CatalogItemLanguage getSourceLanguage(){
-		return this.sourceLanguage;
-	}
-	public void setSourceLanguage(CatalogItemLanguage sourceLanguage){
-		this.sourceLanguage = sourceLanguage;
-	}
-
-	public void sourceLanguage(String multirequestToken){
-		setToken("sourceLanguage", multirequestToken);
-	}
 
 	// outputFormat:
 	public VendorCatalogItemOutputFormat getOutputFormat(){
@@ -88,7 +73,6 @@ public class VendorAlignmentCatalogItem extends VendorCatalogItem {
 		if(jsonObject == null) return;
 
 		// set members values:
-		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
 		outputFormat = VendorCatalogItemOutputFormat.get(GsonParser.parseInt(jsonObject.get("outputFormat")));
 
 	}
@@ -96,7 +80,6 @@ public class VendorAlignmentCatalogItem extends VendorCatalogItem {
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorAlignmentCatalogItem");
-		kparams.add("sourceLanguage", this.sourceLanguage);
 		kparams.add("outputFormat", this.outputFormat);
 		return kparams;
 	}

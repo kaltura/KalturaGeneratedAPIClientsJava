@@ -47,6 +47,7 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 	public interface Tokenizer extends RelatedFilter.Tokenizer {
 		String idEqual();
 		String idIn();
+		String idNotIn();
 		String vendorPartnerIdEqual();
 		String vendorPartnerIdIn();
 		String createdAtGreaterThanOrEqual();
@@ -66,10 +67,13 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		String catalogItemIdIn();
 		String userIdEqual();
 		String contextEqual();
+		String expectedFinishTimeGreaterThanOrEqual();
+		String expectedFinishTimeLessThanOrEqual();
 	}
 
 	private Long idEqual;
 	private String idIn;
+	private String idNotIn;
 	private Integer vendorPartnerIdEqual;
 	private String vendorPartnerIdIn;
 	private Integer createdAtGreaterThanOrEqual;
@@ -89,6 +93,8 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 	private String catalogItemIdIn;
 	private String userIdEqual;
 	private String contextEqual;
+	private Integer expectedFinishTimeGreaterThanOrEqual;
+	private Integer expectedFinishTimeLessThanOrEqual;
 
 	// idEqual:
 	public Long getIdEqual(){
@@ -112,6 +118,18 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 
 	public void idIn(String multirequestToken){
 		setToken("idIn", multirequestToken);
+	}
+
+	// idNotIn:
+	public String getIdNotIn(){
+		return this.idNotIn;
+	}
+	public void setIdNotIn(String idNotIn){
+		this.idNotIn = idNotIn;
+	}
+
+	public void idNotIn(String multirequestToken){
+		setToken("idNotIn", multirequestToken);
 	}
 
 	// vendorPartnerIdEqual:
@@ -342,6 +360,30 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		setToken("contextEqual", multirequestToken);
 	}
 
+	// expectedFinishTimeGreaterThanOrEqual:
+	public Integer getExpectedFinishTimeGreaterThanOrEqual(){
+		return this.expectedFinishTimeGreaterThanOrEqual;
+	}
+	public void setExpectedFinishTimeGreaterThanOrEqual(Integer expectedFinishTimeGreaterThanOrEqual){
+		this.expectedFinishTimeGreaterThanOrEqual = expectedFinishTimeGreaterThanOrEqual;
+	}
+
+	public void expectedFinishTimeGreaterThanOrEqual(String multirequestToken){
+		setToken("expectedFinishTimeGreaterThanOrEqual", multirequestToken);
+	}
+
+	// expectedFinishTimeLessThanOrEqual:
+	public Integer getExpectedFinishTimeLessThanOrEqual(){
+		return this.expectedFinishTimeLessThanOrEqual;
+	}
+	public void setExpectedFinishTimeLessThanOrEqual(Integer expectedFinishTimeLessThanOrEqual){
+		this.expectedFinishTimeLessThanOrEqual = expectedFinishTimeLessThanOrEqual;
+	}
+
+	public void expectedFinishTimeLessThanOrEqual(String multirequestToken){
+		setToken("expectedFinishTimeLessThanOrEqual", multirequestToken);
+	}
+
 
 	public EntryVendorTaskBaseFilter() {
 		super();
@@ -355,6 +397,7 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		// set members values:
 		idEqual = GsonParser.parseLong(jsonObject.get("idEqual"));
 		idIn = GsonParser.parseString(jsonObject.get("idIn"));
+		idNotIn = GsonParser.parseString(jsonObject.get("idNotIn"));
 		vendorPartnerIdEqual = GsonParser.parseInt(jsonObject.get("vendorPartnerIdEqual"));
 		vendorPartnerIdIn = GsonParser.parseString(jsonObject.get("vendorPartnerIdIn"));
 		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
@@ -374,6 +417,8 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		catalogItemIdIn = GsonParser.parseString(jsonObject.get("catalogItemIdIn"));
 		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
 		contextEqual = GsonParser.parseString(jsonObject.get("contextEqual"));
+		expectedFinishTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("expectedFinishTimeGreaterThanOrEqual"));
+		expectedFinishTimeLessThanOrEqual = GsonParser.parseInt(jsonObject.get("expectedFinishTimeLessThanOrEqual"));
 
 	}
 
@@ -382,6 +427,7 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		kparams.add("objectType", "KalturaEntryVendorTaskBaseFilter");
 		kparams.add("idEqual", this.idEqual);
 		kparams.add("idIn", this.idIn);
+		kparams.add("idNotIn", this.idNotIn);
 		kparams.add("vendorPartnerIdEqual", this.vendorPartnerIdEqual);
 		kparams.add("vendorPartnerIdIn", this.vendorPartnerIdIn);
 		kparams.add("createdAtGreaterThanOrEqual", this.createdAtGreaterThanOrEqual);
@@ -401,6 +447,8 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		kparams.add("catalogItemIdIn", this.catalogItemIdIn);
 		kparams.add("userIdEqual", this.userIdEqual);
 		kparams.add("contextEqual", this.contextEqual);
+		kparams.add("expectedFinishTimeGreaterThanOrEqual", this.expectedFinishTimeGreaterThanOrEqual);
+		kparams.add("expectedFinishTimeLessThanOrEqual", this.expectedFinishTimeLessThanOrEqual);
 		return kparams;
 	}
 

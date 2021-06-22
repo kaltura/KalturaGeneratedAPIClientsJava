@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum EntryVendorTaskOrderBy implements EnumAsString {
 	CREATED_AT_ASC("+createdAt"),
+	EXPECTED_FINISH_TIME_ASC("+expectedFinishTime"),
 	FINISH_TIME_ASC("+finishTime"),
 	ID_ASC("+id"),
 	PRICE_ASC("+price"),
@@ -42,6 +43,7 @@ public enum EntryVendorTaskOrderBy implements EnumAsString {
 	STATUS_ASC("+status"),
 	UPDATED_AT_ASC("+updatedAt"),
 	CREATED_AT_DESC("-createdAt"),
+	EXPECTED_FINISH_TIME_DESC("-expectedFinishTime"),
 	FINISH_TIME_DESC("-finishTime"),
 	ID_DESC("-id"),
 	PRICE_DESC("-price"),

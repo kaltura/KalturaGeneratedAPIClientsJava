@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemLanguage;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,22 +43,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class VendorChapteringCatalogItem extends VendorCatalogItem {
 	
 	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
-		String sourceLanguage();
 	}
 
-	private CatalogItemLanguage sourceLanguage;
-
-	// sourceLanguage:
-	public CatalogItemLanguage getSourceLanguage(){
-		return this.sourceLanguage;
-	}
-	public void setSourceLanguage(CatalogItemLanguage sourceLanguage){
-		this.sourceLanguage = sourceLanguage;
-	}
-
-	public void sourceLanguage(String multirequestToken){
-		setToken("sourceLanguage", multirequestToken);
-	}
 
 
 	public VendorChapteringCatalogItem() {
@@ -69,18 +53,11 @@ public class VendorChapteringCatalogItem extends VendorCatalogItem {
 
 	public VendorChapteringCatalogItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorChapteringCatalogItem");
-		kparams.add("sourceLanguage", this.sourceLanguage);
 		return kparams;
 	}
 

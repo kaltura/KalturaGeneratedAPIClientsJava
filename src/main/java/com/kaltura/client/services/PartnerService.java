@@ -68,6 +68,10 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * @param templatePartnerId 
  * @param silent 
  * @param partner 
+ * @param cmsPassword 
+ * @param templatePartnerId 
+ * @param silent 
+ * @param partner 
  * @param allowEmpty 
  */
 public class PartnerService {
@@ -379,6 +383,53 @@ public class PartnerService {
 	 */
     public static RegisterPartnerBuilder register(Partner partner, String cmsPassword, int templatePartnerId, boolean silent)  {
 		return new RegisterPartnerBuilder(partner, cmsPassword, templatePartnerId, silent);
+	}
+	
+	public static class RegistrationValidationPartnerBuilder extends RequestBuilder<Boolean, String, RegistrationValidationPartnerBuilder> {
+		
+		public RegistrationValidationPartnerBuilder(Partner partner, String cmsPassword, int templatePartnerId, boolean silent) {
+			super(Boolean.class, "partner", "registrationValidation");
+			params.add("partner", partner);
+			params.add("cmsPassword", cmsPassword);
+			params.add("templatePartnerId", templatePartnerId);
+			params.add("silent", silent);
+		}
+		
+		public void cmsPassword(String multirequestToken) {
+			params.add("cmsPassword", multirequestToken);
+		}
+		
+		public void templatePartnerId(String multirequestToken) {
+			params.add("templatePartnerId", multirequestToken);
+		}
+		
+		public void silent(String multirequestToken) {
+			params.add("silent", multirequestToken);
+		}
+	}
+
+	public static RegistrationValidationPartnerBuilder registrationValidation(Partner partner)  {
+		return registrationValidation(partner, "");
+	}
+
+	public static RegistrationValidationPartnerBuilder registrationValidation(Partner partner, String cmsPassword)  {
+		return registrationValidation(partner, cmsPassword, Integer.MIN_VALUE);
+	}
+
+	public static RegistrationValidationPartnerBuilder registrationValidation(Partner partner, String cmsPassword, int templatePartnerId)  {
+		return registrationValidation(partner, cmsPassword, templatePartnerId, false);
+	}
+
+	/**
+	 * Create a new Partner object
+	 * 
+	 * @param partner 
+	 * @param cmsPassword 
+	 * @param templatePartnerId 
+	 * @param silent 
+	 */
+    public static RegistrationValidationPartnerBuilder registrationValidation(Partner partner, String cmsPassword, int templatePartnerId, boolean silent)  {
+		return new RegistrationValidationPartnerBuilder(partner, cmsPassword, templatePartnerId, silent);
 	}
 	
 	public static class UpdatePartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, UpdatePartnerBuilder> {

@@ -33,42 +33,25 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6);
+public enum ReachVendorEngineType implements EnumAsString {
+	/** Place holder for future values */;
 
-	private int value;
+	private String value;
 
-	VendorServiceFeature(int value) {
+	ReachVendorEngineType(String value) {
 		this.value = value;
 	}
 
 	@Override
-	public int getValue() {
+	public String getValue() {
 		return this.value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
-	public static VendorServiceFeature get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
-   }
+	public static ReachVendorEngineType get(String value) {
+		return null;
+	}
 }
