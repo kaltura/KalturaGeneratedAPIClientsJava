@@ -120,6 +120,12 @@ public class Partner extends ObjectBase {
 		String usageLimitWarning();
 		String lastFreeTrialNotificationDay();
 		String monitorUsage();
+		String passwordStructureValidations();
+		String passwordStructureValidationsDescription();
+		String passReplaceFreq();
+		String maxLoginAttempts();
+		String loginBlockPeriod();
+		String numPrevPassToKeep();
 	}
 
 	private Integer id;
@@ -208,6 +214,12 @@ public class Partner extends ObjectBase {
 	private Integer usageLimitWarning;
 	private Integer lastFreeTrialNotificationDay;
 	private Integer monitorUsage;
+	private String passwordStructureValidations;
+	private String passwordStructureValidationsDescription;
+	private Integer passReplaceFreq;
+	private Integer maxLoginAttempts;
+	private Integer loginBlockPeriod;
+	private Integer numPrevPassToKeep;
 
 	// id:
 	public Integer getId(){
@@ -737,6 +749,78 @@ public class Partner extends ObjectBase {
 	public Integer getMonitorUsage(){
 		return this.monitorUsage;
 	}
+	// passwordStructureValidations:
+	public String getPasswordStructureValidations(){
+		return this.passwordStructureValidations;
+	}
+	public void setPasswordStructureValidations(String passwordStructureValidations){
+		this.passwordStructureValidations = passwordStructureValidations;
+	}
+
+	public void passwordStructureValidations(String multirequestToken){
+		setToken("passwordStructureValidations", multirequestToken);
+	}
+
+	// passwordStructureValidationsDescription:
+	public String getPasswordStructureValidationsDescription(){
+		return this.passwordStructureValidationsDescription;
+	}
+	public void setPasswordStructureValidationsDescription(String passwordStructureValidationsDescription){
+		this.passwordStructureValidationsDescription = passwordStructureValidationsDescription;
+	}
+
+	public void passwordStructureValidationsDescription(String multirequestToken){
+		setToken("passwordStructureValidationsDescription", multirequestToken);
+	}
+
+	// passReplaceFreq:
+	public Integer getPassReplaceFreq(){
+		return this.passReplaceFreq;
+	}
+	public void setPassReplaceFreq(Integer passReplaceFreq){
+		this.passReplaceFreq = passReplaceFreq;
+	}
+
+	public void passReplaceFreq(String multirequestToken){
+		setToken("passReplaceFreq", multirequestToken);
+	}
+
+	// maxLoginAttempts:
+	public Integer getMaxLoginAttempts(){
+		return this.maxLoginAttempts;
+	}
+	public void setMaxLoginAttempts(Integer maxLoginAttempts){
+		this.maxLoginAttempts = maxLoginAttempts;
+	}
+
+	public void maxLoginAttempts(String multirequestToken){
+		setToken("maxLoginAttempts", multirequestToken);
+	}
+
+	// loginBlockPeriod:
+	public Integer getLoginBlockPeriod(){
+		return this.loginBlockPeriod;
+	}
+	public void setLoginBlockPeriod(Integer loginBlockPeriod){
+		this.loginBlockPeriod = loginBlockPeriod;
+	}
+
+	public void loginBlockPeriod(String multirequestToken){
+		setToken("loginBlockPeriod", multirequestToken);
+	}
+
+	// numPrevPassToKeep:
+	public Integer getNumPrevPassToKeep(){
+		return this.numPrevPassToKeep;
+	}
+	public void setNumPrevPassToKeep(Integer numPrevPassToKeep){
+		this.numPrevPassToKeep = numPrevPassToKeep;
+	}
+
+	public void numPrevPassToKeep(String multirequestToken){
+		setToken("numPrevPassToKeep", multirequestToken);
+	}
+
 
 	public Partner() {
 		super();
@@ -816,6 +900,12 @@ public class Partner extends ObjectBase {
 		usageLimitWarning = GsonParser.parseInt(jsonObject.get("usageLimitWarning"));
 		lastFreeTrialNotificationDay = GsonParser.parseInt(jsonObject.get("lastFreeTrialNotificationDay"));
 		monitorUsage = GsonParser.parseInt(jsonObject.get("monitorUsage"));
+		passwordStructureValidations = GsonParser.parseString(jsonObject.get("passwordStructureValidations"));
+		passwordStructureValidationsDescription = GsonParser.parseString(jsonObject.get("passwordStructureValidationsDescription"));
+		passReplaceFreq = GsonParser.parseInt(jsonObject.get("passReplaceFreq"));
+		maxLoginAttempts = GsonParser.parseInt(jsonObject.get("maxLoginAttempts"));
+		loginBlockPeriod = GsonParser.parseInt(jsonObject.get("loginBlockPeriod"));
+		numPrevPassToKeep = GsonParser.parseInt(jsonObject.get("numPrevPassToKeep"));
 
 	}
 
@@ -855,6 +945,12 @@ public class Partner extends ObjectBase {
 		kparams.add("partnerParentId", this.partnerParentId);
 		kparams.add("referenceId", this.referenceId);
 		kparams.add("eSearchLanguages", this.eSearchLanguages);
+		kparams.add("passwordStructureValidations", this.passwordStructureValidations);
+		kparams.add("passwordStructureValidationsDescription", this.passwordStructureValidationsDescription);
+		kparams.add("passReplaceFreq", this.passReplaceFreq);
+		kparams.add("maxLoginAttempts", this.maxLoginAttempts);
+		kparams.add("loginBlockPeriod", this.loginBlockPeriod);
+		kparams.add("numPrevPassToKeep", this.numPrevPassToKeep);
 		return kparams;
 	}
 

@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum VideoCodec implements EnumAsString {
 	NONE(""),
+	AV1("AV1"),
 	APCH("apch"),
 	APCN("apcn"),
 	APCO("apco"),

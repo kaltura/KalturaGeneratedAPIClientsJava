@@ -62,6 +62,7 @@ public class DropFolder extends ObjectBase {
 		String path();
 		String fileSizeCheckInterval();
 		String fileDeletePolicy();
+		String fileDeleteRegex();
 		String autoFileDeleteDays();
 		String fileHandlerType();
 		String fileNamePatterns();
@@ -96,6 +97,7 @@ public class DropFolder extends ObjectBase {
 	 */
 	private Integer fileSizeCheckInterval;
 	private DropFolderFileDeletePolicy fileDeletePolicy;
+	private String fileDeleteRegex;
 	private Integer autoFileDeleteDays;
 	private DropFolderFileHandlerType fileHandlerType;
 	private String fileNamePatterns;
@@ -236,6 +238,18 @@ public class DropFolder extends ObjectBase {
 
 	public void fileDeletePolicy(String multirequestToken){
 		setToken("fileDeletePolicy", multirequestToken);
+	}
+
+	// fileDeleteRegex:
+	public String getFileDeleteRegex(){
+		return this.fileDeleteRegex;
+	}
+	public void setFileDeleteRegex(String fileDeleteRegex){
+		this.fileDeleteRegex = fileDeleteRegex;
+	}
+
+	public void fileDeleteRegex(String multirequestToken){
+		setToken("fileDeleteRegex", multirequestToken);
 	}
 
 	// autoFileDeleteDays:
@@ -444,6 +458,7 @@ public class DropFolder extends ObjectBase {
 		path = GsonParser.parseString(jsonObject.get("path"));
 		fileSizeCheckInterval = GsonParser.parseInt(jsonObject.get("fileSizeCheckInterval"));
 		fileDeletePolicy = DropFolderFileDeletePolicy.get(GsonParser.parseInt(jsonObject.get("fileDeletePolicy")));
+		fileDeleteRegex = GsonParser.parseString(jsonObject.get("fileDeleteRegex"));
 		autoFileDeleteDays = GsonParser.parseInt(jsonObject.get("autoFileDeleteDays"));
 		fileHandlerType = DropFolderFileHandlerType.get(GsonParser.parseString(jsonObject.get("fileHandlerType")));
 		fileNamePatterns = GsonParser.parseString(jsonObject.get("fileNamePatterns"));
@@ -477,6 +492,7 @@ public class DropFolder extends ObjectBase {
 		kparams.add("path", this.path);
 		kparams.add("fileSizeCheckInterval", this.fileSizeCheckInterval);
 		kparams.add("fileDeletePolicy", this.fileDeletePolicy);
+		kparams.add("fileDeleteRegex", this.fileDeleteRegex);
 		kparams.add("autoFileDeleteDays", this.autoFileDeleteDays);
 		kparams.add("fileHandlerType", this.fileHandlerType);
 		kparams.add("fileNamePatterns", this.fileNamePatterns);
