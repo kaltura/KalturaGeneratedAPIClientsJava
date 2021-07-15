@@ -15,9 +15,9 @@ notifications:
     recipients:
       - moshe.maor@kaltura.com
       - jess.portnoy@kaltura.com
-      - noam.arad@kaltura.com
-      - Elad.cohen@kaltura.com
-      - Jonathan.Kanarek@kaltura.com
-      - nir.belinky@kaltura.com
+      - ravit.shalem@kaltura.com
+      - avicahi.noach@kaltura.com
+      - dror.suhamin@kaltura.com
+      - daniel.barak@kaltura.com
     on_success: change
     on_failure: always
