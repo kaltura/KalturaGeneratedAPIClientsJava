@@ -56,6 +56,9 @@ import java.io.InputStream;
  * @param fileData 
  * @param bulkUploadData 
  * @param bulkUploadCategoryData 
+ * @param categoryId 
+ * @param fromPartnerId 
+ * @param parentCategoryId 
  * @param id 
  * @param moveEntriesToParentCategory 
  * @param id 
@@ -144,6 +147,43 @@ public class CategoryService {
 
     public static AddFromBulkUploadCategoryBuilder addFromBulkUpload(FileHolder fileData, BulkUploadJobData bulkUploadData, BulkUploadCategoryData bulkUploadCategoryData)  {
 		return new AddFromBulkUploadCategoryBuilder(fileData, bulkUploadData, bulkUploadCategoryData);
+	}
+	
+	public static class CloneCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, CloneCategoryBuilder> {
+		
+		public CloneCategoryBuilder(int categoryId, int fromPartnerId, int parentCategoryId) {
+			super(Category.class, "category", "clone");
+			params.add("categoryId", categoryId);
+			params.add("fromPartnerId", fromPartnerId);
+			params.add("parentCategoryId", parentCategoryId);
+		}
+		
+		public void categoryId(String multirequestToken) {
+			params.add("categoryId", multirequestToken);
+		}
+		
+		public void fromPartnerId(String multirequestToken) {
+			params.add("fromPartnerId", multirequestToken);
+		}
+		
+		public void parentCategoryId(String multirequestToken) {
+			params.add("parentCategoryId", multirequestToken);
+		}
+	}
+
+	public static CloneCategoryBuilder clone(int categoryId, int fromPartnerId)  {
+		return clone(categoryId, fromPartnerId, Integer.MIN_VALUE);
+	}
+
+	/**
+	 * Clone Category
+	 * 
+	 * @param categoryId 
+	 * @param fromPartnerId 
+	 * @param parentCategoryId 
+	 */
+    public static CloneCategoryBuilder clone(int categoryId, int fromPartnerId, int parentCategoryId)  {
+		return new CloneCategoryBuilder(categoryId, fromPartnerId, parentCategoryId);
 	}
 	
 	public static class DeleteCategoryBuilder extends NullRequestBuilder {

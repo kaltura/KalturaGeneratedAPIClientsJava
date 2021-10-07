@@ -76,6 +76,7 @@ public abstract class DistributionProfile extends ObjectBase {
 		String recommendedDcForDownload();
 		String recommendedDcForExecute();
 		String distributeTrigger();
+		String supportImageEntry();
 	}
 
 	/**
@@ -157,6 +158,7 @@ public abstract class DistributionProfile extends ObjectBase {
 	 * The event that trigger the automatic distribute
 	 */
 	private DistributeTrigger distributeTrigger;
+	private Boolean supportImageEntry;
 
 	// id:
 	public Integer getId(){
@@ -410,6 +412,10 @@ public abstract class DistributionProfile extends ObjectBase {
 		setToken("distributeTrigger", multirequestToken);
 	}
 
+	// supportImageEntry:
+	public Boolean getSupportImageEntry(){
+		return this.supportImageEntry;
+	}
 
 	public DistributionProfile() {
 		super();
@@ -446,6 +452,7 @@ public abstract class DistributionProfile extends ObjectBase {
 		recommendedDcForDownload = GsonParser.parseInt(jsonObject.get("recommendedDcForDownload"));
 		recommendedDcForExecute = GsonParser.parseInt(jsonObject.get("recommendedDcForExecute"));
 		distributeTrigger = DistributeTrigger.get(GsonParser.parseInt(jsonObject.get("distributeTrigger")));
+		supportImageEntry = GsonParser.parseBoolean(jsonObject.get("supportImageEntry"));
 
 	}
 

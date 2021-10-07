@@ -33,41 +33,39 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario implements EnumAsString {
-	NONE("0"),
-	PROTECTION("playReady.PROTECTION"),
-	PURCHASE("playReady.PURCHASE"),
-	RENTAL("playReady.RENTAL"),
-	SUBSCRIPTION("playReady.SUBSCRIPTION");
+public enum TwoFactorAuthenticationMode implements EnumAsInt {
+	ALL(0),
+	ADMIN_USERS_ONLY(1),
+	NON_ADMIN_USERS_ONLY(2);
 
-	private String value;
+	private int value;
 
-	DrmLicenseScenario(String value) {
+	TwoFactorAuthenticationMode(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static DrmLicenseScenario get(String value) {
+	public static TwoFactorAuthenticationMode get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over DrmLicenseScenario defined values and compare the inner value with the given one:
-		for(DrmLicenseScenario item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over TwoFactorAuthenticationMode defined values and compare the inner value with the given one:
+		for(TwoFactorAuthenticationMode item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DrmLicenseScenario.values().length > 0 ? DrmLicenseScenario.values()[0]: null;
+		return TwoFactorAuthenticationMode.values().length > 0 ? TwoFactorAuthenticationMode.values()[0]: null;
    }
 }

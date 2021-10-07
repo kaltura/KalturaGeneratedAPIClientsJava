@@ -157,7 +157,7 @@ public class ReachProfileService {
 	}
 
 	/**
-	 * sync vednor profile credit
+	 * sync vendor profile credit
 	 * 
 	 * @param reachProfileId 
 	 */

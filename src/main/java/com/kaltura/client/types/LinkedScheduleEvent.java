@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -40,46 +41,69 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(DeliveryProfileVodPackagerPlayServer.Tokenizer.class)
-public class DeliveryProfileVodPackagerPlayServer extends DeliveryProfileVod {
+@MultiRequestBuilder.Tokenizer(LinkedScheduleEvent.Tokenizer.class)
+public class LinkedScheduleEvent extends ObjectBase {
 	
-	public interface Tokenizer extends DeliveryProfileVod.Tokenizer {
-		String adStitchingEnabled();
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String offset();
+		String eventId();
 	}
 
-	private Boolean adStitchingEnabled;
+	/**
+	 * The time between the end of the event which it's id is in $eventId and the start
+	  of the event holding this object
+	 */
+	private Integer offset;
+	/**
+	 * The id of the event influencing the start of the event holding this object
+	 */
+	private Integer eventId;
 
-	// adStitchingEnabled:
-	public Boolean getAdStitchingEnabled(){
-		return this.adStitchingEnabled;
+	// offset:
+	public Integer getOffset(){
+		return this.offset;
 	}
-	public void setAdStitchingEnabled(Boolean adStitchingEnabled){
-		this.adStitchingEnabled = adStitchingEnabled;
+	public void setOffset(Integer offset){
+		this.offset = offset;
 	}
 
-	public void adStitchingEnabled(String multirequestToken){
-		setToken("adStitchingEnabled", multirequestToken);
+	public void offset(String multirequestToken){
+		setToken("offset", multirequestToken);
+	}
+
+	// eventId:
+	public Integer getEventId(){
+		return this.eventId;
+	}
+	public void setEventId(Integer eventId){
+		this.eventId = eventId;
+	}
+
+	public void eventId(String multirequestToken){
+		setToken("eventId", multirequestToken);
 	}
 
 
-	public DeliveryProfileVodPackagerPlayServer() {
+	public LinkedScheduleEvent() {
 		super();
 	}
 
-	public DeliveryProfileVodPackagerPlayServer(JsonObject jsonObject) throws APIException {
+	public LinkedScheduleEvent(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		adStitchingEnabled = GsonParser.parseBoolean(jsonObject.get("adStitchingEnabled"));
+		offset = GsonParser.parseInt(jsonObject.get("offset"));
+		eventId = GsonParser.parseInt(jsonObject.get("eventId"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaDeliveryProfileVodPackagerPlayServer");
-		kparams.add("adStitchingEnabled", this.adStitchingEnabled);
+		kparams.add("objectType", "KalturaLinkedScheduleEvent");
+		kparams.add("offset", this.offset);
+		kparams.add("eventId", this.eventId);
 		return kparams;
 	}
 

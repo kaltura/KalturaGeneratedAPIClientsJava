@@ -48,6 +48,7 @@ import com.kaltura.client.utils.request.ArrayRequestBuilder;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import com.kaltura.client.utils.request.ServeRequestBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -100,6 +101,7 @@ import java.util.List;
  * @param pager Pager
  * @param entryId 
  * @param pager 
+ * @param entryId 
  * @param entryId 
  * @param entryId Entry id to update
  * @param baseEntry Base entry metadata to update
@@ -654,6 +656,27 @@ public class BaseEntryService {
 	 */
     public static RejectBaseEntryBuilder reject(String entryId)  {
 		return new RejectBaseEntryBuilder(entryId);
+	}
+	
+	public static class ServePlaybackKeyBaseEntryBuilder extends ServeRequestBuilder {
+		
+		public ServePlaybackKeyBaseEntryBuilder(String entryId) {
+			super("baseentry", "servePlaybackKey");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * This action serves HLS encrypted key if access control is validated
+	 * 
+	 * @param entryId 
+	 */
+    public static ServePlaybackKeyBaseEntryBuilder servePlaybackKey(String entryId)  {
+		return new ServePlaybackKeyBaseEntryBuilder(entryId);
 	}
 	
 	public static class UpdateBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, UpdateBaseEntryBuilder> {

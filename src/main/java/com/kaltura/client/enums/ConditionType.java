@@ -57,7 +57,8 @@ public enum ConditionType implements EnumAsString {
 	ANONYMOUS_IP("15"),
 	ASSET_TYPE("16"),
 	BOOLEAN("17"),
-	HTTP_HEADER("18");
+	HTTP_HEADER("18"),
+	ENTRY_SCHEDULED("19");
 
 	private String value;
 

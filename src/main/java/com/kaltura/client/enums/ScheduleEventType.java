@@ -38,7 +38,8 @@ public enum ScheduleEventType implements EnumAsInt {
 	LIVE_STREAM(2),
 	BLACKOUT(3),
 	MEETING(4),
-	LIVE_REDIRECT(5);
+	LIVE_REDIRECT(5),
+	VOD(6);
 
 	private int value;
 

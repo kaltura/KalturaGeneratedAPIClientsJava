@@ -33,41 +33,39 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario implements EnumAsString {
-	NONE("0"),
-	PROTECTION("playReady.PROTECTION"),
-	PURCHASE("playReady.PURCHASE"),
-	RENTAL("playReady.RENTAL"),
-	SUBSCRIPTION("playReady.SUBSCRIPTION");
+public enum VendorIntegrationStatus implements EnumAsInt {
+	DISABLED(1),
+	ACTIVE(2),
+	DELETED(3);
 
-	private String value;
+	private int value;
 
-	DrmLicenseScenario(String value) {
+	VendorIntegrationStatus(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static DrmLicenseScenario get(String value) {
+	public static VendorIntegrationStatus get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over DrmLicenseScenario defined values and compare the inner value with the given one:
-		for(DrmLicenseScenario item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over VendorIntegrationStatus defined values and compare the inner value with the given one:
+		for(VendorIntegrationStatus item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DrmLicenseScenario.values().length > 0 ? DrmLicenseScenario.values()[0]: null;
+		return VendorIntegrationStatus.values().length > 0 ? VendorIntegrationStatus.values()[0]: null;
    }
 }

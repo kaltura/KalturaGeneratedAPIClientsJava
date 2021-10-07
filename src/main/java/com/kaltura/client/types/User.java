@@ -62,6 +62,7 @@ public class User extends BaseUser {
 		String title();
 		String company();
 		String ksPrivileges();
+		String encryptedSeed();
 	}
 
 	private UserType type;
@@ -80,6 +81,7 @@ public class User extends BaseUser {
 	private String title;
 	private String company;
 	private String ksPrivileges;
+	private String encryptedSeed;
 
 	// type:
 	public UserType getType(){
@@ -265,6 +267,10 @@ public class User extends BaseUser {
 		setToken("ksPrivileges", multirequestToken);
 	}
 
+	// encryptedSeed:
+	public String getEncryptedSeed(){
+		return this.encryptedSeed;
+	}
 
 	public User() {
 		super();
@@ -292,6 +298,7 @@ public class User extends BaseUser {
 		title = GsonParser.parseString(jsonObject.get("title"));
 		company = GsonParser.parseString(jsonObject.get("company"));
 		ksPrivileges = GsonParser.parseString(jsonObject.get("ksPrivileges"));
+		encryptedSeed = GsonParser.parseString(jsonObject.get("encryptedSeed"));
 
 	}
 

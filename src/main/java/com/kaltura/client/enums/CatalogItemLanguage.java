@@ -36,6 +36,7 @@ package com.kaltura.client.enums;
 public enum CatalogItemLanguage implements EnumAsString {
 	AR("Arabic"),
 	YUE("Cantonese"),
+	CA("Catalan"),
 	ZH("Chinese"),
 	DA("Danish"),
 	NL("Dutch"),

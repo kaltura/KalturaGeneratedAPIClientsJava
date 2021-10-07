@@ -32,6 +32,7 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.ScheduleEventClassificationType;
 import com.kaltura.client.enums.ScheduleEventRecurrenceType;
 import com.kaltura.client.enums.ScheduleEventStatus;
+import com.kaltura.client.types.LinkedScheduleEvent;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.ScheduleEventRecurrence;
 import com.kaltura.client.utils.GsonParser;
@@ -58,6 +59,8 @@ public abstract class ScheduleEvent extends ObjectBase {
 		String startDate();
 		String endDate();
 		String referenceId();
+		LinkedScheduleEvent.Tokenizer linkedTo();
+		String linkedBy();
 		String classificationType();
 		String geoLatitude();
 		String geoLongitude();
@@ -91,6 +94,16 @@ public abstract class ScheduleEvent extends ObjectBase {
 	private Integer startDate;
 	private Integer endDate;
 	private String referenceId;
+	/**
+	 * Contains the Id of the event that influences the timing of this event and the
+	  offset of time.
+	 */
+	private LinkedScheduleEvent linkedTo;
+	/**
+	 * An array of Schedule Event Ids that their start time depends on the end of the
+	  current.
+	 */
+	private String linkedBy;
 	private ScheduleEventClassificationType classificationType;
 	/**
 	 * Specifies the global position for the activity
@@ -214,6 +227,26 @@ public abstract class ScheduleEvent extends ObjectBase {
 
 	public void referenceId(String multirequestToken){
 		setToken("referenceId", multirequestToken);
+	}
+
+	// linkedTo:
+	public LinkedScheduleEvent getLinkedTo(){
+		return this.linkedTo;
+	}
+	public void setLinkedTo(LinkedScheduleEvent linkedTo){
+		this.linkedTo = linkedTo;
+	}
+
+	// linkedBy:
+	public String getLinkedBy(){
+		return this.linkedBy;
+	}
+	public void setLinkedBy(String linkedBy){
+		this.linkedBy = linkedBy;
+	}
+
+	public void linkedBy(String multirequestToken){
+		setToken("linkedBy", multirequestToken);
 	}
 
 	// classificationType:
@@ -408,6 +441,8 @@ public abstract class ScheduleEvent extends ObjectBase {
 		startDate = GsonParser.parseInt(jsonObject.get("startDate"));
 		endDate = GsonParser.parseInt(jsonObject.get("endDate"));
 		referenceId = GsonParser.parseString(jsonObject.get("referenceId"));
+		linkedTo = GsonParser.parseObject(jsonObject.getAsJsonObject("linkedTo"), LinkedScheduleEvent.class);
+		linkedBy = GsonParser.parseString(jsonObject.get("linkedBy"));
 		classificationType = ScheduleEventClassificationType.get(GsonParser.parseInt(jsonObject.get("classificationType")));
 		geoLatitude = GsonParser.parseDouble(jsonObject.get("geoLatitude"));
 		geoLongitude = GsonParser.parseDouble(jsonObject.get("geoLongitude"));
@@ -435,6 +470,8 @@ public abstract class ScheduleEvent extends ObjectBase {
 		kparams.add("startDate", this.startDate);
 		kparams.add("endDate", this.endDate);
 		kparams.add("referenceId", this.referenceId);
+		kparams.add("linkedTo", this.linkedTo);
+		kparams.add("linkedBy", this.linkedBy);
 		kparams.add("classificationType", this.classificationType);
 		kparams.add("geoLatitude", this.geoLatitude);
 		kparams.add("geoLongitude", this.geoLongitude);

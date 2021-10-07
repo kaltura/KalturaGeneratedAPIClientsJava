@@ -51,6 +51,7 @@ public class ReportExportJobData extends JobData {
 		String filePaths();
 		String reportsGroup();
 		RequestBuilder.ListTokenizer<ReportExportFile.Tokenizer> files();
+		String baseUrl();
 	}
 
 	private String recipientEmail;
@@ -58,6 +59,7 @@ public class ReportExportJobData extends JobData {
 	private String filePaths;
 	private String reportsGroup;
 	private List<ReportExportFile> files;
+	private String baseUrl;
 
 	// recipientEmail:
 	public String getRecipientEmail(){
@@ -111,6 +113,18 @@ public class ReportExportJobData extends JobData {
 		this.files = files;
 	}
 
+	// baseUrl:
+	public String getBaseUrl(){
+		return this.baseUrl;
+	}
+	public void setBaseUrl(String baseUrl){
+		this.baseUrl = baseUrl;
+	}
+
+	public void baseUrl(String multirequestToken){
+		setToken("baseUrl", multirequestToken);
+	}
+
 
 	public ReportExportJobData() {
 		super();
@@ -127,6 +141,7 @@ public class ReportExportJobData extends JobData {
 		filePaths = GsonParser.parseString(jsonObject.get("filePaths"));
 		reportsGroup = GsonParser.parseString(jsonObject.get("reportsGroup"));
 		files = GsonParser.parseArray(jsonObject.getAsJsonArray("files"), ReportExportFile.class);
+		baseUrl = GsonParser.parseString(jsonObject.get("baseUrl"));
 
 	}
 
@@ -138,6 +153,7 @@ public class ReportExportJobData extends JobData {
 		kparams.add("filePaths", this.filePaths);
 		kparams.add("reportsGroup", this.reportsGroup);
 		kparams.add("files", this.files);
+		kparams.add("baseUrl", this.baseUrl);
 		return kparams;
 	}
 

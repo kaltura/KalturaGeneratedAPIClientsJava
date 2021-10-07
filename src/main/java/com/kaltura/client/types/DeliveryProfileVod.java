@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,41 +38,50 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario implements EnumAsString {
-	NONE("0"),
-	PROTECTION("playReady.PROTECTION"),
-	PURCHASE("playReady.PURCHASE"),
-	RENTAL("playReady.RENTAL"),
-	SUBSCRIPTION("playReady.SUBSCRIPTION");
 
-	private String value;
-
-	DrmLicenseScenario(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(DeliveryProfileVod.Tokenizer.class)
+public class DeliveryProfileVod extends DeliveryProfile {
+	
+	public interface Tokenizer extends DeliveryProfile.Tokenizer {
+		String simuliveSupport();
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+	private Boolean simuliveSupport;
+
+	// simuliveSupport:
+	public Boolean getSimuliveSupport(){
+		return this.simuliveSupport;
+	}
+	public void setSimuliveSupport(Boolean simuliveSupport){
+		this.simuliveSupport = simuliveSupport;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void simuliveSupport(String multirequestToken){
+		setToken("simuliveSupport", multirequestToken);
 	}
 
-	public static DrmLicenseScenario get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over DrmLicenseScenario defined values and compare the inner value with the given one:
-		for(DrmLicenseScenario item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DrmLicenseScenario.values().length > 0 ? DrmLicenseScenario.values()[0]: null;
-   }
+
+	public DeliveryProfileVod() {
+		super();
+	}
+
+	public DeliveryProfileVod(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		simuliveSupport = GsonParser.parseBoolean(jsonObject.get("simuliveSupport"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaDeliveryProfileVod");
+		kparams.add("simuliveSupport", this.simuliveSupport);
+		return kparams;
+	}
+
 }
+
