@@ -47,6 +47,7 @@ public class ViewHistoryUserEntry extends UserEntry {
 		String playbackContext();
 		String lastTimeReached();
 		String lastUpdateTime();
+		String playlistLastEntryId();
 	}
 
 	/**
@@ -58,6 +59,10 @@ public class ViewHistoryUserEntry extends UserEntry {
 	 */
 	private Integer lastTimeReached;
 	private Integer lastUpdateTime;
+	/**
+	 * Property to save last entry ID played in a playlist.
+	 */
+	private String playlistLastEntryId;
 
 	// playbackContext:
 	public String getPlaybackContext(){
@@ -95,6 +100,18 @@ public class ViewHistoryUserEntry extends UserEntry {
 		setToken("lastUpdateTime", multirequestToken);
 	}
 
+	// playlistLastEntryId:
+	public String getPlaylistLastEntryId(){
+		return this.playlistLastEntryId;
+	}
+	public void setPlaylistLastEntryId(String playlistLastEntryId){
+		this.playlistLastEntryId = playlistLastEntryId;
+	}
+
+	public void playlistLastEntryId(String multirequestToken){
+		setToken("playlistLastEntryId", multirequestToken);
+	}
+
 
 	public ViewHistoryUserEntry() {
 		super();
@@ -109,6 +126,7 @@ public class ViewHistoryUserEntry extends UserEntry {
 		playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
 		lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
 		lastUpdateTime = GsonParser.parseInt(jsonObject.get("lastUpdateTime"));
+		playlistLastEntryId = GsonParser.parseString(jsonObject.get("playlistLastEntryId"));
 
 	}
 
@@ -118,6 +136,7 @@ public class ViewHistoryUserEntry extends UserEntry {
 		kparams.add("playbackContext", this.playbackContext);
 		kparams.add("lastTimeReached", this.lastTimeReached);
 		kparams.add("lastUpdateTime", this.lastUpdateTime);
+		kparams.add("playlistLastEntryId", this.playlistLastEntryId);
 		return kparams;
 	}
 

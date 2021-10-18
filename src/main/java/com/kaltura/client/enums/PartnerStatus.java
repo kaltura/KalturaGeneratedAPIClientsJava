@@ -37,7 +37,8 @@ public enum PartnerStatus implements EnumAsInt {
 	DELETED(0),
 	ACTIVE(1),
 	BLOCKED(2),
-	FULL_BLOCK(3);
+	FULL_BLOCK(3),
+	READ_ONLY(4);
 
 	private int value;
 
