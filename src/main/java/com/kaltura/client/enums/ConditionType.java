@@ -58,7 +58,9 @@ public enum ConditionType implements EnumAsString {
 	ASSET_TYPE("16"),
 	BOOLEAN("17"),
 	HTTP_HEADER("18"),
-	ENTRY_SCHEDULED("19");
+	ENTRY_SCHEDULED("19"),
+	ACTION_NAME("20"),
+	URL_AUTH_PARAMS("21");
 
 	private String value;
 

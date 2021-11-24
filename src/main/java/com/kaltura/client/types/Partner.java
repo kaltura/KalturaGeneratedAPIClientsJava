@@ -121,13 +121,14 @@ public class Partner extends ObjectBase {
 		String usageLimitWarning();
 		String lastFreeTrialNotificationDay();
 		String monitorUsage();
-		String passwordStructureValidations();
+		RequestBuilder.ListTokenizer<RegexItem.Tokenizer> passwordStructureValidations();
 		String passwordStructureValidationsDescription();
 		String passReplaceFreq();
 		String maxLoginAttempts();
 		String loginBlockPeriod();
 		String numPrevPassToKeep();
 		String twoFactorAuthenticationMode();
+		String isSelfServe();
 	}
 
 	private Integer id;
@@ -216,13 +217,14 @@ public class Partner extends ObjectBase {
 	private Integer usageLimitWarning;
 	private Integer lastFreeTrialNotificationDay;
 	private Integer monitorUsage;
-	private String passwordStructureValidations;
+	private List<RegexItem> passwordStructureValidations;
 	private String passwordStructureValidationsDescription;
 	private Integer passReplaceFreq;
 	private Integer maxLoginAttempts;
 	private Integer loginBlockPeriod;
 	private Integer numPrevPassToKeep;
 	private TwoFactorAuthenticationMode twoFactorAuthenticationMode;
+	private Boolean isSelfServe;
 
 	// id:
 	public Integer getId(){
@@ -753,15 +755,11 @@ public class Partner extends ObjectBase {
 		return this.monitorUsage;
 	}
 	// passwordStructureValidations:
-	public String getPasswordStructureValidations(){
+	public List<RegexItem> getPasswordStructureValidations(){
 		return this.passwordStructureValidations;
 	}
-	public void setPasswordStructureValidations(String passwordStructureValidations){
+	public void setPasswordStructureValidations(List<RegexItem> passwordStructureValidations){
 		this.passwordStructureValidations = passwordStructureValidations;
-	}
-
-	public void passwordStructureValidations(String multirequestToken){
-		setToken("passwordStructureValidations", multirequestToken);
 	}
 
 	// passwordStructureValidationsDescription:
@@ -828,6 +826,18 @@ public class Partner extends ObjectBase {
 	public TwoFactorAuthenticationMode getTwoFactorAuthenticationMode(){
 		return this.twoFactorAuthenticationMode;
 	}
+	// isSelfServe:
+	public Boolean getIsSelfServe(){
+		return this.isSelfServe;
+	}
+	public void setIsSelfServe(Boolean isSelfServe){
+		this.isSelfServe = isSelfServe;
+	}
+
+	public void isSelfServe(String multirequestToken){
+		setToken("isSelfServe", multirequestToken);
+	}
+
 
 	public Partner() {
 		super();
@@ -907,13 +917,14 @@ public class Partner extends ObjectBase {
 		usageLimitWarning = GsonParser.parseInt(jsonObject.get("usageLimitWarning"));
 		lastFreeTrialNotificationDay = GsonParser.parseInt(jsonObject.get("lastFreeTrialNotificationDay"));
 		monitorUsage = GsonParser.parseInt(jsonObject.get("monitorUsage"));
-		passwordStructureValidations = GsonParser.parseString(jsonObject.get("passwordStructureValidations"));
+		passwordStructureValidations = GsonParser.parseArray(jsonObject.getAsJsonArray("passwordStructureValidations"), RegexItem.class);
 		passwordStructureValidationsDescription = GsonParser.parseString(jsonObject.get("passwordStructureValidationsDescription"));
 		passReplaceFreq = GsonParser.parseInt(jsonObject.get("passReplaceFreq"));
 		maxLoginAttempts = GsonParser.parseInt(jsonObject.get("maxLoginAttempts"));
 		loginBlockPeriod = GsonParser.parseInt(jsonObject.get("loginBlockPeriod"));
 		numPrevPassToKeep = GsonParser.parseInt(jsonObject.get("numPrevPassToKeep"));
 		twoFactorAuthenticationMode = TwoFactorAuthenticationMode.get(GsonParser.parseInt(jsonObject.get("twoFactorAuthenticationMode")));
+		isSelfServe = GsonParser.parseBoolean(jsonObject.get("isSelfServe"));
 
 	}
 
@@ -959,6 +970,7 @@ public class Partner extends ObjectBase {
 		kparams.add("maxLoginAttempts", this.maxLoginAttempts);
 		kparams.add("loginBlockPeriod", this.loginBlockPeriod);
 		kparams.add("numPrevPassToKeep", this.numPrevPassToKeep);
+		kparams.add("isSelfServe", this.isSelfServe);
 		return kparams;
 	}
 

@@ -63,8 +63,10 @@ import java.util.List;
  * @param responseOptions 
  * @param id 
  * @param params_ 
+ * @param excludedFields 
  * @param id 
  * @param params_ 
+ * @param excludedFields 
  * @param reportType 
  * @param reportInputFilter 
  * @param dimension 
@@ -169,14 +171,19 @@ public class ReportService {
 	
 	public static class GetCsvReportBuilder extends ServeRequestBuilder {
 		
-		public GetCsvReportBuilder(int id, List<KeyValue> params_) {
+		public GetCsvReportBuilder(int id, List<KeyValue> params_, String excludedFields) {
 			super("report", "getCsv");
 			params.add("id", id);
 			params.add("params", params_);
+			params.add("excludedFields", excludedFields);
 		}
 		
 		public void id(String multirequestToken) {
 			params.add("id", multirequestToken);
+		}
+		
+		public void excludedFields(String multirequestToken) {
+			params.add("excludedFields", multirequestToken);
 		}
 	}
 
@@ -184,16 +191,21 @@ public class ReportService {
 		return getCsv(id, null);
 	}
 
-    public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params)  {
-		return new GetCsvReportBuilder(id, params);
+	public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params)  {
+		return getCsv(id, params, null);
+	}
+
+    public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params, String excludedFields)  {
+		return new GetCsvReportBuilder(id, params, excludedFields);
 	}
 	
 	public static class GetCsvFromStringParamsReportBuilder extends ServeRequestBuilder {
 		
-		public GetCsvFromStringParamsReportBuilder(int id, String params_) {
+		public GetCsvFromStringParamsReportBuilder(int id, String params_, String excludedFields) {
 			super("report", "getCsvFromStringParams");
 			params.add("id", id);
 			params.add("params", params_);
+			params.add("excludedFields", excludedFields);
 		}
 		
 		public void id(String multirequestToken) {
@@ -203,21 +215,30 @@ public class ReportService {
 		public void params(String multirequestToken) {
 			params.add("params", multirequestToken);
 		}
+		
+		public void excludedFields(String multirequestToken) {
+			params.add("excludedFields", multirequestToken);
+		}
 	}
 
 	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id)  {
 		return getCsvFromStringParams(id, null);
 	}
 
+	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params)  {
+		return getCsvFromStringParams(id, params, null);
+	}
+
 	/**
 	 * Returns report CSV file executed by string params with the following convention:
-	  param1=value1;param2=value2
+	  param1=value1;param2=value2   excludedFields can be supplied comma separated
 	 * 
 	 * @param id 
 	 * @param params_ 
+	 * @param excludedFields 
 	 */
-    public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params)  {
-		return new GetCsvFromStringParamsReportBuilder(id, params);
+    public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params, String excludedFields)  {
+		return new GetCsvFromStringParamsReportBuilder(id, params, excludedFields);
 	}
 	
 	public static class GetGraphsReportBuilder extends ArrayRequestBuilder<ReportGraph, ReportGraph.Tokenizer, GetGraphsReportBuilder> {
