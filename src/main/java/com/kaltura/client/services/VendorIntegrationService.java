@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.enums.VendorIntegrationStatus;
 import com.kaltura.client.types.IntegrationSetting;
 import com.kaltura.client.utils.request.RequestBuilder;
 
@@ -129,7 +130,7 @@ public class VendorIntegrationService {
 	
 	public static class UpdateStatusVendorIntegrationBuilder extends RequestBuilder<IntegrationSetting, IntegrationSetting.Tokenizer, UpdateStatusVendorIntegrationBuilder> {
 		
-		public UpdateStatusVendorIntegrationBuilder(int id, IntegrationSetting status) {
+		public UpdateStatusVendorIntegrationBuilder(int id, VendorIntegrationStatus status) {
 			super(IntegrationSetting.class, "vendor_vendorintegration", "updateStatus");
 			params.add("id", id);
 			params.add("status", status);
@@ -137,6 +138,10 @@ public class VendorIntegrationService {
 		
 		public void id(String multirequestToken) {
 			params.add("id", multirequestToken);
+		}
+		
+		public void status(String multirequestToken) {
+			params.add("status", multirequestToken);
 		}
 	}
 
@@ -146,7 +151,7 @@ public class VendorIntegrationService {
 	 * @param id 
 	 * @param status 
 	 */
-    public static UpdateStatusVendorIntegrationBuilder updateStatus(int id, IntegrationSetting status)  {
+    public static UpdateStatusVendorIntegrationBuilder updateStatus(int id, VendorIntegrationStatus status)  {
 		return new UpdateStatusVendorIntegrationBuilder(id, status);
 	}
 }

@@ -48,12 +48,14 @@ public class StorageExportJobData extends StorageJobData {
 		String createLink();
 		String assetId();
 		String externalUrl();
+		String port();
 	}
 
 	private Boolean force;
 	private Boolean createLink;
 	private String assetId;
 	private String externalUrl;
+	private Integer port;
 
 	// force:
 	public Boolean getForce(){
@@ -103,6 +105,18 @@ public class StorageExportJobData extends StorageJobData {
 		setToken("externalUrl", multirequestToken);
 	}
 
+	// port:
+	public Integer getPort(){
+		return this.port;
+	}
+	public void setPort(Integer port){
+		this.port = port;
+	}
+
+	public void port(String multirequestToken){
+		setToken("port", multirequestToken);
+	}
+
 
 	public StorageExportJobData() {
 		super();
@@ -118,6 +132,7 @@ public class StorageExportJobData extends StorageJobData {
 		createLink = GsonParser.parseBoolean(jsonObject.get("createLink"));
 		assetId = GsonParser.parseString(jsonObject.get("assetId"));
 		externalUrl = GsonParser.parseString(jsonObject.get("externalUrl"));
+		port = GsonParser.parseInt(jsonObject.get("port"));
 
 	}
 
@@ -128,6 +143,7 @@ public class StorageExportJobData extends StorageJobData {
 		kparams.add("createLink", this.createLink);
 		kparams.add("assetId", this.assetId);
 		kparams.add("externalUrl", this.externalUrl);
+		kparams.add("port", this.port);
 		return kparams;
 	}
 
