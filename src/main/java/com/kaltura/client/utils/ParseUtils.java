@@ -30,19 +30,21 @@ package com.kaltura.client.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Level;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.kaltura.client.IKalturaLogger;
 import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.KalturaObjectFactory;
-import com.kaltura.client.KalturaLogger;
 
 public final class ParseUtils {
-	
-	private static IKalturaLogger logger = KalturaLogger.getLogger(ParseUtils.class);
-	
+
+	private static Logger logger = LogManager.getLogger(ParseUtils.class);
+
 	public static String parseString(String txt) {
 		 return txt;
 	}
@@ -52,41 +54,41 @@ public final class ParseUtils {
 			try {
 				return Integer.parseInt(txt);
 			} catch (NumberFormatException nfe) {
-				if (logger.isEnabled())
+				if (logger.isEnabled(Level.WARN))
 					logger.warn("Failed to parse [" + txt + "] as int", nfe);
 			}
 		}
 		return 0;
 	}
-	
+
 	public static long parseBigint(String txt) {
 		if (txt.length() != 0) {
 			try {
 				return Long.parseLong(txt);
 			} catch (NumberFormatException nfe) {
-				if (logger.isEnabled())
+				if (logger.isEnabled(Level.WARN))
 					logger.warn("Failed to parse [" + txt + "] as long", nfe);
 			}
 		}
 		return 0;
 	}
-	
+
 	public static double parseDouble(String txt) {
 		if (txt.length() != 0) {
 			try {
 				return Double.parseDouble(txt);
 			} catch (NumberFormatException nfe) {
-				if (logger.isEnabled())
+				if (logger.isEnabled(Level.WARN))
 					logger.warn("Failed to parse [" + txt + "] as double", nfe);
 			}
 		}
 		return 0;
 	}
-	
+
 	public static boolean parseBool(String txt) {
 		 return txt.equals("0") ? false : true;
 	}
-	
+
 	public static <T> ArrayList<T> parseArray(Class<T> clz, Node aNode) throws KalturaApiException{
 		ArrayList<T> tmpList = new ArrayList<T>();
 		NodeList subNodeList = aNode.getChildNodes();
@@ -105,7 +107,7 @@ public final class ParseUtils {
 			if(itemNode instanceof Element){
 				NodeList nameNodes = ((Element)itemNode).getElementsByTagName("itemKey");
 		        String name = nameNodes.item(0).getTextContent();
-		        
+
 				tmpMap.put(name, (T) KalturaObjectFactory.create((Element) itemNode, clz));
 			}
 		}

@@ -27,15 +27,18 @@
 // ===================================================================================================
 package com.kaltura.client.test;
 
-import com.kaltura.client.KalturaLogger;
-import com.kaltura.client.IKalturaLogger;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.kaltura.client.services.KalturaSystemService;
 
+import java.util.logging.LogManager;
+
 public class SystemServiceTest extends BaseTest {
-	
-	private IKalturaLogger logger = KalturaLogger.getLogger(SystemServiceTest.class);
-			
+
+	private Logger logger = LogManager.getLogger(SystemServiceTest.class);
+
 	/**
 	 * Tests that ping to the session works
 	 */
@@ -52,7 +55,7 @@ public class SystemServiceTest extends BaseTest {
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
-		
+
 	}
-		
+
 }
