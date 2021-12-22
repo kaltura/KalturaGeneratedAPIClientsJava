@@ -56,24 +56,26 @@ import com.kaltura.client.types.KalturaModerationFlag;
 import com.kaltura.client.types.KalturaModerationFlagListResponse;
 import com.kaltura.client.types.KalturaUploadToken;
 import com.kaltura.client.types.KalturaUploadedFileTokenResource;
-import com.kaltura.client.IKalturaLogger;
-import com.kaltura.client.KalturaLogger;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Level;
 
 public class MediaServiceTest extends BaseTest {
 
-	private IKalturaLogger logger = KalturaLogger.getLogger(MediaServiceTest.class);
-	
+	private Logger logger = LogManager.getLogger(MediaServiceTest.class);
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - add From Url
 	 */
 	public void testAddFromUrl() {
-		if (logger.isEnabled()) 
+		if (logger.isEnabled())
 			logger.info("Test Add From URL");
-        
+
 		String name = "test (" + new Date() + ")";
-		
+
 		try {
 			startUserSession();
 			KalturaMediaEntry addedEntry = addClipFromUrl(this, client, name);
@@ -86,7 +88,7 @@ public class MediaServiceTest extends BaseTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
 	public KalturaMediaEntry addClipFromUrl(BaseTest testContainer,
 			KalturaClient client, String name) throws KalturaApiException {
 
@@ -101,27 +103,27 @@ public class MediaServiceTest extends BaseTest {
 
 		if(addedEntry != null)
 			testContainer.testIds.add(addedEntry.id);
-		
+
 		return addedEntry;
 	}
-	
+
 	/**
-	 * Tests the following : 
-	 * Media Service - 
-	 * 	- add 
+	 * Tests the following :
+	 * Media Service -
+	 * 	- add
 	 *  - add Content
 	 *  - count
-	 * Upload token - 
+	 * Upload token -
 	 *  - add
 	 *  - upload
-	 * Flavor asset - 
+	 * Flavor asset -
 	 * 	- get by entry id
 	 */
 	public void testUploadTokenAddGivenFile() {
-		
+
 		if (logger.isEnabled())
 			logger.info("Test upload token add");
-		
+
 		try {
 			InputStream fileData = TestUtils.getTestVideo();
 			int fileSize = fileData.available();
@@ -129,71 +131,71 @@ public class MediaServiceTest extends BaseTest {
 
 			KalturaMediaEntryFilter filter = new KalturaMediaEntryFilter();
 			filter.tagsLike = uniqueTag;
-			
+
 			startUserSession();
 			int sz = client.getMediaService().count(filter);
-			
+
 			// Create entry
 			KalturaMediaEntry entry = new KalturaMediaEntry();
 			entry.name =  "test (" + new Date() + ")";
 			entry.type = KalturaEntryType.MEDIA_CLIP;
 			entry.mediaType = KalturaMediaType.VIDEO;
 			entry.tags = uniqueTag;
-			
+
 			entry = client.getMediaService().add(entry);
 			assertNotNull(entry);
-			
+
 			testIds.add(entry.id);
-			
+
 			// Create token
 			KalturaUploadToken uploadToken = new KalturaUploadToken();
 			uploadToken.fileName = testConfig.getUploadVideo();
 			uploadToken.fileSize = fileSize;
 			KalturaUploadToken token = client.getUploadTokenService().add(uploadToken);
 			assertNotNull(token);
-			
+
 			// Define content
 			KalturaUploadedFileTokenResource resource = new KalturaUploadedFileTokenResource();
 			resource.token = token.id;
 			entry = client.getMediaService().addContent(entry.id, resource);
 			assertNotNull(entry);
-			
+
 			// upload
 			uploadToken = client.getUploadTokenService().upload(token.id, fileData, testConfig.getUploadVideo(), fileSize, false);
 			assertNotNull(uploadToken);
-			
+
 			// Test Creation
 			entry = getProcessedEntry(client, entry.id, true);
 			assertNotNull(entry);
-			
+
 			// Test get flavor asset by entry id.
 			List<KalturaFlavorAsset> listFlavors = client.getFlavorAssetService().getByEntryId(entry.id);
 			assertNotNull(listFlavors);
 			assertTrue(listFlavors.size() >= 1); // Should contain at least the source
-			
+
 			// Test count
 			int sz2 = client.getMediaService().count(filter);
 			assertTrue(sz + 1 == sz2);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
 	}
-	
+
 	public void testUploadUnexistingFile() throws Exception {
-		
+
 		File file = new File("src/test/resources/nonExistingfile.flv");
-		
+
 		startUserSession();
-		
+
 		// Create token
 		KalturaUploadToken uploadToken = new KalturaUploadToken();
 		uploadToken.fileName = file.getName();
 		uploadToken.fileSize = file.length();
 		KalturaUploadToken token = client.getUploadTokenService().add(uploadToken);
 		assertNotNull(token);
-		
+
 		// upload
 		try {
 			client.getUploadTokenService().upload(token.id, file, false);
@@ -202,10 +204,10 @@ public class MediaServiceTest extends BaseTest {
 			assert(e.getMessage().contains("is not readable or not a file"));
 		}
 	}
-	
-	
+
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - add From Url
 	 * http://www.kaltura.org/how-update-supposed-work-api-v3
@@ -213,39 +215,39 @@ public class MediaServiceTest extends BaseTest {
 	public void testUpdate() {
 		if (logger.isEnabled())
 			logger.info("Test Update Entry");
-		
+
 		String name = "test (" + new Date() + ")";
-		
+
 		try {
 			startUserSession();
 			KalturaMediaEntry addedEntry = addTestImage(this, name);
 			assertNotNull(addedEntry);
 			assertNotNull(addedEntry.id);
-			
+
 			String name2 = "test (" + new Date() + ")";
-			
+
 			KalturaMediaEntry updatedEntry = new KalturaMediaEntry();
-			updatedEntry.name = name2;			
+			updatedEntry.name = name2;
 			client.getMediaService().update(addedEntry.id, updatedEntry);
-			
+
 			KalturaMediaEntry queriedEntry  = getProcessedEntry(client, addedEntry.id, true);
 			assertEquals(name2, queriedEntry.name);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - Get
 	 */
 	public void testBadGet() {
 		if (logger.isEnabled())
 			logger.info("Starting badGet test");
-		
+
 		// look for one we know doesn't exist
 		KalturaMediaEntry badEntry = null;
 		try {
@@ -259,39 +261,39 @@ public class MediaServiceTest extends BaseTest {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
-		
+
 		assertNull(badEntry);
 	}
-	
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - Get
 	 */
 	public void testGet() {
 		if (logger.isEnabled())
 			logger.info("Starting get test");
-		
+
 		String name = "test (" + new Date() + ")";
-		
+
 		try {
 			startUserSession();
 			KalturaMediaEntry addedEntry = addTestImage(this, name);
 			KalturaMediaService mediaService = this.client.getMediaService();
 			KalturaMediaEntry retrievedEntry = mediaService.get(addedEntry.id);
-			
+
 			assertNotNull(retrievedEntry);
 			assertEquals(addedEntry.id, retrievedEntry.id);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
-		
+
 	}
 
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - list
 	 */
@@ -344,94 +346,94 @@ public class MediaServiceTest extends BaseTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - flag
 	 *  - list flags
 	 */
 	public void testModeration() {
-		
+
 		if (logger.isEnabled())
 			logger.info("Starting moderation test");
-		
+
 		final String FLAG_COMMENTS = "This is a test flag";
-		
+
 		if (logger.isEnabled())
 			logger.info("Starting addFromUrl test");
-        
+
 		String name = "test (" + new Date() + ")";
-		
+
 		try {
-			
+
 			startAdminSession();
 
 			KalturaMediaEntry addedEntry = addTestImage(this, name);
 			//wait for the newly-added clip to process
 			getProcessedEntry(client, addedEntry.id);
-						
+
 			KalturaMediaService mediaService = this.client.getMediaService();
-			
+
 			// flag the clip
 			KalturaModerationFlag flag = new KalturaModerationFlag();
 			flag.flaggedEntryId = addedEntry.id;
 			flag.flagType = KalturaModerationFlagType.SPAM_COMMERCIALS;
 			flag.comments = FLAG_COMMENTS;
 			mediaService.flag(flag);
-			
+
 			// get the list of flags for this entry
 			KalturaModerationFlagListResponse flagList = mediaService.listFlags(addedEntry.id);
 			assertEquals(flagList.totalCount, 1);
 
 			// check that the flag we put in is the flag we got back
-			KalturaModerationFlag retFlag = (KalturaModerationFlag)flagList.objects.get(0);						
+			KalturaModerationFlag retFlag = (KalturaModerationFlag)flagList.objects.get(0);
 			assertEquals(retFlag.flagType, KalturaModerationFlagType.SPAM_COMMERCIALS);
 			assertEquals(retFlag.comments, FLAG_COMMENTS);
-			
+
 		} catch (Exception e) {
 			if (logger.isEnabled())
-				logger.error("Got exception testing moderation flag", e);	
+				logger.error("Got exception testing moderation flag", e);
 			e.printStackTrace();
 			fail(e.getMessage());
-		} 
-		
+		}
+
 	}
-	
-	
+
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - delete
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void testDelete() throws Exception {
 		if (logger.isEnabled())
 			logger.info("Starting delete test");
-		
+
 		String name = "test (" + new Date() + ")";
 		String idToDelete = "";
-		
+
 		startUserSession();
 		KalturaMediaService mediaService = this.client.getMediaService();
-		
+
 		// First delete - should succeed
 		try {
-			
+
 			KalturaMediaEntry addedEntry = addTestImage(this, name);
 			assertNotNull(addedEntry);
 			idToDelete = addedEntry.id;
-			
+
 			// calling this makes the test wait for processing to complete
 			// if you call delete while it is processing, the delete doesn't happen
 			getProcessedEntry(client,idToDelete);
 			mediaService.delete(idToDelete);
-			
+
 		} catch (Exception e) {
 			if (logger.isEnabled())
 				logger.error("Trouble deleting", e);
 			fail(e.getMessage());
-		} 
+		}
 
 		// Second delete - should fail
 		KalturaMediaEntry deletedEntry = null;
@@ -440,15 +442,15 @@ public class MediaServiceTest extends BaseTest {
 			fail("Getting deleted entry should fail");
 		} catch (KalturaApiException kae) {
 			// Wanted behavior
-		} 
-		
-		// we whacked this one, so let's not keep track of it		
+		}
+
+		// we whacked this one, so let's not keep track of it
 		this.testIds.remove(testIds.size() - 1);
 		assertNull(deletedEntry);
 	}
-	
+
 	/**
-	 * Tests the following : 
+	 * Tests the following :
 	 * Media Service -
 	 *  - upload
 	 *  - add from uploaded file
@@ -456,9 +458,9 @@ public class MediaServiceTest extends BaseTest {
 	public void testUpload() {
 		if (logger.isEnabled())
 			logger.info("Starting delete test");
-		
+
 		String name = "test (" + new Date() + ")";
-		
+
 		KalturaMediaEntry entry = new KalturaMediaEntry();
 		try {
 			startUserSession();
@@ -469,7 +471,7 @@ public class MediaServiceTest extends BaseTest {
 
 			String result = mediaService.upload(fileData, testConfig.getUploadVideo(), fileSize);
 			if (logger.isEnabled())
-				logger.debug("After upload, result:" + result);			
+				logger.debug("After upload, result:" + result);
 			entry.name = name;
 			entry.type = KalturaEntryType.MEDIA_CLIP;
 			entry.mediaType = KalturaMediaType.VIDEO;
@@ -478,15 +480,15 @@ public class MediaServiceTest extends BaseTest {
 			if (logger.isEnabled())
 				logger.error("Trouble uploading", e);
 			fail(e.getMessage());
-		} 
-		
+		}
+
 		assertNotNull(entry.id);
-		
+
 		if (entry.id != null) {
 			this.testIds.add(entry.id);
 		}
 	}
-	
+
 	public void testDataServe() {
 		if (logger.isEnabled())
 			logger.info("Starting test data serve");
@@ -496,18 +498,18 @@ public class MediaServiceTest extends BaseTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	public void testPlaylist() {
-		if (logger.isEnabled())	
+		if (logger.isEnabled())
 			logger.info("Starting test playlist execute from filters");
 		try {
 			startAdminSession();
-			
+
 			// Create entry
 			KalturaMediaEntry entry = addTestImage(this, "test (" + new Date() + ")");
-			
+
 			// generate filter
 			KalturaMediaEntryFilterForPlaylist filter = new KalturaMediaEntryFilterForPlaylist();
 			filter.referenceIdEqual = entry.referenceId;
@@ -516,36 +518,36 @@ public class MediaServiceTest extends BaseTest {
 			List<KalturaBaseEntry> res = client.getPlaylistService().executeFromFilters(filters, 5);
 			assertNotNull(res);
 			assertEquals(1, res.size());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	public void testServe() throws Exception {
 		String test = "bla bla bla";
 		try {
 			startUserSession();
-			
+
 			// Add Entry
 			KalturaDataEntry dataEntry = new KalturaDataEntry();
 			dataEntry.name = "test (" + new Date() + ")";
 			dataEntry.dataContent = test;
 			KalturaDataEntry addedDataEntry = client.getDataService().add(dataEntry);
-			
+
 			// serve
 			String serveUrl = client.getDataService().serve(addedDataEntry.id);
 			URL url = new URL(serveUrl);
 			String content = readContent(url);
 			assertEquals(test, content);
-			
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	private String readContent(URL url) {
 		StringBuffer sb = new StringBuffer();
 		BufferedReader in = null;
@@ -556,7 +558,7 @@ public class MediaServiceTest extends BaseTest {
 			while ((inputLine = in.readLine()) != null)
 				sb.append(inputLine);
 
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -571,5 +573,5 @@ public class MediaServiceTest extends BaseTest {
 
 		return sb.toString();
 	}
-	
+
 }
