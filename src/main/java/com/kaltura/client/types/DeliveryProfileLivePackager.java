@@ -45,12 +45,14 @@ public class DeliveryProfileLivePackager extends DeliveryProfile {
 	
 	public interface Tokenizer extends DeliveryProfile.Tokenizer {
 		String livePackagerSigningDomain();
+		String shouldRedirect();
 	}
 
 	/**
 	 * Domain used to sign the live url
 	 */
 	private String livePackagerSigningDomain;
+	private Boolean shouldRedirect;
 
 	// livePackagerSigningDomain:
 	public String getLivePackagerSigningDomain(){
@@ -62,6 +64,18 @@ public class DeliveryProfileLivePackager extends DeliveryProfile {
 
 	public void livePackagerSigningDomain(String multirequestToken){
 		setToken("livePackagerSigningDomain", multirequestToken);
+	}
+
+	// shouldRedirect:
+	public Boolean getShouldRedirect(){
+		return this.shouldRedirect;
+	}
+	public void setShouldRedirect(Boolean shouldRedirect){
+		this.shouldRedirect = shouldRedirect;
+	}
+
+	public void shouldRedirect(String multirequestToken){
+		setToken("shouldRedirect", multirequestToken);
 	}
 
 
@@ -76,6 +90,7 @@ public class DeliveryProfileLivePackager extends DeliveryProfile {
 
 		// set members values:
 		livePackagerSigningDomain = GsonParser.parseString(jsonObject.get("livePackagerSigningDomain"));
+		shouldRedirect = GsonParser.parseBoolean(jsonObject.get("shouldRedirect"));
 
 	}
 
@@ -83,6 +98,7 @@ public class DeliveryProfileLivePackager extends DeliveryProfile {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaDeliveryProfileLivePackager");
 		kparams.add("livePackagerSigningDomain", this.livePackagerSigningDomain);
+		kparams.add("shouldRedirect", this.shouldRedirect);
 		return kparams;
 	}
 

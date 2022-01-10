@@ -97,6 +97,8 @@ import java.util.List;
  * KS expires after 24 hours).
  * @param privileges Special privileges
  * @param otp the user's one-time password
+ * @param loginDataId The user's current email address that identified the user for login
+ * @param newPassword The user's new password
  * @param userId The user's unique identifier in the partner's system
  * @param email The user's email address (login email)
  * @param linkType kmc or kms
@@ -621,6 +623,33 @@ public class UserService {
 	 */
     public static LoginByLoginIdUserBuilder loginByLoginId(String loginId, String password, int partnerId, int expiry, String privileges, String otp)  {
 		return new LoginByLoginIdUserBuilder(loginId, password, partnerId, expiry, privileges, otp);
+	}
+	
+	public static class LoginDataResetPasswordUserBuilder extends NullRequestBuilder {
+		
+		public LoginDataResetPasswordUserBuilder(String loginDataId, String newPassword) {
+			super("user", "loginDataResetPassword");
+			params.add("loginDataId", loginDataId);
+			params.add("newPassword", newPassword);
+		}
+		
+		public void loginDataId(String multirequestToken) {
+			params.add("loginDataId", multirequestToken);
+		}
+		
+		public void newPassword(String multirequestToken) {
+			params.add("newPassword", multirequestToken);
+		}
+	}
+
+	/**
+	 * Resets user login password
+	 * 
+	 * @param loginDataId The user's current email address that identified the user for login
+	 * @param newPassword The user's new password
+	 */
+    public static LoginDataResetPasswordUserBuilder loginDataResetPassword(String loginDataId, String newPassword)  {
+		return new LoginDataResetPasswordUserBuilder(loginDataId, newPassword);
 	}
 	
 	public static class NotifyBanUserBuilder extends NullRequestBuilder {
