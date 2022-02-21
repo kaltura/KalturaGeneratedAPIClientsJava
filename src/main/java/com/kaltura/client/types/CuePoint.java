@@ -69,7 +69,7 @@ public abstract class CuePoint extends ObjectBase {
 	}
 
 	private String id;
-	private Integer intId;
+	private Long intId;
 	private CuePointType cuePointType;
 	private CuePointStatus status;
 	private String entryId;
@@ -96,7 +96,7 @@ public abstract class CuePoint extends ObjectBase {
 		return this.id;
 	}
 	// intId:
-	public Integer getIntId(){
+	public Long getIntId(){
 		return this.intId;
 	}
 	// cuePointType:
@@ -259,7 +259,7 @@ public abstract class CuePoint extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseString(jsonObject.get("id"));
-		intId = GsonParser.parseInt(jsonObject.get("intId"));
+		intId = GsonParser.parseLong(jsonObject.get("intId"));
 		cuePointType = CuePointType.get(GsonParser.parseString(jsonObject.get("cuePointType")));
 		status = CuePointStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));

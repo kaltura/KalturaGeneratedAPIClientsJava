@@ -62,7 +62,7 @@ public abstract class UserEntry extends ObjectBase {
 	/**
 	 * unique auto-generated identifier
 	 */
-	private Integer id;
+	private Long id;
 	private String entryId;
 	private String userId;
 	private Integer partnerId;
@@ -73,7 +73,7 @@ public abstract class UserEntry extends ObjectBase {
 	private UserEntryExtendedStatus extendedStatus;
 
 	// id:
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 	// entryId:
@@ -143,7 +143,7 @@ public abstract class UserEntry extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseInt(jsonObject.get("id"));
+		id = GsonParser.parseLong(jsonObject.get("id"));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
