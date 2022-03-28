@@ -129,6 +129,8 @@ public class Partner extends ObjectBase {
 		String numPrevPassToKeep();
 		String twoFactorAuthenticationMode();
 		String isSelfServe();
+		String allowedDomains();
+		String excludedAdminRoleName();
 	}
 
 	private Integer id;
@@ -225,6 +227,8 @@ public class Partner extends ObjectBase {
 	private Integer numPrevPassToKeep;
 	private TwoFactorAuthenticationMode twoFactorAuthenticationMode;
 	private Boolean isSelfServe;
+	private String allowedDomains;
+	private String excludedAdminRoleName;
 
 	// id:
 	public Integer getId(){
@@ -838,6 +842,14 @@ public class Partner extends ObjectBase {
 		setToken("isSelfServe", multirequestToken);
 	}
 
+	// allowedDomains:
+	public String getAllowedDomains(){
+		return this.allowedDomains;
+	}
+	// excludedAdminRoleName:
+	public String getExcludedAdminRoleName(){
+		return this.excludedAdminRoleName;
+	}
 
 	public Partner() {
 		super();
@@ -925,6 +937,8 @@ public class Partner extends ObjectBase {
 		numPrevPassToKeep = GsonParser.parseInt(jsonObject.get("numPrevPassToKeep"));
 		twoFactorAuthenticationMode = TwoFactorAuthenticationMode.get(GsonParser.parseInt(jsonObject.get("twoFactorAuthenticationMode")));
 		isSelfServe = GsonParser.parseBoolean(jsonObject.get("isSelfServe"));
+		allowedDomains = GsonParser.parseString(jsonObject.get("allowedDomains"));
+		excludedAdminRoleName = GsonParser.parseString(jsonObject.get("excludedAdminRoleName"));
 
 	}
 
