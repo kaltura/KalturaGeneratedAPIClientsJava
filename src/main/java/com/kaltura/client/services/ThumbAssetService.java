@@ -456,7 +456,7 @@ public class ThumbAssetService {
 	}
 
 	/**
-	 * Serves thumbnail by entry id and thumnail params id
+	 * Serves thumbnail by entry id and thumbnail params id
 	 * 
 	 * @param entryId 
 	 * @param thumbParamId if not set, default thumbnail will be used.

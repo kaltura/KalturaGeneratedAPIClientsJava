@@ -314,7 +314,7 @@ public class CategoryService {
 	}
 
 	/**
-	 * Move categories that belong to the same parent category to a target categroy -
+	 * Move categories that belong to the same parent category to a target category -
 	  enabled only for ks with disable entitlement
 	 * 
 	 * @param categoryIds 

@@ -62,7 +62,7 @@ public class StatsService {
 
 	/**
 	 * Will write to the event log a single line representing the event   client
-	  version - will help interprete the line structure. different client versions
+	  version - will help interpret the line structure. Different client versions
 	  might have slightly different data/data formats in the line event_id - number is
 	  the row number in yuval's excel datetime - same format as MySql's datetime - can
 	  change and should reflect the time zone session id - can be some big random
@@ -88,7 +88,7 @@ public class StatsService {
 	/**
 	 * Will collect the kmcEvent sent form the KMC client   // this will actually be an
 	  empty function because all events will be sent using GET and will anyway be
-	  logged in the apache log
+	  logged in the Apache log
 	 * 
 	 * @param kmcEvent 
 	 */
