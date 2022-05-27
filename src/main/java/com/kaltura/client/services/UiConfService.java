@@ -79,7 +79,7 @@ public class UiConfService {
 	
 	public static class CloneUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, CloneUiConfBuilder> {
 		
-		public CloneUiConfBuilder(int id) {
+		public CloneUiConfBuilder(long id) {
 			super(UiConf.class, "uiconf", "clone");
 			params.add("id", id);
 		}
@@ -94,13 +94,13 @@ public class UiConfService {
 	 * 
 	 * @param id 
 	 */
-    public static CloneUiConfBuilder clone(int id)  {
+    public static CloneUiConfBuilder clone(long id)  {
 		return new CloneUiConfBuilder(id);
 	}
 	
 	public static class DeleteUiConfBuilder extends NullRequestBuilder {
 		
-		public DeleteUiConfBuilder(int id) {
+		public DeleteUiConfBuilder(long id) {
 			super("uiconf", "delete");
 			params.add("id", id);
 		}
@@ -115,13 +115,13 @@ public class UiConfService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteUiConfBuilder delete(int id)  {
+    public static DeleteUiConfBuilder delete(long id)  {
 		return new DeleteUiConfBuilder(id);
 	}
 	
 	public static class GetUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, GetUiConfBuilder> {
 		
-		public GetUiConfBuilder(int id) {
+		public GetUiConfBuilder(long id) {
 			super(UiConf.class, "uiconf", "get");
 			params.add("id", id);
 		}
@@ -136,7 +136,7 @@ public class UiConfService {
 	 * 
 	 * @param id 
 	 */
-    public static GetUiConfBuilder get(int id)  {
+    public static GetUiConfBuilder get(long id)  {
 		return new GetUiConfBuilder(id);
 	}
 	
@@ -210,7 +210,7 @@ public class UiConfService {
 	
 	public static class UpdateUiConfBuilder extends RequestBuilder<UiConf, UiConf.Tokenizer, UpdateUiConfBuilder> {
 		
-		public UpdateUiConfBuilder(int id, UiConf uiConf) {
+		public UpdateUiConfBuilder(long id, UiConf uiConf) {
 			super(UiConf.class, "uiconf", "update");
 			params.add("id", id);
 			params.add("uiConf", uiConf);
@@ -227,7 +227,7 @@ public class UiConfService {
 	 * @param id 
 	 * @param uiConf 
 	 */
-    public static UpdateUiConfBuilder update(int id, UiConf uiConf)  {
+    public static UpdateUiConfBuilder update(long id, UiConf uiConf)  {
 		return new UpdateUiConfBuilder(id, uiConf);
 	}
 }
