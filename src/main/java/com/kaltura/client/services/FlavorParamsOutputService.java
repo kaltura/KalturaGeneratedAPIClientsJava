@@ -51,7 +51,7 @@ public class FlavorParamsOutputService {
 	
 	public static class GetFlavorParamsOutputBuilder extends RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.Tokenizer, GetFlavorParamsOutputBuilder> {
 		
-		public GetFlavorParamsOutputBuilder(long id) {
+		public GetFlavorParamsOutputBuilder(int id) {
 			super(FlavorParamsOutput.class, "flavorparamsoutput", "get");
 			params.add("id", id);
 		}
@@ -66,7 +66,7 @@ public class FlavorParamsOutputService {
 	 * 
 	 * @param id 
 	 */
-    public static GetFlavorParamsOutputBuilder get(long id)  {
+    public static GetFlavorParamsOutputBuilder get(int id)  {
 		return new GetFlavorParamsOutputBuilder(id);
 	}
 	

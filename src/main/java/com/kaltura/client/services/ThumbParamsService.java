@@ -75,7 +75,7 @@ public class ThumbParamsService {
 	
 	public static class DeleteThumbParamsBuilder extends NullRequestBuilder {
 		
-		public DeleteThumbParamsBuilder(long id) {
+		public DeleteThumbParamsBuilder(int id) {
 			super("thumbparams", "delete");
 			params.add("id", id);
 		}
@@ -90,13 +90,13 @@ public class ThumbParamsService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteThumbParamsBuilder delete(long id)  {
+    public static DeleteThumbParamsBuilder delete(int id)  {
 		return new DeleteThumbParamsBuilder(id);
 	}
 	
 	public static class GetThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, GetThumbParamsBuilder> {
 		
-		public GetThumbParamsBuilder(long id) {
+		public GetThumbParamsBuilder(int id) {
 			super(ThumbParams.class, "thumbparams", "get");
 			params.add("id", id);
 		}
@@ -111,7 +111,7 @@ public class ThumbParamsService {
 	 * 
 	 * @param id 
 	 */
-    public static GetThumbParamsBuilder get(long id)  {
+    public static GetThumbParamsBuilder get(int id)  {
 		return new GetThumbParamsBuilder(id);
 	}
 	
@@ -166,7 +166,7 @@ public class ThumbParamsService {
 	
 	public static class UpdateThumbParamsBuilder extends RequestBuilder<ThumbParams, ThumbParams.Tokenizer, UpdateThumbParamsBuilder> {
 		
-		public UpdateThumbParamsBuilder(long id, ThumbParams thumbParams) {
+		public UpdateThumbParamsBuilder(int id, ThumbParams thumbParams) {
 			super(ThumbParams.class, "thumbparams", "update");
 			params.add("id", id);
 			params.add("thumbParams", thumbParams);
@@ -183,7 +183,7 @@ public class ThumbParamsService {
 	 * @param id 
 	 * @param thumbParams 
 	 */
-    public static UpdateThumbParamsBuilder update(long id, ThumbParams thumbParams)  {
+    public static UpdateThumbParamsBuilder update(int id, ThumbParams thumbParams)  {
 		return new UpdateThumbParamsBuilder(id, thumbParams);
 	}
 }

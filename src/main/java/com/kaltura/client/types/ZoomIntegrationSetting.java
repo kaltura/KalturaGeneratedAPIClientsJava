@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.ZoomGroupParticipationType;
 import com.kaltura.client.enums.ZoomUsersMatching;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -55,6 +56,9 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		String enableZoomTranscription();
 		String zoomAccountDescription();
 		String enableMeetingUpload();
+		String optOutGroupNames();
+		String optInGroupNames();
+		String groupParticipationType();
 	}
 
 	private String zoomCategory;
@@ -67,6 +71,9 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 	private Boolean enableZoomTranscription;
 	private String zoomAccountDescription;
 	private Boolean enableMeetingUpload;
+	private String optOutGroupNames;
+	private String optInGroupNames;
+	private ZoomGroupParticipationType groupParticipationType;
 
 	// zoomCategory:
 	public String getZoomCategory(){
@@ -188,6 +195,42 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		setToken("enableMeetingUpload", multirequestToken);
 	}
 
+	// optOutGroupNames:
+	public String getOptOutGroupNames(){
+		return this.optOutGroupNames;
+	}
+	public void setOptOutGroupNames(String optOutGroupNames){
+		this.optOutGroupNames = optOutGroupNames;
+	}
+
+	public void optOutGroupNames(String multirequestToken){
+		setToken("optOutGroupNames", multirequestToken);
+	}
+
+	// optInGroupNames:
+	public String getOptInGroupNames(){
+		return this.optInGroupNames;
+	}
+	public void setOptInGroupNames(String optInGroupNames){
+		this.optInGroupNames = optInGroupNames;
+	}
+
+	public void optInGroupNames(String multirequestToken){
+		setToken("optInGroupNames", multirequestToken);
+	}
+
+	// groupParticipationType:
+	public ZoomGroupParticipationType getGroupParticipationType(){
+		return this.groupParticipationType;
+	}
+	public void setGroupParticipationType(ZoomGroupParticipationType groupParticipationType){
+		this.groupParticipationType = groupParticipationType;
+	}
+
+	public void groupParticipationType(String multirequestToken){
+		setToken("groupParticipationType", multirequestToken);
+	}
+
 
 	public ZoomIntegrationSetting() {
 		super();
@@ -209,6 +252,9 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		enableZoomTranscription = GsonParser.parseBoolean(jsonObject.get("enableZoomTranscription"));
 		zoomAccountDescription = GsonParser.parseString(jsonObject.get("zoomAccountDescription"));
 		enableMeetingUpload = GsonParser.parseBoolean(jsonObject.get("enableMeetingUpload"));
+		optOutGroupNames = GsonParser.parseString(jsonObject.get("optOutGroupNames"));
+		optInGroupNames = GsonParser.parseString(jsonObject.get("optInGroupNames"));
+		groupParticipationType = ZoomGroupParticipationType.get(GsonParser.parseInt(jsonObject.get("groupParticipationType")));
 
 	}
 
@@ -225,6 +271,9 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		kparams.add("enableZoomTranscription", this.enableZoomTranscription);
 		kparams.add("zoomAccountDescription", this.zoomAccountDescription);
 		kparams.add("enableMeetingUpload", this.enableMeetingUpload);
+		kparams.add("optOutGroupNames", this.optOutGroupNames);
+		kparams.add("optInGroupNames", this.optInGroupNames);
+		kparams.add("groupParticipationType", this.groupParticipationType);
 		return kparams;
 	}
 

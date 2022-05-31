@@ -124,7 +124,7 @@ public abstract class LiveEntry extends MediaEntry {
 	 * The time (unix timestamp in milliseconds) in which the entry broadcast started
 	  or 0 when the entry is off the air
 	 */
-	private Integer currentBroadcastStartTime;
+	private Double currentBroadcastStartTime;
 	private LiveEntryRecordingOptions recordingOptions;
 	/**
 	 * the status of the entry of type EntryServerNodeStatus
@@ -255,10 +255,10 @@ public abstract class LiveEntry extends MediaEntry {
 		return this.lastBroadcast;
 	}
 	// currentBroadcastStartTime:
-	public Integer getCurrentBroadcastStartTime(){
+	public Double getCurrentBroadcastStartTime(){
 		return this.currentBroadcastStartTime;
 	}
-	public void setCurrentBroadcastStartTime(Integer currentBroadcastStartTime){
+	public void setCurrentBroadcastStartTime(Double currentBroadcastStartTime){
 		this.currentBroadcastStartTime = currentBroadcastStartTime;
 	}
 
@@ -364,7 +364,7 @@ public abstract class LiveEntry extends MediaEntry {
 		publishConfigurations = GsonParser.parseArray(jsonObject.getAsJsonArray("publishConfigurations"), LiveStreamPushPublishConfiguration.class);
 		firstBroadcast = GsonParser.parseInt(jsonObject.get("firstBroadcast"));
 		lastBroadcast = GsonParser.parseInt(jsonObject.get("lastBroadcast"));
-		currentBroadcastStartTime = GsonParser.parseInt(jsonObject.get("currentBroadcastStartTime"));
+		currentBroadcastStartTime = GsonParser.parseDouble(jsonObject.get("currentBroadcastStartTime"));
 		recordingOptions = GsonParser.parseObject(jsonObject.getAsJsonObject("recordingOptions"), LiveEntryRecordingOptions.class);
 		liveStatus = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("liveStatus")));
 		segmentDuration = GsonParser.parseInt(jsonObject.get("segmentDuration"));

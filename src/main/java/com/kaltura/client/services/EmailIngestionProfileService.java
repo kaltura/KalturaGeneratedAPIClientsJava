@@ -117,7 +117,7 @@ public class EmailIngestionProfileService {
 	
 	public static class DeleteEmailIngestionProfileBuilder extends NullRequestBuilder {
 		
-		public DeleteEmailIngestionProfileBuilder(long id) {
+		public DeleteEmailIngestionProfileBuilder(int id) {
 			super("emailingestionprofile", "delete");
 			params.add("id", id);
 		}
@@ -132,13 +132,13 @@ public class EmailIngestionProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteEmailIngestionProfileBuilder delete(long id)  {
+    public static DeleteEmailIngestionProfileBuilder delete(int id)  {
 		return new DeleteEmailIngestionProfileBuilder(id);
 	}
 	
 	public static class GetEmailIngestionProfileBuilder extends RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.Tokenizer, GetEmailIngestionProfileBuilder> {
 		
-		public GetEmailIngestionProfileBuilder(long id) {
+		public GetEmailIngestionProfileBuilder(int id) {
 			super(EmailIngestionProfile.class, "emailingestionprofile", "get");
 			params.add("id", id);
 		}
@@ -153,7 +153,7 @@ public class EmailIngestionProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static GetEmailIngestionProfileBuilder get(long id)  {
+    public static GetEmailIngestionProfileBuilder get(int id)  {
 		return new GetEmailIngestionProfileBuilder(id);
 	}
 	
@@ -180,7 +180,7 @@ public class EmailIngestionProfileService {
 	
 	public static class UpdateEmailIngestionProfileBuilder extends RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.Tokenizer, UpdateEmailIngestionProfileBuilder> {
 		
-		public UpdateEmailIngestionProfileBuilder(long id, EmailIngestionProfile EmailIP) {
+		public UpdateEmailIngestionProfileBuilder(int id, EmailIngestionProfile EmailIP) {
 			super(EmailIngestionProfile.class, "emailingestionprofile", "update");
 			params.add("id", id);
 			params.add("EmailIP", EmailIP);
@@ -197,7 +197,7 @@ public class EmailIngestionProfileService {
 	 * @param id 
 	 * @param EmailIP 
 	 */
-    public static UpdateEmailIngestionProfileBuilder update(long id, EmailIngestionProfile EmailIP)  {
+    public static UpdateEmailIngestionProfileBuilder update(int id, EmailIngestionProfile EmailIP)  {
 		return new UpdateEmailIngestionProfileBuilder(id, EmailIP);
 	}
 }

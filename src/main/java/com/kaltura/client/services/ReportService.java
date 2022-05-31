@@ -99,7 +99,7 @@ public class ReportService {
 	
 	public static class ExecuteReportBuilder extends RequestBuilder<ReportResponse, ReportResponse.Tokenizer, ExecuteReportBuilder> {
 		
-		public ExecuteReportBuilder(long id, List<KeyValue> params_) {
+		public ExecuteReportBuilder(int id, List<KeyValue> params_) {
 			super(ReportResponse.class, "report", "execute");
 			params.add("id", id);
 			params.add("params", params_);
@@ -110,11 +110,11 @@ public class ReportService {
 		}
 	}
 
-	public static ExecuteReportBuilder execute(long id)  {
+	public static ExecuteReportBuilder execute(int id)  {
 		return execute(id, null);
 	}
 
-    public static ExecuteReportBuilder execute(long id, List<KeyValue> params)  {
+    public static ExecuteReportBuilder execute(int id, List<KeyValue> params)  {
 		return new ExecuteReportBuilder(id, params);
 	}
 	
@@ -171,7 +171,7 @@ public class ReportService {
 	
 	public static class GetCsvReportBuilder extends ServeRequestBuilder {
 		
-		public GetCsvReportBuilder(long id, List<KeyValue> params_, String excludedFields) {
+		public GetCsvReportBuilder(int id, List<KeyValue> params_, String excludedFields) {
 			super("report", "getCsv");
 			params.add("id", id);
 			params.add("params", params_);
@@ -187,21 +187,21 @@ public class ReportService {
 		}
 	}
 
-	public static GetCsvReportBuilder getCsv(long id)  {
+	public static GetCsvReportBuilder getCsv(int id)  {
 		return getCsv(id, null);
 	}
 
-	public static GetCsvReportBuilder getCsv(long id, List<KeyValue> params)  {
+	public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params)  {
 		return getCsv(id, params, null);
 	}
 
-    public static GetCsvReportBuilder getCsv(long id, List<KeyValue> params, String excludedFields)  {
+    public static GetCsvReportBuilder getCsv(int id, List<KeyValue> params, String excludedFields)  {
 		return new GetCsvReportBuilder(id, params, excludedFields);
 	}
 	
 	public static class GetCsvFromStringParamsReportBuilder extends ServeRequestBuilder {
 		
-		public GetCsvFromStringParamsReportBuilder(long id, String params_, String excludedFields) {
+		public GetCsvFromStringParamsReportBuilder(int id, String params_, String excludedFields) {
 			super("report", "getCsvFromStringParams");
 			params.add("id", id);
 			params.add("params", params_);
@@ -221,11 +221,11 @@ public class ReportService {
 		}
 	}
 
-	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(long id)  {
+	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id)  {
 		return getCsvFromStringParams(id, null);
 	}
 
-	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(long id, String params)  {
+	public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params)  {
 		return getCsvFromStringParams(id, params, null);
 	}
 
@@ -237,7 +237,7 @@ public class ReportService {
 	 * @param params_ 
 	 * @param excludedFields 
 	 */
-    public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(long id, String params, String excludedFields)  {
+    public static GetCsvFromStringParamsReportBuilder getCsvFromStringParams(int id, String params, String excludedFields)  {
 		return new GetCsvFromStringParamsReportBuilder(id, params, excludedFields);
 	}
 	

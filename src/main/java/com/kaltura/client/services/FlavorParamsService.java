@@ -75,7 +75,7 @@ public class FlavorParamsService {
 	
 	public static class DeleteFlavorParamsBuilder extends NullRequestBuilder {
 		
-		public DeleteFlavorParamsBuilder(long id) {
+		public DeleteFlavorParamsBuilder(int id) {
 			super("flavorparams", "delete");
 			params.add("id", id);
 		}
@@ -90,13 +90,13 @@ public class FlavorParamsService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteFlavorParamsBuilder delete(long id)  {
+    public static DeleteFlavorParamsBuilder delete(int id)  {
 		return new DeleteFlavorParamsBuilder(id);
 	}
 	
 	public static class GetFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, GetFlavorParamsBuilder> {
 		
-		public GetFlavorParamsBuilder(long id) {
+		public GetFlavorParamsBuilder(int id) {
 			super(FlavorParams.class, "flavorparams", "get");
 			params.add("id", id);
 		}
@@ -111,7 +111,7 @@ public class FlavorParamsService {
 	 * 
 	 * @param id 
 	 */
-    public static GetFlavorParamsBuilder get(long id)  {
+    public static GetFlavorParamsBuilder get(int id)  {
 		return new GetFlavorParamsBuilder(id);
 	}
 	
@@ -166,7 +166,7 @@ public class FlavorParamsService {
 	
 	public static class UpdateFlavorParamsBuilder extends RequestBuilder<FlavorParams, FlavorParams.Tokenizer, UpdateFlavorParamsBuilder> {
 		
-		public UpdateFlavorParamsBuilder(long id, FlavorParams flavorParams) {
+		public UpdateFlavorParamsBuilder(int id, FlavorParams flavorParams) {
 			super(FlavorParams.class, "flavorparams", "update");
 			params.add("id", id);
 			params.add("flavorParams", flavorParams);
@@ -183,7 +183,7 @@ public class FlavorParamsService {
 	 * @param id 
 	 * @param flavorParams 
 	 */
-    public static UpdateFlavorParamsBuilder update(long id, FlavorParams flavorParams)  {
+    public static UpdateFlavorParamsBuilder update(int id, FlavorParams flavorParams)  {
 		return new UpdateFlavorParamsBuilder(id, flavorParams);
 	}
 }

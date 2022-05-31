@@ -73,7 +73,7 @@ public class AccessControlService {
 	
 	public static class DeleteAccessControlBuilder extends NullRequestBuilder {
 		
-		public DeleteAccessControlBuilder(long id) {
+		public DeleteAccessControlBuilder(int id) {
 			super("accesscontrol", "delete");
 			params.add("id", id);
 		}
@@ -88,13 +88,13 @@ public class AccessControlService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteAccessControlBuilder delete(long id)  {
+    public static DeleteAccessControlBuilder delete(int id)  {
 		return new DeleteAccessControlBuilder(id);
 	}
 	
 	public static class GetAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, GetAccessControlBuilder> {
 		
-		public GetAccessControlBuilder(long id) {
+		public GetAccessControlBuilder(int id) {
 			super(AccessControl.class, "accesscontrol", "get");
 			params.add("id", id);
 		}
@@ -109,7 +109,7 @@ public class AccessControlService {
 	 * 
 	 * @param id 
 	 */
-    public static GetAccessControlBuilder get(long id)  {
+    public static GetAccessControlBuilder get(int id)  {
 		return new GetAccessControlBuilder(id);
 	}
 	
@@ -142,7 +142,7 @@ public class AccessControlService {
 	
 	public static class UpdateAccessControlBuilder extends RequestBuilder<AccessControl, AccessControl.Tokenizer, UpdateAccessControlBuilder> {
 		
-		public UpdateAccessControlBuilder(long id, AccessControl accessControl) {
+		public UpdateAccessControlBuilder(int id, AccessControl accessControl) {
 			super(AccessControl.class, "accesscontrol", "update");
 			params.add("id", id);
 			params.add("accessControl", accessControl);
@@ -159,7 +159,7 @@ public class AccessControlService {
 	 * @param id 
 	 * @param accessControl 
 	 */
-    public static UpdateAccessControlBuilder update(long id, AccessControl accessControl)  {
+    public static UpdateAccessControlBuilder update(int id, AccessControl accessControl)  {
 		return new UpdateAccessControlBuilder(id, accessControl);
 	}
 }

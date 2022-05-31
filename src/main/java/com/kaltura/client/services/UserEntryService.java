@@ -74,7 +74,7 @@ public class UserEntryService {
 	
 	public static class DeleteUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, DeleteUserEntryBuilder> {
 		
-		public DeleteUserEntryBuilder(long id) {
+		public DeleteUserEntryBuilder(int id) {
 			super(UserEntry.class, "userentry", "delete");
 			params.add("id", id);
 		}
@@ -84,7 +84,7 @@ public class UserEntryService {
 		}
 	}
 
-    public static DeleteUserEntryBuilder delete(long id)  {
+    public static DeleteUserEntryBuilder delete(int id)  {
 		return new DeleteUserEntryBuilder(id);
 	}
 	
@@ -149,7 +149,7 @@ public class UserEntryService {
 	
 	public static class UpdateUserEntryBuilder extends RequestBuilder<UserEntry, UserEntry.Tokenizer, UpdateUserEntryBuilder> {
 		
-		public UpdateUserEntryBuilder(long id, UserEntry userEntry) {
+		public UpdateUserEntryBuilder(int id, UserEntry userEntry) {
 			super(UserEntry.class, "userentry", "update");
 			params.add("id", id);
 			params.add("userEntry", userEntry);
@@ -160,7 +160,7 @@ public class UserEntryService {
 		}
 	}
 
-    public static UpdateUserEntryBuilder update(long id, UserEntry userEntry)  {
+    public static UpdateUserEntryBuilder update(int id, UserEntry userEntry)  {
 		return new UpdateUserEntryBuilder(id, userEntry);
 	}
 }

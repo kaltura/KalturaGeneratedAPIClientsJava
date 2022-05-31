@@ -76,7 +76,7 @@ public class ConversionProfileService {
 	
 	public static class DeleteConversionProfileBuilder extends NullRequestBuilder {
 		
-		public DeleteConversionProfileBuilder(long id) {
+		public DeleteConversionProfileBuilder(int id) {
 			super("conversionprofile", "delete");
 			params.add("id", id);
 		}
@@ -91,13 +91,13 @@ public class ConversionProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteConversionProfileBuilder delete(long id)  {
+    public static DeleteConversionProfileBuilder delete(int id)  {
 		return new DeleteConversionProfileBuilder(id);
 	}
 	
 	public static class GetConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, GetConversionProfileBuilder> {
 		
-		public GetConversionProfileBuilder(long id) {
+		public GetConversionProfileBuilder(int id) {
 			super(ConversionProfile.class, "conversionprofile", "get");
 			params.add("id", id);
 		}
@@ -112,7 +112,7 @@ public class ConversionProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static GetConversionProfileBuilder get(long id)  {
+    public static GetConversionProfileBuilder get(int id)  {
 		return new GetConversionProfileBuilder(id);
 	}
 	
@@ -170,7 +170,7 @@ public class ConversionProfileService {
 	
 	public static class SetAsDefaultConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, SetAsDefaultConversionProfileBuilder> {
 		
-		public SetAsDefaultConversionProfileBuilder(long id) {
+		public SetAsDefaultConversionProfileBuilder(int id) {
 			super(ConversionProfile.class, "conversionprofile", "setAsDefault");
 			params.add("id", id);
 		}
@@ -185,13 +185,13 @@ public class ConversionProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static SetAsDefaultConversionProfileBuilder setAsDefault(long id)  {
+    public static SetAsDefaultConversionProfileBuilder setAsDefault(int id)  {
 		return new SetAsDefaultConversionProfileBuilder(id);
 	}
 	
 	public static class UpdateConversionProfileBuilder extends RequestBuilder<ConversionProfile, ConversionProfile.Tokenizer, UpdateConversionProfileBuilder> {
 		
-		public UpdateConversionProfileBuilder(long id, ConversionProfile conversionProfile) {
+		public UpdateConversionProfileBuilder(int id, ConversionProfile conversionProfile) {
 			super(ConversionProfile.class, "conversionprofile", "update");
 			params.add("id", id);
 			params.add("conversionProfile", conversionProfile);
@@ -208,7 +208,7 @@ public class ConversionProfileService {
 	 * @param id 
 	 * @param conversionProfile 
 	 */
-    public static UpdateConversionProfileBuilder update(long id, ConversionProfile conversionProfile)  {
+    public static UpdateConversionProfileBuilder update(int id, ConversionProfile conversionProfile)  {
 		return new UpdateConversionProfileBuilder(id, conversionProfile);
 	}
 }

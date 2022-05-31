@@ -95,7 +95,7 @@ public class EntryServerNodeService {
 	
 	public static class UpdateEntryServerNodeBuilder extends RequestBuilder<EntryServerNode, EntryServerNode.Tokenizer, UpdateEntryServerNodeBuilder> {
 		
-		public UpdateEntryServerNodeBuilder(long id, EntryServerNode entryServerNode) {
+		public UpdateEntryServerNodeBuilder(int id, EntryServerNode entryServerNode) {
 			super(EntryServerNode.class, "entryservernode", "update");
 			params.add("id", id);
 			params.add("entryServerNode", entryServerNode);
@@ -106,7 +106,7 @@ public class EntryServerNodeService {
 		}
 	}
 
-    public static UpdateEntryServerNodeBuilder update(long id, EntryServerNode entryServerNode)  {
+    public static UpdateEntryServerNodeBuilder update(int id, EntryServerNode entryServerNode)  {
 		return new UpdateEntryServerNodeBuilder(id, entryServerNode);
 	}
 	
@@ -133,7 +133,7 @@ public class EntryServerNodeService {
 	
 	public static class ValidateRegisteredEntryServerNodeEntryServerNodeBuilder extends NullRequestBuilder {
 		
-		public ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(long id) {
+		public ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(int id) {
 			super("entryservernode", "validateRegisteredEntryServerNode");
 			params.add("id", id);
 		}
@@ -148,7 +148,7 @@ public class EntryServerNodeService {
 	 * 
 	 * @param id entry server node id
 	 */
-    public static ValidateRegisteredEntryServerNodeEntryServerNodeBuilder validateRegisteredEntryServerNode(long id)  {
+    public static ValidateRegisteredEntryServerNodeEntryServerNodeBuilder validateRegisteredEntryServerNode(int id)  {
 		return new ValidateRegisteredEntryServerNodeEntryServerNodeBuilder(id);
 	}
 }
