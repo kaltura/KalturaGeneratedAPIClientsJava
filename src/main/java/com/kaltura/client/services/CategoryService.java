@@ -188,7 +188,7 @@ public class CategoryService {
 	
 	public static class DeleteCategoryBuilder extends NullRequestBuilder {
 		
-		public DeleteCategoryBuilder(int id, Boolean moveEntriesToParentCategory) {
+		public DeleteCategoryBuilder(long id, Boolean moveEntriesToParentCategory) {
 			super("category", "delete");
 			params.add("id", id);
 			params.add("moveEntriesToParentCategory", moveEntriesToParentCategory);
@@ -203,7 +203,7 @@ public class CategoryService {
 		}
 	}
 
-	public static DeleteCategoryBuilder delete(int id)  {
+	public static DeleteCategoryBuilder delete(long id)  {
 		return delete(id, true);
 	}
 
@@ -213,13 +213,13 @@ public class CategoryService {
 	 * @param id 
 	 * @param moveEntriesToParentCategory 
 	 */
-    public static DeleteCategoryBuilder delete(int id, Boolean moveEntriesToParentCategory)  {
+    public static DeleteCategoryBuilder delete(long id, Boolean moveEntriesToParentCategory)  {
 		return new DeleteCategoryBuilder(id, moveEntriesToParentCategory);
 	}
 	
 	public static class GetCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, GetCategoryBuilder> {
 		
-		public GetCategoryBuilder(int id) {
+		public GetCategoryBuilder(long id) {
 			super(Category.class, "category", "get");
 			params.add("id", id);
 		}
@@ -234,13 +234,13 @@ public class CategoryService {
 	 * 
 	 * @param id 
 	 */
-    public static GetCategoryBuilder get(int id)  {
+    public static GetCategoryBuilder get(long id)  {
 		return new GetCategoryBuilder(id);
 	}
 	
 	public static class IndexCategoryBuilder extends RequestBuilder<Integer, String, IndexCategoryBuilder> {
 		
-		public IndexCategoryBuilder(int id, boolean shouldUpdate) {
+		public IndexCategoryBuilder(long id, boolean shouldUpdate) {
 			super(Integer.class, "category", "index");
 			params.add("id", id);
 			params.add("shouldUpdate", shouldUpdate);
@@ -255,7 +255,7 @@ public class CategoryService {
 		}
 	}
 
-	public static IndexCategoryBuilder index(int id)  {
+	public static IndexCategoryBuilder index(long id)  {
 		return index(id, true);
 	}
 
@@ -265,7 +265,7 @@ public class CategoryService {
 	 * @param id 
 	 * @param shouldUpdate 
 	 */
-    public static IndexCategoryBuilder index(int id, boolean shouldUpdate)  {
+    public static IndexCategoryBuilder index(long id, boolean shouldUpdate)  {
 		return new IndexCategoryBuilder(id, shouldUpdate);
 	}
 	
@@ -340,7 +340,7 @@ public class CategoryService {
 	
 	public static class UpdateCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, UpdateCategoryBuilder> {
 		
-		public UpdateCategoryBuilder(int id, Category category) {
+		public UpdateCategoryBuilder(long id, Category category) {
 			super(Category.class, "category", "update");
 			params.add("id", id);
 			params.add("category", category);
@@ -357,7 +357,7 @@ public class CategoryService {
 	 * @param id 
 	 * @param category 
 	 */
-    public static UpdateCategoryBuilder update(int id, Category category)  {
+    public static UpdateCategoryBuilder update(long id, Category category)  {
 		return new UpdateCategoryBuilder(id, category);
 	}
 }

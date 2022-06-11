@@ -99,7 +99,7 @@ public class PartnerService {
 	
 	public static class GetPartnerBuilder extends RequestBuilder<Partner, Partner.Tokenizer, GetPartnerBuilder> {
 		
-		public GetPartnerBuilder(int id) {
+		public GetPartnerBuilder(long id) {
 			super(Partner.class, "partner", "get");
 			params.add("id", id);
 		}
@@ -110,7 +110,7 @@ public class PartnerService {
 	}
 
 	public static GetPartnerBuilder get()  {
-		return get(Integer.MIN_VALUE);
+		return get(Long.MIN_VALUE);
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class PartnerService {
 	 * 
 	 * @param id 
 	 */
-    public static GetPartnerBuilder get(int id)  {
+    public static GetPartnerBuilder get(long id)  {
 		return new GetPartnerBuilder(id);
 	}
 	
@@ -139,7 +139,7 @@ public class PartnerService {
 	
 	public static class GetPublicInfoPartnerBuilder extends RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.Tokenizer, GetPublicInfoPartnerBuilder> {
 		
-		public GetPublicInfoPartnerBuilder(int id) {
+		public GetPublicInfoPartnerBuilder(long id) {
 			super(PartnerPublicInfo.class, "partner", "getPublicInfo");
 			params.add("id", id);
 		}
@@ -150,7 +150,7 @@ public class PartnerService {
 	}
 
 	public static GetPublicInfoPartnerBuilder getPublicInfo()  {
-		return getPublicInfo(Integer.MIN_VALUE);
+		return getPublicInfo(Long.MIN_VALUE);
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class PartnerService {
 	 * 
 	 * @param id 
 	 */
-    public static GetPublicInfoPartnerBuilder getPublicInfo(int id)  {
+    public static GetPublicInfoPartnerBuilder getPublicInfo(long id)  {
 		return new GetPublicInfoPartnerBuilder(id);
 	}
 	

@@ -73,7 +73,7 @@ public class AccessControlProfileService {
 	
 	public static class DeleteAccessControlProfileBuilder extends NullRequestBuilder {
 		
-		public DeleteAccessControlProfileBuilder(int id) {
+		public DeleteAccessControlProfileBuilder(long id) {
 			super("accesscontrolprofile", "delete");
 			params.add("id", id);
 		}
@@ -88,13 +88,13 @@ public class AccessControlProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteAccessControlProfileBuilder delete(int id)  {
+    public static DeleteAccessControlProfileBuilder delete(long id)  {
 		return new DeleteAccessControlProfileBuilder(id);
 	}
 	
 	public static class GetAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, GetAccessControlProfileBuilder> {
 		
-		public GetAccessControlProfileBuilder(int id) {
+		public GetAccessControlProfileBuilder(long id) {
 			super(AccessControlProfile.class, "accesscontrolprofile", "get");
 			params.add("id", id);
 		}
@@ -109,7 +109,7 @@ public class AccessControlProfileService {
 	 * 
 	 * @param id 
 	 */
-    public static GetAccessControlProfileBuilder get(int id)  {
+    public static GetAccessControlProfileBuilder get(long id)  {
 		return new GetAccessControlProfileBuilder(id);
 	}
 	
@@ -142,7 +142,7 @@ public class AccessControlProfileService {
 	
 	public static class UpdateAccessControlProfileBuilder extends RequestBuilder<AccessControlProfile, AccessControlProfile.Tokenizer, UpdateAccessControlProfileBuilder> {
 		
-		public UpdateAccessControlProfileBuilder(int id, AccessControlProfile accessControlProfile) {
+		public UpdateAccessControlProfileBuilder(long id, AccessControlProfile accessControlProfile) {
 			super(AccessControlProfile.class, "accesscontrolprofile", "update");
 			params.add("id", id);
 			params.add("accessControlProfile", accessControlProfile);
@@ -159,7 +159,7 @@ public class AccessControlProfileService {
 	 * @param id 
 	 * @param accessControlProfile 
 	 */
-    public static UpdateAccessControlProfileBuilder update(int id, AccessControlProfile accessControlProfile)  {
+    public static UpdateAccessControlProfileBuilder update(long id, AccessControlProfile accessControlProfile)  {
 		return new UpdateAccessControlProfileBuilder(id, accessControlProfile);
 	}
 }

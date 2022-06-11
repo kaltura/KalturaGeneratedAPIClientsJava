@@ -35,6 +35,7 @@ package com.kaltura.client.enums;
  */
 public enum ESearchGroupFieldName implements EnumAsString {
 	COMPANY("company"),
+	COUNTRY("country"),
 	CREATED_AT("created_at"),
 	EMAIL("email"),
 	FIRST_NAME("first_name"),

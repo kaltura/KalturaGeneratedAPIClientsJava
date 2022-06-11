@@ -51,7 +51,7 @@ public class ThumbParamsOutputService {
 	
 	public static class GetThumbParamsOutputBuilder extends RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.Tokenizer, GetThumbParamsOutputBuilder> {
 		
-		public GetThumbParamsOutputBuilder(int id) {
+		public GetThumbParamsOutputBuilder(long id) {
 			super(ThumbParamsOutput.class, "thumbparamsoutput", "get");
 			params.add("id", id);
 		}
@@ -66,7 +66,7 @@ public class ThumbParamsOutputService {
 	 * 
 	 * @param id 
 	 */
-    public static GetThumbParamsOutputBuilder get(int id)  {
+    public static GetThumbParamsOutputBuilder get(long id)  {
 		return new GetThumbParamsOutputBuilder(id);
 	}
 	
