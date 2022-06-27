@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EntryType;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -46,16 +47,25 @@ public class ExportToCsvOptions extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String format();
+		String typeEqual();
+		String defaultHeader();
 	}
 
+	/**
+	 * The format of the outputted date string. There are also several predefined date
+	  constants that may be used instead, so for example DATE_RSS contains the format
+	  string 'D, d M Y H:i:s'.   https://www.php.net/manual/en/function.date.php
+	 */
+	private String format;
 	/**
 	 * Setting this property will cause additional columns to be added to the final
 	  report. The columns will be related to the specific object type passed
 	  (currently only MEDIA_CLIP is supported).   Please note that this property will
 	  NOT change the result filter in any way (i.e passing MEDIA_CLIP here will not
-	  force the report to return only media items).   /
+	  force the report to return only media items).
 	 */
-	private String format;
+	private EntryType typeEqual;
+	private Boolean defaultHeader;
 
 	// format:
 	public String getFormat(){
@@ -67,6 +77,30 @@ public class ExportToCsvOptions extends ObjectBase {
 
 	public void format(String multirequestToken){
 		setToken("format", multirequestToken);
+	}
+
+	// typeEqual:
+	public EntryType getTypeEqual(){
+		return this.typeEqual;
+	}
+	public void setTypeEqual(EntryType typeEqual){
+		this.typeEqual = typeEqual;
+	}
+
+	public void typeEqual(String multirequestToken){
+		setToken("typeEqual", multirequestToken);
+	}
+
+	// defaultHeader:
+	public Boolean getDefaultHeader(){
+		return this.defaultHeader;
+	}
+	public void setDefaultHeader(Boolean defaultHeader){
+		this.defaultHeader = defaultHeader;
+	}
+
+	public void defaultHeader(String multirequestToken){
+		setToken("defaultHeader", multirequestToken);
 	}
 
 
@@ -81,6 +115,8 @@ public class ExportToCsvOptions extends ObjectBase {
 
 		// set members values:
 		format = GsonParser.parseString(jsonObject.get("format"));
+		typeEqual = EntryType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
+		defaultHeader = GsonParser.parseBoolean(jsonObject.get("defaultHeader"));
 
 	}
 
@@ -88,6 +124,8 @@ public class ExportToCsvOptions extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaExportToCsvOptions");
 		kparams.add("format", this.format);
+		kparams.add("typeEqual", this.typeEqual);
+		kparams.add("defaultHeader", this.defaultHeader);
 		return kparams;
 	}
 

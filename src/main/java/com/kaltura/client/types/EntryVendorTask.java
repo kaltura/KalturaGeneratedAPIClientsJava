@@ -80,6 +80,7 @@ public class EntryVendorTask extends ObjectBase {
 		String serviceType();
 		String serviceFeature();
 		String turnAroundTime();
+		String externalTaskId();
 	}
 
 	private Long id;
@@ -157,6 +158,10 @@ public class EntryVendorTask extends ObjectBase {
 	private VendorServiceType serviceType;
 	private VendorServiceFeature serviceFeature;
 	private VendorServiceTurnAroundTime turnAroundTime;
+	/**
+	 * The vendor's task internal Id
+	 */
+	private String externalTaskId;
 
 	// id:
 	public Long getId(){
@@ -358,6 +363,18 @@ public class EntryVendorTask extends ObjectBase {
 	public VendorServiceTurnAroundTime getTurnAroundTime(){
 		return this.turnAroundTime;
 	}
+	// externalTaskId:
+	public String getExternalTaskId(){
+		return this.externalTaskId;
+	}
+	public void setExternalTaskId(String externalTaskId){
+		this.externalTaskId = externalTaskId;
+	}
+
+	public void externalTaskId(String multirequestToken){
+		setToken("externalTaskId", multirequestToken);
+	}
+
 
 	public EntryVendorTask() {
 		super();
@@ -398,6 +415,7 @@ public class EntryVendorTask extends ObjectBase {
 		serviceType = VendorServiceType.get(GsonParser.parseInt(jsonObject.get("serviceType")));
 		serviceFeature = VendorServiceFeature.get(GsonParser.parseInt(jsonObject.get("serviceFeature")));
 		turnAroundTime = VendorServiceTurnAroundTime.get(GsonParser.parseInt(jsonObject.get("turnAroundTime")));
+		externalTaskId = GsonParser.parseString(jsonObject.get("externalTaskId"));
 
 	}
 
@@ -415,6 +433,7 @@ public class EntryVendorTask extends ObjectBase {
 		kparams.add("outputObjectId", this.outputObjectId);
 		kparams.add("partnerData", this.partnerData);
 		kparams.add("taskJobData", this.taskJobData);
+		kparams.add("externalTaskId", this.externalTaskId);
 		return kparams;
 	}
 

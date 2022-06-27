@@ -35,6 +35,7 @@ import com.kaltura.client.types.BulkUpload;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.BulkUploadUserData;
 import com.kaltura.client.types.CsvAdditionalFieldInfo;
+import com.kaltura.client.types.ExportToCsvOptions;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.SessionResponse;
@@ -76,6 +77,7 @@ import java.util.List;
  * @param metadataProfileId 
  * @param additionalFields 
  * @param mappedFields mapping between field
+ * @param options 
  * @param hashKey 
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
@@ -310,12 +312,13 @@ public class UserService {
 	
 	public static class ExportToCsvUserBuilder extends RequestBuilder<String, String, ExportToCsvUserBuilder> {
 		
-		public ExportToCsvUserBuilder(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields) {
+		public ExportToCsvUserBuilder(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options) {
 			super(String.class, "user", "exportToCsv");
 			params.add("filter", filter);
 			params.add("metadataProfileId", metadataProfileId);
 			params.add("additionalFields", additionalFields);
 			params.add("mappedFields", mappedFields);
+			params.add("options", options);
 		}
 		
 		public void metadataProfileId(String multirequestToken) {
@@ -339,6 +342,10 @@ public class UserService {
 		return exportToCsv(filter, metadataProfileId, additionalFields, null);
 	}
 
+	public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, mappedFields, null);
+	}
+
 	/**
 	 * Creates a batch job that sends an email with a link to download a CSV containing
 	  a list of users
@@ -347,9 +354,10 @@ public class UserService {
 	 * @param metadataProfileId 
 	 * @param additionalFields 
 	 * @param mappedFields mapping between field
+	 * @param options 
 	 */
-    public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
-		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields, mappedFields);
+    public static ExportToCsvUserBuilder exportToCsv(UserFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options)  {
+		return new ExportToCsvUserBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
 	}
 	
 	public static class GenerateQrCodeUserBuilder extends RequestBuilder<String, String, GenerateQrCodeUserBuilder> {

@@ -37,6 +37,7 @@ import com.kaltura.client.types.CsvAdditionalFieldInfo;
 import com.kaltura.client.types.EntryContextDataParams;
 import com.kaltura.client.types.EntryContextDataResult;
 import com.kaltura.client.types.EntryReplacementOptions;
+import com.kaltura.client.types.ExportToCsvOptions;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.types.ModerationFlag;
@@ -84,6 +85,7 @@ import java.util.List;
  * @param metadataProfileId 
  * @param additionalFields 
  * @param mappedFields mapping between field headline and its mapped value
+ * @param options 
  * @param moderationFlag 
  * @param entryId Entry id
  * @param version Desired version of the data
@@ -345,12 +347,13 @@ public class BaseEntryService {
 	
 	public static class ExportToCsvBaseEntryBuilder extends RequestBuilder<String, String, ExportToCsvBaseEntryBuilder> {
 		
-		public ExportToCsvBaseEntryBuilder(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields) {
+		public ExportToCsvBaseEntryBuilder(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options) {
 			super(String.class, "baseentry", "exportToCsv");
 			params.add("filter", filter);
 			params.add("metadataProfileId", metadataProfileId);
 			params.add("additionalFields", additionalFields);
 			params.add("mappedFields", mappedFields);
+			params.add("options", options);
 		}
 		
 		public void metadataProfileId(String multirequestToken) {
@@ -374,6 +377,10 @@ public class BaseEntryService {
 		return exportToCsv(filter, metadataProfileId, additionalFields, null);
 	}
 
+	public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, mappedFields, null);
+	}
+
 	/**
 	 * add batch job that sends an email with a link to download an updated CSV that
 	  contains list of entries
@@ -382,9 +389,10 @@ public class BaseEntryService {
 	 * @param metadataProfileId 
 	 * @param additionalFields 
 	 * @param mappedFields mapping between field headline and its mapped value
+	 * @param options 
 	 */
-    public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
-		return new ExportToCsvBaseEntryBuilder(filter, metadataProfileId, additionalFields, mappedFields);
+    public static ExportToCsvBaseEntryBuilder exportToCsv(BaseEntryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options)  {
+		return new ExportToCsvBaseEntryBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
 	}
 	
 	public static class FlagBaseEntryBuilder extends NullRequestBuilder {

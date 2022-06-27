@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -51,6 +53,7 @@ public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 		String preStartEntryId();
 		String postEndEntryId();
 		String isContentInterruptible();
+		RequestBuilder.ListTokenizer<LiveFeature.Tokenizer> liveFeatures();
 	}
 
 	/**
@@ -81,6 +84,10 @@ public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 	 * Detect whether "real" live can interrupt to the "main" content
 	 */
 	private Boolean isContentInterruptible;
+	/**
+	 * list of live features that apply to the event
+	 */
+	private List<LiveFeature> liveFeatures;
 
 	// sourceEntryId:
 	public String getSourceEntryId(){
@@ -166,6 +173,14 @@ public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 		setToken("isContentInterruptible", multirequestToken);
 	}
 
+	// liveFeatures:
+	public List<LiveFeature> getLiveFeatures(){
+		return this.liveFeatures;
+	}
+	public void setLiveFeatures(List<LiveFeature> liveFeatures){
+		this.liveFeatures = liveFeatures;
+	}
+
 
 	public LiveStreamScheduleEvent() {
 		super();
@@ -184,6 +199,7 @@ public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 		preStartEntryId = GsonParser.parseString(jsonObject.get("preStartEntryId"));
 		postEndEntryId = GsonParser.parseString(jsonObject.get("postEndEntryId"));
 		isContentInterruptible = GsonParser.parseBoolean(jsonObject.get("isContentInterruptible"));
+		liveFeatures = GsonParser.parseArray(jsonObject.getAsJsonArray("liveFeatures"), LiveFeature.class);
 
 	}
 
@@ -197,6 +213,7 @@ public class LiveStreamScheduleEvent extends BaseLiveScheduleEvent {
 		kparams.add("preStartEntryId", this.preStartEntryId);
 		kparams.add("postEndEntryId", this.postEndEntryId);
 		kparams.add("isContentInterruptible", this.isContentInterruptible);
+		kparams.add("liveFeatures", this.liveFeatures);
 		return kparams;
 	}
 

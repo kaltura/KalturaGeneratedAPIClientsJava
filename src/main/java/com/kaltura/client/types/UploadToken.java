@@ -57,6 +57,8 @@ public class UploadToken extends ObjectBase {
 		String updatedAt();
 		String uploadUrl();
 		String autoFinalize();
+		String attachedObjectType();
+		String attachedObjectId();
 	}
 
 	/**
@@ -108,6 +110,14 @@ public class UploadToken extends ObjectBase {
 	  the file size reproted when adding the upload token.
 	 */
 	private Boolean autoFinalize;
+	/**
+	 * The value for the object_type field.
+	 */
+	private String attachedObjectType;
+	/**
+	 * The value for the object_id field.
+	 */
+	private String attachedObjectId;
 
 	// id:
 	public String getId(){
@@ -177,6 +187,14 @@ public class UploadToken extends ObjectBase {
 		setToken("autoFinalize", multirequestToken);
 	}
 
+	// attachedObjectType:
+	public String getAttachedObjectType(){
+		return this.attachedObjectType;
+	}
+	// attachedObjectId:
+	public String getAttachedObjectId(){
+		return this.attachedObjectId;
+	}
 
 	public UploadToken() {
 		super();
@@ -199,6 +217,8 @@ public class UploadToken extends ObjectBase {
 		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
 		uploadUrl = GsonParser.parseString(jsonObject.get("uploadUrl"));
 		autoFinalize = GsonParser.parseBoolean(jsonObject.get("autoFinalize"));
+		attachedObjectType = GsonParser.parseString(jsonObject.get("attachedObjectType"));
+		attachedObjectId = GsonParser.parseString(jsonObject.get("attachedObjectId"));
 
 	}
 
