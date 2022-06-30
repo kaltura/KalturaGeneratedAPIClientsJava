@@ -34,13 +34,17 @@ import com.kaltura.client.types.BulkUploadCategoryData;
 import com.kaltura.client.types.BulkUploadJobData;
 import com.kaltura.client.types.Category;
 import com.kaltura.client.types.CategoryFilter;
+import com.kaltura.client.types.CsvAdditionalFieldInfo;
+import com.kaltura.client.types.ExportToCsvOptions;
 import com.kaltura.client.types.FilterPager;
+import com.kaltura.client.types.KeyValue;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -61,6 +65,11 @@ import java.io.InputStream;
  * @param parentCategoryId 
  * @param id 
  * @param moveEntriesToParentCategory 
+ * @param filter A filter used to exclude specific categories
+ * @param metadataProfileId 
+ * @param additionalFields 
+ * @param mappedFields mapping between field headline and its mapped value
+ * @param options 
  * @param id 
  * @param id 
  * @param shouldUpdate 
@@ -215,6 +224,56 @@ public class CategoryService {
 	 */
     public static DeleteCategoryBuilder delete(long id, Boolean moveEntriesToParentCategory)  {
 		return new DeleteCategoryBuilder(id, moveEntriesToParentCategory);
+	}
+	
+	public static class ExportToCsvCategoryBuilder extends RequestBuilder<String, String, ExportToCsvCategoryBuilder> {
+		
+		public ExportToCsvCategoryBuilder(CategoryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options) {
+			super(String.class, "category", "exportToCsv");
+			params.add("filter", filter);
+			params.add("metadataProfileId", metadataProfileId);
+			params.add("additionalFields", additionalFields);
+			params.add("mappedFields", mappedFields);
+			params.add("options", options);
+		}
+		
+		public void metadataProfileId(String multirequestToken) {
+			params.add("metadataProfileId", multirequestToken);
+		}
+	}
+
+	public static ExportToCsvCategoryBuilder exportToCsv()  {
+		return exportToCsv(null);
+	}
+
+	public static ExportToCsvCategoryBuilder exportToCsv(CategoryFilter filter)  {
+		return exportToCsv(filter, Integer.MIN_VALUE);
+	}
+
+	public static ExportToCsvCategoryBuilder exportToCsv(CategoryFilter filter, int metadataProfileId)  {
+		return exportToCsv(filter, metadataProfileId, null);
+	}
+
+	public static ExportToCsvCategoryBuilder exportToCsv(CategoryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, null);
+	}
+
+	public static ExportToCsvCategoryBuilder exportToCsv(CategoryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields)  {
+		return exportToCsv(filter, metadataProfileId, additionalFields, mappedFields, null);
+	}
+
+	/**
+	 * Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of categories
+	 * 
+	 * @param filter A filter used to exclude specific categories
+	 * @param metadataProfileId 
+	 * @param additionalFields 
+	 * @param mappedFields mapping between field headline and its mapped value
+	 * @param options 
+	 */
+    public static ExportToCsvCategoryBuilder exportToCsv(CategoryFilter filter, int metadataProfileId, List<CsvAdditionalFieldInfo> additionalFields, List<KeyValue> mappedFields, ExportToCsvOptions options)  {
+		return new ExportToCsvCategoryBuilder(filter, metadataProfileId, additionalFields, mappedFields, options);
 	}
 	
 	public static class GetCategoryBuilder extends RequestBuilder<Category, Category.Tokenizer, GetCategoryBuilder> {

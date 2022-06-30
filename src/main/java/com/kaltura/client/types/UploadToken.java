@@ -101,21 +101,21 @@ public class UploadToken extends ObjectBase {
 	 */
 	private Integer updatedAt;
 	/**
-	 * Upload url - to explicitly determine to which domain to adress the
+	 * Upload url - to explicitly determine to which domain to address the
 	  uploadToken-&gt;upload call
 	 */
 	private String uploadUrl;
 	/**
 	 * autoFinalize - Should the upload be finalized once the file size on disk matches
-	  the file size reproted when adding the upload token.
+	  the file size reported when adding the upload token.
 	 */
 	private Boolean autoFinalize;
 	/**
-	 * The value for the object_type field.
+	 * The type of the object this token is attached to.
 	 */
 	private String attachedObjectType;
 	/**
-	 * The value for the object_id field.
+	 * The id of the object this token is attached to.
 	 */
 	private String attachedObjectId;
 
