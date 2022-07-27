@@ -60,6 +60,7 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * @param filter 
  * @param pager 
  * @param captionAssetId 
+ * @param captionAssetId 
  * @param entryId 
  * @param captionParamId if not set, default caption will be used.
  * @param captionAssetId 
@@ -254,6 +255,27 @@ public class CaptionAssetService {
 	 */
     public static ServeCaptionAssetBuilder serve(String captionAssetId)  {
 		return new ServeCaptionAssetBuilder(captionAssetId);
+	}
+	
+	public static class ServeAsJsonCaptionAssetBuilder extends ServeRequestBuilder {
+		
+		public ServeAsJsonCaptionAssetBuilder(String captionAssetId) {
+			super("caption_captionasset", "serveAsJson");
+			params.add("captionAssetId", captionAssetId);
+		}
+		
+		public void captionAssetId(String multirequestToken) {
+			params.add("captionAssetId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Serves caption file as Json by its ID
+	 * 
+	 * @param captionAssetId 
+	 */
+    public static ServeAsJsonCaptionAssetBuilder serveAsJson(String captionAssetId)  {
+		return new ServeAsJsonCaptionAssetBuilder(captionAssetId);
 	}
 	
 	public static class ServeByEntryIdCaptionAssetBuilder extends ServeRequestBuilder {

@@ -87,6 +87,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String canonicalUrlIn();
 		String virtualEventIdIn();
 		String originIn();
+		String uiConfIdIn();
 	}
 
 	/**
@@ -244,6 +245,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by origin
 	 */
 	private String originIn;
+	/**
+	 * filter by ui conf id
+	 */
+	private String uiConfIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -733,6 +738,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("originIn", multirequestToken);
 	}
 
+	// uiConfIdIn:
+	public String getUiConfIdIn(){
+		return this.uiConfIdIn;
+	}
+	public void setUiConfIdIn(String uiConfIdIn){
+		this.uiConfIdIn = uiConfIdIn;
+	}
+
+	public void uiConfIdIn(String multirequestToken){
+		setToken("uiConfIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -785,6 +802,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		canonicalUrlIn = GsonParser.parseString(jsonObject.get("canonicalUrlIn"));
 		virtualEventIdIn = GsonParser.parseString(jsonObject.get("virtualEventIdIn"));
 		originIn = GsonParser.parseString(jsonObject.get("originIn"));
+		uiConfIdIn = GsonParser.parseString(jsonObject.get("uiConfIdIn"));
 
 	}
 
@@ -832,6 +850,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("canonicalUrlIn", this.canonicalUrlIn);
 		kparams.add("virtualEventIdIn", this.virtualEventIdIn);
 		kparams.add("originIn", this.originIn);
+		kparams.add("uiConfIdIn", this.uiConfIdIn);
 		return kparams;
 	}
 
