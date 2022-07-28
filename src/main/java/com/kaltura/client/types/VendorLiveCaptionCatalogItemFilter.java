@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using generate.php
@@ -33,44 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6),
-	DUBBING(7),
-	LIVE_CAPTION(8);
 
-	private int value;
-
-	VendorServiceFeature(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VendorLiveCaptionCatalogItemFilter.Tokenizer.class)
+public class VendorLiveCaptionCatalogItemFilter extends VendorCaptionsCatalogItemBaseFilter {
+	
+	public interface Tokenizer extends VendorCaptionsCatalogItemBaseFilter.Tokenizer {
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+
+
+	public VendorLiveCaptionCatalogItemFilter() {
+		super();
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public VendorLiveCaptionCatalogItemFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static VendorServiceFeature get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVendorLiveCaptionCatalogItemFilter");
+		return kparams;
+	}
+
 }
+

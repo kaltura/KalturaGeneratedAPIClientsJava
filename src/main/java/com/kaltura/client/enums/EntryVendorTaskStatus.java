@@ -41,7 +41,8 @@ public enum EntryVendorTaskStatus implements EnumAsInt {
 	REJECTED(5),
 	ERROR(6),
 	ABORTED(7),
-	PENDING_ENTRY_READY(8);
+	PENDING_ENTRY_READY(8),
+	SCHEDULED(9);
 
 	private int value;
 
