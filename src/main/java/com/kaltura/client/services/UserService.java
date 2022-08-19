@@ -633,10 +633,10 @@ public class UserService {
 		return new LoginByLoginIdUserBuilder(loginId, password, partnerId, expiry, privileges, otp);
 	}
 	
-	public static class LoginDataResetPasswordUserBuilder extends NullRequestBuilder {
+	public static class LoginDataResetPasswordUserBuilder extends RequestBuilder<User, User.Tokenizer, LoginDataResetPasswordUserBuilder> {
 		
 		public LoginDataResetPasswordUserBuilder(String loginDataId, String newPassword) {
-			super("user", "loginDataResetPassword");
+			super(User.class, "user", "loginDataResetPassword");
 			params.add("loginDataId", loginDataId);
 			params.add("newPassword", newPassword);
 		}
