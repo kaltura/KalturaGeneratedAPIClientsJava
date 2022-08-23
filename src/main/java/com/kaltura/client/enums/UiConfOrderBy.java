@@ -35,8 +35,12 @@ package com.kaltura.client.enums;
  */
 public enum UiConfOrderBy implements EnumAsString {
 	CREATED_AT_ASC("+createdAt"),
+	ID_ASC("+id"),
+	NAME_ASC("+name"),
 	UPDATED_AT_ASC("+updatedAt"),
 	CREATED_AT_DESC("-createdAt"),
+	ID_DESC("-id"),
+	NAME_DESC("-name"),
 	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
