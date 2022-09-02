@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum UiConfCreationMode implements EnumAsInt {
 	WIZARD(2),
-	ADVANCED(3);
+	ADVANCED(3),
+	SYSTEM(4);
 
 	private int value;
 
