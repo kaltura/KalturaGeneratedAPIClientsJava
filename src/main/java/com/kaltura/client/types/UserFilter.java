@@ -45,8 +45,6 @@ public class UserFilter extends UserBaseFilter {
 	
 	public interface Tokenizer extends UserBaseFilter.Tokenizer {
 		String idOrScreenNameStartsWith();
-		String idEqual();
-		String idIn();
 		String loginEnabledEqual();
 		String roleIdEqual();
 		String roleIdsEqual();
@@ -57,8 +55,6 @@ public class UserFilter extends UserBaseFilter {
 	}
 
 	private String idOrScreenNameStartsWith;
-	private String idEqual;
-	private String idIn;
 	private Boolean loginEnabledEqual;
 	private String roleIdEqual;
 	private String roleIdsEqual;
@@ -83,30 +79,6 @@ public class UserFilter extends UserBaseFilter {
 
 	public void idOrScreenNameStartsWith(String multirequestToken){
 		setToken("idOrScreenNameStartsWith", multirequestToken);
-	}
-
-	// idEqual:
-	public String getIdEqual(){
-		return this.idEqual;
-	}
-	public void setIdEqual(String idEqual){
-		this.idEqual = idEqual;
-	}
-
-	public void idEqual(String multirequestToken){
-		setToken("idEqual", multirequestToken);
-	}
-
-	// idIn:
-	public String getIdIn(){
-		return this.idIn;
-	}
-	public void setIdIn(String idIn){
-		this.idIn = idIn;
-	}
-
-	public void idIn(String multirequestToken){
-		setToken("idIn", multirequestToken);
 	}
 
 	// loginEnabledEqual:
@@ -205,8 +177,6 @@ public class UserFilter extends UserBaseFilter {
 
 		// set members values:
 		idOrScreenNameStartsWith = GsonParser.parseString(jsonObject.get("idOrScreenNameStartsWith"));
-		idEqual = GsonParser.parseString(jsonObject.get("idEqual"));
-		idIn = GsonParser.parseString(jsonObject.get("idIn"));
 		loginEnabledEqual = GsonParser.parseBoolean(jsonObject.get("loginEnabledEqual"));
 		roleIdEqual = GsonParser.parseString(jsonObject.get("roleIdEqual"));
 		roleIdsEqual = GsonParser.parseString(jsonObject.get("roleIdsEqual"));
@@ -221,8 +191,6 @@ public class UserFilter extends UserBaseFilter {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaUserFilter");
 		kparams.add("idOrScreenNameStartsWith", this.idOrScreenNameStartsWith);
-		kparams.add("idEqual", this.idEqual);
-		kparams.add("idIn", this.idIn);
 		kparams.add("loginEnabledEqual", this.loginEnabledEqual);
 		kparams.add("roleIdEqual", this.roleIdEqual);
 		kparams.add("roleIdsEqual", this.roleIdsEqual);
