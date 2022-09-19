@@ -131,6 +131,7 @@ public class Partner extends ObjectBase {
 		String isSelfServe();
 		String allowedDomains();
 		String excludedAdminRoleName();
+		String eventPlatformAllowedTemplates();
 	}
 
 	private Integer id;
@@ -229,6 +230,7 @@ public class Partner extends ObjectBase {
 	private Boolean isSelfServe;
 	private String allowedDomains;
 	private String excludedAdminRoleName;
+	private String eventPlatformAllowedTemplates;
 
 	// id:
 	public Integer getId(){
@@ -850,6 +852,18 @@ public class Partner extends ObjectBase {
 	public String getExcludedAdminRoleName(){
 		return this.excludedAdminRoleName;
 	}
+	// eventPlatformAllowedTemplates:
+	public String getEventPlatformAllowedTemplates(){
+		return this.eventPlatformAllowedTemplates;
+	}
+	public void setEventPlatformAllowedTemplates(String eventPlatformAllowedTemplates){
+		this.eventPlatformAllowedTemplates = eventPlatformAllowedTemplates;
+	}
+
+	public void eventPlatformAllowedTemplates(String multirequestToken){
+		setToken("eventPlatformAllowedTemplates", multirequestToken);
+	}
+
 
 	public Partner() {
 		super();
@@ -939,6 +953,7 @@ public class Partner extends ObjectBase {
 		isSelfServe = GsonParser.parseBoolean(jsonObject.get("isSelfServe"));
 		allowedDomains = GsonParser.parseString(jsonObject.get("allowedDomains"));
 		excludedAdminRoleName = GsonParser.parseString(jsonObject.get("excludedAdminRoleName"));
+		eventPlatformAllowedTemplates = GsonParser.parseString(jsonObject.get("eventPlatformAllowedTemplates"));
 
 	}
 
@@ -985,6 +1000,7 @@ public class Partner extends ObjectBase {
 		kparams.add("loginBlockPeriod", this.loginBlockPeriod);
 		kparams.add("numPrevPassToKeep", this.numPrevPassToKeep);
 		kparams.add("isSelfServe", this.isSelfServe);
+		kparams.add("eventPlatformAllowedTemplates", this.eventPlatformAllowedTemplates);
 		return kparams;
 	}
 
