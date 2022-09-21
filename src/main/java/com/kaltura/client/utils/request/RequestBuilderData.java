@@ -85,6 +85,14 @@ public abstract class RequestBuilderData<SelfType> {
 	}
 	
 	/**
+	 * @param language language
+	 */
+	public SelfType setLanguage(String language){
+		params.add("language", language);
+		return (SelfType) this;
+	}
+	
+	/**
 	 * @param responseProfile Response profile - this attribute will be automatically unset after every API call.
 	 */
 	public SelfType setResponseProfile(BaseResponseProfile responseProfile){

@@ -43,8 +43,8 @@ public class Client extends ClientBase {
 	public Client(ConnectionConfiguration config) {
 		super(config);
 		
-		this.setClientTag("java:22-09-20");
-		this.setApiVersion("18.14.0");
+		this.setClientTag("java:22-09-21");
+		this.setApiVersion("18.15.0");
 		this.clientConfiguration.put("format", 1); // JSON
 	}
 	
@@ -139,6 +139,26 @@ public class Client extends ClientBase {
 	public String getSessionId(){
 		if(this.requestConfiguration.containsKey("ks")){
 			return(String) this.requestConfiguration.get("ks");
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * @param language language
+	 */
+	public void setLanguage(String language){
+		this.requestConfiguration.put("language", language);
+	}
+	
+	/**
+	 * language
+	 * 
+	 * @return String
+	 */
+	public String getLanguage(){
+		if(this.requestConfiguration.containsKey("language")){
+			return(String) this.requestConfiguration.get("language");
 		}
 		
 		return null;

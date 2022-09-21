@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.BaseResponseProfile;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -42,60 +41,25 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 /**
- * Define client request optional configurations  /
+ * A Multi Lingual String
  */
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(RequestConfiguration.Tokenizer.class)
-public class RequestConfiguration extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(MultiLingualString.Tokenizer.class)
+public class MultiLingualString extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String partnerId();
-		String ks();
 		String language();
-		BaseResponseProfile.Tokenizer responseProfile();
+		String value();
 	}
 
 	/**
-	 * Impersonated partner id
-	 */
-	private Integer partnerId;
-	/**
-	 * Kaltura API session
-	 */
-	private String ks;
-	/**
-	 * language
+	 * The language of the value
 	 */
 	private String language;
 	/**
-	 * Response profile - this attribute will be automatically unset after every API
-	  call.
+	 * Value
 	 */
-	private BaseResponseProfile responseProfile;
-
-	// partnerId:
-	public Integer getPartnerId(){
-		return this.partnerId;
-	}
-	public void setPartnerId(Integer partnerId){
-		this.partnerId = partnerId;
-	}
-
-	public void partnerId(String multirequestToken){
-		setToken("partnerId", multirequestToken);
-	}
-
-	// ks:
-	public String getKs(){
-		return this.ks;
-	}
-	public void setKs(String ks){
-		this.ks = ks;
-	}
-
-	public void ks(String multirequestToken){
-		setToken("ks", multirequestToken);
-	}
+	private String value;
 
 	// language:
 	public String getLanguage(){
@@ -109,39 +73,39 @@ public class RequestConfiguration extends ObjectBase {
 		setToken("language", multirequestToken);
 	}
 
-	// responseProfile:
-	public BaseResponseProfile getResponseProfile(){
-		return this.responseProfile;
+	// value:
+	public String getValue(){
+		return this.value;
 	}
-	public void setResponseProfile(BaseResponseProfile responseProfile){
-		this.responseProfile = responseProfile;
+	public void setValue(String value){
+		this.value = value;
+	}
+
+	public void value(String multirequestToken){
+		setToken("value", multirequestToken);
 	}
 
 
-	public RequestConfiguration() {
+	public MultiLingualString() {
 		super();
 	}
 
-	public RequestConfiguration(JsonObject jsonObject) throws APIException {
+	public MultiLingualString(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		ks = GsonParser.parseString(jsonObject.get("ks"));
 		language = GsonParser.parseString(jsonObject.get("language"));
-		responseProfile = GsonParser.parseObject(jsonObject.getAsJsonObject("responseProfile"), BaseResponseProfile.class);
+		value = GsonParser.parseString(jsonObject.get("value"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaRequestConfiguration");
-		kparams.add("partnerId", this.partnerId);
-		kparams.add("ks", this.ks);
+		kparams.add("objectType", "KalturaMultiLingualString");
 		kparams.add("language", this.language);
-		kparams.add("responseProfile", this.responseProfile);
+		kparams.add("value", this.value);
 		return kparams;
 	}
 

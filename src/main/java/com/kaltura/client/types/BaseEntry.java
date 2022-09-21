@@ -56,11 +56,14 @@ public class BaseEntry extends ObjectBase {
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String id();
 		String name();
+		RequestBuilder.ListTokenizer<MultiLingualString.Tokenizer> multiLingual_name();
 		String description();
+		RequestBuilder.ListTokenizer<MultiLingualString.Tokenizer> multiLingual_description();
 		String partnerId();
 		String userId();
 		String creatorId();
 		String tags();
+		RequestBuilder.ListTokenizer<MultiLingualString.Tokenizer> multiLingual_tags();
 		String adminTags();
 		String categories();
 		String categoriesIds();
@@ -113,9 +116,17 @@ public class BaseEntry extends ObjectBase {
 	 */
 	private String name;
 	/**
+	 * Entry name (Min 1 chars)
+	 */
+	private List<MultiLingualString> multiLingual_name;
+	/**
 	 * Entry description
 	 */
 	private String description;
+	/**
+	 * Entry description
+	 */
+	private List<MultiLingualString> multiLingual_description;
 	private Integer partnerId;
 	/**
 	 * The ID of the user who is the owner of this entry
@@ -129,6 +140,10 @@ public class BaseEntry extends ObjectBase {
 	 * Entry tags
 	 */
 	private String tags;
+	/**
+	 * Entry tags
+	 */
+	private List<MultiLingualString> multiLingual_tags;
 	/**
 	 * Entry admin tags can be updated only by administrators
 	 */
@@ -319,6 +334,14 @@ public class BaseEntry extends ObjectBase {
 		setToken("name", multirequestToken);
 	}
 
+	// multiLingual_name:
+	public List<MultiLingualString> getMultiLingual_name(){
+		return this.multiLingual_name;
+	}
+	public void setMultiLingual_name(List<MultiLingualString> multiLingual_name){
+		this.multiLingual_name = multiLingual_name;
+	}
+
 	// description:
 	public String getDescription(){
 		return this.description;
@@ -329,6 +352,14 @@ public class BaseEntry extends ObjectBase {
 
 	public void description(String multirequestToken){
 		setToken("description", multirequestToken);
+	}
+
+	// multiLingual_description:
+	public List<MultiLingualString> getMultiLingual_description(){
+		return this.multiLingual_description;
+	}
+	public void setMultiLingual_description(List<MultiLingualString> multiLingual_description){
+		this.multiLingual_description = multiLingual_description;
 	}
 
 	// partnerId:
@@ -369,6 +400,14 @@ public class BaseEntry extends ObjectBase {
 
 	public void tags(String multirequestToken){
 		setToken("tags", multirequestToken);
+	}
+
+	// multiLingual_tags:
+	public List<MultiLingualString> getMultiLingual_tags(){
+		return this.multiLingual_tags;
+	}
+	public void setMultiLingual_tags(List<MultiLingualString> multiLingual_tags){
+		this.multiLingual_tags = multiLingual_tags;
 	}
 
 	// adminTags:
@@ -736,11 +775,14 @@ public class BaseEntry extends ObjectBase {
 		// set members values:
 		id = GsonParser.parseString(jsonObject.get("id"));
 		name = GsonParser.parseString(jsonObject.get("name"));
+		multiLingual_name = GsonParser.parseArray(jsonObject.getAsJsonArray("multiLingual_name"), MultiLingualString.class);
 		description = GsonParser.parseString(jsonObject.get("description"));
+		multiLingual_description = GsonParser.parseArray(jsonObject.getAsJsonArray("multiLingual_description"), MultiLingualString.class);
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
 		creatorId = GsonParser.parseString(jsonObject.get("creatorId"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
+		multiLingual_tags = GsonParser.parseArray(jsonObject.getAsJsonArray("multiLingual_tags"), MultiLingualString.class);
 		adminTags = GsonParser.parseString(jsonObject.get("adminTags"));
 		categories = GsonParser.parseString(jsonObject.get("categories"));
 		categoriesIds = GsonParser.parseString(jsonObject.get("categoriesIds"));
@@ -789,10 +831,13 @@ public class BaseEntry extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaBaseEntry");
 		kparams.add("name", this.name);
+		kparams.add("multiLingual_name", this.multiLingual_name);
 		kparams.add("description", this.description);
+		kparams.add("multiLingual_description", this.multiLingual_description);
 		kparams.add("userId", this.userId);
 		kparams.add("creatorId", this.creatorId);
 		kparams.add("tags", this.tags);
+		kparams.add("multiLingual_tags", this.multiLingual_tags);
 		kparams.add("adminTags", this.adminTags);
 		kparams.add("categories", this.categories);
 		kparams.add("categoriesIds", this.categoriesIds);
