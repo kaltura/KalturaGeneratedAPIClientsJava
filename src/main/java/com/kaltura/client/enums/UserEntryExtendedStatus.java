@@ -34,6 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryExtendedStatus implements EnumAsString {
+	SYNC_STATUS_ERROR("quiz.SYNC_STATUS_ERROR"),
+	SYNC_STATUS_SUCCESS("quiz.SYNC_STATUS_SUCCESS"),
 	PLAYBACK_COMPLETE("viewHistory.PLAYBACK_COMPLETE"),
 	PLAYBACK_STARTED("viewHistory.PLAYBACK_STARTED"),
 	VIEWED("viewHistory.VIEWED");
