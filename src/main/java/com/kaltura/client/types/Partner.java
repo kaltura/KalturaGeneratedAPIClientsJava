@@ -127,11 +127,13 @@ public class Partner extends ObjectBase {
 		String maxLoginAttempts();
 		String loginBlockPeriod();
 		String numPrevPassToKeep();
+		String allowDefaultPasswordRestrictions();
 		String twoFactorAuthenticationMode();
 		String isSelfServe();
 		String allowedDomains();
 		String excludedAdminRoleName();
 		String eventPlatformAllowedTemplates();
+		String verticalClassificationId();
 	}
 
 	private Integer id;
@@ -226,11 +228,13 @@ public class Partner extends ObjectBase {
 	private Integer maxLoginAttempts;
 	private Integer loginBlockPeriod;
 	private Integer numPrevPassToKeep;
+	private Boolean allowDefaultPasswordRestrictions;
 	private TwoFactorAuthenticationMode twoFactorAuthenticationMode;
 	private Boolean isSelfServe;
 	private String allowedDomains;
 	private String excludedAdminRoleName;
 	private String eventPlatformAllowedTemplates;
+	private Integer verticalClassificationId;
 
 	// id:
 	public Integer getId(){
@@ -828,6 +832,10 @@ public class Partner extends ObjectBase {
 		setToken("numPrevPassToKeep", multirequestToken);
 	}
 
+	// allowDefaultPasswordRestrictions:
+	public Boolean getAllowDefaultPasswordRestrictions(){
+		return this.allowDefaultPasswordRestrictions;
+	}
 	// twoFactorAuthenticationMode:
 	public TwoFactorAuthenticationMode getTwoFactorAuthenticationMode(){
 		return this.twoFactorAuthenticationMode;
@@ -864,6 +872,10 @@ public class Partner extends ObjectBase {
 		setToken("eventPlatformAllowedTemplates", multirequestToken);
 	}
 
+	// verticalClassificationId:
+	public Integer getVerticalClassificationId(){
+		return this.verticalClassificationId;
+	}
 
 	public Partner() {
 		super();
@@ -949,11 +961,13 @@ public class Partner extends ObjectBase {
 		maxLoginAttempts = GsonParser.parseInt(jsonObject.get("maxLoginAttempts"));
 		loginBlockPeriod = GsonParser.parseInt(jsonObject.get("loginBlockPeriod"));
 		numPrevPassToKeep = GsonParser.parseInt(jsonObject.get("numPrevPassToKeep"));
+		allowDefaultPasswordRestrictions = GsonParser.parseBoolean(jsonObject.get("allowDefaultPasswordRestrictions"));
 		twoFactorAuthenticationMode = TwoFactorAuthenticationMode.get(GsonParser.parseInt(jsonObject.get("twoFactorAuthenticationMode")));
 		isSelfServe = GsonParser.parseBoolean(jsonObject.get("isSelfServe"));
 		allowedDomains = GsonParser.parseString(jsonObject.get("allowedDomains"));
 		excludedAdminRoleName = GsonParser.parseString(jsonObject.get("excludedAdminRoleName"));
 		eventPlatformAllowedTemplates = GsonParser.parseString(jsonObject.get("eventPlatformAllowedTemplates"));
+		verticalClassificationId = GsonParser.parseInt(jsonObject.get("verticalClassificationId"));
 
 	}
 

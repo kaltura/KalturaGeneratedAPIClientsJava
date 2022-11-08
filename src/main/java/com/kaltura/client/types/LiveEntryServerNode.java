@@ -51,6 +51,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		RequestBuilder.ListTokenizer<LiveEntryServerNodeRecordingInfo.Tokenizer> recordingInfo();
 		String isPlayableUser();
 		String viewMode();
+		String featuresUpdatedAt();
 	}
 
 	/**
@@ -60,6 +61,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 	private List<LiveEntryServerNodeRecordingInfo> recordingInfo;
 	private Boolean isPlayableUser;
 	private ViewMode viewMode;
+	private Integer featuresUpdatedAt;
 
 	// streams:
 	public List<LiveStreamParams> getStreams(){
@@ -101,6 +103,18 @@ public class LiveEntryServerNode extends EntryServerNode {
 		setToken("viewMode", multirequestToken);
 	}
 
+	// featuresUpdatedAt:
+	public Integer getFeaturesUpdatedAt(){
+		return this.featuresUpdatedAt;
+	}
+	public void setFeaturesUpdatedAt(Integer featuresUpdatedAt){
+		this.featuresUpdatedAt = featuresUpdatedAt;
+	}
+
+	public void featuresUpdatedAt(String multirequestToken){
+		setToken("featuresUpdatedAt", multirequestToken);
+	}
+
 
 	public LiveEntryServerNode() {
 		super();
@@ -116,6 +130,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		recordingInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("recordingInfo"), LiveEntryServerNodeRecordingInfo.class);
 		isPlayableUser = GsonParser.parseBoolean(jsonObject.get("isPlayableUser"));
 		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
+		featuresUpdatedAt = GsonParser.parseInt(jsonObject.get("featuresUpdatedAt"));
 
 	}
 
@@ -126,6 +141,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		kparams.add("recordingInfo", this.recordingInfo);
 		kparams.add("isPlayableUser", this.isPlayableUser);
 		kparams.add("viewMode", this.viewMode);
+		kparams.add("featuresUpdatedAt", this.featuresUpdatedAt);
 		return kparams;
 	}
 
