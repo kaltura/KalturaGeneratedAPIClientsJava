@@ -55,7 +55,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		String jwtToken();
 		String enableZoomTranscription();
 		String zoomAccountDescription();
-		String enableMeetingUpload();
 		String optOutGroupNames();
 		String optInGroupNames();
 		String groupParticipationType();
@@ -70,7 +69,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 	private String jwtToken;
 	private Boolean enableZoomTranscription;
 	private String zoomAccountDescription;
-	private Boolean enableMeetingUpload;
 	private String optOutGroupNames;
 	private String optInGroupNames;
 	private ZoomGroupParticipationType groupParticipationType;
@@ -183,18 +181,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		setToken("zoomAccountDescription", multirequestToken);
 	}
 
-	// enableMeetingUpload:
-	public Boolean getEnableMeetingUpload(){
-		return this.enableMeetingUpload;
-	}
-	public void setEnableMeetingUpload(Boolean enableMeetingUpload){
-		this.enableMeetingUpload = enableMeetingUpload;
-	}
-
-	public void enableMeetingUpload(String multirequestToken){
-		setToken("enableMeetingUpload", multirequestToken);
-	}
-
 	// optOutGroupNames:
 	public String getOptOutGroupNames(){
 		return this.optOutGroupNames;
@@ -251,7 +237,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		jwtToken = GsonParser.parseString(jsonObject.get("jwtToken"));
 		enableZoomTranscription = GsonParser.parseBoolean(jsonObject.get("enableZoomTranscription"));
 		zoomAccountDescription = GsonParser.parseString(jsonObject.get("zoomAccountDescription"));
-		enableMeetingUpload = GsonParser.parseBoolean(jsonObject.get("enableMeetingUpload"));
 		optOutGroupNames = GsonParser.parseString(jsonObject.get("optOutGroupNames"));
 		optInGroupNames = GsonParser.parseString(jsonObject.get("optInGroupNames"));
 		groupParticipationType = ZoomGroupParticipationType.get(GsonParser.parseInt(jsonObject.get("groupParticipationType")));
@@ -270,7 +255,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		kparams.add("jwtToken", this.jwtToken);
 		kparams.add("enableZoomTranscription", this.enableZoomTranscription);
 		kparams.add("zoomAccountDescription", this.zoomAccountDescription);
-		kparams.add("enableMeetingUpload", this.enableMeetingUpload);
 		kparams.add("optOutGroupNames", this.optOutGroupNames);
 		kparams.add("optInGroupNames", this.optInGroupNames);
 		kparams.add("groupParticipationType", this.groupParticipationType);

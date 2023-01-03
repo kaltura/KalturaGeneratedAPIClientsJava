@@ -48,12 +48,14 @@ public class LiveCaptionFeature extends LiveFeature {
 		String mediaKey();
 		String captionUrl();
 		String captionToken();
+		String inputDelay();
 	}
 
 	private String mediaUrl;
 	private String mediaKey;
 	private String captionUrl;
 	private String captionToken;
+	private Integer inputDelay;
 
 	// mediaUrl:
 	public String getMediaUrl(){
@@ -103,6 +105,18 @@ public class LiveCaptionFeature extends LiveFeature {
 		setToken("captionToken", multirequestToken);
 	}
 
+	// inputDelay:
+	public Integer getInputDelay(){
+		return this.inputDelay;
+	}
+	public void setInputDelay(Integer inputDelay){
+		this.inputDelay = inputDelay;
+	}
+
+	public void inputDelay(String multirequestToken){
+		setToken("inputDelay", multirequestToken);
+	}
+
 
 	public LiveCaptionFeature() {
 		super();
@@ -118,6 +132,7 @@ public class LiveCaptionFeature extends LiveFeature {
 		mediaKey = GsonParser.parseString(jsonObject.get("mediaKey"));
 		captionUrl = GsonParser.parseString(jsonObject.get("captionUrl"));
 		captionToken = GsonParser.parseString(jsonObject.get("captionToken"));
+		inputDelay = GsonParser.parseInt(jsonObject.get("inputDelay"));
 
 	}
 
@@ -128,6 +143,7 @@ public class LiveCaptionFeature extends LiveFeature {
 		kparams.add("mediaKey", this.mediaKey);
 		kparams.add("captionUrl", this.captionUrl);
 		kparams.add("captionToken", this.captionToken);
+		kparams.add("inputDelay", this.inputDelay);
 		return kparams;
 	}
 

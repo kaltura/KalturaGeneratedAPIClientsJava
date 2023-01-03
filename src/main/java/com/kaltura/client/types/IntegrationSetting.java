@@ -58,6 +58,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		String createdAt();
 		String updatedAt();
 		String partnerId();
+		String enableMeetingUpload();
 	}
 
 	private Integer id;
@@ -71,6 +72,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 	private String createdAt;
 	private String updatedAt;
 	private Integer partnerId;
+	private Boolean enableMeetingUpload;
 
 	// id:
 	public Integer getId(){
@@ -156,6 +158,18 @@ public abstract class IntegrationSetting extends ObjectBase {
 	public Integer getPartnerId(){
 		return this.partnerId;
 	}
+	// enableMeetingUpload:
+	public Boolean getEnableMeetingUpload(){
+		return this.enableMeetingUpload;
+	}
+	public void setEnableMeetingUpload(Boolean enableMeetingUpload){
+		this.enableMeetingUpload = enableMeetingUpload;
+	}
+
+	public void enableMeetingUpload(String multirequestToken){
+		setToken("enableMeetingUpload", multirequestToken);
+	}
+
 
 	public IntegrationSetting() {
 		super();
@@ -178,6 +192,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		createdAt = GsonParser.parseString(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseString(jsonObject.get("updatedAt"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
+		enableMeetingUpload = GsonParser.parseBoolean(jsonObject.get("enableMeetingUpload"));
 
 	}
 
@@ -189,6 +204,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		kparams.add("conversionProfileId", this.conversionProfileId);
 		kparams.add("handleParticipantsMode", this.handleParticipantsMode);
 		kparams.add("deletionPolicy", this.deletionPolicy);
+		kparams.add("enableMeetingUpload", this.enableMeetingUpload);
 		return kparams;
 	}
 

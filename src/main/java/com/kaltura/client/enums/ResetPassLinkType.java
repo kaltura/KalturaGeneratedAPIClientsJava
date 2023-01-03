@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum ResetPassLinkType implements EnumAsString {
 	KMC("1"),
-	KMS("2");
+	KMS("2"),
+	KME("3");
 
 	private String value;
 
