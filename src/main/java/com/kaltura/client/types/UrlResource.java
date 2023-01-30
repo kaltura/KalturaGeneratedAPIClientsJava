@@ -31,6 +31,8 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.List;
 
 /**
  * This class was generated using generate.php
@@ -51,6 +53,7 @@ public class UrlResource extends ContentResource {
 	public interface Tokenizer extends ContentResource.Tokenizer {
 		String url();
 		String forceAsyncDownload();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> urlHeaders();
 	}
 
 	/**
@@ -61,6 +64,7 @@ public class UrlResource extends ContentResource {
 	 * Force Import Job
 	 */
 	private Boolean forceAsyncDownload;
+	private List<StringHolder> urlHeaders;
 
 	// url:
 	public String getUrl(){
@@ -86,6 +90,14 @@ public class UrlResource extends ContentResource {
 		setToken("forceAsyncDownload", multirequestToken);
 	}
 
+	// urlHeaders:
+	public List<StringHolder> getUrlHeaders(){
+		return this.urlHeaders;
+	}
+	public void setUrlHeaders(List<StringHolder> urlHeaders){
+		this.urlHeaders = urlHeaders;
+	}
+
 
 	public UrlResource() {
 		super();
@@ -99,6 +111,7 @@ public class UrlResource extends ContentResource {
 		// set members values:
 		url = GsonParser.parseString(jsonObject.get("url"));
 		forceAsyncDownload = GsonParser.parseBoolean(jsonObject.get("forceAsyncDownload"));
+		urlHeaders = GsonParser.parseArray(jsonObject.getAsJsonArray("urlHeaders"), StringHolder.class);
 
 	}
 
@@ -107,6 +120,7 @@ public class UrlResource extends ContentResource {
 		kparams.add("objectType", "KalturaUrlResource");
 		kparams.add("url", this.url);
 		kparams.add("forceAsyncDownload", this.forceAsyncDownload);
+		kparams.add("urlHeaders", this.urlHeaders);
 		return kparams;
 	}
 

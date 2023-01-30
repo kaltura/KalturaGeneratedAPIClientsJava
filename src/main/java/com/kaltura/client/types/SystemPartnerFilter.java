@@ -46,10 +46,12 @@ public class SystemPartnerFilter extends PartnerFilter {
 	public interface Tokenizer extends PartnerFilter.Tokenizer {
 		String partnerParentIdEqual();
 		String partnerParentIdIn();
+		String adminEmailEqual();
 	}
 
 	private Integer partnerParentIdEqual;
 	private String partnerParentIdIn;
+	private String adminEmailEqual;
 
 	// partnerParentIdEqual:
 	public Integer getPartnerParentIdEqual(){
@@ -75,6 +77,18 @@ public class SystemPartnerFilter extends PartnerFilter {
 		setToken("partnerParentIdIn", multirequestToken);
 	}
 
+	// adminEmailEqual:
+	public String getAdminEmailEqual(){
+		return this.adminEmailEqual;
+	}
+	public void setAdminEmailEqual(String adminEmailEqual){
+		this.adminEmailEqual = adminEmailEqual;
+	}
+
+	public void adminEmailEqual(String multirequestToken){
+		setToken("adminEmailEqual", multirequestToken);
+	}
+
 
 	public SystemPartnerFilter() {
 		super();
@@ -88,6 +102,7 @@ public class SystemPartnerFilter extends PartnerFilter {
 		// set members values:
 		partnerParentIdEqual = GsonParser.parseInt(jsonObject.get("partnerParentIdEqual"));
 		partnerParentIdIn = GsonParser.parseString(jsonObject.get("partnerParentIdIn"));
+		adminEmailEqual = GsonParser.parseString(jsonObject.get("adminEmailEqual"));
 
 	}
 
@@ -96,6 +111,7 @@ public class SystemPartnerFilter extends PartnerFilter {
 		kparams.add("objectType", "KalturaSystemPartnerFilter");
 		kparams.add("partnerParentIdEqual", this.partnerParentIdEqual);
 		kparams.add("partnerParentIdIn", this.partnerParentIdIn);
+		kparams.add("adminEmailEqual", this.adminEmailEqual);
 		return kparams;
 	}
 
