@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2022  Kaltura Inc.
+// Copyright (C) 2006-2023  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -59,6 +59,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		String updatedAt();
 		String partnerId();
 		String enableMeetingUpload();
+		String enableMeetingChat();
 	}
 
 	private Integer id;
@@ -73,6 +74,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 	private String updatedAt;
 	private Integer partnerId;
 	private Boolean enableMeetingUpload;
+	private Boolean enableMeetingChat;
 
 	// id:
 	public Integer getId(){
@@ -170,6 +172,18 @@ public abstract class IntegrationSetting extends ObjectBase {
 		setToken("enableMeetingUpload", multirequestToken);
 	}
 
+	// enableMeetingChat:
+	public Boolean getEnableMeetingChat(){
+		return this.enableMeetingChat;
+	}
+	public void setEnableMeetingChat(Boolean enableMeetingChat){
+		this.enableMeetingChat = enableMeetingChat;
+	}
+
+	public void enableMeetingChat(String multirequestToken){
+		setToken("enableMeetingChat", multirequestToken);
+	}
+
 
 	public IntegrationSetting() {
 		super();
@@ -193,6 +207,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		updatedAt = GsonParser.parseString(jsonObject.get("updatedAt"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		enableMeetingUpload = GsonParser.parseBoolean(jsonObject.get("enableMeetingUpload"));
+		enableMeetingChat = GsonParser.parseBoolean(jsonObject.get("enableMeetingChat"));
 
 	}
 
@@ -205,6 +220,7 @@ public abstract class IntegrationSetting extends ObjectBase {
 		kparams.add("handleParticipantsMode", this.handleParticipantsMode);
 		kparams.add("deletionPolicy", this.deletionPolicy);
 		kparams.add("enableMeetingUpload", this.enableMeetingUpload);
+		kparams.add("enableMeetingChat", this.enableMeetingChat);
 		return kparams;
 	}
 
