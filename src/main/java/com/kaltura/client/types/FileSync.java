@@ -86,8 +86,8 @@ public class FileSync extends ObjectBase {
 	private Integer objectSubType;
 	private String dc;
 	private Integer original;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private Integer readyAt;
 	private Integer syncTime;
 	private FileSyncStatus status;
@@ -140,11 +140,11 @@ public class FileSync extends ObjectBase {
 		return this.original;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// readyAt:
@@ -286,8 +286,8 @@ public class FileSync extends ObjectBase {
 		objectSubType = GsonParser.parseInt(jsonObject.get("objectSubType"));
 		dc = GsonParser.parseString(jsonObject.get("dc"));
 		original = GsonParser.parseInt(jsonObject.get("original"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		readyAt = GsonParser.parseInt(jsonObject.get("readyAt"));
 		syncTime = GsonParser.parseInt(jsonObject.get("syncTime"));
 		status = FileSyncStatus.get(GsonParser.parseInt(jsonObject.get("status")));

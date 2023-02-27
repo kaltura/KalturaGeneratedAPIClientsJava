@@ -87,9 +87,9 @@ public class Asset extends ObjectBase {
 	 * The file extension
 	 */
 	private String fileExt;
-	private Integer createdAt;
-	private Integer updatedAt;
-	private Integer deletedAt;
+	private Long createdAt;
+	private Long updatedAt;
+	private Long deletedAt;
 	/**
 	 * System description, error message, warnings and failure cause.
 	 */
@@ -156,15 +156,15 @@ public class Asset extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// deletedAt:
-	public Integer getDeletedAt(){
+	public Long getDeletedAt(){
 		return this.deletedAt;
 	}
 	// description:
@@ -229,9 +229,9 @@ public class Asset extends ObjectBase {
 		size = GsonParser.parseInt(jsonObject.get("size"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
 		fileExt = GsonParser.parseString(jsonObject.get("fileExt"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-		deletedAt = GsonParser.parseInt(jsonObject.get("deletedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
+		deletedAt = GsonParser.parseLong(jsonObject.get("deletedAt"));
 		description = GsonParser.parseString(jsonObject.get("description"));
 		partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
 		partnerDescription = GsonParser.parseString(jsonObject.get("partnerDescription"));

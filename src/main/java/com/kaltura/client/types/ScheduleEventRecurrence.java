@@ -67,7 +67,7 @@ public class ScheduleEventRecurrence extends ObjectBase {
 
 	private String name;
 	private ScheduleEventRecurrenceFrequency frequency;
-	private Integer until;
+	private Long until;
 	/**
 	 * TimeZone String
 	 */
@@ -159,10 +159,10 @@ public class ScheduleEventRecurrence extends ObjectBase {
 	}
 
 	// until:
-	public Integer getUntil(){
+	public Long getUntil(){
 		return this.until;
 	}
-	public void setUntil(Integer until){
+	public void setUntil(Long until){
 		this.until = until;
 	}
 
@@ -339,7 +339,7 @@ public class ScheduleEventRecurrence extends ObjectBase {
 		// set members values:
 		name = GsonParser.parseString(jsonObject.get("name"));
 		frequency = ScheduleEventRecurrenceFrequency.get(GsonParser.parseString(jsonObject.get("frequency")));
-		until = GsonParser.parseInt(jsonObject.get("until"));
+		until = GsonParser.parseLong(jsonObject.get("until"));
 		timeZone = GsonParser.parseString(jsonObject.get("timeZone"));
 		count = GsonParser.parseInt(jsonObject.get("count"));
 		interval = GsonParser.parseInt(jsonObject.get("interval"));

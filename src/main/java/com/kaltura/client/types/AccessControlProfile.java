@@ -78,11 +78,11 @@ public class AccessControlProfile extends ObjectBase {
 	/**
 	 * Creation time as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Update time as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * True if this access control profile is the partner default
 	 */
@@ -137,11 +137,11 @@ public class AccessControlProfile extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// isDefault:
@@ -180,8 +180,8 @@ public class AccessControlProfile extends ObjectBase {
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		description = GsonParser.parseString(jsonObject.get("description"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
 		rules = GsonParser.parseArray(jsonObject.getAsJsonArray("rules"), Rule.class);
 

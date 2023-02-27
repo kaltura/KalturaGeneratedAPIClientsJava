@@ -78,11 +78,11 @@ public abstract class ScheduleResource extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Last update as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 
 	// id:
 	public Integer getId(){
@@ -157,11 +157,11 @@ public abstract class ScheduleResource extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 
@@ -183,8 +183,8 @@ public abstract class ScheduleResource extends ObjectBase {
 		description = GsonParser.parseString(jsonObject.get("description"));
 		status = ScheduleResourceStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 
 	}
 

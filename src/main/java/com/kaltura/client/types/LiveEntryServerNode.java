@@ -61,7 +61,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 	private List<LiveEntryServerNodeRecordingInfo> recordingInfo;
 	private Boolean isPlayableUser;
 	private ViewMode viewMode;
-	private Integer featuresUpdatedAt;
+	private Long featuresUpdatedAt;
 
 	// streams:
 	public List<LiveStreamParams> getStreams(){
@@ -104,10 +104,10 @@ public class LiveEntryServerNode extends EntryServerNode {
 	}
 
 	// featuresUpdatedAt:
-	public Integer getFeaturesUpdatedAt(){
+	public Long getFeaturesUpdatedAt(){
 		return this.featuresUpdatedAt;
 	}
-	public void setFeaturesUpdatedAt(Integer featuresUpdatedAt){
+	public void setFeaturesUpdatedAt(Long featuresUpdatedAt){
 		this.featuresUpdatedAt = featuresUpdatedAt;
 	}
 
@@ -130,7 +130,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		recordingInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("recordingInfo"), LiveEntryServerNodeRecordingInfo.class);
 		isPlayableUser = GsonParser.parseBoolean(jsonObject.get("isPlayableUser"));
 		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
-		featuresUpdatedAt = GsonParser.parseInt(jsonObject.get("featuresUpdatedAt"));
+		featuresUpdatedAt = GsonParser.parseLong(jsonObject.get("featuresUpdatedAt"));
 
 	}
 

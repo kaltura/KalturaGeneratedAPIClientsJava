@@ -54,8 +54,8 @@ public abstract class LikeBaseFilter extends RelatedFilter {
 	private String entryIdEqual;
 	private String entryIdIn;
 	private String userIdEqual;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
 
 	// entryIdEqual:
 	public String getEntryIdEqual(){
@@ -94,10 +94,10 @@ public abstract class LikeBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -106,10 +106,10 @@ public abstract class LikeBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -131,8 +131,8 @@ public abstract class LikeBaseFilter extends RelatedFilter {
 		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 		userIdEqual = GsonParser.parseString(jsonObject.get("userIdEqual"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
 
 	}
 

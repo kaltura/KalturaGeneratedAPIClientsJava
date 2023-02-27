@@ -90,10 +90,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 	private String dcEqual;
 	private String dcIn;
 	private Integer originalEqual;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
 	private Integer readyAtGreaterThanOrEqual;
 	private Integer readyAtLessThanOrEqual;
 	private Integer syncTimeGreaterThanOrEqual;
@@ -253,10 +253,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -265,10 +265,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -277,10 +277,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 	}
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -289,10 +289,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -479,10 +479,10 @@ public abstract class FileSyncBaseFilter extends Filter {
 		dcEqual = GsonParser.parseString(jsonObject.get("dcEqual"));
 		dcIn = GsonParser.parseString(jsonObject.get("dcIn"));
 		originalEqual = GsonParser.parseInt(jsonObject.get("originalEqual"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
 		readyAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("readyAtGreaterThanOrEqual"));
 		readyAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("readyAtLessThanOrEqual"));
 		syncTimeGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("syncTimeGreaterThanOrEqual"));

@@ -73,11 +73,11 @@ public class LiveChannelSegment extends ObjectBase {
 	/**
 	 * Segment creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Segment update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * Segment name
 	 */
@@ -130,11 +130,11 @@ public class LiveChannelSegment extends ObjectBase {
 		return this.partnerId;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// name:
@@ -274,8 +274,8 @@ public class LiveChannelSegment extends ObjectBase {
 		// set members values:
 		id = GsonParser.parseLong(jsonObject.get("id"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		name = GsonParser.parseString(jsonObject.get("name"));
 		description = GsonParser.parseString(jsonObject.get("description"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));

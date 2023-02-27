@@ -66,8 +66,8 @@ public class UserRole extends ObjectBase {
 	private Integer partnerId;
 	private String permissionNames;
 	private String tags;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 
 	// id:
 	public Integer getId(){
@@ -150,11 +150,11 @@ public class UserRole extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 
@@ -176,8 +176,8 @@ public class UserRole extends ObjectBase {
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		permissionNames = GsonParser.parseString(jsonObject.get("permissionNames"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 
 	}
 

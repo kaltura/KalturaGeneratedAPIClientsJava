@@ -53,18 +53,18 @@ public abstract class BeaconBaseFilter extends Filter {
 		String objectIdIn();
 	}
 
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
 	private String relatedObjectTypeIn;
 	private BeaconObjectTypes relatedObjectTypeEqual;
 	private String eventTypeIn;
 	private String objectIdIn;
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -73,10 +73,10 @@ public abstract class BeaconBaseFilter extends Filter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -143,8 +143,8 @@ public abstract class BeaconBaseFilter extends Filter {
 		if(jsonObject == null) return;
 
 		// set members values:
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
 		relatedObjectTypeIn = GsonParser.parseString(jsonObject.get("relatedObjectTypeIn"));
 		relatedObjectTypeEqual = BeaconObjectTypes.get(GsonParser.parseString(jsonObject.get("relatedObjectTypeEqual")));
 		eventTypeIn = GsonParser.parseString(jsonObject.get("eventTypeIn"));

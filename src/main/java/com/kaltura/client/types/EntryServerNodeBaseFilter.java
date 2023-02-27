@@ -67,10 +67,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	private Integer serverNodeIdEqual;
 	private String serverNodeIdIn;
 	private String serverNodeIdNotIn;
-	private Integer createdAtLessThanOrEqual;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
+	private Long createdAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
 	private EntryServerNodeStatus statusEqual;
 	private String statusIn;
 	private EntryServerNodeType serverTypeEqual;
@@ -138,10 +138,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -150,10 +150,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -162,10 +162,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	}
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -174,10 +174,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -261,10 +261,10 @@ public abstract class EntryServerNodeBaseFilter extends Filter {
 		serverNodeIdEqual = GsonParser.parseInt(jsonObject.get("serverNodeIdEqual"));
 		serverNodeIdIn = GsonParser.parseString(jsonObject.get("serverNodeIdIn"));
 		serverNodeIdNotIn = GsonParser.parseString(jsonObject.get("serverNodeIdNotIn"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
 		statusEqual = EntryServerNodeStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
 		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 		serverTypeEqual = EntryServerNodeType.get(GsonParser.parseString(jsonObject.get("serverTypeEqual")));

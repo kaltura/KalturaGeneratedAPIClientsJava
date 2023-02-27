@@ -78,7 +78,7 @@ public class ConfMaps extends ObjectBase {
 	/**
 	 * Time of the last update
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Regex that represent the host/s that this map affect
 	 */
@@ -145,7 +145,7 @@ public class ConfMaps extends ObjectBase {
 		return this.isEditable;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// relatedHost:
@@ -228,7 +228,7 @@ public class ConfMaps extends ObjectBase {
 		rawData = GsonParser.parseString(jsonObject.get("rawData"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
 		isEditable = GsonParser.parseBoolean(jsonObject.get("isEditable"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		relatedHost = GsonParser.parseString(jsonObject.get("relatedHost"));
 		version = GsonParser.parseInt(jsonObject.get("version"));
 		sourceLocation = ConfMapsSourceLocation.get(GsonParser.parseString(jsonObject.get("sourceLocation")));

@@ -68,11 +68,11 @@ public class GenericDistributionProvider extends DistributionProvider {
 	/**
 	 * Generic distribution provider creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Generic distribution provider last update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	private Integer partnerId;
 	private Boolean isDefault;
 	private GenericDistributionProviderStatus status;
@@ -88,11 +88,11 @@ public class GenericDistributionProvider extends DistributionProvider {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// partnerId:
@@ -191,8 +191,8 @@ public class GenericDistributionProvider extends DistributionProvider {
 
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
 		status = GenericDistributionProviderStatus.get(GsonParser.parseInt(jsonObject.get("status")));

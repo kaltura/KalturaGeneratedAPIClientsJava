@@ -38,6 +38,7 @@ public enum CatalogItemLanguage implements EnumAsString {
 	YUE("Cantonese"),
 	CA("Catalan"),
 	ZH("Chinese"),
+	CS("Czech"),
 	DA("Danish"),
 	NL("Dutch"),
 	EN("English"),

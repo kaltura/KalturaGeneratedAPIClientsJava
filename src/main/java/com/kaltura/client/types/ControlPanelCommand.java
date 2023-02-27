@@ -74,7 +74,7 @@ public class ControlPanelCommand extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Creator name
 	 */
@@ -82,7 +82,7 @@ public class ControlPanelCommand extends ObjectBase {
 	/**
 	 * Update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * Updater name
 	 */
@@ -141,7 +141,7 @@ public class ControlPanelCommand extends ObjectBase {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// createdBy:
@@ -157,7 +157,7 @@ public class ControlPanelCommand extends ObjectBase {
 	}
 
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// updatedBy:
@@ -328,9 +328,9 @@ public class ControlPanelCommand extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		createdBy = GsonParser.parseString(jsonObject.get("createdBy"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		updatedBy = GsonParser.parseString(jsonObject.get("updatedBy"));
 		createdById = GsonParser.parseInt(jsonObject.get("createdById"));
 		schedulerId = GsonParser.parseInt(jsonObject.get("schedulerId"));

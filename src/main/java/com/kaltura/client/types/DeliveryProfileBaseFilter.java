@@ -67,10 +67,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 	private String partnerIdIn;
 	private String systemNameEqual;
 	private String systemNameIn;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
 	private PlaybackProtocol streamerTypeEqual;
 	private DeliveryStatus statusEqual;
 	private String statusIn;
@@ -148,10 +148,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -160,10 +160,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -172,10 +172,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 	}
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -184,10 +184,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -248,10 +248,10 @@ public abstract class DeliveryProfileBaseFilter extends Filter {
 		partnerIdIn = GsonParser.parseString(jsonObject.get("partnerIdIn"));
 		systemNameEqual = GsonParser.parseString(jsonObject.get("systemNameEqual"));
 		systemNameIn = GsonParser.parseString(jsonObject.get("systemNameIn"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
 		streamerTypeEqual = PlaybackProtocol.get(GsonParser.parseString(jsonObject.get("streamerTypeEqual")));
 		statusEqual = DeliveryStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
 		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));

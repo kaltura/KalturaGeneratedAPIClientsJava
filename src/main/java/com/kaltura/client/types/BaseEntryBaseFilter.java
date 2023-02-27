@@ -270,15 +270,15 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	  created at Kaltura system after a specific time/date (standard timestamp
 	  format).
 	 */
-	private Integer createdAtGreaterThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
 	/**
 	 * This filter parameter should be in use for retrieving only entries which were
 	  created at Kaltura system before a specific time/date (standard timestamp
 	  format).
 	 */
-	private Integer createdAtLessThanOrEqual;
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
+	private Long createdAtLessThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
 	private Double rankLessThanOrEqual;
 	private Double rankGreaterThanOrEqual;
 	private Integer totalRankLessThanOrEqual;
@@ -298,14 +298,14 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	private String searchTextMatchOr;
 	private Integer accessControlIdEqual;
 	private String accessControlIdIn;
-	private Integer startDateGreaterThanOrEqual;
-	private Integer startDateLessThanOrEqual;
-	private Integer startDateGreaterThanOrEqualOrNull;
-	private Integer startDateLessThanOrEqualOrNull;
-	private Integer endDateGreaterThanOrEqual;
-	private Integer endDateLessThanOrEqual;
-	private Integer endDateGreaterThanOrEqualOrNull;
-	private Integer endDateLessThanOrEqualOrNull;
+	private Long startDateGreaterThanOrEqual;
+	private Long startDateLessThanOrEqual;
+	private Long startDateGreaterThanOrEqualOrNull;
+	private Long startDateLessThanOrEqualOrNull;
+	private Long endDateGreaterThanOrEqual;
+	private Long endDateLessThanOrEqual;
+	private Long endDateGreaterThanOrEqualOrNull;
+	private Long endDateLessThanOrEqualOrNull;
 	private String referenceIdEqual;
 	private String referenceIdIn;
 	private String replacingEntryIdEqual;
@@ -765,10 +765,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -777,10 +777,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -789,10 +789,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -801,10 +801,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -921,10 +921,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// startDateGreaterThanOrEqual:
-	public Integer getStartDateGreaterThanOrEqual(){
+	public Long getStartDateGreaterThanOrEqual(){
 		return this.startDateGreaterThanOrEqual;
 	}
-	public void setStartDateGreaterThanOrEqual(Integer startDateGreaterThanOrEqual){
+	public void setStartDateGreaterThanOrEqual(Long startDateGreaterThanOrEqual){
 		this.startDateGreaterThanOrEqual = startDateGreaterThanOrEqual;
 	}
 
@@ -933,10 +933,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// startDateLessThanOrEqual:
-	public Integer getStartDateLessThanOrEqual(){
+	public Long getStartDateLessThanOrEqual(){
 		return this.startDateLessThanOrEqual;
 	}
-	public void setStartDateLessThanOrEqual(Integer startDateLessThanOrEqual){
+	public void setStartDateLessThanOrEqual(Long startDateLessThanOrEqual){
 		this.startDateLessThanOrEqual = startDateLessThanOrEqual;
 	}
 
@@ -945,10 +945,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// startDateGreaterThanOrEqualOrNull:
-	public Integer getStartDateGreaterThanOrEqualOrNull(){
+	public Long getStartDateGreaterThanOrEqualOrNull(){
 		return this.startDateGreaterThanOrEqualOrNull;
 	}
-	public void setStartDateGreaterThanOrEqualOrNull(Integer startDateGreaterThanOrEqualOrNull){
+	public void setStartDateGreaterThanOrEqualOrNull(Long startDateGreaterThanOrEqualOrNull){
 		this.startDateGreaterThanOrEqualOrNull = startDateGreaterThanOrEqualOrNull;
 	}
 
@@ -957,10 +957,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// startDateLessThanOrEqualOrNull:
-	public Integer getStartDateLessThanOrEqualOrNull(){
+	public Long getStartDateLessThanOrEqualOrNull(){
 		return this.startDateLessThanOrEqualOrNull;
 	}
-	public void setStartDateLessThanOrEqualOrNull(Integer startDateLessThanOrEqualOrNull){
+	public void setStartDateLessThanOrEqualOrNull(Long startDateLessThanOrEqualOrNull){
 		this.startDateLessThanOrEqualOrNull = startDateLessThanOrEqualOrNull;
 	}
 
@@ -969,10 +969,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// endDateGreaterThanOrEqual:
-	public Integer getEndDateGreaterThanOrEqual(){
+	public Long getEndDateGreaterThanOrEqual(){
 		return this.endDateGreaterThanOrEqual;
 	}
-	public void setEndDateGreaterThanOrEqual(Integer endDateGreaterThanOrEqual){
+	public void setEndDateGreaterThanOrEqual(Long endDateGreaterThanOrEqual){
 		this.endDateGreaterThanOrEqual = endDateGreaterThanOrEqual;
 	}
 
@@ -981,10 +981,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// endDateLessThanOrEqual:
-	public Integer getEndDateLessThanOrEqual(){
+	public Long getEndDateLessThanOrEqual(){
 		return this.endDateLessThanOrEqual;
 	}
-	public void setEndDateLessThanOrEqual(Integer endDateLessThanOrEqual){
+	public void setEndDateLessThanOrEqual(Long endDateLessThanOrEqual){
 		this.endDateLessThanOrEqual = endDateLessThanOrEqual;
 	}
 
@@ -993,10 +993,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// endDateGreaterThanOrEqualOrNull:
-	public Integer getEndDateGreaterThanOrEqualOrNull(){
+	public Long getEndDateGreaterThanOrEqualOrNull(){
 		return this.endDateGreaterThanOrEqualOrNull;
 	}
-	public void setEndDateGreaterThanOrEqualOrNull(Integer endDateGreaterThanOrEqualOrNull){
+	public void setEndDateGreaterThanOrEqualOrNull(Long endDateGreaterThanOrEqualOrNull){
 		this.endDateGreaterThanOrEqualOrNull = endDateGreaterThanOrEqualOrNull;
 	}
 
@@ -1005,10 +1005,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	}
 
 	// endDateLessThanOrEqualOrNull:
-	public Integer getEndDateLessThanOrEqualOrNull(){
+	public Long getEndDateLessThanOrEqualOrNull(){
 		return this.endDateLessThanOrEqualOrNull;
 	}
-	public void setEndDateLessThanOrEqualOrNull(Integer endDateLessThanOrEqualOrNull){
+	public void setEndDateLessThanOrEqualOrNull(Long endDateLessThanOrEqualOrNull){
 		this.endDateLessThanOrEqualOrNull = endDateLessThanOrEqualOrNull;
 	}
 
@@ -1363,10 +1363,10 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		moderationStatusNotIn = GsonParser.parseString(jsonObject.get("moderationStatusNotIn"));
 		typeEqual = EntryType.get(GsonParser.parseString(jsonObject.get("typeEqual")));
 		typeIn = GsonParser.parseString(jsonObject.get("typeIn"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
 		rankLessThanOrEqual = GsonParser.parseDouble(jsonObject.get("rankLessThanOrEqual"));
 		rankGreaterThanOrEqual = GsonParser.parseDouble(jsonObject.get("rankGreaterThanOrEqual"));
 		totalRankLessThanOrEqual = GsonParser.parseInt(jsonObject.get("totalRankLessThanOrEqual"));
@@ -1376,14 +1376,14 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		searchTextMatchOr = GsonParser.parseString(jsonObject.get("searchTextMatchOr"));
 		accessControlIdEqual = GsonParser.parseInt(jsonObject.get("accessControlIdEqual"));
 		accessControlIdIn = GsonParser.parseString(jsonObject.get("accessControlIdIn"));
-		startDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateGreaterThanOrEqual"));
-		startDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("startDateLessThanOrEqual"));
-		startDateGreaterThanOrEqualOrNull = GsonParser.parseInt(jsonObject.get("startDateGreaterThanOrEqualOrNull"));
-		startDateLessThanOrEqualOrNull = GsonParser.parseInt(jsonObject.get("startDateLessThanOrEqualOrNull"));
-		endDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateGreaterThanOrEqual"));
-		endDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("endDateLessThanOrEqual"));
-		endDateGreaterThanOrEqualOrNull = GsonParser.parseInt(jsonObject.get("endDateGreaterThanOrEqualOrNull"));
-		endDateLessThanOrEqualOrNull = GsonParser.parseInt(jsonObject.get("endDateLessThanOrEqualOrNull"));
+		startDateGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("startDateGreaterThanOrEqual"));
+		startDateLessThanOrEqual = GsonParser.parseLong(jsonObject.get("startDateLessThanOrEqual"));
+		startDateGreaterThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("startDateGreaterThanOrEqualOrNull"));
+		startDateLessThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("startDateLessThanOrEqualOrNull"));
+		endDateGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("endDateGreaterThanOrEqual"));
+		endDateLessThanOrEqual = GsonParser.parseLong(jsonObject.get("endDateLessThanOrEqual"));
+		endDateGreaterThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("endDateGreaterThanOrEqualOrNull"));
+		endDateLessThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("endDateLessThanOrEqualOrNull"));
 		referenceIdEqual = GsonParser.parseString(jsonObject.get("referenceIdEqual"));
 		referenceIdIn = GsonParser.parseString(jsonObject.get("referenceIdIn"));
 		replacingEntryIdEqual = GsonParser.parseString(jsonObject.get("replacingEntryIdEqual"));

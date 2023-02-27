@@ -65,7 +65,7 @@ public class WebexDropFolder extends DropFolder {
 	private Boolean deleteFromRecycleBin;
 	private String webexServiceType;
 	private String webexSiteName;
-	private Integer deleteFromTimestamp;
+	private Long deleteFromTimestamp;
 
 	// webexUserId:
 	public String getWebexUserId(){
@@ -176,10 +176,10 @@ public class WebexDropFolder extends DropFolder {
 	}
 
 	// deleteFromTimestamp:
-	public Integer getDeleteFromTimestamp(){
+	public Long getDeleteFromTimestamp(){
 		return this.deleteFromTimestamp;
 	}
-	public void setDeleteFromTimestamp(Integer deleteFromTimestamp){
+	public void setDeleteFromTimestamp(Long deleteFromTimestamp){
 		this.deleteFromTimestamp = deleteFromTimestamp;
 	}
 
@@ -207,7 +207,7 @@ public class WebexDropFolder extends DropFolder {
 		deleteFromRecycleBin = GsonParser.parseBoolean(jsonObject.get("deleteFromRecycleBin"));
 		webexServiceType = GsonParser.parseString(jsonObject.get("webexServiceType"));
 		webexSiteName = GsonParser.parseString(jsonObject.get("webexSiteName"));
-		deleteFromTimestamp = GsonParser.parseInt(jsonObject.get("deleteFromTimestamp"));
+		deleteFromTimestamp = GsonParser.parseLong(jsonObject.get("deleteFromTimestamp"));
 
 	}
 

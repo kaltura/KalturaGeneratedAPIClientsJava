@@ -78,7 +78,7 @@ public class AccessControl extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * True if this Conversion Profile is the default
 	 */
@@ -138,7 +138,7 @@ public class AccessControl extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// isDefault:
@@ -181,7 +181,7 @@ public class AccessControl extends ObjectBase {
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		description = GsonParser.parseString(jsonObject.get("description"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
 		restrictions = GsonParser.parseArray(jsonObject.getAsJsonArray("restrictions"), BaseRestriction.class);
 		containsUnsuportedRestrictions = GsonParser.parseBoolean(jsonObject.get("containsUnsuportedRestrictions"));

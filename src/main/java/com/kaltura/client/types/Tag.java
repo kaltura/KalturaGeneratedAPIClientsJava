@@ -60,8 +60,8 @@ public class Tag extends ObjectBase {
 	private TaggedObjectType taggedObjectType;
 	private Integer partnerId;
 	private Integer instanceCount;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 
 	// id:
 	public Integer getId(){
@@ -84,11 +84,11 @@ public class Tag extends ObjectBase {
 		return this.instanceCount;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 
@@ -107,8 +107,8 @@ public class Tag extends ObjectBase {
 		taggedObjectType = TaggedObjectType.get(GsonParser.parseString(jsonObject.get("taggedObjectType")));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		instanceCount = GsonParser.parseInt(jsonObject.get("instanceCount"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 
 	}
 

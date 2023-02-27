@@ -76,8 +76,8 @@ public class EventNotificationTemplate extends ObjectBase {
 	private String description;
 	private EventNotificationTemplateType type;
 	private EventNotificationTemplateStatus status;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	/**
 	 * Define that the template could be dispatched manually from the API
 	 */
@@ -168,11 +168,11 @@ public class EventNotificationTemplate extends ObjectBase {
 		return this.status;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// manualDispatchEnabled:
@@ -265,8 +265,8 @@ public class EventNotificationTemplate extends ObjectBase {
 		description = GsonParser.parseString(jsonObject.get("description"));
 		type = EventNotificationTemplateType.get(GsonParser.parseString(jsonObject.get("type")));
 		status = EventNotificationTemplateStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		manualDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("manualDispatchEnabled"));
 		automaticDispatchEnabled = GsonParser.parseBoolean(jsonObject.get("automaticDispatchEnabled"));
 		eventType = EventNotificationEventType.get(GsonParser.parseString(jsonObject.get("eventType")));

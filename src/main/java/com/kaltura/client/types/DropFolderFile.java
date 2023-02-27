@@ -79,7 +79,7 @@ public class DropFolderFile extends ObjectBase {
 	private Integer dropFolderId;
 	private String fileName;
 	private Double fileSize;
-	private Integer fileSizeLastSetAt;
+	private Long fileSizeLastSetAt;
 	private DropFolderFileStatus status;
 	private DropFolderType type;
 	private String parsedSlug;
@@ -91,12 +91,12 @@ public class DropFolderFile extends ObjectBase {
 	private DropFolderFileErrorCode errorCode;
 	private String errorDescription;
 	private String lastModificationTime;
-	private Integer createdAt;
-	private Integer updatedAt;
-	private Integer uploadStartDetectedAt;
-	private Integer uploadEndDetectedAt;
-	private Integer importStartedAt;
-	private Integer importEndedAt;
+	private Long createdAt;
+	private Long updatedAt;
+	private Long uploadStartDetectedAt;
+	private Long uploadEndDetectedAt;
+	private Long importStartedAt;
+	private Long importEndedAt;
 	private Integer batchJobId;
 
 	// id:
@@ -144,7 +144,7 @@ public class DropFolderFile extends ObjectBase {
 	}
 
 	// fileSizeLastSetAt:
-	public Integer getFileSizeLastSetAt(){
+	public Long getFileSizeLastSetAt(){
 		return this.fileSizeLastSetAt;
 	}
 	// status:
@@ -264,18 +264,18 @@ public class DropFolderFile extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// uploadStartDetectedAt:
-	public Integer getUploadStartDetectedAt(){
+	public Long getUploadStartDetectedAt(){
 		return this.uploadStartDetectedAt;
 	}
-	public void setUploadStartDetectedAt(Integer uploadStartDetectedAt){
+	public void setUploadStartDetectedAt(Long uploadStartDetectedAt){
 		this.uploadStartDetectedAt = uploadStartDetectedAt;
 	}
 
@@ -284,10 +284,10 @@ public class DropFolderFile extends ObjectBase {
 	}
 
 	// uploadEndDetectedAt:
-	public Integer getUploadEndDetectedAt(){
+	public Long getUploadEndDetectedAt(){
 		return this.uploadEndDetectedAt;
 	}
-	public void setUploadEndDetectedAt(Integer uploadEndDetectedAt){
+	public void setUploadEndDetectedAt(Long uploadEndDetectedAt){
 		this.uploadEndDetectedAt = uploadEndDetectedAt;
 	}
 
@@ -296,10 +296,10 @@ public class DropFolderFile extends ObjectBase {
 	}
 
 	// importStartedAt:
-	public Integer getImportStartedAt(){
+	public Long getImportStartedAt(){
 		return this.importStartedAt;
 	}
-	public void setImportStartedAt(Integer importStartedAt){
+	public void setImportStartedAt(Long importStartedAt){
 		this.importStartedAt = importStartedAt;
 	}
 
@@ -308,10 +308,10 @@ public class DropFolderFile extends ObjectBase {
 	}
 
 	// importEndedAt:
-	public Integer getImportEndedAt(){
+	public Long getImportEndedAt(){
 		return this.importEndedAt;
 	}
-	public void setImportEndedAt(Integer importEndedAt){
+	public void setImportEndedAt(Long importEndedAt){
 		this.importEndedAt = importEndedAt;
 	}
 
@@ -339,7 +339,7 @@ public class DropFolderFile extends ObjectBase {
 		dropFolderId = GsonParser.parseInt(jsonObject.get("dropFolderId"));
 		fileName = GsonParser.parseString(jsonObject.get("fileName"));
 		fileSize = GsonParser.parseDouble(jsonObject.get("fileSize"));
-		fileSizeLastSetAt = GsonParser.parseInt(jsonObject.get("fileSizeLastSetAt"));
+		fileSizeLastSetAt = GsonParser.parseLong(jsonObject.get("fileSizeLastSetAt"));
 		status = DropFolderFileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		type = DropFolderType.get(GsonParser.parseString(jsonObject.get("type")));
 		parsedSlug = GsonParser.parseString(jsonObject.get("parsedSlug"));
@@ -351,12 +351,12 @@ public class DropFolderFile extends ObjectBase {
 		errorCode = DropFolderFileErrorCode.get(GsonParser.parseString(jsonObject.get("errorCode")));
 		errorDescription = GsonParser.parseString(jsonObject.get("errorDescription"));
 		lastModificationTime = GsonParser.parseString(jsonObject.get("lastModificationTime"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-		uploadStartDetectedAt = GsonParser.parseInt(jsonObject.get("uploadStartDetectedAt"));
-		uploadEndDetectedAt = GsonParser.parseInt(jsonObject.get("uploadEndDetectedAt"));
-		importStartedAt = GsonParser.parseInt(jsonObject.get("importStartedAt"));
-		importEndedAt = GsonParser.parseInt(jsonObject.get("importEndedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
+		uploadStartDetectedAt = GsonParser.parseLong(jsonObject.get("uploadStartDetectedAt"));
+		uploadEndDetectedAt = GsonParser.parseLong(jsonObject.get("uploadEndDetectedAt"));
+		importStartedAt = GsonParser.parseLong(jsonObject.get("importStartedAt"));
+		importEndedAt = GsonParser.parseLong(jsonObject.get("importEndedAt"));
 		batchJobId = GsonParser.parseInt(jsonObject.get("batchJobId"));
 
 	}

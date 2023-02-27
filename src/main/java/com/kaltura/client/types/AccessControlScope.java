@@ -76,7 +76,7 @@ public class AccessControlScope extends ObjectBase {
 	 * Unix timestamp (In seconds) to be used to test entry scheduling, keep null to
 	  use now.
 	 */
-	private Integer time;
+	private Long time;
 	/**
 	 * Indicates what contexts should be tested. No contexts means any context.
 	 */
@@ -135,10 +135,10 @@ public class AccessControlScope extends ObjectBase {
 	}
 
 	// time:
-	public Integer getTime(){
+	public Long getTime(){
 		return this.time;
 	}
-	public void setTime(Integer time){
+	public void setTime(Long time){
 		this.time = time;
 	}
 
@@ -177,7 +177,7 @@ public class AccessControlScope extends ObjectBase {
 		ip = GsonParser.parseString(jsonObject.get("ip"));
 		ks = GsonParser.parseString(jsonObject.get("ks"));
 		userAgent = GsonParser.parseString(jsonObject.get("userAgent"));
-		time = GsonParser.parseInt(jsonObject.get("time"));
+		time = GsonParser.parseLong(jsonObject.get("time"));
 		contexts = GsonParser.parseArray(jsonObject.getAsJsonArray("contexts"), AccessControlContextTypeHolder.class);
 		hashes = GsonParser.parseArray(jsonObject.getAsJsonArray("hashes"), KeyValue.class);
 

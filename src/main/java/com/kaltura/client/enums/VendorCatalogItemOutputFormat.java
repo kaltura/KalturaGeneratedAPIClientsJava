@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum VendorCatalogItemOutputFormat implements EnumAsInt {
 	SRT(1),
-	DFXP(2);
+	DFXP(2),
+	VTT(3);
 
 	private int value;
 

@@ -72,8 +72,8 @@ public class MetadataProfile extends ObjectBase {
 	private String name;
 	private String systemName;
 	private String description;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private MetadataProfileStatus status;
 	private String xsd;
 	private String views;
@@ -142,11 +142,11 @@ public class MetadataProfile extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// status:
@@ -207,8 +207,8 @@ public class MetadataProfile extends ObjectBase {
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		description = GsonParser.parseString(jsonObject.get("description"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		status = MetadataProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		xsd = GsonParser.parseString(jsonObject.get("xsd"));
 		views = GsonParser.parseString(jsonObject.get("views"));

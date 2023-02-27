@@ -47,13 +47,13 @@ public class TimeRangeVendorCredit extends VendorCredit {
 		String toDate();
 	}
 
-	private Integer toDate;
+	private Long toDate;
 
 	// toDate:
-	public Integer getToDate(){
+	public Long getToDate(){
 		return this.toDate;
 	}
-	public void setToDate(Integer toDate){
+	public void setToDate(Long toDate){
 		this.toDate = toDate;
 	}
 
@@ -72,7 +72,7 @@ public class TimeRangeVendorCredit extends VendorCredit {
 		if(jsonObject == null) return;
 
 		// set members values:
-		toDate = GsonParser.parseInt(jsonObject.get("toDate"));
+		toDate = GsonParser.parseLong(jsonObject.get("toDate"));
 
 	}
 

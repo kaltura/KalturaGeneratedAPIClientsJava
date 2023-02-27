@@ -29,9 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.SessionType;
-import com.kaltura.client.types.ObjectBase;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -42,72 +39,25 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(SessionInfo.Tokenizer.class)
-public class SessionInfo extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(VendorExtendedAudioDescriptionCatalogItemFilter.Tokenizer.class)
+public class VendorExtendedAudioDescriptionCatalogItemFilter extends VendorCaptionsCatalogItemBaseFilter {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String ks();
-		String sessionType();
-		String partnerId();
-		String userId();
-		String expiry();
-		String privileges();
+	public interface Tokenizer extends VendorCaptionsCatalogItemBaseFilter.Tokenizer {
 	}
 
-	private String ks;
-	private SessionType sessionType;
-	private Integer partnerId;
-	private String userId;
-	private Long expiry;
-	private String privileges;
 
-	// ks:
-	public String getKs(){
-		return this.ks;
-	}
-	// sessionType:
-	public SessionType getSessionType(){
-		return this.sessionType;
-	}
-	// partnerId:
-	public Integer getPartnerId(){
-		return this.partnerId;
-	}
-	// userId:
-	public String getUserId(){
-		return this.userId;
-	}
-	// expiry:
-	public Long getExpiry(){
-		return this.expiry;
-	}
-	// privileges:
-	public String getPrivileges(){
-		return this.privileges;
-	}
 
-	public SessionInfo() {
+	public VendorExtendedAudioDescriptionCatalogItemFilter() {
 		super();
 	}
 
-	public SessionInfo(JsonObject jsonObject) throws APIException {
+	public VendorExtendedAudioDescriptionCatalogItemFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		ks = GsonParser.parseString(jsonObject.get("ks"));
-		sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
-		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		userId = GsonParser.parseString(jsonObject.get("userId"));
-		expiry = GsonParser.parseLong(jsonObject.get("expiry"));
-		privileges = GsonParser.parseString(jsonObject.get("privileges"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaSessionInfo");
+		kparams.add("objectType", "KalturaVendorExtendedAudioDescriptionCatalogItemFilter");
 		return kparams;
 	}
 

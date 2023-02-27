@@ -62,8 +62,8 @@ public abstract class CategoryEntryBaseFilter extends RelatedFilter {
 	private String categoryIdIn;
 	private String entryIdEqual;
 	private String entryIdIn;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
 	private String categoryFullIdsStartsWith;
 	private CategoryEntryStatus statusEqual;
 	private String statusIn;
@@ -119,10 +119,10 @@ public abstract class CategoryEntryBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -131,10 +131,10 @@ public abstract class CategoryEntryBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -217,8 +217,8 @@ public abstract class CategoryEntryBaseFilter extends RelatedFilter {
 		categoryIdIn = GsonParser.parseString(jsonObject.get("categoryIdIn"));
 		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
 		categoryFullIdsStartsWith = GsonParser.parseString(jsonObject.get("categoryFullIdsStartsWith"));
 		statusEqual = CategoryEntryStatus.get(GsonParser.parseInt(jsonObject.get("statusEqual")));
 		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));

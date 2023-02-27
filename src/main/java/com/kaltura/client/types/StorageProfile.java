@@ -93,8 +93,8 @@ public class StorageProfile extends ObjectBase {
 	}
 
 	private Integer id;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private Integer partnerId;
 	private String name;
 	private String systemName;
@@ -157,11 +157,11 @@ public class StorageProfile extends ObjectBase {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// partnerId:
@@ -588,8 +588,8 @@ public class StorageProfile extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));

@@ -64,8 +64,8 @@ public abstract class MediaEntryBaseFilter extends PlayableEntryFilter {
 	private SourceType sourceTypeNotEqual;
 	private String sourceTypeIn;
 	private String sourceTypeNotIn;
-	private Integer mediaDateGreaterThanOrEqual;
-	private Integer mediaDateLessThanOrEqual;
+	private Long mediaDateGreaterThanOrEqual;
+	private Long mediaDateLessThanOrEqual;
 	private String flavorParamsIdsMatchOr;
 	private String flavorParamsIdsMatchAnd;
 
@@ -142,10 +142,10 @@ public abstract class MediaEntryBaseFilter extends PlayableEntryFilter {
 	}
 
 	// mediaDateGreaterThanOrEqual:
-	public Integer getMediaDateGreaterThanOrEqual(){
+	public Long getMediaDateGreaterThanOrEqual(){
 		return this.mediaDateGreaterThanOrEqual;
 	}
-	public void setMediaDateGreaterThanOrEqual(Integer mediaDateGreaterThanOrEqual){
+	public void setMediaDateGreaterThanOrEqual(Long mediaDateGreaterThanOrEqual){
 		this.mediaDateGreaterThanOrEqual = mediaDateGreaterThanOrEqual;
 	}
 
@@ -154,10 +154,10 @@ public abstract class MediaEntryBaseFilter extends PlayableEntryFilter {
 	}
 
 	// mediaDateLessThanOrEqual:
-	public Integer getMediaDateLessThanOrEqual(){
+	public Long getMediaDateLessThanOrEqual(){
 		return this.mediaDateLessThanOrEqual;
 	}
-	public void setMediaDateLessThanOrEqual(Integer mediaDateLessThanOrEqual){
+	public void setMediaDateLessThanOrEqual(Long mediaDateLessThanOrEqual){
 		this.mediaDateLessThanOrEqual = mediaDateLessThanOrEqual;
 	}
 
@@ -206,8 +206,8 @@ public abstract class MediaEntryBaseFilter extends PlayableEntryFilter {
 		sourceTypeNotEqual = SourceType.get(GsonParser.parseString(jsonObject.get("sourceTypeNotEqual")));
 		sourceTypeIn = GsonParser.parseString(jsonObject.get("sourceTypeIn"));
 		sourceTypeNotIn = GsonParser.parseString(jsonObject.get("sourceTypeNotIn"));
-		mediaDateGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("mediaDateGreaterThanOrEqual"));
-		mediaDateLessThanOrEqual = GsonParser.parseInt(jsonObject.get("mediaDateLessThanOrEqual"));
+		mediaDateGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("mediaDateGreaterThanOrEqual"));
+		mediaDateLessThanOrEqual = GsonParser.parseLong(jsonObject.get("mediaDateLessThanOrEqual"));
 		flavorParamsIdsMatchOr = GsonParser.parseString(jsonObject.get("flavorParamsIdsMatchOr"));
 		flavorParamsIdsMatchAnd = GsonParser.parseString(jsonObject.get("flavorParamsIdsMatchAnd"));
 

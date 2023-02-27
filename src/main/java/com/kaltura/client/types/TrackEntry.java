@@ -80,8 +80,8 @@ public class TrackEntry extends ObjectBase {
 	private String paramStr3;
 	private String ks;
 	private String description;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private String userIp;
 	private Integer sessionId;
 
@@ -254,10 +254,10 @@ public class TrackEntry extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
+	public void setCreatedAt(Long createdAt){
 		this.createdAt = createdAt;
 	}
 
@@ -266,10 +266,10 @@ public class TrackEntry extends ObjectBase {
 	}
 
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
-	public void setUpdatedAt(Integer updatedAt){
+	public void setUpdatedAt(Long updatedAt){
 		this.updatedAt = updatedAt;
 	}
 
@@ -326,8 +326,8 @@ public class TrackEntry extends ObjectBase {
 		paramStr3 = GsonParser.parseString(jsonObject.get("paramStr3"));
 		ks = GsonParser.parseString(jsonObject.get("ks"));
 		description = GsonParser.parseString(jsonObject.get("description"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		userIp = GsonParser.parseString(jsonObject.get("userIp"));
 		sessionId = GsonParser.parseInt(jsonObject.get("sessionId"));
 

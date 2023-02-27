@@ -97,11 +97,11 @@ public class UiConf extends ObjectBase {
 	/**
 	 * Entry creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Entry creation date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	private UiConfCreationMode creationMode;
 	private String html5Url;
 	/**
@@ -295,11 +295,11 @@ public class UiConf extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// creationMode:
@@ -371,8 +371,8 @@ public class UiConf extends ObjectBase {
 		useCdn = GsonParser.parseBoolean(jsonObject.get("useCdn"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
 		swfUrlVersion = GsonParser.parseString(jsonObject.get("swfUrlVersion"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		creationMode = UiConfCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
 		html5Url = GsonParser.parseString(jsonObject.get("html5Url"));
 		version = GsonParser.parseString(jsonObject.get("version"));

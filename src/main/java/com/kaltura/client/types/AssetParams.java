@@ -83,7 +83,7 @@ public class AssetParams extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * True if those Flavor Params are part of system defaults
 	 */
@@ -169,7 +169,7 @@ public class AssetParams extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// isSystemDefault:
@@ -260,7 +260,7 @@ public class AssetParams extends ObjectBase {
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		description = GsonParser.parseString(jsonObject.get("description"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		isSystemDefault = GsonParser.parseBoolean(jsonObject.get("isSystemDefault"));
 		tags = GsonParser.parseString(jsonObject.get("tags"));
 		requiredPermissions = GsonParser.parseArray(jsonObject.getAsJsonArray("requiredPermissions"), StringHolder.class);

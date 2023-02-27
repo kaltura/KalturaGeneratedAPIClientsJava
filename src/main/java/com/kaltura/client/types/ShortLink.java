@@ -59,8 +59,8 @@ public class ShortLink extends ObjectBase {
 	}
 
 	private String id;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private Integer expiresAt;
 	private Integer partnerId;
 	private String userId;
@@ -74,11 +74,11 @@ public class ShortLink extends ObjectBase {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// expiresAt:
@@ -169,8 +169,8 @@ public class ShortLink extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseString(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		expiresAt = GsonParser.parseInt(jsonObject.get("expiresAt"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));

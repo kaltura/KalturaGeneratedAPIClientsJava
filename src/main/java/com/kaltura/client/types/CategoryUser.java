@@ -80,11 +80,11 @@ public class CategoryUser extends ObjectBase {
 	/**
 	 * CategoryUser creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * CategoryUser update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * Update method can be either manual or automatic to distinguish between manual
 	  operations (for example in KMC) on automatic - using bulk upload
@@ -144,11 +144,11 @@ public class CategoryUser extends ObjectBase {
 		return this.status;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// updateMethod:
@@ -195,8 +195,8 @@ public class CategoryUser extends ObjectBase {
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		permissionLevel = CategoryUserPermissionLevel.get(GsonParser.parseInt(jsonObject.get("permissionLevel")));
 		status = CategoryUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		updateMethod = UpdateMethodType.get(GsonParser.parseInt(jsonObject.get("updateMethod")));
 		categoryFullIds = GsonParser.parseString(jsonObject.get("categoryFullIds"));
 		permissionNames = GsonParser.parseString(jsonObject.get("permissionNames"));

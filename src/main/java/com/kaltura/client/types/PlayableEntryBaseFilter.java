@@ -54,9 +54,9 @@ public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
 		String durationTypeMatchOr();
 	}
 
-	private Integer lastPlayedAtGreaterThanOrEqual;
-	private Integer lastPlayedAtLessThanOrEqual;
-	private Integer lastPlayedAtLessThanOrEqualOrNull;
+	private Long lastPlayedAtGreaterThanOrEqual;
+	private Long lastPlayedAtLessThanOrEqual;
+	private Long lastPlayedAtLessThanOrEqualOrNull;
 	private Integer durationLessThan;
 	private Integer durationGreaterThan;
 	private Integer durationLessThanOrEqual;
@@ -64,10 +64,10 @@ public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
 	private String durationTypeMatchOr;
 
 	// lastPlayedAtGreaterThanOrEqual:
-	public Integer getLastPlayedAtGreaterThanOrEqual(){
+	public Long getLastPlayedAtGreaterThanOrEqual(){
 		return this.lastPlayedAtGreaterThanOrEqual;
 	}
-	public void setLastPlayedAtGreaterThanOrEqual(Integer lastPlayedAtGreaterThanOrEqual){
+	public void setLastPlayedAtGreaterThanOrEqual(Long lastPlayedAtGreaterThanOrEqual){
 		this.lastPlayedAtGreaterThanOrEqual = lastPlayedAtGreaterThanOrEqual;
 	}
 
@@ -76,10 +76,10 @@ public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
 	}
 
 	// lastPlayedAtLessThanOrEqual:
-	public Integer getLastPlayedAtLessThanOrEqual(){
+	public Long getLastPlayedAtLessThanOrEqual(){
 		return this.lastPlayedAtLessThanOrEqual;
 	}
-	public void setLastPlayedAtLessThanOrEqual(Integer lastPlayedAtLessThanOrEqual){
+	public void setLastPlayedAtLessThanOrEqual(Long lastPlayedAtLessThanOrEqual){
 		this.lastPlayedAtLessThanOrEqual = lastPlayedAtLessThanOrEqual;
 	}
 
@@ -88,10 +88,10 @@ public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
 	}
 
 	// lastPlayedAtLessThanOrEqualOrNull:
-	public Integer getLastPlayedAtLessThanOrEqualOrNull(){
+	public Long getLastPlayedAtLessThanOrEqualOrNull(){
 		return this.lastPlayedAtLessThanOrEqualOrNull;
 	}
-	public void setLastPlayedAtLessThanOrEqualOrNull(Integer lastPlayedAtLessThanOrEqualOrNull){
+	public void setLastPlayedAtLessThanOrEqualOrNull(Long lastPlayedAtLessThanOrEqualOrNull){
 		this.lastPlayedAtLessThanOrEqualOrNull = lastPlayedAtLessThanOrEqualOrNull;
 	}
 
@@ -170,9 +170,9 @@ public abstract class PlayableEntryBaseFilter extends BaseEntryFilter {
 		if(jsonObject == null) return;
 
 		// set members values:
-		lastPlayedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtGreaterThanOrEqual"));
-		lastPlayedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("lastPlayedAtLessThanOrEqual"));
-		lastPlayedAtLessThanOrEqualOrNull = GsonParser.parseInt(jsonObject.get("lastPlayedAtLessThanOrEqualOrNull"));
+		lastPlayedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("lastPlayedAtGreaterThanOrEqual"));
+		lastPlayedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("lastPlayedAtLessThanOrEqual"));
+		lastPlayedAtLessThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("lastPlayedAtLessThanOrEqualOrNull"));
 		durationLessThan = GsonParser.parseInt(jsonObject.get("durationLessThan"));
 		durationGreaterThan = GsonParser.parseInt(jsonObject.get("durationGreaterThan"));
 		durationLessThanOrEqual = GsonParser.parseInt(jsonObject.get("durationLessThanOrEqual"));

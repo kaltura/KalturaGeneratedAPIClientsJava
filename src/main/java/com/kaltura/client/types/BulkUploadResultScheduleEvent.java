@@ -74,9 +74,9 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 	 * ID of the resource specified for the new event.
 	 */
 	private String resourceId;
-	private Integer startTime;
+	private Long startTime;
 	private Integer duration;
-	private Integer endTime;
+	private Long endTime;
 	private String recurrence;
 	private String coEditors;
 	private String coPublishers;
@@ -181,10 +181,10 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 	}
 
 	// startTime:
-	public Integer getStartTime(){
+	public Long getStartTime(){
 		return this.startTime;
 	}
-	public void setStartTime(Integer startTime){
+	public void setStartTime(Long startTime){
 		this.startTime = startTime;
 	}
 
@@ -205,10 +205,10 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 	}
 
 	// endTime:
-	public Integer getEndTime(){
+	public Long getEndTime(){
 		return this.endTime;
 	}
-	public void setEndTime(Integer endTime){
+	public void setEndTime(Long endTime){
 		this.endTime = endTime;
 	}
 
@@ -307,9 +307,9 @@ public class BulkUploadResultScheduleEvent extends BulkUploadResult {
 		tags = GsonParser.parseString(jsonObject.get("tags"));
 		categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
 		resourceId = GsonParser.parseString(jsonObject.get("resourceId"));
-		startTime = GsonParser.parseInt(jsonObject.get("startTime"));
+		startTime = GsonParser.parseLong(jsonObject.get("startTime"));
 		duration = GsonParser.parseInt(jsonObject.get("duration"));
-		endTime = GsonParser.parseInt(jsonObject.get("endTime"));
+		endTime = GsonParser.parseLong(jsonObject.get("endTime"));
 		recurrence = GsonParser.parseString(jsonObject.get("recurrence"));
 		coEditors = GsonParser.parseString(jsonObject.get("coEditors"));
 		coPublishers = GsonParser.parseString(jsonObject.get("coPublishers"));

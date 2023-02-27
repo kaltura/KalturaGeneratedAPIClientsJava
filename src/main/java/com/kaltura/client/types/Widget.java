@@ -73,8 +73,8 @@ public class Widget extends ObjectBase {
 	private Integer uiConfId;
 	private WidgetSecurityType securityType;
 	private Integer securityPolicy;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	/**
 	 * Can be used to store various partner related data as a string
 	 */
@@ -169,11 +169,11 @@ public class Widget extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// partnerData:
@@ -271,8 +271,8 @@ public class Widget extends ObjectBase {
 		uiConfId = GsonParser.parseInt(jsonObject.get("uiConfId"));
 		securityType = WidgetSecurityType.get(GsonParser.parseInt(jsonObject.get("securityType")));
 		securityPolicy = GsonParser.parseInt(jsonObject.get("securityPolicy"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		partnerData = GsonParser.parseString(jsonObject.get("partnerData"));
 		widgetHTML = GsonParser.parseString(jsonObject.get("widgetHTML"));
 		enforceEntitlement = GsonParser.parseBoolean(jsonObject.get("enforceEntitlement"));

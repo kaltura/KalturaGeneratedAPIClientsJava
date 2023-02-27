@@ -61,7 +61,7 @@ public class Like extends ObjectBase {
 	/**
 	 * The date of the like's creation
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 
 	// entryId:
 	public String getEntryId(){
@@ -88,10 +88,10 @@ public class Like extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
-	public void setCreatedAt(Integer createdAt){
+	public void setCreatedAt(Long createdAt){
 		this.createdAt = createdAt;
 	}
 
@@ -112,7 +112,7 @@ public class Like extends ObjectBase {
 		// set members values:
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 
 	}
 

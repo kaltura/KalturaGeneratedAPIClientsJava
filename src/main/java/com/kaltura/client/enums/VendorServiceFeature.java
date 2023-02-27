@@ -41,7 +41,8 @@ public enum VendorServiceFeature implements EnumAsInt {
 	CHAPTERING(5),
 	INTELLIGENT_TAGGING(6),
 	DUBBING(7),
-	LIVE_CAPTION(8);
+	LIVE_CAPTION(8),
+	EXTENDED_AUDIO_DESCRIPTION(9);
 
 	private int value;
 

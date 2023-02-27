@@ -66,9 +66,9 @@ public abstract class ServerNode extends ObjectBase {
 
 	private Integer id;
 	private Integer partnerId;
-	private Integer createdAt;
-	private Integer updatedAt;
-	private Integer heartbeatTime;
+	private Long createdAt;
+	private Long updatedAt;
+	private Long heartbeatTime;
 	/**
 	 * serverNode name
 	 */
@@ -110,15 +110,15 @@ public abstract class ServerNode extends ObjectBase {
 		return this.partnerId;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// heartbeatTime:
-	public Integer getHeartbeatTime(){
+	public Long getHeartbeatTime(){
 		return this.heartbeatTime;
 	}
 	// name:
@@ -230,9 +230,9 @@ public abstract class ServerNode extends ObjectBase {
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-		heartbeatTime = GsonParser.parseInt(jsonObject.get("heartbeatTime"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
+		heartbeatTime = GsonParser.parseLong(jsonObject.get("heartbeatTime"));
 		name = GsonParser.parseString(jsonObject.get("name"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		description = GsonParser.parseString(jsonObject.get("description"));

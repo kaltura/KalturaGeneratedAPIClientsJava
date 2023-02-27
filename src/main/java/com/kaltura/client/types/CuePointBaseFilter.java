@@ -84,12 +84,12 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	private String statusIn;
 	private String entryIdEqual;
 	private String entryIdIn;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
-	private Integer updatedAtGreaterThanOrEqual;
-	private Integer updatedAtLessThanOrEqual;
-	private Integer triggeredAtGreaterThanOrEqual;
-	private Integer triggeredAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
+	private Long updatedAtGreaterThanOrEqual;
+	private Long updatedAtLessThanOrEqual;
+	private Long triggeredAtGreaterThanOrEqual;
+	private Long triggeredAtLessThanOrEqual;
 	private String tagsLike;
 	private String tagsMultiLikeOr;
 	private String tagsMultiLikeAnd;
@@ -202,10 +202,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -214,10 +214,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -226,10 +226,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// updatedAtGreaterThanOrEqual:
-	public Integer getUpdatedAtGreaterThanOrEqual(){
+	public Long getUpdatedAtGreaterThanOrEqual(){
 		return this.updatedAtGreaterThanOrEqual;
 	}
-	public void setUpdatedAtGreaterThanOrEqual(Integer updatedAtGreaterThanOrEqual){
+	public void setUpdatedAtGreaterThanOrEqual(Long updatedAtGreaterThanOrEqual){
 		this.updatedAtGreaterThanOrEqual = updatedAtGreaterThanOrEqual;
 	}
 
@@ -238,10 +238,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// updatedAtLessThanOrEqual:
-	public Integer getUpdatedAtLessThanOrEqual(){
+	public Long getUpdatedAtLessThanOrEqual(){
 		return this.updatedAtLessThanOrEqual;
 	}
-	public void setUpdatedAtLessThanOrEqual(Integer updatedAtLessThanOrEqual){
+	public void setUpdatedAtLessThanOrEqual(Long updatedAtLessThanOrEqual){
 		this.updatedAtLessThanOrEqual = updatedAtLessThanOrEqual;
 	}
 
@@ -250,10 +250,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// triggeredAtGreaterThanOrEqual:
-	public Integer getTriggeredAtGreaterThanOrEqual(){
+	public Long getTriggeredAtGreaterThanOrEqual(){
 		return this.triggeredAtGreaterThanOrEqual;
 	}
-	public void setTriggeredAtGreaterThanOrEqual(Integer triggeredAtGreaterThanOrEqual){
+	public void setTriggeredAtGreaterThanOrEqual(Long triggeredAtGreaterThanOrEqual){
 		this.triggeredAtGreaterThanOrEqual = triggeredAtGreaterThanOrEqual;
 	}
 
@@ -262,10 +262,10 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 	}
 
 	// triggeredAtLessThanOrEqual:
-	public Integer getTriggeredAtLessThanOrEqual(){
+	public Long getTriggeredAtLessThanOrEqual(){
 		return this.triggeredAtLessThanOrEqual;
 	}
-	public void setTriggeredAtLessThanOrEqual(Integer triggeredAtLessThanOrEqual){
+	public void setTriggeredAtLessThanOrEqual(Long triggeredAtLessThanOrEqual){
 		this.triggeredAtLessThanOrEqual = triggeredAtLessThanOrEqual;
 	}
 
@@ -460,12 +460,12 @@ public abstract class CuePointBaseFilter extends RelatedFilter {
 		statusIn = GsonParser.parseString(jsonObject.get("statusIn"));
 		entryIdEqual = GsonParser.parseString(jsonObject.get("entryIdEqual"));
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
-		updatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtGreaterThanOrEqual"));
-		updatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("updatedAtLessThanOrEqual"));
-		triggeredAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("triggeredAtGreaterThanOrEqual"));
-		triggeredAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("triggeredAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
+		updatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtGreaterThanOrEqual"));
+		updatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("updatedAtLessThanOrEqual"));
+		triggeredAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("triggeredAtGreaterThanOrEqual"));
+		triggeredAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("triggeredAtLessThanOrEqual"));
 		tagsLike = GsonParser.parseString(jsonObject.get("tagsLike"));
 		tagsMultiLikeOr = GsonParser.parseString(jsonObject.get("tagsMultiLikeOr"));
 		tagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsMultiLikeAnd"));

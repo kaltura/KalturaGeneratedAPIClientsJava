@@ -67,7 +67,7 @@ public class Beacon extends ObjectBase {
 	/**
 	 * Beacon update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * The object which this beacon belongs to
 	 */
@@ -86,7 +86,7 @@ public class Beacon extends ObjectBase {
 		return this.indexType;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// relatedObjectType:
@@ -162,7 +162,7 @@ public class Beacon extends ObjectBase {
 		// set members values:
 		id = GsonParser.parseString(jsonObject.get("id"));
 		indexType = GsonParser.parseString(jsonObject.get("indexType"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		relatedObjectType = BeaconObjectTypes.get(GsonParser.parseString(jsonObject.get("relatedObjectType")));
 		eventType = GsonParser.parseString(jsonObject.get("eventType"));
 		objectId = GsonParser.parseString(jsonObject.get("objectId"));

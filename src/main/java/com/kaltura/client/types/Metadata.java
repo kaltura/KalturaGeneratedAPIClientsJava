@@ -67,8 +67,8 @@ public class Metadata extends ObjectBase {
 	private MetadataObjectType metadataObjectType;
 	private String objectId;
 	private Integer version;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 	private MetadataStatus status;
 	private String xml;
 
@@ -101,11 +101,11 @@ public class Metadata extends ObjectBase {
 		return this.version;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// status:
@@ -134,8 +134,8 @@ public class Metadata extends ObjectBase {
 		metadataObjectType = MetadataObjectType.get(GsonParser.parseString(jsonObject.get("metadataObjectType")));
 		objectId = GsonParser.parseString(jsonObject.get("objectId"));
 		version = GsonParser.parseInt(jsonObject.get("version"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		status = MetadataStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		xml = GsonParser.parseString(jsonObject.get("xml"));
 

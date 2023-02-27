@@ -66,7 +66,7 @@ public class PlayableEntry extends BaseEntry {
 	/**
 	 * The last time the entry was played
 	 */
-	private Integer lastPlayedAt;
+	private Long lastPlayedAt;
 	/**
 	 * The width in pixels
 	 */
@@ -97,7 +97,7 @@ public class PlayableEntry extends BaseEntry {
 		return this.views;
 	}
 	// lastPlayedAt:
-	public Integer getLastPlayedAt(){
+	public Long getLastPlayedAt(){
 		return this.lastPlayedAt;
 	}
 	// width:
@@ -141,7 +141,7 @@ public class PlayableEntry extends BaseEntry {
 		// set members values:
 		plays = GsonParser.parseInt(jsonObject.get("plays"));
 		views = GsonParser.parseInt(jsonObject.get("views"));
-		lastPlayedAt = GsonParser.parseInt(jsonObject.get("lastPlayedAt"));
+		lastPlayedAt = GsonParser.parseLong(jsonObject.get("lastPlayedAt"));
 		width = GsonParser.parseInt(jsonObject.get("width"));
 		height = GsonParser.parseInt(jsonObject.get("height"));
 		duration = GsonParser.parseInt(jsonObject.get("duration"));

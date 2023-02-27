@@ -58,7 +58,7 @@ public class ViewHistoryUserEntry extends UserEntry {
 	 * Last playback time reached by user
 	 */
 	private Integer lastTimeReached;
-	private Integer lastUpdateTime;
+	private Long lastUpdateTime;
 	/**
 	 * Property to save last entry ID played in a playlist.
 	 */
@@ -89,10 +89,10 @@ public class ViewHistoryUserEntry extends UserEntry {
 	}
 
 	// lastUpdateTime:
-	public Integer getLastUpdateTime(){
+	public Long getLastUpdateTime(){
 		return this.lastUpdateTime;
 	}
-	public void setLastUpdateTime(Integer lastUpdateTime){
+	public void setLastUpdateTime(Long lastUpdateTime){
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
@@ -125,7 +125,7 @@ public class ViewHistoryUserEntry extends UserEntry {
 		// set members values:
 		playbackContext = GsonParser.parseString(jsonObject.get("playbackContext"));
 		lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
-		lastUpdateTime = GsonParser.parseInt(jsonObject.get("lastUpdateTime"));
+		lastUpdateTime = GsonParser.parseLong(jsonObject.get("lastUpdateTime"));
 		playlistLastEntryId = GsonParser.parseString(jsonObject.get("playlistLastEntryId"));
 
 	}

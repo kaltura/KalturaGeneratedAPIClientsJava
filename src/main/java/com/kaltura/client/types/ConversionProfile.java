@@ -109,7 +109,7 @@ public class ConversionProfile extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * List of included flavor ids (comma separated)
 	 */
@@ -267,7 +267,7 @@ public class ConversionProfile extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// flavorParamsIds:
@@ -466,7 +466,7 @@ public class ConversionProfile extends ObjectBase {
 		tags = GsonParser.parseString(jsonObject.get("tags"));
 		description = GsonParser.parseString(jsonObject.get("description"));
 		defaultEntryId = GsonParser.parseString(jsonObject.get("defaultEntryId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
 		isDefault = GsonParser.parseBoolean(jsonObject.get("isDefault"));
 		isPartnerDefault = GsonParser.parseBoolean(jsonObject.get("isPartnerDefault"));

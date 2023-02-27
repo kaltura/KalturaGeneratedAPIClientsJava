@@ -67,11 +67,11 @@ public class GroupUser extends ObjectBase {
 	/**
 	 * Creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Last update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	private GroupUserCreationMode creationMode;
 	private GroupUserRole userRole;
 
@@ -112,11 +112,11 @@ public class GroupUser extends ObjectBase {
 		return this.partnerId;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// creationMode:
@@ -159,8 +159,8 @@ public class GroupUser extends ObjectBase {
 		groupId = GsonParser.parseString(jsonObject.get("groupId"));
 		status = GroupUserStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		creationMode = GroupUserCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
 		userRole = GroupUserRole.get(GsonParser.parseInt(jsonObject.get("userRole")));
 

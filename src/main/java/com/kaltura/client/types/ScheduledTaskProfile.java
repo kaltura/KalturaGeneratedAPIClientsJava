@@ -84,9 +84,9 @@ public class ScheduledTaskProfile extends ObjectBase {
 	 * A list of tasks to execute on the founded objects
 	 */
 	private List<ObjectTask> objectTasks;
-	private Integer createdAt;
-	private Integer updatedAt;
-	private Integer lastExecutionStartedAt;
+	private Long createdAt;
+	private Long updatedAt;
+	private Long lastExecutionStartedAt;
 	/**
 	 * The maximum number of result count allowed to be processed by this profile per
 	  execution
@@ -178,18 +178,18 @@ public class ScheduledTaskProfile extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// lastExecutionStartedAt:
-	public Integer getLastExecutionStartedAt(){
+	public Long getLastExecutionStartedAt(){
 		return this.lastExecutionStartedAt;
 	}
-	public void setLastExecutionStartedAt(Integer lastExecutionStartedAt){
+	public void setLastExecutionStartedAt(Long lastExecutionStartedAt){
 		this.lastExecutionStartedAt = lastExecutionStartedAt;
 	}
 
@@ -229,9 +229,9 @@ public class ScheduledTaskProfile extends ObjectBase {
 		objectFilterEngineType = ObjectFilterEngineType.get(GsonParser.parseString(jsonObject.get("objectFilterEngineType")));
 		objectFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("objectFilter"), Filter.class);
 		objectTasks = GsonParser.parseArray(jsonObject.getAsJsonArray("objectTasks"), ObjectTask.class);
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-		lastExecutionStartedAt = GsonParser.parseInt(jsonObject.get("lastExecutionStartedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
+		lastExecutionStartedAt = GsonParser.parseLong(jsonObject.get("lastExecutionStartedAt"));
 		maxTotalCountAllowed = GsonParser.parseInt(jsonObject.get("maxTotalCountAllowed"));
 
 	}

@@ -62,8 +62,8 @@ public abstract class ControlPanelCommandBaseFilter extends Filter {
 
 	private Integer idEqual;
 	private String idIn;
-	private Integer createdAtGreaterThanOrEqual;
-	private Integer createdAtLessThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
+	private Long createdAtLessThanOrEqual;
 	private Integer createdByIdEqual;
 	private ControlPanelCommandType typeEqual;
 	private String typeIn;
@@ -97,10 +97,10 @@ public abstract class ControlPanelCommandBaseFilter extends Filter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -109,10 +109,10 @@ public abstract class ControlPanelCommandBaseFilter extends Filter {
 	}
 
 	// createdAtLessThanOrEqual:
-	public Integer getCreatedAtLessThanOrEqual(){
+	public Long getCreatedAtLessThanOrEqual(){
 		return this.createdAtLessThanOrEqual;
 	}
-	public void setCreatedAtLessThanOrEqual(Integer createdAtLessThanOrEqual){
+	public void setCreatedAtLessThanOrEqual(Long createdAtLessThanOrEqual){
 		this.createdAtLessThanOrEqual = createdAtLessThanOrEqual;
 	}
 
@@ -217,8 +217,8 @@ public abstract class ControlPanelCommandBaseFilter extends Filter {
 		// set members values:
 		idEqual = GsonParser.parseInt(jsonObject.get("idEqual"));
 		idIn = GsonParser.parseString(jsonObject.get("idIn"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
-		createdAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtLessThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtLessThanOrEqual"));
 		createdByIdEqual = GsonParser.parseInt(jsonObject.get("createdByIdEqual"));
 		typeEqual = ControlPanelCommandType.get(GsonParser.parseInt(jsonObject.get("typeEqual")));
 		typeIn = GsonParser.parseString(jsonObject.get("typeIn"));

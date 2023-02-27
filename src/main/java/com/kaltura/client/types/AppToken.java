@@ -75,11 +75,11 @@ public class AppToken extends ObjectBase {
 	/**
 	 * Creation time as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Update time as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * Application token status
 	 */
@@ -87,7 +87,7 @@ public class AppToken extends ObjectBase {
 	/**
 	 * Expiry time of current token (unix timestamp in seconds)
 	 */
-	private Integer expiry;
+	private Long expiry;
 	/**
 	 * Type of KS (Kaltura Session) that created using the current token
 	 */
@@ -122,11 +122,11 @@ public class AppToken extends ObjectBase {
 		return this.partnerId;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// status:
@@ -134,10 +134,10 @@ public class AppToken extends ObjectBase {
 		return this.status;
 	}
 	// expiry:
-	public Integer getExpiry(){
+	public Long getExpiry(){
 		return this.expiry;
 	}
-	public void setExpiry(Integer expiry){
+	public void setExpiry(Long expiry){
 		this.expiry = expiry;
 	}
 
@@ -231,10 +231,10 @@ public class AppToken extends ObjectBase {
 		id = GsonParser.parseString(jsonObject.get("id"));
 		token = GsonParser.parseString(jsonObject.get("token"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		status = AppTokenStatus.get(GsonParser.parseInt(jsonObject.get("status")));
-		expiry = GsonParser.parseInt(jsonObject.get("expiry"));
+		expiry = GsonParser.parseLong(jsonObject.get("expiry"));
 		sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
 		sessionUserId = GsonParser.parseString(jsonObject.get("sessionUserId"));
 		sessionDuration = GsonParser.parseInt(jsonObject.get("sessionDuration"));

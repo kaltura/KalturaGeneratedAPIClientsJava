@@ -91,8 +91,8 @@ public class ModerationFlag extends ObjectBase {
 	 */
 	private String comments;
 	private ModerationFlagType flagType;
-	private Integer createdAt;
-	private Integer updatedAt;
+	private Long createdAt;
+	private Long updatedAt;
 
 	// id:
 	public Integer getId(){
@@ -163,11 +163,11 @@ public class ModerationFlag extends ObjectBase {
 	}
 
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 
@@ -190,8 +190,8 @@ public class ModerationFlag extends ObjectBase {
 		status = ModerationFlagStatus.get(GsonParser.parseString(jsonObject.get("status")));
 		comments = GsonParser.parseString(jsonObject.get("comments"));
 		flagType = ModerationFlagType.get(GsonParser.parseInt(jsonObject.get("flagType")));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 
 	}
 

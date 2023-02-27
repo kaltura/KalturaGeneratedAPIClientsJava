@@ -81,7 +81,7 @@ public abstract class PartnerBaseFilter extends Filter {
 	private String partnerPackageIn;
 	private PartnerGroupType partnerGroupTypeEqual;
 	private String partnerNameDescriptionWebsiteAdminNameAdminEmailLike;
-	private Integer createdAtGreaterThanOrEqual;
+	private Long createdAtGreaterThanOrEqual;
 	private Integer idGreaterThan;
 	private Integer monitorUsageEqual;
 
@@ -266,10 +266,10 @@ public abstract class PartnerBaseFilter extends Filter {
 	}
 
 	// createdAtGreaterThanOrEqual:
-	public Integer getCreatedAtGreaterThanOrEqual(){
+	public Long getCreatedAtGreaterThanOrEqual(){
 		return this.createdAtGreaterThanOrEqual;
 	}
-	public void setCreatedAtGreaterThanOrEqual(Integer createdAtGreaterThanOrEqual){
+	public void setCreatedAtGreaterThanOrEqual(Long createdAtGreaterThanOrEqual){
 		this.createdAtGreaterThanOrEqual = createdAtGreaterThanOrEqual;
 	}
 
@@ -327,7 +327,7 @@ public abstract class PartnerBaseFilter extends Filter {
 		partnerPackageIn = GsonParser.parseString(jsonObject.get("partnerPackageIn"));
 		partnerGroupTypeEqual = PartnerGroupType.get(GsonParser.parseInt(jsonObject.get("partnerGroupTypeEqual")));
 		partnerNameDescriptionWebsiteAdminNameAdminEmailLike = GsonParser.parseString(jsonObject.get("partnerNameDescriptionWebsiteAdminNameAdminEmailLike"));
-		createdAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("createdAtGreaterThanOrEqual"));
+		createdAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("createdAtGreaterThanOrEqual"));
 		idGreaterThan = GsonParser.parseInt(jsonObject.get("idGreaterThan"));
 		monitorUsageEqual = GsonParser.parseInt(jsonObject.get("monitorUsageEqual"));
 

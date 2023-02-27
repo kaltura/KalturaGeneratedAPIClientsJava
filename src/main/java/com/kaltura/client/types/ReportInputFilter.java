@@ -178,11 +178,11 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	/**
 	 * Entry created at greater than or equal as Unix timestamp
 	 */
-	private Integer entryCreatedAtGreaterThanOrEqual;
+	private Long entryCreatedAtGreaterThanOrEqual;
 	/**
 	 * Entry created at less than or equal as Unix timestamp
 	 */
-	private Integer entryCreatedAtLessThanOrEqual;
+	private Long entryCreatedAtLessThanOrEqual;
 	private String entryIdIn;
 	private String playbackTypeIn;
 	/**
@@ -511,10 +511,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	}
 
 	// entryCreatedAtGreaterThanOrEqual:
-	public Integer getEntryCreatedAtGreaterThanOrEqual(){
+	public Long getEntryCreatedAtGreaterThanOrEqual(){
 		return this.entryCreatedAtGreaterThanOrEqual;
 	}
-	public void setEntryCreatedAtGreaterThanOrEqual(Integer entryCreatedAtGreaterThanOrEqual){
+	public void setEntryCreatedAtGreaterThanOrEqual(Long entryCreatedAtGreaterThanOrEqual){
 		this.entryCreatedAtGreaterThanOrEqual = entryCreatedAtGreaterThanOrEqual;
 	}
 
@@ -523,10 +523,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	}
 
 	// entryCreatedAtLessThanOrEqual:
-	public Integer getEntryCreatedAtLessThanOrEqual(){
+	public Long getEntryCreatedAtLessThanOrEqual(){
 		return this.entryCreatedAtLessThanOrEqual;
 	}
-	public void setEntryCreatedAtLessThanOrEqual(Integer entryCreatedAtLessThanOrEqual){
+	public void setEntryCreatedAtLessThanOrEqual(Long entryCreatedAtLessThanOrEqual){
 		this.entryCreatedAtLessThanOrEqual = entryCreatedAtLessThanOrEqual;
 	}
 
@@ -783,8 +783,8 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		sourceTypeIn = GsonParser.parseString(jsonObject.get("sourceTypeIn"));
 		ownerIdsIn = GsonParser.parseString(jsonObject.get("ownerIdsIn"));
 		entryOperator = GsonParser.parseObject(jsonObject.getAsJsonObject("entryOperator"), ESearchEntryOperator.class);
-		entryCreatedAtGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtGreaterThanOrEqual"));
-		entryCreatedAtLessThanOrEqual = GsonParser.parseInt(jsonObject.get("entryCreatedAtLessThanOrEqual"));
+		entryCreatedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("entryCreatedAtGreaterThanOrEqual"));
+		entryCreatedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("entryCreatedAtLessThanOrEqual"));
 		entryIdIn = GsonParser.parseString(jsonObject.get("entryIdIn"));
 		playbackTypeIn = GsonParser.parseString(jsonObject.get("playbackTypeIn"));
 		playbackContextIdsIn = GsonParser.parseString(jsonObject.get("playbackContextIdsIn"));

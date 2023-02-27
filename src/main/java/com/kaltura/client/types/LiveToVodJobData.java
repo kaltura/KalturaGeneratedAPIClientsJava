@@ -76,7 +76,7 @@ public class LiveToVodJobData extends JobData {
 	/**
 	 * last live to vod sync time
 	 */
-	private Integer lastCuePointSyncTime;
+	private Long lastCuePointSyncTime;
 	/**
 	 * last segment drift
 	 */
@@ -143,10 +143,10 @@ public class LiveToVodJobData extends JobData {
 	}
 
 	// lastCuePointSyncTime:
-	public Integer getLastCuePointSyncTime(){
+	public Long getLastCuePointSyncTime(){
 		return this.lastCuePointSyncTime;
 	}
-	public void setLastCuePointSyncTime(Integer lastCuePointSyncTime){
+	public void setLastCuePointSyncTime(Long lastCuePointSyncTime){
 		this.lastCuePointSyncTime = lastCuePointSyncTime;
 	}
 
@@ -182,7 +182,7 @@ public class LiveToVodJobData extends JobData {
 		totalVodDuration = GsonParser.parseDouble(jsonObject.get("totalVodDuration"));
 		lastSegmentDuration = GsonParser.parseDouble(jsonObject.get("lastSegmentDuration"));
 		amfArray = GsonParser.parseString(jsonObject.get("amfArray"));
-		lastCuePointSyncTime = GsonParser.parseInt(jsonObject.get("lastCuePointSyncTime"));
+		lastCuePointSyncTime = GsonParser.parseLong(jsonObject.get("lastCuePointSyncTime"));
 		lastSegmentDrift = GsonParser.parseInt(jsonObject.get("lastSegmentDrift"));
 
 	}

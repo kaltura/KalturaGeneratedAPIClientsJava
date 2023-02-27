@@ -54,8 +54,8 @@ public class LiveReportInputFilter extends ObjectBase {
 	}
 
 	private String entryIds;
-	private Integer fromTime;
-	private Integer toTime;
+	private Long fromTime;
+	private Long toTime;
 	private Boolean live;
 	private LiveReportOrderBy orderBy;
 
@@ -72,10 +72,10 @@ public class LiveReportInputFilter extends ObjectBase {
 	}
 
 	// fromTime:
-	public Integer getFromTime(){
+	public Long getFromTime(){
 		return this.fromTime;
 	}
-	public void setFromTime(Integer fromTime){
+	public void setFromTime(Long fromTime){
 		this.fromTime = fromTime;
 	}
 
@@ -84,10 +84,10 @@ public class LiveReportInputFilter extends ObjectBase {
 	}
 
 	// toTime:
-	public Integer getToTime(){
+	public Long getToTime(){
 		return this.toTime;
 	}
-	public void setToTime(Integer toTime){
+	public void setToTime(Long toTime){
 		this.toTime = toTime;
 	}
 
@@ -131,8 +131,8 @@ public class LiveReportInputFilter extends ObjectBase {
 
 		// set members values:
 		entryIds = GsonParser.parseString(jsonObject.get("entryIds"));
-		fromTime = GsonParser.parseInt(jsonObject.get("fromTime"));
-		toTime = GsonParser.parseInt(jsonObject.get("toTime"));
+		fromTime = GsonParser.parseLong(jsonObject.get("fromTime"));
+		toTime = GsonParser.parseLong(jsonObject.get("toTime"));
 		live = GsonParser.parseBoolean(jsonObject.get("live"));
 		orderBy = LiveReportOrderBy.get(GsonParser.parseString(jsonObject.get("orderBy")));
 

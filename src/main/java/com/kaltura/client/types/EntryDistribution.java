@@ -88,15 +88,15 @@ public class EntryDistribution extends ObjectBase {
 	/**
 	 * Entry distribution creation date as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Entry distribution last update date as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	/**
 	 * Entry distribution submission date as Unix timestamp (In seconds)
 	 */
-	private Integer submittedAt;
+	private Long submittedAt;
 	private String entryId;
 	private Integer partnerId;
 	private Integer distributionProfileId;
@@ -118,11 +118,11 @@ public class EntryDistribution extends ObjectBase {
 	/**
 	 * Entry distribution publish time as Unix timestamp (In seconds)
 	 */
-	private Integer sunrise;
+	private Long sunrise;
 	/**
 	 * Entry distribution un-publish time as Unix timestamp (In seconds)
 	 */
-	private Integer sunset;
+	private Long sunset;
 	/**
 	 * The id as returned from the distributed destination
 	 */
@@ -151,15 +151,15 @@ public class EntryDistribution extends ObjectBase {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// submittedAt:
-	public Integer getSubmittedAt(){
+	public Long getSubmittedAt(){
 		return this.submittedAt;
 	}
 	// entryId:
@@ -239,10 +239,10 @@ public class EntryDistribution extends ObjectBase {
 	}
 
 	// sunrise:
-	public Integer getSunrise(){
+	public Long getSunrise(){
 		return this.sunrise;
 	}
-	public void setSunrise(Integer sunrise){
+	public void setSunrise(Long sunrise){
 		this.sunrise = sunrise;
 	}
 
@@ -251,10 +251,10 @@ public class EntryDistribution extends ObjectBase {
 	}
 
 	// sunset:
-	public Integer getSunset(){
+	public Long getSunset(){
 		return this.sunset;
 	}
-	public void setSunset(Integer sunset){
+	public void setSunset(Long sunset){
 		this.sunset = sunset;
 	}
 
@@ -330,9 +330,9 @@ public class EntryDistribution extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
-		submittedAt = GsonParser.parseInt(jsonObject.get("submittedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
+		submittedAt = GsonParser.parseLong(jsonObject.get("submittedAt"));
 		entryId = GsonParser.parseString(jsonObject.get("entryId"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		distributionProfileId = GsonParser.parseInt(jsonObject.get("distributionProfileId"));
@@ -342,8 +342,8 @@ public class EntryDistribution extends ObjectBase {
 		thumbAssetIds = GsonParser.parseString(jsonObject.get("thumbAssetIds"));
 		flavorAssetIds = GsonParser.parseString(jsonObject.get("flavorAssetIds"));
 		assetIds = GsonParser.parseString(jsonObject.get("assetIds"));
-		sunrise = GsonParser.parseInt(jsonObject.get("sunrise"));
-		sunset = GsonParser.parseInt(jsonObject.get("sunset"));
+		sunrise = GsonParser.parseLong(jsonObject.get("sunrise"));
+		sunset = GsonParser.parseLong(jsonObject.get("sunset"));
 		remoteId = GsonParser.parseString(jsonObject.get("remoteId"));
 		plays = GsonParser.parseInt(jsonObject.get("plays"));
 		views = GsonParser.parseInt(jsonObject.get("views"));

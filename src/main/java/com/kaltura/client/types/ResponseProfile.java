@@ -66,11 +66,11 @@ public class ResponseProfile extends DetachedResponseProfile {
 	/**
 	 * Creation time as Unix timestamp (In seconds)
 	 */
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Update time as Unix timestamp (In seconds)
 	 */
-	private Integer updatedAt;
+	private Long updatedAt;
 	private ResponseProfileStatus status;
 	private Integer version;
 
@@ -95,11 +95,11 @@ public class ResponseProfile extends DetachedResponseProfile {
 		return this.partnerId;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// updatedAt:
-	public Integer getUpdatedAt(){
+	public Long getUpdatedAt(){
 		return this.updatedAt;
 	}
 	// status:
@@ -124,8 +124,8 @@ public class ResponseProfile extends DetachedResponseProfile {
 		id = GsonParser.parseLong(jsonObject.get("id"));
 		systemName = GsonParser.parseString(jsonObject.get("systemName"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
-		updatedAt = GsonParser.parseInt(jsonObject.get("updatedAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
+		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		status = ResponseProfileStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		version = GsonParser.parseInt(jsonObject.get("version"));
 

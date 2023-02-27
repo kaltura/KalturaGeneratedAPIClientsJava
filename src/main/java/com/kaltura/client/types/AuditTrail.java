@@ -77,7 +77,7 @@ public class AuditTrail extends ObjectBase {
 	}
 
 	private Integer id;
-	private Integer createdAt;
+	private Long createdAt;
 	/**
 	 * Indicates when the data was parsed
 	 */
@@ -112,7 +112,7 @@ public class AuditTrail extends ObjectBase {
 		return this.id;
 	}
 	// createdAt:
-	public Integer getCreatedAt(){
+	public Long getCreatedAt(){
 		return this.createdAt;
 	}
 	// parsedAt:
@@ -291,7 +291,7 @@ public class AuditTrail extends ObjectBase {
 
 		// set members values:
 		id = GsonParser.parseInt(jsonObject.get("id"));
-		createdAt = GsonParser.parseInt(jsonObject.get("createdAt"));
+		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		parsedAt = GsonParser.parseInt(jsonObject.get("parsedAt"));
 		status = AuditTrailStatus.get(GsonParser.parseInt(jsonObject.get("status")));
 		auditObjectType = AuditTrailObjectType.get(GsonParser.parseString(jsonObject.get("auditObjectType")));
