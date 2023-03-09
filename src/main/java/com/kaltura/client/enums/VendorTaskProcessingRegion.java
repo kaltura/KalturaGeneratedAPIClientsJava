@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum VendorTaskProcessingRegion implements EnumAsInt {
 	US(1),
-	EU(2);
+	EU(2),
+	CA(3);
 
 	private int value;
 

@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDisplayInSearchType implements EnumAsInt {
+	RECYCLED(-2),
 	SYSTEM(-1),
 	NONE(0),
 	PARTNER_ONLY(1),

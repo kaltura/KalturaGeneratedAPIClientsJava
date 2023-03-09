@@ -41,7 +41,8 @@ public enum EntryApplication implements EnumAsString {
 	KMS_GO("4"),
 	WEBCAST_APP("5"),
 	PERSONAL_CAPTURE("6"),
-	KALTURA_MEETING("7");
+	KALTURA_MEETING("7"),
+	EP("8");
 
 	private String value;
 

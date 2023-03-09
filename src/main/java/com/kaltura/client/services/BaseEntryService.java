@@ -105,6 +105,8 @@ import java.util.List;
  * @param pager 
  * @param entryId 
  * @param entryId 
+ * @param entryId 
+ * @param entryId 
  * @param entryId Entry id to update
  * @param baseEntry Base entry metadata to update
  * @param entryId Entry id to update
@@ -644,6 +646,27 @@ public class BaseEntryService {
 		return new ListFlagsBaseEntryBuilder(entryId, pager);
 	}
 	
+	public static class RecycleBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, RecycleBaseEntryBuilder> {
+		
+		public RecycleBaseEntryBuilder(String entryId) {
+			super(BaseEntry.class, "baseentry", "recycle");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Move the entry to the recycle bin
+	 * 
+	 * @param entryId 
+	 */
+    public static RecycleBaseEntryBuilder recycle(String entryId)  {
+		return new RecycleBaseEntryBuilder(entryId);
+	}
+	
 	public static class RejectBaseEntryBuilder extends NullRequestBuilder {
 		
 		public RejectBaseEntryBuilder(String entryId) {
@@ -664,6 +687,27 @@ public class BaseEntryService {
 	 */
     public static RejectBaseEntryBuilder reject(String entryId)  {
 		return new RejectBaseEntryBuilder(entryId);
+	}
+	
+	public static class RestoreRecycledBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, RestoreRecycledBaseEntryBuilder> {
+		
+		public RestoreRecycledBaseEntryBuilder(String entryId) {
+			super(BaseEntry.class, "baseentry", "restoreRecycled");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Restore the entry from the recycle bin
+	 * 
+	 * @param entryId 
+	 */
+    public static RestoreRecycledBaseEntryBuilder restoreRecycled(String entryId)  {
+		return new RestoreRecycledBaseEntryBuilder(entryId);
 	}
 	
 	public static class ServePlaybackKeyBaseEntryBuilder extends ServeRequestBuilder {
