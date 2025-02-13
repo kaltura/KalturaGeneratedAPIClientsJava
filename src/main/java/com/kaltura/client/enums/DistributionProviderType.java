@@ -28,14 +28,16 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType implements EnumAsString {
+	ATT_UVERSE("attUverseDistribution.ATT_UVERSE"),
 	AVN("avnDistribution.AVN"),
 	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
+	CORTEX_API("cortexApiDistribution.CORTEX_API"),
 	CROSS_KALTURA("crossKalturaDistribution.CROSS_KALTURA"),
 	DAILYMOTION("dailymotionDistribution.DAILYMOTION"),
 	DOUBLECLICK("doubleClickDistribution.DOUBLECLICK"),
@@ -48,9 +50,18 @@ public enum DistributionProviderType implements EnumAsString {
 	IDETIC("ideticDistribution.IDETIC"),
 	METRO_PCS("metroPcsDistribution.METRO_PCS"),
 	MSN("msnDistribution.MSN"),
+	NDN("ndnDistribution.NDN"),
 	PODCAST("podcastDistribution.PODCAST"),
+	PUSH_TO_NEWS("pushToNewsDistribution.PUSH_TO_NEWS"),
 	QUICKPLAY("quickPlayDistribution.QUICKPLAY"),
+	SYNACOR_HBO("synacorHboDistribution.SYNACOR_HBO"),
+	TIME_WARNER("timeWarnerDistribution.TIME_WARNER"),
+	TVCOM("tvComDistribution.TVCOM"),
+	TVINCI("tvinciDistribution.TVINCI"),
 	UNICORN("unicornDistribution.UNICORN"),
+	UVERSE_CLICK_TO_ORDER("uverseClickToOrderDistribution.UVERSE_CLICK_TO_ORDER"),
+	UVERSE("uverseDistribution.UVERSE"),
+	VERIZON_VCAST("verizonVcastDistribution.VERIZON_VCAST"),
 	YAHOO("yahooDistribution.YAHOO"),
 	YOUTUBE("youTubeDistribution.YOUTUBE"),
 	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),

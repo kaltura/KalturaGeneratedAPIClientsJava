@@ -42,7 +42,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -258,7 +258,7 @@ public class MetadataService {
 	
 	public static class DeleteMetadataBuilder extends NullRequestBuilder {
 		
-		public DeleteMetadataBuilder(int id) {
+		public DeleteMetadataBuilder(long id) {
 			super("metadata_metadata", "delete");
 			params.add("id", id);
 		}
@@ -273,13 +273,13 @@ public class MetadataService {
 	 * 
 	 * @param id 
 	 */
-    public static DeleteMetadataBuilder delete(int id)  {
+    public static DeleteMetadataBuilder delete(long id)  {
 		return new DeleteMetadataBuilder(id);
 	}
 	
 	public static class GetMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, GetMetadataBuilder> {
 		
-		public GetMetadataBuilder(int id) {
+		public GetMetadataBuilder(long id) {
 			super(Metadata.class, "metadata_metadata", "get");
 			params.add("id", id);
 		}
@@ -294,7 +294,7 @@ public class MetadataService {
 	 * 
 	 * @param id 
 	 */
-    public static GetMetadataBuilder get(int id)  {
+    public static GetMetadataBuilder get(long id)  {
 		return new GetMetadataBuilder(id);
 	}
 	
@@ -327,7 +327,7 @@ public class MetadataService {
 	
 	public static class InvalidateMetadataBuilder extends NullRequestBuilder {
 		
-		public InvalidateMetadataBuilder(int id, int version) {
+		public InvalidateMetadataBuilder(long id, int version) {
 			super("metadata_metadata", "invalidate");
 			params.add("id", id);
 			params.add("version", version);
@@ -342,7 +342,7 @@ public class MetadataService {
 		}
 	}
 
-	public static InvalidateMetadataBuilder invalidate(int id)  {
+	public static InvalidateMetadataBuilder invalidate(long id)  {
 		return invalidate(id, Integer.MIN_VALUE);
 	}
 
@@ -353,7 +353,7 @@ public class MetadataService {
 	 * @param version Enable update only if the metadata object version did not change by other
 	 * process
 	 */
-    public static InvalidateMetadataBuilder invalidate(int id, int version)  {
+    public static InvalidateMetadataBuilder invalidate(long id, int version)  {
 		return new InvalidateMetadataBuilder(id, version);
 	}
 	
@@ -386,7 +386,7 @@ public class MetadataService {
 	
 	public static class ServeMetadataBuilder extends ServeRequestBuilder {
 		
-		public ServeMetadataBuilder(int id) {
+		public ServeMetadataBuilder(long id) {
 			super("metadata_metadata", "serve");
 			params.add("id", id);
 		}
@@ -401,13 +401,13 @@ public class MetadataService {
 	 * 
 	 * @param id 
 	 */
-    public static ServeMetadataBuilder serve(int id)  {
+    public static ServeMetadataBuilder serve(long id)  {
 		return new ServeMetadataBuilder(id);
 	}
 	
 	public static class UpdateMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateMetadataBuilder> {
 		
-		public UpdateMetadataBuilder(int id, String xmlData, int version) {
+		public UpdateMetadataBuilder(long id, String xmlData, int version) {
 			super(Metadata.class, "metadata_metadata", "update");
 			params.add("id", id);
 			params.add("xmlData", xmlData);
@@ -427,11 +427,11 @@ public class MetadataService {
 		}
 	}
 
-	public static UpdateMetadataBuilder update(int id)  {
+	public static UpdateMetadataBuilder update(long id)  {
 		return update(id, null);
 	}
 
-	public static UpdateMetadataBuilder update(int id, String xmlData)  {
+	public static UpdateMetadataBuilder update(long id, String xmlData)  {
 		return update(id, xmlData, Integer.MIN_VALUE);
 	}
 
@@ -443,13 +443,13 @@ public class MetadataService {
 	 * @param version Enable update only if the metadata object version did not change by other
 	 * process
 	 */
-    public static UpdateMetadataBuilder update(int id, String xmlData, int version)  {
+    public static UpdateMetadataBuilder update(long id, String xmlData, int version)  {
 		return new UpdateMetadataBuilder(id, xmlData, version);
 	}
 	
 	public static class UpdateFromFileMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateFromFileMetadataBuilder> {
 		
-		public UpdateFromFileMetadataBuilder(int id, FileHolder xmlFile) {
+		public UpdateFromFileMetadataBuilder(long id, FileHolder xmlFile) {
 			super(Metadata.class, "metadata_metadata", "updateFromFile");
 			params.add("id", id);
 			files = new Files();
@@ -461,19 +461,19 @@ public class MetadataService {
 		}
 	}
 
-	public static UpdateFromFileMetadataBuilder updateFromFile(int id)  {
+	public static UpdateFromFileMetadataBuilder updateFromFile(long id)  {
 		return updateFromFile(id, (FileHolder)null);
 	}
 
-	public static UpdateFromFileMetadataBuilder updateFromFile(int id, File xmlFile)  {
+	public static UpdateFromFileMetadataBuilder updateFromFile(long id, File xmlFile)  {
 		return updateFromFile(id, new FileHolder(xmlFile));
 	}
 
-	public static UpdateFromFileMetadataBuilder updateFromFile(int id, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
+	public static UpdateFromFileMetadataBuilder updateFromFile(long id, InputStream xmlFile, String xmlFileMimeType, String xmlFileName, long xmlFileSize)  {
 		return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName, xmlFileSize));
 	}
 
-	public static UpdateFromFileMetadataBuilder updateFromFile(int id, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
+	public static UpdateFromFileMetadataBuilder updateFromFile(long id, FileInputStream xmlFile, String xmlFileMimeType, String xmlFileName)  {
 		return updateFromFile(id, new FileHolder(xmlFile, xmlFileMimeType, xmlFileName));
 	}
 
@@ -483,13 +483,13 @@ public class MetadataService {
 	 * @param id 
 	 * @param xmlFile XML metadata
 	 */
-    public static UpdateFromFileMetadataBuilder updateFromFile(int id, FileHolder xmlFile)  {
+    public static UpdateFromFileMetadataBuilder updateFromFile(long id, FileHolder xmlFile)  {
 		return new UpdateFromFileMetadataBuilder(id, xmlFile);
 	}
 	
 	public static class UpdateFromXSLMetadataBuilder extends RequestBuilder<Metadata, Metadata.Tokenizer, UpdateFromXSLMetadataBuilder> {
 		
-		public UpdateFromXSLMetadataBuilder(int id, FileHolder xslFile) {
+		public UpdateFromXSLMetadataBuilder(long id, FileHolder xslFile) {
 			super(Metadata.class, "metadata_metadata", "updateFromXSL");
 			params.add("id", id);
 			files = new Files();
@@ -501,15 +501,15 @@ public class MetadataService {
 		}
 	}
 
-	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, File xslFile)  {
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(long id, File xslFile)  {
 		return updateFromXSL(id, new FileHolder(xslFile));
 	}
 
-	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, InputStream xslFile, String xslFileMimeType, String xslFileName, long xslFileSize)  {
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(long id, InputStream xslFile, String xslFileMimeType, String xslFileName, long xslFileSize)  {
 		return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName, xslFileSize));
 	}
 
-	public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, FileInputStream xslFile, String xslFileMimeType, String xslFileName)  {
+	public static UpdateFromXSLMetadataBuilder updateFromXSL(long id, FileInputStream xslFile, String xslFileMimeType, String xslFileName)  {
 		return updateFromXSL(id, new FileHolder(xslFile, xslFileMimeType, xslFileName));
 	}
 
@@ -519,7 +519,7 @@ public class MetadataService {
 	 * @param id 
 	 * @param xslFile 
 	 */
-    public static UpdateFromXSLMetadataBuilder updateFromXSL(int id, FileHolder xslFile)  {
+    public static UpdateFromXSLMetadataBuilder updateFromXSL(long id, FileHolder xslFile)  {
 		return new UpdateFromXSLMetadataBuilder(id, xslFile);
 	}
 }

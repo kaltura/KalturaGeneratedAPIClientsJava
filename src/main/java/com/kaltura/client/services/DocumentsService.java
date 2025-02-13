@@ -44,7 +44,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -53,6 +53,8 @@ import java.util.List;
 /**
  * Document service lets you upload and manage document files
  * 
+ * @param entryId 
+ * @param resource 
  * @param sourceEntryId Document entry id to copy from
  * @param documentEntry Document entry metadata
  * @param sourceFlavorParamsId The flavor to be used as the new entry source, source flavor will be used if not
@@ -86,6 +88,35 @@ import java.util.List;
  * @param fileData The file data
  */
 public class DocumentsService {
+	
+	public static class AddContentDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddContentDocumentsBuilder> {
+		
+		public AddContentDocumentsBuilder(String entryId, Resource resource) {
+			super(DocumentEntry.class, "document_documents", "addContent");
+			params.add("entryId", entryId);
+			params.add("resource", resource);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	public static AddContentDocumentsBuilder addContent(String entryId)  {
+		return addContent(entryId, null);
+	}
+
+	/**
+	 * Add content to document entry which is not yet associated with content
+	  (therefore is in status NO_CONTENT).   If the requirement is to replace the
+	  entry's associated content, use action updateContent.
+	 * 
+	 * @param entryId 
+	 * @param resource 
+	 */
+    public static AddContentDocumentsBuilder addContent(String entryId, Resource resource)  {
+		return new AddContentDocumentsBuilder(entryId, resource);
+	}
 	
 	public static class AddFromEntryDocumentsBuilder extends RequestBuilder<DocumentEntry, DocumentEntry.Tokenizer, AddFromEntryDocumentsBuilder> {
 		

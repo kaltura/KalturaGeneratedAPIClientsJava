@@ -32,10 +32,11 @@ import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -53,6 +54,8 @@ public class ConcatJobData extends JobData {
 		String duration();
 		String concatenatedDuration();
 		String shouldSort();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> conversionCommands();
+		String multiSource();
 	}
 
 	/**
@@ -83,6 +86,11 @@ public class ConcatJobData extends JobData {
 	 * Should Sort the clip parts
 	 */
 	private Boolean shouldSort;
+	/**
+	 * conversion commands to be applied to source files
+	 */
+	private List<StringHolder> conversionCommands;
+	private Boolean multiSource;
 
 	// srcFiles:
 	public List<StringHolder> getSrcFiles(){
@@ -164,6 +172,26 @@ public class ConcatJobData extends JobData {
 		setToken("shouldSort", multirequestToken);
 	}
 
+	// conversionCommands:
+	public List<StringHolder> getConversionCommands(){
+		return this.conversionCommands;
+	}
+	public void setConversionCommands(List<StringHolder> conversionCommands){
+		this.conversionCommands = conversionCommands;
+	}
+
+	// multiSource:
+	public Boolean getMultiSource(){
+		return this.multiSource;
+	}
+	public void setMultiSource(Boolean multiSource){
+		this.multiSource = multiSource;
+	}
+
+	public void multiSource(String multirequestToken){
+		setToken("multiSource", multirequestToken);
+	}
+
 
 	public ConcatJobData() {
 		super();
@@ -182,6 +210,8 @@ public class ConcatJobData extends JobData {
 		duration = GsonParser.parseDouble(jsonObject.get("duration"));
 		concatenatedDuration = GsonParser.parseDouble(jsonObject.get("concatenatedDuration"));
 		shouldSort = GsonParser.parseBoolean(jsonObject.get("shouldSort"));
+		conversionCommands = GsonParser.parseArray(jsonObject.getAsJsonArray("conversionCommands"), StringHolder.class);
+		multiSource = GsonParser.parseBoolean(jsonObject.get("multiSource"));
 
 	}
 
@@ -195,6 +225,8 @@ public class ConcatJobData extends JobData {
 		kparams.add("duration", this.duration);
 		kparams.add("concatenatedDuration", this.concatenatedDuration);
 		kparams.add("shouldSort", this.shouldSort);
+		kparams.add("conversionCommands", this.conversionCommands);
+		kparams.add("multiSource", this.multiSource);
 		return kparams;
 	}
 

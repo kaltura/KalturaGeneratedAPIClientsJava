@@ -34,7 +34,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -46,9 +46,11 @@ public class RegexItem extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String regex();
+		String description();
 	}
 
 	private String regex;
+	private String description;
 
 	// regex:
 	public String getRegex(){
@@ -60,6 +62,18 @@ public class RegexItem extends ObjectBase {
 
 	public void regex(String multirequestToken){
 		setToken("regex", multirequestToken);
+	}
+
+	// description:
+	public String getDescription(){
+		return this.description;
+	}
+	public void setDescription(String description){
+		this.description = description;
+	}
+
+	public void description(String multirequestToken){
+		setToken("description", multirequestToken);
 	}
 
 
@@ -74,6 +88,7 @@ public class RegexItem extends ObjectBase {
 
 		// set members values:
 		regex = GsonParser.parseString(jsonObject.get("regex"));
+		description = GsonParser.parseString(jsonObject.get("description"));
 
 	}
 
@@ -81,6 +96,7 @@ public class RegexItem extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaRegexItem");
 		kparams.add("regex", this.regex);
+		kparams.add("description", this.description);
 		return kparams;
 	}
 

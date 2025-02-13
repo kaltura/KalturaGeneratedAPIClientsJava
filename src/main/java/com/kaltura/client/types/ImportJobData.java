@@ -31,9 +31,12 @@ import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -49,6 +52,8 @@ public class ImportJobData extends JobData {
 		String flavorAssetId();
 		String fileSize();
 		String destFileSharedPath();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> urlHeaders();
+		String shouldRedirect();
 	}
 
 	private String srcFileUrl;
@@ -56,6 +61,8 @@ public class ImportJobData extends JobData {
 	private String flavorAssetId;
 	private Integer fileSize;
 	private String destFileSharedPath;
+	private List<StringHolder> urlHeaders;
+	private Boolean shouldRedirect;
 
 	// srcFileUrl:
 	public String getSrcFileUrl(){
@@ -117,6 +124,26 @@ public class ImportJobData extends JobData {
 		setToken("destFileSharedPath", multirequestToken);
 	}
 
+	// urlHeaders:
+	public List<StringHolder> getUrlHeaders(){
+		return this.urlHeaders;
+	}
+	public void setUrlHeaders(List<StringHolder> urlHeaders){
+		this.urlHeaders = urlHeaders;
+	}
+
+	// shouldRedirect:
+	public Boolean getShouldRedirect(){
+		return this.shouldRedirect;
+	}
+	public void setShouldRedirect(Boolean shouldRedirect){
+		this.shouldRedirect = shouldRedirect;
+	}
+
+	public void shouldRedirect(String multirequestToken){
+		setToken("shouldRedirect", multirequestToken);
+	}
+
 
 	public ImportJobData() {
 		super();
@@ -133,6 +160,8 @@ public class ImportJobData extends JobData {
 		flavorAssetId = GsonParser.parseString(jsonObject.get("flavorAssetId"));
 		fileSize = GsonParser.parseInt(jsonObject.get("fileSize"));
 		destFileSharedPath = GsonParser.parseString(jsonObject.get("destFileSharedPath"));
+		urlHeaders = GsonParser.parseArray(jsonObject.getAsJsonArray("urlHeaders"), StringHolder.class);
+		shouldRedirect = GsonParser.parseBoolean(jsonObject.get("shouldRedirect"));
 
 	}
 
@@ -144,6 +173,8 @@ public class ImportJobData extends JobData {
 		kparams.add("flavorAssetId", this.flavorAssetId);
 		kparams.add("fileSize", this.fileSize);
 		kparams.add("destFileSharedPath", this.destFileSharedPath);
+		kparams.add("urlHeaders", this.urlHeaders);
+		kparams.add("shouldRedirect", this.shouldRedirect);
 		return kparams;
 	}
 

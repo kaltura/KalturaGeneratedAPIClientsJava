@@ -29,13 +29,14 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.HandleParticipantsMode;
 import com.kaltura.client.enums.ZoomGroupParticipationType;
 import com.kaltura.client.enums.ZoomUsersMatching;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -52,12 +53,13 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		String zoomUserPostfix();
 		String zoomWebinarCategory();
 		String enableWebinarUploads();
-		String jwtToken();
 		String enableZoomTranscription();
 		String zoomAccountDescription();
 		String optOutGroupNames();
 		String optInGroupNames();
 		String groupParticipationType();
+		String handleCohostsMode();
+		String handleAlternativeHostsMode();
 	}
 
 	private String zoomCategory;
@@ -66,12 +68,13 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 	private String zoomUserPostfix;
 	private String zoomWebinarCategory;
 	private Boolean enableWebinarUploads;
-	private String jwtToken;
 	private Boolean enableZoomTranscription;
 	private String zoomAccountDescription;
 	private String optOutGroupNames;
 	private String optInGroupNames;
 	private ZoomGroupParticipationType groupParticipationType;
+	private HandleParticipantsMode handleCohostsMode;
+	private HandleParticipantsMode handleAlternativeHostsMode;
 
 	// zoomCategory:
 	public String getZoomCategory(){
@@ -145,18 +148,6 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		setToken("enableWebinarUploads", multirequestToken);
 	}
 
-	// jwtToken:
-	public String getJwtToken(){
-		return this.jwtToken;
-	}
-	public void setJwtToken(String jwtToken){
-		this.jwtToken = jwtToken;
-	}
-
-	public void jwtToken(String multirequestToken){
-		setToken("jwtToken", multirequestToken);
-	}
-
 	// enableZoomTranscription:
 	public Boolean getEnableZoomTranscription(){
 		return this.enableZoomTranscription;
@@ -217,6 +208,30 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		setToken("groupParticipationType", multirequestToken);
 	}
 
+	// handleCohostsMode:
+	public HandleParticipantsMode getHandleCohostsMode(){
+		return this.handleCohostsMode;
+	}
+	public void setHandleCohostsMode(HandleParticipantsMode handleCohostsMode){
+		this.handleCohostsMode = handleCohostsMode;
+	}
+
+	public void handleCohostsMode(String multirequestToken){
+		setToken("handleCohostsMode", multirequestToken);
+	}
+
+	// handleAlternativeHostsMode:
+	public HandleParticipantsMode getHandleAlternativeHostsMode(){
+		return this.handleAlternativeHostsMode;
+	}
+	public void setHandleAlternativeHostsMode(HandleParticipantsMode handleAlternativeHostsMode){
+		this.handleAlternativeHostsMode = handleAlternativeHostsMode;
+	}
+
+	public void handleAlternativeHostsMode(String multirequestToken){
+		setToken("handleAlternativeHostsMode", multirequestToken);
+	}
+
 
 	public ZoomIntegrationSetting() {
 		super();
@@ -234,12 +249,13 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		zoomUserPostfix = GsonParser.parseString(jsonObject.get("zoomUserPostfix"));
 		zoomWebinarCategory = GsonParser.parseString(jsonObject.get("zoomWebinarCategory"));
 		enableWebinarUploads = GsonParser.parseBoolean(jsonObject.get("enableWebinarUploads"));
-		jwtToken = GsonParser.parseString(jsonObject.get("jwtToken"));
 		enableZoomTranscription = GsonParser.parseBoolean(jsonObject.get("enableZoomTranscription"));
 		zoomAccountDescription = GsonParser.parseString(jsonObject.get("zoomAccountDescription"));
 		optOutGroupNames = GsonParser.parseString(jsonObject.get("optOutGroupNames"));
 		optInGroupNames = GsonParser.parseString(jsonObject.get("optInGroupNames"));
 		groupParticipationType = ZoomGroupParticipationType.get(GsonParser.parseInt(jsonObject.get("groupParticipationType")));
+		handleCohostsMode = HandleParticipantsMode.get(GsonParser.parseInt(jsonObject.get("handleCohostsMode")));
+		handleAlternativeHostsMode = HandleParticipantsMode.get(GsonParser.parseInt(jsonObject.get("handleAlternativeHostsMode")));
 
 	}
 
@@ -252,12 +268,13 @@ public class ZoomIntegrationSetting extends IntegrationSetting {
 		kparams.add("zoomUserPostfix", this.zoomUserPostfix);
 		kparams.add("zoomWebinarCategory", this.zoomWebinarCategory);
 		kparams.add("enableWebinarUploads", this.enableWebinarUploads);
-		kparams.add("jwtToken", this.jwtToken);
 		kparams.add("enableZoomTranscription", this.enableZoomTranscription);
 		kparams.add("zoomAccountDescription", this.zoomAccountDescription);
 		kparams.add("optOutGroupNames", this.optOutGroupNames);
 		kparams.add("optInGroupNames", this.optInGroupNames);
 		kparams.add("groupParticipationType", this.groupParticipationType);
+		kparams.add("handleCohostsMode", this.handleCohostsMode);
+		kparams.add("handleAlternativeHostsMode", this.handleAlternativeHostsMode);
 		return kparams;
 	}
 

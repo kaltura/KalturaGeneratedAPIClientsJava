@@ -36,7 +36,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -60,7 +60,7 @@ public class Metadata extends ObjectBase {
 		String xml();
 	}
 
-	private Integer id;
+	private Long id;
 	private Integer partnerId;
 	private Integer metadataProfileId;
 	private Integer metadataProfileVersion;
@@ -73,7 +73,7 @@ public class Metadata extends ObjectBase {
 	private String xml;
 
 	// id:
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 	// partnerId:
@@ -127,7 +127,7 @@ public class Metadata extends ObjectBase {
 		if(jsonObject == null) return;
 
 		// set members values:
-		id = GsonParser.parseInt(jsonObject.get("id"));
+		id = GsonParser.parseLong(jsonObject.get("id"));
 		partnerId = GsonParser.parseInt(jsonObject.get("partnerId"));
 		metadataProfileId = GsonParser.parseInt(jsonObject.get("metadataProfileId"));
 		metadataProfileVersion = GsonParser.parseInt(jsonObject.get("metadataProfileVersion"));

@@ -29,11 +29,10 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -41,53 +40,11 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(VendorLiveCaptionCatalogItem.Tokenizer.class)
-public class VendorLiveCaptionCatalogItem extends VendorCaptionsCatalogItem {
+public class VendorLiveCaptionCatalogItem extends VendorLiveCatalogItem {
 	
-	public interface Tokenizer extends VendorCaptionsCatalogItem.Tokenizer {
-		String minimalRefundTime();
-		String minimalOrderTime();
-		String durationLimit();
+	public interface Tokenizer extends VendorLiveCatalogItem.Tokenizer {
 	}
 
-	private Integer minimalRefundTime;
-	private Integer minimalOrderTime;
-	private Integer durationLimit;
-
-	// minimalRefundTime:
-	public Integer getMinimalRefundTime(){
-		return this.minimalRefundTime;
-	}
-	public void setMinimalRefundTime(Integer minimalRefundTime){
-		this.minimalRefundTime = minimalRefundTime;
-	}
-
-	public void minimalRefundTime(String multirequestToken){
-		setToken("minimalRefundTime", multirequestToken);
-	}
-
-	// minimalOrderTime:
-	public Integer getMinimalOrderTime(){
-		return this.minimalOrderTime;
-	}
-	public void setMinimalOrderTime(Integer minimalOrderTime){
-		this.minimalOrderTime = minimalOrderTime;
-	}
-
-	public void minimalOrderTime(String multirequestToken){
-		setToken("minimalOrderTime", multirequestToken);
-	}
-
-	// durationLimit:
-	public Integer getDurationLimit(){
-		return this.durationLimit;
-	}
-	public void setDurationLimit(Integer durationLimit){
-		this.durationLimit = durationLimit;
-	}
-
-	public void durationLimit(String multirequestToken){
-		setToken("durationLimit", multirequestToken);
-	}
 
 
 	public VendorLiveCaptionCatalogItem() {
@@ -96,22 +53,11 @@ public class VendorLiveCaptionCatalogItem extends VendorCaptionsCatalogItem {
 
 	public VendorLiveCaptionCatalogItem(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		minimalRefundTime = GsonParser.parseInt(jsonObject.get("minimalRefundTime"));
-		minimalOrderTime = GsonParser.parseInt(jsonObject.get("minimalOrderTime"));
-		durationLimit = GsonParser.parseInt(jsonObject.get("durationLimit"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorLiveCaptionCatalogItem");
-		kparams.add("minimalRefundTime", this.minimalRefundTime);
-		kparams.add("minimalOrderTime", this.minimalOrderTime);
-		kparams.add("durationLimit", this.durationLimit);
 		return kparams;
 	}
 

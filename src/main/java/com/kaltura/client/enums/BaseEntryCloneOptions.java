@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -37,6 +37,7 @@ public enum BaseEntryCloneOptions implements EnumAsString {
 	AD_CUE_POINTS("adCuePoint.AD_CUE_POINTS"),
 	ANNOTATION_CUE_POINTS("annotation.ANNOTATION_CUE_POINTS"),
 	CODE_CUE_POINTS("codeCuePoint.CODE_CUE_POINTS"),
+	SESSION_CUE_POINTS("sessionCuePoint.SESSION_CUE_POINTS"),
 	THUMB_CUE_POINTS("thumbCuePoint.THUMB_CUE_POINTS"),
 	USERS("1"),
 	CATEGORIES("2"),

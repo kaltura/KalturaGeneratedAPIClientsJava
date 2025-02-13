@@ -28,18 +28,20 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchGroupFieldName implements EnumAsString {
+	CAPABILITIES("capabilities"),
 	COMPANY("company"),
 	COUNTRY("country"),
 	CREATED_AT("created_at"),
 	EMAIL("email"),
 	EXTERNAL_ID("external_id"),
 	FIRST_NAME("first_name"),
+	FULL_NAME("full_name"),
 	GROUP_IDS("group_ids"),
 	IS_ADMIN("is_admin"),
 	IS_HASHED("is_hashed"),

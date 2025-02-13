@@ -51,7 +51,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -102,6 +102,9 @@ import java.util.List;
  * @param loginDataId The user's current email address that identified the user for login
  * @param newPassword The user's new password
  * @param userId The user's unique identifier in the partner's system
+ * @param userId The user's unique identifier in the partner's system
+ * @param newLoginId The new user's email address that identifies the user for login
+ * @param existingLoginId The user's email address that identifies the user for login
  * @param email The user's email address (login email)
  * @param linkType kmc or kms
  * @param id - the requested file id
@@ -679,6 +682,44 @@ public class UserService {
 	 */
     public static NotifyBanUserBuilder notifyBan(String userId)  {
 		return new NotifyBanUserBuilder(userId);
+	}
+	
+	public static class ReplaceUserLoginDataUserBuilder extends RequestBuilder<User, User.Tokenizer, ReplaceUserLoginDataUserBuilder> {
+		
+		public ReplaceUserLoginDataUserBuilder(String userId, String newLoginId, String existingLoginId) {
+			super(User.class, "user", "replaceUserLoginData");
+			params.add("userId", userId);
+			params.add("newLoginId", newLoginId);
+			params.add("existingLoginId", existingLoginId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+		
+		public void newLoginId(String multirequestToken) {
+			params.add("newLoginId", multirequestToken);
+		}
+		
+		public void existingLoginId(String multirequestToken) {
+			params.add("existingLoginId", multirequestToken);
+		}
+	}
+
+	public static ReplaceUserLoginDataUserBuilder replaceUserLoginData(String userId, String newLoginId)  {
+		return replaceUserLoginData(userId, newLoginId, null);
+	}
+
+	/**
+	 * Replace a user's existing login data to a new or an existing login data   to
+	  only be used when admin impersonates a partner
+	 * 
+	 * @param userId The user's unique identifier in the partner's system
+	 * @param newLoginId The new user's email address that identifies the user for login
+	 * @param existingLoginId The user's email address that identifies the user for login
+	 */
+    public static ReplaceUserLoginDataUserBuilder replaceUserLoginData(String userId, String newLoginId, String existingLoginId)  {
+		return new ReplaceUserLoginDataUserBuilder(userId, newLoginId, existingLoginId);
 	}
 	
 	public static class ResetPasswordUserBuilder extends NullRequestBuilder {

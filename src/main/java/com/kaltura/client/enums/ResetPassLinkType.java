@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,7 +36,9 @@ package com.kaltura.client.enums;
 public enum ResetPassLinkType implements EnumAsString {
 	KMC("1"),
 	KMS("2"),
-	KME("3");
+	KME("3"),
+	EP("4"),
+	KME_NR("5");
 
 	private String value;
 

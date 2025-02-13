@@ -31,9 +31,10 @@ import com.kaltura.client.types.ESearchHistory;
 import com.kaltura.client.types.ESearchHistoryFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -55,6 +56,18 @@ public class SearchHistoryService {
 
     public static DeleteSearchHistoryBuilder delete(String searchTerm)  {
 		return new DeleteSearchHistoryBuilder(searchTerm);
+	}
+	
+	public static class ExportToCsvSearchHistoryBuilder extends RequestBuilder<String, String, ExportToCsvSearchHistoryBuilder> {
+		
+		public ExportToCsvSearchHistoryBuilder(ESearchHistoryFilter filter) {
+			super(String.class, "searchhistory_searchhistory", "exportToCsv");
+			params.add("filter", filter);
+		}
+	}
+
+    public static ExportToCsvSearchHistoryBuilder exportToCsv(ESearchHistoryFilter filter)  {
+		return new ExportToCsvSearchHistoryBuilder(filter);
 	}
 	
 	public static class ListSearchHistoryBuilder extends ListResponseRequestBuilder<ESearchHistory, ESearchHistory.Tokenizer, ListSearchHistoryBuilder> {

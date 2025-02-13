@@ -40,7 +40,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -71,6 +71,7 @@ public class DeliveryProfile extends ObjectBase {
 		String priority();
 		String extraParams();
 		AssetFilter.Tokenizer supplementaryAssetsFilter();
+		String enforceDeliveriesSupport();
 	}
 
 	/**
@@ -136,6 +137,7 @@ public class DeliveryProfile extends ObjectBase {
 	  captions)
 	 */
 	private AssetFilter supplementaryAssetsFilter;
+	private String enforceDeliveriesSupport;
 
 	// id:
 	public Integer getId(){
@@ -309,6 +311,18 @@ public class DeliveryProfile extends ObjectBase {
 		this.supplementaryAssetsFilter = supplementaryAssetsFilter;
 	}
 
+	// enforceDeliveriesSupport:
+	public String getEnforceDeliveriesSupport(){
+		return this.enforceDeliveriesSupport;
+	}
+	public void setEnforceDeliveriesSupport(String enforceDeliveriesSupport){
+		this.enforceDeliveriesSupport = enforceDeliveriesSupport;
+	}
+
+	public void enforceDeliveriesSupport(String multirequestToken){
+		setToken("enforceDeliveriesSupport", multirequestToken);
+	}
+
 
 	public DeliveryProfile() {
 		super();
@@ -340,6 +354,7 @@ public class DeliveryProfile extends ObjectBase {
 		priority = GsonParser.parseInt(jsonObject.get("priority"));
 		extraParams = GsonParser.parseString(jsonObject.get("extraParams"));
 		supplementaryAssetsFilter = GsonParser.parseObject(jsonObject.getAsJsonObject("supplementaryAssetsFilter"), AssetFilter.class);
+		enforceDeliveriesSupport = GsonParser.parseString(jsonObject.get("enforceDeliveriesSupport"));
 
 	}
 
@@ -359,6 +374,7 @@ public class DeliveryProfile extends ObjectBase {
 		kparams.add("priority", this.priority);
 		kparams.add("extraParams", this.extraParams);
 		kparams.add("supplementaryAssetsFilter", this.supplementaryAssetsFilter);
+		kparams.add("enforceDeliveriesSupport", this.enforceDeliveriesSupport);
 		return kparams;
 	}
 

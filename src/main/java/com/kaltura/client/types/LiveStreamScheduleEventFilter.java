@@ -29,10 +29,11 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -43,8 +44,22 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class LiveStreamScheduleEventFilter extends LiveStreamScheduleEventBaseFilter {
 	
 	public interface Tokenizer extends LiveStreamScheduleEventBaseFilter.Tokenizer {
+		String sourceEntryIdEqual();
 	}
 
+	private String sourceEntryIdEqual;
+
+	// sourceEntryIdEqual:
+	public String getSourceEntryIdEqual(){
+		return this.sourceEntryIdEqual;
+	}
+	public void setSourceEntryIdEqual(String sourceEntryIdEqual){
+		this.sourceEntryIdEqual = sourceEntryIdEqual;
+	}
+
+	public void sourceEntryIdEqual(String multirequestToken){
+		setToken("sourceEntryIdEqual", multirequestToken);
+	}
 
 
 	public LiveStreamScheduleEventFilter() {
@@ -53,11 +68,18 @@ public class LiveStreamScheduleEventFilter extends LiveStreamScheduleEventBaseFi
 
 	public LiveStreamScheduleEventFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		sourceEntryIdEqual = GsonParser.parseString(jsonObject.get("sourceEntryIdEqual"));
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLiveStreamScheduleEventFilter");
+		kparams.add("sourceEntryIdEqual", this.sourceEntryIdEqual);
 		return kparams;
 	}
 

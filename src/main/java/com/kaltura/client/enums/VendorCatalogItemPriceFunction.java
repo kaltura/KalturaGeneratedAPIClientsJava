@@ -28,12 +28,13 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VendorCatalogItemPriceFunction implements EnumAsString {
+	PRICE_PER_HOUR("kReachUtils::calcPricePerHour"),
 	PRICE_PER_MINUTE("kReachUtils::calcPricePerMinute"),
 	PRICE_PER_SECOND("kReachUtils::calcPricePerSecond");
 

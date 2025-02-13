@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,7 +42,12 @@ public enum VendorServiceFeature implements EnumAsInt {
 	INTELLIGENT_TAGGING(6),
 	DUBBING(7),
 	LIVE_CAPTION(8),
-	EXTENDED_AUDIO_DESCRIPTION(9);
+	EXTENDED_AUDIO_DESCRIPTION(9),
+	CLIPS(10),
+	LIVE_TRANSLATION(11),
+	QUIZ(12),
+	SUMMARY(13),
+	VIDEO_ANALYSIS(14);
 
 	private int value;
 

@@ -32,11 +32,12 @@ import com.kaltura.client.Params;
 import com.kaltura.client.enums.UiConfCreationMode;
 import com.kaltura.client.enums.UiConfObjType;
 import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.types.UiConfV2Redirect;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -71,6 +72,7 @@ public class UiConf extends ObjectBase {
 		String html5Url();
 		String version();
 		String partnerTags();
+		UiConfV2Redirect.Tokenizer v2Redirect();
 	}
 
 	private Integer id;
@@ -109,6 +111,7 @@ public class UiConf extends ObjectBase {
 	 */
 	private String version;
 	private String partnerTags;
+	private UiConfV2Redirect v2Redirect;
 
 	// id:
 	public Integer getId(){
@@ -342,6 +345,14 @@ public class UiConf extends ObjectBase {
 		setToken("partnerTags", multirequestToken);
 	}
 
+	// v2Redirect:
+	public UiConfV2Redirect getV2Redirect(){
+		return this.v2Redirect;
+	}
+	public void setV2Redirect(UiConfV2Redirect v2Redirect){
+		this.v2Redirect = v2Redirect;
+	}
+
 
 	public UiConf() {
 		super();
@@ -377,6 +388,7 @@ public class UiConf extends ObjectBase {
 		html5Url = GsonParser.parseString(jsonObject.get("html5Url"));
 		version = GsonParser.parseString(jsonObject.get("version"));
 		partnerTags = GsonParser.parseString(jsonObject.get("partnerTags"));
+		v2Redirect = GsonParser.parseObject(jsonObject.getAsJsonObject("v2Redirect"), UiConfV2Redirect.class);
 
 	}
 
@@ -400,6 +412,7 @@ public class UiConf extends ObjectBase {
 		kparams.add("creationMode", this.creationMode);
 		kparams.add("html5Url", this.html5Url);
 		kparams.add("partnerTags", this.partnerTags);
+		kparams.add("v2Redirect", this.v2Redirect);
 		return kparams;
 	}
 

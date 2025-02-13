@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -46,6 +46,7 @@ public enum EventNotificationEventObjectType implements EnumAsString {
 	DROP_FOLDER_FILE("dropFolderEventNotifications.DropFolderFile"),
 	METADATA("metadataEventNotifications.Metadata"),
 	TRANSCRIPT_ASSET("transcriptAssetEventNotifications.TranscriptAsset"),
+	VIRTUAL_EVENT("virtualEventEventNotifications.VirtualEvent"),
 	ENTRY("1"),
 	CATEGORY("2"),
 	ASSET("3"),

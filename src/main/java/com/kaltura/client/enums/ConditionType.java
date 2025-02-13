@@ -28,12 +28,13 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType implements EnumAsString {
+	ABC_WATERMARK("abcScreenersWatermarkAccessControl.abcWatermark"),
 	EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
 	EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
 	METADATA_FIELD_CHANGED("metadata.FieldChanged"),

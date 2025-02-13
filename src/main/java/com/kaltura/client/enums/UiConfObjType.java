@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -54,7 +54,9 @@ public enum UiConfObjType implements EnumAsInt {
 	CLIPPER(18),
 	KSR(19),
 	KUPLOAD(20),
-	WEBCASTING(21);
+	WEBCASTING(21),
+	SAP(22),
+	REELS(23);
 
 	private int value;
 

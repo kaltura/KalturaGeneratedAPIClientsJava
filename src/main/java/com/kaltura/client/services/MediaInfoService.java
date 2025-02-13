@@ -33,7 +33,7 @@ import com.kaltura.client.types.MediaInfoFilter;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.

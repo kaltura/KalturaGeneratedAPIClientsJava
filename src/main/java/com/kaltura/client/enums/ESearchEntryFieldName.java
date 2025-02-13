@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,6 +36,7 @@ package com.kaltura.client.enums;
 public enum ESearchEntryFieldName implements EnumAsString {
 	ACCESS_CONTROL_ID("access_control_id"),
 	ADMIN_TAGS("admin_tags"),
+	BROADCAST_ENTRY_ID("broadcast_entry_id"),
 	CAPTIONS_CONTENT("captions_content"),
 	CONVERSION_PROFILE_ID("conversion_profile_id"),
 	CREATED_AT("created_at"),
@@ -64,8 +65,10 @@ public enum ESearchEntryFieldName implements EnumAsString {
 	PUSH_PUBLISH("push_publish"),
 	RANK("rank"),
 	RECORDED_ENTRY_ID("recorded_entry_id"),
+	RECYCLED_AT("recycled_at"),
 	REDIRECT_ENTRY_ID("redirect_entry_id"),
 	REFERENCE_ID("reference_id"),
+	ROOM_TYPE("room_type"),
 	ROOT_ID("root_id"),
 	SITE_URL("site_url"),
 	SOURCE_TYPE("source_type"),

@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -37,6 +37,7 @@ public enum EntryType implements EnumAsString {
 	AUTOMATIC("-1"),
 	CONFERENCE_ENTRY_SERVER("conference.CONFERENCE_ENTRY_SERVER"),
 	EXTERNAL_MEDIA("externalMedia.externalMedia"),
+	ROOM("room.room"),
 	SIP_ENTRY_SERVER("sip.SIP_ENTRY_SERVER"),
 	MEDIA_CLIP("1"),
 	MIX("2"),

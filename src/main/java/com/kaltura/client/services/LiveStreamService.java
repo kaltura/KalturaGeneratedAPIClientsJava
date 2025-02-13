@@ -40,6 +40,7 @@ import com.kaltura.client.types.LiveStreamConfiguration;
 import com.kaltura.client.types.LiveStreamDetails;
 import com.kaltura.client.types.LiveStreamEntry;
 import com.kaltura.client.types.LiveStreamEntryFilter;
+import com.kaltura.client.types.LiveStreamStats;
 import com.kaltura.client.types.RoomDetails;
 import com.kaltura.client.utils.request.ListResponseRequestBuilder;
 import com.kaltura.client.utils.request.NullRequestBuilder;
@@ -49,7 +50,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -93,6 +94,7 @@ import java.io.InputStream;
  * @param entryId Live stream entry id
  * @param version Desired version of the data
  * @param id ID of the live stream entry
+ * @param entryId Id of the live stream entry
  * @param id ID of the live stream
  * @param protocol protocol of the stream to test.
  * @param filter live stream entry filter
@@ -534,6 +536,27 @@ public class LiveStreamService {
 	 */
     public static GetDetailsLiveStreamBuilder getDetails(String id)  {
 		return new GetDetailsLiveStreamBuilder(id);
+	}
+	
+	public static class GetLiveStreamStatsLiveStreamBuilder extends RequestBuilder<LiveStreamStats, LiveStreamStats.Tokenizer, GetLiveStreamStatsLiveStreamBuilder> {
+		
+		public GetLiveStreamStatsLiveStreamBuilder(String entryId) {
+			super(LiveStreamStats.class, "livestream", "getLiveStreamStats");
+			params.add("entryId", entryId);
+		}
+		
+		public void entryId(String multirequestToken) {
+			params.add("entryId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Deliver information about the livestream
+	 * 
+	 * @param entryId Id of the live stream entry
+	 */
+    public static GetLiveStreamStatsLiveStreamBuilder getLiveStreamStats(String entryId)  {
+		return new GetLiveStreamStatsLiveStreamBuilder(entryId);
 	}
 	
 	public static class IsLiveLiveStreamBuilder extends RequestBuilder<Boolean, String, IsLiveLiveStreamBuilder> {

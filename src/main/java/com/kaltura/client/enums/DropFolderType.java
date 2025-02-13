@@ -28,14 +28,21 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType implements EnumAsString {
+	AP_FEED("ApFeedDropFolder.AP_FEED"),
 	FEED("FeedDropFolder.FEED"),
+	MS_TEAMS("MicrosoftTeamsDropFolder.MS_TEAMS"),
+	S3DROPFOLDER("S3DropFolder.S3DROPFOLDER"),
+	TR_RDS_COMPANY("TrRdsSyncDropFolder.TR_RDS_COMPANY"),
+	TR_RDS_TMCTERM("TrRdsSyncDropFolder.TR_RDS_TMCTERM"),
+	WEBEX_API("WebexAPIDropFolder.WEBEX_API"),
 	WEBEX("WebexDropFolder.WEBEX"),
+	ZOOM("ZoomDropFolder.ZOOM"),
 	LOCAL("1"),
 	FTP("2"),
 	SCP("3"),

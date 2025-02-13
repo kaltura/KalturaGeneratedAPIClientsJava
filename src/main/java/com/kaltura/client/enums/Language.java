@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -112,6 +112,7 @@ public enum Language implements EnumAsString {
 	BIN("Bini"),
 	BPY("Bishnupriya Manipuri"),
 	BI("Bislama"),
+	BS("Bosnian"),
 	BR("Breton"),
 	BUG("Buginese"),
 	BG("Bulgarian"),
@@ -176,6 +177,7 @@ public enum Language implements EnumAsString {
 	EGL("Emilian"),
 	EN("English"),
 	EN_US("English (American)"),
+	EN_AU("English (Australian)"),
 	EN_GB("English (British)"),
 	ENM("English Middle (1100-1500)"),
 	MYV("Erzya"),
@@ -229,7 +231,7 @@ public enum Language implements EnumAsString {
 	HNI("Hani"),
 	HA("Hausa"),
 	HAW("Hawaiian"),
-	IW("Hebrew"),
+	HE("Hebrew"),
 	HEI("Heiltsuk"),
 	HID("Hidatsa"),
 	HIL("Hiligaynon"),
@@ -422,6 +424,7 @@ public enum Language implements EnumAsString {
 	PS("Pashto (Pushto)"),
 	PRP("Persian"),
 	PRS("Persian (Dari)"),
+	FA_IR("Persian (Iran)"),
 	PFL("Pfaelzisch"),
 	PCD("Picard"),
 	PMS("Piedmontese"),
@@ -489,6 +492,7 @@ public enum Language implements EnumAsString {
 	SID("Sidamo"),
 	BLA("Siksika"),
 	SZL("Silesian"),
+	ZH_CN("Simplified Chinese"),
 	SD("Sindhi"),
 	SI("Sinhalese"),
 	SS("Siswati"),
@@ -496,6 +500,7 @@ public enum Language implements EnumAsString {
 	SCS("Slavey North"),
 	XSL("Slavey South"),
 	SK("Slovak"),
+	SK_SK("Slovakian"),
 	SL("Slovenian"),
 	SO("Somali"),
 	SNK("Soninke"),
@@ -551,6 +556,7 @@ public enum Language implements EnumAsString {
 	TPI("Tok Pisin"),
 	TO("Tonga"),
 	TOG("Tonga (Nyasa)"),
+	ZH_HK("Traditional Chinese"),
 	DDO("Tsez"),
 	TSI("Tsimshian"),
 	TS("Tsonga"),
@@ -593,7 +599,7 @@ public enum Language implements EnumAsString {
 	WYM("Wymysorys"),
 	XH("Xhosa"),
 	AME("Yanesha"),
-	JI("Yiddish"),
+	YI("Yiddish"),
 	YO("Yoruba"),
 	ZAI("Zapotec Isthmus"),
 	DJE("Zarma"),

@@ -38,7 +38,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -132,6 +132,7 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		String tagsAdminTagsMultiLikeAnd();
 		String tagsAdminTagsNameMultiLikeAnd();
 		String displayInSearchEqual();
+		String displayInSearchIn();
 	}
 
 	/**
@@ -334,6 +335,7 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 	private String tagsAdminTagsMultiLikeAnd;
 	private String tagsAdminTagsNameMultiLikeAnd;
 	private EntryDisplayInSearchType displayInSearchEqual;
+	private String displayInSearchIn;
 
 	// idEqual:
 	public String getIdEqual(){
@@ -1331,6 +1333,18 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		setToken("displayInSearchEqual", multirequestToken);
 	}
 
+	// displayInSearchIn:
+	public String getDisplayInSearchIn(){
+		return this.displayInSearchIn;
+	}
+	public void setDisplayInSearchIn(String displayInSearchIn){
+		this.displayInSearchIn = displayInSearchIn;
+	}
+
+	public void displayInSearchIn(String multirequestToken){
+		setToken("displayInSearchIn", multirequestToken);
+	}
+
 
 	public BaseEntryBaseFilter() {
 		super();
@@ -1425,6 +1439,7 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		tagsAdminTagsMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsAdminTagsMultiLikeAnd"));
 		tagsAdminTagsNameMultiLikeAnd = GsonParser.parseString(jsonObject.get("tagsAdminTagsNameMultiLikeAnd"));
 		displayInSearchEqual = EntryDisplayInSearchType.get(GsonParser.parseInt(jsonObject.get("displayInSearchEqual")));
+		displayInSearchIn = GsonParser.parseString(jsonObject.get("displayInSearchIn"));
 
 	}
 
@@ -1514,6 +1529,7 @@ public abstract class BaseEntryBaseFilter extends RelatedFilter {
 		kparams.add("tagsAdminTagsMultiLikeAnd", this.tagsAdminTagsMultiLikeAnd);
 		kparams.add("tagsAdminTagsNameMultiLikeAnd", this.tagsAdminTagsNameMultiLikeAnd);
 		kparams.add("displayInSearchEqual", this.displayInSearchEqual);
+		kparams.add("displayInSearchIn", this.displayInSearchIn);
 		return kparams;
 	}
 

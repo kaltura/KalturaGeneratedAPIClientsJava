@@ -27,6 +27,7 @@
 // ===================================================================================================
 package com.kaltura.client.services;
 
+import com.kaltura.client.types.EndpointValidationResponse;
 import com.kaltura.client.types.FilterPager;
 import com.kaltura.client.types.ZoomIntegrationSetting;
 import com.kaltura.client.types.ZoomIntegrationSettingResponse;
@@ -34,7 +35,7 @@ import com.kaltura.client.utils.request.NullRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -118,18 +119,18 @@ public class ZoomVendorService {
 	
 	public static class LocalRegistrationPageZoomVendorBuilder extends NullRequestBuilder {
 		
-		public LocalRegistrationPageZoomVendorBuilder(String jwt) {
+		public LocalRegistrationPageZoomVendorBuilder(String zoomAccountId) {
 			super("vendor_zoomvendor", "localRegistrationPage");
-			params.add("jwt", jwt);
+			params.add("zoomAccountId", zoomAccountId);
 		}
 		
-		public void jwt(String multirequestToken) {
-			params.add("jwt", multirequestToken);
+		public void zoomAccountId(String multirequestToken) {
+			params.add("zoomAccountId", multirequestToken);
 		}
 	}
 
-    public static LocalRegistrationPageZoomVendorBuilder localRegistrationPage(String jwt)  {
-		return new LocalRegistrationPageZoomVendorBuilder(jwt);
+    public static LocalRegistrationPageZoomVendorBuilder localRegistrationPage(String zoomAccountId)  {
+		return new LocalRegistrationPageZoomVendorBuilder(zoomAccountId);
 	}
 	
 	public static class OauthValidationZoomVendorBuilder extends NullRequestBuilder {
@@ -159,10 +160,10 @@ public class ZoomVendorService {
 		return new PreOauthValidationZoomVendorBuilder();
 	}
 	
-	public static class RecordingCompleteZoomVendorBuilder extends NullRequestBuilder {
+	public static class RecordingCompleteZoomVendorBuilder extends RequestBuilder<EndpointValidationResponse, EndpointValidationResponse.Tokenizer, RecordingCompleteZoomVendorBuilder> {
 		
 		public RecordingCompleteZoomVendorBuilder() {
-			super("vendor_zoomvendor", "recordingComplete");
+			super(EndpointValidationResponse.class, "vendor_zoomvendor", "recordingComplete");
 		}
 	}
 

@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EventNotificationDelayedCondition;
 import com.kaltura.client.enums.EventNotificationEventObjectType;
 import com.kaltura.client.enums.EventNotificationEventType;
 import com.kaltura.client.enums.EventNotificationTemplateStatus;
@@ -37,10 +38,11 @@ import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -67,6 +69,7 @@ public class EventNotificationTemplate extends ObjectBase {
 		RequestBuilder.ListTokenizer<Condition.Tokenizer> eventConditions();
 		RequestBuilder.ListTokenizer<EventNotificationParameter.Tokenizer> contentParameters();
 		RequestBuilder.ListTokenizer<EventNotificationParameter.Tokenizer> userParameters();
+		String eventDelayedCondition();
 	}
 
 	private Integer id;
@@ -91,7 +94,7 @@ public class EventNotificationTemplate extends ObjectBase {
 	 */
 	private EventNotificationEventType eventType;
 	/**
-	 * Define the object that raied the event that should trigger this notification
+	 * Define the object that raised the event that should trigger this notification
 	 */
 	private EventNotificationEventObjectType eventObjectType;
 	/**
@@ -106,6 +109,10 @@ public class EventNotificationTemplate extends ObjectBase {
 	 * Define the content dynamic parameters
 	 */
 	private List<EventNotificationParameter> userParameters;
+	/**
+	 * Event batch job will be delayed until specific condition criteria is met
+	 */
+	private EventNotificationDelayedCondition eventDelayedCondition;
 
 	// id:
 	public Integer getId(){
@@ -247,6 +254,18 @@ public class EventNotificationTemplate extends ObjectBase {
 		this.userParameters = userParameters;
 	}
 
+	// eventDelayedCondition:
+	public EventNotificationDelayedCondition getEventDelayedCondition(){
+		return this.eventDelayedCondition;
+	}
+	public void setEventDelayedCondition(EventNotificationDelayedCondition eventDelayedCondition){
+		this.eventDelayedCondition = eventDelayedCondition;
+	}
+
+	public void eventDelayedCondition(String multirequestToken){
+		setToken("eventDelayedCondition", multirequestToken);
+	}
+
 
 	public EventNotificationTemplate() {
 		super();
@@ -274,6 +293,7 @@ public class EventNotificationTemplate extends ObjectBase {
 		eventConditions = GsonParser.parseArray(jsonObject.getAsJsonArray("eventConditions"), Condition.class);
 		contentParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("contentParameters"), EventNotificationParameter.class);
 		userParameters = GsonParser.parseArray(jsonObject.getAsJsonArray("userParameters"), EventNotificationParameter.class);
+		eventDelayedCondition = EventNotificationDelayedCondition.get(GsonParser.parseInt(jsonObject.get("eventDelayedCondition")));
 
 	}
 
@@ -291,6 +311,7 @@ public class EventNotificationTemplate extends ObjectBase {
 		kparams.add("eventConditions", this.eventConditions);
 		kparams.add("contentParameters", this.contentParameters);
 		kparams.add("userParameters", this.userParameters);
+		kparams.add("eventDelayedCondition", this.eventDelayedCondition);
 		return kparams;
 	}
 

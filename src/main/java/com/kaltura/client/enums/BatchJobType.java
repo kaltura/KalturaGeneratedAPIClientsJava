@@ -28,13 +28,14 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType implements EnumAsString {
 	CONVERT("0"),
+	REACH_INTERNAL_QUEUE_HANDLER("ReachInternal.ReachInternalQueueHandler"),
 	CONVERT_CAPTION_ASSET("caption.convertcaptionasset"),
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
 	PARSE_CAPTION_ASSET("captionSearch.parseCaptionAsset"),
@@ -52,6 +53,7 @@ public enum BatchJobType implements EnumAsString {
 	ENTRY_VENDOR_TASK_CSV("reach.EntryVendorTasksCsv"),
 	SYNC_REACH_CREDIT_TASK("reach.SyncReachCreditTask"),
 	SCHEDULED_TASK("scheduledTask.ScheduledTask"),
+	SEARCH_TERM_CSV("searchHistory.searchTermsCsv"),
 	INDEX_TAGS("tagSearch.IndexTagsByPrivacyContext"),
 	TAG_RESOLVE("tagSearch.TagResolve"),
 	VIRUS_SCAN("virusScan.VirusScan"),
@@ -107,7 +109,8 @@ public enum BatchJobType implements EnumAsString {
 	STORAGE_PERIODIC_EXPORT("53"),
 	STORAGE_PERIODIC_PURGE("54"),
 	STORAGE_PERIODIC_DELETE_LOCAL("55"),
-	REACH_JOB_CLEANER("56");
+	REACH_JOB_CLEANER("56"),
+	MULTI_CLIP_CONCAT("57");
 
 	private String value;
 

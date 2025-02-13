@@ -28,13 +28,14 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ReachVendorEngineType implements EnumAsString {
-	/** Place holder for future values */;
+	OPEN_CALAIS("OpenCalaisReachVendor.OPEN_CALAIS"),
+	HELLO_WORLD("ReachInternal.HELLO_WORLD");
 
 	private String value;
 
@@ -52,6 +53,18 @@ public enum ReachVendorEngineType implements EnumAsString {
 	}
 
 	public static ReachVendorEngineType get(String value) {
-		return null;
-	}
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over ReachVendorEngineType defined values and compare the inner value with the given one:
+		for(ReachVendorEngineType item: values()) {
+			if(item.getValue().equals(value)) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return ReachVendorEngineType.values().length > 0 ? ReachVendorEngineType.values()[0]: null;
+   }
 }

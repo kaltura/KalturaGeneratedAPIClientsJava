@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -40,6 +40,7 @@ public enum CuePointType implements EnumAsString {
 	EVENT("eventCuePoint.Event"),
 	QUIZ_ANSWER("quiz.QUIZ_ANSWER"),
 	QUIZ_QUESTION("quiz.QUIZ_QUESTION"),
+	SESSION("sessionCuePoint.Session"),
 	THUMB("thumbCuePoint.Thumb");
 
 	private String value;

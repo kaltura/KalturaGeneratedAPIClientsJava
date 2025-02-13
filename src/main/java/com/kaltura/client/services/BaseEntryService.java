@@ -56,7 +56,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -75,6 +75,7 @@ import java.util.List;
  * @param entryId 
  * @param rank 
  * @param entryId 
+ * @param filter 
  * @param entryId Id of entry to clone
  * @param cloneOptions 
  * @param filter Entry filter
@@ -255,6 +256,18 @@ public class BaseEntryService {
 	 */
     public static ApproveBaseEntryBuilder approve(String entryId)  {
 		return new ApproveBaseEntryBuilder(entryId);
+	}
+	
+	public static class BulkDeleteBaseEntryBuilder extends RequestBuilder<Integer, String, BulkDeleteBaseEntryBuilder> {
+		
+		public BulkDeleteBaseEntryBuilder(BaseEntryFilter filter) {
+			super(Integer.class, "baseentry", "bulkDelete");
+			params.add("filter", filter);
+		}
+	}
+
+    public static BulkDeleteBaseEntryBuilder bulkDelete(BaseEntryFilter filter)  {
+		return new BulkDeleteBaseEntryBuilder(filter);
 	}
 	
 	public static class CloneBaseEntryBuilder extends RequestBuilder<BaseEntry, BaseEntry.Tokenizer, CloneBaseEntryBuilder> {

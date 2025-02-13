@@ -33,7 +33,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -45,9 +45,11 @@ public class VendorCatalogItemFilter extends VendorCatalogItemBaseFilter {
 	
 	public interface Tokenizer extends VendorCatalogItemBaseFilter.Tokenizer {
 		String partnerIdEqual();
+		String catalogItemIdEqual();
 	}
 
 	private Integer partnerIdEqual;
+	private Integer catalogItemIdEqual;
 
 	// partnerIdEqual:
 	public Integer getPartnerIdEqual(){
@@ -59,6 +61,18 @@ public class VendorCatalogItemFilter extends VendorCatalogItemBaseFilter {
 
 	public void partnerIdEqual(String multirequestToken){
 		setToken("partnerIdEqual", multirequestToken);
+	}
+
+	// catalogItemIdEqual:
+	public Integer getCatalogItemIdEqual(){
+		return this.catalogItemIdEqual;
+	}
+	public void setCatalogItemIdEqual(Integer catalogItemIdEqual){
+		this.catalogItemIdEqual = catalogItemIdEqual;
+	}
+
+	public void catalogItemIdEqual(String multirequestToken){
+		setToken("catalogItemIdEqual", multirequestToken);
 	}
 
 
@@ -73,6 +87,7 @@ public class VendorCatalogItemFilter extends VendorCatalogItemBaseFilter {
 
 		// set members values:
 		partnerIdEqual = GsonParser.parseInt(jsonObject.get("partnerIdEqual"));
+		catalogItemIdEqual = GsonParser.parseInt(jsonObject.get("catalogItemIdEqual"));
 
 	}
 
@@ -80,6 +95,7 @@ public class VendorCatalogItemFilter extends VendorCatalogItemBaseFilter {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorCatalogItemFilter");
 		kparams.add("partnerIdEqual", this.partnerIdEqual);
+		kparams.add("catalogItemIdEqual", this.catalogItemIdEqual);
 		return kparams;
 	}
 

@@ -33,10 +33,11 @@ import com.kaltura.client.enums.ViewMode;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -52,6 +53,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		String isPlayableUser();
 		String viewMode();
 		String featuresUpdatedAt();
+		String viewModeUpdatedAt();
 	}
 
 	/**
@@ -62,6 +64,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 	private Boolean isPlayableUser;
 	private ViewMode viewMode;
 	private Long featuresUpdatedAt;
+	private Long viewModeUpdatedAt;
 
 	// streams:
 	public List<LiveStreamParams> getStreams(){
@@ -115,6 +118,18 @@ public class LiveEntryServerNode extends EntryServerNode {
 		setToken("featuresUpdatedAt", multirequestToken);
 	}
 
+	// viewModeUpdatedAt:
+	public Long getViewModeUpdatedAt(){
+		return this.viewModeUpdatedAt;
+	}
+	public void setViewModeUpdatedAt(Long viewModeUpdatedAt){
+		this.viewModeUpdatedAt = viewModeUpdatedAt;
+	}
+
+	public void viewModeUpdatedAt(String multirequestToken){
+		setToken("viewModeUpdatedAt", multirequestToken);
+	}
+
 
 	public LiveEntryServerNode() {
 		super();
@@ -131,6 +146,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		isPlayableUser = GsonParser.parseBoolean(jsonObject.get("isPlayableUser"));
 		viewMode = ViewMode.get(GsonParser.parseInt(jsonObject.get("viewMode")));
 		featuresUpdatedAt = GsonParser.parseLong(jsonObject.get("featuresUpdatedAt"));
+		viewModeUpdatedAt = GsonParser.parseLong(jsonObject.get("viewModeUpdatedAt"));
 
 	}
 
@@ -142,6 +158,7 @@ public class LiveEntryServerNode extends EntryServerNode {
 		kparams.add("isPlayableUser", this.isPlayableUser);
 		kparams.add("viewMode", this.viewMode);
 		kparams.add("featuresUpdatedAt", this.featuresUpdatedAt);
+		kparams.add("viewModeUpdatedAt", this.viewModeUpdatedAt);
 		return kparams;
 	}
 

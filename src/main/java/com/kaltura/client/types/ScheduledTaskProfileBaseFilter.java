@@ -34,7 +34,7 @@ import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -60,6 +60,7 @@ public abstract class ScheduledTaskProfileBaseFilter extends Filter {
 		String lastExecutionStartedAtGreaterThanOrEqual();
 		String lastExecutionStartedAtLessThanOrEqual();
 		String lastExecutionStartedAtLessThanOrEqualOrNull();
+		String objectFilterEngineTypeIn();
 	}
 
 	private Integer idEqual;
@@ -77,6 +78,7 @@ public abstract class ScheduledTaskProfileBaseFilter extends Filter {
 	private Long lastExecutionStartedAtGreaterThanOrEqual;
 	private Long lastExecutionStartedAtLessThanOrEqual;
 	private Long lastExecutionStartedAtLessThanOrEqualOrNull;
+	private String objectFilterEngineTypeIn;
 
 	// idEqual:
 	public Integer getIdEqual(){
@@ -258,6 +260,18 @@ public abstract class ScheduledTaskProfileBaseFilter extends Filter {
 		setToken("lastExecutionStartedAtLessThanOrEqualOrNull", multirequestToken);
 	}
 
+	// objectFilterEngineTypeIn:
+	public String getObjectFilterEngineTypeIn(){
+		return this.objectFilterEngineTypeIn;
+	}
+	public void setObjectFilterEngineTypeIn(String objectFilterEngineTypeIn){
+		this.objectFilterEngineTypeIn = objectFilterEngineTypeIn;
+	}
+
+	public void objectFilterEngineTypeIn(String multirequestToken){
+		setToken("objectFilterEngineTypeIn", multirequestToken);
+	}
+
 
 	public ScheduledTaskProfileBaseFilter() {
 		super();
@@ -284,6 +298,7 @@ public abstract class ScheduledTaskProfileBaseFilter extends Filter {
 		lastExecutionStartedAtGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("lastExecutionStartedAtGreaterThanOrEqual"));
 		lastExecutionStartedAtLessThanOrEqual = GsonParser.parseLong(jsonObject.get("lastExecutionStartedAtLessThanOrEqual"));
 		lastExecutionStartedAtLessThanOrEqualOrNull = GsonParser.parseLong(jsonObject.get("lastExecutionStartedAtLessThanOrEqualOrNull"));
+		objectFilterEngineTypeIn = GsonParser.parseString(jsonObject.get("objectFilterEngineTypeIn"));
 
 	}
 
@@ -305,6 +320,7 @@ public abstract class ScheduledTaskProfileBaseFilter extends Filter {
 		kparams.add("lastExecutionStartedAtGreaterThanOrEqual", this.lastExecutionStartedAtGreaterThanOrEqual);
 		kparams.add("lastExecutionStartedAtLessThanOrEqual", this.lastExecutionStartedAtLessThanOrEqual);
 		kparams.add("lastExecutionStartedAtLessThanOrEqualOrNull", this.lastExecutionStartedAtLessThanOrEqualOrNull);
+		kparams.add("objectFilterEngineTypeIn", this.objectFilterEngineTypeIn);
 		return kparams;
 	}
 

@@ -28,7 +28,7 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -44,7 +44,8 @@ public enum ObjectTaskType implements EnumAsString {
 	DELETE_LOCAL_CONTENT("5"),
 	STORAGE_EXPORT("6"),
 	MODIFY_ENTRY("7"),
-	MAIL_NOTIFICATION("8");
+	MAIL_NOTIFICATION("8"),
+	RECYCLE_BIN_CLEANUP("9");
 
 	private String value;
 

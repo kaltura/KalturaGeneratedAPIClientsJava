@@ -28,13 +28,14 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserOrderByFieldName implements EnumAsString {
 	CREATED_AT("created_at"),
+	FULL_NAME("full_name"),
 	USER_ID("puser_id"),
 	SCREEN_NAME("screen_name"),
 	UPDATED_AT("updated_at");

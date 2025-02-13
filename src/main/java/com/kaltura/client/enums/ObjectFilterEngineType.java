@@ -28,14 +28,15 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ObjectFilterEngineType implements EnumAsString {
 	ENTRY("1"),
-	ENTRY_VENDOR_TASK("2");
+	ENTRY_VENDOR_TASK("2"),
+	RECYCLE_BIN_CLEANUP("3");
 
 	private String value;
 

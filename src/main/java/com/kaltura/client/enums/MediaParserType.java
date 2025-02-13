@@ -28,13 +28,14 @@
 package com.kaltura.client.enums;
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MediaParserType implements EnumAsString {
 	MEDIAINFO("0"),
+	REMOTE_MEDIAINFO("remoteMediaInfo.RemoteMediaInfo"),
 	FFMPEG("1");
 
 	private String value;
