@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.UserEntryExtendedStatus;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -49,7 +48,6 @@ public class ViewHistoryUserEntry extends UserEntry {
 		String lastTimeReached();
 		String lastUpdateTime();
 		String playlistLastEntryId();
-		String extendedStatus();
 	}
 
 	/**
@@ -65,7 +63,6 @@ public class ViewHistoryUserEntry extends UserEntry {
 	 * Property to save last entry ID played in a playlist.
 	 */
 	private String playlistLastEntryId;
-	private UserEntryExtendedStatus extendedStatus;
 
 	// playbackContext:
 	public String getPlaybackContext(){
@@ -115,18 +112,6 @@ public class ViewHistoryUserEntry extends UserEntry {
 		setToken("playlistLastEntryId", multirequestToken);
 	}
 
-	// extendedStatus:
-	public UserEntryExtendedStatus getExtendedStatus(){
-		return this.extendedStatus;
-	}
-	public void setExtendedStatus(UserEntryExtendedStatus extendedStatus){
-		this.extendedStatus = extendedStatus;
-	}
-
-	public void extendedStatus(String multirequestToken){
-		setToken("extendedStatus", multirequestToken);
-	}
-
 
 	public ViewHistoryUserEntry() {
 		super();
@@ -142,7 +127,6 @@ public class ViewHistoryUserEntry extends UserEntry {
 		lastTimeReached = GsonParser.parseInt(jsonObject.get("lastTimeReached"));
 		lastUpdateTime = GsonParser.parseLong(jsonObject.get("lastUpdateTime"));
 		playlistLastEntryId = GsonParser.parseString(jsonObject.get("playlistLastEntryId"));
-		extendedStatus = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatus")));
 
 	}
 
@@ -153,7 +137,6 @@ public class ViewHistoryUserEntry extends UserEntry {
 		kparams.add("lastTimeReached", this.lastTimeReached);
 		kparams.add("lastUpdateTime", this.lastUpdateTime);
 		kparams.add("playlistLastEntryId", this.playlistLastEntryId);
-		kparams.add("extendedStatus", this.extendedStatus);
 		return kparams;
 	}
 

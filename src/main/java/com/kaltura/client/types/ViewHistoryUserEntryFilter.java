@@ -29,8 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.UserEntryExtendedStatus;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -45,50 +43,8 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class ViewHistoryUserEntryFilter extends UserEntryFilter {
 	
 	public interface Tokenizer extends UserEntryFilter.Tokenizer {
-		String extendedStatusEqual();
-		String extendedStatusIn();
-		String extendedStatusNotIn();
 	}
 
-	private UserEntryExtendedStatus extendedStatusEqual;
-	private String extendedStatusIn;
-	private String extendedStatusNotIn;
-
-	// extendedStatusEqual:
-	public UserEntryExtendedStatus getExtendedStatusEqual(){
-		return this.extendedStatusEqual;
-	}
-	public void setExtendedStatusEqual(UserEntryExtendedStatus extendedStatusEqual){
-		this.extendedStatusEqual = extendedStatusEqual;
-	}
-
-	public void extendedStatusEqual(String multirequestToken){
-		setToken("extendedStatusEqual", multirequestToken);
-	}
-
-	// extendedStatusIn:
-	public String getExtendedStatusIn(){
-		return this.extendedStatusIn;
-	}
-	public void setExtendedStatusIn(String extendedStatusIn){
-		this.extendedStatusIn = extendedStatusIn;
-	}
-
-	public void extendedStatusIn(String multirequestToken){
-		setToken("extendedStatusIn", multirequestToken);
-	}
-
-	// extendedStatusNotIn:
-	public String getExtendedStatusNotIn(){
-		return this.extendedStatusNotIn;
-	}
-	public void setExtendedStatusNotIn(String extendedStatusNotIn){
-		this.extendedStatusNotIn = extendedStatusNotIn;
-	}
-
-	public void extendedStatusNotIn(String multirequestToken){
-		setToken("extendedStatusNotIn", multirequestToken);
-	}
 
 
 	public ViewHistoryUserEntryFilter() {
@@ -97,22 +53,11 @@ public class ViewHistoryUserEntryFilter extends UserEntryFilter {
 
 	public ViewHistoryUserEntryFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		extendedStatusEqual = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatusEqual")));
-		extendedStatusIn = GsonParser.parseString(jsonObject.get("extendedStatusIn"));
-		extendedStatusNotIn = GsonParser.parseString(jsonObject.get("extendedStatusNotIn"));
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaViewHistoryUserEntryFilter");
-		kparams.add("extendedStatusEqual", this.extendedStatusEqual);
-		kparams.add("extendedStatusIn", this.extendedStatusIn);
-		kparams.add("extendedStatusNotIn", this.extendedStatusNotIn);
 		return kparams;
 	}
 

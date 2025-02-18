@@ -29,11 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -47,18 +43,8 @@ import java.util.List;
 public class PermissionLevelUserEntryFilter extends UserEntryFilter {
 	
 	public interface Tokenizer extends UserEntryFilter.Tokenizer {
-		RequestBuilder.ListTokenizer<PermissionLevel.Tokenizer> permissionLevels();
 	}
 
-	private List<PermissionLevel> permissionLevels;
-
-	// permissionLevels:
-	public List<PermissionLevel> getPermissionLevels(){
-		return this.permissionLevels;
-	}
-	public void setPermissionLevels(List<PermissionLevel> permissionLevels){
-		this.permissionLevels = permissionLevels;
-	}
 
 
 	public PermissionLevelUserEntryFilter() {
@@ -67,18 +53,11 @@ public class PermissionLevelUserEntryFilter extends UserEntryFilter {
 
 	public PermissionLevelUserEntryFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		permissionLevels = GsonParser.parseArray(jsonObject.getAsJsonArray("permissionLevels"), PermissionLevel.class);
-
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaPermissionLevelUserEntryFilter");
-		kparams.add("permissionLevels", this.permissionLevels);
 		return kparams;
 	}
 
