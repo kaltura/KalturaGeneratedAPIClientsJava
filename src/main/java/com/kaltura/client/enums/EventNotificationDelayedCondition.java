@@ -25,15 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
-import com.kaltura.client.utils.request.RequestBuilder;
-import java.util.ArrayList;
-import java.util.List;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using exec.php
@@ -41,46 +33,38 @@ import java.util.List;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum EventNotificationDelayedCondition implements EnumAsInt {
+	NONE(0),
+	PENDING_ENTRY_READY(1);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(PermissionLevelUserEntryFilter.Tokenizer.class)
-public class PermissionLevelUserEntryFilter extends UserEntryFilter {
-	
-	public interface Tokenizer extends UserEntryFilter.Tokenizer {
-		RequestBuilder.ListTokenizer<PermissionLevel.Tokenizer> permissionLevels();
+	private int value;
+
+	EventNotificationDelayedCondition(int value) {
+		this.value = value;
 	}
 
-	private List<PermissionLevel> permissionLevels;
-
-	// permissionLevels:
-	public List<PermissionLevel> getPermissionLevels(){
-		return this.permissionLevels;
-	}
-	public void setPermissionLevels(List<PermissionLevel> permissionLevels){
-		this.permissionLevels = permissionLevels;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-
-	public PermissionLevelUserEntryFilter() {
-		super();
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-	public PermissionLevelUserEntryFilter(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		permissionLevels = GsonParser.parseArray(jsonObject.getAsJsonArray("permissionLevels"), PermissionLevel.class);
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaPermissionLevelUserEntryFilter");
-		kparams.add("permissionLevels", this.permissionLevels);
-		return kparams;
-	}
-
+	public static EventNotificationDelayedCondition get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over EventNotificationDelayedCondition defined values and compare the inner value with the given one:
+		for(EventNotificationDelayedCondition item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return EventNotificationDelayedCondition.values().length > 0 ? EventNotificationDelayedCondition.values()[0]: null;
+   }
 }
-

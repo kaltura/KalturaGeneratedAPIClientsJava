@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.UserEntryExtendedStatus;
 import com.kaltura.client.enums.UserEntryStatus;
 import com.kaltura.client.enums.UserEntryType;
 import com.kaltura.client.types.ObjectBase;
@@ -56,7 +55,6 @@ public abstract class UserEntry extends ObjectBase {
 		String createdAt();
 		String updatedAt();
 		String type();
-		String extendedStatus();
 	}
 
 	/**
@@ -70,7 +68,6 @@ public abstract class UserEntry extends ObjectBase {
 	private Long createdAt;
 	private Long updatedAt;
 	private UserEntryType type;
-	private UserEntryExtendedStatus extendedStatus;
 
 	// id:
 	public Long getId(){
@@ -120,18 +117,6 @@ public abstract class UserEntry extends ObjectBase {
 	public UserEntryType getType(){
 		return this.type;
 	}
-	// extendedStatus:
-	public UserEntryExtendedStatus getExtendedStatus(){
-		return this.extendedStatus;
-	}
-	public void setExtendedStatus(UserEntryExtendedStatus extendedStatus){
-		this.extendedStatus = extendedStatus;
-	}
-
-	public void extendedStatus(String multirequestToken){
-		setToken("extendedStatus", multirequestToken);
-	}
-
 
 	public UserEntry() {
 		super();
@@ -151,7 +136,6 @@ public abstract class UserEntry extends ObjectBase {
 		createdAt = GsonParser.parseLong(jsonObject.get("createdAt"));
 		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		type = UserEntryType.get(GsonParser.parseString(jsonObject.get("type")));
-		extendedStatus = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatus")));
 
 	}
 
@@ -160,7 +144,6 @@ public abstract class UserEntry extends ObjectBase {
 		kparams.add("objectType", "KalturaUserEntry");
 		kparams.add("entryId", this.entryId);
 		kparams.add("userId", this.userId);
-		kparams.add("extendedStatus", this.extendedStatus);
 		return kparams;
 	}
 
