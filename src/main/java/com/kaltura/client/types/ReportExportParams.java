@@ -49,6 +49,7 @@ public class ReportExportParams extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String recipientEmail();
+		String recipientName();
 		String timeZoneOffset();
 		RequestBuilder.ListTokenizer<ReportExportItem.Tokenizer> reportItems();
 		String reportsItemsGroup();
@@ -56,6 +57,7 @@ public class ReportExportParams extends ObjectBase {
 	}
 
 	private String recipientEmail;
+	private String recipientName;
 	/**
 	 * Time zone offset in minutes (between client to UTC)
 	 */
@@ -74,6 +76,18 @@ public class ReportExportParams extends ObjectBase {
 
 	public void recipientEmail(String multirequestToken){
 		setToken("recipientEmail", multirequestToken);
+	}
+
+	// recipientName:
+	public String getRecipientName(){
+		return this.recipientName;
+	}
+	public void setRecipientName(String recipientName){
+		this.recipientName = recipientName;
+	}
+
+	public void recipientName(String multirequestToken){
+		setToken("recipientName", multirequestToken);
 	}
 
 	// timeZoneOffset:
@@ -132,6 +146,7 @@ public class ReportExportParams extends ObjectBase {
 
 		// set members values:
 		recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
+		recipientName = GsonParser.parseString(jsonObject.get("recipientName"));
 		timeZoneOffset = GsonParser.parseInt(jsonObject.get("timeZoneOffset"));
 		reportItems = GsonParser.parseArray(jsonObject.getAsJsonArray("reportItems"), ReportExportItem.class);
 		reportsItemsGroup = GsonParser.parseString(jsonObject.get("reportsItemsGroup"));
@@ -143,6 +158,7 @@ public class ReportExportParams extends ObjectBase {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaReportExportParams");
 		kparams.add("recipientEmail", this.recipientEmail);
+		kparams.add("recipientName", this.recipientName);
 		kparams.add("timeZoneOffset", this.timeZoneOffset);
 		kparams.add("reportItems", this.reportItems);
 		kparams.add("reportsItemsGroup", this.reportsItemsGroup);

@@ -48,6 +48,7 @@ public class ReportExportJobData extends JobData {
 	
 	public interface Tokenizer extends JobData.Tokenizer {
 		String recipientEmail();
+		String recipientName();
 		RequestBuilder.ListTokenizer<ReportExportItem.Tokenizer> reportItems();
 		String filePaths();
 		String reportsGroup();
@@ -56,6 +57,7 @@ public class ReportExportJobData extends JobData {
 	}
 
 	private String recipientEmail;
+	private String recipientName;
 	private List<ReportExportItem> reportItems;
 	private String filePaths;
 	private String reportsGroup;
@@ -72,6 +74,18 @@ public class ReportExportJobData extends JobData {
 
 	public void recipientEmail(String multirequestToken){
 		setToken("recipientEmail", multirequestToken);
+	}
+
+	// recipientName:
+	public String getRecipientName(){
+		return this.recipientName;
+	}
+	public void setRecipientName(String recipientName){
+		this.recipientName = recipientName;
+	}
+
+	public void recipientName(String multirequestToken){
+		setToken("recipientName", multirequestToken);
 	}
 
 	// reportItems:
@@ -138,6 +152,7 @@ public class ReportExportJobData extends JobData {
 
 		// set members values:
 		recipientEmail = GsonParser.parseString(jsonObject.get("recipientEmail"));
+		recipientName = GsonParser.parseString(jsonObject.get("recipientName"));
 		reportItems = GsonParser.parseArray(jsonObject.getAsJsonArray("reportItems"), ReportExportItem.class);
 		filePaths = GsonParser.parseString(jsonObject.get("filePaths"));
 		reportsGroup = GsonParser.parseString(jsonObject.get("reportsGroup"));
@@ -150,6 +165,7 @@ public class ReportExportJobData extends JobData {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaReportExportJobData");
 		kparams.add("recipientEmail", this.recipientEmail);
+		kparams.add("recipientName", this.recipientName);
 		kparams.add("reportItems", this.reportItems);
 		kparams.add("filePaths", this.filePaths);
 		kparams.add("reportsGroup", this.reportsGroup);

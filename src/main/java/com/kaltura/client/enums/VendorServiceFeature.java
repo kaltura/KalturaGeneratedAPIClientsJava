@@ -47,7 +47,8 @@ public enum VendorServiceFeature implements EnumAsInt {
 	LIVE_TRANSLATION(11),
 	QUIZ(12),
 	SUMMARY(13),
-	VIDEO_ANALYSIS(14);
+	VIDEO_ANALYSIS(14),
+	MODERATION(15);
 
 	private int value;
 

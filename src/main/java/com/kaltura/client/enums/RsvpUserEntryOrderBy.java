@@ -33,17 +33,15 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UserEntryType implements EnumAsString {
-	PERMISSION_LEVEL("entryPermissionLevel.PERMISSION_LEVEL"),
-	QUIZ("quiz.QUIZ"),
-	REGISTRATION("registration.REGISTRATION"),
-	RSVP("rsvp.RSVP"),
-	VIEW_HISTORY("viewHistory.VIEW_HISTORY"),
-	WATCH_LATER("watchLater.WATCH_LATER");
+public enum RsvpUserEntryOrderBy implements EnumAsString {
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
 
-	UserEntryType(String value) {
+	RsvpUserEntryOrderBy(String value) {
 		this.value = value;
 	}
 
@@ -56,19 +54,19 @@ public enum UserEntryType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static UserEntryType get(String value) {
+	public static RsvpUserEntryOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over UserEntryType defined values and compare the inner value with the given one:
-		for(UserEntryType item: values()) {
+		// goes over RsvpUserEntryOrderBy defined values and compare the inner value with the given one:
+		for(RsvpUserEntryOrderBy item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return UserEntryType.values().length > 0 ? UserEntryType.values()[0]: null;
+		return RsvpUserEntryOrderBy.values().length > 0 ? RsvpUserEntryOrderBy.values()[0]: null;
    }
 }
