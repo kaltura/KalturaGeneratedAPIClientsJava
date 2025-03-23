@@ -68,6 +68,7 @@ import java.util.List;
  * @param bulkUploadUserData 
  * @param filter 
  * @param userId The user's unique identifier in the partner's system
+ * @param userId 
  * @param userId The user's unique identifier in the partner's system
  * @param loginId The user's email address that identifies the user for login
  * @param userId The user's unique identifier in the partner's system
@@ -236,6 +237,22 @@ public class UserService {
 	 */
     public static DeleteUserBuilder delete(String userId)  {
 		return new DeleteUserBuilder(userId);
+	}
+	
+	public static class DemoteAdminUserBuilder extends RequestBuilder<User, User.Tokenizer, DemoteAdminUserBuilder> {
+		
+		public DemoteAdminUserBuilder(String userId) {
+			super(User.class, "user", "demoteAdmin");
+			params.add("userId", userId);
+		}
+		
+		public void userId(String multirequestToken) {
+			params.add("userId", multirequestToken);
+		}
+	}
+
+    public static DemoteAdminUserBuilder demoteAdmin(String userId)  {
+		return new DemoteAdminUserBuilder(userId);
 	}
 	
 	public static class DisableLoginUserBuilder extends RequestBuilder<User, User.Tokenizer, DisableLoginUserBuilder> {

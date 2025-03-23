@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.UserEntryExtendedStatus;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -48,12 +49,14 @@ public class QuizUserEntry extends UserEntry {
 		String calculatedScore();
 		String feedback();
 		String version();
+		String extendedStatus();
 	}
 
 	private Double score;
 	private Double calculatedScore;
 	private String feedback;
 	private Integer version;
+	private UserEntryExtendedStatus extendedStatus;
 
 	// score:
 	public Double getScore(){
@@ -79,6 +82,18 @@ public class QuizUserEntry extends UserEntry {
 	public Integer getVersion(){
 		return this.version;
 	}
+	// extendedStatus:
+	public UserEntryExtendedStatus getExtendedStatus(){
+		return this.extendedStatus;
+	}
+	public void setExtendedStatus(UserEntryExtendedStatus extendedStatus){
+		this.extendedStatus = extendedStatus;
+	}
+
+	public void extendedStatus(String multirequestToken){
+		setToken("extendedStatus", multirequestToken);
+	}
+
 
 	public QuizUserEntry() {
 		super();
@@ -94,6 +109,7 @@ public class QuizUserEntry extends UserEntry {
 		calculatedScore = GsonParser.parseDouble(jsonObject.get("calculatedScore"));
 		feedback = GsonParser.parseString(jsonObject.get("feedback"));
 		version = GsonParser.parseInt(jsonObject.get("version"));
+		extendedStatus = UserEntryExtendedStatus.get(GsonParser.parseString(jsonObject.get("extendedStatus")));
 
 	}
 
@@ -101,6 +117,7 @@ public class QuizUserEntry extends UserEntry {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaQuizUserEntry");
 		kparams.add("feedback", this.feedback);
+		kparams.add("extendedStatus", this.extendedStatus);
 		return kparams;
 	}
 
