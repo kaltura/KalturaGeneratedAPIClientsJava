@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.enums.GroupProcessStatus;
+import com.kaltura.client.enums.GroupType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -47,10 +48,12 @@ public class Group extends BaseUser {
 	public interface Tokenizer extends BaseUser.Tokenizer {
 		String membersCount();
 		String processStatus();
+		String groupType();
 	}
 
 	private Integer membersCount;
 	private GroupProcessStatus processStatus;
+	private GroupType groupType;
 
 	// membersCount:
 	public Integer getMembersCount(){
@@ -68,6 +71,18 @@ public class Group extends BaseUser {
 		setToken("processStatus", multirequestToken);
 	}
 
+	// groupType:
+	public GroupType getGroupType(){
+		return this.groupType;
+	}
+	public void setGroupType(GroupType groupType){
+		this.groupType = groupType;
+	}
+
+	public void groupType(String multirequestToken){
+		setToken("groupType", multirequestToken);
+	}
+
 
 	public Group() {
 		super();
@@ -81,6 +96,7 @@ public class Group extends BaseUser {
 		// set members values:
 		membersCount = GsonParser.parseInt(jsonObject.get("membersCount"));
 		processStatus = GroupProcessStatus.get(GsonParser.parseInt(jsonObject.get("processStatus")));
+		groupType = GroupType.get(GsonParser.parseInt(jsonObject.get("groupType")));
 
 	}
 
@@ -88,6 +104,7 @@ public class Group extends BaseUser {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaGroup");
 		kparams.add("processStatus", this.processStatus);
+		kparams.add("groupType", this.groupType);
 		return kparams;
 	}
 

@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.GroupType;
 import com.kaltura.client.enums.GroupUserCreationMode;
 import com.kaltura.client.enums.GroupUserRole;
 import com.kaltura.client.enums.GroupUserStatus;
@@ -57,6 +58,7 @@ public class GroupUser extends ObjectBase {
 		String updatedAt();
 		String creationMode();
 		String userRole();
+		String groupType();
 	}
 
 	private String id;
@@ -74,6 +76,7 @@ public class GroupUser extends ObjectBase {
 	private Long updatedAt;
 	private GroupUserCreationMode creationMode;
 	private GroupUserRole userRole;
+	private GroupType groupType;
 
 	// id:
 	public String getId(){
@@ -143,6 +146,10 @@ public class GroupUser extends ObjectBase {
 		setToken("userRole", multirequestToken);
 	}
 
+	// groupType:
+	public GroupType getGroupType(){
+		return this.groupType;
+	}
 
 	public GroupUser() {
 		super();
@@ -163,6 +170,7 @@ public class GroupUser extends ObjectBase {
 		updatedAt = GsonParser.parseLong(jsonObject.get("updatedAt"));
 		creationMode = GroupUserCreationMode.get(GsonParser.parseInt(jsonObject.get("creationMode")));
 		userRole = GroupUserRole.get(GsonParser.parseInt(jsonObject.get("userRole")));
+		groupType = GroupType.get(GsonParser.parseInt(jsonObject.get("groupType")));
 
 	}
 

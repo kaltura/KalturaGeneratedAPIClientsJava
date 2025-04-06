@@ -29,6 +29,8 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.GroupType;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -43,8 +45,22 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class GroupFilter extends UserFilter {
 	
 	public interface Tokenizer extends UserFilter.Tokenizer {
+		String groupType();
 	}
 
+	private GroupType groupType;
+
+	// groupType:
+	public GroupType getGroupType(){
+		return this.groupType;
+	}
+	public void setGroupType(GroupType groupType){
+		this.groupType = groupType;
+	}
+
+	public void groupType(String multirequestToken){
+		setToken("groupType", multirequestToken);
+	}
 
 
 	public GroupFilter() {
@@ -53,11 +69,18 @@ public class GroupFilter extends UserFilter {
 
 	public GroupFilter(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		groupType = GroupType.get(GsonParser.parseInt(jsonObject.get("groupType")));
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaGroupFilter");
+		kparams.add("groupType", this.groupType);
 		return kparams;
 	}
 

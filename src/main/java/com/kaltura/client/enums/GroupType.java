@@ -25,13 +25,7 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.types;
-
-import com.google.gson.JsonObject;
-import com.kaltura.client.Params;
-import com.kaltura.client.enums.GroupType;
-import com.kaltura.client.utils.GsonParser;
-import com.kaltura.client.utils.request.MultiRequestBuilder;
+package com.kaltura.client.enums;
 
 /**
  * This class was generated using exec.php
@@ -39,50 +33,38 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
+public enum GroupType implements EnumAsInt {
+	GROUP(1),
+	APPLICATIVE_GROUP(2);
 
-@SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(GroupUserFilter.Tokenizer.class)
-public class GroupUserFilter extends GroupUserBaseFilter {
-	
-	public interface Tokenizer extends GroupUserBaseFilter.Tokenizer {
-		String groupType();
+	private int value;
+
+	GroupType(int value) {
+		this.value = value;
 	}
 
-	private GroupType groupType;
-
-	// groupType:
-	public GroupType getGroupType(){
-		return this.groupType;
-	}
-	public void setGroupType(GroupType groupType){
-		this.groupType = groupType;
+	@Override
+	public int getValue() {
+		return this.value;
 	}
 
-	public void groupType(String multirequestToken){
-		setToken("groupType", multirequestToken);
+	public void setValue(int value) {
+		this.value = value;
 	}
 
-
-	public GroupUserFilter() {
-		super();
-	}
-
-	public GroupUserFilter(JsonObject jsonObject) throws APIException {
-		super(jsonObject);
-
-		if(jsonObject == null) return;
-
-		// set members values:
-		groupType = GroupType.get(GsonParser.parseInt(jsonObject.get("groupType")));
-
-	}
-
-	public Params toParams() {
-		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaGroupUserFilter");
-		kparams.add("groupType", this.groupType);
-		return kparams;
-	}
-
+	public static GroupType get(Integer value) {
+		if(value == null)
+		{
+			return null;
+		}
+		
+		// goes over GroupType defined values and compare the inner value with the given one:
+		for(GroupType item: values()) {
+			if(item.getValue() == value) {
+				return item;
+			}
+		}
+		// in case the requested value was not found in the enum values, we return the first item as default.
+		return GroupType.values().length > 0 ? GroupType.values()[0]: null;
+   }
 }
-

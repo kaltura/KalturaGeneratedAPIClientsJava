@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum UserType implements EnumAsInt {
 	USER(0),
-	GROUP(1);
+	GROUP(1),
+	APPLICATIVE_GROUP(2);
 
 	private int value;
 
