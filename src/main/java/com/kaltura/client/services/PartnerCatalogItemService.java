@@ -42,29 +42,40 @@ import com.kaltura.client.utils.request.RequestBuilder;
  * Partner Catalog Item Service
  * 
  * @param id source catalog item to assign to partner
+ * @param defaultReachProfileId 
  * @param id source catalog item to remove
  */
 public class PartnerCatalogItemService {
 	
 	public static class AddPartnerCatalogItemBuilder extends RequestBuilder<VendorCatalogItem, VendorCatalogItem.Tokenizer, AddPartnerCatalogItemBuilder> {
 		
-		public AddPartnerCatalogItemBuilder(int id) {
+		public AddPartnerCatalogItemBuilder(int id, int defaultReachProfileId) {
 			super(VendorCatalogItem.class, "reach_partnercatalogitem", "add");
 			params.add("id", id);
+			params.add("defaultReachProfileId", defaultReachProfileId);
 		}
 		
 		public void id(String multirequestToken) {
 			params.add("id", multirequestToken);
 		}
+		
+		public void defaultReachProfileId(String multirequestToken) {
+			params.add("defaultReachProfileId", multirequestToken);
+		}
+	}
+
+	public static AddPartnerCatalogItemBuilder add(int id)  {
+		return add(id, Integer.MIN_VALUE);
 	}
 
 	/**
 	 * Assign existing catalogItem to specific account
 	 * 
 	 * @param id source catalog item to assign to partner
+	 * @param defaultReachProfileId 
 	 */
-    public static AddPartnerCatalogItemBuilder add(int id)  {
-		return new AddPartnerCatalogItemBuilder(id);
+    public static AddPartnerCatalogItemBuilder add(int id, int defaultReachProfileId)  {
+		return new AddPartnerCatalogItemBuilder(id, defaultReachProfileId);
 	}
 	
 	public static class DeletePartnerCatalogItemBuilder extends NullRequestBuilder {

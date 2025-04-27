@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.enums.SessionType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,78 +41,49 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(ReportResponseOptions.Tokenizer.class)
-public class ReportResponseOptions extends ObjectBase {
+@MultiRequestBuilder.Tokenizer(SessionTypeCondition.Tokenizer.class)
+public class SessionTypeCondition extends Condition {
 	
-	public interface Tokenizer extends ObjectBase.Tokenizer {
-		String delimiter();
-		String skipEmptyDates();
-		String useFriendlyHeadersNames();
+	public interface Tokenizer extends Condition.Tokenizer {
+		String sessionType();
 	}
 
-	private String delimiter;
-	private Boolean skipEmptyDates;
-	private Boolean useFriendlyHeadersNames;
+	/**
+	 * The privelege needed to remove the restriction
+	 */
+	private SessionType sessionType;
 
-	// delimiter:
-	public String getDelimiter(){
-		return this.delimiter;
+	// sessionType:
+	public SessionType getSessionType(){
+		return this.sessionType;
 	}
-	public void setDelimiter(String delimiter){
-		this.delimiter = delimiter;
-	}
-
-	public void delimiter(String multirequestToken){
-		setToken("delimiter", multirequestToken);
+	public void setSessionType(SessionType sessionType){
+		this.sessionType = sessionType;
 	}
 
-	// skipEmptyDates:
-	public Boolean getSkipEmptyDates(){
-		return this.skipEmptyDates;
-	}
-	public void setSkipEmptyDates(Boolean skipEmptyDates){
-		this.skipEmptyDates = skipEmptyDates;
-	}
-
-	public void skipEmptyDates(String multirequestToken){
-		setToken("skipEmptyDates", multirequestToken);
-	}
-
-	// useFriendlyHeadersNames:
-	public Boolean getUseFriendlyHeadersNames(){
-		return this.useFriendlyHeadersNames;
-	}
-	public void setUseFriendlyHeadersNames(Boolean useFriendlyHeadersNames){
-		this.useFriendlyHeadersNames = useFriendlyHeadersNames;
-	}
-
-	public void useFriendlyHeadersNames(String multirequestToken){
-		setToken("useFriendlyHeadersNames", multirequestToken);
+	public void sessionType(String multirequestToken){
+		setToken("sessionType", multirequestToken);
 	}
 
 
-	public ReportResponseOptions() {
+	public SessionTypeCondition() {
 		super();
 	}
 
-	public ReportResponseOptions(JsonObject jsonObject) throws APIException {
+	public SessionTypeCondition(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		delimiter = GsonParser.parseString(jsonObject.get("delimiter"));
-		skipEmptyDates = GsonParser.parseBoolean(jsonObject.get("skipEmptyDates"));
-		useFriendlyHeadersNames = GsonParser.parseBoolean(jsonObject.get("useFriendlyHeadersNames"));
+		sessionType = SessionType.get(GsonParser.parseInt(jsonObject.get("sessionType")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaReportResponseOptions");
-		kparams.add("delimiter", this.delimiter);
-		kparams.add("skipEmptyDates", this.skipEmptyDates);
-		kparams.add("useFriendlyHeadersNames", this.useFriendlyHeadersNames);
+		kparams.add("objectType", "KalturaSessionTypeCondition");
+		kparams.add("sessionType", this.sessionType);
 		return kparams;
 	}
 
