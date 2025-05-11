@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EntryObjectType;
 import com.kaltura.client.enums.EntryVendorTaskCreationMode;
 import com.kaltura.client.enums.EntryVendorTaskStatus;
 import com.kaltura.client.enums.VendorServiceFeature;
@@ -64,6 +65,7 @@ public class EntryVendorTask extends ObjectBase {
 		String catalogItemId();
 		String price();
 		String userId();
+		String entryObjectType();
 		String moderatingUser();
 		String errDescription();
 		String accessKey();
@@ -108,6 +110,7 @@ public class EntryVendorTask extends ObjectBase {
 	 * The ID of the user who created this task
 	 */
 	private String userId;
+	private EntryObjectType entryObjectType;
 	/**
 	 * The user ID that approved this task for execution (in case moderation is
 	  requested)
@@ -247,6 +250,18 @@ public class EntryVendorTask extends ObjectBase {
 	public String getUserId(){
 		return this.userId;
 	}
+	// entryObjectType:
+	public EntryObjectType getEntryObjectType(){
+		return this.entryObjectType;
+	}
+	public void setEntryObjectType(EntryObjectType entryObjectType){
+		this.entryObjectType = entryObjectType;
+	}
+
+	public void entryObjectType(String multirequestToken){
+		setToken("entryObjectType", multirequestToken);
+	}
+
 	// moderatingUser:
 	public String getModeratingUser(){
 		return this.moderatingUser;
@@ -399,6 +414,7 @@ public class EntryVendorTask extends ObjectBase {
 		catalogItemId = GsonParser.parseInt(jsonObject.get("catalogItemId"));
 		price = GsonParser.parseDouble(jsonObject.get("price"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
+		entryObjectType = EntryObjectType.get(GsonParser.parseInt(jsonObject.get("entryObjectType")));
 		moderatingUser = GsonParser.parseString(jsonObject.get("moderatingUser"));
 		errDescription = GsonParser.parseString(jsonObject.get("errDescription"));
 		accessKey = GsonParser.parseString(jsonObject.get("accessKey"));
@@ -426,6 +442,7 @@ public class EntryVendorTask extends ObjectBase {
 		kparams.add("status", this.status);
 		kparams.add("reachProfileId", this.reachProfileId);
 		kparams.add("catalogItemId", this.catalogItemId);
+		kparams.add("entryObjectType", this.entryObjectType);
 		kparams.add("errDescription", this.errDescription);
 		kparams.add("notes", this.notes);
 		kparams.add("context", this.context);

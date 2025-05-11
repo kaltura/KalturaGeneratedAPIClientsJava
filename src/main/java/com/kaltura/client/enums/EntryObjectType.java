@@ -33,46 +33,37 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryApplication implements EnumAsString {
-	KMC("0"),
-	KMS("1"),
-	KAF("2"),
-	PITCH("3"),
-	KMS_GO("4"),
-	WEBCAST_APP("5"),
-	PERSONAL_CAPTURE("6"),
-	KALTURA_MEETING("7"),
-	EP("8"),
-	CONTENT_LAB("9");
+public enum EntryObjectType implements EnumAsInt {
+	ENTRY(1);
 
-	private String value;
+	private int value;
 
-	EntryApplication(String value) {
+	EntryObjectType(int value) {
 		this.value = value;
 	}
 
 	@Override
-	public String getValue() {
+	public int getValue() {
 		return this.value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
-	public static EntryApplication get(String value) {
+	public static EntryObjectType get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over EntryApplication defined values and compare the inner value with the given one:
-		for(EntryApplication item: values()) {
-			if(item.getValue().equals(value)) {
+		// goes over EntryObjectType defined values and compare the inner value with the given one:
+		for(EntryObjectType item: values()) {
+			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return EntryApplication.values().length > 0 ? EntryApplication.values()[0]: null;
+		return EntryObjectType.values().length > 0 ? EntryObjectType.values()[0]: null;
    }
 }

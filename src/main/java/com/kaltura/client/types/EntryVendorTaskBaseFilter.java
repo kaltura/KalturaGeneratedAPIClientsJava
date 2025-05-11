@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.EntryObjectType;
 import com.kaltura.client.enums.EntryVendorTaskStatus;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -69,6 +70,9 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		String contextEqual();
 		String expectedFinishTimeGreaterThanOrEqual();
 		String expectedFinishTimeLessThanOrEqual();
+		String entryObjectTypeEqual();
+		String entryObjectTypeIn();
+		String entryObjectTypeNotIn();
 	}
 
 	private Long idEqual;
@@ -95,6 +99,9 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 	private String contextEqual;
 	private Long expectedFinishTimeGreaterThanOrEqual;
 	private Long expectedFinishTimeLessThanOrEqual;
+	private EntryObjectType entryObjectTypeEqual;
+	private String entryObjectTypeIn;
+	private String entryObjectTypeNotIn;
 
 	// idEqual:
 	public Long getIdEqual(){
@@ -384,6 +391,42 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		setToken("expectedFinishTimeLessThanOrEqual", multirequestToken);
 	}
 
+	// entryObjectTypeEqual:
+	public EntryObjectType getEntryObjectTypeEqual(){
+		return this.entryObjectTypeEqual;
+	}
+	public void setEntryObjectTypeEqual(EntryObjectType entryObjectTypeEqual){
+		this.entryObjectTypeEqual = entryObjectTypeEqual;
+	}
+
+	public void entryObjectTypeEqual(String multirequestToken){
+		setToken("entryObjectTypeEqual", multirequestToken);
+	}
+
+	// entryObjectTypeIn:
+	public String getEntryObjectTypeIn(){
+		return this.entryObjectTypeIn;
+	}
+	public void setEntryObjectTypeIn(String entryObjectTypeIn){
+		this.entryObjectTypeIn = entryObjectTypeIn;
+	}
+
+	public void entryObjectTypeIn(String multirequestToken){
+		setToken("entryObjectTypeIn", multirequestToken);
+	}
+
+	// entryObjectTypeNotIn:
+	public String getEntryObjectTypeNotIn(){
+		return this.entryObjectTypeNotIn;
+	}
+	public void setEntryObjectTypeNotIn(String entryObjectTypeNotIn){
+		this.entryObjectTypeNotIn = entryObjectTypeNotIn;
+	}
+
+	public void entryObjectTypeNotIn(String multirequestToken){
+		setToken("entryObjectTypeNotIn", multirequestToken);
+	}
+
 
 	public EntryVendorTaskBaseFilter() {
 		super();
@@ -419,6 +462,9 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		contextEqual = GsonParser.parseString(jsonObject.get("contextEqual"));
 		expectedFinishTimeGreaterThanOrEqual = GsonParser.parseLong(jsonObject.get("expectedFinishTimeGreaterThanOrEqual"));
 		expectedFinishTimeLessThanOrEqual = GsonParser.parseLong(jsonObject.get("expectedFinishTimeLessThanOrEqual"));
+		entryObjectTypeEqual = EntryObjectType.get(GsonParser.parseInt(jsonObject.get("entryObjectTypeEqual")));
+		entryObjectTypeIn = GsonParser.parseString(jsonObject.get("entryObjectTypeIn"));
+		entryObjectTypeNotIn = GsonParser.parseString(jsonObject.get("entryObjectTypeNotIn"));
 
 	}
 
@@ -449,6 +495,9 @@ public abstract class EntryVendorTaskBaseFilter extends RelatedFilter {
 		kparams.add("contextEqual", this.contextEqual);
 		kparams.add("expectedFinishTimeGreaterThanOrEqual", this.expectedFinishTimeGreaterThanOrEqual);
 		kparams.add("expectedFinishTimeLessThanOrEqual", this.expectedFinishTimeLessThanOrEqual);
+		kparams.add("entryObjectTypeEqual", this.entryObjectTypeEqual);
+		kparams.add("entryObjectTypeIn", this.entryObjectTypeIn);
+		kparams.add("entryObjectTypeNotIn", this.entryObjectTypeNotIn);
 		return kparams;
 	}
 
