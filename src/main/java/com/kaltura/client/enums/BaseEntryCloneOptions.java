@@ -34,18 +34,18 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BaseEntryCloneOptions implements EnumAsString {
-	AD_CUE_POINTS("adCuePoint.AD_CUE_POINTS"),
-	ANNOTATION_CUE_POINTS("annotation.ANNOTATION_CUE_POINTS"),
-	CODE_CUE_POINTS("codeCuePoint.CODE_CUE_POINTS"),
-	SESSION_CUE_POINTS("sessionCuePoint.SESSION_CUE_POINTS"),
-	THUMB_CUE_POINTS("thumbCuePoint.THUMB_CUE_POINTS"),
 	USERS("1"),
 	CATEGORIES("2"),
 	CHILD_ENTRIES("3"),
 	ACCESS_CONTROL("4"),
 	METADATA("5"),
 	FLAVORS("6"),
-	CAPTIONS("7");
+	CAPTIONS("7"),
+	AD_CUE_POINTS("adCuePoint.AD_CUE_POINTS"),
+	ANNOTATION_CUE_POINTS("annotation.ANNOTATION_CUE_POINTS"),
+	CODE_CUE_POINTS("codeCuePoint.CODE_CUE_POINTS"),
+	SESSION_CUE_POINTS("sessionCuePoint.SESSION_CUE_POINTS"),
+	THUMB_CUE_POINTS("thumbCuePoint.THUMB_CUE_POINTS");
 
 	private String value;
 

@@ -35,17 +35,17 @@ package com.kaltura.client.enums;
  */
 public enum EntryType implements EnumAsString {
 	AUTOMATIC("-1"),
-	CONFERENCE_ENTRY_SERVER("conference.CONFERENCE_ENTRY_SERVER"),
-	EXTERNAL_MEDIA("externalMedia.externalMedia"),
-	ROOM("room.room"),
-	SIP_ENTRY_SERVER("sip.SIP_ENTRY_SERVER"),
 	MEDIA_CLIP("1"),
 	MIX("2"),
 	PLAYLIST("5"),
 	DATA("6"),
 	LIVE_STREAM("7"),
 	LIVE_CHANNEL("8"),
-	DOCUMENT("10");
+	DOCUMENT("10"),
+	CONFERENCE_ENTRY_SERVER("conference.CONFERENCE_ENTRY_SERVER"),
+	EXTERNAL_MEDIA("externalMedia.externalMedia"),
+	ROOM("room.room"),
+	SIP_ENTRY_SERVER("sip.SIP_ENTRY_SERVER");
 
 	private String value;
 

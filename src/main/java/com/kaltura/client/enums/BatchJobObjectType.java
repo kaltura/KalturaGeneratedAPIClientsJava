@@ -34,16 +34,16 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobObjectType implements EnumAsString {
-	ENTRY_DISTRIBUTION("contentDistribution.EntryDistribution"),
-	DROP_FOLDER_FILE("dropFolderXmlBulkUpload.DropFolderFile"),
-	METADATA("metadata.Metadata"),
-	METADATA_PROFILE("metadata.MetadataProfile"),
-	SCHEDULED_TASK_PROFILE("scheduledTask.ScheduledTaskProfile"),
 	ENTRY("1"),
 	CATEGORY("2"),
 	FILE_SYNC("3"),
 	ASSET("4"),
-	USER("5");
+	USER("5"),
+	ENTRY_DISTRIBUTION("contentDistribution.EntryDistribution"),
+	DROP_FOLDER_FILE("dropFolderXmlBulkUpload.DropFolderFile"),
+	METADATA("metadata.Metadata"),
+	METADATA_PROFILE("metadata.MetadataProfile"),
+	SCHEDULED_TASK_PROFILE("scheduledTask.ScheduledTaskProfile");
 
 	private String value;
 

@@ -36,7 +36,8 @@ package com.kaltura.client.enums;
 public enum VendorCatalogItemPriceFunction implements EnumAsString {
 	PRICE_PER_HOUR("kReachUtils::calcPricePerHour"),
 	PRICE_PER_MINUTE("kReachUtils::calcPricePerMinute"),
-	PRICE_PER_SECOND("kReachUtils::calcPricePerSecond");
+	PRICE_PER_SECOND("kReachUtils::calcPricePerSecond"),
+	PRICE_PER_TOKEN("kReachUtils::calcPricePerToken");
 
 	private String value;
 

@@ -49,7 +49,8 @@ public enum VendorServiceFeature implements EnumAsInt {
 	SUMMARY(13),
 	VIDEO_ANALYSIS(14),
 	MODERATION(15),
-	METADATA_ENRICHMENT(16);
+	METADATA_ENRICHMENT(16),
+	SENTIMENT_ANALYSIS(17);
 
 	private int value;
 

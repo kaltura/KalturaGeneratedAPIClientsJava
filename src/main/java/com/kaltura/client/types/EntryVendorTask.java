@@ -66,6 +66,7 @@ public class EntryVendorTask extends ObjectBase {
 		String price();
 		String userId();
 		String entryObjectType();
+		String unitsUsed();
 		String moderatingUser();
 		String errDescription();
 		String accessKey();
@@ -111,6 +112,7 @@ public class EntryVendorTask extends ObjectBase {
 	 */
 	private String userId;
 	private EntryObjectType entryObjectType;
+	private Integer unitsUsed;
 	/**
 	 * The user ID that approved this task for execution (in case moderation is
 	  requested)
@@ -260,6 +262,18 @@ public class EntryVendorTask extends ObjectBase {
 
 	public void entryObjectType(String multirequestToken){
 		setToken("entryObjectType", multirequestToken);
+	}
+
+	// unitsUsed:
+	public Integer getUnitsUsed(){
+		return this.unitsUsed;
+	}
+	public void setUnitsUsed(Integer unitsUsed){
+		this.unitsUsed = unitsUsed;
+	}
+
+	public void unitsUsed(String multirequestToken){
+		setToken("unitsUsed", multirequestToken);
 	}
 
 	// moderatingUser:
@@ -415,6 +429,7 @@ public class EntryVendorTask extends ObjectBase {
 		price = GsonParser.parseDouble(jsonObject.get("price"));
 		userId = GsonParser.parseString(jsonObject.get("userId"));
 		entryObjectType = EntryObjectType.get(GsonParser.parseInt(jsonObject.get("entryObjectType")));
+		unitsUsed = GsonParser.parseInt(jsonObject.get("unitsUsed"));
 		moderatingUser = GsonParser.parseString(jsonObject.get("moderatingUser"));
 		errDescription = GsonParser.parseString(jsonObject.get("errDescription"));
 		accessKey = GsonParser.parseString(jsonObject.get("accessKey"));
@@ -443,6 +458,7 @@ public class EntryVendorTask extends ObjectBase {
 		kparams.add("reachProfileId", this.reachProfileId);
 		kparams.add("catalogItemId", this.catalogItemId);
 		kparams.add("entryObjectType", this.entryObjectType);
+		kparams.add("unitsUsed", this.unitsUsed);
 		kparams.add("errDescription", this.errDescription);
 		kparams.add("notes", this.notes);
 		kparams.add("context", this.context);

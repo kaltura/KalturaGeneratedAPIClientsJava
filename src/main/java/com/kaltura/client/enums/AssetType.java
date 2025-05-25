@@ -34,6 +34,9 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetType implements EnumAsString {
+	FLAVOR("1"),
+	THUMBNAIL("2"),
+	LIVE("3"),
 	ATTACHMENT("attachment.Attachment"),
 	CAPTION("caption.Caption"),
 	DOCUMENT("document.Document"),
@@ -42,10 +45,7 @@ public enum AssetType implements EnumAsString {
 	SWF("document.SWF"),
 	TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
 	TRANSCRIPT("transcript.Transcript"),
-	WIDEVINE_FLAVOR("widevine.WidevineFlavor"),
-	FLAVOR("1"),
-	THUMBNAIL("2"),
-	LIVE("3");
+	WIDEVINE_FLAVOR("widevine.WidevineFlavor");
 
 	private String value;
 

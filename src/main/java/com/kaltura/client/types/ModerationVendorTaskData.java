@@ -46,6 +46,7 @@ public class ModerationVendorTaskData extends VendorTaskData {
 	public interface Tokenizer extends VendorTaskData.Tokenizer {
 		String ruleIds();
 		String policyIds();
+		String categoryIds();
 		String moderationOutputJson();
 	}
 
@@ -57,6 +58,10 @@ public class ModerationVendorTaskData extends VendorTaskData {
 	 * A comma seperated string of policy IDs.
 	 */
 	private String policyIds;
+	/**
+	 * A comma seperated string of category IDs.
+	 */
+	private String categoryIds;
 	/**
 	 * JSON string containing the moderation output.
 	 */
@@ -86,6 +91,18 @@ public class ModerationVendorTaskData extends VendorTaskData {
 		setToken("policyIds", multirequestToken);
 	}
 
+	// categoryIds:
+	public String getCategoryIds(){
+		return this.categoryIds;
+	}
+	public void setCategoryIds(String categoryIds){
+		this.categoryIds = categoryIds;
+	}
+
+	public void categoryIds(String multirequestToken){
+		setToken("categoryIds", multirequestToken);
+	}
+
 	// moderationOutputJson:
 	public String getModerationOutputJson(){
 		return this.moderationOutputJson;
@@ -111,6 +128,7 @@ public class ModerationVendorTaskData extends VendorTaskData {
 		// set members values:
 		ruleIds = GsonParser.parseString(jsonObject.get("ruleIds"));
 		policyIds = GsonParser.parseString(jsonObject.get("policyIds"));
+		categoryIds = GsonParser.parseString(jsonObject.get("categoryIds"));
 		moderationOutputJson = GsonParser.parseString(jsonObject.get("moderationOutputJson"));
 
 	}
@@ -120,6 +138,7 @@ public class ModerationVendorTaskData extends VendorTaskData {
 		kparams.add("objectType", "KalturaModerationVendorTaskData");
 		kparams.add("ruleIds", this.ruleIds);
 		kparams.add("policyIds", this.policyIds);
+		kparams.add("categoryIds", this.categoryIds);
 		kparams.add("moderationOutputJson", this.moderationOutputJson);
 		return kparams;
 	}

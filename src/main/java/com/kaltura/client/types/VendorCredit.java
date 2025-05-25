@@ -48,14 +48,12 @@ public class VendorCredit extends BaseVendorCredit {
 		String fromDate();
 		String overageCredit();
 		String addOn();
-		String allowNegativeOverageCredit();
 	}
 
 	private Integer credit;
 	private Long fromDate;
 	private Integer overageCredit;
 	private Integer addOn;
-	private Boolean allowNegativeOverageCredit;
 
 	// credit:
 	public Integer getCredit(){
@@ -105,18 +103,6 @@ public class VendorCredit extends BaseVendorCredit {
 		setToken("addOn", multirequestToken);
 	}
 
-	// allowNegativeOverageCredit:
-	public Boolean getAllowNegativeOverageCredit(){
-		return this.allowNegativeOverageCredit;
-	}
-	public void setAllowNegativeOverageCredit(Boolean allowNegativeOverageCredit){
-		this.allowNegativeOverageCredit = allowNegativeOverageCredit;
-	}
-
-	public void allowNegativeOverageCredit(String multirequestToken){
-		setToken("allowNegativeOverageCredit", multirequestToken);
-	}
-
 
 	public VendorCredit() {
 		super();
@@ -132,7 +118,6 @@ public class VendorCredit extends BaseVendorCredit {
 		fromDate = GsonParser.parseLong(jsonObject.get("fromDate"));
 		overageCredit = GsonParser.parseInt(jsonObject.get("overageCredit"));
 		addOn = GsonParser.parseInt(jsonObject.get("addOn"));
-		allowNegativeOverageCredit = GsonParser.parseBoolean(jsonObject.get("allowNegativeOverageCredit"));
 
 	}
 
@@ -143,7 +128,6 @@ public class VendorCredit extends BaseVendorCredit {
 		kparams.add("fromDate", this.fromDate);
 		kparams.add("overageCredit", this.overageCredit);
 		kparams.add("addOn", this.addOn);
-		kparams.add("allowNegativeOverageCredit", this.allowNegativeOverageCredit);
 		return kparams;
 	}
 

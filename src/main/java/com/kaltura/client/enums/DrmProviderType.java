@@ -34,10 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmProviderType implements EnumAsString {
+	CENC("1"),
 	FAIRPLAY("fairplay.FAIRPLAY"),
 	PLAY_READY("playReady.PLAY_READY"),
-	WIDEVINE("widevine.WIDEVINE"),
-	CENC("1");
+	WIDEVINE("widevine.WIDEVINE");
 
 	private String value;
 

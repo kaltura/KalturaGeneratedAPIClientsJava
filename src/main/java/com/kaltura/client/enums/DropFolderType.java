@@ -34,6 +34,11 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType implements EnumAsString {
+	LOCAL("1"),
+	FTP("2"),
+	SCP("3"),
+	SFTP("4"),
+	S3("6"),
 	AP_FEED("ApFeedDropFolder.AP_FEED"),
 	FEED("FeedDropFolder.FEED"),
 	MS_TEAMS("MicrosoftTeamsDropFolder.MS_TEAMS"),
@@ -42,12 +47,7 @@ public enum DropFolderType implements EnumAsString {
 	TR_RDS_TMCTERM("TrRdsSyncDropFolder.TR_RDS_TMCTERM"),
 	WEBEX_API("WebexAPIDropFolder.WEBEX_API"),
 	WEBEX("WebexDropFolder.WEBEX"),
-	ZOOM("ZoomDropFolder.ZOOM"),
-	LOCAL("1"),
-	FTP("2"),
-	SCP("3"),
-	SFTP("4"),
-	S3("6");
+	ZOOM("ZoomDropFolder.ZOOM");
 
 	private String value;
 

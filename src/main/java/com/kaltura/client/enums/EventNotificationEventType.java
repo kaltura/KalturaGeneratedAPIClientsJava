@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationEventType implements EnumAsString {
-	INTEGRATION_JOB_CLOSED("integrationEventNotifications.INTEGRATION_JOB_CLOSED"),
 	BATCH_JOB_STATUS("1"),
 	OBJECT_ADDED("2"),
 	OBJECT_CHANGED("3"),
@@ -47,7 +46,8 @@ public enum EventNotificationEventType implements EnumAsString {
 	OBJECT_SAVED("10"),
 	OBJECT_UPDATED("11"),
 	OBJECT_REPLACED("12"),
-	OBJECT_READY_FOR_INDEX("13");
+	OBJECT_READY_FOR_INDEX("13"),
+	INTEGRATION_JOB_CLOSED("integrationEventNotifications.INTEGRATION_JOB_CLOSED");
 
 	private String value;
 

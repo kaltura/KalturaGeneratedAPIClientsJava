@@ -34,7 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadAction implements EnumAsString {
-	CANCEL("scheduleBulkUpload.CANCEL"),
 	ADD("1"),
 	UPDATE("2"),
 	DELETE("3"),
@@ -43,7 +42,8 @@ public enum BulkUploadAction implements EnumAsString {
 	ADD_OR_UPDATE("6"),
 	ACTIVATE("7"),
 	REJECT("8"),
-	UPDATE_STATUS("9");
+	UPDATE_STATUS("9"),
+	CANCEL("scheduleBulkUpload.CANCEL");
 
 	private String value;
 

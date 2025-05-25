@@ -34,13 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType implements EnumAsString {
-	ABC_WATERMARK("abcScreenersWatermarkAccessControl.abcWatermark"),
-	EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
-	EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
-	METADATA_FIELD_CHANGED("metadata.FieldChanged"),
-	METADATA_FIELD_COMPARE("metadata.FieldCompare"),
-	METADATA_FIELD_MATCH("metadata.FieldMatch"),
-	EVENT_CATEGORY_ENTRY("reach.CategoryEntry"),
 	AUTHENTICATED("1"),
 	COUNTRY("2"),
 	IP_ADDRESS("3"),
@@ -62,7 +55,14 @@ public enum ConditionType implements EnumAsString {
 	ENTRY_SCHEDULED("19"),
 	ACTION_NAME("20"),
 	URL_AUTH_PARAMS("21"),
-	SESSION_TYPE("22");
+	SESSION_TYPE("22"),
+	ABC_WATERMARK("abcScreenersWatermarkAccessControl.abcWatermark"),
+	EVENT_NOTIFICATION_FIELD("eventNotification.BooleanField"),
+	EVENT_NOTIFICATION_OBJECT_CHANGED("eventNotification.ObjectChanged"),
+	METADATA_FIELD_CHANGED("metadata.FieldChanged"),
+	METADATA_FIELD_COMPARE("metadata.FieldCompare"),
+	METADATA_FIELD_MATCH("metadata.FieldMatch"),
+	EVENT_CATEGORY_ENTRY("reach.CategoryEntry");
 
 	private String value;
 

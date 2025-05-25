@@ -34,8 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum IntegrationTriggerType implements EnumAsString {
-	BPM_EVENT_NOTIFICATION("bpmEventNotificationIntegration.BpmEventNotification"),
-	MANUAL("1");
+	MANUAL("1"),
+	BPM_EVENT_NOTIFICATION("bpmEventNotificationIntegration.BpmEventNotification");
 
 	private String value;
 

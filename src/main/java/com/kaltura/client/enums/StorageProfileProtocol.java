@@ -34,13 +34,13 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileProtocol implements EnumAsString {
-	KONTIKI("kontiki.KONTIKI"),
 	KALTURA_DC("0"),
 	FTP("1"),
 	SCP("2"),
 	SFTP("3"),
 	S3("6"),
-	LOCAL("7");
+	LOCAL("7"),
+	KONTIKI("kontiki.KONTIKI");
 
 	private String value;
 

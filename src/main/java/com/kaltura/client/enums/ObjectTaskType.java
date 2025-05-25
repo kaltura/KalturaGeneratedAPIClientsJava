@@ -34,9 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ObjectTaskType implements EnumAsString {
-	DISTRIBUTE("scheduledTaskContentDistribution.Distribute"),
-	DISPATCH_EVENT_NOTIFICATION("scheduledTaskEventNotification.DispatchEventNotification"),
-	EXECUTE_METADATA_XSLT("scheduledTaskMetadata.ExecuteMetadataXslt"),
 	DELETE_ENTRY("1"),
 	MODIFY_CATEGORIES("2"),
 	DELETE_ENTRY_FLAVORS("3"),
@@ -45,7 +42,10 @@ public enum ObjectTaskType implements EnumAsString {
 	STORAGE_EXPORT("6"),
 	MODIFY_ENTRY("7"),
 	MAIL_NOTIFICATION("8"),
-	RECYCLE_BIN_CLEANUP("9");
+	RECYCLE_BIN_CLEANUP("9"),
+	DISTRIBUTE("scheduledTaskContentDistribution.Distribute"),
+	DISPATCH_EVENT_NOTIFICATION("scheduledTaskEventNotification.DispatchEventNotification"),
+	EXECUTE_METADATA_XSLT("scheduledTaskMetadata.ExecuteMetadataXslt");
 
 	private String value;
 

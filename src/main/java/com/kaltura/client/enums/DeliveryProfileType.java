@@ -34,13 +34,6 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeliveryProfileType implements EnumAsString {
-	EDGE_CAST_HTTP("edgeCast.EDGE_CAST_HTTP"),
-	EDGE_CAST_RTMP("edgeCast.EDGE_CAST_RTMP"),
-	KONTIKI_HTTP("kontiki.KONTIKI_HTTP"),
-	UPLYNK_HTTP("uplynk.UPLYNK_HTTP"),
-	UPLYNK_RTMP("uplynk.UPLYNK_RTMP"),
-	VELOCIX_HDS("velocix.VELOCIX_HDS"),
-	VELOCIX_HLS("velocix.VELOCIX_HLS"),
 	APPLE_HTTP("1"),
 	HDS("3"),
 	HTTP("4"),
@@ -85,7 +78,14 @@ public enum DeliveryProfileType implements EnumAsString {
 	LIVE_PACKAGER_HDS("1008"),
 	LIVE_PACKAGER_DASH("1009"),
 	LIVE_PACKAGER_MSS("1010"),
-	LIVE_AKAMAI_HDS("1013");
+	LIVE_AKAMAI_HDS("1013"),
+	EDGE_CAST_HTTP("edgeCast.EDGE_CAST_HTTP"),
+	EDGE_CAST_RTMP("edgeCast.EDGE_CAST_RTMP"),
+	KONTIKI_HTTP("kontiki.KONTIKI_HTTP"),
+	UPLYNK_HTTP("uplynk.UPLYNK_HTTP"),
+	UPLYNK_RTMP("uplynk.UPLYNK_RTMP"),
+	VELOCIX_HDS("velocix.VELOCIX_HDS"),
+	VELOCIX_HLS("velocix.VELOCIX_HLS");
 
 	private String value;
 

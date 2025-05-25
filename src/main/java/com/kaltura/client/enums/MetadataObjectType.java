@@ -34,18 +34,18 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataObjectType implements EnumAsString {
-	AD_CUE_POINT("adCuePointMetadata.AdCuePoint"),
-	ANNOTATION("annotationMetadata.Annotation"),
-	CODE_CUE_POINT("codeCuePointMetadata.CodeCuePoint"),
-	ANSWER_CUE_POINT("quiz.AnswerCuePoint"),
-	QUESTION_CUE_POINT("quiz.QuestionCuePoint"),
-	THUMB_CUE_POINT("thumbCuePointMetadata.thumbCuePoint"),
 	ENTRY("1"),
 	CATEGORY("2"),
 	USER("3"),
 	PARTNER("4"),
 	DYNAMIC_OBJECT("5"),
-	USER_ENTRY("6");
+	USER_ENTRY("6"),
+	AD_CUE_POINT("adCuePointMetadata.AdCuePoint"),
+	ANNOTATION("annotationMetadata.Annotation"),
+	CODE_CUE_POINT("codeCuePointMetadata.CodeCuePoint"),
+	ANSWER_CUE_POINT("quiz.AnswerCuePoint"),
+	QUESTION_CUE_POINT("quiz.QuestionCuePoint"),
+	THUMB_CUE_POINT("thumbCuePointMetadata.thumbCuePoint");
 
 	private String value;
 

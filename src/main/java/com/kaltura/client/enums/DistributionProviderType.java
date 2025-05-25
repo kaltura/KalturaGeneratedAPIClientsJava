@@ -34,6 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType implements EnumAsString {
+	GENERIC("1"),
+	SYNDICATION("2"),
 	ATT_UVERSE("attUverseDistribution.ATT_UVERSE"),
 	AVN("avnDistribution.AVN"),
 	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
@@ -64,9 +66,7 @@ public enum DistributionProviderType implements EnumAsString {
 	VERIZON_VCAST("verizonVcastDistribution.VERIZON_VCAST"),
 	YAHOO("yahooDistribution.YAHOO"),
 	YOUTUBE("youTubeDistribution.YOUTUBE"),
-	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API"),
-	GENERIC("1"),
-	SYNDICATION("2");
+	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API");
 
 	private String value;
 

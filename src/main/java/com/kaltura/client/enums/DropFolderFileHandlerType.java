@@ -34,10 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileHandlerType implements EnumAsString {
+	CONTENT("1"),
 	TR_RDS("TrRdsSyncDropFolder.TR_RDS"),
 	XML("dropFolderXmlBulkUpload.XML"),
-	ICAL("scheduleDropFolder.ICAL"),
-	CONTENT("1");
+	ICAL("scheduleDropFolder.ICAL");
 
 	private String value;
 

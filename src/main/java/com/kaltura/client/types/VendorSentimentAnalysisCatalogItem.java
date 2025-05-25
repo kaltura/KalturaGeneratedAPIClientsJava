@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -33,50 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum FileSyncObjectType implements EnumAsString {
-	ENTRY("1"),
-	UICONF("2"),
-	BATCHJOB("3"),
-	ASSET("4"),
-	METADATA("5"),
-	METADATA_PROFILE("6"),
-	SYNDICATION_FEED("7"),
-	CONVERSION_PROFILE("8"),
-	FILE_ASSET("9"),
-	DISTRIBUTION_PROFILE("contentDistribution.DistributionProfile"),
-	ENTRY_DISTRIBUTION("contentDistribution.EntryDistribution"),
-	GENERIC_DISTRIBUTION_ACTION("contentDistribution.GenericDistributionAction"),
-	EMAIL_NOTIFICATION_TEMPLATE("emailNotification.EmailNotificationTemplate"),
-	HTTP_NOTIFICATION_TEMPLATE("httpNotification.HttpNotificationTemplate");
 
-	private String value;
-
-	FileSyncObjectType(String value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(VendorSentimentAnalysisCatalogItem.Tokenizer.class)
+public class VendorSentimentAnalysisCatalogItem extends VendorCatalogItem {
+	
+	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
+
+
+	public VendorSentimentAnalysisCatalogItem() {
+		super();
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public VendorSentimentAnalysisCatalogItem(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static FileSyncObjectType get(String value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over FileSyncObjectType defined values and compare the inner value with the given one:
-		for(FileSyncObjectType item: values()) {
-			if(item.getValue().equals(value)) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return FileSyncObjectType.values().length > 0 ? FileSyncObjectType.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaVendorSentimentAnalysisCatalogItem");
+		return kparams;
+	}
+
 }
+

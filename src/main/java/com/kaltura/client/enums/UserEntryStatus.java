@@ -34,10 +34,10 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryStatus implements EnumAsString {
-	QUIZ_SUBMITTED("quiz.3"),
 	ACTIVE("1"),
 	DELETED("2"),
-	RECYCLED("3");
+	RECYCLED("3"),
+	QUIZ_SUBMITTED("quiz.3");
 
 	private String value;
 

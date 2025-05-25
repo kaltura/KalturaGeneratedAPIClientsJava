@@ -245,7 +245,7 @@ public enum Language implements EnumAsString {
 	KPO("Ikposo"),
 	ILO("Iloko"),
 	SMN("Inari Sami"),
-	IN("Indonesian"),
+	ID("Indonesian"),
 	IZH("Ingrian"),
 	INH("Ingush"),
 	IA("Interlingua"),
