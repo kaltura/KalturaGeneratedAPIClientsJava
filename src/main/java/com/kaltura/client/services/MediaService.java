@@ -104,6 +104,7 @@ import java.util.List;
  * @param extendingItemsArray 
  * @param features 
  * @param entryId Entry id
+ * @param desiredLines Desired Lines
  * @param filter Media entry filter
  * @param pager Pager
  * @param entryId 
@@ -716,23 +717,33 @@ public class MediaService {
 	
 	public static class GetVolumeMapMediaBuilder extends ServeRequestBuilder {
 		
-		public GetVolumeMapMediaBuilder(String entryId) {
+		public GetVolumeMapMediaBuilder(String entryId, int desiredLines) {
 			super("media", "getVolumeMap");
 			params.add("entryId", entryId);
+			params.add("desiredLines", desiredLines);
 		}
 		
 		public void entryId(String multirequestToken) {
 			params.add("entryId", multirequestToken);
 		}
+		
+		public void desiredLines(String multirequestToken) {
+			params.add("desiredLines", multirequestToken);
+		}
+	}
+
+	public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
+		return getVolumeMap(entryId, Integer.MIN_VALUE);
 	}
 
 	/**
 	 * Get volume map by entry id
 	 * 
 	 * @param entryId Entry id
+	 * @param desiredLines Desired Lines
 	 */
-    public static GetVolumeMapMediaBuilder getVolumeMap(String entryId)  {
-		return new GetVolumeMapMediaBuilder(entryId);
+    public static GetVolumeMapMediaBuilder getVolumeMap(String entryId, int desiredLines)  {
+		return new GetVolumeMapMediaBuilder(entryId, desiredLines);
 	}
 	
 	public static class ListMediaBuilder extends ListResponseRequestBuilder<MediaEntry, MediaEntry.Tokenizer, ListMediaBuilder> {

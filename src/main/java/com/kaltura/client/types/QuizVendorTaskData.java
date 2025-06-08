@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(QuizVendorTaskData.Tokenizer.class)
-public class QuizVendorTaskData extends VendorTaskData {
+public class QuizVendorTaskData extends LocalizedVendorTaskData {
 	
-	public interface Tokenizer extends VendorTaskData.Tokenizer {
+	public interface Tokenizer extends LocalizedVendorTaskData.Tokenizer {
 		String numberOfQuestions();
 		String questionsType();
 		String context();

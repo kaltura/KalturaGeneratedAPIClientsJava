@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(MetadataEnrichmentVendorTaskData.Tokenizer.class)
-public class MetadataEnrichmentVendorTaskData extends VendorTaskData {
+public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 	
-	public interface Tokenizer extends VendorTaskData.Tokenizer {
+	public interface Tokenizer extends LocalizedVendorTaskData.Tokenizer {
 		String detailLevel();
 		String instruction();
 		String outputJson();

@@ -33,16 +33,13 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AttachmentType implements EnumAsString {
-	TEXT("1"),
-	MEDIA("2"),
-	DOCUMENT("3"),
-	JSON("4"),
-	MARKDOWN("5");
+public enum CatalogItemSignLanguage implements EnumAsString {
+	ENGLISH_ASL("English (ASL)"),
+	ENGLISH_BSL("English (BSL)");
 
 	private String value;
 
-	AttachmentType(String value) {
+	CatalogItemSignLanguage(String value) {
 		this.value = value;
 	}
 
@@ -55,19 +52,19 @@ public enum AttachmentType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static AttachmentType get(String value) {
+	public static CatalogItemSignLanguage get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over AttachmentType defined values and compare the inner value with the given one:
-		for(AttachmentType item: values()) {
+		// goes over CatalogItemSignLanguage defined values and compare the inner value with the given one:
+		for(CatalogItemSignLanguage item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return AttachmentType.values().length > 0 ? AttachmentType.values()[0]: null;
+		return CatalogItemSignLanguage.values().length > 0 ? CatalogItemSignLanguage.values()[0]: null;
    }
 }

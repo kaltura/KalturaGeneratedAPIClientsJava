@@ -61,6 +61,8 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * @param pager 
  * @param id vendor task id to reject
  * @param rejectReason 
+ * @param id vendor task id
+ * @param newOutput 
  * @param vendorPartnerId 
  * @param partnerId 
  * @param status 
@@ -333,6 +335,27 @@ public class EntryVendorTaskService {
 	 */
     public static RejectEntryVendorTaskBuilder reject(int id, String rejectReason)  {
 		return new RejectEntryVendorTaskBuilder(id, rejectReason);
+	}
+	
+	public static class ReplaceOutputEntryVendorTaskBuilder extends RequestBuilder<EntryVendorTask, EntryVendorTask.Tokenizer, ReplaceOutputEntryVendorTaskBuilder> {
+		
+		public ReplaceOutputEntryVendorTaskBuilder(int id, String newOutput) {
+			super(EntryVendorTask.class, "reach_entryvendortask", "replaceOutput");
+			params.add("id", id);
+			params.add("newOutput", newOutput);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void newOutput(String multirequestToken) {
+			params.add("newOutput", multirequestToken);
+		}
+	}
+
+    public static ReplaceOutputEntryVendorTaskBuilder replaceOutput(int id, String newOutput)  {
+		return new ReplaceOutputEntryVendorTaskBuilder(id, newOutput);
 	}
 	
 	public static class ServeEntryVendorTaskBuilder extends ServeRequestBuilder {

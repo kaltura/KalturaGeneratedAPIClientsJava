@@ -41,9 +41,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(ClipsVendorTaskData.Tokenizer.class)
-public class ClipsVendorTaskData extends VendorTaskData {
+public class ClipsVendorTaskData extends LocalizedVendorTaskData {
 	
-	public interface Tokenizer extends VendorTaskData.Tokenizer {
+	public interface Tokenizer extends LocalizedVendorTaskData.Tokenizer {
 		String clipsDuration();
 		String eventSessionContextId();
 		String instruction();
