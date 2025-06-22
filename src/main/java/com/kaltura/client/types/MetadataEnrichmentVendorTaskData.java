@@ -46,7 +46,6 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 	public interface Tokenizer extends LocalizedVendorTaskData.Tokenizer {
 		String detailLevel();
 		String instruction();
-		String outputJson();
 	}
 
 	/**
@@ -58,12 +57,6 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 	  enrichment process.
 	 */
 	private String instruction;
-	/**
-	 * Metadata enrichment result as JSON string.   For example: {"titles": ["The first
-	  title", "The second title"], "descriptions": ["The first description"], "tags":
-	  ["Tag1", "Tag2"]}
-	 */
-	private String outputJson;
 
 	// detailLevel:
 	public String getDetailLevel(){
@@ -89,18 +82,6 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		setToken("instruction", multirequestToken);
 	}
 
-	// outputJson:
-	public String getOutputJson(){
-		return this.outputJson;
-	}
-	public void setOutputJson(String outputJson){
-		this.outputJson = outputJson;
-	}
-
-	public void outputJson(String multirequestToken){
-		setToken("outputJson", multirequestToken);
-	}
-
 
 	public MetadataEnrichmentVendorTaskData() {
 		super();
@@ -114,7 +95,6 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		// set members values:
 		detailLevel = GsonParser.parseString(jsonObject.get("detailLevel"));
 		instruction = GsonParser.parseString(jsonObject.get("instruction"));
-		outputJson = GsonParser.parseString(jsonObject.get("outputJson"));
 
 	}
 
@@ -123,7 +103,6 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		kparams.add("objectType", "KalturaMetadataEnrichmentVendorTaskData");
 		kparams.add("detailLevel", this.detailLevel);
 		kparams.add("instruction", this.instruction);
-		kparams.add("outputJson", this.outputJson);
 		return kparams;
 	}
 

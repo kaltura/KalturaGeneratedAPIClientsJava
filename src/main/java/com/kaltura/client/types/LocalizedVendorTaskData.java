@@ -46,12 +46,17 @@ public class LocalizedVendorTaskData extends VendorTaskData {
 	
 	public interface Tokenizer extends VendorTaskData.Tokenizer {
 		String outputLanguage();
+		String outputJson();
 	}
 
 	/**
 	 * Language code
 	 */
 	private Language outputLanguage;
+	/**
+	 * result as JSON string.
+	 */
+	private String outputJson;
 
 	// outputLanguage:
 	public Language getOutputLanguage(){
@@ -63,6 +68,18 @@ public class LocalizedVendorTaskData extends VendorTaskData {
 
 	public void outputLanguage(String multirequestToken){
 		setToken("outputLanguage", multirequestToken);
+	}
+
+	// outputJson:
+	public String getOutputJson(){
+		return this.outputJson;
+	}
+	public void setOutputJson(String outputJson){
+		this.outputJson = outputJson;
+	}
+
+	public void outputJson(String multirequestToken){
+		setToken("outputJson", multirequestToken);
 	}
 
 
@@ -77,6 +94,7 @@ public class LocalizedVendorTaskData extends VendorTaskData {
 
 		// set members values:
 		outputLanguage = Language.get(GsonParser.parseString(jsonObject.get("outputLanguage")));
+		outputJson = GsonParser.parseString(jsonObject.get("outputJson"));
 
 	}
 
@@ -84,6 +102,7 @@ public class LocalizedVendorTaskData extends VendorTaskData {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaLocalizedVendorTaskData");
 		kparams.add("outputLanguage", this.outputLanguage);
+		kparams.add("outputJson", this.outputJson);
 		return kparams;
 	}
 
