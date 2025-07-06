@@ -29,8 +29,12 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.MetadataEnrichmentApplyMode;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -46,6 +50,9 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 	public interface Tokenizer extends LocalizedVendorTaskData.Tokenizer {
 		String detailLevel();
 		String instruction();
+		String shouldApply();
+		String applyMode();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> overrideFields();
 	}
 
 	/**
@@ -57,6 +64,22 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 	  enrichment process.
 	 */
 	private String instruction;
+	/**
+	 * Indicates whether the metadata enrichment results should be automatically
+	  applied on the task entry.   Default is false.
+	 */
+	private Boolean shouldApply;
+	/**
+	 * Specifies how metadata fields should be applied during enrichment.   If
+	  'FILL_EMPTY_AND_OVERRIDE_LIST', use overrideFields to specify which fields to
+	  override.
+	 */
+	private MetadataEnrichmentApplyMode applyMode;
+	/**
+	 * List of entry fields to override when applyMode is set to
+	  'FILL_EMPTY_AND_OVERRIDE_LIST'.
+	 */
+	private List<StringHolder> overrideFields;
 
 	// detailLevel:
 	public String getDetailLevel(){
@@ -82,6 +105,38 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		setToken("instruction", multirequestToken);
 	}
 
+	// shouldApply:
+	public Boolean getShouldApply(){
+		return this.shouldApply;
+	}
+	public void setShouldApply(Boolean shouldApply){
+		this.shouldApply = shouldApply;
+	}
+
+	public void shouldApply(String multirequestToken){
+		setToken("shouldApply", multirequestToken);
+	}
+
+	// applyMode:
+	public MetadataEnrichmentApplyMode getApplyMode(){
+		return this.applyMode;
+	}
+	public void setApplyMode(MetadataEnrichmentApplyMode applyMode){
+		this.applyMode = applyMode;
+	}
+
+	public void applyMode(String multirequestToken){
+		setToken("applyMode", multirequestToken);
+	}
+
+	// overrideFields:
+	public List<StringHolder> getOverrideFields(){
+		return this.overrideFields;
+	}
+	public void setOverrideFields(List<StringHolder> overrideFields){
+		this.overrideFields = overrideFields;
+	}
+
 
 	public MetadataEnrichmentVendorTaskData() {
 		super();
@@ -95,6 +150,9 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		// set members values:
 		detailLevel = GsonParser.parseString(jsonObject.get("detailLevel"));
 		instruction = GsonParser.parseString(jsonObject.get("instruction"));
+		shouldApply = GsonParser.parseBoolean(jsonObject.get("shouldApply"));
+		applyMode = MetadataEnrichmentApplyMode.get(GsonParser.parseString(jsonObject.get("applyMode")));
+		overrideFields = GsonParser.parseArray(jsonObject.getAsJsonArray("overrideFields"), StringHolder.class);
 
 	}
 
@@ -103,6 +161,9 @@ public class MetadataEnrichmentVendorTaskData extends LocalizedVendorTaskData {
 		kparams.add("objectType", "KalturaMetadataEnrichmentVendorTaskData");
 		kparams.add("detailLevel", this.detailLevel);
 		kparams.add("instruction", this.instruction);
+		kparams.add("shouldApply", this.shouldApply);
+		kparams.add("applyMode", this.applyMode);
+		kparams.add("overrideFields", this.overrideFields);
 		return kparams;
 	}
 
