@@ -33,38 +33,37 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType implements EnumAsInt {
-	ENTRY(1),
-	ASSET(2);
+public enum MarkdownProviderType implements EnumAsString {
+	KAI("0");
 
-	private int value;
+	private String value;
 
-	EntryObjectType(int value) {
+	MarkdownProviderType(String value) {
 		this.value = value;
 	}
 
 	@Override
-	public int getValue() {
+	public String getValue() {
 		return this.value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
-	public static EntryObjectType get(Integer value) {
+	public static MarkdownProviderType get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over EntryObjectType defined values and compare the inner value with the given one:
-		for(EntryObjectType item: values()) {
-			if(item.getValue() == value) {
+		// goes over MarkdownProviderType defined values and compare the inner value with the given one:
+		for(MarkdownProviderType item: values()) {
+			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return EntryObjectType.values().length > 0 ? EntryObjectType.values()[0]: null;
+		return MarkdownProviderType.values().length > 0 ? MarkdownProviderType.values()[0]: null;
    }
 }

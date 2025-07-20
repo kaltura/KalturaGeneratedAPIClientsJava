@@ -34,9 +34,8 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ZoomUsersSearchMethod implements EnumAsInt {
-	ID(0),
-	EMAIL(1),
-	ALL(2);
+	EMAIL(0),
+	EXTERNAL(1);
 
 	private int value;
 

@@ -40,9 +40,9 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(TranscriptAssetBaseFilter.Tokenizer.class)
-public abstract class TranscriptAssetBaseFilter extends AttachmentAssetFilter {
+public abstract class TranscriptAssetBaseFilter extends TextualAttachmentAssetFilter {
 	
-	public interface Tokenizer extends AttachmentAssetFilter.Tokenizer {
+	public interface Tokenizer extends TextualAttachmentAssetFilter.Tokenizer {
 	}
 
 

@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemSignLanguage;
+import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,46 +41,68 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(VendorSignLanguageCatalogItem.Tokenizer.class)
-public class VendorSignLanguageCatalogItem extends VendorCatalogItem {
+@MultiRequestBuilder.Tokenizer(TextualAttachmentAsset.Tokenizer.class)
+public abstract class TextualAttachmentAsset extends AttachmentAsset {
 	
-	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
-		String targetLanguage();
+	public interface Tokenizer extends AttachmentAsset.Tokenizer {
+		String language();
+		String humanVerified();
 	}
 
-	private CatalogItemSignLanguage targetLanguage;
+	/**
+	 * The language of the transcript
+	 */
+	private Language language;
+	/**
+	 * Was verified by human or machine
+	 */
+	private Boolean humanVerified;
 
-	// targetLanguage:
-	public CatalogItemSignLanguage getTargetLanguage(){
-		return this.targetLanguage;
+	// language:
+	public Language getLanguage(){
+		return this.language;
 	}
-	public void setTargetLanguage(CatalogItemSignLanguage targetLanguage){
-		this.targetLanguage = targetLanguage;
+	public void setLanguage(Language language){
+		this.language = language;
 	}
 
-	public void targetLanguage(String multirequestToken){
-		setToken("targetLanguage", multirequestToken);
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
+	}
+
+	// humanVerified:
+	public Boolean getHumanVerified(){
+		return this.humanVerified;
+	}
+	public void setHumanVerified(Boolean humanVerified){
+		this.humanVerified = humanVerified;
+	}
+
+	public void humanVerified(String multirequestToken){
+		setToken("humanVerified", multirequestToken);
 	}
 
 
-	public VendorSignLanguageCatalogItem() {
+	public TextualAttachmentAsset() {
 		super();
 	}
 
-	public VendorSignLanguageCatalogItem(JsonObject jsonObject) throws APIException {
+	public TextualAttachmentAsset(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		targetLanguage = CatalogItemSignLanguage.get(GsonParser.parseString(jsonObject.get("targetLanguage")));
+		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
+		humanVerified = GsonParser.parseBoolean(jsonObject.get("humanVerified"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaVendorSignLanguageCatalogItem");
-		kparams.add("targetLanguage", this.targetLanguage);
+		kparams.add("objectType", "KalturaTextualAttachmentAsset");
+		kparams.add("language", this.language);
+		kparams.add("humanVerified", this.humanVerified);
 		return kparams;
 	}
 

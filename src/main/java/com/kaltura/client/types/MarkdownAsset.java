@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemSignLanguage;
+import com.kaltura.client.enums.MarkdownProviderType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -41,46 +41,68 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
  */
 
 @SuppressWarnings("serial")
-@MultiRequestBuilder.Tokenizer(VendorSignLanguageCatalogItem.Tokenizer.class)
-public class VendorSignLanguageCatalogItem extends VendorCatalogItem {
+@MultiRequestBuilder.Tokenizer(MarkdownAsset.Tokenizer.class)
+public class MarkdownAsset extends AttachmentAsset {
 	
-	public interface Tokenizer extends VendorCatalogItem.Tokenizer {
-		String targetLanguage();
+	public interface Tokenizer extends AttachmentAsset.Tokenizer {
+		String accuracy();
+		String providerType();
 	}
 
-	private CatalogItemSignLanguage targetLanguage;
+	/**
+	 * The percentage accuracy of the markdown - values between 0 and 100
+	 */
+	private Integer accuracy;
+	/**
+	 * The provider of the markdown
+	 */
+	private MarkdownProviderType providerType;
 
-	// targetLanguage:
-	public CatalogItemSignLanguage getTargetLanguage(){
-		return this.targetLanguage;
+	// accuracy:
+	public Integer getAccuracy(){
+		return this.accuracy;
 	}
-	public void setTargetLanguage(CatalogItemSignLanguage targetLanguage){
-		this.targetLanguage = targetLanguage;
+	public void setAccuracy(Integer accuracy){
+		this.accuracy = accuracy;
 	}
 
-	public void targetLanguage(String multirequestToken){
-		setToken("targetLanguage", multirequestToken);
+	public void accuracy(String multirequestToken){
+		setToken("accuracy", multirequestToken);
+	}
+
+	// providerType:
+	public MarkdownProviderType getProviderType(){
+		return this.providerType;
+	}
+	public void setProviderType(MarkdownProviderType providerType){
+		this.providerType = providerType;
+	}
+
+	public void providerType(String multirequestToken){
+		setToken("providerType", multirequestToken);
 	}
 
 
-	public VendorSignLanguageCatalogItem() {
+	public MarkdownAsset() {
 		super();
 	}
 
-	public VendorSignLanguageCatalogItem(JsonObject jsonObject) throws APIException {
+	public MarkdownAsset(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
 
 		if(jsonObject == null) return;
 
 		// set members values:
-		targetLanguage = CatalogItemSignLanguage.get(GsonParser.parseString(jsonObject.get("targetLanguage")));
+		accuracy = GsonParser.parseInt(jsonObject.get("accuracy"));
+		providerType = MarkdownProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
-		kparams.add("objectType", "KalturaVendorSignLanguageCatalogItem");
-		kparams.add("targetLanguage", this.targetLanguage);
+		kparams.add("objectType", "KalturaMarkdownAsset");
+		kparams.add("accuracy", this.accuracy);
+		kparams.add("providerType", this.providerType);
 		return kparams;
 	}
 

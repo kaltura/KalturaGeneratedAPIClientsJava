@@ -29,7 +29,6 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.Language;
 import com.kaltura.client.enums.TranscriptProviderType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -43,12 +42,10 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 @SuppressWarnings("serial")
 @MultiRequestBuilder.Tokenizer(TranscriptAsset.Tokenizer.class)
-public class TranscriptAsset extends AttachmentAsset {
+public class TranscriptAsset extends TextualAttachmentAsset {
 	
-	public interface Tokenizer extends AttachmentAsset.Tokenizer {
+	public interface Tokenizer extends TextualAttachmentAsset.Tokenizer {
 		String accuracy();
-		String humanVerified();
-		String language();
 		String providerType();
 	}
 
@@ -56,14 +53,6 @@ public class TranscriptAsset extends AttachmentAsset {
 	 * The accuracy of the transcript - values between 0 and 1
 	 */
 	private Double accuracy;
-	/**
-	 * Was verified by human or machine
-	 */
-	private Boolean humanVerified;
-	/**
-	 * The language of the transcript
-	 */
-	private Language language;
 	/**
 	 * The provider of the transcript
 	 */
@@ -79,30 +68,6 @@ public class TranscriptAsset extends AttachmentAsset {
 
 	public void accuracy(String multirequestToken){
 		setToken("accuracy", multirequestToken);
-	}
-
-	// humanVerified:
-	public Boolean getHumanVerified(){
-		return this.humanVerified;
-	}
-	public void setHumanVerified(Boolean humanVerified){
-		this.humanVerified = humanVerified;
-	}
-
-	public void humanVerified(String multirequestToken){
-		setToken("humanVerified", multirequestToken);
-	}
-
-	// language:
-	public Language getLanguage(){
-		return this.language;
-	}
-	public void setLanguage(Language language){
-		this.language = language;
-	}
-
-	public void language(String multirequestToken){
-		setToken("language", multirequestToken);
 	}
 
 	// providerType:
@@ -129,8 +94,6 @@ public class TranscriptAsset extends AttachmentAsset {
 
 		// set members values:
 		accuracy = GsonParser.parseDouble(jsonObject.get("accuracy"));
-		humanVerified = GsonParser.parseBoolean(jsonObject.get("humanVerified"));
-		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
 		providerType = TranscriptProviderType.get(GsonParser.parseString(jsonObject.get("providerType")));
 
 	}
@@ -139,8 +102,6 @@ public class TranscriptAsset extends AttachmentAsset {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaTranscriptAsset");
 		kparams.add("accuracy", this.accuracy);
-		kparams.add("humanVerified", this.humanVerified);
-		kparams.add("language", this.language);
 		kparams.add("providerType", this.providerType);
 		return kparams;
 	}

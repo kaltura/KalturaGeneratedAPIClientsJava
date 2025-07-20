@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -33,38 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorCatalogItemSignLanguageOutputFormat implements EnumAsInt {
-	ASPECT_RATIO_16_9(1),
-	ASPECT_RATIO_4_3(2);
 
-	private int value;
-
-	VendorCatalogItemSignLanguageOutputFormat(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TextualAttachmentAssetBaseFilter.Tokenizer.class)
+public abstract class TextualAttachmentAssetBaseFilter extends AttachmentAssetFilter {
+	
+	public interface Tokenizer extends AttachmentAssetFilter.Tokenizer {
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+
+
+	public TextualAttachmentAssetBaseFilter() {
+		super();
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public TextualAttachmentAssetBaseFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static VendorCatalogItemSignLanguageOutputFormat get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorCatalogItemSignLanguageOutputFormat defined values and compare the inner value with the given one:
-		for(VendorCatalogItemSignLanguageOutputFormat item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorCatalogItemSignLanguageOutputFormat.values().length > 0 ? VendorCatalogItemSignLanguageOutputFormat.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTextualAttachmentAssetBaseFilter");
+		return kparams;
+	}
+
 }
+

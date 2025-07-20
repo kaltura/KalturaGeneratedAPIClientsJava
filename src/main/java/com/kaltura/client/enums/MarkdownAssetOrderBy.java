@@ -33,38 +33,44 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType implements EnumAsInt {
-	ENTRY(1),
-	ASSET(2);
+public enum MarkdownAssetOrderBy implements EnumAsString {
+	CREATED_AT_ASC("+createdAt"),
+	DELETED_AT_ASC("+deletedAt"),
+	SIZE_ASC("+size"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	DELETED_AT_DESC("-deletedAt"),
+	SIZE_DESC("-size"),
+	UPDATED_AT_DESC("-updatedAt");
 
-	private int value;
+	private String value;
 
-	EntryObjectType(int value) {
+	MarkdownAssetOrderBy(String value) {
 		this.value = value;
 	}
 
 	@Override
-	public int getValue() {
+	public String getValue() {
 		return this.value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
-	public static EntryObjectType get(Integer value) {
+	public static MarkdownAssetOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over EntryObjectType defined values and compare the inner value with the given one:
-		for(EntryObjectType item: values()) {
-			if(item.getValue() == value) {
+		// goes over MarkdownAssetOrderBy defined values and compare the inner value with the given one:
+		for(MarkdownAssetOrderBy item: values()) {
+			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return EntryObjectType.values().length > 0 ? EntryObjectType.values()[0]: null;
+		return MarkdownAssetOrderBy.values().length > 0 ? MarkdownAssetOrderBy.values()[0]: null;
    }
 }

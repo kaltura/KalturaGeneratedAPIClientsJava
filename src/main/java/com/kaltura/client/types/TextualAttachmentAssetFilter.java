@@ -25,7 +25,11 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -33,38 +37,29 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType implements EnumAsInt {
-	ENTRY(1),
-	ASSET(2);
 
-	private int value;
-
-	EntryObjectType(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(TextualAttachmentAssetFilter.Tokenizer.class)
+public abstract class TextualAttachmentAssetFilter extends TextualAttachmentAssetBaseFilter {
+	
+	public interface Tokenizer extends TextualAttachmentAssetBaseFilter.Tokenizer {
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+
+
+	public TextualAttachmentAssetFilter() {
+		super();
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public TextualAttachmentAssetFilter(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
 	}
 
-	public static EntryObjectType get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over EntryObjectType defined values and compare the inner value with the given one:
-		for(EntryObjectType item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return EntryObjectType.values().length > 0 ? EntryObjectType.values()[0]: null;
-   }
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaTextualAttachmentAssetFilter");
+		return kparams;
+	}
+
 }
+

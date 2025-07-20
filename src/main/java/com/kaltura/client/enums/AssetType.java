@@ -43,6 +43,7 @@ public enum AssetType implements EnumAsString {
 	IMAGE("document.Image"),
 	PDF("document.PDF"),
 	SWF("document.SWF"),
+	MARKDOWN("markdown.Markdown"),
 	TIMED_THUMB_ASSET("thumbCuePoint.timedThumb"),
 	TRANSCRIPT("transcript.Transcript"),
 	WIDEVINE_FLAVOR("widevine.WidevineFlavor");
