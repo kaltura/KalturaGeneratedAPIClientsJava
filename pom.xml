@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kaltura</groupId>
     <artifactId>KalturaApiClient</artifactId>
-    <version>21.20.0</version>
+    <version>22.0.0</version>
 
     <packaging>jar</packaging>
     <properties>

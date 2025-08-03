@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.types.ActiveLiveStreamTime;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -54,6 +55,7 @@ public class PlaybackContext extends ObjectBase {
 		RequestBuilder.ListTokenizer<RuleAction.Tokenizer> actions();
 		RequestBuilder.ListTokenizer<AccessControlMessage.Tokenizer> messages();
 		RequestBuilder.ListTokenizer<ObjectBase.Tokenizer> bumperData();
+		ActiveLiveStreamTime.Tokenizer activeLiveStreamTime();
 	}
 
 	private List<PlaybackSource> sources;
@@ -68,6 +70,7 @@ public class PlaybackContext extends ObjectBase {
 	 */
 	private List<AccessControlMessage> messages;
 	private List<ObjectBase> bumperData;
+	private ActiveLiveStreamTime activeLiveStreamTime;
 
 	// sources:
 	public List<PlaybackSource> getSources(){
@@ -117,6 +120,14 @@ public class PlaybackContext extends ObjectBase {
 		this.bumperData = bumperData;
 	}
 
+	// activeLiveStreamTime:
+	public ActiveLiveStreamTime getActiveLiveStreamTime(){
+		return this.activeLiveStreamTime;
+	}
+	public void setActiveLiveStreamTime(ActiveLiveStreamTime activeLiveStreamTime){
+		this.activeLiveStreamTime = activeLiveStreamTime;
+	}
+
 
 	public PlaybackContext() {
 		super();
@@ -134,6 +145,7 @@ public class PlaybackContext extends ObjectBase {
 		actions = GsonParser.parseArray(jsonObject.getAsJsonArray("actions"), RuleAction.class);
 		messages = GsonParser.parseArray(jsonObject.getAsJsonArray("messages"), AccessControlMessage.class);
 		bumperData = GsonParser.parseArray(jsonObject.getAsJsonArray("bumperData"), ObjectBase.class);
+		activeLiveStreamTime = GsonParser.parseObject(jsonObject.getAsJsonObject("activeLiveStreamTime"), ActiveLiveStreamTime.class);
 
 	}
 
@@ -146,6 +158,7 @@ public class PlaybackContext extends ObjectBase {
 		kparams.add("actions", this.actions);
 		kparams.add("messages", this.messages);
 		kparams.add("bumperData", this.bumperData);
+		kparams.add("activeLiveStreamTime", this.activeLiveStreamTime);
 		return kparams;
 	}
 

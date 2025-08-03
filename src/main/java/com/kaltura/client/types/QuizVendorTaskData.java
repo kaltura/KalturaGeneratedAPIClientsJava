@@ -50,6 +50,7 @@ public class QuizVendorTaskData extends LocalizedVendorTaskData {
 		String formalStyle();
 		String createQuiz();
 		String quizOutput();
+		String instruction();
 	}
 
 	/**
@@ -76,6 +77,11 @@ public class QuizVendorTaskData extends LocalizedVendorTaskData {
 	 * Quiz entry Id
 	 */
 	private String quizOutput;
+	/**
+	 * Instructions describing what should be taken into account during the quiz
+	  creation process.
+	 */
+	private String instruction;
 
 	// numberOfQuestions:
 	public Integer getNumberOfQuestions(){
@@ -149,6 +155,18 @@ public class QuizVendorTaskData extends LocalizedVendorTaskData {
 		setToken("quizOutput", multirequestToken);
 	}
 
+	// instruction:
+	public String getInstruction(){
+		return this.instruction;
+	}
+	public void setInstruction(String instruction){
+		this.instruction = instruction;
+	}
+
+	public void instruction(String multirequestToken){
+		setToken("instruction", multirequestToken);
+	}
+
 
 	public QuizVendorTaskData() {
 		super();
@@ -166,6 +184,7 @@ public class QuizVendorTaskData extends LocalizedVendorTaskData {
 		formalStyle = GsonParser.parseString(jsonObject.get("formalStyle"));
 		createQuiz = GsonParser.parseBoolean(jsonObject.get("createQuiz"));
 		quizOutput = GsonParser.parseString(jsonObject.get("quizOutput"));
+		instruction = GsonParser.parseString(jsonObject.get("instruction"));
 
 	}
 
@@ -178,6 +197,7 @@ public class QuizVendorTaskData extends LocalizedVendorTaskData {
 		kparams.add("formalStyle", this.formalStyle);
 		kparams.add("createQuiz", this.createQuiz);
 		kparams.add("quizOutput", this.quizOutput);
+		kparams.add("instruction", this.instruction);
 		return kparams;
 	}
 
