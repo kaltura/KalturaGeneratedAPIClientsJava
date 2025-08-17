@@ -49,6 +49,7 @@ public class SummaryVendorTaskData extends LocalizedVendorTaskData {
 		String typeOfSummary();
 		String writingStyle();
 		String summaryOutputJson();
+		String instruction();
 	}
 
 	/**
@@ -63,6 +64,10 @@ public class SummaryVendorTaskData extends LocalizedVendorTaskData {
 	 * JSON string containing the summary output.
 	 */
 	private String summaryOutputJson;
+	/**
+	 * Additional instruction for the summary.
+	 */
+	private String instruction;
 
 	// typeOfSummary:
 	public TypeOfSummaryTaskData getTypeOfSummary(){
@@ -100,6 +105,18 @@ public class SummaryVendorTaskData extends LocalizedVendorTaskData {
 		setToken("summaryOutputJson", multirequestToken);
 	}
 
+	// instruction:
+	public String getInstruction(){
+		return this.instruction;
+	}
+	public void setInstruction(String instruction){
+		this.instruction = instruction;
+	}
+
+	public void instruction(String multirequestToken){
+		setToken("instruction", multirequestToken);
+	}
+
 
 	public SummaryVendorTaskData() {
 		super();
@@ -114,6 +131,7 @@ public class SummaryVendorTaskData extends LocalizedVendorTaskData {
 		typeOfSummary = TypeOfSummaryTaskData.get(GsonParser.parseString(jsonObject.get("typeOfSummary")));
 		writingStyle = SummaryWritingStyleTaskData.get(GsonParser.parseString(jsonObject.get("writingStyle")));
 		summaryOutputJson = GsonParser.parseString(jsonObject.get("summaryOutputJson"));
+		instruction = GsonParser.parseString(jsonObject.get("instruction"));
 
 	}
 
@@ -123,6 +141,7 @@ public class SummaryVendorTaskData extends LocalizedVendorTaskData {
 		kparams.add("typeOfSummary", this.typeOfSummary);
 		kparams.add("writingStyle", this.writingStyle);
 		kparams.add("summaryOutputJson", this.summaryOutputJson);
+		kparams.add("instruction", this.instruction);
 		return kparams;
 	}
 
