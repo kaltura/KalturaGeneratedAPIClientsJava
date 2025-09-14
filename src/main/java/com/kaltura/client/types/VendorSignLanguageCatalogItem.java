@@ -29,7 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
-import com.kaltura.client.enums.CatalogItemSignLanguage;
+import com.kaltura.client.enums.CatalogItemLanguage;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -48,13 +48,13 @@ public class VendorSignLanguageCatalogItem extends VendorCatalogItem {
 		String targetLanguage();
 	}
 
-	private CatalogItemSignLanguage targetLanguage;
+	private CatalogItemLanguage targetLanguage;
 
 	// targetLanguage:
-	public CatalogItemSignLanguage getTargetLanguage(){
+	public CatalogItemLanguage getTargetLanguage(){
 		return this.targetLanguage;
 	}
-	public void setTargetLanguage(CatalogItemSignLanguage targetLanguage){
+	public void setTargetLanguage(CatalogItemLanguage targetLanguage){
 		this.targetLanguage = targetLanguage;
 	}
 
@@ -73,7 +73,7 @@ public class VendorSignLanguageCatalogItem extends VendorCatalogItem {
 		if(jsonObject == null) return;
 
 		// set members values:
-		targetLanguage = CatalogItemSignLanguage.get(GsonParser.parseString(jsonObject.get("targetLanguage")));
+		targetLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("targetLanguage")));
 
 	}
 

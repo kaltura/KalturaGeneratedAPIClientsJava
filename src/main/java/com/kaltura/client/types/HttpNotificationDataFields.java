@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
@@ -47,8 +48,22 @@ import com.kaltura.client.utils.request.MultiRequestBuilder;
 public class HttpNotificationDataFields extends HttpNotificationData {
 	
 	public interface Tokenizer extends HttpNotificationData.Tokenizer {
+		String contentType();
 	}
 
+	private String contentType;
+
+	// contentType:
+	public String getContentType(){
+		return this.contentType;
+	}
+	public void setContentType(String contentType){
+		this.contentType = contentType;
+	}
+
+	public void contentType(String multirequestToken){
+		setToken("contentType", multirequestToken);
+	}
 
 
 	public HttpNotificationDataFields() {
@@ -57,11 +72,18 @@ public class HttpNotificationDataFields extends HttpNotificationData {
 
 	public HttpNotificationDataFields(JsonObject jsonObject) throws APIException {
 		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		contentType = GsonParser.parseString(jsonObject.get("contentType"));
+
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaHttpNotificationDataFields");
+		kparams.add("contentType", this.contentType);
 		return kparams;
 	}
 
