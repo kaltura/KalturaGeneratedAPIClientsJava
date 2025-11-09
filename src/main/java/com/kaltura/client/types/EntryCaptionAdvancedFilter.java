@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 
@@ -45,9 +46,11 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 	
 	public interface Tokenizer extends SearchItem.Tokenizer {
 		String hasCaption();
+		String language();
 	}
 
 	private Boolean hasCaption;
+	private Language language;
 
 	// hasCaption:
 	public Boolean getHasCaption(){
@@ -59,6 +62,18 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 
 	public void hasCaption(String multirequestToken){
 		setToken("hasCaption", multirequestToken);
+	}
+
+	// language:
+	public Language getLanguage(){
+		return this.language;
+	}
+	public void setLanguage(Language language){
+		this.language = language;
+	}
+
+	public void language(String multirequestToken){
+		setToken("language", multirequestToken);
 	}
 
 
@@ -73,6 +88,7 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 
 		// set members values:
 		hasCaption = GsonParser.parseBoolean(jsonObject.get("hasCaption"));
+		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
 
 	}
 
@@ -80,6 +96,7 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaEntryCaptionAdvancedFilter");
 		kparams.add("hasCaption", this.hasCaption);
+		kparams.add("language", this.language);
 		return kparams;
 	}
 
