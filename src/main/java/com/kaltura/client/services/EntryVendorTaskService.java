@@ -63,6 +63,8 @@ import com.kaltura.client.utils.request.ServeRequestBuilder;
  * @param rejectReason 
  * @param id vendor task id
  * @param newOutput 
+ * @param id vendor task id to reset
+ * @param catalogItemId new catalog item
  * @param vendorPartnerId 
  * @param partnerId 
  * @param status 
@@ -356,6 +358,33 @@ public class EntryVendorTaskService {
 
     public static ReplaceOutputEntryVendorTaskBuilder replaceOutput(int id, String newOutput)  {
 		return new ReplaceOutputEntryVendorTaskBuilder(id, newOutput);
+	}
+	
+	public static class ResetEntryVendorTaskBuilder extends RequestBuilder<EntryVendorTask, EntryVendorTask.Tokenizer, ResetEntryVendorTaskBuilder> {
+		
+		public ResetEntryVendorTaskBuilder(int id, int catalogItemId) {
+			super(EntryVendorTask.class, "reach_entryvendortask", "reset");
+			params.add("id", id);
+			params.add("catalogItemId", catalogItemId);
+		}
+		
+		public void id(String multirequestToken) {
+			params.add("id", multirequestToken);
+		}
+		
+		public void catalogItemId(String multirequestToken) {
+			params.add("catalogItemId", multirequestToken);
+		}
+	}
+
+	/**
+	 * Reset entry vendor task. change status back to pending with a new catalog item
+	 * 
+	 * @param id vendor task id to reset
+	 * @param catalogItemId new catalog item
+	 */
+    public static ResetEntryVendorTaskBuilder reset(int id, int catalogItemId)  {
+		return new ResetEntryVendorTaskBuilder(id, catalogItemId);
 	}
 	
 	public static class ServeEntryVendorTaskBuilder extends ServeRequestBuilder {

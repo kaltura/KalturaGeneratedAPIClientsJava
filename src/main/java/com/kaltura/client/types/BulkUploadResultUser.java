@@ -60,6 +60,7 @@ public class BulkUploadResultUser extends BulkUploadResult {
 		String group();
 		String externalId();
 		String capabilities();
+		String groupUserCreationMode();
 	}
 
 	private String userId;
@@ -78,6 +79,7 @@ public class BulkUploadResultUser extends BulkUploadResult {
 	private String group;
 	private String externalId;
 	private String capabilities;
+	private Integer groupUserCreationMode;
 
 	// userId:
 	public String getUserId(){
@@ -271,6 +273,18 @@ public class BulkUploadResultUser extends BulkUploadResult {
 		setToken("capabilities", multirequestToken);
 	}
 
+	// groupUserCreationMode:
+	public Integer getGroupUserCreationMode(){
+		return this.groupUserCreationMode;
+	}
+	public void setGroupUserCreationMode(Integer groupUserCreationMode){
+		this.groupUserCreationMode = groupUserCreationMode;
+	}
+
+	public void groupUserCreationMode(String multirequestToken){
+		setToken("groupUserCreationMode", multirequestToken);
+	}
+
 
 	public BulkUploadResultUser() {
 		super();
@@ -298,6 +312,7 @@ public class BulkUploadResultUser extends BulkUploadResult {
 		group = GsonParser.parseString(jsonObject.get("group"));
 		externalId = GsonParser.parseString(jsonObject.get("externalId"));
 		capabilities = GsonParser.parseString(jsonObject.get("capabilities"));
+		groupUserCreationMode = GsonParser.parseInt(jsonObject.get("groupUserCreationMode"));
 
 	}
 
@@ -320,6 +335,7 @@ public class BulkUploadResultUser extends BulkUploadResult {
 		kparams.add("group", this.group);
 		kparams.add("externalId", this.externalId);
 		kparams.add("capabilities", this.capabilities);
+		kparams.add("groupUserCreationMode", this.groupUserCreationMode);
 		return kparams;
 	}
 

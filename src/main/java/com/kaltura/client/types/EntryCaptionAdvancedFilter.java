@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.CaptionAssetUsage;
 import com.kaltura.client.enums.Language;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -47,10 +48,20 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 	public interface Tokenizer extends SearchItem.Tokenizer {
 		String hasCaption();
 		String language();
+		String accuracyGreaterThanOrEqual();
+		String accuracyLessThanOrEqual();
+		String accuracyGreaterThan();
+		String accuracyLessThan();
+		String usage();
 	}
 
 	private Boolean hasCaption;
 	private Language language;
+	private Integer accuracyGreaterThanOrEqual;
+	private Integer accuracyLessThanOrEqual;
+	private Integer accuracyGreaterThan;
+	private Integer accuracyLessThan;
+	private CaptionAssetUsage usage;
 
 	// hasCaption:
 	public Boolean getHasCaption(){
@@ -76,6 +87,66 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 		setToken("language", multirequestToken);
 	}
 
+	// accuracyGreaterThanOrEqual:
+	public Integer getAccuracyGreaterThanOrEqual(){
+		return this.accuracyGreaterThanOrEqual;
+	}
+	public void setAccuracyGreaterThanOrEqual(Integer accuracyGreaterThanOrEqual){
+		this.accuracyGreaterThanOrEqual = accuracyGreaterThanOrEqual;
+	}
+
+	public void accuracyGreaterThanOrEqual(String multirequestToken){
+		setToken("accuracyGreaterThanOrEqual", multirequestToken);
+	}
+
+	// accuracyLessThanOrEqual:
+	public Integer getAccuracyLessThanOrEqual(){
+		return this.accuracyLessThanOrEqual;
+	}
+	public void setAccuracyLessThanOrEqual(Integer accuracyLessThanOrEqual){
+		this.accuracyLessThanOrEqual = accuracyLessThanOrEqual;
+	}
+
+	public void accuracyLessThanOrEqual(String multirequestToken){
+		setToken("accuracyLessThanOrEqual", multirequestToken);
+	}
+
+	// accuracyGreaterThan:
+	public Integer getAccuracyGreaterThan(){
+		return this.accuracyGreaterThan;
+	}
+	public void setAccuracyGreaterThan(Integer accuracyGreaterThan){
+		this.accuracyGreaterThan = accuracyGreaterThan;
+	}
+
+	public void accuracyGreaterThan(String multirequestToken){
+		setToken("accuracyGreaterThan", multirequestToken);
+	}
+
+	// accuracyLessThan:
+	public Integer getAccuracyLessThan(){
+		return this.accuracyLessThan;
+	}
+	public void setAccuracyLessThan(Integer accuracyLessThan){
+		this.accuracyLessThan = accuracyLessThan;
+	}
+
+	public void accuracyLessThan(String multirequestToken){
+		setToken("accuracyLessThan", multirequestToken);
+	}
+
+	// usage:
+	public CaptionAssetUsage getUsage(){
+		return this.usage;
+	}
+	public void setUsage(CaptionAssetUsage usage){
+		this.usage = usage;
+	}
+
+	public void usage(String multirequestToken){
+		setToken("usage", multirequestToken);
+	}
+
 
 	public EntryCaptionAdvancedFilter() {
 		super();
@@ -89,6 +160,11 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 		// set members values:
 		hasCaption = GsonParser.parseBoolean(jsonObject.get("hasCaption"));
 		language = Language.get(GsonParser.parseString(jsonObject.get("language")));
+		accuracyGreaterThanOrEqual = GsonParser.parseInt(jsonObject.get("accuracyGreaterThanOrEqual"));
+		accuracyLessThanOrEqual = GsonParser.parseInt(jsonObject.get("accuracyLessThanOrEqual"));
+		accuracyGreaterThan = GsonParser.parseInt(jsonObject.get("accuracyGreaterThan"));
+		accuracyLessThan = GsonParser.parseInt(jsonObject.get("accuracyLessThan"));
+		usage = CaptionAssetUsage.get(GsonParser.parseString(jsonObject.get("usage")));
 
 	}
 
@@ -97,6 +173,11 @@ public class EntryCaptionAdvancedFilter extends SearchItem {
 		kparams.add("objectType", "KalturaEntryCaptionAdvancedFilter");
 		kparams.add("hasCaption", this.hasCaption);
 		kparams.add("language", this.language);
+		kparams.add("accuracyGreaterThanOrEqual", this.accuracyGreaterThanOrEqual);
+		kparams.add("accuracyLessThanOrEqual", this.accuracyLessThanOrEqual);
+		kparams.add("accuracyGreaterThan", this.accuracyGreaterThan);
+		kparams.add("accuracyLessThan", this.accuracyLessThan);
+		kparams.add("usage", this.usage);
 		return kparams;
 	}
 
