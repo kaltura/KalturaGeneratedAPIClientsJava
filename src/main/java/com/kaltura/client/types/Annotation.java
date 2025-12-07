@@ -53,6 +53,7 @@ public class Annotation extends CuePoint {
 		String directChildrenCount();
 		String isPublic();
 		String searchableOnEntry();
+		String originalCuePointCreateAt();
 	}
 
 	private String parentId;
@@ -85,6 +86,10 @@ public class Annotation extends CuePoint {
 	 * Should the cue point get indexed on the entry.
 	 */
 	private Boolean searchableOnEntry;
+	/**
+	 * In case of cloned annotation it will hold source cuepoint createdAt.
+	 */
+	private Long originalCuePointCreateAt;
 
 	// parentId:
 	public String getParentId(){
@@ -162,6 +167,18 @@ public class Annotation extends CuePoint {
 		setToken("searchableOnEntry", multirequestToken);
 	}
 
+	// originalCuePointCreateAt:
+	public Long getOriginalCuePointCreateAt(){
+		return this.originalCuePointCreateAt;
+	}
+	public void setOriginalCuePointCreateAt(Long originalCuePointCreateAt){
+		this.originalCuePointCreateAt = originalCuePointCreateAt;
+	}
+
+	public void originalCuePointCreateAt(String multirequestToken){
+		setToken("originalCuePointCreateAt", multirequestToken);
+	}
+
 
 	public Annotation() {
 		super();
@@ -182,6 +199,7 @@ public class Annotation extends CuePoint {
 		directChildrenCount = GsonParser.parseInt(jsonObject.get("directChildrenCount"));
 		isPublic = GsonParser.parseBoolean(jsonObject.get("isPublic"));
 		searchableOnEntry = GsonParser.parseBoolean(jsonObject.get("searchableOnEntry"));
+		originalCuePointCreateAt = GsonParser.parseLong(jsonObject.get("originalCuePointCreateAt"));
 
 	}
 
@@ -193,6 +211,7 @@ public class Annotation extends CuePoint {
 		kparams.add("endTime", this.endTime);
 		kparams.add("isPublic", this.isPublic);
 		kparams.add("searchableOnEntry", this.searchableOnEntry);
+		kparams.add("originalCuePointCreateAt", this.originalCuePointCreateAt);
 		return kparams;
 	}
 

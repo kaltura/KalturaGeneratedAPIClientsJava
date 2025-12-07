@@ -34,6 +34,9 @@ import com.kaltura.client.enums.ContainerFormat;
 import com.kaltura.client.enums.VideoCodec;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -88,6 +91,7 @@ public class FlavorParams extends AssetParams {
 		String chunkedEncodeMode();
 		String clipOffset();
 		String clipDuration();
+		RequestBuilder.ListTokenizer<StringHolder.Tokenizer> audioLanguages();
 	}
 
 	/**
@@ -170,6 +174,10 @@ public class FlavorParams extends AssetParams {
 	private Integer chunkedEncodeMode;
 	private Integer clipOffset;
 	private Integer clipDuration;
+	/**
+	 * Audio languages extracted from multiStream field
+	 */
+	private List<StringHolder> audioLanguages;
 
 	// videoCodec:
 	public VideoCodec getVideoCodec(){
@@ -663,6 +671,10 @@ public class FlavorParams extends AssetParams {
 		setToken("clipDuration", multirequestToken);
 	}
 
+	// audioLanguages:
+	public List<StringHolder> getAudioLanguages(){
+		return this.audioLanguages;
+	}
 
 	public FlavorParams() {
 		super();
@@ -715,6 +727,7 @@ public class FlavorParams extends AssetParams {
 		chunkedEncodeMode = GsonParser.parseInt(jsonObject.get("chunkedEncodeMode"));
 		clipOffset = GsonParser.parseInt(jsonObject.get("clipOffset"));
 		clipDuration = GsonParser.parseInt(jsonObject.get("clipDuration"));
+		audioLanguages = GsonParser.parseArray(jsonObject.getAsJsonArray("audioLanguages"), StringHolder.class);
 
 	}
 
