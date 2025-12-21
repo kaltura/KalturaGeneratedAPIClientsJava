@@ -64,6 +64,7 @@ import java.io.InputStream;
  * @param filter 
  * @param pager 
  * @param vendorPartnerId 
+ * @param filter 
  * @param id 
  * @param vendorCatalogItem 
  * @param id 
@@ -238,9 +239,10 @@ public class VendorCatalogItemService {
 	
 	public static class ServeVendorCatalogItemBuilder extends ServeRequestBuilder {
 		
-		public ServeVendorCatalogItemBuilder(int vendorPartnerId) {
+		public ServeVendorCatalogItemBuilder(int vendorPartnerId, VendorCatalogItemFilter filter) {
 			super("reach_vendorcatalogitem", "serve");
 			params.add("vendorPartnerId", vendorPartnerId);
+			params.add("filter", filter);
 		}
 		
 		public void vendorPartnerId(String multirequestToken) {
@@ -252,8 +254,12 @@ public class VendorCatalogItemService {
 		return serve(Integer.MIN_VALUE);
 	}
 
-    public static ServeVendorCatalogItemBuilder serve(int vendorPartnerId)  {
-		return new ServeVendorCatalogItemBuilder(vendorPartnerId);
+	public static ServeVendorCatalogItemBuilder serve(int vendorPartnerId)  {
+		return serve(vendorPartnerId, null);
+	}
+
+    public static ServeVendorCatalogItemBuilder serve(int vendorPartnerId, VendorCatalogItemFilter filter)  {
+		return new ServeVendorCatalogItemBuilder(vendorPartnerId, filter);
 	}
 	
 	public static class UpdateVendorCatalogItemBuilder extends RequestBuilder<VendorCatalogItem, VendorCatalogItem.Tokenizer, UpdateVendorCatalogItemBuilder> {

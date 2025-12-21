@@ -30,6 +30,7 @@ package com.kaltura.client.types;
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
 import com.kaltura.client.types.ESearchOrderBy;
+import com.kaltura.client.types.ESearchScoreFunctionParams;
 import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
@@ -52,6 +53,7 @@ public abstract class ESearchParams extends ObjectBase {
 		String ignoreSynonym();
 		String objectIds();
 		String objectIdsNotIn();
+		ESearchScoreFunctionParams.Tokenizer scoreFunctionParams();
 	}
 
 	private String objectStatuses;
@@ -60,6 +62,7 @@ public abstract class ESearchParams extends ObjectBase {
 	private Boolean ignoreSynonym;
 	private String objectIds;
 	private Boolean objectIdsNotIn;
+	private ESearchScoreFunctionParams scoreFunctionParams;
 
 	// objectStatuses:
 	public String getObjectStatuses(){
@@ -129,6 +132,14 @@ public abstract class ESearchParams extends ObjectBase {
 		setToken("objectIdsNotIn", multirequestToken);
 	}
 
+	// scoreFunctionParams:
+	public ESearchScoreFunctionParams getScoreFunctionParams(){
+		return this.scoreFunctionParams;
+	}
+	public void setScoreFunctionParams(ESearchScoreFunctionParams scoreFunctionParams){
+		this.scoreFunctionParams = scoreFunctionParams;
+	}
+
 
 	public ESearchParams() {
 		super();
@@ -146,6 +157,7 @@ public abstract class ESearchParams extends ObjectBase {
 		ignoreSynonym = GsonParser.parseBoolean(jsonObject.get("ignoreSynonym"));
 		objectIds = GsonParser.parseString(jsonObject.get("objectIds"));
 		objectIdsNotIn = GsonParser.parseBoolean(jsonObject.get("objectIdsNotIn"));
+		scoreFunctionParams = GsonParser.parseObject(jsonObject.getAsJsonObject("scoreFunctionParams"), ESearchScoreFunctionParams.class);
 
 	}
 
@@ -158,6 +170,7 @@ public abstract class ESearchParams extends ObjectBase {
 		kparams.add("ignoreSynonym", this.ignoreSynonym);
 		kparams.add("objectIds", this.objectIds);
 		kparams.add("objectIdsNotIn", this.objectIdsNotIn);
+		kparams.add("scoreFunctionParams", this.scoreFunctionParams);
 		return kparams;
 	}
 
