@@ -29,6 +29,7 @@ package com.kaltura.client.types;
 
 import com.google.gson.JsonObject;
 import com.kaltura.client.Params;
+import com.kaltura.client.enums.MediaType;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -50,11 +51,13 @@ public class CortexApiDistributionJobProviderData extends ConfigurableDistributi
 		String videoAssetFilePath();
 		String thumbAssetFilePath();
 		RequestBuilder.ListTokenizer<CortexApiCaptionDistributionInfo.Tokenizer> captionsInfo();
+		String mediaType();
 	}
 
 	private String videoAssetFilePath;
 	private String thumbAssetFilePath;
 	private List<CortexApiCaptionDistributionInfo> captionsInfo;
+	private MediaType mediaType;
 
 	// videoAssetFilePath:
 	public String getVideoAssetFilePath(){
@@ -88,6 +91,18 @@ public class CortexApiDistributionJobProviderData extends ConfigurableDistributi
 		this.captionsInfo = captionsInfo;
 	}
 
+	// mediaType:
+	public MediaType getMediaType(){
+		return this.mediaType;
+	}
+	public void setMediaType(MediaType mediaType){
+		this.mediaType = mediaType;
+	}
+
+	public void mediaType(String multirequestToken){
+		setToken("mediaType", multirequestToken);
+	}
+
 
 	public CortexApiDistributionJobProviderData() {
 		super();
@@ -102,6 +117,7 @@ public class CortexApiDistributionJobProviderData extends ConfigurableDistributi
 		videoAssetFilePath = GsonParser.parseString(jsonObject.get("videoAssetFilePath"));
 		thumbAssetFilePath = GsonParser.parseString(jsonObject.get("thumbAssetFilePath"));
 		captionsInfo = GsonParser.parseArray(jsonObject.getAsJsonArray("captionsInfo"), CortexApiCaptionDistributionInfo.class);
+		mediaType = MediaType.get(GsonParser.parseInt(jsonObject.get("mediaType")));
 
 	}
 
@@ -111,6 +127,7 @@ public class CortexApiDistributionJobProviderData extends ConfigurableDistributi
 		kparams.add("videoAssetFilePath", this.videoAssetFilePath);
 		kparams.add("thumbAssetFilePath", this.thumbAssetFilePath);
 		kparams.add("captionsInfo", this.captionsInfo);
+		kparams.add("mediaType", this.mediaType);
 		return kparams;
 	}
 
