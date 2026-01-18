@@ -88,6 +88,7 @@ public enum BatchJobType implements EnumAsString {
 	STORAGE_PERIODIC_DELETE_LOCAL("55"),
 	REACH_JOB_CLEANER("56"),
 	MULTI_CLIP_CONCAT("57"),
+	UPDATE_USER_ENTRIES("58"),
 	REACH_INTERNAL_QUEUE_HANDLER("ReachInternal.ReachInternalQueueHandler"),
 	CONVERT_CAPTION_ASSET("caption.convertcaptionasset"),
 	PARSE_MULTI_LANGUAGE_CAPTION_ASSET("caption.parsemultilanguagecaptionasset"),
