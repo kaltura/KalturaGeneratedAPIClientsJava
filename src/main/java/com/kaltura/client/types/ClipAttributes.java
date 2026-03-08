@@ -56,6 +56,7 @@ public class ClipAttributes extends OperationAttributes {
 		RequestBuilder.ListTokenizer<Effect.Tokenizer> effectArray();
 		String cropAlignment();
 		RequestBuilder.ListTokenizer<CaptionAttributes.Tokenizer> captionAttributes();
+		RequestBuilder.ListTokenizer<MediaCompositionAttributes.Tokenizer> mediaCompositionAttributesArray();
 	}
 
 	/**
@@ -76,6 +77,7 @@ public class ClipAttributes extends OperationAttributes {
 	private List<Effect> effectArray;
 	private Integer cropAlignment;
 	private List<CaptionAttributes> captionAttributes;
+	private List<MediaCompositionAttributes> mediaCompositionAttributesArray;
 
 	// offset:
 	public Integer getOffset(){
@@ -141,6 +143,14 @@ public class ClipAttributes extends OperationAttributes {
 		this.captionAttributes = captionAttributes;
 	}
 
+	// mediaCompositionAttributesArray:
+	public List<MediaCompositionAttributes> getMediaCompositionAttributesArray(){
+		return this.mediaCompositionAttributesArray;
+	}
+	public void setMediaCompositionAttributesArray(List<MediaCompositionAttributes> mediaCompositionAttributesArray){
+		this.mediaCompositionAttributesArray = mediaCompositionAttributesArray;
+	}
+
 
 	public ClipAttributes() {
 		super();
@@ -158,6 +168,7 @@ public class ClipAttributes extends OperationAttributes {
 		effectArray = GsonParser.parseArray(jsonObject.getAsJsonArray("effectArray"), Effect.class);
 		cropAlignment = GsonParser.parseInt(jsonObject.get("cropAlignment"));
 		captionAttributes = GsonParser.parseArray(jsonObject.getAsJsonArray("captionAttributes"), CaptionAttributes.class);
+		mediaCompositionAttributesArray = GsonParser.parseArray(jsonObject.getAsJsonArray("mediaCompositionAttributesArray"), MediaCompositionAttributes.class);
 
 	}
 
@@ -170,6 +181,7 @@ public class ClipAttributes extends OperationAttributes {
 		kparams.add("effectArray", this.effectArray);
 		kparams.add("cropAlignment", this.cropAlignment);
 		kparams.add("captionAttributes", this.captionAttributes);
+		kparams.add("mediaCompositionAttributesArray", this.mediaCompositionAttributesArray);
 		return kparams;
 	}
 
