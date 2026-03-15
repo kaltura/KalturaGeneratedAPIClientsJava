@@ -36,6 +36,9 @@ package com.kaltura.client.enums;
 public enum CatalogItemLanguage implements EnumAsString {
 	AF("Afrikaans"),
 	AR("Arabic"),
+	AR_LB("Arabic (Lebanon)"),
+	AR_QA("Arabic (Qatar)"),
+	AR_SA("Arabic (Saudi Arabia)"),
 	AUTO_DETECT("Auto Detect"),
 	AZ("Azerbaijani"),
 	BA("Bashkir"),
