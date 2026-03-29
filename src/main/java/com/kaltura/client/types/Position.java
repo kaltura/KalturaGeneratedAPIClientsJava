@@ -25,7 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.types.ObjectBase;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -33,58 +39,66 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6),
-	DUBBING(7),
-	LIVE_CAPTION(8),
-	EXTENDED_AUDIO_DESCRIPTION(9),
-	CLIPS(10),
-	LIVE_TRANSLATION(11),
-	QUIZ(12),
-	SUMMARY(13),
-	VIDEO_ANALYSIS(14),
-	MODERATION(15),
-	METADATA_ENRICHMENT(16),
-	SENTIMENT_ANALYSIS(17),
-	DOCUMENT_ENRICHMENT(18),
-	SIGN_LANGUAGE(19),
-	SPEECH_TO_VIDEO(20),
-	IMMERSIVE_AGENT_CALL(21),
-	IMMERSIVE_AGENT_CHAT(22);
 
-	private int value;
-
-	VendorServiceFeature(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(Position.Tokenizer.class)
+public class Position extends ObjectBase {
+	
+	public interface Tokenizer extends ObjectBase.Tokenizer {
+		String x();
+		String y();
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+	private Double x;
+	private Double y;
+
+	// x:
+	public Double getX(){
+		return this.x;
+	}
+	public void setX(Double x){
+		this.x = x;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void x(String multirequestToken){
+		setToken("x", multirequestToken);
 	}
 
-	public static VendorServiceFeature get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
-   }
+	// y:
+	public Double getY(){
+		return this.y;
+	}
+	public void setY(Double y){
+		this.y = y;
+	}
+
+	public void y(String multirequestToken){
+		setToken("y", multirequestToken);
+	}
+
+
+	public Position() {
+		super();
+	}
+
+	public Position(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		x = GsonParser.parseDouble(jsonObject.get("x"));
+		y = GsonParser.parseDouble(jsonObject.get("y"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaPosition");
+		kparams.add("x", this.x);
+		kparams.add("y", this.y);
+		return kparams;
+	}
+
 }
+
