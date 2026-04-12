@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum EntryObjectType implements EnumAsInt {
 	ENTRY(1),
-	ASSET(2);
+	ASSET(2),
+	EXTERNAL_OBJECT(3);
 
 	private int value;
 

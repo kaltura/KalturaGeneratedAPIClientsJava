@@ -96,6 +96,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String companyIn();
 		String eventSessionContextIdIn();
 		String videoCodecIn();
+		String agentIdIn();
+		String genieIdIn();
+		String reachProfileIdIn();
 	}
 
 	/**
@@ -289,6 +292,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by event video codec
 	 */
 	private String videoCodecIn;
+	/**
+	 * filter by agent id
+	 */
+	private String agentIdIn;
+	/**
+	 * filter by Genie id
+	 */
+	private String genieIdIn;
+	/**
+	 * filter by reach profile id
+	 */
+	private String reachProfileIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -886,6 +901,42 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("videoCodecIn", multirequestToken);
 	}
 
+	// agentIdIn:
+	public String getAgentIdIn(){
+		return this.agentIdIn;
+	}
+	public void setAgentIdIn(String agentIdIn){
+		this.agentIdIn = agentIdIn;
+	}
+
+	public void agentIdIn(String multirequestToken){
+		setToken("agentIdIn", multirequestToken);
+	}
+
+	// genieIdIn:
+	public String getGenieIdIn(){
+		return this.genieIdIn;
+	}
+	public void setGenieIdIn(String genieIdIn){
+		this.genieIdIn = genieIdIn;
+	}
+
+	public void genieIdIn(String multirequestToken){
+		setToken("genieIdIn", multirequestToken);
+	}
+
+	// reachProfileIdIn:
+	public String getReachProfileIdIn(){
+		return this.reachProfileIdIn;
+	}
+	public void setReachProfileIdIn(String reachProfileIdIn){
+		this.reachProfileIdIn = reachProfileIdIn;
+	}
+
+	public void reachProfileIdIn(String multirequestToken){
+		setToken("reachProfileIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -947,6 +998,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		companyIn = GsonParser.parseString(jsonObject.get("companyIn"));
 		eventSessionContextIdIn = GsonParser.parseString(jsonObject.get("eventSessionContextIdIn"));
 		videoCodecIn = GsonParser.parseString(jsonObject.get("videoCodecIn"));
+		agentIdIn = GsonParser.parseString(jsonObject.get("agentIdIn"));
+		genieIdIn = GsonParser.parseString(jsonObject.get("genieIdIn"));
+		reachProfileIdIn = GsonParser.parseString(jsonObject.get("reachProfileIdIn"));
 
 	}
 
@@ -1003,6 +1057,9 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("companyIn", this.companyIn);
 		kparams.add("eventSessionContextIdIn", this.eventSessionContextIdIn);
 		kparams.add("videoCodecIn", this.videoCodecIn);
+		kparams.add("agentIdIn", this.agentIdIn);
+		kparams.add("genieIdIn", this.genieIdIn);
+		kparams.add("reachProfileIdIn", this.reachProfileIdIn);
 		return kparams;
 	}
 

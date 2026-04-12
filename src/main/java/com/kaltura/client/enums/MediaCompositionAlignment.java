@@ -33,34 +33,20 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6),
-	DUBBING(7),
-	LIVE_CAPTION(8),
-	EXTENDED_AUDIO_DESCRIPTION(9),
-	CLIPS(10),
-	LIVE_TRANSLATION(11),
-	QUIZ(12),
-	SUMMARY(13),
-	VIDEO_ANALYSIS(14),
-	MODERATION(15),
-	METADATA_ENRICHMENT(16),
-	SENTIMENT_ANALYSIS(17),
-	DOCUMENT_ENRICHMENT(18),
-	SIGN_LANGUAGE(19),
-	SPEECH_TO_VIDEO(20),
-	IMMERSIVE_AGENT_CALL(21),
-	IMMERSIVE_AGENT_CHAT(22),
-	AVATAR_VOD(23);
+public enum MediaCompositionAlignment implements EnumAsInt {
+	BOTTOM_LEFT(1),
+	BOTTOM_CENTER(2),
+	BOTTOM_RIGHT(3),
+	TOP_LEFT(4),
+	TOP_CENTER(6),
+	TOP_RIGHT(7),
+	CENTER_LEFT(8),
+	CENTER_CENTER(10),
+	CENTER_RIGHT(11);
 
 	private int value;
 
-	VendorServiceFeature(int value) {
+	MediaCompositionAlignment(int value) {
 		this.value = value;
 	}
 
@@ -73,19 +59,19 @@ public enum VendorServiceFeature implements EnumAsInt {
 		this.value = value;
 	}
 
-	public static VendorServiceFeature get(Integer value) {
+	public static MediaCompositionAlignment get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
+		// goes over MediaCompositionAlignment defined values and compare the inner value with the given one:
+		for(MediaCompositionAlignment item: values()) {
 			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
+		return MediaCompositionAlignment.values().length > 0 ? MediaCompositionAlignment.values()[0]: null;
    }
 }
