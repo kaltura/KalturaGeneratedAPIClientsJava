@@ -99,6 +99,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String agentIdIn();
 		String genieIdIn();
 		String reachProfileIdIn();
+		String isPreview();
 	}
 
 	/**
@@ -304,6 +305,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by reach profile id
 	 */
 	private String reachProfileIdIn;
+	/**
+	 * filter by preview mode
+	 */
+	private Boolean isPreview;
 
 	// keywords:
 	public String getKeywords(){
@@ -937,6 +942,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("reachProfileIdIn", multirequestToken);
 	}
 
+	// isPreview:
+	public Boolean getIsPreview(){
+		return this.isPreview;
+	}
+	public void setIsPreview(Boolean isPreview){
+		this.isPreview = isPreview;
+	}
+
+	public void isPreview(String multirequestToken){
+		setToken("isPreview", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -1001,6 +1018,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		agentIdIn = GsonParser.parseString(jsonObject.get("agentIdIn"));
 		genieIdIn = GsonParser.parseString(jsonObject.get("genieIdIn"));
 		reachProfileIdIn = GsonParser.parseString(jsonObject.get("reachProfileIdIn"));
+		isPreview = GsonParser.parseBoolean(jsonObject.get("isPreview"));
 
 	}
 
@@ -1060,6 +1078,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("agentIdIn", this.agentIdIn);
 		kparams.add("genieIdIn", this.genieIdIn);
 		kparams.add("reachProfileIdIn", this.reachProfileIdIn);
+		kparams.add("isPreview", this.isPreview);
 		return kparams;
 	}
 

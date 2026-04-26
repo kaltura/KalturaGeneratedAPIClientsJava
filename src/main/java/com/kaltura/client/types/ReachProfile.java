@@ -339,6 +339,14 @@ public class ReachProfile extends ObjectBase {
 	public Double getUsedCredit(){
 		return this.usedCredit;
 	}
+	public void setUsedCredit(Double usedCredit){
+		this.usedCredit = usedCredit;
+	}
+
+	public void usedCredit(String multirequestToken){
+		setToken("usedCredit", multirequestToken);
+	}
+
 	// dictionaries:
 	public List<Dictionary> getDictionaries(){
 		return this.dictionaries;
@@ -431,6 +439,7 @@ public class ReachProfile extends ObjectBase {
 		kparams.add("contentDeletionPolicy", this.contentDeletionPolicy);
 		kparams.add("rules", this.rules);
 		kparams.add("credit", this.credit);
+		kparams.add("usedCredit", this.usedCredit);
 		kparams.add("dictionaries", this.dictionaries);
 		kparams.add("flavorParamsIds", this.flavorParamsIds);
 		kparams.add("vendorTaskProcessingRegion", this.vendorTaskProcessingRegion);
