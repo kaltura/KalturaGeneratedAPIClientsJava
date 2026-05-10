@@ -64,6 +64,7 @@ public class LiveStreamEntry extends LiveEntry {
 		String streamName();
 		String streamUrl();
 		String hlsStreamUrl();
+		String readyForDeletion();
 		String urlManager();
 		String encodingIP1();
 		String encodingIP2();
@@ -106,6 +107,10 @@ public class LiveStreamEntry extends LiveEntry {
 	 * HLS URL - URL for live stream playback on mobile device
 	 */
 	private String hlsStreamUrl;
+	/**
+	 * Indicates whether the live entry is ready to be deleted
+	 */
+	private Boolean readyForDeletion;
 	/**
 	 * URL Manager to handle the live stream URL (for instance, add token)
 	 */
@@ -306,6 +311,10 @@ public class LiveStreamEntry extends LiveEntry {
 		setToken("hlsStreamUrl", multirequestToken);
 	}
 
+	// readyForDeletion:
+	public Boolean getReadyForDeletion(){
+		return this.readyForDeletion;
+	}
 	// urlManager:
 	public String getUrlManager(){
 		return this.urlManager;
@@ -409,6 +418,7 @@ public class LiveStreamEntry extends LiveEntry {
 		streamName = GsonParser.parseString(jsonObject.get("streamName"));
 		streamUrl = GsonParser.parseString(jsonObject.get("streamUrl"));
 		hlsStreamUrl = GsonParser.parseString(jsonObject.get("hlsStreamUrl"));
+		readyForDeletion = GsonParser.parseBoolean(jsonObject.get("readyForDeletion"));
 		urlManager = GsonParser.parseString(jsonObject.get("urlManager"));
 		encodingIP1 = GsonParser.parseString(jsonObject.get("encodingIP1"));
 		encodingIP2 = GsonParser.parseString(jsonObject.get("encodingIP2"));

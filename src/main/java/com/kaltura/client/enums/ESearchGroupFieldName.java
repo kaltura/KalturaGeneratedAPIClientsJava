@@ -53,7 +53,8 @@ public enum ESearchGroupFieldName implements EnumAsString {
 	TAGS("tags"),
 	TITLE("title"),
 	UPDATED_AT("updated_at"),
-	USER_ID("user_id");
+	USER_ID("user_id"),
+	TYPE("user_type");
 
 	private String value;
 
