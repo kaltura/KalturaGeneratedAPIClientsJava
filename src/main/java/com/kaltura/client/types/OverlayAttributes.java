@@ -33,6 +33,8 @@ import com.kaltura.client.enums.MediaCompositionAlignment;
 import com.kaltura.client.enums.OverlayShape;
 import com.kaltura.client.types.AudioAttributes;
 import com.kaltura.client.types.ContentResource;
+import com.kaltura.client.types.DimensionsPercentage;
+import com.kaltura.client.types.OverlayScaleAttribute;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
 import com.kaltura.client.utils.request.RequestBuilder;
@@ -53,8 +55,8 @@ public class OverlayAttributes extends MediaCompositionAttributes {
 	public interface Tokenizer extends MediaCompositionAttributes.Tokenizer {
 		ContentResource.Tokenizer resource();
 		RequestBuilder.ListTokenizer<MediaCompositionAttributes.Tokenizer> resourceMediaCompositionAttributesArray();
-		String marginsPercentage();
-		String overlayScalePercentage();
+		DimensionsPercentage.Tokenizer marginsPercentage();
+		OverlayScaleAttribute.Tokenizer overlayScaleAttribute();
 		String overlayPlacement();
 		String overlayShape();
 		AudioAttributes.Tokenizer audioAttributes();
@@ -68,8 +70,8 @@ public class OverlayAttributes extends MediaCompositionAttributes {
 	 * Only KalturaReplaceBackgroundAttributes is supported
 	 */
 	private List<MediaCompositionAttributes> resourceMediaCompositionAttributesArray;
-	private Double marginsPercentage;
-	private Double overlayScalePercentage;
+	private DimensionsPercentage marginsPercentage;
+	private OverlayScaleAttribute overlayScaleAttribute;
 	private MediaCompositionAlignment overlayPlacement;
 	private OverlayShape overlayShape;
 	private AudioAttributes audioAttributes;
@@ -91,27 +93,19 @@ public class OverlayAttributes extends MediaCompositionAttributes {
 	}
 
 	// marginsPercentage:
-	public Double getMarginsPercentage(){
+	public DimensionsPercentage getMarginsPercentage(){
 		return this.marginsPercentage;
 	}
-	public void setMarginsPercentage(Double marginsPercentage){
+	public void setMarginsPercentage(DimensionsPercentage marginsPercentage){
 		this.marginsPercentage = marginsPercentage;
 	}
 
-	public void marginsPercentage(String multirequestToken){
-		setToken("marginsPercentage", multirequestToken);
+	// overlayScaleAttribute:
+	public OverlayScaleAttribute getOverlayScaleAttribute(){
+		return this.overlayScaleAttribute;
 	}
-
-	// overlayScalePercentage:
-	public Double getOverlayScalePercentage(){
-		return this.overlayScalePercentage;
-	}
-	public void setOverlayScalePercentage(Double overlayScalePercentage){
-		this.overlayScalePercentage = overlayScalePercentage;
-	}
-
-	public void overlayScalePercentage(String multirequestToken){
-		setToken("overlayScalePercentage", multirequestToken);
+	public void setOverlayScaleAttribute(OverlayScaleAttribute overlayScaleAttribute){
+		this.overlayScaleAttribute = overlayScaleAttribute;
 	}
 
 	// overlayPlacement:
@@ -159,8 +153,8 @@ public class OverlayAttributes extends MediaCompositionAttributes {
 		// set members values:
 		resource = GsonParser.parseObject(jsonObject.getAsJsonObject("resource"), ContentResource.class);
 		resourceMediaCompositionAttributesArray = GsonParser.parseArray(jsonObject.getAsJsonArray("resourceMediaCompositionAttributesArray"), MediaCompositionAttributes.class);
-		marginsPercentage = GsonParser.parseDouble(jsonObject.get("marginsPercentage"));
-		overlayScalePercentage = GsonParser.parseDouble(jsonObject.get("overlayScalePercentage"));
+		marginsPercentage = GsonParser.parseObject(jsonObject.getAsJsonObject("marginsPercentage"), DimensionsPercentage.class);
+		overlayScaleAttribute = GsonParser.parseObject(jsonObject.getAsJsonObject("overlayScaleAttribute"), OverlayScaleAttribute.class);
 		overlayPlacement = MediaCompositionAlignment.get(GsonParser.parseInt(jsonObject.get("overlayPlacement")));
 		overlayShape = OverlayShape.get(GsonParser.parseInt(jsonObject.get("overlayShape")));
 		audioAttributes = GsonParser.parseObject(jsonObject.getAsJsonObject("audioAttributes"), AudioAttributes.class);
@@ -173,7 +167,7 @@ public class OverlayAttributes extends MediaCompositionAttributes {
 		kparams.add("resource", this.resource);
 		kparams.add("resourceMediaCompositionAttributesArray", this.resourceMediaCompositionAttributesArray);
 		kparams.add("marginsPercentage", this.marginsPercentage);
-		kparams.add("overlayScalePercentage", this.overlayScalePercentage);
+		kparams.add("overlayScaleAttribute", this.overlayScaleAttribute);
 		kparams.add("overlayPlacement", this.overlayPlacement);
 		kparams.add("overlayShape", this.overlayShape);
 		kparams.add("audioAttributes", this.audioAttributes);
