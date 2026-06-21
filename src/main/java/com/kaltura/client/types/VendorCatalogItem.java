@@ -40,6 +40,9 @@ import com.kaltura.client.types.ObjectBase;
 import com.kaltura.client.types.VendorCatalogItemPricing;
 import com.kaltura.client.utils.GsonParser;
 import com.kaltura.client.utils.request.MultiRequestBuilder;
+import com.kaltura.client.utils.request.RequestBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class was generated using exec.php
@@ -64,6 +67,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		String serviceFeature();
 		String turnAroundTime();
 		VendorCatalogItemPricing.Tokenizer pricing();
+		RequestBuilder.ListTokenizer<VendorCatalogItemUnitPricing.Tokenizer> pricingArray();
 		String engineType();
 		String sourceLanguage();
 		String allowResubmission();
@@ -90,6 +94,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 	private VendorServiceFeature serviceFeature;
 	private VendorServiceTurnAroundTime turnAroundTime;
 	private VendorCatalogItemPricing pricing;
+	private List<VendorCatalogItemUnitPricing> pricingArray;
 	/**
 	 * Property showing the catalog item's engine type, in case a vendor can offer the
 	  same service via different engines.
@@ -194,6 +199,14 @@ public abstract class VendorCatalogItem extends ObjectBase {
 	}
 	public void setPricing(VendorCatalogItemPricing pricing){
 		this.pricing = pricing;
+	}
+
+	// pricingArray:
+	public List<VendorCatalogItemUnitPricing> getPricingArray(){
+		return this.pricingArray;
+	}
+	public void setPricingArray(List<VendorCatalogItemUnitPricing> pricingArray){
+		this.pricingArray = pricingArray;
 	}
 
 	// engineType:
@@ -374,6 +387,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		serviceFeature = VendorServiceFeature.get(GsonParser.parseInt(jsonObject.get("serviceFeature")));
 		turnAroundTime = VendorServiceTurnAroundTime.get(GsonParser.parseInt(jsonObject.get("turnAroundTime")));
 		pricing = GsonParser.parseObject(jsonObject.getAsJsonObject("pricing"), VendorCatalogItemPricing.class);
+		pricingArray = GsonParser.parseArray(jsonObject.getAsJsonArray("pricingArray"), VendorCatalogItemUnitPricing.class);
 		engineType = ReachVendorEngineType.get(GsonParser.parseString(jsonObject.get("engineType")));
 		sourceLanguage = CatalogItemLanguage.get(GsonParser.parseString(jsonObject.get("sourceLanguage")));
 		allowResubmission = GsonParser.parseBoolean(jsonObject.get("allowResubmission"));
@@ -399,6 +413,7 @@ public abstract class VendorCatalogItem extends ObjectBase {
 		kparams.add("serviceType", this.serviceType);
 		kparams.add("turnAroundTime", this.turnAroundTime);
 		kparams.add("pricing", this.pricing);
+		kparams.add("pricingArray", this.pricingArray);
 		kparams.add("engineType", this.engineType);
 		kparams.add("sourceLanguage", this.sourceLanguage);
 		kparams.add("allowResubmission", this.allowResubmission);

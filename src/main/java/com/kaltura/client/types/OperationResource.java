@@ -58,7 +58,8 @@ public class OperationResource extends ContentResource {
 	}
 
 	/**
-	 * Only KalturaEntryResource and KalturaAssetResource are supported
+	 * Only KalturaEntryResource, KalturaAssetResource and
+	  KalturaDocumentImagesResource are supported
 	 */
 	private ContentResource resource;
 	private List<OperationAttributes> operationAttributes;
