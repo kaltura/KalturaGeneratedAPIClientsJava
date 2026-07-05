@@ -80,6 +80,7 @@ public class ReachProfile extends ObjectBase {
 		RequestBuilder.ListTokenizer<Dictionary.Tokenizer> dictionaries();
 		String flavorParamsIds();
 		String vendorTaskProcessingRegion();
+		String allowedCatalogItemIds();
 	}
 
 	private Integer id;
@@ -118,6 +119,11 @@ public class ReachProfile extends ObjectBase {
 	 * Indicates in which region the task processing should task place
 	 */
 	private VendorTaskProcessingRegion vendorTaskProcessingRegion;
+	/**
+	 * Comma separated catalogItemIds that are allowed for ordering using this reach
+	  profile
+	 */
+	private String allowedCatalogItemIds;
 
 	// id:
 	public Integer getId(){
@@ -379,6 +385,18 @@ public class ReachProfile extends ObjectBase {
 		setToken("vendorTaskProcessingRegion", multirequestToken);
 	}
 
+	// allowedCatalogItemIds:
+	public String getAllowedCatalogItemIds(){
+		return this.allowedCatalogItemIds;
+	}
+	public void setAllowedCatalogItemIds(String allowedCatalogItemIds){
+		this.allowedCatalogItemIds = allowedCatalogItemIds;
+	}
+
+	public void allowedCatalogItemIds(String multirequestToken){
+		setToken("allowedCatalogItemIds", multirequestToken);
+	}
+
 
 	public ReachProfile() {
 		super();
@@ -416,6 +434,7 @@ public class ReachProfile extends ObjectBase {
 		dictionaries = GsonParser.parseArray(jsonObject.getAsJsonArray("dictionaries"), Dictionary.class);
 		flavorParamsIds = GsonParser.parseString(jsonObject.get("flavorParamsIds"));
 		vendorTaskProcessingRegion = VendorTaskProcessingRegion.get(GsonParser.parseInt(jsonObject.get("vendorTaskProcessingRegion")));
+		allowedCatalogItemIds = GsonParser.parseString(jsonObject.get("allowedCatalogItemIds"));
 
 	}
 
@@ -443,6 +462,7 @@ public class ReachProfile extends ObjectBase {
 		kparams.add("dictionaries", this.dictionaries);
 		kparams.add("flavorParamsIds", this.flavorParamsIds);
 		kparams.add("vendorTaskProcessingRegion", this.vendorTaskProcessingRegion);
+		kparams.add("allowedCatalogItemIds", this.allowedCatalogItemIds);
 		return kparams;
 	}
 
