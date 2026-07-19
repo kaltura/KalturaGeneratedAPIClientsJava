@@ -46,17 +46,34 @@ public abstract class VendorTaskData extends ObjectBase {
 	
 	public interface Tokenizer extends ObjectBase.Tokenizer {
 		String entryDuration();
+		String vendorComment();
 	}
 
 	/**
 	 * The duration of the entry for which the task was created for in milliseconds
 	 */
 	private Integer entryDuration;
+	/**
+	 * string containing the comment provided by vendor
+	 */
+	private String vendorComment;
 
 	// entryDuration:
 	public Integer getEntryDuration(){
 		return this.entryDuration;
 	}
+	// vendorComment:
+	public String getVendorComment(){
+		return this.vendorComment;
+	}
+	public void setVendorComment(String vendorComment){
+		this.vendorComment = vendorComment;
+	}
+
+	public void vendorComment(String multirequestToken){
+		setToken("vendorComment", multirequestToken);
+	}
+
 
 	public VendorTaskData() {
 		super();
@@ -69,12 +86,14 @@ public abstract class VendorTaskData extends ObjectBase {
 
 		// set members values:
 		entryDuration = GsonParser.parseInt(jsonObject.get("entryDuration"));
+		vendorComment = GsonParser.parseString(jsonObject.get("vendorComment"));
 
 	}
 
 	public Params toParams() {
 		Params kparams = super.toParams();
 		kparams.add("objectType", "KalturaVendorTaskData");
+		kparams.add("vendorComment", this.vendorComment);
 		return kparams;
 	}
 
