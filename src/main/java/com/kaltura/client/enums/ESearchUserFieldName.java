@@ -34,6 +34,7 @@ package com.kaltura.client.enums;
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserFieldName implements EnumAsString {
+	ADMIN_TAGS("admin_tags"),
 	CAPABILITIES("capabilities"),
 	COMPANY("company"),
 	COUNTRY("country"),
