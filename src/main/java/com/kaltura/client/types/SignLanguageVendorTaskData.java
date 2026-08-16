@@ -25,7 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-package com.kaltura.client.enums;
+package com.kaltura.client.types;
+
+import com.google.gson.JsonObject;
+import com.kaltura.client.Params;
+import com.kaltura.client.utils.GsonParser;
+import com.kaltura.client.utils.request.MultiRequestBuilder;
 
 /**
  * This class was generated using exec.php
@@ -33,57 +38,50 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceTurnAroundTime implements EnumAsInt {
-	BEST_EFFORT(-1),
-	IMMEDIATE(0),
-	ONE_BUSINESS_DAY(1),
-	TWO_BUSINESS_DAYS(2),
-	THREE_BUSINESS_DAYS(3),
-	FOUR_BUSINESS_DAYS(4),
-	FIVE_BUSINESS_DAYS(5),
-	SIX_BUSINESS_DAYS(6),
-	SEVEN_BUSINESS_DAYS(7),
-	TEN_BUSINESS_DAYS(10),
-	THIRTY_MINUTES(1800),
-	TWO_HOURS(7200),
-	THREE_HOURS(10800),
-	SIX_HOURS(21600),
-	EIGHT_HOURS(28800),
-	TWELVE_HOURS(43200),
-	TWENTY_FOUR_HOURS(86400),
-	FORTY_EIGHT_HOURS(172800),
-	FOUR_DAYS(345600),
-	FIVE_DAYS(432000),
-	TEN_DAYS(864000);
 
-	private int value;
-
-	VendorServiceTurnAroundTime(int value) {
-		this.value = value;
+@SuppressWarnings("serial")
+@MultiRequestBuilder.Tokenizer(SignLanguageVendorTaskData.Tokenizer.class)
+public class SignLanguageVendorTaskData extends VendorTaskData {
+	
+	public interface Tokenizer extends VendorTaskData.Tokenizer {
+		String assetId();
 	}
 
-	@Override
-	public int getValue() {
-		return this.value;
+	private String assetId;
+
+	// assetId:
+	public String getAssetId(){
+		return this.assetId;
+	}
+	public void setAssetId(String assetId){
+		this.assetId = assetId;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void assetId(String multirequestToken){
+		setToken("assetId", multirequestToken);
 	}
 
-	public static VendorServiceTurnAroundTime get(Integer value) {
-		if(value == null)
-		{
-			return null;
-		}
-		
-		// goes over VendorServiceTurnAroundTime defined values and compare the inner value with the given one:
-		for(VendorServiceTurnAroundTime item: values()) {
-			if(item.getValue() == value) {
-				return item;
-			}
-		}
-		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceTurnAroundTime.values().length > 0 ? VendorServiceTurnAroundTime.values()[0]: null;
-   }
+
+	public SignLanguageVendorTaskData() {
+		super();
+	}
+
+	public SignLanguageVendorTaskData(JsonObject jsonObject) throws APIException {
+		super(jsonObject);
+
+		if(jsonObject == null) return;
+
+		// set members values:
+		assetId = GsonParser.parseString(jsonObject.get("assetId"));
+
+	}
+
+	public Params toParams() {
+		Params kparams = super.toParams();
+		kparams.add("objectType", "KalturaSignLanguageVendorTaskData");
+		kparams.add("assetId", this.assetId);
+		return kparams;
+	}
+
 }
+

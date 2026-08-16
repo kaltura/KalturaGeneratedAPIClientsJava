@@ -69,6 +69,7 @@ public class BulkUploadResultVendorCatalogItem extends BulkUploadResult {
 		RequestBuilder.ListTokenizer<VendorCatalogItemUnitPricing.Tokenizer> pricingArray();
 		String flavorParamsId();
 		String clearAudioFlavorParamsId();
+		String vendorData();
 	}
 
 	private Integer vendorCatalogItemId;
@@ -87,6 +88,7 @@ public class BulkUploadResultVendorCatalogItem extends BulkUploadResult {
 	private List<VendorCatalogItemUnitPricing> pricingArray;
 	private Integer flavorParamsId;
 	private Integer clearAudioFlavorParamsId;
+	private String vendorData;
 
 	// vendorCatalogItemId:
 	public Integer getVendorCatalogItemId(){
@@ -272,6 +274,18 @@ public class BulkUploadResultVendorCatalogItem extends BulkUploadResult {
 		setToken("clearAudioFlavorParamsId", multirequestToken);
 	}
 
+	// vendorData:
+	public String getVendorData(){
+		return this.vendorData;
+	}
+	public void setVendorData(String vendorData){
+		this.vendorData = vendorData;
+	}
+
+	public void vendorData(String multirequestToken){
+		setToken("vendorData", multirequestToken);
+	}
+
 
 	public BulkUploadResultVendorCatalogItem() {
 		super();
@@ -299,6 +313,7 @@ public class BulkUploadResultVendorCatalogItem extends BulkUploadResult {
 		pricingArray = GsonParser.parseArray(jsonObject.getAsJsonArray("pricingArray"), VendorCatalogItemUnitPricing.class);
 		flavorParamsId = GsonParser.parseInt(jsonObject.get("flavorParamsId"));
 		clearAudioFlavorParamsId = GsonParser.parseInt(jsonObject.get("clearAudioFlavorParamsId"));
+		vendorData = GsonParser.parseString(jsonObject.get("vendorData"));
 
 	}
 
@@ -321,6 +336,7 @@ public class BulkUploadResultVendorCatalogItem extends BulkUploadResult {
 		kparams.add("pricingArray", this.pricingArray);
 		kparams.add("flavorParamsId", this.flavorParamsId);
 		kparams.add("clearAudioFlavorParamsId", this.clearAudioFlavorParamsId);
+		kparams.add("vendorData", this.vendorData);
 		return kparams;
 	}
 

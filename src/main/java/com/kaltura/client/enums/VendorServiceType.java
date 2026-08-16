@@ -35,7 +35,8 @@ package com.kaltura.client.enums;
  */
 public enum VendorServiceType implements EnumAsInt {
 	HUMAN(1),
-	MACHINE(2);
+	MACHINE(2),
+	HYBRID(3);
 
 	private int value;
 
