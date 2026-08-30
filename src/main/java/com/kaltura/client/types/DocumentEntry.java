@@ -47,6 +47,7 @@ public class DocumentEntry extends BaseEntry {
 	public interface Tokenizer extends BaseEntry.Tokenizer {
 		String documentType();
 		String assetParamsIds();
+		String views();
 	}
 
 	/**
@@ -57,6 +58,10 @@ public class DocumentEntry extends BaseEntry {
 	 * Comma separated asset params ids that exists for this media entry
 	 */
 	private String assetParamsIds;
+	/**
+	 * Number of views
+	 */
+	private Integer views;
 
 	// documentType:
 	public DocumentType getDocumentType(){
@@ -74,6 +79,10 @@ public class DocumentEntry extends BaseEntry {
 	public String getAssetParamsIds(){
 		return this.assetParamsIds;
 	}
+	// views:
+	public Integer getViews(){
+		return this.views;
+	}
 
 	public DocumentEntry() {
 		super();
@@ -87,6 +96,7 @@ public class DocumentEntry extends BaseEntry {
 		// set members values:
 		documentType = DocumentType.get(GsonParser.parseInt(jsonObject.get("documentType")));
 		assetParamsIds = GsonParser.parseString(jsonObject.get("assetParamsIds"));
+		views = GsonParser.parseInt(jsonObject.get("views"));
 
 	}
 

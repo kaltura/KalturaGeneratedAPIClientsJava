@@ -58,6 +58,7 @@ public class BulkUploadResultCategory extends BulkUploadResult {
 		String contributionPolicy();
 		String partnerSortValue();
 		String moderation();
+		String adminTags();
 	}
 
 	private String relativePath;
@@ -74,6 +75,7 @@ public class BulkUploadResultCategory extends BulkUploadResult {
 	private Integer contributionPolicy;
 	private Integer partnerSortValue;
 	private Boolean moderation;
+	private String adminTags;
 
 	// relativePath:
 	public String getRelativePath(){
@@ -243,6 +245,18 @@ public class BulkUploadResultCategory extends BulkUploadResult {
 		setToken("moderation", multirequestToken);
 	}
 
+	// adminTags:
+	public String getAdminTags(){
+		return this.adminTags;
+	}
+	public void setAdminTags(String adminTags){
+		this.adminTags = adminTags;
+	}
+
+	public void adminTags(String multirequestToken){
+		setToken("adminTags", multirequestToken);
+	}
+
 
 	public BulkUploadResultCategory() {
 		super();
@@ -268,6 +282,7 @@ public class BulkUploadResultCategory extends BulkUploadResult {
 		contributionPolicy = GsonParser.parseInt(jsonObject.get("contributionPolicy"));
 		partnerSortValue = GsonParser.parseInt(jsonObject.get("partnerSortValue"));
 		moderation = GsonParser.parseBoolean(jsonObject.get("moderation"));
+		adminTags = GsonParser.parseString(jsonObject.get("adminTags"));
 
 	}
 
@@ -288,6 +303,7 @@ public class BulkUploadResultCategory extends BulkUploadResult {
 		kparams.add("contributionPolicy", this.contributionPolicy);
 		kparams.add("partnerSortValue", this.partnerSortValue);
 		kparams.add("moderation", this.moderation);
+		kparams.add("adminTags", this.adminTags);
 		return kparams;
 	}
 
