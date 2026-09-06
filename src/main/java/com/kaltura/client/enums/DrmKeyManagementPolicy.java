@@ -33,37 +33,22 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature implements EnumAsInt {
-	CAPTIONS(1),
-	TRANSLATION(2),
-	ALIGNMENT(3),
-	AUDIO_DESCRIPTION(4),
-	CHAPTERING(5),
-	INTELLIGENT_TAGGING(6),
-	DUBBING(7),
-	LIVE_CAPTION(8),
-	EXTENDED_AUDIO_DESCRIPTION(9),
-	CLIPS(10),
-	LIVE_TRANSLATION(11),
-	QUIZ(12),
-	SUMMARY(13),
-	VIDEO_ANALYSIS(14),
-	MODERATION(15),
-	METADATA_ENRICHMENT(16),
-	SENTIMENT_ANALYSIS(17),
-	DOCUMENT_ENRICHMENT(18),
-	SIGN_LANGUAGE(19),
-	SPEECH_TO_VIDEO(20),
-	IMMERSIVE_AGENT_CALL(21),
-	IMMERSIVE_AGENT_CHAT(22),
-	AVATAR_VOD(23),
-	LLM_MODELS(24),
-	IMMERSIVE_AGENT_EVAL(25),
-	IMMERSIVE_AGENT_PREVIEW(26);
+public enum DrmKeyManagementPolicy implements EnumAsInt {
+	UNKNOWN(0),
+	CLEAR(1),
+	SHARED_KEY(2),
+	ALL_VIDEO(3),
+	SD_HD(4),
+	SD_HD_UHD(5),
+	SD_HD_UHD1_UHD2(6),
+	SD_HD1_HD2_UHD1_UHD2(7),
+	SD_HD1_HD2_UHD(8),
+	SDHD1_HD2_UHD(9),
+	SDHD1_HD2_UHD1_UHD2(10);
 
 	private int value;
 
-	VendorServiceFeature(int value) {
+	DrmKeyManagementPolicy(int value) {
 		this.value = value;
 	}
 
@@ -76,19 +61,19 @@ public enum VendorServiceFeature implements EnumAsInt {
 		this.value = value;
 	}
 
-	public static VendorServiceFeature get(Integer value) {
+	public static DrmKeyManagementPolicy get(Integer value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over VendorServiceFeature defined values and compare the inner value with the given one:
-		for(VendorServiceFeature item: values()) {
+		// goes over DrmKeyManagementPolicy defined values and compare the inner value with the given one:
+		for(DrmKeyManagementPolicy item: values()) {
 			if(item.getValue() == value) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return VendorServiceFeature.values().length > 0 ? VendorServiceFeature.values()[0]: null;
+		return DrmKeyManagementPolicy.values().length > 0 ? DrmKeyManagementPolicy.values()[0]: null;
    }
 }
