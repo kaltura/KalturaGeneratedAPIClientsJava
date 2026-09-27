@@ -101,6 +101,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		String reachProfileIdIn();
 		String isPreview();
 		String streamTypeIn();
+		String reachCatalogItemIdIn();
 	}
 
 	/**
@@ -314,6 +315,10 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 	 * filter by stream type
 	 */
 	private String streamTypeIn;
+	/**
+	 * filter by reach catalog item id
+	 */
+	private String reachCatalogItemIdIn;
 
 	// keywords:
 	public String getKeywords(){
@@ -971,6 +976,18 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		setToken("streamTypeIn", multirequestToken);
 	}
 
+	// reachCatalogItemIdIn:
+	public String getReachCatalogItemIdIn(){
+		return this.reachCatalogItemIdIn;
+	}
+	public void setReachCatalogItemIdIn(String reachCatalogItemIdIn){
+		this.reachCatalogItemIdIn = reachCatalogItemIdIn;
+	}
+
+	public void reachCatalogItemIdIn(String multirequestToken){
+		setToken("reachCatalogItemIdIn", multirequestToken);
+	}
+
 
 	public ReportInputFilter() {
 		super();
@@ -1037,6 +1054,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		reachProfileIdIn = GsonParser.parseString(jsonObject.get("reachProfileIdIn"));
 		isPreview = GsonParser.parseBoolean(jsonObject.get("isPreview"));
 		streamTypeIn = GsonParser.parseString(jsonObject.get("streamTypeIn"));
+		reachCatalogItemIdIn = GsonParser.parseString(jsonObject.get("reachCatalogItemIdIn"));
 
 	}
 
@@ -1098,6 +1116,7 @@ public class ReportInputFilter extends ReportInputBaseFilter {
 		kparams.add("reachProfileIdIn", this.reachProfileIdIn);
 		kparams.add("isPreview", this.isPreview);
 		kparams.add("streamTypeIn", this.streamTypeIn);
+		kparams.add("reachCatalogItemIdIn", this.reachCatalogItemIdIn);
 		return kparams;
 	}
 

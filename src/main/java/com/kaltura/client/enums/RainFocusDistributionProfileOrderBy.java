@@ -33,45 +33,15 @@ package com.kaltura.client.enums;
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DistributionProviderType implements EnumAsString {
-	GENERIC("1"),
-	SYNDICATION("2"),
-	ATT_UVERSE("attUverseDistribution.ATT_UVERSE"),
-	AVN("avnDistribution.AVN"),
-	COMCAST_MRSS("comcastMrssDistribution.COMCAST_MRSS"),
-	CORTEX_API("cortexApiDistribution.CORTEX_API"),
-	CROSS_KALTURA("crossKalturaDistribution.CROSS_KALTURA"),
-	DAILYMOTION("dailymotionDistribution.DAILYMOTION"),
-	DOUBLECLICK("doubleClickDistribution.DOUBLECLICK"),
-	FACEBOOK("facebookDistribution.FACEBOOK"),
-	FREEWHEEL("freewheelDistribution.FREEWHEEL"),
-	FREEWHEEL_GENERIC("freewheelGenericDistribution.FREEWHEEL_GENERIC"),
-	FTP("ftpDistribution.FTP"),
-	FTP_SCHEDULED("ftpDistribution.FTP_SCHEDULED"),
-	HULU("huluDistribution.HULU"),
-	IDETIC("ideticDistribution.IDETIC"),
-	METRO_PCS("metroPcsDistribution.METRO_PCS"),
-	MSN("msnDistribution.MSN"),
-	NDN("ndnDistribution.NDN"),
-	PODCAST("podcastDistribution.PODCAST"),
-	PUSH_TO_NEWS("pushToNewsDistribution.PUSH_TO_NEWS"),
-	QUICKPLAY("quickPlayDistribution.QUICKPLAY"),
-	RAIN_FOCUS("rainFocusDistribution.RAIN_FOCUS"),
-	SYNACOR_HBO("synacorHboDistribution.SYNACOR_HBO"),
-	TIME_WARNER("timeWarnerDistribution.TIME_WARNER"),
-	TVCOM("tvComDistribution.TVCOM"),
-	TVINCI("tvinciDistribution.TVINCI"),
-	UNICORN("unicornDistribution.UNICORN"),
-	UVERSE_CLICK_TO_ORDER("uverseClickToOrderDistribution.UVERSE_CLICK_TO_ORDER"),
-	UVERSE("uverseDistribution.UVERSE"),
-	VERIZON_VCAST("verizonVcastDistribution.VERIZON_VCAST"),
-	YAHOO("yahooDistribution.YAHOO"),
-	YOUTUBE("youTubeDistribution.YOUTUBE"),
-	YOUTUBE_API("youtubeApiDistribution.YOUTUBE_API");
+public enum RainFocusDistributionProfileOrderBy implements EnumAsString {
+	CREATED_AT_ASC("+createdAt"),
+	UPDATED_AT_ASC("+updatedAt"),
+	CREATED_AT_DESC("-createdAt"),
+	UPDATED_AT_DESC("-updatedAt");
 
 	private String value;
 
-	DistributionProviderType(String value) {
+	RainFocusDistributionProfileOrderBy(String value) {
 		this.value = value;
 	}
 
@@ -84,19 +54,19 @@ public enum DistributionProviderType implements EnumAsString {
 		this.value = value;
 	}
 
-	public static DistributionProviderType get(String value) {
+	public static RainFocusDistributionProfileOrderBy get(String value) {
 		if(value == null)
 		{
 			return null;
 		}
 		
-		// goes over DistributionProviderType defined values and compare the inner value with the given one:
-		for(DistributionProviderType item: values()) {
+		// goes over RainFocusDistributionProfileOrderBy defined values and compare the inner value with the given one:
+		for(RainFocusDistributionProfileOrderBy item: values()) {
 			if(item.getValue().equals(value)) {
 				return item;
 			}
 		}
 		// in case the requested value was not found in the enum values, we return the first item as default.
-		return DistributionProviderType.values().length > 0 ? DistributionProviderType.values()[0]: null;
+		return RainFocusDistributionProfileOrderBy.values().length > 0 ? RainFocusDistributionProfileOrderBy.values()[0]: null;
    }
 }
