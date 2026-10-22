@@ -60,7 +60,8 @@ public enum VendorServiceFeature implements EnumAsInt {
 	LLM_MODELS(24),
 	IMMERSIVE_AGENT_EVAL(25),
 	IMMERSIVE_AGENT_PREVIEW(26),
-	VIDEO_GENERATION(27);
+	VIDEO_GENERATION(27),
+	VISUAL_DESCRIPTION(28);
 
 	private int value;
 
